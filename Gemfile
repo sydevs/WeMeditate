@@ -39,6 +39,10 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'regulator'
 gem 'paper_trail'
+gem 'friendly_id'
+gem 'geocoder'
+gem 'globalize'
+gem 'globalize-versioning', github: 'aaroncraigie/globalize-versioning' # for paper_trail support
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
