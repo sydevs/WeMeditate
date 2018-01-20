@@ -1,0 +1,19 @@
+
+- content_for :title, 'Editors'
+
+.ui.items
+  - if @users.empty?
+    tr
+      td
+        .ui.small.header
+          i.low.vision.icon
+          ' No Editors
+      td
+    
+  = render @users
+
+.ui.hidden.divider
+
+.ui.small.header Invite New Editor
+.ui.items
+  = render User.new

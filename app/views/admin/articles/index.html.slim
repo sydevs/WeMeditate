@@ -1,0 +1,19 @@
+
+- content_for :title, 'Articles'
+
+.ui.items
+  - if @articles.empty?
+    tr
+      td
+        .ui.small.header
+          i.low.vision.icon
+          ' No Articles
+      td
+    
+  = render @articles
+
+.ui.hidden.divider
+
+a.ui.basic.labeled.icon.button href=new_admin_article_url
+  i.plus.icon
+  ' New Article

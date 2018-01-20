@@ -1,0 +1,37 @@
+
+#logo.ui.centered.small.image
+  = render 'admin/application/logo'
+
+.ui.section.divider
+
+.ui.fluid.secondary.vertical.menu
+  = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"
+    i.users.icon
+    ' Editors
+
+  = link_to [:admin, Category], class: "#{'active' if controller_name == 'categories'} item"
+    i.hashtag.icon
+    ' Categories
+
+  = link_to [:admin, Article], class: "#{'active' if controller_name == 'articles'} item"
+    i.sticky.note.icon
+    ' Articles
+
+  = link_to [:admin, :root], class: "#{'active' if controller_name == 'tracks'} item"
+    i.music.icon
+    ' Tracks
+
+  = link_to [:admin, :root], class: "#{'active' if controller_name == 'cities'} item"
+    i.university.icon
+    ' Cities
+
+
+.ui.hidden.divider
+
+.ui.vertical.text.menu
+  = link_to root_url, class: 'item' do
+    i.browser.icon
+    ' View Site
+  = link_to destroy_user_session_path, class: 'item', method: :delete do
+    i.sign.out.icon
+    ' Log Out

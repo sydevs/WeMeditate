@@ -1,9 +1,9 @@
-class ArticleContent < ApplicationRecord
+class Section < ApplicationRecord
   has_paper_trail
   
   belongs_to :article
 
-  enum type: [
+  enum content_type: [
     :text,
     :video
   ]

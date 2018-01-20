@@ -1,0 +1,22 @@
+
+- reorder = false unless defined? local_assigns[:reorder]
+- content_for :title, 'Categories'
+
+.ui.items class="#{'sortable-list' if reorder}"
+  //data-sort-url=sort_admin_categories_path
+  
+  - if @categories.empty?
+    tr
+      td
+        .ui.small.header
+          i.low.vision.icon
+          ' No Categories
+      td
+    
+  = render @categories
+
+.ui.hidden.divider
+
+.ui.small.header New Category
+.ui.items
+  = render Category.new

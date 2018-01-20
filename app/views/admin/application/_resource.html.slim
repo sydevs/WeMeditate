@@ -1,0 +1,32 @@
+
+- new_label = 'New' unless local_assigns[:new_label].present?
+- viewable = true unless defined? local_assigns[:viewable]
+
+= form_for [:admin, resource], remote: true, html: { class: "item #{'editing' if resource.new_record?}" } do |f|
+  .actions
+    - if resource.new_record?
+      button.ui.basic.labeled.icon.create.button
+        i.plus.icon
+        = new_label
+    - else
+      .ui.tiny.compact.vertical.labeled.icon.buttons
+        button.ui.save.edit.button.for-editing
+          i.green.checkmark.icon
+          ' Save
+        .ui.cancel.edit.button.for-editing
+          i.red.cancel.icon
+          ' Cancel
+      
+        - if viewable
+          a.ui.view.button.for-viewing href=url_for(resource)
+            i.browser.icon
+            ' View
+        .ui.start.edit.button.for-viewing
+          i.edit.icon
+          ' Edit
+        a.ui.delete.button.for-viewing href=url_for([:admin, resource]) data-method="delete"
+          i.trash.icon
+          ' Delete
+
+  .content
+    = yield f

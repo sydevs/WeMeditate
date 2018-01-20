@@ -2,7 +2,7 @@ doctype html
 
 html
   head
-    title We Meditate
+    title We Meditate - #{content_for :title}
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -11,19 +11,6 @@ html
     p class="notice" = notice
     p class="alert" = alert
     
+    h1 Front
+
     = yield
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Wemeditate</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
-</html>

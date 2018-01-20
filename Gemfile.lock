@@ -92,6 +92,10 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    jquery-rails (4.3.1)
+      rails-dom-testing (>= 1, < 3)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -115,7 +119,7 @@ GEM
       request_store (~> 1.1)
     pg (0.21.0)
     public_suffix (3.0.1)
-    puma (3.11.0)
+    puma (3.11.1)
     rack (2.0.3)
     rack-test (0.8.2)
       rack (>= 1.0, < 3)
@@ -169,6 +173,11 @@ GEM
     selenium-webdriver (3.8.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
+    semantic-ui-sass (2.2.12.1)
+      sass (>= 3.2)
+    simple_form (3.5.0)
+      actionpack (> 4, < 5.2)
+      activemodel (> 4, < 5.2)
     slim (3.0.9)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 1.3.3, < 2.1)
@@ -225,6 +234,7 @@ DEPENDENCIES
   globalize
   globalize-versioning!
   jbuilder (~> 2.5)
+  jquery-rails
   listen (>= 3.0.5, < 3.2)
   paper_trail
   pg (~> 0.18)
@@ -233,6 +243,8 @@ DEPENDENCIES
   regulator
   sass-rails (~> 5.0)
   selenium-webdriver
+  semantic-ui-sass
+  simple_form
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)

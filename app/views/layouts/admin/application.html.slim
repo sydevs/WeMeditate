@@ -1,0 +1,26 @@
+doctype html
+
+html
+  head
+    title WM #{content_for :title}
+    = csrf_meta_tags
+    = stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
+
+  body.ui.padded.relaxed.grid
+    .four.wide.column
+      = render 'admin/application/menu'
+  
+    main.twelve.wide.column
+      h1.ui.header = content_for :title
+
+      - if notice
+        .ui.info.message = notice
+
+      - if alert
+        .ui.error.message = alert
+      
+      .ui.divider
+
+      content
+        = yield

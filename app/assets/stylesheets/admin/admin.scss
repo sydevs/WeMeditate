@@ -1,0 +1,77 @@
+@import "semantic-ui";
+
+#logo path {
+  fill: black;
+}
+
+h1.ui.header {
+  display: table-cell;
+  height: 99.54px;
+  vertical-align: bottom;
+  padding-top: 1rem;
+  box-sizing: content-box;
+  text-transform: lowercase;
+}
+
+content {
+  display: block;
+  padding-top: 1rem;
+}
+
+.ui.items > .item {
+  display: block;
+
+  > .actions {
+    float: right;
+  }
+
+  > .content {
+    margin-right: 105px;
+
+    > .meta .ui.list > .item:after {
+      clear: none;
+    }
+  }
+
+  &.editing {
+    .header,
+    .meta,
+    .button.for-viewing {
+      display: none;
+    }
+
+    .description {
+      margin: 0;
+    }
+  }
+
+  &:not(.editing) {
+    .field,
+    .fields,
+    .button.for-editing {
+      display: none;
+    }
+  }
+
+  .right.floated {
+    margin-left: 4px;
+  }
+}
+
+.object-template {
+  display: none;
+}
+
+.section {
+  margin-bottom: 1em;
+}
+
+.reset-slug {
+  label {
+    margin-left: 10px;
+  }
+
+  input[type="checkbox"] {
+    vertical-align: baseline;
+  }
+}

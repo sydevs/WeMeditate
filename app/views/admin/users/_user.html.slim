@@ -1,0 +1,39 @@
+
+//.item
+  .actions
+    .ui.tiny.compact.vertical.labeled.icon.buttons
+      a.ui.button.for-viewing href=admin_user_url(user) data-method="delete"
+        i.trash.icon
+        ' Delete
+
+  .content
+    .header = user.email
+
+    .meta
+      - if user.invitation_accepted?
+        ' last login:
+        = user.last_login_at.to_s(:long)
+      - else
+        ' invitation sent
+
+= render 'admin/application/resource', resource: user, new_label: 'Invite', viewable: false do |f|
+  .header = user.email
+
+  .meta
+    - if user.invitation_accepted?
+      ' last login:
+      = user.last_login_at.to_s(:long)
+    - else
+      ' invitation sent
+
+  .description
+    .field
+      - if user.new_record?
+        .ui.fluid.input
+          = f.text_field :email, placeholder: 'Email Address'
+      - else
+        strong = user.email
+    .field
+      = f.select :languages, options_for_select(I18n.available_locales.collect {|l| [l.to_s.capitalize, l]}), { include_blank: "Set Language Access...", selected: nil }, { class: 'ui fluid dropdown' }
+    .field
+      = f.select :role, options_for_select(['Editor', 'Regional Admin', 'Super Admin']), { include_blank: "Set Capabilities...", selected: nil }, { class: 'ui fluid dropdown' }

@@ -1,0 +1,46 @@
+
+= form_for [:admin, @article], html: { class: "ui form #{'error' if @article.errors.present?}" } do |f|
+  - if @article.errors.present?
+    .ui.small.error.message
+      .header Errors
+      ul.list
+        - @article.errors.messages.each do |field, errors|
+          - errors.each do |error|
+            li #{field} #{error}
+
+  .field
+    = f.label :title
+    = f.text_field :title
+
+    - unless @article.new_record?
+      .reset-slug
+        em = @article.slug
+        //= f.label :reset_slug do
+          ' #{f.check_box :reset_slug, checked: false, value: 'on'} reset slug
+
+
+  .field
+    = f.label :category
+    = f.select :category_id, options_for_select(Category.all.map {|c| [c.name, c.id] }), { allow_blank: 'Select Category...' }, { class: 'ui dropdown' }
+
+  .contents.field.object-list
+    label Content
+    - f.fields_for :sections do |ff|
+      = render @article.sections, f: ff
+
+  .ui.tiny.compact.basic.labeled.icon.button.new-object-button
+    i.plus.icon
+    ' Add Content
+
+  .object-template
+    = render Section.new, f: f
+  
+  .ui.hidden.divider
+
+  p
+    a.ui.basic.button href=admin_articles_url
+      i.left.arrow.icon
+      ' Back to Articles
+
+    button.ui.basic.positive.button
+      ' Save
