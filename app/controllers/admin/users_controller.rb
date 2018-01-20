@@ -16,9 +16,11 @@ module Admin
     end
 
     def update
-      @user.update user_params
-      #head :ok
-      redirect_to [:admin, User]
+      if @user.update user_params
+        head :ok
+      else
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
 
     def destroy
@@ -28,7 +30,7 @@ module Admin
 
     private
       def user_params
-        params.fetch(:user, {}).permit(:email)
+        params.fetch(:user, {}).permit(:email, :role, languages: [])
       end
 
       def set_user

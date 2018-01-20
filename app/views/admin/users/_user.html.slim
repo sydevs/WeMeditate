@@ -10,21 +10,39 @@
     .header = user.email
 
     .meta
-      - if user.invitation_accepted?
-        ' last login:
-        = user.last_login_at.to_s(:long)
-      - else
-        ' invitation sent
+      .ui.tiny.list
+        .item
+          - if user.invitation_accepted?
+            i.user.icon
+            ' last login: #{user.last_login_at.to_s(:long)}
+          - else
+            i.mail.icon
+            ' invitation sent
+        .item
+          i.globe.icon
+          .content = user.languages.join(', ')
 
 = render 'admin/application/resource', resource: user, new_label: 'Invite', viewable: false do |f|
   .header = user.email
 
   .meta
-    - if user.invitation_accepted?
-      ' last login:
-      = user.last_login_at.to_s(:long)
-    - else
-      ' invitation sent
+    .ui.tiny.list
+      .item
+        - if user.invitation_accepted?
+          i.user.icon
+          .content last login: #{user.last_login_at.to_s(:long)}
+        - else
+          i.mail.icon
+          .content invitation sent
+      .item
+        i.user.icon
+        .content
+          = user.role.humanize(capitalize: false)
+          '  - 
+          - if user.all_languages?
+            ' worldwide
+          - else
+            = user.languages.map{|l| I18nData.languages[l.to_s.upcase]}.join(', ').downcase
 
   .description
     .field
@@ -34,6 +52,8 @@
       - else
         strong = user.email
     .field
-      = f.select :languages, options_for_select(I18n.available_locales.collect {|l| [l.to_s.capitalize, l]}), { include_blank: "Set Language Access...", selected: nil }, { class: 'ui fluid dropdown' }
+      //label Capabilities
+      = f.select :role, User.roles.map {|k, v| [k.humanize.titlecase, k]}, {}, { class: 'ui fluid dropdown' }
     .field
-      = f.select :role, options_for_select(['Editor', 'Regional Admin', 'Super Admin']), { include_blank: "Set Capabilities...", selected: nil }, { class: 'ui fluid dropdown' }
+      //label Language Access
+      = f.select :languages, I18n.available_locales.collect {|l| [I18nData.languages[l.to_s.upcase], l]}, { include_blank: "Can access all languages" }, { class: 'ui fluid search dropdown', multiple: '' }

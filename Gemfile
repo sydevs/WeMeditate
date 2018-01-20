@@ -43,6 +43,7 @@ gem 'friendly_id'
 gem 'geocoder'
 gem 'semantic-ui-sass'
 gem 'jquery-rails'
+gem 'i18n_data'
 gem 'globalize'
 gem 'globalize-versioning', github: 'aaroncraigie/globalize-versioning' # for paper_trail support
 

@@ -1,4 +1,6 @@
 module Admin::ApplicationHelper
+  require 'i18n_data'
+  
   #ActionView::Helpers::FormBuilder.class_eval do
   #  include ActionView::Helpers::TagHelper
   #
