@@ -8,7 +8,12 @@ Rails.application.routes.draw do
     root to: "application#dashboard"
 
     resources :users, except: [:show]
-    resources :categories, except: [:show]
+    resources :categories, except: [:show] do 
+      collection do
+        put 'sort'
+      end
+    end
+    
     resources :articles, except: [:show] do 
       resources :sections, only: [:create, :update, :destroy]
     end

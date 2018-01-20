@@ -75,3 +75,15 @@ content {
     vertical-align: baseline;
   }
 }
+
+.clearfix {
+  clear: both;
+}
+
+.sortable-ghost {
+  opacity: 0.4;
+}
+
+.sortable .handle {
+  cursor: move;
+}

@@ -14,4 +14,5 @@
 //= require rails-ujs
 //= require turbolinks
 //= require semantic-ui
+//= require sortable-rails
 //= require_tree ./admin

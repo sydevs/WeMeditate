@@ -1,9 +1,9 @@
 module Admin
     class CategoriesController < Admin::ApplicationController
-      before_action :set_category, except: [:index, :create]
+      before_action :set_category, except: [:index, :create, :sort]
 
       def index
-        @categories = Category.all
+        @categories = Category.order(:order).all
       end
 
       def create
@@ -13,8 +13,24 @@ module Admin
       end
 
       def update
-        @category.update category_params
-        #head :ok
+        atts = category_params
+
+        if params[:category][:reset_slug]
+          atts[:slug] = nil
+        end
+
+        if @category.update atts
+          redirect_to [:admin, Category]
+        else
+          format.json { render json: @category.errors, status: :unprocessable_entity }
+        end
+      end
+
+      def sort
+        params[:order].each_with_index do |id, index|
+          Category.find(id).update_attribute(:order, index)
+        end
+
         redirect_to [:admin, Category]
       end
 

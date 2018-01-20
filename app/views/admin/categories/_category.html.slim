@@ -1,25 +1,34 @@
 
-= render 'admin/application/resource', resource: category do |f|
-  .header = category.name
+- if reorder
+  .item
+    .header.handle
+      i.bars.icon
+      = category.name
+    = hidden_field_tag 'order[]', category.id, { id: 'order_for_' + category.id.to_s }
+- else
+  = render 'admin/application/resource', resource: category do |f|
+    .header = category.name
 
-  - unless category.new_record?
-    .meta
-      .ui.tiny.list
-        .item
-          i.linkify.icon
-          .content = category.slug
-        .item
-          i.sticky.note.icon
-          .content = pluralize category.articles.count, 'article'
-
-  .description
-    .field
-      .ui.fluid.input
-        = f.text_field :name, placeholder: 'Category Name'
-      
     - unless category.new_record?
-      .field.reset-slug
-        em = category.slug
-        = f.label :reset_slug do
-          ' #{f.check_box :reset_slug, checked: false, value: 'on'} reset slug
+      .meta
+        .ui.tiny.list
+          .item
+            i.linkify.icon
+            .content = category.slug
+          .item
+            i.sticky.note.icon
+            .content = pluralize category.articles.count, 'article'
+
+    .description
+      .field
+        .ui.fluid.input
+          = f.text_field :name, placeholder: 'Category Name'
+        
+      - unless category.new_record?
+        .field.reset-slug
+          i.linkify.icon
+          em = category.slug
+          = f.label :reset_slug do
+            = f.check_box :reset_slug, { checked: false }, 'yes', nil
+            ' reset slug
   

@@ -183,6 +183,7 @@ GEM
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (~> 3.0)
+    sortable-rails (1.4.2.2)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -244,6 +245,7 @@ DEPENDENCIES
   selenium-webdriver
   semantic-ui-sass
   slim-rails
+  sortable-rails
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

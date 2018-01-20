@@ -1,22 +1,38 @@
 
-- reorder = false unless defined? local_assigns[:reorder]
+- reorder = (params[:reorder] == 'true')
 - content_for :title, 'Categories'
 
-.ui.items class="#{'sortable-list' if reorder}"
-  //data-sort-url=sort_admin_categories_path
-  
-  - if @categories.empty?
-    tr
-      td
-        .ui.small.header
-          i.low.vision.icon
-          ' No Categories
-      td
-    
-  = render @categories
+- if @categories.empty?
+  .ui.items
+    .item
+      .header
+        i.low.vision.icon
+        ' No Categories
+- elsif reorder
+  = form_tag sort_admin_categories_path, method: :put
+    a.ui.tiny.compact.basic.right.floated.button href=admin_categories_path
+      ' Cancel
+    button.ui.tiny.compact.basic.positive.right.floated.right.labeled.icon.button
+      ' Save
+      i.checkmark.icon
 
-.ui.hidden.divider
+    .clearfix
 
-.ui.small.header New Category
-.ui.items
-  = render Category.new
+    .ui.sortable.items
+      = render @categories, reorder: reorder
+- else
+  a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=admin_categories_path(reorder: true)
+    i.bars.icon
+    ' Change Category Order
+
+  .clearfix
+
+  .ui.items
+    = render @categories, reorder: reorder
+
+- unless reorder
+  .ui.hidden.divider
+
+  .ui.small.header New Category
+  .ui.items
+    = render Category.new, reorder: reorder

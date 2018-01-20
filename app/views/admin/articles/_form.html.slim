@@ -14,9 +14,11 @@
 
     - unless @article.new_record?
       .reset-slug
+        i.linkify.icon
         em = @article.slug
-        //= f.label :reset_slug do
-          ' #{f.check_box :reset_slug, checked: false, value: 'on'} reset slug
+        = f.label :reset_slug do
+          = f.check_box :reset_slug, { checked: false }, 'yes', nil
+          ' reset slug
 
 
   .field

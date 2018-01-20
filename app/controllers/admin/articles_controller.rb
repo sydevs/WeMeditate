@@ -24,13 +24,13 @@ module Admin
       end
 
       def update
-        @article.update article_params
+        atts = article_params
 
-        if params[:reset_slug]
-          @article.update slug: nil
+        if params[:article][:reset_slug]
+          atts[:slug] = nil
         end
 
-        if @article.errors.present?
+        if @article.update atts
           render :edit
         else
           redirect_to [:admin, Article]
