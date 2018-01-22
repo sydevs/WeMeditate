@@ -35,8 +35,12 @@ module Admin
       end
 
       def destroy
-        @category.destroy #if @category.documents.count == 0
-        redirect_to [:admin, Category]
+        if @category.articles.count > 0
+          redirect_to [:admin, Category], alert: 'You cannot delete a category which has articles attached to it. Reassign the articles and try again.'
+        else
+          @category.destroy
+          redirect_to [:admin, Category]
+        end
       end
 
       private

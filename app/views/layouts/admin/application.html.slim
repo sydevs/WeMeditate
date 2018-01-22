@@ -11,14 +11,14 @@ html
     nav = render 'admin/application/menu'
     main
       h1.ui.header = content_for :title
-
-      - if notice
-        .ui.info.message = notice
-
-      - if alert
-        .ui.error.message = alert
       
       .ui.divider
+
+      - if notice
+        .ui.small.info.message = notice
+
+      - if alert
+        .ui.small.error.message = alert
 
       content
         = yield

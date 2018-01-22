@@ -21,11 +21,12 @@
     .ui.sort-list.items
       = render @categories, reorder: reorder
 - else
-  a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=admin_categories_path(reorder: true)
-    i.bars.icon
-    ' Change Category Order
+  - if @categories.count > 1
+    a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=admin_categories_path(reorder: true)
+      i.bars.icon
+      ' Change Category Order
 
-  .clearfix
+    .clearfix
 
   .ui.resource.items
     = render @categories, reorder: reorder
