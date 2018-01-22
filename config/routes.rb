@@ -14,9 +14,7 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :articles, except: [:show] do 
-      resources :sections, only: [:create, :update, :destroy]
-    end
+    resources :articles, except: [:show]
   end
 
   resources :categories, only: [:index, :show]

@@ -1,14 +1,20 @@
 
 $(document).on('turbolinks:load', function() {
   $('.ui.dropdown').dropdown()
+  $('.ui.checkbox').checkbox()
   $('.ui.accordion').accordion()
 
-  $('.sortable.items').each(function() {
+  $('.sort-list').each(function() {
     Sortable.create(this, {
       handle: ".handle",
-      draggable: ".item",
+      draggable: ".sortable",
     })
 
-    console.log('sorting', this)
+    var list = $(this)
+    list.closest('form').on('submit', function() {
+      list.children('.sortable').each(function(index) {
+        $(this).children('.sorting-order').val(index + 1)
+      })
+    })
   })
 })

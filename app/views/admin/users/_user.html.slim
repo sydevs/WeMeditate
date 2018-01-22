@@ -1,12 +1,6 @@
 
-//.item
-  .actions
-    .ui.tiny.compact.vertical.labeled.icon.buttons
-      a.ui.button.for-viewing href=admin_user_url(user) data-method="delete"
-        i.trash.icon
-        ' Delete
-
-  .content
+= render 'admin/application/resource', resource: user, new_label: 'Invite', viewable: false do |f|
+  - unless user.new_record?
     .header = user.email
 
     .meta
@@ -14,35 +8,19 @@
         .item
           - if user.invitation_accepted?
             i.user.icon
-            ' last login: #{user.last_login_at.to_s(:long)}
+            .content Last Login: #{user.last_login_at.to_s(:long)}
           - else
             i.mail.icon
-            ' invitation sent
+            .content Invitation Sent
         .item
-          i.globe.icon
-          .content = user.languages.join(', ')
-
-= render 'admin/application/resource', resource: user, new_label: 'Invite', viewable: false do |f|
-  .header = user.email
-
-  .meta
-    .ui.tiny.list
-      .item
-        - if user.invitation_accepted?
           i.user.icon
-          .content last login: #{user.last_login_at.to_s(:long)}
-        - else
-          i.mail.icon
-          .content invitation sent
-      .item
-        i.user.icon
-        .content
-          = user.role.humanize(capitalize: false)
-          '  - 
-          - if user.all_languages?
-            ' worldwide
-          - else
-            = user.languages.map{|l| I18nData.languages[l.to_s.upcase]}.join(', ').downcase
+          .content
+            = user.role.titleize
+            '  - 
+            - if user.all_languages?
+              ' Worldwide
+            - else
+              = user.languages.map{|l| I18nData.languages[l.to_s.upcase]}.join(', ')
 
   .description
     .field

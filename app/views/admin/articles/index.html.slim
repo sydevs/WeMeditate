@@ -1,14 +1,12 @@
 
 - content_for :title, 'Articles'
 
-.ui.items
+.ui.resource.items
   - if @articles.empty?
-    tr
-      td
-        .ui.small.header
+    .item
+      .small.header
           i.low.vision.icon
           ' No Articles
-      td
     
   = render @articles
 

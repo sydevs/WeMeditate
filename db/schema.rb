@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180120123047) do
+ActiveRecord::Schema.define(version: 20180122105646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20180120123047) do
     t.datetime "updated_at", null: false
     t.string "slug", null: false
     t.bigint "category_id"
+    t.integer "priority", default: 0, null: false
     t.index ["category_id"], name: "index_articles_on_category_id"
   end
 
@@ -46,10 +47,13 @@ ActiveRecord::Schema.define(version: 20180120123047) do
 
   create_table "sections", force: :cascade do |t|
     t.string "header"
-    t.string "text"
     t.integer "content_type", default: 0
-    t.json "options"
     t.bigint "article_id"
+    t.integer "order", default: 0, null: false
+    t.jsonb "parameters", default: {}, null: false
+    t.integer "visibility_type", default: 0, null: false
+    t.string "visibility_countries"
+    t.integer "language", default: 0, null: false
     t.index ["article_id"], name: "index_sections_on_article_id"
   end
 

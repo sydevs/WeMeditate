@@ -3,7 +3,7 @@ module Admin
     before_action :set_user, except: [:index, :create]
 
     def index
-      @users = User.all
+      @users = User.order(:email).all
     end
 
     def create

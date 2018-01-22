@@ -18,25 +18,26 @@
         em = @article.slug
         = f.label :reset_slug do
           = f.check_box :reset_slug, { checked: false }, 'yes', nil
-          ' reset slug
-
+          '  reset slug
 
   .field
     = f.label :category
-    = f.select :category_id, options_for_select(Category.all.map {|c| [c.name, c.id] }), { allow_blank: 'Select Category...' }, { class: 'ui dropdown' }
+    = f.select :category_id, Category.all.map {|c| [c.name, c.id] }, { allow_blank: 'Select Category...' }, { class: 'ui dropdown' }
 
-  .contents.field.object-list
+  .field
+    = f.label :priority, 'Visibility'
+    = f.select :priority, Article.priorities.map {|k, v| [k.humanize.titlecase, k]}, {}, { class: 'ui fluid dropdown' }
+
+  .field
     label Content
-    - f.fields_for :sections do |ff|
-      = render @article.sections, f: ff
+    .sort-list
+      = f.fields_for :sections do |ff|
+        = render 'section_fields', f: ff
 
-  .ui.tiny.compact.basic.labeled.icon.button.new-object-button
-    i.plus.icon
-    ' Add Content
+      = link_to_add_fields f, :sections, {}, { class: 'ui tiny compact basic labeled icon button' } do
+        i.plus.icon
+        ' Add Content
 
-  .object-template
-    = render Section.new, f: f
-  
   .ui.hidden.divider
 
   p

@@ -18,7 +18,7 @@
 
     .clearfix
 
-    .ui.sortable.items
+    .ui.sort-list.items
       = render @categories, reorder: reorder
 - else
   a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=admin_categories_path(reorder: true)
@@ -27,12 +27,11 @@
 
   .clearfix
 
-  .ui.items
+  .ui.resource.items
     = render @categories, reorder: reorder
 
 - unless reorder
   .ui.hidden.divider
 
   .ui.small.header New Category
-  .ui.items
-    = render Category.new, reorder: reorder
+  = render Category.new, reorder: reorder

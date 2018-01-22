@@ -26,14 +26,20 @@ module Admin
       def update
         atts = article_params
 
+        print params
+        print "\r\n"
+        print article_params
+        print "\r\n"
+
         if params[:article][:reset_slug]
           atts[:slug] = nil
         end
 
         if @article.update atts
-          render :edit
+          redirect_to edit_admin_article_path(@article)
+          #redirect_to [:admin, Article]
         else
-          redirect_to [:admin, Article]
+          render :edit
         end
       end
 
@@ -43,7 +49,14 @@ module Admin
 
       private
         def article_params
-          params.fetch(:article, {}).permit(:title, :category_id)
+          params.fetch(:article, {}).permit(
+            :title, :category_id, :priority,
+            sections_attributes: [
+              :id, :order, :_destroy, # Meta fields
+              :header, :content_type, :visibility_type, :visibility_countries,
+              :text, :youtube_id, :image # These are the options for different content_types
+            ]
+          )
         end
 
         def set_article

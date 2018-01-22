@@ -4,6 +4,20 @@
   fill: black;
 }
 
+nav {
+  position: absolute;
+  width: 225px;
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
+}
+
+main {
+  margin-left: 225px;
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
+  max-width: 900px;
+}
+
 h1.ui.header {
   display: table-cell;
   height: 99.54px;
@@ -18,7 +32,7 @@ content {
   padding-top: 1rem;
 }
 
-.ui.items > .item {
+.ui.resource.items > .item {
   display: block;
 
   > .actions {
@@ -58,27 +72,20 @@ content {
   }
 }
 
-.object-template {
-  display: none;
-}
-
-.section {
-  margin-bottom: 1em;
-}
-
 .reset-slug {
   label {
     margin-left: 10px;
   }
 
   input[type="checkbox"] {
-    vertical-align: baseline;
+    vertical-align: baseline !important;
   }
 }
 
 .clearfix {
   clear: both;
 }
+
 
 .sortable-ghost {
   opacity: 0.4;

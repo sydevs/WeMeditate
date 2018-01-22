@@ -1,15 +1,15 @@
 
 - if reorder
-  .item
+  .sortable.item
     .header.handle
       i.bars.icon
       = category.name
     = hidden_field_tag 'order[]', category.id, { id: 'order_for_' + category.id.to_s }
 - else
   = render 'admin/application/resource', resource: category do |f|
-    .header = category.name
-
     - unless category.new_record?
+      .header = category.name
+
       .meta
         .ui.tiny.list
           .item
@@ -17,7 +17,7 @@
             .content = category.slug
           .item
             i.sticky.note.icon
-            .content = pluralize category.articles.count, 'article'
+            .content = pluralize category.articles.count, 'Article'
 
     .description
       .field

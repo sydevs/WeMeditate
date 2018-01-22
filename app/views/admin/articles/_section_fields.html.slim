@@ -1,0 +1,75 @@
+
+- section = f.object
+
+.ui.styled.sortable.section.accordion id=dom_id(section) class="type-#{section.content_type}"
+  - unless section.new_record?
+    = f.hidden_field :id
+
+  = f.hidden_field :order, class: 'sorting-order'
+
+  .title
+    //.location style="float: right" data-tooltip="Visible for All Countries" data-inverted=""
+      i.teal.check.circle.outline.icon
+      i.black.globe.icon
+
+    //.location style="float: right" data-tooltip="Visible for United States" data-inverted=""
+      i.teal.check.circle.outline.icon
+      i.ca.flag
+
+    //.location style="float: right" data-tooltip="Hidden for United States" data-inverted=""
+      i.orange.remove.circle.outline.icon
+      i.us.flag
+
+    i.black.bars.icon.handle
+
+    - if section.new_record?
+      ' New Section
+    - elsif section.header.present?
+      = section.header + " [#{section.content_type.humanize}]"
+    - elsif section.content_type.present?
+      = section.content_type.humanize + ' Section'
+    - else
+      = "Section ##{section.id}"
+
+  .content
+    .form
+      .field
+        = f.text_field :header, placeholder: 'Name'
+      .field.content-type
+        label Content Type
+        = f.select :content_type, Section.content_types.map {|k,v| [k.humanize.capitalize, k]}, {}, { class: 'ui dropdown' }
+      
+      .field.for-text
+        = f.text_area :text, placeholder: 'Text'
+      .field.for-image
+        = f.file_field :image
+      .field.for-video
+        = f.text_field :youtube_id, placeholder: 'Youtube Video ID'
+      
+      .fields
+        .six.wide.field
+          label Visible to
+          = f.select :visibility_type, Section.visibility_types.map {|k,v| [k.humanize.capitalize, k]}, {}, { class: 'ui dropdown' }
+        .ten.wide.field
+          label countries
+          .ui.multiple.search.selection.dropdown
+            // We need the raw country data for display
+            = f.hidden_field :visibility_countries, value: section[:visibility_countries]
+            i.dropdown.icon
+            .default.text None
+            .menu
+              - I18nData.countries.each do |country_code, country_name|
+                .item data-value=country_code.downcase
+                  i.flag class=country_code.downcase
+                  = country_name
+
+    - if section.new_record?
+      .ui.tiny.compact.basic.labeled.icon.button.remove-section-button
+        i.trash.icon
+        ' Remove Section
+    - else
+      .ui.checkbox
+        = f.check_box :_destroy, class: 'delete-section'
+        = f.label :delete_section
+
+    .clearfix
