@@ -1,5 +1,10 @@
 module Admin::ApplicationHelper
   require 'i18n_data'
+
+  LANGUAGE_TO_FLAG_MAP = {
+    ru: 'ru',
+    en: 'gb',
+  }
   
   #ActionView::Helpers::FormBuilder.class_eval do
   #  include ActionView::Helpers::TagHelper
@@ -10,6 +15,14 @@ module Admin::ApplicationHelper
   #    end
   #  end
   #end
+
+  def country_flag country_code
+    content_tag :i, nil, class: "#{country_code} flag"
+  end
+
+  def language_flag l=locale
+    country_flag LANGUAGE_TO_FLAG_MAP[l]
+  end
 
   # This function is taken from https://www.pluralsight.com/guides/ruby-ruby-on-rails/ruby-on-rails-nested-attributes
   def link_to_add_fields(name = nil, f = nil, association = nil, options = nil, html_options = nil, &block)

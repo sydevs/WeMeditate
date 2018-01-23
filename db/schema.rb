@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122105646) do
+ActiveRecord::Schema.define(version: 20180122134812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(version: 20180122105646) do
     t.string "visibility_countries"
     t.integer "language", default: 0, null: false
     t.index ["article_id"], name: "index_sections_on_article_id"
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "subtitle"
+    t.string "file", null: false
+    t.integer "mood", default: 0, null: false
+    t.string "instruments"
   end
 
   create_table "users", force: :cascade do |t|

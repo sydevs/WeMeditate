@@ -31,3 +31,12 @@
 
 en:
   hello: "Hello world"
+  dashboard: "Dashboarder"
+  locale:
+    worldwide: "Worldwide"
+  user:
+    invitation_sent: "Invitation Sent"
+    role:
+      super_admin: "Super Admin"
+      regional_admin: "Regional Admin"
+      editor: "Editor"

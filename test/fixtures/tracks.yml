@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  file: 
+  mood: 1
+  instruments: 1
+
+two:
+  name: MyString
+  file: 
+  mood: 1
+  instruments: 1

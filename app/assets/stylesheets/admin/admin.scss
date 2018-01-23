@@ -72,6 +72,11 @@ content {
   }
 }
 
+.editing.item .field {
+  margin-bottom: 0.5em;
+  font-size: 90%;
+}
+
 .reset-slug {
   label {
     margin-left: 10px;
@@ -93,4 +98,8 @@ content {
 
 .sortable .handle {
   cursor: move;
+}
+
+.translation_missing {
+  background: moccasin;
 }

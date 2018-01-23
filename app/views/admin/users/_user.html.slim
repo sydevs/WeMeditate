@@ -8,19 +8,19 @@
         .item
           - if user.invitation_accepted?
             i.user.icon
-            .content Last Login: #{user.last_login_at.to_s(:long)}
+            .content Last Login: #{localize user.last_login_at}
           - else
             i.mail.icon
-            .content Invitation Sent
+            .content = translate 'user.invitation_sent'
         .item
           i.user.icon
           .content
-            = user.role.titleize
+            = translate 'user.role.' + user.role.to_s
             '  - 
             - if user.all_languages?
-              ' Worldwide
+              = translate 'locale.worldwide'
             - else
-              = user.languages.map{|l| I18nData.languages[l.to_s.upcase]}.join(', ')
+              = user.languages.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
 
   .description
     .field

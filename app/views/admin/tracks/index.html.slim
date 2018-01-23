@@ -1,0 +1,16 @@
+
+- content_for :title, 'Tracks'
+
+.ui.resource.items
+  - if @tracks.empty?
+    .item
+      .header
+        i.low.vision.icon
+        ' No Music Tracks
+    
+  = render @tracks
+
+.ui.hidden.divider
+
+.ui.small.header New Track
+= render Track.new

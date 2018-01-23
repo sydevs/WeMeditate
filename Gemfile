@@ -46,6 +46,9 @@ gem 'semantic-ui-sass'
 gem 'jquery-rails'
 gem 'sortable-rails'
 
+gem 'carrierwave'
+#gem 'carrierwave-aws'
+
 gem 'i18n_data'
 gem 'globalize'
 gem 'globalize-versioning', github: 'aaroncraigie/globalize-versioning' # for paper_trail support
