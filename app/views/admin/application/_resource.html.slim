@@ -1,6 +1,7 @@
 
 - new_label = 'New' unless local_assigns[:new_label].present?
 - viewable = true unless local_assigns[:viewable] == false
+- allow = policy(resource)
 
 = form_for [:admin, resource], remote: true, html: { class: "item #{'editing' if resource.new_record?}" } do |f|
   .actions
@@ -17,12 +18,14 @@
           a.ui.view.button.for-viewing href=url_for(resource)
             i.browser.icon
             ' View
-        .ui.start.edit.button.for-viewing
-          i.edit.icon
-          ' Edit
-        a.ui.delete.button.for-viewing href=url_for([:admin, resource]) data-method="delete" data-confirm="Are you sure you want to delete that?"
-          i.trash.icon
-          ' Delete
+        - if allow.edit?
+          .ui.start.edit.button.for-viewing
+            i.edit.icon
+            ' Edit
+        - if allow.destroy?
+          a.ui.delete.button.for-viewing href=url_for([:admin, resource]) data-method="delete" data-confirm="Are you sure you want to delete that?"
+            i.trash.icon
+            ' Delete
 
   .content
     = yield f

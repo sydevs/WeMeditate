@@ -1,4 +1,6 @@
 
+- allow = policy(category)
+
 - if reorder
   .sortable.item
     .header.handle
@@ -19,16 +21,17 @@
             i.sticky.note.icon
             .content = pluralize category.articles.count, 'Article'
 
-    .description
-      .field
-        .ui.fluid.input
-          = f.text_field :name, placeholder: 'Category Name'
-        
-      - unless category.new_record?
-        .field.reset-slug
-          i.linkify.icon
-          em = category.slug
-          = f.label :reset_slug do
-            = f.check_box :reset_slug, { checked: false }, 'yes', nil
-            ' reset slug
+    - if allow.edit?
+      .description
+        .field
+          .ui.fluid.input
+            = f.text_field :name, placeholder: 'Category Name'
+          
+        - unless category.new_record?
+          .field.reset-slug
+            i.linkify.icon
+            em = category.slug
+            = f.label :reset_slug do
+              = f.check_box :reset_slug, { checked: false }, 'yes', nil
+              ' reset slug
   

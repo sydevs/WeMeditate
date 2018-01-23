@@ -1,13 +1,18 @@
 module Admin
   class UsersController < Admin::ApplicationController
     before_action :set_user, except: [:index, :create]
+    before_action :authorize!, except: [:create]
 
     def index
       @users = User.order(:email).all
     end
 
     def create
-      @user = User.invite! user_params
+      @user = User.new user_params
+      authorize @user
+
+      @user.invite!
+
       if @user.errors.empty?
         redirect_to [:admin, User]
       else
@@ -35,6 +40,10 @@ module Admin
 
       def set_user
         @user = User.find(params[:id])
+      end
+
+      def authorize!
+        authorize @user || User
       end
 
   end

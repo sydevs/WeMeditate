@@ -1,6 +1,7 @@
 module Admin
     class TracksController < Admin::ApplicationController
       before_action :set_track, except: [:index, :create]
+      before_action :authorize!, except: [:create]
 
       def index
         @tracks = Track.all
@@ -8,6 +9,7 @@ module Admin
   
       def create
         @track = Track.new track_params
+        authorize @track
         @track.save
 
         if @track.errors.empty?
@@ -42,6 +44,10 @@ module Admin
   
         def set_track
           @track = Track.find(params[:id])
+        end
+
+        def authorize!
+          authorize @track || Track
         end
   
     end

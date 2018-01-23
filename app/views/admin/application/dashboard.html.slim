@@ -2,3 +2,11 @@
 - content_for :title, t(:dashboard)
 
 = translate :hello
+
+- p = policy(User)
+div = p.index?
+div = p.editor?
+div = p.locale_allowed?
+div = I18n.locale
+div = current_user.available_languages
+

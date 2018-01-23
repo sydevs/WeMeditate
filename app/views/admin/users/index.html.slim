@@ -1,5 +1,6 @@
 
 - content_for :title, 'Editors'
+- allow = policy(User)
 
 .ui.resource.items
   - if @users.empty?
@@ -10,7 +11,8 @@
     
   = render @users
 
-.ui.hidden.divider
+- if allow.create?
+  .ui.hidden.divider
 
-.ui.small.header Invite New Editor
-= render User.new
+  .ui.small.header Invite New Editor
+  = render User.new

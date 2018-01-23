@@ -1,4 +1,6 @@
 
+- allow = policy(track)
+
 = render 'admin/application/resource', resource: track, new_label: 'Upload', viewable: false do |f|
   - unless track.new_record?
     .header = track.title
@@ -23,21 +25,22 @@
             - else
               ' No Instruments Set
 
-  .description
-    - unless track.new_record?
-      .field
-        label = track.file_identifier.humanize
-    .field
-      .ui.fluid.input
-        = f.text_field :title, placeholder: 'Track Title'
-    .field
-      .ui.fluid.input
-        = f.text_field :subtitle, placeholder: 'Artist'
-    .field
-      = f.select :mood, Track.moods.map {|k, v| [k.humanize.titlecase, k]}, {}, { class: 'ui fluid dropdown' }
-    .field
-      = f.select :instruments, Track::INSTRUMENTS.map {|k, v| [k.to_s.humanize.titlecase, k]}, { include_blank: "Instruments" }, { class: 'ui fluid dropdown', multiple: '' }
-    - if track.new_record?
+  - if allow.edit?
+    .description
+      - unless track.new_record?
+        .field
+          label = track.file_identifier.humanize
       .field
         .ui.fluid.input
-          = f.file_field :file
+          = f.text_field :title, placeholder: 'Track Title'
+      .field
+        .ui.fluid.input
+          = f.text_field :subtitle, placeholder: 'Artist'
+      .field
+        = f.select :mood, Track.moods.map {|k, v| [k.humanize.titlecase, k]}, {}, { class: 'ui fluid dropdown' }
+      .field
+        = f.select :instruments, Track::INSTRUMENTS.map {|k, v| [k.to_s.humanize.titlecase, k]}, { include_blank: "Instruments" }, { class: 'ui fluid dropdown', multiple: '' }
+      - if track.new_record?
+        .field
+          .ui.fluid.input
+            = f.file_field :file

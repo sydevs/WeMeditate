@@ -1,16 +1,20 @@
 
+- allow = policy(article)
+
 .item
   .actions
     .ui.tiny.compact.vertical.labeled.icon.buttons
       a.ui.button.for-viewing href=article_url(article)
         i.browser.icon
         ' View
-      a.ui.button.for-viewing href=edit_admin_article_url(article)
-        i.edit.icon
-        ' Edit
-      a.ui.button.for-viewing href=admin_article_url(article) data-method="delete" data-confirm="Are you sure you want to delete that?"
-        i.trash.icon
-        ' Delete
+      - if allow.edit?
+        a.ui.button.for-viewing href=edit_admin_article_url(article)
+          i.edit.icon
+          ' Edit
+      - if allow.destroy?
+        a.ui.button.for-viewing href=admin_article_url(article) data-method="delete" data-confirm="Are you sure you want to delete that?"
+          i.trash.icon
+          ' Delete
 
   .content
     .header = article.title

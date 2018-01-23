@@ -23,11 +23,15 @@ class User < ApplicationRecord
     if all_languages?
       I18n.available_locales
     else
-      languages
+      languages.map &:to_sym
     end
   end
 
   def all_languages?
     not self[:languages].present? #or current_user&.super_admin?
+  end
+
+  def has_locale_access?
+    available_languages.include? params[:locale]
   end
 end

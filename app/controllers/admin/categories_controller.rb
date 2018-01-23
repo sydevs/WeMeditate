@@ -1,6 +1,7 @@
 module Admin
     class CategoriesController < Admin::ApplicationController
       before_action :set_category, except: [:index, :create, :sort]
+      before_action :authorize!, except: [:create]
 
       def index
         @categories = Category.order(:order).all
@@ -8,6 +9,7 @@ module Admin
 
       def create
         @category = Category.new category_params
+        authorize @category
         @category.save
         redirect_to [:admin, Category]
       end
@@ -50,6 +52,10 @@ module Admin
 
         def set_category
           @category = Category.friendly.find(params[:id])
+        end
+
+        def authorize!
+          authorize @category || Category
         end
   
     end

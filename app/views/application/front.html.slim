@@ -2,3 +2,11 @@
 - content_for :title, 'Front'
 
 = translate :hello
+
+p
+  ' Switch User:
+  = switch_user_select
+
+p
+  ' Current User:
+  = current_user&.email

@@ -1,6 +1,7 @@
 module Admin
     class ArticlesController < Admin::ApplicationController
       before_action :set_article, except: [:index, :create, :new]
+      before_action :authorize!, except: [:create]
 
       def index
         @articles = Article.all
@@ -12,6 +13,7 @@ module Admin
 
       def create
         @article = Article.new article_params
+        authorize @article
 
         if @article.save
           redirect_to [:admin, Article]
@@ -61,6 +63,10 @@ module Admin
 
         def set_article
           @article = Article.friendly.find(params[:id])
+        end
+
+        def authorize!
+          authorize @article || Article
         end
   
     end

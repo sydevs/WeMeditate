@@ -1,5 +1,6 @@
 
 - content_for :title, 'Tracks'
+- allow = policy(Track)
 
 .ui.resource.items
   - if @tracks.empty?
@@ -10,7 +11,8 @@
     
   = render @tracks
 
-.ui.hidden.divider
+- if allow.create?
+  .ui.hidden.divider
 
-.ui.small.header New Track
-= render Track.new
+  .ui.small.header New Track
+  = render Track.new
