@@ -23,35 +23,35 @@
     i.black.bars.icon.handle
 
     - if section.new_record?
-      ' New Section
+      = Section.model_name.human
     - elsif section.header.present?
-      = section.header + " [#{section.content_type.humanize}]"
+      = section.header + ' [' + human_enum_name(section, :content_type) + ']'
     - elsif section.content_type.present?
-      = section.content_type.humanize + ' Section'
+      = human_enum_name(section, :content_type) + ' ' + Section.model_name.human
     - else
-      = "Section ##{section.id}"
+      = Section.model_name.human + ' #' + section.id
 
   .content
     .form
       .field
-        = f.text_field :header, placeholder: 'Name'
+        = f.text_field :header, placeholder: Section.human_attribute_name(:header)
       .field.content-type
-        label Content Type
+        = f.label :content_type
         = f.select :content_type, Section.content_types.map {|k,v| [k.humanize.capitalize, k]}, {}, { class: 'ui dropdown' }
       
       .field.for-text
-        = f.text_area :text, placeholder: 'Text'
+        = f.text_area :text, placeholder: Section.human_attribute_name(:text)
       .field.for-image
         = f.file_field :image
       .field.for-video
-        = f.text_field :youtube_id, placeholder: 'Youtube Video ID'
+        = f.text_field :youtube_id, placeholder: Section.human_attribute_name(:youtube_id)
       
       .fields
         .six.wide.field
-          label Visible to
+          = f.label :visibility_type
           = f.select :visibility_type, Section.visibility_types.map {|k,v| [k.humanize.capitalize, k]}, {}, { class: 'ui dropdown' }
         .ten.wide.field
-          label countries
+          = f.label :visibility_countries
           .ui.multiple.search.selection.dropdown
             // We need the raw country data for display
             = f.hidden_field :visibility_countries, value: section[:visibility_countries]
@@ -66,10 +66,10 @@
     - if section.new_record?
       .ui.tiny.compact.basic.labeled.icon.button.remove-section-button
         i.trash.icon
-        ' Remove Section
+        = translate 'action.target.remove', target: Section.model_name.human
     - else
       .ui.checkbox
         = f.check_box :_destroy, class: 'delete-section'
-        = f.label :delete_section
+        = f.label :delete_section, t('action.target.destroy', target: Section.model_name.human)
 
     .clearfix

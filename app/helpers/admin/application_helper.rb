@@ -24,6 +24,10 @@ module Admin::ApplicationHelper
     country_flag LANGUAGE_TO_FLAG_MAP[l]
   end
 
+  def human_enum_name model, attr 
+    I18n.translate "activerecord.attributes.#{model.model_name.i18n_key}.#{attr.to_s.pluralize}.#{model.send(attr)}"
+  end
+
   # This function is taken from https://www.pluralsight.com/guides/ruby-ruby-on-rails/ruby-on-rails-nested-attributes
   def link_to_add_fields(name = nil, f = nil, association = nil, options = nil, html_options = nil, &block)
     # If a block is provided there is no name attribute and the arguments are

@@ -1,5 +1,5 @@
 
-- content_for :title, 'Articles'
+- content_for :title, Article.model_name.human(count: -1)
 - allow = policy(Article)
 
 .ui.resource.items
@@ -7,7 +7,7 @@
     .item
       .small.header
           i.low.vision.icon
-          ' No Articles
+          = translate 'messages.no_models', models: Article.model_name.human(count: -1)
     
   = render @articles
 
@@ -16,4 +16,4 @@
 - if allow.create?
   a.ui.basic.labeled.icon.button href=new_admin_article_url
     i.plus.icon
-    ' New Article
+    = translate 'action.target.create', target: Article.model_name.human

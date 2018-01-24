@@ -34,7 +34,7 @@ module Admin
       print "\r\n"
 
       if params[:article][:reset_slug]
-        atts[:slug] = nil
+        atts.merge slug: nil
       end
 
       if @article.update atts
@@ -47,6 +47,7 @@ module Admin
 
     def destroy
       @article.destroy
+      redirect_to [:admin, Article]
     end
 
     private

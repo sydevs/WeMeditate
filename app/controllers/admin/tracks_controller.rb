@@ -21,7 +21,7 @@ module Admin
 
     def update
       if @track.update track_params
-        head :ok
+        redirect_to [:admin, Track]
       else
         format.json { render json: @track.errors, status: :unprocessable_entity }
       end

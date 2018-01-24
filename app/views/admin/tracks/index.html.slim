@@ -1,14 +1,14 @@
 
-- content_for :title, 'Music'
+- content_for :title, Track.model_name.human(count: -1)
 - allow = policy(Track)
 
 - if allow.edit?
   a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=admin_mood_filters_path
     i.filter.icon
-    ' Moods
+    = MoodFilter.model_name.human(count: -1)
   a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=admin_instrument_filters_path
     i.filter.icon
-    ' Instruments
+    = InstrumentFilter.model_name.human(count: -1)
 
   .clearfix
 
@@ -17,12 +17,12 @@
     .item
       .header
         i.low.vision.icon
-        ' No Music Tracks
+        = translate 'messages.no_models', models: Track.model_name.human(count: -1)
     
   = render @tracks
 
 - if allow.create?
   .ui.hidden.divider
 
-  .ui.small.header New Track
+  .ui.small.header = t('action.target.create', target: Track.model_name.human)
   = render Track.new

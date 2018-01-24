@@ -1,0 +1,74 @@
+
+.ui.styled.section.accordion
+  .title
+    - if section.header.present?
+      = section.header + " [#{section.content_type.humanize}]"
+    - elsif section.content_type.present?
+      = section.content_type.humanize + ' Section'
+    - else
+      = "Section ##{section.id}"
+
+  .content
+    .ui.small.list
+      //.item
+        .header Content Type
+        .description = section.content_type.humanize
+        
+      - if [:text, :text_with_image].include? section.content_type.to_sym
+        .item
+          .header Text
+          .description = section.text
+
+      - if [:text_with_image].include? section.content_type.to_sym
+        .item
+          .header Image
+          //.description = section.image
+
+      - if [:video].include? section.content_type.to_sym
+        .item
+          .header Youtube Video ID
+          .description = section.youtube_id.present? ? section.youtube_id : 'undefined'
+
+      .item
+        .header Visibility
+        .description
+          - case section.visibility_type
+            - when 'worldwide'
+              ' Worldwide
+            - when 'only_certain_countries'
+              - countries = section.visibility_countries.map {|c| I18nData.countries(locale)[c.to_s.upcase]}
+              ' Visible in #{countries.to_sentence}
+            - when 'except_certain_countries'
+              - countries = section.visibility_countries.map {|c| I18nData.countries(locale)[c.to_s.upcase]}
+              ' Hidden in #{countries.to_sentence}
+
+    //.form
+      .field
+        = f.text_field :header, placeholder: 'Name'
+      .field.content-type
+        label Content Type
+        = f.select :content_type, Section.content_types.map {|k,v| [k.humanize.capitalize, k]}, {}, { class: 'ui dropdown' }
+      
+      .field.for-text
+        = f.text_area :text, placeholder: 'Text'
+      .field.for-image
+        = f.file_field :image
+      .field.for-video
+        = f.text_field :youtube_id, placeholder: 'Youtube Video ID'
+      
+      .fields
+        .six.wide.field
+          label Visible to
+          = f.select :visibility_type, Section.visibility_types.map {|k,v| [k.humanize.capitalize, k]}, {}, { class: 'ui dropdown' }
+        .ten.wide.field
+          label countries
+          .ui.multiple.search.selection.dropdown
+            // We need the raw country data for display
+            = f.hidden_field :visibility_countries, value: section[:visibility_countries]
+            i.dropdown.icon
+            .default.text None
+            .menu
+              - I18nData.countries.each do |country_code, country_name|
+                .item data-value=country_code.downcase
+                  i.flag class=country_code.downcase
+                  = country_name

@@ -21,7 +21,7 @@ module Admin
 
     def update
       if @user.update user_params
-        head :ok
+        redirect_to [:admin, User]
       else
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end

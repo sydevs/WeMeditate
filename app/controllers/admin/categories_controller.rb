@@ -18,7 +18,7 @@ module Admin
       atts = category_params
 
       if params[:category][:reset_slug]
-        atts[:slug] = nil
+        atts.merge slug: nil
       end
 
       if @category.update atts

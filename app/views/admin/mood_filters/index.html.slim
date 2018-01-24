@@ -1,5 +1,5 @@
 
-- content_for :title, 'Music Filter - Moods'
+- content_for :title, "#{Track.model_name.human} - #{MoodFilter.model_name.human(count: -1)}"
 - reorder = (params[:reorder] == 'true')
 - allow = policy(MoodFilter)
 
@@ -8,13 +8,13 @@
     .item
       .header
         i.low.vision.icon
-        ' No Instrument Filters
+        = translate 'messages.no_models', models: MoodFilter.model_name.human(count: -1)
 - elsif reorder
   = form_tag sort_admin_mood_filters_path, method: :put
     a.ui.tiny.compact.basic.right.floated.button href=admin_mood_filters_path
-      ' Cancel
+      = translate 'action.cancel'
     button.ui.tiny.compact.basic.positive.right.floated.right.labeled.icon.button
-      ' Save
+      = translate 'action.update'
       i.checkmark.icon
 
     .clearfix
@@ -25,7 +25,7 @@
   - if @mood_filters.count > 1 and allow.sort?
     a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=admin_mood_filters_path(reorder: true)
       i.bars.icon
-      ' Change Moods Order
+      = translate 'action.target.reorder', target: MoodFilter.model_name.human(count: -1)
 
     .clearfix
 
@@ -37,8 +37,8 @@
 
   a.ui.basic.button href=admin_tracks_url
     i.left.arrow.icon
-    ' Back to Tracks
+    = translate 'action.target.back', target: Track.model_name.human(count: -1)
 
   - if allow.create?
-    .ui.small.header New Mood Filter
+    .ui.small.header = t('action.target.create', target: InstrumentFilter.model_name.human)
     = render MoodFilter.new

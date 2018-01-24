@@ -5,25 +5,28 @@
 .ui.section.divider
 
 .ui.fluid.secondary.vertical.menu
+  = link_to [:admin, :root], class: "#{'active' if controller_name == 'application'} item"
+    = translate :'misc.dashboard'
+
   - if policy(User).index?
     = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"
       i.users.icon
-      ' Editors
+      = User.model_name.human(count: -1)
 
   - if policy(Category).index?
     = link_to [:admin, Category], class: "#{'active' if controller_name == 'categories'} item"
       i.hashtag.icon
-      ' Categories
+      = Category.model_name.human(count: -1)
 
   - if policy(Article).index?
     = link_to [:admin, Article], class: "#{'active' if controller_name == 'articles'} item"
       i.sticky.note.icon
-      ' Articles
+      = Article.model_name.human(count: -1)
 
   - if policy(Track).index?
     = link_to [:admin, Track], class: "#{'active' if ['tracks', 'mood_filters', 'instrument_filters'].include? controller_name} item"
       i.music.icon
-      ' Tracks
+      = Track.model_name.human(count: -1)
 
   = link_to [:admin, :root], class: "#{'active' if controller_name == 'cities'} item"
     i.university.icon
@@ -35,7 +38,7 @@
 .ui.vertical.text.menu
   = link_to root_url, class: 'item' do
     i.browser.icon
-    ' View Site
+    = translate :'action.view_site'
   = link_to destroy_user_session_path, class: 'item', method: :delete do
     i.sign.out.icon
-    ' Log Out
+    = translate :'action.sign_out'

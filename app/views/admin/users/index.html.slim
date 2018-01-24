@@ -7,12 +7,12 @@
     .item
       .header
         i.low.vision.icon
-        ' No Editors
+        = translate 'messages.no_models', models: User.model_name.human(count: -1)
     
   = render @users
 
 - if allow.create?
   .ui.hidden.divider
 
-  .ui.small.header Invite New Editor
+  .ui.small.header = t('action.target.create', target: User.model_name.human)
   = render User.new

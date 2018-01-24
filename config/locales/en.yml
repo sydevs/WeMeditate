@@ -30,13 +30,33 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-  dashboard: "Dashboarder"
-  locale:
-    worldwide: "Worldwide"
-  user:
-    invitation_sent: "Invitation Sent"
-    role:
-      super_admin: "Super Admin"
-      regional_admin: "Regional Admin"
-      editor: "Editor"
+  action:
+    view_site: View Site
+    sign_out: Log Out
+    show: View
+    update: Save
+    cancel: Cancel
+    create: New
+    edit: Edit
+    destroy: Delete
+    target:
+      edit: Edit %{target}
+      reset: Reset %{target}
+      add: Add %{target}
+      create: New %{target}
+      remove: Remove %{target}
+      destroy: Delete %{target}
+      back: Back to %{target}
+      reorder: Change %{target} Order
+  messages:
+    errors: Errors
+    confirm_destroy: Are you sure you want to delete that?
+    no_translation: Not Translated
+    no_models: No %{models}
+    user:
+      invitation_sent: Invitation Sent
+      last_login: 'Last Login: %{date}'
+  misc:
+    dashboard: Dashboard
+    locale:
+      worldwide: Worldwide

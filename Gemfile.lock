@@ -81,7 +81,7 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
-    devise (4.4.0)
+    devise (4.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.2)
@@ -95,6 +95,8 @@ GEM
     ffi (1.9.18)
     friendly_id (5.2.3)
       activerecord (>= 4.0.0)
+    friendly_id-globalize (1.0.0.alpha3)
+      friendly_id (>= 5.2.0, < 6.0)
     geocoder (1.4.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -105,6 +107,8 @@ GEM
     i18n (0.9.3)
       concurrent-ruby (~> 1.0)
     i18n_data (0.8.0)
+    i18n_generators (2.1.1)
+      rails (>= 3.0.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -159,6 +163,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-i18n (5.0.4)
+      i18n (~> 0.7)
+      railties (~> 5.0)
     railties (5.1.4)
       actionpack (= 5.1.4)
       activesupport (= 5.1.4)
@@ -249,10 +256,12 @@ DEPENDENCIES
   devise
   devise_invitable
   friendly_id
+  friendly_id-globalize
   geocoder
   globalize
   globalize-versioning!
   i18n_data
+  i18n_generators
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
@@ -260,6 +269,7 @@ DEPENDENCIES
   pg (~> 0.18)
   puma (~> 3.7)
   rails (~> 5.1.4)
+  rails-i18n
   regulator
   sass-rails (~> 5.0)
   selenium-webdriver

@@ -10,27 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124111455) do
+ActiveRecord::Schema.define(version: 20180124123853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
+  create_table "article_translations", force: :cascade do |t|
+    t.integer "article_id", null: false
+    t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title", null: false
     t.string "slug", null: false
+    t.index ["article_id"], name: "index_article_translations_on_article_id"
+    t.index ["locale"], name: "index_article_translations_on_locale"
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "category_id"
     t.integer "priority", default: 0, null: false
     t.index ["category_id"], name: "index_articles_on_category_id"
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
     t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "category_translations", force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name", null: false
     t.string "slug", null: false
+    t.index ["category_id"], name: "index_category_translations_on_category_id"
+    t.index ["locale"], name: "index_category_translations_on_locale"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -39,14 +57,25 @@ ActiveRecord::Schema.define(version: 20180124111455) do
     t.string "sluggable_type", limit: 50
     t.string "scope"
     t.datetime "created_at"
-    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.string "locale"
+    t.index ["locale"], name: "index_friendly_id_slugs_on_locale"
+    t.index ["slug", "sluggable_type", "locale"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_locale"
+    t.index ["slug", "sluggable_type", "scope", "locale"], name: "index_friendly_id_slugs_uniqueness", unique: true
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
-  create_table "instrument_filters", force: :cascade do |t|
+  create_table "instrument_filter_translations", force: :cascade do |t|
+    t.integer "instrument_filter_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name", null: false
+    t.index ["instrument_filter_id"], name: "index_instrument_filter_translations_on_instrument_filter_id"
+    t.index ["locale"], name: "index_instrument_filter_translations_on_locale"
+  end
+
+  create_table "instrument_filters", force: :cascade do |t|
     t.string "icon", null: false
     t.integer "order"
   end
@@ -58,8 +87,17 @@ ActiveRecord::Schema.define(version: 20180124111455) do
     t.index ["track_id"], name: "index_instrument_filters_tracks_on_track_id"
   end
 
-  create_table "mood_filters", force: :cascade do |t|
+  create_table "mood_filter_translations", force: :cascade do |t|
+    t.integer "mood_filter_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name", null: false
+    t.index ["locale"], name: "index_mood_filter_translations_on_locale"
+    t.index ["mood_filter_id"], name: "index_mood_filter_translations_on_mood_filter_id"
+  end
+
+  create_table "mood_filters", force: :cascade do |t|
     t.integer "order"
   end
 
@@ -82,9 +120,18 @@ ActiveRecord::Schema.define(version: 20180124111455) do
     t.index ["article_id"], name: "index_sections_on_article_id"
   end
 
-  create_table "tracks", force: :cascade do |t|
+  create_table "track_translations", force: :cascade do |t|
+    t.integer "track_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "title", null: false
     t.string "subtitle"
+    t.index ["locale"], name: "index_track_translations_on_locale"
+    t.index ["track_id"], name: "index_track_translations_on_track_id"
+  end
+
+  create_table "tracks", force: :cascade do |t|
     t.string "file", null: false
   end
 

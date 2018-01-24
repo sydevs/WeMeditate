@@ -35,23 +35,31 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Users
 gem 'devise'
 gem 'devise_invitable'
 gem 'regulator'
-gem 'paper_trail'
-gem 'friendly_id'
-gem 'geocoder'
-gem 'semantic-ui-sass'
 
+# Front End
+gem 'semantic-ui-sass'
 gem 'jquery-rails'
 gem 'sortable-rails'
 
+# Models
+gem 'paper_trail'
+gem 'friendly_id'
+gem 'geocoder'
+
+# Uploads
 gem 'carrierwave'
 #gem 'carrierwave-aws'
 
-gem 'i18n_data'
+# Localization
+gem 'rails-i18n'
 gem 'globalize'
+gem 'friendly_id-globalize'
 gem 'globalize-versioning', github: 'aaroncraigie/globalize-versioning' # for paper_trail support
+gem 'i18n_data'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -69,7 +77,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
-  gem "switch_user", github: "tslocke/switch_user"
+  gem 'switch_user', github: 'tslocke/switch_user'
+  gem 'i18n_generators'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

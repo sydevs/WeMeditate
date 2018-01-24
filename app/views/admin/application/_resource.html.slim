@@ -1,5 +1,4 @@
 
-- new_label = 'New' unless local_assigns[:new_label].present?
 - viewable = true unless local_assigns[:viewable] == false
 - allow = policy(resource)
 
@@ -9,23 +8,23 @@
       .ui.tiny.compact.vertical.labeled.icon.buttons
         button.ui.save.edit.button.for-editing
           i.green.checkmark.icon
-          ' Save
+          = translate 'action.update'
         .ui.cancel.edit.button.for-editing
           i.red.cancel.icon
-          ' Cancel
+          = translate 'action.cancel'
       
         - if viewable
           a.ui.view.button.for-viewing href=url_for(resource)
             i.browser.icon
-            ' View
+            = translate 'action.show'
         - if allow.edit?
           .ui.start.edit.button.for-viewing
             i.edit.icon
-            ' Edit
+            = translate 'action.edit'
         - if allow.destroy?
-          a.ui.delete.button.for-viewing href=url_for([:admin, resource]) data-method="delete" data-confirm="Are you sure you want to delete that?"
+          a.ui.delete.button.for-viewing href=url_for([:admin, resource]) data-method="delete" data-confirm=t('messages.confirm_destroy')
             i.trash.icon
-            ' Delete
+            = translate 'action.destroy'
 
   .content
     = yield f
@@ -33,4 +32,4 @@
   - if resource.new_record?
     button.ui.basic.labeled.icon.create.button
       i.plus.icon
-      = new_label
+      = translate 'action.create'

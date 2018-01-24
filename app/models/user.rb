@@ -1,9 +1,13 @@
 class User < ApplicationRecord
+
+  # Extensions
   devise :database_authenticatable, :recoverable, :rememberable, :validatable, :invitable
 
-  validates :role, presence: true
-
+  # Associations
   enum role: [ :editor, :regional_admin, :super_admin ]
+
+  # Validations
+  validates :role, presence: true
 
   def languages= list
     list &= I18n.available_locales.map {|l| l.to_s} # only allow locales from the list of available locales
@@ -31,7 +35,7 @@ class User < ApplicationRecord
     not self[:languages].present? #or current_user&.super_admin?
   end
 
-  def has_locale_access?
-    available_languages.include? params[:locale]
+  def cache_key
+    super + '-' + Globalize.locale.to_s
   end
 end

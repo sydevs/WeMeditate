@@ -15,12 +15,16 @@
 
       .meta
         .ui.tiny.list
+          - unless mood_filter.translated_locales.include? I18n.locale
+            .item
+              i.orange.warning.sign.icon
+              .content = translate 'messages.no_translation'
           .item
             i.music.icon
-            .content = pluralize mood_filter.tracks.count, 'Track'
+            .content = pluralize(mood_filter.tracks.count, 'Track') + ' [TODO: Fix translation]'
 
     - if allow.edit?
       .description
         .field
           .ui.fluid.input
-            = f.text_field :name, placeholder: 'Name'
+            = f.text_field :name, placeholder: MoodFilter.human_attribute_name(:name)

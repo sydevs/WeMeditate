@@ -1,0 +1,91 @@
+en:
+  activerecord:
+    models:
+      article:
+        one: Article
+        other: Articles
+      category:
+        one: Category
+        other: Categories
+      instrument_filter:
+        one: Instrument
+        other: Instruments
+      mood_filter:
+        one: Mood
+        other: Moods
+      section:
+        one: Section
+        other: Sections
+      track:
+        one: Track
+        other: Tracks
+      user:
+        one: Editor
+        other: Editors
+
+    attributes:
+      article:
+        title: Title
+        slug: URL
+        category: :activerecord.models.category
+        priority: Visibility
+        priorities:
+          low: Low Visibility
+          normal: Normal Visibility
+          high: High Visibility
+          home_page: Home Page
+        sections: Content
+
+      category:
+        name: Name
+        slug: URL
+        articles: :activerecord.models.article.other
+
+      instrument_filter:
+        name: Name
+        icon: Icon
+        tracks: :activerecord.models.track.other
+
+      mood_filter:
+        name: Name
+        tracks: :activerecord.models.track.other
+
+      section:
+        header: Title
+        content_type: Content Type
+        content_types:
+          text: Text
+          video: Video
+          text_with_image: Text + Image
+        text: Text
+        youtube_id: Youtube Video ID
+        visibility_type: Visible to
+        visibility_countries: countries
+
+      track:
+        title: Title
+        subtitle: Artist
+        file: File
+        instrument_filters: :activerecord.models.instrument_filter.other
+        mood_filters: :activerecord.models.mood_filter.other
+
+      user:
+        email: Email Address
+        encrypted_password: Encrypted password  #g
+        invitation_accepted_at: Invitation accepted at  #g
+        invitation_created_at: Invitation created at  #g
+        invitation_limit: Invitation limit  #g
+        invitation_sent_at: Invitation sent at  #g
+        invitation_token: Invitation token  #g
+        invited_by: :activerecord.models.invited_by  #g
+        invited_by_type: Invited by type  #g
+        remember_created_at: Remember created at  #g
+        reset_password_sent_at: Reset password sent at  #g
+        reset_password_token: Reset password token  #g
+        role: Role  #g
+        all_languages: All Languages
+        languages: Languages
+        roles:
+          editor: Editor
+          regional_admin: Regional Admin
+          super_admin: Super Admin

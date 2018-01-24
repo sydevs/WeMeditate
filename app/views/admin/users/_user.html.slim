@@ -1,7 +1,7 @@
 
 - allow = policy(user)
 
-= render 'admin/application/resource', resource: user, new_label: 'Invite', viewable: false do |f|
+= render 'admin/application/resource', resource: user, viewable: false do |f|
   - unless user.new_record?
     .header = user.email
 
@@ -10,17 +10,17 @@
         .item
           - if user.invitation_accepted?
             i.user.icon
-            .content Last Login: #{localize user.last_login_at}
+            .content = t('messages.user.last_login', date: localize(user.last_login_at))
           - else
             i.mail.icon
-            .content = translate 'user.invitation_sent'
+            .content = t('messages.user.invitation_sent')
         .item
           i.user.icon
           .content
-            = translate 'user.role.' + user.role.to_s
+            = human_enum_name(user, :role)
             '  - 
             - if user.all_languages?
-              = translate 'locale.worldwide'
+              = translate 'misc.locale.worldwide'
             - else
               = user.languages.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
 
@@ -29,7 +29,7 @@
       .field
         - if user.new_record?
           .ui.fluid.input
-            = f.text_field :email, placeholder: 'Email Address'
+            = f.text_field :email, placeholder: User.human_attribute_name(:email)
         - else
           strong = user.email
       .field
@@ -37,4 +37,4 @@
         = f.select :role, User.roles.map {|k, v| [k.humanize.titlecase, k]}, {}, { class: 'ui fluid dropdown' }
       .field
         //label Language Access
-        = f.select :languages, I18n.available_locales.collect {|l| [I18nData.languages[l.to_s.upcase], l]}, { include_blank: "Can access all languages" }, { class: 'ui fluid search dropdown', multiple: '' }
+        = f.select :languages, I18n.available_locales.collect {|l| [I18nData.languages[l.to_s.upcase], l]}, { include_blank: User.human_attribute_name(:all_languages) }, { class: 'ui fluid search dropdown', multiple: '' }

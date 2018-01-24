@@ -15,18 +15,23 @@
 
       .meta
         .ui.tiny.list
-          .item
-            i.linkify.icon
-            .content = category.slug
+          - if category.translated_locales.include? I18n.locale
+            .item
+              i.linkify.icon
+              .content = category.slug
+          - else
+            .item
+              i.orange.warning.sign.icon
+              .content = translate 'messages.no_translation'
           .item
             i.sticky.note.icon
-            .content = pluralize category.articles.count, 'Article'
+            .content = pluralize(category.articles.count, 'Article') + ' [TODO: Fix translation]'
 
     - if allow.edit?
       .description
         .field
           .ui.fluid.input
-            = f.text_field :name, placeholder: 'Category Name'
+            = f.text_field :name, placeholder: Category.human_attribute_name(:name)
           
         - unless category.new_record?
           .field.reset-slug
@@ -34,5 +39,5 @@
             em = category.slug
             = f.label :reset_slug do
               = f.check_box :reset_slug, { checked: false }, 'yes', nil
-              ' reset slug
+              '  #{translate 'action.target.reset', target: Category.human_attribute_name(:slug)}
   

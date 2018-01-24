@@ -20,7 +20,7 @@ module Admin
 
     def update
       if @instrument_filter.update instrument_params
-        head :ok
+        redirect_to [:admin, InstrumentFilter]
       else
         format.json { render json: @instrument_filter.errors, status: :unprocessable_entity }
       end
