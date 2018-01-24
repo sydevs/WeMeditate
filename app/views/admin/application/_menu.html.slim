@@ -21,7 +21,7 @@
       ' Articles
 
   - if policy(Track).index?
-    = link_to [:admin, Track], class: "#{'active' if controller_name == 'tracks'} item"
+    = link_to [:admin, Track], class: "#{'active' if ['tracks', 'mood_filters', 'instrument_filters'].include? controller_name} item"
       i.music.icon
       ' Tracks
 

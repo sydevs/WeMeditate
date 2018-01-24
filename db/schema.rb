@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122134812) do
+ActiveRecord::Schema.define(version: 20180124111455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,31 @@ ActiveRecord::Schema.define(version: 20180122134812) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "instrument_filters", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "icon", null: false
+    t.integer "order"
+  end
+
+  create_table "instrument_filters_tracks", id: false, force: :cascade do |t|
+    t.bigint "track_id"
+    t.bigint "instrument_filter_id"
+    t.index ["instrument_filter_id"], name: "index_instrument_filters_tracks_on_instrument_filter_id"
+    t.index ["track_id"], name: "index_instrument_filters_tracks_on_track_id"
+  end
+
+  create_table "mood_filters", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "order"
+  end
+
+  create_table "mood_filters_tracks", id: false, force: :cascade do |t|
+    t.bigint "track_id"
+    t.bigint "mood_filter_id"
+    t.index ["mood_filter_id"], name: "index_mood_filters_tracks_on_mood_filter_id"
+    t.index ["track_id"], name: "index_mood_filters_tracks_on_track_id"
+  end
+
   create_table "sections", force: :cascade do |t|
     t.string "header"
     t.integer "content_type", default: 0
@@ -61,8 +86,6 @@ ActiveRecord::Schema.define(version: 20180122134812) do
     t.string "title", null: false
     t.string "subtitle"
     t.string "file", null: false
-    t.integer "mood", default: 0, null: false
-    t.string "instruments"
   end
 
   create_table "users", force: :cascade do |t|

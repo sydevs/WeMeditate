@@ -1,6 +1,16 @@
 
-- content_for :title, 'Tracks'
+- content_for :title, 'Music'
 - allow = policy(Track)
+
+- if allow.edit?
+  a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=admin_mood_filters_path
+    i.filter.icon
+    ' Moods
+  a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=admin_instrument_filters_path
+    i.filter.icon
+    ' Instruments
+
+  .clearfix
 
 .ui.resource.items
   - if @tracks.empty?

@@ -1,0 +1,26 @@
+
+- reorder = (params[:reorder] == 'true')
+- allow = policy(mood_filter)
+
+- if reorder
+  .sortable.item
+    .header.handle
+      i.bars.icon
+      = mood_filter.name
+    = hidden_field_tag 'order[]', mood_filter.id, { id: 'order_for_' + mood_filter.id.to_s }
+- else
+  = render 'admin/application/resource', resource: mood_filter, viewable: false do |f|
+    - unless mood_filter.new_record?
+      .header = mood_filter.name
+
+      .meta
+        .ui.tiny.list
+          .item
+            i.music.icon
+            .content = pluralize mood_filter.tracks.count, 'Track'
+
+    - if allow.edit?
+      .description
+        .field
+          .ui.fluid.input
+            = f.text_field :name, placeholder: 'Name'

@@ -10,7 +10,6 @@ module Admin
     def create
       @user = User.new user_params
       authorize @user
-
       @user.invite!
 
       if @user.errors.empty?

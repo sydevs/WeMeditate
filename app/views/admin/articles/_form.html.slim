@@ -22,7 +22,7 @@
 
   .field
     = f.label :category
-    = f.select :category_id, Category.all.map {|c| [c.name, c.id] }, { allow_blank: 'Select Category...' }, { class: 'ui dropdown' }
+    = f.select :category_id, Category.all.map {|c| [c.name, c.id] }, { include_blank: 'Select Category...' }, { class: 'ui dropdown' }
 
   .field
     = f.label :priority, 'Visibility'

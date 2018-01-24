@@ -14,16 +14,14 @@
         .item
           i.music.icon
           .content = track.file_identifier.humanize
-        .item
-          i.tag.icon
-          .content = track.mood
-        .item
-          i.tags.icon
-          .content
-            - if track.instruments.present?
-              = track.instruments.join(', ')
-            - else
-              ' No Instruments Set
+        - unless track.mood_filters.empty?
+          .item
+            i.filter.icon
+            .content = track.mood_filters.collect(&:name).join(', ')
+        - unless track.instrument_filters.empty?
+          .item
+            i.filter.icon
+            .content = track.instrument_filters.collect(&:name).join(', ')
 
   - if allow.edit?
     .description
@@ -37,9 +35,11 @@
         .ui.fluid.input
           = f.text_field :subtitle, placeholder: 'Artist'
       .field
-        = f.select :mood, Track.moods.map {|k, v| [k.humanize.titlecase, k]}, {}, { class: 'ui fluid dropdown' }
+        = f.select :mood_filter_ids, MoodFilter.all.map {|c| [c.name, c.id] }, { include_blank: 'Moods' }, { class: 'ui fluid dropdown', multiple: '' }
+        //= f.select :mood, Track.moods.map {|k, v| [k.humanize.titlecase, k]}, {}, { class: 'ui fluid dropdown' }
       .field
-        = f.select :instruments, Track::INSTRUMENTS.map {|k, v| [k.to_s.humanize.titlecase, k]}, { include_blank: "Instruments" }, { class: 'ui fluid dropdown', multiple: '' }
+        = f.select :instrument_filter_ids, InstrumentFilter.all.map {|c| [c.name, c.id] }, { include_blank: 'Instruments' }, { class: 'ui fluid dropdown', multiple: '' }
+        //= f.select :instruments, Track::INSTRUMENTS.map {|k, v| [k.to_s.humanize.titlecase, k]}, { include_blank: "Instruments" }, { class: 'ui fluid dropdown', multiple: '' }
       - if track.new_record?
         .field
           .ui.fluid.input

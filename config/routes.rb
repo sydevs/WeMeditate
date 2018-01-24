@@ -9,16 +9,22 @@ Rails.application.routes.draw do
     
     namespace :admin do
       root to: "application#dashboard"
-
-      resources :categories, except: [:show] do 
-        collection do
-          put 'sort'
-        end
-      end
       
       resources :users, except: [:show]
       resources :articles, except: [:show]
       resources :tracks, except: [:show]
+
+      resources :categories, except: [:show] do
+        put :sort, on: :collection
+      end
+
+      resources :mood_filters, except: [:show] do
+        put :sort, on: :collection
+      end
+
+      resources :instrument_filters, except: [:show] do
+        put :sort, on: :collection
+      end
     end
 
     resources :categories, only: [:index, :show]

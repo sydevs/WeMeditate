@@ -3,20 +3,8 @@ class Track < ApplicationRecord
 
   enum mood: [ :cheerful, :peaceful, :joyful, :integration, :innocence ]
 
+  has_and_belongs_to_many :mood_filters
+  has_and_belongs_to_many :instrument_filters
   mount_uploader :file, TrackUploader
-
-  def instruments= list
-    list &= INSTRUMENTS.map {|l| l.to_s} # only allow the allowed list of instruments
-    super list.join(',')
-  end
-
-  def instruments
-    list = super
-    if list
-      list.split(',')
-    else
-      []
-    end
-  end
 
 end

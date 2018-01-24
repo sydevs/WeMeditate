@@ -1,6 +1,6 @@
 
-- reorder = (params[:reorder] == 'true')
 - content_for :title, 'Categories'
+- reorder = (params[:reorder] == 'true')
 - allow = policy(Category)
 
 - if @categories.empty?
@@ -20,7 +20,7 @@
     .clearfix
 
     .ui.sort-list.items
-      = render @categories, reorder: reorder
+      = render @categories
 - else
   - if @categories.count > 1 and allow.sort?
     a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=admin_categories_path(reorder: true)
@@ -30,11 +30,10 @@
     .clearfix
 
   .ui.resource.items
-    = render @categories, reorder: reorder
+    = render @categories
 
-- unless reorder
+- if allow.create? and not reorder
   .ui.hidden.divider
 
-  - if allow.create?
-    .ui.small.header New Category
-    = render Category.new, reorder: reorder
+  .ui.small.header New Category
+  = render Category.new

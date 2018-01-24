@@ -11,5 +11,5 @@ class Article < ApplicationRecord
   validates :title, presence: true
   enum priority: { home_page: 2, high: 1, normal: 0, low: -1 }
   
-  default_scope { order(priority: :desc) }
+  default_scope { order( priority: :desc ) }
 end

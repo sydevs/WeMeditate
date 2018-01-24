@@ -1,0 +1,29 @@
+
+- reorder = (params[:reorder] == 'true')
+- allow = policy(instrument_filter)
+
+- if reorder
+  .sortable.item
+    .header.handle
+      i.bars.icon
+      = instrument_filter.name
+    = hidden_field_tag 'order[]', instrument_filter.id, { id: 'order_for_' + instrument_filter.id.to_s }
+- else
+  = render 'admin/application/resource', resource: instrument_filter, viewable: false do |f|
+    - unless instrument_filter.new_record?
+      .header = instrument_filter.name
+
+      .meta
+        .ui.tiny.list
+          .item
+            i.music.icon
+            .content = pluralize instrument_filter.tracks.count, 'Track'
+
+    - if allow.edit?
+      .description
+        .field
+          .ui.fluid.input
+            = f.text_field :name, placeholder: 'Name'
+        .field
+          .ui.fluid.input
+            = f.file_field :icon
