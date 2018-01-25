@@ -1,0 +1,4 @@
+
+- if resource.errors.present?
+  - resource.errors.full_messages.each do |message|
+    .ui.small.error.message = message

@@ -1,0 +1,19 @@
+doctype html
+
+html
+  head
+    title WM #{content_for :title}
+    = csrf_meta_tags
+    = stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
+
+  body#devise
+    #logo.ui.small.image
+      = render 'admin/application/logo'
+
+    h2.ui.header = content_for :title
+
+    .ui.segment
+      = yield
+
+    = render "devise/shared/links"

@@ -1,5 +1,11 @@
 @import "semantic-ui";
 
+#devise {
+  max-width: 400px !important;
+  margin: auto;
+  margin-top: 2rem;
+}
+
 #logo path {
   fill: black;
 }

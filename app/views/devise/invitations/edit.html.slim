@@ -1,0 +1,18 @@
+
+- content_for :title, t('devise.invitations.edit.header')
+
+= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { class: "ui form #{'error' if resource.errors.present?}", method: :put } do |f|
+  = f.hidden_field :invitation_token
+
+  - if f.object.class.require_password_on_accepting
+    .field
+      = f.label :password
+      = f.password_field :password
+
+    .field
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+
+  = render 'devise/shared/errors', resource: resource
+
+  button.ui.basic.primary.button = t('devise.invitations.edit.submit_button')

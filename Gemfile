@@ -62,6 +62,7 @@ gem 'friendly_id-globalize'
 gem 'carrierwave-i18n'
 gem 'globalize-versioning', github: 'aaroncraigie/globalize-versioning' # for paper_trail support
 gem 'i18n_data'
+gem 'devise-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -81,6 +82,7 @@ group :development do
   gem 'better_errors'
   gem 'switch_user', github: 'tslocke/switch_user'
   gem 'i18n_generators'
+  gem 'letter_opener'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

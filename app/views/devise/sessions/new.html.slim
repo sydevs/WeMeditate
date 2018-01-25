@@ -1,0 +1,22 @@
+
+- content_for :title, t('.sign_in')
+
+= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "ui form #{'error' if resource.errors.present?}" } do |f|
+
+  .field
+    = f.label :email
+    = f.email_field :email, autofocus: true
+
+  .field
+    = f.label :password
+    = f.password_field :password, autocomplete: 'off'
+
+  - if devise_mapping.rememberable?
+    .inline.field
+      .ui.checkbox
+        = f.check_box :remember_me, { checked: params[:remember_me] }, 'yes', nil
+        = f.label :remember_me
+
+  = render 'devise/shared/errors', resource: resource
+
+  button.ui.basic.primary.button = t('.sign_in')

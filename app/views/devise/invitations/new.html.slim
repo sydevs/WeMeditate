@@ -1,0 +1,12 @@
+
+- content_for :title, t('devise.invitations.new.header')
+
+= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { class: "ui form #{'error' if resource.errors.present?}", method: :post } do |f|
+  - resource.class.invite_key_fields.each do |field|
+    .field
+      = f.label field
+      = f.text_field field
+
+  = render 'devise/shared/errors', resource: resource
+
+  button.ui.basic.primary.button = t('devise.invitations.new.submit_button')
