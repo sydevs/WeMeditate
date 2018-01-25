@@ -23,7 +23,7 @@
               .content = translate 'messages.no_translation'
           .item
             i.music.icon
-            .content = pluralize(instrument_filter.tracks.count, 'Track') + ' [TODO: Fix translation]'
+            .content = InstrumentFilter.human_attribute_name(:tracks, count: instrument_filter.tracks.count)
 
     - if allow.edit?
       .description

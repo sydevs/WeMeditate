@@ -25,7 +25,7 @@
               .content = translate 'messages.no_translation'
           .item
             i.sticky.note.icon
-            .content = pluralize(category.articles.count, 'Article') + ' [TODO: Fix translation]'
+            .content = Category.human_attribute_name(:articles, count: category.articles.count)
 
     - if allow.edit?
       .description

@@ -39,16 +39,22 @@ en:
       category:
         name: Name
         slug: URL
-        articles: :activerecord.models.article.other
+        articles:
+          one: 1 Article
+          other: '%{count} Articles'
 
       instrument_filter:
         name: Name
         icon: Icon
-        tracks: :activerecord.models.track.other
+        tracks:
+          one: 1 Track
+          other: '%{count} Tracks'
 
       mood_filter:
         name: Name
-        tracks: :activerecord.models.track.other
+        tracks:
+          one: 1 Track
+          other: '%{count} Tracks'
 
       section:
         header: Title

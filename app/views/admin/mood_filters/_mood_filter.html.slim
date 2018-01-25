@@ -21,7 +21,7 @@
               .content = translate 'messages.no_translation'
           .item
             i.music.icon
-            .content = pluralize(mood_filter.tracks.count, 'Track') + ' [TODO: Fix translation]'
+            .content = MoodFilter.human_attribute_name(:tracks, count: mood_filter.tracks.count)
 
     - if allow.edit?
       .description
