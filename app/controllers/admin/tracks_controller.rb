@@ -23,7 +23,9 @@ module Admin
       if @track.update track_params
         redirect_to [:admin, Track]
       else
-        format.json { render json: @track.errors, status: :unprocessable_entity }
+        respond_to do |format|
+          format.json { render json: @track.errors, status: :unprocessable_entity }
+        end
       end
     end
 

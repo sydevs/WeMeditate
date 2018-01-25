@@ -42,5 +42,7 @@
         //= f.select :instruments, Track::INSTRUMENTS.map {|k, v| [k.to_s.humanize.titlecase, k]}, { include_blank: "Instruments" }, { class: 'ui fluid dropdown', multiple: '' }
       - if track.new_record?
         .field
-          .ui.fluid.input
+          .ui.fluid.icon.file.input
+            i.volume.up.icon
             = f.file_field :file
+            = f.hidden_field :file_cache

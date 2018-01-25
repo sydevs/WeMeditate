@@ -11,7 +11,9 @@
 - else
   = render 'admin/application/resource', resource: instrument_filter, viewable: false do |f|
     - unless instrument_filter.new_record?
-      .header = instrument_filter.name
+      .header
+        = image_tag instrument_filter.icon_url, class: 'ui avatar image'
+        = instrument_filter.name
 
       .meta
         .ui.tiny.list
@@ -29,5 +31,14 @@
           .ui.fluid.input
             = f.text_field :name, placeholder: InstrumentFilter.human_attribute_name(:name)
         .field
-          .ui.fluid.input
+          .ui.fluid.icon.file.input
+            i.image.icon
             = f.file_field :icon
+            = f.hidden_field :icon_cache
+            
+          //- if instrument_filter.icon?
+            = image_tag instrument_filter.icon_url, class: 'ui mini spaced image'
+            //= f.label :remove_icon do
+              = f.check_box :remove_icon
+              '  #{translate 'action.target.remove', target: InstrumentFilter.human_attribute_name(:icon)}
+

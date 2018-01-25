@@ -23,7 +23,9 @@ module Admin
       if @user.update user_params
         redirect_to [:admin, User]
       else
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        respond_to do |format|
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
     end
 

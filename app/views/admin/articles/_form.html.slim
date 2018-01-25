@@ -17,7 +17,7 @@
         i.linkify.icon
         em = @article.slug
         = f.label :reset_slug do
-          = f.check_box :reset_slug, { checked: false }, 'yes', nil
+          = f.check_box :reset_slug, { checked: params[:reset_slug] }, 'yes', nil
           '  #{translate 'action.target.reset', target: Article.human_attribute_name(:slug)}
 
   .field

@@ -22,7 +22,9 @@ module Admin
       if @mood_filter.update mood_filter_params
         redirect_to [:admin, MoodFilter]
       else
-        format.json { render json: @mood_filter.errors, status: :unprocessable_entity }
+        respond_to do |format|
+          format.json { render json: @mood_filter.errors, status: :unprocessable_entity }
+        end
       end
     end
 

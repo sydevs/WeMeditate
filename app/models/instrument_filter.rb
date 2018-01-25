@@ -5,7 +5,7 @@ class InstrumentFilter < ApplicationRecord
 
   # Associations
   has_and_belongs_to_many :tracks
-  mount_uploader :file, IconUploader
+  mount_uploader :icon, IconUploader
 
   # Scopes
   default_scope { order( :order ) }

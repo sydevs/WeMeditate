@@ -53,11 +53,13 @@ gem 'geocoder'
 # Uploads
 gem 'carrierwave'
 #gem 'carrierwave-aws'
+gem 'mini_magick'
 
 # Localization
 gem 'rails-i18n'
 gem 'globalize'
 gem 'friendly_id-globalize'
+gem 'carrierwave-i18n'
 gem 'globalize-versioning', github: 'aaroncraigie/globalize-versioning' # for paper_trail support
 gem 'i18n_data'
 

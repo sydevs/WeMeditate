@@ -24,7 +24,9 @@ module Admin
       if @category.update atts
         redirect_to [:admin, Category]
       else
-        format.json { render json: @category.errors, status: :unprocessable_entity }
+        respond_to do |category|
+          format.json { render json: @category.errors, status: :unprocessable_entity }
+        end
       end
     end
 
