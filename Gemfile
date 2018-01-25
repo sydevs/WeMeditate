@@ -44,6 +44,7 @@ gem 'regulator'
 gem 'semantic-ui-sass'
 gem 'jquery-rails'
 gem 'sortable-rails'
+gem 'google-analytics-rails'
 
 # Models
 gem 'paper_trail'

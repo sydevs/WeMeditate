@@ -91,4 +91,7 @@ Rails.application.configure do
 
   # Devise config
   config.action_mailer.default_url_options = { host: 'wemeditate.com', port: 3000 }
+
+  # Google Analytics
+  #GA.tracker = 'UA-113069688-1'
 end
