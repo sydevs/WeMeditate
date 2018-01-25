@@ -59,9 +59,6 @@ en:
     confirm_destroy: Are you sure you want to delete that?
     no_translation: Not Translated
     no_models: No %{models}
-    user:
-      invitation_sent: Invitation Sent
-      last_login: 'Last Login: %{date}'
   misc:
     dashboard: Dashboard
     locale:

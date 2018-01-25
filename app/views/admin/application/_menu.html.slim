@@ -28,6 +28,10 @@
       i.music.icon
       = Track.model_name.human(count: -1)
 
+  = link_to [:admin, :root], class: "#{'active' if controller_name == 'meditations'} item"
+    i.leaf.icon
+    ' Meditations
+
   = link_to [:admin, :root], class: "#{'active' if controller_name == 'cities'} item"
     i.university.icon
     ' Cities

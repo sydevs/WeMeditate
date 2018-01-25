@@ -8,12 +8,19 @@
     .meta
       .ui.tiny.list
         .item
-          - if user.invitation_accepted?
-            i.user.icon
-            .content = t('messages.user.last_login', date: localize(user.last_login_at))
+          - if user.invitation_created_at == nil
+            i.check.circle.icon
+            .content #{User.human_attribute_name(:created_at)} #{localize user.created_at, format: :short}
+          - elsif user.invitation_accepted?
+            i.check.circle.icon
+            .content #{User.human_attribute_name(:invitation_accepted_at)} #{localize user.invitation_accepted_at, format: :short}
           - else
-            i.mail.icon
-            .content = t('messages.user.invitation_sent')
+            i.olive.mail.icon
+            .content #{User.human_attribute_name(:invitation_sent_at)} #{localize user.invitation_created_at, format: :short}
+        - unless user.invited_by_id == nil
+          .item
+            i.spy.icon
+            .content #{User.human_attribute_name(:invitation_by_id)} ##{user.invited_by_id}
         .item
           i.user.icon
           .content
