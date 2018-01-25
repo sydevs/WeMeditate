@@ -48,6 +48,12 @@ en:
       destroy: Delete %{target}
       back: Back to %{target}
       reorder: Change %{target} Order
+    create_model:
+      user: Invite
+      track: Upload
+      target:
+        user: Invite %{target}
+        track: Upload %{target}
   messages:
     errors: Errors
     confirm_destroy: Are you sure you want to delete that?

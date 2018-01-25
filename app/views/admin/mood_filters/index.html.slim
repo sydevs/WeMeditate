@@ -40,5 +40,5 @@
     = translate 'action.target.back', target: Track.model_name.human(count: -1)
 
   - if allow.create?
-    .ui.small.header = t('action.target.create', target: InstrumentFilter.model_name.human)
+    .ui.small.header = t("action.create_model.target.#{MoodFilter.model_name.i18n_key}", target: MoodFilter.model_name.human, default: :'action.target.create')
     = render MoodFilter.new

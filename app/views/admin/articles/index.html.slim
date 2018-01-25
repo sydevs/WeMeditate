@@ -16,4 +16,4 @@
 - if allow.create?
   a.ui.basic.labeled.icon.button href=new_admin_article_url
     i.plus.icon
-    = translate 'action.target.create', target: Article.model_name.human
+    = translate "action.create_model.target.#{Article.model_name.i18n_key}", target: Article.model_name.human, default: :'action.target.create'

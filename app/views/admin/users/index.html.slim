@@ -14,5 +14,5 @@
 - if allow.create?
   .ui.hidden.divider
 
-  .ui.small.header = t('action.target.create', target: User.model_name.human)
+  .ui.small.header = t("action.create_model.target.#{User.model_name.i18n_key}", target: User.model_name.human, default: :'action.target.create')
   = render User.new
