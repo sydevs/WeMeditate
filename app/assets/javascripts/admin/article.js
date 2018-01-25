@@ -30,6 +30,7 @@ $(document).on('turbolinks:load', function() {
 
     // TODO: Remove this temp code
     obj.accordion()
+    obj.find('.ui.dropdown').dropdown()
 
     obj.insertBefore(this)
     return false

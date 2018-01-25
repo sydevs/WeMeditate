@@ -15,5 +15,7 @@
 
 /node_modules
 /yarn-error.log
+/public/uploads
 
+.DS_Store
 .byebug_history

@@ -28,25 +28,28 @@ module Admin
     def update
       atts = article_params
 
-      print params
-      print "\r\n"
-      print article_params
-      print "\r\n"
-
       if params[:article][:reset_slug]
         atts.merge slug: nil
       end
 
       if @article.update atts
-        redirect_to edit_admin_article_path(@article)
-        #redirect_to [:admin, Article]
+        #redirect_to edit_admin_article_path(@article)
+        redirect_to [:admin, Article]
       else
         render :edit
       end
     end
 
     def destroy
-      @article.destroy
+      if @article.translated_locales.include? I18n.locale
+        if @article.translated_locales.count == 1
+          @article.destroy
+        else
+          @article.translations.find_by(locale: I18n.locale).delete
+          @article.sections.where(language: I18n.locale).delete_all
+        end
+      end
+
       redirect_to [:admin, Article]
     end
 

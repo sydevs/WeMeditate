@@ -22,7 +22,7 @@
             i.edit.icon
             = translate 'action.edit'
         - if allow.destroy?
-          a.ui.delete.button.for-viewing href=url_for([:admin, resource]) data-method="delete" data-confirm=t('messages.confirm_destroy')
+          a.ui.delete.button.for-viewing href=url_for([:admin, resource]) data-method="delete" data-confirm=t('messages.confirm_destroy', default: 'Confirm Destroy')
             i.trash.icon
             = translate 'action.destroy'
 

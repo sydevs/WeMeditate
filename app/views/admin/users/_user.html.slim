@@ -37,4 +37,4 @@
         = f.select :role, User.roles.map {|k, v| [k.humanize.titlecase, k]}, {}, { class: 'ui fluid dropdown' }
       .field
         //label Language Access
-        = f.select :languages, I18n.available_locales.collect {|l| [I18nData.languages[l.to_s.upcase], l]}, { include_blank: User.human_attribute_name(:all_languages) }, { class: 'ui fluid search dropdown', multiple: '' }
+        = f.select :languages, I18n.available_locales.collect {|l| [I18nData.languages[l.to_s.upcase], l]}, { include_blank: t('misc.locale.all_languages') }, { class: 'ui fluid search dropdown', multiple: '' }

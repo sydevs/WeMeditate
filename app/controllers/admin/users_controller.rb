@@ -28,7 +28,7 @@ module Admin
     end
 
     def destroy
-      @user.destroy #if @category.documents.count == 0
+      @user.destroy
       redirect_to [:admin, User]
     end
 
