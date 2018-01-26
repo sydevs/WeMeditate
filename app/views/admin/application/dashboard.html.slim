@@ -1,12 +1,24 @@
 
 - content_for :title, t(:'misc.dashboard')
 
-= translate :hello
+.ui.two.column.grid
+  .column
+    = render 'model_table', title: t('messages.untranslated_pages'), color: 'orange', sets: [ \
+      { model: Article, icon: 'sticky note', elements: Article.untranslated, name: :title }, \
+    ]
 
-- p = policy(User)
-div = p.index?
-div = p.editor?
-div = p.locale_allowed?
-div = I18n.locale
-div = current_user.available_languages
+    - title = t('messages.available_cities', language: I18nData.languages[I18n.locale.to_s.upcase])
+    = render 'model_table', title: title, color: 'teal', sets: [ \
+      { model: Article, icon: 'university', elements: City.with_translations(I18n.locale), name: :name }, \
+    ]
+  .column
+    = render 'model_table', title: t('messages.pending_users'), color: 'olive', editable: false, sets: [ \
+      { model: User, icon: 'user', elements: User.pending, name: :email }, \
+    ]
 
+    = render 'model_table', title: t('messages.untranslated_resources'), color: 'red', sets: [ \
+      { model: Category, icon: 'hashtag', elements: Category.untranslated, name: :name }, \
+      { model: InstrumentFilter, icon: 'filter', elements: InstrumentFilter.untranslated, name: :name }, \
+      { model: MoodFilter, icon: 'filter', elements: MoodFilter.untranslated, name: :name }, \
+    ]
+    

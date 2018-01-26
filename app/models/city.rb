@@ -14,6 +14,9 @@ class City < ApplicationRecord
   validates :banner, presence: true
   accepts_nested_attributes_for :sections, reject_if: :all_blank, allow_destroy: true
   
+  # Scopes
+  scope :untranslated, -> { joins(:translations).where.not(article_translations: { locale: I18n.locale }) }
+
   def cache_key
     super + '-' + Globalize.locale.to_s
   end

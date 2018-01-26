@@ -9,7 +9,8 @@ class InstrumentFilter < ApplicationRecord
 
   # Scopes
   default_scope { order( :order ) }
-  
+  scope :untranslated, -> { joins(:translations).where.not(instrument_filter_translations: { locale: I18n.locale }) }
+
   def cache_key
     super + '-' + Globalize.locale.to_s
   end

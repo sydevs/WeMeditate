@@ -9,6 +9,9 @@ class User < ApplicationRecord
   # Validations
   validates :role, presence: true
 
+  # Scopes
+  scope :pending, -> { where.not(invitation_created_at: nil).where(invitation_accepted_at: nil) }
+
   def languages= list
     list &= I18n.available_locales.map {|l| l.to_s} # only allow locales from the list of available locales
     super list.join(',')
