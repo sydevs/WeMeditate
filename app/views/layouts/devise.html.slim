@@ -16,4 +16,7 @@ html
     .ui.segment
       = yield
 
+    - if Rails.env.development?
+      p = switch_user_select
+
     = render "devise/shared/links"

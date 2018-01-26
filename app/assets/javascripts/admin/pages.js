@@ -1,13 +1,27 @@
 
 $(document).on('turbolinks:load', function() {
-  $('body').on('change', '.section .content-type.field select', function() {
+  $('body').on('change', '.section .content-type.field input', function() {
     var section = $(this).closest('.section')
     
     section.removeClass(function (index, className) {
-      return (className.match (/(^|\s)type-\S+/g) || []).join(' ')
+      return (className.match (/(^|\s)(format|type)-\S+/g) || []).join(' ')
     });
 
-    section.addClass('type-' + $(this).children("option").filter(":selected").val())
+    content_type = $(this).val()
+    section.addClass('type-' + content_type)
+
+    format = $('.section .format.for.'+content_type+' option:selected').val()
+    section.addClass('format-' + format)
+  })
+
+  $('body').on('change', '.section .format.field select', function() {
+    var section = $(this).closest('.section')
+    
+    section.removeClass(function (index, className) {
+      return (className.match (/(^|\s)format-\S+/g) || []).join(' ')
+    });
+
+    section.addClass('format-' + $(this).children("option").filter(":selected").val())
   })
 
   $('body').on('change', '.section .delete-section', function() {

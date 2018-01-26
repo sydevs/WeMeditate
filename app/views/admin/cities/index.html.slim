@@ -6,7 +6,7 @@
   - if @cities.empty?
     .item
       .small.header
-          i.low.vision.icon
+          i.hide.icon
           = translate 'messages.no_models', models: City.model_name.human(count: -1)
     
   = render @cities

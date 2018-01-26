@@ -39,7 +39,7 @@
     .sort-list
       - localized_sections.each do |section|
         = f.fields_for :sections, section do |ff|
-          = render 'sections/form', f: ff
+          = render 'admin/sections/form', f: ff
 
       = link_to_add_fields f, :sections, {}, { class: 'ui tiny compact basic labeled icon button' } do
         i.plus.icon

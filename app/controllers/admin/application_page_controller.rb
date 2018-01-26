@@ -8,6 +8,10 @@ module Admin
       instance_variable_set('@'+pages_name, @klass.all)
     end
 
+    def show
+      redirect_to [:edit, :admin, @page]
+    end
+
     def new
       page_name = @klass.name.underscore
       instance_variable_set('@'+page_name, @klass.new)
@@ -29,13 +33,23 @@ module Admin
     end
 
     def update page_params
+      # TODO: Fix slug resetting
       if params[:reset_slug]
         page_params.merge slug: nil
       end
 
+      page_params[:sections_attributes].each do |_, section|
+        section[:format] = section[:format][section[:content_type]]
+      end
+
+      print params
+      print "\r\n"
+      print page_params
+      print "\r\n\r\n"
+
       if @page.update page_params
-        #redirect_to edit_admin_article_path(@article)
-        redirect_to [:admin, @klass]
+        redirect_to [:edit, :admin, @article]
+        #redirect_to [:admin, @klass]
       else
         render :edit
       end
@@ -55,6 +69,13 @@ module Admin
     end
 
     protected
+      ALLOWED_SECTION_ATTRIBUTES = [
+        :id, :order, :_destroy, # Meta fields
+        :header, :content_type, :visibility_type, :visibility_countries,
+        :title, :subtitle, :text, :quote, :credit, :image, :action_text, :url, # These are the options for different content_types
+        { format: [ :text, :image, :action ], images: [] }, # For image uploads
+      ]
+
       def set_model klass
         @klass = klass
       end

@@ -47,9 +47,10 @@ gem 'sortable-rails'
 gem 'google-analytics-rails'
 
 # Models
-gem 'paper_trail'
+#gem 'paper_trail'
 gem 'friendly_id'
 gem 'geocoder'
+gem 'jsonb_accessor'
 
 # Uploads
 gem 'carrierwave'
@@ -61,7 +62,7 @@ gem 'rails-i18n'
 gem 'globalize'
 gem 'friendly_id-globalize'
 gem 'carrierwave-i18n'
-gem 'globalize-versioning', github: 'aaroncraigie/globalize-versioning' # for paper_trail support
+#gem 'globalize-versioning', github: 'aaroncraigie/globalize-versioning' # for paper_trail support
 gem 'i18n_data'
 gem 'devise-i18n'
 

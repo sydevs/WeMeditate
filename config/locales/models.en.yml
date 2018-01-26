@@ -44,6 +44,7 @@ en:
         slug: URL
         latitude: Latitude
         longitude: Longitude
+        banner: Banner
         sections: Content
 
       category:
@@ -67,14 +68,35 @@ en:
           other: '%{count} Tracks'
 
       section:
-        header: Title
+        title: Title
         content_type: Content Type
         content_types:
           text: Text
           video: Video
-          text_with_image: Text + Image
+          quote: Quote
+          image: Image
+          banner: Banner
+          action: Call to Action
+        format: Format
+        formats:
+          just_text: Just Text
+          with_quote: Text With Quote Insert
+          adjacent_to_image: Text With Image
+          within_image: Image With Text Insert
+          around_image: Text With Image Insert
+          with_image_background: Text Over Image
+          fit_container_width: Fit Content Width
+          fit_page_width: Fit Page Width
+          signup: Sign Up
+          button: Button
         text: Text
-        youtube_id: Youtube Video ID
+        subtitle: Subtitle
+        quote: Quote
+        images: Images
+        credit: Credit
+        video_url: YouTube Video URL
+        action_url: Action Link
+        action_text: Action Text
         visibility_type: Visible to
         visibility_countries: countries
 

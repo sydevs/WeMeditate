@@ -24,8 +24,12 @@ module Admin::ApplicationHelper
     country_flag LANGUAGE_TO_FLAG_MAP[l]
   end
 
-  def human_enum_name model, attr 
-    I18n.translate "activerecord.attributes.#{model.model_name.i18n_key}.#{attr.to_s.pluralize}.#{model.send(attr)}"
+  def human_enum_name model, attr, value = nil
+    if value
+      I18n.translate "activerecord.attributes.#{model.model_name.i18n_key}.#{attr.to_s.pluralize}.#{value}"
+    else
+      I18n.translate "activerecord.attributes.#{model.model_name.i18n_key}.#{attr.to_s.pluralize}.#{model.send(attr)}"
+    end
   end
 
   # This function is taken from https://www.pluralsight.com/guides/ruby-ruby-on-rails/ruby-on-rails-nested-attributes

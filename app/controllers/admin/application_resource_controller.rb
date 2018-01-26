@@ -7,6 +7,10 @@ module Admin
         resources_name = @klass.name.pluralize.underscore
         instance_variable_set('@'+resources_name, @klass.all)
       end
+
+      def show
+        redirect_to [:edit, @klass]
+      end
   
       def create resource_params
         @resource = @klass.new resource_params

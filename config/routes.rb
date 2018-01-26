@@ -10,23 +10,23 @@ Rails.application.routes.draw do
     namespace :admin do
       root to: "application#dashboard"
       
-      resources :users, except: [:show]
-      resources :articles, except: [:show]
-      resources :tracks, except: [:show]
+      resources :users
+      resources :articles
+      resources :tracks
 
-      resources :cities, except: [:show] do
+      resources :cities do
         get :lookup, on: :collection, constraints: { format: 'json' }
       end
 
-      resources :categories, except: [:show] do
+      resources :categories do
         put :sort, on: :collection
       end
 
-      resources :mood_filters, except: [:show] do
+      resources :mood_filters do
         put :sort, on: :collection
       end
 
-      resources :instrument_filters, except: [:show] do
+      resources :instrument_filters do
         put :sort, on: :collection
       end
     end

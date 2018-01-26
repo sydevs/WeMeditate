@@ -2,27 +2,59 @@
 .section {
   margin-bottom: 1em;
   
-  .for-text,
-  .for-video,
-  .for-image {
+  .format.field,
+  .field.for {
     display: none;
   }
 
   &.type-text {
-    .for-text {
+    .for.text,
+    .text.format {
+      display: block;
+    }
+
+    &.format-with_quote .for.sub-quote,
+    &.format-adjacent_to_image .for.image,
+    &.format-within_image .for.image,
+    &.format-around_image .for.image,
+    &.format-with_image_background .for.image {
       display: block;
     }
   }
 
   &.type-video {
-    .for-video {
+    .for.video {
       display: block;
     }
   }
 
-  &.type-text_with_image {
-    .for-text,
-    .for-image, {
+  &.type-image {
+    .for.image,
+    .image.format {
+      display: block;
+    }
+  }
+
+  &.type-quote {
+    .for.quote, {
+      display: block;
+    }
+  }
+
+  &.type-banner {
+    .for.image,
+    .for.button {
+      display: block;
+    }
+  }
+
+  &.type-action {
+    .for.action,
+    .action.format {
+      display: block;
+    }
+
+    &.format-button .for.button {
       display: block;
     }
   }
@@ -33,7 +65,7 @@
 
     .field,
     .fields {
-      display: none;
+      display: none !important;
     }
   }
 }

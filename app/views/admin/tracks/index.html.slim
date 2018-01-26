@@ -16,7 +16,7 @@
   - if @tracks.empty?
     .item
       .header
-        i.low.vision.icon
+        i.hide.icon
         = translate 'messages.no_models', models: Track.model_name.human(count: -1)
     
   = render @tracks

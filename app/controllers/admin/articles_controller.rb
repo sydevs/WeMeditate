@@ -16,11 +16,7 @@ module Admin
       def article_params
         params.fetch(:article, {}).permit(
           :title, :category_id, :priority,
-          sections_attributes: [
-            :id, :order, :_destroy, # Meta fields
-            :header, :content_type, :visibility_type, :visibility_countries,
-            :text, :youtube_id, :image # These are the options for different content_types
-          ]
+          sections_attributes: Admin::ApplicationPageController::ALLOWED_SECTION_ATTRIBUTES
         )
       end
 

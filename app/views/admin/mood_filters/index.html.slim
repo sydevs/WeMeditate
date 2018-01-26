@@ -7,7 +7,7 @@
   .ui.items
     .item
       .header
-        i.low.vision.icon
+        i.hide.icon
         = translate 'messages.no_models', models: MoodFilter.model_name.human(count: -1)
 - elsif reorder
   = form_tag sort_admin_mood_filters_path, method: :put

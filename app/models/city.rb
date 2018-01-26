@@ -7,7 +7,7 @@ class City < ApplicationRecord
 
   # Associations
   has_many :sections, -> { order(:order) }, as: :page, dependent: :delete_all
-  mount_uploader :banner, BannerUploader
+  mount_uploader :banner, GenericImageUploader
 
   # Validations
   validates :name, presence: true

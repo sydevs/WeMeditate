@@ -6,7 +6,7 @@
   - if @articles.empty?
     .item
       .small.header
-          i.low.vision.icon
+          i.hide.icon
           = translate 'messages.no_models', models: Article.model_name.human(count: -1)
     
   = render @articles

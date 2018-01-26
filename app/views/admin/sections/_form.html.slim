@@ -1,7 +1,7 @@
 
 - section = f.object
 
-.ui.styled.sortable.section.accordion id=dom_id(section) class="type-#{section.content_type}"
+.ui.styled.sortable.section.accordion id=dom_id(section) class="type-#{section.content_type} format-#{section.format}"
   - unless section.new_record?
     = f.hidden_field :id
 
@@ -24,27 +24,67 @@
 
     - if section.new_record?
       = Section.model_name.human
-    - elsif section.header.present?
-      = section.header + ' [' + human_enum_name(section, :content_type) + ']'
-    - elsif section.content_type.present?
-      = human_enum_name(section, :content_type) + ' ' + Section.model_name.human
+    - elsif section.title.present?
+      = section.title + ' [' + human_enum_name(section, :content_type) + ']'
     - else
-      = Section.model_name.human + ' #' + section.id
+      = human_enum_name(section, :content_type) + ' ' + Section.model_name.human
 
   .content
     .form
       .field
-        = f.text_field :header, placeholder: Section.human_attribute_name(:header)
+        = f.text_field :title, placeholder: Section.human_attribute_name(:title)
       .field.content-type
         = f.label :content_type
-        = f.select :content_type, Section.content_types.map {|k,v| [k.humanize.capitalize, k]}, {}, { class: 'ui dropdown' }
+        .ui.scrolling.selection.dropdown
+          = f.hidden_field :content_type
+          i.dropdown.icon
+          .default.text Section.human_attribute_name(:content_type)
+          .menu
+            - Section.content_types.each do |k, v|
+              .item data-value=k
+                = content_type_icon k.to_sym
+                = human_enum_name(section, :content_type, k)
       
-      .field.for-text
+      = f.fields_for :format do |ff|
+        .field.text.format
+          = ff.label :format
+          = ff.select :text, Section::TEXT_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown' }
+
+        .field.image.format
+          = ff.label :format
+          = ff.select :image, Section::IMAGE_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown' }
+
+        .field.action.format
+          = ff.label :format
+          = ff.select :action, Section::ACTION_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown' }
+        
+      .field.for.text
+        = f.text_field :subtitle, placeholder: Section.human_attribute_name(:subtitle)
+      .field.for.text
         = f.text_area :text, placeholder: Section.human_attribute_name(:text)
-      .field.for-image
-        = f.file_field :image
-      .field.for-video
-        = f.text_field :youtube_id, placeholder: Section.human_attribute_name(:youtube_id)
+      .field.for.quote.sub-quote
+        = f.text_area :quote, placeholder: Section.human_attribute_name(:quote)
+      .field.for.image
+        .ui.fluid.icon.file.input
+          i.image.icon
+          = f.file_field :images, multiple: true
+          = f.hidden_field :images_cache
+        - if section.images.present?
+          .ui.tiny.list
+            - section.images.each do |image|
+              a.item href=image.url = image.identifier
+      .field.for.video
+        = f.url_field :url, placeholder: Section.human_attribute_name(:video_url)
+      .field.for.image.quote
+        = f.text_field :credit, placeholder: Section.human_attribute_name(:credit)
+      .field.for.quote
+        = f.text_field :subtitle, placeholder: Section.human_attribute_name(:subtitle)
+      .two.fields
+        .field.for.button
+          = f.text_field :action_text, placeholder: Section.human_attribute_name(:action_text)
+        .field.for.button
+          = f.url_field :url, placeholder: Section.human_attribute_name(:action_url)
+
       
       .fields
         .six.wide.field
