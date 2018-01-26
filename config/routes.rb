@@ -14,6 +14,10 @@ Rails.application.routes.draw do
       resources :articles, except: [:show]
       resources :tracks, except: [:show]
 
+      resources :cities, except: [:show] do
+        get :lookup, on: :collection, constraints: { format: 'json' }
+      end
+
       resources :categories, except: [:show] do
         put :sort, on: :collection
       end
@@ -29,6 +33,7 @@ Rails.application.routes.draw do
 
     resources :categories, only: [:index, :show]
     resources :articles, only: [:show]
+    resources :cities, only: [:show]
   end
 
 end

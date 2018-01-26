@@ -1,0 +1,77 @@
+
+= form_for [:admin, @city], html: { class: "ui form #{'error' if @city.errors.present?}" } do |f|
+  - if @city.errors.present?
+    .ui.small.error.message
+      .header = translate 'messages.errors'
+      ul.list
+        - @city.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :city
+    // This {query} part of these parameter has to be included in a wierd way so that it isn't escaped.
+    .ui.search data-url=(lookup_admin_cities_url(q: '') + '{query}')
+      .ui.right.labeled.left.icon.input
+        i.search.icon
+        = f.text_field :city, value: @city.name, class: 'prompt', autocomplete: 'off', placeholder: t('action.target.search_for', target: City.model_name.human)
+        #city_coordinates.ui.tag.label
+          i.marker.icon
+          - if params[:city] && params[:city][:latitude] && params[:city][:longitude]
+            span #{params[:city][:latitude]}, #{params[:city][:longitude]}
+          - else
+            span Not Set
+
+      .results
+    
+    = f.hidden_field :name
+    = f.hidden_field :longitude
+    = f.hidden_field :latitude
+
+    - unless @city.new_record?
+      .reset-slug
+        i.linkify.icon
+        em = @city.slug
+        = label_tag :reset_slug do
+          = check_box_tag :reset_slug, 'yes', params[:reset_slug]
+          '  #{translate 'action.target.reset', target: City.human_attribute_name(:slug)}
+  
+  .field
+    = f.label :banner
+    .ui.fluid.icon.file.input
+      i.image.icon
+      = f.file_field :banner
+      = f.hidden_field :banner_cache
+
+  - localized_sections = @city.sections.where(language: locale)
+
+  .field
+    - if localized_sections.present?
+      label = city.human_attribute_name(:sections)
+    - else
+      label #{I18nData.languages(locale)[locale.to_s.upcase]} #{City.human_attribute_name(:sections)}
+    
+    .sort-list
+      - localized_sections.each do |section|
+        = f.fields_for :sections, section do |ff|
+          = render 'sections/form', f: ff
+
+      = link_to_add_fields f, :sections, {}, { class: 'ui tiny compact basic labeled icon button' } do
+        i.plus.icon
+        = translate 'action.target.add', target: Section.model_name.human
+  
+  - unless localized_sections.present?
+    - english_sections = @city.sections.where(language: :en)
+    - if english_sections.present?
+      .field
+        label #{I18nData.languages(locale)['EN']} #{City.human_attribute_name(:sections)}
+        = render english_sections
+
+  .ui.hidden.divider
+
+  p
+    a.ui.basic.button href=admin_cities_url
+      i.left.arrow.icon
+      = translate 'action.target.back', target: City.model_name.human(count: -1)
+
+    button.ui.basic.positive.button
+      = translate 'action.update'

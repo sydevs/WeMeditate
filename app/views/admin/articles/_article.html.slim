@@ -1,31 +1,5 @@
 
-- allow = policy(article)
-
-.item
-  .actions
-    .ui.tiny.compact.vertical.labeled.icon.buttons
-      a.ui.button.for-viewing href=article_url(article)
-        i.browser.icon
-        = translate 'action.show'
-      - if allow.edit?
-        a.ui.button.for-viewing href=edit_admin_article_url(article)
-          i.edit.icon
-          = translate 'action.edit'
-      - if allow.destroy? and article.translated_locales.include? locale
-        //.ui.floating.dropdown.search.button
-          i.trash.icon
-          = translate 'action.destroy'
-          .menu
-            a.item href=admin_article_url(article) data-method="delete" data-confirm=t('messages.confirm_destroy')
-              = translate 'misc.locale.all_languages'
-            - localized_languages = I18nData.languages(locale)
-            - languages.each do |l|
-              a.item href=admin_article_url(article, language: l) data-method="delete" data-confirm=t('messages.confirm_destroy')
-                = localized_languages[l.to_s.upcase]
-        a.ui.button.for-viewing href=admin_article_url(article) data-method="delete" data-confirm=t('messages.confirm_destroy', default: 'Confirm Destroy')
-          i.trash.icon
-          = translate 'action.destroy'
-
+= render 'admin/application/page', page: article do
   .content
     .header = article.title
 

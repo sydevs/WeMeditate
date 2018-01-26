@@ -16,8 +16,8 @@
       .reset-slug
         i.linkify.icon
         em = @article.slug
-        = f.label :reset_slug do
-          = f.check_box :reset_slug, { checked: params[:reset_slug] }, 'yes', nil
+        = label_tag :reset_slug do
+          = check_box_tag :reset_slug, 'yes', params[:reset_slug]
           '  #{translate 'action.target.reset', target: Article.human_attribute_name(:slug)}
 
   .field
@@ -39,7 +39,7 @@
     .sort-list
       - localized_sections.each do |section|
         = f.fields_for :sections, section do |ff|
-          = render 'section_fields', f: ff
+          = render 'sections/form', f: ff
 
       = link_to_add_fields f, :sections, {}, { class: 'ui tiny compact basic labeled icon button' } do
         i.plus.icon

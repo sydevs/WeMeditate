@@ -1,0 +1,21 @@
+
+- allow = policy(page)
+
+.item
+  .actions
+    .ui.tiny.compact.vertical.labeled.icon.buttons
+      a.ui.button.for-viewing href=url_for(page)
+        i.browser.icon
+        = translate 'action.show'
+      - if allow.edit?
+        a.ui.button.for-viewing href=url_for([:edit, :admin, page])
+          i.edit.icon
+          = translate 'action.edit'
+      - if allow.destroy? and page.translated_locales.include? locale
+        a.ui.button.for-viewing href=url_for([:admin, page]) data-method="delete" data-confirm=t('messages.confirm_destroy', default: 'Confirm Destroy')
+          i.trash.icon
+          = translate 'action.destroy'
+
+  .content
+    = yield
+  

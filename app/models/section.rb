@@ -5,7 +5,6 @@ class Section < ApplicationRecord
   store_accessor :parameters, :text, :youtube_id, :image
 
   # Associations
-  belongs_to :article
   enum content_type: [:text, :video, :text_with_image]
   enum visibility_type: [:worldwide, :only_certain_countries, :except_certain_countries]
   enum language: I18n.available_locales

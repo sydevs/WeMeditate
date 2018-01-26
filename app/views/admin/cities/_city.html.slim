@@ -1,0 +1,18 @@
+
+= render 'admin/application/page', page: city do
+  .header = city.name
+
+  .meta
+    .ui.tiny.list
+      .item
+        i.marker.icon
+        .content #{city.latitude}, #{city.longitude}
+      - if city.translated_locales.include? I18n.locale
+        .item
+          i.linkify.icon
+          .content = city.slug
+      .item
+        i.globe.icon
+        .content
+          = city.translated_locales.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
+  

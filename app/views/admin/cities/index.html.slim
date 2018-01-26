@@ -1,0 +1,19 @@
+
+- content_for :title, City.model_name.human(count: -1)
+- allow = policy(City)
+
+.ui.resource.items
+  - if @cities.empty?
+    .item
+      .small.header
+          i.low.vision.icon
+          = translate 'messages.no_models', models: City.model_name.human(count: -1)
+    
+  = render @cities
+
+.ui.hidden.divider
+
+- if allow.create?
+  a.ui.basic.labeled.icon.button href=new_admin_city_url
+    i.plus.icon
+    = translate "action.create_model.target.#{City.model_name.i18n_key}", target: City.model_name.human, default: :'action.target.create'

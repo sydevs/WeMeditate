@@ -46,7 +46,7 @@ module Admin::ApplicationHelper
     if options.include? :partial
       partial = options[:partial]
     else
-      partial = association.to_s.singularize + '_fields'
+      partial = 'admin/' + association.to_s.pluralize + '/form'
     end
     
     # Render the form fields from a file with the association name provided

@@ -1,30 +1,22 @@
 module Admin
-  class InstrumentFiltersController < Admin::ApplicationController
-    before_action :set_instrument_filter, except: [:index, :create, :sort]
-    before_action :authorize!
-
-    def index
-      @instrument_filters = InstrumentFilter.all
+  class InstrumentFiltersController < Admin::ApplicationResourceController
+    prepend_before_action do
+      set_model InstrumentFilter
     end
 
     def create
-      @instrument_filter = InstrumentFilter.new instrument_filter_params
-      @instrument_filter.save
-
-      if @instrument_filter.errors.empty?
-        redirect_to [:admin, InstrumentFilter]
-      else
-        redirect_to [:admin, InstrumentFilter], alert: @instrument_filter.errors.messages
-      end
+      super instrument_filter_params
     end
 
     def update
-      if @instrument_filter.update instrument_filter_params
-        redirect_to [:admin, InstrumentFilter]
+      super instrument_filter_params
+    end
+
+    def destroy
+      if @instrument_filter.tracks.count > 0
+        redirect_to [:admin, InstrumentFilter], alert: 'You cannot delete a filter which has tracks attached to it. Reassign the tracks and try again.'
       else
-        respond_to do |format|
-          format.json { render json: @instrument_filter.errors, status: :unprocessable_entity }
-        end
+        super
       end
     end
 
@@ -36,26 +28,9 @@ module Admin
       redirect_to [:admin, InstrumentFilter]
     end
 
-    def destroy
-      if @instrument_filter.tracks.count > 0
-        redirect_to [:admin, InstrumentFilter], alert: 'You cannot delete a filter which has tracks attached to it. Reassign the tracks and try again.'
-      else
-        @instrument_filter.destroy
-        redirect_to [:admin, InstrumentFilter]
-      end
-    end
-
-    protected
+    private
       def instrument_filter_params
         params.fetch(:instrument_filter, {}).permit(:name, :icon)
-      end
-
-      def set_instrument_filter
-        @instrument_filter = InstrumentFilter.find(params[:id])
-      end
-
-      def authorize!
-        authorize @instrument_filter || InstrumentFilter
       end
 
       def self.policy_class

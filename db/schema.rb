@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124123853) do
+ActiveRecord::Schema.define(version: 20180125180052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,25 @@ ActiveRecord::Schema.define(version: 20180124123853) do
     t.string "slug", null: false
     t.index ["category_id"], name: "index_category_translations_on_category_id"
     t.index ["locale"], name: "index_category_translations_on_locale"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.string "banner", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "city_translations", force: :cascade do |t|
+    t.integer "city_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.index ["city_id"], name: "index_city_translations_on_city_id"
+    t.index ["locale"], name: "index_city_translations_on_locale"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -111,13 +130,14 @@ ActiveRecord::Schema.define(version: 20180124123853) do
   create_table "sections", force: :cascade do |t|
     t.string "header"
     t.integer "content_type", default: 0
-    t.bigint "article_id"
     t.integer "order", default: 0, null: false
     t.jsonb "parameters", default: {}, null: false
     t.integer "visibility_type", default: 0, null: false
     t.string "visibility_countries"
     t.integer "language", default: 0, null: false
-    t.index ["article_id"], name: "index_sections_on_article_id"
+    t.string "page_type"
+    t.bigint "page_id"
+    t.index ["page_type", "page_id"], name: "index_sections_on_page_type_and_page_id"
   end
 
   create_table "track_translations", force: :cascade do |t|
@@ -172,5 +192,4 @@ ActiveRecord::Schema.define(version: 20180124123853) do
   end
 
   add_foreign_key "articles", "categories"
-  add_foreign_key "sections", "articles"
 end

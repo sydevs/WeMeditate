@@ -37,7 +37,7 @@
           .field.reset-slug
             i.linkify.icon
             em = category.slug
-            = f.label :reset_slug do
-              = f.check_box :reset_slug, { checked: params[:reset_slug] }, 'yes', nil
+            = label_tag :reset_slug do
+              = check_box_tag :reset_slug, 'yes', params[:reset_slug]
               '  #{translate 'action.target.reset', target: Category.human_attribute_name(:slug)}
   

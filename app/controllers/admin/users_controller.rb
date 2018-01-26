@@ -1,50 +1,20 @@
 module Admin
-  class UsersController < Admin::ApplicationController
-    before_action :set_user, except: [:index, :create]
-    before_action :authorize!, except: [:create]
-
-    def index
-      @users = User.order(:email).all
+  class UsersController < Admin::ApplicationResourceController
+    prepend_before_action do
+      set_model User
     end
 
     def create
-      @user = User.new user_params
-      authorize @user
-      @user.invite!
-
-      if @user.errors.empty?
-        redirect_to [:admin, User]
-      else
-        redirect_to [:admin, User], alert: @user.errors.messages
-      end
+      super user_params
     end
 
     def update
-      if @user.update user_params
-        redirect_to [:admin, User]
-      else
-        respond_to do |format|
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
-      end
-    end
-
-    def destroy
-      @user.destroy
-      redirect_to [:admin, User]
+      super user_params
     end
 
     private
       def user_params
         params.fetch(:user, {}).permit(:email, :role, languages: [])
-      end
-
-      def set_user
-        @user = User.find(params[:id])
-      end
-
-      def authorize!
-        authorize @user || User
       end
 
   end

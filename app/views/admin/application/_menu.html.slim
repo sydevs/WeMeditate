@@ -8,36 +8,43 @@
   = link_to [:admin, :root], class: "#{'active' if controller_name == 'application'} item"
     = translate :'misc.dashboard'
 
-  - if policy(User).index?
-    = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"
-      i.users.icon
-      = User.model_name.human(count: -1)
+  - if policy(Article).index?
+    = link_to [:admin, Article], class: "#{'active' if controller_name == 'articles'} item"
+      i.sticky.note.icon
+      = Article.model_name.human(count: -1)
 
   - if policy(Category).index?
     = link_to [:admin, Category], class: "#{'active' if controller_name == 'categories'} item"
       i.hashtag.icon
       = Category.model_name.human(count: -1)
 
-  - if policy(Article).index?
-    = link_to [:admin, Article], class: "#{'active' if controller_name == 'articles'} item"
-      i.sticky.note.icon
-      = Article.model_name.human(count: -1)
+  - if policy(City).index?
+    = link_to [:admin, City], class: "#{'active' if controller_name == 'cities'} item"
+      i.university.icon
+      = City.model_name.human(count: -1)
 
   - if policy(Track).index?
     = link_to [:admin, Track], class: "#{'active' if ['tracks', 'mood_filters', 'instrument_filters'].include? controller_name} item"
       i.music.icon
       = Track.model_name.human(count: -1)
 
-  = link_to [:admin, :root], class: "#{'active' if controller_name == 'meditations'} item"
+  .disabled.item
+    i.leaf.icon
+    ' Meditations
+  //= link_to [:admin, :root], class: "#{'active' if controller_name == 'meditations'} item"
     i.leaf.icon
     ' Meditations
 
-  = link_to [:admin, :root], class: "#{'active' if controller_name == 'cities'} item"
-    i.university.icon
-    ' Cities
+  - if policy(User).index?
+    = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"
+      i.users.icon
+      = User.model_name.human(count: -1)
 
 
 .ui.hidden.divider
+
+- if Rails.env.development?
+  = switch_user_select
 
 .ui.vertical.text.menu
   = link_to root_url, class: 'item' do

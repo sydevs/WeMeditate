@@ -17,4 +17,21 @@ $(document).on('turbolinks:load', function() {
       })
     })
   })
+
+  $('.ui.search').each(function() {
+    $(this).search({
+      debug: true,
+      apiSettings: {
+        url: $(this).data('url'),
+      },
+      onSelect: function(result, response) {
+        $('#city_name').val(result.city_name)
+        $('#city_latitude').val(result.latitude)
+        $('#city_longitude').val(result.longitude)
+        $('#city_coordinates span').text(result.latitude + ', ' + result.longitude)
+      },
+      minCharacters: 3,
+      //showNoResults: true,
+    })
+  })
 })

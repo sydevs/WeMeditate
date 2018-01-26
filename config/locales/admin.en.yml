@@ -48,6 +48,7 @@ en:
       destroy: Delete %{target}
       back: Back to %{target}
       reorder: Change %{target} Order
+      search_for: Search for %{target}
     create_model:
       user: Invite
       track: Upload

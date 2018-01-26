@@ -40,9 +40,11 @@ content {
 
 .ui.resource.items > .item {
   display: block;
+  position: relative;
 
   > .actions {
-    float: right;
+    position: absolute;
+    right: 0;
   }
 
   > .content {

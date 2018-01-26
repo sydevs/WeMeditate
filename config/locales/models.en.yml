@@ -4,6 +4,9 @@ en:
       article:
         one: Article
         other: Articles
+      city:
+        one: City
+        other: Cities
       category:
         one: Category
         other: Categories
@@ -34,6 +37,13 @@ en:
           normal: Normal Visibility
           high: High Visibility
           home_page: Home Page
+        sections: Content
+
+      city:
+        name: Name
+        slug: URL
+        latitude: Latitude
+        longitude: Longitude
         sections: Content
 
       category:

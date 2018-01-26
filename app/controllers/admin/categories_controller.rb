@@ -1,33 +1,21 @@
 module Admin
-  class CategoriesController < Admin::ApplicationController
-    before_action :set_category, except: [:index, :create, :sort]
-    before_action :authorize!, except: [:create]
-
-    def index
-      @categories = Category.all
+  class CategoriesController < Admin::ApplicationResourceController
+    prepend_before_action do
+      set_model Category
     end
 
     def create
-      @category = Category.new category_params
-      authorize @category
-      @category.save
-      redirect_to [:admin, Category]
+      super category_params
     end
 
     def update
       atts = category_params
 
-      if params[:category][:reset_slug]
+      if params[:reset_slug]
         atts.merge slug: nil
       end
 
-      if @category.update atts
-        redirect_to [:admin, Category]
-      else
-        respond_to do |category|
-          format.json { render json: @category.errors, status: :unprocessable_entity }
-        end
-      end
+      super atts
     end
 
     def sort
@@ -42,22 +30,19 @@ module Admin
       if @category.articles.count > 0
         redirect_to [:admin, Category], alert: 'You cannot delete a category which has articles attached to it. Reassign the articles and try again.'
       else
-        @category.destroy
-        redirect_to [:admin, Category]
+        super
       end
     end
+
+    protected
+      def set_resource
+        @resource = Category.friendly.find(params[:id])
+        @category = @resource
+      end
 
     private
       def category_params
         params.fetch(:category, {}).permit(:name)
-      end
-
-      def set_category
-        @category = Category.friendly.find(params[:id])
-      end
-
-      def authorize!
-        authorize @category || Category
       end
 
   end
