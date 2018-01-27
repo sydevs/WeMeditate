@@ -33,9 +33,9 @@ module Admin
         params.fetch(:instrument_filter, {}).permit(:name, :icon)
       end
 
-      def self.policy_class
-        Admin::FilterPolicy
-      end
+      #def self.policy_class
+      #  Admin::FilterPolicy
+      #end
 
   end
 end

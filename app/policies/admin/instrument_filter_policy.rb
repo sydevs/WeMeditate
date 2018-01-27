@@ -1,5 +1,5 @@
 module Admin
-  class FilterPolicy < ApplicationPolicy
+  class InstrumentFilterPolicy < ApplicationPolicy
 
     def index?
       regional_admin? and locale_allowed?

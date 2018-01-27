@@ -7,7 +7,7 @@ class Article < ApplicationRecord
 
   # Associations
   belongs_to :category
-  enum priority: { home_page: 2, high: 1, normal: 0, low: -1 }
+  enum priority: { high: 1, normal: 0, low: -1 }
   has_many :sections, -> { order(:order) }, as: :page, dependent: :delete_all
 
   # Validations
