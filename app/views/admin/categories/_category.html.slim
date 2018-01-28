@@ -9,7 +9,7 @@
       = category.name
     = hidden_field_tag 'order[]', category.id, { id: 'order_for_' + category.id.to_s }
 - else
-  = render 'admin/application/resource', resource: category do |f|
+  = render 'admin/application_resources/index_item', resource: category do |f|
     - unless category.new_record?
       .header = category.name
 
@@ -24,7 +24,7 @@
               i.orange.warning.sign.icon
               .content = translate 'messages.no_translation'
           .item
-            i.sticky.note.icon
+            i.file.text.icon
             .content = Category.human_attribute_name(:articles, count: category.articles.count)
 
     - if allow.edit?

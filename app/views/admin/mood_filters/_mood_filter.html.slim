@@ -9,7 +9,7 @@
       = mood_filter.name
     = hidden_field_tag 'order[]', mood_filter.id, { id: 'order_for_' + mood_filter.id.to_s }
 - else
-  = render 'admin/application/resource', resource: mood_filter, viewable: false do |f|
+  = render 'admin/application_resources/index_item', resource: mood_filter, viewable: false do |f|
     - unless mood_filter.new_record?
       .header = mood_filter.name
 

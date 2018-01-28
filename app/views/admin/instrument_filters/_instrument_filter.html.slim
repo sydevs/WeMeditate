@@ -9,7 +9,7 @@
       = instrument_filter.name
     = hidden_field_tag 'order[]', instrument_filter.id, { id: 'order_for_' + instrument_filter.id.to_s }
 - else
-  = render 'admin/application/resource', resource: instrument_filter, viewable: false do |f|
+  = render 'admin/application_resources/index_item', resource: instrument_filter, viewable: false do |f|
     - unless instrument_filter.new_record?
       .header
         = image_tag instrument_filter.icon_url, class: 'ui avatar image'

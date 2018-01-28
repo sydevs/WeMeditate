@@ -1,7 +1,7 @@
 
 - allow = policy(user)
 
-= render 'admin/application/resource', resource: user, viewable: false do |f|
+= render 'admin/application_resources/index_item', resource: user, viewable: false do |f|
   - unless user.new_record?
     .header = user.email
 

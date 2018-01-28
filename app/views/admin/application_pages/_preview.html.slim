@@ -1,0 +1,13 @@
+
+= yield
+
+p
+  a.ui.basic.button href=url_for([:admin, page.class])
+    i.left.arrow.icon
+    = translate 'action.target.back', target: page.class.model_name.human(count: -1)
+
+  a.ui.basic.negative.button href=url_for([:revert, :admin, page])
+    = translate 'action.discard_changes'
+
+  a.ui.basic.positive.button href=url_for([:publish, :admin, page])
+    = translate 'action.publish'

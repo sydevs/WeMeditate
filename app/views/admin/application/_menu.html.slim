@@ -10,7 +10,7 @@
 
   - if policy(Article).index?
     = link_to [:admin, Article], class: "#{'active' if controller_name == 'articles'} item"
-      i.sticky.note.icon
+      i.file.text.icon
       = Article.model_name.human(count: -1)
 
   - if policy(Category).index?
@@ -27,6 +27,13 @@
     = link_to [:admin, Track], class: "#{'active' if ['tracks', 'mood_filters', 'instrument_filters'].include? controller_name} item"
       i.music.icon
       = Track.model_name.human(count: -1)
+
+  .disabled.item title="Not Implemented"
+    i.file.icon
+    ' Static Pages
+  //= link_to [:admin, :root], class: "#{'active' if controller_name == 'pages'} item"
+    i.square.icon
+    ' Static Pages
 
   .disabled.item title="Not Implemented"
     i.leaf.icon
