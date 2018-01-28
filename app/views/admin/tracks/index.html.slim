@@ -1,28 +1,16 @@
 
 - content_for :title, Track.model_name.human(count: -1)
-- allow = policy(Track)
 
-- if allow.edit?
+- if policy(MoodFilter).edit?
   a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=admin_mood_filters_path
     i.filter.icon
     = MoodFilter.model_name.human(count: -1)
+
+- if policy(InstrumentFilter).edit?
   a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=admin_instrument_filters_path
     i.filter.icon
     = InstrumentFilter.model_name.human(count: -1)
 
-  .clearfix
+.clearfix
 
-.ui.resource.items
-  - if @tracks.empty?
-    .item
-      .header
-        i.hide.icon
-        = translate 'messages.no_models', models: Track.model_name.human(count: -1)
-    
-  = render @tracks
-
-- if allow.create?
-  .ui.hidden.divider
-
-  .ui.small.header = t("action.create_model.target.#{Track.model_name.i18n_key}", target: Track.model_name.human, default: :'action.target.create')
-  = render Track.new
+= render 'admin/application_resources/index', model: Track, resources: @tracks

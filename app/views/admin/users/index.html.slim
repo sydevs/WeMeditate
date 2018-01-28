@@ -1,18 +1,4 @@
 
 - content_for :title, 'Editors'
-- allow = policy(User)
 
-.ui.resource.items
-  - if @users.empty?
-    .item
-      .header
-        i.hide.icon
-        = translate 'messages.no_models', models: User.model_name.human(count: -1)
-    
-  = render @users
-
-- if allow.create?
-  .ui.hidden.divider
-
-  .ui.small.header = t("action.create_model.target.#{User.model_name.i18n_key}", target: User.model_name.human, default: :'action.target.create')
-  = render User.new
+= render 'admin/application_resources/index', model: User, resources: @users

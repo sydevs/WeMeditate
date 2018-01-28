@@ -12,30 +12,23 @@
 
   = yield f
 
-  - localized_sections = page.sections.where(language: locale)
-
   .field
-    - if localized_sections.present?
-      label = model.human_attribute_name(:sections)
-    - else
-      label #{I18nData.languages(locale)[locale.to_s.upcase]} #{model.human_attribute_name(:sections)}
+    - sections = page.sections.where(language: locale)
+  
+    - if sections.empty?
+      - sections = page.sections.where(language: page.translated_locales.first)
+      
+    label = model.human_attribute_name(:sections)
     
     .sort-list
-      - localized_sections.each do |section|
-        = f.fields_for :sections, section do |ff|
+      - sections.each do |section|
+        = f.fields_for :sections do |ff|
           = render 'admin/sections/form', f: ff
 
       = link_to_add_fields f, :sections, {}, { class: 'ui tiny compact basic labeled icon button' } do
         i.plus.icon
         = translate 'action.target.add', target: Section.model_name.human
   
-  - unless localized_sections.present?
-    - english_sections = page.sections.where(language: :en)
-    - if english_sections.present?
-      .field
-        label #{I18nData.languages(locale)['EN']} #{model.human_attribute_name(:sections)}
-        = render english_sections
-
   .ui.hidden.divider
 
   p
