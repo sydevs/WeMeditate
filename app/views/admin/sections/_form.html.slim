@@ -1,7 +1,7 @@
 
 - section = f.object
 
-.ui.styled.sortable.section.accordion id=dom_id(section) class="type-#{section.content_type} format-#{section.format}"
+.ui.styled.sortable.section.accordion.child id=dom_id(section) class="type-#{section.content_type} format-#{section.format}"
   - unless section.new_record?
     = f.hidden_field :id
 
@@ -72,7 +72,7 @@
         - if section.images.present?
           .ui.tiny.list
             - section.images.each do |image|
-              a.item href=image.url = image.identifier
+              a.item href=image.url target="_blank" = image.identifier
       .field.for.video
         = f.url_field :url, placeholder: Section.human_attribute_name(:video_url)
       .field.for.image.quote
@@ -104,12 +104,12 @@
                   = country_name
 
     - if section.new_record?
-      .ui.tiny.compact.basic.labeled.icon.button.remove-section-button
+      .ui.tiny.compact.basic.labeled.icon.button.remove-child-button
         i.trash.icon
         = translate 'action.target.remove', target: Section.model_name.human
     - else
       .ui.checkbox
-        = f.check_box :_destroy, class: 'delete-section'
-        = f.label :delete_section, t('action.target.destroy', target: Section.model_name.human)
+        = f.check_box :_destroy, class: 'delete-child'
+        = f.label :_destroy, t('action.target.destroy', target: Section.model_name.human)
 
     .clearfix

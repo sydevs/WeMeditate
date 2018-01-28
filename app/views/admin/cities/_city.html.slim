@@ -4,13 +4,21 @@
 
   .meta
     .ui.tiny.list
-      .item
-        i.marker.icon
-        .content #{city.latitude}, #{city.longitude}
+      - if city.latitude.present? and city.longitude.present?
+        .item
+          i.marker.icon
+          .content #{city.latitude}, #{city.longitude}
+      - else
+        .item
+          i.marker.icon
+          .content = t('messages.latlong_not_found')
       - if city.translated_locales.include? I18n.locale
         .item
           i.linkify.icon
           .content = city.slug
+      .item
+        i.home.icon
+        .content = City.human_attribute_name(:program_venues, count: city.program_venues.count)
       .item
         i.globe.icon
         .content

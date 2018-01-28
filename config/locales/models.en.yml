@@ -25,6 +25,12 @@ en:
       user:
         one: Editor
         other: Editors
+      program_venue:
+        one: Program Location
+        other: Program Locations
+      program_time:
+        one: Time
+        other: Times
 
     attributes:
       article:
@@ -45,6 +51,18 @@ en:
         longitude: Longitude
         banner: Banner
         sections: Content
+        program_venues:
+          one: 1 Program Location
+          other: '%{count} Program Locations'
+
+      program_venue:
+        address: Street Address
+        room_information: Room Information
+
+      program_time:
+        day_of_week: Day
+        start_time: Starts At
+        end_time: Ends At
 
       category:
         name: Name

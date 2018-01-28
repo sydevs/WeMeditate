@@ -31,10 +31,23 @@ module Admin
     end
 
     protected
+      ALLOWED_PROGRAM_TIME_ATTRIBUTES = [
+        :id, :_destroy, # Meta fields
+        :day_of_week, :start_time, :end_time,
+      ]
+      
+      ALLOWED_PROGRAM_VENUE_ATTRIBUTES = [
+        :id, :order, :_destroy, # Meta fields
+        :address, :room_information,
+        :order, :latitude, :longitude,
+        program_times_attributes: ALLOWED_PROGRAM_TIME_ATTRIBUTES,
+      ]
+
       def city_params
         params.fetch(:city, {}).permit(
-          :name, :latitude, :longitude, :banner,
-          sections_attributes: Admin::ApplicationPageController::ALLOWED_SECTION_ATTRIBUTES
+          :name, :address, :latitude, :longitude, :banner,
+          sections_attributes: Admin::ApplicationPageController::ALLOWED_SECTION_ATTRIBUTES,
+          program_venues_attributes: ALLOWED_PROGRAM_VENUE_ATTRIBUTES,
         )
       end
 

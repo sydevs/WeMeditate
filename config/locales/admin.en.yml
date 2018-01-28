@@ -60,11 +60,16 @@ en:
     confirm_destroy: Are you sure you want to delete that?
     no_translation: Not Translated
     no_models: No %{models}
+    not_set: Not Set
     untranslated_pages: Untranslated Pages
     untranslated_resources: Untranslated Resources
     available_cities: Cities in %{language}
     pending_users: Pending Invitations
     empty_model_table: None
+    latlong_not_found: Coordinates Not Found
+  time:
+    formats:
+      time: '%k:%M'
   misc:
     dashboard: Dashboard
     locale:

@@ -32,8 +32,12 @@ module Admin::ApplicationHelper
     end
   end
 
+  def coordinates_url latitude, longitude
+    "https://www.google.com/maps/search/?api=1&query=#{latitude}%2C#{longitude}"
+  end
+
   # This function is taken from https://www.pluralsight.com/guides/ruby-ruby-on-rails/ruby-on-rails-nested-attributes
-  def link_to_add_fields(name = nil, f = nil, association = nil, options = nil, html_options = nil, &block)
+  def link_to_add_fields name = nil, f = nil, association = nil, options = nil, html_options = nil, &block
     # If a block is provided there is no name attribute and the arguments are
     # shifted with one position to the left. This re-assigns those values.
     f, association, options, html_options = name, f, association, options if block_given?

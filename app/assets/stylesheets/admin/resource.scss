@@ -1,0 +1,47 @@
+
+.ui.resource.items > .item {
+  display: block;
+  position: relative;
+
+  > .actions {
+    position: absolute;
+    right: 0;
+  }
+
+  > .content {
+    margin-right: 105px;
+
+    > .meta .ui.list > .item:after {
+      clear: none;
+    }
+  }
+
+  &.editing {
+    .header,
+    .meta,
+    .button.for-viewing {
+      display: none;
+    }
+
+    .description {
+      margin: 0;
+    }
+  }
+
+  &:not(.editing) {
+    .field,
+    .fields,
+    .button.for-editing {
+      display: none;
+    }
+  }
+
+  .right.floated {
+    margin-left: 4px;
+  }
+}
+
+.editing.item .field {
+  margin-bottom: 0.5em;
+  font-size: 90%;
+}

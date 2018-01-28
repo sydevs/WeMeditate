@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126135122) do
+ActiveRecord::Schema.define(version: 20180127090717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20180126135122) do
     t.string "banner", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
   end
 
   create_table "city_translations", force: :cascade do |t|
@@ -125,6 +126,27 @@ ActiveRecord::Schema.define(version: 20180126135122) do
     t.bigint "mood_filter_id"
     t.index ["mood_filter_id"], name: "index_mood_filters_tracks_on_mood_filter_id"
     t.index ["track_id"], name: "index_mood_filters_tracks_on_track_id"
+  end
+
+  create_table "program_times", force: :cascade do |t|
+    t.integer "day_of_week"
+    t.time "start_time"
+    t.time "end_time"
+    t.bigint "program_venue_id"
+    t.index ["program_venue_id"], name: "index_program_times_on_program_venue_id"
+  end
+
+  create_table "program_venues", force: :cascade do |t|
+    t.string "address"
+    t.string "room_information"
+    t.json "program_times"
+    t.integer "order"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_program_venues_on_city_id"
   end
 
   create_table "sections", force: :cascade do |t|

@@ -1,0 +1,24 @@
+
+- program_time = f.object
+
+.child.fields
+  .six.wide.field
+    = f.select :day_of_week, t('date.day_names').map.with_index {|x,i| [x,i]}, {}, { class: 'ui selection dropdown' }
+
+  .five.wide.field
+    = f.time_field :start_time
+
+  .five.wide.field
+    = f.time_field :end_time
+
+  - if program_time.new_record?
+    i.red.remove.icon.link.remove-child-button
+  - else
+    = f.label :_destroy do
+      i.red.trash.icon.link
+
+    .ui.destroy.checkbox
+      = f.check_box :_destroy, class: 'delete-child'
+      = f.label :_destroy do
+        = t('action.target.destroy', target: ProgramTime.model_name.human)
+        //'  - #{translate_day program_time.day_of_week}, #{l program_time.start_time, format: :time} to #{l program_time.end_time, format: :time}

@@ -8,18 +8,24 @@
           li = message
 
   .field
-    = f.label :city
+    = f.label City.model_name.human
     // This {query} part of these parameter has to be included in a wierd way so that it isn't escaped.
     .ui.search data-url=(lookup_admin_cities_url(q: '') + '{query}')
       .ui.right.labeled.left.icon.input
         i.search.icon
-        = f.text_field :city, value: @city.name, class: 'prompt', autocomplete: 'off', placeholder: t('action.target.search_for', target: City.model_name.human)
-        #city_coordinates.ui.tag.label
-          i.marker.icon
-          - if params[:city] && params[:city][:latitude] && params[:city][:longitude]
+        = f.text_field :address, class: 'prompt', autocomplete: 'off', placeholder: t('action.target.search_for', target: City.model_name.human)
+        - if params[:city] && params[:city][:latitude] && params[:city][:longitude]
+          a#city_coordinates.ui.tag.label href=coordinates_url(params[:city][:latitude], params[:city][:longitude]) target="_blank"
+            i.marker.icon
             span #{params[:city][:latitude]}, #{params[:city][:longitude]}
-          - else
-            span Not Set
+        - elsif @city.latitude.present? and @city.longitude.present?
+          a#city_coordinates.ui.tag.label href=coordinates_url(@city.latitude, @city.longitude) target="_blank"
+            i.marker.icon
+            span #{@city.latitude}, #{@city.longitude}
+        - else
+          #city_coordinates.ui.tag.label
+            i.marker.icon
+            span = t('messages.not_set')
 
       .results
     
@@ -42,13 +48,25 @@
       = f.file_field :banner
       = f.hidden_field :banner_cache
 
-  - localized_sections = @city.sections.where(language: locale)
+  .field
+    label = ProgramVenue.model_name.human(count: -1)
+    
+    .sort-list
+      - @city.program_venues.each do |program_venue|
+        = f.fields_for :program_venues, program_venue do |ff|
+          = render 'admin/program_venues/form', f: ff
+
+      = link_to_add_fields f, :program_venues, {}, { class: 'ui tiny compact basic labeled icon button' } do
+        i.plus.icon
+        = translate 'action.target.add', target: ProgramVenue.model_name.human
 
   .field
+    - localized_sections = @city.sections.where(language: locale)
+
     - if localized_sections.present?
-      label = city.human_attribute_name(:sections)
+      label = Section.model_name.human(count: -1)
     - else
-      label #{I18nData.languages(locale)[locale.to_s.upcase]} #{City.human_attribute_name(:sections)}
+      label #{I18nData.languages(locale)[locale.to_s.upcase]} #{Section.model_name.human(count: -1)}
     
     .sort-list
       - localized_sections.each do |section|

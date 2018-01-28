@@ -38,8 +38,10 @@ module Admin
         page_params.merge slug: nil
       end
 
-      page_params[:sections_attributes].each do |_, section|
-        section[:format] = section[:format][section[:content_type]]
+      if page_params[:sections_attributes].present?
+        page_params[:sections_attributes].each do |_, section|
+          section[:format] = section[:format][section[:content_type]]
+        end
       end
 
       print params
@@ -48,7 +50,7 @@ module Admin
       print "\r\n\r\n"
 
       if @page.update page_params
-        redirect_to [:edit, :admin, @article]
+        redirect_to [:edit, :admin, @page]
         #redirect_to [:admin, @klass]
       else
         render :edit
