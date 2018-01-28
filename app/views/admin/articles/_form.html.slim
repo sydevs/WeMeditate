@@ -1,13 +1,5 @@
 
-= form_for [:admin, @article], html: { class: "ui form #{'error' if @article.errors.present?}" } do |f|
-  - if @article.errors.present?
-    .ui.small.error.message
-      .header = translate 'messages.errors'
-      ul.list
-        - @article.errors.messages.each do |field, errors|
-          - errors.each do |error|
-            li #{field} #{error}
-
+= render 'admin/application_pages/form', page: @article do |f|
   .field
     = f.label :title
     = f.text_field :title
@@ -27,37 +19,3 @@
   .field
     = f.label :priority
     = f.select :priority, Article.priorities.map {|k, v| [k.humanize.titlecase, k]}, {}, { class: 'ui fluid dropdown' }
-
-  - localized_sections = @article.sections.where(language: locale)
-
-  .field
-    - if localized_sections.present?
-      label = Article.human_attribute_name(:sections)
-    - else
-      label #{I18nData.languages(locale)[locale.to_s.upcase]} #{Article.human_attribute_name(:sections)}
-    
-    .sort-list
-      - localized_sections.each do |section|
-        = f.fields_for :sections, section do |ff|
-          = render 'admin/sections/form', f: ff
-
-      = link_to_add_fields f, :sections, {}, { class: 'ui tiny compact basic labeled icon button' } do
-        i.plus.icon
-        = translate 'action.target.add', target: Section.model_name.human
-  
-  - unless localized_sections.present?
-    - english_sections = @article.sections.where(language: :en)
-    - if english_sections.present?
-      .field
-        label #{I18nData.languages(locale)['EN']} #{Article.human_attribute_name(:sections)}
-        = render english_sections
-
-  .ui.hidden.divider
-
-  p
-    a.ui.basic.button href=admin_articles_url
-      i.left.arrow.icon
-      = translate 'action.target.back', target: Article.model_name.human(count: -1)
-
-    button.ui.basic.positive.button
-      = translate 'action.update'

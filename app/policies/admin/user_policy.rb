@@ -1,10 +1,10 @@
 module Admin
-  class UserPolicy < ApplicationPolicy
+  class UserPolicy < Admin::ApplicationResourcePolicy
 
     def index?
       editor? and locale_allowed?
     end
-    
+
     def update?
       if super_admin?
         true
@@ -17,10 +17,6 @@ module Admin
 
     def create?
       regional_admin? and locale_allowed?
-    end
-
-    def destroy?
-      super_admin?
     end
 
   end

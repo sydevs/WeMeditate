@@ -1,26 +1,21 @@
 
-= render 'admin/application_pages/index_item', page: article do
-  .content
-    .header = article.title
-
-    .meta
-      .ui.tiny.list
-        - if article.translated_locales.include? I18n.locale
-          .item
-            i.linkify.icon
-            .content = article.slug
-        - else
-          .item
-            i.orange.warning.sign.icon
-            .content = translate 'messages.no_translation'
-        .item
-          i.globe.icon
-          .content
-            = article.translated_locales.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
-        .item
-          i.hashtag.icon
-          .content = article.category.name
-        .item
-          i.unhide.icon
-          .content = human_enum_name(article, :priority)
+= render 'admin/application_pages/index_item', page: article, header: :title do
+  - if article.translated_locales.include? I18n.locale
+    .item
+      i.linkify.icon
+      .content = article.slug
+  - else
+    .item
+      i.orange.warning.sign.icon
+      .content = translate 'messages.no_translation'
+  .item
+    i.globe.icon
+    .content
+      = article.translated_locales.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
+  .item
+    i.hashtag.icon
+    .content = article.category.name
+  .item
+    i.unhide.icon
+    .content = human_enum_name(article, :priority)
   

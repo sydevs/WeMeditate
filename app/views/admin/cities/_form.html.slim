@@ -1,12 +1,5 @@
 
-= form_for [:admin, @city], html: { class: "ui form #{'error' if @city.errors.present?}" } do |f|
-  - if @city.errors.present?
-    .ui.small.error.message
-      .header = translate 'messages.errors'
-      ul.list
-        - @city.errors.full_messages.each do |message|
-          li = message
-
+= render 'admin/application_pages/form', page: @city do |f|
   .field
     = f.label City.model_name.human
     // This {query} part of these parameter has to be included in a wierd way so that it isn't escaped.
@@ -60,36 +53,3 @@
         i.plus.icon
         = translate 'action.target.add', target: ProgramVenue.model_name.human
 
-  .field
-    - localized_sections = @city.sections.where(language: locale)
-
-    - if localized_sections.present?
-      label = Section.model_name.human(count: -1)
-    - else
-      label #{I18nData.languages(locale)[locale.to_s.upcase]} #{Section.model_name.human(count: -1)}
-    
-    .sort-list
-      - localized_sections.each do |section|
-        = f.fields_for :sections, section do |ff|
-          = render 'admin/sections/form', f: ff
-
-      = link_to_add_fields f, :sections, {}, { class: 'ui tiny compact basic labeled icon button' } do
-        i.plus.icon
-        = translate 'action.target.add', target: Section.model_name.human
-  
-  - unless localized_sections.present?
-    - english_sections = @city.sections.where(language: :en)
-    - if english_sections.present?
-      .field
-        label #{I18nData.languages(locale)['EN']} #{City.human_attribute_name(:sections)}
-        = render english_sections
-
-  .ui.hidden.divider
-
-  p
-    a.ui.basic.button href=admin_cities_url
-      i.left.arrow.icon
-      = translate 'action.target.back', target: City.model_name.human(count: -1)
-
-    button.ui.basic.positive.button
-      = translate 'action.update'

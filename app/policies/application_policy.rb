@@ -34,22 +34,6 @@ class ApplicationPolicy
     false
   end
 
-  def super_admin?
-    user.super_admin?
-  end
-
-  def regional_admin?
-    user.regional_admin? or super_admin?
-  end
-
-  def editor?
-    user.editor? or regional_admin?
-  end
-
-  def locale_allowed?
-    user.available_languages.include? I18n.locale
-  end
-
   def scope
     Regulator.policy_scope!(user, record.class)
   end

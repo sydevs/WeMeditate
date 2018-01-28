@@ -1,0 +1,47 @@
+
+- model = page.class
+
+= form_for [:admin, page], html: { class: "ui form #{'error' if page.errors.present?}" } do |f|
+  - if page.errors.present?
+    .ui.small.error.message
+      .header = translate 'messages.errors'
+      ul.list
+        - page.errors.messages.each do |field, errors|
+          - errors.each do |error|
+            li #{field} #{error}
+
+  = yield f
+
+  - localized_sections = page.sections.where(language: locale)
+
+  .field
+    - if localized_sections.present?
+      label = model.human_attribute_name(:sections)
+    - else
+      label #{I18nData.languages(locale)[locale.to_s.upcase]} #{model.human_attribute_name(:sections)}
+    
+    .sort-list
+      - localized_sections.each do |section|
+        = f.fields_for :sections, section do |ff|
+          = render 'admin/sections/form', f: ff
+
+      = link_to_add_fields f, :sections, {}, { class: 'ui tiny compact basic labeled icon button' } do
+        i.plus.icon
+        = translate 'action.target.add', target: Section.model_name.human
+  
+  - unless localized_sections.present?
+    - english_sections = page.sections.where(language: :en)
+    - if english_sections.present?
+      .field
+        label #{I18nData.languages(locale)['EN']} #{model.human_attribute_name(:sections)}
+        = render english_sections
+
+  .ui.hidden.divider
+
+  p
+    a.ui.basic.button href=url_for([:admin, model])
+      i.left.arrow.icon
+      = translate 'action.target.back', target: model.model_name.human(count: -1)
+
+    button.ui.basic.positive.button
+      = translate 'action.update'

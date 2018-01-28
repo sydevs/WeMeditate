@@ -15,7 +15,11 @@
         a.ui.button.for-viewing href=url_for([:admin, page]) data-method="delete" data-confirm=t('messages.confirm_destroy', default: 'Confirm Destroy')
           i.trash.icon
           = translate 'action.destroy'
-
+  
   .content
-    = yield
+    .header = page[header]
+
+    .meta
+      .ui.tiny.list
+        = yield
   
