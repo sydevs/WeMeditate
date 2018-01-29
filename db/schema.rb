@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127090717) do
+ActiveRecord::Schema.define(version: 20180129164100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,9 @@ ActiveRecord::Schema.define(version: 20180127090717) do
     t.datetime "updated_at", null: false
     t.bigint "category_id"
     t.integer "priority", default: 0, null: false
+    t.integer "draft_id"
+    t.datetime "published_at"
+    t.datetime "trashed_at"
     t.index ["category_id"], name: "index_articles_on_category_id"
   end
 
@@ -58,6 +61,9 @@ ActiveRecord::Schema.define(version: 20180127090717) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"
+    t.integer "draft_id"
+    t.datetime "published_at"
+    t.datetime "trashed_at"
   end
 
   create_table "city_translations", force: :cascade do |t|
@@ -69,6 +75,23 @@ ActiveRecord::Schema.define(version: 20180127090717) do
     t.string "slug", null: false
     t.index ["city_id"], name: "index_city_translations_on_city_id"
     t.index ["locale"], name: "index_city_translations_on_locale"
+  end
+
+  create_table "drafts", id: :serial, force: :cascade do |t|
+    t.string "item_type", null: false
+    t.integer "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit", null: false
+    t.text "object"
+    t.text "previous_draft"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_drafts_on_created_at"
+    t.index ["event"], name: "index_drafts_on_event"
+    t.index ["item_id"], name: "index_drafts_on_item_id"
+    t.index ["item_type"], name: "index_drafts_on_item_type"
+    t.index ["updated_at"], name: "index_drafts_on_updated_at"
+    t.index ["whodunnit"], name: "index_drafts_on_whodunnit"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -161,6 +184,24 @@ ActiveRecord::Schema.define(version: 20180127090717) do
     t.bigint "page_id"
     t.jsonb "images"
     t.index ["page_type", "page_id"], name: "index_sections_on_page_type_and_page_id"
+  end
+
+  create_table "static_page_translations", force: :cascade do |t|
+    t.integer "static_page_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title", null: false
+    t.string "slug", null: false
+    t.index ["locale"], name: "index_static_page_translations_on_locale"
+    t.index ["static_page_id"], name: "index_static_page_translations_on_static_page_id"
+  end
+
+  create_table "static_pages", force: :cascade do |t|
+    t.integer "role", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role"], name: "index_static_pages_on_role", unique: true
   end
 
   create_table "track_translations", force: :cascade do |t|

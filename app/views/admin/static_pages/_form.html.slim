@@ -1,0 +1,18 @@
+
+= render 'admin/application_pages/form', page: @static_page do |f|
+  .field
+    = f.label :title
+    = f.text_field :title
+
+    - unless @static_page.new_record?
+      .reset-slug
+        i.linkify.icon
+        em = @static_page.slug
+        = label_tag :reset_slug do
+          = check_box_tag :reset_slug, 'yes', params[:reset_slug]
+          '  #{translate 'action.target.reset', target: StaticPage.human_attribute_name(:slug)}
+
+  - if @static_page.new_record?
+    .field
+      = f.label :role
+      = f.select :role, StaticPage.available_roles.map {|k, v| [human_enum_name(StaticPage, :role, k), k]}, { selected: params[:role] || @static_page.role }, { class: 'ui fluid dropdown' }

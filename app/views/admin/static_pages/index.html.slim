@@ -1,0 +1,4 @@
+
+- content_for :title, StaticPage.model_name.human(count: -1)
+
+= render 'admin/application_pages/index', model: StaticPage, pages: @static_pages

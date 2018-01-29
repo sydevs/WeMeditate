@@ -28,12 +28,10 @@
       i.music.icon
       = Track.model_name.human(count: -1)
 
-  .disabled.item title="Not Implemented"
-    i.file.icon
-    ' Static Pages
-  //= link_to [:admin, :root], class: "#{'active' if controller_name == 'pages'} item"
-    i.square.icon
-    ' Static Pages
+  - if policy(StaticPage).index?
+    = link_to [:admin, StaticPage], class: "#{'active' if controller_name == 'static_pages'} item"
+      i.file.icon
+      = StaticPage.model_name.human(count: -1)
 
   .disabled.item title="Not Implemented"
     i.leaf.icon

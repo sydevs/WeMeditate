@@ -36,10 +36,9 @@
           = f.text_field :subtitle, placeholder: Track.human_attribute_name(:subtitle)
       .field
         = f.select :mood_filter_ids, MoodFilter.all.map {|c| [c.name, c.id] }, { include_blank: Track.human_attribute_name(:mood_filters) }, { class: 'ui fluid dropdown', multiple: '' }
-        //= f.select :mood, Track.moods.map {|k, v| [k.humanize.titlecase, k]}, {}, { class: 'ui fluid dropdown' }
       .field
         = f.select :instrument_filter_ids, InstrumentFilter.all.map {|c| [c.name, c.id] }, { include_blank: Track.human_attribute_name(:instrument_filters) }, { class: 'ui fluid dropdown', multiple: '' }
-        //= f.select :instruments, Track::INSTRUMENTS.map {|k, v| [k.to_s.humanize.titlecase, k]}, { include_blank: "Instruments" }, { class: 'ui fluid dropdown', multiple: '' }
+      
       - if track.new_record?
         .field
           .ui.fluid.icon.file.input

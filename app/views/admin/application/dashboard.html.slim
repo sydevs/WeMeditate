@@ -3,7 +3,10 @@
 
 .ui.two.column.grid
   .column
+    = render 'missing_pages_table'
+
     = render 'dashboard_table', title: t('messages.untranslated_pages'), color: 'orange', sets: [ \
+      { model: StaticPage, icon: 'file', elements: StaticPage.untranslated, name: :title }, \
       { model: Article, icon: 'file text', elements: Article.untranslated, name: :title }, \
     ]
 

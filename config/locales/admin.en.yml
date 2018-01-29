@@ -67,6 +67,7 @@ en:
     pending_users: Pending Invitations
     empty_model_table: None
     latlong_not_found: Coordinates Not Found
+    missing_pages: Missing Pages
   time:
     formats:
       time: '%k:%M'

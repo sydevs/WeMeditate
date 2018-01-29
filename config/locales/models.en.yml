@@ -7,6 +7,9 @@ en:
       city:
         one: City
         other: Cities
+      static_page:
+        one: Static Page
+        other: Static Pages
       category:
         one: Category
         other: Categories
@@ -54,6 +57,16 @@ en:
         program_venues:
           one: 1 Program Location
           other: '%{count} Program Locations'
+
+      static_page:
+        title: Title
+        slug: URL
+        role: Role
+        roles:
+          home: Home Page
+          contact: Contact Page
+          shri_mataji: About Shri Mataji
+        sections: Content
 
       program_venue:
         address: Street Address

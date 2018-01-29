@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       
       resources :users
       resources :articles
+      resources :static_pages
       resources :tracks
 
       resources :cities do
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
 
     resources :categories, only: [:index, :show]
     resources :articles, only: [:show]
+    resources :static_pages, only: [:show], page: '/'
     resources :cities, only: [:show]
   end
 
