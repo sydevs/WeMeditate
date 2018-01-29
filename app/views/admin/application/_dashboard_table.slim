@@ -1,11 +1,13 @@
 
 - editable = true unless local_assigns[:editable] == false
+- prefix = false unless local_assigns[:prefix] == true
 - empty = true
 
 table.ui.compact.table class=color
   thead
     tr
-      th colspan="3" = title
+      th colspan="3"
+        = title
   tbody
     - sets.each do |set|
       - allow = policy(set[:model])
@@ -14,6 +16,7 @@ table.ui.compact.table class=color
         tr
           td
             i.icon class=set[:icon]
+            = set[:model].model_name.human + ': ' if prefix
             = element[set[:name]]
           - if editable && allow.edit?
             td.collapsing.selectable
