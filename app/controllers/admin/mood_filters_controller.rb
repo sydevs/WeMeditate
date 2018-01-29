@@ -33,9 +33,5 @@ module Admin
         params.fetch(:mood_filter, {}).permit(:name)
       end
 
-      #def self.policy_class
-      #  Admin::FilterPolicy
-      #end
-
   end
 end

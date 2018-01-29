@@ -13,7 +13,8 @@ Rails.application.routes.draw do
       resources :users
       resources :articles
       resources :static_pages
-      resources :tracks
+      resources :tracks, only: [:index, :create, :update, :destroy]
+      resources :meditations, only: [:index, :create, :update, :destroy]
 
       resources :cities do
         get :lookup, on: :collection, constraints: { format: 'json' }
@@ -23,11 +24,19 @@ Rails.application.routes.draw do
         put :sort, on: :collection
       end
 
-      resources :mood_filters do
+      resources :mood_filters, only: [:index, :create, :update, :destroy] do
         put :sort, on: :collection
       end
 
-      resources :instrument_filters do
+      resources :instrument_filters, only: [:index, :create, :update, :destroy] do
+        put :sort, on: :collection
+      end
+
+      resources :goal_filters, only: [:index, :create, :update, :destroy] do
+        put :sort, on: :collection
+      end
+
+      resources :duration_filters, only: [:index, :create, :update, :destroy] do
         put :sort, on: :collection
       end
     end
@@ -35,6 +44,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :show]
     resources :articles, only: [:show]
     resources :static_pages, only: [:show], page: '/'
+    resources :meditations, only: [:show]
     resources :cities, only: [:show]
   end
 

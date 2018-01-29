@@ -1,0 +1,14 @@
+
+- reorder = (params[:reorder] == 'true')
+- viewable = true unless local_assigns[:viewable] == false
+- allow = policy(resource)
+
+- if reorder
+  .sortable.item
+    .header.handle
+      i.bars.icon
+      = resource[name]
+    = hidden_field_tag 'order[]', resource.id, { id: 'order_for_' + resource.id.to_s }
+- else
+  = render 'admin/application_resources/index_item', resource: resource, viewable: viewable do |f|
+    = yield f

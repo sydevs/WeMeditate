@@ -1,0 +1,32 @@
+
+- allow = policy(meditation)
+
+= render 'admin/application_resources/index_item', resource: meditation do |f|
+  - unless meditation.new_record?
+    .header = meditation.name
+
+    .meta
+      .ui.tiny.list
+        .item
+          i.volume.up.icon
+          .content = meditation.file_identifier.humanize
+        - if meditation.duration_filter.present?
+          .item
+            i.filter.icon
+            .content = duration_filter.name
+        - if meditation.goal_filters.present?
+          .item
+            i.filter.icon
+            .content = meditation.goal_filters.collect(&:name).join(', ')
+
+  - if allow.edit?
+    .description
+      .field
+        .ui.fluid.input
+          = f.text_field :name, placeholder: Meditation.human_attribute_name(:name)
+      
+      .field
+        .ui.fluid.icon.file.input
+          i.volume.up.icon
+          = f.file_field :file
+          = f.hidden_field :file_cache

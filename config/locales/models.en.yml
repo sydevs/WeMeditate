@@ -13,27 +13,36 @@ en:
       category:
         one: Category
         other: Categories
-      instrument_filter:
-        one: Instrument
-        other: Instruments
-      mood_filter:
-        one: Mood
-        other: Moods
-      section:
-        one: Section
-        other: Sections
+      meditation:
+        one: Meditation
+        other: Meditations
       track:
         one: Track
         other: Tracks
       user:
         one: Editor
         other: Editors
+      section:
+        one: Section
+        other: Sections
       program_venue:
         one: Program Location
         other: Program Locations
       program_time:
         one: Time
         other: Times
+      instrument_filter:
+        one: Instrument
+        other: Instruments
+      mood_filter:
+        one: Mood
+        other: Moods
+      duration_filter:
+        one: Duration
+        other: Durations
+      goal_filter:
+        one: Goal
+        other: Goals
 
     attributes:
       article:
@@ -97,6 +106,18 @@ en:
           one: 1 Track
           other: '%{count} Tracks'
 
+      duration_filter:
+        name: Name
+        meditations:
+          one: 1 Meditation
+          other: '%{count} Meditations'
+
+      goal_filter:
+        name: Name
+        meditations:
+          one: 1 Meditation
+          other: '%{count} Meditations'
+
       section:
         title: Title
         content_type: Content Type
@@ -136,6 +157,12 @@ en:
         file: File
         instrument_filters: :activerecord.models.instrument_filter.other
         mood_filters: :activerecord.models.mood_filter.other
+
+      meditation:
+        title: Name
+        file: Voice Over
+        duration_filter: :activerecord.models.duration_filter.one
+        goal_filters: :activerecord.models.goal_filter.other
 
       user:
         email: Email Address

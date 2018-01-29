@@ -1,30 +1,22 @@
 
-- reorder = (params[:reorder] == 'true')
 - allow = policy(mood_filter)
 
-- if reorder
-  .sortable.item
-    .header.handle
-      i.bars.icon
-      = mood_filter.name
-    = hidden_field_tag 'order[]', mood_filter.id, { id: 'order_for_' + mood_filter.id.to_s }
-- else
-  = render 'admin/application_resources/index_item', resource: mood_filter, viewable: false do |f|
-    - unless mood_filter.new_record?
-      .header = mood_filter.name
+= render 'admin/application_resources/sortable_index_item', resource: mood_filter, name: :name, viewable: false do |f|
+  - unless mood_filter.new_record?
+    .header = mood_filter.name
 
-      .meta
-        .ui.tiny.list
-          - unless mood_filter.translated_locales.include? I18n.locale
-            .item
-              i.orange.warning.sign.icon
-              .content = translate 'messages.no_translation'
+    .meta
+      .ui.tiny.list
+        - unless mood_filter.translated_locales.include? I18n.locale
           .item
-            i.music.icon
-            .content = MoodFilter.human_attribute_name(:tracks, count: mood_filter.tracks.count)
+            i.orange.warning.sign.icon
+            .content = translate 'messages.no_translation'
+        .item
+          i.music.icon
+          .content = MoodFilter.human_attribute_name(:tracks, count: mood_filter.tracks.count)
 
-    - if allow.edit?
-      .description
-        .field
-          .ui.fluid.input
-            = f.text_field :name, placeholder: MoodFilter.human_attribute_name(:name)
+  - if allow.edit?
+    .description
+      .field
+        .ui.fluid.input
+          = f.text_field :name, placeholder: MoodFilter.human_attribute_name(:name)

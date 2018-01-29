@@ -1,0 +1,22 @@
+
+- allow = policy(goal_filter)
+
+= render 'admin/application_resources/sortable_index_item', resource: goal_filter, name: :name, viewable: false do |f|
+  - unless goal_filter.new_record?
+    .header = goal_filter.name
+
+    .meta
+      .ui.tiny.list
+        - unless goal_filter.translated_locales.include? I18n.locale
+          .item
+            i.orange.warning.sign.icon
+            .content = translate 'messages.no_translation'
+        .item
+          i.music.icon
+          .content = GoalFilter.human_attribute_name(:tracks, count: goal_filter.tracks.count)
+
+  - if allow.edit?
+    .description
+      .field
+        .ui.fluid.input
+          = f.text_field :name, placeholder: GoalFilter.human_attribute_name(:name)

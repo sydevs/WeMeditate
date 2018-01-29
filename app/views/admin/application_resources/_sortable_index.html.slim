@@ -7,7 +7,7 @@
     .item
       .header
         i.hide.icon
-          = translate 'messages.no_models', models: model.model_name.human(count: -1)
+        = translate 'messages.no_models', models: model.model_name.human(count: -1)
 - elsif reorder
   = form_tag url_for([:sort, :admin, model]), method: :put
     a.ui.tiny.compact.basic.right.floated.button href=url_for([:admin, model])

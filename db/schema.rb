@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129164100) do
+ActiveRecord::Schema.define(version: 20180129180132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,20 @@ ActiveRecord::Schema.define(version: 20180129164100) do
     t.index ["whodunnit"], name: "index_drafts_on_whodunnit"
   end
 
+  create_table "duration_filter_translations", force: :cascade do |t|
+    t.integer "duration_filter_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name", null: false
+    t.index ["duration_filter_id"], name: "index_duration_filter_translations_on_duration_filter_id"
+    t.index ["locale"], name: "index_duration_filter_translations_on_locale"
+  end
+
+  create_table "duration_filters", force: :cascade do |t|
+    t.integer "order"
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -106,6 +120,27 @@ ActiveRecord::Schema.define(version: 20180129164100) do
     t.index ["slug", "sluggable_type", "scope", "locale"], name: "index_friendly_id_slugs_uniqueness", unique: true
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "goal_filter_translations", force: :cascade do |t|
+    t.integer "goal_filter_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name", null: false
+    t.index ["goal_filter_id"], name: "index_goal_filter_translations_on_goal_filter_id"
+    t.index ["locale"], name: "index_goal_filter_translations_on_locale"
+  end
+
+  create_table "goal_filters", force: :cascade do |t|
+    t.integer "order"
+  end
+
+  create_table "goal_filters_meditations", id: false, force: :cascade do |t|
+    t.bigint "meditation_id"
+    t.bigint "goal_filter_id"
+    t.index ["goal_filter_id"], name: "index_goal_filters_meditations_on_goal_filter_id"
+    t.index ["meditation_id"], name: "index_goal_filters_meditations_on_meditation_id"
   end
 
   create_table "instrument_filter_translations", force: :cascade do |t|
@@ -128,6 +163,22 @@ ActiveRecord::Schema.define(version: 20180129164100) do
     t.bigint "instrument_filter_id"
     t.index ["instrument_filter_id"], name: "index_instrument_filters_tracks_on_instrument_filter_id"
     t.index ["track_id"], name: "index_instrument_filters_tracks_on_track_id"
+  end
+
+  create_table "meditation_translations", force: :cascade do |t|
+    t.integer "meditation_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name", null: false
+    t.index ["locale"], name: "index_meditation_translations_on_locale"
+    t.index ["meditation_id"], name: "index_meditation_translations_on_meditation_id"
+  end
+
+  create_table "meditations", force: :cascade do |t|
+    t.string "file", null: false
+    t.bigint "duration_filters_id"
+    t.index ["duration_filters_id"], name: "index_meditations_on_duration_filters_id"
   end
 
   create_table "mood_filter_translations", force: :cascade do |t|

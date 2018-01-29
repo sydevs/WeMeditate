@@ -1,44 +1,29 @@
 
-- reorder = (params[:reorder] == 'true')
 - allow = policy(instrument_filter)
 
-- if reorder
-  .sortable.item
-    .header.handle
-      i.bars.icon
+= render 'admin/application_resources/sortable_index_item', resource: instrument_filter, name: :name, viewable: false do |f|
+  - unless instrument_filter.new_record?
+    .header
+      = image_tag instrument_filter.icon_url, class: 'ui avatar image'
       = instrument_filter.name
-    = hidden_field_tag 'order[]', instrument_filter.id, { id: 'order_for_' + instrument_filter.id.to_s }
-- else
-  = render 'admin/application_resources/index_item', resource: instrument_filter, viewable: false do |f|
-    - unless instrument_filter.new_record?
-      .header
-        = image_tag instrument_filter.icon_url, class: 'ui avatar image'
-        = instrument_filter.name
 
-      .meta
-        .ui.tiny.list
-          - unless instrument_filter.translated_locales.include? I18n.locale
-            .item
-              i.orange.warning.sign.icon
-              .content = translate 'messages.no_translation'
+    .meta
+      .ui.tiny.list
+        - unless instrument_filter.translated_locales.include? I18n.locale
           .item
-            i.music.icon
-            .content = InstrumentFilter.human_attribute_name(:tracks, count: instrument_filter.tracks.count)
+            i.orange.warning.sign.icon
+            .content = translate 'messages.no_translation'
+        .item
+          i.music.icon
+          .content = InstrumentFilter.human_attribute_name(:tracks, count: instrument_filter.tracks.count)
 
-    - if allow.edit?
-      .description
-        .field
-          .ui.fluid.input
-            = f.text_field :name, placeholder: InstrumentFilter.human_attribute_name(:name)
-        .field
-          .ui.fluid.icon.file.input
-            i.image.icon
-            = f.file_field :icon
-            = f.hidden_field :icon_cache
-            
-          //- if instrument_filter.icon?
-            = image_tag instrument_filter.icon_url, class: 'ui mini spaced image'
-            //= f.label :remove_icon do
-              = f.check_box :remove_icon
-              '  #{translate 'action.target.remove', target: InstrumentFilter.human_attribute_name(:icon)}
-
+  - if allow.edit?
+    .description
+      .field
+        .ui.fluid.input
+          = f.text_field :name, placeholder: InstrumentFilter.human_attribute_name(:name)
+      .field
+        .ui.fluid.icon.file.input
+          i.image.icon
+          = f.file_field :icon
+          = f.hidden_field :icon_cache

@@ -1,43 +1,34 @@
 
-- reorder = (params[:reorder] == 'true')
 - allow = policy(category)
 
-- if reorder
-  .sortable.item
-    .header.handle
-      i.bars.icon
-      = category.name
-    = hidden_field_tag 'order[]', category.id, { id: 'order_for_' + category.id.to_s }
-- else
-  = render 'admin/application_resources/index_item', resource: category do |f|
-    - unless category.new_record?
-      .header = category.name
+= render 'admin/application_resources/sortable_index_item', resource: category, name: :name do |f|
+  - unless category.new_record?
+    .header = category.name
 
-      .meta
-        .ui.tiny.list
-          - if category.translated_locales.include? I18n.locale
-            .item
-              i.linkify.icon
-              .content = category.slug
-          - else
-            .item
-              i.orange.warning.sign.icon
-              .content = translate 'messages.no_translation'
+    .meta
+      .ui.tiny.list
+        - if category.translated_locales.include? I18n.locale
           .item
-            i.file.text.icon
-            .content = Category.human_attribute_name(:articles, count: category.articles.count)
-
-    - if allow.edit?
-      .description
-        .field
-          .ui.fluid.input
-            = f.text_field :name, placeholder: Category.human_attribute_name(:name)
-          
-        - unless category.new_record?
-          .field.reset-slug
             i.linkify.icon
-            em = category.slug
-            = label_tag :reset_slug do
-              = check_box_tag :reset_slug, 'yes', params[:reset_slug]
-              '  #{translate 'action.target.reset', target: Category.human_attribute_name(:slug)}
-  
+            .content = category.slug
+        - else
+          .item
+            i.orange.warning.sign.icon
+            .content = translate 'messages.no_translation'
+        .item
+          i.file.text.icon
+          .content = Category.human_attribute_name(:articles, count: category.articles.count)
+
+  - if allow.edit?
+    .description
+      .field
+        .ui.fluid.input
+          = f.text_field :name, placeholder: Category.human_attribute_name(:name)
+        
+      - unless category.new_record?
+        .field.reset-slug
+          i.linkify.icon
+          em = category.slug
+          = label_tag :reset_slug do
+            = check_box_tag :reset_slug, 'yes', params[:reset_slug]
+            '  #{translate 'action.target.reset', target: Category.human_attribute_name(:slug)}

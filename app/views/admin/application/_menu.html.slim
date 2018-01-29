@@ -33,12 +33,10 @@
       i.file.icon
       = StaticPage.model_name.human(count: -1)
 
-  .disabled.item title="Not Implemented"
-    i.leaf.icon
-    ' Meditations
-  //= link_to [:admin, :root], class: "#{'active' if controller_name == 'meditations'} item"
-    i.leaf.icon
-    ' Meditations
+  - if policy(Meditation).index?
+    = link_to [:admin, Meditation], class: "#{'active' if ['tracks', 'goal_filters', 'duration_filters'].include? controller_name} item"
+      i.leaf.icon
+      = Meditation.model_name.human(count: -1)
 
   - if policy(User).index?
     = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"
