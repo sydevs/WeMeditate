@@ -2,7 +2,7 @@ class CreateMeditations < ActiveRecord::Migration[5.1]
   def change
     create_table :meditations do |t|
       t.string :file, null: false
-      t.belongs_to :duration_filters
+      t.belongs_to :duration_filter
     end
 
     create_table :goal_filters do |t|
@@ -10,7 +10,7 @@ class CreateMeditations < ActiveRecord::Migration[5.1]
     end
 
     create_table :duration_filters do |t|
-      t.integer :order
+      t.integer :minutes
     end
 
     create_table :goal_filters_meditations, id: false do |t|
@@ -21,10 +21,6 @@ class CreateMeditations < ActiveRecord::Migration[5.1]
     reversible do |dir|
       dir.up do
         GoalFilter.create_translation_table!({
-          name: { type: :string, null: false }
-        })
-        
-        DurationFilter.create_translation_table!({
           name: { type: :string, null: false }
         })
         

@@ -73,6 +73,9 @@ en:
       time: '%k:%M'
   misc:
     dashboard: Dashboard
+    menu:
+      pages: Pages
+      resources: Resources
     locale:
       worldwide: Worldwide
       all_languages: All Languages

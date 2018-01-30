@@ -5,38 +5,46 @@
 .ui.section.divider
 
 .ui.fluid.secondary.vertical.menu
-  = link_to [:admin, :root], class: "#{'active' if controller_name == 'application'} item"
-    = translate :'misc.dashboard'
+  = link_to [:admin, :root], class: "#{'active' if action_name == 'dashboard'} item"
+    = translate 'misc.dashboard'
 
-  - if policy(Article).index?
-    = link_to [:admin, Article], class: "#{'active' if controller_name == 'articles'} item"
-      i.file.text.icon
-      = Article.model_name.human(count: -1)
+  - if policy(Article).index? or policy(City).index? or policy(StaticPage).index?
+    .item
+      .title = translate 'misc.menu.pages'
+      .menu
+        - if policy(Article).index?
+          = link_to [:admin, Article], class: "#{'active' if controller_name == 'articles'} item"
+            i.file.text.icon
+            = Article.model_name.human(count: -1)
 
-  - if policy(Category).index?
-    = link_to [:admin, Category], class: "#{'active' if controller_name == 'categories'} item"
-      i.hashtag.icon
-      = Category.model_name.human(count: -1)
+        - if policy(City).index?
+          = link_to [:admin, City], class: "#{'active' if controller_name == 'cities'} item"
+            i.university.icon
+            = City.model_name.human(count: -1)
 
-  - if policy(City).index?
-    = link_to [:admin, City], class: "#{'active' if controller_name == 'cities'} item"
-      i.university.icon
-      = City.model_name.human(count: -1)
+        - if policy(StaticPage).index?
+          = link_to [:admin, StaticPage], class: "#{'active' if controller_name == 'static_pages'} item"
+            i.file.icon
+            = StaticPage.model_name.human(count: -1)
 
-  - if policy(Track).index?
-    = link_to [:admin, Track], class: "#{'active' if ['tracks', 'mood_filters', 'instrument_filters'].include? controller_name} item"
-      i.music.icon
-      = Track.model_name.human(count: -1)
+  - if policy(Category).index? or policy(Track).index? or policy(Meditation).index?
+    .item
+      .title = translate 'misc.menu.resources'
+      .menu
+        - if policy(Category).index?
+          = link_to [:admin, Category], class: "#{'active' if controller_name == 'categories'} item"
+            i.hashtag.icon
+            = Category.model_name.human(count: -1)
 
-  - if policy(StaticPage).index?
-    = link_to [:admin, StaticPage], class: "#{'active' if controller_name == 'static_pages'} item"
-      i.file.icon
-      = StaticPage.model_name.human(count: -1)
+        - if policy(Track).index?
+          = link_to [:admin, Track], class: "#{'active' if ['tracks', 'mood_filters', 'instrument_filters'].include? controller_name} item"
+            i.music.icon
+            = Track.model_name.human(count: -1)
 
-  - if policy(Meditation).index?
-    = link_to [:admin, Meditation], class: "#{'active' if ['tracks', 'goal_filters', 'duration_filters'].include? controller_name} item"
-      i.leaf.icon
-      = Meditation.model_name.human(count: -1)
+        - if policy(Meditation).index?
+          = link_to [:admin, Meditation], class: "#{'active' if ['meditations', 'goal_filters', 'duration_filters'].include? controller_name} item"
+            i.leaf.icon
+            = Meditation.model_name.human(count: -1)
 
   - if policy(User).index?
     = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"

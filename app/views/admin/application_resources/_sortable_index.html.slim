@@ -1,14 +1,9 @@
 
 - reorder = (params[:reorder] == 'true')
+- parent = false unless local_assigns[:parent].present?
 - allow = policy(model)
 
-- if resources.empty?
-  .ui.items
-    .item
-      .header
-        i.hide.icon
-        = translate 'messages.no_models', models: model.model_name.human(count: -1)
-- elsif reorder
+- if reorder
   = form_tag url_for([:sort, :admin, model]), method: :put
     a.ui.tiny.compact.basic.right.floated.button href=url_for([:admin, model])
       = translate 'action.cancel'
@@ -28,11 +23,45 @@
 
     .clearfix
 
-  .ui.resource.items
-    = render resources
+  = render 'admin/application_resources/index', model: model, resources: resources, parent: parent do |f|
 
-- if allow.create? and not reorder
-  .ui.hidden.divider
+//
+  - if resources.empty?
+    .ui.items
+      .item
+        .header
+          i.hide.icon
+          = translate 'messages.no_models', models: model.model_name.human(count: -1)
+  - elsif reorder
+    = form_tag url_for([:sort, :admin, model]), method: :put
+      a.ui.tiny.compact.basic.right.floated.button href=url_for([:admin, model])
+        = translate 'action.cancel'
+      button.ui.tiny.compact.basic.positive.right.floated.right.labeled.icon.button
+        = translate 'action.update'
+        i.checkmark.icon
 
-  .ui.small.header = t("action.create_model.target.#{model.model_name.i18n_key}", target: model.model_name.human, default: :'action.target.create')
-  = render model.new
+      .clearfix
+
+      .ui.sort-list.items
+        = render resources
+  - else
+    - if resources.count > 1 and allow.sort?
+      a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=url_for(controller: model.model_name.route_key, reorder: true)
+        i.bars.icon
+        = translate 'action.target.reorder', target: model.model_name.human
+
+      .clearfix
+
+    .ui.resource.items
+      = render resources
+
+  - if parent
+    = link_to [:admin, parent], class: 'ui compact basic button' do
+      i.left.arrow.icon
+      = t('action.target.back', target: parent.model_name.human(count: -1))
+
+  - if allow.create? and not reorder
+    .ui.hidden.divider
+
+    .ui.small.header = t("action.create_model.target.#{model.model_name.i18n_key}", target: model.model_name.human, default: :'action.target.create')
+    = render model.new

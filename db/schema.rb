@@ -94,18 +94,8 @@ ActiveRecord::Schema.define(version: 20180129180132) do
     t.index ["whodunnit"], name: "index_drafts_on_whodunnit"
   end
 
-  create_table "duration_filter_translations", force: :cascade do |t|
-    t.integer "duration_filter_id", null: false
-    t.string "locale", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name", null: false
-    t.index ["duration_filter_id"], name: "index_duration_filter_translations_on_duration_filter_id"
-    t.index ["locale"], name: "index_duration_filter_translations_on_locale"
-  end
-
   create_table "duration_filters", force: :cascade do |t|
-    t.integer "order"
+    t.integer "minutes"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -177,8 +167,8 @@ ActiveRecord::Schema.define(version: 20180129180132) do
 
   create_table "meditations", force: :cascade do |t|
     t.string "file", null: false
-    t.bigint "duration_filters_id"
-    t.index ["duration_filters_id"], name: "index_meditations_on_duration_filters_id"
+    t.bigint "duration_filter_id"
+    t.index ["duration_filter_id"], name: "index_meditations_on_duration_filter_id"
   end
 
   create_table "mood_filter_translations", force: :cascade do |t|

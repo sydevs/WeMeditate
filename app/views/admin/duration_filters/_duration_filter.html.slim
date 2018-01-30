@@ -1,22 +1,18 @@
 
 - allow = policy(duration_filter)
 
-= render 'admin/application_resources/sortable_index_item', resource: duration_filter, name: :name, viewable: false do |f|
+= render 'admin/application_resources/index_item', resource: duration_filter, viewable: false do |f|
   - unless duration_filter.new_record?
-    .header = duration_filter.name
+    .header = duration_filter_name(duration_filter)
 
     .meta
       .ui.tiny.list
-        - unless duration_filter.translated_locales.include? I18n.locale
-          .item
-            i.orange.warning.sign.icon
-            .content = translate 'messages.no_translation'
         .item
           i.music.icon
-          .content = DurationFilter.human_attribute_name(:tracks, count: duration_filter.tracks.count)
+          .content = DurationFilter.human_attribute_name(:meditations, count: duration_filter.meditations.count)
 
   - if allow.edit?
     .description
       .field
         .ui.fluid.input
-          = f.text_field :name, placeholder: DurationFilter.human_attribute_name(:name)
+          = f.number_field :minutes, placeholder: DurationFilter.human_attribute_name(:minutes)

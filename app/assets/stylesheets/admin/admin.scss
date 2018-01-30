@@ -46,6 +46,10 @@ content {
   font-size: 1.21428571em;
 }
 
+.ui.vertical.secondary.menu .item:not(.dropdown) > .menu {
+  margin: 0.5em -1.14285714em 0em;
+}
+
 .clearfix {
   clear: both;
 }

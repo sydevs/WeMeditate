@@ -1,5 +1,5 @@
 
-- editable = true unless local_assigns[:editable] == false
+- action = :edit unless local_assigns[:action].present?
 - prefix = false unless local_assigns[:prefix] == true
 - empty = true
 
@@ -18,9 +18,14 @@ table.ui.compact.table class=color
             i.icon class=set[:icon]
             = set[:model].model_name.human + ': ' if prefix
             = element[set[:name]]
-          - if editable && allow.edit?
+          - if action == :edit && allow.edit?
             td.collapsing.selectable
               a href=url_for([:edit, :admin, element])
+                i.edit.icon
+                = t('action.edit')
+          - elsif action == :index && allow.edit?
+            td.collapsing.selectable
+              a href=url_for([:admin, element.class])
                 i.edit.icon
                 = t('action.edit')
   - if empty

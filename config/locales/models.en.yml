@@ -107,7 +107,7 @@ en:
           other: '%{count} Tracks'
 
       duration_filter:
-        name: Name
+        minutes: Minutes
         meditations:
           one: 1 Meditation
           other: '%{count} Meditations'

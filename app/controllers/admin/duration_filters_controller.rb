@@ -13,7 +13,7 @@ module Admin
     end
 
     def destroy
-      if @duration_filter.tracks.count > 0
+      if @duration_filter.meditations.count > 0
         redirect_to [:admin, DurationFilter], alert: 'You cannot delete a filter which has meditations attached to it. Reassign the meditations and try again.'
       else
         super
@@ -30,7 +30,7 @@ module Admin
 
     private
       def duration_filter_params
-        params.fetch(:duration_filter, {}).permit(:name, :icon)
+        params.fetch(:duration_filter, {}).permit(:minutes)
       end
 
   end

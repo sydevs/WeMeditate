@@ -13,7 +13,7 @@ module Admin
     end
 
     def destroy
-      if @goal_filter.tracks.count > 0
+      if @goal_filter.meditations.count > 0
         redirect_to [:admin, GoalFilter], alert: 'You cannot delete a filter which has tracks attached to it. Reassign the tracks and try again.'
       else
         super

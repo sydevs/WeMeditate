@@ -1,4 +1,5 @@
 
+- parent = false unless local_assigns[:parent].present?
 - allow = policy(model)
 
 .ui.resource.items
@@ -9,6 +10,11 @@
         = translate 'messages.no_models', models: model.model_name.human(count: -1)
     
   = render resources
+
+- if parent
+  = link_to [:admin, parent], class: 'ui compact basic button' do
+    i.left.arrow.icon
+    = t('action.target.back', target: parent.model_name.human(count: -1))
 
 - if allow.create?
   .ui.hidden.divider

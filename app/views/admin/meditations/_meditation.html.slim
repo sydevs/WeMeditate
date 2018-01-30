@@ -12,8 +12,8 @@
           .content = meditation.file_identifier.humanize
         - if meditation.duration_filter.present?
           .item
-            i.filter.icon
-            .content = duration_filter.name
+            i.clock.icon
+            .content = duration_filter_name(meditation.duration_filter)
         - if meditation.goal_filters.present?
           .item
             i.filter.icon
@@ -30,3 +30,8 @@
           i.volume.up.icon
           = f.file_field :file
           = f.hidden_field :file_cache
+          
+      .field
+        = f.select :duration_filter_id, DurationFilter.all.map {|df| [duration_filter_name(df), df.id] }, { include_blank: Meditation.human_attribute_name(:duration_filter) }, { class: 'ui fluid dropdown' }
+      .field
+        = f.select :goal_filter_ids, GoalFilter.all.map {|gf| [gf.name, gf.id] }, { include_blank: Meditation.human_attribute_name(:goal_filters) }, { class: 'ui fluid dropdown', multiple: '' }
