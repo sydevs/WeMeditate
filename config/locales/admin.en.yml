@@ -36,14 +36,16 @@ en:
     show: View
     update: Save
     cancel: Cancel
-    create: New
+    new: New
+    create: Save
     edit: Edit
     destroy: Delete
     target:
       edit: Edit %{target}
       reset: Reset %{target}
       add: Add %{target}
-      create: New %{target}
+      new: New %{target}
+      create: Save %{target}
       remove: Remove %{target}
       destroy: Delete %{target}
       back: Back to %{target}

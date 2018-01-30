@@ -16,7 +16,19 @@
     i.left.arrow.icon
     = t('action.target.back', target: parent.model_name.human(count: -1))
 
+
 - if allow.create?
+  .ui.hidden.divider
+
+  .ui.accordion
+    .ui.basic.labeled.icon.title.button
+      i.plus.icon
+      = t("action.target.new", target: model.model_name.human)
+    .ui.content.segment
+      = render model.new
+
+
+//- if allow.create?
   .ui.hidden.divider
 
   .ui.small.header = t("action.create_model.target.#{model.model_name.i18n_key}", target: model.model_name.human, default: :'action.target.create')

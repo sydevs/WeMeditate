@@ -29,7 +29,7 @@
   .content
     = yield f
 
-  - if resource.new_record?
-    button.ui.basic.labeled.icon.create.button
-      i.plus.icon
-      = translate "action.create_model.#{resource.model_name.i18n_key}", default: :'action.create'
+    - if resource.new_record?
+      button.ui.basic.green.compact.right.labeled.icon.create.button
+        = translate "action.create_model.#{resource.model_name.i18n_key}", default: :'action.create'
+        i.checkmark.icon
