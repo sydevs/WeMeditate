@@ -13,7 +13,8 @@
             .content = track.subtitle
         .item
           i.music.icon
-          .content = track.file_identifier.humanize
+          a.content href=track.file_url
+            = track.file_identifier.humanize
         - unless track.mood_filters.empty?
           .item
             i.filter.icon

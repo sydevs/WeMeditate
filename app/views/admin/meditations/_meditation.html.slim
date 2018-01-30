@@ -9,7 +9,8 @@
       .ui.tiny.list
         .item
           i.volume.up.icon
-          .content = meditation.file_identifier.humanize
+          a.content href=meditation.file_url
+            = meditation.file_identifier.humanize
         - if meditation.duration_filter.present?
           .item
             i.clock.icon

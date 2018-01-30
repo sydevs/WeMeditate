@@ -10,11 +10,11 @@ table.ui.compact.table class=color
         = title
   tbody
     - sets.each do |set|
-      - allow = policy(set[:model])
       - set[:elements].each do |element|
+        - allow = policy(element)
         - empty = false
         tr
-          td
+          td colspan="#{2 unless allow.edit?}"
             i.icon class=set[:icon]
             = set[:model].model_name.human + ': ' if prefix
             = element[set[:name]]

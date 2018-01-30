@@ -50,6 +50,14 @@ content {
   margin: 0.5em -1.14285714em 0em;
 }
 
+.ui.list > .item a.content {
+  color: inherit;
+
+  &:hover {
+    color: black;
+  }
+}
+
 .clearfix {
   clear: both;
 }
