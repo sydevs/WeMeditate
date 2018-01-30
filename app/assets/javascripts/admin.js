@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require semantic-ui
 //= require sortable-rails
+//= require autosize
 //= require_tree ./admin

@@ -27,7 +27,7 @@
             i.file.icon
             = StaticPage.model_name.human(count: -1)
 
-  - if policy(Category).index? or policy(Track).index? or policy(Meditation).index?
+  - if policy(Category).index? or policy(Track).index? or policy(Meditation).index? or policy(Treatment).index?
     .item
       .title = translate 'misc.menu.resources'
       .menu
@@ -45,6 +45,11 @@
           = link_to [:admin, Meditation], class: "#{'active' if ['meditations', 'goal_filters', 'duration_filters'].include? controller_name} item"
             i.leaf.icon
             = Meditation.model_name.human(count: -1)
+
+        - if policy(Treatment).index?
+          = link_to [:admin, Treatment], class: "#{'active' if controller_name == 'treatments'} item"
+            i.first.aid.icon
+            = Treatment.model_name.human(count: -1)
 
   - if policy(User).index?
     = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"

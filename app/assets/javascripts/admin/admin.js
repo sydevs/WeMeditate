@@ -4,6 +4,8 @@ $(document).on('turbolinks:load', function() {
   $('.ui.checkbox').checkbox()
   $('.ui.accordion').accordion()
 
+  autosize($('textarea'))
+
   $('.sort-list').each(function() {
     Sortable.create(this, {
       handle: ".handle",

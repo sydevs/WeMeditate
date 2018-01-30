@@ -17,6 +17,7 @@
   .column
     = render 'dashboard_table', title: t('messages.untranslated_resources'), color: 'red', action: :index, prefix: true, sets: [ \
       { model: Category, icon: 'hashtag', elements: Category.untranslated, name: :name }, \
+      { model: Treatment, icon: 'first aid', elements: Treatment.untranslated, name: :name }, \
       { model: InstrumentFilter, icon: 'filter', elements: InstrumentFilter.untranslated, name: :name }, \
       { model: MoodFilter, icon: 'filter', elements: MoodFilter.untranslated, name: :name }, \
       { model: GoalFilter, icon: 'filter', elements: GoalFilter.untranslated, name: :name }, \

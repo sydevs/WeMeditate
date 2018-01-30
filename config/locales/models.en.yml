@@ -16,6 +16,9 @@ en:
       meditation:
         one: Meditation
         other: Meditations
+      treatment:
+        one: Treatment
+        other: Treatments
       track:
         one: Track
         other: Tracks
@@ -92,6 +95,13 @@ en:
         articles:
           one: 1 Article
           other: '%{count} Articles'
+
+      treatment:
+        name: Name
+        slug: URL
+        excerpt: Excerpt
+        content: Content
+        video_url: Youtube Video URL
 
       instrument_filter:
         name: Name

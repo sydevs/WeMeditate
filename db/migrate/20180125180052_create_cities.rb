@@ -12,7 +12,7 @@ class CreateCities < ActiveRecord::Migration[5.1]
       dir.up do
         City.create_translation_table!({
           name: { type: :string, null: false },
-          slug: { type: :string, null: false }
+          slug: { type: :string, null: false },
         })
       end
 

@@ -1,0 +1,39 @@
+
+- allow = policy(treatment)
+
+= render 'admin/application_resources/sortable_index_item', resource: treatment, name: :name do |f|
+  - unless treatment.new_record?
+    .header = treatment.name
+
+    .meta
+      .ui.tiny.list
+        - if treatment.translated_locales.include? I18n.locale
+          .item
+            i.linkify.icon
+            .content = treatment.slug
+        - else
+          .item
+            i.orange.warning.sign.icon
+            .content = translate 'messages.no_translation'
+
+  - if allow.edit?
+    .description
+      .field
+        = f.text_field :name, placeholder: Treatment.human_attribute_name(:name)
+        
+      - unless treatment.new_record?
+        .field.reset-slug
+          i.linkify.icon
+          em = treatment.slug
+          = label_tag :reset_slug do
+            = check_box_tag :reset_slug, 'yes', params[:reset_slug]
+            '  #{translate 'action.target.reset', target: Treatment.human_attribute_name(:slug)}
+
+      .field
+        = f.text_field :video_url, placeholder: Treatment.human_attribute_name(:video_url)
+        
+      .field
+        = f.text_area :excerpt, placeholder: Treatment.human_attribute_name(:excerpt), rows: 2
+
+      .field
+        = f.text_area :content, placeholder: Treatment.human_attribute_name(:content), rows: 3

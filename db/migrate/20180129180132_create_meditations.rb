@@ -20,19 +20,19 @@ class CreateMeditations < ActiveRecord::Migration[5.1]
 
     reversible do |dir|
       dir.up do
-        GoalFilter.create_translation_table!({
-          name: { type: :string, null: false }
-        })
-        
         Meditation.create_translation_table!({
+          name: { type: :string, null: false },
+          slug: { type: :string, null: false },
+        })
+
+        GoalFilter.create_translation_table!({
           name: { type: :string, null: false },
         })
       end
 
       dir.down do
-        GoalFilter.drop_translation_table!
-        DurationFilter.drop_translation_table!
         Meditation.drop_translation_table!
+        GoalFilter.drop_translation_table!
       end
     end
   end

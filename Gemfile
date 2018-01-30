@@ -45,6 +45,7 @@ gem 'semantic-ui-sass'
 gem 'jquery-rails'
 gem 'sortable-rails'
 gem 'google-analytics-rails'
+gem 'autosize'
 
 # Models
 #gem 'paper_trail'

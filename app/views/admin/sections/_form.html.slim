@@ -61,9 +61,9 @@
       .field.for.text
         = f.text_field :subtitle, placeholder: Section.human_attribute_name(:subtitle)
       .field.for.text
-        = f.text_area :text, placeholder: Section.human_attribute_name(:text)
+        = f.text_area :text, placeholder: Section.human_attribute_name(:text), rows: 2
       .field.for.quote.sub-quote
-        = f.text_area :quote, placeholder: Section.human_attribute_name(:quote)
+        = f.text_area :quote, placeholder: Section.human_attribute_name(:quote), rows: 1
       .field.for.image
         .ui.fluid.icon.file.input
           i.image.icon

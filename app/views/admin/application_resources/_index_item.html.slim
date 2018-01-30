@@ -2,7 +2,7 @@
 - viewable = true unless local_assigns[:viewable] == false
 - allow = policy(resource)
 
-= form_for [:admin, resource], remote: true, html: { class: "item #{'editing' if resource.new_record?}" } do |f|
+= form_for [:admin, resource], remote: true, html: { class: "ui form item #{'editing' if resource.new_record?}" } do |f|
   .actions
     - unless resource.new_record?
       .ui.tiny.compact.vertical.labeled.icon.buttons
