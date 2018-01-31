@@ -1,13 +1,40 @@
 
+- content_for :title, t('action.review')
+
+.ui.medium.header = t('messages.changes')
+
+.ui.list
+  //- page.draft.changeset.each do |key, change|
+    .item
+      .content
+        .header = page.class.human_attribute_name(key)
+        .description
+          - if change[0].nil?
+            i.plus.circle.icon
+            = change[1]
+          - elsif change[1].nil?
+            i.minus.circle.icon
+            = change[1]
+          - else
+            = change[0]
+            '  
+            i.right.arrow.circle.icon
+            = change[1]
+
 = yield
+
+p
+  a.ui.basic.negative.button href=url_for([:review, :admin, page, publish: false]) data-method="patch"
+    = translate 'action.discard_changes'
+
+  a.ui.basic.secondary.button href=url_for([:edit, :admin, page])
+    = translate 'action.edit'
+
+  a.ui.basic.primary.button href=url_for([:review, :admin, page, publish: true]) data-method="patch"
+    = translate 'action.publish'
 
 p
   a.ui.basic.button href=url_for([:admin, page.class])
     i.left.arrow.icon
     = translate 'action.target.back', target: page.class.model_name.human(count: -1)
-
-  a.ui.basic.negative.button href=url_for([:revert, :admin, page])
-    = translate 'action.discard_changes'
-
-  a.ui.basic.positive.button href=url_for([:publish, :admin, page])
-    = translate 'action.publish'
+  

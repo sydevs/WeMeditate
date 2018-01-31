@@ -18,4 +18,4 @@
 
   .field
     = f.label :priority
-    = f.select :priority, Article.priorities.map {|k, v| [human_enum_name(User, :priority, k), k]}, {}, { class: 'ui fluid dropdown' }
+    = f.select :priority, Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}, {}, { class: 'ui fluid dropdown' }

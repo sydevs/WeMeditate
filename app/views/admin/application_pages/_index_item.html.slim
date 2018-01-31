@@ -11,15 +11,34 @@
         a.ui.button.for-viewing href=url_for([:edit, :admin, page])
           i.edit.icon
           = translate 'action.edit'
-      - if allow.destroy? and page.translated_locales.include? locale
+      - if allow.destroy?
         a.ui.button.for-viewing href=url_for([:admin, page]) data-method="delete" data-confirm=t('messages.confirm_destroy', default: 'Confirm Destroy')
           i.trash.icon
           = translate 'action.destroy'
+      - if allow.review?
+        a.ui.primary.button.for-viewing href=url_for([:admin, page])
+          i.check.circle.outline.icon
+          = translate 'action.review'
   
   .content
     .header = page[header]
 
     .meta
       .ui.tiny.list
+        //.item
+          i.blue.file.outline.icon
+          .content #{page.draft_id.inspect}: #{page.draft.inspect}
+
+        - page.translations.each do |translation|
+          .item
+            i.purple.translate.icon
+            .content #{translation.inspect}
+          
+
+        //- if page.draft?
+          .item
+            i.blue.file.outline.icon
+            .content = translate 'messages.has_draft'
+
         = yield
   

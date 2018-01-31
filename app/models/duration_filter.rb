@@ -6,8 +6,4 @@ class DurationFilter < ApplicationRecord
   # Scopes
   validates :minutes, presence: true
   default_scope { order( :minutes ) }
-
-  def cache_key
-    super + '-' + Globalize.locale.to_s
-  end
 end

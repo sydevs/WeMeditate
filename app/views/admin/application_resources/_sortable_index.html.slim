@@ -17,7 +17,7 @@
       = render resources
 - else
   - if resources.count > 1 and allow.sort?
-    a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=url_for(controller: model.model_name.route_key, reorder: true)
+    a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=url_for([:admin, model, reorder: true])
       i.bars.icon
       = translate 'action.target.reorder', target: model.model_name.human
 

@@ -10,14 +10,16 @@ Rails.application.routes.draw do
     namespace :admin do
       root to: "application#dashboard"
       
-      resources :users
-      resources :articles
-      resources :static_pages
-      resources :treatments, :meditations, :tracks,
+      resources :users, :treatments, :meditations, :tracks,
                 only: [:index, :create, :update, :destroy]
+
+      resources :articles, :static_pages do
+        patch :review, on: :member
+      end
 
       resources :cities do
         get :lookup, on: :collection, constraints: { format: 'json' }
+        patch :review, on: :member
       end
 
       resources :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters, 

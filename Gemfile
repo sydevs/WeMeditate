@@ -48,7 +48,8 @@ gem 'google-analytics-rails'
 gem 'autosize'
 
 # Models
-#gem 'paper_trail'
+#gem 'draftsman', path: '~/Documents/Projects/Other/draftsman'
+#gem 'draft_punk'
 gem 'friendly_id'
 gem 'geocoder'
 gem 'jsonb_accessor'

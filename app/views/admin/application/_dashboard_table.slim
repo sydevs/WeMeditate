@@ -1,5 +1,5 @@
 
-- action = :edit unless local_assigns[:action].present?
+- action = :edit unless defined? local_assigns[:action]
 - prefix = false unless local_assigns[:prefix] == true
 - empty = true
 
@@ -11,10 +11,11 @@ table.ui.compact.table class=color
   tbody
     - sets.each do |set|
       - set[:elements].each do |element|
-        - allow = policy(element)
+        - if action
+          - allow = policy(element)
         - empty = false
         tr
-          td colspan="#{2 unless allow.edit?}"
+          td colspan="#{2 unless action == nil or allow.edit?}"
             i.icon class=set[:icon]
             = set[:model].model_name.human + ': ' if prefix
             = element[set[:name]]

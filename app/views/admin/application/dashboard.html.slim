@@ -3,11 +3,12 @@
 
 .ui.two.column.grid
   .column
-    = render 'missing_pages_table'
+    //= render 'dashboard_table', title: t('messages.drafts'), color: 'blue', action: nil, sets: [ \
+      { model: Draftsman::Draft, icon: 'file outline', elements: @drafts, name: :id }, \
+    //]
 
-    = render 'dashboard_table', title: t('messages.untranslated_pages'), color: 'orange', action: :edit, sets: [ \
-      { model: StaticPage, icon: 'orange warning sign', elements: StaticPage.untranslated, name: :title }, \
-      { model: Article, icon: 'file text', elements: Article.untranslated, name: :title }, \
+    = render 'dashboard_table', title: t('messages.pending_users'), color: 'olive', sets: [ \
+      { model: User, icon: 'user', elements: User.pending, name: :email }, \
     ]
 
     //- title = t('messages.available_cities', language: I18nData.languages[I18n.locale.to_s.upcase])
@@ -15,6 +16,8 @@
       { model: Article, icon: 'university', elements: City.with_translations(I18n.locale), name: :name }, \
     //]
   .column
+    = render 'missing_pages_table'
+
     = render 'dashboard_table', title: t('messages.untranslated_resources'), color: 'red', action: :index, prefix: true, sets: [ \
       { model: Category, icon: 'hashtag', elements: Category.untranslated, name: :name }, \
       { model: Treatment, icon: 'first aid', elements: Treatment.untranslated, name: :name }, \
@@ -23,7 +26,8 @@
       { model: GoalFilter, icon: 'filter', elements: GoalFilter.untranslated, name: :name }, \
     ]
 
-    = render 'dashboard_table', title: t('messages.pending_users'), color: 'olive', action: nil, sets: [ \
-      { model: User, icon: 'user', elements: User.pending, name: :email }, \
+    = render 'dashboard_table', title: t('messages.untranslated_pages'), color: 'orange', action: :edit, sets: [ \
+      { model: StaticPage, icon: 'orange warning sign', elements: StaticPage.untranslated, name: :title }, \
+      { model: Article, icon: 'file text', elements: Article.untranslated, name: :title }, \
     ]
     

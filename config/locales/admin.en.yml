@@ -36,16 +36,18 @@ en:
     show: View
     update: Save
     cancel: Cancel
-    new: New
-    create: Save
+    create: New
     edit: Edit
     destroy: Delete
+    review: Review
+    save_draft: Save Draft
+    publish_draft: Publish
+    revert_draft: Discard Changes
     target:
       edit: Edit %{target}
       reset: Reset %{target}
       add: Add %{target}
-      new: New %{target}
-      create: Save %{target}
+      create: New %{target}
       remove: Remove %{target}
       destroy: Delete %{target}
       back: Back to %{target}
@@ -70,6 +72,7 @@ en:
     empty_model_table: None
     latlong_not_found: Coordinates Not Found
     missing_pages: Missing Pages
+    has_draft: Has Pending Changes
   time:
     formats:
       time: '%k:%M'

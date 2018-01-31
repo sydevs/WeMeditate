@@ -70,6 +70,16 @@ module Admin
       redirect_to [:admin, @klass]
     end
 
+    def review
+      if params[:publish]
+        @page.draft.publish!
+      else
+        @page.draft.revert!
+      end
+
+      redirect_to [:admin, @klass]
+    end
+
     protected
       ALLOWED_SECTION_ATTRIBUTES = [
         :id, :order, :_destroy, # Meta fields

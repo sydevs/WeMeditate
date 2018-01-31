@@ -14,6 +14,10 @@ class CreateTreatments < ActiveRecord::Migration[5.1]
           content: { type: :text },
         })
       end
+
+      dir.down do
+        Treatment.drop_translation_table!
+      end
     end
   end
 end
