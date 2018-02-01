@@ -11,10 +11,10 @@
       { model: User, icon: 'user', elements: User.pending, name: :email }, \
     ]
 
-    //- title = t('messages.available_cities', language: I18nData.languages[I18n.locale.to_s.upcase])
-    //= render 'dashboard_table', title: title, color: 'teal', sets: [ \
-      { model: Article, icon: 'university', elements: City.with_translations(I18n.locale), name: :name }, \
-    //]
+    = render 'dashboard_table', title: t('messages.untranslated_pages'), color: 'orange', action: :edit, sets: [ \
+      { model: StaticPage, icon: 'orange warning sign', elements: StaticPage.untranslated, name: :title }, \
+      { model: Article, icon: 'file text', elements: Article.untranslated, name: :title }, \
+    ]
   .column
     = render 'missing_pages_table'
 
@@ -24,10 +24,5 @@
       { model: InstrumentFilter, icon: 'filter', elements: InstrumentFilter.untranslated, name: :name }, \
       { model: MoodFilter, icon: 'filter', elements: MoodFilter.untranslated, name: :name }, \
       { model: GoalFilter, icon: 'filter', elements: GoalFilter.untranslated, name: :name }, \
-    ]
-
-    = render 'dashboard_table', title: t('messages.untranslated_pages'), color: 'orange', action: :edit, sets: [ \
-      { model: StaticPage, icon: 'orange warning sign', elements: StaticPage.untranslated, name: :title }, \
-      { model: Article, icon: 'file text', elements: Article.untranslated, name: :title }, \
     ]
     

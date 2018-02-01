@@ -1,5 +1,6 @@
 module Admin
   class ApplicationPageController < Admin::ApplicationController
+    before_action :set_paper_trail_whodunnit
     before_action :set_page, except: [:index, :create, :new]
     before_action :authorize!, except: [:create]
 
@@ -9,7 +10,7 @@ module Admin
     end
 
     def show
-      redirect_to [:edit, :admin, @page]
+      #redirect_to [:edit, :admin, @page]
     end
 
     def new
@@ -26,6 +27,7 @@ module Admin
       authorize @page
 
       if @page.save
+        @page.publish_drafts! # This line effectively disables drafts by always publishing the latest version.
         redirect_to [:admin, @klass]
       else
         render :new
@@ -44,14 +46,17 @@ module Admin
         end
       end
 
-      print params
-      print "\r\n"
-      print page_params
-      print "\r\n\r\n"
+      @page.attributes = page_params
 
-      if @page.update page_params
-        redirect_to [:edit, :admin, @page]
-        #redirect_to [:admin, @klass]
+      if @page.save
+        @page.publish_drafts! # This line effectively disables drafts by always publishing the latest version.
+
+        #redirect_to [:edit, :admin, @page]
+        if policy(@page).review?
+          redirect_to [:admin, @page]
+        else
+          redirect_to [:admin, @klass]
+        end
       else
         render :edit
       end
@@ -71,10 +76,10 @@ module Admin
     end
 
     def review
-      if params[:publish]
-        @page.draft.publish!
+      if params[:do] == 'publish'
+        @page.publish_drafts!
       else
-        @page.draft.revert!
+        @page.discard_drafts!
       end
 
       redirect_to [:admin, @klass]

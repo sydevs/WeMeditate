@@ -36,9 +36,10 @@
       i.left.arrow.icon
       = translate 'action.target.back', target: model.model_name.human(count: -1)
 
-    button.ui.basic.positive.button
-      = translate 'action.save_draft'
-
     - if policy(page).review?
-      a.ui.basic.primary.button href=url_for([:admin, page])
-        = translate 'action.review_changes'
+      button.ui.basic.primary.button
+        = translate 'action.update_and_review_changes'
+    - else
+      button.ui.basic.positive.button
+        = translate 'action.update'
+

@@ -40,9 +40,6 @@ en:
     edit: Edit
     destroy: Delete
     review: Review
-    save_draft: Save Draft
-    publish_draft: Publish
-    revert_draft: Discard Changes
     target:
       edit: Edit %{target}
       reset: Reset %{target}
@@ -60,6 +57,7 @@ en:
         user: Invite %{target}
         track: Upload %{target}
   messages:
+    updated_on: Updated on %{date}
     errors: Errors
     confirm_destroy: Are you sure you want to delete that?
     no_translation: Not Translated

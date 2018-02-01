@@ -18,7 +18,7 @@ module Admin
     end
 
     def review?
-      false #record.draft? and regional_admin? and locale_allowed?
+      record.draft? and regional_admin? and locale_allowed?
     end
     
   end

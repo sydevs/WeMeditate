@@ -1,6 +1,10 @@
 class Article < ApplicationRecord
   extend FriendlyId
 
+  # Drafts
+  has_paper_trail ignore: [:published_at]
+  include RequireApproval
+
   # Extensions
   translates :title, :slug
   friendly_id :title, use: :globalize

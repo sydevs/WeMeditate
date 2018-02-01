@@ -1,6 +1,7 @@
 class Section < ApplicationRecord
 
   # Extensions
+  has_paper_trail
   jsonb_accessor :parameters,
     title: :string,
     subtitle: :string,

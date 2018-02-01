@@ -25,20 +25,20 @@
 
     .meta
       .ui.tiny.list
-        //.item
-          i.blue.file.outline.icon
-          .content #{page.draft_id.inspect}: #{page.draft.inspect}
-
-        - page.translations.each do |translation|
+        - if page.draft?
           .item
-            i.purple.translate.icon
-            .content #{translation.inspect}
-          
+            i.blue.write.square.icon
+            .content
+              = translate 'messages.draft'
+              '  (#{pluralize page.drafts.count, 'Change'})
 
-        //- if page.draft?
-          .item
-            i.blue.file.outline.icon
-            .content = translate 'messages.has_draft'
+        .item
+          i.calendar.icon
+          .content
+            - if page.published?
+              = translate 'messages.updated_on', date: l(page.published_at, format: :long)
+            - else
+              = translate 'messages.not_published'
 
         = yield
   

@@ -1,6 +1,10 @@
 class City < ApplicationRecord
   extend FriendlyId
 
+  # Drafts
+  has_paper_trail ignore: [:published_at]
+  include RequireApproval
+
   # Extensions
   translates :name, :slug
   friendly_id :name, use: :globalize
