@@ -16,7 +16,7 @@ module Admin
         def static_page_params
           if policy(@static_page || StaticPage).update_structure?
             params.fetch(:article, {}).permit(
-              :title, :role,
+              :title, :slug, :role,
               sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES
             )
           else

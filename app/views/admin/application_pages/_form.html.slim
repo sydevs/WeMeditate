@@ -1,6 +1,7 @@
 
 - model = page.class
 - allow = policy(page)
+- show_title_field = true unless local_assigns[:show_title_field] == false
 
 = form_for [:admin, page], html: { class: "ui form #{'error' if page.errors.present?}" } do |f|
   - if page.errors.present?
@@ -10,6 +11,24 @@
         - page.errors.messages.each do |field, errors|
           - errors.each do |error|
             li #{field} #{error}
+
+  - if show_title_field
+    .field
+      = f.label :title
+      = f.text_field :title
+
+      - if allow.update_structure? and not @page.new_record?
+        .ui.accordion
+          .title
+            i.dropdown.icon
+            i.linkify.icon
+            em = url_for(@page)
+          .content
+            //= f.label :slug
+            .ui.labeled.input
+              .ui.basic.label
+                = url_for(@page).split('/')[0...-1].join('/') + '/'
+              = f.text_field :slug, placeholder: @page.id
 
   = yield f
 

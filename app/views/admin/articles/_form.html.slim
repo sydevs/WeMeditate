@@ -2,7 +2,7 @@
 - allow = policy(@article)
 
 = render 'admin/application_pages/form', page: @article do |f|
-  .field
+  //.field
     = f.label :title
     = f.text_field :title
 
@@ -13,6 +13,13 @@
         = label_tag :reset_slug do
           = check_box_tag :reset_slug, 'yes', params[:reset_slug]
           '  #{translate 'action.target.reset', target: Article.human_attribute_name(:slug)}
+
+  //.field
+    = f.label :slug
+    .ui.labeled.input
+      .ui.basic.label
+        = url_for(@article).sub("#{@article.slug}", '')
+      = f.text_field :slug
 
   .field
     = f.label :category

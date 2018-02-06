@@ -1,7 +1,7 @@
 
 - allow = policy(@city)
 
-= render 'admin/application_pages/form', page: @city do |f|
+= render 'admin/application_pages/form', page: @city, show_title_field: false do |f|
   .field
     = f.label City.model_name.human
     // This {query} part of these parameter has to be included in a wierd way so that it isn't escaped.
@@ -30,12 +30,17 @@
       = f.hidden_field :latitude
 
       - unless @city.new_record?
-        .reset-slug
-          i.linkify.icon
-          em = @city.slug
-          = label_tag :reset_slug do
-            = check_box_tag :reset_slug, 'yes', params[:reset_slug]
-            '  #{translate 'action.target.reset', target: City.human_attribute_name(:slug)}
+        .ui.accordion
+          .title
+            i.dropdown.icon
+            i.linkify.icon
+            em = url_for(@page)
+          .content
+            //= f.label :slug
+            .ui.labeled.input
+              .ui.basic.label
+                = url_for(@page).split('/')[0...-1].join('/') + '/'
+              = f.text_field :slug, placeholder: @page.id
     - else
       = f.text_field :address, disabled: true
 
