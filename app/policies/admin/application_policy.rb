@@ -31,6 +31,10 @@ module Admin
       user.editor? or regional_admin?
     end
   
+    def translator?
+      user.translator? or editor?
+    end
+  
     def locale_allowed?
       user.available_languages.include? I18n.locale
     end

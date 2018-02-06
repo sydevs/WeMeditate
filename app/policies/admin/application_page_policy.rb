@@ -6,6 +6,14 @@ module Admin
     end
 
     def update?
+      update_translation? or update_structure?
+    end
+
+    def update_translation?
+      translator? and locale_allowed?
+    end
+
+    def update_structure?
       editor? and locale_allowed?
     end
 

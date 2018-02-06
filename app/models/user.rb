@@ -4,12 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable, :validatable, :invitable
 
   # Associations
-  enum role: [ :editor, :regional_admin, :super_admin ]
+  enum role: [ :translator, :editor, :regional_admin, :super_admin ]
 
   # Validations
   validates :role, presence: true
 
   # Scopes
+  default_scope { order( :email ) }
   scope :pending, -> { where.not(invitation_created_at: nil).where(invitation_accepted_at: nil) }
 
   def languages= list

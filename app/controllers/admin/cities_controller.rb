@@ -36,19 +36,31 @@ module Admin
         :day_of_week, :start_time, :end_time,
       ]
       
-      ALLOWED_PROGRAM_VENUE_ATTRIBUTES = [
+      ALL_PROGRAM_VENUE_ATTRIBUTES = [
         :id, :order, :_destroy, # Meta fields
         :address, :room_information,
         :order, :latitude, :longitude,
         program_times_attributes: ALLOWED_PROGRAM_TIME_ATTRIBUTES,
       ]
+      
+      TRANSLATABLE_PROGRAM_VENUE_ATTRIBUTES = [
+        :id, # Meta fields
+        :room_information,
+      ]
 
       def city_params
-        params.fetch(:city, {}).permit(
-          :name, :address, :latitude, :longitude, :banner,
-          sections_attributes: Admin::ApplicationPageController::ALLOWED_SECTION_ATTRIBUTES,
-          program_venues_attributes: ALLOWED_PROGRAM_VENUE_ATTRIBUTES,
-        )
+        if policy(@city || City).update_structure?
+          params.fetch(:article, {}).permit(
+            :name, :address, :latitude, :longitude, :banner,
+            sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES,
+            program_venues_attributes: ALL_PROGRAM_VENUE_ATTRIBUTES,
+          )
+        else
+          params.fetch(:article, {}).permit(
+            sections_attributes: Admin::ApplicationPageController::TRANSLATABLE_SECTION_ATTRIBUTES,
+            program_venues_attributes: TRANSLATABLE_PROGRAM_VENUE_ATTRIBUTES,
+          )
+        end
       end
 
   end

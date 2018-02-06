@@ -5,22 +5,16 @@
   - unless section.new_record?
     = f.hidden_field :id
 
-  = f.hidden_field :order, class: 'sorting-order'
+  - if allow.update_structure?
+    = f.hidden_field :order, class: 'sorting-order'
 
   .title
     //.location style="float: right" data-tooltip="Visible for All Countries" data-inverted=""
       i.teal.check.circle.outline.icon
       i.black.globe.icon
 
-    //.location style="float: right" data-tooltip="Visible for United States" data-inverted=""
-      i.teal.check.circle.outline.icon
-      i.ca.flag
-
-    //.location style="float: right" data-tooltip="Hidden for United States" data-inverted=""
-      i.orange.remove.circle.outline.icon
-      i.us.flag
-
-    i.black.bars.icon.handle
+    - if allow.update_structure?
+      i.black.bars.icon.handle
 
     - if section.new_record?
       = Section.model_name.human
@@ -32,11 +26,13 @@
   .content
     .form
       .field
+        //= f.label :title
         = f.text_field :title, placeholder: Section.human_attribute_name(:title)
+
       .field.content-type
         = f.label :content_type
-        .ui.scrolling.selection.dropdown
-          = f.hidden_field :content_type
+        .ui.scrolling.selection.dropdown class="#{'disabled' unless allow.update_structure?}"
+          = f.hidden_field :content_type, disabled: !allow.update_structure?
           i.dropdown.icon
           .default.text Section.human_attribute_name(:content_type)
           .menu
@@ -48,23 +44,27 @@
       = f.fields_for :format do |ff|
         .field.text.format
           = ff.label :format
-          = ff.select :text, Section::TEXT_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown' }
+          = ff.select :text, Section::TEXT_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown', disabled: !allow.update_structure? }
 
         .field.image.format
           = ff.label :format
-          = ff.select :image, Section::IMAGE_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown' }
+          = ff.select :image, Section::IMAGE_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown', disabled: !allow.update_structure? }
 
         .field.action.format
           = ff.label :format
-          = ff.select :action, Section::ACTION_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown' }
+          = ff.select :action, Section::ACTION_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown', disabled: !allow.update_structure? }
         
       .field.for.text
+        //= f.label :subtitle
         = f.text_field :subtitle, placeholder: Section.human_attribute_name(:subtitle)
-      .field.for.text
+      .field.for.text.quote
+        //= f.label :text
         = f.text_area :text, placeholder: Section.human_attribute_name(:text), rows: 2
       .field.for.quote.sub-quote
+        //= f.label :quote
         = f.text_area :quote, placeholder: Section.human_attribute_name(:quote), rows: 1
       .field.for.image
+        //= f.label :images
         .ui.fluid.icon.file.input
           i.image.icon
           = f.file_field :images, multiple: true
@@ -74,42 +74,48 @@
             - section.images.each do |image|
               a.item href=image.url target="_blank" = image.identifier
       .field.for.video
-        = f.url_field :url, placeholder: Section.human_attribute_name(:video_url)
+        //= f.label :video_url
+        = f.url_field :video_url, placeholder: Section.human_attribute_name(:video_url)
       .field.for.image.quote
+        //= f.label :credit
         = f.text_field :credit, placeholder: Section.human_attribute_name(:credit)
       .field.for.quote
-        = f.text_field :subtitle, placeholder: Section.human_attribute_name(:subtitle)
+        //= f.label :credit_subtitle, Section.human_attribute_name(:subtitle)
+        = f.text_field :credit_subtitle, placeholder: Section.human_attribute_name(:subtitle)
       .two.fields
         .field.for.button
+          //= f.label :action_text
           = f.text_field :action_text, placeholder: Section.human_attribute_name(:action_text)
         .field.for.button
-          = f.url_field :url, placeholder: Section.human_attribute_name(:action_url)
+          //= f.label :action_url
+          = f.url_field :action_url, placeholder: Section.human_attribute_name(:action_url)
 
-      
-      .fields
-        .six.wide.field
-          = f.label :visibility_type
-          = f.select :visibility_type, Section.visibility_types.map {|k,v| [k.humanize.capitalize, k]}, {}, { class: 'ui dropdown' }
-        .ten.wide.field
-          = f.label :visibility_countries
-          .ui.multiple.search.selection.dropdown
-            // We need the raw country data for display
-            = f.hidden_field :visibility_countries, value: section[:visibility_countries]
-            i.dropdown.icon
-            .default.text None
-            .menu
-              - I18nData.countries.each do |country_code, country_name|
-                .item data-value=country_code.downcase
-                  i.flag class=country_code.downcase
-                  = country_name
+      - if allow.update_structure?
+        .fields
+          .six.wide.field
+            = f.label :visibility_type
+            = f.select :visibility_type, Section.visibility_types.map {|k,v| [k.humanize.capitalize, k]}, {}, { class: 'ui dropdown' }
+          .ten.wide.field
+            = f.label :visibility_countries
+            .ui.multiple.search.selection.dropdown
+              // We need the raw country data for display
+              = f.hidden_field :visibility_countries, value: section[:visibility_countries]
+              i.dropdown.icon
+              .default.text None
+              .menu
+                - I18nData.countries.each do |country_code, country_name|
+                  .item data-value=country_code.downcase
+                    i.flag class=country_code.downcase
+                    = country_name
 
-    - if section.new_record?
-      .ui.tiny.compact.basic.labeled.icon.button.remove-child-button
-        i.trash.icon
-        = translate 'action.target.remove', target: Section.model_name.human
-    - else
-      .ui.checkbox
-        = f.check_box :_destroy, class: 'delete-child'
-        = f.label :_destroy, t('action.target.destroy', target: Section.model_name.human)
+    - if allow.update_structure?
+      - if section.new_record?
+        .ui.tiny.compact.basic.labeled.icon.button.remove-child-button
+          i.trash.icon
+          = translate 'action.target.remove', target: Section.model_name.human
+      - else
+        .ui.checkbox
+          = f.check_box :_destroy, class: 'delete-child'
+          = f.label :_destroy, t('action.target.destroy', target: Section.model_name.human)
 
-    .clearfix
+      .clearfix

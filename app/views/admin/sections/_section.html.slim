@@ -10,25 +10,6 @@
 
   .content
     .ui.small.list
-      //.item
-        .header Content Type
-        .description = section.content_type.humanize
-        
-      - if [:text, :text_with_image].include? section.content_type.to_sym
-        .item
-          .header Text
-          .description = section.text
-
-      - if [:text_with_image].include? section.content_type.to_sym
-        .item
-          .header Image
-          //.description = section.image
-
-      - if [:video].include? section.content_type.to_sym
-        .item
-          .header Youtube Video ID
-          .description = section.youtube_id.present? ? section.youtube_id : 'undefined'
-
       .item
         .header Visibility
         .description

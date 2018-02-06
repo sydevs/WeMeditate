@@ -8,8 +8,10 @@ class Section < ApplicationRecord
     text: :text,
     quote: :text,
     credit: :string,
+    credit_subtitle: :string,
     action_text: :string,
-    url: :string,
+    action_url: :string,
+    video_url: :string,
     format: :string
 
   # Associations

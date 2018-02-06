@@ -16,16 +16,19 @@
   .content
     .form
       .field
-        .ui.right.labeled.input
-          = f.text_field :address, placeholder: ProgramVenue.human_attribute_name(:address)
-          - if program_venue.latitude.present? && program_venue.longitude.present?
-            a.ui.tag.label href=coordinates_url(program_venue.latitude, program_venue.longitude) target="_blank"
-              i.marker.icon
-              span #{program_venue.latitude}, #{program_venue.longitude}
-          - elsif not program_venue.new_record?
-            .ui.orange.tag.label
-              i.warning.sign.icon
-              span #{t 'messages.latlong_not_found'}
+        - if allow.update_structure?
+          .ui.right.labeled.input
+            = f.text_field :address, placeholder: ProgramVenue.human_attribute_name(:address)
+            - if program_venue.latitude.present? && program_venue.longitude.present?
+              a.ui.tag.label href=coordinates_url(program_venue.latitude, program_venue.longitude) target="_blank"
+                i.marker.icon
+                span #{program_venue.latitude}, #{program_venue.longitude}
+            - elsif not program_venue.new_record?
+              .ui.orange.tag.label
+                i.warning.sign.icon
+                span #{t 'messages.latlong_not_found'}
+        - else
+          = f.text_field :address, placeholder: ProgramVenue.human_attribute_name(:address), disabled: true
 
       .field
         = f.text_field :room_information, placeholder: ProgramVenue.human_attribute_name(:room_information)
@@ -46,19 +49,21 @@
 
         - program_venue.program_times.each do |program_time|
           = f.fields_for :program_times, program_time do |ff|
-            = render 'admin/program_times/form', f: ff
+            = render 'admin/program_times/form', f: ff, allow: allow
 
-        = link_to_add_fields f, :program_times, {}, { class: 'ui tiny compact basic labeled icon button' } do
-          i.plus.icon
-          = translate 'action.target.add', target: ProgramTime.model_name.human
+        - if allow.update_structure?
+          = link_to_add_fields f, :program_times, { locals: { allow: allow } }, { class: 'ui tiny compact basic labeled icon button' } do
+            i.plus.icon
+            = translate 'action.target.add', target: ProgramTime.model_name.human
 
-    - if program_venue.new_record?
-      .ui.tiny.compact.basic.labeled.icon.button.remove-child-button
-        i.trash.icon
-        = translate 'action.target.remove', target: ProgramVenue.model_name.human
-    - else
-      .ui.checkbox
-        = f.check_box :_destroy, class: 'delete-child'
-        = f.label :_destroy, t('action.target.destroy', target: ProgramVenue.model_name.human)
+    - if allow.update_structure?
+      - if program_venue.new_record?
+        .ui.tiny.compact.basic.labeled.icon.button.remove-child-button
+          i.trash.icon
+          = translate 'action.target.remove', target: ProgramVenue.model_name.human
+      - else
+        .ui.checkbox
+          = f.check_box :_destroy, class: 'delete-child'
+          = f.label :_destroy, t('action.target.destroy', target: ProgramVenue.model_name.human)
 
-    .clearfix
+      .clearfix

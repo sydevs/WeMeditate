@@ -30,7 +30,9 @@ module RequireApproval
 
   def publish_drafts!
     update_attribute(:published_at, DateTime.now)
-    self.versions.where(['created_at < ?', self.versions.last.created_at]).delete_all
+    if self.version.present?
+      self.versions.where(['created_at < ?', self.versions.last.created_at]).delete_all
+    end
   end
 
   def discard_drafts!

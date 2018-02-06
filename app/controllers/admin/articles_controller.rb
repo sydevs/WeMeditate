@@ -14,10 +14,17 @@ module Admin
 
     protected
       def article_params
-        params.fetch(:article, {}).permit(
-          :title, :category_id, :priority,
-          sections_attributes: Admin::ApplicationPageController::ALLOWED_SECTION_ATTRIBUTES
-        )
+        if policy(@article || Article).update_structure?
+          params.fetch(:article, {}).permit(
+            :title, :category_id, :priority,
+            sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES
+          )
+        else
+          params.fetch(:article, {}).permit(
+            :title,
+            sections_attributes: Admin::ApplicationPageController::TRANSLATABLE_SECTION_ATTRIBUTES
+          )
+        end
       end
 
   end

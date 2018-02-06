@@ -1,4 +1,6 @@
 
+- allow = policy(@article)
+
 = render 'admin/application_pages/form', page: @article do |f|
   .field
     = f.label :title
@@ -14,8 +16,8 @@
 
   .field
     = f.label :category
-    = f.select :category_id, Category.all.map {|c| [c.name, c.id] }, { include_blank: 'Select Category...' }, { class: 'ui dropdown' }
+    = f.select :category_id, Category.all.map {|c| [c.name, c.id] }, { include_blank: 'Select Category...' }, { class: 'ui dropdown', disabled: !allow.update_structure? }
 
   .field
     = f.label :priority
-    = f.select :priority, Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}, {}, { class: 'ui fluid dropdown' }
+    = f.select :priority, Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}, {}, { class: 'ui fluid dropdown', disabled: !allow.update_structure? }

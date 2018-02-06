@@ -1,5 +1,6 @@
 
 - model = page.class
+- allow = policy(page)
 
 = form_for [:admin, page], html: { class: "ui form #{'error' if page.errors.present?}" } do |f|
   - if page.errors.present?
@@ -20,14 +21,17 @@
       
     label = model.human_attribute_name(:sections)
     
-    .sort-list
+    div class="#{'sort-list' if allow.update_structure?}"
       - sections.each do |section|
         = f.fields_for :sections do |ff|
-          = render 'admin/sections/form', f: ff
+          = render 'admin/sections/form', f: ff, allow: allow
 
-      = link_to_add_fields f, :sections, {}, { class: 'ui tiny compact basic labeled icon button' } do
-        i.plus.icon
-        = translate 'action.target.add', target: Section.model_name.human
+      - if allow.update_structure?
+        = link_to_add_fields f, :sections, { locals: { allow: allow } }, { class: 'ui tiny compact basic labeled icon button' } do
+          i.plus.icon
+          = translate 'action.target.add', target: Section.model_name.human
+      - elsif sections.empty?
+        .ui.label = translate 'messages.not_set'
   
   .ui.hidden.divider
 

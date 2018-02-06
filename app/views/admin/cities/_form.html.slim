@@ -1,55 +1,70 @@
 
+- allow = policy(@city)
+
 = render 'admin/application_pages/form', page: @city do |f|
   .field
     = f.label City.model_name.human
     // This {query} part of these parameter has to be included in a wierd way so that it isn't escaped.
-    .ui.search data-url=(lookup_admin_cities_url(q: '') + '{query}')
-      .ui.right.labeled.left.icon.input
-        i.search.icon
-        = f.text_field :address, class: 'prompt', autocomplete: 'off', placeholder: t('action.target.search_for', target: City.model_name.human)
-        - if params[:city] && params[:city][:latitude] && params[:city][:longitude]
-          a#city_coordinates.ui.tag.label href=coordinates_url(params[:city][:latitude], params[:city][:longitude]) target="_blank"
-            i.marker.icon
-            span #{params[:city][:latitude]}, #{params[:city][:longitude]}
-        - elsif @city.latitude.present? and @city.longitude.present?
-          a#city_coordinates.ui.tag.label href=coordinates_url(@city.latitude, @city.longitude) target="_blank"
-            i.marker.icon
-            span #{@city.latitude}, #{@city.longitude}
-        - else
-          #city_coordinates.ui.tag.label
-            i.marker.icon
-            span = t('messages.not_set')
+    - if allow.update_structure?
+      .ui.search data-url=(lookup_admin_cities_url(q: '') + '{query}')
+        .ui.right.labeled.left.icon.input
+          i.search.icon
+          = f.text_field :address, class: 'prompt', autocomplete: 'off', placeholder: t('action.target.search_for', target: City.model_name.human)
+          - if params[:city] && params[:city][:latitude] && params[:city][:longitude]
+            a#city_coordinates.ui.tag.label href=coordinates_url(params[:city][:latitude], params[:city][:longitude]) target="_blank"
+              i.marker.icon
+              span #{params[:city][:latitude]}, #{params[:city][:longitude]}
+          - elsif @city.latitude.present? and @city.longitude.present?
+            a#city_coordinates.ui.tag.label href=coordinates_url(@city.latitude, @city.longitude) target="_blank"
+              i.marker.icon
+              span #{@city.latitude}, #{@city.longitude}
+          - else
+            #city_coordinates.ui.tag.label
+              i.marker.icon
+              span = t('messages.not_set')
 
-      .results
+        .results
     
-    = f.hidden_field :name
-    = f.hidden_field :longitude
-    = f.hidden_field :latitude
+      = f.hidden_field :name
+      = f.hidden_field :longitude
+      = f.hidden_field :latitude
 
-    - unless @city.new_record?
-      .reset-slug
-        i.linkify.icon
-        em = @city.slug
-        = label_tag :reset_slug do
-          = check_box_tag :reset_slug, 'yes', params[:reset_slug]
-          '  #{translate 'action.target.reset', target: City.human_attribute_name(:slug)}
+      - unless @city.new_record?
+        .reset-slug
+          i.linkify.icon
+          em = @city.slug
+          = label_tag :reset_slug do
+            = check_box_tag :reset_slug, 'yes', params[:reset_slug]
+            '  #{translate 'action.target.reset', target: City.human_attribute_name(:slug)}
+    - else
+      = f.text_field :address, disabled: true
+
   
   .field
     = f.label :banner
-    .ui.fluid.icon.file.input
-      i.image.icon
-      = f.file_field :banner
-      = f.hidden_field :banner_cache
+    - if allow.update_structure?
+      .ui.fluid.icon.file.input
+        i.image.icon
+        = f.file_field :banner
+        = f.hidden_field :banner_cache
+    
+    - if @city.banner.present?
+      = image_tag @city.banner_url, class: 'ui image'
+    - elsif not allow.update_structure?
+      .ui.label = translate 'messages.not_set'
 
   .field
     label = ProgramVenue.model_name.human(count: -1)
     
-    .sort-list
+    div class="#{'sort-list' if allow.update_structure?}"
       - @city.program_venues.each do |program_venue|
         = f.fields_for :program_venues, program_venue do |ff|
-          = render 'admin/program_venues/form', f: ff
+          = render 'admin/program_venues/form', f: ff, allow: allow
 
-      = link_to_add_fields f, :program_venues, {}, { class: 'ui tiny compact basic labeled icon button' } do
-        i.plus.icon
-        = translate 'action.target.add', target: ProgramVenue.model_name.human
+      - if allow.update_structure?
+        = link_to_add_fields f, :program_venues, { locals: { allow: allow } }, { class: 'ui tiny compact basic labeled icon button' } do
+          i.plus.icon
+          = translate 'action.target.add', target: ProgramVenue.model_name.human
+      - elsif @city.program_venues.empty?
+        .ui.label = translate 'messages.not_set'
 

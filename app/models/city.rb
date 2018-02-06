@@ -8,7 +8,7 @@ class City < ApplicationRecord
   # Extensions
   translates :name, :slug
   friendly_id :name, use: :globalize
-  after_validation :geocode_venues
+  after_save :geocode_venues
 
   # Associations
   has_many :sections, -> { order(:order) }, as: :page, dependent: :delete_all
@@ -26,6 +26,10 @@ class City < ApplicationRecord
   # Scopes
   scope :untranslated, -> { joins(:translations).where.not(article_translations: { locale: I18n.locale }) }
 
+  def has_coordinates?
+    latitude.present? and longitude.present?
+  end
+
   def cache_key
     super + '-' + Globalize.locale.to_s
   end
@@ -37,7 +41,7 @@ class City < ApplicationRecord
         attributes = []
 
         program_venues.each do |program_venue|
-          if address_changed? or program_venue.address_changed? or program_venue.latitude.nil? or program_venue.longitude.nil?
+          if address_changed? or program_venue.address_changed? or (address.present? and !program_venue.has_coordinates?)
             ids << program_venue.id
             coordinates = Geocoder.coordinates(program_venue.address + ', ' + address)
             print 'Lookup ' + program_venue.address + ', ' + address + ' = ' + coordinates.to_s + "\r\n"
@@ -51,7 +55,7 @@ class City < ApplicationRecord
         end
 
         ProgramVenue.update(ids, attributes)
-
+        
         print "\r\n"
       end
     end

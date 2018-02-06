@@ -31,7 +31,7 @@
             - else
               = user.languages.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
 
-  - if allow.edit?
+  - if allow.edit? or (user.new_record? and allow.create?)
     .description
       .field
         - if user.new_record?
@@ -41,7 +41,7 @@
           strong = user.email
       .field
         //label Capabilities
-        = f.select :role, User.roles.map {|k, v| [human_enum_name(User, :role, k), k]}, {}, { class: 'ui fluid dropdown' }
+        = f.select :role, @assignable_roles.map {|k, v| [human_enum_name(User, :role, k), k]}, {}, { class: 'ui fluid dropdown' }
       .field
         //label Language Access
         = f.select :languages, I18n.available_locales.collect {|l| [I18nData.languages[l.to_s.upcase], l]}, { include_blank: t('misc.locale.all_languages') }, { class: 'ui fluid search dropdown', multiple: '' }

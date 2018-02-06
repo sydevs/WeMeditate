@@ -14,10 +14,17 @@ module Admin
   
       protected
         def static_page_params
-          params.fetch(:static_page, {}).permit(
-            :title, :role,
-            sections_attributes: Admin::ApplicationPageController::ALLOWED_SECTION_ATTRIBUTES
-          )
+          if policy(@static_page || StaticPage).update_structure?
+            params.fetch(:article, {}).permit(
+              :title, :role,
+              sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES
+            )
+          else
+            params.fetch(:article, {}).permit(
+              :title,
+              sections_attributes: Admin::ApplicationPageController::TRANSLATABLE_SECTION_ATTRIBUTES
+            )
+          end
         end
   
     end

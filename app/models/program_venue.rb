@@ -8,4 +8,8 @@ class ProgramVenue < ApplicationRecord
   validates :address, presence: true
   accepts_nested_attributes_for :program_times, reject_if: :all_blank, allow_destroy: true
 
+  def has_coordinates?
+    latitude.present? and longitude.present?
+  end
+
 end

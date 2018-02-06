@@ -9,7 +9,7 @@ module Admin
       if super_admin?
         true
       elsif regional_admin? and locale_allowed?
-        record.editor?
+        not (record.regional_admin? or record.super_admin?)
       else
         false
       end

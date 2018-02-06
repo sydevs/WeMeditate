@@ -190,6 +190,7 @@ en:
         role: Role  #g
         languages: Languages
         roles:
+          translator: Translator
           editor: Editor
           regional_admin: Regional Admin
           super_admin: Super Admin

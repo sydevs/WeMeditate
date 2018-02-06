@@ -40,7 +40,7 @@ module Admin
         page_params.merge slug: nil
       end
 
-      if page_params[:sections_attributes].present?
+      if policy(@page).update_structure? and page_params[:sections_attributes].present?
         page_params[:sections_attributes].each do |_, section|
           section[:format] = section[:format][section[:content_type]]
         end
@@ -86,11 +86,17 @@ module Admin
     end
 
     protected
-      ALLOWED_SECTION_ATTRIBUTES = [
+      ALL_SECTION_ATTRIBUTES = [
         :id, :order, :_destroy, # Meta fields
-        :header, :content_type, :visibility_type, :visibility_countries,
+        :content_type, :visibility_type, :visibility_countries,
         :title, :subtitle, :text, :quote, :credit, :image, :action_text, :url, # These are the options for different content_types
-        { format: [ :text, :image, :action ], images: [] }, # For image uploads
+        { format: [ :text, :image, :action ], images: [] },
+      ]
+
+      TRANSLATABLE_SECTION_ATTRIBUTES = [
+        :id, # Meta fields
+        :title, :subtitle, :text, :quote, :credit, :credit_subtitle, :image, :action_text, :action_url, :video_url, # These are the options for different content_types
+        { images: [] }, # For image uploads
       ]
 
       def set_model klass
