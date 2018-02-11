@@ -1,5 +1,7 @@
 
+- partial = ['sections/type', section.content_type]
+- partial << section.format if [:text, :image, :action].include? section.content_type.to_sym
+
 p
-  = section.content_type
-  '  - 
+  strong = render partial.join('/'), section: section
   small = section.attributes.to_s

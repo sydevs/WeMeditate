@@ -36,7 +36,7 @@
           i.calendar.icon
           .content
             - if page.published?
-              = translate 'messages.updated_on', date: l(page.published_at, format: :long)
+              = translate 'messages.updated_on_by', date: l(page.published_at, format: :long), author: page.last_changed_by.email
             - else
               = translate 'messages.not_published'
 
