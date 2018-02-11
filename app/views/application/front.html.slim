@@ -1,8 +1,6 @@
 
 - content_for :title, 'Front'
 
-= translate :hello
-
 p
   ' Switch User:
   = switch_user_select
@@ -16,3 +14,13 @@ p
     = link_to 'Log Out', destroy_user_session_path, method: :delete
   - else
     = link_to 'Log In', new_user_session_path
+
+h3 Cities
+ul
+  - City.all.each do |city|
+    li = link_to city.name, url_for(city)
+
+h3 Static Pages
+ul
+  - StaticPage.all.each do |static_page|
+    li = link_to static_page.title, url_for(static_page)

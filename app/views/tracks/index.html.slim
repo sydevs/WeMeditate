@@ -1,0 +1,14 @@
+
+- content_for :title, 'Music'
+
+p
+  strong Instruments: 
+  = render @instrument_filters
+
+p
+  strong Moods: 
+  = render @mood_filters
+
+h3 Tracks
+ul
+  = render @tracks

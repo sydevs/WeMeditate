@@ -31,9 +31,10 @@ Rails.application.routes.draw do
 
       resources :articles, :cities, only: [:show]
       resources :categories, only: [:index, :show]
-      resources :meditations, only: [:show]
+      resources :meditations, only: [:index, :show]
       resources :treatments, only: [:index, :show]
-      #resources :static_pages, only: [:show], path: '/'
+      resources :tracks, only: [:index]
+      resources :static_pages, only: [:show], path: '/'
     end
   end
 

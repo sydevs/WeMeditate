@@ -1,0 +1,10 @@
+
+- content_for :title, "Article: #{@article.title}"
+
+h3 Attributes
+ul
+  - @article.attributes.each do |key, value|
+    li #{key}: #{value}
+
+h3 Content
+= render @article.sections

@@ -3,19 +3,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   #protect_from_forgery with: :exception
 
-  #before_action :set_locale
- 
   def front
   end
 
   protected
-    #def set_locale
-    #  I18n.locale = params[:locale] || I18n.default_locale
+    #def url_options
+    #  { locale: I18n.locale }.merge(super)
     #end
-
-    def default_url_options(options = {})
-      { locale: I18n.locale }.merge options
-    end
     
     def layout_by_resource
       if devise_controller?

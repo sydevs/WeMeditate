@@ -1,0 +1,10 @@
+
+- content_for :title, @static_page.title
+
+h3 Attributes
+ul
+  - @static_page.attributes.each do |key, value|
+    li #{key}: #{value}
+
+h3 Content
+= render @static_page.sections

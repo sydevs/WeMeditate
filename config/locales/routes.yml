@@ -1,7 +1,7 @@
 
 en:
   routes:
-    admin: test
+    admin: admin
     articles: articles
     cities: cities
     categories: categories

@@ -1,0 +1,14 @@
+
+- content_for :title, 'Meditations'
+
+p
+  strong Durations: 
+  = render @duration_filters
+
+p
+  strong Goals: 
+  = render @goal_filters
+
+h3 Meditations
+ul
+  = render @meditations

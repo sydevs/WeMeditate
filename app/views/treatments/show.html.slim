@@ -1,0 +1,7 @@
+
+- content_for :title, "Treatment: #{@treatment.name}"
+
+h3 Attributes
+ul
+  - @treatment.attributes.each do |key, value|
+    li #{key}: #{value}

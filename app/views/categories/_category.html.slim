@@ -1,0 +1,11 @@
+
+hr
+
+h3 = category.name
+ul
+  - category.attributes.each do |key, value|
+    li #{key}: #{value}
+
+u Articles
+ul
+  = render category.articles
