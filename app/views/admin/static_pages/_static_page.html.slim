@@ -3,7 +3,7 @@
   - if static_page.translated_locales.include? I18n.locale
     .item
       i.linkify.icon
-      .content = static_page.slug
+      .content = url_for(static_page)
   - else
     .item
       i.orange.warning.sign.icon

@@ -3,7 +3,7 @@
   - if article.translated_locales.include? I18n.locale
     .item
       i.linkify.icon
-      .content = article.slug
+      .content = url_for(article)
   - else
     .item
       i.orange.warning.sign.icon

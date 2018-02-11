@@ -17,18 +17,18 @@
       = f.label :title
       = f.text_field :title
 
-      - if allow.update_structure? and not @page.new_record?
+      - if allow.update_structure? and not page.new_record?
         .ui.accordion
           .title
             i.dropdown.icon
             i.linkify.icon
-            em = url_for(@page)
+            em = url_for(page)
           .content
             //= f.label :slug
             .ui.labeled.input
               .ui.basic.label
-                = url_for(@page).split('/')[0...-1].join('/') + '/'
-              = f.text_field :slug, placeholder: @page.id
+                = url_for(page).split('/')[0...-1].join('/') + '/'
+              = f.text_field :slug, placeholder: page.id
 
   = yield f
 

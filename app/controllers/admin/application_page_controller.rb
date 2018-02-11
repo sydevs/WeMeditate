@@ -35,11 +35,6 @@ module Admin
     end
 
     def update page_params
-      # TODO: Fix slug resetting
-      if params[:reset_slug]
-        page_params.merge slug: nil
-      end
-
       if policy(@page).update_structure? and page_params[:sections_attributes].present?
         page_params[:sections_attributes].each do |_, section|
           section[:format] = section[:format][section[:content_type]]

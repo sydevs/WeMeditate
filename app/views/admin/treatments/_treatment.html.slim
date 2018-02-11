@@ -10,7 +10,7 @@
         - if treatment.translated_locales.include? I18n.locale
           .item
             i.linkify.icon
-            .content = treatment.slug
+            .content = url_for(treatment)
         - else
           .item
             i.orange.warning.sign.icon

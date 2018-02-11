@@ -42,7 +42,7 @@ module Admin
 
     private
       def category_params
-        params.fetch(:category, {}).permit(:name)
+        params.fetch(:category, {}).permit(:name, :slug)
       end
 
   end

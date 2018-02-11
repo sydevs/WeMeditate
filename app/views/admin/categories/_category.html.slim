@@ -10,7 +10,7 @@
         - if category.translated_locales.include? I18n.locale
           .item
             i.linkify.icon
-            .content = category.slug
+            .content = url_for(category)
         - else
           .item
             i.orange.warning.sign.icon
@@ -26,9 +26,8 @@
           = f.text_field :name, placeholder: Category.human_attribute_name(:name)
         
       - unless category.new_record?
-        .field.reset-slug
-          i.linkify.icon
-          em = category.slug
-          = label_tag :reset_slug do
-            = check_box_tag :reset_slug, 'yes', params[:reset_slug]
-            '  #{translate 'action.target.reset', target: Category.human_attribute_name(:slug)}
+        .field
+          .ui.labeled.input
+            .ui.basic.label
+              = url_for(category).split('/')[0...-1].join('/') + '/'
+            = f.text_field :slug, placeholder: category.id

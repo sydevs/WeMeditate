@@ -78,6 +78,18 @@ en:
           home: Home Page
           contact: Contact Page
           shri_mataji: About Shri Mataji
+          subtle_system: Subtle System
+          chakra_1: 'Chakra: Mooladhara'
+          chakra_2: 'Chakra: Swadhisthan'
+          chakra_3: 'Chakra: Nabhi'
+          chakra_3b: 'Chakra: Void'
+          chakra_4: 'Chakra: Anahat'
+          chakra_5: 'Chakra: Vishuddhi'
+          chakra_6: 'Chakra: Agnya'
+          chakra_7: 'Chakra: Sahasrara'
+          channel_left: 'Channel: Ida (Left)'
+          channel_right: 'Channel: Pingala (Right)'
+          channel_center: 'Channel: Sushumna (Center)'
         sections: Content
 
       program_venue:

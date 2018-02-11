@@ -10,7 +10,7 @@
   - if city.translated_locales.include? I18n.locale
     .item
       i.linkify.icon
-      .content = city.slug
+      .content = url_for(city)
   - unless city.program_venues.empty?
     .item
       i.home.icon
