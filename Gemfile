@@ -66,6 +66,7 @@ gem 'carrierwave-i18n'
 gem 'globalize-versioning', github: 'aaroncraigie/globalize-versioning' # for paper_trail support
 gem 'i18n_data'
 gem 'devise-i18n'
+gem 'route_translator'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

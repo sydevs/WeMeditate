@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'switch_user' => 'switch_user#set_current_user'
   
   scope "(:locale)" do
+  #localized do
     root to: "application#front"
     
     namespace :admin do
@@ -29,10 +30,11 @@ Rails.application.routes.draw do
     end
 
     resources :articles, :cities, only: [:show]
-    resources :static_pages, only: [:show], page: '/'
+    resources :static_pages, only: [:show], path: '/'
     resources :categories, only: [:index, :show]
     resources :meditations, only: [:show]
     resources :treatments, only: [:index, :show]
   end
+  #end
 
 end

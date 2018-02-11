@@ -1,0 +1,9 @@
+
+en:
+  routes:
+    admin: test
+    articles: articles
+    cities: cities
+    categories: categories
+    meditations: meditations
+    treatments: treatments
