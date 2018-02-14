@@ -1,14 +1,131 @@
 
 - content_for :title, 'Music'
 
-p
-  strong Instruments: 
-  = render @instrument_filters
-
-p
-  strong Moods: 
-  = render @mood_filters
-
-h3 Tracks
-ul
-  = render @tracks
+/! main
+main.page-music
+  .container_narrow.container
+    h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s" 
+      | Music
+      span for meditation
+    /! description
+    section.s__description
+      .section__wrap.has__triangle.has__triangle_right
+        .article
+          .article__content
+            h1.article__title Subtitle for music
+            p.article__text
+              | It's easier to concentrate with music, so you get meditation deeper.
+    /! /description
+    /! music
+    section.s__music
+      .music__container
+        .music__subtitle Choose the mood
+        .mood__container
+          = render @mood_filters
+          //
+            a.btn.btn__popup href="#"  Покой
+            a.btn.btn__popup href="#"  Радость
+            a.btn.btn__popup href="#"  Интеграция
+            a.btn.btn__popup href="#"  Невинность
+        .music__subtitle Select an instrument
+        .instrument__container
+          //= render @instrument_filters
+          a href="#" 
+            i.icon-mus-instrument-1
+          a href="#" 
+            i.icon-mus-instrument-2
+          a href="#" 
+            i.icon-mus-instrument-3
+          a href="#" 
+            i.icon-mus-instrument-4
+    /! music
+    /! player
+    section.s__player
+      .player-wrap.track-view.light
+        audio preload="" 
+        .player
+          .song-info
+            p.title-text.ellipsis.song-title
+            p.artist-text.ellipsis.song-artist
+          .controls
+            .play-pause
+              .play-button.icon-play-icon
+              .pause-button
+                .equalizer
+                  .equalizer-bar
+                  .equalizer-bar
+                  .equalizer-bar
+                  .equalizer-bar
+                  .equalizer-bar
+                  .equalizer-bar
+            .seek-wrap
+              input.seek-bar max="100" min="0" step=".1" type="range" value="0" /
+              .time-wrap
+                .current-time 0:00:00
+                .duration-time 0:00:00
+            .controls-container
+              a.prev-button.icon-switch-music-icon-left href="#" 
+              a.next-button.icon-switch-music-icon-right href="#" 
+            .volume-wrap
+              .mute-button
+              input.volume-bar max="100" min="0" step="1" type="range" value="100" /
+          .playlist-wrap
+            h2.playlist-title.title
+              | Плейлист
+              span.playlist-mood
+            .playlist-mood-box
+              .mood-text Бодрость
+              .mood-img style=("background-image: url(img/music/mood-img.png)") 
+            ol
+              li.song-info
+                i.icon-play-icon
+                a.song-title data-artist=("Shivkumar Sharma") href="http://incompetech.com/music/royalty-free/mp3-royaltyfree/Hitman.mp3"  Raag Durga
+                p.song-artist Shivkumar Sharma
+                .duration-time 03:20
+              li.song-info
+                i.icon-play-icon
+                a.song-title data-artist=("Ali Akbar Khan") href="http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3"  Morning Meditation
+                p.song-artist Ali Akbar Khan
+                .duration-time 04:27
+              li.song-info
+                i.icon-play-icon
+                a.song-title data-artist=("Kavach Devi") href="http://www.jplayer.org/audio/mp3/Miaow-01-Tempered-song.mp3"  Sahaja Yoga
+                p.song-artist Kavach Devi
+                .duration-time 05:41
+              li.song-info
+                i.icon-play-icon
+                a.song-title data-artist=("N. Rajam") href="http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3"  Rag Malkauns Teental
+                p.song-artist N. Rajam
+                .duration-time 04:05
+              li.song-info
+                i.icon-play-icon
+                a.song-title data-artist=("Kavach Devi") href="http://www.jplayer.org/audio/mp3/Miaow-01-Tempered-song.mp3"  Sahaja Yoga
+                p.song-artist Kavach Devi
+                .duration-time 05:41
+              li.song-info
+                i.icon-play-icon
+                a.song-title data-artist=("N. Rajam") href="http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3"  Rag Malkauns Teental
+                p.song-artist N. Rajam
+                .duration-time 04:05
+    /! /player
+    /! article-list
+    section.s__article-list
+      .list__item
+        h3.h3.item__title.title Title
+        p.item__text.text
+          | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab sed maxime quia doloribus sit, iure assumenda quo accusamus voluptatem. Qui vero cum quo dicta harum necessitatibus eligendi dolor amet. Quo.
+      .list__item
+        h3.h3.item__title.title Title
+        p.item__text.text
+          | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab sed maxime quia doloribus sit, iure assumenda quo accusamus voluptatem. Qui vero cum quo dicta harum necessitatibus eligendi dolor amet. Quo.
+      .list__item
+        h3.h3.item__title.title Title
+        p.item__text.text
+          | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab sed maxime quia doloribus sit, iure assumenda quo accusamus voluptatem. Qui vero cum quo dicta harum necessitatibus eligendi dolor amet. Quo.
+      .list__item
+        h3.h3.item__title.title Title
+        p.item__text.text
+          | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab sed maxime quia doloribus sit, iure assumenda quo accusamus voluptatem. Qui vero cum quo dicta harum necessitatibus eligendi dolor amet. Quo.
+    /! article-list
+  /! /container
+/! /main

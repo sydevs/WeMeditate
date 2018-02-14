@@ -1,0 +1,94 @@
+.plyr--video .plyr__controls
+  align-items: center
+  display: flex
+  padding: 0
+  height: 46px
+  background-color: rgba(0, 0, 0, 0.55)
+
+.plyr
+  .plyr__progress
+    top: 0
+    position: absolute
+    display: inline-block
+    width: 100%
+    left: 0
+    margin-left: 0
+    transform: translateY(-38%)
+
+  .plyr__time
+    order: 2
+
+  .plyr__volume
+    margin-top: 5px
+
+  button[data-plyr="fullscreen"]
+    order: 3
+    margin-right: 5px
+
+  button[data-plyr="play"], button[data-plyr="pause"]
+    margin-left: 5px
+    margin-right: 10px
+
+.plyr--video .plyr__controls button.tab-focus:focus, .plyr--video .plyr__controls button:hover
+  background: rgba(197, 224, 220, 0.3)
+
+.plyr--video .plyr__progress--buffer, .plyr--video .plyr__volume--display
+  background: rgba(255, 255, 255, .9)
+
+.plyr-video-title
+  display: block
+  margin-right: auto
+  font-size: 16px
+  line-height: 28px
+  font-family: $raleway-semi
+
+.plyr__play-large
+  border-radius: 0
+  padding: 0
+  border: none
+  margin: 0!important
+  svg
+    left: 0
+    width: 85px
+    height: 85px
+
+//  Magnific-popup
+.mfp-bg
+  mix-blend-mode: multiply
+  background: #5f2f18
+  background-blend-mode: multiply
+  opacity: 1
+
+.mfp-close-btn-in .mfp-close
+  color: white
+  opacity: 1
+  transform: translate(30%, -100%)
+
+.my-mfp-zoom-in
+  .zoom-anim-dialog
+    opacity: 0
+    transition: all 0.2s ease-in-out
+    transform: scale(0.8)
+  &.mfp-ready .zoom-anim-dialog
+    opacity: 1
+    transform: scale(1)
+  &.mfp-removing .zoom-anim-dialog
+    transform: scale(0.8)
+    opacity: 0
+  &.mfp-bg
+    opacity: 0
+    transition: opacity 0.3s ease-out
+  &.mfp-ready.mfp-bg
+    opacity: 1
+  &.mfp-removing.mfp-bg
+    opacity: 0
+
+#custom-video
+  width: 100%
+
+@media screen and (max-width: 768px)
+  #video-popup
+    display: block
+    width: 90%
+    margin: 0 auto
+

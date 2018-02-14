@@ -1,0 +1,874 @@
+@import "_mixins/device-media"
+
+.page-meditation-improving
+
+  padding-top: 175px
+
+  .s_description
+    margin-bottom: 39vh
+
+  section.s_together
+    @media screen and (max-width: 1440px)
+      margin-bottom: 10%
+
+  .btn-circle-svg
+    display: inline-flex
+    -webkit-transform: translateZ(0) scale(1.0, 1.0)
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    backface-visibility: hidden
+    user-select: none
+    text-align: center
+    position: relative
+    width: 311px
+    height: 311px
+    transition: all .5s ease
+    @media screen and (max-width: 1400px)
+      width: 300px
+      height: 300px
+      margin-top: 35px
+    @media screen and (max-width: 768px)
+      margin: 25px 0
+      width: 180px
+      height: 180px
+    svg
+      height: 100%
+      width: 100%
+      stroke: $dark-gray
+    span
+      text-align: center
+      transition: all .5s ease
+      display: inline-block
+      width: 100%
+      font-family: $raleway-medium
+      color: $dark-gray
+      font-size: 30px
+      line-height: 30px
+      position: absolute
+      font-weight: normal
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      will-change: transform
+      text-rendering: optimizeLegibility !important
+      font-smoothing: antialiased !important
+      -webkit-font-smoothing: antialiased !important
+      -moz-osx-font-smoothing: grayscale !important
+      @media screen and (max-width: 1400px)
+        font-size: 25px
+        line-height: 25px
+      @media screen and (max-width: 768px)
+        font-size: 20px
+        line-height: 20px
+    &:hover
+      -webkit-transform: scale3d(1.1, 1.1, 1.1)
+      transform: scale(1.1)
+      svg
+        stroke: $orange
+        transform-origin: center
+      span
+        color: $orange
+
+  .s_awaken
+    background-size: cover
+    min-height: 1346px
+    background-repeat: no-repeat
+    background-position: bottom center
+    margin-bottom: 110px
+    text-align: center
+    .s_title
+      left: 95%
+      top: 150%
+      span
+        color: #fff
+    .section
+      &_description
+        margin-bottom: 17px
+        padding-top: 75px
+        font-size: 28px
+        line-height: 35px
+        color: $light-gray
+        text-align: center
+        @media screen and (max-width: 1024px)
+          font-size: 24px
+          line-height: 35px
+      &_title
+        text-align: center
+        font-size: 50px
+        color: $dark-gray
+        font-weight: bold
+        //margin-bottom: 46px
+        margin-bottom: 35px
+        font-family: $raleway-bold
+        @media screen and (max-width: 1024px)
+          color: #7b7b7b
+          font-size: 30px
+          margin-bottom: 0
+        span
+          @media only screen and (max-width: 736px)
+            display: block
+            line-height: 40px
+      &_btn
+        cursor: pointer
+        display: inline-flex
+        width: 290px
+        height: 290px
+        background-size: cover
+        background: url(../img/improving/graphic-button.svg) no-repeat center center
+        justify-content: center
+        align-items: center
+        transition: all .5s ease
+        transform: scale(1)
+        will-change: scale
+        &:hover
+          transition: all .5s ease
+          transform: scale(1.05)
+          background: url(../img/improving/graphic-button_orange.svg) no-repeat center center
+          span
+            color: $orange
+        span
+          font-weight: bold
+          font-size: 35px
+          color: $dark-gray
+          transition: all .5s ease
+
+  .s_technique
+    margin-bottom: -4vh
+    .player-wrap
+      @media screen and (max-width: 768px)
+        margin: 0
+        max-width: 100%
+        margin-bottom: 35px
+        .player
+          .controls-container
+            min-width: 20%
+      @media screen and (max-width: 480px)
+        .player
+          .controls-container
+            min-width: 80%
+            .button-container
+              align-self: center
+    .section__title
+      top: 98%
+    .article
+      &:first-of-type
+        .article__content
+          margin-top: -5px
+          @media screen and (max-width: 480px)
+            .article__text
+              p
+                margin-bottom: 70px
+        @media screen and (max-width: 1025px)
+          flex-direction: column
+          .article__content
+            margin-top: 30px
+            .player-wrap
+              max-width: 100%
+            .seek-wrap
+              width: 80%
+    .article__grid
+      position: relative
+      display: flex
+      flex-wrap: wrap
+      justify-content: space-between
+      &.has__triangle
+        &::after
+          bottom: -167px
+          z-index: 10
+          @media screen and (max-width: 768px)
+            display: none
+    .article_technique
+      padding: 0 145px
+      flex-wrap: nowrap
+      flex-basis: 100%
+      margin-bottom: 150px
+      display: flex
+      position: relative
+      &:nth-child(even)
+        .article__content
+          padding-left: 30px
+          @media screen and (max-width: 768px)
+            padding-left: 0
+        .article__image
+          position: relative
+          margin: 0 0 0 95px
+          background-size: cover
+          background-position: center center
+          order: 2
+          @media screen and (max-width: 768px)
+            align-self: flex-end
+          @media screen and (max-width: 480px)
+            margin: 0
+        &:after
+          content: ''
+          opacity: .5
+          display: block
+          height: 235px
+          width: 705px
+          position: absolute
+          right: -321px
+          top: -118px
+          background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.18) 25%, rgba(241, 212, 175, 0.7) 100%)
+          z-index: -1
+          @media screen and (max-width: 1024px)
+            right: -440px
+          @media screen and (max-width: 768px)
+            right: -510px
+          @media screen and (max-width: 480px)
+            right: -610px
+        .article__number
+          right: 0
+      &:nth-child(odd)
+        .article__image
+          background-size: cover
+          background-position: center center
+          position: relative
+          margin: 0 95px 0 0
+          @media screen and (max-width: 768px)
+            margin: 0
+            align-self: flex-start
+          @media screen and (max-width: 480px)
+            margin: 0
+        &::after
+          content: ''
+          opacity: .5
+          display: block
+          height: 235px
+          width: 705px
+          position: absolute
+          left: -321px
+          top: -118px
+          background: linear-gradient(to right, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.18) 25%, rgba(197, 224, 220, 0.3) 100%)
+          z-index: -1
+          @media screen and (max-width: 1024px)
+            left: -440px
+          @media screen and (max-width: 768px)
+            left: -510px
+          @media screen and (max-width: 480px)
+            left: -610px
+        .article__number
+          left: 0
+      @media screen and (max-width: 1024px)
+        padding: 0 65px
+      @media only screen and (min-device-width: 320px) and (max-device-width: 736px) and (orientation: portrait)
+        &:last-of-type
+          margin-bottom: 0
+      @media screen and (max-width: 480px)
+        padding: 0 15px
+        width: 100%
+    .article__image
+      width: 400px
+      height: 400px
+      margin: 0 auto 25px
+      flex: 0 0 auto
+      position: relative
+      z-index: 20
+      background-size: cover
+      background: no-repeat center center
+      @media screen and (max-width: 768px)
+        width: 300px
+        height: 300px
+      @media screen and (max-width: 480px)
+        width: 100%
+    .article__title
+      text-align: left
+    .article__btn
+      .btn
+        padding: 17px 18px
+    .article__content
+      margin-top: 65px
+      flex: 1 1 auto
+      @media screen and (max-width: 768px)
+        margin-top: 30px
+    .article__number
+      font-family: $raleway
+      font-size: 35px
+      line-height: 55px
+      color: #e8e8e8
+      font-weight: 100
+      position: absolute
+      top: -86px
+
+  .popup
+    display: none
+    box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.17)
+    z-index: 50
+    background-color: #fff
+    top: 60px
+    right: -50px
+    position: absolute
+    width: 625px
+    padding: 75px 80px 75px 65px
+    &::before
+      content: ''
+      position: absolute
+      top: -16px
+      right: 60px
+      border: 8px solid transparent
+      border-bottom: 8px solid white
+    &__subtitle
+      font-size: 25px
+      line-height: 28px
+      color: #5e6063
+      font-family: $raleway-medium
+      margin-bottom: 45px
+    .mood__container
+      display: flex
+      justify-content: space-between
+      flex-direction: row
+      flex-wrap: wrap
+    a.btn
+      border-color: #9d9d9c
+      color: #9d9d9c
+      padding: 2px 0
+      display: inline-block
+      width: 130px
+      margin-bottom: 40px
+      font-family: $futura-book
+      font-weight: 600
+      &:last-of-type
+        margin-left: 45px
+        margin-right: auto
+    .icon-arrow-close-pop-up
+      position: absolute
+      top: 40px
+      right: 55px
+      color: #9d9d9c
+      font-size: 13px
+
+  .instrument__container
+    max-width: 625px
+    display: flex
+    justify-content: space-around
+    a
+      transition: all 1s ease
+      i
+        color: gray
+        font-size: 50px
+        transition: all 1s ease
+      &.active
+        i
+          color: $blue
+      @media screen and (min-width: 1025px)
+        &:hover
+          i
+            color: $blue
+
+  @media screen and (max-width: 1024px)
+    .s_title
+      left: 25px
+      top: 103%
+  @media screen and (max-width: 768px)
+
+    .s_awaken
+      margin-bottom: 0
+      background-image: url(../img/improving/bg_awaken-mobile-b.png) !important
+      background-position: bottom center
+      min-height: 1110px
+      .s_title
+        top: 118%
+        left: 93%
+
+    .s_description
+      margin-top: -175px
+      margin-bottom: 150px
+
+    .s_together
+      margin-bottom: 150px
+
+    .has__triangle
+      &::after
+        width: 164px
+        height: 124px
+        bottom: -380px
+
+    .s_title
+      left: 15px
+      top: 100%
+
+    .volume-wrap
+      display: none
+
+    .seek-wrap
+      margin-top: 40px
+      width: 100% !important
+      max-width: 100% !important
+      input
+        width: 100%
+        min-width: 100% !important
+
+  @media screen and (max-width: 480px)
+    .s_awaken
+      min-height: 840px
+      .container
+        padding: 0 20px
+      .s_title
+        display: none
+
+    .s_technique
+      .s_title
+        display: none
+
+    .s_description
+      margin-top: 30px
+      .container_narrow
+        padding: 0 30px
+
+    .s_together
+      .s_title
+        top: 140%
+        left: 36px
+
+    .song-info
+      display: block
+      width: 100%
+      padding: 0
+
+    .s_technique .player-wrap .player .song-info
+      padding-right: 0
+      display: flex
+      position: absolute
+      top: -50px
+      left: 0
+      margin-bottom: 40px
+      .title-text, .artist-text
+        font-size: 14px
+        font-family: $raleway
+      .artist-text
+        position: relative
+        &::before
+          content: '-'
+          display: inline-block
+          margin: 0 5px
+
+    .popup
+      padding: 50px 30px
+      width: 102vw
+      top: 70px
+      transform: translateX(-5%)
+      &::before
+        right: 10%
+      .mood__container
+        margin-bottom: 55px
+        display: flex
+        width: 100%
+        flex-wrap: wrap
+        justify-content: space-between
+      .icon-arrow-close-pop-up
+        right: 34px
+      a.btn
+        margin-bottom: 30px
+        &:last-of-type
+          margin: 0
+
+// Common styles
+.mute-button
+  cursor: pointer
+  &.icon-volum-icon-muted
+    &::before
+      color: $blue
+
+.section_btn
+  cursor: pointer
+  display: inline-flex
+  width: 281px
+  height: 281px
+  background-origin: content-box
+  background-size: cover
+  background: url(../img/improving/graphic-button.svg) no-repeat
+  justify-content: center
+  align-items: center
+  transition: all .5s ease
+  will-change: transform
+  transform-origin: center
+  backface-visibility: hidden
+  transform: translateZ(0)
+  -webkit-font-smoothing: subpixel-antialiased
+  -webkit-transform: scale3d(1, 1, 1)
+  background-position: top left
+  &:hover, &.active
+    will-change: transform
+    transform-origin: center
+    -webkit-transform: scale3d(1.1, 1.1, 1.1)
+    background: url(../img/improving/graphic-button_orange.svg) no-repeat
+    background-size: cover
+    background-position: top left
+    span
+      will-change: transform
+      color: $orange
+  span
+    font-weight: bold
+    font-size: 35px
+    color: $dark-gray
+    transition: all .5s ease
+    backface-visibility: hidden
+    transform: translateZ(0)
+    -webkit-font-smoothing: subpixel-antialiased
+
+.s_description
+  .section__wrap
+    display: block
+    min-height: 100%
+    &::after
+      bottom: -254px
+    .article
+      max-width: 670px
+      .article__title
+        font-family: $raleway-semi
+        font-weight: 600
+      .article__text
+        p
+          margin-bottom: 10px
+
+.player-wrap
+  margin-bottom: 30px
+  max-width: 575px
+  margin-right: -160px
+  .player
+    position: relative
+    padding-left: 80px
+    .song-info
+      padding-right: 150px
+    .song
+      &-title
+        font-size: 25px
+        line-height: 29px
+        color: #5e6063
+      &-artist
+        font-size: 18px
+        line-height: 29px
+        color: #9d9d9c
+    .controls-container
+      position: absolute
+      right: 0
+      top: 0
+      display: flex
+      .playlist-button
+        margin-left: 55px
+      .next-button
+        margin-left: 15px
+      @media screen and (max-width: 738px)
+        display: flex
+        justify-content: space-between
+        min-width: 80%
+    .controls
+      justify-content: space-between
+      display: flex
+      flex-direction: row
+      flex-wrap: wrap
+      margin-left: -80px
+      .play-pause
+        left: 0
+        top: 0
+        position: absolute
+        .play-button, .pause-button
+          cursor: pointer
+          position: absolute
+          top: 0
+          left: 0
+          height: 35px
+          width: 35px
+          font-size: 35px
+        .pause-button
+          transition: all .3s ease
+          display: none
+          border: 1px solid $light-gray
+          @keyframes equalize-2
+            0%
+              transform: translate3d(0, 0, 0)
+
+            50%
+              transform: translate3d(0, 80%, 0)
+
+            100%
+              transform: translate3d(0, 0, 0)
+
+          .equalizer
+            font-size: 0
+            height: 24px
+            overflow: hidden
+            position: absolute
+            top: 5px
+            left: 9px
+
+          .equalizer-bar
+            display: inline-block
+            width: 1px
+            height: 100%
+            background: $light-gray
+            margin-right: 2px
+            transition: all .3s ease
+            &:nth-child(1)
+              height: 70%
+              animation: equalize-2 500ms ease infinite
+            &:nth-child(2)
+              animation: equalize-2 500ms linear infinite
+            &:nth-child(3)
+              height: 70%
+              animation: equalize-2 500ms 200ms ease infinite
+            &:nth-child(4)
+              animation: equalize-2 500ms 150ms linear infinite
+            &:nth-child(5)
+              height: 70%
+              animation: equalize-2 500ms 150ms ease infinite
+            &:nth-child(6)
+              height: 70%
+              animation: equalize-2 500ms 200ms ease infinite
+
+          &:hover
+            transition: all .3s ease
+            border: 1px solid $blue
+            .equalizer-bar
+              background: $blue
+    .mute-button, .prev-button, .next-button, .next-button, .playlist-button, .play-button, .pause-button
+      color: $dark-gray
+      font-size: 20px
+      transition: all .5s ease
+      &:hover
+        color: $blue
+    .prev-button, .next-button
+      font-size: 13px
+
+    .playlist-button
+      vertical-align: middle
+      text-align: center
+      font-size: 16px
+      color: $dark-gray
+      display: inline-block
+      padding: 10px 5px
+      position: relative
+      border: 1px solid transparent
+      transition: all 1s ease
+      span
+        text-align: left
+        width: 150px
+        transition: opacity 1s ease
+        opacity: 0
+        display: inline
+        position: absolute
+        top: -105px
+        left: -60px
+        font-size: 12px
+        line-height: 22px
+        color: $blue
+        transform: rotate(-90deg)
+        font-family: $raleway
+        @media screen and (max-width: 768px)
+          display: none
+      &:hover,
+      &.active
+        border: 1px solid $blue
+        color: $blue
+        span
+          opacity: 1
+
+    .seek-wrap
+      input
+        width: 100%
+        min-width: 400px
+
+    .time-wrap
+      margin-top: -2px
+      width: 100%
+      display: flex
+      justify-content: space-between
+
+    .current-time,
+    .duration-time
+      font-size: 12px
+      line-height: 27px
+      font-family: $futura-book
+      color: #9d9d9c
+
+    .volume-wrap
+      user-select: none
+      background-color: #fff
+      input
+        width: 100px
+      .mute-button
+        position: relative
+        margin-right: 4px
+        display: inline-flex
+        align-self: center
+        &::before
+          content: '\e90a'
+          position: absolute
+          top: -18px
+          left: -18px
+          font-family: yoga-icon, sans-serif
+        &.muted
+          &:before
+            content: '\e913'
+            color: $blue
+      @media screen and (max-width: 1024px)
+        display: none
+
+    .playlist-wrap
+      display: none
+
+    input[type='range']
+      outline: none
+      -webkit-appearance: none !important
+      background: $blue
+      height: 3px
+      &::-moz-range-thumb
+        background: $blue
+        height: 11px
+        width: 11px
+        border-radius: 0
+        cursor: pointer
+      &::-moz-range-track
+        border: none
+        background-color: $blue
+        outline: none
+      &::-webkit-slider-thumb
+        -webkit-appearance: none !important
+        background: $blue
+        height: 11px
+        width: 11px
+        cursor: pointer
+        border: none
+      &:focus
+        outline: none
+      @media screen and (max-width: 1024px)
+        height: 5px
+        &::-webkit-slider-thumb
+          height: 20px
+          width: 20px
+
+    .seek-wrap
+      cursor: pointer
+      input
+        cursor: pointer
+      @media screen and (min-width: 1100px)
+        width: 70%
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape)
+  .page-meditation-improving .s_technique .article:first-of-type .article__content .seek-wrap
+    width: 100%
+
+@media only screen and (min-width: 768px) and (orientation: portrait)
+  .page-meditation-improving .s_awaken .s_title
+    top: 150%
+
+.page-meditation-improving
+
+  .s_technique
+    .article_technique
+      .article__image
+        img
+          display: block
+          width: 100%
+          height: auto
+
+  @media screen and (max-width: 1280px)
+    .player-wrap .player .volume-wrap
+      display: none
+
+  @include laptop
+
+
+    .s_technique
+      .article_technique
+        padding: 0 100px
+
+        &:not(:first-of-type)
+          .article__content
+            margin: 0 !important
+            padding: 0 !important
+            align-self: flex-start
+
+  @include tablet
+
+    padding-top: 175px
+
+    .mobile-title
+      display: block
+
+    .s_title
+      display: none
+
+    .s_awaken
+      margin: 0
+      background-image: image-url("improving/bg_awaken-mobile-tablet-min.jpg") !important
+      background-size:  1024px auto
+      min-height: 992px
+
+      .section_description
+        padding-top: 75px
+        .section__title
+          font-size: 30px
+
+    .s_description
+      margin-top: -85px
+      margin-bottom: 175px
+
+    section.s_together
+      &:before
+        height: 104%
+
+    .s_technique
+
+      .article
+
+        &__grid.has__triangle
+          &::after
+            display: none
+
+        &:first-of-type
+          .article__image
+            margin-bottom: 50px !important
+          .article__content
+            .seek-wrap
+              width: 100%
+
+      .article_technique
+        margin-bottom: 225px
+        padding: 0 15px
+
+        &:nth-child(even)
+          .article__content
+            margin: 0
+            padding: 0
+
+          .article__image
+            margin: 0 0 0 40px
+
+        &:nth-child(odd)
+          .article__content
+            margin: 0
+            padding: 0
+
+          .article__image
+            margin: 0 40px 0 0
+
+        .article__image
+          max-width: 50%
+
+  @include mobile
+
+    padding-top: 85px
+
+    .s_description
+      .section__wrap
+        &::after
+          display: none
+
+    .s_technique
+      .article_technique
+        flex-direction: column
+
+        &:nth-child(even)
+          flex-direction: column-reverse
+
+    .s_awaken
+      .section_description
+        padding-top: 35px
+
+.page-meditation-improving
+  @media screen and (min-width: 768px) and (max-width: 1024px)
+    .btn-circle-svg
+      margin: 25px 0
+      width: 210px
+      height: 210px
+      span
+        font-size: 20px

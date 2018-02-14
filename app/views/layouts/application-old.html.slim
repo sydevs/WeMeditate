@@ -1,0 +1,31 @@
+doctype html
+
+html
+  head
+    title We Meditate - #{content_for :title}
+    = csrf_meta_tags
+    = analytics_init if GoogleAnalytics.valid_tracker?
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body class="#{controller_name} #{controller.action_name}"
+    p class="notice" = notice
+    p class="alert" = alert
+    
+    h1 #{content_for :title}
+    p
+      = link_to "Test", "/en/"
+      '  - 
+      = link_to "Admin", admin_root_path
+      '  - 
+      = link_to 'Home', url_for(StaticPage.find_by(role: :home))
+      '  - 
+      = link_to 'Inspiration', url_for(Category)
+      '  - 
+      = link_to 'Treatments', url_for(Treatment)
+      '  - 
+      = link_to 'Music', url_for(Track)
+      '  - 
+      = link_to 'Meditations', url_for(Meditation)
+
+    = yield

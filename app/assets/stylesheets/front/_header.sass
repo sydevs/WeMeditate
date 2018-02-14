@@ -1,0 +1,386 @@
+//  Header
+body.sticky-header
+  .header
+    height: 100px
+    &__topline
+      padding-top: 16px
+    &.gray
+      height: 85px
+  .topline__logo
+    .logo
+      display: none
+    .burger__button
+      display: block
+  .topline__illustration
+    margin-bottom: .5rem
+    .illustration__holder
+      transform: scale(0, 0)
+      display: none
+    .logo_small
+      display: block
+
+.header
+  width: 100%
+  height: 195px
+  background-color: transparent
+  position: fixed
+  top: 0
+  transition: all 0.5s ease
+  z-index: 40
+  @media screen and (max-width: 459px)
+    height: 85px
+    transition: none
+
+  .container.desktop
+    @media screen and (max-width: 767px)
+      display: none
+
+  &__topline
+    display: flex
+    width: 100%
+    justify-content: space-between
+    align-items: center
+    padding-top: 40px
+    border-bottom: 1px solid #ffffff
+
+  &__nav
+    border-bottom: 1px solid #ffffff
+    width: 100%
+    & > ul
+      position: relative
+      width: 100%
+      display: flex
+      justify-content: space-between
+      align-items: center
+    .btn
+      color: #fff
+      border: none
+      padding: 0 1rem
+      line-height: 2.25rem
+      font-size: 1rem
+      font-family: $raleway-medium
+      font-weight: normal
+      &:before
+        background-color: rgba(255, 255, 255, 0.4)
+
+  &__breadcrumbs
+    list-style: none
+    li
+      display: inline-block
+      &:hover, &.is_active
+        &:before, a
+          color: #fff
+      a
+        color: rgba(255, 255, 255, 0.4)
+        text-decoration: none
+        font-size: 12px
+        line-height: 22px
+        transition: all .3s ease
+        font-family: $raleway
+    li + li::before
+      transition: all .3s ease
+      padding: 8px
+      color: $light-gray
+      content: "\e906"
+      font-family: "yoga-icon", sans-serif
+      font-size: 9px
+
+  .topline
+    &__logo
+      .logo
+      display: block
+      max-width: 64px
+      svg
+        width: 100%
+      .btn__burger
+        display: none
+
+    &__illustration
+      margin-bottom: 2.813rem
+      .illustration__holder
+        display: block
+        width: 514px
+        svg
+          width: 100%
+          path
+            stroke: #fff
+      .logo_small
+        width: 86px
+        display: none
+
+    &__text
+      text-align: right
+      font-family: $raleway-medium
+      font-weight: normal
+      font-size: 14px
+      line-height: 16px
+      color: #fff
+      span
+        display: block
+
+  .nav__item
+    a
+      display: block
+    &:hover
+      .nav__item_container
+        z-index: 50
+        opacity: 1
+        visibility: visible
+    &_container
+      transition: all .5s ease
+      position: absolute
+      top: 101%
+      z-index: -1
+      opacity: 0
+      visibility: hidden
+      left: 0
+      display: block
+      width: 100%
+      background: #f6f6f6 image-url("menu-bg.png") bottom right
+      @media screen and (max-width: 1024px)
+        display: none
+      .container__content
+        display: flex
+        width: 100%
+        padding-left: 80px
+        padding-right: 18px
+        justify-content: space-between
+        align-items: flex-start
+      .container__title
+        font-family: $raleway-semi
+        font-size: 24px
+        padding-left: 80px
+        color: #7b7b7b
+        border-bottom: 1px solid #e8e8e8
+        line-height: 58px
+        text-align: left
+      .related-posts
+        display: flex
+        .post-item
+          position: relative
+          &:not(:last-of-type)
+            margin-right: 18px
+            margin-bottom: 18px
+        .post-heading
+          position: absolute
+          font-family: $raleway-semi
+          font-size: 12px
+          line-height: 21px
+          color: #7b7b7b
+          left: 0
+          top: -15%
+        .post-link
+          display: block
+          position: relative
+          &:hover
+            .link-overlay
+              opacity: 1
+        .link-overlay
+          display: flex
+          align-items: center
+          justify-content: center
+          position: absolute
+          text-align: center
+          width: 100%
+          height: 100%
+          color: white
+          font-size: 18px
+          line-height: 28px
+          left: 0
+          top: 0
+          right: 0
+          bottom: 0
+          background-color: rgba(0, 0, 0, 0.51)
+          opacity: 0
+          transition: all .5s ease
+          &:after
+            content: ''
+            position: absolute
+            display: block
+            width: 71px
+            height: 16px
+            background-size: cover
+            background: image-url("article-illustration.svg") center
+            bottom: 5%
+            left: 50%
+            transform: translateX(-50%)
+        img
+          display: block
+      .side
+        ul
+          text-align: left
+      .side.left
+        ul
+          padding-top: 32px
+        li
+          margin-bottom: 10px
+        a
+          display: block
+          font-family: $raleway-medium
+          font-size: 18px
+          line-height: 21px
+          color: #9d9d9c
+          transition: all .5s ease
+          cursor: pointer
+          &:hover
+            color: #c5e0dc
+
+  .burger__button
+    cursor: pointer
+    display: none
+    position: relative
+    width: 30px
+    height: 30px
+
+  .burger__button__icon
+    display: inline-block
+    position: absolute
+    background: #fff
+    margin: 0 auto
+    width: 30px
+    height: 2px
+    top: 50%
+    left: 0
+    right: 0
+    transition: all 0.5s ease
+    transform: translateY(-1px)
+    &:before, &:after
+      content: ""
+      position: absolute
+      margin: 0 auto
+      background: #fff
+      width: 30px
+      height: 2px
+      left: 0
+      right: 0
+      transition: all 0.5s ease
+    &:before
+      bottom: 10px
+    &:after
+      top: 10px
+
+  .burger__button.open .burger__button__icon
+    background: transparent
+    &:before, &:after
+      transform-origin: 0 50%
+      width: 28.28427125px
+    &:before
+      transform: rotateZ(0.7854rad)
+    &:after
+      transform: rotateZ(-0.7854rad)
+
+  &.gray
+    height: 85px
+    .topline__illustration .logo_small
+      svg
+        path
+          fill: #555
+
+    .burger__button__icon
+      background-color: #555
+      height: 1px
+      &::before, &::after
+        background-color: #555
+        height: 1px
+
+    background: #fff
+    .header__topline,.header__nav
+      border-bottom: 1px solid #9d9d9c
+    .header__nav, .header__breadcrumbs
+      background-color: #fff
+    .header__topline
+      padding-top: 20px
+
+    .header__nav .btn
+      color: #9d9d9c
+      &:before
+        background: rgba(246, 246, 246, 0.41)
+
+    .topline
+      &__logo
+        path
+          fill: #555
+      &__text
+        color: #555
+      &__illustration
+        margin-bottom: 9px
+        .illustration__holder
+          path
+            stroke: #555
+
+    .header__breadcrumbs
+      padding: 16px 0
+      li
+        &:before
+          color: #dcdcdc
+        &:hover, &.is_active
+          &:before, a
+            color: #9d9d9c
+      a
+        color: #dcdcdc
+
+.transparent
+  margin: 0
+  background-color: transparent !important
+
+.container.mobile
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin: 0 25px
+  padding: 0
+  //border-bottom: 1px solid #9d9d9c
+  border-bottom: 1px solid #fff
+  max-height: 85px
+  @media screen and (min-width: 767px)
+    display: none
+  .logo
+    position: relative
+    display: block
+    svg
+      width: 50px
+      height: 36px
+      path
+        fill: #fff
+  .text
+    text-align: center
+    color: #fff
+    font-size: 0.875rem
+    line-height: 1.125rem
+    font-family: $raleway-medium
+  .burger__button
+    position: relative
+    display: block
+
+.z-index
+  z-index: 100
+
+.header.gray
+  .container.mobile
+    background-color: #fff
+    z-index: 100
+    position: relative
+    border-bottom: 1px solid #9d9d9c
+    .logo
+      svg
+        path
+          fill: #555
+    .text
+      color: #555
+    a, .burger__button__icon, .burger__button__icon::before, .burger__button__icon::after
+      transition: none
+
+
+.wide-header
+  height: 122px!important
+
+
+.header
+  &:not(.gray)
+    .header__breadcrumbs
+      display: none
+
+
+
+
+    

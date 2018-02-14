@@ -1,0 +1,392 @@
+.page-music
+  .s_subtitle
+    @media screen and (max-width: 480px)
+      width: 100%
+      padding: 0 15px
+      span
+        display: block
+
+  .s__description
+    min-height: 100%
+    margin-bottom: 55px
+    padding-top: 50px
+    .section__wrap
+      &::after
+        right: 105px
+        bottom: -25px
+    .article
+      max-width: 50%
+      &__title
+        font-family: $raleway-semi
+        font-size: 24px
+        line-height: 31px
+        color: $dark-gray
+        letter-spacing: 1px
+        font-weight: 500
+      &__text
+        font-family: $raleway
+        font-size: 18px
+        line-height: 30px
+        color: $light-gray
+
+  .s__music
+    margin-bottom: 55px
+
+  .s__player
+    margin-bottom: 80px
+    .player-wrap
+      margin-bottom: 30px
+      max-width: 100%
+      margin-right: 0
+      .player
+        .controls-container
+          display: flex
+          align-items: center
+          position: static
+          .next-button, .prev-button
+            margin-bottom: 18px
+        .seek-wrap input
+          width: 100%
+          //min-width: 830px
+          min-width: 800px
+      .controls
+        margin-bottom: 50px
+      .playlist-wrap
+        //height: 611px
+        height: 660px
+        position: relative
+        margin-left: auto
+        width: 100%
+        max-width: 705px
+        padding: 60px 0 60px 160px
+        display: block
+        background: linear-gradient(to left, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.18) 25%, rgba(197, 224, 220, 0.3) 100%)
+        ol
+          padding-left: 0
+        .song-info
+          -webkit-tap-highlight-color: rgba(0,0,0,0)
+          position: relative
+          margin-bottom: 33px
+          .duration-time
+            position: absolute
+            right: 5px
+            bottom: 0
+          i
+            font-size: 14px
+            color: $dark-gray
+            display: inline-block
+          .song-title
+            font-size: 21px
+            line-height: 22px
+          .song-artist
+            line-height: 0
+            font-size: 12px
+            padding-left: 44px
+        .playlist-mood
+          margin-left: 20px
+          i
+            margin-right: 10px
+            font-size: 24px
+            color: $light-gray
+        .playlist-mood-box
+          position: absolute
+          top: 115px
+          left: -320px
+          .mood-text
+            text-align: right
+            max-width: 385px
+            width: 100%
+            position: absolute
+            top: 100%
+            left: -110px
+            font-size: 35px
+            line-height: 35px
+            color: $light-gray
+            font-family: $raleway
+            text-transform: uppercase
+            letter-spacing: 2px
+            transform: rotate(-90deg)
+            transform-origin: left top 0
+            @media screen and (max-width: 1024px)
+              left: -55px
+          .mood-img
+            display: block
+            width: 385px
+            height: 385px
+            background-size: cover
+            background: no-repeat center center
+
+  .s__article-list
+    padding: 0 15px 0 60px
+    margin-bottom: 53px
+    .list__item
+      margin-bottom: 67px
+
+
+  @media only screen and (max-width: 1400px)
+    .container_narrow
+      padding: 0 20px
+
+
+  @media only screen and (max-width: 992px)
+    .s__description
+      .section__wrap
+        display: block
+        min-height: 100%
+        &::after
+          right: 0
+      .article
+        max-width: 50%
+
+    .music__container
+      .mood__container
+        display: flex
+        justify-content: space-between
+        width: 100%
+        a.btn
+          max-width: 130px
+          flex: 1
+          &:not(:first-of-type),
+          &:not(:last-of-type)
+            margin: 0 10px
+
+    .s__article-list
+      padding: 0 50px
+
+  @media only screen and (min-device-width : 834px) and (max-device-width : 1112px) and (orientation : portrait)
+    .playlist-mood-box
+      display: none
+    .s__player
+      .player-wrap
+        .playlist-wrap
+          padding-left: 75px
+          width: 100%
+          margin-left: -75px
+
+
+
+
+  @media screen and (max-width: 1100px)
+    .volume-wrap
+      display: none
+    .controls-container
+      display: flex
+      max-width: 40%
+      margin: 0 auto
+      width: 40%
+      justify-content: space-between
+  @media screen and (max-width: 1024px)
+    .media-volume, .media-mute
+      display: none
+      visibility: hidden
+      opacity: 0
+
+  @media only screen and (max-width: 768px)
+    .container
+      flex-direction: column
+
+    .s__article-list
+      padding: 0 20px
+      margin-top: -50px
+
+    .music__container
+      padding: 0 15px
+      .instrument__container
+        padding: 0
+      .mood__container
+        display: block
+        text-align: center
+        a.btn
+          display: inline-block
+          margin: 15px!important
+
+    .s__player
+      margin-bottom: 0
+      padding: 0 15px
+      .player
+        padding-left: 60px
+        .controls
+          margin-left: -60px
+      .player-wrap
+        .playlist-wrap
+          background: none
+          width: 100%
+          padding: 0
+          margin: 0
+          margin-left: -60px
+          min-width: 100%
+          margin-right: 0
+          position: static
+          ol
+            width: 105%
+            margin-left: -13px
+            margin-right: 0
+      .playlist-mood-box
+        display: none
+
+      .song-info
+        padding: 0
+        width: 100%
+        i
+          width: 14px
+          height: 14px
+
+    .volume-wrap
+      display: none
+
+    .seek-wrap
+      margin-left: 0
+      width: 100%
+      input
+        min-width: 100%!important
+
+    .controls-container
+      margin: auto
+      min-width: 30%!important
+      margin-top: 20px
+      justify-content: space-around
+
+
+  @media only screen and (max-width: 480px)
+    .container_narrow
+      padding: 0 15px
+
+    .s__description
+      margin-bottom: 75px
+      padding: 30px 15px 0
+      .section__wrap
+        .article
+          max-width: 100%
+        &::after
+          display: none
+
+    .s__player
+      .player-wrap
+        .playlist-wrap
+          margin-left: -50px
+          min-width: 120%
+          ol
+            width: 105%
+            margin-left: -13px
+            margin-right: 0
+
+    .title
+      font-size: 26px
+    .text
+      font-size: 18px
+      line-height: 25px
+
+    .playlist-title.title
+      font-size: 22px
+
+
+  @media screen and (min-width: 768px)
+    .s__player .player-wrap .playlist-wrap .song-info
+      .song-artist
+        line-height: 12px
+        font-size: 12px
+        padding-left: 40px
+        padding-bottom: 10px
+      .duration-time
+        bottom: 15px
+
+  input[type='range']
+    background-color: $blue
+    height: 20px
+    &::-moz-range-thumb
+      background: $blue
+      height: 10px
+      width: 10px
+      border-radius: 0
+      cursor: pointer
+    &::-moz-range-track
+      border: none
+      background-color: $blue
+      outline: none
+
+  .seek-wrap
+    width: 100%
+    input
+      -webkit-appearance: none!important
+
+
+
+// Common styles
+.music__container
+  .music__subtitle
+    font-size: 24px
+    line-height: 28px
+    color: $dark-gray
+    font-family: $raleway
+    margin-bottom: 40px
+  .mood__container
+    margin-bottom: 55px
+    a.btn
+      font-size: 16px
+      line-height: 29px
+      border-color: #9d9d9c
+      color: #9d9d9c
+      padding: 2px 0
+      display: inline-block
+      width: 130px
+      font-family: $raleway-semi
+      font-weight: normal
+      margin-right: 44px
+  .instrument__container
+    padding-left: 30px
+    max-width: 450px
+    display: flex
+    justify-content: space-between
+    a
+      transition: all 1s ease
+      i
+        color: $light-gray
+        font-size: 50px
+        transition: all 1s ease
+      &.active
+        i
+          color: $blue
+      @media screen and (min-width: 1025px)
+        &:hover
+          i
+            color: $blue
+
+.page-music .s__player .player-wrap .playlist-wrap .song-info
+  border: 1px solid transparent
+  i
+    font-size: 14px
+    color: #7b7b7b
+    display: inline-block
+    width: 35px
+    height: 35px
+    text-align: center
+    line-height: 35px
+    cursor: pointer
+  &.sel
+    border: 1px solid $blue
+  @media screen and (max-width: 480px)
+    i
+      font-size: 16px
+    .song-title
+      line-height: 20px
+      font-size: 16px
+    .song-artist
+      line-height: 9px
+      font-size: 12px
+      padding-left: 40px
+      padding-bottom: 10px
+    .duration-time
+      bottom: 12px
+
+.page-music .s__player .player-wrap .player .controls .play-pause .play-button
+  border: 1px solid #9d9d9c
+  display: flex
+  justify-content: center
+  align-items: center
+  transition: all .5s ease
+  &:before
+    font-size: 16px
+  &:hover
+    border: 1px solid $blue
+
+

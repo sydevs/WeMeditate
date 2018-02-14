@@ -1,0 +1,228 @@
+.inspiration
+  margin-bottom: 120px
+
+  .video-play__btn_wrapper
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+    a
+      width: 100px
+      height: 100px
+      padding: 16px
+
+  .topline__filter
+    padding: 36px 0 55px
+    margin: 0 auto 14px
+    max-width: 930px
+    display: flex
+    justify-content: space-between
+    @media screen and (max-width: 1400px)
+      padding: 0
+      padding-top: 10px
+      margin-bottom: 24px
+  .filter__btn
+    font-family: $raleway
+    color: $light-gray
+    font-weight: 600
+    font-size: 16px
+    border: none
+    padding: 18px 22px
+    width: 130px
+    @media screen and (max-width: 1400px)
+      font-size: 0.875rem
+      line-height: 0.875rem
+    &::before
+      background-color: $blue
+    &:hover, &.active
+      color: #fff
+  //background-color: $blue
+  .loadmore
+    text-align: center
+    @media screen and (max-width: 1400px)
+      a
+        font-size: 0.875rem
+        line-height: 0.875rem
+
+  .article
+    margin-bottom: 50px
+    background: #fff
+    padding: 0
+    &__title
+      margin-top: 32px
+      margin-bottom: 10px
+      font-family: $raleway-semi
+      font-weight: bold
+      font-size: 1.5rem
+      @media screen and (max-width: 1400px)
+        font-size: 1.25rem
+    &__text
+      p
+        font-size: 0.875rem
+        line-height: 1.563rem
+        margin-bottom: 32px
+        @media screen and (max-width: 1400px)
+          font-size: 0.875rem
+          line-height: 25px
+    &__btn
+      a
+        border: none
+        margin: 0
+        padding: 0
+        font-size: inherit
+    &__media
+      display: block
+      position: relative
+      width: 100%
+      transition: all .5s ease
+      &:hover
+        opacity: .7
+      img
+        width: 100%
+        height: auto
+      .play__btn
+        position: absolute
+        margin-top: -50px
+        margin-left: -50px
+        left: 50%
+        top: 50%
+        a
+          position: relative
+          width: 100px
+          height: 100px
+          i
+            max-width: 66px
+            max-height: 66px
+            padding: 21px 27px
+            margin-top: -33px
+            margin-left: -33px
+
+  .intro-grid
+    .column
+      padding-top: 0 !important
+    .item
+      padding: 0
+      box-shadow: none
+      @media screen and (max-width: 1400px)
+        margin-left: 25px
+        margin-right: 25px
+
+  .more_btn
+    display: flex
+    justify-content: space-between
+    align-items: center
+    a
+      text-decoration: none
+      font-size: 16px
+      line-height: 29px
+      outline: none
+      color: $light-gray
+      font-family: $raleway
+      &:hover
+        color: $blue
+
+      i
+        margin-left: 7px
+        font-size: 12px
+    span
+      display: block
+      font-size: 16px
+      font-family: $futura-book
+      margin-right: 5px
+      color: $light-gray
+
+.filter__menu
+  background: #fff
+  margin-top: 0
+  position: absolute
+  top: -130%
+  left: 0
+  right: 0
+  bottom: auto
+  z-index: 9999
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: flex-start
+  overflow: auto
+  will-change: transform
+  transition: all .3s ease
+  height: 100vh
+  &_open
+    top: 0
+    bottom: 0
+    transition: all .3s ease
+  &_topline
+    padding: 0 27px 0 22px
+    display: flex
+    align-items: flex-end
+    flex-direction: row
+    justify-content: space-between
+    width: 100%
+    height: 10vh
+    .icon-logo__meditade
+      color: $light-gray
+      font-size: 43px
+    .icon-close-icon
+      color: $light-gray
+      font-size: 18px
+      margin-bottom: 4px
+  &_container
+    width: 100%
+    height: 80vh
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-around
+  .filter__btn
+    padding: 10px 15px
+    text-align: center
+    width: 150px
+    border: none
+    &.active, &:focus
+      color: #fff
+      &::before
+        background-color: $blue
+    &::before
+      transition: all 0s ease
+
+@media only screen and (max-width: 992px)
+  .header__animation
+    padding-top: 7px
+    text-align: center
+    img
+      width: 400px
+
+@media only screen and (max-width: 480px)
+  .inspiration
+    margin-bottom: 100px
+    .topline__filter
+      display: none
+    .filter__btn
+      margin: 0 10px 20px
+      font-size: .9em
+      padding: 10px 15px
+    figure
+      margin-bottom: 25px
+
+  .mobile__filter_container
+    display: flex
+    padding-right: 10px
+    flex-direction: row
+    justify-content: space-between
+    align-items: baseline
+    width: 100%
+    margin-bottom: 30px
+    .filter__btn_open
+      display: flex
+      align-items: flex-end
+      font-size: 14px
+      line-height: 25px
+      color: $dark-gray
+      i
+        margin-left: 15px
+        color: $dark-gray
+        font-size: 23px
+
+
+

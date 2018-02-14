@@ -1,0 +1,977 @@
+@import "fonts"
+@import "vars"
+
+*::-webkit-input-placeholder
+  color: #666
+  opacity: 1
+
+*:-moz-placeholder
+  color: #666
+  opacity: 1
+
+*::-moz-placeholder
+  color: #666
+  opacity: 1
+
+*:-ms-input-placeholder
+  color: #666
+  opacity: 1
+
+*
+  box-sizing: border-box
+  -webkit-text-size-adjust: none
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+
+html, body
+  margin: 0
+  padding: 0
+  min-height: 100%
+  overflow-x: hidden
+  &.overflowHidden
+    overflow: hidden
+    position: relative
+//height: 100%
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+  color: #666
+
+body input:required:valid,
+body textarea:required:valid
+  color: #666
+
+body
+  font-size: 16px
+  min-width: 320px
+  position: relative
+  line-height: 1.75
+  font-family: $raleway
+  overflow-x: hidden
+  opacity: 1
+  color: $gray
+
+main
+  position: relative
+  height: 100%
+  padding-top: 245px
+  @media screen and (max-width: 459px)
+    padding-top: 112px
+  @media screen and (max-device-width : 767px) and (orientation : landscape)
+    padding-top: 85px
+
+section
+  display: block
+  width: 100%
+  height: 100%
+  position: relative
+  background-size: cover
+  background-position: center
+//margin-bottom: 39vh
+
+h1, h2, h3, h4, h5, h6, p
+  margin: 0
+  padding: 0
+  font-weight: normal
+
+ul, li
+  list-style-type: none
+  margin: 0
+  padding: 0
+
+a
+  outline: none
+  text-decoration: none
+  font-size: 18px
+  color: $gray
+  transition: color .3s ease
+
+button
+  border: none
+  border-radius: 0
+  outline: none
+
+.zoom
+  zoom: 0.9
+
+.text-center
+  text-align: center
+
+.img-responsive
+  display: block
+  max-width: 100%
+  height: auto
+  position: relative
+
+.hidden
+  visibility: hidden
+  opacity: 0
+  transition: opacity .3s ease
+
+.visible
+  visibility: visible
+  opacity: 1
+  transition: opacity .3s ease
+
+.hide-desktop
+  @media screen and (max-width: 459px)
+    display: inline-block
+    visibility: visible
+
+  @media screen and (min-width: 460px)
+    display: none
+    visibility: hidden
+
+.hide-mobile
+  @media screen and (max-width: 459px)
+    display: none
+    visibility: hidden
+
+  @media screen and (min-width: 460px)
+    display: inline-block
+    visibility: visible
+
+.fixed
+  position: fixed
+  width: 100%
+
+.container
+  position: relative
+  max-width: 1280px
+  height: 100%
+  margin: 0 auto
+  padding: 0 15px
+  &_narrow
+    @extend .container
+    padding: 0 65px
+
+.loadmore
+  text-align: center
+
+.preloader
+  display: flex
+  position: fixed
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  z-index: 999999
+  justify-content: center
+  align-items: center
+  transition: all .3s ease
+  background-blend-mode: multiply
+  background: #5f2f18 image-url("bg-small.jpg") no-repeat
+  background-size: cover
+
+  display: none
+
+.btn
+  display: inline-block
+  font-family: $raleway-bold
+  font-size: 16px
+  line-height: 29px
+  border: 1px solid $dark-gray
+  color: $dark-gray
+  padding: 17px 28px
+  text-align: center
+  font-weight: 600
+  position: relative
+  z-index: 10
+  transition: all .5s ease
+  white-space: nowrap
+  &:before
+    transition: 1s all ease
+    position: absolute
+    top: 0
+    left: 50%
+    right: 50%
+    bottom: 0
+    opacity: 0
+    content: ''
+    background-color: $light-blue
+    z-index: -2
+  &:hover
+    color: #9d9d9c
+    border: 1px solid $light-blue
+    &:before
+      transition: 1s all ease
+      left: 0
+      right: 0
+      opacity: 1
+  &:focus
+    &:before
+      transition: 1s all ease
+      left: 0
+      right: 0
+      opacity: 1
+  &.active
+    &:before
+      left: 0
+      right: 0
+      opacity: 1
+
+.btn__svg
+  z-index: 10
+  border: transparent
+  font-size: 30px
+  color: #ffffff
+  font-family: $raleway-medium
+  font-weight: 100
+  padding: 20px 70px
+  background-size: contain
+  will-change: all
+  background: image-url("svg/btn__leaves.svg") no-repeat center 13px
+
+.btn__hover__holder
+  position: absolute
+  top: 0
+  left: 50%
+  transform: translateX(-50%)
+  overflow: hidden
+  width: 0
+  height: 100%
+  will-change: all
+  transition: 3s all ease
+  .hidden
+    will-change: all
+    padding: 20px 70px
+    position: absolute
+    top: -20px
+    left: 50%
+    transform: translateX(-50%)
+    opacity: 0
+    content: ''
+    z-index: 1
+    color: #f9d046
+    background-size: contain
+    background: image-url("svg/btn__leaves_color.svg") no-repeat 0 21px
+
+.btn__container
+  position: relative
+  &:hover
+    .btn__hover__holder
+      width: calc(100% - 2px)
+    .btn__svg.hidden
+      opacity: 1
+
+/* ======= Main Page ======= */
+
+.s_title
+  position: absolute
+  left: 19px
+  top: 100%
+  overflow: hidden
+  white-space: nowrap
+  display: block
+  transform: rotate(-90deg)
+  transform-origin: top left
+  text-align: right
+  z-index: 5
+  &_right
+    left: 94%
+  span
+    text-transform: uppercase
+    font-size: 35px
+    line-height: 35px
+    color: #e8e8e8
+    font-family: $raleway
+    letter-spacing: 5px
+    display: inline-block
+    &.gray
+      color: #e8e8e8
+    &.white
+      color: #ffffff
+    &.orange
+      color: #cc8b53
+
+.article
+  &__image
+    img
+      height: 100vh
+      max-height: 800px
+      width: auto
+  &__title
+    font-weight: bold
+    font-family: $raleway-semi
+    font-size: 24px
+    line-height: 31px
+    color: #7b7b7b
+    margin-bottom: 17px
+  &__text
+    p
+      font-family: $raleway
+      font-size: 18px
+      line-height: 30px
+      color: #9d9d9c
+      margin-bottom: 46px
+  &_main
+    padding: 100px 110px
+    max-width: 670px
+    right: 50%
+    position: absolute
+    top: 50%
+    margin-right: -175px
+    margin-top: -240px
+    max-height: 480px
+    display: block
+    background: #fff
+  &_inversion
+    background: transparent
+    .article
+      &__title, &__text p, &__btn a
+        color: #fff
+      &__btn a
+        border-color: #FFFFFF
+        &:hover
+          color: #9d9d9c
+
+.s__wrapper
+  position: relative
+  display: flex
+  width: 100%
+  flex-direction: row-reverse
+  &_wide
+    height: 100vh
+    position: relative
+    display: flex
+    width: 100%
+    align-items: center
+    .article_main
+      max-width: 670px
+      padding: 100px 130px
+      position: static
+
+.fullscreen
+  min-height: 100vh
+
+.s__realization
+  margin-bottom: 285px
+  &.has__gradient_blue
+    &::before
+      top: 332px
+
+.img__circle
+  display: block
+  width: 560px
+  height: 560px
+  position: absolute
+  right: 13%
+  bottom: -25%
+  z-index: 5
+  .cls-1, .cls-4, .cls-5
+    fill: none
+    stroke: #ebebeb
+
+.s_video
+  margin-bottom: 24vh
+  .s_title
+    top: 57%
+  .video-play__btn_wrapper
+    position: absolute
+    transform: translate(-50%, -50%)
+    left: 50%
+    top: 50%
+  .owl-carousel
+    z-index: 25
+
+.owl-nav
+  position: absolute
+  top: 35%
+  width: 100%
+  > div
+    width: 65px
+    height: 65px
+    background-color: #999
+    color: #fff
+    position: absolute
+    text-align: center
+    line-height: 70px
+    font-size: 23px
+    transition: all .5s ease
+    &.owl-prev
+      left: -15px
+    &.owl-next
+      right: -15px
+    &:hover
+      background-color: darken(#999, 10%)
+
+    @media screen and (max-width: 480px)
+      background-color: transparent
+      color: #3f3f3f
+      &.owl-prev
+        left: -30px
+      &.owl-next
+        right: -30px
+      &:hover
+        background-color: transparent
+
+.carousel-video-item
+  overflow: hidden
+  width: 604px
+  height: 414px
+  opacity: 0.5
+  transition: .3s all ease
+  .carousel__img
+    position: relative
+    background-size: cover
+    background-position: center center
+    background-repeat: no-repeat
+    margin-bottom: 35px
+    min-height: 417px
+  .video-play__btn_wrapper
+    transition: all .3s ease
+    display: none
+  .item-caption
+    padding-left: 5px
+
+.owl-carousel
+  .owl-item.active
+    .item-caption
+      float: none
+      width: 100%
+      max-width: 222px
+  .owl-item.active.center
+    .carousel-video-item
+      opacity: 1
+      .video-play__btn_wrapper
+        display: inline-block
+      .item-caption
+        float: none
+        width: 100%
+        max-width: 100%
+        padding-left: 0
+
+div.owl-item > div
+  display: table-cell
+  vertical-align: middle
+
+.item-caption
+  font-weight: bold
+  display: block
+  font-family: $raleway-bold
+  font-size: 24px
+  color: #7b7b7b
+  line-height: 30px
+  width: 100%
+  max-width: 260px
+  float: right
+
+.s__mataji
+  margin-bottom: 30vh
+  .s__wrapper_wide
+    align-items: center
+    justify-content: flex-start
+    .s_title
+      padding-right: 7%
+    .article_main
+      margin-top: 4%
+      max-width: 700px
+      background-color: transparent
+
+.s__meditate
+  margin-bottom: 14vh
+  z-index: 3
+  .s__wrapper
+    flex-direction: row
+    .article
+      right: 0
+      left: 50%
+      margin-left: -175px
+
+.s__howto
+  background-position: center top
+  margin-bottom: 30vh
+  .s__wrapper_wide
+    align-items: center
+    .s_title
+      padding-right: 7%
+    .article_main
+      padding: 90px 100px
+      max-width: 700px
+      top: 27%
+      bottom: 100px
+      left: 80px
+      position: relative
+      max-height: 100%
+      z-index: 5
+      .article__text
+        p:first-of-type
+          margin-bottom: 8px
+
+  &.has__gradient_orange
+    &::before
+      height: 205vh
+      top: -90%
+
+.s__events
+  margin-bottom: 14vh
+  &.has__gradient_gray
+    &::before
+      bottom: 5%
+
+.s__articles
+  margin-bottom: 75px
+  .article
+    &__wrapper
+      padding: 0 50px
+      display: flex
+      flex-wrap: wrap
+      justify-content: space-between
+    &__item
+      margin-bottom: 30px
+      width: calc(33.33% - 30px * 2 / 3)
+      display: flex
+      flex-wrap: wrap
+    &__cont
+      margin-right: 20px
+    &__title
+      display: inline-block
+      margin-bottom: 8px
+      text-align: left
+      font-family: $raleway-bold
+      font-size: 20px
+      line-height: 24px
+      color: $light-gray
+      transition: color .3s ease
+      letter-spacing: 1px
+      &:hover
+        color: $dark-gray
+    &__text
+      font-family: $raleway
+      font-size: 14px
+      color: #9d9d9c
+
+/*======= Section Gradients =======*/
+.has__gradient_blue
+  position: relative
+  &::before
+    content: ''
+    display: block
+    width: 705px
+    height: 1361px
+    position: absolute
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.18) 25%, rgba(197, 224, 220, 0.3) 100%)
+    top: 50%
+    right: 0
+    z-index: -1
+
+.has__gradient_orange
+  position: relative
+  &::before
+    content: ''
+    opacity: .5
+    display: block
+    height: 2303px
+    width: 705px
+    position: absolute
+    left: 0
+    top: -76%
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.18) 25%, rgba(241, 212, 175, 0.7) 100%)
+    z-index: 1
+
+.has__gradient_gray
+  position: relative
+  &::before
+    content: ''
+    display: block
+    height: 621px
+    width: 100%
+    position: absolute
+    left: 0
+    bottom: -28%
+    background: linear-gradient(to left, rgba(232, 232, 232, 0.5) 0%, rgba(255, 255, 255, 0.01) 100%)
+    z-index: -1
+
+/*======= Triangle Illustration =======*/
+.has__triangle
+  position: relative
+  &:after
+    content: ''
+    display: block
+    width: 354px
+    height: 314px
+    background-size: cover
+    position: absolute
+    background: image-url("svg/illustration__triangle.svg") no-repeat center
+    bottom: -140px
+    z-index: 10
+  &_right
+    &:after
+      right: 0
+  &_left
+    &:after
+      left: 0
+
+/*======= Drawing Border =======*/
+.draw-line
+  position: relative
+  box-shadow: inset 0 0 0 2px transparent
+  transition: color 0.5s 0.5s
+  &::before, &::after
+    border: 0 solid transparent
+    box-sizing: border-box
+    content: ''
+    pointer-events: none
+    position: absolute
+    width: 0
+    height: 0
+  &::before
+    top: 0
+    right: 0
+    border-bottom-width: 2px
+    border-right-width: 2px
+  &::after
+    left: 0
+    bottom: 0
+    border-top-width: 2px
+    border-left-width: 2px
+  &.active
+    color: #ffffff
+    &::before, &::after
+      border-color: #ffffff
+      transition: border-color 0s, height 0.5s, width 0.5s
+      width: 100%
+      height: 100%
+    &::before
+      transition-delay: 1s, 1s, 1.5s
+    &::after
+      transition-delay: 0s, 0s, .5s
+
+// Common styles
+
+.s_subtitle
+  display: inline-block
+  font-family: $raleway-bold
+  font-size: 45px
+  height: 170px
+  font-weight: bold
+  color: $dark-gray
+  line-height: 170px
+  &::after
+    content: ''
+    opacity: .5
+    display: block
+    height: 170px
+    width: 705px
+    position: absolute
+    left: -375px
+    top: 0
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.18) 25%, rgba(197, 224, 220, 0.3) 100%)
+    z-index: -1
+  @media only screen and (max-width: 1400px)
+    font-size: 33.6px
+    height: 85px
+    line-height: 85px
+    &::after
+      height: 85px
+
+section.s_together
+  position: relative
+  margin-bottom: 325px
+  background-size: cover
+  min-height: 1371px
+  background: no-repeat center
+  text-align: center
+  .s_title
+    top: 118%
+    left: 36px
+    span
+      color: #fff
+      @media screen and (max-width: 736px)
+        color: $light-gray
+  .container
+    padding-top: 275px
+  .section__title
+    top: 690%
+    span
+      color: #FFFFFF
+  .title
+    font-size: 50px
+    color: $dark-gray
+    font-family: $raleway-medium
+    @media screen and  (min-width: 768px) and (max-width: 1024px)
+      margin-bottom: 30px
+  .description
+    font-size: 28px
+    line-height: 35px
+    font-family: $raleway
+    color: #9d9d9c
+    margin-bottom: 160px
+    @media screen and  (min-width: 768px) and (max-width: 1024px)
+      max-width: 960px
+      margin: 0 auto 160px
+
+  .btn__item_wrap
+    z-index: 10
+  .btn__item_container
+    display: flex
+    margin: auto
+    width: 990px
+    justify-content: space-between
+    @media screen and  (min-width: 768px) and (max-width: 1024px)
+      max-width: 840px
+      width: 100%
+
+  .btn_item
+    display: flex
+    flex-direction: column
+    align-items: center
+    &:hover
+      .item__icon
+        transition: all .5s ease
+        color: $orange
+      .item__text
+        transition: all .5s ease
+        color: $orange
+  .item__icon
+    color: $dark-gray
+    font-size: 70px
+    display: inline-block
+    margin-bottom: 44px
+    transition: all .5s ease
+
+  .item__text
+    font-family: $raleway-semi
+    font-size: 23px
+    line-height: 31px
+    color: $dark-gray
+    transition: all .5s ease
+
+  &::before
+    content: ''
+    display: block
+    width: 705px
+    height: 1361px
+    position: absolute
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.18) 25%, rgba(197, 224, 220, 0.3) 100%)
+    bottom: 0
+    left: 0
+    z-index: 0
+    @media screen and (max-width: 1400px)
+      width: 48.5vw
+      bottom: -100px
+  @media screen and (max-width: 992px)
+    .btn__item_container
+      width: 100%
+      padding: 70px
+
+  @media screen and (max-width: 480px)
+    background-size: 1200px 890px
+    background-position: bottom center
+    margin-bottom: 150px !important
+    min-height: 1320px
+    .container
+      padding-top: 100px
+    .s_title
+      top: 140%
+      span
+        font-size: 30px !important
+        line-height: 30px !important
+    .title
+      font-size: 30px
+      line-height: 30px
+      margin-bottom: 30px
+    .description
+      font-size: 24px
+      line-height: 31px
+      color: $dark-gray
+      margin-bottom: 85px
+    .btn__item
+      &_wrap
+        margin-bottom: 70px
+      &_container
+        flex-direction: column
+        align-items: flex-end
+        padding: 0 11vw
+        width: 100%
+    .item
+      &__icon
+        font-size: 82px
+        margin-bottom: 30px
+        &.icon-notebook-icon
+          font-size: 70px
+      &__text
+        font-size: 18px
+        line-height: 26px
+    &::before
+      width: 30vw
+      bottom: -100px
+      height: 83%
+  @media only screen and (min-device-width: 320px) and (max-device-width: 736px) and (orientation: landscape)
+    padding-top: 50px
+    min-height: 170vh
+    background-size: 960px 700px
+    background-position: center -60px
+    margin-bottom: 100px
+    &::before
+      height: 200vh
+      bottom: -50px
+    .s_title
+      left: 18px
+      span
+        font-size: 23px
+        line-height: 23px
+    .container
+      padding-top: 0
+    .title__wrapper
+      max-width: 75%
+      margin: 0 auto
+      .title
+        font-size: 30px
+      .description
+        font-size: 24px
+        margin-bottom: 0
+    .item__text
+      font-size: 16px
+      line-height: 18px
+    .item__icon
+      margin-bottom: 20px
+    .btn__item_container
+      padding: 55px
+
+.title
+  font-family: $raleway-semi
+  font-size: 24px
+  line-height: 31px
+  color: $dark-gray
+  letter-spacing: 1px
+  font-weight: 500
+  margin-bottom: 17px
+
+.text
+  font-family: $raleway
+  font-size: 18px
+  line-height: 30px
+  color: $light-gray
+
+.text-box
+  .box__title
+    font-family: $raleway-semi
+    font-size: 24px
+    line-height: 31px
+    color: $dark-gray
+    letter-spacing: 1px
+    font-weight: 500
+    margin-bottom: 17px
+  .box__text
+    p
+      font-family: $raleway
+      font-size: 18px
+      line-height: 30px
+      color: $light-gray
+  &.inverse
+    .box__title, .box__text p, a
+      color: #fff
+
+.s__hero
+  height: 100vh
+  width: 100%
+  display: block
+  margin-bottom: 22vh
+  .container
+    height: 100%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+  .text-box
+    transform: translateY(30%)
+    @media screen and (max-width: 459px)
+      transform: none
+  .box
+    &__title
+      font-family: $raleway
+      font-size: 2.5rem
+      line-height: 3.438rem
+      text-align: center
+      margin-bottom: 2.5rem
+      font-weight: 500
+      @media screen and (max-width: 459px)
+        font-size: 30px
+        line-height: 36px
+        margin-bottom: 7vh
+    &__text
+      //margin-bottom: 84px
+      margin-bottom: 25%
+      p
+        font-family: $raleway-medium
+        font-size: 1.5rem
+        line-height: 2.188rem
+        font-weight: normal
+  @media screen and (max-width: 459px)
+    .text-box
+      .box__text
+        p
+          font-size: 20px
+          line-height: 26px
+
+#video-popup
+  text-align: left
+  max-width: 65%
+  margin: 40px auto
+  position: relative
+  @media screen and (max-width: 768px)
+    max-width: 90%
+    video
+      display: block
+      width: 100%
+      margin: 0 auto
+
+.bg-image
+  min-height: 50vh
+  position: relative
+  margin-bottom: 0
+  &-cover
+    height: 100%
+    top: 0
+    bottom: 0
+    width: 100%
+    position: absolute
+    background-size: cover
+    background-position: center bottom
+    z-index: -1
+
+.bg-img-section
+  height: auto
+  position: relative
+  display: block
+  .container-wrapper
+    display: block
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+
+.page-main, .page-meditate
+  padding-top: 0
+
+.page-main
+  @media screen and (max-width: 459px)
+    .s__hero
+      background-image: url(../img/mobile/header__mobile.png) !important
+
+.page-meditate
+  @media screen and (max-width: 459px)
+    .s__hero
+      background-image: url(../img/meditate/header-bg_mobile.jpg) !important
+
+@import "header"
+@import "footer"
+@import "mobile-menu"
+@import "plyr-controls"
+@import "inspiration"
+@import "meditation-improving"
+@import "shri-mataji"
+@import "meditate"
+@import "why-meditate"
+@import "music"
+@import "events"
+@import "chakras-channels"
+@import "chakra"
+@import "come-meditate"
+@import "article-page"
+
+@import "media"
+// Всегда в конце

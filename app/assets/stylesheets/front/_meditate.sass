@@ -1,0 +1,366 @@
+@import "_mixins/device-media"
+
+.page-meditate
+
+  @include tablet
+    .s__hero
+      background-image: url(../img/meditate/header-bg_tablet.jpg) !important
+
+  .content__text span
+    display: block
+
+  .btn__container
+    a
+      text-align: center
+      font-family: $raleway-medium
+      color: #fff
+      font-size: 25px
+      i
+        margin-top: 15px
+        display: block
+        color: #fff
+        font-size: 70px
+
+  .s__box
+    padding-right: 80px
+    max-width: 530px
+    margin-left: 80px
+    @media screen and (max-width: 1024px)
+      margin-left: 50px
+    @media screen and (max-width: 768px)
+      margin-left: 0
+      max-width: 100%
+      width: 100%
+      padding: 45px 45px 90px
+    @media screen and (max-width: 480px)
+      margin-left: 0
+      max-width: 100%
+      padding: 0 15px
+    .box
+      &-item
+        margin-bottom: 23px
+        @media screen and (max-width: 768px)
+          margin-bottom: 45px
+        &:first-of-type
+          @media screen and (max-width: 1024px)
+            display: none
+      &__title
+        font-family: $raleway-semi
+        font-size: 25px
+        line-height: 31px
+        color: $dark-gray
+        margin-bottom: 16px
+      &__text
+        font-size: 18px
+        line-height: 30px
+        color: $light-gray
+    .btn
+      margin-top: 25px
+
+  .s__ancient-knowledge
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+    height: 1505px
+    padding-top: 228px
+    margin-bottom: 150px
+    .s_title
+      top: 100%
+      span
+        color: #cc8b53
+    .article
+      max-width: 430px
+      margin-left: 130px
+      @media screen and (max-width: 480px)
+        margin-left: 60px
+      &__title
+        font-family: $raleway-semi
+        font-weight: normal
+      &:last-of-type
+        @media screen and (max-width: 1024px)
+          margin-left: 20px
+
+    @media screen and (max-width: 1400px)
+      height: 1345px
+      padding-top: 70px
+    @media screen and (max-width: 768px)
+      height: 1130px
+      margin-bottom: 75px
+    @media screen and (max-width: 480px)
+      height: 1450px
+
+  .chakras_wrapper
+    display: flex
+    .article.article_inversion
+      &:last-of-type
+        align-self: center
+    @media screen and (max-width: 480px)
+      display: block
+
+  .chakras-man
+    margin: 180px 0
+    max-width: 630px
+    max-height: 600px
+    width: 100%
+    height: 100%
+    position: relative
+    @media screen and (max-width: 768px)
+      max-width: 360px
+    svg
+      position: absolute
+      height: calc(100% + 20px)
+      width: auto
+      fill: #fff
+      stroke: #fff
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      margin-top: -45px
+      z-index: 3
+    .yoga-dude
+      max-width: 100%
+      position: relative
+      z-index: 2
+    .yoga-ellipse
+      max-width: 505px
+      width: 100%
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-100%, -50%)
+
+    .yoga-mask
+      position: absolute
+      height: calc(100% + 20px)
+      width: auto
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      background-color: rgba(0, 0, 0, 0.4)
+      z-index: 5
+      margin-top: -45px
+
+    .yoga-line
+      margin-left: -1px
+      width: 4px
+      background-color: rgba(yellow, 1)
+      height: 0
+      filter: blur(5px)
+      position: absolute
+      bottom: 0
+      animation: yoga-line 2s ease
+
+    .yoga-circle
+      margin-left: -5px
+      width: 9px
+      height: 9px
+      border-radius: 50%
+      background-color: rgba(red, .5)
+      position: absolute
+      opacity: 0
+      &:nth-child(2)
+        background: rgba(167, 53, 68, 0.71)
+        bottom: .8%
+        box-shadow: 0 0 10px 10px rgba(#a73544, .7)
+      &:nth-child(3)
+        background: rgba(255, 237, 0, 0.71)
+        bottom: 16.7%
+        box-shadow: 0 0 10px 10px rgba(#ffed00, .7)
+      &:nth-child(4)
+        width: 59px
+        height: 59px
+        background: rgba(89, 168, 15, 0.7)
+        bottom: 27%
+        margin-left: -28px
+        box-shadow: 0 0 30px 35px rgba(89, 168, 15, .7)
+      &:nth-child(5)
+        background: rgba(236, 29, 68, 0.71)
+        bottom: 50.6%
+        box-shadow: 0 0 10px 10px rgba(#ec1d44, .7)
+      &:nth-child(6)
+        background: rgba(58, 132, 210, 0.9)
+        bottom: 64.7%
+        box-shadow: 0 0 10px 10px rgba(#3a84d2, .9)
+      &:nth-child(7)
+        background: rgba(#b8b8b8, .7)
+        bottom: 82.6%
+        box-shadow: 0 0 10px 10px rgba(#b8b8b8, .8)
+      &:nth-child(8)
+        background: rgba(249, 125, 192, 0.6)
+        bottom: 94%
+        width: 39px
+        height: 19px
+        margin-left: -19px
+        box-shadow: 0 0 15px 27px rgba(249, 125, 192, .6)
+
+  .s__why-meditate
+    @media screen and (max-width: 480px)
+      .s_title
+        display: none
+      .item.article
+        &:nth-child(2)
+          max-height: 720px
+          height: 720px !important
+      .loadmore
+        a.btn
+          width: 100%
+          padding-right: 0
+          padding-left: 0
+          text-align: center
+
+  .s_together
+    margin-bottom: 200px
+    &:before
+      bottom: -100px
+    @media screen and (max-width: 1400px)
+      .container
+        padding-right: 150px
+        padding-left: 150px
+        .btn__item_container
+          width: 100%
+    @media screen and (max-width: 768px)
+      margin-bottom: 100px
+      &:before
+        bottom: -50px
+      .container
+        padding-right: 15px
+        padding-left: 15px
+    @media screen and (max-width: 480px)
+      margin-bottom: 100px !important
+
+  #meditate-anchor
+    margin-bottom: 0
+    @media screen and (max-width: 1024px)
+      .article__image
+        max-width: 50%
+        img
+          width: 100%
+          height: auto
+    @media screen and (max-width: 768px)
+      .article__image
+        img
+          max-width: 320px
+          max-height: 100% !important
+    @media screen and (max-width: 480px)
+      .article__image
+        margin-bottom: 30px
+
+  .s__meditate.s__improving
+    margin-top: -100px
+    margin-bottom: 0
+    @media only screen and (max-device-width: 1024px) and (min-device-width: 768px) and (orientation: portrait)
+      .s__wrapper .article.article_main
+        margin: 0
+        padding: 45px 45px 0px
+    @media screen and (max-width: 736px)
+      .s_title span
+        font-size: 20px
+        line-height: 20px
+    @media screen and (max-width: 1024px)
+      margin-bottom: 75px
+      min-height: 100%
+
+  .s__mataji .s__wrapper_wide .article_main
+    @media screen and (max-width: 1024px)
+      max-width: 625px
+
+  @media only screen and (min-device-width: 834px) and (max-device-width: 1112px) and (orientation: portrait)
+    //header.header__wide.main-page
+    //  background-image: url(../img/meditate/header-bg_mobile.jpg)!important
+    .s__meditate
+      .s__box
+        padding-top: 50px
+        max-width: 100%
+    .s_together
+      .container
+        padding: 275px 100px 0
+      .btn__item_container
+        padding: 0
+        width: 100%
+    .s__why-meditate
+      .item.article
+        height: 750px
+        flex-basis: 255px
+    .s__mataji .s__wrapper_wide .article_main
+      width: 450px
+    .s__ancient-knowledge .article
+      margin-bottom: 50px
+
+// Common styles
+.s__why-meditate
+  margin-bottom: 120px
+  .s_title
+    @media screen and (max-width: 768px)
+      left: 87%
+      span
+        font-size: 20px
+        line-height: 20px
+        letter-spacing: 0
+  .article__container
+    display: flex
+    flex-direction: row
+    max-width: 1040px
+    justify-content: space-between
+    margin-bottom: 84px
+    @media screen and (max-width: 768px)
+      padding: 0 45px
+      flex-direction: column
+      max-width: 100%
+      width: 100%
+      justify-content: flex-start
+      margin-bottom: 0
+    @media screen and (max-width: 480px)
+      padding: 0 15px
+
+  .item.article
+    position: relative
+    height: 635px
+    flex-basis: 270px
+    margin-bottom: 50px
+    background: #fff
+    padding: 0
+    @media screen and (max-width: 1024px)
+      height: 700px
+    @media screen and (max-width: 768px)
+      flex: 1
+      height: 625px
+      background-color: transparent
+    @media screen and (max-width: 480px)
+      margin-bottom: 75px
+    .article__title
+      margin-right: -21px
+      margin-top: 32px
+      margin-bottom: 12px
+      font-family: $raleway-bold
+      font-size: 24px
+      line-height: 31px
+      @media screen and (max-width: 1024px)
+        margin-right: 0
+    .article__text
+      margin-right: -20px
+      font-size: 18px
+      margin-bottom: 32px
+      color: $light-gray
+      @media screen and (max-width: 1024px)
+        margin-right: 0
+    .article__btn
+      position: absolute
+      bottom: 0
+    //@media screen and (max-width: 1024px)
+      //  position: static
+    .article__media
+      img
+        max-width: 240px
+        width: 100%
+        height: auto
+        @media screen and (max-width: 1024px)
+          max-width: 100%
+        @media screen and (max-width: 768px)
+          max-width: 320px
+      @media screen and (max-width: 480px)
+        text-align: center
+        img
+          max-width: 100%
+
+  @media screen and (max-width: 768px)
+    margin-bottom: 75px

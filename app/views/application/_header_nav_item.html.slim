@@ -1,0 +1,24 @@
+
+/! nav__item
+li.nav__item
+  a.btn href=nav[:url] = nav[:label] || nav[:title]
+  /! nav__item_container
+  .nav__item_container
+    h4.container__title = nav[:title]
+    .container__content
+      .side.left
+        ul
+          li
+            a Know youself
+          li
+            a Enjoy life
+          li
+            a Ability
+          li
+            a More
+      .side.right
+        ul.related-posts
+          = render 'header_related_post', title: nav[:title], image: 'chakra/item1.jpg'
+          = render 'header_related_post', title: nav[:title], image: 'chakra/item2.jpg'
+  /! /nav__item_container
+/! /nav__item

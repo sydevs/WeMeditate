@@ -1,0 +1,345 @@
+@import "_mixins/device-media"
+
+.chakra-man-holder
+  display: block
+  max-width: 42%
+  width: 100%
+  height: auto
+  margin: 0 auto
+  position: relative
+
+.chackras-item
+  position: relative
+  z-index: -1
+  visibility: hidden
+  opacity: 0
+  transition: all 1s ease
+  &.active
+    opacity: 1
+
+.page-headline
+  font-size: 45px
+  font-family: $raleway
+  font-weight: 300
+  line-height: 67px
+  display: block
+  width: 100%
+  text-align: center
+
+.desc-box
+  display: none
+  max-width: 320px
+  width: 100%
+  padding: 15px
+  position: absolute
+  background-color: #fff
+  &.right-channel
+    transform: translateY(50%)
+  &__title
+    font-weight: 700
+    font-family: raleway-semi, sans-serif
+    font-size: 24px
+    line-height: 31px
+    color: #7b7b7b
+    margin-bottom: 17px
+  &__text
+    font-family: raleway, sans-serif
+    font-size: 14px
+    line-height: 25px
+    color: #9d9d9c
+    margin-bottom: 7px
+    &:last-of-type
+      margin-bottom: 26px
+  &__link
+    font-family: raleway, sans-serif
+    font-size: 16px
+    line-height: 29px
+    color: #9d9d9c
+    transition: all .5s ease
+    i
+      font-size: 11px
+      display: inline-block
+      margin-left: 14px
+      color: #9d9d9c
+      transition: all .5s ease
+    &:hover
+      color: #c5e0dc
+      i
+        color: #c5e0dc
+  &.muladhara
+    bottom: 15%
+    left: 0
+  &.svadistan
+    bottom: 25%
+    right: 0
+  &.nabi, &.void
+    left: 0
+    bottom: 33%
+  &.anahata
+    right: 0
+    bottom: 40%
+  &.vishudhi
+    left: 0
+    bottom: 50%
+  &.agia
+    right: 0
+    bottom: 57%
+  &.kundalini, &.left-channel
+    right: 0
+    bottom: 42%
+  &.sahasrara
+    left: 0
+    bottom: 60%
+  &.right-channel, &.center-channel
+    bottom: 42%
+    left: 0
+
+.page-wrapper
+  width: 100%
+  height: 100%
+  position: relative
+
+.tab-container
+  display: block
+  width: 100%
+  height: 100%
+  margin-bottom: 1.825vw
+
+.tabs
+  width: 18.25vw
+  align-items: center
+  justify-content: space-between
+  margin: 0 auto 6.2vw
+  display: flex
+
+.tabs li
+  display: inline-flex
+  list-style-type: none
+  a
+    display: flex
+    width: 130px
+    align-items: center
+    justify-content: center
+    font-family: $raleway-medium
+    font-weight: 500
+    font-size: 16px
+    padding: 18px 0
+    line-height: 29px
+    text-decoration: none
+    color: #9d9d9c
+  &.active
+    background: #c5e0dc
+    a
+      color: #fff
+
+#tab1
+  svg
+    image
+      display: none
+      &.active
+        display: block
+    path
+      cursor: pointer
+      transition: all .5s ease
+      &.active
+        fill-opacity: 1
+
+    .kundalini
+      image
+        transition: all .3s ease
+
+    .kundalini.active
+      opacity: .45
+      path
+        transition: all .5s ease
+        fill: #ecbe13
+      image
+        opacity: 1
+        display: block
+
+  .trigger-item
+    display: block
+    width: 25px
+    height: 25px
+    position: absolute
+    left: 50%
+    transform: translateX(-55%)
+    border-radius: 50%
+    cursor: pointer
+    &:first-of-type
+      top: 8%
+      width: 60px
+      height: 50px
+      transform: translateX(-50%)
+    &:nth-of-type(2)
+      top: 21%
+    &:nth-of-type(3)
+      top: 36%
+    &:nth-of-type(4)
+      top: 48%
+    &:nth-of-type(5)
+      z-index: 5
+      top: 63%
+    &:nth-of-type(6)
+      top: 75%
+      z-index: 5
+    &:nth-of-type(7)
+      height: 35px
+      top: 80%
+    &:nth-of-type(8)
+      top: 89%
+    &:nth-of-type(9)
+      width: 7vw
+      height: 7vw
+      top: 54%
+      transform: translateX(-50%)
+      z-index: 1
+
+#tab2
+  svg
+    image
+      transition: all .5s ease
+      opacity: 0
+    .active
+      image
+        transition: all .5s ease
+        opacity: 1
+
+  .kundalini.active + g path
+    fill: #ecbe13
+
+  .transparent-lines
+    transition: fill 1s ease
+    fill: white
+    stroke: gray
+
+  .right-channel.active + g path.transparent-lines
+    fill: #ffed00
+    stroke: none
+    transition: fill 1s ease
+  .left-channel.active + g path.transparent-lines
+    fill: #3a84d2
+    stroke: none
+    transition: fill 1s ease
+  .center-channel.active
+    & + g rect.transparent-lines, & + g polyline.transparent-lines
+      fill: #f69273
+      stroke: none
+      transition: fill 1s ease
+
+  .trigger-item
+    width: 4%
+    height: 40px
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    cursor: pointer
+    &:first-of-type
+      top: 16%
+      left: 54%
+    &:nth-of-type(2)
+      top: 22%
+      left: 45%
+      height: 57%
+    &:nth-of-type(3)
+      width: 4%
+      top: 16%
+      height: 64%
+    &:nth-of-type(4)
+      top: 16%
+      left: 46%
+    &:nth-of-type(5)
+      top: 22%
+      left: 55%
+      height: 70%
+    &:nth-of-type(6)
+      top: 80%
+      height: 40px
+      width: 30px
+      z-index: 5
+
+.page-chakras-channels
+
+  @include tablet()
+    .tabs
+      width: 35%
+      li
+        a
+          padding: 10px 0
+          width: 110px
+
+
+  @media screen and (max-width: 459px)
+    .page-headline
+      font-size: 30px
+      line-height: 30px
+
+    .chakra-man-holder
+      width: 100%
+      max-width: 100%
+
+    .desc-box
+      position: static
+      max-width: 100%
+      bottom: auto
+      top: auto
+
+    .tabs
+      padding-top: 30px
+      width: 100%
+      justify-content: center
+      margin-bottom: 56px
+      li
+        a
+          width: 105px
+          padding: 10px 0
+
+    #tab1
+      .trigger-item
+        display: block
+        width: 25px
+        height: 25px
+        position: absolute
+        left: 50%
+        transform: translateX(-55%)
+        border-radius: 50%
+        cursor: pointer
+        &:first-of-type
+          top: 8%
+          width: 50px
+          height: 38px
+          transform: translateX(-50%)
+        &:nth-of-type(2)
+          top: 19.5%
+        &:nth-of-type(3)
+          top: 34%
+        &:nth-of-type(4)
+          top: 46%
+        &:nth-of-type(5)
+          z-index: 5
+          top: 61.2%
+        &:nth-of-type(6)
+          top: 73%
+          z-index: 5
+        &:nth-of-type(7)
+          height: 30px
+          top: 80%
+        &:nth-of-type(8)
+          top: 87%
+        &:nth-of-type(9)
+          width: 27vw
+          height: 27vw
+          top: 52%
+          transform: translateX(-50%)
+          z-index: 1
+
+  @media only screen and (min-device-width: 320px) and (max-device-width: 736px) and (orientation: landscape)
+    .tabs
+      width: 50%
+    .desc-box
+      position: static
+      max-width: 100%
+      bottom: auto
+      top: auto
+
+

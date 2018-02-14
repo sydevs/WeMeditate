@@ -1,4 +1,29 @@
 
-- content_for :title, 'Categories'
+- content_for :title, 'Inspiration'
 
-= render @categories
+/! main
+main.inspiration.page-inspiration
+  .container
+    .topline__filter
+      a.btn.filter__btn.active href="#" Creativity
+      a.btn.filter__btn href="#" Wisdom
+      a.btn.filter__btn href="#" Photo
+      a.btn.filter__btn href="#" Video
+      a.btn.filter__btn href="#" All
+
+    /! filter-mobile
+    .mobile__filter_container
+      a.btn.filter__btn.active href="#" Creativity
+      a.filter__btn_open href="#" 
+        | Filter
+        i.icon-filter-icon
+    /! /filter-mobile
+    
+    figure#grid.intro-grid data-columns=""
+      //- (1..14).to_a.each do |i|
+        = render 'articles/article', index: i
+      = render @categories.first.articles
+
+    .loadmore
+      a.btn href="#" Load more articles
+/! /main
