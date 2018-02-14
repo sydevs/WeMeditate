@@ -3,6 +3,6 @@ $(document).on('turbolinks:load', function() {
 
   var grid = document.getElementById('grid')
   if (grid) {
-    salvattore.registerGrid()
+    salvattore.registerGrid(grid)
   }
 })
