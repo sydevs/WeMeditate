@@ -1,6 +1,6 @@
 li.post-item
-  p.post-heading = title
-  a.post-link href="#" 
+  p.post-heading = resource_name(item)
+  a.post-link href=url_for(item)
     span.link-overlay
       | Inspiration
       br/

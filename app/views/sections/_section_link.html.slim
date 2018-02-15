@@ -1,0 +1,9 @@
+
+- if section_link.chapter?
+  - index = section_link_counter + 1
+
+  li
+    a.to-section.active href="#section-#{index}"
+      span.chapter-num = index
+      span.chapter-title = section_link.title
+    span.progress-indicator data-id="section-#{index}" 

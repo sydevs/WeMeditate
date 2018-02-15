@@ -141,6 +141,7 @@ en:
           other: '%{count} Meditations'
 
       section:
+        label: Label (admin only)
         title: Title
         content_type: Content Type
         content_types:

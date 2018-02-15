@@ -3,6 +3,7 @@ class Section < ApplicationRecord
   # Extensions
   has_paper_trail
   jsonb_accessor :parameters,
+    label: :string,
     title: :string,
     subtitle: :string,
     text: :text,
@@ -27,6 +28,10 @@ class Section < ApplicationRecord
 
   # Validations
   before_create :set_language
+
+  def chapter?
+    content_type == 'text' and title.present?
+  end
 
   def visibility_countries= list
     if list.is_a? Array

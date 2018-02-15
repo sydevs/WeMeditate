@@ -82,14 +82,14 @@ module Admin
 
     protected
       ALL_SECTION_ATTRIBUTES = [
-        :id, :order, :_destroy, # Meta fields
+        :id, :label, :order, :_destroy, # Meta fields
         :content_type, :visibility_type, :visibility_countries,
         :title, :subtitle, :text, :quote, :credit, :image, :action_text, :url, # These are the options for different content_types
         { format: [ :text, :image, :action ], images: [] },
       ]
 
       TRANSLATABLE_SECTION_ATTRIBUTES = [
-        :id, # Meta fields
+        :id, :label, # Meta fields
         :title, :subtitle, :text, :quote, :credit, :credit_subtitle, :image, :action_text, :action_url, :video_url, # These are the options for different content_types
         { images: [] }, # For image uploads
       ]

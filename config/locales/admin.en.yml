@@ -57,7 +57,7 @@ en:
         user: Invite %{target}
         track: Upload %{target}
   messages:
-    updated_on: Updated on %{date}
+    updated_on_by: Updated on %{date} by %{author}
     errors: Errors
     confirm_destroy: Are you sure you want to delete that?
     no_translation: Not Translated

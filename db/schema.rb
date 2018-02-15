@@ -194,7 +194,7 @@ ActiveRecord::Schema.define(version: 20180131133421) do
   end
 
   create_table "sections", force: :cascade do |t|
-    t.string "header"
+    t.string "header" # TODO: Remove this
     t.integer "content_type", default: 0
     t.integer "order", default: 0, null: false
     t.jsonb "parameters", default: {}, null: false

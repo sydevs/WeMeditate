@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
   include Regulator
   protect_from_forgery #with: :exception
   before_action :set_navigation
@@ -7,14 +8,30 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+    def layout_by_resource
+      if devise_controller?
+        'devise'
+      else
+        'application'
+      end
+    end
+
+  private
     def set_navigation
       @desktop_navigation = [
-        { title: 'Why Meditate', label: 'Why', url: root_url },
-        { title: 'How to meditate', label: 'How', url: root_url },
-        { title: 'Inspiration', url: categories_url },
+        {
+          title: 'How much time do you have?', label: 'Meditate now!', url: meditations_url,
+          content: { items: DurationFilter.first(5).reverse, featured: Meditation.first(2) }
+        },
+        {
+          title: 'Inspiration', url: categories_url,
+          content: { items: Category.first(5), featured: Article.first(2) }
+        },
         { title: 'Music', url: tracks_url },
-        { title: 'Send inquiry', url: root_url },
-        { title: 'Contacts', url: root_url },
+        {
+          title: 'Learn More', url: root_url,
+          content: { items: StaticPage.where(role: [:sahaja_yoga, :shri_mataji, :kundalini, :subtle_system]), featured: Treatment.first(2) }
+        },
       ]
 
       @mobile_navigation = [
@@ -27,12 +44,8 @@ class ApplicationController < ActionController::Base
       ]
     end
 
-    def layout_by_resource
-      if devise_controller?
-        'devise'
-      else
-        'application'
-      end
+    def meditations_navigation
     end
+
 
 end

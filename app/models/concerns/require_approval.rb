@@ -18,6 +18,12 @@ module RequireApproval
     paper_trail.version_at(published_at)
   end
 
+  def last_changed_by
+    if versions.present?
+      User.find(versions.last.whodunnit)
+    end
+  end
+
   def drafts
     @drafts ||= begin
       if published?

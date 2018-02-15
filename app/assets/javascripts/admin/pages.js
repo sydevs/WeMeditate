@@ -26,15 +26,16 @@ $(document).on('turbolinks:load', function() {
 
   $('body').on('click', '[data-form-prepend]', function(e) {
     var obj = $($(this).attr('data-form-prepend'))
+    var id = (new Date()).getTime()
 
     obj.find('input, select, textarea').each(function() {
       $(this).attr('name', function() {
-        return $(this).attr('name').replace('new_record', (new Date()).getTime())
+        return $(this).attr('name').replace('new_record', id)
       })
     })
 
     // TODO: Remove this temp code
-    obj.accordion()
+    obj.accordion('open', 0)
     obj.find('.ui.dropdown').dropdown()
 
     obj.insertBefore(this)

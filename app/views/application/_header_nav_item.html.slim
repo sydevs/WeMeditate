@@ -2,23 +2,21 @@
 /! nav__item
 li.nav__item
   a.btn href=nav[:url] = nav[:label] || nav[:title]
-  /! nav__item_container
-  .nav__item_container
-    h4.container__title = nav[:title]
-    .container__content
-      .side.left
-        ul
-          li
-            a Know youself
-          li
-            a Enjoy life
-          li
-            a Ability
-          li
-            a More
-      .side.right
-        ul.related-posts
-          = render 'header_related_post', title: nav[:title], image: 'chakra/item1.jpg'
-          = render 'header_related_post', title: nav[:title], image: 'chakra/item2.jpg'
-  /! /nav__item_container
+  
+  - if nav[:content]
+    /! nav__item_container
+    .nav__item_container
+      h4.container__title = nav[:title]
+      .container__content
+        .side.left
+          ul
+            - nav[:content][:items].each do |item|
+              li
+                = nav_link_for item
+                //a href=url_for(item) = item.name || item.title
+        .side.right
+          ul.related-posts
+            = render 'header_related_post', item: nav[:content][:featured][0], image: 'chakra/item1.jpg' if nav[:content][:featured].length > 0
+            = render 'header_related_post', item: nav[:content][:featured][1], image: 'chakra/item2.jpg' if nav[:content][:featured].length > 1
+    /! /nav__item_container
 /! /nav__item

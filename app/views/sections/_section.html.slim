@@ -2,6 +2,9 @@
 - partial = ['sections/type', section.content_type]
 - partial << section.format if [:text, :image, :action].include? section.content_type.to_sym
 
-p
-  strong = render partial.join('/'), section: section
-  small = section.attributes.to_s
+- index = section_counter + 1
+
+/! section #{index}
+section id="section-#{index}" data-section=index 
+  = render partial.join('/'), section: section
+/! /section #{index}

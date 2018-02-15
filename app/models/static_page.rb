@@ -11,7 +11,7 @@ class StaticPage < ApplicationRecord
 
   # Associations
   enum role: [
-    :home, :contact, :shri_mataji, :subtle_system,
+    :home, :contact, :shri_mataji, :subtle_system, :sahaja_yoga, :kundalini,
     :chakra_1, :chakra_2, :chakra_3, :chakra_3b, :chakra_4, :chakra_5, :chakra_6, :chakra_7,
     :channel_left, :channel_right, :channel_center
   ]
