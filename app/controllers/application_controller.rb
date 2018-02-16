@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
           content: { items: DurationFilter.first(5).reverse, featured: Meditation.first(2) }
         },
         {
-          title: 'Inspiration', url: categories_url,
-          content: { items: Category.first(5), featured: Article.first(2) }
+          title: 'Inspiration', url: articles_url,
+          content: { items: Article.first(5), featured: Article.first(2) }
         },
         { title: 'Music', url: tracks_url },
         {
@@ -37,8 +37,8 @@ class ApplicationController < ActionController::Base
       @mobile_navigation = [
         { title: 'Meditation', url: root_url },
         { title: 'Music', url: tracks_url },
-        { title: 'Inspiration', url: categories_url },
-        { title: 'Events', url: categories_url },
+        { title: 'Inspiration', url: articles_url },
+        { title: 'Events', url: articles_url },
         { title: 'About us', url: root_url },
         { title: 'Contacts', url: root_url },
       ]

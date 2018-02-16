@@ -1,7 +1,10 @@
 
 - content_for :title, "Treatment: #{@treatment.name}"
 
-h3 Attributes
-ul
-  - @treatment.attributes.each do |key, value|
-    li #{key}: #{value}
+/! main
+main class="page-treatment"
+  .container
+    h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s" = @treatment.name
+
+  = render 'sections/type/video'
+/! /main

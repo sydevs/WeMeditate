@@ -1,0 +1,29 @@
+
+- content_for :title, 'Inspiration'
+
+= @selected_category.inspect
+
+/! main
+main.inspiration.page-inspiration
+  .container
+    .topline__filter
+      - @categories.each do |category|
+        a.btn.filter__btn class="#{'active' if @selected_category == category}" href="#"
+          = category.name
+      a.btn.filter__btn class="#{'active' unless @categories.include?(@selected_category)}" href="#"
+        ' All
+
+    /! filter-mobile
+    .mobile__filter_container
+      a.btn.filter__btn.active href="#" = @selected_category&.name || 'All'
+      a.filter__btn_open href="#" 
+        | Filter
+        i.icon-filter-icon
+    /! /filter-mobile
+    
+    figure#grid.intro-grid data-columns=""
+      = render @articles
+
+    .loadmore
+      a.btn href="#" Load more articles
+/! /main

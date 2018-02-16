@@ -29,8 +29,12 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :articles, :cities, only: [:show]
-      resources :categories, only: [:index, :show]
+      resources :articles, only: [:index, :show] do
+        get '/category/:category_id', on: :collection, action: :index
+      end
+
+      resources :cites, only: [:show]
+      #resources :categories, only: [:index, :show]
       resources :meditations, only: [:index, :show]
       resources :treatments, only: [:index, :show]
       resources :tracks, only: [:index]

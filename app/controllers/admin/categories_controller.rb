@@ -9,13 +9,7 @@ module Admin
     end
 
     def update
-      atts = category_params
-
-      if params[:reset_slug]
-        atts.merge slug: nil
-      end
-
-      super atts
+      super category_params
     end
 
     def sort

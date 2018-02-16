@@ -33,9 +33,9 @@
   = yield f
 
   .field
-    - if page.new_record?
+    - if page.new_record? 
       - sections = page.sections
-      - sections = page.generate_default_sections! if sections.empty?
+      - sections = page.generate_default_sections! if sections.empty? and page.respond_to?(:generate_default_sections!)
     - else
       - sections = page.sections.where(language: locale)
       - sections = page.sections.where(language: page.translated_locales.first) if sections.empty?

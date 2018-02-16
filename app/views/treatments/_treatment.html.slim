@@ -1,2 +1,16 @@
 
-li = link_to treatment.name, url_for(treatment)
+- index = (treatment_counter + 2).to_s.rjust(2, '0')
+
+.article.article_technique
+  .article__image
+    .article__number = index
+    img alt="technique" src=image_path("improving/technique_#{index}.jpg") /
+  .article__content
+    h1.article__title = treatment.name
+    .article__text
+      p
+        | Сахаджа Йога является методом получения реального опыта
+        | самосозерцания и мировозрения. Она
+        | основана на опыте Самореализации, доступном каждому человеку с рождения.
+    .article__btn
+      a.btn href=treatment_url(treatment) Больше о методе

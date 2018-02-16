@@ -22,12 +22,11 @@
         = f.text_field :name, placeholder: Treatment.human_attribute_name(:name)
         
       - unless treatment.new_record?
-        .field.reset-slug
-          i.linkify.icon
-          em = treatment.slug
-          = label_tag :reset_slug do
-            = check_box_tag :reset_slug, 'yes', params[:reset_slug]
-            '  #{translate 'action.target.reset', target: Treatment.human_attribute_name(:slug)}
+        .field
+          .ui.labeled.input
+            .ui.basic.label
+              = url_for(treatment).split('/')[0...-1].join('/') + '/'
+            = f.text_field :slug, placeholder: treatment.id
 
       .field
         = f.text_field :video_url, placeholder: Treatment.human_attribute_name(:video_url)

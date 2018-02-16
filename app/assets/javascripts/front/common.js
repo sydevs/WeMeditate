@@ -186,6 +186,7 @@ $(document).on('turbolinks:load', function() {
 
 
   // SVG Vivus Animation
+  /*
   $('.footer__illustration').each(function (i) {
     var el = $(this).attr('id', 'footer_custom_' + i)
     new Vivus(el.attr('id'), {duration: 200, file: $(this).data('svg')})
@@ -193,6 +194,12 @@ $(document).on('turbolinks:load', function() {
 
   $('.img__circle').each(function (i) {
     var el = $(this).attr('id', 'img__circle_' + i)
+    new Vivus(el.attr('id'), {duration: 200, file: $(this).data('svg')})
+  })
+  */
+
+  $('[data-svg]').each(function(i) {
+    var el = $(this).attr('id', 'svg_' + i)
     new Vivus(el.attr('id'), {duration: 200, file: $(this).data('svg')})
   })
 })

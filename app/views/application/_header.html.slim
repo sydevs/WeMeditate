@@ -22,15 +22,13 @@ header.header.gray
       ul
         = render partial: 'header_nav_item', collection: @desktop_navigation, as: :nav
     /! /nav
-    /! breadcrumbs
-    ul.header__breadcrumbs.transparent
-      li
-        a href="#" Meditation
-      li
-        a href="#" Why do we meditate
-      li.is_active
-        a href="#" Joy to life
-    /! /breadcrumbs
+    - unless @breadcrumbs.nil?
+      /! breadcrumbs
+      ul.header__breadcrumbs.transparent
+        - @breadcrumbs.each do |crumb|
+          li class="#{'is_active' if crumb[:url].nil?}"
+            a href=crumb[:url] = crumb[:name]
+      /! /breadcrumbs
   /! mobile
   .container.mobile
     a.logo href="#"

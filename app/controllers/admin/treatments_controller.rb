@@ -9,13 +9,7 @@ module Admin
     end
 
     def update
-      atts = treatment_params
-
-      if params[:reset_slug]
-        atts.merge slug: nil
-      end
-
-      super atts
+      super treatment_params
     end
 
     def sort
@@ -34,7 +28,7 @@ module Admin
 
     private
       def treatment_params
-        params.fetch(:treatment, {}).permit(:name, :excerpt, :content)
+        params.fetch(:treatment, {}).permit(:name, :slug, :excerpt, :content)
       end
 
   end
