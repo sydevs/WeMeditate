@@ -5,6 +5,5 @@
 - index = section_counter + 1
 
 /! section #{index}
-section id="section-#{index}" data-section=index 
-  = render partial.join('/'), section: section
+= render partial.join('/'), section: section, index: index
 /! /section #{index}

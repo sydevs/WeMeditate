@@ -106,7 +106,7 @@ module Admin
 
     private
       def set_page
-        @page = @klass.friendly.find(params[:id])
+        @page = @klass.includes(:sections).friendly.find(params[:id])
         set_instance_variable
       end
 

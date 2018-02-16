@@ -9,10 +9,6 @@
     = f.hidden_field :order, class: 'sorting-order'
 
   .title
-    //.location style="float: right" data-tooltip="Visible for All Countries" data-inverted=""
-      i.teal.check.circle.outline.icon
-      i.black.globe.icon
-
     - if allow.update_structure?
       i.black.bars.icon.handle
 
@@ -27,9 +23,6 @@
       .ui.top.right.attached.label
         = content_type_icon section.content_type.to_sym
         = human_enum_name(section, :content_type) if section.special?
-        //
-          = content_type_icon :special
-          ' #{human_enum_name(section, :content_type, :special)}: #{human_enum_name(section, :format, section.format)}
 
   .content
     .form

@@ -35,10 +35,9 @@
   .field
     - if page.new_record? 
       - sections = page.sections
-      - sections = page.generate_default_sections! if sections.empty? and page.respond_to?(:generate_default_sections!)
     - else
-      - sections = page.sections.where(language: locale)
-      - sections = page.sections.where(language: page.translated_locales.first) if sections.empty?
+      - sections = page.sections.select { |s| s.language.to_sym == locale }
+      - sections = page.sections.select { |s| s.language.to_sym == page.translated_locales.first } if sections.empty?
       
     label = model.human_attribute_name(:sections)
     

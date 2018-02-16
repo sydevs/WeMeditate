@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.friendly.find(params[:id])
+    @article = Article.includes(:sections).friendly.find(params[:id])
     @breadcrumbs = [
       { name: Article.model_name.human(count: -1), url: articles_url },
       { name: @article.category.name, url: '#' },

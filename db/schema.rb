@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180131133421) do
+ActiveRecord::Schema.define(version: 20180216115450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -194,7 +194,6 @@ ActiveRecord::Schema.define(version: 20180131133421) do
   end
 
   create_table "sections", force: :cascade do |t|
-    t.string "header" # TODO: Remove this
     t.integer "content_type", default: 0
     t.integer "order", default: 0, null: false
     t.jsonb "parameters", default: {}, null: false
@@ -204,6 +203,8 @@ ActiveRecord::Schema.define(version: 20180131133421) do
     t.string "page_type"
     t.bigint "page_id"
     t.jsonb "images"
+    t.string "format"
+    t.index ["content_type", "format"], name: "index_sections_on_content_type_and_format"
     t.index ["page_type", "page_id"], name: "index_sections_on_page_type_and_page_id"
   end
 

@@ -33,11 +33,20 @@ class StaticPage < ApplicationRecord
   def generate_default_sections!
     case role.to_sym
     when :shri_mataji
-      sections.new_special(:try_meditation)
-      sections.new_special(:award)
+      ensure_special_section_exists! :try_meditation
+      ensure_special_section_exists! :awards
+    when :subtle_system
+      ensure_special_section_exists! :subtle_system
     end
+  end
 
-    sections
+  def ensure_special_section_exists! format
+    unless sections.exists?(content_type: :special, format: format)
+      sections.new(content_type: :special, format: format, language: I18n.locale)
+    end
+  end
+
+  def self.new_special format
   end
 
   def cache_key

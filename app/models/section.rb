@@ -12,8 +12,7 @@ class Section < ApplicationRecord
     credit_subtitle: :string,
     action_text: :string,
     action_url: :string,
-    video_url: :string,
-    format: :string
+    video_url: :string
 
   # Associations
   mount_uploaders :images, GenericImageUploader
@@ -24,15 +23,10 @@ class Section < ApplicationRecord
   TEXT_FORMATS = [:just_text, :with_quote, :adjacent_to_image, :within_image, :around_image, :with_image_background]
   IMAGE_FORMATS = [:fit_container_width, :fit_page_width]
   ACTION_FORMATS = [:signup, :button]
-  SPECIAL_FORMATS = [:try_meditation]
-  #enum format: TEXT_FORMATS + IMAGE_FORMATS + ACTION_FORMATS
+  #enum format: TEXT_FORMATS + IMAGE_FORMATS + ACTION_FORMATS + SPECIAL_FORMATS
 
   # Validations
   before_create :set_language
-
-  def self.new_special format
-    new(content_type: :special, format: format, language: I18n.locale)
-  end
 
   def chapter?
     content_type == 'text' and title.present?
