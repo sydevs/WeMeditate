@@ -16,82 +16,95 @@
     - if allow.update_structure?
       i.black.bars.icon.handle
 
-    - if section.new_record?
-      = Section.model_name.human
+    - if section.special?
+      = human_enum_name(section, :format, section.format)
     - elsif section.label.present?
-      = section.label + ' [' + human_enum_name(section, :content_type) + ']'
-    - else
-      = human_enum_name(section, :content_type) + ' ' + Section.model_name.human
+      = section.label
+    - else section.new_record?
+      = Section.model_name.human
+
+    - if section.special? or not section.new_record?
+      .ui.top.right.attached.label
+        = content_type_icon section.content_type.to_sym
+        = human_enum_name(section, :content_type) if section.special?
+        //
+          = content_type_icon :special
+          ' #{human_enum_name(section, :content_type, :special)}: #{human_enum_name(section, :format, section.format)}
 
   .content
     .form
-      .field
-        = f.label :label
-        = f.text_field :label
-
-      .field.content-type
-        = f.label :content_type
-        .ui.scrolling.selection.dropdown class="#{'disabled' unless allow.update_structure?}"
-          = f.hidden_field :content_type, disabled: !allow.update_structure?
-          i.dropdown.icon
-          .default.text Section.human_attribute_name(:content_type)
-          .menu
-            - Section.content_types.each do |k, v|
-              .item data-value=k
-                = content_type_icon k.to_sym
-                = human_enum_name(section, :content_type, k)
+      - if section.special?
+        = f.hidden_field :content_type
+        = f.fields_for :format do |ff|
+          = ff.hidden_field :special, value: section.format
+      - else
+        .field
+          = f.label :label
+          = f.text_field :label
+          
+        .field.content-type
+          = f.label :content_type
+          .ui.scrolling.selection.dropdown class="#{'disabled' unless allow.update_structure?}"
+            = f.hidden_field :content_type, disabled: !allow.update_structure?
+            i.dropdown.icon
+            .default.text Section.human_attribute_name(:content_type)
+            .menu
+              - Section.content_types.except(:special).each do |k, v|
+                .item data-value=k
+                  = content_type_icon k.to_sym
+                  = human_enum_name(section, :content_type, k)
       
-      = f.fields_for :format do |ff|
-        .field.text.format
-          = ff.label :format
-          = ff.select :text, Section::TEXT_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown', disabled: !allow.update_structure? }
+        = f.fields_for :format do |ff|
+          .field.text.format
+            = ff.label :format
+            = ff.select :text, Section::TEXT_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown', disabled: !allow.update_structure? }
 
-        .field.image.format
-          = ff.label :format
-          = ff.select :image, Section::IMAGE_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown', disabled: !allow.update_structure? }
+          .field.image.format
+            = ff.label :format
+            = ff.select :image, Section::IMAGE_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown', disabled: !allow.update_structure? }
 
-        .field.action.format
-          = ff.label :format
-          = ff.select :action, Section::ACTION_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown', disabled: !allow.update_structure? }
+          .field.action.format
+            = ff.label :format
+            = ff.select :action, Section::ACTION_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, { selected: section.format }, { class: 'ui scrolling dropdown', disabled: !allow.update_structure? }
         
-      .field.for.text
-        //= f.label :title
-        = f.text_field :title, placeholder: Section.human_attribute_name(:title)
-      .field.for.text.video
-        //= f.label :subtitle
-        = f.text_field :subtitle, placeholder: Section.human_attribute_name(:subtitle)
-      .field.for.text.quote
-        //= f.label :text
-        = f.text_area :text, placeholder: Section.human_attribute_name(:text), rows: 2
-      .field.for.quote.sub-quote
-        //= f.label :quote
-        = f.text_area :quote, placeholder: Section.human_attribute_name(:quote), rows: 1
-      .field.for.image
-        //= f.label :images
-        .ui.fluid.icon.file.input
-          i.image.icon
-          = f.file_field :images, multiple: true
-          = f.hidden_field :images_cache
-        - if section.images.present?
-          .ui.tiny.list
-            - section.images.each do |image|
-              a.item href=image.url target="_blank" = image.identifier
-      .field.for.video
-        //= f.label :video_url
-        = f.url_field :video_url, placeholder: Section.human_attribute_name(:video_url)
-      .field.for.image.quote
-        //= f.label :credit
-        = f.text_field :credit, placeholder: Section.human_attribute_name(:credit)
-      .field.for.quote
-        //= f.label :credit_subtitle, Section.human_attribute_name(:subtitle)
-        = f.text_field :credit_subtitle, placeholder: Section.human_attribute_name(:subtitle)
-      .two.fields
-        .field.for.button
-          //= f.label :action_text
-          = f.text_field :action_text, placeholder: Section.human_attribute_name(:action_text)
-        .field.for.button
-          //= f.label :action_url
-          = f.url_field :action_url, placeholder: Section.human_attribute_name(:action_url)
+        .field.for.text
+          //= f.label :title
+          = f.text_field :title, placeholder: Section.human_attribute_name(:title)
+        .field.for.text.video
+          //= f.label :subtitle
+          = f.text_field :subtitle, placeholder: Section.human_attribute_name(:subtitle)
+        .field.for.text.quote
+          //= f.label :text
+          = f.text_area :text, placeholder: Section.human_attribute_name(:text), rows: 2
+        .field.for.quote.sub-quote
+          //= f.label :quote
+          = f.text_area :quote, placeholder: Section.human_attribute_name(:quote), rows: 1
+        .field.for.image
+          //= f.label :images
+          .ui.fluid.icon.file.input
+            i.image.icon
+            = f.file_field :images, multiple: true
+            = f.hidden_field :images_cache
+          - if section.images.present?
+            .ui.tiny.list
+              - section.images.each do |image|
+                a.item href=image.url target="_blank" = image.identifier
+        .field.for.video
+          //= f.label :video_url
+          = f.url_field :video_url, placeholder: Section.human_attribute_name(:video_url)
+        .field.for.image.quote
+          //= f.label :credit
+          = f.text_field :credit, placeholder: Section.human_attribute_name(:credit)
+        .field.for.quote
+          //= f.label :credit_subtitle, Section.human_attribute_name(:subtitle)
+          = f.text_field :credit_subtitle, placeholder: Section.human_attribute_name(:subtitle)
+        .two.fields
+          .field.for.button
+            //= f.label :action_text
+            = f.text_field :action_text, placeholder: Section.human_attribute_name(:action_text)
+          .field.for.button
+            //= f.label :action_url
+            = f.url_field :action_url, placeholder: Section.human_attribute_name(:action_url)
 
       - if allow.update_structure?
         .fields
@@ -111,7 +124,7 @@
                     i.flag class=country_code.downcase
                     = country_name
 
-    - if allow.update_structure?
+    - if allow.update_structure? and not section.special?
       - if section.new_record?
         .ui.tiny.compact.basic.labeled.icon.button.remove-child-button
           i.trash.icon

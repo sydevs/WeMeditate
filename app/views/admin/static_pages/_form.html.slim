@@ -1,6 +1,13 @@
 
 = render 'admin/application_pages/form', page: @static_page do |f|
-  - if @static_page.new_record?
+  .field
+    = f.label :role
+    = f.hidden_field :role
+    .ui.icon.label
+      i.pin.icon
+      = human_enum_name(@static_page, :role)
+
+  //- if @static_page.new_record?
     .field
       = f.label :role
       = f.select :role, StaticPage.available_roles.map {|k, v| [human_enum_name(StaticPage, :role, k), k]}, { selected: params[:role] || @static_page.role }, { class: 'ui fluid dropdown' }

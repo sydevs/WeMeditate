@@ -78,7 +78,9 @@ en:
           home: Home Page
           contact: Contact Page
           shri_mataji: About Shri Mataji
-          subtle_system: Subtle System
+          subtle_system: About Subtle System
+          sahaja_yoga: About Sahaja Yoga
+          kundalini: About Kundalini
           chakra_1: 'Chakra: Mooladhara'
           chakra_2: 'Chakra: Swadhisthan'
           chakra_3: 'Chakra: Nabhi'
@@ -151,18 +153,25 @@ en:
           image: Image
           banner: Banner
           action: Call to Action
+          special: Special
         format: Format
         formats:
+          # Text
           just_text: Just Text
           with_quote: Text With Quote Insert
           adjacent_to_image: Text With Image
           within_image: Image With Text Insert
           around_image: Text With Image Insert
           with_image_background: Text Over Image
+          # Image
           fit_container_width: Fit Content Width
           fit_page_width: Fit Page Width
+          # Call to Action
           signup: Sign Up
           button: Button
+          # Special
+          try_meditation: Try Meditation
+          awards: Awards
         text: Text
         subtitle: Subtitle
         quote: Quote

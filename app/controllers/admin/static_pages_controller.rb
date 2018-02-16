@@ -3,6 +3,11 @@ module Admin
       prepend_before_action do
         set_model StaticPage
       end
+
+      def new
+        @page = StaticPage.new role: params[:role]
+        set_instance_variable
+      end
   
       def create
         super static_page_params

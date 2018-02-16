@@ -1,2 +1,18 @@
 
-' TEXT: WITHIN IMAGE
+.s__founder.fullscreen.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s"
+  .container
+    .s__wrapper
+      .img__circle data-svg=image_path('svg/img__circle.svg')
+      .s_title
+        span.text-width = section.title if section.subtitle.present?
+      .article__image
+        img alt="founder" src=image_path('shri-mataji/s-founder-new.jpg') /
+      .article.circle.article_main.wow.fadeIn data-wow-delay="1.5s" data-wow-duration="2s" 
+        h2.h2.article__title = section.subtitle.present? ? section.subtitle : section.title
+        .article__text
+          p
+            | Shri Mataji Nirmala Devi quietly transformed lives. For more than forty years, she travelled
+            | internationally, offering free public lectures and the experience of self-realization to
+            | all, regardless of race, religion or circumstance. She not only enabled people to pass this
+            | valuable experience on to others, but taught them the meditation technique necessary to
+            | sustain it, known as Sahaja Yoga.

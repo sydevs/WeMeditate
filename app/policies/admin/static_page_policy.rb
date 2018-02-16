@@ -14,11 +14,11 @@ module Admin
     end
 
     def update_structure?
-      super_admin? and locale_allowed?
+      super_admin?
     end
 
     def destroy?
-      false
+      super_admin?
     end
 
   end

@@ -7,6 +7,7 @@ module Admin::SectionHelper
     image: 'photo',
     banner: 'desktop',
     action: 'mouse pointer',
+    special: 'star',
   }
       
   def content_type_icon ct

@@ -25,8 +25,19 @@ class StaticPage < ApplicationRecord
   default_scope { order(:role) }
   scope :untranslated, -> { joins(:translations).where.not(static_page_translations: { locale: I18n.locale }) }
 
+
   def self.available_roles
     StaticPage.roles.keys - StaticPage.pluck(:role)
+  end
+
+  def generate_default_sections!
+    case role.to_sym
+    when :shri_mataji
+      sections.new_special(:try_meditation)
+      sections.new_special(:award)
+    end
+
+    sections
   end
 
   def cache_key

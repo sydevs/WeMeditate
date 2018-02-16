@@ -14,14 +14,20 @@ module Admin
     end
 
     def new
-      page_name = @klass.name.underscore
-      instance_variable_set('@'+page_name, @klass.new)
+      @page = @klass.new
+      set_instance_variable
     end
 
     def edit
     end
 
     def create page_params
+      if page_params[:sections_attributes].present?
+        page_params[:sections_attributes].each do |_, section|
+          section[:format] = section[:format][section[:content_type]] rescue nil
+        end
+      end
+
       @page = @klass.new page_params
       set_instance_variable
       authorize @page
@@ -37,7 +43,7 @@ module Admin
     def update page_params
       if policy(@page).update_structure? and page_params[:sections_attributes].present?
         page_params[:sections_attributes].each do |_, section|
-          section[:format] = section[:format][section[:content_type]]
+          section[:format] = section[:format][section[:content_type]] rescue nil
         end
       end
 
@@ -85,7 +91,7 @@ module Admin
         :id, :label, :order, :_destroy, # Meta fields
         :content_type, :visibility_type, :visibility_countries,
         :title, :subtitle, :text, :quote, :credit, :image, :action_text, :url, # These are the options for different content_types
-        { format: [ :text, :image, :action ], images: [] },
+        { format: [ :text, :image, :action, :special ], images: [] },
       ]
 
       TRANSLATABLE_SECTION_ATTRIBUTES = [
