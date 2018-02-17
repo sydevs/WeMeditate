@@ -12,5 +12,6 @@
  *
  *= require_tree ./front/libs
  *= require ./front/main.sass
+ *= require ./front/adjustments.sass
  *= require_self
  */

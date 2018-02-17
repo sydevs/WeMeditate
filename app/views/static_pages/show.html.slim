@@ -6,6 +6,6 @@ main class="page-#{@static_page.role.downcase.dasherize}"
   .container
     h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s" = @static_page.title
 
-  = render @static_page.sections
+  = render @static_page.sections.with_translations(locale)
   = render 'application/footer_together'
 /! /main

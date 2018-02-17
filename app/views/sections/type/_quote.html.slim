@@ -3,6 +3,18 @@ section id="section-#{index}" data-section=index
   .section-wrapper
     blockquote.text-center.article-blockquote
       span.divider__line
+      h3 = section.quote
+      p
+        = section.credit
+        span = section.subtitle
+      span.divider__line.after
+    p.text-center
+      a.btn href="#"  Медитация со Шри Матаджи
+
+//section id="section-#{index}" data-section=index
+  .section-wrapper
+    blockquote.text-center.article-blockquote
+      span.divider__line
       h3
         | «Радость начинает спускаться на вашу голову
         br/
@@ -13,18 +25,6 @@ section id="section-#{index}" data-section=index
       p
         | Шри Матаджи,
         span основатель метода медитации «Сахаджа Йога»
-      span.divider__line.after
-    p.text-center
-      a.btn href="#"  Медитация со Шри Матаджи
-
-//section id="section-#{index}" data-section=index
-  .section-wrapper
-    blockquote.text-center.article-blockquote
-      span.divider__line
-      h3 = section.quote
-      p
-        = section.credit
-        span = section.subtitle
       span.divider__line.after
     p.text-center
       a.btn href="#"  Медитация со Шри Матаджи

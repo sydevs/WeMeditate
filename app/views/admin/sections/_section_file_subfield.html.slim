@@ -1,0 +1,16 @@
+
+- groups = local_assigns[:for] || nil
+- accepts = { image: 'image/png', video: 'video/mp3' }
+- icon = { image: 'image', video: 'film' }
+- media = f.object.send(attribute)
+
+= render 'admin/sections/section_subfield', f: f, attribute: attribute, for: groups
+  - if media.file.present?
+    a.ui.fluid.basic.file.label href=media.url target="_blank"
+      i.icon class=icon[attribute]
+      span = media.file.identifier
+
+  .ui.fluid.icon.file.input
+    i.icon class=icon[attribute]
+    = f.file_field attribute, accept: accepts[attribute]
+    = f.hidden_field "#{attribute}_cache".to_sym

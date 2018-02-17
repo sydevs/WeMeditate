@@ -22,12 +22,6 @@ module Admin
     end
 
     def create page_params
-      if page_params[:sections_attributes].present?
-        page_params[:sections_attributes].each do |_, section|
-          section[:format] = section[:format][section[:content_type]] rescue nil
-        end
-      end
-
       @page = @klass.new page_params
       set_instance_variable
       authorize @page
@@ -41,12 +35,6 @@ module Admin
     end
 
     def update page_params
-      if policy(@page).update_structure? and page_params[:sections_attributes].present?
-        page_params[:sections_attributes].each do |_, section|
-          section[:format] = section[:format][section[:content_type]] rescue nil
-        end
-      end
-
       @page.attributes = page_params
 
       if @page.save
@@ -87,18 +75,19 @@ module Admin
     end
 
     protected
+      CONTENT_ATTRIBUTES = [
+        :title, :subtitle, :sidetext, :text, :quote, :credit, :url, :action, # These are the options for different content_types
+        :video, :image, # For file uploads
+      ]
+
       ALL_SECTION_ATTRIBUTES = [
         :id, :label, :order, :_destroy, # Meta fields
         :content_type, :visibility_type, :visibility_countries, :format, # Structural fields
-        :title, :subtitle, :text, :quote, :credit, :image, :url, # These are the options for different content_types
-        { images: [] },
-      ]
+      ] + CONTENT_ATTRIBUTES
 
       TRANSLATABLE_SECTION_ATTRIBUTES = [
         :id, :label, # Meta fields
-        :title, :subtitle, :text, :quote, :credit, :image, :url, # These are the options for different content_types
-        { images: [] }, # For image uploads
-      ]
+      ] + CONTENT_ATTRIBUTES
 
       def set_model klass
         @klass = klass

@@ -6,6 +6,19 @@ section.s__meditate.s__family.fullscreen.wow.fadeIn data-wow-duration="3s" id="s
       .s_title.s_title_right
         span.text-width Семья
       .article__image
+        img alt="family" src=section.image.url /
+      .article.article_main.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s" 
+        h2.h2.article__title = section.title
+        .article__text
+          = markdown section.text
+
+//section.s__meditate.s__family.fullscreen.wow.fadeIn data-wow-duration="3s" id="section-#{index}" data-section=index
+  .container
+    .s__wrapper
+      .img__circle data-svg=image_path('svg/img__circle.svg')
+      .s_title.s_title_right
+        span.text-width Семья
+      .article__image
         img alt="family" src=image_path('shri-mataji/s-family.jpg') /
       .article.article_main.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s" 
         h2.h2.article__title Семья Шри Матаджи

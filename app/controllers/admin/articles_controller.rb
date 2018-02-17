@@ -16,12 +16,12 @@ module Admin
       def article_params
         if policy(@article || Article).update_structure?
           params.fetch(:article, {}).permit(
-            :title, :slug, :category_id, :priority,
+            :title, :slug, :category_id, :priority, :excerpt, :banner, :thumbnail,
             sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES
           )
         else
           params.fetch(:article, {}).permit(
-            :title, :slug,
+            :title, :slug, :excerpt, :banner, :thumbnail,
             sections_attributes: Admin::ApplicationPageController::TRANSLATABLE_SECTION_ATTRIBUTES
           )
         end

@@ -2,8 +2,8 @@
 section id="section-#{index}" data-section=index
   .video-box
     .video-wrapper
-      img alt="" src=image_url('article/video.jpg') /
+      img alt="" src=section.image.url /
       .video-play__btn_wrapper
-        a.video-link.popup-with-zoom-anim data-poster="http://www.etonline.com/sites/default/files/images/2016-10/1280_Gilmore_Girls_Revival_Fall.jpg" data-source="http://thenewcode.com/assets/videos/polina.mp4" data-title=("Первый метод медитации") href="#video-popup" 
+        a.video-link.popup-with-zoom-anim data-poster=section.image.url data-source=section.video.url data-title=section.title href="#video-popup" 
           img alt="" src=image_url('video-icon.svg') /
     h4.video-title = section.title

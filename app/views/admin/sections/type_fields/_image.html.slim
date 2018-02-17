@@ -2,16 +2,5 @@
 = render 'admin/sections/section_subfield', f: f, attribute: :format do
   = f.select :format, Section::IMAGE_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, {}, { class: 'ui scrolling dropdown', disabled: !allow.update_structure? }
 
-= render 'admin/sections/section_subfield', f: f, attribute: :images
-  .ui.fluid.icon.file.input
-    i.image.icon
-    = f.file_field :images, multiple: true
-    = f.hidden_field :images_cache
-  - if section.images.present?
-    .ui.tiny.list
-      - section.images.each do |image|
-        a.item href=image.url target="_blank"
-          i.image.icon
-          span = image.file.identifier
-
+= render 'admin/sections/section_file_subfield', f: f, attribute: :image
 = render 'admin/sections/section_subfield', f: f, attribute: :credit

@@ -54,7 +54,7 @@
         = f.hidden_field :banner_cache
     
     - if @city.banner.present?
-      = image_tag @city.banner_url, class: 'ui image'
+      = image_tag @city.banner_url, class: 'ui rounded image'
     - elsif not allow.update_structure?
       .ui.label = translate 'messages.not_set'
 

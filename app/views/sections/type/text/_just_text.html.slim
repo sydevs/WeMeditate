@@ -2,6 +2,11 @@
 section id="section-#{index}" data-section=index
   .section-wrapper
     h4 = section.title
+    = markdown section.text
+
+//section id="section-#{index}" data-section=index
+  .section-wrapper
+    h4 = section.title
     p
       | Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения. Она основана
       | на опыте Самореализации, доступном каждому человеку с рождения. Сахаджа Йога является методом
@@ -25,8 +30,3 @@ section id="section-#{index}" data-section=index
       | на опыте Самореализации, доступном каждому человеку с рождения. Сахаджа Йога является методом
       | получения реального опыта самосозерцания и мировозрения. Она основана на опыте Самореализации,
       | доступном каждому человеку с рождения. Сахаджа
-
-//section id="section-#{index}" data-section=index
-  .section-wrapper
-    h4 = section.title
-    = markdown section.text

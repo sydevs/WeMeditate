@@ -74,7 +74,13 @@ en:
     has_draft: Has Pending Changes
   time:
     formats:
-      time: '%k:%M'
+      default: '%k:%M'
+      time: :time.formats.default
+      date: :date.formats.default
+  date:
+    formats:
+      default: '%d.%m.%Y'
+      date: :date.formats.default
   misc:
     dashboard: Dashboard
     menu:

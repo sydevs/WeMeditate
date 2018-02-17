@@ -1,19 +1,18 @@
 
-//li = link_to article.title, url_for(article)
 - index = article_counter + 1
 
 .item.article.wow.fadeIn data-n=index data-wow-delay="1s" data-wow-duration="4s" 
   a.article__media href=article_url(article)
-    img.article__image alt=("article image") src=image_path("inspiration__items/item_#{index}.png") /
+    img.article__image alt=("article image") src=(article.thumbnail.url || image_path("inspiration__items/item_#{index}.png")) /
 
   h2.article__title = article.title
   
   .article__text
-    p Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
+    p = article.excerpt
 
   .more_btn
     a href=article_url(article)
       | Learn More
       i.icon-arrow-breadcrumb
 
-    span 13.07.2017
+    span = localize article.created_at, format: :date

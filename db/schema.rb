@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180216115450) do
+ActiveRecord::Schema.define(version: 20180217144000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20180216115450) do
     t.datetime "updated_at", null: false
     t.string "title", null: false
     t.string "slug", null: false
+    t.text "excerpt"
+    t.jsonb "banner"
+    t.jsonb "thumbnail"
     t.index ["article_id"], name: "index_article_translations_on_article_id"
     t.index ["locale"], name: "index_article_translations_on_locale"
   end
@@ -193,16 +196,33 @@ ActiveRecord::Schema.define(version: 20180216115450) do
     t.index ["city_id"], name: "index_program_venues_on_city_id"
   end
 
+  create_table "section_translations", force: :cascade do |t|
+    t.integer "section_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "label"
+    t.string "title"
+    t.string "subtitle"
+    t.string "sidetext"
+    t.text "text"
+    t.text "quote"
+    t.string "credit"
+    t.string "url"
+    t.string "action"
+    t.jsonb "image"
+    t.jsonb "video"
+    t.index ["locale"], name: "index_section_translations_on_locale"
+    t.index ["section_id"], name: "index_section_translations_on_section_id"
+  end
+
   create_table "sections", force: :cascade do |t|
     t.integer "content_type", default: 0
     t.integer "order", default: 0, null: false
-    t.jsonb "parameters", default: {}, null: false
     t.integer "visibility_type", default: 0, null: false
     t.string "visibility_countries"
-    t.integer "language", default: 0, null: false
     t.string "page_type"
     t.bigint "page_id"
-    t.jsonb "images"
     t.string "format"
     t.index ["content_type", "format"], name: "index_sections_on_content_type_and_format"
     t.index ["page_type", "page_id"], name: "index_sections_on_page_type_and_page_id"

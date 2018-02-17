@@ -32,8 +32,7 @@
     .form
       - if section.special?
         = f.hidden_field :content_type
-        = f.fields_for :format do |ff|
-          = ff.hidden_field :special, value: section.format
+        = f.hidden_field :format
       - else
         .field
           = f.label :label
@@ -70,15 +69,14 @@
                     = country_name
 
       - unless section.special?
-        .ui.divider
-
         - Section.content_types.except(:special).each do |type, v|
           .grouped.fields.for class=type
+            .ui.divider
             = render "admin/sections/type_fields/#{type}", f: f, section: section, allow: allow
-
-        .ui.divider
       
     - if allow.update_structure? and not section.special?
+      .ui.divider
+      
       - if section.new_record?
         .ui.tiny.compact.basic.labeled.icon.button.remove-child-button
           i.trash.icon

@@ -57,6 +57,9 @@ en:
           low: Low Visibility
           normal: Normal Visibility
           high: High Visibility
+        excerpt: Preview Content
+        banner: Banner (png)
+        thumbnail: Thumbnail (png)
         sections: Content
 
       city:
@@ -144,6 +147,8 @@ en:
 
       section:
         label: Label (admin only)
+        visibility_type: Visible to
+        visibility_countries: countries
         content_type: Content Type
         content_types:
           text: Text
@@ -177,13 +182,11 @@ en:
         sidetext: Side Text
         text: Text
         quote: Quote
-        images: Images
+        image: Image (png)
         credit: Credit
-        video_url: YouTube Video URL
-        action_url: Action Link
-        action_text: Action Text
-        visibility_type: Visible to
-        visibility_countries: countries
+        video: Video (mp3)
+        action: Action Text
+        url: Link
 
       track:
         title: Title

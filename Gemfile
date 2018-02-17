@@ -60,12 +60,15 @@ gem 'carrierwave'
 #gem 'carrierwave-aws'
 gem 'mini_magick'
 
-# Localization
-gem 'rails-i18n'
+# Globalize (translatable models)
 gem 'globalize'
 gem 'friendly_id-globalize'
-gem 'carrierwave-i18n'
+gem 'carrierwave_globalize'
 gem 'globalize-versioning', github: 'aaroncraigie/globalize-versioning' # for paper_trail support
+
+# Localization
+gem 'rails-i18n'
+gem 'carrierwave-i18n'
 gem 'i18n_data'
 gem 'devise-i18n'
 gem 'route_translator'

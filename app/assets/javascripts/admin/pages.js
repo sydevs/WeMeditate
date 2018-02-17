@@ -56,6 +56,12 @@ $(document).on('turbolinks:load', function() {
   })
 
   $('#page-form').on('submit', function() {
-    $(this).find('.grouped.fields:hidden :input').attr('disabled', true)
+    $('.ui.accordion').accordion('close', 0)
+    $(this).addClass('loading')
+
+    $(this).find('.section').each(function() {
+      var content_type = $(this).find('.content-type.field input').val()
+      $(this).find('.grouped.fields.for:not(.'+content_type+') :input').attr('disabled', true)        
+    })
   })
 })

@@ -34,16 +34,10 @@
   = yield f
 
   .field
-    - if page.new_record? 
-      - sections = page.sections
-    - else
-      - sections = page.sections.select { |s| s.language.to_sym == locale }
-      - sections = page.sections.select { |s| s.language.to_sym == page.translated_locales.first } if sections.empty?
-      
     label = model.human_attribute_name(:sections)
     
     div class="#{'sort-list' if allow.update_structure?}"
-      = f.fields_for :sections, sections do |ff|
+      = f.fields_for :sections do |ff|
         = render 'admin/sections/form', f: ff, allow: allow
 
       - if allow.update_structure?
