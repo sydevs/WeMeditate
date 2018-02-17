@@ -9,8 +9,8 @@ module ApplicationHelper
   end
 
   def markdown content
-    rc = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-    rc.render(content).html_safe
+    @rc ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, no_intra_emphasis: true, autolink: true, space_after_headers: true)
+    @rc.render(content).html_safe
   end
 
   def nav_link_for item

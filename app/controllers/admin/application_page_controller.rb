@@ -34,7 +34,7 @@ module Admin
 
       if @page.save
         @page.publish_drafts! # This line effectively disables drafts by always publishing the latest version.
-        redirect_to [:admin, @klass]
+        redirect_to [:edit, :admin, @page], flash: { info: "Created successfully." }
       else
         render :new
       end
@@ -54,9 +54,9 @@ module Admin
 
         #redirect_to [:edit, :admin, @page]
         if policy(@page).review?
-          redirect_to [:admin, @page]
+          redirect_to [:admin, @page], flash: { info: "Saved successfully, you can now review and publish the changes." }
         else
-          redirect_to [:admin, @klass]
+          redirect_to [:edit, :admin, @page], flash: { info: "Saved successfully." }
         end
       else
         render :edit
@@ -89,14 +89,14 @@ module Admin
     protected
       ALL_SECTION_ATTRIBUTES = [
         :id, :label, :order, :_destroy, # Meta fields
-        :content_type, :visibility_type, :visibility_countries,
-        :title, :subtitle, :text, :quote, :credit, :image, :action_text, :url, # These are the options for different content_types
-        { format: [ :text, :image, :action, :special ], images: [] },
+        :content_type, :visibility_type, :visibility_countries, :format, # Structural fields
+        :title, :subtitle, :text, :quote, :credit, :image, :url, # These are the options for different content_types
+        { images: [] },
       ]
 
       TRANSLATABLE_SECTION_ATTRIBUTES = [
         :id, :label, # Meta fields
-        :title, :subtitle, :text, :quote, :credit, :credit_subtitle, :image, :action_text, :action_url, :video_url, # These are the options for different content_types
+        :title, :subtitle, :text, :quote, :credit, :image, :url, # These are the options for different content_types
         { images: [] }, # For image uploads
       ]
 

@@ -3,7 +3,7 @@
 - allow = policy(page)
 - show_title_field = true unless local_assigns[:show_title_field] == false
 
-= form_for [:admin, page], html: { class: "ui form #{'error' if page.errors.present?}" } do |f|
+= form_for [:admin, page], html: { id: 'page-form', class: "ui form #{'error' if page.errors.present?}" } do |f|
   - if page.errors.present?
     .ui.small.error.message
       .header = translate 'messages.errors'
@@ -25,10 +25,11 @@
             em = url_for(page)
           .content
             //= f.label :slug
-            .ui.labeled.input
+            .ui.labeled.action.input
               .ui.basic.label
                 = url_for(page).split('/')[0...-1].join('/') + '/'
               = f.text_field :slug, placeholder: page.id
+              a.ui.button href=url_for(page) target="_blank" = t('action.show')
 
   = yield f
 
@@ -65,4 +66,6 @@
     - else
       button.ui.basic.positive.button
         = translate 'action.update'
+      //button.ui.basic.positive.button
+        = translate 'action.update_and_done'
 

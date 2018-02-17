@@ -10,11 +10,11 @@ $(document).on('turbolinks:load', function() {
     content_type = $(this).val()
     section.addClass('type-' + content_type)
 
-    format = $('.section .format.for.'+content_type+' option:selected').val()
+    format = $('.section .fields.for.'+content_type+' .field-format option:selected').val()
     section.addClass('format-' + format)
   })
 
-  $('body').on('change', '.section .format.field select', function() {
+  $('body').on('change', '.section .field-format select', function() {
     var section = $(this).closest('.section')
     
     section.removeClass(function (index, className) {
@@ -34,11 +34,11 @@ $(document).on('turbolinks:load', function() {
       })
     })
 
-    // TODO: Remove this temp code
-    obj.accordion('open', 0)
-    obj.find('.ui.dropdown').dropdown()
-
+    $('.ui.accordion').accordion('close', 0)
+    obj.find('.ui.dropdown').dropdown() // TODO: Remove this temp code
     obj.insertBefore(this)
+    obj.accordion('open', 0) // TODO: Remove this temp code
+
     return false
   })
 
@@ -53,5 +53,9 @@ $(document).on('turbolinks:load', function() {
   
   $('body').on('click', '.remove-child-button', function() {
     $(this).closest('.child').remove()
+  })
+
+  $('#page-form').on('submit', function() {
+    $(this).find('.grouped.fields:hidden :input').attr('disabled', true)
   })
 })

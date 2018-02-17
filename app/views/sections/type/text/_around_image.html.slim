@@ -28,3 +28,11 @@ section id="section-#{index}" data-section=index
       | на опыте Самореализации, доступном каждому человеку с рождения. Сахаджа Йога является методом
       | получения реального опыта самосозерцания и мировозрения. Она основана на опыте Самореализации,
       | доступном каждому человеку с рождения. Сахаджа
+
+//section id="section-#{index}" data-section=index
+  .section-wrapper
+    h4 = section.title
+    figure.callout-figure
+      img alt="" src=section.images[0].url /
+      figcaption.figcaption Credit • #{section.credit}
+    = markdown section.text

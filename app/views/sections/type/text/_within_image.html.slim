@@ -17,3 +17,17 @@ section id="section-#{index}" data-section=index
               | all, regardless of race, religion or circumstance. She not only enabled people to pass this
               | valuable experience on to others, but taught them the meditation technique necessary to
               | sustain it, known as Sahaja Yoga.
+
+//section id="section-#{index}" data-section=index
+  .s__founder.fullscreen.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s"
+    .container
+      .s__wrapper
+        .img__circle data-svg=image_path('svg/img__circle.svg')
+        .s_title
+          span.text-width = section.title if section.subtitle.present?
+        .article__image
+          img alt=section.images[0].file.identifier src=section.images[0].url /
+        .article.circle.article_main.wow.fadeIn data-wow-delay="1.5s" data-wow-duration="2s" 
+          h2.h2.article__title = section.subtitle.present? ? section.subtitle : section.title
+          .article__text
+            = markdown section.text

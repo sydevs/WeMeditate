@@ -144,7 +144,6 @@ en:
 
       section:
         label: Label (admin only)
-        title: Title
         content_type: Content Type
         content_types:
           text: Text
@@ -173,8 +172,10 @@ en:
           try_meditation: Try Meditation
           awards: Awards
           subtle_system: Subtle System Diagram
-        text: Text
+        title: Title
         subtitle: Subtitle
+        sidetext: Side Text
+        text: Text
         quote: Quote
         images: Images
         credit: Credit

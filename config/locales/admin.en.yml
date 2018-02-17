@@ -35,6 +35,7 @@ en:
     sign_out: Log Out
     show: View
     update: Save
+    update_and_done: Save & Done
     cancel: Cancel
     create: New
     edit: Edit

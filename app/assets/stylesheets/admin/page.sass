@@ -1,0 +1,73 @@
+.ui.form .section
+  position: relative
+
+  .grouped.fields,
+  .grouped.fields .field.for
+    display: none
+
+  &.type-text
+    .grouped.fields.for.text
+      display: block
+
+    &.format-with_quote .field.for.quote,
+    &.format-adjacent_to_image .field.for.image,
+    &.format-within_image .field.for.image,
+    &.format-around_image .field.for.image,
+    &.format-with_image_background .field.for.image
+      display: block !important
+
+  &.type-action
+    .grouped.fields.for.action
+      display: block
+
+    &.format-button .for.button
+      display: block
+
+  &.type-video .grouped.fields.for.video
+    display: block
+
+  &.type-image .grouped.fields.for.image
+    display: block
+
+  &.type-quote .grouped.fields.for.quote
+    display: block
+
+  &.type-banner .grouped.fields.for.banner
+    display: block
+
+  .grouped.fields .field
+    margin-bottom: 0 !important
+
+  .field > label
+    text-transform: uppercase
+    background-color: #E8E8E8
+    border-radius: 0.28571429rem 0.28571429rem 0 0
+    font-size: 80%
+    margin: 0
+    display: inline-block
+    padding: 0 0.28571429rem
+
+    + *
+      border-top-left-radius: 0
+
+.reset-slug
+  label
+    margin-left: 10px
+
+  input[type="checkbox"]
+    vertical-align: baseline !important
+
+.child
+  margin-bottom: 1em
+
+  &.deleting
+    opacity: 0.8 !important
+    box-shadow: 0px 1px 2px 0 rgba(219, 40, 40, 1), 0px 0px 0px 1px rgba(219, 40, 40, 1) !important
+
+    .field,
+    .fields
+      display: none !important
+
+  &.fields:not(.deleting)
+    .ui.destroy.checkbox
+      display: none

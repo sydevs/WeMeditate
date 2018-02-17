@@ -6,6 +6,7 @@ class Section < ApplicationRecord
     label: :string,
     title: :string,
     subtitle: :string,
+    sidetext: :string,
     text: :text,
     quote: :text,
     credit: :string,

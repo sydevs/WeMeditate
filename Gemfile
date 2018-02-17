@@ -47,6 +47,7 @@ gem 'jquery-rails'
 gem 'sortable-rails'
 gem 'google-analytics-rails'
 gem 'autosize'
+gem 'redcarpet' # To part markdown
 
 # Models
 gem 'paper_trail'
