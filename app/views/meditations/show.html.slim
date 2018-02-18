@@ -1,7 +1,5 @@
 
 - content_for :title, "Meditation: #{@meditation.name}"
 
-h3 Attributes
-ul
-  - @meditation.attributes.each do |key, value|
-    li #{key}: #{value}
+main style="background-image: url(#{image_path @meditation.image_url})"
+  = link_to :back

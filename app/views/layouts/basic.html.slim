@@ -25,19 +25,5 @@ html lang=locale
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-    //sass:
-      body
-        opacity: 0
-        overflow-x: hidden
-      html
-        background-color: #fff
-
 body class=content_for(:title).downcase
-  .preloader
-    image width="200" height="100" src=image_path('svg/preloader.svg') alt="preloader"
-
-  = render 'application/header'
-
   = yield
-
-  = render 'application/footer'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180217144000) do
+ActiveRecord::Schema.define(version: 20180218080329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,12 +144,13 @@ ActiveRecord::Schema.define(version: 20180217144000) do
     t.datetime "updated_at", null: false
     t.string "name", null: false
     t.string "slug", null: false
+    t.jsonb "image"
+    t.jsonb "audio"
     t.index ["locale"], name: "index_meditation_translations_on_locale"
     t.index ["meditation_id"], name: "index_meditation_translations_on_meditation_id"
   end
 
   create_table "meditations", force: :cascade do |t|
-    t.string "file", null: false
     t.bigint "duration_filter_id"
     t.index ["duration_filter_id"], name: "index_meditations_on_duration_filter_id"
   end

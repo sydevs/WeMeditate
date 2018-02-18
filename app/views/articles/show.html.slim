@@ -2,12 +2,19 @@
 - content_for :title, "Article: #{@article.title}"
 
 /! main
-main.page-article
-  section.bg-image
-    .bg-image-cover style=("background-image: url(#{@article.banner.url})") 
+main.page-article class="#{'page-article-no-img' unless @article.banner.file.present?}"
+  - if @article.banner.file.present?
+    section.bg-image
+      .bg-image-cover style=("background-image: url(#{@article.banner.url})") 
+        .container
+          h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s" style=("visibility: visible; animation-duration: 3s; animation-delay: 1s; animation-name: fadeIn;") 
+            = @article.title
+  - else
+    section.s-intro
       .container
         h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s" style=("visibility: visible; animation-duration: 3s; animation-delay: 1s; animation-name: fadeIn;") 
           = @article.title
+
   /! chapter-nav
   .chapter-nav-wrapper
     .container
@@ -15,6 +22,7 @@ main.page-article
         ul
           = render partial: 'sections/section_link', collection: @article.sections
   /! /chapter-nav
+
   article
     = render @article.sections.with_translations(locale)
 

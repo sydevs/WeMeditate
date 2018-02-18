@@ -1,0 +1,16 @@
+
+- media = f.object.send(attribute)
+- type = attribute unless local_assigns.key? :type
+
+- accepts = { image: 'image/png', video: 'video/mp3', audio: 'audio/mp3' }
+- icon = { image: 'image', video: 'film', audio: 'volume up' }
+
+- if media.file.present?
+  a.ui.fluid.basic.file.label href=media.url target="_blank"
+    i.icon class=icon[type]
+    span = media.file.identifier
+
+.ui.fluid.icon.file.input
+  i.icon class=icon[type]
+  = f.file_field attribute, accept: accepts[type]
+  = f.hidden_field "#{attribute}_cache".to_sym

@@ -7,10 +7,18 @@
 
     .meta
       .ui.tiny.list
+        - if meditation.translated_locales.include? I18n.locale
+          .item
+            i.linkify.icon
+            .content = url_for(meditation)
+        - else
+          .item
+            i.orange.warning.sign.icon
+            .content = translate 'messages.no_translation'
         .item
           i.volume.up.icon
-          a.content href=meditation.file_url
-            = meditation.file_identifier.humanize
+          a.content href=meditation.audio_url
+            = meditation.audio_identifier
         - if meditation.duration_filter.present?
           .item
             i.clock.icon
@@ -25,13 +33,16 @@
       .field
         .ui.fluid.input
           = f.text_field :name, placeholder: Meditation.human_attribute_name(:name)
-      
-      .field
-        .ui.fluid.icon.file.input
-          i.volume.up.icon
-          = f.file_field :file
-          = f.hidden_field :file_cache
           
+        - unless meditation.new_record?
+          = render 'admin/application/fields/slug', f: f
+
+      .field
+        = render 'admin/application/fields/file', f: f, attribute: :image
+
+      .field
+        = render 'admin/application/fields/file', f: f, attribute: :audio
+
       .field
         = f.select :duration_filter_id, DurationFilter.all.map {|df| [duration_filter_name(df), df.id] }, { include_blank: Meditation.human_attribute_name(:duration_filter) }, { class: 'ui fluid dropdown' }
       .field

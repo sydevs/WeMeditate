@@ -5,4 +5,4 @@ li.post-item
       | Inspiration
       br/
       | comes from within
-    img alt="" src=image_url(image) /
+    img alt="" src=(item.respond_to?(:thumbnail) && item.thumbnail.file.present? ? item.thumbnail.url : image_url(image)) /

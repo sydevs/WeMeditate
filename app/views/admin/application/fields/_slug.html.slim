@@ -1,0 +1,15 @@
+
+- url = url_for(f.object)
+
+.ui.accordion
+  .title
+    i.dropdown.icon
+    i.linkify.icon
+    em = url
+  .content
+    //= f.label :slug
+    .ui.labeled.action.input
+      .ui.basic.label
+        = url.split('/')[0...-1].join('/') + '/'
+      = f.text_field :slug, placeholder: f.object.id
+      a.ui.button href=url target="_blank" = t('action.show')

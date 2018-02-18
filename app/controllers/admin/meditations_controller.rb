@@ -12,9 +12,15 @@ module Admin
       super meditation_params
     end
 
+    protected
+      def set_resource
+        @resource = Meditation.friendly.find(params[:id])
+        @meditation = @resource
+      end
+
     private
       def meditation_params
-        params.fetch(:meditation, {}).permit(:name, :file, :duration_filter_id, goal_filter_ids: [])
+        params.fetch(:meditation, {}).permit(:name, :slug, :image, :audio, :duration_filter_id, goal_filter_ids: [])
       end
 
   end

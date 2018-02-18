@@ -7,7 +7,8 @@ class MeditationsController < ApplicationController
   end
 
   def show
-    @meditation = Meditation.find(params[:id])
+    @meditation = Meditation.friendly.find(params[:id])
+    render layout: 'basic'
   end
   
 end
