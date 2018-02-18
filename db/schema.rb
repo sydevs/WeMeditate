@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218080329) do
+ActiveRecord::Schema.define(version: 20180218132424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,7 +144,6 @@ ActiveRecord::Schema.define(version: 20180218080329) do
     t.datetime "updated_at", null: false
     t.string "name", null: false
     t.string "slug", null: false
-    t.jsonb "image"
     t.jsonb "audio"
     t.index ["locale"], name: "index_meditation_translations_on_locale"
     t.index ["meditation_id"], name: "index_meditation_translations_on_meditation_id"
@@ -152,6 +151,7 @@ ActiveRecord::Schema.define(version: 20180218080329) do
 
   create_table "meditations", force: :cascade do |t|
     t.bigint "duration_filter_id"
+    t.jsonb "image"
     t.index ["duration_filter_id"], name: "index_meditations_on_duration_filter_id"
   end
 
@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(version: 20180218080329) do
 
   create_table "mood_filters", force: :cascade do |t|
     t.integer "order"
+    t.jsonb "image"
   end
 
   create_table "mood_filters_tracks", id: false, force: :cascade do |t|
@@ -260,7 +261,7 @@ ActiveRecord::Schema.define(version: 20180218080329) do
   end
 
   create_table "tracks", force: :cascade do |t|
-    t.string "file", null: false
+    t.string "audio", null: false
   end
 
   create_table "treatment_translations", force: :cascade do |t|
@@ -272,6 +273,8 @@ ActiveRecord::Schema.define(version: 20180218080329) do
     t.string "slug", null: false
     t.text "excerpt", null: false
     t.text "content"
+    t.jsonb "thumbnail"
+    t.jsonb "video"
     t.index ["locale"], name: "index_treatment_translations_on_locale"
     t.index ["treatment_id"], name: "index_treatment_translations_on_treatment_id"
   end

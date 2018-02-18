@@ -1,48 +1,38 @@
 
-- allow = policy(track)
-
 = render 'admin/application_resources/index_item', resource: track, viewable: false do |f|
   - unless track.new_record?
-    .header = track.title
-
-    .meta
-      .ui.tiny.list
-        - if track.subtitle.present?
-          .item
-            i.user.icon
-            .content = track.subtitle
+    - content_for :meta, flush: true do
+      - if track.subtitle.present?
         .item
-          i.music.icon
-          a.content href=track.file_url
-            = track.file_identifier.humanize
-        - unless track.mood_filters.empty?
-          .item
-            i.filter.icon
-            .content = track.mood_filters.collect(&:name).join(', ')
-        - unless track.instrument_filters.empty?
-          .item
-            i.filter.icon
-            .content = track.instrument_filters.collect(&:name).join(', ')
+          i.user.icon
+          .content = track.subtitle
 
-  - if allow.edit?
-    .description
-      - unless track.new_record?
-        .field
-          label = track.file_identifier.humanize
-      .field
-        .ui.fluid.input
-          = f.text_field :title, placeholder: Track.human_attribute_name(:title)
-      .field
-        .ui.fluid.input
-          = f.text_field :subtitle, placeholder: Track.human_attribute_name(:subtitle)
-      .field
-        = f.select :mood_filter_ids, MoodFilter.all.map {|mf| [mf.name, mf.id] }, { include_blank: Track.human_attribute_name(:mood_filters) }, { class: 'ui fluid dropdown', multiple: '' }
-      .field
-        = f.select :instrument_filter_ids, InstrumentFilter.all.map {|mf| [mf.name, mf.id] }, { include_blank: Track.human_attribute_name(:instrument_filters) }, { class: 'ui fluid dropdown', multiple: '' }
-      
-      - if track.new_record?
-        .field
-          .ui.fluid.icon.file.input
-            i.volume.up.icon
-            = f.file_field :file
-            = f.hidden_field :file_cache
+      .item
+        i.music.icon
+        a.content href=track.audio_url target="_blank"
+          = track.audio_identifier.humanize
+
+      - unless track.mood_filters.empty?
+        .item
+          i.filter.icon
+          .content = track.mood_filters.collect(&:name).join(', ')
+
+      - unless track.instrument_filters.empty?
+        .item
+          i.filter.icon
+          .content = track.instrument_filters.collect(&:name).join(', ')
+
+  - content_for :fields, flush: true do
+    = subfield f, :title
+    = subfield f, :subtitle
+
+    = subfield f, :audio
+      = file_input f, :audio
+
+    = subfield f, :mood_filters
+      = multiselect_input f, :mood_filter_ids, MoodFilter.all.map {|f| [f.name, f.id] }
+      //= f.select :mood_filter_ids, MoodFilter.all.map {|f| [f.name, f.id] }, {}, { class: 'ui fluid dropdown', multiple: true }
+
+    = subfield f, :instrument_filters
+      = multiselect_input f, :instrument_filter_ids, InstrumentFilter.all.map {|f| [f.name, f.id] }
+      //= f.select :instrument_filter_ids, InstrumentFilter.all.map {|f| [f.name, f.id] }, {}, { class: 'ui fluid dropdown', multiple: true }

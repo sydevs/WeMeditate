@@ -38,8 +38,4 @@ class User < ApplicationRecord
   def all_languages?
     not self[:languages].present? #or current_user&.super_admin?
   end
-
-  def cache_key
-    super + '-' + Globalize.locale.to_s
-  end
 end

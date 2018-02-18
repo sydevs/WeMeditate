@@ -12,3 +12,8 @@
 - else
   = render 'admin/application_resources/index_item', resource: resource, viewable: viewable do |f|
     = yield f
+    //- content_for :meta do
+      = content_for :meta
+
+    //- content_for :fields do
+      = content_for :fields, f

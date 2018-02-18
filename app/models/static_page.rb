@@ -48,10 +48,5 @@ class StaticPage < ApplicationRecord
 
   def self.new_special format
   end
-
-  def cache_key
-    super + '-' + Globalize.locale.to_s
-  end
-
 end
   

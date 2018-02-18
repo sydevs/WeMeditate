@@ -30,10 +30,6 @@ class City < ApplicationRecord
     latitude.present? and longitude.present?
   end
 
-  def cache_key
-    super + '-' + Globalize.locale.to_s
-  end
-
   private
     def geocode_venues
       if program_venues.present?

@@ -1,15 +1,17 @@
 
-= render 'admin/sections/section_subfield', f: f, attribute: :format do
+= render 'admin/application/fields/subfield', f: f, attribute: :format do
   = f.select :format, Section::TEXT_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, {}, { class: 'ui scrolling dropdown', disabled: !allow.update_structure? }
 
-= render 'admin/sections/section_subfield', f: f, attribute: :title
-//= render 'admin/sections/section_subfield', f: f, attribute: :sidetext
+= render 'admin/application/fields/subfield', f: f, attribute: :title
+//= render 'admin/application/section_subfield', f: f, attribute: :sidetext
 
-= render 'admin/sections/section_subfield', f: f, attribute: :text
+= render 'admin/application/fields/subfield', f: f, attribute: :text
   = f.text_area :text, rows: 2
 
-= render 'admin/sections/section_subfield', f: f, attribute: :quote, for: [:quote]
+= render 'admin/application/fields/subfield', f: f, attribute: :quote, for: [:quote]
   = f.text_area :quote, rows: 1
 
-= render 'admin/sections/section_file_subfield', f: f, attribute: :image, for: [:image]
-= render 'admin/sections/section_subfield', f: f, attribute: :credit, for: [:image]
+= render 'admin/application/fields/subfield', f: f, attribute: :image, for: [:image] do
+  = render 'admin/application/fields/file', f: f, attribute: :image
+
+= render 'admin/application/fields/subfield', f: f, attribute: :credit, for: [:image]

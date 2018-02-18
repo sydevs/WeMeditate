@@ -1,49 +1,42 @@
 
-- allow = policy(meditation)
-
 = render 'admin/application_resources/index_item', resource: meditation do |f|
-  - unless meditation.new_record?
-    .header = meditation.name
+  - content_for :meta, flush: true do
+    - if meditation.translated_locales.include? I18n.locale
+      .item
+        i.linkify.icon
+        .content = url_for(meditation)
+    - else
+      .item
+        i.orange.warning.sign.icon
+        .content = translate 'messages.no_translation'
 
-    .meta
-      .ui.tiny.list
-        - if meditation.translated_locales.include? I18n.locale
-          .item
-            i.linkify.icon
-            .content = url_for(meditation)
-        - else
-          .item
-            i.orange.warning.sign.icon
-            .content = translate 'messages.no_translation'
-        .item
-          i.volume.up.icon
-          a.content href=meditation.audio_url
-            = meditation.audio_identifier
-        - if meditation.duration_filter.present?
-          .item
-            i.clock.icon
-            .content = duration_filter_name(meditation.duration_filter)
-        - if meditation.goal_filters.present?
-          .item
-            i.filter.icon
-            .content = meditation.goal_filters.collect(&:name).join(', ')
+    .item
+      i.volume.up.icon
+      a.content href=meditation.audio_url
+        = meditation.audio_identifier
+        
+    - if meditation.duration_filter.present?
+      .item
+        i.clock.icon
+        .content = duration_filter_name(meditation.duration_filter)
+    - if meditation.goal_filters.present?
+      .item
+        i.filter.icon
+        .content = meditation.goal_filters.collect(&:name).join(', ')
 
-  - if allow.edit?
-    .description
-      .field
-        .ui.fluid.input
-          = f.text_field :name, placeholder: Meditation.human_attribute_name(:name)
-          
-        - unless meditation.new_record?
-          = render 'admin/application/fields/slug', f: f
+  - content_for :fields, flush: true do
+    = subfield f, :name do
+      = f.text_field :name
+      = render 'admin/application/fields/slug', f: f unless meditation.new_record?
 
-      .field
-        = render 'admin/application/fields/file', f: f, attribute: :image
+    = subfield f, :image do
+      = render 'admin/application/fields/file', f: f, attribute: :image
 
-      .field
-        = render 'admin/application/fields/file', f: f, attribute: :audio
+    = subfield f, :audio do
+      = render 'admin/application/fields/file', f: f, attribute: :audio
 
-      .field
-        = f.select :duration_filter_id, DurationFilter.all.map {|df| [duration_filter_name(df), df.id] }, { include_blank: Meditation.human_attribute_name(:duration_filter) }, { class: 'ui fluid dropdown' }
-      .field
-        = f.select :goal_filter_ids, GoalFilter.all.map {|gf| [gf.name, gf.id] }, { include_blank: Meditation.human_attribute_name(:goal_filters) }, { class: 'ui fluid dropdown', multiple: '' }
+    = subfield f, :duration_filter do
+      = select_input f, :duration_filter_id, DurationFilter.all.map {|f| [duration_filter_name(f), f.id] }
+
+    = subfield f, :goal_filter do
+      = multiselect_input f, :goal_filter_ids, GoalFilter.all.map {|f| [f.name, f.id] }

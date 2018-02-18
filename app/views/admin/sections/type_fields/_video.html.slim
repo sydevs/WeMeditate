@@ -1,4 +1,8 @@
 
-= render 'admin/sections/section_subfield', f: f, attribute: :title
-= render 'admin/sections/section_file_subfield', f: f, attribute: :video
-= render 'admin/sections/section_file_subfield', f: f, attribute: :image
+= render 'admin/application/fields/subfield', f: f, attribute: :title
+
+= render 'admin/application/fields/subfield', f: f, attribute: :video do
+  = render 'admin/application/fields/file', f: f, attribute: :video
+
+= render 'admin/application/fields/subfield', f: f, attribute: :image do
+  = render 'admin/application/fields/file', f: f, attribute: :image

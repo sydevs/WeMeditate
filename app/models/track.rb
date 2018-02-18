@@ -6,9 +6,8 @@ class Track < ApplicationRecord
   # Associations
   has_and_belongs_to_many :mood_filters
   has_and_belongs_to_many :instrument_filters
-  mount_uploader :file, TrackUploader
+  mount_uploader :audio, TrackUploader
+
+  alias name title
   
-  def cache_key
-    super + '-' + Globalize.locale.to_s
-  end
 end

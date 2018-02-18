@@ -28,7 +28,7 @@ module Admin
 
     private
       def treatment_params
-        params.fetch(:treatment, {}).permit(:name, :slug, :excerpt, :content)
+        params.fetch(:treatment, {}).permit(:name, :slug, :excerpt, :content, :thumbnail, :video)
       end
 
   end

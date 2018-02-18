@@ -3,31 +3,21 @@
 
 = render 'admin/application_resources/sortable_index_item', resource: category, name: :name do |f|
   - unless category.new_record?
-    .header = category.name
-
-    .meta
-      .ui.tiny.list
-        - if category.translated_locales.include? I18n.locale
-          .item
-            i.linkify.icon
-            .content = url_for(category)
-        - else
-          .item
-            i.orange.warning.sign.icon
-            .content = translate 'messages.no_translation'
+    - content_for :meta, flush: true do
+      - if category.translated_locales.include? I18n.locale
         .item
-          i.file.text.icon
-          .content = Category.human_attribute_name(:articles, count: category.articles.count)
+          i.linkify.icon
+          .content = url_for(category)
+      - else
+        .item
+          i.orange.warning.sign.icon
+          .content = translate 'messages.no_translation'
 
-  - if allow.edit?
-    .description
-      .field
-        .ui.fluid.input
-          = f.text_field :name, placeholder: Category.human_attribute_name(:name)
-        
-      - unless category.new_record?
-        .field
-          .ui.labeled.input
-            .ui.basic.label
-              = url_for(category).split('/')[0...-1].join('/') + '/'
-            = f.text_field :slug, placeholder: category.id
+      .item
+        i.file.text.icon
+        .content = Category.human_attribute_name(:articles, count: category.articles.count)
+
+  - content_for :fields, flush: true do
+    = subfield f, :name do
+      = f.text_field :name
+      = render 'admin/application/fields/slug', f: f unless category.new_record?

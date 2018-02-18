@@ -3,33 +3,43 @@
 - allow = policy(resource)
 
 = form_for [:admin, resource], remote: true, html: { class: "ui form item #{'editing' if resource.new_record?}" } do |f|
-  .actions
-    - unless resource.new_record?
-      .ui.tiny.compact.vertical.labeled.icon.buttons
-        button.ui.save.edit.button.for-editing
-          i.green.checkmark.icon
-          = translate 'action.update'
-        .ui.cancel.edit.button.for-editing
-          i.red.cancel.icon
-          = translate 'action.cancel'
-      
-        - if viewable
-          a.ui.view.button.for-viewing href=url_for(resource)
-            i.browser.icon
-            = translate 'action.show'
-        - if allow.edit?
-          .ui.start.edit.button.for-viewing
-            i.edit.icon
-            = translate 'action.edit'
-        - if allow.destroy?
-          a.ui.delete.button.for-viewing href=url_for([:admin, resource]) data-method="delete" data-confirm=t('messages.confirm_destroy', default: 'Confirm Destroy')
-            i.trash.icon
-            = translate 'action.destroy'
-
   .content
-    = yield f
+    - yield f
+    - unless resource.new_record?
+      .header = content_for?(:name) ? content_for(:name) : resource.name
+      .meta
+        .ui.tiny.list
+          = content_for :meta
+
+    - if allow.edit?
+      fieldset.ui.segment
+        = content_for :fields
 
     - if resource.new_record?
       button.ui.basic.green.compact.right.labeled.icon.create.button
         = translate "action.create_model.#{resource.model_name.i18n_key}", default: :'action.create'
         i.checkmark.icon
+
+  - unless resource.new_record?
+    .actions
+      .ui.tiny.compact.vertical.labeled.icon.buttons.for-editing
+        button.ui.save.edit.button
+          i.green.checkmark.icon
+          = translate 'action.update'
+        .ui.cancel.edit.button
+          i.red.cancel.icon
+          = translate 'action.cancel'
+      
+      .ui.tiny.compact.vertical.labeled.icon.buttons.for-viewing
+        - if viewable
+          a.ui.view.button href=url_for(resource)
+            i.browser.icon
+            = translate 'action.show'
+        - if allow.edit?
+          .ui.start.edit.button
+            i.edit.icon
+            = translate 'action.edit'
+        - if allow.destroy?
+          a.ui.delete.button href=url_for([:admin, resource]) data-method="delete" data-confirm=t('messages.confirm_destroy', default: 'Confirm Destroy')
+            i.trash.icon
+            = translate 'action.destroy'

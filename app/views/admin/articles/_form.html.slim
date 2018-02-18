@@ -33,7 +33,7 @@
     
     - if @article.thumbnail.present?
       a.ui.label.link
-        = @article.thumbnail.file.identifier
+        = @article.thumbnail_identifier.humanize
     - elsif not allow.update_structure?
       .ui.label = translate 'messages.not_set'
 

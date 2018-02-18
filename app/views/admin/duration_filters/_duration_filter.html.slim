@@ -1,18 +1,13 @@
 
-- allow = policy(duration_filter)
-
 = render 'admin/application_resources/index_item', resource: duration_filter, viewable: false do |f|
   - unless duration_filter.new_record?
-    .header = duration_filter_name(duration_filter)
+    - content_for :name, duration_filter_name(duration_filter), flush: true
 
-    .meta
-      .ui.tiny.list
-        .item
-          i.music.icon
-          .content = DurationFilter.human_attribute_name(:meditations, count: duration_filter.meditations.count)
+  - content_for :meta, flush: true do
+    .item
+      i.music.icon
+      .content = DurationFilter.human_attribute_name(:meditations, count: duration_filter.meditations.count)
 
-  - if allow.edit?
-    .description
-      .field
-        .ui.fluid.input
-          = f.number_field :minutes, placeholder: DurationFilter.human_attribute_name(:minutes)
+  - content_for :fields, flush: true do
+    = subfield f, :minutes
+      = f.number_field :minutes

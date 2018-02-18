@@ -24,5 +24,5 @@
     .ui.basic.labeled.icon.title.button
       i.plus.icon
       = translate "action.create_model.target.#{model.model_name.i18n_key}", target: model.model_name.human, default: :'action.target.create'
-    .ui.content.segment
+    .content
       = render model.new

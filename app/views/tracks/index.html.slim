@@ -20,23 +20,15 @@ main.page-music
       .music__container
         .music__subtitle Choose the mood
         .mood__container
-          = render @mood_filters
-          //
-            a.btn.btn__popup href="#"  Покой
-            a.btn.btn__popup href="#"  Радость
-            a.btn.btn__popup href="#"  Интеграция
-            a.btn.btn__popup href="#"  Невинность
+          - @mood_filters.each do |mood_filter|
+            a.btn.btn__popup href="#" #{mood_filter.name}
+
         .music__subtitle Select an instrument
         .instrument__container
-          //= render @instrument_filters
-          a href="#" 
-            i.icon-mus-instrument-1
-          a href="#" 
-            i.icon-mus-instrument-2
-          a href="#" 
-            i.icon-mus-instrument-3
-          a href="#" 
-            i.icon-mus-instrument-4
+          - @instrument_filters.each_with_index do |instrument_filter, index|
+            a href="#" 
+              //img src=instrument_filter.icon_url
+              i class="icon-mus-instrument-#{index+1}"
     /! music
     /! player
     section.s__player
@@ -70,42 +62,18 @@ main.page-music
               input.volume-bar max="100" min="0" step="1" type="range" value="100" /
           .playlist-wrap
             h2.playlist-title.title
-              | Плейлист
+              | Playlist
               span.playlist-mood
             .playlist-mood-box
               .mood-text Playlist
               .mood-img style=("background-image: url(#{image_path 'music/mood-img.png'})") 
             ol
-              li.song-info
-                i.icon-play-icon
-                a.song-title data-artist=("Shivkumar Sharma") href="http://incompetech.com/music/royalty-free/mp3-royaltyfree/Hitman.mp3"  Raag Durga
-                p.song-artist Shivkumar Sharma
-                .duration-time 03:20
-              li.song-info
-                i.icon-play-icon
-                a.song-title data-artist=("Ali Akbar Khan") href="http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3"  Morning Meditation
-                p.song-artist Ali Akbar Khan
-                .duration-time 04:27
-              li.song-info
-                i.icon-play-icon
-                a.song-title data-artist=("Kavach Devi") href="http://www.jplayer.org/audio/mp3/Miaow-01-Tempered-song.mp3"  Sahaja Yoga
-                p.song-artist Kavach Devi
-                .duration-time 05:41
-              li.song-info
-                i.icon-play-icon
-                a.song-title data-artist=("N. Rajam") href="http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3"  Rag Malkauns Teental
-                p.song-artist N. Rajam
-                .duration-time 04:05
-              li.song-info
-                i.icon-play-icon
-                a.song-title data-artist=("Kavach Devi") href="http://www.jplayer.org/audio/mp3/Miaow-01-Tempered-song.mp3"  Sahaja Yoga
-                p.song-artist Kavach Devi
-                .duration-time 05:41
-              li.song-info
-                i.icon-play-icon
-                a.song-title data-artist=("N. Rajam") href="http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3"  Rag Malkauns Teental
-                p.song-artist N. Rajam
-                .duration-time 04:05
+              - @tracks.each do |track|
+                li.song-info
+                  i.icon-play-icon
+                  a.song-title data-artist=track.subtitle href=track.audio_url = track.title
+                  p.song-artist = track.subtitle
+                  .duration-time 03:20
     /! /player
     /! article-list
     section.s__article-list

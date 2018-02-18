@@ -26,9 +26,5 @@ class Article < ApplicationRecord
   default_scope { order( priority: :desc ) }
   scope :untranslated, -> { joins(:translations).where.not(article_translations: { locale: I18n.locale }) }
   scope :published, -> { where.not(published_at: nil) }
-
-  def cache_key
-    super + '-' + Globalize.locale.to_s
-  end
-
+  
 end

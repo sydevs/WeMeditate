@@ -3,28 +3,33 @@
   position: relative
 
   > .actions
-    position: absolute
-    right: 0
+    display: inline-block
+    vertical-align: top
+    width: 105px
+    margin-left: 5px
 
   > .content
-    margin-right: 110px
+    width: calc(100% - 110px)
+    display: inline-block
 
     > .meta .ui.list > .item:after
       clear: none
 
+  fieldset.ui.segment
+    margin: 0
+
   &.editing
     .header,
     .meta,
-    .button.for-viewing
+    .buttons.for-viewing
       display: none
 
     .description
       margin: 0
 
   &:not(.editing)
-    .field,
-    .fields,
-    .button.for-editing
+    fieldset, .field, .fields,
+    .buttons.for-editing
       display: none
 
   .right.floated

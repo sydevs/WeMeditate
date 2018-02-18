@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       end
 
       resources :cites, only: [:show]
-      #resources :categories, only: [:index, :show]
+      resources :categories, only: [:show] # TODO: Remove this
       resources :meditations, only: [:index, :show]
       resources :treatments, only: [:index, :show]
       resources :tracks, only: [:index]

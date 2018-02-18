@@ -1,11 +1,22 @@
 
 $(document).on('turbolinks:load', function() {
-  $('.ui.dropdown').dropdown()
   $('.ui.checkbox').checkbox()
   $('.ui.accordion').accordion()
   $('.tabs > *').tab()
 
   autosize($('textarea'))
+
+  $('.ui.dropdown').each(function() {
+    var element = $(this)
+    element.dropdown()
+    
+    // This is a workaround to fix default values for a multiple select
+    if (element.hasClass('multiple')) {
+      var selected = []
+      selected.push(element.find('option:selected').val())
+      element.dropdown('set selected', selected)
+    }
+  })
 
   $('.sort-list').each(function() {
     Sortable.create(this, {

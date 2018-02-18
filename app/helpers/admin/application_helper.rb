@@ -70,4 +70,24 @@ module Admin::ApplicationHelper
     content_tag(:a, name, html_options, &block)
   end
 
+  def subfield f, attribute, **args, &block
+    render 'admin/application/fields/subfield', f: f, attribute: attribute, **args, &block
+  end
+
+  def file_input f, attribute, **args
+    render 'admin/application/fields/file', f: f, attribute: attribute, **args
+  end
+
+  def select_input f, attribute, options, **args
+    render 'admin/application/fields/select', f: f, attribute: attribute, options: options, **args
+  end
+
+  def multiselect_input f, attribute, options, **args
+    render 'admin/application/fields/select', f: f, attribute: attribute, options: options, multiple: true, **args
+  end
+
+  def slug_input f, **args
+    render 'admin/application/fields/slug', f: f, **args
+  end
+
 end

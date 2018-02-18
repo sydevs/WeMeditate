@@ -8,7 +8,7 @@
 - if media.file.present?
   a.ui.fluid.basic.file.label href=media.url target="_blank"
     i.icon class=icon[type]
-    span = media.file.identifier
+    span = media.file.identifier.humanize
 
 .ui.fluid.icon.file.input
   i.icon class=icon[type]

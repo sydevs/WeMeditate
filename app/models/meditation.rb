@@ -3,14 +3,14 @@ class Meditation < ApplicationRecord
   extend CarrierwaveGlobalize
 
   # Extensions
-  translates :name, :slug, :image, :audio
+  translates :name, :slug, :audio
   friendly_id :name, use: :globalize
 
   # Associations
   has_and_belongs_to_many :goal_filters
   belongs_to :duration_filter
   mount_translated_uploader :audio, TrackUploader
-  mount_translated_uploader :image, GenericImageUploader
+  mount_uploader :image, GenericImageUploader
   
   alias thumbnail image
 end

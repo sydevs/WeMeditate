@@ -1,38 +1,34 @@
 
-- allow = policy(treatment)
-
 = render 'admin/application_resources/sortable_index_item', resource: treatment, name: :name do |f|
   - unless treatment.new_record?
-    .header = treatment.name
+    - content_for :meta, flush: true do
+      - if treatment.translated_locales.include? I18n.locale
+        .item
+          i.linkify.icon
+          .content = url_for(treatment)
+      - else
+        .item
+          i.orange.warning.sign.icon
+          .content = translate 'messages.no_translation'
 
-    .meta
-      .ui.tiny.list
-        - if treatment.translated_locales.include? I18n.locale
-          .item
-            i.linkify.icon
-            .content = url_for(treatment)
-        - else
-          .item
-            i.orange.warning.sign.icon
-            .content = translate 'messages.no_translation'
+      .item
+        i.film.icon
+        a.content href=treatment.video_url target="_blank"
+          = treatment.video.file.identifier.humanize
 
-  - if allow.edit?
-    .description
-      .field
-        = f.text_field :name, placeholder: Treatment.human_attribute_name(:name)
-        
-      - unless treatment.new_record?
-        .field
-          .ui.labeled.input
-            .ui.basic.label
-              = url_for(treatment).split('/')[0...-1].join('/') + '/'
-            = f.text_field :slug, placeholder: treatment.id
+  - content_for :fields, flush: true do
+    = subfield f, :name do
+      = f.text_field :name
+      = slug_input f unless treatment.new_record?
 
-      .field
-        = f.text_field :video_url, placeholder: Treatment.human_attribute_name(:video_url)
-        
-      .field
-        = f.text_area :excerpt, placeholder: Treatment.human_attribute_name(:excerpt), rows: 2
+    = subfield f, :thumbnail do
+      = file_input f, :thumbnail, type: :image
+    
+    = subfield f, :excerpt do
+      = f.text_area :excerpt, rows: 2
 
-      .field
-        = f.text_area :content, placeholder: Treatment.human_attribute_name(:content), rows: 3
+    = subfield f, :video do
+      = file_input f, :video
+
+    = subfield f, :content do
+      = f.text_area :content, rows: 3

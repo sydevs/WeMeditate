@@ -1,7 +1,7 @@
 
-= render 'admin/sections/section_subfield', f: f, attribute: :format do
+= render 'admin/application/fields/subfield', f: f, attribute: :format do
   = f.select :format, Section::ACTION_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, {}, { class: 'ui scrolling dropdown', disabled: !allow.update_structure? }
 
-= render 'admin/sections/section_subfield', f: f, attribute: :action
-= render 'admin/sections/section_subfield', f: f, attribute: :url, for: [:button] do
+= render 'admin/application/fields/subfield', f: f, attribute: :action
+= render 'admin/application/fields/subfield', f: f, attribute: :url, for: [:button] do
   = f.url_field :url
