@@ -4,22 +4,15 @@ section.s__meditate.s__try-meditation.fullscreen.wow.fadeIn data-wow-duration="3
   .container
     .s__wrapper
       .mobile-title
-        p
-          | Медитация под рукуводством
-          span Шри Матаджи
+        p = section.title
       .article__image
         img alt="try-meditation" src=image_path('shri-mataji/s-try-meditation.jpg') /
         .video-play__btn_wrapper
-          a.video-link.popup-with-zoom-anim data-poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg?v1" data-source="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.mp4" data-title=("Первый метод медитации") href="#video-popup" 
+          a.video-link.popup-with-zoom-anim data-poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg?v1" data-source=section.video_url data-title=("Первый метод медитации") href="#video-popup" 
             img alt="" src=image_path('video-icon.svg') /
       .s__box.wow.fadeIn data-wow-delay="1s" data-wow-duration="4s" 
         a.btn-circle-svg aria-haspopup="true" href="#" 
-          span
-            | Попробовать
-            br/
-            | медитацию
-            br/
-            | прямо сейчас
+          span = section.action
           svg viewbox=("0 0 290.99 290.99") xmlns="http://www.w3.org/2000/svg" 
             g fill="none" stroke-miterlimit="10" stroke-width=".75" 
               path d=("m298.72 145.92a3.88 3.88 0 0 0 -1.1-2.89 4.32 4.32 0 0 0 0 5.78 3.87 3.87 0 0 0 1.1-2.89z") transform=("translate(-152.26 -110.01)") /
@@ -87,7 +80,5 @@ section.s__meditate.s__try-meditation.fullscreen.wow.fadeIn data-wow-duration="3
                 path d=("m416 207.76a1.29 1.29 0 1 0 -1-2.38 12.52 12.52 0 0 0 -2.29 2.34 12.52 12.52 0 0 0 3.29.04z") /
                 path d=("m352 129.08a1.87 1.87 0 0 0 -3.46-1.43c-.4 1 .06 4.75.06 4.75s3-2.4 3.4-3.32z") /
                 path d=("m347.63 138.1a1.29 1.29 0 0 0 -2.38-1 12.52 12.52 0 0 0 0 3.28 12.52 12.52 0 0 0 2.38-2.28z") /
-        p
-          | Медитация под рукуводством
-          span Шри Матаджи
+        p = section.title
 /! /try-meditation

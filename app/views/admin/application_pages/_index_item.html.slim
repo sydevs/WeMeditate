@@ -3,20 +3,20 @@
 
 .item
   .actions
-    .ui.tiny.compact.vertical.labeled.icon.buttons
-      a.ui.button.for-viewing href=url_for(page)
+    .ui.tiny.compact.vertical.labeled.icon.buttons.for-viewing
+      a.ui.button href=url_for(page)
         i.browser.icon
         = translate 'action.show'
       - if allow.edit?
-        a.ui.button.for-viewing href=url_for([:edit, :admin, page])
+        a.ui.button href=url_for([:edit, :admin, page])
           i.edit.icon
           = translate 'action.edit'
       - if allow.destroy?
-        a.ui.button.for-viewing href=url_for([:admin, page]) data-method="delete" data-confirm=t('messages.confirm_destroy', default: 'Confirm Destroy')
+        a.ui.button href=url_for([:admin, page]) data-method="delete" data-confirm=t('messages.confirm_destroy', default: 'Confirm Destroy')
           i.trash.icon
           = translate 'action.destroy'
       - if allow.review?
-        a.ui.primary.button.for-viewing href=url_for([:admin, page])
+        a.ui.primary.button href=url_for([:admin, page])
           i.check.circle.outline.icon
           = translate 'action.review'
   

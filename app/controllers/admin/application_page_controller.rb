@@ -78,6 +78,7 @@ module Admin
       CONTENT_ATTRIBUTES = [
         :title, :subtitle, :sidetext, :text, :quote, :credit, :url, :action, # These are the options for different content_types
         :video, :image, # For file uploads
+        special: {}, # For special sections
       ]
 
       ALL_SECTION_ATTRIBUTES = [
