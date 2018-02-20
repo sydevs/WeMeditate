@@ -24,6 +24,8 @@ main.inspiration.page-inspiration
     figure#grid
       = render @articles
 
-    .loadmore
-      a.btn href="#" Load more articles
+    - if Article.all.count > ArticlesController::ARTICLES_PER_PAGE
+      .loadmore
+        = link_to articles_path(format: 'js', offset: ArticlesController::ARTICLES_PER_PAGE), remote: 'true', class: 'btn' do
+          ' Load more articles
 /! /main

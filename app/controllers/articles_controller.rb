@@ -1,9 +1,19 @@
 class ArticlesController < ApplicationController
 
+  ARTICLES_PER_PAGE = 15
+
   def index
-    @categories = Category.all
-    @articles = Article.all
-    @selected_category = Category.friendly.find(params[:category_id]) rescue nil
+    respond_to do |format|
+      format.html {
+        @categories = Category.all
+        @articles = Article.limit(ARTICLES_PER_PAGE)
+        @selected_category = Category.friendly.find(params[:category_id]) rescue nil
+      }
+      format.js {
+        @articles = Article.offset(params[:offset]).limit(ARTICLES_PER_PAGE)
+        @next_offset = params[:offset].to_i + ARTICLES_PER_PAGE
+      }
+    end
   end
 
   def show
