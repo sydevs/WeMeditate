@@ -8,9 +8,9 @@ main.inspiration.page-inspiration
   .container
     .topline__filter
       - @categories.each do |category|
-        a.btn.filter__btn class="#{'active' if @selected_category == category}" href="#"
+        a.btn.filter__btn class="#{'active' if @selected_category == category}" data-filter=dom_id(category) href="#"
           = category.name
-      a.btn.filter__btn class="#{'active' unless @categories.include?(@selected_category)}" href="#"
+      a.btn.filter__btn class="#{'active' unless @categories.include?(@selected_category)}" data-filter="" href="#"
         ' All
 
     /! filter-mobile
@@ -21,7 +21,7 @@ main.inspiration.page-inspiration
         i.icon-filter-icon
     /! /filter-mobile
     
-    figure#grid.intro-grid data-columns=""
+    figure#grid
       = render @articles
 
     .loadmore

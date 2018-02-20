@@ -10,7 +10,6 @@ var Music = {
     $('.mood__container a').on('click', Music._on_select_mood)
     $('.instrument__container a').on('click', Music._on_toggle_instrument)
     Music.song_list.children('a.song-title').on('click', Music._on_select_track)
-    console.log(Music.song_list.children('a.song-title'))
   },
 
   _on_init_track: function() {
@@ -24,7 +23,6 @@ var Music = {
   },
 
   _on_select_track: function() {
-    console.log('selected', this)
     var image_url = $(this).data('image')
     var image_element = $('#music-player-image')
 

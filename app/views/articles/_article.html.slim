@@ -1,7 +1,7 @@
 
 - index = article_counter + 1
 
-.item.article.wow.fadeIn data-n=index data-wow-delay="1s" data-wow-duration="4s" 
+.item.article class=dom_id(article.category)
   a.article__media href=article_url(article)
     img.article__image alt=("article image") src=(article.thumbnail.url || image_path("inspiration__items/item_#{index}.png")) /
 

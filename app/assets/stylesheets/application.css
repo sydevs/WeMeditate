@@ -12,6 +12,7 @@
  *
  *= require_tree ./front/libs
  *= require ./front/legacy/main.sass
+ *= require_tree ./front/adjustments
  *= require ./front/temp.sass
  *= require_self
  */
