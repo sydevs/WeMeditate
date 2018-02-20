@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree ./front/libs
- *= require ./front/main.sass
- *= require ./front/adjustments.sass
+ *= require ./front/legacy/main.sass
+ *= require ./front/temp.sass
  *= require_self
  */

@@ -11,6 +11,11 @@
     i.filter.icon
     = InstrumentFilter.model_name.human(count: -1)
 
+- if policy(Artist).edit?
+  a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=admin_artists_path
+    i.user.icon
+    = Artist.model_name.human(count: -1)
+
 .clearfix
 
 = render 'admin/application_resources/index', model: Track, resources: @tracks

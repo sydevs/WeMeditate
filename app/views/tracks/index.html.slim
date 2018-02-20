@@ -21,12 +21,12 @@ main.page-music
         .music__subtitle Choose the mood
         .mood__container
           - @mood_filters.each do |mood_filter|
-            a.btn.btn__popup href="#" #{mood_filter.name}
+            a.btn.btn__popup data-filter=dom_id(mood_filter) href="#" #{mood_filter.name}
 
         .music__subtitle Select an instrument
         .instrument__container
           - @instrument_filters.each_with_index do |instrument_filter, index|
-            a href="#" 
+            a href="#" data-filter=dom_id(instrument_filter)
               //img src=instrument_filter.icon_url
               i class="icon-mus-instrument-#{index+1}"
     /! music
@@ -66,14 +66,23 @@ main.page-music
               span.playlist-mood
             .playlist-mood-box
               .mood-text Playlist
-              .mood-img style=("background-image: url(#{image_path 'music/mood-img.png'})") 
+              .mood-img#music-player-image data-default=image_path('music/mood-img.png') style=("background-image: url(#{image_path 'music/mood-img.png'})") 
             ol
               - @tracks.each do |track|
-                li.song-info
+                - mood_classes = track.mood_filters.map {|f| dom_id(f)}
+                - instrument_classes = track.instrument_filters.map {|f| dom_id(f)}
+                li.song-info class=(mood_classes + instrument_classes)
                   i.icon-play-icon
-                  a.song-title data-artist=track.subtitle href=track.audio_url = track.title
-                  p.song-artist = track.subtitle
-                  .duration-time 03:20
+                  a.song-title data-artist=track.artist&.name data-image=track.artist&.image href=track.audio_url = track.title
+                  p.song-artist = track.artist&.name
+                  //- if track.artist.present?
+                    p.song-artist
+                    - if track.artist.url.present?
+                      a href=track.artist.url = track.artist.name
+                    - else
+                      = track.artist.name
+                  .duration-time
+                    /! Set via Javascript
     /! /player
     /! article-list
     section.s__article-list

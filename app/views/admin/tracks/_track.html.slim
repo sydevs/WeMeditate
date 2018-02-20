@@ -2,10 +2,10 @@
 = render 'admin/application_resources/index_item', resource: track, viewable: false do |f|
   - unless track.new_record?
     - content_for :meta, flush: true do
-      - if track.subtitle.present?
+      - if track.artist.present?
         .item
           i.user.icon
-          .content = track.subtitle
+          .content = track.artist.name
 
       .item
         i.music.icon
@@ -24,15 +24,15 @@
 
   - content_for :fields, flush: true do
     = subfield f, :title
-    = subfield f, :subtitle
+
+    = subfield f, :artist
+      = select_input f, :artist_id, [["None", ""]] + Artist.all.map {|f| [f.name, f.id]}
 
     = subfield f, :audio
       = file_input f, :audio
 
     = subfield f, :mood_filters
-      = multiselect_input f, :mood_filter_ids, MoodFilter.all.map {|f| [f.name, f.id] }
-      //= f.select :mood_filter_ids, MoodFilter.all.map {|f| [f.name, f.id] }, {}, { class: 'ui fluid dropdown', multiple: true }
+      = multiselect_input f, :mood_filter_ids, MoodFilter.all.map {|f| [f.name, f.id]}
 
     = subfield f, :instrument_filters
-      = multiselect_input f, :instrument_filter_ids, InstrumentFilter.all.map {|f| [f.name, f.id] }
-      //= f.select :instrument_filter_ids, InstrumentFilter.all.map {|f| [f.name, f.id] }, {}, { class: 'ui fluid dropdown', multiple: true }
+      = multiselect_input f, :instrument_filter_ids, InstrumentFilter.all.map {|f| [f.name, f.id]}

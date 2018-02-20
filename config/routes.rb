@@ -11,9 +11,6 @@ Rails.application.routes.draw do
       namespace :admin do
         root to: 'application#dashboard'
         
-        resources :users, :treatments, :meditations, :tracks,
-                  only: [:index, :create, :update, :destroy]
-
         resources :articles, :static_pages do
           patch :review, on: :member
         end
@@ -22,6 +19,9 @@ Rails.application.routes.draw do
           get :lookup, on: :collection, constraints: { format: 'json' }
           patch :review, on: :member
         end
+
+        resources :users, :artists, :treatments, :meditations, :tracks,
+                  only: [:index, :create, :update, :destroy]
 
         resources :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters, 
                   only: [:index, :create, :update, :destroy] do

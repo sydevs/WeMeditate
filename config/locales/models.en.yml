@@ -22,6 +22,9 @@ en:
       track:
         one: Track
         other: Tracks
+      artist:
+        one: Artist
+        other: Artists
       user:
         one: Editor
         other: Editors
@@ -118,7 +121,8 @@ en:
         slug: URL
         excerpt: Excerpt
         content: Content
-        video_url: Youtube Video URL
+        thumbnail: Thumbnail (png)
+        video: Video (mp4)
 
       instrument_filter:
         name: Name
@@ -190,8 +194,8 @@ en:
 
       track:
         title: Title
-        subtitle: Artist
-        file: File
+        artist: Artist
+        audio: File (mp3)
         instrument_filters: :activerecord.models.instrument_filter.other
         mood_filters: :activerecord.models.mood_filter.other
 
@@ -200,6 +204,14 @@ en:
         file: Voice Over
         duration_filter: :activerecord.models.duration_filter.one
         goal_filters: :activerecord.models.goal_filter.other
+
+      artist:
+        name: Name
+        image: Album Art
+        url: Website
+        tracks:
+          one: 1 Track
+          other: '%{count} Tracks'
 
       user:
         email: Email Address

@@ -14,7 +14,7 @@ module Admin
 
     private
       def track_params
-        params.fetch(:track, {}).permit(:title, :subtitle, :audio, mood_filter_ids: [], instrument_filter_ids: [])
+        params.fetch(:track, {}).permit(:title, :subtitle, :audio, :artist_id, mood_filter_ids: [], instrument_filter_ids: [])
       end
 
   end

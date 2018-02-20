@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218132424) do
+ActiveRecord::Schema.define(version: 20180218133835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 20180218132424) do
     t.integer "priority", default: 0, null: false
     t.datetime "published_at"
     t.index ["category_id"], name: "index_articles_on_category_id"
+  end
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.jsonb "image"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -262,6 +268,8 @@ ActiveRecord::Schema.define(version: 20180218132424) do
 
   create_table "tracks", force: :cascade do |t|
     t.string "audio", null: false
+    t.bigint "artist_id"
+    t.index ["artist_id"], name: "index_tracks_on_artist_id"
   end
 
   create_table "treatment_translations", force: :cascade do |t|

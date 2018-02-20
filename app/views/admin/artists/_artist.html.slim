@@ -1,0 +1,21 @@
+
+= render 'admin/application_resources/index_item', resource: artist, viewable: false do |f|
+  - unless artist.new_record?
+    - content_for :meta, flush: true do
+      - if artist.url.present?
+        .item
+          i.linkify.icon
+          a.content href=artist.url target="_blank"
+            = artist.url
+
+      .item
+        i.music.icon
+        .content = Artist.human_attribute_name(:tracks, count: artist.tracks.count)
+
+  - content_for :fields, flush: true do
+    = subfield f, :name
+    = subfield f, :url do
+      = f.url_field :url
+
+    = subfield f, :image
+      = file_input f, :image

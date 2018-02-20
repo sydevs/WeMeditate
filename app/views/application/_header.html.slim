@@ -44,6 +44,6 @@ header.header.gray
       ul.mobile-menu__wrap
         - @mobile_navigation.each do |nav|
           li.mobile-menu__item class="#{'active'}"
-            a.mobile-menu__href href=nav[:url] nav[:title]
+            a.mobile-menu__href href=nav[:url] = nav[:title]
   /! mobile
 /! /header

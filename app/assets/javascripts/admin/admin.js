@@ -15,6 +15,7 @@ $(document).on('turbolinks:load', function() {
       var selected = []
       selected.push(element.find('option:selected').val())
       element.dropdown('set selected', selected)
+      element.children('input[type="hidden"]').val(null)
     }
   })
 

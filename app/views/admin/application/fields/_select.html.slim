@@ -18,7 +18,7 @@
       = placeholder if placeholder
   - else
     = f.hidden_field attribute
-    .text = selected || options[0][0]
+    .text = selected || (options.present? ? options[0][0] : nil)
   
   .menu
     - options.each do |name, value|
