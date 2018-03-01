@@ -1,0 +1,55 @@
+@import "../../mixins/vars"
+
+footer
+  .divider
+    display: flex
+    align-items: center
+    margin-bottom: 35px
+
+    .illustration
+      min-width: 205px
+      height: 52px
+      margin: 0 25px
+
+    &:before,
+    &:after
+      content: ''
+      top: -2px
+      height: 1px
+      width: 100%
+      position: relative
+      background-color: $light-gray
+      display: inline-block
+  
+  .columns
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    border-bottom: 1px solid $light-gray
+    padding: 0 50px
+
+    > *
+      margin-bottom: 66px
+
+    nav
+      > a
+        display: block
+        line-height: 22px
+        font-size: 12px
+
+      &.main a, .title
+        font-weight: 600
+        line-height: 28px
+        font-size: 16px
+
+      .social
+        margin-top: 15px
+        
+        > a
+          margin-right: 0.5em
+
+  .copyright
+    text-align: center
+    line-height: 110px
+    font-size: 12px
+    

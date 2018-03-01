@@ -1,0 +1,32 @@
+@import "../../mixins/functions"
+@import "../../mixins/vars"
+
+section.intro
+  min-height: 50vh
+
+  .title
+    margin-top: 1.4em
+    letter-spacing: 1px
+    font-size: 45px
+    color: $dark-gray
+    font-weight: 700
+    height: 170px
+    line-height: 170px
+
+  .title:after
+    display: block
+    content: ''
+    opacity: .5
+    z-index: -1
+    height: 170px
+    width: 705px
+    @include overlay(0, auto, -375px, auto)
+    background: linear-gradient(to right,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
+
+  &.banner
+    .title
+      color: white
+
+    .title:after
+      background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.18) 25%,rgba(241,212,175,.7) 100%)
+

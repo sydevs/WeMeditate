@@ -42,12 +42,15 @@ gem 'devise_invitable'
 gem 'regulator'
 
 # Front End
+gem 'normalize-rails' # To normalize CSS
+gem 'autoprefixer-rails' # For automatic cross browser CSS compatibility
 gem 'semantic-ui-sass'
 gem 'jquery-rails'
 gem 'sortable-rails'
 gem 'google-analytics-rails'
 gem 'autosize'
-gem 'redcarpet' # To part markdown
+gem 'redcarpet' # To parse markdown
+gem 'inline_svg' # To embed svg files
 
 # Models
 gem 'paper_trail'

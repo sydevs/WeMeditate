@@ -1,8 +1,7 @@
-li.post-item
-  p.post-heading = resource_name(item)
-  a.post-link href=url_for(item)
-    span.link-overlay
-      | Inspiration
-      br/
-      | comes from within
-    img alt="" src=(item.respond_to?(:thumbnail) && item.thumbnail.file.present? ? item.thumbnail.url : image_url(image)) /
+
+.related-post
+  .title = resource_name(item)
+  a href=url_for(item)
+    .overlay
+      | Inspiration<br>comes from within
+    img alt=resource_name(item) src=item.thumbnail.url

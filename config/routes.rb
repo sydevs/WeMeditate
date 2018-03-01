@@ -33,7 +33,7 @@ Rails.application.routes.draw do
         get '/category/:category_id', on: :collection, action: :index
       end
 
-      resources :cites, only: [:show]
+      resources :cities, only: [:show, :index]
       resources :categories, only: [:show] # TODO: Remove this
       resources :meditations, only: [:index, :show]
       resources :treatments, only: [:index, :show]

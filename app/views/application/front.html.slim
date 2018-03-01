@@ -1,172 +1,172 @@
 
 - content_for :title, 'Front'
 
-/! main
-main.page-main
-  /! hero
-  section.s__hero style=("background-image: url(#{image_path('main/header-bg.jpg')})") 
-    .container
-      .text-box.inverse.text-center
-        h2.box__title.wow.fadeIn data-wow-delay="1.5s" data-wow-duration="3s" 
-          | Медитация &mdash;
-          br/
-          | это внутренний покой
-        .box__text.wow.fadeIn data-wow-delay="2.5s" 
-          p
-            | Для медитации не нужны
+//! main
+  main.page-main
+    /! hero
+    section.s__hero style=("background-image: url(#{image_path('main/header-bg.jpg')})") 
+      .container
+        .text-box.inverse.text-center
+          h2.box__title.wow.fadeIn data-wow-delay="1.5s" data-wow-duration="3s" 
+            | Медитация &mdash;
             br/
-            | особые навыки,
-            br/
-            | достаточно просто
-        .btn__wrapper.fadeIn.wow data-wow-delay="3.5s" 
-          .btn__container.wow.animated.infinite.pulse
-            a.btn__svg href="#"  Ощутить
-            .btn__hover__holder
-              a.btn__svg.hidden href="#"  Ощутить
-        /! btn
-  /! hero
-  /! realization
-  section.s__realization.fullscreen.has__gradient_blue.wow.fadeIn data-wow-duration="3s" 
-    .container
-      .s__wrapper
-        .img__circle data-svg=image_path('svg/img__circle.svg')
-        .s_title
-          span.text-width Самореализация
-        .article__image
-          img alt="realization" src=image_path('main/s-realization.jpg') /
-        .article.circle.article_main.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s" 
-          h2.h2.article__title Сахаджа Йога
-          .article__text
+            | это внутренний покой
+          .box__text.wow.fadeIn data-wow-delay="2.5s" 
             p
-              | Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения. Она
-              | основана на опыте Самореализации, доступном каждому человеку с рождения.
-          .article__btn
-            a.btn href="#"  Узнать больше
-  /! /realization
-  /! video
-  section.s_video.wow.fadeIn data-wow-duration="3s" 
-    .container
-      .s_title.s_title_right
-        span.text-width Видео
-      .owl-carousel.carousel-video
-        .carousel-video-item
-          .carousel__img style=("background-image: url(#{image_path('main/slide-2.jpg')})") 
-            .video-play__btn_wrapper
-              a.video-link.popup-with-zoom-anim data-poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg?v1" data-source="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.mp4" data-title=("Первый метод медитации") href="#video-popup" 
-                img alt="" src=image_path('video-icon.svg') /
-          p.item-caption Первый метод медитации
-        .carousel-video-item
-          .carousel__img style=("background-image: url(#{image_path('main/slide-3.jpg')})") 
-            .video-play__btn_wrapper
-              a.video-link.popup-with-zoom-anim data-poster="http://www.etonline.com/sites/default/files/images/2016-10/1280_Gilmore_Girls_Revival_Fall.jpg" data-source="http://thenewcode.com/assets/videos/polina.mp4" data-title=("Покой в сердце") href="#video-popup" 
-                img alt="" src=image_path('video-icon.svg') /
-          p.item-caption Покой в сердце
-        .carousel-video-item
-          .carousel__img style=("background-image: url(#{image_path('main/slide-1.jpg')})") 
-            .video-play__btn_wrapper
-              a.video-link.popup-with-zoom-anim data-poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg?v1" data-source="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.mp4" data-title=("Это помогает мне справиться со стрессом") href="#video-popup" 
-                img alt="" src=image_path('video-icon.svg') /
-          p.item-caption Это помогает мне справиться со стрессом
-        .carousel-video-item
-          .carousel__img style=("background-image: url(#{image_path('main/slide-1.jpg')})") 
-            .video-play__btn_wrapper
-              a.video-link.popup-with-zoom-anim data-poster="http://www.etonline.com/sites/default/files/images/2016-10/1280_Gilmore_Girls_Revival_Fall.jpg" data-source="http://thenewcode.com/assets/videos/polina.mp4" data-title=("Это помогает мне справиться") href="#video-popup" 
-                img alt="" src=image_path('video-icon.svg') /
-          p.item-caption Это помогает мне справиться
-  /! /video
-  /! mataji
-  section.s__mataji.fullscreen.wow.fadeIn data-wow-duration="3s" style=("background-image: url(#{image_path('main/s-mataji.jpg')})") 
-    .container.has__triangle.has__triangle_left
-      .s__wrapper_wide
-        .s_title
-          span.text-width Шри Матаджи
-        .article.article_main.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s" 
-          h2.h2.article__title Заголовок о Шри Матаджи
-          .article__text
-            p
-              | Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения. Она
-              | основана на опыте Самореализации, доступном каждому человеку с рождения.
-          .article__btn
-            a.btn href="#"  Подробнее о Шри Матаджи
-  /! /mataji
-  /! meditate
-  section.s__meditate.fullscreen.wow.fadeIn data-wow-duration="3s" 
-    .container
-      .s__wrapper
+              | Для медитации не нужны
+              br/
+              | особые навыки,
+              br/
+              | достаточно просто
+          .btn__wrapper.fadeIn.wow data-wow-delay="3.5s" 
+            .btn__container.wow.animated.infinite.pulse
+              a.btn__svg href="#"  Ощутить
+              .btn__hover__holder
+                a.btn__svg.hidden href="#"  Ощутить
+          /! btn
+    /! hero
+    /! realization
+    section.s__realization.fullscreen.has__gradient_blue.wow.fadeIn data-wow-duration="3s" 
+      .container
+        .s__wrapper
+          .img__circle data-svg=image_path('svg/img__circle.svg')
+          .s_title
+            span.text-width Самореализация
+          .article__image
+            img alt="realization" src=image_path('main/s-realization.jpg') /
+          .article.circle.article_main.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s" 
+            h2.h2.article__title Сахаджа Йога
+            .article__text
+              p
+                | Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения. Она
+                | основана на опыте Самореализации, доступном каждому человеку с рождения.
+            .article__btn
+              a.btn href="#"  Узнать больше
+    /! /realization
+    /! video
+    section.s_video.wow.fadeIn data-wow-duration="3s" 
+      .container
         .s_title.s_title_right
-          span.text-width Медитация
-        .article__image
-          img alt="meditation" src=image_path('main/s-meditation.jpg') /
-        .article.article_main.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s" 
-          h2.h2.article__title Статья о We Meditate
-          .article__text
-            p
-              | Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения. Она
-              | основана на опыте Самореализации, доступном каждому человеку с рождения.
-          .article__btn
-            a.btn href="#"  Узнать больше
-  /! /meditate
-  /! how to
-  section.s__howto.has__gradient_orange.fullscreen.wow.fadeIn data-wow-duration="3s" style=("background-image: url(#{image_path('main/s-howto.jpg')})") 
-    .container.has__triangle.has__triangle_right
-      .s__wrapper_wide
-        .s_title
-          span.text-width Как медитировать
-        .article.article_main.article_inversion.draw-line.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s" 
-          h2.h2.article__title Статья о том как медитировать
-          .article__text
-            p
-              | Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения. Она
-              | основана на опыте Самореализации.
-            p Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения.
-          .article__btn
-            a.btn href="#"  Узнать больше
-  /! /howto
-  /! events
-  section.s__events.fullscreen.has__gradient_gray.wow.fadeIn data-wow-duration="3s" 
-    .container
-      .s__wrapper
-        .s_title
-          span.text-width События
-        .article__image
-          img alt="events" src=image_path('main/s-events.jpg') /
-        .article.article_main.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s" 
-          h2.h2.article__title Заголовок события
-          .article__text
-            p
-              | Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения. Она
-              | основана на опыте Самореализации, доступном каждому человеку с рождения.
-          .article__btn
-            a.btn href="#"  Больше событий
-  /! events
-  /! articles
-  section.s__articles
-    .container
-      /! article-wrapper
-      .article__wrapper
-        article.article__item.wow.fadeIn data-wow-duration="3s" 
-          .article__cont
-            a.article__title href="#"  Статья Meate Mediate
-            p.article__text
-              | Сахаджа Йога является методом получения реального опыта
-              | самосозерцания и
-              | мировозрения.Она основана на опыте Самореализации, доступном каждому человеку с
-              | рождения.
-        article.article__item.wow.fadeIn data-wow-delay=".5s" data-wow-duration="3s" 
-          .article__cont
-            a.article__title href="#"  Статья Meate Mediate
-            p.article__text
-              | Сахаджа Йога является методом получения реального опыта
-              | самосозерцания и
-              | мировозрения.Она основана на опыте Самореализации, доступном каждому человеку с
-              | рождения.
-        article.article__item.wow.fadeIn data-wow-delay=".75s" data-wow-duration="3s" 
-          .article__cont
-            a.article__title href="#"  Статья Meate Mediate
-            p.article__text
-              | Сахаджа Йога является методом получения реального опыта
-              | самосозерцания и
-              | мировозрения.Она основана на опыте Самореализации, доступном каждому человеку с
-              | рождения.
-      /! /article-wrapper
-/! /main
+          span.text-width Видео
+        .owl-carousel.carousel-video
+          .carousel-video-item
+            .carousel__img style=("background-image: url(#{image_path('main/slide-2.jpg')})") 
+              .video-play__btn_wrapper
+                a.video-link.popup-with-zoom-anim data-poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg?v1" data-source="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.mp4" data-title=("Первый метод медитации") href="#video-popup" 
+                  img alt="" src=image_path('video-icon.svg') /
+            p.item-caption Первый метод медитации
+          .carousel-video-item
+            .carousel__img style=("background-image: url(#{image_path('main/slide-3.jpg')})") 
+              .video-play__btn_wrapper
+                a.video-link.popup-with-zoom-anim data-poster="http://www.etonline.com/sites/default/files/images/2016-10/1280_Gilmore_Girls_Revival_Fall.jpg" data-source="http://thenewcode.com/assets/videos/polina.mp4" data-title=("Покой в сердце") href="#video-popup" 
+                  img alt="" src=image_path('video-icon.svg') /
+            p.item-caption Покой в сердце
+          .carousel-video-item
+            .carousel__img style=("background-image: url(#{image_path('main/slide-1.jpg')})") 
+              .video-play__btn_wrapper
+                a.video-link.popup-with-zoom-anim data-poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg?v1" data-source="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.mp4" data-title=("Это помогает мне справиться со стрессом") href="#video-popup" 
+                  img alt="" src=image_path('video-icon.svg') /
+            p.item-caption Это помогает мне справиться со стрессом
+          .carousel-video-item
+            .carousel__img style=("background-image: url(#{image_path('main/slide-1.jpg')})") 
+              .video-play__btn_wrapper
+                a.video-link.popup-with-zoom-anim data-poster="http://www.etonline.com/sites/default/files/images/2016-10/1280_Gilmore_Girls_Revival_Fall.jpg" data-source="http://thenewcode.com/assets/videos/polina.mp4" data-title=("Это помогает мне справиться") href="#video-popup" 
+                  img alt="" src=image_path('video-icon.svg') /
+            p.item-caption Это помогает мне справиться
+    /! /video
+    /! mataji
+    section.s__mataji.fullscreen.wow.fadeIn data-wow-duration="3s" style=("background-image: url(#{image_path('main/s-mataji.jpg')})") 
+      .container.has__triangle.has__triangle_left
+        .s__wrapper_wide
+          .s_title
+            span.text-width Шри Матаджи
+          .article.article_main.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s" 
+            h2.h2.article__title Заголовок о Шри Матаджи
+            .article__text
+              p
+                | Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения. Она
+                | основана на опыте Самореализации, доступном каждому человеку с рождения.
+            .article__btn
+              a.btn href="#"  Подробнее о Шри Матаджи
+    /! /mataji
+    /! meditate
+    section.s__meditate.fullscreen.wow.fadeIn data-wow-duration="3s" 
+      .container
+        .s__wrapper
+          .s_title.s_title_right
+            span.text-width Медитация
+          .article__image
+            img alt="meditation" src=image_path('main/s-meditation.jpg') /
+          .article.article_main.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s" 
+            h2.h2.article__title Статья о We Meditate
+            .article__text
+              p
+                | Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения. Она
+                | основана на опыте Самореализации, доступном каждому человеку с рождения.
+            .article__btn
+              a.btn href="#"  Узнать больше
+    /! /meditate
+    /! how to
+    section.s__howto.has__gradient_orange.fullscreen.wow.fadeIn data-wow-duration="3s" style=("background-image: url(#{image_path('main/s-howto.jpg')})") 
+      .container.has__triangle.has__triangle_right
+        .s__wrapper_wide
+          .s_title
+            span.text-width Как медитировать
+          .article.article_main.article_inversion.draw-line.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s" 
+            h2.h2.article__title Статья о том как медитировать
+            .article__text
+              p
+                | Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения. Она
+                | основана на опыте Самореализации.
+              p Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения.
+            .article__btn
+              a.btn href="#"  Узнать больше
+    /! /howto
+    /! events
+    section.s__events.fullscreen.has__gradient_gray.wow.fadeIn data-wow-duration="3s" 
+      .container
+        .s__wrapper
+          .s_title
+            span.text-width События
+          .article__image
+            img alt="events" src=image_path('main/s-events.jpg') /
+          .article.article_main.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s" 
+            h2.h2.article__title Заголовок события
+            .article__text
+              p
+                | Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения. Она
+                | основана на опыте Самореализации, доступном каждому человеку с рождения.
+            .article__btn
+              a.btn href="#"  Больше событий
+    /! events
+    /! articles
+    section.s__articles
+      .container
+        /! article-wrapper
+        .article__wrapper
+          article.article__item.wow.fadeIn data-wow-duration="3s" 
+            .article__cont
+              a.article__title href="#"  Статья Meate Mediate
+              p.article__text
+                | Сахаджа Йога является методом получения реального опыта
+                | самосозерцания и
+                | мировозрения.Она основана на опыте Самореализации, доступном каждому человеку с
+                | рождения.
+          article.article__item.wow.fadeIn data-wow-delay=".5s" data-wow-duration="3s" 
+            .article__cont
+              a.article__title href="#"  Статья Meate Mediate
+              p.article__text
+                | Сахаджа Йога является методом получения реального опыта
+                | самосозерцания и
+                | мировозрения.Она основана на опыте Самореализации, доступном каждому человеку с
+                | рождения.
+          article.article__item.wow.fadeIn data-wow-delay=".75s" data-wow-duration="3s" 
+            .article__cont
+              a.article__title href="#"  Статья Meate Mediate
+              p.article__text
+                | Сахаджа Йога является методом получения реального опыта
+                | самосозерцания и
+                | мировозрения.Она основана на опыте Самореализации, доступном каждому человеку с
+                | рождения.
+        /! /article-wrapper
+  /! /main

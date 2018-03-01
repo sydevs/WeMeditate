@@ -1,49 +1,27 @@
-/! header
-header.header.gray
-  .container.desktop
-    /! topline
-    .header__topline
-      .topline__logo
-        a.logo href=root_url
-          img.svg alt="we-meditate" src=image_url('header/topline__logo.svg') /
-        a#burger-button.burger__button href="#" 
-          span.burger__button__icon
-      .topline__illustration
-        .illustration__holder
-          img.svg alt="meditate-illustration" src=image_url('header/topline__illustration.svg') /
-        a.logo_small href="#" 
-          img.svg alt="" src=image_url('header/topline__illustration_logo.svg') /
-      a.topline__text href="#" 
-        | Come
-        span meditate
-    /! /topline
-    /! nav
-    nav.header__nav
-      ul
-        = render partial: 'header_nav_item', collection: @desktop_navigation, as: :nav
-    /! /nav
+
+header
+  .desktop.container
+    .topline
+      a.logo href=root_url = inline_svg 'header/logo.svg'
+      img.svg.illustration src=image_url('header/illustration.svg')
+      a.sign-in href="#" SIGN IN
+
+    nav.menu
+      = render partial: 'header_nav_item', collection: @desktop_navigation, as: :nav
+
     - unless @breadcrumbs.nil?
-      /! breadcrumbs
-      ul.header__breadcrumbs.transparent
+      nav.breadcrumbs
         - @breadcrumbs.each do |crumb|
-          li class="#{'is_active' if crumb[:url].nil?}"
-            a href=crumb[:url] = crumb[:name]
-      /! /breadcrumbs
-  /! mobile
-  .container.mobile
-    a.logo href="#"
-      img.svg alt="we-meditate" src=image_url('mobile/logo-mob-gray.svg') /
-    a.text href="#"
-      | Come
-      br/
-      | meditate
-    a#burger-button.mobile-menu__btn.burger__button href="#" 
-      span.burger__button__icon
-    nav.mobile-menu
-      .mobile-menu__topline
-      ul.mobile-menu__wrap
-        - @mobile_navigation.each do |nav|
-          li.mobile-menu__item class="#{'active'}"
-            a.mobile-menu__href href=nav[:url] = nav[:title]
-  /! mobile
-/! /header
+          a.item href=crumb[:url] = crumb[:name]
+
+  .mobile.container
+    .topline
+      a.logo href=root_url
+        img.svg alt="we-meditate" src=image_url('header/logo-small.svg')
+
+      a#burger-button
+        img.svg src=image_url('header/burger.svg')
+
+    nav.menu
+      - @mobile_navigation.each do |nav|
+        a href=nav[:url] = nav[:title]

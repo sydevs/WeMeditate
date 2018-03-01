@@ -1,22 +1,14 @@
 
-/! nav__item
-li.nav__item
-  a.btn href=nav[:url] = nav[:label] || nav[:title]
-  
+.item
+  a.button href=nav[:url] = nav[:label] || nav[:title]
+
   - if nav[:content]
-    /! nav__item_container
-    .nav__item_container
-      h4.container__title = nav[:title]
-      .container__content
-        .side.left
-          ul
-            - nav[:content][:items].each do |item|
-              li
-                = nav_link_for item
-                //a href=url_for(item) = item.name || item.title
-        .side.right
-          ul.related-posts
-            = render 'header_related_post', item: nav[:content][:featured][0], image: 'chakra/item1.jpg' if nav[:content][:featured].length > 0
-            = render 'header_related_post', item: nav[:content][:featured][1], image: 'chakra/item2.jpg' if nav[:content][:featured].length > 1
-    /! /nav__item_container
-/! /nav__item
+    .container
+      h4.title = nav[:title]
+      .content
+        ul.links
+          - nav[:content][:items].each do |item|
+            li = nav_link_for item
+
+        - nav[:content][:featured].each do |item|
+          = render 'header_related_post', item: item

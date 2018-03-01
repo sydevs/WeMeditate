@@ -1,0 +1,17 @@
+@import "../../mixins/functions"
+@import "../../mixins/vars"
+
+.button
+  position: relative
+  display: inline-block
+
+  &:before
+    background: $background-gray
+    content: ''
+    z-index: -2
+    transition: all 1s ease
+    @include overlay(0, 0, 50%, 50%)
+
+  &:hover:before
+    left: 0
+    right: 0

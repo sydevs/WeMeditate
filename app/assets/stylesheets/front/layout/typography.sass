@@ -1,0 +1,28 @@
+@import "../../mixins/vars"
+@import "../../mixins/functions"
+@import "../../mixins/font_face"
+
++font-face("raleway", "RalewayRegular/RalewayRegular")
++font-face("raleway", "RalewayExtraLight/RalewayExtraLight", 200)
++font-face("raleway", "RalewayLight/RalewayLight", 300)
+
++font-face("raleway-bold", "RalewayBold/RalewayBold")
++font-face("raleway-medium", "RalewayMedium/RalewayMedium")
++font-face("raleway-semi", "RalewaySemiBold/RalewaySemiBold")
++font-face("futura-book", "FuturaBook/FuturaBook")
+
+*
+  font-family: $raleway
+
+a
+  outline: none
+  text-decoration: none
+  color: $light-gray
+  transition: all .3s ease
+
+  &:hover
+    color: black
+
+ul
+  list-style: none
+  padding: 0

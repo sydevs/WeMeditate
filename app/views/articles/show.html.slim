@@ -1,30 +1,45 @@
 
 - content_for :title, "Article: #{@article.title}"
+- banner_style = @article.banner.file.present? ? "background-image: url(#{@article.banner.url})" : nil
+- sections = @article.sections.with_translations(locale)
 
-/! main
-main.page-article class="#{'page-article-no-img' unless @article.banner.file.present?}"
-  - if @article.banner.file.present?
-    section.bg-image
-      .bg-image-cover style=("background-image: url(#{@article.banner.url})") 
+section.intro class="#{'banner' if banner_style}" style=banner_style
+  .container
+    h2.title = @article.title
+
+nav.chapters
+  ul
+    li = render partial: 'sections/section_link', collection: sections
+
+//article
+  = render sections
+
+//= render 'application/footer_together'
+
+//! main
+  main.page-article class="#{'page-article-no-img' unless @article.banner.file.present?}"
+    - if @article.banner.file.present?
+      section.bg-image
+        .bg-image-cover style=("background-image: url(#{@article.banner.url})") 
+          .container
+            h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s" style=("visibility: visible; animation-duration: 3s; animation-delay: 1s; animation-name: fadeIn;") 
+              = @article.title
+    - else
+      section.s-intro
         .container
           h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s" style=("visibility: visible; animation-duration: 3s; animation-delay: 1s; animation-name: fadeIn;") 
             = @article.title
-  - else
-    section.s-intro
+
+    /! chapter-nav
+    .chapter-nav-wrapper
       .container
-        h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s" style=("visibility: visible; animation-duration: 3s; animation-delay: 1s; animation-name: fadeIn;") 
-          = @article.title
+        nav.chapter-nav
+          ul
+            = render partial: 'sections/section_link', collection: @article.sections
+    /! /chapter-nav
 
-  /! chapter-nav
-  .chapter-nav-wrapper
-    .container
-      nav.chapter-nav
-        ul
-          = render partial: 'sections/section_link', collection: @article.sections
-  /! /chapter-nav
+    article
+      = render @article.sections.with_translations(locale)
 
-  article
-    = render @article.sections.with_translations(locale)
-
-  = render 'application/footer_together'
-/! /main
+    = render 'application/footer_together'
+  /! /main

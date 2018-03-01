@@ -1,0 +1,150 @@
+@import "../../mixins/vars"
+@import "../../mixins/functions"
+
+header
+  .topline
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    text-align: center
+    padding: 15px 0
+
+    .logo svg
+      width: 64px
+      max-width: 64px
+    
+    a
+      color: $light-gray
+      text-decoration: none
+    
+    svg, img
+      height: 100%
+    
+    svg path
+      fill: #555
+
+    #burger-button
+      float: right
+
+  .desktop
+    > .menu,
+    > .topline
+      border-bottom: 1px solid $light-gray
+
+    .illustration
+      width: 514px
+
+    > .menu
+      display: flex
+      justify-content: space-between
+      align-items: center
+      position: relative
+
+      > .item
+        > a
+          padding: 0 1rem
+          line-height: 2.25rem
+          font-size: 1rem
+          font-family: $raleway-medium
+          font-weight: 400
+
+        > .container
+          @include overlay(100%, auto, 0, 0)
+          background: $light-gray image-url("header/menu-background.png") bottom right
+
+        &:not(:hover) > .container
+          display: none
+      
+      .container
+        > *
+          padding-left: 80px
+          padding-right: 18px
+        
+        > .title
+          font-size: 24px
+          color: $dark-gray
+          border-bottom: 1px solid darken($light-gray, $shading-percentage)
+          line-height: 58px
+          margin: 0
+
+        > .content
+          display: flex
+          align-items: flex-start
+          position: relative
+
+        ul
+          flex-grow: 1
+          li
+            margin-bottom: 10px
+
+      .related-post
+        margin-right: 18px
+        margin-bottom: 18px
+        
+        > .title
+          position: absolute
+          bottom: 100%
+          margin-bottom: 1em
+
+        a
+          position: relative
+          display: inline-block
+          overflow: hidden
+
+          &:not(:hover) > .overlay
+            opacity: 0
+
+        img
+          max-height: 242px
+
+        .overlay
+          @include overlay(0, 0, 0, 0)
+          transition: all .5s opacity
+          background-color: rgba(0,0,0,0.5)
+          color: white
+          text-align: center
+
+    > .breadcrumbs
+      margin-top: 1em
+      font-size: 80%
+
+      .item
+        display: inline-block
+
+        &:not([href])
+          color: black
+
+      .item:not(:last-child)::after
+        content: '>'
+        margin: 0 6px
+
+  .mobile
+    .topline > *
+      display: inline-block
+      height: 32px
+      
+    > .menu
+      position: absolute
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      z-index: 50
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      text-align: center
+      
+      > a
+        width: 100%
+        line-height: 50px
+        font-size: 16px
+        font-weight: 600
+        transition: all .3s ease
+        
+        &:hover,
+        &.active
+          background: $background-gray
+
