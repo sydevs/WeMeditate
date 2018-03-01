@@ -8,11 +8,6 @@ module ApplicationHelper
     time_ago_in_words(duration_filter.minutes.minutes.from_now).titleize
   end
 
-  def markdown content
-    @rc ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, no_intra_emphasis: true, autolink: true, space_after_headers: true)
-    @rc.render(content).html_safe
-  end
-
   def nav_link_for item
     case item
     when DurationFilter

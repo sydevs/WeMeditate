@@ -2,9 +2,9 @@
 section id="section-#{index}" data-section=index
   .section-wrapper
     h4 = section.title
-    .callout-text
-      p = section.quote
-    = markdown section.text
+    = markdown section.text do
+      .callout-text
+        p = section.quote
 
 //section id="section-#{index}" data-section=index
   .section-wrapper
