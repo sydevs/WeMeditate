@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
     @article = Article.includes(:sections).friendly.find(params[:id])
     @breadcrumbs = [
       { name: Article.model_name.human(count: -1), url: articles_url },
-      { name: @article.category.name, url: '#' },
+      { name: @article.category.name, url: articles_url(category: @article.category.id) },
       { name: @article.title }
     ]
   end
