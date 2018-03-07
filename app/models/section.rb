@@ -23,7 +23,7 @@ class Section < ApplicationRecord
   enum content_type: {text: 0, quote: 1, video: 2, image: 3, action: 5, special: 6}
   enum visibility_type: {worldwide: 0, only_certain_countries: 1, except_certain_countries: 2}
 
-  TEXT_FORMATS = [:just_text, :with_quote, :adjacent_to_image, :within_image, :around_image, :with_image_background]
+  TEXT_FORMATS = [:just_text, :with_quote, :with_image, :box_with_lefthand_image, :box_with_righthand_image, :box_over_image]
   IMAGE_FORMATS = [:fit_container_width, :fit_page_width]
   ACTION_FORMATS = [:signup, :button]
   #enum format: TEXT_FORMATS + IMAGE_FORMATS + ACTION_FORMATS + SPECIAL_FORMATS

@@ -6,8 +6,9 @@
     .credit = section.credit
     .subtitle = section.subtitle
     .illustration.post.divider
-  a.box.button href="#"
-    Медитация со Шри Матаджи
+
+  - if section.action.present? and section.url.present?
+    a.box.button href=section.url = section.action
 
 
 //section id="section-#{index}" data-section=index

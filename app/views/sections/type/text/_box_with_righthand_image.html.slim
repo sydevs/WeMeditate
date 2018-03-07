@@ -3,6 +3,8 @@
   .content-box
     h2.title = section.title
     = markdown section.text
+    - if section.action.present? and section.url.present?
+      a.box.button href=section.url = section.action
   img alt=section.image.identifier src=section.image.url
 
 //section id="section-#{index}" data-section=index

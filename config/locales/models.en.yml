@@ -166,10 +166,10 @@ en:
           # Text
           just_text: Just Text
           with_quote: Text With Quote Insert
-          adjacent_to_image: Text With Image
-          within_image: Image With Text Insert
-          around_image: Text With Image Insert
-          with_image_background: Text Over Image
+          with_image: Text With Image Insert
+          box_with_lefthand_image: Text Box With Left-Hand Image
+          box_with_righthand_image: Text Box With Right-Hand Image
+          box_over_image: Text Box Over Image
           # Image
           fit_container_width: Fit Content Width
           fit_page_width: Fit Page Width

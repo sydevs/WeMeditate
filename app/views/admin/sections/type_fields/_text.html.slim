@@ -15,3 +15,7 @@
   = render 'admin/application/fields/file', f: f, attribute: :image
 
 = render 'admin/application/fields/subfield', f: f, attribute: :credit, for: [:image]
+
+= render 'admin/application/fields/subfield', f: f, attribute: :action, for: [:action]
+= render 'admin/application/fields/subfield', f: f, attribute: :url, for: [:action] do
+  = f.url_field :url

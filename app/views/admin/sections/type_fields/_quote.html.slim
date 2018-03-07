@@ -4,3 +4,7 @@
 
 = render 'admin/application/fields/subfield', f: f, attribute: :credit
 = render 'admin/application/fields/subfield', f: f, attribute: :subtitle
+
+= render 'admin/application/fields/subfield', f: f, attribute: :action
+= render 'admin/application/fields/subfield', f: f, attribute: :url do
+  = f.url_field :url

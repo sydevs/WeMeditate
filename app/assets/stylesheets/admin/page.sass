@@ -10,10 +10,15 @@
       display: block
 
     &.format-with_quote .field.for.quote,
-    &.format-adjacent_to_image .field.for.image,
-    &.format-within_image .field.for.image,
-    &.format-around_image .field.for.image,
-    &.format-with_image_background .field.for.image
+    &.format-with_image .field.for.image,
+    &.format-box_with_lefthand_image .field.for.image,
+    &.format-box_with_righthand_image .field.for.image,
+    &.format-box_over_image .field.for.image
+      display: block !important
+
+    &.format-box_with_lefthand_image .field.for.action,
+    &.format-box_with_righthand_image .field.for.action,
+    &.format-box_over_image .field.for.action
       display: block !important
 
   &.type-action

@@ -4,6 +4,8 @@
   .content-box
     h2.title = section.title
     = markdown section.text
+    - if section.action.present? and section.url.present?
+      a.box.button href=section.url = section.action
 
 //section.s__meditate.s__family.fullscreen.wow.fadeIn data-wow-duration="3s" id="section-#{index}" data-section=index
   .container
