@@ -14,7 +14,7 @@ footer
     &:before,
     &:after
       content: ''
-      top: -2px
+      margin-top: -2px
       height: 1px
       width: 100%
       position: relative
@@ -52,7 +52,14 @@ footer
     text-align: center
     line-height: 110px
     font-size: 12px
-    
+
+section.share
+  span
+    margin-right: 0.5em
+
+  a
+    margin: 0 2px
+
 section.footer
   min-height: 1371px
   background-image: image-url('footer/together.png')
@@ -92,14 +99,18 @@ section.footer
     max-width: 990px
     margin-top: 160px
 
-    img
+    .item > *
+      color: $color-text-dark
+      transition: all .5s ease
+
+    .item:hover > *
+      color: $color-text-highlight
+
+    i.icon
+      font-size: 70px
       margin-bottom: 44px
 
     .title
       font-size: 23px // TODO: Inconsistent use of px vs rem
       line-height: 31px
       font-family: $raleway-semi
-      transition: all .5s ease
-
-    .item:hover .title
-      color: $color-text-highlight
