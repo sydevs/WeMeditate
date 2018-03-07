@@ -5,16 +5,16 @@
 
 section.intro class="#{'banner' if banner_style}" style=banner_style
   .container
-    h2.title = @article.title
+    .title = @article.title
 
-nav.chapters
-  ul
-    li = render partial: 'sections/section_link', collection: sections
+.container
+  nav.chapters
+    = render partial: 'sections/section_link', collection: sections
 
-//article
+article
   = render sections
 
-//= render 'application/footer_together'
+= render 'application/footer_together'
 
 //! main
   main.page-article class="#{'page-article-no-img' unless @article.banner.file.present?}"

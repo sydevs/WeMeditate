@@ -25,10 +25,10 @@ html lang=locale
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-body class="#{controller_name} #{controller_name}-#{action_name} #{content_for(:title).downcase}"
+body class="#{controller_name} #{controller_name}-#{action_name}"
   //.preloader
     image width="200" height="100" src=image_path('svg/preloader.svg') alt="preloader"
 
   = render 'application/header'
-  = yield
+  main = yield
   = render 'application/footer'

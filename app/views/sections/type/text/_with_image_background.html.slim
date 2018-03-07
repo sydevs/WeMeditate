@@ -1,5 +1,11 @@
 
-section.s__sahaja.s__howto.fullscreen.wow.fadeIn data-wow-duration="3s" id="section-#{index}" data-section=index style=("background-image: url(#{section.image.url})") 
+.background style="background-image: url(#{section.image.url})"
+  .section-wrapper
+    .content-box
+      h2 = section.title
+      = markdown section.text
+
+//section.s__sahaja.s__howto.fullscreen.wow.fadeIn data-wow-duration="3s" id="section-#{index}" data-section=index style=("background-image: url(#{section.image.url})") 
   .container.has__triangle.has__triangle_right
     .s__wrapper_wide
       .s_title

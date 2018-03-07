@@ -61,7 +61,7 @@ en:
           normal: Normal Visibility
           high: High Visibility
         excerpt: Preview Content
-        banner: Banner (png)
+        banner: Banner Image (png)
         thumbnail: Thumbnail (png)
         sections: Content
 
@@ -70,7 +70,7 @@ en:
         slug: URL
         latitude: Latitude
         longitude: Longitude
-        banner: Banner
+        banner: Banner Image (png)
         sections: Content
         program_venues:
           one: 1 Program Location
@@ -159,7 +159,6 @@ en:
           video: Video
           quote: Quote
           image: Image
-          banner: Banner
           action: Call to Action
           special: Special
         format: Format

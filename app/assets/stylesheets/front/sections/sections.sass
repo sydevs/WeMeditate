@@ -1,0 +1,53 @@
+@import "../../mixins/functions"
+@import "../../mixins/vars"
+
+section
+  position: relative
+  margin-bottom: 5em
+
+.section-wrapper
+  max-width: 830px
+  width: 100%
+  margin: auto
+
+.callout
+  float: right
+  max-width: 420px
+  width: 100%
+  margin: 20px -150px 40px 50px
+
+  &.text
+    position: relative
+    padding: 70px 0
+    
+    &:after
+      content: ''
+      position: absolute
+      left: 17%
+      top: 0
+      bottom: 0
+      right: 0
+
+      z-index: -1
+      background: linear-gradient(to left,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
+
+section.intro
+  overflow: hidden
+
+  .title
+    //margin-top: 1.4em
+    letter-spacing: 1px
+    font-size: 45px
+    color: $dark-gray
+    font-weight: 700
+    height: 170px
+    line-height: 170px
+
+  .title:after
+    display: block
+    content: ''
+    opacity: .5
+    height: 100%
+    width: 705px
+    @include overlay(0, auto, -375px, auto)
+    background: linear-gradient(to right,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)

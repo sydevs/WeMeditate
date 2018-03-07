@@ -1,5 +1,9 @@
 
-section id="section-#{index}" data-section=index
+figure
+  img alt=section.image.identifier src=section.image.url
+  figcaption Credit • #{section.credit}
+
+//section id="section-#{index}" data-section=index
   .bg-image
     .bg-image-cover style=("background-image: url(#{section.image.url})") 
       .container.has__triangle.has__triangle_right

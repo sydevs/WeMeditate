@@ -32,6 +32,7 @@ class ApplicationController < ActionController::Base
           title: 'Learn More', url: root_url,
           content: { items: StaticPage.where(role: [:sahaja_yoga, :shri_mataji, :kundalini, :subtle_system]), featured: Treatment.first(2) }
         },
+        { title: 'Come meditate', url: cities_url },
       ]
 
       @mobile_navigation = [
@@ -48,4 +49,14 @@ class ApplicationController < ActionController::Base
     end
 
 
+end
+
+class Hash
+  def method_missing(name, *args, &blk)
+    if self.keys.map(&:to_sym).include? name.to_sym
+      return self[name.to_sym]
+    else
+      super
+    end
+  end
 end

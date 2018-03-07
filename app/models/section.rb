@@ -20,8 +20,8 @@ class Section < ApplicationRecord
   # Associations
   mount_translated_uploader :image, GenericImageUploader
   mount_translated_uploader :video, VideoUploader
-  enum content_type: [:text, :quote, :video, :image, :banner, :action, :special]
-  enum visibility_type: [:worldwide, :only_certain_countries, :except_certain_countries]
+  enum content_type: {text: 0, quote: 1, video: 2, image: 3, action: 5, special: 6}
+  enum visibility_type: {worldwide: 0, only_certain_countries: 1, except_certain_countries: 2}
 
   TEXT_FORMATS = [:just_text, :with_quote, :adjacent_to_image, :within_image, :around_image, :with_image_background]
   IMAGE_FORMATS = [:fit_container_width, :fit_page_width]

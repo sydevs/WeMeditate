@@ -5,7 +5,6 @@ module Admin::SectionHelper
     quote: 'quote right',
     video: 'play',
     image: 'photo',
-    banner: 'desktop',
     action: 'mouse pointer',
     special: 'star',
   }

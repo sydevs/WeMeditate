@@ -51,9 +51,10 @@ header
 
         > .container
           @include overlay(100%, auto, 0, 0)
-          background: $light-gray image-url("header/menu-background.png") bottom right
+          background: $gray image-url("header/menu-background.png") bottom right
+          z-index: 10
 
-        &:not(:hover) > .container
+        &:not(:hover) > .container:not(:hover)
           display: none
       
       .container
@@ -106,6 +107,7 @@ header
           text-align: center
 
     > .breadcrumbs
+      position: absolute
       margin-top: 1em
       font-size: 80%
 

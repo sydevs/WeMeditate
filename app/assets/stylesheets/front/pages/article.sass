@@ -1,32 +1,53 @@
 @import "../../mixins/functions"
 @import "../../mixins/vars"
 
-section.intro
-  min-height: 50vh
+body.articles-show
+  section.intro
+    &.banner
+      min-height: 50vh
+      background-position: center
 
-  .title
-    margin-top: 1.4em
-    letter-spacing: 1px
-    font-size: 45px
-    color: $dark-gray
-    font-weight: 700
-    height: 170px
-    line-height: 170px
+      .title
+        color: white
+        height: 85px
+        line-height: 85px
+        margin-top: 5%
 
-  .title:after
-    display: block
-    content: ''
-    opacity: .5
-    z-index: -1
-    height: 170px
-    width: 705px
-    @include overlay(0, auto, -375px, auto)
-    background: linear-gradient(to right,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
+      .title:after
+        background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.18) 25%,rgba(241,212,175,.7) 100%)
 
-  &.banner
-    .title
-      color: white
+  nav.chapters
+    position: relative
+    display: flex
 
-    .title:after
-      background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.18) 25%,rgba(241,212,175,.7) 100%)
+    z-index: 35
+    height: 82px
+    margin-bottom: 84px
 
+    background: white
+    border-bottom: 1px solid #9d9d9c
+
+    .item
+      flex: 1
+      display: flex
+      align-items: center
+
+      color: #c6c6c6
+
+      &:not(:last-child)
+        padding-right: 30px
+
+      .number
+        margin-right: 15px
+        font-size: 45px
+
+      .title
+        font-size: 12px
+        line-height: 22px
+
+      .progress
+        position: absolute
+        bottom: -2px
+        left: 0
+        height: 3px
+        background-color: #8ec2bb

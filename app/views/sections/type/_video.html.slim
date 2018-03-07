@@ -1,5 +1,12 @@
 
-section id="section-#{index}" data-section=index
+.section-wrapper
+  .video-preview
+    img alt=section.title src=section.image_url
+    a.box.button href="#video" data-source=section.video_url
+      | Play
+  .title = section.title
+
+//section id="section-#{index}" data-section=index
   .video-box
     .video-wrapper
       img alt="" src=section.image.url /

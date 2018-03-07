@@ -1,92 +1,109 @@
 
-/! awards
-section.s__articles.s__awards.wow.fadeIn data-wow-duration="3s" id="section-#{index}" data-section=index
-  .container
-    /! article-wrapper
-    .article__wrapper
-      .award__text
-        h3.h3 = section.title
-        = markdown section.text
-      ul.article__list
-        li.article__item
-          .article__text
-            h4
-              a href="#"  Italy, 1986
-            p
-              | Declared ‘Personality of the Year’ by the Italian
-              | Government.
-        li.article__item
-          .article__text
-            h4
-              a href="#"  Moscow, Russia, 1989
-            p
-              | Following Shri Mataji’s meeting with the USSR Minister of
-              | Health, Sahaja Yoga was granted full government sponsorship, including funding for
-              | scientific
-              | research.
-        li.article__item
-          .article__text
-            h4
-              a href="#"  St. Petersburg, Russia, 1993
-            p
-              | Appointed as Honorary Member of the Petrovskaya Academy of Art
-              | and Science. In the history
-              | of the Academy, only twelve people have been granted this honour, Einstein being one of
-              | them. Shri Mataji inaugurated the first International Conference on Medicine and
-              | Self-Knowledge, which became an annual event at the Academy thereafter.
-        li.article__item
-          .article__text
-            h4
-              a href="#"  St. Petersburg, Russia, 1993
-            p
-              | Appointed as Honorary Member of the Petrovskaya Academy of Art
-              | and Science. In the history
-              | of the Academy, only twelve people have been granted this honour, Einstein being one of
-              | them. Shri Mataji inaugurated the first International Conference on Medicine and
-              | Self-Knowledge, which became an annual event at the Academy thereafter.
-        li.article__item
-          .article__text
-            h4
-              a href="#"  Italy, 1986
-            p
-              | Declared ‘Personality of the Year’ by the Italian
-              | Government.
-        li.article__item
-          .article__text
-            h4
-              a href="#"  Moscow, Russia, 1989
-            p
-              | Following Shri Mataji’s meeting with the USSR Minister of
-              | Health, Sahaja Yoga was granted full government sponsorship, including funding for
-              | scientific
-              | research.
-        li.article__item
-          .article__text
-            h4
-              a href="#"  Moscow, Russia, 1989
-            p
-              | Following Shri Mataji’s meeting with the USSR Minister of
-              | Health, Sahaja Yoga was granted full government sponsorship, including funding for
-              | scientific
-              | research.
-        li.article__item
-          .article__text
-            h4
-              a href="#"  St. Petersburg, Russia, 1993
-            p
-              | Appointed as Honorary Member of the Petrovskaya Academy of Art
-              | and Science. In the history
-              | of the Academy, only twelve people have been granted this honour, Einstein being one of
-              | them. Shri Mataji inaugurated the first International Conference on Medicine and
-              | Self-Knowledge, which became an annual event at the Academy thereafter.
-        li.article__item
-          .article__text
-            h4
-              a href="#"  Italy, 1986
-            p
-              | Declared ‘Personality of the Year’ by the Italian
-              | Government.
-    /! /article-wrapper
-    .loadmore
-      a.btn href="#"  Полный список
-/! /awards
+- awards = [ \
+  { location: 'Italy, 1986', description: "Declared ‘Personality of the Year’ by the Italian Government." },
+  { location: 'Moscow, Russia, 1989', description: "Following Shri Mataji’s meeting with the USSR Minister of Health, Sahaja Yoga was granted full government sponsorship, including funding for scientific research." },
+  { location: 'St. Petersburg, Russia, 1993', description: "Appointed as Honorary Member of the Petrovskaya Academy of Art and Science. In the history of the Academy, only twelve people have been granted this honour, Einstein being one of them. Shri Mataji inaugurated the first International Conference on Medicine and Self-Knowledge, which became an annual event at the Academy thereafter." },
+]
+
+.container
+  h4 = section.title
+  = markdown section.text
+  .awards
+    - awards = awards.shuffle + awards.shuffle + awards.shuffle
+    - awards.each do |award|
+      .item
+        a href="#" = award[:location]
+        p = award[:description]
+
+
+//! awards
+  section.s__articles.s__awards.wow.fadeIn data-wow-duration="3s" id="section-#{index}" data-section=index
+    .container
+      /! article-wrapper
+      .article__wrapper
+        .award__text
+          h3.h3 = section.title
+          = markdown section.text
+        ul.article__list
+          li.article__item
+            .article__text
+              h4
+                a href="#"  Italy, 1986
+              p
+                | Declared ‘Personality of the Year’ by the Italian
+                | Government.
+          li.article__item
+            .article__text
+              h4
+                a href="#"  Moscow, Russia, 1989
+              p
+                | Following Shri Mataji’s meeting with the USSR Minister of
+                | Health, Sahaja Yoga was granted full government sponsorship, including funding for
+                | scientific
+                | research.
+          li.article__item
+            .article__text
+              h4
+                a href="#"  St. Petersburg, Russia, 1993
+              p
+                | Appointed as Honorary Member of the Petrovskaya Academy of Art
+                | and Science. In the history
+                | of the Academy, only twelve people have been granted this honour, Einstein being one of
+                | them. Shri Mataji inaugurated the first International Conference on Medicine and
+                | Self-Knowledge, which became an annual event at the Academy thereafter.
+          li.article__item
+            .article__text
+              h4
+                a href="#"  St. Petersburg, Russia, 1993
+              p
+                | Appointed as Honorary Member of the Petrovskaya Academy of Art
+                | and Science. In the history
+                | of the Academy, only twelve people have been granted this honour, Einstein being one of
+                | them. Shri Mataji inaugurated the first International Conference on Medicine and
+                | Self-Knowledge, which became an annual event at the Academy thereafter.
+          li.article__item
+            .article__text
+              h4
+                a href="#"  Italy, 1986
+              p
+                | Declared ‘Personality of the Year’ by the Italian
+                | Government.
+          li.article__item
+            .article__text
+              h4
+                a href="#"  Moscow, Russia, 1989
+              p
+                | Following Shri Mataji’s meeting with the USSR Minister of
+                | Health, Sahaja Yoga was granted full government sponsorship, including funding for
+                | scientific
+                | research.
+          li.article__item
+            .article__text
+              h4
+                a href="#"  Moscow, Russia, 1989
+              p
+                | Following Shri Mataji’s meeting with the USSR Minister of
+                | Health, Sahaja Yoga was granted full government sponsorship, including funding for
+                | scientific
+                | research.
+          li.article__item
+            .article__text
+              h4
+                a href="#"  St. Petersburg, Russia, 1993
+              p
+                | Appointed as Honorary Member of the Petrovskaya Academy of Art
+                | and Science. In the history
+                | of the Academy, only twelve people have been granted this honour, Einstein being one of
+                | them. Shri Mataji inaugurated the first International Conference on Medicine and
+                | Self-Knowledge, which became an annual event at the Academy thereafter.
+          li.article__item
+            .article__text
+              h4
+                a href="#"  Italy, 1986
+              p
+                | Declared ‘Personality of the Year’ by the Italian
+                | Government.
+      /! /article-wrapper
+      .loadmore
+        a.btn href="#"  Полный список
+  /! /awards

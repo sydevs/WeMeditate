@@ -25,5 +25,5 @@ html lang=locale
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-body class=content_for(:title).downcase
+body class="#{controller_name} #{controller_name}-#{action_name}"
   = yield

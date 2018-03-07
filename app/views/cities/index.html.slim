@@ -1,0 +1,8 @@
+
+.container
+  = inline_svg 'maps/us.svg'
+
+  ul
+    - @cities.each do |city|
+      li
+        a href=url_for(city) = city.name

@@ -1,5 +1,11 @@
 
-section.s__meditate.s__family.fullscreen.wow.fadeIn data-wow-duration="3s" id="section-#{index}" data-section=index
+.section-wrapper
+  img alt=section.image.identifier src=section.image.url
+  .content-box
+    h2 = section.title
+    = markdown section.text
+
+//section.s__meditate.s__family.fullscreen.wow.fadeIn data-wow-duration="3s" id="section-#{index}" data-section=index
   .container
     .s__wrapper
       .img__circle data-svg=image_path('svg/img__circle.svg')

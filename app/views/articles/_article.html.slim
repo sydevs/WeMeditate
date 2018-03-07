@@ -1,18 +1,16 @@
 
 - index = article_counter + 1
 
-.item.article class=dom_id(article.category)
-  a.article__media href=article_url(article)
-    img.article__image alt=("article image") src=(article.thumbnail.url || image_path("inspiration__items/item_#{index}.png")) /
+article class=dom_id(article.category)
+  a href=article_url(article)
+    img alt=article.title src=(article.thumbnail.url || image_path("temp/inspiration/item_#{index}.png")) /
 
-  h2.article__title = article.title
-  
-  .article__text
+  .title = article.title
+  .content
     p = article.excerpt
 
-  .more_btn
+  .meta
     a href=article_url(article)
-      | Learn More
-      i.icon-arrow-breadcrumb
+      | Learn More >
 
     span = localize article.created_at, format: :date

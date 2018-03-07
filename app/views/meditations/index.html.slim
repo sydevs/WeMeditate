@@ -1,32 +1,52 @@
 
 - content_for :title, 'Meditations'
 
-/! main
-main.page-meditations
-  .container_narrow.container
-    h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s" 
-      | Meditations
-    /! description
-    section.s__description
-      .section__wrap.has__triangle.has__triangle_right
-        .article
-          .article__content
-            h1.article__title Subtitle for meditations
-            p.article__text
-              | Listen to one of our guided meditations.
-    /! /description
-    /! music
-    section.s__music
-      .music__container
-        .music__subtitle How much time do you have?
-        .mood__container
-          = render @duration_filters
-        .music__subtitle What is your goal?
-        .mood__container
-          = render @goal_filters
-    /! music
+.container
+  h2 Meditations
 
-    ul
-      = render @meditations
-  /! /container
-/! /main
+  h3 Subtitle for meditations
+  p Listen to one of our guided meditations.
+
+  h4 How much time do you have?
+  nav.filter-durations
+    - @duration_filters.each do |duration_filter|
+      a.box.button href="#" data-filter=dom_id(duration_filter) #{duration_filter_name(duration_filter)}
+
+  h4 What is your goal?
+  nav.filter-goals
+    - @goal_filters.each_with_index do |goal_filter, index|
+      a.box.button href="#" data-filter=dom_id(goal_filter) #{goal_filter.name}
+
+  ul
+    - @meditations.each do |meditation|
+      li = link_to meditation.name, url_for(meditation)
+
+//! main
+  main.page-meditations
+    .container_narrow.container
+      h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s" 
+        | Meditations
+      /! description
+      section.s__description
+        .section__wrap.has__triangle.has__triangle_right
+          .article
+            .article__content
+              h1.article__title Subtitle for meditations
+              p.article__text
+                | Listen to one of our guided meditations.
+      /! /description
+      /! music
+      section.s__music
+        .music__container
+          .music__subtitle How much time do you have?
+          .mood__container
+            = render @duration_filters
+          .music__subtitle What is your goal?
+          .mood__container
+            = render @goal_filters
+      /! music
+
+      ul
+        = render @meditations
+    /! /container
+  /! /main

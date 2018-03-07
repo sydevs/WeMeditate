@@ -1,5 +1,11 @@
 
-section id="section-#{index}" data-section=index
+.section-wrapper
+  h4 = section.title
+  = markdown section.text do
+    blockquote.text.callout
+      p = section.quote
+
+//section id="section-#{index}" data-section=index
   .section-wrapper
     h4 = section.title
     = markdown section.text do

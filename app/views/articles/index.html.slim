@@ -1,7 +1,19 @@
 
 - content_for :title, 'Inspiration'
 
-= @selected_category.inspect
+nav.filter-categories
+  - @categories.each do |category|
+    a.button class="#{'active' if @selected_category == category}" data-filter=dom_id(category) href="#"
+      = category.name
+  a.button class="#{'active' unless @categories.include?(@selected_category)}" data-filter="" href="#"
+    ' All
+
+#grid.container = render @articles
+
+- if Article.all.count > ArticlesController::ARTICLES_PER_PAGE
+  .loadmore.centered
+    = link_to articles_path(format: 'js', offset: ArticlesController::ARTICLES_PER_PAGE), remote: 'true', class: 'box button' do
+      ' Load more articles
 
 //! main
   main.inspiration.page-inspiration

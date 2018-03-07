@@ -1,5 +1,12 @@
 
-section id="section-#{index}" data-section=index
+.section-wrapper
+  h4 = section.title
+  = markdown section.text do
+    figure.image.callout
+      img alt=section.image.identifier src=section.image.url
+      figcaption.figcaption Credit • #{section.credit}
+
+//section id="section-#{index}" data-section=index
   .section-wrapper
     h4 = section.title
     = markdown section.text do
