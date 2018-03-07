@@ -3,7 +3,7 @@
 
 section.intro
   .container
-    .title = @static_page.title
+    h1.title = @static_page.title
 
 article
   = render @static_page.sections.with_translations(locale)

@@ -5,31 +5,38 @@ section
   position: relative
   margin-bottom: 5em
 
-.section-wrapper
-  max-width: 830px
-  width: 100%
-  margin: auto
+  .title
+    font-size: 1.5rem
+    line-height: 1.938rem
+    color: $color-text-dark
+    font-family: $raleway-semi
+    margin-bottom: 1rem
 
-.callout
-  float: right
-  max-width: 420px
-  width: 100%
-  margin: 20px -150px 40px 50px
+  p
+    font-size: 1.125rem
+    line-height: 1.875rem
+    color: $color-text-normal
 
-  &.text
-    position: relative
-    padding: 70px 0
-    
-    &:after
-      content: ''
-      position: absolute
-      left: 17%
-      top: 0
-      bottom: 0
-      right: 0
+  .callout
+    float: right
+    max-width: 420px
+    width: 100%
+    margin: 20px -150px 40px 50px
 
-      z-index: -1
-      background: linear-gradient(to left,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
+    &.text
+      position: relative
+      padding: 70px 0
+      
+      &:after
+        content: ''
+        position: absolute
+        left: 17%
+        top: 0
+        bottom: 0
+        right: 0
+
+        z-index: -1
+        background: linear-gradient(to left,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
 
 section.intro
   overflow: hidden
@@ -38,7 +45,7 @@ section.intro
     //margin-top: 1.4em
     letter-spacing: 1px
     font-size: 45px
-    color: $dark-gray
+    color: $color-text-dark
     font-weight: 700
     height: 170px
     line-height: 170px

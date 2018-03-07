@@ -1,6 +1,5 @@
 @import "../../mixins/vars"
 @import "../../mixins/functions"
-@import "../../mixins/font_face"
 
 +font-face("raleway", "RalewayRegular/RalewayRegular")
 +font-face("raleway", "RalewayExtraLight/RalewayExtraLight", 200)
@@ -12,16 +11,22 @@
 +font-face("futura-book", "FuturaBook/FuturaBook")
 
 *
+  box-sizing: border-box
+  -webkit-text-size-adjust: none
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+
+body
   font-family: $raleway
+  color: $color-text-normal
 
 a
   outline: none
   text-decoration: none
-  color: $light-gray
+  color: $color-text-light
   transition: all .3s ease
 
   &:hover
-    color: black
+    color: darken($color-text-normal, 20%)
 
 ul
   list-style: none
@@ -31,7 +36,21 @@ svg, img
   max-width: 100%
 
 figure
+  position: relative
   margin: 0
+
+input
+  width: 100%
+  max-width: 510px
+  font-size: 1.125rem
+  outline: transparent
+  background-color: transparent
+  border-radius: 0
+  padding-bottom: 18px
+  color: $color-text-dark
+  border: none
+  border-bottom: 1px solid $color-text-normal
+  margin-bottom: 3.5rem
 
 .centered
   text-align: center

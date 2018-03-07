@@ -1,8 +1,8 @@
 
 .background style="background-image: url(#{section.image.url})"
-  .section-wrapper
+  .section.wrapper
     .content-box
-      h2 = section.title
+      h2.title = section.title
       = markdown section.text
 
 //section.s__sahaja.s__howto.fullscreen.wow.fadeIn data-wow-duration="3s" id="section-#{index}" data-section=index style=("background-image: url(#{section.image.url})") 

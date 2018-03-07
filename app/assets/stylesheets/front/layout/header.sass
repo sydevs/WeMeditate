@@ -15,7 +15,7 @@ header
       max-width: 64px
     
     a
-      color: $light-gray
+      color: $color-text-normal
       text-decoration: none
     
     svg, img
@@ -45,9 +45,13 @@ header
         > a
           padding: 0 1rem
           line-height: 2.25rem
-          font-size: 1rem
+          color: $color-text-normal
           font-family: $raleway-medium
           font-weight: 400
+          font-size: 1rem
+
+          &:hover
+            color: darken($color-text-normal, 20%)
 
         > .container
           @include overlay(100%, auto, 0, 0)
@@ -108,14 +112,21 @@ header
 
     > .breadcrumbs
       position: absolute
-      margin-top: 1em
+      margin: 16px 0
       font-size: 80%
+      z-index: 10
 
       .item
         display: inline-block
 
         &:not([href])
           color: black
+
+      &.inverse .item
+        color: $color-text-lighter
+        
+        &:not([href])
+          color: $color-text-normal
 
       .item:not(:last-child)::after
         content: '>'

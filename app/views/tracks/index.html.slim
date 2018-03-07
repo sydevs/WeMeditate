@@ -2,16 +2,16 @@
 - content_for :title, 'Music'
 
 .container
-  h2 Music for meditation
-  h3 Subtitle for music
+  h1 Music for meditation
+  h2 Subtitle for music
   p It's easier to concentrate with music, so you get meditation deeper.
 
-  h4 Choose the mood
+  h3 Choose the mood
   nav.filter-moods
     - @mood_filters.each do |mood_filter|
       a.box.button href="#" data-filter=dom_id(mood_filter) #{mood_filter.name}
 
-  h4 Select the instruments
+  h3 Select the instruments
   nav.filter-instruments
     - @instrument_filters.each_with_index do |instrument_filter, index|
       a href="#" data-filter=dom_id(instrument_filter)

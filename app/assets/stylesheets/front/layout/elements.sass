@@ -4,15 +4,42 @@
 .button
   position: relative
   display: inline-block
+  background: transparent
 
   &.box
-    border: 1px solid #7b7b7b
-    color: #7b7b7b
+    border: 1px solid $color-text-dark
+    color: $color-text-dark
     padding: 17px 28px
     text-align: center
     font-weight: 600
 
-  &:before
+    &:after
+      background: $light-blue
+
+    &:hover
+      border-color: $light-blue
+      color: $color-text-normal
+
+  &.video
+    position: relative
+    width: 170px
+    height: 170px
+    padding: 32px
+
+    border: 1px solid transparent
+    transition: all .5s ease
+
+    &:hover
+      border: 1px solid #dcdcdc
+
+    &:after
+      background-image: image-url('graphics/play-video.svg')
+      display: block
+      content: ''
+      width: 100%
+      height: 100%
+
+  &:not(.video):before
     background: $background-gray
     content: ''
     z-index: -2
@@ -23,7 +50,66 @@
     left: 0
     right: 0
 
+.wrapper
+  width: 100%
+  margin: auto
+
+  &.section
+    max-width: 830px
+
+  &.video
+    max-width: 615px
+
 .background
   background-position: center
   width: 100%
   height: 100%
+
+figcaption
+  position: absolute
+  writing-mode: vertical-rl
+  transform: rotate(180deg)
+  bottom: 0
+  right: 100%
+  margin-right: 12px
+  color: $color-text-lighter
+  white-space: nowrap
+
+.illustration.divider
+  max-width: 400px
+  width: 100%
+  margin: auto
+  background-color: #aaaaa9
+  height: 1px
+  border: none
+  position: relative
+
+  &:after
+    content: ''
+    position: absolute
+    left: 50%
+    top: 2px
+
+    padding: 0 20px
+    display: block
+    width: 29px
+    height: 32px
+
+    background-color: white
+    background-image: image-url('graphics/leaf.svg')
+    background-repeat: no-repeat
+    background-position: center
+
+    transform-origin: center
+    transform: translateX(-50%) translateY(-100%)
+
+  &.post:after
+    top: -2px
+    transform-origin: center
+    transform: rotate(180deg) translateX(50%)
+
+  &.simple
+    height: 0
+
+    &:after
+      background-color: transparent

@@ -1,15 +1,60 @@
+@import "../../mixins/vars"
 
 section.type-text
-  &.format-around-image .section-wrapper
-  &.format-within-image .section-wrapper,
-  &.format-adjacent-to-image .section-wrapper
-    display: flex
-
-    img
-      width: 50%
-      height: 50%
-
   .content-box
-    padding: 1em
-    max-height: 100%
+    background: white
+    padding: 75px 110px
+    max-width: 670px
+    max-height: 90%
     overflow: hidden
+
+    position: absolute
+    left: 50%
+    bottom: 5%
+    margin-left: -335px
+
+    *:first-child
+      margin-top: 0
+
+    *:last-child
+      margin-bottom: 0
+
+  .text.callout p
+    margin: 0
+    font-size: 1.25rem
+    line-height: 2.188rem
+    font-family: $raleway-semi
+    color: $dark-gray
+
+  .image.callout
+    float: left
+    margin: 40px 50px 40px -130px
+
+section.type-text
+  &.format-with-image-background
+    height: 100vh
+
+    .wrapper
+      position: relative
+      height: 100%
+
+    .content-box
+      left: 0
+      margin-left: 0
+      background: transparent
+      border: 2px solid white
+
+      *
+        color: $color-text-inverse
+
+  &.format-within-image
+    img
+      float: right
+
+    .content-box
+      left: 40%
+
+  &.format-adjacent-to-image .content-box
+    margin-left: 0
+    left: auto
+    right: 0

@@ -10,7 +10,7 @@ header
       = render partial: 'header_nav_item', collection: @desktop_navigation, as: :nav
 
     - unless @breadcrumbs.nil?
-      nav.breadcrumbs
+      nav.breadcrumbs class=content_for(:breadcrumbs_class)
         - @breadcrumbs.each do |crumb|
           a.item href=crumb[:url] = crumb[:name]
 

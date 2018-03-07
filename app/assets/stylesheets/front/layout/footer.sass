@@ -57,3 +57,49 @@ section.footer
   min-height: 1371px
   background-image: image-url('footer/together.png')
   background-position: center
+  
+  &:before
+    content: ''
+    display: block
+
+    position: absolute
+    bottom: 0
+    left: 0
+    z-index: 0
+
+    width: 705px
+    height: 1361px
+    background: linear-gradient(to right,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
+
+  .container
+    padding-top: 275px
+
+  .title
+    font-size: 50px // TODO: Inconsistent use of px vs rem
+    color: $color-text-dark
+    font-family: $raleway-medium
+
+  .sub.title
+    font-size: 28px // TODO: Inconsistent use of px vs rem
+    line-height: 1.2em
+    color: $color-text-normal
+    font-family: $raleway
+
+  .actions
+    display: flex
+    justify-content: space-between
+    text-align: center
+    max-width: 990px
+    margin-top: 160px
+
+    img
+      margin-bottom: 44px
+
+    .title
+      font-size: 23px // TODO: Inconsistent use of px vs rem
+      line-height: 31px
+      font-family: $raleway-semi
+      transition: all .5s ease
+
+    .item:hover .title
+      color: $color-text-highlight
