@@ -11,4 +11,8 @@
             li = nav_link_for item
 
         - nav[:content][:featured].each do |item|
-          = render 'header_related_post', item: item
+          .related-post
+            .title = resource_name(item)
+            a href=url_for(item)
+              img src=item.thumbnail.url
+              .overlay Inspiration<br>comes from within

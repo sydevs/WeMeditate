@@ -10,7 +10,16 @@ section.intro class="#{'banner' if banner_style}" style=banner_style
 
 .container
   nav.chapters
-    = render partial: 'sections/section_link', collection: sections
+    - section_index = 0
+    - chapter_index = 0
+    - sections.each do |section|
+      - section_index += 1
+      - if section.chapter_start?
+        - chapter_index += 1
+        a.item href="#section-#{section_index}"
+          .number = chapter_index
+          .title = section.title
+          //.progress data-id="section-#{section_index}" 
 
 article
   = render sections
