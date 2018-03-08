@@ -7,7 +7,8 @@ header
       a.sign-in href="#" SIGN IN
 
     nav.menu
-      = render partial: 'header_nav_item', collection: @desktop_navigation, as: :nav
+      - navigation do |nav|
+        = render 'header_nav_item', nav: nav
 
     - unless @breadcrumbs.nil?
       nav.breadcrumbs class=content_for(:breadcrumbs_class)
@@ -23,5 +24,5 @@ header
         img.svg src=image_url('header/burger.svg')
 
     nav.menu
-      - @mobile_navigation.each do |nav|
+      = navigation do |nav|
         a href=nav[:url] = nav[:title]

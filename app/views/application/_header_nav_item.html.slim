@@ -1,6 +1,6 @@
 
 .item
-  a.button href=nav[:url] = nav[:label] || nav[:title]
+  a.button href=nav[:url] = nav[:title]
 
   - if nav[:content]
     .container
@@ -8,11 +8,12 @@
       .content
         ul.links
           - nav[:content][:items].each do |item|
-            li = nav_link_for item
+            li
+              a href=item[:url] = item[:title]
 
         - nav[:content][:featured].each do |item|
           .related-post
-            .title = resource_name(item)
-            a href=url_for(item)
-              img src=item.thumbnail.url
+            .title = item[:title]
+            a href=item[:url]
+              img src=item[:thumbnail]
               .overlay Inspiration<br>comes from within
