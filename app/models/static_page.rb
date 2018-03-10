@@ -10,11 +10,11 @@ class StaticPage < ApplicationRecord
   friendly_id :title, use: :globalize
 
   # Associations
-  enum role: [
-    :home, :contact, :shri_mataji, :subtle_system, :sahaja_yoga, :kundalini,
-    :chakra_1, :chakra_2, :chakra_3, :chakra_3b, :chakra_4, :chakra_5, :chakra_6, :chakra_7,
-    :channel_left, :channel_right, :channel_center
-  ]
+  enum role: {
+    home: 0, about: 1, contact: 2, shri_mataji: 3, subtle_system: 4, sahaja_yoga: 5, kundalini: 6,
+    chakra_1: 7, chakra_2: 8, chakra_3: 9, chakra_3b: 10, chakra_4: 11, chakra_5: 12, chakra_6: 13, chakra_7: 14,
+    channel_left: 15, channel_right: 16, channel_center: 17
+  }
   has_many :sections, -> { order(:order) }, as: :page, dependent: :delete_all
 
   # Validations

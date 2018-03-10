@@ -1,0 +1,78 @@
+options:
+  find_existing_by: title
+records:
+  - sprig_id: 1
+    title: Article With Banner
+    slug: article-with-banner
+    excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    banner: <%= sprig_file('articles/banner.jpg') %>
+    thumbnail: <%= sprig_file('articles/thumbnails/1.png') %>
+    category_id: <%= sprig_record(Category, 'wisdom').id %>
+  - sprig_id: 2
+    title: Article Without Banner
+    slug: article-without-banner
+    excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    thumbnail: <%= sprig_file('articles/thumbnails/2.png') %>
+    category_id: <%= sprig_record(Category, 'experiences').id %>
+  - sprig_id: 3
+    title: Test Article
+    slug: test-article
+    excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    banner: <%= sprig_file('articles/banner.jpg') %>
+    thumbnail: <%= sprig_file('articles/thumbnails/3.png') %>
+    category_id: <%= sprig_record(Category, 'wisdom').id %>
+  - sprig_id: 4
+    title: Article 4
+    excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    thumbnail: <%= sprig_file('articles/thumbnails/4.png') %>
+    category_id: <%= sprig_record(Category, 'creativity').id %>
+  - sprig_id: 5
+    title: Article 5
+    excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    thumbnail: <%= sprig_file('articles/thumbnails/5.png') %>
+    category_id: <%= sprig_record(Category, 'events').id %>
+  - sprig_id: 6
+    title: Article 6
+    excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    thumbnail: <%= sprig_file('articles/thumbnails/6.png') %>
+    category_id: <%= sprig_record(Category, 'experiences').id %>
+  - sprig_id: 7
+    title: Article 7
+    excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    thumbnail: <%= sprig_file('articles/thumbnails/7.png') %>
+    category_id: <%= sprig_record(Category, 'events').id %>
+  - sprig_id: 8
+    title: Article 8
+    excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    thumbnail: <%= sprig_file('articles/thumbnails/8.png') %>
+    category_id: <%= sprig_record(Category, 'creativity').id %>
+  - sprig_id: 9
+    title: Article 9
+    excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    thumbnail: <%= sprig_file('articles/thumbnails/9.png') %>
+    category_id: <%= sprig_record(Category, 'wisdom').id %>
+  - sprig_id: 10
+    title: Article 10
+    excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    thumbnail: <%= sprig_file('articles/thumbnails/10.png') %>
+    category_id: <%= sprig_record(Category, 'wisdom').id %>
+  - sprig_id: 11
+    title: Article 11
+    excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    thumbnail: <%= sprig_file('articles/thumbnails/11.png') %>
+    category_id: <%= sprig_record(Category, 'events').id %>
+  - sprig_id: 12
+    title: Article 12
+    excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    thumbnail: <%= sprig_file('articles/thumbnails/12.png') %>
+    category_id: <%= sprig_record(Category, 'creativity').id %>
+  - sprig_id: 13
+    title: Article 13
+    excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    thumbnail: <%= sprig_file('articles/thumbnails/13.png') %>
+    category_id: <%= sprig_record(Category, 'experiences').id %>
+  - sprig_id: 14
+    title: Article 14
+    excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    thumbnail: <%= sprig_file('articles/thumbnails/14.png') %>
+    category_id: <%= sprig_record(Category, 'wisdom').id %>

@@ -27,7 +27,7 @@ class IconUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-  process resize_to_fit: [1000, 50] # any width, as long as height is 50
+  #process resize_to_fit: [1000, 50] # any width, as long as height is 50
 
   # Create different versions of your uploaded files:
   # version :thumb do
@@ -37,7 +37,7 @@ class IconUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(png)
+    %w(png svg)
   end
 
   # Override the filename of the uploaded files:

@@ -7,10 +7,10 @@ class CreateArtists < ActiveRecord::Migration[5.1]
     end
 
     add_belongs_to :tracks, :artist
-
+    
     reversible do |dir|
       dir.up do
-        remove_column :tracks, :subtitle
+        remove_column :track_translations, :subtitle
       end
 
       dir.down do

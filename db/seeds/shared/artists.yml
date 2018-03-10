@@ -1,0 +1,19 @@
+options:
+  find_existing_by: name
+records:
+  - sprig_id: 1
+    name: Leo Vertunni
+    url: http://indialucia.com
+    image: <%= sprig_file('artists/1.jpg') %>
+  - sprig_id: 2
+    name: Sanjay Talwar
+    url: http://sahajayoga.org
+    image: <%= sprig_file('artists/2.jpg') %>
+  - sprig_id: 3
+    name: Indialucia
+    url: http://indialucia.com
+    image: <%= sprig_file('artists/3.jpg') %>
+  - sprig_id: 4
+    name: TEV Orchestra
+    url: http://www.theatreofeternalvalues.com
+    image: <%= sprig_file('artists/4.jpg') %>

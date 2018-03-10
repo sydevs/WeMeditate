@@ -1,0 +1,44 @@
+options:
+  find_existing_by: title
+records:
+  - sprig_id: 1
+    title: Raag Darbari
+    audio: <%= sprig_file('general/music.mp3') %>
+    artist_id: <%= sprig_record(Artist, 1).id %>
+    mood_filter_ids:
+      - <%= sprig_record(MoodFilter, 'Peace').id %>
+      - <%= sprig_record(MoodFilter, 'Joy').id %>
+      - <%= sprig_record(MoodFilter, 'Innocence').id %>
+    instrument_filter_ids:
+      - <%= sprig_record(InstrumentFilter, 'Voice').id %>
+      - <%= sprig_record(InstrumentFilter, 'Flute').id %>
+  - sprig_id: 2
+    title: Raag Durga
+    audio: <%= sprig_file('general/music.mp3') %>
+    artist_id: <%= sprig_record(Artist, 1).id %>
+    mood_filter_ids:
+      - <%= sprig_record(MoodFilter, 'Peace').id %>
+      - <%= sprig_record(MoodFilter, 'Cheerfulness').id %>
+    instrument_filter_ids:
+      - <%= sprig_record(InstrumentFilter, 'Tabla').id %>
+      - <%= sprig_record(InstrumentFilter, 'Sitar').id %>
+  - sprig_id: 3
+    title: Raag Jayjayvanti
+    audio: <%= sprig_file('general/music.mp3') %>
+    artist_id: <%= sprig_record(Artist, 2).id %>
+    mood_filter_ids:
+      - <%= sprig_record(MoodFilter, 'Peace').id %>
+      - <%= sprig_record(MoodFilter, 'Integration').id %>
+    instrument_filter_ids:
+      - <%= sprig_record(InstrumentFilter, 'Voice').id %>
+  - sprig_id: 4
+    title: Brahma Shodile
+    audio: <%= sprig_file('general/music.mp3') %>
+    artist_id: <%= sprig_record(Artist, 3).id %>
+    mood_filter_ids:
+      - <%= sprig_record(MoodFilter, 'Integration').id %>
+      - <%= sprig_record(MoodFilter, 'Joy').id %>
+    instrument_filter_ids:
+      - <%= sprig_record(InstrumentFilter, 'Tabla').id %>
+      - <%= sprig_record(InstrumentFilter, 'Sitar').id %>
+      - <%= sprig_record(InstrumentFilter, 'Flute').id %>

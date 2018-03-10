@@ -1,0 +1,12 @@
+options:
+  find_existing_by: name
+records:
+  - sprig_id: Go Deeper
+    name: Go Deeper
+    order: 1
+  - sprig_id: Feel Relaxed
+    name: Feel Relaxed
+    order: 2
+  - sprig_id: Forgive Others
+    name: Forgive Others
+    order: 3

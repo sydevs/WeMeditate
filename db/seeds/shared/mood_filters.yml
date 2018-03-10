@@ -1,0 +1,18 @@
+options:
+  find_existing_by: name
+records:
+  - sprig_id: Cheerfulness
+    name: Cheerfulness
+    order: 1
+  - sprig_id: Peace
+    name: Peace
+    order: 2
+  - sprig_id: Joy
+    name: Joy
+    order: 3
+  - sprig_id: Integration
+    name: Integration
+    order: 4
+  - sprig_id: Innocence
+    name: Innocence
+    order: 5

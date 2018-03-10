@@ -1,0 +1,467 @@
+options:
+  find_existing_by: ['page_type', 'page_id', 'order']
+records:
+
+# FOR ARTICLE: 1
+  - sprig_id: 1
+    page_type: Article
+    page_id: <%= sprig_record(Article, 1).id %>
+    content_type: text
+    format: with_quote
+    title: Section 1
+    text: |-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
+      
+      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+      
+      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+      
+      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+    quote: Fusce faucibus commodo tempor. Nunc consequat lectus et ipsum rutrum pellentesque. Cras vulputate turpis sed neque dictum blandit. Maecenas hendrerit eu nulla vel tempus. Suspendisse eget purus sit amet dolor vulputate convallis. Morbi hendrerit enim nec interdum iaculis. Nullam eget massa orci.
+    order: 1
+  - sprig_id: 2
+    page_type: Article
+    page_id: <%= sprig_record(Article, 1).id %>
+    content_type: text
+    format: with_image
+    title: Section 2
+    text: |-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
+      
+      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+      
+      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+      
+      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+    image: <%= sprig_file('articles/callout.jpg') %>
+    credit: John Smith
+    order: 2
+  - sprig_id: 3
+    page_type: Article
+    page_id: <%= sprig_record(Article, 1).id %>
+    content_type: image
+    format: fit_container_width
+    image: <%= sprig_file('articles/container-width.jpg') %>
+    credit: John Smith
+    order: 3
+  - sprig_id: 4
+    page_type: Article
+    page_id: <%= sprig_record(Article, 1).id %>
+    content_type: text
+    format: just_text
+    title: Section 3
+    text: |-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
+      
+      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+      
+      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+      
+      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+    order: 4
+  - sprig_id: 5
+    page_type: Article
+    page_id: <%= sprig_record(Article, 1).id %>
+    content_type: action
+    format: button
+    action: Try Meditation
+    url: '#'
+    order: 5
+  - sprig_id: 6
+    page_type: Article
+    page_id: <%= sprig_record(Article, 1).id %>
+    content_type: image
+    format: fit_page_width
+    image: <%= sprig_file('articles/page-width.jpg') %>
+    credit: John Smith
+    order: 6
+  - sprig_id: 7
+    page_type: Article
+    page_id: <%= sprig_record(Article, 1).id %>
+    content_type: text
+    format: just_text
+    title: Section 4
+    text: |-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
+      
+      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+      
+      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+      
+      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+    order: 7
+  - sprig_id: 8
+    page_type: Article
+    page_id: <%= sprig_record(Article, 1).id %>
+    content_type: quote
+    title: About Us
+    quote: "Joy starts to descend on your head all the time, spilling throughout the whole being, making you absolutely calm and beautiful."
+    credit: Shri Mataji
+    subtitle: Founder of the meditation method "Sahaja Yoga"
+    action: Meditation with Shri Mataji
+    url: '#'
+    order: 8
+  - sprig_id: 9
+    page_type: Article
+    page_id: <%= sprig_record(Article, 1).id %>
+    content_type: text
+    format: just_text
+    title: Section 5
+    text: |-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
+      
+      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+      
+      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+      
+      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+    order: 9
+  - sprig_id: 10
+    page_type: Article
+    page_id: <%= sprig_record(Article, 1).id %>
+    content_type: action
+    format: signup
+    order: 10
+  - sprig_id: 11
+    page_type: Article
+    page_id: <%= sprig_record(Article, 1).id %>
+    content_type: video
+    title: The first method of meditation
+    image: <%= sprig_file('general/video.jpg') %>
+    video: <%= sprig_file('general/video.mp4') %>
+    order: 11
+  - sprig_id: 12
+    page_type: Article
+    page_id: <%= sprig_record(Article, 1).id %>
+    content_type: text
+    format: just_text
+    text: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+    order: 12
+
+
+# FOR ARTICLE: 2
+  - sprig_id: 101
+    page_type: Article
+    page_id: <%= sprig_record(Article, 2).id %>
+    content_type: text
+    format: with_quote
+    title: Section 1
+    text: |-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
+      
+      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+      
+      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+      
+      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+    quote: Fusce faucibus commodo tempor. Nunc consequat lectus et ipsum rutrum pellentesque. Cras vulputate turpis sed neque dictum blandit. Maecenas hendrerit eu nulla vel tempus. Suspendisse eget purus sit amet dolor vulputate convallis. Morbi hendrerit enim nec interdum iaculis. Nullam eget massa orci.
+    order: 1
+
+
+# FOR ARTICLE: 3
+  - sprig_id: 201
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    content_type: text
+    format: just_text
+    title: Section 1
+    text: |-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
+      
+      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+      
+      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+      
+      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+    order: 1
+  - sprig_id: 202
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    content_type: text
+    format: with_quote
+    title: Section 2
+    text: |-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
+      
+      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+      
+      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+      
+      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+    quote: Fusce faucibus commodo tempor. Nunc consequat lectus et ipsum rutrum pellentesque. Cras vulputate turpis sed neque dictum blandit. Maecenas hendrerit eu nulla vel tempus. Suspendisse eget purus sit amet dolor vulputate convallis. Morbi hendrerit enim nec interdum iaculis. Nullam eget massa orci.
+    order: 2
+  - sprig_id: 203
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    content_type: text
+    format: with_image
+    title: Section 3
+    text: |-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
+      
+      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+      
+      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+      
+      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+    image: <%= sprig_file('articles/callout.jpg') %>
+    credit: John Smith
+    order: 3
+  - sprig_id: 204
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    content_type: text
+    format: box_over_image
+    title: Section 4
+    text: |-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
+      
+      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+    image: <%= sprig_file('articles/behind.jpg') %>
+    order: 4
+  - sprig_id: 205
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    content_type: text
+    format: box_with_lefthand_image
+    title: Section 5
+    text: |-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
+      
+      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+    image: <%= sprig_file('articles/lefthand.jpg') %>
+    order: 5
+  - sprig_id: 206
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    content_type: text
+    format: box_with_righthand_image
+    title: Section 6
+    text: |-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
+      
+      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+    image: <%= sprig_file('articles/righthand.jpg') %>
+    order: 6
+  - sprig_id: 207
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    content_type: image
+    format: fit_container_width
+    image: <%= sprig_file('articles/container-width.jpg') %>
+    credit: John Smith
+    order: 7
+  - sprig_id: 208
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    content_type: image
+    format: fit_page_width
+    image: <%= sprig_file('articles/page-width.jpg') %>
+    credit: John Smith
+    order: 8
+  - sprig_id: 209
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    content_type: action
+    format: button
+    action: Try Meditation
+    url: '#'
+    order: 9
+  - sprig_id: 210
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    content_type: action
+    format: signup
+    action: Sign Up
+    order: 10
+  - sprig_id: 211
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    content_type: quote
+    title: About Us
+    quote: "Joy starts to descend on your head all the time, spilling throughout the whole being, making you absolutely calm and beautiful."
+    credit: Shri Mataji
+    subtitle: Founder of the meditation method "Sahaja Yoga"
+    action: Meditation with Shri Mataji
+    url: '#'
+    order: 11
+  - sprig_id: 212
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    content_type: video
+    title: The first method of meditation
+    image: <%= sprig_file('general/video.jpg') %>
+    video: <%= sprig_file('general/video.mp4') %>
+    order: 12
+
+
+# FOR STATIC PAGE: HOME
+  - sprig_id: 301
+    order: 1
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'home').id %>
+    content_type: text
+    format: box_with_righthand_image
+    title: Sahaja Yoga
+    text: Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.
+    action: Learn More
+    url: '#'
+    image: <%= sprig_file('static_pages/front/sahaja-yoga.jpg') %>
+  # Insert the video gallery
+  - sprig_id: 302
+    order: 2
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'home').id %>
+    content_type: text
+    format: box_over_image
+    title: Shri Mataji
+    text: Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.
+    action: Learn More
+    url: '#'
+    image: <%= sprig_file('static_pages/front/shri-mataji.jpg') %>
+  - sprig_id: 303
+    order: 3
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'home').id %>
+    content_type: text
+    format: box_with_lefthand_image
+    title: About Us
+    text: Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.
+    image: <%= sprig_file('static_pages/front/we-meditate.jpg') %>
+  - sprig_id: 304
+    order: 4
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'home').id %>
+    content_type: text
+    format: box_over_image
+    title: About Us
+    text: |-
+      Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization.
+
+      Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview.
+    action: Learn More
+    url: '#'
+    image: <%= sprig_file('static_pages/front/meditation.jpg') %>
+  - sprig_id: 305
+    order: 5
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'home').id %>
+    content_type: text
+    format: box_with_righthand_image
+    title: Events
+    text: Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.
+    action: More Events
+    url: '#'
+    image: <%= sprig_file('static_pages/front/events.jpg') %>
+  # Insert the final sections
+
+
+# FOR STATIC PAGE: about
+  - sprig_id: 401
+    order: 1
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'about').id %>
+    content_type: text
+    format: just_text
+    title: About We Meditate
+    text: |-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
+
+      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+
+      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+
+
+# FOR STATIC PAGE: contact
+  - sprig_id: 501
+    order: 1
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'contact').id %>
+    content_type: text
+    format: just_text
+    title: Contact form
+    text: Coming soon
+
+
+# FOR STATIC PAGE: shri_mataji
+  - sprig_id: 601
+    order: 1
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'shri_mataji').id %>
+    content_type: text
+    format: box_with_righthand_image
+    title: Founder of Sahaja Yoga
+    text: Shri Mataji Nirmala Devi quietly transformed lives. For more than forty years, she travelled internationally, offering free public lectures and the experience of self-realization to all, regardless of race, religion or circumstance. She not only enabled people to pass this valuable experience on to others, but taught them the meditation technique necessary to sustain it, known as Sahaja Yoga.
+    image: <%= sprig_file('static_pages/shri-mataji/founder.jpg') %>
+  - sprig_id: 602
+    order: 2
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'shri_mataji').id %>
+    content_type: text
+    format: box_over_image
+    title: What is Sahaja Yoga?
+    text: |-
+      Shri Mataji maintained that there is an innate spiritual potential within every human being, and it can be spontaneously awakened, bringing one into the state of spontaneous meditation. The inner balance and stress-reduction that accompanies the practice of Sahaja Yoga meditation has already benefited hundreds of thousands worldwide.
+
+      The ability to quickly and easily activate our innate, spiritual energy - and experience its benefits differentiates Sahaja Yoga from other forms of meditation. With practice, individuals are able to direct their own energy and redress mental, physical and emotional imbalances to achieve a state of well-being, serenity and fulfillment.
+    action: More about Sahaja Yoga
+    url: '#'
+    image: <%= sprig_file('static_pages/shri-mataji/sahaja-yoga.jpg') %>
+  - sprig_id: 603
+    order: 3
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'shri_mataji').id %>
+    content_type: text
+    format: box_with_righthand_image
+    title: Social Work
+    text: Brought up in a family that considered self-sacrifice the highest calling, Shri Mataji dedicated her life to a continuous program of public and spiritual work.She created charitable organizations such as the Vishwa Nirmala Prem Ashram for destitute women and orphan children, founded international schools promoting a holistic and balanced education, established health clinics, created a classical art academy, and much more. All of these endeavors complemented her global work of spiritual transformation.
+    image: <%= sprig_file('static_pages/shri-mataji/social-work.jpg') %>
+  - sprig_id: 604
+    order: 4
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'shri_mataji').id %>
+    content_type: text
+    format: box_with_lefthand_image
+    title: Shri Mataji's Family
+    text: Brought up in a family that considered self-sacrifice the highest calling, Shri Mataji dedicated her life to a continuous program of public and spiritual work.She created charitable organizations such as the Vishwa Nirmala Prem Ashram for destitute women and orphan children, founded international schools promoting a holistic and balanced education, established health clinics, created a classical art academy, and much more. All of these endeavors complemented her global work of spiritual transformation.
+    image: <%= sprig_file('static_pages/shri-mataji/family.jpg') %>
+  - sprig_id: 605
+    order: 5
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'shri_mataji').id %>
+    content_type: special
+    format: awards
+    title: Awards
+    text: Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+
+
+# FOR STATIC PAGE: subtle_system
+  - sprig_id: 701
+    order: 1
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'subtle_system').id %>
+    content_type: special
+    format: subtle_system
+
+
+# FOR STATIC PAGE: sahaja_yoga
+  - sprig_id: 801
+    order: 1
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'sahaja_yoga').id %>
+    content_type: text
+    format: just_text
+    title: About Sahaja Yoga
+    text: Coming soon
+
+
+# FOR STATIC PAGE: kundalini
+  - sprig_id: 901
+    order: 1
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'kundalini').id %>
+    content_type: text
+    format: just_text
+    title: About Kundalini
+    text: Coming soon
+

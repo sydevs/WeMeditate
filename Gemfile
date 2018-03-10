@@ -76,6 +76,9 @@ gem 'i18n_data'
 gem 'devise-i18n'
 gem 'route_translator'
 
+# Tools
+gem 'sprig'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

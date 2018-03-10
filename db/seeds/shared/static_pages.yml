@@ -1,0 +1,24 @@
+options:
+  find_existing_by: role
+records:
+  - sprig_id: home
+    role: <%= StaticPage.roles[:home] %>
+    title: Front Page
+  - sprig_id: about
+    role: <%= StaticPage.roles[:about] %>
+    title: About Us
+  - sprig_id: contact
+    role: <%= StaticPage.roles[:contact] %>
+    title: Contact Us
+  - sprig_id: shri_mataji
+    role: <%= StaticPage.roles[:shri_mataji] %>
+    title: Shri Mataji
+  - sprig_id: subtle_system
+    role: <%= StaticPage.roles[:subtle_system] %>
+    title: Chakras & Channels
+  - sprig_id: sahaja_yoga
+    role: <%= StaticPage.roles[:sahaja_yoga] %>
+    title: About Sahaja Yoga
+  - sprig_id: kundalini
+    role: <%= StaticPage.roles[:kundalini] %>
+    title: About Kundalini
