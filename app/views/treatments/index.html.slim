@@ -1,7 +1,14 @@
 
 - content_for :title, 'Treatments'
 
-.container
+.treatments.wrapper
+  article.music
+    .number 01
+    img alt='Music' src=image_path("sections/music/treatment.jpg")
+    .content
+      .title Music
+      p It's easier to concentrate with music, so it's deeper to meditate.
+
   = render @treatments
 
 //! main

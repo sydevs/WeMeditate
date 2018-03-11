@@ -1,0 +1,79 @@
+@import "../../mixins/vars"
+
+body.treatments-index
+  .treatments.wrapper
+    max-width: 960px
+    margin-bottom: 150px
+
+  article
+    position: relative
+    margin-top: 150px
+
+    display: flex
+    flex-basis: 100%
+    flex-wrap: nowrap
+
+    img
+      width: 400px
+      height: 400px
+
+    .content
+      margin-top: 65px
+
+      .title
+        margin-bottom: 0.7em
+
+      p
+        font-size: 18px // TODO: Inconsistent use of px vs rem/em
+        line-height: 1.667em
+
+      .button
+        margin-top: 46px
+
+    .number
+      position: absolute
+      top: -86px
+
+      color: $color-text-lighter
+      font-size: 35px // TODO: Fix inconsistent use of px vs rem/em
+      line-height: 1.57em
+
+    &:after
+      display: block
+      content: ''
+
+      position: absolute
+      top: -118px
+
+      height: 235px
+      width: 705px
+      opacity: 0.5
+      z-index: -1
+
+    &:nth-child(even)
+      img
+        margin-left: 95px
+
+      .content
+        margin-left: 30px
+
+      .number
+        right: 0
+      
+      &:after
+        right: -466px
+        background: linear-gradient(to left,rgba(255,255,255,0) 0,rgba(255,255,255,.18) 25%,rgba(241,212,175,.7) 100%)
+    
+    &:nth-child(odd)
+      img
+        margin-right: 95px
+
+      .content
+        margin-right: 30px
+
+      .number
+        left: 0
+      
+      &:after
+        left: -466px
+        background: linear-gradient(to right,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)

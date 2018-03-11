@@ -1,8 +1,6 @@
 
 .video.wrapper
-  .video-preview
-    img alt=section.title src=section.image_url
-    a.video.button href="#video" data-source=section.video_url
+  = render 'shared/video', thumbnail: section.image.url, video: section.video.url
   h3.title = section.title
 
 //section id="section-#{index}" data-section=index

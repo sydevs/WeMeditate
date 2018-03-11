@@ -1,13 +1,18 @@
 
 - index = (treatment_counter + 2).to_s.rjust(2, '0')
 
-article
+article id=dom_id(treatment)
+  .number = index
+  - if treatment_counter.odd?
+    img alt=treatment.name src=treatment.thumbnail.url
+  
+  .content
+    .title = treatment.name
+    p Sahaja Yoga is a method of obtaining real experience introspection and worldview. She is based on the experience of Self-realization, accessible to every person from birth.
+    a.box.button href=treatment_url(treatment) More about the method
+  
   - if treatment_counter.even?
-    .content
-      .title = treatment.name
-      p Sahaja Yoga is a method of obtaining real experience introspection and worldview. She is based on the experience of Self-realization, accessible to every person from birth.
-      a.box.button href=treatment_url(treatment) More about the method
-    img alt=treatment.name src=(treatment.thumbnail_url || image_path("temp/treatments/technique_#{index}.jpg")) /
+    img alt=treatment.name src=treatment.thumbnail.url
 
 //.article.article_technique
   .article__image
