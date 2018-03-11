@@ -1,0 +1,86 @@
+@import "../../mixins/vars"
+
+body.tracks-index
+  section.intro
+    margin-bottom: 50px
+
+  .filter
+    margin-right: 44px
+
+  .instrument.filters
+    .filter
+      opacity: 0.4
+
+      &.active,
+      &:hover
+        opacity: 0.95
+
+    img
+      height: 50px
+  
+  .playlist
+    position: relative
+    height: 660px
+    width: 100%
+    max-width: 705px
+    margin-left: auto
+    margin-top: 50px
+    padding: 60px 0 60px 160px
+    background: linear-gradient(to left,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
+
+    > .title
+      font-size: 24px // TODO: Inconsistent use of em/rem vs px
+      line-height: 1.3em
+      margin-bottom: 0.7em
+      letter-spacing: 1px
+
+    .cover
+      position: absolute
+      top: 115px
+      left: -320px
+      width: 385px
+
+    .list
+      position: relative
+      list-style: none
+
+    .list > *
+      width: 100%
+      margin-bottom: 30px
+      padding-right: 150px
+
+      .label
+        display: block
+        color: $color-text-dark
+        font-size: 21px // TODO: Inconsistent use of px vs rem/em
+        line-height: 35px
+
+        i.icon
+          width: 35px
+          height: 35px
+          font-size: 14px // TODO: Inconsistent use of px vs rem/em
+          text-align: center
+
+      .artist
+        display: block
+        font-size: 12px // TODO: Inconsistent use of px vs rem/em
+        line-height: 1em
+        padding-left: 35px
+        padding-bottom: 0.8em
+
+        &:hover
+          color: $color-text-orange
+
+      .duration
+        position: absolute
+        right: 5px
+        bottom: 15px
+
+        font-family: $futura-book
+        font-size: 12px // TODO: Inconsistent use of px vs rem/em
+        line-height: 2.25em
+
+      &.active
+        border: 1px solid $background-blue
+
+      

@@ -4,6 +4,8 @@
 +font-face("wemeditate-icons", "wemeditate-icons/wemeditate-icons")
 
 i.icon
+  display: inline-block
+
   &:before
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: $wemeditate-icons !important
@@ -33,3 +35,5 @@ i.icon
 
   &.breadcrumb:before
     content: $icon-breadcrumb
+  &.play:before
+    content: $icon-play

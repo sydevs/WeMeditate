@@ -1,23 +1,32 @@
 
 - content_for :title, 'Music'
 
+section.intro
+  .container
+    h1.title Music for meditation
+
 .container
-  h1 Music for meditation
   h2 Subtitle for music
   p It's easier to concentrate with music, so you get meditation deeper.
 
   h3 Choose the mood
-  nav.filter-moods
+  nav.mood.filters data-group='moods'
     - @mood_filters.each do |mood_filter|
-      a.box.button href="#" data-filter=dom_id(mood_filter) #{mood_filter.name}
+      a.filter.box.button href="#" data-filter=".#{dom_id(mood_filter)}" = mood_filter.name
 
   h3 Select the instruments
-  nav.filter-instruments
+  nav.instrument.filters data-group='instruments' data-multiple=true
     - @instrument_filters.each_with_index do |instrument_filter, index|
-      a href="#" data-filter=dom_id(instrument_filter)
+      a.filter href="#" data-filter=".#{dom_id(instrument_filter)}"
         img src=instrument_filter.icon_url
 
-
+section.player
+  .container
+    .playlist
+      .title Playlist
+      img.cover src=image_path('sections/music/album.jpg')
+      #grid.list
+        = render @tracks
 
 
 //! main
