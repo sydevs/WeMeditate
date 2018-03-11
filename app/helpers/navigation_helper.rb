@@ -4,35 +4,35 @@ module NavigationHelper
     @desktop_navigation ||= [
       {
         title: 'Meditations', label: 'Meditate now!', url: meditations_url,
-        content: {
-          items: DurationFilter.first(5).reverse.map {|df| {
-            title: duration_filter_name(df),
-            url: meditations_url(duration: df.minutes),
-          }},
-          featured: Meditation.first(2).map {|meditation| {
-            title: meditation.name,
-            url: meditation_url(meditation),
-            thumbnail: meditation.image.url,
-          }},
-        }
+        #content: {
+        #  items: DurationFilter.first(5).reverse.map {|df| {
+        #    title: duration_filter_name(df),
+        #    url: meditations_url(duration: df.minutes),
+        #  }},
+        #  featured: Meditation.first(2).map {|meditation| {
+        #    title: meditation.name,
+        #    url: meditation_url(meditation),
+        #    thumbnail: meditation.image.url,
+        #  }},
+        #}
       },
       {
         title: 'Inspiration', url: articles_url,
-        content: {
-          items: Article.offset(2).first(5).map {|article| {
-            title: article.title,
-            url: article_url(article),
-          }},
-          featured: Article.first(2).map {|article| {
-              title: article.title,
-              url: article_url(article),
-              thumbnail: article.thumbnail.url,
-          }}
-        }
+        #content: {
+        #  items: Article.offset(2).first(5).map {|article| {
+        #    title: article.title,
+        #    url: article_url(article),
+        #  }},
+        #  featured: Article.first(2).map {|article| {
+        #      title: article.title,
+        #      url: article_url(article),
+        #      thumbnail: article.thumbnail.url,
+        #  }}
+        #}
       },
       { title: 'Music', url: tracks_url },
       {
-        title: 'Learn More', url: root_url,
+        title: 'Learn More', url: static_page_url(StaticPage.find_by(role: :about)),
         content: {
           items: StaticPage.where(role: [:sahaja_yoga, :shri_mataji, :kundalini, :subtle_system]).map {|static_page| {
             title: static_page.title,
@@ -41,8 +41,8 @@ module NavigationHelper
             title: 'Improving Meditation',
             url: treatments_url,
           }],
-          featured: Treatment.first(2).map {|treatment| {
-            title: treatment.name,
+          featured: Treatment.first(3).map {|treatment| {
+            title: "#{Treatment.model_name.human}: #{treatment.name}",
             url: treatment_url(treatment),
             thumbnail: treatment.thumbnail.url,
           }}

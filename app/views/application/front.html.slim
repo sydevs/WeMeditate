@@ -1,6 +1,8 @@
 
 - content_for :title, 'Front'
 
+= render @static_page.sections.with_translations(locale)
+
 //! main
   main.page-main
     /! hero

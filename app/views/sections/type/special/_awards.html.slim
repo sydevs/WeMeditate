@@ -8,12 +8,15 @@
 .container
   h2.title = section.title
   = markdown section.text
-  .awards
+  #grid.awards
     - awards = awards.shuffle + awards.shuffle + awards.shuffle
-    - awards.each do |award|
-      .item
-        a href="#" = award[:location]
+    - awards.each_with_index do |award, index|
+      article class="#{'initial' if index < 3}"
+        a.title href="#" = award[:location]
         p = award[:description]
+  nav.filters data-group='amount'
+    a.initial.active.box.button data-filter='.initial' Collapse
+    a.box.button data-filter='*' Show More
 
 
 //! awards

@@ -60,11 +60,16 @@ header
         > .container
           @include overlay(100%, auto, 0, 0)
           background: $background-gray image-url("header/menu-background.png") bottom right
+          background-position: top
           padding: 0
           z-index: 10
+          transition: height 0.5s cubic-bezier(.02, .01, .47, 1)
+          transition-delay: 0.3s
+          overflow: hidden
+          height: 320px
 
         &:not(:hover) > .container:not(:hover)
-          display: none
+          height: 0
       
       .container
         > *

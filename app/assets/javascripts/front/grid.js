@@ -20,7 +20,9 @@ const Grid = {
     const allow_multiple = (typeof this.dataset.multiple !== 'undefined')
 
     $(this).children('a').each(function() {
-      // TODO: Detect active children
+      if ($(this).hasClass('active')) {
+        Grid.toggle_filter_by(group, this.dataset.filter, allow_multiple)
+      }
     })
 
     $(this).children('a').on('click', function(e) {
