@@ -117,24 +117,10 @@ header
           overflow: hidden
           background-position: center
 
-          &:not(:hover) > .overlay
-            opacity: 0
-
         img
           max-height: 242px
 
-        .overlay
-          @include overlay(0, 0, 0, 0)
-          transition: all .5s ease
-          background-color: rgba(0,0,0,0.5)
-          color: white
-          text-align: center
-
-          display: flex
-          align-items: center
-          justify-content: center
-
-          &:after
+        .overlay:after
             content: ''
             display: block
             position: absolute

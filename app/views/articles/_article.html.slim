@@ -1,9 +1,7 @@
 
-- index = article_counter + 1
-
-article class=dom_id(article.category)
+article id=dom_id(article) class=dom_id(article.category)
   a href=article_url(article)
-    img alt=article.title src=(article.thumbnail.url || image_path("temp/inspiration/item_#{index}.png")) /
+    img alt=article.title src=article.thumbnail.url
 
   .title = article.title
   .content

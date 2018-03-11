@@ -1,9 +1,9 @@
 
 - content_for :title, 'Inspiration'
 
-nav.filter-categories
+nav.category.filters data-group='category'
   - @categories.each do |category|
-    a.button class="#{'active' if @selected_category == category}" data-filter=dom_id(category) href="#"
+    a.button class="#{'active' if @selected_category == category}" data-filter=".#{dom_id(category)}" href="#"
       = category.name
   a.button class="#{'active' unless @categories.include?(@selected_category)}" data-filter="" href="#"
     ' All
