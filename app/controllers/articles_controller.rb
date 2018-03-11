@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  ARTICLES_PER_PAGE = 15
+  ARTICLES_PER_PAGE = 10
 
   def index
     respond_to do |format|

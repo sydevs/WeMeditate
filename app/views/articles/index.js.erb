@@ -1,6 +1,9 @@
 var items = $('<%=j render @articles %>')
-Articles.grid.append(items)
-Articles.grid.isotope('appended', items)
+
+items.imagesLoaded(function() {
+  Grid.container.append(items)
+  Grid.container.isotope('appended', items)
+})
 
 <% if Article.all.count > @next_offset %>
   $('.loadmore a').prop('href', '<%= articles_path(format: 'js', offset: @next_offset) %>')

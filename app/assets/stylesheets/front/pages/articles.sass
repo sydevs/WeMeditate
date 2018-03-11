@@ -1,3 +1,4 @@
+@import "../../mixins/vars"
 
 body.articles-index
   nav.category.filters
@@ -7,11 +8,49 @@ body.articles-index
     margin: 0 auto 14px
     max-width: 930px
 
+    .filter
+      font-size: .875rem // TODO: Use em instead of rem
+      line-height: 1em
+      padding: 18px 22px
+      font-family: $raleway
+
+      &:before
+        background: $background-blue
+      
+      &:hover,
+      &.active
+        color: $color-text-inverse
+
   article
-    width: 25%
-    padding: 0 10px
+    width: 24% // TODO: This should be 25%, or the grid needs to be centered
+    padding: 0 25px
     margin-bottom: 50px
+
+    img
+      width: 100%
+
+    .title
+      font-size: 1.25rem // TODO: Use em instead of rem
+      margin-top: 32px
+      margin-bottom: 10px
+      font-family: $raleway-semi
+      line-height: 31px // TODO: Inconsistent use of px vs rem/em
+
+    p
+      font-size: 0.874rem // TODO: Use em instead of rem
+      line-height: 25px // TODO: Inconsistent use of px vs rem/em
+      margin-bottom: 32px // TODO: Inconsistent use of px vs rem/em
 
     .meta
       display: flex
       justify-content: space-between
+
+      font-size: 16px // TODO: Inconsistent use of px vs rem/em
+      line-height: 1.8125em
+
+      i.icon
+        margin-left: 0.5em
+        font-size: 0.75em
+
+  .loadmore
+    margin-bottom: 2em

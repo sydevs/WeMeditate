@@ -4,12 +4,16 @@ const Grid = {
   active_filters: {},
 
   load: function() {
+    console.log('Grid.load')
     Grid.container = $('#grid')
 
     if (Grid.container.length) {
-      Grid.container.isotope({
-        itemSelector: 'article',
+      Grid.container.imagesLoaded(function() {
+        Grid.container.isotope({
+          itemSelector: 'article',
+        })
       })
+      console.log('Grid.load isotope', Grid.container)
 
       $('nav.filters').each(Grid._init_group)
     }

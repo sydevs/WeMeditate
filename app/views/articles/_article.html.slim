@@ -9,6 +9,7 @@ article id=dom_id(article) class=dom_id(article.category)
 
   .meta
     a href=article_url(article)
-      | Learn More >
+      ' Learn More
+      i.breadcrumb.icon
 
-    span = localize article.created_at, format: :date
+    span.date = localize article.created_at, format: :date

@@ -4,9 +4,9 @@
 
 nav.category.filters data-group='category'
   - @categories.each do |category|
-    a.button class="#{'active' if selected_category_id == category.id}" data-filter=".#{dom_id(category)}" href="#"
+    a.filter.button class="#{'active' if selected_category_id == category.id}" data-filter=".#{dom_id(category)}" href="#"
       = category.name
-  a.button class="#{'active' unless @categories.any? {|c| c.id == selected_category_id}}" data-filter="" href="#"
+  a.filter.button class="#{'active' unless @categories.any? {|c| c.id == selected_category_id}}" data-filter="" href="#"
     ' All
 
 #grid.container = render @articles
