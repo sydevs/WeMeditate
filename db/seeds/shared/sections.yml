@@ -121,6 +121,7 @@ records:
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: action
     format: signup
+    action: Sign Up
     order: 10
   - sprig_id: 11
     page_type: Article

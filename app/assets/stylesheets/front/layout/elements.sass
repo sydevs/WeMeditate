@@ -12,8 +12,9 @@
   &.box
     border: 1px solid $color-text-dark
     color: $color-text-dark
-    padding: 17px 28px
+    padding: 1.4em 2em
     font-family: $raleway-bold
+    font-size: 0.875em
 
     &:after
       background: $light-blue
@@ -31,8 +32,8 @@
 
   &.video
     position: relative
-    width: 170px
-    height: 170px
+    width: 160px
+    height: 160px
     padding: 32px
 
     border: 1px solid transparent
@@ -65,10 +66,10 @@
   margin: auto
 
   &.section
-    max-width: 830px
+    max-width: 746px
 
   &.video
-    max-width: 615px
+    max-width: 554px
 
 .background
   background-position: center
@@ -81,9 +82,11 @@ figcaption
   transform: rotate(180deg)
   bottom: 0
   right: 100%
-  margin-right: 12px
+  margin-right: 15px
+  margin-bottom: 5px
   color: $color-text-lighter
   white-space: nowrap
+  font-size: 0.9em
 
 .illustration.divider
   max-width: 400px
@@ -102,8 +105,9 @@ figcaption
 
     padding: 0 20px
     display: block
-    width: 29px
-    height: 32px
+    font-size: 1.8em
+    width: 0.9em
+    height: 1em
 
     background-color: white
     background-image: image-url('graphics/leaf.svg')
@@ -146,5 +150,18 @@ a:not(:hover) > .overlay
     position: absolute
     top: 50%
     left: 50%
-    margin-top: -85px
-    margin-left: -85px
+    margin-top: -80px
+    margin-left: -80px
+
+.sidetext
+  position: absolute
+  white-space: nowrap
+  color: $color-text-inverse
+  text-transform: uppercase
+  transform: rotate(-90deg)
+  z-index: 5
+  font-size: 2em
+  left: 30px
+  top: 100%
+  text-align: right
+  transform-origin: top left

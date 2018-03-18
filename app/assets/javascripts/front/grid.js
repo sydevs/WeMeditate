@@ -6,6 +6,7 @@ const Grid = {
   load: function() {
     console.log('Grid.load')
     Grid.container = $('#grid')
+    Grid.active_filters = {} // Clear the filters list
 
     if (Grid.container.length) {
       Grid.container.imagesLoaded(function() {

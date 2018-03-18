@@ -1,7 +1,8 @@
 
 figure
-  img alt=section.image.identifier src=section.image.url
-  .container
+  .background style="background-image: url(#{image_path section.image.url})"
+  //img alt=section.image.identifier src=section.image.url
+  .container.with.triangle.decoration
     figcaption Credit • #{section.credit}
 
 //section id="section-#{index}" data-section=index

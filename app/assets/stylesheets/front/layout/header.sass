@@ -2,13 +2,16 @@
 @import "../../mixins/functions"
 
 header
+  padding-top: 5px
+  
   .topline
     display: flex
     justify-content: space-between
     align-items: center
 
     text-align: center
-    padding: 15px 0
+    padding: 10px 0
+    font-size: 0.8em
 
     .logo svg
       width: 64px
@@ -32,14 +35,24 @@ header
     > .topline
       border-bottom: 1px solid $light-gray
 
-    .illustration
-      width: 514px
+    .topline
+      height: 115px
+
+    .illustration-wrapper
+      position: absolute
+      width: 100%
+      
+      .illustration
+        height: 90px
 
     > .menu
       display: flex
       justify-content: space-between
       align-items: center
       position: relative
+
+      font-size: 0.875em
+      font-family: $raleway-medium
 
       .title
         font-family: $raleway-semi
@@ -49,9 +62,6 @@ header
         > a
           padding: 0 1rem
           line-height: 2.25rem
-          font-family: $raleway-medium
-          font-weight: 400
-          font-size: 1rem
 
           &:hover
             color: darken($color-text-normal, 20%)
@@ -139,8 +149,8 @@ header
 
     > .breadcrumbs
       position: absolute
-      margin: 16px 0
-      font-size: 80%
+      margin-top: 2.25em
+      font-size: 0.7em
       z-index: 5
 
       .item
@@ -158,7 +168,8 @@ header
       .item:not(:last-child)::after
         font-family: $wemeditate-icons !important
         content: $icon-breadcrumb
-        margin: 0 6px
+        margin: 0 0.9em
+        font-size: 0.5em
 
   .mobile
     .topline > *
