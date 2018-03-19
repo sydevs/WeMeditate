@@ -60,7 +60,7 @@ gem 'jsonb_accessor'
 
 # Uploads
 gem 'carrierwave'
-#gem 'carrierwave-aws'
+gem 'carrierwave-google-storage'
 gem 'mini_magick'
 
 # Globalize (translatable models)

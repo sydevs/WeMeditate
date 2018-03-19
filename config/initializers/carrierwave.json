@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "we-meditate",
+  "private_key_id": "64f0d05d2f2b01c9ff5f597545af057cc4b428b6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDHojIfZzbYBm85\n+h5UyLjuw9Xqo2EFRaxbP/iMkqT6MghdMyfqZHBQocXEMk9fIBdZLb6nXSN/eceH\nKDeuU9iVEiu1OW5bSDl3bdA5Ydieez0iut42tn2soUfjcT8OniciaZBI6wrKYRnZ\nyuS3rBcyzv64ap5kXQK9Zef5JCVernxYt2NBkE5RqqmoTZ+Lu4PbhdKYUVsVrsSN\ndw/DLdPM9CXhO9iuRzv2YiHocLmt5Y4Fwg7Zu6R30LmcpsnyQYv6Xd5r+y90Vm+U\naHAa9V5tqEKWWk3r1nU1j6YfYDy7QIoK6sIT1ioi+4SNZ8NOYQMqaZILsLQLlwGR\nVteCSQWpAgMBAAECggEANxU+5UFSdarY19N2uQglVuQ8SyDHbW/7DbaJ+yefU9Wo\nTycFVXxfLTBl5CvJkMLHDnk7yOw/FjZg4p8rNfO2p/M6kieFlrRH/vcS5DJmVdxF\nUybil5Ak/xQFRPGDZ6IlxC4CfMw1zv+Z5WlBUJiwUfmhePsaNzEex2mt5yWdFhFs\nJFhVmmwLCUYLnllagfyWGksPBfu71r1+NvR6Eq12nZZu5n4wqDPsig6O8RPqwc8C\nEiTKwZO1qYbh9vogXQT2apX4Tq4u3kiPcCvZGfa83iXfYP74HPRNR/mrtsXjqnnr\nCv4ipiWi5vPmjMYm7QI2jjmFCxUeYFzvUkuDF9OyjQKBgQDsz4tubhQbtzaNL/yC\nhgTNLFS1I5WmuiLfIt77/0fVUTTZwjuDFmfWTsU1pFrjtm1fXti/ceUxSZPzui11\nXAKNoVSY8MIlOnzXynCNP2F8MEl7NtRdPEudxUQ4a10w4Pznpp2bP6Uq5xVZI6Z0\nDZQ1ta6G6Z0oVEqYClJie3tjmwKBgQDXz3Clhbnfe8KZTOI8+9+RvIaBWMbVmwWB\nQ4oW+gbnoiPjwdVLjOgtlFDQsYGdbX/M5WqM4k2FRRQ4dXM1tWMArQm9d2S8ErMw\nZ5LQ3e4Ue/103ksv9ES4CN1c2aHsZ6QtZmwh09VbwWNA0rDK7QgKl/dZKFwX9kc/\n2Jsx3HoaCwKBgQCB0mXF7GLprs8hJ6VuiLopIJxvkUqBVJm5agyEabafox0uI+Us\nQCQ8wIIsniWVoHTlS8HXckELfCK4AuDY7dAYhNEz5wkID8BRLJH3XT+8LVybR7u0\nQVHS9EoqA/Ha0fzToevVKFcL5hM2Au1Fwgv2Rduf6oJVkaAzKbVwd/F08QKBgQC1\nd9U9GgmGBsdHqQLETPdd0K05rrDjhQtH+sbvMycDN6/+IEt+z+mcCg86rUhUXHMO\nlArYlKKi4cdzAi/yhafONbLvAqpOC1tp5G3r+/Hqf6hM0W9fz4LJTYr2PHqQE0ZW\ndr2OZFYQZblUFNZcjJwqbEatTebCr3CSG03Ey6RQqQKBgQCZ4hvGSfcshOUmxnqt\nBCBSwIdPzqiMD4p1J5nR7pYf1dTKHv1k+nCaYhy39CBY5NV2CKiWnHz69rvO3BG7\nZJTcZqsTt5vhhgzS7CYjnzCk68Dvbta2jNAi9rr6Lrb7m3sUT6bS9tEUg1pnOuBq\nZMQPX1xrCTBYno6jXilJCxvkbQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "owner-account@we-meditate.iam.gserviceaccount.com",
+  "client_id": "117666216665758302920",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/owner-account%40we-meditate.iam.gserviceaccount.com"
+}
