@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery #with: :exception
 
   def front
-    @static_page = StaticPage.find_by(role: :home)
+    @static_page = StaticPage.includes(:sections).find_by(role: :home)
   end
 
   protected
