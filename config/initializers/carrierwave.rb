@@ -1,6 +1,6 @@
 CarrierWave.configure do |config|
   config.storage                             = :gcloud
-  config.gcloud_bucket                       = 'your-bucket-name'
+  config.gcloud_bucket                       = 'wemeditate.herokuapp.com'
   config.gcloud_bucket_is_public             = true
   config.gcloud_authenticated_url_expiration = 600
   
