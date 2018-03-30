@@ -17,7 +17,7 @@
             = human_enum_name(StaticPage, :role, role)
           - if allow.create?
             td.collapsing.selectable
-              a href=new_admin_static_page_url(role: role)
+              a href=new_admin_static_page_path(role: role)
                 i.add.icon
                 = t('action.create')
 

@@ -63,7 +63,7 @@
   = switch_user_select
 
 .ui.vertical.text.menu
-  = link_to root_url, class: 'item' do
+  = link_to root_path, class: 'item' do
     i.browser.icon
     = translate :'action.view_site'
   = link_to destroy_user_session_path, class: 'item', method: :delete do

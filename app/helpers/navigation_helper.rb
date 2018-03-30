@@ -3,7 +3,7 @@ module NavigationHelper
   def navigation
     @desktop_navigation ||= [
       {
-        title: 'Meditations', label: 'Meditate now!', url: meditations_url,
+        title: 'Meditations', label: 'Meditate now!', url: meditations_path,
         #content: {
         #  items: DurationFilter.first(5).reverse.map {|df| {
         #    title: duration_filter_name(df),
@@ -17,7 +17,7 @@ module NavigationHelper
         #}
       },
       {
-        title: 'Inspiration', url: articles_url,
+        title: 'Inspiration', url: articles_path,
         #content: {
         #  items: Article.offset(2).first(5).map {|article| {
         #    title: article.title,
@@ -30,25 +30,25 @@ module NavigationHelper
         #  }}
         #}
       },
-      { title: 'Music', url: tracks_url },
+      { title: 'Music', url: tracks_path },
       {
-        title: 'Learn More', url: static_page_url(StaticPage.find_by(role: :about)),
+        title: 'Learn More', url: static_page_path(StaticPage.find_by(role: :about)),
         content: {
           items: StaticPage.where(role: [:sahaja_yoga, :shri_mataji, :kundalini, :subtle_system]).map {|static_page| {
             title: static_page.title,
-            url: static_page_url(static_page),
+            url: static_page_path(static_page),
           }} + [{
             title: 'Improving Meditation',
-            url: treatments_url,
+            url: treatments_path,
           }],
           featured: Treatment.first(3).map {|treatment| {
             title: "#{Treatment.model_name.human}: #{treatment.name}",
-            url: treatment_url(treatment),
+            url: treatment_path(treatment),
             thumbnail: treatment.thumbnail.url,
           }}
         }
       },
-      { title: 'Come meditate', url: cities_url },
+      { title: 'Come meditate', url: cities_path },
     ]
 
     p @desktop_navigation

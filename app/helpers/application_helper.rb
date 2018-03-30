@@ -12,7 +12,7 @@ module ApplicationHelper
     case item
     when DurationFilter
       name = duration_filter_name(item)
-      url = meditations_url(duration: item.minutes)
+      url = meditations_path(duration: item.minutes)
     else
       name = resource_name(item)
       url = url_for(item)

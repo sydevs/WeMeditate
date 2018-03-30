@@ -6,7 +6,7 @@
     = f.label City.model_name.human
     // This {query} part of these parameter has to be included in a wierd way so that it isn't escaped.
     - if allow.update_structure?
-      .ui.search data-url=(lookup_admin_cities_url(q: '') + '{query}')
+      .ui.search data-url=(lookup_admin_cities_path(q: '') + '{query}')
         .ui.right.labeled.left.icon.input
           i.search.icon
           = f.text_field :address, class: 'prompt', autocomplete: 'off', placeholder: t('action.target.search_for', target: City.model_name.human)
@@ -24,7 +24,7 @@
               span = t('messages.not_set')
 
         .results
-    
+
       = f.hidden_field :name
       = f.hidden_field :longitude
       = f.hidden_field :latitude
@@ -44,7 +44,7 @@
     - else
       = f.text_field :address, disabled: true
 
-  
+
   .field
     = f.label :banner
     - if allow.update_structure?
@@ -52,7 +52,7 @@
         i.image.icon
         = f.file_field :banner
         = f.hidden_field :banner_cache
-    
+
     - if @city.banner.present?
       = image_tag @city.banner_url, class: 'ui rounded image'
     - elsif not allow.update_structure?
@@ -60,7 +60,7 @@
 
   .field
     label = ProgramVenue.model_name.human(count: -1)
-    
+
     div class="#{'sort-list' if allow.update_structure?}"
       - @city.program_venues.each do |program_venue|
         = f.fields_for :program_venues, program_venue do |ff|

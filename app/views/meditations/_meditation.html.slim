@@ -4,7 +4,7 @@
 - classes += meditation.goal_filters.map {|gf| dom_id(gf)}
 
 article id=dom_id(meditation) class=classes
-  a href=meditation_url(meditation)
+  a href=meditation_path(meditation)
     img alt=meditation.name src=meditation.image.url
     .overlay
       span = meditation.name
