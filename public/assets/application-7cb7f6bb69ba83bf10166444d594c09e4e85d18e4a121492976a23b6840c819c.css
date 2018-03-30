@@ -1,0 +1,1960 @@
+/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
+ */
+/* line 8, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+/* line 18, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ * 2. Add the correct display in IE.
+ */
+/* line 31, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+/* line 50, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+/* line 61, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+/* line 70, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Add the correct display in IE 10-.
+ * 1. Add the correct display in IE.
+ */
+/* line 79, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+template,
+[hidden] {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+/* line 92, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+a {
+  background-color: transparent;
+  /* 1 */
+  -webkit-text-decoration-skip: objects;
+  /* 2 */
+}
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+/* line 102, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+/* line 115, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+/* line 125, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+/* line 134, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+/* line 143, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+/* line 152, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+/* line 161, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+/* line 170, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+/* line 179, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 187, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+sub {
+  bottom: -0.25em;
+}
+
+/* line 191, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+/* line 202, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+/* line 210, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+/* line 222, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+/* line 234, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+/* line 243, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change font properties to `inherit` in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+/* line 257, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/**
+ * Restore the font weight unset by the previous rule.
+ */
+/* line 269, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+optgroup {
+  font-weight: bold;
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+/* line 278, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+/* line 288, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+/* line 299, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+/* line 310, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+/* line 322, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+/* line 333, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+/* line 346, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+/* line 359, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+/* line 368, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+/* line 378, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+/* line 388, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.
+ */
+/* line 397, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Correct the text style of placeholders in Chrome, Edge, and Safari.
+ */
+/* line 406, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+/* line 416, /Users/devindra/.rvm/gems/ruby-2.4.0/gems/normalize-rails-4.1.1/vendor/assets/stylesheets/normalize-rails/normalize.css */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+/* line 4, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/decorations.sass */
+.with.decoration.triangle:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 5px;
+  bottom: -96px;
+  width: 246px;
+  height: 216px;
+  background: url(/assets/graphics/triangle-107c93b6f9d67dd10dadf99c2f8f19792aa3e563a5290c9643f0fe005c42708a.svg) no-repeat center;
+  background-size: cover;
+  z-index: 10;
+}
+
+@media only screen and (min-width: 1366px) {
+  /* line 19, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/decorations.sass */
+  .with.triangle.decoration:after {
+    bottom: -140px;
+    width: 354px;
+    height: 314px;
+  }
+}
+/* line 4, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.button {
+  position: relative;
+  display: inline-block;
+  background: transparent;
+  cursor: pointer;
+  text-align: center;
+  color: #9d9d9c;
+}
+/* line 12, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.button.box {
+  border: 1px solid #7b7b7b;
+  color: #7b7b7b;
+  padding: 1.4em 2em;
+  font-family: "raleway-bold", sans-serif;
+  font-size: 0.875em;
+}
+/* line 19, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.button.box:after {
+  background: #ebf4f3;
+}
+/* line 22, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.button.box:hover:not(.filter) {
+  border-color: #ebf4f3;
+  color: #9d9d9c;
+}
+/* line 26, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.button.filter {
+  width: 130px;
+  padding: 2px 0;
+  font-family: "raleway-semi", sans-serif;
+  font-size: 16px;
+  line-height: 1.8125em;
+}
+/* line 33, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.button.video {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  padding: 32px;
+  border: 1px solid transparent;
+  transition: all 0.5s ease;
+}
+/* line 42, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.button.video:hover {
+  border: 1px solid #dcdcdc;
+}
+/* line 45, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.button.video:after {
+  background-image: url(/assets/graphics/play-video-15b6b40d456ec66623c56cececb07b55c97108d429ac869b6dcc46b35f48104e.svg);
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+}
+/* line 52, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.button:not(.video):before {
+  background: #f6f6f6;
+  content: "";
+  z-index: -2;
+  transition: all 1s ease;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+}
+/* line 59, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.button.active:before, .button:hover:before {
+  left: 0;
+  right: 0;
+}
+
+/* line 64, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.wrapper {
+  width: 100%;
+  margin: auto;
+}
+/* line 68, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.wrapper.section {
+  max-width: 746px;
+}
+/* line 71, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.wrapper.video {
+  max-width: 554px;
+}
+
+/* line 74, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.background {
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 79, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+figcaption {
+  position: absolute;
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  bottom: 0;
+  right: 100%;
+  margin-right: 15px;
+  margin-bottom: 5px;
+  color: #d7d7d6;
+  white-space: nowrap;
+  font-size: 0.9em;
+}
+
+/* line 91, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.illustration.divider {
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  background-color: #aaaaa9;
+  height: 1px;
+  border: none;
+  position: relative;
+}
+/* line 100, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.illustration.divider:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 2px;
+  padding: 0 20px;
+  display: block;
+  font-size: 1.8em;
+  width: 0.9em;
+  height: 1em;
+  background-color: white;
+  background-image: url(/assets/graphics/leaf-8263cfe751f43282fb39bd386f9c23a5c3b817bddf2a99cdc6fbb1048d55e694.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transform: translateX(-50%) translateY(-100%);
+          transform: translateX(-50%) translateY(-100%);
+}
+/* line 120, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.illustration.divider.post:after {
+  top: -2px;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transform: rotate(180deg) translateX(50%);
+          transform: rotate(180deg) translateX(50%);
+}
+/* line 125, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.illustration.divider.simple {
+  height: 0;
+}
+/* line 128, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.illustration.divider.simple:after {
+  background-color: transparent;
+}
+
+/* line 131, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+a:not(:hover) > .overlay {
+  opacity: 0;
+}
+
+/* line 134, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.5s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* line 145, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.video-preview {
+  position: relative;
+  text-align: center;
+}
+/* line 149, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.video-preview .button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -80px;
+  margin-left: -80px;
+}
+
+/* line 156, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/elements.sass */
+.sidetext {
+  position: absolute;
+  white-space: nowrap;
+  color: white;
+  text-transform: uppercase;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  z-index: 5;
+  font-size: 2em;
+  left: 30px;
+  top: 100%;
+  text-align: right;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+}
+/* line 3, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+footer {
+  margin-top: 5rem !important;
+}
+/* line 6, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+footer .title {
+  color: #9d9d9c;
+}
+/* line 9, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+footer a:hover {
+  color: #7b7b7b;
+}
+/* line 12, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+footer .divider {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+}
+/* line 17, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+footer .divider .illustration {
+  min-width: 188px;
+  height: 48px;
+  margin: 0px 20px;
+}
+/* line 22, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+footer .divider:before, footer .divider:after {
+  content: "";
+  margin-top: -2px;
+  height: 1px;
+  width: 100%;
+  position: relative;
+  background-color: #e8e8e8;
+  display: inline-block;
+}
+/* line 32, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+footer .columns {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 0 4%;
+}
+/* line 39, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+footer .columns > * {
+  margin-bottom: 66px;
+  flex-grow: 0;
+}
+/* line 43, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+footer .columns > *:last-child {
+  flex-grow: 0.1;
+  text-align: right;
+}
+/* line 48, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+footer .columns nav > a {
+  display: block;
+  line-height: 2em;
+  font-size: 0.7em;
+}
+/* line 53, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+footer .columns nav .title {
+  line-height: 1.75em;
+  font-size: 1em;
+  margin-bottom: 1px;
+}
+/* line 58, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+footer .columns nav .social {
+  margin-top: 0.9em;
+}
+/* line 61, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+footer .columns nav .social > a {
+  margin-right: 0.75em;
+}
+/* line 64, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+footer .copyright {
+  text-align: center;
+  line-height: 110px;
+  font-size: 12px;
+}
+
+/* line 69, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+section.share {
+  font-size: 0.75em;
+  line-height: 1.5em;
+}
+/* line 73, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+section.share span {
+  margin-right: 2.75em;
+}
+/* line 76, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+section.share a {
+  font-size: 1.25em;
+  margin: 0 0.5em;
+}
+
+/* line 80, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+section.footer {
+  min-height: 155vh;
+  background-image: url(/assets/footer/together-d86f70355275feb6e883779400a4748f1d99c140dadf150c2a0464e21c9835ac.png);
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 8em;
+}
+/* line 87, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+section.footer:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  width: 36.5%;
+  height: 108%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.01) 0, rgba(255, 255, 255, 0.18) 25%, rgba(197, 224, 220, 0.3) 100%);
+}
+/* line 101, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+section.footer .container {
+  padding-top: 240px;
+}
+/* line 104, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+section.footer .title {
+  font-size: 2.9em;
+  line-height: 1.25em;
+  color: #7b7b7b;
+  font-family: "raleway-medium", sans-serif;
+  margin-bottom: 0;
+}
+/* line 111, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+section.footer .sub.title {
+  font-size: 1.75em;
+  line-height: 1.2em;
+  color: #9d9d9c;
+  font-family: "raleway", sans-serif;
+}
+/* line 117, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+section.footer .actions {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  max-width: 890px;
+  margin-top: 144px;
+}
+/* line 124, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+section.footer .actions .item {
+  width: 164px;
+}
+/* line 127, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+section.footer .actions .item > * {
+  color: #7b7b7b;
+  transition: all 0.5s ease;
+}
+/* line 131, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+section.footer .actions .item:hover > * {
+  color: #e08e79;
+}
+/* line 134, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+section.footer .actions i.icon {
+  font-size: 4em;
+  margin-bottom: 0.4em;
+}
+/* line 138, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/footer.sass */
+section.footer .actions .title {
+  font-size: 1.35em;
+  line-height: 1.25em;
+  font-family: "raleway-semi", sans-serif;
+}
+/* line 3, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/general.sass */
+.container {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+/* line 9, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/general.sass */
+.container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* line 14, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/general.sass */
+.mobile {
+  display: none;
+}
+
+/* line 17, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/general.sass */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* line 21, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/general.sass */
+svg, img {
+  max-width: 100%;
+}
+
+/* line 24, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/general.sass */
+figure {
+  position: relative;
+  margin: 0;
+}
+
+/* line 28, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/general.sass */
+input {
+  width: 100%;
+  max-width: 510px;
+  font-size: 0.8em;
+  line-height: 1.35em;
+  outline: transparent;
+  background-color: transparent;
+  border-radius: 0;
+  padding-bottom: 1.2em;
+  color: #7b7b7b;
+  border: none;
+  border-bottom: 1px solid #9d9d9c;
+  margin-bottom: 4em;
+}
+
+/* line 42, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/general.sass */
+.centered {
+  text-align: center;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  /* line 46, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/general.sass */
+  .container {
+    margin: 0 25px;
+  }
+
+  /* line 49, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/general.sass */
+  .mobile {
+    display: block;
+  }
+
+  /* line 52, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/general.sass */
+  .desktop {
+    display: none;
+  }
+}
+@charset "UTF-8";
+/* line 4, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header {
+  padding-top: 5px;
+}
+/* line 7, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.8em;
+}
+/* line 16, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .topline .logo svg {
+  width: 64px;
+  max-width: 64px;
+}
+/* line 20, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .topline a {
+  color: #9d9d9c;
+  text-decoration: none;
+}
+/* line 24, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .topline svg, header .topline img {
+  height: 100%;
+}
+/* line 27, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .topline svg path {
+  fill: #555;
+}
+/* line 30, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .topline #burger-button {
+  float: right;
+}
+/* line 34, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu,
+header .desktop > .topline {
+  border-bottom: 1px solid #9d9d9c;
+}
+/* line 38, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop .topline {
+  height: 115px;
+}
+/* line 41, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop .illustration-wrapper {
+  position: absolute;
+  width: 100%;
+}
+/* line 45, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop .illustration-wrapper .illustration {
+  height: 90px;
+}
+/* line 48, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  font-size: 0.875em;
+  font-family: "raleway-medium", sans-serif;
+}
+/* line 57, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu .title {
+  font-family: "raleway-semi", sans-serif;
+  color: #7b7b7b;
+}
+/* line 62, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu > .item > a {
+  padding: 0 1rem;
+  line-height: 2.25rem;
+}
+/* line 66, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu > .item > a:hover {
+  color: #6a6a69;
+}
+/* line 69, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu > .item > .container {
+  position: absolute;
+  top: 100%;
+  bottom: auto;
+  left: 0;
+  right: 0;
+  background: #f6f6f6 url(/assets/header/menu-background-faa6dcbbf3d8496a96b1f14d803eb88693305496f6823ace4e7ef654d6b48e07.png) bottom right;
+  background-position: top;
+  padding: 0;
+  z-index: 10;
+  transition: height 0.5s cubic-bezier(0.02, 0.01, 0.47, 1);
+  transition-delay: 0.3s;
+  overflow: hidden;
+  height: 320px;
+}
+/* line 80, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu > .item:not(:hover) > .container:not(:hover) {
+  height: 0;
+}
+/* line 84, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu .container > * {
+  padding-left: 80px;
+  padding-right: 18px;
+}
+/* line 88, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu .container > .title {
+  font-size: 24px;
+  color: #7b7b7b;
+  border-bottom: 1px solid #e8e8e8;
+  line-height: 58px;
+  margin: 0;
+}
+/* line 95, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu .container > .content {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+/* line 100, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu .container ul {
+  flex-grow: 1;
+}
+/* line 103, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu .container ul li {
+  margin-bottom: 10px;
+}
+/* line 106, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu .container ul li a {
+  line-height: 21px;
+  font-size: 18px;
+  font-family: "raleway-medium", sans-serif;
+  color: #9d9d9c;
+}
+/* line 112, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu .container ul li a:hover {
+  color: #c5e0dc;
+}
+/* line 115, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu .related-post {
+  margin-left: 18px;
+  margin-bottom: 18px;
+  max-width: 30%;
+  height: 100%;
+}
+/* line 121, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu .related-post > .title {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 1em;
+  font-size: 12px;
+  line-height: 1.75em;
+}
+/* line 128, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu .related-post a {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background-position: center;
+}
+/* line 134, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu .related-post img {
+  max-height: 242px;
+}
+/* line 137, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .menu .related-post .overlay:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  margin-left: -35.5px;
+  width: 71px;
+  height: 16px;
+  background: url(/assets/graphics/lotus-decoration-5e27718e5625dd5f3568dd8b93e6f0d88602a0b3c02869820f842fc727a8cf3b.svg) center;
+}
+/* line 150, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .breadcrumbs {
+  position: absolute;
+  margin-top: 2.25em;
+  font-size: 0.7em;
+  z-index: 5;
+}
+/* line 156, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .breadcrumbs .item {
+  display: inline-block;
+}
+/* line 159, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .breadcrumbs .item:not([href]) {
+  color: black;
+}
+/* line 162, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .breadcrumbs.inverse .item {
+  color: #d7d7d6;
+}
+/* line 165, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .breadcrumbs.inverse .item:not([href]) {
+  color: #9d9d9c;
+}
+/* line 168, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .desktop > .breadcrumbs .item:not(:last-child)::after {
+  font-family: "wemeditate-icons" !important;
+  content: "";
+  margin: 0 0.9em;
+  font-size: 0.5em;
+}
+/* line 175, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .mobile .topline > * {
+  display: inline-block;
+  height: 32px;
+}
+/* line 179, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .mobile > .menu {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+/* line 192, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .mobile > .menu > a {
+  width: 100%;
+  line-height: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+/* line 199, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/header.sass */
+header .mobile > .menu > a:hover, header .mobile > .menu > a.active {
+  background: #f6f6f6;
+}
+@charset "UTF-8";
+@font-face {
+  font-family: "wemeditate-icons";
+  font-weight: normal;
+  font-style: normal;
+  src: url(/assets/wemeditate-icons/wemeditate-icons-32dfcd3d2cbb48ba34d50ea6de1b70791455148a59656aeaf527ca7e290da88e.eot);
+  src: url(/assets/wemeditate-icons/wemeditate-icons-32dfcd3d2cbb48ba34d50ea6de1b70791455148a59656aeaf527ca7e290da88e.eot?#iefix) format("embedded-opentype"), url(/assets/wemeditate-icons/wemeditate-icons-e844c454d7ec868c199d0bdcdf6dbe53ed9e1de201fc946f32e73028c380f2a3.woff) format("woff"), url(/assets/wemeditate-icons/wemeditate-icons-bf92cc255906a857f0bea33474737deac0e6d86f7c8cc94cf8bdc3bdcf7393d4.ttf) format("truetype");
+}
+/* line 6, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/icons.sass */
+i.icon {
+  display: inline-block;
+}
+/* line 9, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/icons.sass */
+i.icon:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "wemeditate-icons" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* line 22, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/icons.sass */
+i.icon.meditation:before {
+  content: "";
+}
+/* line 24, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/icons.sass */
+i.icon.location:before {
+  content: "";
+}
+/* line 26, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/icons.sass */
+i.icon.computer:before {
+  content: "";
+}
+/* line 29, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/icons.sass */
+i.icon.facebook:before {
+  content: "";
+}
+/* line 31, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/icons.sass */
+i.icon.instagram:before {
+  content: "";
+}
+/* line 33, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/icons.sass */
+i.icon.vk:before {
+  content: "";
+}
+/* line 36, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/icons.sass */
+i.icon.breadcrumb:before {
+  content: "";
+}
+/* line 38, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/icons.sass */
+i.icon.play:before {
+  content: "";
+}
+@font-face {
+  font-family: "raleway";
+  font-weight: normal;
+  font-style: normal;
+  src: url(/fonts/RalewayRegular/RalewayRegular.eot);
+  src: url(/fonts/RalewayRegular/RalewayRegular.eot?#iefix) format("embedded-opentype"), url(/assets/RalewayRegular/RalewayRegular-76bcd85504e2519013d485df603db64e02959c51fa16cfa460f4b95170b7841b.woff) format("woff"), url(/assets/RalewayRegular/RalewayRegular-60de6e998cd947a862ec0a2dfb706f00f2c9c38e1a6956998333feb36484bb93.ttf) format("truetype");
+}
+@font-face {
+  font-family: "raleway";
+  font-weight: 200;
+  font-style: normal;
+  src: url(/fonts/RalewayExtraLight/RalewayExtraLight.eot);
+  src: url(/fonts/RalewayExtraLight/RalewayExtraLight.eot?#iefix) format("embedded-opentype"), url(/assets/RalewayExtraLight/RalewayExtraLight-b535cacb1abebee35c6907da5605f054f11aa88e82f1d48e121495c49b95d311.woff) format("woff"), url(/assets/RalewayExtraLight/RalewayExtraLight-5a9b149a502eca8055bdb1a178dcfaecb516232ca21b97f3bc4e4130fc3c353e.ttf) format("truetype");
+}
+@font-face {
+  font-family: "raleway";
+  font-weight: 300;
+  font-style: normal;
+  src: url(/fonts/RalewayLight/RalewayLight.eot);
+  src: url(/fonts/RalewayLight/RalewayLight.eot?#iefix) format("embedded-opentype"), url(/assets/RalewayLight/RalewayLight-7212f7c2bc095a7d3165bda4bd2bfdd595f0eaaa8e90d1efbcc3d0116d6bfbb3.woff) format("woff"), url(/assets/RalewayLight/RalewayLight-35bdbbd4714201623071768bba34137032da404c3f43a02fb6cbbe00efd7857c.ttf) format("truetype");
+}
+@font-face {
+  font-family: "raleway-bold";
+  font-weight: normal;
+  font-style: normal;
+  src: url(/fonts/RalewayBold/RalewayBold.eot);
+  src: url(/fonts/RalewayBold/RalewayBold.eot?#iefix) format("embedded-opentype"), url(/assets/RalewayBold/RalewayBold-718c9c6e162dbf3201fc0e3052e2d7d826c32e3d1cfec207edf94ad6cbaeb19b.woff) format("woff"), url(/assets/RalewayBold/RalewayBold-5c03fb25bad2871bfeed87e9fa8872d664bb0f2d6ff03cbb90962bca0524c936.ttf) format("truetype");
+}
+@font-face {
+  font-family: "raleway-medium";
+  font-weight: normal;
+  font-style: normal;
+  src: url(/fonts/RalewayMedium/RalewayMedium.eot);
+  src: url(/fonts/RalewayMedium/RalewayMedium.eot?#iefix) format("embedded-opentype"), url(/assets/RalewayMedium/RalewayMedium-d89c39be41c626207e27af8cfb0a37094861c5812dbff0ba63fee22d2062f89a.woff) format("woff"), url(/assets/RalewayMedium/RalewayMedium-a56226b5d4b1a5cfdcde8cff0ddf5b16729e009c7f071051760ed73ffa518256.ttf) format("truetype");
+}
+@font-face {
+  font-family: "raleway-semi";
+  font-weight: normal;
+  font-style: normal;
+  src: url(/fonts/RalewaySemiBold/RalewaySemiBold.eot);
+  src: url(/fonts/RalewaySemiBold/RalewaySemiBold.eot?#iefix) format("embedded-opentype"), url(/assets/RalewaySemiBold/RalewaySemiBold-ac0aa8dd7f8e6b1cbfe9c047cc8c82c72b2d580d66780f9b74c4f55c6468ebc8.woff) format("woff"), url(/assets/RalewaySemiBold/RalewaySemiBold-ba9cff995ffd14f3bb881d48beca978cc059671d77e5879b9a41e5248b7726c3.ttf) format("truetype");
+}
+@font-face {
+  font-family: "futura-book";
+  font-weight: normal;
+  font-style: normal;
+  src: url(/fonts/FuturaBook/FuturaBook.eot);
+  src: url(/fonts/FuturaBook/FuturaBook.eot?#iefix) format("embedded-opentype"), url(/assets/FuturaBook/FuturaBook-220a6e804cf880e856dc03c9b8dc07811fe065c145ba2738e4b29a5dfd930a7d.woff) format("woff"), url(/assets/FuturaBook/FuturaBook-c214b582b27befb4edc953561cb5a5ff0155fce694e5263e5fe509f6381e2c4a.ttf) format("truetype");
+}
+/* line 13, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/typography.sass */
+* {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* line 18, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/typography.sass */
+body {
+  font-family: "raleway", sans-serif;
+  color: #9d9d9c;
+}
+
+/* line 22, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/typography.sass */
+a {
+  outline: none;
+  text-decoration: none;
+  color: #c6c6c6;
+  transition: all 0.3s ease;
+}
+/* line 28, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/typography.sass */
+a:hover {
+  color: #c5e0dc;
+}
+
+/* line 31, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/typography.sass */
+h1, h2, h3, h4, h5, h6, .title {
+  color: #7b7b7b;
+  font-family: "raleway-semi", sans-serif;
+}
+
+/* line 35, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/typography.sass */
+h1 {
+  font-family: "raleway-bold", sans-serif;
+}
+
+/* line 38, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/typography.sass */
+.title {
+  font-size: 24px;
+  line-height: 1.3em;
+}
+
+/* line 42, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/layout/typography.sass */
+.date {
+  font-family: "futura-book", sans-serif;
+}
+/* line 5, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/article.sass */
+body.articles-show section.intro {
+  margin-bottom: 0;
+}
+/* line 8, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/article.sass */
+body.articles-show section.intro.banner {
+  min-height: 45vh;
+  background-size: cover;
+  background-position: center;
+}
+/* line 13, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/article.sass */
+body.articles-show section.intro.banner .title {
+  color: white;
+}
+/* line 16, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/article.sass */
+body.articles-show section.intro.banner .title:after {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.18) 25%, rgba(241, 212, 175, 0.7) 100%);
+}
+/* line 19, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/article.sass */
+body.articles-show nav.chapters {
+  position: relative;
+  display: flex;
+  z-index: 35;
+  height: 74px;
+  margin-bottom: 74px;
+  background: white;
+  border-bottom: 1px solid #9d9d9c;
+}
+/* line 30, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/article.sass */
+body.articles-show nav.chapters .item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+/* line 35, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/article.sass */
+body.articles-show nav.chapters .item:not(:last-child) {
+  padding-right: 30px;
+}
+/* line 38, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/article.sass */
+body.articles-show nav.chapters .item .number {
+  margin-right: 15px;
+  font-size: 40px;
+  font-weight: 200;
+  color: #c6c6c6;
+}
+/* line 44, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/article.sass */
+body.articles-show nav.chapters .item .title {
+  font-size: 12px;
+  line-height: 22px;
+  color: #c6c6c6;
+}
+/* line 49, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/article.sass */
+body.articles-show nav.chapters .item .progress {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 3px;
+  background-color: #8ec2bb;
+}
+/* line 4, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/articles.sass */
+body.articles-index nav.category.filters {
+  display: flex;
+  justify-content: space-between;
+  padding: 36px 0 55px;
+  margin: 0 auto 14px;
+  max-width: 930px;
+}
+/* line 11, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/articles.sass */
+body.articles-index nav.category.filters .filter {
+  font-size: 0.875rem;
+  line-height: 1em;
+  padding: 18px 22px;
+  font-family: "raleway", sans-serif;
+}
+/* line 17, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/articles.sass */
+body.articles-index nav.category.filters .filter:before {
+  background: #c5e0dc;
+}
+/* line 20, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/articles.sass */
+body.articles-index nav.category.filters .filter:hover, body.articles-index nav.category.filters .filter.active {
+  color: white;
+}
+/* line 24, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/articles.sass */
+body.articles-index article {
+  width: 24%;
+  padding: 0 25px;
+  margin-bottom: 50px;
+}
+/* line 29, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/articles.sass */
+body.articles-index article img {
+  width: 100%;
+}
+/* line 32, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/articles.sass */
+body.articles-index article .title {
+  font-size: 1.25rem;
+  margin-top: 32px;
+  margin-bottom: 10px;
+  font-family: "raleway-semi", sans-serif;
+  line-height: 31px;
+}
+/* line 39, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/articles.sass */
+body.articles-index article p {
+  font-size: 0.874rem;
+  line-height: 25px;
+  margin-bottom: 32px;
+}
+/* line 44, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/articles.sass */
+body.articles-index article .meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  line-height: 1.8125em;
+}
+/* line 51, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/articles.sass */
+body.articles-index article .meta i.icon {
+  margin-left: 0.5em;
+  font-size: 0.75em;
+}
+/* line 55, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/articles.sass */
+body.articles-index .loadmore {
+  margin-bottom: 2em;
+}
+/* line 4, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/cities.sass */
+body.cities-index main svg {
+  opacity: 0.8;
+}
+/* line 7, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/cities.sass */
+body.cities-index main svg path {
+  fill: #f9e2c8;
+  position: relative;
+}
+/* line 4, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/general.sass */
+.container > h2 {
+  font-family: "raleway-semi", sans-serif;
+  letter-spacing: 1px;
+  font-size: 24px;
+  line-height: 1.3em;
+}
+/* line 10, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/general.sass */
+.container > h3 {
+  font-family: "raleway", sans-serif;
+  color: #9d9d9c;
+  font-size: 24px;
+  line-height: 1.1667em;
+  margin-bottom: 1.667em;
+}
+/* line 17, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/general.sass */
+.container > p {
+  font-size: 18px;
+  line-height: 1.667em;
+}
+/* line 2, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/meditation.sass */
+body.meditations-show {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+/* line 4, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/meditations.sass */
+body.meditations-index section.intro {
+  margin-bottom: 50px;
+}
+/* line 7, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/meditations.sass */
+body.meditations-index .filter.button {
+  margin-right: 44px;
+}
+/* line 10, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/meditations.sass */
+body.meditations-index nav {
+  margin-bottom: 55px;
+}
+/* line 13, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/meditations.sass */
+body.meditations-index article {
+  width: 25%;
+  padding: 0 10px;
+  margin-bottom: 50px;
+}
+/* line 18, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/meditations.sass */
+body.meditations-index article a {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* line 24, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/meditations.sass */
+body.meditations-index article a > .overlay {
+  opacity: 0.75;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+/* line 28, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/meditations.sass */
+body.meditations-index article a > .overlay:hover {
+  opacity: 0.95;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* line 32, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/meditations.sass */
+body.meditations-index article .overlay > * {
+  font-size: 1.5em;
+  font-family: "raleway-semi", sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 1em;
+}
+/* line 4, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index section.intro {
+  margin-bottom: 50px;
+}
+/* line 7, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .filter {
+  margin-right: 44px;
+}
+/* line 11, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .instrument.filters .filter {
+  opacity: 0.4;
+}
+/* line 14, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .instrument.filters .filter.active, body.tracks-index .instrument.filters .filter:hover {
+  opacity: 0.95;
+}
+/* line 18, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .instrument.filters img {
+  height: 50px;
+}
+/* line 21, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .playlist {
+  position: relative;
+  height: 660px;
+  width: 100%;
+  max-width: 705px;
+  margin-left: auto;
+  margin-top: 50px;
+  padding: 60px 0 60px 160px;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.01) 0, rgba(255, 255, 255, 0.18) 25%, rgba(197, 224, 220, 0.3) 100%);
+}
+/* line 31, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .playlist > .title {
+  font-size: 24px;
+  line-height: 1.3em;
+  margin-bottom: 0.7em;
+  letter-spacing: 1px;
+}
+/* line 37, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .playlist .cover {
+  position: absolute;
+  top: 115px;
+  left: -320px;
+  width: 385px;
+}
+/* line 43, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .playlist .list {
+  position: relative;
+  list-style: none;
+}
+/* line 47, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .playlist .list > * {
+  width: 100%;
+  margin-bottom: 30px;
+  padding-right: 150px;
+}
+/* line 52, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .playlist .list > * .label {
+  display: block;
+  color: #7b7b7b;
+  font-size: 21px;
+  line-height: 35px;
+}
+/* line 58, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .playlist .list > * .label i.icon {
+  width: 35px;
+  height: 35px;
+  font-size: 14px;
+  text-align: center;
+}
+/* line 64, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .playlist .list > * .artist {
+  display: block;
+  font-size: 12px;
+  line-height: 1em;
+  padding-left: 35px;
+  padding-bottom: 0.8em;
+}
+/* line 71, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .playlist .list > * .artist:hover {
+  color: #e08e79;
+}
+/* line 74, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .playlist .list > * .duration {
+  position: absolute;
+  right: 5px;
+  bottom: 15px;
+  font-family: "futura-book", sans-serif;
+  font-size: 12px;
+  line-height: 2.25em;
+}
+/* line 83, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/tracks.sass */
+body.tracks-index .playlist .list > *.active {
+  border: 1px solid #c5e0dc;
+}
+/* line 4, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index .treatments.wrapper {
+  max-width: 960px;
+  margin-bottom: 150px;
+}
+/* line 8, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article {
+  position: relative;
+  margin-top: 150px;
+  display: flex;
+  flex-basis: 100%;
+  flex-wrap: nowrap;
+}
+/* line 16, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article img {
+  width: 400px;
+  height: 400px;
+}
+/* line 20, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article .content {
+  margin-top: 65px;
+}
+/* line 23, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article .content .title {
+  margin-bottom: 0.7em;
+}
+/* line 26, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article .content p {
+  font-size: 18px;
+  line-height: 1.667em;
+}
+/* line 30, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article .content .button {
+  margin-top: 46px;
+}
+/* line 33, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article .number {
+  position: absolute;
+  top: -86px;
+  color: #d7d7d6;
+  font-size: 35px;
+  line-height: 1.57em;
+}
+/* line 41, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article:after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: -118px;
+  height: 235px;
+  width: 705px;
+  opacity: 0.5;
+  z-index: -1;
+}
+/* line 54, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article:nth-child(even) img {
+  margin-left: 95px;
+}
+/* line 57, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article:nth-child(even) .content {
+  margin-left: 30px;
+}
+/* line 60, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article:nth-child(even) .number {
+  right: 0;
+}
+/* line 63, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article:nth-child(even):after {
+  right: -466px;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.18) 25%, rgba(241, 212, 175, 0.7) 100%);
+}
+/* line 68, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article:nth-child(odd) img {
+  margin-right: 95px;
+}
+/* line 71, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article:nth-child(odd) .content {
+  margin-right: 30px;
+}
+/* line 74, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article:nth-child(odd) .number {
+  left: 0;
+}
+/* line 77, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/pages/treatments.sass */
+body.treatments-index article:nth-child(odd):after {
+  left: -466px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.01) 0, rgba(255, 255, 255, 0.18) 25%, rgba(197, 224, 220, 0.3) 100%);
+}
+/* line 4, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/action_section.sass */
+section.type-action.format-signup {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.18) 25%, rgba(241, 212, 175, 0.7) 100%);
+}
+/* line 7, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/action_section.sass */
+section.type-action.format-signup h2.title {
+  font-size: 1.8em;
+  line-height: 1.6em;
+  font-family: "raleway-medium", sans-serif;
+  margin-bottom: 0.2em;
+}
+/* line 13, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/action_section.sass */
+section.type-action.format-signup .sub.title {
+  font-size: 1.125em;
+  line-height: 1.1em;
+  font-family: "raleway", sans-serif;
+  margin-bottom: 1.4em;
+}
+/* line 19, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/action_section.sass */
+section.type-action.format-signup form {
+  margin-top: 4em;
+}
+/* line 22, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/action_section.sass */
+section.type-action.format-signup .wrapper {
+  padding: 6.5em;
+}
+/* line 25, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/action_section.sass */
+section.type-action.format-signup .pre.divider {
+  margin-bottom: 3em;
+}
+/* line 28, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/action_section.sass */
+section.type-action.format-signup .post.divider {
+  margin-top: 3em;
+}
+/* line 31, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/action_section.sass */
+section.type-action.format-button .button {
+  margin: 2.45em 0;
+}
+/* line 5, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/image_section.sass */
+section.type-image.format-fit-page-width .background {
+  height: 45vh;
+  background-size: cover;
+}
+/* line 9, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/image_section.sass */
+section.type-image.format-fit-page-width figcaption {
+  margin-bottom: 1em;
+  color: white;
+}
+/* line 3, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/quote_section.sass */
+section.type-quote {
+  margin-top: 7em;
+}
+/* line 6, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/quote_section.sass */
+section.type-quote blockquote {
+  margin: 72px 0;
+}
+/* line 9, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/quote_section.sass */
+section.type-quote .quote {
+  font-size: 1.25rem;
+  line-height: 2.25rem;
+  color: #7b7b7b;
+  font-family: "raleway-medium", sans-serif;
+  margin-bottom: 1.25em;
+  margin-top: 50px;
+}
+/* line 17, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/quote_section.sass */
+section.type-quote .credit {
+  font-size: 1em;
+  line-height: 2em;
+  font-family: "raleway-medium", sans-serif;
+}
+/* line 22, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/quote_section.sass */
+section.type-quote .subtitle {
+  font-size: 0.8em;
+  font-family: "raleway", sans-serif;
+  margin-bottom: 50px;
+}
+/* line 4, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/sections.sass */
+section {
+  position: relative;
+  margin-bottom: 4.5em;
+}
+/* line 8, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/sections.sass */
+section .title {
+  font-size: 1.35em;
+  line-height: 1.6em;
+  color: #7b7b7b;
+  font-family: "raleway-semi", sans-serif;
+  margin-bottom: 1rem;
+}
+/* line 15, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/sections.sass */
+section p {
+  font-size: 1em;
+  line-height: 1.85em;
+  color: #9d9d9c;
+}
+/* line 20, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/sections.sass */
+section .callout {
+  float: right;
+  max-width: 360px;
+  width: 100%;
+  margin: 15px -120px 45px 50px;
+}
+/* line 26, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/sections.sass */
+section .callout.text {
+  position: relative;
+  padding: 65px 0;
+}
+/* line 30, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/sections.sass */
+section .callout.text:after {
+  content: "";
+  position: absolute;
+  left: 17%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.01) 0, rgba(255, 255, 255, 0.18) 25%, rgba(197, 224, 220, 0.3) 100%);
+}
+
+/* line 41, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/sections.sass */
+section.intro {
+  overflow: hidden;
+}
+/* line 44, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/sections.sass */
+section.intro .title {
+  letter-spacing: 1px;
+  font-size: 1.85em;
+  color: #7b7b7b;
+  font-weight: 700;
+  height: 78px;
+  line-height: 78px;
+  margin: 0;
+  margin-top: 5%;
+}
+/* line 54, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/sections.sass */
+section.intro .title:after {
+  display: block;
+  content: "";
+  opacity: 0.5;
+  height: 100%;
+  width: 705px;
+  position: absolute;
+  top: 0;
+  bottom: auto;
+  left: -375px;
+  right: auto;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.01) 0, rgba(255, 255, 255, 0.18) 25%, rgba(197, 224, 220, 0.3) 100%);
+}
+/* line 5, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/special_section.sass */
+section.type-special.format-awards .awards {
+  margin-top: 50px;
+}
+/* line 8, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/special_section.sass */
+section.type-special.format-awards article {
+  width: 33%;
+  padding-right: 40px;
+  padding-bottom: 40px;
+  min-height: 120px;
+}
+/* line 14, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/special_section.sass */
+section.type-special.format-awards article .title {
+  font-size: 20px;
+  line-height: 1.2em;
+  letter-spacing: 1px;
+}
+/* line 19, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/special_section.sass */
+section.type-special.format-awards article p {
+  font-size: 14px;
+  line-height: 1.75em;
+}
+/* line 23, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/special_section.sass */
+section.type-special.format-awards .filters {
+  text-align: center;
+}
+/* line 26, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/special_section.sass */
+section.type-special.format-awards .filters a.initial,
+section.type-special.format-awards .filters a.active {
+  display: none;
+}
+/* line 31, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/special_section.sass */
+section.type-special.format-subtle-system .chart {
+  text-align: center;
+}
+/* line 34, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/special_section.sass */
+section.type-special.format-subtle-system .chart svg {
+  height: 100vh;
+}
+/* line 4, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/text_section.sass */
+section.type-text .content-box {
+  background: white;
+  padding: 75px 110px;
+  max-width: 670px;
+  max-height: 90%;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  margin-left: -335px;
+}
+/* line 16, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/text_section.sass */
+section.type-text .content-box *:first-child {
+  margin-top: 0;
+}
+/* line 19, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/text_section.sass */
+section.type-text .content-box *:last-child {
+  margin-bottom: 0;
+}
+/* line 22, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/text_section.sass */
+section.type-text .text.callout p {
+  margin: 0;
+  font-size: 1.15em;
+  line-height: 1.9em;
+  font-family: "raleway-semi", sans-serif;
+  color: #7b7b7b;
+}
+/* line 29, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/text_section.sass */
+section.type-text .image.callout {
+  float: left;
+  margin: 40px 45px 40px -118px;
+}
+
+/* line 34, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/text_section.sass */
+section.type-text.format-box-over-image {
+  height: 100vh;
+}
+/* line 37, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/text_section.sass */
+section.type-text.format-box-over-image .wrapper {
+  position: relative;
+  height: 100%;
+}
+/* line 41, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/text_section.sass */
+section.type-text.format-box-over-image .content-box {
+  left: 0;
+  margin-left: 0;
+  background: transparent;
+  border: 2px solid white;
+}
+/* line 47, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/text_section.sass */
+section.type-text.format-box-over-image .content-box * {
+  color: white;
+}
+/* line 51, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/text_section.sass */
+section.type-text.format-box-with-righthand-image img {
+  float: right;
+}
+/* line 54, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/text_section.sass */
+section.type-text.format-box-with-righthand-image .content-box {
+  left: 40%;
+}
+/* line 57, /Users/devindra/Documents/Projects/Sahaj/wemeditate/app/assets/stylesheets/front/sections/text_section.sass */
+section.type-text.format-box-with-lefthand-image .content-box {
+  margin-left: 0;
+  left: auto;
+  right: 0;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+
+ */
+
