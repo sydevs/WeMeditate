@@ -78,6 +78,7 @@ gem 'route_translator'
 
 # Tools
 gem 'sprig'
+gem 'dotenv'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -98,6 +99,7 @@ group :development do
   gem 'switch_user', github: 'tslocke/switch_user'
   gem 'i18n_generators'
   gem 'letter_opener'
+  gem 'derailed'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
