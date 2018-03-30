@@ -7,15 +7,15 @@
 
     - content_for :meta, flush: true do
       .item
-        - if user.invitation_created_at != nil
+        - if not user.created_at.nil?
           i.check.circle.icon
           .content #{User.human_attribute_name(:created_at)} #{localize user.created_at, format: :short}
         - elsif user.invitation_accepted?
           i.check.circle.icon
           .content #{User.human_attribute_name(:invitation_accepted_at)} #{localize user.invitation_accepted_at, format: :short}
-        - else
+        - elsif not user.invitation_sent_at.nil?
           i.olive.mail.icon
-          .content #{User.human_attribute_name(:invitation_sent_at)} #{localize user.invitation_created_at, format: :short}
+          .content #{User.human_attribute_name(:invitation_sent_at)} #{localize user.invitation_sent_at, format: :short}
       - unless user.invited_by_id == nil
         .item
           i.spy.icon
@@ -24,7 +24,7 @@
         i.user.icon
         .content
           = human_enum_name(user, :role)
-          '  - 
+          '  -
           - if user.all_languages?
             = translate 'misc.locale.worldwide'
           - else
@@ -39,6 +39,6 @@
 
     = subfield f, :role
       = f.select :role, @assignable_roles.map {|k, v| [human_enum_name(User, :role, k), k]}, {}, { class: 'ui fluid dropdown' }
-    
+
     = subfield f, :languages
       = f.select :languages, I18n.available_locales.collect {|l| [I18nData.languages[l.to_s.upcase], l]}, { include_blank: t('misc.locale.all_languages') }, { class: 'ui fluid search dropdown', multiple: '' }
