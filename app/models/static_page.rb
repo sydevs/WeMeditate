@@ -25,6 +25,8 @@ class StaticPage < ApplicationRecord
   default_scope { order(:role) }
   scope :untranslated, -> { joins(:translations).where.not(static_page_translations: { locale: I18n.locale }) }
 
+  # Callbacks
+  after_create :disable_drafts
 
   def self.available_roles
     StaticPage.roles.keys - StaticPage.pluck(:role)
@@ -46,7 +48,8 @@ class StaticPage < ApplicationRecord
     end
   end
 
-  def self.new_special format
-  end
+  private
+    def disable_drafts
+      update_column :published_at, DateTime.now
+    end
 end
-  
