@@ -32,7 +32,9 @@ section.player
         source src=track.audio_url type='audio/mp3'
 
     .playlist
-      .title Playlist
+      .title
+        ' Playlist
+        span#selected-filter-icons
       img.cover#track-cover src=image_path('sections/music/album.jpg')
       #grid.list
         = render @tracks

@@ -4,22 +4,31 @@ var Music = {
   player: null,
   player_title: null,
   player_artist: null,
+
   list: null,
   track_selectors: null,
+
   cover: null,
   default_cover_url: null,
+  filter_icons: null,
 
   load: function() {
     var player = $('audio#player')
     Music.player = new Plyr('audio#player', player.data('controls'))
     Music.player_title = $('#track-player-title')
     Music.player_artist = $('#track-player-artist')
+
     Music.list = $('.playlist #grid')
     Music.track_selectors = Music.list.find('.track > a.info')
-    Music.cover = $('#track-cover')
-    Music.default_cover_url = Music.cover.attr('href')
     Music.track_selectors.each(Music._init_track)
     Music.track_selectors.on('click', Music._on_select_track)
+
+    Music.cover = $('#track-cover')
+    Music.default_cover_url = Music.cover.attr('href')
+
+    Music.filter_icons = $('#selected-filter-icons')
+
+    $('.instrument.filters > a').on('mouseup', Music._on_clicked_instrument_filter)
   },
 
   _init_track: function() {
@@ -31,6 +40,18 @@ var Music = {
     })
 
     audio.src = this.href
+  },
+
+  _on_clicked_instrument_filter: function() {
+    var element = $(this)
+    var klass = 'for-'+this.dataset.filter.slice(1)
+
+    if (element.hasClass('active')) {
+      Music.filter_icons.children('.'+klass).remove()
+    } else {
+      var icon = $(element.html()).addClass(klass)
+      Music.filter_icons.append(icon)
+    }
   },
 
   _on_select_track: function(e) {

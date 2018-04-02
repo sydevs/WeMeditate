@@ -31,15 +31,19 @@ const Grid = {
     })
 
     $(this).children('a').on('click', function(e) {
-      let active = Grid.toggle_filter_by(group, this.dataset.filter, allow_multiple)
-
-      if (!allow_multiple && active) {
-        $(this).siblings('.active').removeClass('active')
-      }
-
-      $(this).toggleClass('active', active)
-      e.preventDefault()
+      Grid._on_filter_click.call(this, e, group, allow_multiple)
     })
+  },
+
+  _on_filter_click: function(e, group, allow_multiple) {
+    let active = Grid.toggle_filter_by(group, this.dataset.filter, allow_multiple)
+
+    if (!allow_multiple && active) {
+      $(this).siblings('.active').removeClass('active')
+    }
+
+    $(this).toggleClass('active', active)
+    e.preventDefault()
   },
 
   toggle_filter_by: function(group, filter, allow_multiple) {
@@ -94,4 +98,3 @@ const Grid = {
 
 $(document).on('turbolinks:load', function() { Grid.load() })
 console.log('loading Grid.js')
-  
