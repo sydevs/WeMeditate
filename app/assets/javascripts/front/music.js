@@ -2,6 +2,8 @@
 var Music = {
   // These variables will be set on load
   player: null,
+  player_title: null,
+  player_artist: null,
   list: null,
   track_selectors: null,
   cover: null,
@@ -10,6 +12,8 @@ var Music = {
   load: function() {
     var player = $('audio#player')
     Music.player = new Plyr('audio#player', player.data('controls'))
+    Music.player_title = $('#track-player-title')
+    Music.player_artist = $('#track-player-artist')
     Music.list = $('.playlist #grid')
     Music.track_selectors = Music.list.find('.track > a.info')
     Music.cover = $('#track-cover')
@@ -31,6 +35,9 @@ var Music = {
 
   _on_select_track: function(e) {
     var image_url = this.dataset.artistImage
+    Music.player_title.text(this.textContent)
+    Music.player_artist.text(this.dataset.artistName)
+    Music.player_artist.attr('href', this.dataset.artistUrl)
 
     if (!image_url) {
       image_url = Music.default_cover_url
@@ -45,10 +52,7 @@ var Music = {
       ]
     }
 
-    Music.player.on('canplay', function() {
-      Music.player.play()
-    })
-
+    Music.player.play()
     e.preventDefault()
   },
 
