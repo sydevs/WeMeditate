@@ -22,9 +22,12 @@ section.intro
 
 section.player
   .container
+    audio#player controls=true
+    /data-controls="#{render('shared/audio_controls').html_safe}"
+
     .playlist
       .title Playlist
-      img.cover src=image_path('sections/music/album.jpg')
+      img.cover#track-cover src=image_path('sections/music/album.jpg')
       #grid.list
         = render @tracks
 
@@ -32,7 +35,7 @@ section.player
 //! main
   main.page-music
     .container_narrow.container
-      h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s" 
+      h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s"
         | Music for meditation
       /! description
       section.s__description
@@ -61,7 +64,7 @@ section.player
       /! player
       section.s__player
         .player-wrap.track-view.light
-          audio preload="" 
+          audio preload=""
           .player
             .song-info
               p.title-text.ellipsis.song-title
@@ -83,8 +86,8 @@ section.player
                   .current-time 0:00:00
                   .duration-time 0:00:00
               .controls-container
-                a.prev-button.icon-switch-music-icon-left href="#" 
-                a.next-button.icon-switch-music-icon-right href="#" 
+                a.prev-button.icon-switch-music-icon-left href="#"
+                a.next-button.icon-switch-music-icon-right href="#"
               .volume-wrap
                 .mute-button
                 input.volume-bar max="100" min="0" step="1" type="range" value="100" /
@@ -94,7 +97,7 @@ section.player
                 span.playlist-mood
               .playlist-mood-box
                 .mood-text Playlist
-                .mood-img#music-player-image data-default=image_path('music/mood-img.png') style=("background-image: url(#{image_path 'music/mood-img.png'})") 
+                .mood-img#music-player-image data-default=image_path('music/mood-img.png') style=("background-image: url(#{image_path 'music/mood-img.png'})")
               ol
                 - @tracks.each do |track|
                   - mood_classes = track.mood_filters.map {|f| dom_id(f)}

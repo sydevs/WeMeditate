@@ -2,8 +2,8 @@
 - classes << track.mood_filters.map {|f| dom_id(f)}
 - classes << track.instrument_filters.map {|f| dom_id(f)}
 
-article id=dom_id(track) class=classes
-  a.label href=track.audio.url data = { artist: { name: track.artist.name, url: track.artist.url, image: track.artist.image.url } }
+article.track id=dom_id(track) class=classes
+  a.info.label href=track.audio.url data = { artist: { name: track.artist.name, url: track.artist.url, image: track.artist.image.url } }
     i.play.icon
     = track.name
   a.artist href=track.artist.url target='_blank' = track.artist.name

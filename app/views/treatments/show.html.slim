@@ -5,6 +5,6 @@ section.intro
   .container
     .title = @treatment.name
 
-= render 'shared/video', thumbnail: @treatment.thumbnail.url, video: @treatment.video.url
+= render 'shared/video_preview', thumbnail: @treatment.thumbnail.url, video_url: @treatment.video.url
 
 = render 'sections/type/text/just_text', section: { title: 'Test', text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos facere incidunt voluptas temporibus, eveniet, fugit laborum sint rerum, corrupti magni quam? Corporis ipsam doloremque consequatur fugiat atque nesciunt dolores quaerat.' }

@@ -41,7 +41,7 @@ module NavigationHelper
             title: 'Improving Meditation',
             url: treatments_path,
           }],
-          featured: Treatment.first(3).map {|treatment| {
+          featured: Treatment.first(2).map {|treatment| {
             title: "#{Treatment.model_name.human}: #{treatment.name}",
             url: treatment_path(treatment),
             thumbnail: treatment.thumbnail.url,

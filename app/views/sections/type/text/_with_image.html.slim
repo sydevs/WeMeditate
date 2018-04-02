@@ -3,8 +3,9 @@
   h2.title = section.title
   = markdown section.text do
     figure.image.callout
-      img alt=section.image.identifier src=section.image.url
-      figcaption.figcaption Credit • #{section.credit}
+      a.popout.mfp-image href=section.image.url
+        img alt=section.image.identifier src=section.image.url
+      figcaption.credit Credit • #{section.credit}
 
 //section id="section-#{index}" data-section=index
   .section-wrapper
