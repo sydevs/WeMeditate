@@ -1,0 +1,23 @@
+
+.sub.field
+  = f.label attribute
+
+  .repeatable.fields
+    .wrapper
+      .container
+        - items.each do |item|
+          = f.fields_for attribute, item do |ff|
+            .row
+              .fields-wrapper = yield ff, item
+              .ui.remove.button
+                i.trash.icon
+
+        = f.fields_for attribute do |ff|
+          .template.row
+            .fields-wrapper = yield ff, {}
+            .ui.remove.button
+              i.trash.icon
+
+      .ui.basic.tiny.compact.add.button
+        i.plus.icon
+        | Add

@@ -90,3 +90,52 @@ input + .ui.rounded.image
       border-top-left-radius: 0
       margin-left: 0
       margin-top: 0
+
+  .repeatable.fields
+    width: 100%
+
+    .wrapper
+      width: 100%
+
+    .row
+      position: relative
+      padding-right: 1.25em
+      margin-bottom: 0.25em
+      border-radius: 0.28571429rem
+      background: rgba(34, 36, 38, 0.15)
+
+      .remove
+        position: absolute
+        right: 0
+        top: 0
+        bottom: 0
+        width: 1.25em
+
+        margin: 0
+        padding: 0
+        padding-top: 0.3em
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
+
+        .icon
+          margin: 0
+          font-size: 0.8em
+
+      textarea, input, select
+        border-top-right-radius: 0
+        border-bottom-right-radius: 0
+
+        &:not(:last-child)
+          border-bottom-left-radius: 0
+          //border-bottom-right-radius: 0
+          border-bottom: 0
+
+          &:focus
+            + textarea,
+            + input,
+            + select
+              border-top-color: #85B7D9
+
+        &:not(:first-child)
+          border-top-left-radius: 0
+          //border-top-right-radius: 0

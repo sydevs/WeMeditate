@@ -177,8 +177,9 @@ en:
           signup: Sign Up
           button: Button
           # Special
+          banner: Banner
+          grid: Grid
           try_meditation: Try Meditation
-          awards: Awards
           subtle_system: Subtle System Diagram
         title: Title
         subtitle: Subtitle

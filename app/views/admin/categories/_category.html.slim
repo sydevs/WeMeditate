@@ -20,4 +20,4 @@
   - content_for :fields, flush: true do
     = subfield f, :name do
       = f.text_field :name
-      = render 'admin/application/fields/slug', f: f unless category.new_record?
+      = render 'admin/fields/slug', f: f unless category.new_record?

@@ -1,0 +1,11 @@
+
+= render 'admin/fields/subfield', f: f, attribute: :title
+
+= render 'admin/fields/subfield', f: f, attribute: :text do
+  = f.text_area :text, rows: 2
+
+= f.fields_for :special, f.object.special do |ff|
+  = render 'admin/fields/repeatable_fields', f: ff, attribute: :items, items: f.object.special['items'] do |fff, item|
+    = fff.text_field :title, value: item['title'], placeholder: t("activerecord.attributes.#{f.object.model_name.i18n_key}.title"), name: "#{fff.object_name}[title][]"
+    = fff.text_area :text, value: item['text'], placeholder: t("activerecord.attributes.#{f.object.model_name.i18n_key}.text"), name: "#{fff.object_name}[text][]", rows: 1
+    = fff.url_field :url, value: item['title'], placeholder: t("activerecord.attributes.#{f.object.model_name.i18n_key}.url"), name: "#{fff.object_name}[url][]"

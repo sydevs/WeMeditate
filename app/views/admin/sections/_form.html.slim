@@ -39,7 +39,7 @@
         .field
           = f.label :label
           = f.text_field :label, placeholder: label_placeholder
-          
+
         .field.content-type
           = f.label :content_type
           .ui.scrolling.selection.dropdown class="#{'disabled' unless allow.update_structure?}"
@@ -51,8 +51,8 @@
                 .item data-value=k
                   = content_type_icon k.to_sym
                   = human_enum_name(section, :content_type, k)
-        
-      - if allow.update_structure?
+
+      //- if allow.update_structure?
         .fields
           .six.wide.field
             = f.label :visibility_type
@@ -75,10 +75,10 @@
           .grouped.fields.for class=type
             .ui.divider
             = render "admin/sections/type_fields/#{type}", f: f, section: section, allow: allow
-      
+
     - if allow.update_structure? and not section.special?
       .ui.divider
-      
+
       - if section.new_record?
         .ui.tiny.compact.basic.labeled.icon.button.remove-child-button
           i.trash.icon

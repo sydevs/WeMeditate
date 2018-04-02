@@ -14,7 +14,7 @@
       i.volume.up.icon
       a.content href=meditation.audio_url
         = meditation.audio_identifier
-        
+
     - if meditation.duration_filter.present?
       .item
         i.clock.icon
@@ -27,13 +27,13 @@
   - content_for :fields, flush: true do
     = subfield f, :name do
       = f.text_field :name
-      = render 'admin/application/fields/slug', f: f unless meditation.new_record?
+      = render 'admin/fields/slug', f: f unless meditation.new_record?
 
     = subfield f, :image do
-      = render 'admin/application/fields/file', f: f, attribute: :image
+      = render 'admin/fields/file', f: f, attribute: :image
 
     = subfield f, :audio do
-      = render 'admin/application/fields/file', f: f, attribute: :audio
+      = render 'admin/fields/file', f: f, attribute: :audio
 
     = subfield f, :duration_filter do
       = select_input f, :duration_filter_id, DurationFilter.all.map {|f| [duration_filter_name(f), f.id] }

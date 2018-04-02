@@ -3,13 +3,16 @@ $(document).on('turbolinks:load', function() {
   $('.ui.checkbox').checkbox()
   $('.ui.accordion').accordion()
   $('.tabs > *').tab()
+  $('.repeatable.fields').each(function() {
+    $(this).repeatable_fields()
+  })
 
   autosize($('textarea'))
 
   $('.ui.dropdown').each(function() {
     var element = $(this)
     element.dropdown()
-    
+
     // This is a workaround to fix default values for a multiple select
     if (element.hasClass('multiple')) {
       var selected = []

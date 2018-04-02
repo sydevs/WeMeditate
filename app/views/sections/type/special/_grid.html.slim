@@ -1,22 +1,23 @@
 
-- awards = [ \
-  { location: 'Italy, 1986', description: "Declared ‘Personality of the Year’ by the Italian Government." },
-  { location: 'Moscow, Russia, 1989', description: "Following Shri Mataji’s meeting with the USSR Minister of Health, Sahaja Yoga was granted full government sponsorship, including funding for scientific research." },
-  { location: 'St. Petersburg, Russia, 1993', description: "Appointed as Honorary Member of the Petrovskaya Academy of Art and Science. In the history of the Academy, only twelve people have been granted this honour, Einstein being one of them. Shri Mataji inaugurated the first International Conference on Medicine and Self-Knowledge, which became an annual event at the Academy thereafter." },
-]
+- items = section.special['items']
 
 .container
   h2.title = section.title
-  = markdown section.text
-  #grid.awards
-    - awards = awards.shuffle + awards.shuffle + awards.shuffle
-    - awards.each_with_index do |award, index|
+  = markdown section.text if section.text.present?
+
+  #grid.items
+    - items.each_with_index do |item, index|
       article class="#{'initial' if index < 3}"
-        a.title href="#" = award[:location]
-        p = award[:description]
-  nav.filters data-group='amount'
-    a.initial.active.box.button data-filter='.initial' Collapse
-    a.box.button data-filter='*' Show More
+        - if item['url'].present?
+          a.title href=item['url'] = item['title']
+        - else
+          .title = item['title']
+        p = item['text']
+
+  - if items.length > 3
+    nav.filters data-group='amount'
+      a.initial.active.box.button data-filter='.initial' Collapse
+      a.box.button data-filter='*' Show More
 
 
 //! awards

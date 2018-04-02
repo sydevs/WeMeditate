@@ -3,7 +3,7 @@
 - allow = policy(page)
 - show_title_field = true unless local_assigns[:show_title_field] == false
 
-= form_for [:admin, page], html: { id: 'page-form', class: "ui form #{'error' if page.errors.present?}" } do |f|
+= form_for [:admin, page], html: { id: 'page-form', class: "ui form #{'error' if page.errors.present?}", novalidate: true } do |f|
   - if page.errors.present?
     .ui.small.error.message
       .header = translate 'messages.errors'
@@ -35,7 +35,7 @@
 
   .field
     label = model.human_attribute_name(:sections)
-    
+
     div class="#{'sort-list' if allow.update_structure?}"
       = f.fields_for :sections do |ff|
         = render 'admin/sections/form', f: ff, allow: allow
@@ -46,7 +46,7 @@
           = translate 'action.target.add', target: Section.model_name.human
       - elsif sections.empty?
         .ui.label = translate 'messages.not_set'
-  
+
   .ui.hidden.divider
 
   p

@@ -34,9 +34,12 @@ class StaticPage < ApplicationRecord
 
   def generate_default_sections!
     case role.to_sym
+    when :home
+      ensure_special_section_exists! :banner
+      ensure_special_section_exists! :grid
     when :shri_mataji
       ensure_special_section_exists! :try_meditation
-      ensure_special_section_exists! :awards
+      ensure_special_section_exists! :grid
     when :subtle_system
       ensure_special_section_exists! :subtle_system
     end
@@ -44,7 +47,7 @@ class StaticPage < ApplicationRecord
 
   def ensure_special_section_exists! format
     unless sections.exists?(content_type: :special, format: format)
-      sections.new(content_type: :special, format: format, language: I18n.locale)
+      sections.new(content_type: :special, format: format)
     end
   end
 

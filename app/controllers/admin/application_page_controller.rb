@@ -22,7 +22,7 @@ module Admin
     end
 
     def create page_params
-      @page = @klass.new page_params
+      @page = @klass.new update_params(page_params)
       set_instance_variable
       authorize @page
 
@@ -35,7 +35,7 @@ module Admin
     end
 
     def update page_params
-      @page.attributes = page_params
+      @page.attributes = update_params(page_params)
 
       if @page.save
         @page.publish_drafts! # This line effectively disables drafts by always publishing the latest version.
@@ -95,6 +95,26 @@ module Admin
       end
 
     private
+      def update_params page_params
+        page_params = page_params.to_h
+        page_params[:sections_attributes].each do |key, data|
+          if data[:special].present?
+            items = []
+
+            data[:special][:items][:title].each_with_index do |title, index|
+              items[index] = {
+                title: title,
+                text: data[:special][:items][:text][index],
+              }
+            end
+
+            page_params[:sections_attributes][key][:special][:items] = items
+          end
+        end
+
+        page_params
+      end
+
       def set_page
         @page = @klass.includes(:sections).friendly.find(params[:id])
         set_instance_variable
