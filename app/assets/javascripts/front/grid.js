@@ -4,7 +4,7 @@ const Grid = {
   active_filters: {},
 
   load: function() {
-    console.log('Grid.load')
+    console.log('loading Grid.js')
     Grid.container = $('#grid')
     Grid.active_filters = {} // Clear the filters list
 
@@ -14,7 +14,6 @@ const Grid = {
           itemSelector: 'article',
         })
       })
-      console.log('Grid.load isotope', Grid.container)
 
       $('nav.filters').each(Grid._init_group)
     }
@@ -97,4 +96,3 @@ const Grid = {
 }
 
 $(document).on('turbolinks:load', function() { Grid.load() })
-console.log('loading Grid.js')

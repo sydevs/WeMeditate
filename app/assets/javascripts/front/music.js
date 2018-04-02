@@ -13,6 +13,7 @@ var Music = {
   filter_icons: null,
 
   load: function() {
+    console.log('loading Music.js')
     var player = $('audio#player')
     Music.player = new Plyr('audio#player', player.data('controls'))
     Music.player_title = $('#track-player-title')
@@ -95,4 +96,3 @@ var Music = {
 }
 
 $(document).on('turbolinks:load', function() { Music.load() })
-console.log('loading Music.js')

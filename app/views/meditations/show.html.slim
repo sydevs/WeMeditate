@@ -5,3 +5,6 @@
   .container
     = link_to Meditation do
       | back
+
+audio#audio-player controls=true
+  source src=@meditation.audio_url type='audio/mp3'

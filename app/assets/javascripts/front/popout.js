@@ -4,6 +4,7 @@ var Popout = {
   video_player: null,
 
   load: function() {
+    console.log('loading Popout.js')
     var player = $('#video-player')
     Popout.video_player = new Plyr('#video-player', player.data('controls'))
     Popout.video_player.on('canplay', function() {
@@ -33,4 +34,3 @@ var Popout = {
 }
 
 $(document).on('turbolinks:load', function() { Popout.load() })
-console.log('loading Popout.js')
