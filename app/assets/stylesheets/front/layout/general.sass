@@ -25,19 +25,27 @@ figure
   position: relative
   margin: 0
 
-form input
-  width: 100%
-  max-width: 510px
-  font-size: 0.8em
-  line-height: 1.35em
-  outline: transparent
-  background-color: transparent
-  border-radius: 0
-  padding-bottom: 1.2em
-  color: $color-text-dark
-  border: none
-  border-bottom: 1px solid $color-text-normal
-  margin-bottom: 4em
+form
+  .message
+    &.positive
+      color: darken($color-text-blue, 20%)
+
+    &.negative
+      color: $color-text-orange
+
+  input
+    width: 100%
+    max-width: 510px
+    font-size: 0.8em
+    line-height: 1.35em
+    outline: transparent
+    background-color: transparent
+    border-radius: 0
+    padding-bottom: 1.2em
+    color: $color-text-dark
+    border: none
+    border-bottom: 1px solid $color-text-normal
+    margin-bottom: 4em
 
 .centered
   text-align: center

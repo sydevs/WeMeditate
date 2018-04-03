@@ -121,7 +121,12 @@ records:
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: action
     format: signup
+    title: Meditation for 7 days
+    subtitle: Free guide
+    text: Simple Exercises for a Better Life, once a day.
     action: Sign Up
+    special:
+      mailchimp_list_id: 1
     order: 10
   - sprig_id: 11
     page_type: Article
@@ -273,7 +278,12 @@ records:
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: action
     format: signup
+    title: Meditation for 7 days
+    subtitle: Free guide
+    text: Simple Exercises for a Better Life, once a day.
     action: Sign Up
+    special:
+      mailchimp_list_id: 1
     order: 10
   - sprig_id: 211
     page_type: Article

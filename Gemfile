@@ -80,6 +80,9 @@ gem 'route_translator'
 gem 'sprig'
 gem 'dotenv'
 
+# Misc
+gem 'gibbon'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -99,7 +102,6 @@ group :development do
   gem 'switch_user', github: 'tslocke/switch_user'
   gem 'i18n_generators'
   gem 'letter_opener'
-  gem 'derailed'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

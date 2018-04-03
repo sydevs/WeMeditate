@@ -1,0 +1,9 @@
+var subscribe_message_elements = $('.subscribe-form .message')
+
+<% if @success %>
+  subscribe_message_elements.removeClass('negative').addClass('positive')
+<% else %>
+  subscribe_message_elements.removeClass('positive').addClass('negative')
+<% end %>
+
+subscribe_message_elements.text('<%= @message %>').show()

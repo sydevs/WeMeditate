@@ -1,15 +1,19 @@
 
-.wrapper.centered
-  .simple.illustration.pre.divider
-  h2.title Meditation for 7 days
-  .sub.title Free guide
-  .title Simple Exercises for a Better Life, once a day.
-  form
-    p
-      input type="email" placeholder="Your email"
-    p
-      button.box.button = section.action
-  .simple.illustration.post.divider
+- if section.special['mailchimp_list_id'].present?
+  .wrapper.centered
+    .simple.illustration.pre.divider
+    h2.title = section.title
+    .sub.title = section.subtitle
+    .title = section.text
+    = form_tag subscribe_path, class: 'subscribe-form', remote: true do
+      = hidden_field_tag :mailchimp_list_id, section.special['mailchimp_list_id']
+      p.message
+      p
+        = email_field_tag :email_address, nil, placeholder: 'Your email'
+      p
+        button.box.button = section.action
+
+    .simple.illustration.post.divider
 
 //section id="section-#{index}" data-section=index
   .form-box
