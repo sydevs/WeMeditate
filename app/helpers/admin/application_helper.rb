@@ -6,15 +6,21 @@ module Admin::ApplicationHelper
     en: 'gb',
   }
 
-  #ActionView::Helpers::FormBuilder.class_eval do
-  #  include ActionView::Helpers::TagHelper
-  #
-  #  def error(att)
-  #    if object.errors.include? att
-  #      content_tag :div, object.errors[att].to_s, class: 'ui error message'
-  #    end
-  #  end
-  #end
+  CONTENT_TYPE_TO_ICON_MAP = {
+    text: 'font',
+    quote: 'quote right',
+    video: 'play',
+    image: 'photo',
+    action: 'mouse pointer',
+    special: 'star',
+  }
+
+  FILE_TYPE_METADATA = {
+    image: { accepts: 'image/png', icon: 'image' },
+    video: { accepts: 'video/mp4', icon: 'film' },
+    audio: { accepts: 'audio/mp3', icon: 'volume up' },
+    default: { accepts: '*', icon: 'file' },
+  }
 
   def country_flag country_code
     content_tag :i, nil, class: "#{country_code} flag"
@@ -22,6 +28,16 @@ module Admin::ApplicationHelper
 
   def language_flag l=locale
     country_flag LANGUAGE_TO_FLAG_MAP[l]
+  end
+
+  def file_type_accepts type
+    type = :default unless FILE_TYPE_METADATA.has_key? type
+    FILE_TYPE_METADATA[type][:accepts]
+  end
+
+  def file_type_icon type
+    type = :default unless FILE_TYPE_METADATA.has_key? type
+    FILE_TYPE_METADATA[type][:icon]
   end
 
   def human_enum_name model, attr, value = nil

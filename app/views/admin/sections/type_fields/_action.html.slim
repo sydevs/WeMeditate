@@ -4,7 +4,7 @@
 
 = render 'admin/fields/subfield', f: f, attribute: :action
 
-= render 'admin/fields/subfield', f: f, attribute: :mailchimp_list_id, for: [:signup] do
+//= render 'admin/fields/subfield', f: f, attribute: :mailchimp_list_id, for: [:signup] do
   - f.fields_for :special do |ff|
     - lists = gibbon.lists.retrieve(params: { fields: 'lists.id,lists.name' }).lists
     = ff.select :mailchimp_list_id, lists.map {|l| [l.name, l.id]}, {}, { class: 'ui dropdown', disabled: !allow.update_structure? }

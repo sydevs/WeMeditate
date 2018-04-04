@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.0'
+ruby '2.4.3'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -66,7 +66,8 @@ gem 'mini_magick'
 # Globalize (translatable models)
 gem 'globalize'
 gem 'friendly_id-globalize'
-gem 'carrierwave_globalize'
+gem 'carrierwave_globalize', github: 'Ardnived/carrierwave_globalize' # for multiple uploaders support
+#gem 'carrierwave_globalize', path: '~/Documents/Projects/Other/carrierwave_globalize' # for multiple uploaders support
 gem 'globalize-versioning', github: 'aaroncraigie/globalize-versioning' # for paper_trail support
 
 # Localization
@@ -99,6 +100,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'switch_user', github: 'tslocke/switch_user'
   gem 'i18n_generators'
   gem 'letter_opener'

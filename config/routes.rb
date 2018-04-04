@@ -7,18 +7,6 @@ Rails.application.routes.draw do
   scope ':locale' do
     localized do
       root to: 'application#front'
-      post :subscribe, to: 'application#subscribe'
-
-      resources :articles, only: [:index, :show], path: 'inspiration' do
-        get '/category/:category_id', on: :collection, action: :index
-      end
-
-      resources :cities, only: [:show, :index]
-      resources :categories, only: [:show] # TODO: Remove this
-      resources :meditations, only: [:index, :show]
-      resources :treatments, only: [:index, :show]
-      resources :tracks, only: [:index], path: 'music'
-      resources :static_pages, only: [:show], path: '/'
 
       namespace :admin do
         root to: 'application#dashboard'
@@ -40,6 +28,19 @@ Rails.application.routes.draw do
           put :sort, on: :collection
         end
       end
+
+      post :subscribe, to: 'application#subscribe'
+
+      resources :articles, only: [:index, :show], path: 'inspiration' do
+        get '/category/:category_id', on: :collection, action: :index
+      end
+
+      resources :cities, only: [:show, :index]
+      resources :categories, only: [:show] # TODO: Remove this
+      resources :meditations, only: [:index, :show]
+      resources :treatments, only: [:index, :show]
+      resources :tracks, only: [:index], path: 'music'
+      resources :static_pages, only: [:show], path: '/'
     end
   end
 

@@ -1,16 +1,21 @@
 
 - media = f.object.send(attribute)
 - type = attribute unless local_assigns.key? :type
+- multiple = false unless local_assigns.key? :multiple
 
-- accepts = { image: 'image/png', video: 'video/mp4', audio: 'audio/mp3' }
-- icon = { image: 'image', video: 'film', audio: 'volume up' }
+- type = :image if type == :images
+- video = :video if type == :videos
 
-- if media.file.present?
-  a.ui.fluid.basic.file.label href=media.url target="_blank"
-    i.icon class=icon[type]
-    span = media.file.identifier.humanize
+- unless media.is_a? Array
+  media = media.file.present? ? [media.file] : []
+
+.ui.fluid.file.labels
+  - media.each do |item|
+    a.ui.basic.label href=item.url target="_blank"
+      i.icon class=file_type_icon(type)
+      span = item.file.identifier.humanize
 
 .ui.fluid.icon.file.input
-  i.icon class=icon[type]
-  = f.file_field attribute, accept: accepts[type]
+  i.icon class=file_type_icon(type)
+  = f.file_field attribute, accept: file_type_accepts(type), multiple: multiple
   = f.hidden_field "#{attribute}_cache".to_sym

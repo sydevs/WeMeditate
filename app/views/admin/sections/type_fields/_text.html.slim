@@ -12,7 +12,7 @@
   = f.text_area :quote, rows: 1
 
 = render 'admin/fields/subfield', f: f, attribute: :image, for: [:image] do
-  = render 'admin/fields/file', f: f, attribute: :image
+  = render 'admin/fields/file', f: f, attribute: :images, multiple: true
 
 = render 'admin/fields/subfield', f: f, attribute: :credit, for: [:image]
 
