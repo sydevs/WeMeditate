@@ -14,6 +14,8 @@ class Section < ApplicationRecord
   attribute :credit
   attribute :action
   attribute :url
+  attribute :images
+  attribute :videos
 
   # Associations
   mount_translated_uploaders :images, GenericImageUploader

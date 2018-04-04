@@ -13,7 +13,7 @@
 
       .item
         i.film.icon
-        a.content href=treatment.video_url target="_blank"
+        a.content href=treatment.video.url target="_blank"
           = treatment.video.file.identifier.humanize
 
   - content_for :fields, flush: true do
@@ -23,7 +23,7 @@
 
     = subfield f, :thumbnail do
       = file_input f, :thumbnail, type: :image
-    
+
     = subfield f, :excerpt do
       = f.text_area :excerpt, rows: 2
 

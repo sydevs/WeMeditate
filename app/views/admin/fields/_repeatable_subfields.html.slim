@@ -1,5 +1,11 @@
 
-.sub.field
+- groups = local_assigns[:for] || nil
+
+- classes = ["field-#{attribute}"]
+- classes << 'for' if groups.present?
+- classes += groups if groups.present?
+
+.sub.field class=classes
   = f.label attribute
 
   .repeatable.fields

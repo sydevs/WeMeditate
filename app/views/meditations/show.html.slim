@@ -1,7 +1,7 @@
 
 - content_for :title, "Meditation: #{@meditation.name}"
 
-.background style="background-image: url(#{image_path @meditation.image_url})"
+.background style="background-image: url(#{image_path @meditation.image.url})"
   .container
     = link_to Meditation do
       | back

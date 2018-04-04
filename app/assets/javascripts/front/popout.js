@@ -18,18 +18,24 @@ var Popout = {
 
     $('a.video.button').magnificPopup({
       key: 'video',
-      callbacks: {
-        open: function() {
-          var element = this.ev[0]
-          Popout.video_player.source = {
-            type: 'video',
-            sources: [
-              { src: element.href, type: 'video/mp4' },
-            ]
-          }
-        },
-      }
+      callbacks: { open: Popout._on_video_open }
     })
+
+    /*$('.carousel a.video.button').magnificPopup({
+      key: 'video',
+      gallery: { enabled: true },
+      callbacks: { open: Popout._on_video_open }
+    })*/
+  },
+
+  _on_video_open: function() {
+    var element = this.ev[0]
+    Popout.video_player.source = {
+      type: 'video',
+      sources: [
+        { src: element.href, type: 'video/mp4' },
+      ]
+    }
   },
 }
 
