@@ -1,0 +1,23 @@
+@import "../../mixins/functions"
+@import "../../mixins/vars"
+
+.container
+  position: relative
+  max-width: 1280px
+  margin: 0 auto
+  padding: 0 15px
+
+  &:after
+    content: ''
+    display: block
+    clear: both
+
+.wrapper
+  width: 100%
+  margin: auto
+
+  &.section
+    max-width: 746px
+
+  &.video
+    max-width: 554px

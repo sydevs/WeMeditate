@@ -1,0 +1,71 @@
+@import "../../mixins/functions"
+@import "../../mixins/vars"
+
+.background
+  background-position: center
+  width: 100%
+  height: 100%
+
+a:not(:hover) > .overlay
+  opacity: 0
+
+.overlay
+  @include overlay(0, 0, 0, 0)
+  transition: all .5s ease
+  background-color: rgba(0,0,0,0.5)
+  color: white
+  text-align: center
+
+  display: flex
+  align-items: center
+  justify-content: center
+
+.video-preview
+  position: relative
+  text-align: center
+
+  .button
+    position: absolute
+    top: 50%
+    left: 50%
+    margin-top: -80px
+    margin-left: -80px
+
+.carousel
+  max-width: 1000px
+  width: 100%
+  overflox-x: hidden
+
+  .owl-stage
+    display: flex
+
+#video-popup
+  width: 544px
+  max-width: 1280px
+  min-width: 80%
+  margin: auto
+
+.sidetext
+  position: absolute
+  white-space: nowrap
+  color: $color-text-inverse
+  text-transform: uppercase
+  transform: rotate(-90deg)
+  z-index: 5
+  font-size: 2em
+  left: 30px
+  top: 100%
+  text-align: right
+  transform-origin: top left
+
+figcaption.credit
+  position: absolute
+  writing-mode: vertical-rl
+  transform: rotate(180deg)
+  bottom: 0
+  right: 100%
+  margin-right: 15px
+  margin-bottom: 5px
+  color: $color-text-lighter
+  white-space: nowrap
+  font-size: 0.9em

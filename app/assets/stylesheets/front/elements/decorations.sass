@@ -1,0 +1,63 @@
+@import "../../mixins/functions"
+@import "../../mixins/vars"
+
+.with.decoration
+  &.triangle:after
+    content: ''
+    display: block
+
+    position: absolute
+    right: 5px
+    bottom: -96px
+    width: 246px
+    height: 216px
+
+    background: image-url('graphics/triangle.svg') no-repeat center
+    background-size: cover
+    z-index: 10
+
+.illustration.divider
+  max-width: 400px
+  width: 100%
+  margin: auto
+  background-color: #aaaaa9
+  height: 1px
+  border: none
+  position: relative
+
+  &:after
+    content: ''
+    position: absolute
+    left: 50%
+    top: 2px
+
+    padding: 0 20px
+    display: block
+    font-size: 1.8em
+    width: 0.9em
+    height: 1em
+
+    background-color: white
+    background-image: image-url('graphics/leaf.svg')
+    background-repeat: no-repeat
+    background-position: center
+
+    transform-origin: center
+    transform: translateX(-50%) translateY(-100%)
+
+  &.post:after
+    top: -2px
+    transform-origin: center
+    transform: rotate(180deg) translateX(50%)
+
+  &.simple
+    height: 0
+
+    &:after
+      background-color: transparent
+
+@include desktop
+  .with.triangle.decoration:after
+    bottom: -140px
+    width: 354px
+    height: 314px
