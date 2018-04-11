@@ -2,6 +2,7 @@ class TreatmentsController < ApplicationController
 
   def index
     @treatments = Treatment.all
+    @static_page = StaticPage.includes(:sections).find_by(role: :treatments)
   end
 
   def show

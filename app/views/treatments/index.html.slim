@@ -1,5 +1,7 @@
 
-- content_for :title, 'Treatments'
+- content_for :title, @static_page.title
+
+= render @static_page.sections.with_translations(locale)
 
 .treatments.wrapper
   article.music

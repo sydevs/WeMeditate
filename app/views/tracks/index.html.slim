@@ -1,5 +1,5 @@
 
-- content_for :title, 'Music'
+- content_for :title, @static_page.title
 
 section.intro
   .container
@@ -39,6 +39,7 @@ section.player
       #grid.list
         = render @tracks
 
+= render @static_page.sections.with_translations(locale)
 
 //! main
   main.page-music

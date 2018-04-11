@@ -38,7 +38,7 @@ module NavigationHelper
             title: static_page.title,
             url: static_page_path(static_page),
           }} + [{
-            title: 'Improving Meditation',
+            title: StaticPage.find_by(role: :treatments).title,
             url: treatments_path,
           }],
           featured: Treatment.first(2).map {|treatment| {

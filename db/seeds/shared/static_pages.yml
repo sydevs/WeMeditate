@@ -4,6 +4,7 @@ records:
   - sprig_id: home
     role: <%= StaticPage.roles[:home] %>
     title: Front Page
+
   - sprig_id: about
     role: <%= StaticPage.roles[:about] %>
     title: About Us
@@ -22,3 +23,13 @@ records:
   - sprig_id: kundalini
     role: <%= StaticPage.roles[:kundalini] %>
     title: About Kundalini
+
+  - sprig_id: treatments
+    role: <%= StaticPage.roles[:treatments] %>
+    title: Improving Meditation
+  - sprig_id: tracks
+    role: <%= StaticPage.roles[:tracks] %>
+    title: Music
+  - sprig_id: meditations
+    role: <%= StaticPage.roles[:meditations] %>
+    title: Guided Meditations
