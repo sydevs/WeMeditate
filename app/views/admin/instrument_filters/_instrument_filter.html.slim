@@ -11,7 +11,8 @@
       .content = InstrumentFilter.human_attribute_name(:tracks, count: instrument_filter.tracks.count)
 
   - content_for :fields, flush: true do
-    = subfield f, :name
+    = f.input :name, wrapper_html: { class: 'sub' }
+    = f.input :icon, wrapper: :ui_file_input, icon: :image, file: instrument_filter.icon, wrapper_html: { class: 'sub' }
 
-    = subfield f, :icon do
-      = render 'admin/fields/file', f: f, attribute: :icon, type: :image
+    - if instrument_filter.icon.present?
+      .item = image_tag instrument_filter.icon.url, class: 'ui tiny image'

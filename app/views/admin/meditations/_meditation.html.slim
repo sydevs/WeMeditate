@@ -18,25 +18,16 @@
     - if meditation.duration_filter.present?
       .item
         i.clock.icon
-        .content = duration_filter_name(meditation.duration_filter)
+        .content = meditation.duration_filter.name
     - if meditation.goal_filters.present?
       .item
         i.filter.icon
         .content = meditation.goal_filters.collect(&:name).join(', ')
 
   - content_for :fields, flush: true do
-    = subfield f, :name do
-      = f.text_field :name
-      = render 'admin/fields/slug', f: f unless meditation.new_record?
-
-    = subfield f, :image do
-      = render 'admin/fields/file', f: f, attribute: :image
-
-    = subfield f, :audio do
-      = render 'admin/fields/file', f: f, attribute: :audio
-
-    = subfield f, :duration_filter do
-      = select_input f, :duration_filter_id, DurationFilter.all.map {|f| [duration_filter_name(f), f.id] }
-
-    = subfield f, :goal_filter do
-      = multiselect_input f, :goal_filter_ids, GoalFilter.all.map {|f| [f.name, f.id] }
+    = f.input :name, wrapper_html: { class: 'sub' }
+    = f.input :slug, label: url_for(meditation), wrapper: :slug, wrapper_html: { class: 'sub' }
+    = f.input :image, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:image), file: meditation.image, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:image) }
+    = f.input :audio, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:audio), file: meditation.audio, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:audio) }
+    = f.association :duration_filter, wrapper_html: { class: 'sub' }
+    = f.association :goal_filters, wrapper_html: { class: 'sub' }

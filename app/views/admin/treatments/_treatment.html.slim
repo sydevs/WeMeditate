@@ -17,18 +17,12 @@
           = treatment.video.file.identifier.humanize
 
   - content_for :fields, flush: true do
-    = subfield f, :name do
-      = f.text_field :name
-      = slug_input f unless treatment.new_record?
+    = f.input :name, wrapper_html: { class: 'sub' }
 
-    = subfield f, :thumbnail do
-      = file_input f, :thumbnail, type: :image
+    - unless treatment.new_record?
+      = f.input :slug, label: url_for(treatment), wrapper: :slug, wrapper_html: { class: 'sub' }
 
-    = subfield f, :excerpt do
-      = f.text_area :excerpt, rows: 2
-
-    = subfield f, :video do
-      = file_input f, :video
-
-    = subfield f, :content do
-      = f.text_area :content, rows: 3
+    = f.input :thumbnail, wrapper: :ui_file_input, icon: :image, file: treatment.thumbnail, wrapper_html: { class: 'sub' }
+    = f.input :excerpt, as: :text, input_html: { rows: 2 }, wrapper_html: { class: 'sub' }
+    = f.input :video, wrapper: :ui_file_input, icon: :video, file: treatment.video, wrapper_html: { class: 'sub' }
+    = f.input :content, as: :text, input_html: { rows: 3 }, wrapper_html: { class: 'sub' }

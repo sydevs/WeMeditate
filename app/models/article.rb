@@ -20,6 +20,7 @@ class Article < ApplicationRecord
   # Validations
   validates :title, presence: true
   validates :excerpt, presence: true
+  validates :priority, presence: true
   accepts_nested_attributes_for :sections, reject_if: :all_blank, allow_destroy: true
 
   # Scopes

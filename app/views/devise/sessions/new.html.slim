@@ -1,7 +1,7 @@
 
 - content_for :title, t('.sign_in')
 
-= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "ui form #{'error' if resource.errors.present?}" } do |f|
+= simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "ui form #{'error' if resource.errors.present?}" } do |f|
 
   .field
     = f.label :email

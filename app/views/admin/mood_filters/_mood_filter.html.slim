@@ -11,4 +11,4 @@
       .content = MoodFilter.human_attribute_name(:tracks, count: mood_filter.tracks.count)
 
   - content_for :fields, flush: true do
-    = subfield f, :name
+    = f.input :name, wrapper_html: { class: 'sub' }

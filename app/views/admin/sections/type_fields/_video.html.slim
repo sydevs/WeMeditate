@@ -1,8 +1,4 @@
 
-= render 'admin/fields/subfield', f: f, attribute: :title
-
-= render 'admin/fields/subfield', f: f, attribute: :video do
-  = render 'admin/fields/file', f: f, attribute: :videos, multiple: true
-
-= render 'admin/fields/subfield', f: f, attribute: :image do
-  = render 'admin/fields/file', f: f, attribute: :images, multiple: true
+= f.input :title, wrapper_html: { class: 'sub' }
+= f.input :videos, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:video), files: f.object.videos, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:video) }
+= f.input :images, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:image), files: f.object.images, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:image) }

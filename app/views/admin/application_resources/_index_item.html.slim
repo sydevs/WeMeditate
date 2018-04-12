@@ -2,7 +2,7 @@
 - viewable = true unless local_assigns[:viewable] == false
 - allow = policy(resource)
 
-= form_for [:admin, resource], remote: true, html: { class: "ui form item #{'editing' if resource.new_record?}" } do |f|
+= simple_form_for [:admin, resource], remote: true, html: { id: dom_id(resource), class: "item #{'editing' if resource.new_record? or resource.errors.present?}" } do |f|
   .content
     - yield f
     - unless resource.new_record?
@@ -23,13 +23,13 @@
   - unless resource.new_record?
     .actions
       .ui.tiny.compact.vertical.labeled.icon.buttons.for-editing
-        button.ui.save.edit.button
+        button.ui.save.button
           i.green.checkmark.icon
           = translate 'action.update'
         .ui.cancel.edit.button
           i.red.cancel.icon
           = translate 'action.cancel'
-      
+
       .ui.tiny.compact.vertical.labeled.icon.buttons.for-viewing
         - if viewable
           a.ui.view.button href=url_for(resource)
@@ -40,6 +40,6 @@
             i.edit.icon
             = translate 'action.edit'
         - if allow.destroy?
-          a.ui.delete.button href=url_for([:admin, resource]) data-method="delete" data-confirm=t('messages.confirm_destroy', default: 'Confirm Destroy')
+          a.ui.delete.button href=url_for([:admin, resource]) data-method="delete" data-remote=true data-confirm=t('messages.confirm_destroy', default: 'Confirm Destroy')
             i.trash.icon
             = translate 'action.destroy'

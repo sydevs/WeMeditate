@@ -1,13 +1,8 @@
 
-= render 'admin/fields/subfield', f: f, attribute: :format do
-  = f.select :format, Section::ACTION_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, {}, { class: 'ui scrolling dropdown', disabled: !allow.update_structure? }
+= f.input :format, collection: Section::ACTION_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, disabled: !allow.update_structure?, wrapper_html: { class: 'sub field-format' }
+= f.input :action, wrapper_html: { class: 'sub' }
 
-= render 'admin/fields/subfield', f: f, attribute: :action
+- f.fields_for :special do |ff|
+  = ff.input :mailchimp_list_id, collection: [], disabled: !allow.update_structure?, wrapper_html: { class: 'sub for signup' }
 
-//= render 'admin/fields/subfield', f: f, attribute: :mailchimp_list_id, for: [:signup] do
-  - f.fields_for :special do |ff|
-    - lists = gibbon.lists.retrieve(params: { fields: 'lists.id,lists.name' }).lists
-    = ff.select :mailchimp_list_id, lists.map {|l| [l.name, l.id]}, {}, { class: 'ui dropdown', disabled: !allow.update_structure? }
-
-= render 'admin/fields/subfield', f: f, attribute: :url, for: [:button] do
-  = f.url_field :url
+= f.input :url, as: :url, wrapper_html: { class: 'sub for button' }

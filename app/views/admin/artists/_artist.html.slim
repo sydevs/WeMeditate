@@ -13,9 +13,6 @@
         .content = Artist.human_attribute_name(:tracks, count: artist.tracks.count)
 
   - content_for :fields, flush: true do
-    = subfield f, :name
-    = subfield f, :url do
-      = f.url_field :url
-
-    = subfield f, :image
-      = file_input f, :image
+    = f.input :name, wrapper_html: { class: 'sub' }
+    = f.input :url, as: :url, wrapper_html: { class: 'sub' }
+    = f.input :image, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:image), file: artist.image, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:image) }

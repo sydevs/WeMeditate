@@ -18,6 +18,7 @@
         .content = Category.human_attribute_name(:articles, count: category.articles.count)
 
   - content_for :fields, flush: true do
-    = subfield f, :name do
-      = f.text_field :name
-      = render 'admin/fields/slug', f: f unless category.new_record?
+    = f.input :name, wrapper_html: { class: 'sub' }
+
+    - unless category.new_record?
+      = f.input :slug, label: url_for(category), wrapper: :slug, wrapper_html: { class: 'sub' }

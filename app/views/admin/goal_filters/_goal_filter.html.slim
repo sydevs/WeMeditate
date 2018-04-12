@@ -13,4 +13,4 @@
       .content = GoalFilter.human_attribute_name(:meditations, count: goal_filter.meditations.count)
 
   - content_for :fields, flush: true do
-    = subfield f, :name
+    = f.input :name, wrapper_html: { class: 'sub' }

@@ -1,11 +1,15 @@
 class InstrumentFilter < ApplicationRecord
-  
+
   # Extentions
   translates :name
 
   # Associations
   has_and_belongs_to_many :tracks
   mount_uploader :icon, IconUploader
+
+  # Validations
+  validates :name, presence: true
+  validates :icon, presence: true
 
   # Scopes
   default_scope { order( :order ) }

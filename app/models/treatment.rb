@@ -9,6 +9,10 @@ class Treatment < ApplicationRecord
   # Validations
   validates :name, presence: true
   validates :excerpt, presence: true
+  validates :content, presence: true
+  validates :thumbnail, presence: true
+  validates :video, presence: true
+
   mount_translated_uploader :video, VideoUploader
   mount_translated_uploader :thumbnail, GenericImageUploader
 

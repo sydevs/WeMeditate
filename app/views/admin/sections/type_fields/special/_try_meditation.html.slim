@@ -1,11 +1,8 @@
 
-= render 'admin/fields/subfield', f: f, attribute: :image do
-  = render 'admin/fields/file', f: f, attribute: :images, multiple: true
+= f.input :images, as: :file, multiple: true, wrapper: :ui_file_input, icon: :audio, files: f.object.images, wrapper_html: { class: 'sub' }
 
-= render 'admin/fields/subfield', f: f, attribute: :action
+= f.input :action, wrapper_html: { class: 'sub' }
+= f.input :title, wrapper_html: { class: 'sub' }
+= f.input :subtitle, wrapper_html: { class: 'sub' }
 
-= render 'admin/fields/subfield', f: f, attribute: :title
-= render 'admin/fields/subfield', f: f, attribute: :subtitle
-
-= render 'admin/fields/subfield', f: f, attribute: :video do
-  = render 'admin/fields/file', f: f, attribute: :videos, multiple: true
+= f.input :videos, as: :file, multiple: true, wrapper: :ui_file_input, icon: :audio, files: f.object.videos, wrapper_html: { class: 'sub' }

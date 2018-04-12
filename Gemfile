@@ -63,6 +63,9 @@ gem 'carrierwave'
 gem 'carrierwave-google-storage'
 gem 'mini_magick'
 
+# Admin
+gem 'simple_form'
+
 # Globalize (translatable models)
 gem 'globalize'
 gem 'friendly_id-globalize'

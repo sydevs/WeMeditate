@@ -23,16 +23,8 @@
           .content = track.instrument_filters.collect(&:name).join(', ')
 
   - content_for :fields, flush: true do
-    = subfield f, :title
-
-    = subfield f, :artist
-      = select_input f, :artist_id, [["None", ""]] + Artist.all.map {|f| [f.name, f.id]}
-
-    = subfield f, :audio
-      = file_input f, :audio
-
-    = subfield f, :mood_filters
-      = multiselect_input f, :mood_filter_ids, MoodFilter.all.map {|f| [f.name, f.id]}
-
-    = subfield f, :instrument_filters
-      = multiselect_input f, :instrument_filter_ids, InstrumentFilter.all.map {|f| [f.name, f.id]}
+    = f.input :title, wrapper_html: { class: 'sub' }
+    = f.association :artist, include_blank: 'None', wrapper_html: { class: 'sub' }
+    = f.input :audio, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:audio), file: track.audio, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:audio) }
+    = f.association :mood_filters, wrapper_html: { class: 'sub' }
+    = f.association :instrument_filters, wrapper_html: { class: 'sub' }

@@ -1,13 +1,24 @@
 
 $(document).on('turbolinks:load', function() {
   $('.ui.checkbox').checkbox()
-  $('.ui.accordion').accordion()
   $('.tabs > *').tab()
+
+  $('.ui.accordion').accordion()
+  /*{
+    onOpen: function() {
+      autosize($(this).find('textarea'))
+    },
+  })*/
+
   $('.repeatable.fields').each(function() {
     $(this).repeatable_fields()
   })
 
   autosize($('textarea'))
+
+  $('#page-form').on('submit', function() {
+    $(this).addClass('loading')
+  })
 
   $('.ui.dropdown').each(function() {
     var element = $(this)

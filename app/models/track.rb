@@ -9,6 +9,13 @@ class Track < ApplicationRecord
   belongs_to :artist, optional: true
   mount_uploader :audio, TrackUploader
 
+  # Validations
+  validates :title, presence: true
+  validates :audio, presence: true
+  validates :mood_filters, presence: true
+  validates :instrument_filters, presence: true
+
+
   alias name title
-  
+
 end

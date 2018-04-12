@@ -1,8 +1,4 @@
 
-= render 'admin/fields/subfield', f: f, attribute: :format do
-  = f.select :format, Section::IMAGE_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, {}, { class: 'ui scrolling dropdown', disabled: !allow.update_structure? }
-
-= render 'admin/fields/subfield', f: f, attribute: :image do
-  = render 'admin/fields/file', f: f, attribute: :images, multiple: true
-
-= render 'admin/fields/subfield', f: f, attribute: :credit
+= f.input :format, collection: Section::IMAGE_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, disabled: !allow.update_structure?, wrapper_html: { class: 'sub field-format' }
+= f.input :credit, wrapper_html: { class: 'sub' }
+= f.input :images, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:image), files: f.object.images, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:image) }

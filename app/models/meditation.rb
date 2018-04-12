@@ -11,6 +11,13 @@ class Meditation < ApplicationRecord
   belongs_to :duration_filter
   mount_translated_uploader :audio, TrackUploader
   mount_uploader :image, GenericImageUploader
-  
+
+  # Validations
+  validates :name, presence: true
+  validates :image, presence: true
+  validates :audio, presence: true
+  validates :duration_filter, presence: true
+  validates :goal_filters, presence: true
+
   alias thumbnail image
 end

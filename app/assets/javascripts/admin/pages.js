@@ -2,7 +2,7 @@
 $(document).on('turbolinks:load', function() {
   $('body').on('change', '.section .content-type.field input', function() {
     var section = $(this).closest('.section')
-    
+
     section.removeClass(function (index, className) {
       return (className.match (/(^|\s)(format|type)-\S+/g) || []).join(' ')
     });
@@ -16,7 +16,7 @@ $(document).on('turbolinks:load', function() {
 
   $('body').on('change', '.section .field-format select', function() {
     var section = $(this).closest('.section')
-    
+
     section.removeClass(function (index, className) {
       return (className.match (/(^|\s)format-\S+/g) || []).join(' ')
     });
@@ -50,18 +50,17 @@ $(document).on('turbolinks:load', function() {
       child.accordion('close', 0)
     }
   })
-  
+
   $('body').on('click', '.remove-child-button', function() {
     $(this).closest('.child').remove()
   })
 
   $('#page-form').on('submit', function() {
     $('.ui.accordion').accordion('close', 0)
-    $(this).addClass('loading')
 
     $(this).find('.section').each(function() {
       var content_type = $(this).find('.content-type.field input').val()
-      $(this).find('.grouped.fields.for:not(.'+content_type+') :input').attr('disabled', true)        
+      $(this).find('.grouped.fields.for:not(.'+content_type+') :input').attr('disabled', true)
     })
   })
 })

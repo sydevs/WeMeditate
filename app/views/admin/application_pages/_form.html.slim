@@ -3,39 +3,14 @@
 - allow = policy(page)
 - show_title_field = true unless local_assigns[:show_title_field] == false
 
-= form_for [:admin, page], html: { id: 'page-form', class: "ui form #{'error' if page.errors.present?}", novalidate: true } do |f|
-  - if page.errors.present?
-    .ui.small.error.message
-      .header = translate 'messages.errors'
-      ul.list
-        - page.errors.messages.each do |field, errors|
-          - errors.each do |error|
-            li #{field} #{error}
-
+= simple_form_for [:admin, page], html: { id: 'page-form', class: "#{'error' if page.errors.present?}", novalidate: true } do |f|
   - if show_title_field
-    .field
-      = f.label :title
-      = f.text_field :title
-
-      - if allow.update_structure? and not page.new_record?
-        .ui.accordion
-          .title
-            i.dropdown.icon
-            i.linkify.icon
-            em = url_for(page)
-          .content
-            //= f.label :slug
-            .ui.labeled.action.input
-              .ui.basic.label
-                = url_for(page).split('/')[0...-1].join('/') + '/'
-              = f.text_field :slug, placeholder: page.id
-              a.ui.button href=url_for(page) target="_blank" = t('action.show')
+    = f.input :title
+    = f.input :slug, label: (page.new_record? ? t("activerecord.attributes.#{f.object.model_name.i18n_key}.slug") : url_for(page)), wrapper: :slug
 
   = yield f
 
-  .field
-    label = model.human_attribute_name(:sections)
-
+  = f.input :sections do
     div class="#{'sort-list' if allow.update_structure?}"
       = f.fields_for :sections do |ff|
         = render 'admin/sections/form', f: ff, allow: allow

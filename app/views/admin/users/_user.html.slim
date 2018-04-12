@@ -32,13 +32,9 @@
 
   - content_for :fields, flush: true do
     - if user.new_record?
-      = subfield f, :email do
-        = f.email_field :email
+      = f.input :email, as: :email, wrapper_html: { class: 'sub' }
     - else
       h3 = user.email
 
-    = subfield f, :role
-      = f.select :role, @assignable_roles.map {|k, v| [human_enum_name(User, :role, k), k]}, {}, { class: 'ui fluid dropdown' }
-
-    = subfield f, :languages
-      = f.select :languages, I18n.available_locales.collect {|l| [I18nData.languages[l.to_s.upcase], l]}, { include_blank: t('misc.locale.all_languages') }, { class: 'ui fluid search dropdown', multiple: '' }
+    = f.input :role, collection: @assignable_roles.map {|k, v| [human_enum_name(User, :role, k), k]}, wrapper_html: { class: 'sub' }
+    = f.input :languages, collection: I18n.available_locales.collect {|l| [I18nData.languages[l.to_s.upcase], l]}, prompt: t('misc.locale.all_languages'), wrapper_html: { class: 'sub' }, input_html: { multiple: true }

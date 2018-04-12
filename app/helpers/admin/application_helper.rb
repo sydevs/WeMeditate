@@ -6,17 +6,8 @@ module Admin::ApplicationHelper
     en: 'gb',
   }
 
-  CONTENT_TYPE_TO_ICON_MAP = {
-    text: 'font',
-    quote: 'quote right',
-    video: 'play',
-    image: 'photo',
-    action: 'mouse pointer',
-    special: 'star',
-  }
-
   FILE_TYPE_METADATA = {
-    image: { accepts: 'image/png', icon: 'image' },
+    image: { accepts: 'image/png, image/jpg', icon: 'image' },
     video: { accepts: 'video/mp4', icon: 'film' },
     audio: { accepts: 'audio/mp3', icon: 'volume up' },
     default: { accepts: '*', icon: 'file' },
