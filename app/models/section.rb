@@ -18,6 +18,7 @@ class Section < ApplicationRecord
   attribute :videos
 
   # Associations
+  belongs_to :page, polymorphic: true
   mount_translated_uploaders :images, GenericImageUploader
   mount_translated_uploaders :videos, VideoUploader
   enum content_type: { text: 0, quote: 1, video: 2, image: 3, action: 5, special: 6 }
