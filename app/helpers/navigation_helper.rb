@@ -6,7 +6,7 @@ module NavigationHelper
         title: 'Meditations', label: 'Meditate now!', url: meditations_path,
         #content: {
         #  items: DurationFilter.first(5).reverse.map {|df| {
-        #    title: duration_filter_name(df),
+        #    title: df.name,
         #    url: meditations_url(duration: df.minutes),
         #  }},
         #  featured: Meditation.first(2).map {|meditation| {

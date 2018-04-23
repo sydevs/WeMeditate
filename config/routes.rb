@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get 'switch_user' => 'switch_user#set_current_user'
+  get '/', to: redirect('/en')
 
   scope ':locale' do
     localized do

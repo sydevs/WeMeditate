@@ -13,7 +13,7 @@ section.intro
   nav.duration.filters data-group='duration'
     - @duration_filters.each do |duration_filter|
       a.filter.box.button href="#" data-filter=".#{dom_id(duration_filter)}" class="#{'active' if duration_filter.minutes.to_s == params[:duration]}"
-        = duration_filter_name(duration_filter)
+        = duration_filter.name
 
   h3 What is your goal?
   nav.goal.filters data-group='goals'

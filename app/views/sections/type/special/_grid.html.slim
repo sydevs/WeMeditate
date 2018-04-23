@@ -1,5 +1,5 @@
 
-- items = section.special['items']
+- items = defined?(section.special['items']) ? section.special['items'] : []
 
 .container
   h2.title = section.title
