@@ -19,9 +19,9 @@
         a.ui.primary.button href=url_for([:admin, page])
           i.check.circle.outline.icon
           = translate 'action.review'
-  
+
   .content
-    .header = page[header]
+    .header = page.send(header)
 
     .meta
       .ui.tiny.list
@@ -41,4 +41,3 @@
               = translate 'messages.not_published'
 
         = yield
-  

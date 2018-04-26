@@ -2,7 +2,45 @@
 - allow = policy(@city)
 
 = render 'admin/application_pages/form', page: @city, show_title_field: false do |f|
-  .field
+  - country_names = I18nData.countries(locale)
+  = f.input :country, collection: City.countries.map {|k, v| [country_names[k], k]}, input_html: { class: 'ui search selection dropdown' }, disabled: !allow.update_structure?
+
+  = f.input :name do
+    - if allow.update_structure?
+      .ui.city.search data-url=(lookup_admin_cities_path(q: '') + '{query}')
+        .ui.right.labeled.left.icon.input
+          i.search.icon
+          = f.text_field :name, class: 'prompt', autocomplete: 'off', placeholder: t('action.target.search_for', target: City.model_name.human)
+
+          //- if params[:city] && params[:city][:latitude] && params[:city][:longitude]
+            a#city_coordinates.ui.tag.label href=coordinates_url(params[:city][:latitude], params[:city][:longitude]) target="_blank"
+              i.marker.icon
+              span #{params[:city][:latitude]}, #{params[:city][:longitude]}
+          //- elsif @city.latitude.present? and @city.longitude.present?
+          - if @city.latitude.present? and @city.longitude.present?
+            a#city_coordinates.ui.tag.label href=coordinates_url(@city.latitude, @city.longitude) target="_blank"
+              i.marker.icon
+              span #{@city.latitude}, #{@city.longitude}
+          - else
+            #city_coordinates.ui.tag.label
+              i.marker.icon
+              span = t('messages.not_set')
+
+        .results
+
+      = f.hidden_field :longitude
+      = f.hidden_field :latitude
+    - else
+      = f.text_field :name
+
+      - if @city.latitude.present? and @city.longitude.present?
+        a#city_coordinates.ui.tag.label href=coordinates_url(@city.latitude, @city.longitude) target="_blank"
+          i.marker.icon
+          span #{@city.latitude}, #{@city.longitude}
+
+  = f.input :slug, label: (@city.new_record? ? t("activerecord.attributes.#{f.object.model_name.i18n_key}.slug") : url_for(@city)), wrapper: :slug
+
+  //.field
     = f.label City.model_name.human
     // This {query} part of these parameter has to be included in a wierd way so that it isn't escaped.
     - if allow.update_structure?
@@ -22,13 +60,10 @@
             #city_coordinates.ui.tag.label
               i.marker.icon
               span = t('messages.not_set')
-
         .results
-
       = f.hidden_field :name
       = f.hidden_field :longitude
       = f.hidden_field :latitude
-
       - unless @city.new_record?
         .ui.accordion
           .title
@@ -57,18 +92,31 @@
     - elsif not allow.update_structure?
       .ui.label = translate 'messages.not_set'
 
-  .field
-    label = ProgramVenue.model_name.human(count: -1)
+  - if allow.update_structure?
+    = render 'admin/application/repeatable_fields', f: f, attribute: :venues, items: f.object.venues do |ff, item|
+      = ff.text_field :room_information, value: item['room_information'], placeholder: City.human_attribute_name(:room_information), name: "#{ff.object_name}[room_information][]"
+      = ff.hidden_field :previous_address, value: item['address'], name: "#{ff.object_name}[previous_address][]"
+      = ff.text_field :address, value: item['address'], placeholder: City.human_attribute_name(:address), name: "#{ff.object_name}[address][]"
 
-    div class="#{'sort-list' if allow.update_structure?}"
-      - @city.program_venues.each do |program_venue|
-        = f.fields_for :program_venues, program_venue do |ff|
-          = render 'admin/program_venues/form', f: ff, allow: allow
+      - if item['latitude'].present? and item['longitude'].present?
+        a.ui.fluid.basic.label href=coordinates_url(item['latitude'], item['longitude'])
+          i.marker.icon
+          | #{item['latitude']}, #{item['longitude']}
 
-      - if allow.update_structure?
-        = link_to_add_fields f, :program_venues, { locals: { allow: allow } }, { class: 'ui tiny compact basic labeled icon button' } do
-          i.plus.icon
-          = translate 'action.target.add', target: ProgramVenue.model_name.human
-      - elsif @city.program_venues.empty?
-        .ui.label = translate 'messages.not_set'
-
+      = ff.select :day_of_week, t('date.day_names').map.with_index {|x,i| [x,i]}, { selected: item['day_of_week'] }, { class: 'ui selection dropdown', name: "#{ff.object_name}[day_of_week][]" }
+      .ui.labeled.input
+        .ui.label = City.human_attribute_name(:start_time)
+        = ff.time_field :start_time, value: item['start_time'], name: "#{ff.object_name}[start_time][]"
+      .ui.labeled.input
+        .ui.label = City.human_attribute_name(:end_time)
+        = ff.time_field :end_time, value: item['end_time'], name: "#{ff.object_name}[end_time][]"
+  - else
+    .field
+      label = City.human_attribute_name(:venues)
+      - if f.object.venues.present?
+        - day_names = t('date.day_names')
+        .ui.divided.list
+          - f.object.venues.each do |venue|
+            .item
+              .title #{venue['address']} (#{venue['room_information']})
+              .description #{day_names[venue['day_of_week'].to_i]}, #{venue['start_time']} - #{venue['end_time']}

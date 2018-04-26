@@ -31,12 +31,6 @@ en:
       section:
         one: Section
         other: Sections
-      program_venue:
-        one: Program Location
-        other: Program Locations
-      program_time:
-        one: Time
-        other: Times
       instrument_filter:
         one: Instrument
         other: Instruments
@@ -72,9 +66,12 @@ en:
         longitude: Longitude
         banner: Banner Image (png)
         sections: Content
-        program_venues:
-          one: 1 Program Location
-          other: '%{count} Program Locations'
+        venues: Program Venues
+        address: Street Address
+        room_information: Room Information
+        day_of_week: Day
+        start_time: Starts At
+        end_time: Ends At
 
       static_page:
         title: Title
@@ -99,15 +96,6 @@ en:
           channel_right: 'Channel: Pingala (Right)'
           channel_center: 'Channel: Sushumna (Center)'
         sections: Content
-
-      program_venue:
-        address: Street Address
-        room_information: Room Information
-
-      program_time:
-        day_of_week: Day
-        start_time: Starts At
-        end_time: Ends At
 
       category:
         name: Name

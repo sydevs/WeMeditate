@@ -87,6 +87,9 @@ input + .ui.rounded.image
   margin-top: 2px
   margin-left: 0
 
+.ui.selection
+  width: 100%
+
 .ui.form
   .sub.field > label
     text-transform: uppercase
@@ -106,6 +109,7 @@ input + .ui.rounded.image
 
   .repeatable.fields
     width: 100%
+    margin-left: 0
 
     .wrapper
       width: 100%
@@ -134,7 +138,14 @@ input + .ui.rounded.image
           margin: 0
           font-size: 0.8em
 
-      textarea, input, select
+      .ui.segment
+        box-shadow: none
+        margin: 0
+
+        label
+          opacity: 0.65
+
+      textarea, input, select, .ui.segment, .ui.dropdown
         border-top-right-radius: 0
         border-bottom-right-radius: 0
 

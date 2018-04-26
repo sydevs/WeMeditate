@@ -1,11 +1,8 @@
 
 .container style='text-align: center; margin-top: 5em'
-  h1 Not yet implemented
+  h1 Not yet fully implemented
   h2 Cities pages
 
-//.container
-  = inline_svg 'maps/us.svg'
   ul
     - @cities.each do |city|
-      li
-        a href=url_for(city) = city.name
+      li: a href=url_for(city) = city.full_name

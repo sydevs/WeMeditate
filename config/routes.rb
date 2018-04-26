@@ -37,11 +37,13 @@ Rails.application.routes.draw do
       end
 
       resources :cities, only: [:show, :index]
+      get '/countries/:country_code', controller: :cities, action: :country, as: :countries
+
       resources :categories, only: [:show] # TODO: Remove this
       resources :meditations, only: [:index, :show]
       resources :treatments, only: [:index, :show]
       resources :tracks, only: [:index], path: 'music'
-      resources :static_pages, only: [:show], path: '/'
+      resources :static_pages, only: [:show], path: 'page'
     end
   end
 

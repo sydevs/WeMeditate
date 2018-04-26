@@ -1,0 +1,7 @@
+
+.container
+  = inline_svg "maps/#{params[:country_code].downcase}.svg"
+  ul
+    - @cities.each do |city|
+      li
+        a href=url_for(city) = city.name

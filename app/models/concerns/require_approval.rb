@@ -19,7 +19,7 @@ module RequireApproval
   end
 
   def last_changed_by
-    if versions.present?
+    if versions.present? and versions.last.whodunnit.present?
       User.find(versions.last.whodunnit)
     end
   end

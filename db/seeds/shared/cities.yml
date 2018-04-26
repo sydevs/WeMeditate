@@ -2,6 +2,7 @@ options:
   find_existing_by: name
 records:
   - sprig_id: 1
+    country: us
     name: Atlanta
     slug: atlanta
     address: Atlanta, Georgia, United States
@@ -9,6 +10,7 @@ records:
     longitude: 84.3880
     banner: <%= sprig_file('cities/background.jpg') %>
   - sprig_id: 2
+    country: us
     name: New York
     slug: new-york
     address: New York, New York, United States
@@ -16,6 +18,7 @@ records:
     longitude: 74.0060
     banner: <%= sprig_file('cities/background.jpg') %>
   - sprig_id: 3
+    country: us
     name: Los Angeles
     slug: los-angeles
     address: Los Angeles, California, United States
@@ -23,6 +26,7 @@ records:
     longitude: 118.2437
     banner: <%= sprig_file('cities/background.jpg') %>
   - sprig_id: 4
+    country: us
     name: Detroit
     slug: detroit
     address: Detroit, Michigan, United States

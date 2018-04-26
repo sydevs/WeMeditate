@@ -94,7 +94,6 @@ module Admin
         @klass = klass
       end
 
-    private
       def update_params page_params
         if page_params[:sections_attributes].present?
           page_params = page_params.to_h
@@ -117,6 +116,7 @@ module Admin
         page_params
       end
 
+    private
       def set_page
         @page = @klass.includes(:sections).friendly.find(params[:id])
         set_instance_variable
