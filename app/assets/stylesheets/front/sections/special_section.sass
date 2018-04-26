@@ -43,8 +43,29 @@ section.type-special
         display: none
 
   &.format-subtle-system
-    .chart
-      text-align: center
+    text-align: center
 
-      svg
-        height: 100vh
+    .chart svg
+      height: 100vh
+
+    .article
+      position: absolute
+      top: 4em
+      width: 400px
+      padding: 2em
+      text-align: left
+
+      p
+        line-height: 1.4em
+
+      &:nth-child(even)
+        left: 0
+
+      &:nth-child(odd)
+        margin-top: 1em
+        right: 0
+
+    /*.article,*/
+    .chart
+      &:not(.active)
+        display: none

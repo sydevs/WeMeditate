@@ -1,13 +1,22 @@
 
-.container style='text-align: center; margin-top: 5em'
+//.container style='text-align: center; margin-top: 5em'
   h1 Not yet implemented
   h2 Chakras and Channels
 
-//.container
-  .chakras.chart
+.container
+  .active.chakras.chart
     = inline_svg 'sections/subtle-system/chakras.svg'
   .channels.chart
     = inline_svg 'sections/subtle-system/channels.svg'
+
+  .active.chakras.filter.button data-filter='.chakras.chart' Chakras
+  .channels.filter.button data-filter='.channels.chart' Channels
+
+  - subtle_system_pages.each do |static_page|
+    .article id=dom_id(static_page) class="static-page-#{static_page.role.dasherize}"
+      strong = static_page.title
+      p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia ut commodi excepturi, unde harum quo temporibus eligendi voluptatum cupiditate libero dicta iure nemo voluptatibus. Ex ad qui amet possimus doloremque!
+      a href=url_for(static_page) Learn More
 
 //.container
   .page-wrapper

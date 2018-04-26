@@ -8,7 +8,6 @@ class City < ApplicationRecord
   # Extensions
   translates :name, :slug
   friendly_id :name, use: :globalize
-  after_save :geocode_venues
 
   # Associations
   has_many :sections, -> { order(:order) }, as: :page, dependent: :delete_all

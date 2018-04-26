@@ -1,5 +1,9 @@
 module SectionHelper
-  
+
+  def subtle_system_pages
+    StaticPage.where(role: [:chakra_1, :chakra_2, :chakra_3, :chakra_3b, :chakra_4, :chakra_5, :chakra_6, :chakra_7, :channel_left, :channel_right, :channel_center])
+  end
+
   def markdown content, &block
     @r ||= MarkdownRenderer.new
     @r.callout = (block_given? ? capture(&block) : nil)
