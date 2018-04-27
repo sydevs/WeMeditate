@@ -3,15 +3,15 @@
 section.type-text
   .content-box
     background: white
-    padding: 75px 110px
-    max-width: 670px
+    padding: 65px 97px
+    max-width: 600px
     max-height: 90%
     overflow: hidden
 
     position: absolute
     left: 50%
     bottom: 5%
-    margin-left: -335px
+    margin-left: -410px
 
     *:first-child
       margin-top: 0
@@ -32,55 +32,74 @@ section.type-text
 
 section.type-text
   &.format-box-over-image
-    height: 100vh
+    height: 90vh
 
     .wrapper
       position: relative
       height: 100%
 
     .content-box
-      left: 0
-      margin-left: 0
+      margin-left: -42.5%
+      max-width: 496px
       background: transparent
       border: 2px solid white
-
-      *
-        color: $color-text-inverse
-
-  &.format-box-with-righthand-image
-    img
-      float: right
-
-    .content-box
-      left: 40%
-
-  &.format-box-with-lefthand-image .content-box
-    margin-left: 0
-    left: auto
-    right: 0
-
-  &.format-grid
-    .items
-      margin-top: 50px
-
-    article
-      width: 33%
-      padding-right: 40px
-      padding-bottom: 40px
-      min-height: 120px
-
-      .title
-        font-size: 20px // TODO: Inconsistent use of px vs rem/em
-        line-height: 1.2em
-        letter-spacing: 1px
+      padding: 35px 40px
 
       p
-        font-size: 14px // TODO: Inconsistent use of px vs rem/em
-        line-height: 1.75em
+        line-height: 1.5em
+        font-size: 0.95em
+        letter-spacing: -0.35px
+        margin-bottom: 1.2em
+
+      .title, p
+        color: $color-text-inverse
+
+  &.format-box-with-righthand-image,
+  &.format-box-with-lefthand-image
+    img
+      max-width: 47.25%
+
+  &.format-box-with-righthand-image img
+    float: right
+
+  &.format-box-with-lefthand-image .content-box
+    margin-left: 410px
+    left: auto
+
+  &.format-grid
+
+    .container
+      padding: 0 58px
+
+      .title
+        margin-bottom: 2em
+
+      p
+        font-size: 0.95em
+
+    .items
+      margin-top: 2.8em
+
+      article
+        width: 33%
+        padding-right: 40px
+        padding-bottom: 40px
+        min-height: 8em
+
+        .title
+          font-size: 1.15em
+          line-height: 1.2em
+          letter-spacing: 1px
+          margin-bottom: 0.25em
+
+        p
+          font-size: 0.8em
+          line-height: 1.75em
+          margin-top: 0.4em
+          letter-spacing: -0.1px
 
     .filters
       text-align: center
 
-      a.initial,
-      a.active
+      a.initial, a.active
         display: none

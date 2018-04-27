@@ -1,30 +1,30 @@
 
 .background style="background-image: url(#{section.image.url})"
-  .section.wrapper
+  .wrapper
     .content-box
       h2.title = section.title
       = markdown section.text
       - if section.action.present? and section.url.present?
-        a.box.button href=section.url = section.action
+        a.inverse.box.button href=section.url = section.action
 
-//section.s__sahaja.s__howto.fullscreen.wow.fadeIn data-wow-duration="3s" id="section-#{index}" data-section=index style=("background-image: url(#{section.image.url})") 
+//section.s__sahaja.s__howto.fullscreen.wow.fadeIn data-wow-duration="3s" id="section-#{index}" data-section=index style=("background-image: url(#{section.image.url})")
   .container.has__triangle.has__triangle_right
     .s__wrapper_wide
       .s_title
         span.text-width = section.subtitle
-      .article.article_main.article_inversion.draw-line.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s" 
+      .article.article_main.article_inversion.draw-line.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s"
         h2.h2.article__title = section.title
         .article__text
           = markdown section.text
         .article__btn
           a.btn href="#" Подробнее о Сахаджа Йоге
 
-//section.s__sahaja.s__howto.fullscreen.wow.fadeIn data-wow-duration="3s" id="section-#{index}" data-section=index style=("background-image: url(#{image_path 'shri-mataji/s-sahaja.jpg'})") 
+//section.s__sahaja.s__howto.fullscreen.wow.fadeIn data-wow-duration="3s" id="section-#{index}" data-section=index style=("background-image: url(#{image_path 'shri-mataji/s-sahaja.jpg'})")
   .container.has__triangle.has__triangle_right
     .s__wrapper_wide
       .s_title
         span.text-width = section.title if section.subtitle.present?
-      .article.article_main.article_inversion.draw-line.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s" 
+      .article.article_main.article_inversion.draw-line.wow.fadeIn data-wow-delay="0.5s" data-wow-duration="2s"
         h2.h2.article__title = section.subtitle.present? ? section.subtitle : section.title
         .article__text
           p

@@ -8,6 +8,7 @@
   cursor: pointer
   text-align: center
   color: $color-text-normal
+  z-index: 1
 
   &.box
     border: 1px solid $color-text-dark
@@ -15,6 +16,10 @@
     padding: 1.4em 2em
     font-family: $raleway-bold
     font-size: 0.875em
+
+    &.inverse
+      color: $color-text-inverse
+      border-color: $color-text-inverse
 
     &:after
       background: $light-blue
