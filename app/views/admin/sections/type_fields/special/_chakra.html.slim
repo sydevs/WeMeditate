@@ -1,6 +1,5 @@
 
-= f.input :title, wrapper_html: { class: 'sub' }
-= f.input :text, as: :text, input_html: { rows: 2 }, wrapper_html: { class: 'sub' }
+= f.input :images, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:image), files: f.object.images, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:image) }
 
 = f.fields_for :special, f.object.special do |ff|
   - items = f.object.special['items'] rescue []
@@ -8,4 +7,4 @@
   = render 'admin/application/repeatable_fields', f: ff, attribute: :items, items: items, subfield: true do |fff, item|
     = fff.text_field :title, value: item['title'], placeholder: t("activerecord.attributes.#{f.object.model_name.i18n_key}.title"), name: "#{fff.object_name}[title][]"
     = fff.text_area :text, value: item['text'], placeholder: t("activerecord.attributes.#{f.object.model_name.i18n_key}.text"), name: "#{fff.object_name}[text][]", rows: 1
-    = fff.url_field :url, value: item['url'], placeholder: t("activerecord.attributes.#{f.object.model_name.i18n_key}.url"), name: "#{fff.object_name}[url][]"
+    //= fff.select :size, collection: ['Large', 'Small'], value: item['size'], placeholder: t("activerecord.attributes.#{f.object.model_name.i18n_key}.size"), name: "#{fff.object_name}[size][]"

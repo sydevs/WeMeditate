@@ -34,12 +34,17 @@
         = f.hidden_field :content_type
         = f.hidden_field :format
 
-        = render "admin/sections/type_fields/special/#{section.format}", f: f, section: section, allow: allow
+        - if section.new_record?
+          = f.input :content_type do
+            p #{human_enum_name(section, :content_type)} - #{human_enum_name(section, :format)}
+          .ui.divider
       - else
         = f.input :label, placeholder: label_placeholder
-    = f.input :content_type, collection: Section.content_types.except(:special).keys.map {|k| [human_enum_name(section, :content_type, k), k]}, prompt: 'Choose a type', disabled: !allow.update_structure?
+        = f.input :content_type, collection: Section.content_types.except(:special).keys.map {|k| [human_enum_name(section, :content_type, k), k]}, prompt: 'Choose a type', disabled: !allow.update_structure?
 
-      - unless section.special?
+      - if section.special?
+        = render "admin/sections/type_fields/special/#{section.format}", f: f, section: section, allow: allow
+      - else
         - Section.content_types.except(:special).each do |type, v|
           .grouped.fields.for class=type
             .ui.divider

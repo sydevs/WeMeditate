@@ -59,8 +59,10 @@ $(document).on('turbolinks:load', function() {
     $('.ui.accordion').accordion('close', 0)
 
     $(this).find('.section').each(function() {
-      var content_type = $(this).find('.content-type.field input').val()
-      $(this).find('.grouped.fields.for:not(.'+content_type+') :input').attr('disabled', true)
+      var content_type = $(this).find('.static_page_sections_content_type select').val()
+      if (typeof content_type !== 'undefined') {
+        $(this).find('.grouped.fields.for:not(.'+content_type+') :input').attr('disabled', true)
+      }
     })
   })
 })

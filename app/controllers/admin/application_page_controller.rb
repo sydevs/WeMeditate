@@ -98,17 +98,10 @@ module Admin
         if page_params[:sections_attributes].present?
           page_params = page_params.to_h
           page_params[:sections_attributes].each do |key, data|
-            if data[:special].present?
-              items = []
-
-              data[:special][:items][:title].each_with_index do |title, index|
-                items[index] = {
-                  title: title,
-                  text: data[:special][:items][:text][index],
-                }
-              end
-
-              page_params[:sections_attributes][key][:special][:items] = items
+            if data[:special].present? and data[:special][:items].present?
+              data = data[:special][:items]
+              data = data.values.transpose.map { |vs| data.keys.zip(vs).to_h }
+              page_params[:sections_attributes][key][:special][:items] = data
             end
           end
         end

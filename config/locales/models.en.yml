@@ -158,6 +158,8 @@ en:
           box_with_lefthand_image: Text Box With Left-Hand Image
           box_with_righthand_image: Text Box With Right-Hand Image
           box_over_image: Text Box Over Image
+          grid: Text Grid
+          ancient_wisdom: Ancient Wisdom
           # Image
           fit_container_width: Fit Content Width
           fit_page_width: Fit Page Width
@@ -166,9 +168,10 @@ en:
           button: Button
           # Special
           banner: Banner
-          grid: Grid
           try_meditation: Try Meditation
           subtle_system: Subtle System Diagram
+          chakra: Chakra / Channel
+          treatments: Treatment List
         title: Title
         subtitle: Subtitle
         sidetext: Side Text
