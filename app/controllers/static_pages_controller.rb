@@ -9,10 +9,10 @@ class StaticPagesController < ApplicationController
         { name: @static_page.title }
       ]
     else
-      @about_page = StaticPage.find_by(role: :about)
+      about_page = StaticPage.find_by(role: :about)
       @breadcrumbs = [
         { name: 'Home', url: root_path },
-        { name: @about_page.title, url: static_page_path(@about_page) },
+        { name: 'Learn More', url: static_page_path(about_page) },
         { name: @static_page.title }
       ]
     end

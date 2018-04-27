@@ -34,7 +34,7 @@ module NavigationHelper
       {
         title: 'Learn More', url: static_page_path(StaticPage.find_by(role: :about)),
         content: {
-          items: StaticPage.where(role: [:about, :sahaja_yoga, :shri_mataji, :kundalini, :subtle_system]).map {|static_page| {
+          items: StaticPage.where(role: [:about, :sahaja_yoga, :shri_mataji, :subtle_system]).map {|static_page| {
             title: static_page.title,
             url: static_page_path(static_page),
           }} + [{
