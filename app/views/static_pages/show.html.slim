@@ -1,7 +1,7 @@
 
 - content_for :title, @static_page.title
 
-section.intro
+section.intro class="for-#{@static_page.role.to_s.dasherize}"
   .container
     h1.title = @static_page.title
 
