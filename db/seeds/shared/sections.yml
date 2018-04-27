@@ -412,7 +412,7 @@ records:
     order: 8
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
-    content_type: special
+    content_type: text
     format: grid
     title: Test
 
@@ -507,7 +507,7 @@ records:
     order: 6
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'shri_mataji').id %>
-    content_type: special
+    content_type: text
     format: grid
     title: Awards
     text: Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
