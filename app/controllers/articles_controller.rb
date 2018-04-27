@@ -7,6 +7,11 @@ class ArticlesController < ApplicationController
       format.html {
         @categories = Category.all
         @articles = Article.limit(ARTICLES_PER_PAGE)
+
+        @breadcrumbs = [
+          { name: 'Home', url: root_path },
+          { name: Article.model_name.human(count: -1) },
+        ]
       }
       format.js {
         @articles = Article.offset(params[:offset]).limit(ARTICLES_PER_PAGE)
@@ -18,6 +23,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.includes(:sections).friendly.find(params[:id])
     @breadcrumbs = [
+      { name: 'Home', url: root_path },
       { name: Article.model_name.human(count: -1), url: articles_path },
       { name: @article.category.name, url: articles_path(category: @article.category.id) },
       { name: @article.title }
