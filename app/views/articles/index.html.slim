@@ -2,7 +2,7 @@
 - content_for :title, 'Inspiration'
 - selected_category_id = params[:category]&.to_i
 
-nav.category.filters data-group='category'
+nav.primary.category.filters data-group='category'
   - @categories.each do |category|
     a.filter.button class="#{'active' if selected_category_id == category.id}" data-filter=".#{dom_id(category)}" href="#"
       = category.name
@@ -29,11 +29,11 @@ nav.category.filters data-group='category'
       /! filter-mobile
       .mobile__filter_container
         a.btn.filter__btn.active href="#" = @selected_category&.name || 'All'
-        a.filter__btn_open href="#" 
+        a.filter__btn_open href="#"
           | Filter
           i.icon-filter-icon
       /! /filter-mobile
-      
+
       figure#grid
         = render @articles
 

@@ -4,7 +4,7 @@ records:
   - sprig_id: 1
     name: First Meditation Experience
     slug: first-experience
-    image: <%= sprig_file('general/background.jpg') %>
+    image: <%= sprig_file('meditations/background-1.jpg') %>
     audio: <%= sprig_file('general/meditation.mp3') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 10).id %>
     goal_filter_ids:
@@ -12,7 +12,7 @@ records:
   - sprig_id: 2
     name: Silent Meditation
     slug: silent
-    image: <%= sprig_file('general/background.jpg') %>
+    image: <%= sprig_file('meditations/background-2.jpg') %>
     audio: <%= sprig_file('general/meditation.mp3') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 2).id %>
     goal_filter_ids:
@@ -20,7 +20,7 @@ records:
   - sprig_id: 3
     name: Long Meditation
     slug: long
-    image: <%= sprig_file('general/background.jpg') %>
+    image: <%= sprig_file('meditations/background-1.jpg') %>
     audio: <%= sprig_file('general/meditation.mp3') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 30).id %>
     goal_filter_ids:
@@ -28,7 +28,7 @@ records:
   - sprig_id: 4
     name: Mooladhara
     slug: mooladhara
-    image: <%= sprig_file('general/background.jpg') %>
+    image: <%= sprig_file('meditations/background-2.jpg') %>
     audio: <%= sprig_file('general/meditation.mp3') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 5).id %>
     goal_filter_ids:
@@ -36,7 +36,7 @@ records:
   - sprig_id: 5
     name: Balancing
     slug: balacing
-    image: <%= sprig_file('general/background.jpg') %>
+    image: <%= sprig_file('meditations/background-1.jpg') %>
     audio: <%= sprig_file('general/meditation.mp3') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 5).id %>
     goal_filter_ids:
