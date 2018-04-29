@@ -232,7 +232,7 @@ records:
     images:
       - <%= sprig_file('articles/behind.jpg') %>
     extra:
-      color: light
+      color: dark
     order: 4
   - sprig_id: 205
     page_type: Article
@@ -374,7 +374,7 @@ records:
     images:
       - <%= sprig_file('static_pages/front/shri-mataji.jpg') %>
     extra:
-      color: light
+      color: dark
   - sprig_id: 305
     order: 5
     page_type: StaticPage
@@ -401,7 +401,7 @@ records:
     images:
       - <%= sprig_file('static_pages/front/meditation.jpg') %>
     extra:
-      color: dark
+      color: light
   - sprig_id: 307
     order: 7
     page_type: StaticPage
@@ -485,7 +485,7 @@ records:
     images:
       - <%= sprig_file('static_pages/shri-mataji/sahaja-yoga.jpg') %>
     extra:
-      color: light
+      color: dark
   - sprig_id: 603
     order: 3
     page_type: StaticPage
