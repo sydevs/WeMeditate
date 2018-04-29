@@ -1,14 +1,11 @@
 
 - if section.videos.size > 1
-  .section.wrapper
+  .video.wrapper
     .video.carousel
       - section.videos.each_with_index do |video, index|
         .video.wrapper
           = render 'shared/video_preview', thumbnail: section.images[index].url, video_url: video.url
-        //img src=section.images[index].url
-
-  .video.wrapper
-    h3.title = section.title
+          h3.title = section.title
 - else
   .video.wrapper
     = render 'shared/video_preview', thumbnail: section.image.url, video_url: section.video.url

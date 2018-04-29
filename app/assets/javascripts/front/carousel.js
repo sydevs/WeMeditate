@@ -1,7 +1,7 @@
 
 var Carousel = {
   default_options: {
-    margin: 10,
+    margin: 60,
     navText: ['<i class="left arrow icon"></i>', '<i class="right arrow icon"></i>'],
   },
 
@@ -12,7 +12,6 @@ var Carousel = {
     dots: false,
     //autoWidth: true,
     smartSpeed: 700,
-    margin: 60,
     responsiveClass: true,
     responsive: {
       0: { items: 1 },

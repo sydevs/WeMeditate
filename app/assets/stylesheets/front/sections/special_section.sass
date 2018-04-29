@@ -3,11 +3,12 @@
 section.type-special
   &.format-banner
     z-index: -1
-    margin-top: -157px
     text-align: center
 
     .background
       height: 100vh
+      padding-top: 215px
+      padding-bottom: 134px
 
       display: flex
       flex-direction: column
@@ -15,6 +16,41 @@ section.type-special
 
     *
       color: white
+
+    h1
+      font-family: $raleway
+      margin-bottom: 1em
+
+    h2
+      font-family: $raleway-medium
+
+    .action
+      font-size: 1.8em
+      position: absolute
+      bottom: 82px
+      left: 0
+      right: 0
+      letter-spacing: -1px
+
+      display: flex
+      align-items: center
+      justify-content: center
+
+      > *
+        display: inline-block
+
+      svg
+        width: 40px
+        margin: 0 22px
+
+        path
+          fill: white
+
+      svg:first-child
+        transform: rotate(-90deg) scaleX(-1)
+
+      svg:last-child
+        transform: rotate(90deg)
 
   &.format-try-meditation
     margin-bottom: 220px

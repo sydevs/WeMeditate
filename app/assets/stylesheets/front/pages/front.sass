@@ -1,0 +1,56 @@
+
+body.static-page-home
+  header
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+
+    .topline > *
+      margin-bottom: 0
+
+    .logo svg path
+        fill: white
+
+    .illustration-wrapper svg path
+      stroke: white
+
+    .topline
+      padding-bottom: 50px
+      height: 173px
+
+    a
+      color: white
+
+    .desktop
+      > .topline,
+      > .menu
+        border-color: white
+
+  section.type-text
+    .content-box
+      font-size: 1.1em
+
+    &.format-box-with-lefthand-image img,
+    &.format-box-with-righthand-image img
+      max-width: 52.5%
+
+    &.format-box-with-righthand-image .content-box
+      margin-left: -460px
+
+    &.format-box-over-image
+      height: 100vh
+
+      .content-box
+        margin-left: -445px
+
+    &.format-grid
+      .title
+        margin-bottom: 0.5em
+
+      article
+        padding: 20px
+        font-size: 1.15em
+
+      p
+        line-height: 1.8em

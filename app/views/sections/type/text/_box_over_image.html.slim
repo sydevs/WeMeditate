@@ -1,11 +1,11 @@
 
 .background style="background-image: url(#{section.image.url})"
-  .wrapper
-    .content-box
+  .content.wrapper
+    .inverse.content-box
       h2.title = section.title
       = markdown section.text
       - if section.action.present? and section.url.present?
-        a.inverse.box.button href=section.url = section.action
+        a.box.button href=section.url = section.action
 
 //section.s__sahaja.s__howto.fullscreen.wow.fadeIn data-wow-duration="3s" id="section-#{index}" data-section=index style=("background-image: url(#{section.image.url})")
   .container.has__triangle.has__triangle_right

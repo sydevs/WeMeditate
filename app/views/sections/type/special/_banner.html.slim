@@ -2,4 +2,7 @@
 .background style="background-image: url(#{image_path section.image.url})"
   h1 = section.title
   h2 = section.text
-  a href=section.url = section.action
+  a.action href=section.url
+    = inline_svg 'graphics/leaf.svg'
+    div = section.action
+    = inline_svg 'graphics/leaf.svg'

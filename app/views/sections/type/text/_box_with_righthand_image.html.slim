@@ -1,10 +1,11 @@
 
 .container
-  .content-box
-    h2.title = section.title
-    = markdown section.text
-    - if section.action.present? and section.url.present?
-      a.box.button href=section.url = section.action
+  .content
+    .content-box
+      h2.title = section.title
+      = markdown section.text
+      - if section.action.present? and section.url.present?
+        a.box.button href=section.url = section.action
   img alt=section.image.identifier src=section.image.url
 
 //section id="section-#{index}" data-section=index
@@ -16,7 +17,7 @@
           span.text-width = section.subtitle
         .article__image
           img alt="founder" src=section.image.url /
-        .article.circle.article_main.wow.fadeIn data-wow-delay="1.5s" data-wow-duration="2s" 
+        .article.circle.article_main.wow.fadeIn data-wow-delay="1.5s" data-wow-duration="2s"
           h2.h2.article__title = section.title
           .article__text
             = markdown section.text
@@ -30,7 +31,7 @@
           span.text-width = section.title if section.subtitle.present?
         .article__image
           img alt="founder" src=image_path('shri-mataji/s-founder-new.jpg') /
-        .article.circle.article_main.wow.fadeIn data-wow-delay="1.5s" data-wow-duration="2s" 
+        .article.circle.article_main.wow.fadeIn data-wow-delay="1.5s" data-wow-duration="2s"
           h2.h2.article__title = section.subtitle.present? ? section.subtitle : section.title
           .article__text
             p

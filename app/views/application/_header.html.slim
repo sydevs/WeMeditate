@@ -4,7 +4,7 @@ header
     .topline
       a.logo href=root_path = inline_svg 'header/logo.svg'
       a.illustration-wrapper href=root_path
-        img.svg.illustration src=image_path('header/illustration.svg')
+        = inline_svg 'header/illustration.svg'
 
       - unless current_user.present?
         a.sign-in href=new_user_session_path SIGN IN

@@ -3,7 +3,7 @@
 
 .background
   background-position: center
-  bacgrkound-size: cover
+  background-size: cover
   width: 100%
   height: 100%
 
@@ -35,10 +35,47 @@ a:not(:hover) > .overlay
 .carousel
   max-width: 1000px
   width: 100%
-  overflox-x: hidden
+
+  .video.wrapper
+    max-width: 680px
 
   .owl-stage
     display: flex
+
+  .owl-item:not(.active)
+    .button, .title
+      opacity: 0
+      visibility: hidden
+
+  .owl-nav button
+    appearance: none
+    background: #999
+    color: white
+    border: none
+    width: 65px
+    height: 65px
+    transition: all .5s ease
+
+    font-size: 23px
+    line-height: 65px
+
+    position: absolute
+    top: 160px
+
+    user-select: none
+    cursor: pointer
+    outline: none
+
+    &:first-child
+      left: 0
+      padding-right: 10px
+
+    &:last-child
+      right: 0
+      padding-left: 10px
+
+    &:hover
+      background: gray
 
 #video-popup
   width: 544px

@@ -3,7 +3,7 @@
 @import "../../mixins/vars"
 
 .with.decoration
-  &.triangle:after
+  &.triangle::after
     content: ''
     display: block
 
@@ -17,6 +17,30 @@
     background-size: cover
     z-index: 10
 
+  &.leaf
+    &::before,
+    &::after
+      content: ''
+
+      padding: 20px 0
+      display: inline-block
+      font-size: 1.8em
+      width: 0.9em
+      height: 1em
+
+      background-color: white
+      background-image: image-url('graphics/leaf.svg')
+      background-repeat: no-repeat
+      background-position: center
+
+      transform-origin: center
+
+    &::before
+      transform: rotate(90deg)
+
+    &::after
+      transform: rotate(-90deg)
+
 .illustration.divider
   max-width: 400px
   width: 100%
@@ -26,7 +50,7 @@
   border: none
   position: relative
 
-  &:after
+  &::after
     content: ''
     position: absolute
     left: 50%

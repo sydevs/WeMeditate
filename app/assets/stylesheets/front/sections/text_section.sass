@@ -1,17 +1,26 @@
 @import "../../mixins/vars"
 
 section.type-text
+  .content
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    position: absolute
+    left: 50%
+    top: 10%
+    bottom: 2%
+
   .content-box
     background: white
     padding: 65px 97px
     max-width: 600px
-    max-height: 90%
+    max-height: 88%
+    margin-left: -410px
     overflow: hidden
 
-    position: absolute
-    left: 50%
-    bottom: 5%
-    margin-left: -410px
+    .box.button
+      margin-top: 2em
 
     *:first-child
       margin-top: 0
@@ -39,20 +48,20 @@ section.type-text
       height: 100%
 
     .content-box
-      margin-left: -42.5%
       max-width: 496px
       background: transparent
-      border: 2px solid white
       padding: 35px 40px
 
       p
-        line-height: 1.5em
         font-size: 0.95em
         letter-spacing: -0.35px
         margin-bottom: 1.2em
 
-      .title, p
-        color: $color-text-inverse
+      &.inverse
+        border: 2px solid $color-text-inverse
+
+        .title, p
+          color: $color-text-inverse
 
   &.format-box-with-righthand-image,
   &.format-box-with-lefthand-image
@@ -63,7 +72,8 @@ section.type-text
     float: right
 
   &.format-box-with-lefthand-image .content-box
-    margin-left: 410px
+    margin-left: -140px
+    padding: 65px
     left: auto
 
   &.format-grid
