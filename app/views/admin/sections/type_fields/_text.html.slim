@@ -11,10 +11,13 @@
 = f.input :action, wrapper_html: { class: 'sub for action' }
 = f.input :url, as: :url, wrapper_html: { class: 'sub for action' }
 
-= f.fields_for :special, f.object.special do |ff|
-  - items = f.object.special['items'] rescue []
+= f.fields_for :extra, f.object.extra do |ff|
+  - items = f.object.extra['items'] rescue []
+  - color = f.object.extra['color'] rescue nil
 
   = render 'admin/application/repeatable_fields', f: ff, attribute: :items, items: items, subfield: true, for: [:grid] do |fff, item|
-    = fff.text_field :title, value: item['title'], placeholder: t("activerecord.attributes.#{f.object.model_name.i18n_key}.title"), name: "#{fff.object_name}[title][]"
-    = fff.text_area :text, value: item['text'], placeholder: t("activerecord.attributes.#{f.object.model_name.i18n_key}.text"), name: "#{fff.object_name}[text][]", rows: 1
-    = fff.url_field :url, value: item['url'], placeholder: t("activerecord.attributes.#{f.object.model_name.i18n_key}.url"), name: "#{fff.object_name}[url][]"
+    = fff.text_field :title, value: item['title'], placeholder: Section.human_attribute_name(:title), name: "#{fff.object_name}[title][]"
+    = fff.text_area :text, value: item['text'], placeholder: Section.human_attribute_name(:text), name: "#{fff.object_name}[text][]", rows: 1
+    = fff.url_field :url, value: item['url'], placeholder: Section.human_attribute_name(:url), name: "#{fff.object_name}[url][]"
+
+  = ff.input :color, collection: [:light, :dark].map {|c| [human_enum_name(Section, :color, c), c] }, selected: color, label: Section.human_attribute_name(:color), wrapper_html: { class: 'sub for background' }, required: false

@@ -2,7 +2,7 @@
 = f.input :format, collection: Section::ACTION_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, disabled: !allow.update_structure?, wrapper_html: { class: 'sub field-format' }
 = f.input :action, wrapper_html: { class: 'sub' }
 
-- f.fields_for :special do |ff|
+- f.fields_for :extra do |ff|
   = ff.input :mailchimp_list_id, collection: [], disabled: !allow.update_structure?, wrapper_html: { class: 'sub for signup' }
 
 = f.input :url, as: :url, wrapper_html: { class: 'sub for button' }

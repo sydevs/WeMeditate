@@ -1,7 +1,7 @@
 
 .container
   .carousel
-    - section.special['items'].each_with_index do |item|
+    - section.extra['items'].each_with_index do |item|
       .section.wrapper
         img src=section.image.url
         strong = item['title']

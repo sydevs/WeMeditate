@@ -3,7 +3,7 @@ class Section < ApplicationRecord
 
   # Extensions
   has_paper_trail
-  translates :label, :title, :subtitle, :sidetext, :text, :quote, :credit, :action, :url, :images, :videos
+  translates :label, :title, :subtitle, :sidetext, :text, :quote, :credit, :action, :url, :images, :videos, :extra
 
   attribute :label
   attribute :title
@@ -16,6 +16,7 @@ class Section < ApplicationRecord
   attribute :url
   attribute :images
   attribute :videos
+  attribute :extra
 
   # Associations
   belongs_to :page, polymorphic: true

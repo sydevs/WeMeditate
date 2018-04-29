@@ -1,8 +1,8 @@
 
 = f.input :images, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:image), files: f.object.images, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:image) }
 
-= f.fields_for :special, f.object.special do |ff|
-  - items = f.object.special['items'] rescue []
+= f.fields_for :extra, f.object.extra do |ff|
+  - items = f.object.extra['items'] rescue []
 
   = render 'admin/application/repeatable_fields', f: ff, attribute: :items, items: items, subfield: true do |fff, item|
     = fff.text_field :title, value: item['title'], placeholder: t("activerecord.attributes.#{f.object.model_name.i18n_key}.title"), name: "#{fff.object_name}[title][]"

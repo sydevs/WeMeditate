@@ -181,7 +181,11 @@ en:
         credit: Credit
         video: Video (mp4)
         action: Action Text
-        url: Link
+        url: Link (url)
+        color: Colour
+        colors:
+          light: Light Text
+          dark: Dark Text
 
       track:
         title: Title

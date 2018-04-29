@@ -78,7 +78,7 @@ module Admin
       CONTENT_ATTRIBUTES = [
         :title, :subtitle, :sidetext, :text, :quote, :credit, :url, :action, # These are the options for different content_types
         videos: [], images: [], # For file uploads
-        special: {}, # For special sections
+        extra: {}, # For extra attributes sections
       ]
 
       ALL_SECTION_ATTRIBUTES = [
@@ -98,10 +98,10 @@ module Admin
         if page_params[:sections_attributes].present?
           page_params = page_params.to_h
           page_params[:sections_attributes].each do |key, data|
-            if data[:special].present? and data[:special][:items].present?
-              data = data[:special][:items]
+            if data[:extra].present? and data[:extra][:items].present?
+              data = data[:extra][:items]
               data = data.values.transpose.map { |vs| data.keys.zip(vs).to_h }
-              page_params[:sections_attributes][key][:special][:items] = data
+              page_params[:sections_attributes][key][:extra][:items] = data
             end
           end
         end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426160536) do
+ActiveRecord::Schema.define(version: 20180429114714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -200,6 +200,7 @@ ActiveRecord::Schema.define(version: 20180426160536) do
     t.string "action"
     t.jsonb "images"
     t.jsonb "videos"
+    t.jsonb "extra"
     t.index ["locale"], name: "index_section_translations_on_locale"
     t.index ["section_id"], name: "index_section_translations_on_section_id"
   end
@@ -212,7 +213,6 @@ ActiveRecord::Schema.define(version: 20180426160536) do
     t.string "page_type"
     t.bigint "page_id"
     t.string "format"
-    t.jsonb "special"
     t.index ["content_type", "format"], name: "index_sections_on_content_type_and_format"
     t.index ["page_type", "page_id"], name: "index_sections_on_page_type_and_page_id"
   end

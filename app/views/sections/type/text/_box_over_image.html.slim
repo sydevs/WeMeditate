@@ -1,7 +1,7 @@
 
 .background style="background-image: url(#{section.image.url})"
   .content.wrapper
-    .inverse.content-box
+    .content-box class="#{'inverse' if section.extra.present? and section.extra['color'] == 'light'}"
       h2.title = section.title
       = markdown section.text
       - if section.action.present? and section.url.present?
