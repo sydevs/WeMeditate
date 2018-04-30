@@ -597,3 +597,37 @@ records:
 
       In people who have received self-realization, without medicines, the blood composition is corrected, the metabolism is normalized, stress is eliminated - the cause of many complex diseases.
 
+
+# FOR STATIC PAGE: tracks
+  - sprig_id: 1101
+    order: 1
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'tracks').id %>
+    content_type: text
+    format: just_text
+    title: Header
+    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
+  - sprig_id: 1102
+    order: 2
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'tracks').id %>
+    content_type: text
+    format: just_text
+    title: Header
+    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
+  - sprig_id: 1103
+    order: 3
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'tracks').id %>
+    content_type: text
+    format: just_text
+    title: Header
+    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
+  - sprig_id: 1104
+    order: 4
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'tracks').id %>
+    content_type: text
+    format: just_text
+    title: Header
+    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.

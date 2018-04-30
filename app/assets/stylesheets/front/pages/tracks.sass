@@ -4,44 +4,69 @@ body.tracks-index
   section.intro
     margin-bottom: 50px
 
-  .filter
-    margin-right: 44px
+  .container
+    > h2
+      font-size: 1.4em
+      line-height: 1em
 
-  .instrument.filters
+    > h3
+      margin-top: 2em
+
+  .filters
+    margin-left: 3px
+
     .filter
-      opacity: 0.4
+      margin-right: 44px
 
-      &.active,
-      &:hover
-        opacity: 0.95
+    &.instrument
+      .filter
+        opacity: 0.4
+        margin: 0 30px
 
-    img
-      height: 50px
+        &.active,
+        &:hover
+          opacity: 0.95
 
-  #track-player-title
-    font-size: 25px
-    line-height: 29px
-    color: $color-text-darker
+      img
+        height: 45px
 
-  #track-player-artist
-    font-size: 18px
-    line-height: 29px
-    color: $color-text-normal
+  .player
+    margin-top: 3em
+
+    .current-info
+      margin-left: 15px
+
+    .plyr
+      margin-top: -5px
+      z-index: -1
+
+    #track-player-title
+      font-size: 1.5em
+      line-height: 1.3em
+      letter-spacing: -1px
+      color: $color-text-darker
+
+    #track-player-artist
+      font-size: 1em
+      line-height: 1em
+      margin-left: 1px
+      color: $color-text-normal
 
   .playlist
     position: relative
-    height: 660px
+    //max-height: 660px
+    min-height: 460px
     width: 100%
-    max-width: 705px
+    max-width: 638px
     margin-left: auto
-    margin-top: 50px
-    padding: 60px 0 60px 160px
+    margin-top: 88px
+    padding: 50px 0 60px 144px
     background: linear-gradient(to left,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
 
     > .title
-      font-size: 24px // TODO: Inconsistent use of em/rem vs px
-      line-height: 1.3em
-      margin-bottom: 0.7em
+      font-size: 1.5em
+      line-height: 1.5em
+      margin-bottom: 0.4em
       letter-spacing: 1px
 
     #selected-filter-icons img
@@ -51,9 +76,9 @@ body.tracks-index
 
     .cover
       position: absolute
-      top: 115px
-      left: -320px
-      width: 385px
+      top: 102px
+      left: -288px
+      width: 348px
 
     .list
       position: relative
@@ -61,38 +86,37 @@ body.tracks-index
 
     .list > *
       width: 100%
-      margin-bottom: 30px
+      margin-bottom: 28px
       padding-right: 150px
 
       .label
         display: block
         color: $color-text-dark
-        font-size: 21px // TODO: Inconsistent use of px vs rem/em
-        line-height: 35px
+        font-size: 1.2em
+        line-height: 1.5em
 
         i.icon
           width: 35px
-          height: 35px
-          font-size: 14px // TODO: Inconsistent use of px vs rem/em
+          font-size: 0.6em
           text-align: center
 
       .artist
-        display: inline-block
-        font-size: 12px // TODO: Inconsistent use of px vs rem/em
-        line-height: 1em
+        display: block
+        font-size: 0.7em
+        line-height: 0.8em
         padding-left: 35px
-        padding-bottom: 0.8em
+        padding-bottom: 1em
 
         &:hover
           color: $color-text-orange
 
       .duration
         position: absolute
-        right: 5px
-        bottom: 15px
+        right: 7px
+        bottom: 12px
 
         font-family: $futura-book
-        font-size: 12px // TODO: Inconsistent use of px vs rem/em
+        font-size: 0.7em
         line-height: 2.25em
 
       &.active

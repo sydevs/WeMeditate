@@ -1,4 +1,5 @@
 - classes = []
+- classes << 'active' if track_counter == 0
 - classes << track.mood_filters.map {|f| dom_id(f)}
 - classes << track.instrument_filters.map {|f| dom_id(f)}
 
