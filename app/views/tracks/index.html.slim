@@ -28,7 +28,7 @@ section.player
       a#track-player-artist.song-artist href=track.artist.url target='_blank' = track.artist.name
 
       audio#player controls=true
-        / data-controls="#{render('shared/audio_controls').html_safe}"
+        data-controls="#{render('shared/audio_controls').html_safe}"
         source src=track.audio_url type='audio/mp3'
 
     .playlist

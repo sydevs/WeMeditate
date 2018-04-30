@@ -90,7 +90,7 @@ body.tracks-index
 
 .plyr--full-ui
   input[type=range]
-    color: #c5e0dc
+    color: $audio-light-green
     background: white
 
   input[type=range]::-webkit-media-slider-thumb,
@@ -99,18 +99,18 @@ body.tracks-index
     height: 10px
     border-radius: 0
     border: 0
-    background: #c5e0dc
+    background: $audio-light-green
     -webkit-transition: background .2s ease,border .2s ease,-webkit-transform .2s ease
     transition: background .2s ease,border .2s ease,-webkit-transform .2s ease
     -o-transition: background .2s ease,border .2s ease,transform .2s ease
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.15),0 0 0 1px rgba(0,0,0,.15)
-    box-shadow: 0 1px 1px rgba(0,0,0,.15),0 0 0 1px rgba(0,0,0,.15)
+    -webkit-box-shadow: 0 1px 1px $audio-gray, 0 0 0 1px $audio-gray
+    box-shadow: 0 1px 1px $audio-gray,0 0 0 1px $audio-gray
     -webkit-box-sizing: border-box
     box-sizing: border-box
     cursor: pointer
 
   input[type=range]::-webkit-slider-runnable-track
-    background: linear-gradient(to right, rgb(197, 224, 220) 0%, rgb(197, 224, 220) 100%, rgb(238, 238, 238) 100%, rgb(238, 238, 238) 100%, rgb(238, 238, 238) 100%, rgb(238, 238, 238) 100%)
+    background: linear-gradient(to right, $audio-light-green 0%, $audio-light-green 100%, $audio-light-gray 100%, $audio-light-gray 100%, $audio-light-gray 100%, $audio-light-gray 100%)
     border: 0
     border-radius: 0
     height: 3px
@@ -127,7 +127,7 @@ body.tracks-index
   .plyr__control:hover,
   .plyr__control[aria-expanded=true]
     background: #FFFFFF
-    color: #c5e0dc
+    color: $audio-light-green
 
   .plyr__progress
     margin-right: 10px
@@ -135,12 +135,12 @@ body.tracks-index
 .song-title
   font-size: 25px
   line-height: 29px
-  color: #5e6063
+  color: $audio-text-dark
 
 .song-artist
   font-size: 18px
   line-height: 29px
-  color: #9d9d9c
+  color: $audio-text-normal
 
 .plyr__controls
   padding-bottom: 0 !important
