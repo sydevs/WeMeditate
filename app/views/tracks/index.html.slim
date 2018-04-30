@@ -24,8 +24,8 @@ section.player
   .container
     p
       - track = @tracks.first
-      #track-player-title.song-title = track.name
-      a#track-player-artist.song-artist href=track.artist.url target='_blank' = track.artist.name
+      #track-player-title = track.name
+      a#track-player-artist href=track.artist.url target='_blank' = track.artist.name
 
       audio#player controls=true
         data-controls="#{render('shared/audio_controls').html_safe}"
