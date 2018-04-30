@@ -13,9 +13,15 @@ var Music = {
   filter_icons: null,
 
   load: function() {
-    console.log('loading Music.js')
-    var player = $('audio#player')
-    Music.player = new Plyr('audio#player', player.data('controls'))
+    console.log('loading Music.js');
+    var player = $('audio#player');
+    var controls = player.find('data-controls').text();
+    Music.player = new Plyr(player, {
+      controls,
+      invertTime: false
+    });
+
+
     Music.player_title = $('#track-player-title')
     Music.player_artist = $('#track-player-artist')
 

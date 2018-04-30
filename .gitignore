@@ -19,3 +19,6 @@
 
 .DS_Store
 .byebug_history
+
+# RubyMine JetBrains
+.idea

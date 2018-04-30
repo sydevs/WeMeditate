@@ -28,7 +28,7 @@ section.player
       a#track-player-artist href=track.artist.url target='_blank' = track.artist.name
 
       audio#player controls=true
-        /data-controls="#{render('shared/audio_controls').html_safe}"
+        data-controls="#{render('shared/audio_controls').html_safe}"
         source src=track.audio_url type='audio/mp3'
 
     .playlist
@@ -40,108 +40,3 @@ section.player
         = render @tracks
 
 = render @static_page.sections.with_translations(locale)
-
-//! main
-  main.page-music
-    .container_narrow.container
-      h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s"
-        | Music for meditation
-      /! description
-      section.s__description
-        .section__wrap.has__triangle.has__triangle_right
-          .article
-            .article__content
-              h1.article__title Subtitle for music
-              p.article__text
-                | It's easier to concentrate with music, so you get meditation deeper.
-      /! /description
-      /! music
-      section.s__music
-        .music__container
-          .music__subtitle Choose the mood
-          .mood__container
-            - @mood_filters.each do |mood_filter|
-              a.btn.btn__popup data-filter=dom_id(mood_filter) href="#" #{mood_filter.name}
-
-          .music__subtitle Select an instrument
-          .instrument__container
-            - @instrument_filters.each_with_index do |instrument_filter, index|
-              a href="#" data-filter=dom_id(instrument_filter)
-                //img src=instrument_filter.icon_url
-                i class="icon-mus-instrument-#{index+1}"
-      /! music
-      /! player
-      section.s__player
-        .player-wrap.track-view.light
-          audio preload=""
-          .player
-            .song-info
-              p.title-text.ellipsis.song-title
-              p.artist-text.ellipsis.song-artist
-            .controls
-              .play-pause
-                .play-button.icon-play-icon
-                .pause-button
-                  .equalizer
-                    .equalizer-bar
-                    .equalizer-bar
-                    .equalizer-bar
-                    .equalizer-bar
-                    .equalizer-bar
-                    .equalizer-bar
-              .seek-wrap
-                input.seek-bar max="100" min="0" step=".1" type="range" value="0" /
-                .time-wrap
-                  .current-time 0:00:00
-                  .duration-time 0:00:00
-              .controls-container
-                a.prev-button.icon-switch-music-icon-left href="#"
-                a.next-button.icon-switch-music-icon-right href="#"
-              .volume-wrap
-                .mute-button
-                input.volume-bar max="100" min="0" step="1" type="range" value="100" /
-            .playlist-wrap
-              h2.playlist-title.title
-                | Playlist
-                span.playlist-mood
-              .playlist-mood-box
-                .mood-text Playlist
-                .mood-img#music-player-image data-default=image_path('music/mood-img.png') style=("background-image: url(#{image_path 'music/mood-img.png'})")
-              ol
-                - @tracks.each do |track|
-                  - mood_classes = track.mood_filters.map {|f| dom_id(f)}
-                  - instrument_classes = track.instrument_filters.map {|f| dom_id(f)}
-                  li.song-info class=(mood_classes + instrument_classes)
-                    i.icon-play-icon
-                    a.song-title data-artist=track.artist&.name data-image=track.artist&.image href=track.audio_url = track.title
-                    p.song-artist = track.artist&.name
-                    //- if track.artist.present?
-                      p.song-artist
-                      - if track.artist.url.present?
-                        a href=track.artist.url = track.artist.name
-                      - else
-                        = track.artist.name
-                    .duration-time
-                      /! Set via Javascript
-      /! /player
-      /! article-list
-      section.s__article-list
-        .list__item
-          h3.h3.item__title.title Title
-          p.item__text.text
-            | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab sed maxime quia doloribus sit, iure assumenda quo accusamus voluptatem. Qui vero cum quo dicta harum necessitatibus eligendi dolor amet. Quo.
-        .list__item
-          h3.h3.item__title.title Title
-          p.item__text.text
-            | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab sed maxime quia doloribus sit, iure assumenda quo accusamus voluptatem. Qui vero cum quo dicta harum necessitatibus eligendi dolor amet. Quo.
-        .list__item
-          h3.h3.item__title.title Title
-          p.item__text.text
-            | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab sed maxime quia doloribus sit, iure assumenda quo accusamus voluptatem. Qui vero cum quo dicta harum necessitatibus eligendi dolor amet. Quo.
-        .list__item
-          h3.h3.item__title.title Title
-          p.item__text.text
-            | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab sed maxime quia doloribus sit, iure assumenda quo accusamus voluptatem. Qui vero cum quo dicta harum necessitatibus eligendi dolor amet. Quo.
-      /! article-list
-    /! /container
-  /! /main
