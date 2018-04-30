@@ -13,9 +13,75 @@ var Music = {
   filter_icons: null,
 
   load: function() {
-    console.log('loading Music.js')
-    var player = $('audio#player')
-    Music.player = new Plyr('audio#player', player.data('controls'))
+    console.log('loading Music.js');
+    var player = $('audio#player');
+    var seekTime = 10;
+    var controls = `
+<div class="plyr__controls">
+    <button aria-label="Play, {title}" aria-pressed="false" class="plyr__control" data-plyr="play" type="button">
+        <svg class="icon--pressed" role="presentation">
+            <use xlink:href="#plyr-pause"></use>
+        </svg>
+        <svg class="icon--not-pressed" role="presentation">
+            <use xlink:href="#plyr-play"></use>
+        </svg> 
+        <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span><span
+            class="label--not-pressed plyr__tooltip" role="tooltip">Play</span></button>
+        <div class="plyr__progress"><label class="plyr__sr-only" for="plyr-seek-{id}"> Seek</label>
+        <input data-plyr="seek" id="plyr-seek-{id}" max="100" min="0" step="0.01" type="range" value="0"/>
+        <progress class="plyr__progress--buffer" max="100" min="0" value="0"> % buffered</progress>
+        <span class="plyr__tooltip" role="tooltip"> 00:00</span></div>    
+        <span class="plyr__time--current">00:00</span>   
+    <button class="plyr__control" data-plyr="rewind" type="button">
+        <svg role="presentation">
+            <use xlink:href="#plyr-rewind"></use>
+        </svg>
+        <span class="plyr__tooltip" role="tooltip">Rewind ${seekTime} secs</span></button>
+    <button class="plyr__control" data-plyr="fast-forward" type="button">
+        <svg role="presentation">
+            <use xlink:href="#plyr-fast-forward"></use>
+        </svg>
+        <span class="plyr__tooltip" role="tooltip">Forward ${seekTime} secs</span></button>
+    <button aria-label="Mute" aria-pressed="false" class="plyr__control" data-plyr="mute" type="button">
+        <svg class="icon--pressed" role="presentation">
+            <use xlink:href="#plyr-muted"></use>
+        </svg>
+        <svg class="icon--not-pressed" role="presentation">
+            <use xlink:href="#plyr-volume"></use>
+        </svg>
+        <span class="label--pressed plyr__tooltip" role="tooltip"> Unmute</span><span
+            class="label--not-pressed plyr__tooltip" role="tooltip"> Mute</span></button>
+    <div class="plyr__volume">   
+        <label class="plyr__sr-only" for="plyr-volume-{id}"> Volume</label>
+        <input
+            autocomplete="off" data-plyr="volume" id="plyr-volume-{id}" max="1" min="0" step="0.05" type="range"
+            value="1"/></div>
+    <button aria-label="Enable captions" aria-pressed="true" class="plyr__control" data-plyr="captions" type="button">
+        <svg class="icon--pressed" role="presentation">
+            <use xlink:href="#plyr-captions-on"></use>
+        </svg>
+        <svg class="icon--not-pressed" role="presentation">
+            <use xlink:href="#plyr-captions-off"></use>
+        </svg>
+        <span class="label--pressed plyr__tooltip" role="tooltip"> Disable captions</span><span
+            class="label--not-pressed plyr__tooltip" role="tooltip"> Enable captions</span></button>
+    <button aria-label="Enter fullscreen" aria-pressed="false" class="plyr__control" data-plyr="fullscreen"
+            type="button">
+        <svg class="icon--pressed" role="presentation">
+            <use xlink:href="#plyr-exit-fullscreen"></use>
+        </svg>
+        <svg class="icon--not-pressed" role="presentation">
+            <use xlink:href="#plyr-enter-fullscreen"></use>
+        </svg>
+        <span class="label--pressed plyr__tooltip" role="tooltip"> Exit fullscreen</span><span
+            class="label--not-pressed plyr__tooltip" role="tooltip"> Enter fullscreen</span></button>
+</div>`;
+    Music.player = new Plyr(player, {
+      controls,
+      invertTime: false
+    });
+
+
     Music.player_title = $('#track-player-title')
     Music.player_artist = $('#track-player-artist')
 

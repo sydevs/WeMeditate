@@ -88,4 +88,59 @@ body.tracks-index
       &.active
         border: 1px solid $background-blue
 
+.plyr--full-ui
+  input[type=range]
+    color: #c5e0dc
+    background: white
 
+  input[type=range]::-webkit-media-slider-thumb,
+  input[type=range]::-webkit-slider-thumb
+    width: 10px
+    height: 10px
+    border-radius: 0
+    border: 0
+    background: #c5e0dc
+    -webkit-transition: background .2s ease,border .2s ease,-webkit-transform .2s ease
+    transition: background .2s ease,border .2s ease,-webkit-transform .2s ease
+    -o-transition: background .2s ease,border .2s ease,transform .2s ease
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.15),0 0 0 1px rgba(0,0,0,.15)
+    box-shadow: 0 1px 1px rgba(0,0,0,.15),0 0 0 1px rgba(0,0,0,.15)
+    -webkit-box-sizing: border-box
+    box-sizing: border-box
+    cursor: pointer
+
+  input[type=range]::-webkit-slider-runnable-track
+    background: linear-gradient(to right, rgb(197, 224, 220) 0%, rgb(197, 224, 220) 100%, rgb(238, 238, 238) 100%, rgb(238, 238, 238) 100%, rgb(238, 238, 238) 100%, rgb(238, 238, 238) 100%)
+    border: 0
+    border-radius: 0
+    height: 3px
+    transition: all .3s ease
+    -webkit-user-select: none
+    user-select: none
+
+.plyr--audio
+  .plyr__control
+    svg
+      width: 13px
+
+  .plyr__control.plyr__tab-focus,
+  .plyr__control:hover,
+  .plyr__control[aria-expanded=true]
+    background: #FFFFFF
+    color: #c5e0dc
+
+  .plyr__progress
+    margin-right: 10px
+
+.song-title
+  font-size: 25px
+  line-height: 29px
+  color: #5e6063
+
+.song-artist
+  font-size: 18px
+  line-height: 29px
+  color: #9d9d9c
+
+.plyr__controls
+  padding-bottom: 0 !important
