@@ -41,6 +41,8 @@ class StaticPage < ApplicationRecord
     when :shri_mataji
       ensure_special_section_exists! :try_meditation
       #ensure_special_section_exists! :grid
+    when :treatments
+      ensure_special_section_exists! :banner
     when :subtle_system
       ensure_special_section_exists! :subtle_system
     when :chakra_1, :chakra_2, :chakra_3, :chakra_3b, :chakra_4, :chakra_5, :chakra_6, :chakra_7, :channel_center, :channel_right, :channel_left

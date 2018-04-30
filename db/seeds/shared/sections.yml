@@ -334,6 +334,9 @@ records:
     url: '#'
     images:
       - <%= sprig_file('general/background.jpg') %>
+    extra:
+      banner_style: front_page
+      color: light
   - sprig_id: 302
     order: 2
     page_type: StaticPage
@@ -420,7 +423,6 @@ records:
     page_id: <%= sprig_record(StaticPage, 'home').id %>
     content_type: text
     format: grid
-    title: Test
     extra:
       items:
         - title: Article Meate Meditate
@@ -566,4 +568,32 @@ records:
     format: just_text
     title: About Kundalini
     text: Coming soon
+
+
+# FOR STATIC PAGE: treatments
+  - sprig_id: 1001
+    order: 1
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'treatments').id %>
+    content_type: special
+    format: banner
+    title: Awaken the inner energy!
+    text: Before using methods to improve meditation, you need to awaken
+    url: '#'
+    images:
+      - <%= sprig_file('treatments/banner.png') %>
+    extra:
+      banner_style: treatments_page
+      color: dark
+  - sprig_id: 1002
+    order: 2
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'treatments').id %>
+    content_type: text
+    format: just_text
+    title: Methods for improving meditation
+    text: |-
+      Using simple methods, a person gets the opportunity to purify his energy centers and thereby adjust the state of his organs and systems (blood, lymphatic, etc.).
+
+      In people who have received self-realization, without medicines, the blood composition is corrected, the metabolism is normalized, stress is eliminated - the cause of many complex diseases.
 

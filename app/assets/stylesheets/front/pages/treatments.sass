@@ -1,8 +1,9 @@
 @import "../../mixins/vars"
 
 .treatments.wrapper
-  max-width: 960px
-  margin-bottom: 150px
+  max-width: 895px
+  margin-bottom: 135px
+  padding-top: 2px
 
   article
     position: relative
@@ -13,49 +14,46 @@
     flex-wrap: nowrap
 
     img
-      width: 400px
-      height: 400px
+      width: 360px
+      height: 360px
 
     .content
       margin-top: 65px
 
       .title
         margin-bottom: 0.7em
+        line-height: 1em
 
       p
-        font-size: 18px // TODO: Inconsistent use of px vs rem/em
-        line-height: 1.667em
+        font-size: 1.1em
+        line-height: 1.55em
 
       .button
-        margin-top: 46px
+        margin-top: 1.75em
+        padding: 1.4em
 
     .number
       position: absolute
-      top: -86px
+      top: -70px
 
-      color: $color-text-lighter
-      font-size: 35px // TODO: Fix inconsistent use of px vs rem/em
-      line-height: 1.57em
+      color: $color-text-lightest
+      font-size: 2em
+      font-family: $raleway
+      font-weight: 200
 
     &:after
       display: block
       content: ''
 
       position: absolute
-      top: -118px
+      top: -106px
 
-      height: 235px
-      width: 705px
+      height: 210px
+      width: 722px
       opacity: 0.5
       z-index: -1
 
     &:nth-child(even)
-      img
-        margin-left: 95px
-
-      .content
-        margin-left: 30px
-
       .number
         right: 0
 
@@ -65,7 +63,7 @@
 
     &:nth-child(odd)
       img
-        margin-right: 95px
+        margin-right: 87px
 
       .content
         margin-right: 30px

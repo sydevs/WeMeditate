@@ -2,4 +2,4 @@
 = f.input :title, wrapper_html: { class: 'sub' }
 
 = f.fields_for :extra do |ff|
-  = ff.input :treatments, collection: Treatment.all.map{|t| [t.name, t.id.to_s]}, selected: f.object.extra['treatments'], input_html: { multiple: true }, wrapper_html: { class: 'sub' }, required: false, disabled: !allow.update_structure?
+  = ff.input :treatments, collection: Treatment.all.map{|t| [t.name, t.id.to_s]}, selected: f.object.extra_attr('treatments'), input_html: { multiple: true }, wrapper_html: { class: 'sub' }, required: false, disabled: !allow.update_structure?

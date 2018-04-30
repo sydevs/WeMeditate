@@ -1,12 +1,14 @@
 
-- if section.extra['mailchimp_list_id'].present?
+- mailchimp_list_id = section.extra_attr 'mailchimp_list_id'
+
+- if mailchimp_list_id.present?
   .wrapper.centered
     .simple.illustration.pre.divider
     h2.title = section.title
     .sub.title = section.subtitle
     .title = section.text
     = form_tag subscribe_path, class: 'subscribe-form', remote: true do
-      = hidden_field_tag :mailchimp_list_id, section.extra['mailchimp_list_id']
+      = hidden_field_tag :mailchimp_list_id, mailchimp_list_id
       p.message
       p
         = email_field_tag :email_address, nil, placeholder: 'Your email'

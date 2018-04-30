@@ -38,6 +38,14 @@ class Section < ApplicationRecord
     content_type == 'special'
   end
 
+  def extra_attr key, default: nil
+    if self[:extra].present? and self[:extra][key].present?
+      self[:extra][key]
+    else
+      default
+    end
+  end
+
   def image
     images[0]
   end

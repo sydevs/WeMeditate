@@ -1,5 +1,5 @@
 
-- items = defined?(section.extra['items']) ? section.extra['items'] : []
+- items = section.extra_attr('items', default: [])
 
 .container
   h2.title = section.title

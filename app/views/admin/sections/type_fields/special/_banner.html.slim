@@ -1,5 +1,12 @@
 
+= f.fields_for :extra do |ff|
+  = ff.input :banner_style, collection: [:front_page, :treatments_page].map {|c| [human_enum_name(Section, :banner_style, c), c] }, selected: f.object.extra_attr('banner_style'), label: Section.human_attribute_name(:banner_style), wrapper_html: { class: 'sub for background' }, required: false
+
 = f.input :images, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:image), files: f.object.images, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:image) }
 = f.input :title, wrapper_html: { class: 'sub' }
 = f.input :text, wrapper_html: { class: 'sub' }
 = f.input :action, wrapper_html: { class: 'sub' }
+= f.input :url, wrapper_html: { class: 'sub' }
+
+= f.fields_for :extra do |ff|
+  = ff.input :color, collection: [:light, :dark].map {|c| [human_enum_name(Section, :color, c), c] }, selected: f.object.extra_attr('color'), label: Section.human_attribute_name(:color), wrapper_html: { class: 'sub for background' }, required: false

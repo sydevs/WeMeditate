@@ -79,11 +79,15 @@ en:
         role: Role
         roles:
           home: Home Page
+          meditations: Meditations Index Page
+          treatments: Techniques Index Page
+          tracks: Music Page
+
           contact: Contact Page
           shri_mataji: About Shri Mataji
           subtle_system: About Subtle System
           sahaja_yoga: About Sahaja Yoga
-          kundalini: About Kundalini
+          about: About Us
           chakra_1: 'Chakra: Mooladhara'
           chakra_2: 'Chakra: Swadhisthan'
           chakra_3: 'Chakra: Nabhi'
@@ -95,6 +99,7 @@ en:
           channel_left: 'Channel: Ida (Left)'
           channel_right: 'Channel: Pingala (Right)'
           channel_center: 'Channel: Sushumna (Center)'
+          kundalini: About Kundalini
         sections: Content
 
       category:
@@ -186,6 +191,10 @@ en:
         colors:
           light: Light Text
           dark: Dark Text
+        banner_style: Banner Style
+        banner_styles:
+          front_page: Front Page
+          treatments_page: Techniques Page
 
       track:
         title: Title
