@@ -25,19 +25,20 @@
 
     .meta
       .ui.tiny.list
-        - if page.draft?
-          .item
-            i.blue.write.square.icon
-            .content
-              = translate 'messages.draft'
-              '  (#{pluralize page.drafts.count, 'Change'})
+        - if page.has_paper_trail?
+          - if page.draft?
+            .item
+              i.blue.write.square.icon
+              .content
+                = translate 'messages.draft'
+                '  (#{pluralize page.drafts.count, 'Change'})
 
-        .item
-          i.calendar.icon
-          .content
-            - if page.published?
-              = translate 'messages.updated_on_by', date: l(page.published_at, format: :long), author: page.last_changed_by&.email
-            - else
-              = translate 'messages.not_published'
+          .item
+            i.calendar.icon
+            .content
+              - if page.published?
+                = translate 'messages.updated_on_by', date: l(page.published_at, format: :long), author: page.last_changed_by&.email
+              - else
+                = translate 'messages.not_published'
 
         = yield

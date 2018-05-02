@@ -27,7 +27,7 @@ module Admin
       authorize @page
 
       if @page.save
-        @page.publish_drafts! # This line effectively disables drafts by always publishing the latest version.
+        @page.publish_drafts! if @page.has_paper_trail? # This line effectively disables drafts by always publishing the latest version.
         redirect_to [:edit, :admin, @page], flash: { info: "Created successfully." }
       else
         render :new
@@ -38,7 +38,7 @@ module Admin
       @page.attributes = update_params(page_params)
 
       if @page.save
-        @page.publish_drafts! # This line effectively disables drafts by always publishing the latest version.
+        @page.publish_drafts! if @page.has_paper_trail? # This line effectively disables drafts by always publishing the latest version.
 
         #redirect_to [:edit, :admin, @page]
         if policy(@page).review?

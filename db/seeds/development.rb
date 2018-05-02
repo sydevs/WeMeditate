@@ -3,7 +3,7 @@ include Sprig::Helpers
 
 sprig [User]
 sprig_shared [
-  StaticPage, Category, Article, City, Section, Treatment,
+  Category, Article, StaticPage, City, SubtleSystemNode, Treatment, Section,
   Artist, MoodFilter, InstrumentFilter, Track,
   DurationFilter, GoalFilter, Meditation
 ]

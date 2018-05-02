@@ -1,0 +1,22 @@
+
+- items = section.extra_attr('items', default: [])
+
+.container
+  - if section.title.present?
+    h2.title = section.title
+  = markdown section.text if section.text.present?
+
+  .carousel
+    - use_single_image = (section.images.count != items.count)
+    - items.each_with_index do |item, index|
+      - image_url = use_single_image ? section.image : section.images[index]
+      article
+        .image
+          img src=image_url
+
+        - if item['url'].present?
+          a.title href=item['url'] = item['title']
+        - else
+          .title = item['title']
+
+        p = item['text']

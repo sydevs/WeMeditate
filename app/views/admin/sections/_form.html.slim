@@ -14,7 +14,7 @@
 
     - if section.label.present?
       = section.label
-    - elsif section.new_record?
+    - elsif section.new_record? and not section.special?
       ' New Section
     - elsif section.format.present?
       - label_placeholder = human_enum_name(section, :format)
@@ -33,11 +33,6 @@
       - if section.special?
         = f.hidden_field :content_type
         = f.hidden_field :format
-
-        - if section.new_record?
-          = f.input :content_type do
-            p #{human_enum_name(section, :content_type)} - #{human_enum_name(section, :format)}
-          .ui.divider
       - else
         = f.input :label, placeholder: label_placeholder
         = f.input :content_type, collection: Section.content_types.except(:special).keys.map {|k| [human_enum_name(section, :content_type, k), k]}, prompt: 'Choose a type', disabled: !allow.update_structure?

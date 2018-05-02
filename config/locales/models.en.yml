@@ -10,6 +10,9 @@ en:
       static_page:
         one: Static Page
         other: Static Pages
+      subtle_system_node:
+        one: Subtle System Node
+        other: Subtle System
       category:
         one: Category
         other: Categories
@@ -82,12 +85,18 @@ en:
           meditations: Meditations Index Page
           treatments: Techniques Index Page
           tracks: Music Page
-
           contact: Contact Page
           shri_mataji: About Shri Mataji
           subtle_system: About Subtle System
           sahaja_yoga: About Sahaja Yoga
           about: About Us
+        sections: Content
+
+      subtle_system_node:
+        name: Name
+        slug: URL
+        excerpt: Excerpt
+        roles:
           chakra_1: 'Chakra: Mooladhara'
           chakra_2: 'Chakra: Swadhisthan'
           chakra_3: 'Chakra: Nabhi'
@@ -99,8 +108,7 @@ en:
           channel_left: 'Channel: Ida (Left)'
           channel_right: 'Channel: Pingala (Right)'
           channel_center: 'Channel: Sushumna (Center)'
-          kundalini: About Kundalini
-        sections: Content
+          kundalini: Kundalini
 
       category:
         name: Name
@@ -164,6 +172,7 @@ en:
           box_with_righthand_image: Text Box With Right-Hand Image
           box_over_image: Text Box Over Image
           grid: Text Grid
+          columns: Text Columns
           ancient_wisdom: Ancient Wisdom
           # Image
           fit_container_width: Fit Content Width

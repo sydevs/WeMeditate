@@ -20,6 +20,7 @@ class StaticPage < ApplicationRecord
 
   # Validations
   validates :title, presence: true
+  validates :role, presence: true, uniqueness: true
   accepts_nested_attributes_for :sections, reject_if: :all_blank, allow_destroy: true
 
   # Scopes

@@ -1,0 +1,21 @@
+
+- content_for :title, SubtleSystemNode.model_name.human(count: -1)
+
+= render 'admin/application_pages/index', model: SubtleSystemNode, pages: @subtle_system_nodes, show_new: false
+
+- if policy(SubtleSystemNode).create?
+  .ui.accordion
+    .ui.basic.labeled.icon.title.button
+      i.plus.icon
+      = translate "action.create_model.target.#{SubtleSystemNode.model_name.i18n_key}", target: SubtleSystemNode.model_name.human, default: :'action.target.create'
+    .ui.content.segment
+      = form_tag new_admin_subtle_system_node_path, method: :get, class: 'ui form'
+        .field
+          - options = SubtleSystemNode.available_roles.map {|k, v| [human_enum_name(SubtleSystemNode, :role, k), k]}
+          = label_tag :role, t('messages.missing_pages')
+          = select_tag :role, options_for_select(options), class: 'ui fluid scrolling dropdown'
+
+        button.ui.basic.green.compact.right.labeled.icon.create.button
+          = translate "action.create_model.#{SubtleSystemNode.model_name.i18n_key}", default: :'action.create'
+          i.checkmark.icon
+

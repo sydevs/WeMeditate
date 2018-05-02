@@ -28,6 +28,8 @@ Rails.application.routes.draw do
                   only: [:index, :create, :update, :destroy] do
           put :sort, on: :collection
         end
+
+        resources :subtle_system_nodes, except: [:show]
       end
 
       post :subscribe, to: 'application#subscribe'
@@ -44,6 +46,7 @@ Rails.application.routes.draw do
       resources :treatments, only: [:index, :show]
       resources :tracks, only: [:index], path: 'music'
       resources :static_pages, only: [:show], path: 'page'
+      resources :subtle_system_nodes, only: [:index, :show], path: 'subtle-system'
     end
   end
 

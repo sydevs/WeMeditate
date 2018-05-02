@@ -1,0 +1,13 @@
+
+- content_for :title, @subtle_system_node.name
+
+section.intro
+  .container
+    .title
+      = inline_svg 'graphics/leaf.svg'
+      div = @subtle_system_node.name
+      = inline_svg 'graphics/leaf.svg'
+
+= render @subtle_system_node.sections
+
+= render 'application/footer_together'

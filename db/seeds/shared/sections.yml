@@ -559,15 +559,39 @@ records:
     text: Coming soon
 
 
-# FOR STATIC PAGE: kundalini
+# FOR STATIC PAGE: tracks
   - sprig_id: 901
     order: 1
     page_type: StaticPage
-    page_id: <%= sprig_record(StaticPage, 'kundalini').id %>
+    page_id: <%= sprig_record(StaticPage, 'tracks').id %>
     content_type: text
     format: just_text
-    title: About Kundalini
-    text: Coming soon
+    title: Header
+    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
+  - sprig_id: 902
+    order: 2
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'tracks').id %>
+    content_type: text
+    format: just_text
+    title: Header
+    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
+  - sprig_id: 903
+    order: 3
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'tracks').id %>
+    content_type: text
+    format: just_text
+    title: Header
+    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
+  - sprig_id: 904
+    order: 4
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'tracks').id %>
+    content_type: text
+    format: just_text
+    title: Header
+    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
 
 
 # FOR STATIC PAGE: treatments
@@ -598,36 +622,72 @@ records:
       In people who have received self-realization, without medicines, the blood composition is corrected, the metabolism is normalized, stress is eliminated - the cause of many complex diseases.
 
 
-# FOR STATIC PAGE: tracks
+# FOR SUBTLE SYSTEM NODE: chakra_1
   - sprig_id: 1101
     order: 1
-    page_type: StaticPage
-    page_id: <%= sprig_record(StaticPage, 'tracks').id %>
+    page_type: SubtleSystemNode
+    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_1').id %>
+    label: Chakra Overview
     content_type: text
-    format: just_text
-    title: Header
-    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
+    format: columns
+    images:
+      - <%= sprig_file('subtle_system/chakra-1.png') %>
+    extra:
+      items:
+        - title: Left Aspect
+          text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+        - title: Central Aspect
+          text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+        - title: Right Aspect
+          text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
   - sprig_id: 1102
     order: 2
-    page_type: StaticPage
-    page_id: <%= sprig_record(StaticPage, 'tracks').id %>
+    page_type: SubtleSystemNode
+    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_1').id %>
+    label: In Daily Life
     content_type: text
-    format: just_text
-    title: Header
-    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
+    format: box_over_image
+    title: How to open Nabhi?
+    text: |-
+      It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.
+
+      'Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.'
+
+      To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.
+    images:
+      - <%= sprig_file('subtle_system/background.jpg') %>
   - sprig_id: 1103
     order: 3
-    page_type: StaticPage
-    page_id: <%= sprig_record(StaticPage, 'tracks').id %>
-    content_type: text
-    format: just_text
-    title: Header
-    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
+    page_type: SubtleSystemNode
+    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_1').id %>
+    content_type: special
+    format: treatments
+    title: Method of cleaning
+    extra:
+      - "<%= sprig_record(Treatment, 3).id %>"
+      - "<%= sprig_record(Treatment, 1).id %>"
+      - "<%= sprig_record(Treatment, 4).id %>"
+      - "<%= sprig_record(Treatment, 2).id %>"
   - sprig_id: 1104
     order: 4
-    page_type: StaticPage
-    page_id: <%= sprig_record(StaticPage, 'tracks').id %>
+    page_type: SubtleSystemNode
+    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_1').id %>
+    content_type: video
+    title: Shri Mataji on Nabhi Chakra
+    images:
+      - <%= sprig_file('subtle_system/video.jpg') %>
+    videos:
+      - <%= sprig_file('general/video.mp4') %>
+  - sprig_id: 1105
+    order: 5
+    page_type: SubtleSystemNode
+    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_1').id %>
     content_type: text
-    format: just_text
-    title: Header
-    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
+    format: ancient_wisdom
+    text: |-
+      Header 1
+      --------
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
+      Header 2
+      --------
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!

@@ -1,3 +1,24 @@
 
-.treatments.wrapper
-  = render Treatment.where(id: section.extra_attr('treatments'))
+- treatments = Treatment.where(id: section.extra)
+
+#grid.treatments.wrapper
+  - treatments.each_with_index do |treatment, index|
+    article id=dom_id(treatment) class="#{'initial' if index < 2}"
+      - if index.odd?
+        .image
+          img alt=treatment.name src=treatment.thumbnail.url
+          a.video.button href=treatment.video_url data-mfp-src='#video-popup'
+
+      .content
+        .title = treatment.name
+        p = treatment.excerpt
+
+      - if index.even?
+        .image
+          img alt=treatment.name src=treatment.thumbnail.url
+          a.video.button href=treatment.video_url data-mfp-src='#video-popup'
+
+- if treatments.length > 2
+  nav.filters data-group='amount'
+    a.initial.active.box.button data-filter='.initial' Collapse
+    a.box.button data-filter='*' Show More

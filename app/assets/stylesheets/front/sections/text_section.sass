@@ -113,3 +113,54 @@ section.type-text
 
       a.initial, a.active
         display: none
+
+  &.format-columns
+    article
+      .image
+        text-align: center
+        padding: 5px
+
+        img
+          height: 160px
+
+      .title
+        font-size: 1.3em
+        line-height: 1em
+
+    .owl-item:not(:nth-child(2))
+      article
+        .image
+          padding: 25px
+
+        img
+          height: 120px
+
+  &.format-ancient-wisdom
+    .background
+      padding: 20% 0 10%
+
+    .row
+      max-width: 944px
+      margin: auto
+
+    img
+      width: 33.25vw
+      float: left
+
+    .content
+      position: static
+      padding: 0 2.25em
+
+      > *
+        color: $color-text-inverse
+
+      h1, h2, h3, h4, h5, h6, .title
+        font-size: 1.25em
+        margin-top: 1.25em
+        margin-bottom: 0
+
+      p
+        font-size: 0.85em
+        margin-top: 1em
+        letter-spacing: 0.45px
+        line-height: 1.6em

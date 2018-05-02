@@ -36,6 +36,11 @@
             i.hashtag.icon
             = Category.model_name.human(count: -1)
 
+        - if policy(SubtleSystemNode).index?
+          = link_to [:admin, SubtleSystemNode], class: "#{'active' if controller_name == 'subtle_system_nodes'} item"
+            i.sun.icon
+            = SubtleSystemNode.model_name.human(count: -1)
+
         - if policy(Track).index?
           = link_to [:admin, Track], class: "#{'active' if ['tracks', 'mood_filters', 'instrument_filters'].include? controller_name} item"
             i.music.icon

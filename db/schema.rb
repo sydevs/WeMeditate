@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180429114714) do
+ActiveRecord::Schema.define(version: 20180430164026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -234,6 +234,25 @@ ActiveRecord::Schema.define(version: 20180429114714) do
     t.datetime "updated_at", null: false
     t.datetime "published_at"
     t.index ["role"], name: "index_static_pages_on_role", unique: true
+  end
+
+  create_table "subtle_system_node_translations", force: :cascade do |t|
+    t.integer "subtle_system_node_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.text "excerpt", null: false
+    t.index ["locale"], name: "index_subtle_system_node_translations_on_locale"
+    t.index ["subtle_system_node_id"], name: "index_subtle_system_node_translations_on_subtle_system_node_id"
+  end
+
+  create_table "subtle_system_nodes", force: :cascade do |t|
+    t.integer "role", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role"], name: "index_subtle_system_nodes_on_role", unique: true
   end
 
   create_table "track_translations", force: :cascade do |t|

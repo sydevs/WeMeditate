@@ -146,3 +146,69 @@ section.type-special
     .chart
       &:not(.active)
         display: none
+
+  &.format-treatments
+    .treatments.wrapper
+      margin-bottom: 212px
+
+      article
+        padding: 0 55px
+
+        &:not(:first-child)
+          margin-top: 212px
+
+        .content
+          margin-top: 0
+          display: flex
+          flex-direction: column
+          justify-content: center
+
+          .title
+            margin-bottom: 0.5em
+            line-height: 1.2em
+            letter-spacing: 1px
+
+          p
+            font-size: 1em
+            line-height: 1.7em
+
+          > *:last-child
+            margin-bottom: 0
+
+        .image
+          position: relative
+
+          img
+            max-width: none
+
+          .video.button
+            position: absolute
+            left: -75px
+            bottom: -75px
+
+        &:nth-child(odd)
+          .content
+            margin-right: 80px
+
+          img
+            margin-right: 0
+
+        &:nth-child(even)
+          padding: 0 28px
+
+          .content
+            margin-left: 72px
+
+          .video.button
+            left: auto
+            right: -85px
+
+      article::after
+        display: none
+
+    .filters
+      text-align: center
+      margin-left: 3px
+
+      a.initial, a.active
+        display: none
