@@ -1,224 +1,34 @@
 
-//.container style='text-align: center; margin-top: 5em'
-  h1 Not yet implemented
-  h2 Chakras and Channels
-
 .container
   h2.title = section.title
   .active.chakras.chart
-    .trigger-item data-class='chakra-7'
-    .trigger-item data-class='chakra-6'
-    .trigger-item data-class='chakra-5'
-    .trigger-item data-class='chakra-4'
-    .trigger-item data-class='chakra-3'
-    .trigger-item data-class='chakra-2'
-    .trigger-item data-class='kundalini'
-    .trigger-item data-class='chakra-1'
-    .trigger-item data-class='chakra-3b'
+    .trigger.for-chakra-7 data-class='chakra-7'
+    .trigger.for-chakra-6 data-class='chakra-6'
+    .trigger.for-chakra-5 data-class='chakra-5'
+    .trigger.for-chakra-4 data-class='chakra-4'
+    .trigger.for-chakra-3b data-class='chakra-3b'
+    .trigger.for-chakra-3 data-class='chakra-3'
+    .trigger.for-chakra-2 data-class='chakra-2'
+    .trigger.for-chakra-1 data-class='chakra-1'
+    .trigger.for-kundalini data-class='kundalini'
     = inline_svg 'sections/subtle-system/chakras.svg'
   .channels.chart
-    .trigger-item data-class='channel-right'
-    .trigger-item data-class='channel-right'
-    .trigger-item data-class='channel-center'
-    .trigger-item data-class='channel-left'
-    .trigger-item data-class='channel-left'
-    .trigger-item data-class='kundalini'
+    .trigger.for-channel-right-1 data-class='channel-right'
+    .trigger.for-channel-right-2 data-class='channel-right'
+    .trigger.for-channel-center data-class='channel-center'
+    .trigger.for-channel-left-1 data-class='channel-left'
+    .trigger.for-channel-left-2 data-class='channel-left'
+    .trigger.for-kundalini data-class='kundalini'
     = inline_svg 'sections/subtle-system/channels.svg'
 
-  .active.chakras.filter.button data-filter='.chakras.chart' Chakras
-  .channels.filter.button data-filter='.channels.chart' Channels
+  nav.primary.filters
+    .active.chakras.filter.button data-filter='.chakras.chart' Chakras
+    .channels.filter.button data-filter='.channels.chart' Channels
 
-  - subtle_system_pages.each do |static_page|
-    .article id=dom_id(static_page) class="static-page-#{static_page.role.dasherize}"
-      strong = static_page.title
-      p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia ut commodi excepturi, unde harum quo temporibus eligendi voluptatum cupiditate libero dicta iure nemo voluptatibus. Ex ad qui amet possimus doloremque!
-      a href=url_for(static_page) Learn More
-
-//.container
-  .page-wrapper
-    .tab-container
-      #tab1.tab-content
-        h2.page-headline
-          span.hide-mobile Наведите
-          span.hide-desktop Нажмите
-          | на чакру, чтобы узнать больше
-        .chakra-man-holder
-          .trigger-item data-class="sahasrara"
-          .trigger-item data-class="agia"
-          .trigger-item data-class="vishudhi"
-          .trigger-item data-class="anahata"
-          .trigger-item data-class="nabi"
-          .trigger-item data-class="svadistan"
-          .trigger-item data-class="kundalini"
-          .trigger-item data-class="muladhara"
-          .trigger-item data-class="void"
-          = render 'sections/type/special/subtle_system_chakras'
-        .desc-box.muladhara
-          h4.desc-box__title Муладхара
-          p.desc-box__text
-            | Эта чакра отвечает за мир и покой в человеке. Ее качество —
-            | удовлетворение собой
-            | и миром вокруг. Когда наби чакра пробуждена, мы становимся щедрыми, радостными людьми,
-            | которые знают
-            | толк в размеренном ведении жизни.
-          a.desc-box__link href="#"
-            | Подробнее
-            i.icon-arrow-breadcrumb
-        .desc-box.kundalini
-          h4.desc-box__title Кундалини
-          p.desc-box__text
-            | Эта чакра отвечает за мир и покой в человеке. Ее качество —
-            | удовлетворение собой
-            | и миром вокруг. Когда наби чакра пробуждена, мы становимся щедрыми, радостными людьми,
-            | которые знают
-            | толк в размеренном ведении жизни.
-          a.desc-box__link href="#"
-            | Подробнее
-            i.icon-arrow-breadcrumb
-        .desc-box.svadistan
-          h4.desc-box__title Свадистан
-          p.desc-box__text
-            | Эта чакра отвечает за мир и покой в человеке. Ее качество —
-            | удовлетворение собой
-            | и миром вокруг. Когда наби чакра пробуждена, мы становимся щедрыми, радостными людьми,
-            | которые знают
-            | толк в размеренном ведении жизни.
-          a.desc-box__link href="#"
-            | Подробнее
-            i.icon-arrow-breadcrumb
-        .desc-box.nabi
-          h4.desc-box__title Наби
-          p.desc-box__text
-            | Эта чакра отвечает за мир и покой в человеке. Ее качество —
-            | удовлетворение собой
-            | и миром вокруг. Когда наби чакра пробуждена, мы становимся щедрыми, радостными людьми,
-            | которые знают
-            | толк в размеренном ведении жизни.
-          a.desc-box__link href="#"
-            | Подробнее
-            i.icon-arrow-breadcrumb
-        .desc-box.anahata
-          h4.desc-box__title Анахата
-          p.desc-box__text
-            | Эта чакра отвечает за мир и покой в человеке. Ее качество —
-            | удовлетворение собой
-            | и миром вокруг. Когда наби чакра пробуждена, мы становимся щедрыми, радостными людьми,
-            | которые знают
-            | толк в размеренном ведении жизни.
-          a.desc-box__link href="#"
-            | Подробнее
-            i.icon-arrow-breadcrumb
-        .desc-box.vishudhi
-          h4.desc-box__title Вишудхи
-          p.desc-box__text
-            | Эта чакра отвечает за мир и покой в человеке. Ее качество —
-            | удовлетворение собой
-            | и миром вокруг. Когда наби чакра пробуждена, мы становимся щедрыми, радостными людьми,
-            | которые знают
-            | толк в размеренном ведении жизни.
-          a.desc-box__link href="#"
-            | Подробнее
-            i.icon-arrow-breadcrumb
-        .desc-box.agia
-          h4.desc-box__title Агия
-          p.desc-box__text
-            | Эта чакра отвечает за мир и покой в человеке. Ее качество —
-            | удовлетворение собой
-            | и миром вокруг. Когда наби чакра пробуждена, мы становимся щедрыми, радостными людьми,
-            | которые знают
-            | толк в размеренном ведении жизни.
-          a.desc-box__link href="#"
-            | Подробнее
-            i.icon-arrow-breadcrumb
-        .desc-box.void
-          h4.desc-box__title Войд
-          p.desc-box__text
-            | Эта чакра отвечает за мир и покой в человеке. Ее качество —
-            | удовлетворение собой
-            | и миром вокруг. Когда наби чакра пробуждена, мы становимся щедрыми, радостными людьми,
-            | которые знают
-            | толк в размеренном ведении жизни.
-          a.desc-box__link href="#"
-            | Подробнее
-            i.icon-arrow-breadcrumb
-        .desc-box.sahasrara
-          h4.desc-box__title Сахасрара
-          p.desc-box__text
-            | Эта чакра отвечает за мир и покой в человеке. Ее качество —
-            | удовлетворение собой
-            | и миром вокруг. Когда наби чакра пробуждена, мы становимся щедрыми, радостными людьми,
-            | которые знают
-            | толк в размеренном ведении жизни.
-          a.desc-box__link href="#"
-            | Подробнее
-            i.icon-arrow-breadcrumb
-
-      #tab2.tab-content
-        h2.page-headline
-          span.hide-mobile Наведите
-          span.hide-desktop Нажмите
-          | на канал, чтобы узнать больше
-        .chakra-man-holder
-          .trigger-item data-class="right-channel"
-          .trigger-item data-class="right-channel"
-          .trigger-item data-class="center-channel"
-          .trigger-item data-class="left-channel"
-          .trigger-item data-class="left-channel"
-          .trigger-item data-class="kundalini"
-          = render 'sections/type/special/subtle_system_channels'
-        .desc-box.kundalini
-          h4.desc-box__title Кундалини
-          p.desc-box__text
-            | Эта чакра отвечает за мир и покой в человеке. Ее качество —
-            | удовлетворение собой
-            | и миром вокруг. Когда наби чакра пробуждена, мы становимся щедрыми, радостными людьми,
-            | которые знают
-            | толк в размеренном ведении жизни.
-          a.desc-box__link href="#"
-            | Подробнее
-            i.icon-arrow-breadcrumb
-        .desc-box.right-channel
-          h4.desc-box__title Правый канал
-          p.desc-box__text
-            | Эта чакра отвечает за мир и покой в человеке. Ее качество —
-            | удовлетворение собой
-            | и миром вокруг. Когда наби чакра пробуждена, мы становимся щедрыми, радостными людьми,
-            | которые знают
-            | толк в размеренном ведении жизни.
-          p.desc-box__text
-            | Эта чакра отвечает за мир и покой в человеке. Ее качество —
-            | удовлетворение собой
-            | и миром вокруг. Когда наби чакра пробуждена, мы становимся щедрыми, радостными людьми,
-            | которые знают
-            | толк в размеренном ведении жизни.
-          a.desc-box__link href="#"
-            | Подробнее
-            i.icon-arrow-breadcrumb
-        .desc-box.left-channel
-          h4.desc-box__title Левый канал
-          p.desc-box__text
-            | Эта чакра отвечает за мир и покой в человеке. Ее качество —
-            | удовлетворение собой
-            | и миром вокруг. Когда наби чакра пробуждена, мы становимся щедрыми, радостными людьми,
-            | которые знают
-            | толк в размеренном ведении жизни.
-          a.desc-box__link href="#"
-            | Подробнее
-            i.icon-arrow-breadcrumb
-        .desc-box.center-channel
-          h4.desc-box__title Центральный канал
-          p.desc-box__text
-            | Эта чакра отвечает за мир и покой в человеке. Ее качество —
-            | удовлетворение собой
-            | и миром вокруг. Когда наби чакра пробуждена, мы становимся щедрыми, радостными людьми,
-            | которые знают
-            | толк в размеренном ведении жизни.
-          a.desc-box__link href="#"
-            | Подробнее
-            i.icon-arrow-breadcrumb
-
-    ul.tabs
-      li
-        a href="#tab1"  Чакры
-      li
-        a href="#tab2"  Каналы
+  - SubtleSystemNode.all.each do |subtle_system_node|
+    .article id=dom_id(subtle_system_node) class=subtle_system_node.role.to_s.dasherize
+      .title = subtle_system_node.name
+      p = subtle_system_node.excerpt
+      a href=url_for(subtle_system_node)
+        ' Learn More
+        i.breadcrumb.icon
