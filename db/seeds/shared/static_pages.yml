@@ -30,3 +30,6 @@ records:
   - sprig_id: meditations
     role: <%= StaticPage.roles[:meditations] %>
     title: Guided Meditations
+  - sprig_id: country
+    role: <%= StaticPage.roles[:country] %>
+    title: Meditation classes

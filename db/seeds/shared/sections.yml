@@ -1388,3 +1388,18 @@ records:
       Header 2
       --------
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
+
+
+# FOR STATIC PAGE: country
+  - sprig_id: 2201
+    order: 1
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'country').id %>
+    content_type: special
+    format: country
+    title: It's much easier to meditate together!
+    text: Come to free classes in your city
+    extra:
+      action_title: No classes in your city?
+      action_subtitle: Visit the free webinar!
+      action_text: Let's go

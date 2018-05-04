@@ -1,0 +1,71 @@
+@import "../../../mixins/vars"
+
+section.type-special.format-banner
+  z-index: -1
+  text-align: center
+
+  .background
+    height: 100vh
+
+  .style-front-page.background
+    padding-top: 215px
+    padding-bottom: 134px
+
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    &.inverse *
+      color: $color-text-inverse
+
+    h1
+      font-family: $raleway
+      margin-bottom: 1em
+
+    h2
+      font-family: $raleway-medium
+
+    .action
+      font-size: 1.8em
+      position: absolute
+      bottom: 82px
+      left: 0
+      right: 0
+      letter-spacing: -1px
+
+      display: flex
+      align-items: center
+      justify-content: center
+
+      > *
+        display: inline-block
+
+      svg
+        width: 40px
+        margin: 0 22px
+
+        path
+          fill: white
+
+      svg:first-child
+        transform: rotate(-90deg) scaleX(-1)
+
+      svg:last-child
+        transform: rotate(90deg)
+
+  .style-treatments-page.background
+    min-height: 1210px
+    background-position: bottom center
+
+    h1
+      margin: 0
+      margin-bottom: 60px
+      line-height: 1.75em
+      font-size: 2.75em
+
+    h2
+      margin: 0
+      padding-top: 68px
+      margin-bottom: 15px
+      font-family: $raleway
+      color: $color-text-normal

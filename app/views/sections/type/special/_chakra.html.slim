@@ -1,8 +1,0 @@
-
-.container
-  .carousel
-    - section.extra_attr('items', default: []).each_with_index do |item|
-      .section.wrapper
-        img src=section.image.url
-        strong = item['title']
-        = markdown item['text']

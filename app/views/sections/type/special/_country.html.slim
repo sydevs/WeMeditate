@@ -1,0 +1,27 @@
+
+.container
+  h1 = section.title
+  h2 = section.text
+
+// Map data can be retrieved from https://geojson-maps.ash.ms
+- params[:country_code] = 'US'
+.country.map data-src='/maps/#{params[:country_code].downcase}.geo.json' data-cities=cities_json(params[:country_code]) data-bounds=country_bounds_json(params[:country_code])
+
+//.map
+  //= inline_svg "maps/#{params[:country_code].downcase}.svg"
+  = inline_svg "maps/ru.svg"
+  .cities
+    - cities = City.with_translations(locale).where(country: City.countries[params[:country_code]])
+    - cities.each do |city|
+      a.city href=url_for(city) = city.name
+
+.action
+  h3 No classes in your city?
+  p Visit the free webinar!
+  a.box.button href='#'
+    | Let's go
+
+.extra style='display: none'
+  h3 Other Cities in #{I18nData.countries(locale)[params[:country_code]]}
+  .cities
+

@@ -1,7 +1,8 @@
 
-.container
-  = inline_svg "maps/#{params[:country_code].downcase}.svg"
-  ul
-    - @cities.each do |city|
-      li
-        a href=url_for(city) = city.name
+- content_for :title, @static_page.title
+
+section.intro
+  .container
+    h1.title = @static_page.title
+
+= render @static_page.sections.with_translations(locale)
