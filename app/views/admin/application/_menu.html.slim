@@ -13,7 +13,7 @@
       .title = translate 'misc.menu.pages'
       .menu
         - if policy(Article).index?
-          = link_to [:admin, Article], class: "#{'active' if controller_name == 'articles'} item"
+          = link_to [:admin, Article], class: "#{'active' if ['articles', 'categories'].include? controller_name} item"
             i.file.text.icon
             = Article.model_name.human(count: -1)
 
@@ -31,11 +31,6 @@
     .item
       .title = translate 'misc.menu.resources'
       .menu
-        - if policy(Category).index?
-          = link_to [:admin, Category], class: "#{'active' if controller_name == 'categories'} item"
-            i.hashtag.icon
-            = Category.model_name.human(count: -1)
-
         - if policy(SubtleSystemNode).index?
           = link_to [:admin, SubtleSystemNode], class: "#{'active' if controller_name == 'subtle_system_nodes'} item"
             i.sun.icon

@@ -1,4 +1,11 @@
 
 - content_for :title, Article.model_name.human(count: -1)
 
+- if policy(Category).edit?
+  a.ui.tiny.compact.right.floated.basic.labeled.icon.button href=admin_categories_path
+    i.hashtag.icon
+    = Category.model_name.human(count: -1)
+
+.clearfix
+
 = render 'admin/application_pages/index', model: Article, pages: @articles
