@@ -5,6 +5,11 @@ module Admin
       set_model City
     end
 
+    def new
+      super
+      @city.generate_default_sections!
+    end
+
     def create
       super city_params
     end

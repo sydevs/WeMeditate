@@ -6,7 +6,6 @@ class CitiesController < ApplicationController
   end
 
   def country
-    #@cities = City.with_translations(I18n.locale).where(country: City.countries[params[:country_code]])
     @static_page = StaticPage.find_by(role: :country)
     @breadcrumbs = [
       { name: City.model_name.human(count: -1), url: cities_path },

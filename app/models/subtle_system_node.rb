@@ -36,4 +36,14 @@ class SubtleSystemNode < ApplicationRecord
     sections.new label: 'Ancient Wisdom', content_type: :text, format: :ancient_wisdom
   end
 
+  def generate_required_sections!
+    ensure_special_section_exists! :treatments
+  end
+
+  def ensure_special_section_exists! format
+    unless sections.exists?(content_type: :special, format: format)
+      sections.new(content_type: :special, format: format)
+    end
+  end
+
 end

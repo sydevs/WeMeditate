@@ -6,12 +6,12 @@ module Admin
 
     def new
       @page = StaticPage.new role: params[:role]
-      @page.generate_default_sections!
+      @page.generate_required_sections!
       set_instance_variable
     end
 
     def edit
-      @static_page.generate_default_sections!
+      @static_page.generate_required_sections!
       super
     end
 

@@ -11,6 +11,7 @@ module Admin
     end
 
     def edit
+      @subtle_system_node.generate_required_sections!
       super
     end
 

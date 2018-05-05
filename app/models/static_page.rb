@@ -32,7 +32,7 @@ class StaticPage < ApplicationRecord
     StaticPage.roles.keys - StaticPage.pluck(:role)
   end
 
-  def generate_default_sections!
+  def generate_required_sections!
     case role.to_sym
     when :home
       ensure_special_section_exists! :banner

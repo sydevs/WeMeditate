@@ -40,9 +40,19 @@ class City < ApplicationRecord
     "#{name}, #{country_name}"
   end
 
+  def generate_default_sections!
+    sections.new label: 'Value of Collective Meditation', content_type: :text, format: :just_text
+    sections.new label: 'What to Expect', content_type: :text, format: :box_over_image
+    sections.new label: 'Testimonial', content_type: :video
+    sections.new content_type: :special, format: :venue_map
+    sections.new content_type: :special, format: :venue_registration
+    sections.new label: 'Contact Locals', content_type: :action, format: :contact_list
+    sections.new label: 'FAQ', content_type: :text, format: :just_text
+    sections.new label: 'Signup Call to Action', content_type: :action, format: :button
+  end
+
   private
     def disable_drafts
       update_column :published_at, DateTime.now
     end
-
 end

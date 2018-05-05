@@ -92,7 +92,7 @@
     - elsif not allow.update_structure?
       .ui.label = translate 'messages.not_set'
 
-  - if allow.update_structure?
+  - if allow.update_venues?
     = render 'admin/application/repeatable_fields', f: f, attribute: :venues, items: f.object.venues do |ff, item|
       = ff.text_field :room_information, value: item['room_information'], placeholder: City.human_attribute_name(:room_information), name: "#{ff.object_name}[room_information][]"
       = ff.hidden_field :previous_address, value: item['address'], name: "#{ff.object_name}[previous_address][]"
