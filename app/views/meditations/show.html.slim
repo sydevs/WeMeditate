@@ -2,9 +2,8 @@
 - content_for :title, "Meditation: #{@meditation.name}"
 
 .background style="background-image: url(#{image_path @meditation.image.url})"
-  .container
-    = link_to Meditation, class: 'back' do
-      i.left.arrow.icon
+  = link_to Meditation, class: 'back' do
+    i.left.arrow.icon
 
 audio#audio-player controls=true
   source src=@meditation.audio_url type='audio/mp3'
