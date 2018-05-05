@@ -1403,3 +1403,15 @@ records:
       action_title: No classes in your city?
       action_subtitle: Visit the free webinar!
       action_text: Let's go
+
+
+# FOR STATIC PAGE: world
+  - sprig_id: 2301
+    order: 1
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'world').id %>
+    content_type: special
+    format: world
+    title: Find local classes near you
+    text: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    action: Choose a country

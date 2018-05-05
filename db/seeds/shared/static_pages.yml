@@ -33,3 +33,6 @@ records:
   - sprig_id: country
     role: <%= StaticPage.roles[:country] %>
     title: Meditation classes
+  - sprig_id: world
+    role: <%= StaticPage.roles[:world] %>
+    title: Meditation classes

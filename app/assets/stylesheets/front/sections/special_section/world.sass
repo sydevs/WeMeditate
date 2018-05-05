@@ -1,0 +1,67 @@
+@import "../../../mixins/vars"
+
+section.type-special.format-world
+  padding-top: 1em
+
+  svg
+    opacity: 0.75
+
+    path
+      fill: $color-country-map
+      stroke: none
+      fill-opacity: 1
+
+  .wrapper
+    position: absolute
+    top: 12%
+    left: 0
+    right: 0
+    text-align: center
+
+    .title
+      font-size: 2em
+      margin-bottom: 0.25em
+
+    p
+      margin-bottom: 2em
+
+    .action
+      max-width: 400px
+      width: 90%
+      margin: auto
+
+      .awesomplete
+        width: 100%
+
+      input
+        appearance: none
+        width: 100%
+        margin-bottom: 1em
+        padding: 0.8em
+        font-size: 1em
+        background: white
+
+      ul
+        box-shadow: none
+        border-radius: 0
+        text-align: left
+
+        > li
+          background: white
+          border: none
+          padding: 0.8em
+          font-size: 1em
+
+          &:hover
+            background: transparentize($background-blue, 0.5)
+
+          &[aria-selected="true"]
+            background: $background-blue
+            color: $color-text-darker
+
+          mark
+            background: none
+            font-family: $raleway-semi
+
+        &:before
+          display: none

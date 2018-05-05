@@ -1,8 +1,4 @@
 
-.container style='text-align: center; margin-top: 5em'
-  h1 Not yet fully implemented
-  h2 Cities pages
+- content_for :title, @static_page.title
 
-  ul
-    - @cities.each do |city|
-      li: a href=url_for(city) = city.full_name
+= render @static_page.sections.with_translations(locale)

@@ -39,7 +39,7 @@ Rails.application.routes.draw do
       end
 
       resources :cities, only: [:show, :index]
-      get '/countries/:country_code', controller: :cities, action: :country, as: :countries
+      get '/countries/:country_code', controller: :cities, action: :country, as: :country
 
       resources :categories, only: [:show] # TODO: Remove this
       resources :meditations, only: [:index, :show]

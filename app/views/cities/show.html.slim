@@ -6,13 +6,13 @@ section.intro class="#{'banner' if banner_style}" style=banner_style
   .container
     h1.title = @city.name
 
-.container
+//.container
   h4 Attributes
   ul
     - @city.attributes.each do |key, value|
       li #{key}: #{value}
 
-.container
+//.container
   h4 Programs
   - if @city.venues.present?
     ul

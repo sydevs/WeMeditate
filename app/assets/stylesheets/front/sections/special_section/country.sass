@@ -23,7 +23,7 @@ section.type-special.format-country
       opacity: 0.8
 
       path
-        fill: rgb(249, 226, 200)
+        fill: $color-country-map
         stroke: none
         fill-opacity: 1
 
@@ -55,13 +55,20 @@ section.type-special.format-country
         background: image-url('sections/country/dot.svg') no-repeat
         background-size: cover
 
+  .main.cities
+    margin-top: 3em
+    text-align: center
+
   > .extra,
   > .action
     text-align: center
-    position: absolute
-    bottom: 0
-    right: 0
     padding: 4%
+    margin-bottom: -4%
+
+    &:not(.static)
+      position: absolute
+      bottom: 0
+      right: 0
 
     h3
       margin: 0

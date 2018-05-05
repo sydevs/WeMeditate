@@ -1,0 +1,14 @@
+
+.container
+  = inline_svg 'sections/world/map.svg'
+
+  .wrapper
+    h2.title = section.title
+    p = section.text
+
+    .action
+      input.country.autocomplete list='countries-list' placeholder=section.action
+
+datalist#countries-list
+  - I18nData.countries(locale).each do |country_code, country_name|
+    option value=country_path(country_code: country_code.downcase) = country_name
