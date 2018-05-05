@@ -7,6 +7,21 @@ class ApplicationController < ActionController::Base
     @static_page = StaticPage.includes(:sections).find_by(role: :home)
   end
 
+  def contact
+    if not params[:email_address].present?
+      @message = 'You must provide an email address.'
+      @success = false
+    elsif not params[:subject].present? or not params[:message].present?
+      @message = 'You forgot to fill out a subject and message.'
+      @success = false
+    else
+      # TODO: Send the email
+
+      @message = 'You\'re message has been sent.'
+      @success = true
+    end
+  end
+
   def subscribe
     if not params[:email_address].present?
       @message = 'You must provide an email address.'

@@ -1,0 +1,9 @@
+var contact_message_elements = $('.contact-form .message')
+
+<% if @success %>
+  contact_message_elements.removeClass('negative').addClass('positive')
+<% else %>
+  contact_message_elements.removeClass('positive').addClass('negative')
+<% end %>
+
+contact_message_elements.text('<%= @message %>').show()

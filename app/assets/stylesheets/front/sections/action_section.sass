@@ -1,7 +1,8 @@
 @import "../../mixins/vars"
 
 section.type-action
-  &.format-signup
+  &.format-signup,
+  &.format-contact-form
     background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.18) 25%,rgba(241,212,175,.7) 100%)
 
     h2.title
@@ -18,6 +19,9 @@ section.type-action
 
     form
       margin-top: 4em
+
+    .fields
+      margin-bottom: 4em
 
     .wrapper
       padding: 6.5em

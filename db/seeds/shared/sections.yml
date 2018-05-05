@@ -454,10 +454,11 @@ records:
     order: 1
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'contact').id %>
-    content_type: text
-    format: just_text
-    title: Contact form
-    text: Coming soon
+    content_type: action
+    format: contact_form
+    title: Contact Us
+    text: Your contact information will only be used by us to reply to you.
+    action: Submit
 
 
 # FOR STATIC PAGE: shri_mataji

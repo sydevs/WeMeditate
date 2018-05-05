@@ -32,6 +32,7 @@ Rails.application.routes.draw do
         resources :subtle_system_nodes, except: [:show]
       end
 
+      post :contact, to: 'application#contact'
       post :subscribe, to: 'application#subscribe'
 
       resources :articles, only: [:index, :show], path: 'inspiration' do

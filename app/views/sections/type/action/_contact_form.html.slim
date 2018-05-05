@@ -1,0 +1,16 @@
+.wrapper.centered
+  .simple.illustration.pre.divider
+  h2.title = section.title
+  .sub.title = section.subtitle
+  .title = section.text
+
+  = form_tag contact_path, class: 'contact-form', remote: true do
+    p.message
+    p.fields
+      = email_field_tag :email_address, nil, placeholder: 'Your email'
+      = text_field_tag :subject, nil, placeholder: 'Subject'
+      = text_area_tag :message, nil, placeholder: 'Message', rows: 1
+    p
+      button.box.button = section.action
+
+  .simple.illustration.post.divider
