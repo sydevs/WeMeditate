@@ -4,7 +4,8 @@
 .container
   - if section.title.present?
     h2.title = section.title
-  = markdown section.text if section.text.present?
+
+  = section.text&.html_safe
 
   .carousel
     - use_single_image = (section.images.count != items.count)

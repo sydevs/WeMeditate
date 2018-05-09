@@ -4,7 +4,7 @@
   .content
     .content-box
       h2.title = section.title
-      = markdown section.text
+      = section.text&.html_safe
       - if section.action.present? and section.url.present?
         a.box.button href=section.url = section.action
 

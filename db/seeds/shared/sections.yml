@@ -10,13 +10,10 @@ records:
     format: with_quote
     title: Section 1
     text: |-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
-
-      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
-
-      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
-
-      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
     quote: Fusce faucibus commodo tempor. Nunc consequat lectus et ipsum rutrum pellentesque. Cras vulputate turpis sed neque dictum blandit. Maecenas hendrerit eu nulla vel tempus. Suspendisse eget purus sit amet dolor vulputate convallis. Morbi hendrerit enim nec interdum iaculis. Nullam eget massa orci.
     order: 1
   - sprig_id: 2
@@ -26,13 +23,10 @@ records:
     format: with_image
     title: Section 2
     text: |-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
-
-      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
-
-      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
-
-      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
     images:
       - <%= sprig_file('articles/callout.jpg') %>
     credit: John Smith
@@ -53,13 +47,10 @@ records:
     format: just_text
     title: Section 3
     text: |-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
-
-      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
-
-      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
-
-      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
     order: 4
   - sprig_id: 5
     page_type: Article
@@ -85,13 +76,10 @@ records:
     format: just_text
     title: Section 4
     text: |-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
-
-      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
-
-      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
-
-      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
     order: 7
   - sprig_id: 8
     page_type: Article
@@ -111,13 +99,10 @@ records:
     format: just_text
     title: Section 5
     text: |-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
-
-      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
-
-      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
-
-      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
     order: 9
   - sprig_id: 10
     page_type: Article
@@ -158,13 +143,10 @@ records:
     format: with_quote
     title: Section 1
     text: |-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
-
-      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
-
-      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
-
-      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
     quote: Fusce faucibus commodo tempor. Nunc consequat lectus et ipsum rutrum pellentesque. Cras vulputate turpis sed neque dictum blandit. Maecenas hendrerit eu nulla vel tempus. Suspendisse eget purus sit amet dolor vulputate convallis. Morbi hendrerit enim nec interdum iaculis. Nullam eget massa orci.
     order: 1
 
@@ -177,13 +159,10 @@ records:
     format: just_text
     title: Section 1
     text: |-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
-
-      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
-
-      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
-
-      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
     order: 1
   - sprig_id: 202
     page_type: Article
@@ -192,13 +171,10 @@ records:
     format: with_quote
     title: Section 2
     text: |-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
-
-      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
-
-      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
-
-      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
     quote: Fusce faucibus commodo tempor. Nunc consequat lectus et ipsum rutrum pellentesque. Cras vulputate turpis sed neque dictum blandit. Maecenas hendrerit eu nulla vel tempus. Suspendisse eget purus sit amet dolor vulputate convallis. Morbi hendrerit enim nec interdum iaculis. Nullam eget massa orci.
     order: 2
   - sprig_id: 203
@@ -208,13 +184,10 @@ records:
     format: with_image
     title: Section 3
     text: |-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
-
-      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
-
-      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
-
-      Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
     images:
       - <%= sprig_file('articles/callout.jpg') %>
     credit: John Smith
@@ -226,9 +199,8 @@ records:
     format: box_over_image
     title: Section 4
     text: |-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
-
-      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
     images:
       - <%= sprig_file('articles/behind.jpg') %>
     extra:
@@ -241,9 +213,8 @@ records:
     format: box_with_lefthand_image
     title: Section 5
     text: |-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
-
-      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
     images:
       - <%= sprig_file('articles/lefthand.jpg') %>
     order: 5
@@ -254,9 +225,8 @@ records:
     format: box_with_righthand_image
     title: Section 6
     text: |-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
-
-      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
     images:
       - <%= sprig_file('articles/righthand.jpg') %>
     order: 6
@@ -442,11 +412,9 @@ records:
     format: just_text
     title: About We Meditate
     text: |-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.
-
-      Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
-
-      In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
 
 
 # FOR STATIC PAGE: contact
@@ -480,9 +448,8 @@ records:
     format: box_over_image
     title: What is Sahaja Yoga?
     text: |-
-      Shri Mataji maintained that there is an innate spiritual potential within every human being, and it can be spontaneously awakened, bringing one into the state of spontaneous meditation. The inner balance and stress-reduction that accompanies the practice of Sahaja Yoga meditation has already benefited hundreds of thousands worldwide.
-
-      The ability to quickly and easily activate our innate, spiritual energy - and experience its benefits differentiates Sahaja Yoga from other forms of meditation. With practice, individuals are able to direct their own energy and redress mental, physical and emotional imbalances to achieve a state of well-being, serenity and fulfillment.
+      <p>Shri Mataji maintained that there is an innate spiritual potential within every human being, and it can be spontaneously awakened, bringing one into the state of spontaneous meditation. The inner balance and stress-reduction that accompanies the practice of Sahaja Yoga meditation has already benefited hundreds of thousands worldwide.</p>
+      <p>The ability to quickly and easily activate our innate, spiritual energy - and experience its benefits differentiates Sahaja Yoga from other forms of meditation. With practice, individuals are able to direct their own energy and redress mental, physical and emotional imbalances to achieve a state of well-being, serenity and fulfillment.</p>
     action: More about Sahaja Yoga
     url: '#'
     images:
@@ -619,9 +586,8 @@ records:
     format: just_text
     title: Methods for improving meditation
     text: |-
-      Using simple methods, a person gets the opportunity to purify his energy centers and thereby adjust the state of his organs and systems (blood, lymphatic, etc.).
-
-      In people who have received self-realization, without medicines, the blood composition is corrected, the metabolism is normalized, stress is eliminated - the cause of many complex diseases.
+      <p>Using simple methods, a person gets the opportunity to purify his energy centers and thereby adjust the state of his organs and systems (blood, lymphatic, etc.).</p>
+      <p>In people who have received self-realization, without medicines, the blood composition is corrected, the metabolism is normalized, stress is eliminated - the cause of many complex diseases.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_1
@@ -651,11 +617,9 @@ records:
     format: box_over_image
     title: How to open Mooladhara?
     text: |-
-      It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.
-
-      'Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.'
-
-      To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.
+      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
+      '<p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>'
+      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
     images:
       - <%= sprig_file('subtle_system/background.jpg') %>
   - sprig_id: 1103
@@ -687,12 +651,10 @@ records:
     content_type: text
     format: ancient_wisdom
     text: |-
-      Header 1
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
-      Header 2
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
+      <p><strong>Header 1</strong></p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p><strong>Header 2</strong></p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_2
@@ -722,11 +684,9 @@ records:
     format: box_over_image
     title: How to open Swadisthan?
     text: |-
-      It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.
-
-      'Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.'
-
-      To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.
+      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
+      '<p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>'
+      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
     images:
       - <%= sprig_file('subtle_system/background.jpg') %>
   - sprig_id: 1203
@@ -758,12 +718,10 @@ records:
     content_type: text
     format: ancient_wisdom
     text: |-
-      Header 1
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
-      Header 2
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
+      <p><strong>Header 1</strong></p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p><strong>Header 2</strong></p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_3
@@ -793,11 +751,9 @@ records:
     format: box_over_image
     title: How to open Nabhi?
     text: |-
-      It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.
-
-      'Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.'
-
-      To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.
+      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
+      '<p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>'
+      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
     images:
       - <%= sprig_file('subtle_system/background.jpg') %>
   - sprig_id: 1303
@@ -829,12 +785,10 @@ records:
     content_type: text
     format: ancient_wisdom
     text: |-
-      Header 1
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
-      Header 2
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
+      <p><strong>Header 1</strong></p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p><strong>Header 2</strong></p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_3b
@@ -891,12 +845,10 @@ records:
     content_type: text
     format: ancient_wisdom
     text: |-
-      Header 1
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
-      Header 2
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
+      <p><strong>Header 1</strong></p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p><strong>Header 2</strong></p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_4
@@ -926,11 +878,9 @@ records:
     format: box_over_image
     title: How to open Anahat?
     text: |-
-      It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.
-
-      'Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.'
-
-      To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.
+      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
+      '<p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>'
+      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
     images:
       - <%= sprig_file('subtle_system/background.jpg') %>
   - sprig_id: 1503
@@ -962,12 +912,10 @@ records:
     content_type: text
     format: ancient_wisdom
     text: |-
-      Header 1
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
-      Header 2
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
+      <p><strong>Header 1</strong></p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p><strong>Header 2</strong></p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_5
@@ -997,11 +945,9 @@ records:
     format: box_over_image
     title: How to open Vishuddhi?
     text: |-
-      It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.
-
-      'Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.'
-
-      To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.
+      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
+      '<p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>'
+      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
     images:
       - <%= sprig_file('subtle_system/background.jpg') %>
   - sprig_id: 1603
@@ -1033,12 +979,10 @@ records:
     content_type: text
     format: ancient_wisdom
     text: |-
-      Header 1
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
-      Header 2
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
+      <p><strong>Header 1</strong></p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p><strong>Header 2</strong></p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_6
@@ -1068,11 +1012,9 @@ records:
     format: box_over_image
     title: How to open Agnya?
     text: |-
-      It is important to try to show Agnya quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.
-
-      'Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.'
-
-      To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.
+      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
+      '<p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>'
+      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
     images:
       - <%= sprig_file('subtle_system/background.jpg') %>
   - sprig_id: 1703
@@ -1104,12 +1046,10 @@ records:
     content_type: text
     format: ancient_wisdom
     text: |-
-      Header 1
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
-      Header 2
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
+      <p><strong>Header 1</strong></p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p><strong>Header 2</strong></p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_7
@@ -1139,11 +1079,9 @@ records:
     format: box_over_image
     title: How to open Sahasrara?
     text: |-
-      It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.
-
-      'Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.'
-
-      To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.
+      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
+      '<p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>'
+      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
     images:
       - <%= sprig_file('subtle_system/background.jpg') %>
   - sprig_id: 1803
@@ -1175,12 +1113,10 @@ records:
     content_type: text
     format: ancient_wisdom
     text: |-
-      Header 1
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
-      Header 2
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
+      <p><strong>Header 1</strong></p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p><strong>Header 2</strong></p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: kundalini
@@ -1209,12 +1145,10 @@ records:
     content_type: text
     format: ancient_wisdom
     text: |-
-      Header 1
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
-      Header 2
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
+      <p><strong>Header 1</strong></p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p><strong>Header 2</strong></p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: channel_center
@@ -1235,11 +1169,9 @@ records:
     format: box_over_image
     title: How to strengthen the central channel?
     text: |-
-      It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.
-
-      'Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.'
-
-      To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.
+      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
+      '<p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>'
+      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
     images:
       - <%= sprig_file('subtle_system/background.jpg') %>
   - sprig_id: 2003
@@ -1259,12 +1191,10 @@ records:
     content_type: text
     format: ancient_wisdom
     text: |-
-      Header 1
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
-      Header 2
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
+      <p><strong>Header 1</strong></p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p><strong>Header 2</strong></p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: channel_left
@@ -1285,11 +1215,9 @@ records:
     format: box_over_image
     title: How to strengthen the central channel?
     text: |-
-      It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.
-
-      'Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.'
-
-      To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.
+      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
+      '<p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>'
+      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
     images:
       - <%= sprig_file('subtle_system/background.jpg') %>
   - sprig_id: 2103
@@ -1321,12 +1249,10 @@ records:
     content_type: text
     format: ancient_wisdom
     text: |-
-      Header 1
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
-      Header 2
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
+      <p><strong>Header 1</strong></p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p><strong>Header 2</strong></p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: channel_right
@@ -1347,11 +1273,9 @@ records:
     format: box_over_image
     title: How to strengthen the central channel?
     text: |-
-      It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.
-
-      'Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.'
-
-      To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.
+      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
+      '<p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>'
+      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
     images:
       - <%= sprig_file('subtle_system/background.jpg') %>
   - sprig_id: 2103
@@ -1383,12 +1307,10 @@ records:
     content_type: text
     format: ancient_wisdom
     text: |-
-      Header 1
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
-      Header 2
-      --------
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
+      <p><strong>Header 1</strong></p>
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
+      <p><strong>Header 2</strong></p>
+      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR STATIC PAGE: world
@@ -1434,6 +1356,7 @@ records:
     order: 2
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'city').id %>
+    label: Better to Meditation Together
     content_type: text
     format: just_text
     title: Meditation works better in a group
@@ -1472,20 +1395,20 @@ records:
     order: 7
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'city').id %>
+    label: Frequently Asked Questions
     content_type: text
     format: just_text
     title: FAQ
     text: |-
-      What to bring with me?
-      ----------------------
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet harum iste similique, vel, cupiditate modi voluptatibus necessitatibus eaque ut rem, esse corrupti vero itaque eos fugiat quisquam ipsum mollitia libero.
-      Why is it free?
-      ---------------
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet harum iste similique, vel, cupiditate modi voluptatibus necessitatibus eaque ut rem, esse corrupti vero itaque eos fugiat quisquam ipsum mollitia libero.
+      <p><strong>What to bring with me?</strong></p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet harum iste similique, vel, cupiditate modi voluptatibus necessitatibus eaque ut rem, esse corrupti vero itaque eos fugiat quisquam ipsum mollitia libero.</p>
+      <p><strong>Why is it free?</strong></p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet harum iste similique, vel, cupiditate modi voluptatibus necessitatibus eaque ut rem, esse corrupti vero itaque eos fugiat quisquam ipsum mollitia libero.</p>
   - sprig_id: 2408
     order: 8
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'city').id %>
+    label: Sign Up Button
     content_type: action
     format: button
     action: Sign up for a free class
@@ -1501,9 +1424,9 @@ records:
     format: box_with_righthand_image
     title: What to expect at a class?
     text: |-
-      Iste exercitationem quaerat, praesentium quod corrupti beatae eligendi quasi nostrum natus ut, ea accusantium repellat ex placeat expedita dolores ad quas optio.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste exercitationem quaerat, praesentium quod corrupti beatae eligendi quasi nostrum natus ut, ea accusantium repellat ex placeat expedita dolores ad quas optio.
-      Ea accusantium repellat ex placeat expedita dolores ad quas optio.
+      <p>Iste exercitationem quaerat, praesentium quod corrupti beatae eligendi quasi nostrum natus ut, ea accusantium repellat ex placeat expedita dolores ad quas optio.</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste exercitationem quaerat, praesentium quod corrupti beatae eligendi quasi nostrum natus ut, ea accusantium repellat ex placeat expedita dolores ad quas optio.</p>
+      <p>Ea accusantium repellat ex placeat expedita dolores ad quas optio.</p>
     images:
       - <%= sprig_file('cities/class.jpg') %>
   - sprig_id: 2502

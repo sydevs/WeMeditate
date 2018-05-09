@@ -1,9 +1,9 @@
 
 .section.wrapper
   h2.title = section.title
-  = markdown section.text do
-    blockquote.text.callout
-      p = section.quote
+  blockquote.text.callout
+    p = section.quote
+  = section.text&.html_safe
 
 //section id="section-#{index}" data-section=index
   .section-wrapper

@@ -13,7 +13,7 @@
   = yield f
 
   = f.input :sections do
-    div class="#{'sort-list' if allow.update_structure?}"
+    .sections.list class="#{'sort-list' if allow.update_structure?}"
       = f.fields_for :sections do |ff|
         = render 'admin/sections/form', f: ff, allow: allow
 

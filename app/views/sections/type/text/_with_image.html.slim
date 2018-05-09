@@ -1,11 +1,11 @@
 
 .section.wrapper
   h2.title = section.title
-  = markdown section.text do
-    figure.image.callout
-      a.popout.mfp-image href=section.image.url
-        img alt=section.image.identifier src=section.image.url
-      figcaption.credit Credit • #{section.credit}
+  figure.image.callout
+    a.popout.mfp-image href=section.image.url
+      img alt=section.image.identifier src=section.image.url
+    figcaption.credit Credit • #{section.credit}
+  = section.text&.html_safe
 
 //section id="section-#{index}" data-section=index
   .section-wrapper

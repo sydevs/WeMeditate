@@ -3,7 +3,7 @@
 
 .container
   h2.title = section.title
-  = markdown section.text if section.text.present?
+  = section.text&.html_safe
 
   #grid.items
     - items.each_with_index do |item, index|

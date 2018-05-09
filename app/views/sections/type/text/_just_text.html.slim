@@ -1,7 +1,7 @@
 
 .section.wrapper
   h2.title = section.title
-  = markdown section.text
+  = section.text&.html_safe
 
 //section id="section-#{index}" data-section=index
   .section-wrapper

@@ -39,7 +39,6 @@ class Section < ApplicationRecord
   end
 
   def extra_attr key, default: nil
-    puts "#{key} from #{extra} = #{extra[key] if extra.present?}"
     if extra.present? and extra[key].present?
       extra[key]
     else

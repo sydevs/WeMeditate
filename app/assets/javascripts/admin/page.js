@@ -1,10 +1,24 @@
 
-$(document).on('turbolinks:load', function() {
-  $('body').on('change', '.section .content-type.field input', function() {
+let Page = {
+  form: null, // To be set on load
+
+  load: function() {
+    console.log('Load Page.js')
+    Page.form = $('#page-form')
+    Page.form.on('change', '.section .field-content-type select', Page._on_section_type_change)
+    Page.form.on('change', '.section .field-format select', Page._on_section_format_change)
+    Page.form.on('change', '.child .delete-child', Page._on_delete_child_change)
+    Page.form.on('click', '.remove-child-button', Page._on_remove_child)
+    Page.form.on('click', '.sections.list [data-form-prepend]', Page._on_prepend_section)
+    Page.form.on('submit', Page._on_submit)
+  },
+
+  _on_section_type_change: function() {
+    console.log('On section content type change')
     var section = $(this).closest('.section')
 
     section.removeClass(function (index, className) {
-      return (className.match (/(^|\s)(format|type)-\S+/g) || []).join(' ')
+      return (className.match(/(^|\s)(format|type)-\S+/g) || []).join(' ')
     });
 
     content_type = $(this).val()
@@ -12,9 +26,9 @@ $(document).on('turbolinks:load', function() {
 
     format = $('.section .fields.for.'+content_type+' .field-format option:selected').val()
     section.addClass('format-' + format)
-  })
+  },
 
-  $('body').on('change', '.section .field-format select', function() {
+  _on_section_format_change: function() {
     var section = $(this).closest('.section')
 
     section.removeClass(function (index, className) {
@@ -22,40 +36,40 @@ $(document).on('turbolinks:load', function() {
     });
 
     section.addClass('format-' + $(this).children("option").filter(":selected").val())
-  })
+  },
 
-  $('body').on('click', '[data-form-prepend]', function(e) {
-    var obj = $($(this).attr('data-form-prepend'))
+  _on_prepend_section: function() {
+    var section = $($(this).attr('data-form-prepend'))
     var id = (new Date()).getTime()
 
-    obj.find('input, select, textarea').each(function() {
+    section.find('input, select, textarea').each(function() {
       $(this).attr('name', function() {
         return $(this).attr('name').replace('new_record', id)
       })
     })
 
     $('.ui.accordion').accordion('close', 0)
-    obj.find('.ui.dropdown').dropdown() // TODO: Remove this temp code
-    obj.insertBefore(this)
-    obj.accordion('open', 0) // TODO: Remove this temp code
+    section.insertBefore(this)
+    Admin.initialize(section)
+    section.accordion('open', 0)
 
     return false
-  })
+  },
 
-  $('body').on('change', '.child .delete-child', function() {
+  _on_delete_child_change: function() {
     var child = $(this).closest('.child')
     child.toggleClass('deleting', this.checked)
 
     if (this.checked) {
       child.accordion('close', 0)
     }
-  })
+  },
 
-  $('body').on('click', '.remove-child-button', function() {
+  _on_remove_child: function() {
     $(this).closest('.child').remove()
-  })
+  },
 
-  $('#page-form').on('submit', function() {
+  _on_submit: function() {
     $('.ui.accordion').accordion('close', 0)
 
     $(this).find('.section').each(function() {
@@ -64,5 +78,11 @@ $(document).on('turbolinks:load', function() {
         $(this).find('.grouped.fields.for:not(.'+content_type+') :input').attr('disabled', true)
       }
     })
-  })
+  },
+}
+
+$(document).on('turbolinks:load', function() {
+  if ($('#page-form').length > 0) {
+    Page.load()
+  }
 })

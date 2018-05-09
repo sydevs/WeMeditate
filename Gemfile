@@ -49,7 +49,6 @@ gem 'jquery-rails'
 gem 'sortable-rails'
 gem 'google-analytics-rails'
 gem 'autosize'
-gem 'redcarpet' # To parse markdown
 gem 'inline_svg' # To embed svg files
 
 # Models
@@ -65,6 +64,7 @@ gem 'mini_magick'
 
 # Admin
 gem 'simple_form'
+gem 'quilljs-rails'
 
 # Globalize (translatable models)
 gem 'globalize'
