@@ -1391,8 +1391,20 @@ records:
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eos ad voluptas esse reprehenderit voluptate harum! Ullam necessitatibus ea consequuntur atque, dolorum similique consequatur animi fugit amet, omnis nemo impedit!
 
 
-# FOR STATIC PAGE: country
+# FOR STATIC PAGE: world
   - sprig_id: 2201
+    order: 1
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'world').id %>
+    content_type: special
+    format: world
+    title: Find local classes near you
+    text: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    action: Choose a country
+
+
+# FOR STATIC PAGE: country
+  - sprig_id: 2301
     order: 1
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'country').id %>
@@ -1406,13 +1418,101 @@ records:
       action_text: Let's go
 
 
-# FOR STATIC PAGE: world
-  - sprig_id: 2301
+# FOR STATIC PAGE: city
+  - sprig_id: 2401
     order: 1
     page_type: StaticPage
-    page_id: <%= sprig_record(StaticPage, 'world').id %>
+    page_id: <%= sprig_record(StaticPage, 'city').id %>
     content_type: special
-    format: world
-    title: Find local classes near you
-    text: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-    action: Choose a country
+    format: banner
+    title: Meditation in %city
+    text: Free classes for beginners - unlock your true potential
+    action: Join the class
+    extra:
+      banner_style: city_page
+  - sprig_id: 2402
+    order: 2
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'city').id %>
+    content_type: text
+    format: just_text
+    title: Meditation works better in a group
+    text: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae at labore temporibus nesciunt minima ipsum nobis quidem ex nam tempora perferendis voluptas architecto quisquam, soluta inventore minus quibusdam mollitia sunt!
+  - sprig_id: 2403
+    order: 3
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'city').id %>
+    content_type: special
+    format: city_sections
+  - sprig_id: 2404
+    order: 4
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'city').id %>
+    content_type: special
+    format: venue_map
+    title: 'Address and time:'
+  - sprig_id: 2405
+    order: 5
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'city').id %>
+    content_type: special
+    format: venue_registration
+    title: Sign up for free classes near you
+    action: Sign up
+  - sprig_id: 2406
+    order: 6
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'city').id %>
+    content_type: special
+    format: local_contacts
+    title: Questions?
+    subtitle: Ask the instructors directly!
+    action: Ask
+  - sprig_id: 2407
+    order: 7
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'city').id %>
+    content_type: text
+    format: just_text
+    title: FAQ
+    text: |-
+      What to bring with me?
+      ----------------------
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet harum iste similique, vel, cupiditate modi voluptatibus necessitatibus eaque ut rem, esse corrupti vero itaque eos fugiat quisquam ipsum mollitia libero.
+      Why is it free?
+      ---------------
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet harum iste similique, vel, cupiditate modi voluptatibus necessitatibus eaque ut rem, esse corrupti vero itaque eos fugiat quisquam ipsum mollitia libero.
+  - sprig_id: 2408
+    order: 8
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'city').id %>
+    content_type: action
+    format: button
+    action: Sign up for a free class
+    url: '#signup'
+
+
+# FOR CITY: los_angeles
+  - sprig_id: 2501
+    order: 1
+    page_type: City
+    page_id: <%= sprig_record(City, 'los_angeles').id %>
+    content_type: text
+    format: box_with_righthand_image
+    title: What to expect at a class?
+    text: |-
+      Iste exercitationem quaerat, praesentium quod corrupti beatae eligendi quasi nostrum natus ut, ea accusantium repellat ex placeat expedita dolores ad quas optio.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste exercitationem quaerat, praesentium quod corrupti beatae eligendi quasi nostrum natus ut, ea accusantium repellat ex placeat expedita dolores ad quas optio.
+      Ea accusantium repellat ex placeat expedita dolores ad quas optio.
+    images:
+      - <%= sprig_file('cities/class.jpg') %>
+  - sprig_id: 2502
+    order: 2
+    page_type: City
+    page_id: <%= sprig_record(City, 'los_angeles').id %>
+    content_type: video
+    title: "It was great - I learned so much about myself"
+    images:
+      - <%= sprig_file('general/video.jpg') %>
+    videos:
+      - <%= sprig_file('general/video.mp4') %>

@@ -11,10 +11,10 @@ class StaticPage < ApplicationRecord
 
   # Associations
   enum role: {
-    home: 0, about: 1, contact: 2, shri_mataji: 3, subtle_system: 4, sahaja_yoga: 5, kundalini: 6,
-    treatments: 11, tracks: 12, meditations: 13, country: 14, world: 15,
+    home: 0, about: 1, contact: 2, shri_mataji: 3, subtle_system: 4, sahaja_yoga: 5,
+    treatments: 11, tracks: 12, meditations: 13, country: 14, world: 15, city: 16,
   }
-  has_many :sections, -> { order(:order) }, as: :page, dependent: :delete_all
+  has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
 
   # Validations
   validates :title, presence: true
@@ -35,21 +35,27 @@ class StaticPage < ApplicationRecord
   def generate_required_sections!
     case role.to_sym
     when :home
-      ensure_special_section_exists! :banner
+      ensure_special_section_exists! :banner, { extra: { 'banner_style' => 'front_page' } }
     when :shri_mataji
       ensure_special_section_exists! :try_meditation
     when :treatments
-      ensure_special_section_exists! :banner
+      ensure_special_section_exists! :banner, { extra: { 'banner_style' => 'treatments_page' } }
     when :country
       ensure_special_section_exists! :country
+    when :city
+      ensure_special_section_exists! :banner, { extra: { 'banner_style' => 'city_page' } }
+      ensure_special_section_exists! :city_sections
+      ensure_special_section_exists! :venue_map
+      ensure_special_section_exists! :venue_registration
+      ensure_special_section_exists! :local_contacts
     when :subtle_system
       ensure_special_section_exists! :subtle_system
     end
   end
 
-  def ensure_special_section_exists! format
+  def ensure_special_section_exists! format, attrs = {}
     unless sections.exists?(content_type: :special, format: format)
-      sections.new(content_type: :special, format: format)
+      sections.new(attrs.merge!(content_type: :special, format: format))
     end
   end
 

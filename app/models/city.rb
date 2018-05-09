@@ -10,7 +10,7 @@ class City < ApplicationRecord
   friendly_id :name, use: :globalize
 
   # Associations
-  has_many :sections, -> { order(:order) }, as: :page, dependent: :delete_all
+  has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
   mount_uploader :banner, GenericImageUploader
 
   # Validations
@@ -41,14 +41,8 @@ class City < ApplicationRecord
   end
 
   def generate_default_sections!
-    sections.new label: 'Value of Collective Meditation', content_type: :text, format: :just_text
     sections.new label: 'What to Expect', content_type: :text, format: :box_over_image
     sections.new label: 'Testimonial', content_type: :video
-    sections.new content_type: :special, format: :venue_map
-    sections.new content_type: :special, format: :venue_registration
-    sections.new label: 'Contact Locals', content_type: :action, format: :contact_list
-    sections.new label: 'FAQ', content_type: :text, format: :just_text
-    sections.new label: 'Signup Call to Action', content_type: :action, format: :button
   end
 
   private

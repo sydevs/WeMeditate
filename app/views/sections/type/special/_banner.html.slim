@@ -4,15 +4,23 @@
 - classes = ["style-#{banner_style.dasherize}"]
 - classes << 'inverse' if section.extra_attr('color', default: 'light') == 'light'
 
-.background class=classes style="background-image: url(#{image_path section.image.url})"
-  - if banner_style == 'treatments_page'
-    h2 = section.text
-    h1 = section.title
-    a.action.with.circle.decoration href=section.url = section.action
-  - else
-    h1 = section.title
-    h2 = section.text
-    a.action href=section.url
-      = inline_svg 'graphics/leaf.svg'
-      div = section.action
-      = inline_svg 'graphics/leaf.svg'
+- image_url = (banner_style == 'city_page' ? @city.banner.url : section.image.url)
+
+.background class=classes style="background-image: url(#{image_path image_url})"
+  - case banner_style
+    - when 'front_page'
+      h1 = section.title
+      h2 = section.text
+      a.action href=section.url
+        = inline_svg 'graphics/leaf.svg'
+        div = section.action
+        = inline_svg 'graphics/leaf.svg'
+    - when 'treatments_page'
+      h2 = section.text
+      h1 = section.title
+      a.action.with.circle.decoration href=section.url = section.action
+    - when 'city_page'
+      h1 = section.title.gsub('%city', @city.name)
+      h2 = section.text
+      a.action href=section.url = section.action
+      //= inline_svg 'graphics/'

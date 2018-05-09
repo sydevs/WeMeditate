@@ -30,9 +30,12 @@ records:
   - sprig_id: meditations
     role: <%= StaticPage.roles[:meditations] %>
     title: Guided Meditations
-  - sprig_id: country
-    role: <%= StaticPage.roles[:country] %>
-    title: Meditation classes
   - sprig_id: world
     role: <%= StaticPage.roles[:world] %>
     title: Meditation classes
+  - sprig_id: country
+    role: <%= StaticPage.roles[:country] %>
+    title: Meditation classes
+  - sprig_id: city
+    role: <%= StaticPage.roles[:city] %>
+    title: City Page Template

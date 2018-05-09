@@ -90,6 +90,9 @@ en:
           subtle_system: About Subtle System
           sahaja_yoga: About Sahaja Yoga
           about: About Us
+          world: World Page
+          country: Country Page
+          city: City Page
         sections: Content
 
       subtle_system_node:
@@ -186,6 +189,12 @@ en:
           subtle_system: Subtle System Diagram
           chakra: Chakra / Channel
           treatments: Treatment List
+          world: World Map
+          country: Country Map
+          city_sections: City Content
+          venue_map: Program Map
+          venue_registration: Program Registration
+          local_contacts: Local Contacts
         title: Title
         subtitle: Subtitle
         sidetext: Side Text
@@ -204,6 +213,7 @@ en:
         banner_styles:
           front_page: Front Page
           treatments_page: Techniques Page
+          city_page: City Page
 
       track:
         title: Title

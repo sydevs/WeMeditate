@@ -12,7 +12,7 @@ class Article < ApplicationRecord
 
   # Associations
   belongs_to :category
-  has_many :sections, -> { order(:order) }, as: :page, dependent: :delete_all
+  has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
   mount_translated_uploader :banner, GenericImageUploader
   mount_translated_uploader :thumbnail, GenericImageUploader
   enum priority: { high: 1, normal: 0, low: -1 }

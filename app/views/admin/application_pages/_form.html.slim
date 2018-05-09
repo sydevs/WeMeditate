@@ -4,6 +4,8 @@
 - show_title_field = true unless local_assigns[:show_title_field] == false
 
 = simple_form_for [:admin, page], html: { id: 'page-form', class: "#{'error' if page.errors.present?}", novalidate: true } do |f|
+  = f.error :base
+
   - if show_title_field
     = f.input :title
     = f.input :slug, label: (page.new_record? ? t("activerecord.attributes.#{f.object.model_name.i18n_key}.slug") : url_for(page)), wrapper: :slug

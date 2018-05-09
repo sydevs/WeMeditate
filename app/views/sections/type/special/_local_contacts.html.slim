@@ -1,0 +1,22 @@
+
+- contacts = [ \
+  { \
+    name: 'John Stewart',
+    url: 'https://www.facebook.com',
+    image_url: image_path('sections/music/album.jpg'),
+  },
+  { \
+    name: 'Ann Smith',
+    url: 'https://www.facebook.com',
+    image_url: image_path('sections/music/album.jpg'),
+  },
+]
+
+h2.title = section.title
+p = section.subtitle
+.carousel
+  - contacts.each do |contact|
+    .contact
+      img src=contact[:image_url]
+      .title = contact[:name]
+      a.box.button href=contact[:url] = section.action

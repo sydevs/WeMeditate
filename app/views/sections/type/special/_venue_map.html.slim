@@ -1,0 +1,12 @@
+
+.content
+  .content-box
+    h2.title = section.title
+    - @city.venues.present?
+      .carousel
+        - @city.venues.each do |venue|
+          .address
+            div = venue['room_information']
+            div = venue['address']
+          .time #{venue['day_of_week']}. #{venue['start_time']} - #{venue['end_time']}
+.map

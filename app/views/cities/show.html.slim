@@ -1,22 +1,8 @@
 
 - content_for :title, @city.full_name
-- banner_style = @city.banner.file.present? ? "background-image: url(#{@city.banner.url})" : nil
 
-section.intro class="#{'banner' if banner_style}" style=banner_style
-  .container
-    h1.title = @city.name
-
-//.container
-  h4 Attributes
-  ul
-    - @city.attributes.each do |key, value|
-      li #{key}: #{value}
-
-//.container
-  h4 Programs
-  - if @city.venues.present?
-    ul
-      - @city.venues.each do |venue|
-        li = venue.inspect
-
-= render @city.sections
+- @static_page.sections.each_with_index do |section, index|
+  - if section.special? and section.format == 'city_sections'
+    = render @city.sections, index: index
+  - else
+    = render section, index: index

@@ -11,7 +11,7 @@ class SubtleSystemNode < ApplicationRecord
     chakra_1: 1, chakra_2: 2, chakra_3: 3, chakra_3b: 4, chakra_4: 5, chakra_5: 6, chakra_6: 7, chakra_7: 8,
     channel_left: 9, channel_right: 10, channel_center: 11, kundalini: 12,
   }
-  has_many :sections, -> { order(:order) }, as: :page, dependent: :delete_all
+  has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
 
   # Validations
   validates :name, presence: true

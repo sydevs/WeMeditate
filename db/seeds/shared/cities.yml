@@ -1,42 +1,42 @@
 options:
   find_existing_by: name
 records:
-  - sprig_id: 1
+  - sprig_id: atlanta
     country: <%= City.countries['US'] %>
     name: Atlanta
     slug: atlanta
     latitude: 33.7490
     longitude: -84.3880
     banner: <%= sprig_file('cities/background.jpg') %>
-  - sprig_id: 2
+  - sprig_id: new_york
     country: <%= City.countries['US'] %>
     name: New York
     slug: new-york
     latitude: 40.7128
     longitude: -74.0060
     banner: <%= sprig_file('cities/background.jpg') %>
-  - sprig_id: 3
+  - sprig_id: los_angeles
     country: <%= City.countries['US'] %>
     name: Los Angeles
     slug: los-angeles
     latitude: 34.0522
     longitude: -118.2437
     banner: <%= sprig_file('cities/background.jpg') %>
-  - sprig_id: 4
+  - sprig_id: detroit
     country: <%= City.countries['US'] %>
     name: Detroit
     slug: detroit
     latitude: 42.3314
     longitude: -83.0458
     banner: <%= sprig_file('cities/background.jpg') %>
-  - sprig_id: 5
+  - sprig_id: anchorage
     country: <%= City.countries['US'] %>
     name: Anchorage
     slug: anchorage
     latitude: 61.2181
     longitude: -149.9003
     banner: <%= sprig_file('cities/background.jpg') %>
-  - sprig_id: 6
+  - sprig_id: berlin
     country: <%= City.countries['DE'] %>
     name: Berlin
     slug: berlin

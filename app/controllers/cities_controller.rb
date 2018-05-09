@@ -14,6 +14,7 @@ class CitiesController < ApplicationController
   end
 
   def show
+    @static_page = StaticPage.find_by(role: :city)
     @city = City.includes(:sections).friendly.find(params[:id])
     @breadcrumbs = [
       { name: City.model_name.human(count: -1), url: cities_path },
