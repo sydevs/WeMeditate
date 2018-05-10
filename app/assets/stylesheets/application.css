@@ -11,6 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
  *= require normalize-rails
+ *= require slick
+ *= require slick-theme
  *= require_tree ./front
  *= require_self
  */

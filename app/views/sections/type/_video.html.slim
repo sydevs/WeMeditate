@@ -1,7 +1,7 @@
 
 - if section.videos.size > 1
-  .video.wrapper
-    .video.carousel
+  .wrapper
+    .video.carousel data-style='video'
       - section.videos.each_with_index do |video, index|
         .video.wrapper
           = render 'shared/video_preview', thumbnail: section.images[index].url, video_url: video.url

@@ -48,7 +48,7 @@ gem 'semantic-ui-sass'
 gem 'jquery-rails'
 gem 'sortable-rails'
 gem 'google-analytics-rails'
-gem 'autosize'
+gem 'jquery-slick-rails' # A slider library
 gem 'inline_svg' # To embed svg files
 
 # Models
@@ -64,7 +64,8 @@ gem 'mini_magick'
 
 # Admin
 gem 'simple_form'
-gem 'quilljs-rails'
+gem 'autosize' # To automatically grow text areas
+gem 'quilljs-rails' # A wysiwyg text editor
 
 # Globalize (translatable models)
 gem 'globalize'

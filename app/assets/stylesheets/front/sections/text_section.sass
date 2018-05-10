@@ -116,6 +116,8 @@ section.type-text
 
   &.format-columns
     article
+      padding: 1em
+
       .image
         text-align: center
         padding: 5px
@@ -127,13 +129,12 @@ section.type-text
         font-size: 1.3em
         line-height: 1em
 
-    .owl-item:not(:nth-child(2))
-      article
-        .image
-          padding: 25px
+    article:not(.central)
+      .image
+        padding: 25px
 
-        img
-          height: 120px
+      img
+        height: 120px
 
   &.format-ancient-wisdom
     .background

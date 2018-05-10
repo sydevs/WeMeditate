@@ -37,50 +37,41 @@ a:not(:hover) > .overlay
   max-width: 1000px
   width: 100%
   margin: auto
+  text-align: center
+
+  &.video
+    .slick-list
+      overflow: visible
+
+    .slick-slide:not(.slick-active)
+      .button, .title
+        opacity: 0
+        visibility: hidden
+
+  img
+    margin: auto
 
   .video.wrapper
     max-width: 680px
+    padding: 10px
 
-  .owl-stage
-    display: flex
-
-  .owl-item:not(.active)
-    .button, .title
-      opacity: 0
-      visibility: hidden
-
-  .owl-nav button
-    appearance: none
+  .slick-arrow
     background: #999
-    color: white
-    border: none
-    width: 65px
-    height: 65px
+    width: 60px
+    height: 60px
     transition: all .5s ease
+    z-index: 10
 
-    font-size: 23px
-    line-height: 65px
+    margin-top: -30px
 
-    position: absolute
-    top: 160px
+    &.slick-prev
+      margin-left: 30px
 
-    user-select: none
-    cursor: pointer
-    outline: none
-
-    &:first-child
-      left: 0
-      padding-right: 10px
-
-    &:last-child
-      right: 0
-      padding-left: 10px
+    &.slick-next
+      margin-right: 30px
 
     &:hover
       background: gray
-
-  > .disabled
-    display: none
 
 #video-popup
   width: 544px

@@ -7,11 +7,11 @@
 
   = section.text&.html_safe
 
-  .carousel
+  .carousel data-style='columns'
     - use_single_image = (section.images.count != items.count)
     - items.each_with_index do |item, index|
       - image_url = use_single_image ? section.image : section.images[index]
-      article
+      article class="#{'central' if index == 1}"
         .image
           img src=image_url
 
