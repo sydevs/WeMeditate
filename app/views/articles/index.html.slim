@@ -15,30 +15,3 @@ nav.primary.category.filters data-group='category'
   .loadmore.centered
     = link_to articles_path(format: 'js', offset: ArticlesController::ARTICLES_PER_PAGE), remote: 'true', class: 'box button' do
       ' Load more articles
-
-//! main
-  main.inspiration.page-inspiration
-    .container
-      .topline__filter
-        - @categories.each do |category|
-          a.btn.filter__btn class="#{'active' if @selected_category == category}" data-filter=dom_id(category) href="#"
-            = category.name
-        a.btn.filter__btn class="#{'active' unless @categories.include?(@selected_category)}" data-filter="" href="#"
-          ' All
-
-      /! filter-mobile
-      .mobile__filter_container
-        a.btn.filter__btn.active href="#" = @selected_category&.name || 'All'
-        a.filter__btn_open href="#"
-          | Filter
-          i.icon-filter-icon
-      /! /filter-mobile
-
-      figure#grid
-        = render @articles
-
-      - if Article.all.count > ArticlesController::ARTICLES_PER_PAGE
-        .loadmore
-          = link_to articles_path(format: 'js', offset: ArticlesController::ARTICLES_PER_PAGE), remote: 'true', class: 'btn' do
-            ' Load more articles
-  /! /main

@@ -19,38 +19,10 @@ section.intro class="#{'banner' if banner_style}" style=banner_style
         a.item href="#section-#{section_index}"
           .number = chapter_index
           .title = section.title
-          //.progress data-id="section-#{section_index}" 
+          //.progress data-id="section-#{section_index}"
 
 article
   = render sections
 
 = render 'application/share_this'
 = render 'application/footer_together'
-
-//! main
-  main.page-article class="#{'page-article-no-img' unless @article.banner.file.present?}"
-    - if @article.banner.file.present?
-      section.bg-image
-        .bg-image-cover style=("background-image: url(#{@article.banner.url})") 
-          .container
-            h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s" style=("visibility: visible; animation-duration: 3s; animation-delay: 1s; animation-name: fadeIn;") 
-              = @article.title
-    - else
-      section.s-intro
-        .container
-          h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s" style=("visibility: visible; animation-duration: 3s; animation-delay: 1s; animation-name: fadeIn;") 
-            = @article.title
-
-    /! chapter-nav
-    .chapter-nav-wrapper
-      .container
-        nav.chapter-nav
-          ul
-            = render partial: 'sections/section_link', collection: @article.sections
-    /! /chapter-nav
-
-    article
-      = render @article.sections.with_translations(locale)
-
-    = render 'application/footer_together'
-  /! /main

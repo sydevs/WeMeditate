@@ -10,12 +10,3 @@
   .video.wrapper
     = render 'shared/video_preview', thumbnail: section.image.url, video_url: section.video.url
     h3.title = section.title
-
-//section id="section-#{index}" data-section=index
-  .video-box
-    .video-wrapper
-      img alt="" src=section.image.url /
-      .video-play__btn_wrapper
-        a.video-link.popup-with-zoom-anim data-poster=section.image.url data-source=section.video.url data-title=section.title href="#video-popup"
-          img alt="" src=image_url('video-icon.svg') /
-    h4.video-title = section.title
