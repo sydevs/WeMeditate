@@ -3,6 +3,7 @@ const Map = {
   load: function() {
     console.log('loading Map.js')
     $('.country.map').each(Map._load_country_map)
+    $('.city.map').each(Map._load_city_map)
   },
 
   _load_country_map: function() {
@@ -65,8 +66,44 @@ const Map = {
   },
 
   _load_city_map: function() {
+    let markers = []
+    let Icon = L.Icon.extend({
+      options: {
+        iconUrl: '/maps/marker/icon.png',
+        iconRetinaUrl: '/maps/marker/icon-2x.png',
+        shadowUrl: '/maps/marker/shadow.png',
+        iconSize:      [25, 41],
+        iconAnchor:    [12, 41],
+        popupAnchor:   [1, -34],
+        tooltipAnchor: [16, -28],
+        shadowSize:    [41, 41],
+      },
+    })
 
+    let map = L.map(this, {
+      zoomControl: false,
+      attributionControl: false,
+      scrollWheelZoom: false,
+    })
+
+    L.control.zoom({
+      position: 'topright',
+    }).addTo(map)
+
+    //new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?', {}).addTo(map);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map)
+
+    $(this).data('venues').forEach(function(venue) {
+      markers.push(L.marker([venue.latitude, venue.longitude], { icon: new Icon }))
+    })
+
+    let markerGroup = L.featureGroup(markers).addTo(map)
+    map.fitBounds(markerGroup.getBounds().pad(0.5))
   },
 }
 
-$(document).on('turbolinks:load', function() { Map.load() })
+$(document).on('turbolinks:load', Map.load)

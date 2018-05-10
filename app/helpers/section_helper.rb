@@ -38,4 +38,19 @@ module SectionHelper
     result.to_json
   end
 
+  def venues_json city
+    result = []
+
+    city.venues&.each_with_index do |venue, index|
+      result << {
+        name: venue['address'],
+        latitude: venue['latitude'],
+        longitude: venue['longitude'],
+        index: index,
+      }
+    end
+
+    result.to_json
+  end
+
 end

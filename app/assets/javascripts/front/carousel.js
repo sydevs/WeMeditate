@@ -47,6 +47,11 @@ var Carousel = {
     ]
   },
 
+  venues_options: {
+    centerPadding: '60px',
+    slidesToShow: 1,
+  },
+
   columns_options: {},
 
   contacts_options: {},
@@ -62,6 +67,8 @@ var Carousel = {
 
       if (style == 'video') {
         $carousel.slick(Carousel.video_options)
+      } else if (style == 'venues') {
+        $carousel.slick(Carousel.venues_options)
       } else if (style == 'columns') {
         $carousel.slick(Carousel.columns_options)
       } else if (style == 'contacts') {
@@ -70,8 +77,6 @@ var Carousel = {
         $carousel.slick(Carousel.default_options)
       }
     })
-
-    $('.carousel').slick(Carousel.options)
   },
 }
 

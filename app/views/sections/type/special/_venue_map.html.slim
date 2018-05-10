@@ -2,11 +2,12 @@
 .content
   .content-box
     h2.title = section.title
-    - @city.venues.present?
-      .carousel
+    - if @city.venues.present?
+      .carousel data-style='venues'
         - @city.venues.each do |venue|
-          .address
-            div = venue['room_information']
-            div = venue['address']
-          .time #{venue['day_of_week']}. #{venue['start_time']} - #{venue['end_time']}
-.map
+          .venue
+            .address
+              div = venue['room_information']
+              div = venue['address']
+            .time #{translate_day venue['day_of_week']}. #{venue['start_time']} - #{venue['end_time']}
+.city.map data-venues=venues_json(@city)

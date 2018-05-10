@@ -1436,6 +1436,6 @@ records:
     content_type: video
     title: "It was great - I learned so much about myself"
     images:
-      - <%= sprig_file('general/video.jpg') %>
+      - <%= sprig_file('cities/video.jpg') %>
     videos:
       - <%= sprig_file('general/video.mp4') %>
