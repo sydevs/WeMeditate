@@ -2,6 +2,7 @@ class CitiesController < ApplicationController
 
   def index
     @static_page = StaticPage.find_by(role: :world)
+    @countries = City.distinct.pluck(:country)
     @cities = City.with_translations(I18n.locale).select(:name, :country, :slug)
   end
 

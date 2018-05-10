@@ -6,9 +6,16 @@
     h2.title = section.title
     p = section.text
 
-    .action
+    .action data-no-result='No classes for that country'
       input.country.autocomplete list='countries-list' placeholder=section.action
 
+.action
+  h3 No classes in your country?
+  p Visit the free webinar!
+  a.box.button href='#'
+    | Let's go
+
 datalist#countries-list
-  - I18nData.countries(locale).each do |country_code, country_name|
-    option value=country_path(country_code: country_code.downcase) = country_name
+  - country_names = I18nData.countries(locale)
+  - @countries.each do |country_code|
+    option value=country_path(country_code: country_code.downcase) = country_names[country_code.upcase]

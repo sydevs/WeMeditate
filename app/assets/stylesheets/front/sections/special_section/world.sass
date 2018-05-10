@@ -11,6 +11,32 @@ section.type-special.format-world
       stroke: none
       fill-opacity: 1
 
+  .action.no-results:after
+      content: attr(data-no-result)
+      color: $color-text-orange
+
+  > .action
+    text-align: center
+    padding: 4%
+    margin-bottom: -4%
+
+    &:not(.static)
+      position: absolute
+      top: 50%
+      right: 0
+
+    h3
+      margin: 0
+      font-size: 1em
+
+    p
+      line-height: 1.4em
+      font-size: 0.85em
+      margin: 0.5em 0
+
+    .box.button
+      padding: 0.4em 1em
+
   .wrapper
     position: absolute
     top: 12%
