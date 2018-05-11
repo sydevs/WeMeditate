@@ -61,7 +61,7 @@ module Admin
         end
       end
 
-      redirect_to [:admin, @klass]
+      render 'admin/application_pages/destroy'
     end
 
     def review

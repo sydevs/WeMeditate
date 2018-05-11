@@ -40,6 +40,6 @@
             i.edit.icon
             = translate 'action.edit'
         - if allow.destroy?
-          a.ui.delete.button href=url_for([:admin, resource]) data-method="delete" data-remote=true data-confirm=t('messages.confirm_destroy', default: 'Confirm Destroy')
+          a.ui.delete.button href=url_for([:admin, resource]) data-method='delete' data-remote=true data-confirm=t('messages.confirm_destroy', default: 'Confirm Destroy')
             i.trash.icon
             = translate 'action.destroy'
