@@ -16,7 +16,5 @@
 
 - unless style == 'city_page'
   = f.input :url, wrapper_html: { class: 'sub' }
-
-- unless style == 'city_page'
   = f.fields_for :extra do |ff|
     = ff.input :color, collection: [:light, :dark].map {|c| [human_enum_name(Section, :color, c), c] }, selected: f.object.extra_attr('color'), label: Section.human_attribute_name(:color), wrapper_html: { class: 'sub' }, required: false

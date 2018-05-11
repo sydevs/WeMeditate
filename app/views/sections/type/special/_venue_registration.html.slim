@@ -8,7 +8,7 @@
   .title = section.text
   = form_tag subscribe_path, class: 'registration-form', remote: true do
     p.message
-    p.fields
+    .fields
       = hidden_field_tag :city_id, @city.id
       = email_field_tag :name, nil, placeholder: 'Your name'
       = email_field_tag :email_address, nil, placeholder: 'Your email'

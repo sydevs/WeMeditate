@@ -6,7 +6,7 @@
 
   = form_tag contact_path, class: 'contact-form', remote: true do
     p.message
-    p.fields
+    .fields
       = email_field_tag :email_address, nil, placeholder: 'Your email'
       = text_field_tag :subject, nil, placeholder: 'Subject'
       = text_area_tag :message, nil, placeholder: 'Message', rows: 1

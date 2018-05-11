@@ -6,6 +6,7 @@ section.type-special.format-banner
 
   .background
     height: 100vh
+    max-height: 985px
 
   .style-city-page.background,
   .style-front-page.background
@@ -32,11 +33,13 @@ section.type-special.format-banner
       bottom: 82px
       left: 0
       right: 0
-      letter-spacing: -1px
 
+  .style-front-page.background
+    .action
       display: flex
       align-items: center
       justify-content: center
+      letter-spacing: -1px
 
       > *
         display: inline-block
@@ -70,3 +73,28 @@ section.type-special.format-banner
       margin-bottom: 15px
       font-family: $raleway
       color: $color-text-normal
+
+  .style-city-page.background
+    padding-bottom: 188px
+
+    h1
+      font-size: 2.75em
+      font-family: raleway
+      font-weight: 200
+
+    h2
+      margin-top: 0
+      font-family: $raleway
+      font-weight: 200
+      line-height: 1.5em
+      letter-spacing: 0.5px
+
+    .action
+      bottom: 78px
+      font-weight: 300
+      letter-spacing: 1px
+
+      img
+        display: block
+        margin: auto
+        margin-top: 40px

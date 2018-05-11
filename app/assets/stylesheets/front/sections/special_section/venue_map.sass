@@ -3,7 +3,8 @@
 section.type-special.format-venue-map
   .city.map
     height: 90vh
-    margin-left: 30%
+    max-height: 880px
+    margin-left: 38.5%
 
   .content
     display: flex
@@ -11,15 +12,56 @@ section.type-special.format-venue-map
     justify-content: center
 
     position: absolute
-    left: 30%
-    top: 10%
-    bottom: 2%
+    left: 15%
+    top: 0
+    bottom: 0
 
   .content-box
     background: white
-    padding: 65px
-    max-width: 460px
-    max-height: 88%
-    margin-left: -300px
+    padding: 125px 95px
+    max-width: 525px
+    max-height: 96%
     overflow: hidden
     z-index: 10000
+
+    h2
+      margin: 0
+      margin-bottom: 76px
+      font-size: 1.4em
+      letter-spacing: 1.8px
+
+    .slick-arrow
+      position: absolute
+
+      &.slick-prev
+        left: -95px
+
+      &.slick-next
+        right: -95px
+
+    .venue
+      padding-left: 30px
+      text-align: left
+      line-height: 2em
+      font-size: 0.85em
+      letter-spacing: 0.5px
+      font-weight: 300
+      position: relative
+
+      *::before
+        content: ''
+        width: 20px
+        height: 25px
+        display: block
+        position: absolute
+        left: 0
+
+      .address
+        margin-bottom: 1em
+
+        &::before
+          background: image-url('sections/map/marker.svg')
+
+      .time
+        &::before
+          background: image-url('sections/map/marker.svg')

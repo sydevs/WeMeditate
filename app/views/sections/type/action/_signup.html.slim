@@ -10,7 +10,7 @@
     = form_tag subscribe_path, class: 'subscribe-form', remote: true do
       = hidden_field_tag :mailchimp_list_id, mailchimp_list_id
       p.message
-      p.fields
+      .fields
         = email_field_tag :email_address, nil, placeholder: 'Your email'
       p
         button.box.button = section.action

@@ -1,21 +1,36 @@
 
 - contacts = [ \
   { \
-    name: 'John Stewart',
+    name: 'Debra Doe',
     url: 'https://www.facebook.com',
-    image_url: image_path('sections/music/album.jpg'),
+    image_url: image_path('temp/instructors/1.jpg'),
   },
   { \
-    name: 'Ann Smith',
+    name: 'Andy Arnoldsson',
     url: 'https://www.facebook.com',
-    image_url: image_path('sections/music/album.jpg'),
+    image_url: image_path('temp/instructors/2.jpg'),
+  },
+  { \
+    name: 'Joe Jakobs',
+    url: 'https://www.facebook.com',
+    image_url: image_path('temp/instructors/3.jpg'),
+  },
+  { \
+    name: 'John Stewart',
+    url: 'https://www.facebook.com',
+    image_url: image_path('temp/instructors/4.jpg'),
+  },
+  { \
+    name: 'Michelle Murphy',
+    url: 'https://www.facebook.com',
+    image_url: image_path('temp/instructors/5.jpg'),
   },
 ]
 
 h2.title = section.title
 p = section.subtitle
 .carousel data-style='contacts'
-  - contacts.each do |contact|
+  - contacts.sample(3).each do |contact|
     .contact
       img src=contact[:image_url]
       .title = contact[:name]

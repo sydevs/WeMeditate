@@ -2,6 +2,9 @@
 @import "../../mixins/vars"
 
 form
+  max-width: 510px
+  margin: auto
+
   .message
     &.positive
       color: darken($color-text-blue, 20%)
@@ -9,11 +12,8 @@ form
     &.negative
       color: $color-text-orange
 
-input,
-textarea,
-select
+input, textarea, select
   width: 100%
-  max-width: 510px
   font-size: 0.8em
   line-height: 1.35em
   outline: transparent
