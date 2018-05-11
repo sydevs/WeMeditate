@@ -15,3 +15,7 @@
 //= require turbolinks
 //= require jquery.slick
 //= require_tree ./front
+
+$(document).on('turbolinks:load', function() {
+  new SmoothScroll('a[href*="#"]')
+})

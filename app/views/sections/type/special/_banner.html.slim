@@ -22,6 +22,6 @@
     - when 'city_page'
       h1 = section.title.gsub('%city', @city.name)
       h2 = section.text
-      a.scroll.action href='#section-1'
+      a.action href='#section-1'
         div = section.action
         img src=image_path('graphics/arrow.png')
