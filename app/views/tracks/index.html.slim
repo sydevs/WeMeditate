@@ -5,6 +5,8 @@ section.intro
   .container
     h1.title = @static_page.title
 
+#music-triangle.container.with.right.triangle.decoration
+
 .container
   h2 Subtitle for music
   p It's easier to concentrate with music, so you get meditation deeper.
@@ -12,12 +14,12 @@ section.intro
   h3 Choose the mood
   nav.mood.filters data-group='moods'
     - @mood_filters.each do |mood_filter|
-      a.filter.box.button href="#" data-filter=".#{dom_id(mood_filter)}" = mood_filter.name
+      a.filter.box.button data-filter=".#{dom_id(mood_filter)}" = mood_filter.name
 
   h3 Select the instruments
   nav.instrument.filters data-group='instruments' data-multiple=true
     - @instrument_filters.each_with_index do |instrument_filter, index|
-      a.filter href="#" data-filter=".#{dom_id(instrument_filter)}"
+      a.filter data-filter=".#{dom_id(instrument_filter)}"
         img src=instrument_filter.icon_url
 
 section.player
@@ -35,6 +37,7 @@ section.player
       .title
         ' Playlist
         span#selected-filter-icons
+      #track-mood-title.top-left.sidetext
       img.cover#track-cover src=image_path('sections/music/album.jpg')
       #grid.list
         = render @tracks

@@ -4,6 +4,7 @@ var Music = {
   player: null,
   player_title: null,
   player_artist: null,
+  mood_title: null,
 
   list: null,
   track_selectors: null,
@@ -21,9 +22,9 @@ var Music = {
       invertTime: false
     });
 
-
     Music.player_title = $('#track-player-title')
     Music.player_artist = $('#track-player-artist')
+    Music.mood_title = $('#track-mood-title')
 
     Music.list = $('.playlist #grid')
     Music.track_selectors = Music.list.find('.track > a.info')
@@ -36,6 +37,7 @@ var Music = {
     Music.filter_icons = $('#selected-filter-icons')
 
     $('.instrument.filters > a').on('mouseup', Music._on_clicked_instrument_filter)
+    $('.mood.filters > a').on('mouseup', Music._on_clicked_mood_filter)
   },
 
   _init_track: function() {
@@ -58,6 +60,14 @@ var Music = {
     } else {
       var icon = $(element.html()).addClass(klass)
       Music.filter_icons.append(icon)
+    }
+  },
+
+  _on_clicked_mood_filter: function() {
+    if (Music.mood_title.text() == this.innerText) {
+      Music.mood_title.text('')
+    } else {
+      Music.mood_title.text(this.innerText)
     }
   },
 
