@@ -4,6 +4,7 @@ records:
 
 # FOR ARTICLE: 1
   - sprig_id: 1
+    order: 1
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: text
@@ -15,8 +16,8 @@ records:
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
       <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
     quote: Fusce faucibus commodo tempor. Nunc consequat lectus et ipsum rutrum pellentesque. Cras vulputate turpis sed neque dictum blandit. Maecenas hendrerit eu nulla vel tempus. Suspendisse eget purus sit amet dolor vulputate convallis. Morbi hendrerit enim nec interdum iaculis. Nullam eget massa orci.
-    order: 1
   - sprig_id: 2
+    order: 2
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: text
@@ -30,8 +31,8 @@ records:
     images:
       - <%= sprig_file('articles/callout.jpg') %>
     credit: John Smith
-    order: 2
   - sprig_id: 3
+    order: 3
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: image
@@ -39,8 +40,8 @@ records:
     images:
       - <%= sprig_file('articles/container-width.jpg') %>
     credit: John Smith
-    order: 3
   - sprig_id: 4
+    order: 4
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: text
@@ -51,16 +52,18 @@ records:
       <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
       <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
-    order: 4
   - sprig_id: 5
+    order: 5
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: action
     format: button
     action: Try Meditation
     url: '#'
-    order: 5
+    extra:
+      decorations: { leaf: true }
   - sprig_id: 6
+    order: 6
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: image
@@ -68,8 +71,8 @@ records:
     images:
       - <%= sprig_file('articles/page-width.jpg') %>
     credit: John Smith
-    order: 6
   - sprig_id: 7
+    order: 7
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: text
@@ -80,8 +83,8 @@ records:
       <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
       <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
-    order: 7
   - sprig_id: 8
+    order: 8
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: quote
@@ -91,8 +94,8 @@ records:
     subtitle: Founder of the meditation method "Sahaja Yoga"
     action: Meditation with Shri Mataji
     url: '#'
-    order: 8
   - sprig_id: 9
+    order: 9
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: text
@@ -103,8 +106,8 @@ records:
       <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
       <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
-    order: 9
   - sprig_id: 10
+    order: 10
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: action
@@ -115,8 +118,8 @@ records:
     action: Sign Up
     extra:
       mailchimp_list_id: 1
-    order: 10
   - sprig_id: 11
+    order: 11
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: video
@@ -125,18 +128,19 @@ records:
       - <%= sprig_file('general/video.jpg') %>
     videos:
       - <%= sprig_file('general/video.mp4') %>
-    order: 11
   - sprig_id: 12
+    order: 12
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: text
     format: just_text
-    text: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
-    order: 12
+    text: |-
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
 
 
 # FOR ARTICLE: 2
   - sprig_id: 101
+    order: 1
     page_type: Article
     page_id: <%= sprig_record(Article, 2).id %>
     content_type: text
@@ -148,7 +152,6 @@ records:
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
       <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
     quote: Fusce faucibus commodo tempor. Nunc consequat lectus et ipsum rutrum pellentesque. Cras vulputate turpis sed neque dictum blandit. Maecenas hendrerit eu nulla vel tempus. Suspendisse eget purus sit amet dolor vulputate convallis. Morbi hendrerit enim nec interdum iaculis. Nullam eget massa orci.
-    order: 1
 
 
 # FOR ARTICLE: 3
@@ -204,7 +207,7 @@ records:
     images:
       - <%= sprig_file('articles/behind.jpg') %>
     extra:
-      color: dark
+      color: light
     order: 4
   - sprig_id: 205
     page_type: Article
@@ -314,11 +317,15 @@ records:
     content_type: text
     format: box_with_righthand_image
     title: Sahaja Yoga
-    text: Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.
+    text: |-
+      <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
     action: Learn More
     url: '#'
+    sidetext: Self-Realization
     images:
       - <%= sprig_file('static_pages/front/sahaja-yoga.jpg') %>
+    extra:
+      decorations: { circle: true }
   - sprig_id: 303
     order: 3
     page_type: StaticPage
@@ -334,6 +341,9 @@ records:
       - <%= sprig_file('general/video.mp4') %>
       - <%= sprig_file('general/video.mp4') %>
       - <%= sprig_file('general/video.mp4') %>
+    sidetext: Video
+    extra:
+      decorations: { gradient: [ right, blue ] }
   - sprig_id: 304
     order: 4
     page_type: StaticPage
@@ -341,12 +351,15 @@ records:
     content_type: text
     format: box_over_image
     title: Shri Mataji
-    text: Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.
+    text: |-
+      <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
     action: Learn More
     url: '#'
     images:
       - <%= sprig_file('static_pages/front/shri-mataji.jpg') %>
+    sidetext: Shri Mataji
     extra:
+      decorations: { triangle: [ left ] }
       color: dark
   - sprig_id: 305
     order: 5
@@ -355,9 +368,11 @@ records:
     content_type: text
     format: box_with_lefthand_image
     title: About Us
-    text: Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.
+    text: |-
+      <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
     images:
       - <%= sprig_file('static_pages/front/we-meditate.jpg') %>
+    sidetext: Meditation
   - sprig_id: 306
     order: 6
     page_type: StaticPage
@@ -366,14 +381,17 @@ records:
     format: box_over_image
     title: About Us
     text: |-
-      Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization.
-
-      Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview.
+      <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization.</p>
+      <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview.</p>
     action: Learn More
     url: '#'
     images:
       - <%= sprig_file('static_pages/front/meditation.jpg') %>
+    sidetext: How to Meditate
     extra:
+      decorations:
+        triangle: [ right ]
+        gradient: [ left, orange ]
       color: light
   - sprig_id: 307
     order: 7
@@ -382,11 +400,13 @@ records:
     content_type: text
     format: box_with_righthand_image
     title: Events
-    text: Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.
+    text: |-
+      <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
     action: More Events
     url: '#'
     images:
       - <%= sprig_file('static_pages/front/events.jpg') %>
+    sidetext: Developments
   - sprig_id: 308
     order: 8
     page_type: StaticPage
@@ -437,9 +457,11 @@ records:
     content_type: text
     format: box_with_righthand_image
     title: Founder of Sahaja Yoga
-    text: Shri Mataji Nirmala Devi quietly transformed lives. For more than forty years, she travelled internationally, offering free public lectures and the experience of self-realization to all, regardless of race, religion or circumstance. She not only enabled people to pass this valuable experience on to others, but taught them the meditation technique necessary to sustain it, known as Sahaja Yoga.
+    text: |-
+      <p>Shri Mataji Nirmala Devi quietly transformed lives. For more than forty years, she travelled internationally, offering free public lectures and the experience of self-realization to all, regardless of race, religion or circumstance. She not only enabled people to pass this valuable experience on to others, but taught them the meditation technique necessary to sustain it, known as Sahaja Yoga.</p>
     images:
       - <%= sprig_file('static_pages/shri-mataji/founder.jpg') %>
+    sidetext: Founder
   - sprig_id: 602
     order: 2
     page_type: StaticPage
@@ -454,8 +476,10 @@ records:
     url: '#'
     images:
       - <%= sprig_file('static_pages/shri-mataji/sahaja-yoga.jpg') %>
+    sidetext: Sahaja Yoga
     extra:
-      color: dark
+      decorations: { triangle: [ right ] }
+      color: light
   - sprig_id: 603
     order: 3
     page_type: StaticPage
@@ -476,9 +500,11 @@ records:
     content_type: text
     format: box_with_righthand_image
     title: Social Work
-    text: Brought up in a family that considered self-sacrifice the highest calling, Shri Mataji dedicated her life to a continuous program of public and spiritual work.She created charitable organizations such as the Vishwa Nirmala Prem Ashram for destitute women and orphan children, founded international schools promoting a holistic and balanced education, established health clinics, created a classical art academy, and much more. All of these endeavors complemented her global work of spiritual transformation.
+    text: |-
+      <p>Brought up in a family that considered self-sacrifice the highest calling, Shri Mataji dedicated her life to a continuous program of public and spiritual work.She created charitable organizations such as the Vishwa Nirmala Prem Ashram for destitute women and orphan children, founded international schools promoting a holistic and balanced education, established health clinics, created a classical art academy, and much more. All of these endeavors complemented her global work of spiritual transformation.</p>
     images:
       - <%= sprig_file('static_pages/shri-mataji/social-work.jpg') %>
+    sidetext: Social Work
   - sprig_id: 605
     order: 5
     page_type: StaticPage
@@ -486,9 +512,13 @@ records:
     content_type: text
     format: box_with_lefthand_image
     title: Shri Mataji's Family
-    text: Brought up in a family that considered self-sacrifice the highest calling, Shri Mataji dedicated her life to a continuous program of public and spiritual work.She created charitable organizations such as the Vishwa Nirmala Prem Ashram for destitute women and orphan children, founded international schools promoting a holistic and balanced education, established health clinics, created a classical art academy, and much more. All of these endeavors complemented her global work of spiritual transformation.
+    text: |-
+      <p>Brought up in a family that considered self-sacrifice the highest calling, Shri Mataji dedicated her life to a continuous program of public and spiritual work.She created charitable organizations such as the Vishwa Nirmala Prem Ashram for destitute women and orphan children, founded international schools promoting a holistic and balanced education, established health clinics, created a classical art academy, and much more. All of these endeavors complemented her global work of spiritual transformation.</p>
     images:
       - <%= sprig_file('static_pages/shri-mataji/family.jpg') %>
+    sidetext: Family
+    extra:
+      decorations: { gradient: [ right, blue ] }
   - sprig_id: 606
     order: 6
     page_type: StaticPage
@@ -496,7 +526,8 @@ records:
     content_type: text
     format: grid
     title: Awards
-    text: Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.
+    text: |-
+      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
     extra:
       items:
         - title: Italy, 1986
@@ -525,7 +556,8 @@ records:
     content_type: text
     format: just_text
     title: About Sahaja Yoga
-    text: Coming soon
+    text: |-
+      <p>Coming soon</p>
 
 
 # FOR STATIC PAGE: tracks
@@ -536,7 +568,8 @@ records:
     content_type: text
     format: just_text
     title: Header
-    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
+    text: |-
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
   - sprig_id: 902
     order: 2
     page_type: StaticPage
@@ -544,7 +577,8 @@ records:
     content_type: text
     format: just_text
     title: Header
-    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
+    text: |-
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
   - sprig_id: 903
     order: 3
     page_type: StaticPage
@@ -552,7 +586,8 @@ records:
     content_type: text
     format: just_text
     title: Header
-    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
+    text: |-
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
   - sprig_id: 904
     order: 4
     page_type: StaticPage
@@ -560,7 +595,8 @@ records:
     content_type: text
     format: just_text
     title: Header
-    text: The significance of these problems is so obvious that the constant information and propaganda support of our activities plays an important role in shaping the positions taken by the participants in relation to the tasks assigned. The task of the organization, especially the framework and place of training of personnel entails the process of introducing and modernizing forms of development.
+    text: |-
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
 
 
 # FOR STATIC PAGE: treatments
@@ -799,7 +835,8 @@ records:
     label: Overview
     content_type: text
     format: just_text
-    text: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio culpa minus rem. Repellendus, ad animi! Voluptates neque rem tempore repellendus harum totam, molestiae asperiores commodi dolore, nulla nostrum doloremque recusandae?
+    text: |-
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
   - sprig_id: 1402
     order: 2
     page_type: SubtleSystemNode
@@ -1127,7 +1164,8 @@ records:
     label: Overview
     content_type: text
     format: just_text
-    text: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio culpa minus rem. Repellendus, ad animi! Voluptates neque rem tempore repellendus harum totam, molestiae asperiores commodi dolore, nulla nostrum doloremque recusandae?
+    text: |-
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
   - sprig_id: 1902
     order: 2
     page_type: SubtleSystemNode
@@ -1159,7 +1197,8 @@ records:
     label: Channel Overview
     content_type: text
     format: just_text
-    text: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio culpa minus rem. Repellendus, ad animi! Voluptates neque rem tempore repellendus harum totam, molestiae asperiores commodi dolore, nulla nostrum doloremque recusandae?
+    text: |-
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
   - sprig_id: 2002
     order: 2
     page_type: SubtleSystemNode
@@ -1205,7 +1244,8 @@ records:
     label: Channel Overview
     content_type: text
     format: just_text
-    text: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio culpa minus rem. Repellendus, ad animi! Voluptates neque rem tempore repellendus harum totam, molestiae asperiores commodi dolore, nulla nostrum doloremque recusandae?
+    text: |-
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
   - sprig_id: 2102
     order: 2
     page_type: SubtleSystemNode
@@ -1263,7 +1303,8 @@ records:
     label: Channel Overview
     content_type: text
     format: just_text
-    text: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio culpa minus rem. Repellendus, ad animi! Voluptates neque rem tempore repellendus harum totam, molestiae asperiores commodi dolore, nulla nostrum doloremque recusandae?
+    text: |-
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
   - sprig_id: 2102
     order: 2
     page_type: SubtleSystemNode
@@ -1360,7 +1401,8 @@ records:
     content_type: text
     format: just_text
     title: Meditation works better in a group
-    text: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae at labore temporibus nesciunt minima ipsum nobis quidem ex nam tempora perferendis voluptas architecto quisquam, soluta inventore minus quibusdam mollitia sunt!
+    text: |-
+      <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
   - sprig_id: 2403
     order: 3
     page_type: StaticPage

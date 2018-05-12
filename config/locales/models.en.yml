@@ -195,9 +195,13 @@ en:
           venue_map: Program Map
           venue_registration: Program Registration
           local_contacts: Local Contacts
+        decoration: Decoration
+        decorations:
+          no_decoration: None
+          decorated: Decorated
         title: Title
         subtitle: Subtitle
-        sidetext: Side Text
+        sidetext: Background Text
         text: Text
         quote: Quote
         image: Image (png)

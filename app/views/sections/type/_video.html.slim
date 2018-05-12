@@ -1,4 +1,6 @@
 
+.top-right.sidetext = section.sidetext
+
 - if section.videos.size > 1
   .wrapper
     .video.carousel data-style='video'
@@ -10,3 +12,4 @@
   .video.wrapper
     = render 'shared/video_preview', thumbnail: section.image.url, video_url: section.video.url
     h3.title = section.title
+

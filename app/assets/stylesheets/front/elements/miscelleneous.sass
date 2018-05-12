@@ -82,15 +82,31 @@ a:not(:hover) > .overlay
 .sidetext
   position: absolute
   white-space: nowrap
-  color: $color-text-inverse
+  color: $color-text-lightest
   text-transform: uppercase
   transform: rotate(-90deg)
-  z-index: 5
-  font-size: 2em
-  left: 30px
-  top: 100%
-  text-align: right
-  transform-origin: top left
+  font-size: 2.275em
+  letter-spacing: 4px
+
+  &.top-left
+    transform-origin: top right
+    right: 100%
+    margin-right: -30px
+
+  &.top-right
+    transform-origin: top right
+    right: 82px
+
+  &.bottom-left
+    transform-origin: top left
+    top: 100%
+    left: 30px
+
+  &.bottom-right
+    transform-origin: top left
+    top: 100%
+    left: 100%
+    margin-left: -82px
 
 figcaption.credit
   position: absolute

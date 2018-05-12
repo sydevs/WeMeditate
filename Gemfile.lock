@@ -117,7 +117,7 @@ GEM
     dotenv (2.4.0)
     erubi (1.7.1)
     execjs (2.7.0)
-    faraday (0.15.0)
+    faraday (0.15.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
     friendly_id (5.2.4)

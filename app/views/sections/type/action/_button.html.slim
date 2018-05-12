@@ -1,6 +1,8 @@
 
 .section.wrapper.centered
-  .simple.illustration.pre.divider
+  - if section.decorations.key? 'leaf'
+    .simple.illustration.pre.divider
   a.box.button href=section.url class="#{'scroll' if section.url[0,1] == '#'}"
     = section.action
-  .simple.illustration.post.divider
+  - if section.decorations.key? 'leaf'
+    .simple.illustration.post.divider

@@ -3,5 +3,8 @@
 - partial << section.format if [:text, :image, :action, :special].include? section.content_type.to_sym
 - index = (defined? index ? index : 0).to_i + (defined? section_counter ? section_counter : 0).to_i + 1
 
-section id="section-#{index}" class="type-#{section.content_type} format-#{section.format&.dasherize}" data-section=index
+- classes = ["type-#{section.content_type}", "format-#{section.format&.dasherize}"]
+- classes << ['with', section.decorations['gradient'].join(' '), 'gradient'] if section.decorations.key? 'gradient'
+
+section id="section-#{index}" class=classes data-section=index
   = render partial.join('/'), section: section

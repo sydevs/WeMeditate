@@ -38,7 +38,7 @@ class Section < ApplicationRecord
     content_type == 'special'
   end
 
-  def extra_attr key, default: nil
+  def extra_attr key, default = nil
     if extra.present? and extra[key].present?
       extra[key]
     else
@@ -52,6 +52,10 @@ class Section < ApplicationRecord
 
   def video
     videos[0]
+  end
+
+  def decorations
+    @decorations ||= extra_attr('decorations', {})
   end
 
   def visibility_countries= list

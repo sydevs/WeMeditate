@@ -1,7 +1,9 @@
 
 .container
   img alt=section.subtitle src=section.image.url
-  .action.with.circle.decoration = section.action
+  .action
+    = inline_svg 'graphics/circle.svg'
+    .text = section.action
   .content
     h3 = section.title
     h4 = section.subtitle

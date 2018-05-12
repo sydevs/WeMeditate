@@ -2,7 +2,7 @@
 - banner_style = section.extra_attr('banner_style')
 
 - classes = ["style-#{banner_style.dasherize}"]
-- classes << 'inverse' if section.extra_attr('color', default: 'light') == 'light'
+- classes << 'inverse' if section.extra_attr('color', 'light') == 'light'
 
 - image_url = (banner_style == 'city_page' ? @city.banner.url : section.image.url)
 

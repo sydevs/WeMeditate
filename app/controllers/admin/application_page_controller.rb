@@ -83,7 +83,7 @@ module Admin
 
       ALL_SECTION_ATTRIBUTES = [
         :id, :label, :order, :_destroy, # Meta fields
-        :content_type, :visibility_type, :visibility_countries, :format, # Structural fields
+        :content_type, :visibility_type, :visibility_countries, :format, :decorated, # Structural fields
       ] + CONTENT_ATTRIBUTES
 
       TRANSLATABLE_SECTION_ATTRIBUTES = [

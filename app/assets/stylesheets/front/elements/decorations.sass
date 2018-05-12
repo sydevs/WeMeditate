@@ -3,19 +3,25 @@
 @import "../../mixins/vars"
 
 .with.decoration
-  &.triangle::after
-    content: ''
-    display: block
+  &.triangle
+    &::after
+      content: ''
+      display: block
 
-    position: absolute
-    right: 5px
-    bottom: -96px
-    width: 246px
-    height: 216px
+      position: absolute
+      bottom: -108px
+      width: 284px
+      height: 250px
 
-    background: image-url('graphics/triangle.svg') no-repeat center
-    background-size: cover
-    z-index: 10
+      background: image-url('graphics/triangle.svg') no-repeat center
+      background-size: cover
+      z-index: 10
+
+    &.right::after
+      right: 5px
+
+    &.left::after
+      left: 5px
 
   &.leaf
     &::before,
@@ -42,15 +48,14 @@
       transform: rotate(-90deg)
 
   &.circle
-    display: flex
-    text-align: center
-    align-items: center
-    font-size: 1.5em
-    width: 300px
-    height: 300px
-    padding: 70px
-    margin: auto
-    color: $color-text-dark
+    &::before
+      content: ''
+      display: block
+      width: 300px
+      height: 300px
+      background-image: image-url('graphics/circle.svg')
+      background-repeat: no-repeat
+      background-position: center
 
 .illustration.divider
   max-width: 400px
@@ -91,6 +96,38 @@
 
     &:after
       background-color: transparent
+
+.with.gradient
+  &::before
+    content: ''
+    display: block
+
+    position: absolute
+    width: 31vw
+    z-index: -1
+    top: -50%
+    bottom: -10%
+
+  &.right::before
+    right: 0
+
+  &.left::before
+    left: 0
+
+  &.orange::before
+    opacity: 0.5
+
+  &.right.blue::before
+    background: linear-gradient(to left,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
+
+  &.left.blue::before
+    background: linear-gradient(to right,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
+
+  &.right.orange::before
+    background: linear-gradient(to left,rgba(255,255,255,0) 0,rgba(255,255,255,.18) 25%,rgba(241,212,175,.7) 100%)
+
+  &.left.orange::before
+    background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.18) 25%,rgba(241,212,175,.7) 100%)
 
 @include desktop
   .with.triangle.decoration:after

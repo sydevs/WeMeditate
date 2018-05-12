@@ -1,4 +1,6 @@
 
+.top-left.sidetext = section.sidetext
+
 .container
   .content
     .content-box
@@ -6,4 +8,4 @@
       = section.text&.html_safe
       - if section.action.present? and section.url.present?
         a.box.button href=section.url = section.action
-  img alt=section.image.identifier src=section.image.url
+  img alt=section.image.identifier src=section.image.url class="#{'with circle decoration' if section.decorations.key? 'circle'}"
