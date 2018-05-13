@@ -18,7 +18,9 @@
     - when 'treatments_page'
       h2 = section.text
       h1 = section.title
-      a.action.with.circle.decoration href=section.url = section.action
+      a.circle.button href=section.url
+        = inline_svg 'graphics/circle.svg'
+        .text = section.action
     - when 'city_page'
       h1 = section.title.gsub('%city', @city.name)
       h2 = section.text

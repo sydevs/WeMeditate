@@ -3,10 +3,13 @@
 
 section.intro
   .container
-    .title = @treatment.name
+    .title
+      = inline_svg 'graphics/leaf.svg'
+      div = @treatment.name
+      = inline_svg 'graphics/leaf.svg'
 
 section
   = render 'shared/video_preview', thumbnail: @treatment.thumbnail.url, video_url: @treatment.video.url
 
 section.content-type-text.format-just-text
-  = render 'sections/type/text/just_text', section: { title: @treatment.name, text: @treatment.content }
+  = render 'sections/type/text/just_text', section: { title: @treatment.name, text: @treatment.content, sidetext: nil }

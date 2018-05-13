@@ -39,7 +39,7 @@ class Section < ApplicationRecord
   end
 
   def extra_attr key, default = nil
-    if extra.present? and extra[key].present?
+    if extra.present? and extra.is_a? Hash and extra.key? key
       extra[key]
     else
       default

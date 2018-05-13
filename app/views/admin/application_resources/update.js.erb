@@ -1,3 +1,4 @@
 var html = $('<%= escape_javascript render(@resource) %>').hide().fadeIn(300)
 html.find('.ui.dropdown').dropdown()
 $('#<%= dom_id @resource %>').replaceWith(html)
+Admin.initialize($('#<%= dom_id @resource %>'))

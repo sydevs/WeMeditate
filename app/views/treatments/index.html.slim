@@ -3,6 +3,8 @@
 
 = render @static_page.sections.with_translations(locale)
 
+.container.with.right.triangle.decoration
+
 .treatments.wrapper
   article.music
     .number 01
@@ -13,5 +15,7 @@
       a.box.button href=tracks_path Listen to music
 
   = render @treatments
+
+.container.with.right.triangle.decoration
 
 = render 'application/footer_together'

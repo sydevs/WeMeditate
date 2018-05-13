@@ -24,6 +24,7 @@ let Admin = {
   },
 
   initialize: function(scope) {
+    console.log('initialize', scope)
     scope.find('.ui.checkbox').checkbox()
     scope.find('.tabs > *').tab()
     scope.find('.ui.accordion').accordion()

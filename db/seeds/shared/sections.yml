@@ -608,6 +608,7 @@ records:
     format: banner
     title: Awaken the inner energy!
     text: Before using methods to improve meditation, you need to awaken
+    action: Vigorous
     url: '#'
     images:
       - <%= sprig_file('treatments/banner.png') %>
