@@ -1,6 +1,9 @@
 
 - treatments = Treatment.where(id: section.extra)
 
+.container
+  .top-left.sidetext = section.sidetext
+
 #grid.treatments.wrapper
   - treatments.each_with_index do |treatment, index|
     article id=dom_id(treatment) class="#{'initial' if index < 2}"
