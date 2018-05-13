@@ -5,18 +5,20 @@ section.intro
   .container
     h1.title = Meditation.model_name.human(count: -1)
 
+#meditations-triangle.container.with.right.triangle.decoration
+
 .container
   h2 Subtitle for meditations
   p Listen to one of our guided meditations.
   h3 How much time do you have?
   nav.duration.filters data-group='duration'
     - @duration_filters.each do |duration_filter|
-      a.filter.box.button href="#" data-filter=".#{dom_id(duration_filter)}" class="#{'active' if duration_filter.minutes.to_s == params[:duration]}"
+      a.filter.box.button data-filter=".#{dom_id(duration_filter)}" class="#{'active' if duration_filter.minutes.to_s == params[:duration]}"
         = duration_filter.name
   h3 What is your goal?
   nav.goal.filters data-group='goals'
     - @goal_filters.each_with_index do |goal_filter, index|
-      a.filter.box.button href="#" data-filter=".#{dom_id(goal_filter)}" class="#{'active' if goal_filter.id.to_s == params[:goal]}"
+      a.filter.box.button data-filter=".#{dom_id(goal_filter)}" class="#{'active' if goal_filter.id.to_s == params[:goal]}"
         = goal_filter.name
 
 #grid.container = render @meditations
