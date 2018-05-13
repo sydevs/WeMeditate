@@ -33,41 +33,6 @@ content
   display: block
   padding-top: 1rem
 
-.ui.form
-  .button
-    margin-top: 2px
-
-  .field .file.labels
-    > .label
-      margin: 0
-
-      &:first-child
-        border-bottom-left-radius: 0
-        border-bottom-right-radius: 0
-
-      &:not(:first-child)
-        border-radius: 0
-        border-top: none
-
-    + .input input
-      border-top: none
-      border-top-left-radius: 0
-      border-top-right-radius: 0
-
-  .ql-toolbar
-    border-top-left-radius: 0.28571429rem
-    border-top-right-radius: 0.28571429rem
-
-  .ql-container
-    border-bottom-left-radius: 0.28571429rem
-    border-bottom-right-radius: 0.28571429rem
-
-  .sub.field .file.labels > .label:first-child
-    border-top-left-radius: 0
-
-  .file.field .ui.icon.input i.icon
-    font-size: 1.21428571em
-
 .ui.vertical.secondary.menu .item:not(.dropdown) > .menu
   margin: 0.5em -1.14285714em 0em
 
@@ -99,22 +64,72 @@ input + .ui.rounded.image
   width: 100%
 
 .ui.form
-  .sub.field > label
-    text-transform: uppercase
-    background-color: #E8E8E8
-    border-radius: 0.28571429rem 0.28571429rem 0 0
-    font-size: 80%
-    margin: 0
-    display: inline-block
-    padding: 0 0.28571429rem
+  .sub.field
+    > label
+      text-transform: uppercase
+      background-color: #E8E8E8
+      border-radius: 0.28571429rem 0.28571429rem 0 0
+      font-size: 80%
+      margin: 0
+      display: inline-block
+      padding: 0 0.28571429rem
 
-    + *,
-    + * input,
-    ~ * .ql-toolbar,
-    ~ .dropdown
+      + *,
+      + * input,
+      ~ * .ql-toolbar,
+      ~ .dropdown,
+      ~ .grouped.fields
+        border-top-left-radius: 0
+        margin-left: 0
+        margin-top: 0
+
+    > .grouped.fields
+      border: 1px solid rgba(34, 36, 38, 0.15)
+      border-radius: 0.28571429rem
+      padding: 0.67857143em 1em
+
+      > *:first-child
+        margin-top: 0
+
+  .button
+    margin-top: 2px
+
+  .grouped.fields > .inline.fields
+    margin-bottom: 0
+
+    > *
+      padding-right: 1em
+
+  .field .file.labels
+    > .label
+      margin: 0
+
+      &:first-child
+        border-bottom-left-radius: 0
+        border-bottom-right-radius: 0
+
+      &:not(:first-child)
+        border-radius: 0
+        border-top: none
+
+    + .input input
+      border-top: none
       border-top-left-radius: 0
-      margin-left: 0
-      margin-top: 0
+      border-top-right-radius: 0
+
+  .ql-toolbar
+    border-top-left-radius: 0.28571429rem
+    border-top-right-radius: 0.28571429rem
+
+  .ql-container
+    border-bottom-left-radius: 0.28571429rem
+    border-bottom-right-radius: 0.28571429rem
+
+  .sub.field .file.labels > .label:first-child
+    border-top-left-radius: 0
+
+  .file.field .ui.icon.input i.icon
+    font-size: 1.21428571em
 
   .repeatable.fields
     width: 100%

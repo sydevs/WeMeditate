@@ -1,0 +1,23 @@
+
+- classes = ['sub']
+- classes += ['for'] + local_assigns[:for].map(&:to_s) if local_assigns.key?(:for) && local_assigns[:for].present?
+
+= f.input :decorations, wrapper: :group, wrapper_html: { class: classes }, required: false do
+  - if collection.include? :leaf
+    .inline.fields
+      = decoration_type_input f, :leaf
+
+  - if collection.include? :circle
+    .inline.fields
+      = decoration_type_input f, :circle
+
+  - if collection.include? :triangle
+    .inline.fields
+      = decoration_type_input f, :triangle
+      = decoration_config_dropdown f, :triangle, :position, ['left', 'right']
+
+  - if collection.include? :gradient
+    .inline.fields
+      = decoration_type_input f, :gradient
+      = decoration_config_dropdown f, :gradient, :position, ['left', 'right']
+      = decoration_config_dropdown f, :gradient, :color, ['orange', 'blue']

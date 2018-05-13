@@ -51,8 +51,6 @@ module NavigationHelper
       { title: 'Come meditate', url: cities_path },
     ]
 
-    p @desktop_navigation
-
     @desktop_navigation.each do |item|
       yield item
     end

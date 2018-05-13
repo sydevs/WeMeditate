@@ -84,6 +84,15 @@ SimpleForm.setup do |config|
     b.use :error, wrap_with: { tag: 'div', class: 'ui red pointing above error label' }
   end
 
+  config.wrappers :group, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
+    b.use :html5
+    b.use :label
+    b.wrapper tag: 'div', class: 'grouped fields' do |ba|
+      ba.use :input
+    end
+    b.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
+  end
+
   config.wrappers :ui_input, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
     b.use :html5
     b.use :label

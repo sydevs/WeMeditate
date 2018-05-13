@@ -195,10 +195,6 @@ en:
           venue_map: Program Map
           venue_registration: Program Registration
           local_contacts: Local Contacts
-        decoration: Decoration
-        decorations:
-          no_decoration: None
-          decorated: Decorated
         title: Title
         subtitle: Subtitle
         sidetext: Background Text
@@ -218,6 +214,23 @@ en:
           front_page: Front Page
           treatments_page: Techniques Page
           city_page: City Page
+        decorations: Decorations
+        decoration_types:
+          leaf: Leaves
+          triangle: Triangle
+          gradient: Gradient
+          circle: Circle
+        decoration_options:
+          position: position
+          positions:
+            left: left
+            right: right
+            top: top
+            bottom: top
+          color: color
+          colors:
+            blue: blue
+            orange: orange
 
       track:
         title: Title

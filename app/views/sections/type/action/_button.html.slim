@@ -1,8 +1,8 @@
 
 .section.wrapper.centered
-  - if section.decorations.key? 'leaf'
+  - if section.has_decoration? :leaf
     .simple.illustration.pre.divider
   a.box.button href=section.url class="#{'scroll' if section.url[0,1] == '#'}"
     = section.action
-  - if section.decorations.key? 'leaf'
+  - if section.has_decoration? :leaf
     .simple.illustration.post.divider

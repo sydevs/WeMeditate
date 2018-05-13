@@ -72,7 +72,6 @@ module Admin::ApplicationHelper
 
     # The rendered fields are sent with the link within the data-form-prepend attr
     html_options['data-form-prepend'] = raw CGI::escapeHTML( fields )
-    html_options['href'] = '#'
 
     content_tag(:a, name, html_options, &block)
   end

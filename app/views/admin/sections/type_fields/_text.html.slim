@@ -11,7 +11,9 @@
 = f.input :action, wrapper_html: { class: 'sub for action' }
 = f.input :url, as: :url, wrapper_html: { class: 'sub for action' }
 
-= f.fields_for :extra do |ff|
+= f.input :sidetext, wrapper_html: { class: 'sub' }
+
+= f.fields_for :extra, f.object do |ff|
   - items = f.object.extra_attr 'items', []
   - color = f.object.extra_attr 'color'
 
@@ -21,5 +23,4 @@
     = fff.url_field :url, value: item['url'], placeholder: Section.human_attribute_name(:url), name: "#{fff.object_name}[url][]"
 
   = ff.input :color, collection: [:light, :dark].map {|c| [human_enum_name(Section, :color, c), c] }, selected: color, label: Section.human_attribute_name(:color), wrapper_html: { class: 'sub for background' }, required: false
-
-= f.input :sidetext, wrapper_html: { class: 'sub' }
+  = render 'admin/sections/decoration_fields', f: ff, collection: [:triangle, :gradient]

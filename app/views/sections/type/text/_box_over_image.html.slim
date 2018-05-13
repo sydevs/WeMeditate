@@ -9,5 +9,5 @@
       - if section.action.present? and section.url.present?
         a.box.button href=section.url = section.action
 
-- if section.decorations.key? 'triangle'
-  .container.with.triangle.decoration class=section.decorations['triangle']
+- if section.has_decoration? :triangle
+  .container.with.triangle.decoration class=section.decoration_options(:triangle)

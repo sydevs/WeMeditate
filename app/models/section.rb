@@ -58,6 +58,14 @@ class Section < ApplicationRecord
     @decorations ||= extra_attr('decorations', {})
   end
 
+  def has_decoration? type
+    decorations['enabled'].include?(type.to_s) if decorations.present?
+  end
+
+  def decoration_options type
+    defined?(decorations['options'][type.to_s]) ? (decorations['options'][type.to_s] || []) : []
+  end
+
   def visibility_countries= list
     if list.is_a? Array
       super list.join(',')

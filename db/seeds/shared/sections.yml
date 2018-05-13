@@ -61,7 +61,7 @@ records:
     action: Try Meditation
     url: '#'
     extra:
-      decorations: { leaf: true }
+      decorations: { enabled: [leaf] }
   - sprig_id: 6
     order: 6
     page_type: Article
@@ -325,7 +325,7 @@ records:
     images:
       - <%= sprig_file('static_pages/front/sahaja-yoga.jpg') %>
     extra:
-      decorations: { circle: true }
+      decorations: { enabled: [circle] }
   - sprig_id: 303
     order: 3
     page_type: StaticPage
@@ -343,7 +343,10 @@ records:
       - <%= sprig_file('general/video.mp4') %>
     sidetext: Video
     extra:
-      decorations: { gradient: [ right, blue ] }
+      decorations:
+        enabled: [ gradient ]
+        options:
+          gradient: [ right, blue ]
   - sprig_id: 304
     order: 4
     page_type: StaticPage
@@ -359,7 +362,10 @@ records:
       - <%= sprig_file('static_pages/front/shri-mataji.jpg') %>
     sidetext: Shri Mataji
     extra:
-      decorations: { triangle: [ left ] }
+      decorations:
+        enabled: [triangle]
+        options:
+          triangle: [left]
       color: dark
   - sprig_id: 305
     order: 5
@@ -390,8 +396,10 @@ records:
     sidetext: How to Meditate
     extra:
       decorations:
-        triangle: [ right ]
-        gradient: [ left, orange ]
+        enabled: [triangle, gradient]
+        options:
+          triangle: [right]
+          gradient: [left, orange]
       color: light
   - sprig_id: 307
     order: 7
@@ -478,7 +486,10 @@ records:
       - <%= sprig_file('static_pages/shri-mataji/sahaja-yoga.jpg') %>
     sidetext: Sahaja Yoga
     extra:
-      decorations: { triangle: [ right ] }
+      decorations:
+        enabled: [triangle]
+        options:
+          triangle: [right]
       color: light
   - sprig_id: 603
     order: 3
@@ -518,7 +529,10 @@ records:
       - <%= sprig_file('static_pages/shri-mataji/family.jpg') %>
     sidetext: Family
     extra:
-      decorations: { gradient: [ right, blue ] }
+      decorations:
+        enabled: [gradient]
+        options:
+          gradient: [right, blue]
   - sprig_id: 606
     order: 6
     page_type: StaticPage
@@ -670,7 +684,10 @@ records:
       - <%= sprig_file('subtle_system/background.jpg') %>
     sidetext: In Life
     extra:
-      decorations: { gradient: [ right, orange ] }
+      decorations:
+        enabled: [gradient]
+        options:
+          gradient: [right, orange]
   - sprig_id: 1103
     order: 3
     page_type: SubtleSystemNode
@@ -695,7 +712,10 @@ records:
       - <%= sprig_file('general/video.mp4') %>
     sidetext: Video
     extra:
-      decorations: { gradient: [ left, orange ] }
+      decorations:
+        enabled: [gradient]
+        options:
+          gradient: [left, orange]
   - sprig_id: 1105
     order: 5
     page_type: SubtleSystemNode
@@ -708,7 +728,10 @@ records:
       <p><strong>Header 2</strong></p>
       <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
     extra:
-      decorations: { gradient: [ left, orange ] }
+      decorations:
+        enabled: [gradient]
+        options:
+          gradient: [left, orange]
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_2
@@ -1506,7 +1529,7 @@ records:
       - <%= sprig_file('cities/class.jpg') %>
     sidetext: Classes
     extra:
-      decorations: { triangle: true }
+      decorations: { enabled: [triangle] }
   - sprig_id: 2502
     order: 2
     page_type: City

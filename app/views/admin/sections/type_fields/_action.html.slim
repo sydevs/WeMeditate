@@ -6,8 +6,8 @@
 = f.input :text, wrapper_html: { class: 'sub for form' }
 
 = f.input :action, wrapper_html: { class: 'sub' }
-
-- f.fields_for :extra do |ff|
-  = ff.input :mailchimp_list_id, collection: [], disabled: !allow.update_structure?, wrapper_html: { class: 'sub for signup' }
-
 = f.input :url, as: :url, wrapper_html: { class: 'sub for button' }
+
+= f.fields_for :extra, f.object do |ff|
+  = ff.input :mailchimp_list_id, collection: [], selected: nil, disabled: !allow.update_structure?, wrapper_html: { class: 'sub for signup' }
+  = render 'admin/sections/decoration_fields', f: ff, collection: [:leaf], for: [:button]
