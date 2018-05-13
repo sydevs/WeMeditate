@@ -1448,6 +1448,7 @@ records:
     content_type: special
     format: venue_map
     title: 'Address and time:'
+    sidetext: Locations
   - sprig_id: 2405
     order: 5
     page_type: StaticPage
@@ -1503,6 +1504,9 @@ records:
       <p>Ea accusantium repellat ex placeat expedita dolores ad quas optio.</p>
     images:
       - <%= sprig_file('cities/class.jpg') %>
+    sidetext: Classes
+    extra:
+      decorations: { triangle: true }
   - sprig_id: 2502
     order: 2
     page_type: City
@@ -1513,3 +1517,4 @@ records:
       - <%= sprig_file('cities/video.jpg') %>
     videos:
       - <%= sprig_file('general/video.mp4') %>
+    sidetext: Testimonial

@@ -2,6 +2,9 @@
 .top-left.sidetext = section.sidetext
 
 .container
+  - if section.decorations.key? 'triangle'
+    .container.with.right.triangle.decoration class=section.decorations['triangle']
+
   .content
     .content-box
       h2.title = section.title

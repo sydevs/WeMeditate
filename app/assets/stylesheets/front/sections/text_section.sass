@@ -81,13 +81,18 @@ section.type-text
     img
       max-width: 47.25%
 
-  &.format-box-with-righthand-image img
-    float: right
+  &.format-box-with-righthand-image
+    .container.with.right.triangle.decoration::after
+      right: -108px
 
-  &.format-box-with-lefthand-image .content-box
-    margin-left: -140px
-    padding: 65px
-    left: auto
+    img
+      float: right
+
+  &.format-box-with-lefthand-image
+    .content-box
+      margin-left: -140px
+      padding: 65px
+      left: auto
 
   &.format-grid
     .container

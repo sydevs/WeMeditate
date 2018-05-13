@@ -1,21 +1,22 @@
 
 #signup
 
-.wrapper.centered
-  .simple.illustration.pre.divider
-  h2.title = section.title
-  .sub.title = section.subtitle
-  .title = section.text
-  = form_tag subscribe_path, class: 'registration-form', remote: true do
-    p.message
-    .fields
-      = hidden_field_tag :city_id, @city.id
-      = email_field_tag :email_address, nil, placeholder: 'Your email'
-      = email_field_tag :name, nil, placeholder: 'Your name'
-      = select_tag :venue, options_for_select(@city.venues.each_with_index.map { |v,i| [ "#{v['address']}, #{translate_day v['day_of_week']} #{v['start_time']}", i ] }), prompt: 'Select location'
-      = select_tag :date, options_for_select(['Saturday, Jan 3, 10:00', 'Jan 10', 'Jan 17', 'Jan 24']), prompt: 'Select date'
-      //= date_field_tag :date, nil, placeholder: 'Choose date'
-    p
-      button.box.button = section.action
+- if @city.venues.present?
+  .wrapper.centered
+    .simple.illustration.pre.divider
+    h2.title = section.title
+    .sub.title = section.subtitle
+    .title = section.text
+    = form_tag subscribe_path, class: 'registration-form', remote: true do
+      p.message
+      .fields
+        = hidden_field_tag :city_id, @city.id
+        = email_field_tag :email_address, nil, placeholder: 'Your email'
+        = email_field_tag :name, nil, placeholder: 'Your name'
+        = select_tag :venue, options_for_select(@city.venues.each_with_index.map { |v,i| [ "#{v['address']}, #{translate_day v['day_of_week']} #{v['start_time']}", i ] }), prompt: 'Select location'
+        = select_tag :date, options_for_select(['Saturday, Jan 3, 10:00', 'Jan 10', 'Jan 17', 'Jan 24']), prompt: 'Select date'
+        //= date_field_tag :date, nil, placeholder: 'Choose date'
+      p
+        button.box.button = section.action
 
-  .simple.illustration.post.divider
+    .simple.illustration.post.divider
