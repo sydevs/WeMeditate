@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   include Regulator
   protect_from_forgery #with: :exception
+  before_action :check_maintenance_mode, except: [:maintenance]
 
   def front
     @static_page = StaticPage.includes(:sections).find_by(role: :home)
@@ -41,6 +42,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def maintenance
+    render layout: 'basic'
+  end
+
   protected
     def layout_by_resource
       if devise_controller?
@@ -50,10 +55,13 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def meditations_navigation
+    def check_maintenance_mode
+      puts ENV['MAINTENANCE_MODE']
+
+      if ENV['MAINTENANCE_MODE'] and controller_name != 'sessions' and controller_name != 'switch_user' and !current_user.present?
+        redirect_to '/maintenance'
+      end
     end
-
-
 end
 
 class Hash

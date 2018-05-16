@@ -8,6 +8,8 @@ header
 
       - unless current_user.present?
         a.sign-in href=new_user_session_path SIGN IN
+      - else
+        a href=admin_root_path ADMIN
 
     nav.menu
       - navigation do |nav|

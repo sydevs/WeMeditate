@@ -1,0 +1,26 @@
+
+= inline_svg 'header/logo-small.svg'
+h1 WE MEDITATE
+p = ENV['MAINTENANCE_MODE'] || 'The website is under construction, come back soon.'
+- if current_user.present?
+  a href=admin_root_path Go To Admin Dashboard
+- else
+  a.sign-in href=new_user_session_path Sign In
+
+sass:
+  body
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    text-align: center
+    height: 100vh
+
+  svg
+    height: 100px
+
+    path
+      fill: #7b7b7b
+
+  h1
+    font-family: 'raleway', sans-serif

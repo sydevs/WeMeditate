@@ -22,6 +22,7 @@ header
     a
       color: $color-text-normal
       text-decoration: none
+      z-index: 1
 
     svg, img
       height: 100%
@@ -29,8 +30,11 @@ header
     .logo svg path
       fill: #555
 
-    .illustration-wrapper svg path
-      stroke: #555
+    .illustration-wrapper
+      z-index: 0
+
+      svg path
+        stroke: #555
 
     #burger-button
       float: right
