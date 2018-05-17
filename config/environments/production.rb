@@ -94,5 +94,5 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'wemeditate.com', port: 3000 }
 
   # Google Analytics
-  #GA.tracker = 'UA-113069688-1'
+  GA.tracker = ENV['GOOGLE_ANALYTICS_ID']
 end

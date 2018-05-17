@@ -21,7 +21,7 @@ html lang=locale
     / iOS Safari
     meta name="apple-mobile-web-app-status-bar-style" content="#000"
 
-    = analytics_init if GoogleAnalytics.valid_tracker?
+    = analytics_init if GoogleAnalytics.valid_tracker? and not current_user.present?
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
