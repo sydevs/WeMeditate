@@ -15,3 +15,12 @@
 @mixin desktop
   @media only screen and (min-width: #{$desktop-width})
     @content
+
+
+@mixin tablet-or-smaller
+  @media only screen and (max-width: #{$laptop-width - 1px})
+    @content
+
+@mixin laptop-or-larger
+  @media only screen and (min-width: #{$laptop-width})
+    @content

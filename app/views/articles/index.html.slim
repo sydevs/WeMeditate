@@ -9,7 +9,11 @@ nav.primary.category.filters data-group='category'
   a.filter.button class="#{'active' unless @categories.any? {|c| c.id == selected_category_id}}" data-filter="" href="#"
     ' All
 
-#grid.container = render @articles
+.grid.container
+  .grid.wrapper
+    #grid
+      .grid-sizer
+      = render @articles
 
 - if Article.all.count > ArticlesController::ARTICLES_PER_PAGE
   .loadmore.centered

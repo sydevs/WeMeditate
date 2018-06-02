@@ -1,17 +1,27 @@
+@import "../../mixins/device_media"
 @import "../../mixins/vars"
 
 body.articles-index
   #grid
-    padding: 0 50px
+    position: relative
+    //padding: 0 50px
     margin: auto
 
-  article
-    width: 30% // TODO: This should be 33.333%, or the grid needs to be centered
-    padding: 0 20px
-    margin-bottom: 50px
-
-    img
+    .grid-sizer,
+    article
       width: 100%
+      box-sizing: border-box
+
+  article
+    padding: 0 2%
+    margin-bottom: 3em
+
+    .media
+      &:hover
+        opacity: 0.7
+
+      img
+        width: 100%
 
     .title
       font-size: 1em
@@ -38,3 +48,22 @@ body.articles-index
 
   .loadmore
     margin-bottom: 2em
+
+  @include desktop
+    #grid
+      .grid-sizer, article
+        width: 25%
+
+  @include laptop
+    #grid
+      .grid-sizer, article
+        width: 33.3333%
+
+  @include tablet
+    #grid
+      .grid-sizer, article
+        width: 50%
+
+  @include laptop-or-larger
+    .grid.wrapper
+      padding: 0 4%

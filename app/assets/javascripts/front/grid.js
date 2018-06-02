@@ -12,6 +12,10 @@ const Grid = {
       Grid.container.imagesLoaded(function() {
         Grid.container.isotope({
           itemSelector: 'article',
+          percentPosition: true,
+          masonry: {
+            columnWidth: '.grid-sizer',
+          }
         })
       })
 

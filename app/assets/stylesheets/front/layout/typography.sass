@@ -1,5 +1,6 @@
 @import "../../mixins/vars"
 @import "../../mixins/functions"
+@import "../../mixins/device_media"
 
 +font-face("raleway", "RalewayRegular/RalewayRegular")
 +font-face("raleway", "RalewayExtraLight/RalewayExtraLight", 200)
@@ -44,3 +45,7 @@ h1
 
 .date
   font-family: $futura-book
+
+@include tablet-or-smaller
+  html
+    font-size: 110%
