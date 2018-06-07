@@ -1,13 +1,15 @@
 
 - items = section.extra_attr('items', [])
 
-.top-left.sidetext = section.sidetext
+.container
+  .top-left.sidetext = section.sidetext
 
 .container
   h2.title = section.title
   = section.text&.html_safe
 
   #grid.items
+    .grid-sizer
     - items.each_with_index do |item, index|
       article class="#{'initial' if index < 3}"
         - if item['url'].present?

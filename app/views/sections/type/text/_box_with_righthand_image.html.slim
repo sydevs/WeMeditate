@@ -1,14 +1,13 @@
 
-.top-left.sidetext = section.sidetext
-
 .container
+  .top-left.sidetext = section.sidetext
   - if section.has_decoration? :triangle
     .container.with.right.triangle.decoration class=section.decoration_options(:triangle)
 
+  img.side alt=section.image.identifier src=section.image.url
   .content
     .content-box
       h2.title = section.title
       = section.text&.html_safe
       - if section.action.present? and section.url.present?
         a.box.button href=section.url = section.action
-  img alt=section.image.identifier src=section.image.url

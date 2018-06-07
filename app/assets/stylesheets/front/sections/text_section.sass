@@ -9,13 +9,26 @@ section.type-text
     position: absolute
     left: 50%
     top: 10%
-    bottom: 2%
+    min-height: 88%
+
+  img.side
+    max-width: 47.25%
+
+    @include tablet-or-smaller
+      max-width: none !important
+      height: 100vh
+
+    @include mobile
+      position: relative
+      width: 100%
+      height: auto
 
   .content-box
     background: white
     padding: 65px 97px
-    max-width: 600px
-    max-height: 88%
+    width: 600px
+    max-width: 100%
+    max-height: 100%
     margin-left: -410px
     overflow: hidden
 
@@ -42,6 +55,29 @@ section.type-text
     @include tablet-or-smaller
       margin-left: 0
 
+  @include tablet
+    .content
+      left: 10px !important
+      right: 10px !important
+
+    .content-box
+      max-width: 62.5% !important
+      padding: 65px !important
+      margin-left: 0 !important
+
+  @include mobile
+    .content
+      position: static !important
+      height: auto
+      clear: both
+      min-height: 0
+
+    .content-box
+      width: auto
+      max-height: none
+      margin: 3em 0 !important
+      padding: 0 !important
+
 section.type-text
   &.format-box-over-image
     height: 90vh
@@ -52,17 +88,51 @@ section.type-text
       &::before
         z-index: 0
 
+    .background > img
+      padding-left: 90px
+      display: none
+
+    @include mobile
+      .content
+        .content-box.inverse
+          .title, p
+            color: $color-text-normal
+
+          .box.button
+            color: $color-text-dark
+            border-color: $color-text-dark
+
+      .background
+        background: none !important
+
+        > img
+          display: block
+
     .sidetext
-      margin-top: 7%
+      padding-right: 7%
+
+      @include mobile
+        background: white
+        margin-top: -5px
+        padding-right: 0
 
     .wrapper
       position: relative
-      //height: 100%
+
+      @include mobile
+        padding: 0 35px
+
+    .content
+      left: 45%
 
     .content-box
-      max-width: 496px
+      width: 512px
       background: transparent
       padding: 35px 40px
+      padding-left: 65px
+
+      @include mobile
+        padding-left: 55px !important
 
       p
         font-size: 0.95em
@@ -81,21 +151,38 @@ section.type-text
       top: -15rem
       height: 26rem
 
-    img
-      max-width: 47.25%
-
   &.format-box-with-righthand-image
     .container.with.right.triangle.decoration::after
       right: -108px
 
+    .content-box
+      @include mobile
+        padding-left: 55px !important
+
     img
       float: right
 
+      @include mobile
+        padding-left: 20px
+        margin-right: -35px
+
   &.format-box-with-lefthand-image
+    .content
+      @include tablet
+        align-items: flex-end
+
     .content-box
       margin-left: -140px
       padding: 65px
       left: auto
+
+      @include mobile
+        padding-right: 55px !important
+
+    img
+      @include mobile
+        padding-right: 20px
+        margin-left: -35px
 
   &.format-grid
     .container
@@ -107,14 +194,21 @@ section.type-text
       p
         font-size: 0.95em
 
-    .items
+    #grid.items
       margin-top: 2.8em
 
-      article
+      article, .grid-sizer
         width: 33%
         padding-right: 40px
         padding-bottom: 40px
         min-height: 8em
+
+        @include tablet
+          padding: 20px
+
+        @include mobile
+          width: 100%
+          padding: 0
 
         .title
           font-size: 1.15em

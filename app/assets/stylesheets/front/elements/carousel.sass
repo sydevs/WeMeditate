@@ -1,0 +1,52 @@
+@import "../../mixins/vars"
+
+.carousel.slick-slider
+  max-width: 1000px
+  width: 100%
+  margin: auto
+  text-align: center
+
+  &.video
+    .slick-list
+      overflow: visible
+
+    .slick-slide:not(.slick-active)
+      .button, .title
+        opacity: 0
+        visibility: hidden
+
+  img
+    margin: auto
+
+  .video.wrapper
+    max-width: 680px
+    padding: 10px
+
+  .slick-arrow
+    background: #999
+    width: 60px
+    height: 60px
+    transition: all .5s ease
+    z-index: 10
+
+    margin-top: -30px
+
+    &.slick-prev
+      margin-left: 30px
+
+    &.slick-next
+      margin-right: 30px
+
+    &:hover
+      background: gray
+
+  .slick-arrow::before
+    font-family: $wemeditate-icons
+    font-size: 24px
+    opacity: 1
+
+  .slick-prev::before
+    content: $icon-arrow-left
+
+  .slick-next::before
+    content: $icon-arrow-right

@@ -22,11 +22,9 @@ header
 
   .mobile.container
     .topline
-      a.logo href=root_path
-        img.svg alt="we-meditate" src=image_url('header/logo-small.svg')
-
-      a#burger-button
-        img.svg src=image_url('header/burger.svg')
+      a.logo href=root_path = inline_svg 'header/logo-small.svg'
+      a href='#' Come<br>Meditate
+      a#burger-button = inline_svg 'header/burger.svg'
 
     nav.menu
       - navigation do |nav|

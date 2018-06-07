@@ -1,7 +1,9 @@
 
-.top-left.sidetext = section.sidetext
+.container
+  .top-left.sidetext = section.sidetext
 
 .background style="background-image: url(#{section.image.url})"
+  img src=image_path(section.image.url)
   .content.wrapper
     .content-box class="#{'inverse' if section.extra_attr('color', 'light') == 'light'}"
       h2.title = section.title

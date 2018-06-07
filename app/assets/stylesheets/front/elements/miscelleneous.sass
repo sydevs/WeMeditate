@@ -33,45 +33,12 @@ a:not(:hover) > .overlay
     margin-top: -80px
     margin-left: -80px
 
-.carousel
-  max-width: 1000px
-  width: 100%
-  margin: auto
-  text-align: center
-
-  &.video
-    .slick-list
-      overflow: visible
-
-    .slick-slide:not(.slick-active)
-      .button, .title
-        opacity: 0
-        visibility: hidden
-
-  img
-    margin: auto
-
-  .video.wrapper
-    max-width: 680px
-    padding: 10px
-
-  .slick-arrow
-    background: #999
-    width: 60px
-    height: 60px
-    transition: all .5s ease
-    z-index: 10
-
-    margin-top: -30px
-
-    &.slick-prev
-      margin-left: 30px
-
-    &.slick-next
-      margin-right: 30px
-
-    &:hover
-      background: gray
+    @include mobile
+      width: 85px
+      height: 85px
+      padding: 10px
+      margin-top: -42.5px
+      margin-left: -42.5px
 
 #video-popup
   width: 544px
@@ -87,11 +54,12 @@ a:not(:hover) > .overlay
   transform: rotate(-90deg)
   font-size: 2.275em
   letter-spacing: 4px
+  z-index: 1
 
   &.top-left
     transform-origin: top right
     right: 100%
-    margin-right: -30px
+    padding-top: 30px
 
   &.top-right
     transform-origin: top right

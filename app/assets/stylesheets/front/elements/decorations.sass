@@ -19,7 +19,6 @@
 
       @include tablet
         @include triangle-size(0.7)
-        bottom: -140px * 0.7
 
       @include mobile
         display: none
@@ -110,10 +109,21 @@
     display: block
 
     position: absolute
-    width: 31vw
     z-index: -1
     top: -50%
     bottom: -10%
+
+    @include mobile
+      display: none
+
+    @include tablet-or-smaller
+      width: 22vw
+
+    @include laptop
+      width: 31vw
+
+    @include desktop
+      width: 36vw
 
   &.right::before
     right: 0

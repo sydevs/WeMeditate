@@ -1,47 +1,44 @@
 
 var Carousel = {
   default_options: {
-    centerPadding: '60px',
+    centerPadding: '6%',
     slidesToShow: 3,
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 992,
         settings: {
           arrows: true,
           slidesToShow: 1,
-          centerPadding: '40px',
         }
       },
       {
-        breakpoint: 480,
+        breakpoint: 640,
         settings: {
           arrows: true,
           slidesToShow: 1,
-          centerPadding: '40px',
         }
       }
     ]
   },
 
   video_options: {
-    centerPadding: '60px',
+    centerPadding: '6%',
     centerMode: true,
     slidesToShow: 1,
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 992,
         settings: {
           arrows: true,
           slidesToShow: 1,
-          centerPadding: '40px',
         }
       },
       {
-        breakpoint: 480,
+        breakpoint: 640,
         settings: {
           arrows: true,
+          centerMode: false,
           slidesToShow: 1,
-          centerPadding: '40px',
         }
       }
     ]
