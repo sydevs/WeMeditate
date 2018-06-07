@@ -6,6 +6,25 @@ section.type-image
       height: 45vh
       background-size: cover
 
+      @include tablet-or-smaller
+        height: 20vh
+
     figcaption.credit
       margin-bottom: 1em
       color: $color-text-inverse
+
+      @include tablet-or-smaller
+        position: static
+        transform: none
+        writing-mode: horizontal-tb
+        color: $color-text-lighter
+
+    .container.with.triangle.decoration
+      @include tablet-or-smaller
+        position: absolute
+        width: 100%
+        bottom: 0
+
+      @include mobile
+        margin: 0
+

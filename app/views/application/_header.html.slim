@@ -29,5 +29,5 @@ header
         img.svg src=image_url('header/burger.svg')
 
     nav.menu
-      = navigation do |nav|
+      - navigation do |nav|
         a href=nav[:url] = nav[:title]

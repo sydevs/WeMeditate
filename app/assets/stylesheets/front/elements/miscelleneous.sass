@@ -120,6 +120,12 @@ figcaption.credit
   white-space: nowrap
   font-size: 0.9em
 
+  @include mobile
+    position: static
+    transform: none
+    writing-mode: horizontal-tb
+    margin-top: 0.75em
+
 nav.primary.filters
   display: flex
   justify-content: space-between

@@ -42,9 +42,16 @@ footer
     border-bottom: 1px solid $background-gray-divider
     padding: 0 4%
 
+    @include mobile
+      display: block
+
     > *
       margin-bottom: 66px
       flex-grow: 0
+
+      @include mobile
+        margin-bottom: 36px
+        text-align: center !important
 
       &:last-child
         flex-grow: 0.1
@@ -54,7 +61,7 @@ footer
       > a
         display: block
         line-height: 2em
-        font-size: 0.7em
+        font-size: 0.75em
 
       .title
         line-height: 1.75em
@@ -64,8 +71,15 @@ footer
       .social
         margin-top: 0.9em
 
+        @include mobile
+          font-size: 1.75em
+          margin-top: 0.6em
+
         > a
           margin-right: 0.75em
+
+          &:last-child
+            margin-right: 0
 
   .copyright
     text-align: center
@@ -106,6 +120,12 @@ section.footer
 
   .container
     padding-top: 240px
+    padding-bottom: 450px
+
+    @include mobile
+      padding-top: 0
+      padding-left: 15px
+      padding-right: 15px
 
   .title
     font-size: 2.9em
@@ -145,3 +165,37 @@ section.footer
       font-size: 1.35em
       line-height: 1.25em
       font-family: $raleway-semi
+
+  @include mobile
+    &:before
+      top: 14%
+      height: 94%
+
+    .title
+      font-size: 1.75em
+      line-height: 1em
+      margin-bottom: 1em
+
+    .sub.title
+      font-size: 1.5em
+
+    .sidetext
+      width: 1080px
+      padding-left: 450px
+      font-size: 1.95em
+      color: $color-text-normal
+
+    .actions
+      height: 620px
+      margin-top: 85px
+      flex-direction: column
+      align-items: flex-end
+
+      .item
+        i.icon
+          font-size: 5em
+          margin-bottom: 0.15em
+
+        .title
+          font-size: 1.1em
+          line-height: 1.45em

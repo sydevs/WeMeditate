@@ -6,6 +6,11 @@
   left: $left
   right: $right
 
+@mixin triangle-size($size)
+  bottom: -108px * $size
+  width: 284px * $size
+  height: 250px * $size
+
 @mixin font-face($font-family, $file-path, $weight: normal, $style: normal )
   @font-face
     font-family: $font-family

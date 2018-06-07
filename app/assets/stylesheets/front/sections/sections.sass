@@ -25,6 +25,14 @@ section
     width: 100%
     margin: 15px -120px 45px 50px
 
+    @include mobile
+      float: none
+      max-width: none
+      margin-left: 0
+
+    @include tablet-or-smaller
+      margin-right: 0
+
     &.text
       position: relative
       padding: 65px 0
@@ -40,6 +48,9 @@ section
         z-index: -1
         background: linear-gradient(to left,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
 
+        @include mobile
+          left: 50%
+
 section.intro
   overflow: hidden
 
@@ -49,8 +60,8 @@ section.intro
     color: $color-text-dark
     font-weight: 700
     line-height: 78px
-    margin: 0
-    margin-top: 5%
+    margin-top: 62px
+    margin-bottom: 12px
 
   .title:after
     display: block
@@ -71,3 +82,6 @@ section.intro
 
     .title:after
       background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.18) 25%,rgba(241,212,175,.7) 100%)
+
+    @include tablet-or-smaller
+      min-height: 0

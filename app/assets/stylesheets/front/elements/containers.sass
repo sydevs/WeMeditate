@@ -1,4 +1,3 @@
-@import "../../mixins/device_media"
 @import "../../mixins/vars"
 
 .container
@@ -6,6 +5,9 @@
   max-width: 1156px
   margin: 0 auto
   padding: 0 15px
+
+  @include mobile
+    padding: 0 35px
 
   &:after
     content: ''
@@ -15,9 +17,10 @@
 .wrapper
   width: 100%
   margin: auto
+  padding: 0 10px
 
   &.section
-    max-width: 746px
+    max-width: 766px
 
   &.video
-    max-width: 554px
+    max-width: 574px

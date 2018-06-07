@@ -26,11 +26,20 @@ section.type-action
     .wrapper
       padding: 6.5em
 
+      @include mobile
+        padding: 60px 30px
+
     .pre.divider
       margin-bottom: 3em
 
+      @include mobile
+        margin-bottom: -10px
+
     .post.divider
       margin-top: 3em
+
+      @include mobile
+        margin-top: 1.5em
 
   &.format-button .button
     margin: 2.45em 0

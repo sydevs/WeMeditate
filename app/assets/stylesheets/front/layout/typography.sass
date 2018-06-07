@@ -1,6 +1,5 @@
-@import "../../mixins/vars"
 @import "../../mixins/functions"
-@import "../../mixins/device_media"
+@import "../../mixins/vars"
 
 +font-face("raleway", "RalewayRegular/RalewayRegular")
 +font-face("raleway", "RalewayExtraLight/RalewayExtraLight", 200)
@@ -40,12 +39,8 @@ h1
   font-family: $raleway-bold
 
 .title
-  font-size: 24px // TODO: Inconsistent use of px vs rem/em
+  font-size: 1.5em
   line-height: 1.3em
 
 .date
   font-family: $futura-book
-
-@include tablet-or-smaller
-  html
-    font-size: 110%

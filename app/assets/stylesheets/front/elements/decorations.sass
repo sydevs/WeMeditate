@@ -1,5 +1,4 @@
 @import "../../mixins/functions"
-@import "../../mixins/device_media"
 @import "../../mixins/vars"
 
 .with.decoration
@@ -9,13 +8,21 @@
       display: block
 
       position: absolute
-      bottom: -108px
-      width: 284px
-      height: 250px
+      @include triangle-size(1)
 
       background: image-url('graphics/triangle.svg') no-repeat center
       background-size: cover
       z-index: 10
+
+      @include desktop
+        @include triangle-size(1.25)
+
+      @include tablet
+        @include triangle-size(0.7)
+        bottom: -140px * 0.7
+
+      @include mobile
+        display: none
 
     &.right::after
       right: 5px
@@ -128,9 +135,3 @@
 
   &.left.orange::before
     background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.18) 25%,rgba(241,212,175,.7) 100%)
-
-@include desktop
-  .with.triangle.decoration:after
-    bottom: -140px
-    width: 354px
-    height: 314px

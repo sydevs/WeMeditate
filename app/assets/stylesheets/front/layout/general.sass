@@ -1,4 +1,8 @@
-@import "../../mixins/device_media"
+@import "../../mixins/vars"
+
+html
+  @include tablet
+    zoom: 1.1
 
 ul
   list-style: none
@@ -17,12 +21,9 @@ figure
 .mobile
   display: none
 
-@include mobile
-  .container
-    margin: 0 25px
-
-  .mobile
+  @include mobile
     display: block
 
-  .desktop
+.desktop
+  @include mobile
     display: none
