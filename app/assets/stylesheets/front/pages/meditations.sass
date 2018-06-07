@@ -6,9 +6,16 @@ body.meditations-index
 
   .filter.button
     margin-right: 44px
+    margin-bottom: 0.625em
+
+    @include tablet-or-smaller
+      margin: 22px 22px 0 10px
 
   nav
-    margin-bottom: 55px
+    margin-bottom: 2.8em
+
+    @include tablet-or-smaller
+      text-align: center
 
   #meditations-triangle::after
     bottom: auto
@@ -16,8 +23,20 @@ body.meditations-index
     top: -120px
     zoom: 0.875
 
+  #grid
+    article, .grid-sizer
+      width: 25%
+
+      @include laptop
+        width: 33.33%
+
+      @include tablet
+        width: 50%
+
+      @include mobile
+        width: 100%
+
   article
-    width: 25%
     padding: 0 10px
     margin-bottom: 1em
 

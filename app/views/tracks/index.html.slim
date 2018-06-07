@@ -40,6 +40,7 @@ section.player
       #track-mood-title.top-left.sidetext
       img.cover#track-cover src=image_path('sections/music/album.jpg')
       #grid.list
+        .grid-sizer
         = render @tracks
 
 = render @static_page.sections.with_translations(locale)
