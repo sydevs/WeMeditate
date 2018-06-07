@@ -83,6 +83,9 @@ section.type-text
   &.format-box-over-image
     height: 90vh
 
+    @include mobile
+      height: auto
+
     &.with.gradient
       z-index: -1
 
@@ -186,8 +189,11 @@ section.type-text
         margin-left: -35px
 
   &.format-grid
+    .top-left.sidetext
+      padding-top: 10px
+
     .container
-      padding: 0 58px
+      padding: 0 65px
 
       .title
         margin-bottom: 2em
@@ -205,11 +211,13 @@ section.type-text
         min-height: 8em
 
         @include tablet
-          padding: 20px
+          padding: 10px
 
         @include mobile
           width: 100%
           padding: 0
+          min-height: 0
+          margin-bottom: 1em
 
         .title
           font-size: 1.15em

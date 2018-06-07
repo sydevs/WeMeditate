@@ -11,9 +11,18 @@ section.type-special.format-try-meditation
     top: 30px
     left: 72.25%
     margin-left: -135px
+    z-index: -1
 
     width: 270px
     height: 270px
+
+    @include tablet-or-smaller
+      top: -30px
+      margin-top: 5%
+      zoom: 0.9
+
+    @include mobile
+      top: -60px
 
     svg path
       stroke: $color-text-dark
@@ -43,6 +52,10 @@ section.type-special.format-try-meditation
     left: 0
     right: 0
 
+    @include tablet-or-smaller
+      bottom: -150px
+      padding: 0
+
     h3, h4
       margin-top: 0
       margin-bottom: 0.6em
@@ -64,8 +77,17 @@ section.type-special.format-try-meditation
       width: 100%
       background: linear-gradient(to right,rgba(232,232,232,.5) 0,rgba(255,255,255,.01) 100%)
 
+      @include tablet-or-smaller
+        top: -10px
+        bottom: -10px
+        height: auto
+
     .video.button
       position: absolute
       margin-left: -80px
       left: 45.75%
       bottom: -32px
+
+      @include tablet-or-smaller
+        position: static
+        margin: 0
