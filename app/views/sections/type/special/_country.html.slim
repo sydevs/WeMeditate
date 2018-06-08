@@ -1,33 +1,26 @@
 
 - country_code = params[:country_code].upcase
 - country_name = I18nData.countries(locale)[country_code]
+- cities = City.with_translations(locale).where(country: City.countries[country_code])
+- has_map = country_map_supported?(country_code)
 
-.container
+.container class="#{'map' if has_map}"
   h1 = section.title
   h2 = section.text
 
-- if country_map_supported? country_code
-  // Map data can be retrieved from https://geojson-maps.ash.ms
-  - country_code = 'US'
-  .country.map data-src='/maps/#{country_code.downcase}.geo.json' data-cities=cities_json(country_code) data-bounds=country_bounds_json(country_code)
-
-  .extra style='display: none'
-    h3 Other Cities in #{country_name}
-    .cities
-
-  .action
-    h3 No classes in your city?
-    p Visit the free webinar!
-    a.box.button href='#'
-      | Let's go
-- else
-  - cities = City.with_translations(locale).where(country: City.countries[country_code])
-
   - if cities.present?
-    .container
-      .main.cities
-        - cities.each do |city|
-          a.city href=city_path(city) = city.name
+    - if has_map
+      // Map data can be retrieved from https://geojson-maps.ash.ms
+      .country.map data-src='/maps/#{country_code.downcase}.geo.json' data-cities=cities_json(country_code) data-bounds=country_bounds_json(country_code)
+
+    .main.cities
+      h3 = country_name
+      - cities.each do |city|
+        a.city href=city_path(city) = city.name
+
+    .extra style='display: none'
+      h3 Other Cities in #{country_name}
+      .cities
 
     .action
       h3 No classes in your city?

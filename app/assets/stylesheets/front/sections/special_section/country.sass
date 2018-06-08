@@ -5,9 +5,10 @@ section.type-special.format-country
     margin: 0
     text-align: center
     letter-spacing: 2px
+    margin-bottom: 0.45em
 
   h1
-    line-height: 1.75em
+    line-height: 1.2em
     font-size: 2.45em
     font-family: $raleway-medium
     font-weight: 500
@@ -18,6 +19,10 @@ section.type-special.format-country
   .country.map
     height: 90vh
     background: transparent
+    margin: 0 -15px
+
+    @include mobile
+      display: none
 
     svg
       opacity: 0.8
@@ -55,34 +60,65 @@ section.type-special.format-country
         background: image-url('sections/country/dot.svg') no-repeat
         background-size: cover
 
-  .main.cities
-    margin-top: 3em
-    text-align: center
+  .container
+    .main.cities
+      margin-top: 3em
+      text-align: center
 
-  > .extra,
-  > .action
-    text-align: center
-    padding: 4%
-    margin-bottom: -4%
+      .city
+        display: block
 
-    &:not(.static)
-      position: absolute
-      bottom: 0
-      right: 0
+        @include mobile
+          color: $color-text-normal
+          font-size: 1.2em
+          line-height: 1.5em
 
-    h3
-      margin: 0
-      font-size: 1em
+          &:hover
+            color: $color-text-orange
 
-    p
-      line-height: 1.4em
-      font-size: 0.85em
-      margin: 0.5em 0
+    &.map
+      .main.cities
+        display: none
 
-    .box.button
-      padding: 0.4em 1em
+        @include mobile
+          display: block
 
-  > .extra
-    text-align: left
-    left: 0
-    right: auto
+      > .extra,
+      > .action
+        position: absolute
+        padding: 4%
+        margin-bottom: -4%
+
+        h3
+          margin: 0
+          font-size: 1em
+
+        p
+          line-height: 1.4em
+          font-size: 0.85em
+          margin: 0.5em 0
+
+        .box.button
+          padding: 0.4em 1em
+
+      > .extra
+        text-align: left
+        left: 0
+        top: 80%
+        right: auto
+
+        @include mobile
+          display: none
+
+      > .action
+        text-align: center
+        position: absolute
+        bottom: 0
+        right: 0
+
+        @include mobile
+          position: static
+          margin-top: 2em
+
+    &:not(.map) > .extra
+      display: none

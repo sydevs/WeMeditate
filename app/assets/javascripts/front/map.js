@@ -6,6 +6,10 @@ const Map = {
     $('.city.map').each(Map._load_city_map)
   },
 
+  get_city_html: function(name, url) {
+    return '<a class="city" href="'+url+'">'+name+'</a>'
+  },
+
   _load_country_map: function() {
     let element = $(this)
     let bounds = element.data('bounds')
@@ -53,12 +57,11 @@ const Map = {
           new L.marker(latlng, {
             icon: new L.DivIcon({
               className: 'marker',
-              html: '<a class="city" href="'+city.url+'">'+city.name+'</a>'
+              html: Map.get_city_html(city.name, city.url)
             }),
           }).addTo(map)
         } else {
-          console.log("EXTRA", extra_cities_container, city)
-          extra_cities_container.children('.cities').append('<p><a class="city" href="'+city.url+'">'+city.name+'</a></p>')
+          extra_cities_container.children('.cities').append('<p>' + Map.get_city_html(city.name, city.url) + '</p>')
           extra_cities_container.show()
         }
       })
