@@ -6,7 +6,7 @@
     .simple.illustration.pre.divider
     h2.title = section.title
     .sub.title = section.subtitle
-    .title = section.text
+    .description = section.text
     = form_tag subscribe_path, class: 'subscribe-form', remote: true do
       = hidden_field_tag :mailchimp_list_id, mailchimp_list_id
       p.message
