@@ -42,6 +42,9 @@ body.tracks-index
         opacity: 0.4
         margin: 0 30px
 
+        @include mobile
+          margin: 0 5px
+
         &.active,
         &:hover
           opacity: 0.95
@@ -86,11 +89,18 @@ body.tracks-index
     padding: 50px 0 60px 144px
     background: linear-gradient(to left,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
 
-    @include mobile
-      padding: 0
-      background: none
+    @include tablet
+      margin: auto
+      max-width: 766px
+
+    @include tablet-or-smaller
       margin-top: 50px
+      padding: 50px
       min-height: 0
+
+    @include mobile
+      background: none
+      padding: 0
 
     > .title
       font-size: 1.5em
@@ -113,7 +123,7 @@ body.tracks-index
       left: -288px
       width: 348px
 
-      @include mobile
+      @include tablet-or-smaller
         display: none
 
     #track-mood-title
@@ -127,6 +137,9 @@ body.tracks-index
     .list
       position: relative
       list-style: none
+
+      @include tablet
+        max-width: 540px
 
     .list > *
       width: 100%
