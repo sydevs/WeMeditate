@@ -24,10 +24,20 @@ body.tracks-index
   .filters
     margin-left: 3px
 
+    @include tablet-or-smaller
+      text-align: center
+
     .filter
       margin-right: 44px
 
+      @include tablet-or-smaller
+        margin: 10px 22px
+
     &.instrument
+      @include mobile
+        display: flex
+        justify-content: space-around
+
       .filter
         opacity: 0.4
         margin: 0 30px
@@ -48,6 +58,10 @@ body.tracks-index
     .plyr
       margin-top: -5px
       z-index: -1
+
+    .plyr__controls .extra
+      @include mobile
+        display: none
 
     #track-player-title
       font-size: 1.5em
@@ -72,11 +86,21 @@ body.tracks-index
     padding: 50px 0 60px 144px
     background: linear-gradient(to left,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
 
+    @include mobile
+      padding: 0
+      background: none
+      margin-top: 50px
+      min-height: 0
+
     > .title
       font-size: 1.5em
       line-height: 1.5em
       margin-bottom: 0.4em
       letter-spacing: 1px
+
+      @include mobile
+        font-size: 1.375em
+        margin-bottom: 0.75em
 
     #selected-filter-icons img
       height: 0.8em
@@ -88,6 +112,9 @@ body.tracks-index
       top: 102px
       left: -288px
       width: 348px
+
+      @include mobile
+        display: none
 
     #track-mood-title
       position: absolute

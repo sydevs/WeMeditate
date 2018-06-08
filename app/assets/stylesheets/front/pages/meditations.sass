@@ -4,18 +4,18 @@ body.meditations-index
   section.intro
     margin-bottom: 50px
 
-  .filter.button
-    margin-right: 44px
-    margin-bottom: 0.625em
-
-    @include tablet-or-smaller
-      margin: 22px 22px 0 10px
-
-  nav
+  nav.filters
     margin-bottom: 2.8em
 
     @include tablet-or-smaller
       text-align: center
+
+    .filter.button
+      margin-right: 44px
+      margin-bottom: 0.625em
+
+      @include tablet-or-smaller
+        margin: 10px 22px
 
   #meditations-triangle::after
     bottom: auto

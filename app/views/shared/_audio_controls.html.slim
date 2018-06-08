@@ -1,46 +1,48 @@
 .plyr__controls
-  button.plyr__control aria-label="Play, {title}" aria-pressed="false" data-plyr="play" type="button" 
-    svg.icon--pressed role="presentation" 
-      use xlink:href="#plyr-pause" 
-    svg.icon--not-pressed role="presentation" 
-      use xlink:href="#plyr-play" 
-    span.label--pressed.plyr__tooltip role="tooltip"  Pause
-    span.label--not-pressed.plyr__tooltip role="tooltip"  Play
+  button.plyr__control aria-label='Play, {title}' aria-pressed='false' data-plyr='play' type='button'
+    svg.icon--pressed role='presentation'
+      use xlink:href='#plyr-pause'
+    svg.icon--not-pressed role='presentation'
+      use xlink:href='#plyr-play'
+    span.label--pressed.plyr__tooltip role='tooltip' Pause
+    span.label--not-pressed.plyr__tooltip role='tooltip' Play
   .plyr__progress
-    label.plyr__sr-only for="plyr-seek-{id}"  Seek
-    input data-plyr="seek" id="plyr-seek-{id}" max="100" min="0" step="0.01" type="range" value="0" /
-    progress.plyr__progress--buffer max="100" min="0" value="0"  % buffered
-    span.plyr__tooltip role="tooltip"  00:00
+    label.plyr__sr-only for='plyr-seek-{id}' Seek
+    input data-plyr='seek' id='plyr-seek-{id}' max='100' min='0' step='0.01' type='range' value='0' /
+    progress.plyr__progress--buffer max='100' min='0' value='0' % buffered
+    span.plyr__tooltip role='tooltip' 00:00
   span.plyr__time--current 00:00
-  button.plyr__control data-plyr="rewind" type="button" 
-    svg role="presentation" 
-      use xlink:href="#plyr-rewind" 
-    span.plyr__tooltip role=("tooltip") Rewind 10 secs
-  button.plyr__control data-plyr="fast-forward" type="button" 
-    svg role="presentation" 
-      use xlink:href="#plyr-fast-forward" 
-    span.plyr__tooltip role=("tooltip") Forward 10 secs
-  button.plyr__control aria-label="Mute" aria-pressed="false" data-plyr="mute" type="button" 
-    svg.icon--pressed role="presentation" 
-      use xlink:href="#plyr-muted" 
-    svg.icon--not-pressed role="presentation" 
-      use xlink:href="#plyr-volume" 
-    span.label--pressed.plyr__tooltip role="tooltip"  Unmute
-    span.label--not-pressed.plyr__tooltip role="tooltip"  Mute
-  .plyr__volume
-    label.plyr__sr-only for="plyr-volume-{id}"  Volume
-    input autocomplete="off" data-plyr="volume" id="plyr-volume-{id}" max="1" min="0" step="0.05" type="range" value="1" /
-  button.plyr__control aria-label=("Enable captions") aria-pressed="true" data-plyr="captions" type="button" 
-    svg.icon--pressed role="presentation" 
-      use xlink:href="#plyr-captions-on" 
-    svg.icon--not-pressed role="presentation" 
-      use xlink:href="#plyr-captions-off" 
-    span.label--pressed.plyr__tooltip role="tooltip"  Disable captions
-    span.label--not-pressed.plyr__tooltip role="tooltip"  Enable captions
-  button.plyr__control aria-label=("Enter fullscreen") aria-pressed="false" data-plyr="fullscreen" type="button" 
-    svg.icon--pressed role="presentation" 
-      use xlink:href="#plyr-exit-fullscreen" 
-    svg.icon--not-pressed role="presentation" 
-      use xlink:href="#plyr-enter-fullscreen" 
-    span.label--pressed.plyr__tooltip role="tooltip"  Exit fullscreen
-    span.label--not-pressed.plyr__tooltip role="tooltip"  Enter fullscreen
+  button.plyr__control data-plyr='rewind' type='button'
+    svg role='presentation'
+      use xlink:href='#plyr-rewind'
+    span.plyr__tooltip role='tooltip' Rewind 10 secs
+  button.plyr__control data-plyr='fast-forward' type='button'
+    svg role='presentation'
+      use xlink:href='#plyr-fast-forward'
+    span.plyr__tooltip role='tooltip' Forward 10 secs
+
+  .extra
+    button.plyr__control aria-label='Mute' aria-pressed='false' data-plyr='mute' type='button'
+      svg.icon--pressed role='presentation'
+        use xlink:href='#plyr-muted'
+      svg.icon--not-pressed role='presentation'
+        use xlink:href='#plyr-volume'
+      span.label--pressed.plyr__tooltip role='tooltip' Unmute
+      span.label--not-pressed.plyr__tooltip role='tooltip' Mute
+    .plyr__volume
+      label.plyr__sr-only for='plyr-volume-{id}' Volume
+      input autocomplete='off' data-plyr='volume' id='plyr-volume-{id}' max='1' min='0' step='0.05' type='range' value='1'
+    button.plyr__control aria-label=('Enable captions') aria-pressed='true' data-plyr='captions' type='button'
+      svg.icon--pressed role='presentation'
+        use xlink:href='#plyr-captions-on'
+      svg.icon--not-pressed role='presentation'
+        use xlink:href='#plyr-captions-off'
+      span.label--pressed.plyr__tooltip role='tooltip' Disable captions
+      span.label--not-pressed.plyr__tooltip role='tooltip' Enable captions
+    button.plyr__control aria-label=('Enter fullscreen') aria-pressed='false' data-plyr='fullscreen' type='button'
+      svg.icon--pressed role='presentation'
+        use xlink:href='#plyr-exit-fullscreen'
+      svg.icon--not-pressed role='presentation'
+        use xlink:href='#plyr-enter-fullscreen'
+      span.label--pressed.plyr__tooltip role='tooltip' Exit fullscreen
+      span.label--not-pressed.plyr__tooltip role='tooltip' Enter fullscreen
