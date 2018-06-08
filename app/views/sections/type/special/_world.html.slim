@@ -1,19 +1,19 @@
 
 .container
-  = inline_svg 'sections/world/map.svg'
+  .map = inline_svg 'sections/world/map.svg'
 
   .wrapper
     h2.title = section.title
     p = section.text
 
-    .action data-no-result='No classes for that country'
+    .country.action data-no-result='No classes for that country'
       input.country.autocomplete list='countries-list' placeholder=section.action
 
-.action
-  h3 No classes in your country?
-  p Visit the free webinar!
-  a.box.button href='#'
-    | Let's go
+    .webinar.action
+      h3 No classes in your country?
+      p Visit the free webinar!
+      a.box.button href='#'
+        | Let's go
 
 datalist#countries-list
   - country_names = I18nData.countries(locale)
