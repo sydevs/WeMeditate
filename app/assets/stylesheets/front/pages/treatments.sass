@@ -10,6 +10,10 @@ body.treatments-index
   margin-bottom: 135px
   padding-top: 2px
 
+  @include tablet
+    padding-left: 30px
+    padding-right: 30px
+
   article
     position: relative
     margin-top: 150px
@@ -18,12 +22,32 @@ body.treatments-index
     flex-basis: 100%
     flex-wrap: nowrap
 
+    @include mobile
+      flex-direction: column !important
+
+    &.reverse
+      flex-direction: row-reverse
+
+      img
+        @include mobile
+          align-self: flex-end
+
     img
       width: 360px
-      height: 360px
+      max-width: 100%
+      align-self: flex-start
+
+      @include tablet
+        max-width: 50%
+
+    > .clearfix
+      display: none
 
     .content
       margin-top: 65px
+
+      @include tablet-or-smaller
+        margin-top: 30px
 
       .title
         margin-bottom: 0.7em
@@ -59,6 +83,12 @@ body.treatments-index
       z-index: -1
 
     &:nth-child(even)
+      img
+        margin-left: 87px
+
+        @include tablet
+          margin-left: 40px
+
       .number
         right: 0
 
@@ -69,6 +99,9 @@ body.treatments-index
     &:nth-child(odd)
       img
         margin-right: 87px
+
+        @include tablet
+          margin-right: 40px
 
       .content
         margin-right: 30px
