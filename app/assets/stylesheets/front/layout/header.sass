@@ -12,12 +12,10 @@ header
     text-align: center
     padding: 10px 0
     font-size: 0.8em
+    border-bottom: 1px solid $light-gray
 
     .logo svg
       width: 60px
-
-    > *:not(.illustration-wrapper)
-      margin-bottom: 20px
 
     a
       color: $color-text-normal
@@ -40,8 +38,7 @@ header
       float: right
 
   .desktop
-    > .menu,
-    > .topline
+    > .menu
       border-bottom: 1px solid $light-gray
 
     .topline
@@ -181,9 +178,13 @@ header
         font-size: 0.5em
 
   .mobile
-    .topline > *
-      display: inline-block
-      height: 32px
+    .topline
+      height: 85px
+      align-items: center
+
+      > *
+        display: inline-block
+        height: 32px
 
     > .menu
       position: absolute

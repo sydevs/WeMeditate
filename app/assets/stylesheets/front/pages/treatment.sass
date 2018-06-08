@@ -14,6 +14,9 @@ body.treatments-show
       align-items: center
       justify-content: center
 
+      @include mobile
+        margin-top: 26px
+
       &:after
         width: 100%
         left: auto
@@ -25,6 +28,9 @@ body.treatments-show
       svg
         width: 40px
         margin: 0 22px
+
+        @include mobile
+          display: none
 
         &:first-child
           transform: rotate(-90deg)
