@@ -3,8 +3,11 @@
   .top-left.sidetext = section.sidetext
   - if section.has_decoration? :triangle
     .container.with.right.triangle.decoration class=section.decoration_options(:triangle)
+  //- if section.has_decoration? :circle
+    .circle = inline_svg 'graphics/circle.svg'
 
-  img.side alt=section.image.identifier src=section.image.url
+  .image class="#{'with circle decoration' if section.has_decoration?(:circle)}"
+    img alt=section.image.identifier src=section.image.url
   .content
     .content-box
       h2.title = section.title

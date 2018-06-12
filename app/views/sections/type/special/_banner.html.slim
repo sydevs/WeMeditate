@@ -12,19 +12,24 @@
       - when 'front_page'
         h1 = section.title
         h2 = section.text
-        a.action href=section.url
-          = inline_svg 'graphics/leaf.svg'
-          div = section.action
-          = inline_svg 'graphics/leaf.svg'
       - when 'treatments_page'
         h2 = section.text
         h1 = section.title
-        a.circle.button href=section.url
-          = inline_svg 'graphics/circle.svg'
-          .text = section.action
       - when 'city_page'
         h1 = section.title.gsub('%city', @city.name)
         h2 = section.text
-        a.action href='#section-1'
-          div = section.action
-          img src=image_path('graphics/arrow.png')
+
+  - case banner_style
+    - when 'front_page'
+      a.action href=section.url
+        = inline_svg 'graphics/leaf.svg'
+        div = section.action
+        = inline_svg 'graphics/leaf.svg'
+    - when 'treatments_page'
+      a.circle.button href=section.url
+        = inline_svg 'graphics/circle.svg'
+        .text = section.action
+    - when 'city_page'
+      a.action href='#section-1'
+        div = section.action
+        img src=image_path('graphics/arrow.png')
