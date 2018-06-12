@@ -241,11 +241,17 @@ section.type-text
   &.format-columns
     article
       text-align: left
-      padding: 1em
+      padding: 1em 2em
+      padding-left: 2.5em
+
+      @include tablet-or-smaller
+        padding-left: 80px
+        padding-right: 80px
 
       .image
         text-align: center
         padding: 5px
+        margin-left: -0.5em
 
         img
           height: 160px
@@ -253,16 +259,19 @@ section.type-text
       .title
         font-size: 1.3em
         line-height: 1em
+        margin-bottom: 0.85em
 
       .text
-        font-size: 0.875em
+        font-size: 0.75em
+        line-height: 1.85em
 
     article:not(.central)
-      .image
-        padding: 25px
+      @include laptop-or-larger
+        .image
+          padding: 25px
 
-      img
-        height: 120px
+        img
+          height: 120px
 
   &.format-ancient-wisdom
     .background

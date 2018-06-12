@@ -5,6 +5,7 @@ section.type-special.format-treatments
     margin-bottom: 212px
 
     article
+      display: flex
       padding: 0 55px
 
       &:not(:first-child)
@@ -33,28 +34,22 @@ section.type-special.format-treatments
 
         img
           max-width: none
+          margin: 0
 
         .video.button
           position: absolute
-          left: -75px
           bottom: -75px
+          right: -85px
 
-      &:nth-child(odd)
-        .content
-          margin-right: 80px
-
-        img
-          margin-right: 0
-
-      &:nth-child(even)
+      &.reverse
         padding: 0 28px
 
         .content
           margin-left: 72px
 
         .video.button
-          left: auto
-          right: -85px
+          left: -75px
+          right: auto
 
     article::after
       display: none

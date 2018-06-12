@@ -1,3 +1,4 @@
+@import "../../mixins/vars"
 
 body.static-page
   section
@@ -10,6 +11,10 @@ body.static-page
   &.static-page-contact
     section.intro
       display: none
+
+    section:last-child
+      @include tablet-or-larger
+        margin-bottom: 0
 
   &.static-page-country
     section:first-child

@@ -5,6 +5,7 @@
   .top-left.sidetext = section.sidetext
 
 #grid.treatments.wrapper
+  .grid-sizer
   - treatments.each_with_index do |treatment, index|
     article id=dom_id(treatment) class="#{'initial' if index < 2} #{'reverse' if index.even?}"
       .image

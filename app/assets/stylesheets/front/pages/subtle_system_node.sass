@@ -32,12 +32,19 @@ body.subtle_system_nodes-show
         &:last-child
           transform: rotate(90deg) scaleX(-1)
 
+  section.type-text.format-columns
+    article
+      max-width: 520px
+
   section.type-text.format-box-over-image
     height: auto
 
     .background
       padding: 5% 0
       background-position: bottom
+
+      @include mobile
+        padding: 0
 
     .content-box
       max-width: 484px
@@ -56,7 +63,8 @@ body.subtle_system_nodes-show
       bottom: -90vh
 
   section.type-text.format-ancient-wisdom:nth-last-child(2)
-    margin-bottom: 0
+    @include tablet-or-larger
+      margin-bottom: 0
 
   .with.left.gradient::before
     width: 36.5vw
