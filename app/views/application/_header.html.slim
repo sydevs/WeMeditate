@@ -1,7 +1,7 @@
 
-header
+header class="#{'inverse' if action_name == 'front'}"
   .desktop.container
-    .topline
+    .full.topline
       a.logo href=root_path = inline_svg 'header/logo.svg'
       a.illustration-wrapper href=root_path
         = inline_svg 'header/illustration.svg'
@@ -11,7 +11,16 @@ header
       - else
         a href=admin_root_path ADMIN
 
-    nav.menu
+    .mini.topline
+      a.burger-button = inline_svg 'header/burger.svg'
+      a.logo href=root_path = inline_svg 'header/logo-small.svg'
+
+      - unless current_user.present?
+        a.sign-in href=new_user_session_path SIGN IN
+      - else
+        a href=admin_root_path ADMIN
+
+    nav.menubar
       - navigation do |nav|
         = render 'header_nav_item', nav: nav
 
@@ -22,10 +31,10 @@ header
 
   .mobile.container
     .topline
-      a.logo href=root_path = inline_svg 'header/logo-small.svg'
+      a.logo href=root_path = inline_svg 'header/logo-mini.svg'
       a href='#' Come<br>Meditate
-      a#burger-button = inline_svg 'header/burger.svg'
+      a.burger-button = inline_svg 'header/burger.svg'
 
-    nav.menu
-      - navigation do |nav|
-        a href=nav[:url] = nav[:title]
+  nav.menu
+    - navigation do |nav|
+      a href=nav[:url] = nav[:title]

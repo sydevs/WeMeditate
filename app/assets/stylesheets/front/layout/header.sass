@@ -2,7 +2,66 @@
 @import "../../mixins/functions"
 
 header
+  position: relative
+  min-height: 85px
+  z-index: 100
   padding-top: 5px
+
+  .burger-buttom
+    cursor: pointer
+
+  > .container
+    z-index: 100
+
+  > .menu
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    text-align: center
+    background: white
+
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    z-index: 90
+
+    height: 0
+    overflow: hidden
+    transition: height 0.5s ease
+
+    > a
+      width: 100%
+      font-size: 1.125em
+      line-height: 3em
+      transition: all .3s ease
+
+      &:hover,
+      &.active
+        background: $background-gray
+
+  .full.topline,
+  .menubar,
+  .breadcrumbs,
+    transition: all 0.5s ease
+
+  &.sticky
+    .full.topline,
+    .menubar,
+    .breadcrumbs,
+      display: none !important
+
+    .container
+      position: fixed
+      top: 0
+      left: 0
+      right: 0
+      background: white
+
+  &:not(.sticky) .mini.topline
+    display: none
 
   .topline
     display: flex
@@ -25,8 +84,10 @@ header
     svg, img
       height: 100%
 
-    .logo svg path
-      fill: #555
+    .burger-button,
+    .logo,
+      svg path
+        fill: #555
 
     .illustration-wrapper
       z-index: 0
@@ -34,15 +95,18 @@ header
       svg path
         stroke: #555
 
-    #burger-button
-      float: right
-
   .desktop
-    > .menu
-      border-bottom: 1px solid $light-gray
-
-    .topline
+    .full.topline
       height: 115px
+
+    .mini.topline
+      height: 76.5px
+      padding-bottom: 5px
+      align-items: center
+
+      .logo svg
+        height: 42px
+        width: auto
 
     .illustration-wrapper
       position: absolute
@@ -51,7 +115,7 @@ header
       svg
         height: 90px
 
-    > .menu
+    > .menubar
       display: flex
       justify-content: space-between
       align-items: center
@@ -59,6 +123,7 @@ header
 
       font-size: 0.875em
       font-family: $raleway-medium
+      border-bottom: 1px solid $light-gray
 
       .title
         font-family: $raleway-semi
@@ -178,6 +243,12 @@ header
         font-size: 0.5em
 
   .mobile
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    background: white
+
     .topline
       height: 85px
       align-items: center
@@ -186,29 +257,38 @@ header
         display: inline-block
         height: 32px
 
+  // INVERSE TRANSITIONS
+  .topline .logo svg path,
+  .illustration-wrapper svg path,
+  .burger-button svg path,
+  .container, .topline, .menubar, a
+    transition: all 0.2s ease
+
+  &.inverse
+    .container
+      background: transparent
+
+    .topline
+      .logo svg path
+        fill: white
+
+      .illustration-wrapper,
+      .burger-button
+        svg path
+          stroke: white
+
+    a
+      color: white
+
+    .topline,
+    .menubar
+      border-color: white
+
+html.show-menu
+  overflow: hidden
+
+  header
+    position: static
+
     > .menu
-      position: absolute
-      top: 0
-      bottom: 0
-      left: 0
-      right: 0
-      z-index: 50
-      display: flex
-      flex-direction: column
-      justify-content: center
-      align-items: center
-      text-align: center
-
-      display: none
-
-      > a
-        width: 100%
-        line-height: 50px
-        font-size: 16px
-        font-weight: 600
-        transition: all .3s ease
-
-        &:hover,
-        &.active
-          background: $background-gray
-
+      height: 100%

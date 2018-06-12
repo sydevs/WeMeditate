@@ -101,16 +101,24 @@ figcaption.credit
 
 nav.primary.filters
   display: flex
+  flex-wrap: wrap
   justify-content: space-between
   padding: 72px 0 20px
   margin: auto
   max-width: 850px
+
+  @include tablet-or-smaller
+    justify-content: center
+
+  @include mobile
+    padding: 36px 0
 
   .filter
     font-size: 0.875em
     line-height: 1em
     padding: 1.2em 1.5em
     font-family: $raleway
+    margin: 5px
 
     &:before
       background: $background-blue
