@@ -8,18 +8,18 @@ section.intro class="#{'banner' if banner_style}" style=banner_style
   .container
     h1.title = @article.title
 
-.container
-  nav.chapters
+nav.chapters
+  .container
     - section_index = 0
     - chapter_index = 0
     - sections.each do |section|
       - section_index += 1
       - if section.chapter_start?
         - chapter_index += 1
-        a.item href="#section-#{section_index}"
+        a.item href="##{section.chapter_slug}"
           .number = chapter_index
           .title = section.title
-          //.progress data-id="section-#{section_index}"
+          .progress data-id=section.chapter_slug
 
 article
   = render sections

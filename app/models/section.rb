@@ -34,6 +34,10 @@ class Section < ApplicationRecord
     content_type == 'text' and title.present?
   end
 
+  def chapter_slug
+    title&.parameterize
+  end
+
   def special?
     content_type == 'special'
   end
