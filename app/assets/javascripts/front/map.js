@@ -1,13 +1,40 @@
 
 const Map = {
+  padding: [40, 0],
+
+  // These variables will be set on load
+  //maps: null,
+  //resizeTimer: null,
+
   load: function() {
     console.log('loading Map.js')
+    //Map.maps = []
+    //Map.resizeTimer = null
+
     $('.country.map').each(Map._load_country_map)
     $('.city.map').each(Map._load_city_map)
+    //$(window).resize(Map._on_resize)
   },
 
   get_city_html: function(name, url) {
     return '<a class="city" href="'+url+'">'+name+'</a>'
+  },
+
+  setup_bounds: function(map, bounds) {
+    let resizeTimer = null
+    map.fitBounds(bounds, { padding: Map.padding })
+
+    $(window).resize(function() {
+      clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(function() {
+        console.log('Resize', map)
+        map.fitBounds(bounds, {
+          padding: Map.padding,
+          animate: false,
+        })
+        map.invalidateSize()
+      }, 250)
+    })
   },
 
   _load_country_map: function() {
@@ -25,26 +52,16 @@ const Map = {
       tap: false,
     })
 
+    //Map.maps.push(map)
     //new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?', {}).addTo(map);
 
     $.getJSON(element.data('src'), function(data) {
-      let layer = new L.GeoJSON(data, {
-        /*coordsToLatLng: function(coords) {
-          longitude = coords[0]; latitude = coords[1]
-          var latlng = L.latLng(latitude, longitude)
-
-          if (longitude < 0) {
-            return latlng.wrap(360, 0)
-          } else {
-            return latlng.wrap()
-          }
-        },*/
-      })
+      let layer = new L.GeoJSON(data)
 
       layer.addTo(map)
 
       bounds = (bounds == null || typeof bounds === 'undefined') ? layer.getBounds() : bounds
-      map.fitBounds(bounds, { padding: [40, 0] })
+      Map.setup_bounds(map, bounds)
       bounds = map.getBounds()
 
       let extra_cities_container = element.parent().find('.extra')
