@@ -25,10 +25,11 @@
     .active.chakras.filter.button data-filter='.chakras.chart' Chakras
     .channels.filter.button data-filter='.channels.chart' Channels
 
-  - SubtleSystemNode.all.each do |subtle_system_node|
-    .article id=dom_id(subtle_system_node) class=subtle_system_node.role.to_s.dasherize
-      .title = subtle_system_node.name
-      p = subtle_system_node.excerpt
-      a href=url_for(subtle_system_node)
-        ' Learn More
-        i.breadcrumb.icon
+  .articles
+    - SubtleSystemNode.all.each do |subtle_system_node|
+      .article id=dom_id(subtle_system_node) class=subtle_system_node.role.to_s.dasherize
+        .title = subtle_system_node.name
+        p = subtle_system_node.excerpt
+        a href=url_for(subtle_system_node)
+          ' Learn More
+          i.breadcrumb.icon
