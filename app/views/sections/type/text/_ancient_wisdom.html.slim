@@ -4,11 +4,10 @@
 
 .background style="background-image: url(#{image_path 'sections/ancient-wisdom/background.png'})"
   .container
-    .row
-      img src=image_path('sections/ancient-wisdom/image.jpg')
-      .content
-        - if section.title.present?
-          h2.title = section.title
-        = section.text&.html_safe
-        - if section.action.present? and section.url.present?
-          a.box.button href=section.url = section.action
+    img src=image_path('sections/ancient-wisdom/image.jpg')
+    .content
+      - if section.title.present?
+        h2.title = section.title
+      = section.text&.html_safe
+      - if section.action.present? and section.url.present?
+        a.box.button href=section.url = section.action

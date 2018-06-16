@@ -267,7 +267,8 @@ header
   .container, .topline, .menubar, a
     transition: all 0.2s ease
 
-  &.inverse
+html:not(.show-menu)
+  header.inverse
     .container
       background: transparent
 

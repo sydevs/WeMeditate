@@ -2,14 +2,18 @@
 
 section.type-special.format-treatments
   .treatments.wrapper
-    margin-bottom: 212px
+    margin-bottom: 0
+
+    @include tablet
+      width: 640px
 
     article
       display: flex
       padding: 0 55px
+      margin-top: 0
 
-      &:not(:first-child)
-        margin-top: 212px
+      &:not(:last-child)
+        margin-bottom: 212px
 
       .content
         margin-top: 0
@@ -50,6 +54,28 @@ section.type-special.format-treatments
         .video.button
           left: -75px
           right: auto
+
+      @include tablet-or-smaller
+        padding-left: 35px !important
+        padding-right: 28px !important
+
+        &:not(:last-child)
+          margin-bottom: 80px
+
+        .content
+          margin: 0 5px !important
+
+        .image
+          margin: 0
+          margin-bottom: 40px
+
+          .video.button
+            bottom: -40px
+            right: 0
+            left: auto
+            width: 120px
+            height: 120px
+            padding: 16px
 
     article::after
       display: none

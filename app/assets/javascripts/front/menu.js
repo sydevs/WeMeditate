@@ -37,8 +37,8 @@ var Menu = {
     Menu.stickyPoint = Menu.header.outerHeight(true)
 
     $banner = $('main > section:first-child')
-    if ($banner.hasClass('format-banner') && $banner.children('background').hasClass('inverse')) {
-      Menu.inversePoint = $banner.outerHeight()
+    if ($banner.length > 0 && $banner.hasClass('format-banner') && $banner.children('.background').hasClass('inverse')) {
+      Menu.inversePoint = $banner.outerHeight() - Menu.stickyPoint
     }
 
     if (Menu.chapters.length > 0) {

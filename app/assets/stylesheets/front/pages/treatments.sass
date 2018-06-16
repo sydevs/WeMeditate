@@ -21,15 +21,16 @@ body.treatments-index
     display: flex
     flex-basis: 100%
     flex-wrap: nowrap
+    align-items: flex-start
 
-    @include mobile
+    @include tablet-or-smaller
       flex-direction: column !important
 
     &.reverse
       flex-direction: row-reverse
 
       img
-        @include mobile
+        @include tablet-or-smaller
           align-self: flex-end
 
     img
@@ -48,6 +49,7 @@ body.treatments-index
 
       @include tablet-or-smaller
         margin-top: 30px
+        max-width: 360px
 
       .title
         margin-bottom: 0.7em
@@ -86,7 +88,7 @@ body.treatments-index
       .image
         margin-left: 87px
 
-        @include tablet
+        @include tablet-or-smaller
           margin-left: 40px
 
       .number
@@ -100,7 +102,7 @@ body.treatments-index
       .image
         margin-right: 87px
 
-        @include tablet
+        @include tablet-or-smaller
           margin-right: 40px
 
       .content

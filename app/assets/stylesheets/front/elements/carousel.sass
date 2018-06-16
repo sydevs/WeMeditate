@@ -6,47 +6,74 @@
   margin: auto
   text-align: center
 
+  img
+    margin: auto
+
+  .slick-arrow
+    transition: all 0.5s ease
+    z-index: 10
+
+    &::before
+      color: $color-text-normal
+      font-family: $wemeditate-icons
+      font-size: 24px
+      opacity: 1
+
+    &.slick-prev
+      left: 0
+
+      &::before
+        content: $icon-arrow-left
+
+    &.slick-next
+      right: 0
+
+      &::before
+        content: $icon-arrow-right
+
   &.video
     .slick-list
       overflow: visible
 
-    .slick-slide:not(.slick-active)
-      .button, .title
-        opacity: 0
-        visibility: hidden
+    .slick-slide
+      .video.wrapper
+        max-width: 680px
+        padding: 10px
 
-  img
-    margin: auto
+      &:not(.slick-active)
+        .button, .title
+          opacity: 0
+          visibility: hidden
 
-  .video.wrapper
-    max-width: 680px
-    padding: 10px
+    .slick-arrow
+      @include tablet-or-larger
+        background: #999
+        width: 60px
+        height: 60px
+        margin-top: -30px
 
-  .slick-arrow
-    background: #999
-    width: 60px
-    height: 60px
-    transition: all .5s ease
-    z-index: 10
+        &::before
+          color: white
 
-    margin-top: -30px
+        &.slick-prev
+          margin-left: 30px
 
-    &.slick-prev
-      margin-left: 30px
+        &.slick-next
+          margin-right: 30px
 
-    &.slick-next
-      margin-right: 30px
+        &:hover
+          background: gray
 
-    &:hover
-      background: gray
+      @include mobile
+        width: 35px
+        height: auto
+        line-height: 100%
+        top: 0
+        bottom: 0
+        background: white
 
-  .slick-arrow::before
-    font-family: $wemeditate-icons
-    font-size: 24px
-    opacity: 1
+        &.slick-prev
+          left: -35px
 
-  .slick-prev::before
-    content: $icon-arrow-left
-
-  .slick-next::before
-    content: $icon-arrow-right
+        &.slick-next
+          right: -35px

@@ -1,35 +1,6 @@
 @import "../../mixins/vars"
 
 section.type-text
-  .content
-    display: flex
-    flex-direction: column
-    justify-content: center
-
-    position: absolute
-    left: 50%
-    top: 10%
-    min-height: 88%
-    width: 100%
-
-  .content-box
-    background: white
-    padding: 65px 97px
-    width: 600px
-    max-width: 100%
-    max-height: 100%
-    margin-left: -410px
-    overflow: hidden
-
-    .box.button
-      margin-top: 2em
-
-    *:first-child
-      margin-top: 0
-
-    *:last-child
-      margin-bottom: 0
-
   .text.callout p
     margin: 0
     font-size: 1.15em
@@ -44,30 +15,62 @@ section.type-text
     @include tablet-or-smaller
       margin-left: 0
 
-  @include tablet
-    .content
-      left: 10px
-      right: 10px
-
-    .content-box
-      max-width: 62.5%
-      padding: 65px
-      margin-left: 0
-
-  @include mobile
-    .content
-      position: static
-      height: auto
-      clear: both
-      min-height: 0
-
-    .content-box
-      width: auto
-      max-height: none
-      margin: 3em 0 !important
-      padding: 0 !important
-
 section.type-text
+  &.format-box-over-image,
+  &.format-box-with-righthand-image,
+  &.format-box-with-lefthand-image
+    .content
+      display: flex
+      flex-direction: column
+      justify-content: center
+
+      position: absolute
+      left: 50%
+      top: 10%
+      min-height: 88%
+      width: 100%
+
+    .content-box
+      background: white
+      padding: 65px 97px
+      width: 600px
+      max-width: 100%
+      max-height: 100%
+      margin-left: -410px
+      overflow: hidden
+
+      .box.button
+        margin-top: 2em
+
+      *:first-child
+        margin-top: 0
+
+      *:last-child
+        margin-bottom: 0
+
+    @include tablet
+      .content
+        left: 10px
+        right: 10px
+
+      .content-box
+        max-width: 62.5%
+        padding: 65px
+        margin-left: 0
+
+    @include mobile
+      .content
+        position: static
+        height: auto
+        clear: both
+        min-height: 0
+
+      .content-box
+        width: auto
+        max-height: none
+        margin: 3em 0 !important
+        padding: 0 !important
+
   &.format-box-over-image
     height: 90vh
 
@@ -259,9 +262,13 @@ section.type-text
       padding: 1em 2em
       padding-left: 2.5em
 
-      @include tablet-or-smaller
+      @include tablet
         padding-left: 80px
         padding-right: 80px
+
+      @include mobile
+        padding: 1em 1.5em
+        padding-left: 2em
 
       .image
         text-align: center
@@ -292,20 +299,22 @@ section.type-text
     .background
       padding: 20% 0 10%
 
-    .row
+    .container
+      position: relative
       max-width: 944px
-      margin: auto
 
-    img
-      width: 33.25vw
-      float: left
+      @include tablet-or-larger
+        display: flex
+        align-items: flex-start
 
-    .content
-      position: static
-      padding: 0 2.25em
+      img
+        @include laptop-or-larger
+          width: 33.25vw
+          margin-right: 11.75vw
 
-      > *
-        color: $color-text-inverse
+        @include tablet
+          width: 37vw
+          margin-right: 4vw
 
       p > strong:first-child:last-child
         font-size: 1.25em
@@ -313,6 +322,7 @@ section.type-text
         margin-bottom: 0
 
       p
+        color: $color-text-inverse
         font-size: 0.85em
         margin-top: 1em
         letter-spacing: 0.45px
