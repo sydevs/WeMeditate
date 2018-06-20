@@ -1,9 +1,11 @@
 
+- content_for :callout, flush: true do
+  blockquote.text.callout
+    p = section.quote
+
 .container
   .top-left.sidetext = section.sidetext
 
 .section.wrapper
   h2.title = section.title
-  blockquote.text.callout
-    p = section.quote
-  = section.text&.html_safe
+  = section.text&.sub('</p>', '</p>'+content_for(:callout)).html_safe

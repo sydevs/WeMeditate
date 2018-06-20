@@ -1,11 +1,13 @@
 
+- content_for :callout, flush: true do
+  figure.image.callout
+    a.popout.mfp-image href=section.image.url
+      img alt=section.image.identifier src=section.image.url
+    figcaption.credit Credit • #{section.credit}
+
 .container
   .top-left.sidetext = section.sidetext
 
 .section.wrapper
   h2.title = section.title
-  figure.image.callout
-    a.popout.mfp-image href=section.image.url
-      img alt=section.image.identifier src=section.image.url
-    figcaption.credit Credit • #{section.credit}
-  = section.text&.html_safe
+  = section.text&.sub('</p>', '</p>'+content_for(:callout)).html_safe
