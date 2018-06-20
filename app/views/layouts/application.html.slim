@@ -23,6 +23,7 @@ html lang=locale
 
     = analytics_init if GoogleAnalytics.valid_tracker? and not current_user.present?
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
 - classes = [controller_name, "#{controller_name}-#{action_name}"]
 - classes << "static-page static-page-#{@static_page.role.to_s.dasherize}" if @static_page.present?
@@ -35,5 +36,3 @@ body class=classes
   main = yield
   = render 'application/footer'
   = render 'shared/video_popup'
-
-= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
