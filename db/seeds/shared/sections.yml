@@ -307,6 +307,7 @@ records:
     url: '#'
     images:
       - <%= sprig_file('general/background.jpg') %>
+      - <%= sprig_file('static_pages/front/banner-mobile.png') %>
     extra:
       banner_style: front_page
       color: light
@@ -626,6 +627,7 @@ records:
     url: '#'
     images:
       - <%= sprig_file('treatments/banner.png') %>
+      - <%= sprig_file('treatments/banner-mobile.png') %>
     extra:
       banner_style: treatments_page
       color: dark

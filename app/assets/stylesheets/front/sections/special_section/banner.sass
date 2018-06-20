@@ -5,14 +5,19 @@ section.type-special.format-banner
   text-align: center
 
   .background
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
+    z-index: -1
+
+  .content
     height: 100vh
     max-height: 985px
 
-    @include mobile
-      background-image: image-url('temp/banner/mobile.png') !important
-
-  .style-city-page.background,
-  .style-front-page.background
+  .style-city-page,
+  .style-front-page
     padding-top: 215px
     padding-bottom: 134px
 
@@ -37,7 +42,7 @@ section.type-special.format-banner
       left: 0
       right: 0
 
-  .style-front-page.background
+  .style-front-page
     h1
       margin-top: 0
       margin-bottom: 1.1em
@@ -87,9 +92,12 @@ section.type-special.format-banner
         margin-bottom: 10vh
 
 
-  .style-treatments-page.background
+  .style-treatments-page
     min-height: 1210px
-    background-position: bottom center
+    margin-bottom: -15vh
+
+    .background
+      background-position: bottom center
 
     h1
       margin: 0
@@ -105,7 +113,8 @@ section.type-special.format-banner
       color: $color-text-normal
 
     @include mobile
-      min-height: 100vh
+      min-height: 1100px
+      margin-bottom: -40vw
 
       h1
         font-size: 1.875em
@@ -119,7 +128,7 @@ section.type-special.format-banner
         .text
           font-size: 1.25em
 
-  .style-city-page.background
+  .style-city-page
     padding-bottom: 0
 
     .container

@@ -4,9 +4,13 @@
 - classes = ["style-#{banner_style.dasherize}"]
 - classes << 'inverse' if section.extra_attr('color', 'light') == 'light'
 
-- image_url = (banner_style == 'city_page' ? @city.banner.url : section.image.url)
+.content class=classes
+  - if banner_style == 'city_page'
+    .background style="background-image: url(#{image_path @city.banner.url})"
+  - else
+    .mobile.background style="background-image: url(#{image_path (section.images[1] || section.images[0]).url})"
+    .background style="background-image: url(#{image_path section.image.url})"
 
-.background class=classes style="background-image: url(#{image_path image_url})"
   .container
     - case banner_style
       - when 'front_page'
