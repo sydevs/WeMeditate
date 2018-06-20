@@ -69,6 +69,7 @@ const Grid = {
       if (current_filter == filter) {
         current_filter = null
         active = false
+        $('nav.filters > .all.filter').click()
       } else {
         current_filter = filter
       }
