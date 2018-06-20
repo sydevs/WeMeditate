@@ -2,8 +2,30 @@
 var Autocomplete = {
   load: function() {
     console.log('loading Autocomplete.js')
-
     $('.country.autocomplete').each(Autocomplete._on_load_country_autocomplete)
+    $('.classes.autocomplete').each(Autocomplete._on_load_classes_autocomplete)
+  },
+
+  _on_load_classes_autocomplete: function() {
+    var $input = $(this)
+
+    var awesomplete = new Awesomplete(this, {
+      minChars: 0,
+      maxItems: 10,
+      autoFirst: true
+    })
+
+    $input.on('focus', function(event) {
+      if (this.value == '') {
+        awesomplete.evaluate()
+      } else {
+        $(this).select()
+      }
+    })
+
+    $input.on('mouseup', function(event) {
+      event.preventDefault()
+    })
   },
 
   _on_load_country_autocomplete: function() {

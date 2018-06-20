@@ -82,9 +82,6 @@ section.type-special.format-world
         content: attr(data-no-result)
         color: $color-text-orange
 
-      .awesomplete
-        width: 100%
-
       input
         appearance: none
         width: 100%
@@ -93,28 +90,6 @@ section.type-special.format-world
         font-size: 1em
         background: white
 
-      ul
-        box-shadow: none
-        border-radius: 0
-        text-align: left
-        z-index: 700
-
-        > li
-          background: white
-          border: none
-          padding: 0.8em
-          font-size: 1em
-
-          &:hover
-            background: transparentize($background-blue, 0.5)
-
-          &[aria-selected="true"]
-            background: $background-blue
-            color: $color-text-darker
-
-          mark
-            background: none
-            font-family: $raleway-semi
-
-        &:before
-          display: none
+      ul > li
+        padding: 0.8em
+        font-size: 1em

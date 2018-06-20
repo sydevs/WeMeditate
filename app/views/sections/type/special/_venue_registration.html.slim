@@ -13,10 +13,14 @@
         = hidden_field_tag :city_id, @city.id
         = email_field_tag :email_address, nil, placeholder: 'Your email'
         = email_field_tag :name, nil, placeholder: 'Your name'
-        = select_tag :venue, options_for_select(@city.venues.each_with_index.map { |v,i| [ "#{v['address']}, #{translate_day v['day_of_week']} #{v['start_time']}", i ] }), prompt: 'Select location'
-        = select_tag :date, options_for_select(['Saturday, Jan 3, 10:00', 'Jan 10', 'Jan 17', 'Jan 24']), prompt: 'Select date'
-        //= date_field_tag :date, nil, placeholder: 'Choose date'
+        input.classes.autocomplete list='classes-list' placeholder='Select class'
+
       p
         button.box.button = section.action
+
+    datalist#classes-list
+      - @city.venues.each_with_index do |venue,i|
+        - item = "#{venue['address']}, #{translate_day venue['day_of_week']} #{venue['start_time']} - #{venue['end_time']}"
+        option value=item = item
 
     .simple.illustration.post.divider
