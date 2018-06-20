@@ -322,11 +322,14 @@ records:
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
     action: Learn More
     url: '#'
-    sidetext: Self-Realization
     images:
       - <%= sprig_file('static_pages/front/sahaja-yoga.jpg') %>
     extra:
-      decorations: { enabled: [circle] }
+      decorations:
+        enabled: [ sidetext, circle ]
+        options:
+          sidetext: [ top-left ]
+        sidetext: Self-Realization
   - sprig_id: 303
     order: 3
     page_type: StaticPage
@@ -342,12 +345,13 @@ records:
       - <%= sprig_file('general/video.mp4') %>
       - <%= sprig_file('general/video.mp4') %>
       - <%= sprig_file('general/video.mp4') %>
-    sidetext: Video
     extra:
       decorations:
-        enabled: [ gradient ]
+        enabled: [ sidetext, gradient ]
         options:
+          sidetext: [ top-right ]
           gradient: [ right, blue ]
+        sidetext: Video
   - sprig_id: 304
     order: 4
     page_type: StaticPage
@@ -361,12 +365,13 @@ records:
     url: '#'
     images:
       - <%= sprig_file('static_pages/front/shri-mataji.jpg') %>
-    sidetext: Shri Mataji
     extra:
       decorations:
-        enabled: [triangle]
+        enabled: [ sidetext, triangle ]
         options:
-          triangle: [left]
+          sidetext: [ top-left ]
+          triangle: [ left ]
+        sidetext: Shri Mataji
       color: dark
   - sprig_id: 305
     order: 5
@@ -379,7 +384,12 @@ records:
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
     images:
       - <%= sprig_file('static_pages/front/we-meditate.jpg') %>
-    sidetext: Meditation
+    extra:
+      decorations:
+        enabled: [ sidetext ]
+        options:
+          sidetext: [ top-right ]
+        sidetext: Meditation
   - sprig_id: 306
     order: 6
     page_type: StaticPage
@@ -394,13 +404,14 @@ records:
     url: '#'
     images:
       - <%= sprig_file('static_pages/front/meditation.jpg') %>
-    sidetext: How to Meditate
     extra:
       decorations:
-        enabled: [triangle, gradient]
+        enabled: [ sidetext, triangle, gradient ]
         options:
-          triangle: [right]
-          gradient: [left, orange]
+          sidetext: [ top-left ]
+          triangle: [ right ]
+          gradient: [ left, orange ]
+        sidetext: How to Meditate
       color: light
   - sprig_id: 307
     order: 7
@@ -415,7 +426,12 @@ records:
     url: '#'
     images:
       - <%= sprig_file('static_pages/front/events.jpg') %>
-    sidetext: Developments
+    extra:
+      decorations:
+        enabled: [ sidetext ]
+        options:
+          sidetext: [ top-left ]
+        sidetext: Developments
   - sprig_id: 308
     order: 8
     page_type: StaticPage
@@ -470,7 +486,12 @@ records:
       <p>Shri Mataji Nirmala Devi quietly transformed lives. For more than forty years, she travelled internationally, offering free public lectures and the experience of self-realization to all, regardless of race, religion or circumstance. She not only enabled people to pass this valuable experience on to others, but taught them the meditation technique necessary to sustain it, known as Sahaja Yoga.</p>
     images:
       - <%= sprig_file('static_pages/shri-mataji/founder.jpg') %>
-    sidetext: Founder
+    extra:
+      decorations:
+        enabled: [ sidetext ]
+        options:
+          sidetext: [ top-left ]
+        sidetext: Founder
   - sprig_id: 602
     order: 2
     page_type: StaticPage
@@ -485,12 +506,13 @@ records:
     url: '#'
     images:
       - <%= sprig_file('static_pages/shri-mataji/sahaja-yoga.jpg') %>
-    sidetext: Sahaja Yoga
     extra:
       decorations:
-        enabled: [triangle]
+        enabled: [ sidetext, triangle ]
         options:
-          triangle: [right]
+          sidetext: [ top-left ]
+          triangle: [ right ]
+        sidetext: Sahaja Yoga
       color: light
   - sprig_id: 603
     order: 3
@@ -516,7 +538,12 @@ records:
       <p>Brought up in a family that considered self-sacrifice the highest calling, Shri Mataji dedicated her life to a continuous program of public and spiritual work.She created charitable organizations such as the Vishwa Nirmala Prem Ashram for destitute women and orphan children, founded international schools promoting a holistic and balanced education, established health clinics, created a classical art academy, and much more. All of these endeavors complemented her global work of spiritual transformation.</p>
     images:
       - <%= sprig_file('static_pages/shri-mataji/social-work.jpg') %>
-    sidetext: Social Work
+    extra:
+      decorations:
+        enabled: [ sidetext ]
+        options:
+          sidetext: [ top-left ]
+        sidetext: Social Work
   - sprig_id: 605
     order: 5
     page_type: StaticPage
@@ -528,12 +555,13 @@ records:
       <p>Brought up in a family that considered self-sacrifice the highest calling, Shri Mataji dedicated her life to a continuous program of public and spiritual work.She created charitable organizations such as the Vishwa Nirmala Prem Ashram for destitute women and orphan children, founded international schools promoting a holistic and balanced education, established health clinics, created a classical art academy, and much more. All of these endeavors complemented her global work of spiritual transformation.</p>
     images:
       - <%= sprig_file('static_pages/shri-mataji/family.jpg') %>
-    sidetext: Family
     extra:
       decorations:
-        enabled: [gradient]
+        enabled: [ sidetext, gradient ]
         options:
-          gradient: [right, blue]
+          sidetext: [ top-right ]
+          gradient: [ right, blue ]
+        sidetext: Family
   - sprig_id: 606
     order: 6
     page_type: StaticPage
@@ -684,24 +712,30 @@ records:
       <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
     images:
       - <%= sprig_file('subtle_system/background.jpg') %>
-    sidetext: In Life
     extra:
       decorations:
-        enabled: [gradient]
+        enabled: [ sidetext, gradient ]
         options:
-          gradient: [right, orange]
+          sidetext: [ top-left ]
+          gradient: [ right, orange ]
+        sidetext: In Life
   - sprig_id: 1103
     order: 3
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_1').id %>
     content_type: special
     format: treatments
-    sidetext: Methods of cleaning
     extra:
-      - "<%= sprig_record(Treatment, 3).id %>"
-      - "<%= sprig_record(Treatment, 1).id %>"
-      - "<%= sprig_record(Treatment, 4).id %>"
-      - "<%= sprig_record(Treatment, 2).id %>"
+      treatment_ids:
+        - <%= sprig_record(Treatment, 3).id %>
+        - <%= sprig_record(Treatment, 1).id %>
+        - <%= sprig_record(Treatment, 4).id %>
+        - <%= sprig_record(Treatment, 2).id %>
+      decorations:
+        enabled: [ sidetext ]
+        options:
+          sidetext: [ top-left ]
+        sidetext: Methods of Cleaning
   - sprig_id: 1104
     order: 4
     page_type: SubtleSystemNode
@@ -712,12 +746,13 @@ records:
       - <%= sprig_file('subtle_system/video.jpg') %>
     videos:
       - <%= sprig_file('general/video.mp4') %>
-    sidetext: Video
     extra:
       decorations:
-        enabled: [gradient]
+        enabled: [ sidetext, gradient ]
         options:
-          gradient: [left, orange]
+          sidetext: [ top-right ]
+          gradient: [ left, orange ]
+        sidetext: Video
   - sprig_id: 1105
     order: 5
     page_type: SubtleSystemNode
@@ -763,54 +798,6 @@ records:
             <p>The right Nabhi is responsible for the ability to concentrate attention, and therefore stay in thoughtlessness and meditate. Therefore, this is one of the most important chakras in our delicate system.</p>
             <p>She is also responsible for material well-being and a sense of inner dignity.</p>
             <p>On the physical plane, the right Nabi corresponds to the liver. It comes out of balance, or "overheats" when we think too much and do not give ourselves a break.</p>
-  - sprig_id: 1202
-    order: 2
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_2').id %>
-    label: In Daily Life
-    content_type: text
-    format: box_over_image
-    title: How to open Swadisthan?
-    text: |-
-      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
-      <p>Quality Swadhistan: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>
-      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
-    images:
-      - <%= sprig_file('subtle_system/background.jpg') %>
-    sidetext: In Life
-  - sprig_id: 1203
-    order: 3
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_2').id %>
-    content_type: special
-    format: treatments
-    title: Method of cleaning
-    extra:
-      - "<%= sprig_record(Treatment, 3).id %>"
-      - "<%= sprig_record(Treatment, 1).id %>"
-      - "<%= sprig_record(Treatment, 4).id %>"
-      - "<%= sprig_record(Treatment, 2).id %>"
-  - sprig_id: 1204
-    order: 4
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_2').id %>
-    content_type: video
-    title: Shri Mataji on Swadhisthan Chakra
-    images:
-      - <%= sprig_file('subtle_system/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-  - sprig_id: 1205
-    order: 5
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_2').id %>
-    content_type: text
-    format: ancient_wisdom
-    text: |-
-      <p><strong>Header 1</strong></p>
-      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
-      <p><strong>Header 2</strong></p>
-      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_3
@@ -831,54 +818,6 @@ records:
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
         - title: Right Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
-  - sprig_id: 1302
-    order: 2
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_3').id %>
-    label: In Daily Life
-    content_type: text
-    format: box_over_image
-    title: How to open Nabhi?
-    text: |-
-      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
-      <p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>
-      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
-    images:
-      - <%= sprig_file('subtle_system/background.jpg') %>
-    sidetext: In Life
-  - sprig_id: 1303
-    order: 3
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_3').id %>
-    content_type: special
-    format: treatments
-    title: Method of cleaning
-    extra:
-      - "<%= sprig_record(Treatment, 3).id %>"
-      - "<%= sprig_record(Treatment, 1).id %>"
-      - "<%= sprig_record(Treatment, 4).id %>"
-      - "<%= sprig_record(Treatment, 2).id %>"
-  - sprig_id: 1304
-    order: 4
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_3').id %>
-    content_type: video
-    title: Shri Mataji on Nabhi Chakra
-    images:
-      - <%= sprig_file('subtle_system/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-  - sprig_id: 1305
-    order: 5
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_3').id %>
-    content_type: text
-    format: ancient_wisdom
-    text: |-
-      <p><strong>Header 1</strong></p>
-      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
-      <p><strong>Header 2</strong></p>
-      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_3b
@@ -891,54 +830,6 @@ records:
     format: just_text
     text: |-
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
-  - sprig_id: 1402
-    order: 2
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_3b').id %>
-    label: In Daily Life
-    content_type: text
-    format: box_over_image
-    title: How to clean the Void?
-    text: |-
-      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
-      <p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>
-      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
-    images:
-      - <%= sprig_file('subtle_system/background.jpg') %>
-    sidetext: In Life
-  - sprig_id: 1403
-    order: 3
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_3b').id %>
-    content_type: special
-    format: treatments
-    title: Method of cleaning
-    extra:
-      - "<%= sprig_record(Treatment, 3).id %>"
-      - "<%= sprig_record(Treatment, 1).id %>"
-      - "<%= sprig_record(Treatment, 4).id %>"
-      - "<%= sprig_record(Treatment, 2).id %>"
-  - sprig_id: 1404
-    order: 4
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_3b').id %>
-    content_type: video
-    title: Shri Mataji on Void
-    images:
-      - <%= sprig_file('subtle_system/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-  - sprig_id: 1405
-    order: 5
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_3b').id %>
-    content_type: text
-    format: ancient_wisdom
-    text: |-
-      <p><strong>Header 1</strong></p>
-      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
-      <p><strong>Header 2</strong></p>
-      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_4
@@ -959,54 +850,6 @@ records:
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
         - title: Right Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
-  - sprig_id: 1502
-    order: 2
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_4').id %>
-    label: In Daily Life
-    content_type: text
-    format: box_over_image
-    title: How to open Anahat?
-    text: |-
-      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
-      <p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>
-      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
-    images:
-      - <%= sprig_file('subtle_system/background.jpg') %>
-    sidetext: In Life
-  - sprig_id: 1503
-    order: 3
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_4').id %>
-    content_type: special
-    format: treatments
-    title: Method of cleaning
-    extra:
-      - "<%= sprig_record(Treatment, 3).id %>"
-      - "<%= sprig_record(Treatment, 1).id %>"
-      - "<%= sprig_record(Treatment, 4).id %>"
-      - "<%= sprig_record(Treatment, 2).id %>"
-  - sprig_id: 1504
-    order: 4
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_4').id %>
-    content_type: video
-    title: Shri Mataji on Anahat Chakra
-    images:
-      - <%= sprig_file('subtle_system/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-  - sprig_id: 1505
-    order: 5
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_4').id %>
-    content_type: text
-    format: ancient_wisdom
-    text: |-
-      <p><strong>Header 1</strong></p>
-      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
-      <p><strong>Header 2</strong></p>
-      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_5
@@ -1027,54 +870,6 @@ records:
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
         - title: Right Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
-  - sprig_id: 1602
-    order: 2
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_5').id %>
-    label: In Daily Life
-    content_type: text
-    format: box_over_image
-    title: How to open Vishuddhi?
-    text: |-
-      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
-      <p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>
-      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
-    images:
-      - <%= sprig_file('subtle_system/background.jpg') %>
-    sidetext: In Life
-  - sprig_id: 1603
-    order: 3
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_5').id %>
-    content_type: special
-    format: treatments
-    title: Method of cleaning
-    extra:
-      - "<%= sprig_record(Treatment, 3).id %>"
-      - "<%= sprig_record(Treatment, 1).id %>"
-      - "<%= sprig_record(Treatment, 4).id %>"
-      - "<%= sprig_record(Treatment, 2).id %>"
-  - sprig_id: 1604
-    order: 4
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_5').id %>
-    content_type: video
-    title: Shri Mataji on Vishuddhi Chakra
-    images:
-      - <%= sprig_file('subtle_system/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-  - sprig_id: 1605
-    order: 5
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_5').id %>
-    content_type: text
-    format: ancient_wisdom
-    text: |-
-      <p><strong>Header 1</strong></p>
-      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
-      <p><strong>Header 2</strong></p>
-      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_6
@@ -1095,54 +890,6 @@ records:
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
         - title: Right Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
-  - sprig_id: 1702
-    order: 2
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_6').id %>
-    label: In Daily Life
-    content_type: text
-    format: box_over_image
-    title: How to open Agnya?
-    text: |-
-      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
-      <p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>
-      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
-    images:
-      - <%= sprig_file('subtle_system/background.jpg') %>
-    sidetext: In Life
-  - sprig_id: 1703
-    order: 3
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_6').id %>
-    content_type: special
-    format: treatments
-    title: Method of cleaning
-    extra:
-      - "<%= sprig_record(Treatment, 3).id %>"
-      - "<%= sprig_record(Treatment, 1).id %>"
-      - "<%= sprig_record(Treatment, 4).id %>"
-      - "<%= sprig_record(Treatment, 2).id %>"
-  - sprig_id: 1704
-    order: 4
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_6').id %>
-    content_type: video
-    title: Shri Mataji on Agnya Chakra
-    images:
-      - <%= sprig_file('subtle_system/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-  - sprig_id: 1705
-    order: 5
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_6').id %>
-    content_type: text
-    format: ancient_wisdom
-    text: |-
-      <p><strong>Header 1</strong></p>
-      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
-      <p><strong>Header 2</strong></p>
-      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_7
@@ -1163,54 +910,6 @@ records:
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
         - title: Right Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
-  - sprig_id: 1802
-    order: 2
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_7').id %>
-    label: In Daily Life
-    content_type: text
-    format: box_over_image
-    title: How to open Sahasrara?
-    text: |-
-      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
-      <p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>
-      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
-    images:
-      - <%= sprig_file('subtle_system/background.jpg') %>
-    sidetext: In Life
-  - sprig_id: 1803
-    order: 3
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_7').id %>
-    content_type: special
-    format: treatments
-    title: Method of cleaning
-    extra:
-      - "<%= sprig_record(Treatment, 3).id %>"
-      - "<%= sprig_record(Treatment, 1).id %>"
-      - "<%= sprig_record(Treatment, 4).id %>"
-      - "<%= sprig_record(Treatment, 2).id %>"
-  - sprig_id: 1804
-    order: 4
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_7').id %>
-    content_type: video
-    title: Shri Mataji on Sahasrara Chakra
-    images:
-      - <%= sprig_file('subtle_system/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-  - sprig_id: 1805
-    order: 5
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_7').id %>
-    content_type: text
-    format: ancient_wisdom
-    text: |-
-      <p><strong>Header 1</strong></p>
-      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
-      <p><strong>Header 2</strong></p>
-      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: kundalini
@@ -1223,27 +922,6 @@ records:
     format: just_text
     text: |-
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
-  - sprig_id: 1902
-    order: 2
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'kundalini').id %>
-    content_type: video
-    title: Shri Mataji on Kundalini
-    images:
-      - <%= sprig_file('subtle_system/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-  - sprig_id: 1903
-    order: 3
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'kundalini').id %>
-    content_type: text
-    format: ancient_wisdom
-    text: |-
-      <p><strong>Header 1</strong></p>
-      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
-      <p><strong>Header 2</strong></p>
-      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: channel_center
@@ -1256,41 +934,6 @@ records:
     format: just_text
     text: |-
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
-  - sprig_id: 2002
-    order: 2
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'channel_center').id %>
-    label: In Daily Life
-    content_type: text
-    format: box_over_image
-    title: How to strengthen the central channel?
-    text: |-
-      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
-      '<p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>'
-      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
-    images:
-      - <%= sprig_file('subtle_system/background.jpg') %>
-  - sprig_id: 2003
-    order: 3
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'channel_center').id %>
-    content_type: video
-    title: Shri Mataji on the Central Channel
-    images:
-      - <%= sprig_file('subtle_system/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-  - sprig_id: 2004
-    order: 4
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'channel_center').id %>
-    content_type: text
-    format: ancient_wisdom
-    text: |-
-      <p><strong>Header 1</strong></p>
-      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
-      <p><strong>Header 2</strong></p>
-      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: channel_left
@@ -1303,53 +946,6 @@ records:
     format: just_text
     text: |-
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
-  - sprig_id: 2102
-    order: 2
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'channel_left').id %>
-    label: In Daily Life
-    content_type: text
-    format: box_over_image
-    title: How to strengthen the central channel?
-    text: |-
-      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
-      '<p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>'
-      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
-    images:
-      - <%= sprig_file('subtle_system/background.jpg') %>
-  - sprig_id: 2103
-    order: 3
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'channel_left').id %>
-    content_type: special
-    format: treatments
-    title: Method of cleaning
-    extra:
-      - "<%= sprig_record(Treatment, 3).id %>"
-      - "<%= sprig_record(Treatment, 1).id %>"
-      - "<%= sprig_record(Treatment, 4).id %>"
-      - "<%= sprig_record(Treatment, 2).id %>"
-  - sprig_id: 2104
-    order: 4
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'channel_left').id %>
-    content_type: video
-    title: Shri Mataji on the Left Channel
-    images:
-      - <%= sprig_file('subtle_system/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-  - sprig_id: 2105
-    order: 5
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'channel_left').id %>
-    content_type: text
-    format: ancient_wisdom
-    text: |-
-      <p><strong>Header 1</strong></p>
-      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
-      <p><strong>Header 2</strong></p>
-      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR SUBTLE SYSTEM NODE: channel_right
@@ -1362,53 +958,6 @@ records:
     format: just_text
     text: |-
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
-  - sprig_id: 2102
-    order: 2
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'channel_right').id %>
-    label: In Daily Life
-    content_type: text
-    format: box_over_image
-    title: How to strengthen the central channel?
-    text: |-
-      <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
-      '<p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>'
-      <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
-    images:
-      - <%= sprig_file('subtle_system/background.jpg') %>
-  - sprig_id: 2103
-    order: 3
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'channel_right').id %>
-    content_type: special
-    format: treatments
-    title: Method of cleaning
-    extra:
-      - "<%= sprig_record(Treatment, 3).id %>"
-      - "<%= sprig_record(Treatment, 1).id %>"
-      - "<%= sprig_record(Treatment, 4).id %>"
-      - "<%= sprig_record(Treatment, 2).id %>"
-  - sprig_id: 2104
-    order: 4
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'channel_right').id %>
-    content_type: video
-    title: Shri Mataji on the Right Channel
-    images:
-      - <%= sprig_file('subtle_system/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-  - sprig_id: 2105
-    order: 5
-    page_type: SubtleSystemNode
-    page_id: <%= sprig_record(SubtleSystemNode, 'channel_right').id %>
-    content_type: text
-    format: ancient_wisdom
-    text: |-
-      <p><strong>Header 1</strong></p>
-      <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
-      <p><strong>Header 2</strong></p>
-      <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
 
 
 # FOR STATIC PAGE: world
@@ -1473,7 +1022,12 @@ records:
     content_type: special
     format: venue_map
     title: 'Address and time:'
-    sidetext: Locations
+    extra:
+      decorations:
+        enabled: [ sidetext ]
+        options:
+          sidetext: [ top-left ]
+        sidetext: Locations
   - sprig_id: 2405
     order: 5
     page_type: StaticPage
@@ -1529,9 +1083,12 @@ records:
       <p>Ea accusantium repellat ex placeat expedita dolores ad quas optio.</p>
     images:
       - <%= sprig_file('cities/class.jpg') %>
-    sidetext: Classes
     extra:
-      decorations: { enabled: [triangle] }
+      decorations:
+        enabled: [ sidetext, triangle ]
+        options:
+          sidetext: [ top-left ]
+        sidetext: Classes
   - sprig_id: 2502
     order: 2
     page_type: City
@@ -1542,4 +1099,9 @@ records:
       - <%= sprig_file('cities/video.jpg') %>
     videos:
       - <%= sprig_file('general/video.mp4') %>
-    sidetext: Testimonial
+    extra:
+      decorations:
+        enabled: [ sidetext ]
+        options:
+          sidetext: [ top-right ]
+        sidetext: Testimonial

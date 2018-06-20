@@ -70,6 +70,10 @@ class Section < ApplicationRecord
     defined?(decorations['options'][type.to_s]) ? (decorations['options'][type.to_s] || []) : []
   end
 
+  def decoration_sidetext
+    decorations['sidetext'] || ''
+  end
+
   def visibility_countries= list
     if list.is_a? Array
       super list.join(',')

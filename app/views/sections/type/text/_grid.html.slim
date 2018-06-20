@@ -2,7 +2,7 @@
 - items = section.extra_attr('items', [])
 
 .container
-  .top-left.sidetext = section.sidetext
+  = sidetext(section)
 
   h2.title = section.title
   = section.text&.html_safe

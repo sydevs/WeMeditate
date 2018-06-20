@@ -1,22 +1,25 @@
 
-- treatments = Treatment.where(id: section.extra)
+- treatments = Treatment.where(id: section.extra_attr('treatment_ids', [])).all
 
-.container
-  .top-left.sidetext = section.sidetext
+code = treatments.inspect
+code = section.extra.inspect
 
-#grid.treatments.wrapper
-  .grid-sizer
-  - treatments.each_with_index do |treatment, index|
-    article id=dom_id(treatment) class="#{'initial' if index < 2} #{'reverse' if index.even?}"
-      .image
-        img alt=treatment.name src=treatment.thumbnail.url
-        a.video.button href=treatment.video_url data-mfp-src='#video-popup'
+- if treatments.present?
+  .container = sidetext(section)
 
-      .content
-        .title = treatment.name
-        p = treatment.excerpt
+  #grid.treatments.wrapper
+    .grid-sizer
+    - treatments.each_with_index do |treatment, index|
+      article id=dom_id(treatment) class="#{'initial' if index < 2} #{'reverse' if index.even?}"
+        .image
+          img alt=treatment.name src=treatment.thumbnail.url
+          a.video.button href=treatment.video_url data-mfp-src='#video-popup'
 
-- if treatments.length > 2
-  nav.filters data-group='amount'
-    a.initial.active.box.button data-filter='.initial' Collapse
-    a.box.button data-filter='*' Show More
+        .content
+          .title = treatment.name
+          p = treatment.excerpt
+
+  - if treatments.length > 2
+    nav.filters data-group='amount'
+      a.initial.active.box.button data-filter='.initial' Collapse
+      a.box.button data-filter='*' Show More

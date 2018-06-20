@@ -1,4 +1,5 @@
 
 p A map of the city's classes will go here.
 
-= f.input :sidetext, wrapper_html: { class: 'sub' }
+= f.fields_for :extra, f.object do |ff|
+  = render 'admin/sections/decoration_fields', f: ff, collection: [:sidetext]

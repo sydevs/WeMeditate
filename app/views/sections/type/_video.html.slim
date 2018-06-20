@@ -1,7 +1,5 @@
 
-- if section.sidetext.present?
-  .side.container
-    .top-right.sidetext = section.sidetext
+.side.container = sidetext(section)
 
 - if section.videos.size > 1
   .wrapper

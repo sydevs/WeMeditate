@@ -5,8 +5,7 @@
       img alt=section.image.identifier src=section.image.url
     figcaption.credit Credit • #{section.credit}
 
-.container
-  .top-left.sidetext = section.sidetext
+.container = sidetext(section)
 
 .section.wrapper
   h2.title = section.title

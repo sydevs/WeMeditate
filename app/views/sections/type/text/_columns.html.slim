@@ -1,8 +1,7 @@
 
 - items = section.extra_attr('items', [])
 
-.container
-  .top-left.sidetext = section.sidetext
+.container = sidetext(section)
 
 .container
   - if section.title.present?

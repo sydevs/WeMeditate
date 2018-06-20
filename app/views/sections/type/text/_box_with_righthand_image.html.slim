@@ -1,6 +1,6 @@
 
 .container
-  .top-left.sidetext = section.sidetext
+  = sidetext(section)
   - if section.has_decoration? :triangle
     .container.with.right.triangle.decoration class=section.decoration_options(:triangle)
   //- if section.has_decoration? :circle

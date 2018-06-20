@@ -197,7 +197,6 @@ en:
           local_contacts: Local Contacts
         title: Title
         subtitle: Subtitle
-        sidetext: Background Text
         text: Text
         quote: Quote
         image: Image (png)
@@ -216,6 +215,7 @@ en:
           city_page: City Page
         decorations: Decorations
         decoration_types:
+          sidetext: Side Text
           leaf: Leaves
           triangle: Triangle
           gradient: Gradient
@@ -227,6 +227,10 @@ en:
             right: right
             top: top
             bottom: top
+            top-left: top left
+            top-right: top right
+            bottom-left: bottom left
+            bottom-right: bottom right
           color: color
           colors:
             blue: blue

@@ -2,4 +2,6 @@
 = f.input :title, wrapper_html: { class: 'sub' }
 = f.input :videos, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:video), files: f.object.videos, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:video) }
 = f.input :images, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:image), files: f.object.images, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:image) }
-= f.input :sidetext, wrapper_html: { class: 'sub' }
+
+= f.fields_for :extra, f.object do |ff|
+  = render 'admin/sections/decoration_fields', f: ff, collection: [:sidetext]

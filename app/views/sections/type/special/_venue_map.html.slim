@@ -1,7 +1,6 @@
 
 - if @city.venues.present?
-  .container
-    .top-left.sidetext = section.sidetext
+  .container = sidetext(section)
 
   .content
     .content-box

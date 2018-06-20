@@ -5,6 +5,12 @@ module SectionHelper
     us: [[49.384472, -124.7844079], [24.446667, -66.9513812]]
   }
 
+  def sidetext section
+    if section.has_decoration? :sidetext
+      content_tag :div, section.decoration_sidetext, class: "#{section.decoration_options(:sidetext).join(' ')} sidetext"
+    end
+  end
+
   def subtle_system_pages
     StaticPage.where(role: [:chakra_1, :chakra_2, :chakra_3, :chakra_3b, :chakra_4, :chakra_5, :chakra_6, :chakra_7, :channel_left, :channel_right, :channel_center])
   end

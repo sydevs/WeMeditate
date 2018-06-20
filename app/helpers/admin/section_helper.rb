@@ -43,6 +43,16 @@ module Admin::SectionHelper
     end
   end
 
+  def decoration_config_sidetext f
+    f.input_field :sidetext, {
+      as: :string,
+      wrapper: :ui_input,
+      required: false,
+      name: "#{f.object_name}[decorations][sidetext]",
+      value: f.object.decoration_sidetext,
+    }
+  end
+
   def decoration_type_label type
     I18n.translate "activerecord.attributes.section.decoration_types.#{type}"
   end
