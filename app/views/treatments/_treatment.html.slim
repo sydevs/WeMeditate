@@ -3,7 +3,8 @@
 
 article id=dom_id(treatment) class="#{'reverse' if treatment_counter.even?}"
   .number = index
-  img alt=treatment.name src=treatment.thumbnail.url
+  .image
+    img alt=treatment.name src=treatment.thumbnail.url
 
   .content
     .title = treatment.name

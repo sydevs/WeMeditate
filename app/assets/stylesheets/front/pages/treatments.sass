@@ -5,8 +5,9 @@ body.treatments-index
     zoom: 0.875
     right: 5.75%
 
+
 .treatments.wrapper
-  max-width: 895px
+  max-width: 920px
   margin-bottom: 135px
   padding-top: 2px
 
@@ -29,11 +30,12 @@ body.treatments-index
     &.reverse
       flex-direction: row-reverse
 
-      img
+      .image
         @include tablet-or-smaller
           align-self: flex-end
 
-    img
+    .image
+      min-width: 360px
       width: 360px
       max-width: 100%
       align-self: flex-start
@@ -45,15 +47,12 @@ body.treatments-index
       display: none
 
     .content
-      margin-top: 65px
-
       @include tablet-or-smaller
         margin-top: 30px
         max-width: 360px
 
       .title
-        margin-bottom: 0.7em
-        line-height: 1em
+        font-size: 1.25em
 
       p
         font-size: 1.1em
@@ -104,9 +103,6 @@ body.treatments-index
 
         @include tablet-or-smaller
           margin-right: 40px
-
-      .content
-        margin-right: 30px
 
       .number
         left: 0
