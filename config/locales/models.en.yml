@@ -71,7 +71,7 @@ en:
         sections: Content
         venues: Program Venues
         address: Street Address
-        room_information: Room Information
+        room_information: Room Information (optional)
         day_of_week: Day
         start_time: Starts At
         end_time: Ends At

@@ -56,8 +56,6 @@ class ApplicationController < ActionController::Base
     end
 
     def check_maintenance_mode
-      puts ENV['MAINTENANCE_MODE']
-
       if ENV['MAINTENANCE_MODE'] and controller_name != 'sessions' and controller_name != 'switch_user' and !current_user.present?
         redirect_to '/maintenance'
       end

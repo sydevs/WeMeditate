@@ -96,7 +96,7 @@ module Admin
 
       def update_params page_params
         if page_params[:sections_attributes].present?
-          page_params = page_params.to_h
+          #page_params = page_params.to_h
           page_params[:sections_attributes].each do |key, data|
             if data[:extra].present? and data[:extra][:items].present?
               data = data[:extra][:items]

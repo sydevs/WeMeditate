@@ -21,4 +21,4 @@
     = fff.url_field :url, value: item['url'], placeholder: Section.human_attribute_name(:url), name: "#{fff.object_name}[url][]"
 
   = ff.input :color, collection: [:light, :dark].map {|c| [human_enum_name(Section, :color, c), c] }, selected: color, label: Section.human_attribute_name(:color), wrapper_html: { class: 'sub for background' }, required: false
-  = render 'admin/sections/decoration_fields', f: ff, collection: [:sidetext, :triangle, :gradient]
+  = render 'admin/sections/decoration_fields', f: ff, collection: [:sidetext, :triangle, :circle, :gradient]

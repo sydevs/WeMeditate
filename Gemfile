@@ -83,7 +83,6 @@ gem 'route_translator'
 
 # Tools
 gem 'sprig'
-gem 'dotenv'
 
 # Misc
 gem 'gibbon'
@@ -108,6 +107,7 @@ group :development do
   gem 'switch_user', github: 'tslocke/switch_user'
   gem 'i18n_generators'
   gem 'letter_opener'
+  gem 'dotenv'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

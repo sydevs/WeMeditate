@@ -36,6 +36,10 @@ content
 .ui.vertical.secondary.menu .item:not(.dropdown) > .menu
   margin: 0.5em -1.14285714em 0em
 
+.ui.search > .results
+  width: auto
+  max-width: 80%
+
 .ui.list > .item a.content
   color: inherit
 
@@ -169,21 +173,43 @@ input + .ui.rounded.image
         label
           opacity: 0.65
 
-      textarea, input, select, .ui.segment, .ui.dropdown
-        border-top-right-radius: 0
-        border-bottom-right-radius: 0
+      .fields-wrapper
+        textarea, input, select, .ui.segment, .ui.dropdown
+          border-top-right-radius: 0
+          border-bottom-right-radius: 0
 
-        &:not(:last-child)
-          border-bottom-left-radius: 0
-          //border-bottom-right-radius: 0
-          border-bottom: 0
+        > textarea,
+        > input,
+        > select,
+        > .ui.segment,
+        > .ui.dropdown
+          &:not(:last-child)
+            border-bottom-left-radius: 0
+            border-bottom: 0
 
-          &:focus
-            + textarea,
-            + input,
-            + select
-              border-top-color: #85B7D9
+            &:focus
+              + textarea,
+              + input,
+              + select
+                border-top-color: #85B7D9
 
-        &:not(:first-child)
-          border-top-left-radius: 0
-          //border-top-right-radius: 0
+          &:not(:first-child)
+            border-top-left-radius: 0
+
+        > .fields
+          margin: 0
+          margin-right: -0.5px
+
+          &:not(:first-child) > *
+            border-top-left-radius: 0
+
+          &:not(:last-child)
+            > *:not(:first-child)
+              border-bottom-left-radius: 0
+
+            > *
+              border-bottom: 0
+
+          > *
+            border-top-right-radius: 0
+            border-bottom-right-radius: 0

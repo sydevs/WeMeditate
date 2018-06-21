@@ -11,6 +11,7 @@ module Admin
     end
 
     def create
+      puts city_params
       super city_params
     end
 
@@ -19,14 +20,16 @@ module Admin
     end
 
     def lookup
-      lookup_params = { types: 'locality', language: I18n.locale }
+      lookup_params = { types: params[:type], language: I18n.locale }
       #params << { country: @city.country } if @city.country.present?
       results = Geocoder.search(params[:q], params: lookup_params) # TODO: Switch to :google_places_search
 
       json = results.collect do |result|
+        result.data['formatted_address'] = "#{result.data['name']}, #{result.data['formatted_address']}" unless result.data['formatted_address'].starts_with?(result.data['name'])
+
         {
-          title: [result.city, result.state_code, result.country].reject(&:blank?).join(', '),
-          city_name: result.city,
+          title: result.data['formatted_address'],
+          name: result.data['name'],
           latitude: result.latitude,
           longitude: result.longitude,
         }
@@ -56,21 +59,12 @@ module Admin
       end
 
       def update_params city_params
+        puts "BEFORE TRANSFORM #{city_params[:venues].inspect}"
+
         if city_params[:venues].present?
           city_params = city_params.to_h
           data = city_params[:venues]
           data = data.values.transpose.map { |vs| data.keys.zip(vs).to_h }
-
-          if data[:address].present? and data[:address] != data[:previous_address]
-            coordinates = Geocoder.coordinates(venue.address, language: I18n.locale, params: { components: ["locality:#{city_params[:name]}", "country:#{city_params[:country]}"] })
-
-            if coordinates.present?
-              data << { latitude: coordinates[0], longitude: coordinates[1] }
-            else
-              data << { latitude: nil, longitude: nil }
-            end
-          end
-
           city_params[:venues] = data
         end
 

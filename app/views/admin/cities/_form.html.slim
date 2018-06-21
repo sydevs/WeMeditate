@@ -5,9 +5,11 @@
   - country_names = I18nData.countries(locale)
   = f.input :country, collection: City.countries.map {|k, v| [country_names[k], k]}, input_html: { class: 'ui search selection dropdown' }, disabled: !allow.update_structure?
 
-  = f.input :name do
+  = f.input :name, label: false do
+    img.ui.right.floated.image src=image_path('admin/powered-by-google.png') style='margin: 0'
+    = f.label :name
     - if allow.update_structure?
-      .ui.city.search data-url=(lookup_admin_cities_path(q: '') + '{query}')
+      .ui.city.search data-url=(lookup_admin_cities_path(type: 'locality') + '&q={query}')
         .ui.right.labeled.left.icon.input
           i.search.icon
           = f.text_field :name, class: 'prompt', autocomplete: 'off', placeholder: t('action.target.search_for', target: City.model_name.human)
@@ -17,6 +19,7 @@
               i.marker.icon
               span #{params[:city][:latitude]}, #{params[:city][:longitude]}
           //- elsif @city.latitude.present? and @city.longitude.present?
+
           - if @city.latitude.present? and @city.longitude.present?
             a#city_coordinates.ui.tag.label href=coordinates_url(@city.latitude, @city.longitude) target="_blank"
               i.marker.icon
@@ -95,21 +98,42 @@
   - if allow.update_venues?
     = render 'admin/application/repeatable_fields', f: f, attribute: :venues, items: f.object.venues do |ff, item|
       = ff.text_field :room_information, value: item['room_information'], placeholder: City.human_attribute_name(:room_information), name: "#{ff.object_name}[room_information][]"
-      = ff.hidden_field :previous_address, value: item['address'], name: "#{ff.object_name}[previous_address][]"
-      = ff.text_field :address, value: item['address'], placeholder: City.human_attribute_name(:address), name: "#{ff.object_name}[address][]"
+      = ff.hidden_field :latitude, value: item['latitude'], name: "#{ff.object_name}[latitude][]", class: 'latitude'
+      = ff.hidden_field :longitude,  value: item['longitude'], name: "#{ff.object_name}[longitude][]", class: 'longitude'
 
-      - if item['latitude'].present? and item['longitude'].present?
+      .ui.venue.search data-url=(lookup_admin_cities_path(type: '') + '&q={query}')
+        .ui.right.labeled.left.icon.input
+          i.search.icon
+          = ff.text_field :address, class: 'prompt', autocomplete: 'off', value: item['address'], name: "#{ff.object_name}[address][]", placeholder: t('action.target.search_for', target: City.human_attribute_name(:address))
+
+          - if item['latitude'].present? and item['longitude'].present?
+            a.ui.tag.label href=coordinates_url(item['latitude'], item['longitude']) target="_blank"
+              i.marker.icon
+              span #{item['latitude']}, #{item['longitude']}
+          - else
+            .ui.tag.label
+              i.marker.icon
+              span = t('messages.not_set')
+
+        .results
+
+      //- if item['latitude'].present? and item['longitude'].present?
         a.ui.fluid.basic.label href=coordinates_url(item['latitude'], item['longitude'])
           i.marker.icon
           | #{item['latitude']}, #{item['longitude']}
+      //- else
+        a.ui.label
+          i.marker.icon
+          span = t('messages.not_set')
 
-      = ff.select :day_of_week, t('date.day_names').map.with_index {|x,i| [x,i]}, { selected: item['day_of_week'] }, { class: 'ui selection dropdown', name: "#{ff.object_name}[day_of_week][]" }
-      .ui.labeled.input
-        .ui.label = City.human_attribute_name(:start_time)
-        = ff.time_field :start_time, value: item['start_time'], name: "#{ff.object_name}[start_time][]"
-      .ui.labeled.input
-        .ui.label = City.human_attribute_name(:end_time)
-        = ff.time_field :end_time, value: item['end_time'], name: "#{ff.object_name}[end_time][]"
+      .three.fields
+        = ff.select :day_of_week, t('date.day_names').map.with_index {|x,i| [x,i]}, { selected: item['day_of_week'] }, { class: 'ui selection dropdown', name: "#{ff.object_name}[day_of_week][]" }
+        .ui.labeled.input
+          .ui.label = City.human_attribute_name(:start_time)
+          = ff.time_field :start_time, value: item['start_time'], name: "#{ff.object_name}[start_time][]"
+        .ui.labeled.input
+          .ui.label = City.human_attribute_name(:end_time)
+          = ff.time_field :end_time, value: item['end_time'], name: "#{ff.object_name}[end_time][]"
   - else
     .field
       label = City.human_attribute_name(:venues)
