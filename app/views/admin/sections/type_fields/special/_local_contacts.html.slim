@@ -1,2 +1,9 @@
 
-p A list of local contacts in this city will go here.
+= f.input :title, wrapper_html: { class: 'sub' }
+= f.input :subtitle, wrapper_html: { class: 'sub' }
+
+//= f.fields_for :extra, f.object do |ff|
+  = render 'admin/application/repeatable_fields', f: f, attribute: :contacts, items: ff.object.extra do |fff, item|
+    = fff.text_field :name, value: item['name'], placeholder: Section.human_attribute_name(:name), name: "#{fff.object_name}[name][]"
+    = fff.url_field :url, value: item['url'], placeholder: City.human_attribute_name(:url), name: "#{fff.object_name}[url][]"
+    //= fff.file_field :image, value: item['url'], placeholder: City.human_attribute_name(:url), name: "#{fff.object_name}[url][]"

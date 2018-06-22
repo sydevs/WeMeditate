@@ -203,6 +203,7 @@ en:
         credit: Credit
         video: Video (mp4)
         action: Action Text
+        name: Name
         url: Link (url)
         color: Colour
         colors:
