@@ -100,7 +100,6 @@ module Admin
     protected
       CONTENT_ATTRIBUTES = [
         :title, :subtitle, :sidetext, :text, :quote, :credit, :url, :action, # These are the options for different content_types
-        videos: [], images: [], # For file uploads
         extra: {}, # For extra attributes sections
       ]
 

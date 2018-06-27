@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180625080259) do
+ActiveRecord::Schema.define(version: 20180627090116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20180625080259) do
     t.bigint "category_id"
     t.integer "priority", default: 0, null: false
     t.datetime "published_at"
+    t.string "video_uuid"
+    t.date "date"
     t.index ["category_id"], name: "index_articles_on_category_id"
   end
 

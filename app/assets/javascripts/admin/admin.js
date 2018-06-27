@@ -27,6 +27,7 @@ let Admin = {
     scope.find('.ui.checkbox').checkbox()
     scope.find('.tabs > *').tab()
     scope.find('.ui.accordion').accordion()
+    scope.find('.ui.date.picker').calendar({ type: 'date' })
     autosize(scope.find('textarea'))
 
     $('.ui.dropdown').each(function() {

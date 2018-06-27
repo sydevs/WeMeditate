@@ -23,7 +23,7 @@ class Article < ApplicationRecord
   accepts_nested_attributes_for :sections, reject_if: :all_blank, allow_destroy: true
 
   # Scopes
-  default_scope { order( priority: :desc ) }
+  default_scope { order( priority: :desc, updated_at: :desc ) }
   scope :untranslated, -> { joins(:translations).where.not(article_translations: { locale: I18n.locale }) }
   scope :published, -> { where.not(published_at: nil) }
 
@@ -36,6 +36,10 @@ class Article < ApplicationRecord
 
   def thumbnail
     attachments.find_by(uuid: thumbnail_uuid)&.file
+  end
+
+  def video
+    attachments.find_by(uuid: video_uuid)&.file
   end
 
   private

@@ -19,4 +19,9 @@
     = f.label :thumbnail
     = render 'admin/application/attachment_select', f: f, field: :thumbnail, attachments: @article.attachments
 
+  = f.input :video, label: false do
+    = f.label :video
+    = render 'admin/application/attachment_select', f: f, field: :video, attachments: @article.attachments
+
+  = f.input :date, as: :string, wrapper_html: { class: 'ui date picker' }
   = f.input :excerpt, as: :text, input_html: { rows: 3 }

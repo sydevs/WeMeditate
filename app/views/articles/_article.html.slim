@@ -1,7 +1,20 @@
 
 article id=dom_id(article) class=dom_id(article.category)
-  a.media href=article_path(article)
-    img alt=article.title src=article.thumbnail.url
+  - if article.video.present?
+    .media.video-preview
+      img alt=article.title src=article.thumbnail.url
+      a.video.button href=article.video.url data-mfp-src='#video-popup'
+      - if article.date.present?
+        .date
+          span.day = article.date.strftime('%d')
+          .month = article.date.strftime('%m')
+  - else
+    a.media href=article_path(article)
+      img alt=article.title src=article.thumbnail.url
+      - if article.date.present?
+        .date
+          span.day = article.date.strftime('%d')
+          .month = article.date.strftime('%m')
 
   .title = article.title
   .content

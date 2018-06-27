@@ -11,32 +11,34 @@ var Media = {
   initialize_uploader: function() {
     let element = document.getElementById("uploader")
 
-    Media.uploader = new qq.FineUploader({
-      element: element,
-      //autoUpload: false,
-      request: {
-        endpoint: element.dataset.endpoint,
-        params: {
-          authenticity_token: element.dataset.authenticityToken
-        }
-      },
-      deleteFile: {
-        enabled: true,
-        endpoint: element.dataset.endpoint,
-        params: {
-          authenticity_token: element.dataset.authenticityToken
-        }
-      },
-      validation: {
-        acceptFiles: element.dataset.types,
-      },
-      callbacks: {
-        onComplete: Media._on_upload_complete,
-        onDeleteComplete: Media._on_upload_delete,
-      },
-    })
+    if (element) {
+      Media.uploader = new qq.FineUploader({
+        element: element,
+        //autoUpload: false,
+        request: {
+          endpoint: element.dataset.endpoint,
+          params: {
+            authenticity_token: element.dataset.authenticityToken
+          }
+        },
+        deleteFile: {
+          enabled: true,
+          endpoint: element.dataset.endpoint,
+          params: {
+            authenticity_token: element.dataset.authenticityToken
+          }
+        },
+        validation: {
+          acceptFiles: element.dataset.types,
+        },
+        callbacks: {
+          onComplete: Media._on_upload_complete,
+          onDeleteComplete: Media._on_upload_delete,
+        },
+      })
 
-    Media.uploader.addInitialFiles(JSON.parse(element.dataset.files))
+      Media.uploader.addInitialFiles(JSON.parse(element.dataset.files))
+    }
   },
 
   get_option_html: function(uuid, name, url) {

@@ -47,7 +47,7 @@ module Admin
       def city_params
         if policy(@city || City).update_structure?
           params.fetch(:city, {}).permit(
-            :country, :name, :slug, :address, :latitude, :longitude, :banner,
+            :country, :name, :slug, :address, :latitude, :longitude, :banner_uuid,
             sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES,
             venues: {},
           )

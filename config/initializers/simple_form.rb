@@ -114,6 +114,13 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
   end
 
+  config.wrappers :ui_date, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
+    b.use :html5
+    b.use :label
+    b.use :input, class: 'ui dropdown'
+    b.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
+  end
+
   config.wrappers :ui_checkbox, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
     b.use :html5
     b.wrapper tag: 'div', class: 'ui checkbox' do |input|

@@ -61,6 +61,8 @@ en:
         attachments: Attachments
         banner: Banner Image
         thumbnail: Thumbnail
+        video: Featured Video
+        date: Date
         sections: Content
 
       city:
