@@ -15,7 +15,7 @@
     &.format-with_image .field.for.image,
     &.format-box_with_lefthand_image .field.for.image,
     &.format-box_with_righthand_image .field.for.image,
-    &.format-box_over_image .field.for.image
+    &.format-box_over_image .field.for.image,
     &.format-ancient_wisdom .field.for.image
       display: block !important
 
@@ -40,8 +40,15 @@
     &.format-button .for.button
       display: block
 
-  &.type-video .grouped.fields.for.video
-    display: block
+  &.type-video
+    .grouped.fields.for.video
+      display: block
+
+    &.format-single .for.single
+      display: block
+
+    &.format-gallery .for.gallery
+      display: block
 
   &.type-image .grouped.fields.for.image
     display: block

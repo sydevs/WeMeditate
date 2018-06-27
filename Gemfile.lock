@@ -225,6 +225,8 @@ GEM
     puma (3.11.4)
     quilljs-rails (0.0.4)
     rack (2.0.5)
+    rack-raw-upload (1.1.1)
+      multi_json
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rails (5.1.6)
@@ -384,6 +386,7 @@ DEPENDENCIES
   pg (~> 0.18)
   puma (~> 3.7)
   quilljs-rails
+  rack-raw-upload
   rails (~> 5.1.4)
   rails-i18n
   regulator

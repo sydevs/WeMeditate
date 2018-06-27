@@ -61,6 +61,7 @@ gem 'jsonb_accessor'
 gem 'carrierwave'
 gem 'carrierwave-google-storage'
 gem 'mini_magick'
+gem 'rack-raw-upload'
 
 # Admin
 gem 'simple_form'

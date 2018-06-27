@@ -6,6 +6,7 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
+    = render 'admin/application/file_upload'
 
   body class="admin #{controller_name} #{controller.action_name}"
     nav = render 'admin/application/menu'
@@ -19,9 +20,9 @@ html
             a.item href=url_for(locale: language)
               = language_flag language
               = I18nData.languages(language)[language.to_s.upcase]
-      
+
       h1.ui.header = content_for :title
-      
+
       .ui.divider
 
       - if notice

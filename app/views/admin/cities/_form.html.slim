@@ -43,57 +43,15 @@
 
   = f.input :slug, label: (@city.new_record? ? t("activerecord.attributes.#{f.object.model_name.i18n_key}.slug") : url_for(@city)), wrapper: :slug
 
-  //.field
-    = f.label City.model_name.human
-    // This {query} part of these parameter has to be included in a wierd way so that it isn't escaped.
-    - if allow.update_structure?
-      .ui.search data-url=(lookup_admin_cities_path(q: '') + '{query}')
-        .ui.right.labeled.left.icon.input
-          i.search.icon
-          = f.text_field :address, class: 'prompt', autocomplete: 'off', placeholder: t('action.target.search_for', target: City.model_name.human)
-          - if params[:city] && params[:city][:latitude] && params[:city][:longitude]
-            a#city_coordinates.ui.tag.label href=coordinates_url(params[:city][:latitude], params[:city][:longitude]) target="_blank"
-              i.marker.icon
-              span #{params[:city][:latitude]}, #{params[:city][:longitude]}
-          - elsif @city.latitude.present? and @city.longitude.present?
-            a#city_coordinates.ui.tag.label href=coordinates_url(@city.latitude, @city.longitude) target="_blank"
-              i.marker.icon
-              span #{@city.latitude}, #{@city.longitude}
-          - else
-            #city_coordinates.ui.tag.label
-              i.marker.icon
-              span = t('messages.not_set')
-        .results
-      = f.hidden_field :name
-      = f.hidden_field :longitude
-      = f.hidden_field :latitude
-      - unless @city.new_record?
-        .ui.accordion
-          .title
-            i.dropdown.icon
-            i.linkify.icon
-            em = url_for(@page)
-          .content
-            //= f.label :slug
-            .ui.labeled.input
-              .ui.basic.label
-                = url_for(@page).split('/')[0...-1].join('/') + '/'
-              = f.text_field :slug, placeholder: @page.id
+  = f.input :attachments do
+    - if @city.new_record?
+      p You must save this #{City.model_name.humanize} before you can add media to it.
     - else
-      = f.text_field :address, disabled: true
+      #uploader data-endpoint=upload_to_admin_city_path(@city) data-files=attachments_json(@city) data-authenticity-token=form_authenticity_token
 
-  .field
+  = f.input :banner, label: false do
     = f.label :banner
-    - if allow.update_structure?
-      .ui.fluid.icon.file.input
-        i.image.icon
-        = f.file_field :banner
-        = f.hidden_field :banner_cache
-
-    - if @city.banner.present?
-      = image_tag @city.banner_url, class: 'ui rounded image'
-    - elsif not allow.update_structure?
-      .ui.label = translate 'messages.not_set'
+    = render 'admin/application/attachment_select', f: f, field: :banner, attachments: @city.attachments
 
   - if allow.update_venues?
     = render 'admin/application/repeatable_fields', f: f, attribute: :venues, items: f.object.venues do |ff, item|

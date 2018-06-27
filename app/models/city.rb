@@ -11,14 +11,14 @@ class City < ApplicationRecord
 
   # Associations
   has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
-  mount_uploader :banner, GenericImageUploader
+  has_many :attachments, as: :page, inverse_of: :page, dependent: :delete_all
 
   # Validations
   validates :country, presence: true
   validates :name, presence: true
   validates :latitude, presence: true
   validates :longitude, presence: true
-  validates :banner, presence: true
+  validates :banner_uuid, presence: true
   accepts_nested_attributes_for :sections, reject_if: :all_blank, allow_destroy: true
   enum country: I18nData.countries.keys
 
@@ -30,6 +30,10 @@ class City < ApplicationRecord
 
   def has_coordinates?
     latitude.present? and longitude.present?
+  end
+
+  def banner
+    attachments.find_by(uuid: banner_uuid)&.file
   end
 
   def country_name

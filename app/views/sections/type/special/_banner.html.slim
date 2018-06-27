@@ -8,8 +8,10 @@
   - if banner_style == 'city_page'
     .background style="background-image: url(#{image_path @city.banner.url})"
   - else
-    .mobile.background style="background-image: url(#{image_path (section.images[1] || section.images[0]).url})"
-    .background style="background-image: url(#{image_path section.image.url})"
+    - mobile_image = section.image(section.extra_attr('mobile_image_uuid'))
+    - desktop_image = section.image(section.extra_attr('desktop_image_uuid'))
+    .mobile.background style="background-image: url(#{image_path (mobile_image || desktop_image).url})"
+    .background style="background-image: url(#{image_path desktop_image.url})"
 
   .container
     - case banner_style

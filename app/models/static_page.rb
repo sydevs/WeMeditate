@@ -15,6 +15,7 @@ class StaticPage < ApplicationRecord
     treatments: 11, tracks: 12, meditations: 13, country: 14, world: 15, city: 16,
   }
   has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
+  has_many :attachments, as: :page, inverse_of: :page, dependent: :delete_all
 
   # Validations
   validates :title, presence: true

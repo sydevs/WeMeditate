@@ -13,13 +13,17 @@ Rails.application.routes.draw do
       namespace :admin do
         root to: 'application#dashboard'
 
-        resources :articles, :static_pages do
+        resources :articles, :static_pages, :cities do
           patch :review, on: :member
+        end
+
+        resources :articles, :static_pages, :cities, :subtle_system_nodes do
+          post :upload_media, on: :member, path: :media, as: :upload_to
+          delete :destroy_media, on: :member, path: 'media/:qquuid', as: :destroy_media_for
         end
 
         resources :cities do
           get :lookup, on: :collection, constraints: { format: 'json' }
-          patch :review, on: :member
         end
 
         resources :users, :artists, :treatments, :meditations, :tracks,

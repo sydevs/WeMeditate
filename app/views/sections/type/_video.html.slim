@@ -1,13 +1,15 @@
 
 .side.container = sidetext(section)
 
-- if section.videos.size > 1
+- if section.format == 'gallery'
+  - items = section.extra_attr('items', [])
+
   .wrapper
     .video.carousel data-style='video'
-      - section.videos.each_with_index do |video, index|
+      - items.each_with_index do |item, index|
         .video.wrapper
-          = render 'shared/video_preview', thumbnail: section.images[index].url, video_url: video.url
-          h3.title = section.title
+          = render 'shared/video_preview', thumbnail: section.image(item['image_uuid']).url, video_url: section.video(item['video_uuid']).url
+          h3.title = item['title']
 - else
   .video.wrapper
     = render 'shared/video_preview', thumbnail: section.image.url, video_url: section.video.url

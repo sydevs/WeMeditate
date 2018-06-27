@@ -7,7 +7,8 @@
       i.pin.icon
       = human_enum_name(@static_page, :role)
 
-  //- if @static_page.new_record?
-    .field
-      = f.label :role
-      = f.select :role, StaticPage.available_roles.map {|k, v| [human_enum_name(StaticPage, :role, k), k]}, { selected: params[:role] || @static_page.role }, { class: 'ui fluid dropdown' }
+  = f.input :attachments do
+    - if @static_page.new_record?
+      p You must save this #{StaticPage.model_name.humanize} before you can add media to it.
+    - else
+      #uploader data-endpoint=upload_to_admin_static_page_path(@static_page) data-files=attachments_json(@static_page) data-authenticity-token=form_authenticity_token

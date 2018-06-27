@@ -5,9 +5,18 @@
   = f.association :category, disabled: !allow.update_structure?
   = f.input :priority, collection: Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}, disabled: !allow.update_structure?
 
-  = f.input :banner, wrapper: :ui_file_input, icon: :image, file: f.object.banner
-  - if @article.banner.present?
-    .field = image_tag @article.banner.url, class: 'ui rounded image'
+  = f.input :attachments do
+    - if @article.new_record?
+      p You must save this #{Article.model_name.humanize} before you can add media to it.
+    - else
+      #uploader data-endpoint=upload_to_admin_article_path(@article) data-files=attachments_json(@article) data-authenticity-token=form_authenticity_token
 
-  = f.input :thumbnail, wrapper: :ui_file_input, icon: :image, file: f.object.thumbnail
+  = f.input :banner, label: false do
+    = f.label :banner
+    = render 'admin/application/attachment_select', f: f, field: :banner, attachments: @article.attachments
+
+  = f.input :thumbnail, label: false do
+    = f.label :thumbnail
+    = render 'admin/application/attachment_select', f: f, field: :thumbnail, attachments: @article.attachments
+
   = f.input :excerpt, as: :text, input_html: { rows: 3 }

@@ -16,7 +16,7 @@ module Admin
       def article_params
         if policy(@article || Article).update_structure?
           params.fetch(:article, {}).permit(
-            :title, :slug, :category_id, :priority, :excerpt, :banner, :thumbnail,
+            :title, :slug, :category_id, :priority, :excerpt, :banner_uuid, :thumbnail_uuid,
             sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES
           )
         else

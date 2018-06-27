@@ -64,8 +64,15 @@ module Admin::ApplicationHelper
       partial = 'admin/' + association.to_s.pluralize + '/form'
     end
 
+    if options.include? :new_object
+      new_object = options[:new_object]
+    else
+      new_object = f.object.class.reflect_on_association(association).klass.new
+    end
+
+    puts new_object.inspect
+
     # Render the form fields from a file with the association name provided
-    new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, child_index: 'new_record') do |builder|
       render(partial, locals.merge!(f: builder))
     end
@@ -74,6 +81,14 @@ module Admin::ApplicationHelper
     html_options['data-form-prepend'] = raw CGI::escapeHTML( fields )
 
     content_tag(:a, name, html_options, &block)
+  end
+
+  def attachments_json page
+    page.attachments.select(:uuid, :name, :size).as_json.to_json
+  end
+
+  def attachments_collection page
+    page.attachments.select(:name, :uuid).map{ |hash| [ hash['name'], hash['uuid'] ] }
   end
 
   def subfield f, attribute, **args, &block

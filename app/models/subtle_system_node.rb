@@ -12,6 +12,7 @@ class SubtleSystemNode < ApplicationRecord
     channel_left: 9, channel_right: 10, channel_center: 11, kundalini: 12,
   }
   has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
+  has_many :attachments, as: :page, inverse_of: :page, dependent: :delete_all
 
   # Validations
   validates :name, presence: true

@@ -64,6 +64,29 @@ module Admin
       render 'admin/application_pages/destroy'
     end
 
+    def upload_media
+      file = params[:qqfile].is_a?(ActionDispatch::Http::UploadedFile) ? params[:qqfile] : params[:file]
+      attachment = @page.attachments.new uuid: params[:qquuid], size: params[:qqtotalfilesize], name: params[:qqfilename], file: file
+
+      if attachment.save
+        render json: {
+          success: true,
+          uuid: params[:qquuid],
+          src: attachment.file_url,
+        }
+      else
+        render json: attachment.errors.to_json
+      end
+    end
+
+    def destroy_media
+      @page.attachments.find_by(uuid: params[:qquuid]).delete
+      render json: {
+        success: true,
+        uuid: params[:qquuid],
+      }
+    end
+
     def review
       if params[:do] == 'publish'
         @page.publish_drafts!

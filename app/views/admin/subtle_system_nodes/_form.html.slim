@@ -10,3 +10,9 @@
       = human_enum_name(@subtle_system_node, :role)
 
   = f.input :excerpt, as: :text, input_html: { rows: 2 }
+
+  = f.input :attachments do
+    - if @subtle_system_node.new_record?
+      p You must save this #{SubtleSystemNode.model_name.humanize} before you can add media to it.
+    - else
+      #uploader data-endpoint=upload_to_admin_subtle_system_node_path(@subtle_system_node) data-files=attachments_json(@subtle_system_node) data-authenticity-token=form_authenticity_token

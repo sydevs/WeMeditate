@@ -1,7 +1,28 @@
 
+= f.input :format, collection: Section::VIDEO_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, disabled: !allow.update_structure?, wrapper_html: { class: 'sub field-format' }
 = f.input :title, wrapper_html: { class: 'sub' }
-= f.input :videos, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:video), files: f.object.videos, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:video) }
-= f.input :images, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:image), files: f.object.images, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:image) }
+//= f.input :videos, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:video), files: f.object.videos, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:video) }
+//= f.input :images, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:image), files: f.object.images, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:image) }
+//= f.input :video, wrapper_html: { class: 'sub' } do
+  = render 'admin/application/attachment_select', f: f, field: :video, attachments: section.page.attachments
+//= f.input :image, wrapper_html: { class: 'sub' } do
+  = render 'admin/application/attachment_select', f: f, field: :image, attachments: section.page.attachments
+
 
 = f.fields_for :extra, f.object do |ff|
+  - items = f.object.extra_attr 'items', []
+  - video_uuid = f.object.extra_attr 'video_uuid'
+  - image_uuid = f.object.extra_attr 'image_uuid'
+
+  = ff.input :video, wrapper_html: { class: 'sub for single' } do
+    = render 'admin/application/attachment_select', f: ff, field: :video, value: video_uuid, attachments: section.page.attachments
+
+  = ff.input :thumbnail, wrapper_html: { class: 'sub for single' } do
+    = render 'admin/application/attachment_select', f: ff, field: :image, value: image_uuid, attachments: section.page.attachments
+
+  = render 'admin/application/repeatable_fields', f: ff, attribute: :items, items: items, subfield: true, for: [:gallery] do |fff, item|
+    = fff.text_field :title, value: item['title'], placeholder: Section.human_attribute_name(:title), name: "#{fff.object_name}[title][]"
+    = render 'admin/application/attachment_select', f: fff, placeholder: Section.human_attribute_name(:video), name: "#{fff.object_name}[video_uuid][]", value: item['video_uuid'], attachments: section.page.attachments
+    = render 'admin/application/attachment_select', f: fff, placeholder: Section.human_attribute_name(:thumbnail), name: "#{fff.object_name}[image_uuid][]", value: item['image_uuid'], attachments: section.page.attachments
+
   = render 'admin/sections/decoration_fields', f: ff, collection: [:sidetext]

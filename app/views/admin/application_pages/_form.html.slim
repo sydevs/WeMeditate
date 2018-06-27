@@ -18,7 +18,7 @@
         = render 'admin/sections/form', f: ff, allow: allow
 
       - if allow.update_structure?
-        = link_to_add_fields f, :sections, { locals: { allow: allow } }, { class: 'ui tiny compact basic labeled icon button' } do
+        = link_to_add_fields f, :sections, { locals: { allow: allow }, new_object: page.sections.new }, { class: 'ui tiny compact basic labeled icon button' } do
           i.plus.icon
           = translate 'action.target.add', target: Section.model_name.human
       - elsif sections.empty?

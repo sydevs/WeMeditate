@@ -3,18 +3,17 @@ class Article < ApplicationRecord
   extend CarrierwaveGlobalize
 
   # Drafts
-  has_paper_trail ignore: [:published_at]
+  has_paper_trail ignore: [:published_at, :attachments]
   include RequireApproval
 
   # Extensions
-  translates :title, :slug, :excerpt, :banner, :thumbnail
+  translates :title, :slug, :excerpt, :banner_uuid, :thumbnail_uuid
   friendly_id :title, use: :globalize
 
   # Associations
   belongs_to :category
   has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
-  mount_translated_uploader :banner, GenericImageUploader
-  mount_translated_uploader :thumbnail, GenericImageUploader
+  has_many :attachments, as: :page, inverse_of: :page, dependent: :delete_all
   enum priority: { high: 1, normal: 0, low: -1 }
 
   # Validations
@@ -30,6 +29,14 @@ class Article < ApplicationRecord
 
   # Callbacks
   after_create :disable_drafts
+
+  def banner
+    attachments.find_by(uuid: banner_uuid)&.file
+  end
+
+  def thumbnail
+    attachments.find_by(uuid: thumbnail_uuid)&.file
+  end
 
   private
     def disable_drafts

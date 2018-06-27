@@ -1,4 +1,10 @@
 
 = f.input :format, collection: Section::IMAGE_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, disabled: !allow.update_structure?, wrapper_html: { class: 'sub field-format' }
 = f.input :credit, wrapper_html: { class: 'sub' }
-= f.input :images, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:image), files: f.object.images, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:image) }
+//= f.input :images, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:image), files: f.object.images, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:image) }
+
+= f.fields_for :extra, f.object do |ff|
+  - image_uuid = f.object.extra_attr 'image_uuid'
+
+  = ff.input :image, wrapper_html: { class: 'sub' } do
+    = render 'admin/application/attachment_select', f: ff, field: :image, value: image_uuid, attachments: section.page.attachments

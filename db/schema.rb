@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430164026) do
+ActiveRecord::Schema.define(version: 20180625080259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20180430164026) do
     t.string "title", null: false
     t.string "slug", null: false
     t.text "excerpt"
-    t.jsonb "banner"
-    t.jsonb "thumbnail"
+    t.string "banner_uuid"
+    t.string "thumbnail_uuid"
     t.index ["article_id"], name: "index_article_translations_on_article_id"
     t.index ["locale"], name: "index_article_translations_on_locale"
   end
@@ -42,6 +42,20 @@ ActiveRecord::Schema.define(version: 20180430164026) do
     t.string "name"
     t.string "url"
     t.jsonb "image"
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.string "uuid", null: false
+    t.string "name"
+    t.integer "size"
+    t.integer "usage_count", default: 0
+    t.jsonb "file"
+    t.string "page_type"
+    t.bigint "page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["page_type", "page_id"], name: "index_attachments_on_page_type_and_page_id"
+    t.index ["uuid"], name: "index_attachments_on_uuid"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -64,12 +78,12 @@ ActiveRecord::Schema.define(version: 20180430164026) do
   create_table "cities", force: :cascade do |t|
     t.float "latitude", null: false
     t.float "longitude", null: false
-    t.string "banner", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "published_at"
     t.jsonb "venues"
     t.integer "country"
+    t.string "banner_uuid"
   end
 
   create_table "city_translations", force: :cascade do |t|
@@ -192,14 +206,11 @@ ActiveRecord::Schema.define(version: 20180430164026) do
     t.string "label"
     t.string "title"
     t.string "subtitle"
-    t.string "sidetext"
     t.text "text"
     t.text "quote"
     t.string "credit"
     t.string "url"
     t.string "action"
-    t.jsonb "images"
-    t.jsonb "videos"
     t.jsonb "extra"
     t.index ["locale"], name: "index_section_translations_on_locale"
     t.index ["section_id"], name: "index_section_translations_on_section_id"

@@ -1,8 +1,14 @@
 
-= f.input :images, as: :file, multiple: true, wrapper: :ui_file_input, icon: :audio, files: f.object.images, wrapper_html: { class: 'sub' }
-
 = f.input :action, wrapper_html: { class: 'sub' }
 = f.input :title, wrapper_html: { class: 'sub' }
 = f.input :subtitle, wrapper_html: { class: 'sub' }
 
-= f.input :videos, as: :file, multiple: true, wrapper: :ui_file_input, icon: :audio, files: f.object.videos, wrapper_html: { class: 'sub' }
+= f.fields_for :extra, f.object do |ff|
+  - image_uuid = f.object.extra_attr 'image_uuid'
+  - video_uuid = f.object.extra_attr 'video_uuid'
+
+  = ff.input :thumbnail, wrapper_html: { class: 'sub' } do
+    = render 'admin/application/attachment_select', f: ff, field: :image, value: image_uuid, attachments: section.page.attachments
+
+  = ff.input :video, wrapper_html: { class: 'sub' } do
+    = render 'admin/application/attachment_select', f: ff, field: :video, video: video_uuid, attachments: section.page.attachments

@@ -7,21 +7,21 @@ records:
     slug: atlanta
     latitude: 33.7490
     longitude: -84.3880
-    banner: <%= sprig_file('cities/background.jpg') %>
+    banner_uuid: <%= SecureRandom.uuid %>
   - sprig_id: new_york
     country: <%= City.countries['US'] %>
     name: New York
     slug: new-york
     latitude: 40.7128
     longitude: -74.0060
-    banner: <%= sprig_file('cities/background.jpg') %>
+    banner_uuid: <%= SecureRandom.uuid %>
   - sprig_id: los_angeles
     country: <%= City.countries['US'] %>
     name: Los Angeles
     slug: los-angeles
     latitude: 34.0522
     longitude: -118.2437
-    banner: <%= sprig_file('cities/background.jpg') %>
+    banner_uuid: <%= SecureRandom.uuid %>
     venues:
       - latitude: 34.0602743
         longitude: -118.2803541
@@ -50,18 +50,18 @@ records:
     slug: detroit
     latitude: 42.3314
     longitude: -83.0458
-    banner: <%= sprig_file('cities/background.jpg') %>
+    banner_uuid: <%= SecureRandom.uuid %>
   - sprig_id: anchorage
     country: <%= City.countries['US'] %>
     name: Anchorage
     slug: anchorage
     latitude: 61.2181
     longitude: -149.9003
-    banner: <%= sprig_file('cities/background.jpg') %>
+    banner_uuid: <%= SecureRandom.uuid %>
   - sprig_id: berlin
     country: <%= City.countries['DE'] %>
     name: Berlin
     slug: berlin
     latitude: 52.5200
     longitude: 13.404954
-    banner: <%= sprig_file('cities/background.jpg') %>
+    banner_uuid: <%= SecureRandom.uuid %>

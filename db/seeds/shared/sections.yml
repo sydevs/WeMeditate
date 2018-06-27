@@ -3,7 +3,7 @@ options:
 records:
 
 # FOR ARTICLE: 1
-  - sprig_id: 1
+  - sprig_id: s_a1_text_with_quote
     order: 1
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
@@ -16,7 +16,7 @@ records:
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
       <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
     quote: Fusce faucibus commodo tempor. Nunc consequat lectus et ipsum rutrum pellentesque. Cras vulputate turpis sed neque dictum blandit. Maecenas hendrerit eu nulla vel tempus. Suspendisse eget purus sit amet dolor vulputate convallis. Morbi hendrerit enim nec interdum iaculis. Nullam eget massa orci.
-  - sprig_id: 2
+  - sprig_id: s_a1_text_with_image
     order: 2
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
@@ -28,19 +28,19 @@ records:
       <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
       <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
-    images:
-      - <%= sprig_file('articles/callout.jpg') %>
     credit: John Smith
-  - sprig_id: 3
+    extra:
+      image_uuid: afadd6d8-8818-4943-b737-86887e8008e4
+  - sprig_id: s_a1_image_fit_container_width
     order: 3
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: image
     format: fit_container_width
-    images:
-      - <%= sprig_file('articles/container-width.jpg') %>
     credit: John Smith
-  - sprig_id: 4
+    extra:
+      image_uuid: dfbaa357-7501-48c0-b71a-51c2cb45f77b
+  - sprig_id: s_a1_just_text
     order: 4
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
@@ -52,7 +52,7 @@ records:
       <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
       <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
-  - sprig_id: 5
+  - sprig_id: s_a1_try_meditation
     order: 5
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
@@ -62,16 +62,16 @@ records:
     url: '#'
     extra:
       decorations: { enabled: [leaf] }
-  - sprig_id: 6
+  - sprig_id: s_a1_image_fit_page_width
     order: 6
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: image
     format: fit_page_width
-    images:
-      - <%= sprig_file('articles/page-width.jpg') %>
     credit: John Smith
-  - sprig_id: 7
+    extra:
+      image_uuid: 800443da-a903-4dde-bc8d-2d8ae249d90f
+  - sprig_id: s_a1_just_text_2
     order: 7
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
@@ -83,7 +83,7 @@ records:
       <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
       <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
-  - sprig_id: 8
+  - sprig_id: s_a1_quote
     order: 8
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
@@ -94,7 +94,7 @@ records:
     subtitle: Founder of the meditation method "Sahaja Yoga"
     action: Meditation with Shri Mataji
     url: '#'
-  - sprig_id: 9
+  - sprig_id: s_a1_just_text_3
     order: 9
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
@@ -106,7 +106,7 @@ records:
       <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
       <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
-  - sprig_id: 10
+  - sprig_id: s_a1_action_signup
     order: 10
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
@@ -118,17 +118,17 @@ records:
     action: Sign Up
     extra:
       mailchimp_list_id: 1
-  - sprig_id: 11
+  - sprig_id: s_a1_video
     order: 11
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
     content_type: video
+    format: single
     title: The first method of meditation
-    images:
-      - <%= sprig_file('general/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-  - sprig_id: 12
+    extra:
+      image_uuid: 4aa1a4ef-1761-465c-845b-73de3fc9ebf2
+      video_uuid: 5324f1d7-c0f6-4795-9299-34817b2f7ef5
+  - sprig_id: s_a1_just_text_4
     order: 12
     page_type: Article
     page_id: <%= sprig_record(Article, 1).id %>
@@ -139,7 +139,7 @@ records:
 
 
 # FOR ARTICLE: 2
-  - sprig_id: 101
+  - sprig_id: s_a2_text_with_quote
     order: 1
     page_type: Article
     page_id: <%= sprig_record(Article, 2).id %>
@@ -155,7 +155,8 @@ records:
 
 
 # FOR ARTICLE: 3
-  - sprig_id: 201
+  - sprig_id: s_a3_just_text
+    order: 1
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: text
@@ -166,8 +167,8 @@ records:
       <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
       <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
-    order: 1
-  - sprig_id: 202
+  - sprig_id: s_a3_text_with_quote
+    order: 2
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: text
@@ -179,8 +180,8 @@ records:
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
       <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
     quote: Fusce faucibus commodo tempor. Nunc consequat lectus et ipsum rutrum pellentesque. Cras vulputate turpis sed neque dictum blandit. Maecenas hendrerit eu nulla vel tempus. Suspendisse eget purus sit amet dolor vulputate convallis. Morbi hendrerit enim nec interdum iaculis. Nullam eget massa orci.
-    order: 2
-  - sprig_id: 203
+  - sprig_id: s_a3_text_with_image
+    order: 3
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: text
@@ -191,11 +192,11 @@ records:
       <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
       <p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>
-    images:
-      - <%= sprig_file('articles/callout.jpg') %>
     credit: John Smith
-    order: 3
-  - sprig_id: 204
+    extra:
+      image_uuid: a3c943d3-af06-4637-a967-45a7337cf4cc
+  - sprig_id: s_a3_text_box_over_image
+    order: 4
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: text
@@ -204,12 +205,11 @@ records:
     text: |-
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
       <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
-    images:
-      - <%= sprig_file('articles/behind.jpg') %>
     extra:
+      image_uuid: 6f734989-2d5e-4898-a629-f21547b41373
       color: light
-    order: 4
-  - sprig_id: 205
+  - sprig_id: s_a3_text_box_with_lefthand_image
+    order: 5
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: text
@@ -218,10 +218,10 @@ records:
     text: |-
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
       <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
-    images:
-      - <%= sprig_file('articles/lefthand.jpg') %>
-    order: 5
-  - sprig_id: 206
+    extra:
+      image_uuid: d759cd8d-972a-4305-a117-17d2720f20a1
+  - sprig_id: s_a3_text_box_with_righthand_image
+    order: 6
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: text
@@ -230,36 +230,36 @@ records:
     text: |-
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p>
       <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
-    images:
-      - <%= sprig_file('articles/righthand.jpg') %>
-    order: 6
-  - sprig_id: 207
+    extra:
+      image_uuid: 5b691366-36d8-4235-9552-08e60f2e2bc8
+  - sprig_id: s_a3_image_fit_container_width
+    order: 7
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: image
     format: fit_container_width
-    images:
-      - <%= sprig_file('articles/container-width.jpg') %>
     credit: John Smith
-    order: 7
-  - sprig_id: 208
+    extra:
+      image_uuid: 20d7c4bd-a150-4adb-9305-fc5fa657699f
+  - sprig_id: s_a3_image_fit_page_width
+    order: 8
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: image
     format: fit_page_width
-    images:
-      - <%= sprig_file('articles/page-width.jpg') %>
     credit: John Smith
-    order: 8
-  - sprig_id: 209
+    extra:
+      image_uuid: c93477d4-3a15-4642-993f-649564f92769
+  - sprig_id: s_a3_action_button
+    order: 9
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: action
     format: button
     action: Try Meditation
     url: '#'
-    order: 9
-  - sprig_id: 210
+  - sprig_id: s_a3_action_signup
+    order: 10
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: action
@@ -270,8 +270,8 @@ records:
     action: Sign Up
     extra:
       mailchimp_list_id: 1
-    order: 10
-  - sprig_id: 211
+  - sprig_id: s_a3_quote
+    order: 11
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: quote
@@ -281,21 +281,20 @@ records:
     subtitle: Founder of the meditation method "Sahaja Yoga"
     action: Meditation with Shri Mataji
     url: '#'
-    order: 11
-  - sprig_id: 212
+  - sprig_id: s_a3_video
+    order: 12
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: video
+    format: single
     title: The first method of meditation
-    images:
-      - <%= sprig_file('general/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-    order: 12
+    extra:
+      image_uuid: dab12031-1aee-4207-9625-f3e099e5b033
+      video_uuid: d8bdc249-fbed-4fd9-b601-dfe84c196a2f
 
 
 # FOR STATIC PAGE: HOME
-  - sprig_id: 301
+  - sprig_id: s_sp_home_banner
     order: 1
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
@@ -305,13 +304,12 @@ records:
     text: For meditation do not need special skills, quite simply
     action: Feel
     url: '#'
-    images:
-      - <%= sprig_file('general/background.jpg') %>
-      - <%= sprig_file('static_pages/front/banner-mobile.png') %>
     extra:
+      desktop_image_uuid: ca2acb29-49bd-4605-ae26-29637c9b67c0
+      mobile_image_uuid: 7749260b-0e6f-4d81-9876-2d3817e87566
       banner_style: front_page
       color: light
-  - sprig_id: 302
+  - sprig_id: s_sp_home_sahaja_yoga
     order: 2
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
@@ -322,37 +320,40 @@ records:
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
     action: Learn More
     url: '#'
-    images:
-      - <%= sprig_file('static_pages/front/sahaja-yoga.jpg') %>
     extra:
+      image_uuid: 3e317127-071e-46bb-9d2c-5ee4ea0660d3
       decorations:
         enabled: [ sidetext, circle ]
         options:
           sidetext: [ top-left ]
         sidetext: Self-Realization
-  - sprig_id: 303
+  - sprig_id: s_sp_home_video_gallery
     order: 3
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
     content_type: video
-    images:
-      - <%= sprig_file('static_pages/front/slide-1.jpg') %>
-      - <%= sprig_file('static_pages/front/slide-2.jpg') %>
-      - <%= sprig_file('static_pages/front/slide-3.jpg') %>
-      - <%= sprig_file('static_pages/front/slide-4.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-      - <%= sprig_file('general/video.mp4') %>
-      - <%= sprig_file('general/video.mp4') %>
-      - <%= sprig_file('general/video.mp4') %>
+    format: gallery
     extra:
+      items:
+        - title: Video 1
+          image_uuid: 2abac3e2-e4eb-4a3e-bac8-3da77c7c15cc
+          video_uuid: ce9afd05-8ebd-4fb5-981b-ad609f28994e
+        - title: Video 2
+          image_uuid: 9b87b8d8-3cf3-4874-afac-8c50eae4123d
+          video_uuid: ce9afd05-8ebd-4fb5-981b-ad609f28994e
+        - title: Video 3
+          image_uuid: 212b62d1-5783-434a-b115-49dcb77467fc
+          video_uuid: ce9afd05-8ebd-4fb5-981b-ad609f28994e
+        - title: Video 4
+          image_uuid: dfe3a70d-5fee-49a0-86d5-72bd44ad963b
+          video_uuid: ce9afd05-8ebd-4fb5-981b-ad609f28994e
       decorations:
         enabled: [ sidetext, gradient ]
         options:
           sidetext: [ top-right ]
           gradient: [ right, blue ]
         sidetext: Video
-  - sprig_id: 304
+  - sprig_id: s_sp_home_shri_mataji
     order: 4
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
@@ -363,9 +364,8 @@ records:
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
     action: Learn More
     url: '#'
-    images:
-      - <%= sprig_file('static_pages/front/shri-mataji.jpg') %>
     extra:
+      image_uuid: 6c5f3faf-9181-434c-a371-d34e3f4d18b2
       decorations:
         enabled: [ sidetext, triangle ]
         options:
@@ -373,7 +373,7 @@ records:
           triangle: [ left ]
         sidetext: Shri Mataji
       color: dark
-  - sprig_id: 305
+  - sprig_id: s_sp_home_meditation
     order: 5
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
@@ -382,15 +382,14 @@ records:
     title: About Us
     text: |-
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
-    images:
-      - <%= sprig_file('static_pages/front/we-meditate.jpg') %>
     extra:
+      image_uuid: 724d1d5b-c37a-4a95-b794-7f5a839b3adc
       decorations:
         enabled: [ sidetext ]
         options:
           sidetext: [ top-right ]
         sidetext: Meditation
-  - sprig_id: 306
+  - sprig_id: s_sp_home_how_to_meditate
     order: 6
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
@@ -402,9 +401,8 @@ records:
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview.</p>
     action: Learn More
     url: '#'
-    images:
-      - <%= sprig_file('static_pages/front/meditation.jpg') %>
     extra:
+      image_uuid: bf9468a2-b061-4137-9088-fe5395dd972d
       decorations:
         enabled: [ sidetext, triangle, gradient ]
         options:
@@ -413,7 +411,7 @@ records:
           gradient: [ left, orange ]
         sidetext: How to Meditate
       color: light
-  - sprig_id: 307
+  - sprig_id: s_sp_home_events
     order: 7
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
@@ -424,15 +422,14 @@ records:
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
     action: More Events
     url: '#'
-    images:
-      - <%= sprig_file('static_pages/front/events.jpg') %>
     extra:
+      image_uuid: f354b762-2c6b-4479-9951-825f8b893256
       decorations:
         enabled: [ sidetext ]
         options:
           sidetext: [ top-left ]
         sidetext: Developments
-  - sprig_id: 308
+  - sprig_id: s_sp_home_grid
     order: 8
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
@@ -449,7 +446,7 @@ records:
 
 
 # FOR STATIC PAGE: about
-  - sprig_id: 401
+  - sprig_id: s_sp_about_we_meditate
     order: 1
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'about').id %>
@@ -463,7 +460,7 @@ records:
 
 
 # FOR STATIC PAGE: contact
-  - sprig_id: 501
+  - sprig_id: s_sp_contact_form
     order: 1
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'contact').id %>
@@ -475,7 +472,7 @@ records:
 
 
 # FOR STATIC PAGE: shri_mataji
-  - sprig_id: 601
+  - sprig_id: s_sp_shri_mataji_founder
     order: 1
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'shri_mataji').id %>
@@ -484,15 +481,14 @@ records:
     title: Founder of Sahaja Yoga
     text: |-
       <p>Shri Mataji Nirmala Devi quietly transformed lives. For more than forty years, she travelled internationally, offering free public lectures and the experience of self-realization to all, regardless of race, religion or circumstance. She not only enabled people to pass this valuable experience on to others, but taught them the meditation technique necessary to sustain it, known as Sahaja Yoga.</p>
-    images:
-      - <%= sprig_file('static_pages/shri-mataji/founder.jpg') %>
     extra:
+      image_uuid: 7a746151-425e-4214-a8ff-9b80f202615a
       decorations:
         enabled: [ sidetext ]
         options:
           sidetext: [ top-left ]
         sidetext: Founder
-  - sprig_id: 602
+  - sprig_id: s_sp_shri_mataji_sahaja_yoga
     order: 2
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'shri_mataji').id %>
@@ -504,9 +500,8 @@ records:
       <p>The ability to quickly and easily activate our innate, spiritual energy - and experience its benefits differentiates Sahaja Yoga from other forms of meditation. With practice, individuals are able to direct their own energy and redress mental, physical and emotional imbalances to achieve a state of well-being, serenity and fulfillment.</p>
     action: More about Sahaja Yoga
     url: '#'
-    images:
-      - <%= sprig_file('static_pages/shri-mataji/sahaja-yoga.jpg') %>
     extra:
+      image_uuid: 79e97f7b-aca5-4c30-b0ad-87d0cd42c23b
       decorations:
         enabled: [ sidetext, triangle ]
         options:
@@ -514,7 +509,7 @@ records:
           triangle: [ right ]
         sidetext: Sahaja Yoga
       color: light
-  - sprig_id: 603
+  - sprig_id: s_sp_shri_mataji_try_meditation
     order: 3
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'shri_mataji').id %>
@@ -523,11 +518,10 @@ records:
     title: Meditation under the arm
     subtitle: Shri Mataji
     action: Try meditation right now
-    images:
-      - <%= sprig_file('static_pages/shri-mataji/try-meditation.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
-  - sprig_id: 604
+    extra:
+      image_uuid: bd0d4e27-0780-4164-89d8-6fea3f318406
+      video_uuid: ebc59cb6-8b32-440c-8bea-ed018201ef4e
+  - sprig_id: s_sp_shri_mataji_social_work
     order: 4
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'shri_mataji').id %>
@@ -536,15 +530,14 @@ records:
     title: Social Work
     text: |-
       <p>Brought up in a family that considered self-sacrifice the highest calling, Shri Mataji dedicated her life to a continuous program of public and spiritual work.She created charitable organizations such as the Vishwa Nirmala Prem Ashram for destitute women and orphan children, founded international schools promoting a holistic and balanced education, established health clinics, created a classical art academy, and much more. All of these endeavors complemented her global work of spiritual transformation.</p>
-    images:
-      - <%= sprig_file('static_pages/shri-mataji/social-work.jpg') %>
     extra:
+      image_uuid: fffd6bb2-4925-4c06-a438-474fcafebfa6
       decorations:
         enabled: [ sidetext ]
         options:
           sidetext: [ top-left ]
         sidetext: Social Work
-  - sprig_id: 605
+  - sprig_id: s_sp_shri_mataji_family
     order: 5
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'shri_mataji').id %>
@@ -553,16 +546,15 @@ records:
     title: Shri Mataji's Family
     text: |-
       <p>Brought up in a family that considered self-sacrifice the highest calling, Shri Mataji dedicated her life to a continuous program of public and spiritual work.She created charitable organizations such as the Vishwa Nirmala Prem Ashram for destitute women and orphan children, founded international schools promoting a holistic and balanced education, established health clinics, created a classical art academy, and much more. All of these endeavors complemented her global work of spiritual transformation.</p>
-    images:
-      - <%= sprig_file('static_pages/shri-mataji/family.jpg') %>
     extra:
+      image_uuid: 40e372b4-21ef-4351-836b-4f35fc48b9d5
       decorations:
         enabled: [ sidetext, gradient ]
         options:
           sidetext: [ top-right ]
           gradient: [ right, blue ]
         sidetext: Family
-  - sprig_id: 606
+  - sprig_id: s_sp_shri_mataji_awards
     order: 6
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'shri_mataji').id %>
@@ -582,7 +574,7 @@ records:
 
 
 # FOR STATIC PAGE: subtle_system
-  - sprig_id: 701
+  - sprig_id: s_sp_subtle_system
     order: 1
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'subtle_system').id %>
@@ -592,7 +584,7 @@ records:
 
 
 # FOR STATIC PAGE: sahaja_yoga
-  - sprig_id: 801
+  - sprig_id: s_sp_sahaja_yoga_about
     order: 1
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'sahaja_yoga').id %>
@@ -604,7 +596,7 @@ records:
 
 
 # FOR STATIC PAGE: tracks
-  - sprig_id: 901
+  - sprig_id: s_sp_tracks_text_1
     order: 1
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'tracks').id %>
@@ -613,7 +605,7 @@ records:
     title: Header
     text: |-
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
-  - sprig_id: 902
+  - sprig_id: s_sp_tracks_text_2
     order: 2
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'tracks').id %>
@@ -622,7 +614,7 @@ records:
     title: Header
     text: |-
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
-  - sprig_id: 903
+  - sprig_id: s_sp_tracks_text_3
     order: 3
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'tracks').id %>
@@ -631,7 +623,7 @@ records:
     title: Header
     text: |-
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
-  - sprig_id: 904
+  - sprig_id: s_sp_tracks_text_4
     order: 4
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'tracks').id %>
@@ -643,7 +635,7 @@ records:
 
 
 # FOR STATIC PAGE: treatments
-  - sprig_id: 1001
+  - sprig_id: s_sp_treatments_banner
     order: 1
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'treatments').id %>
@@ -653,13 +645,12 @@ records:
     text: Before using methods to improve meditation, you need to awaken
     action: Vigorous
     url: '#'
-    images:
-      - <%= sprig_file('treatments/banner.png') %>
-      - <%= sprig_file('treatments/banner-mobile.png') %>
     extra:
+      desktop_image_uuid: f4381b4a-fcae-4fcf-818f-0e8f9735e142
+      mobile_image_uuid: 59124e84-e2b1-4d78-8424-ff260710d64a
       banner_style: treatments_page
       color: dark
-  - sprig_id: 1002
+  - sprig_id: s_sp_treatments_methods
     order: 2
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'treatments').id %>
@@ -672,15 +663,13 @@ records:
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_1
-  - sprig_id: 1101
+  - sprig_id: s_ssn_chakra_1_overview
     order: 1
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_1').id %>
     label: Chakra Overview
     content_type: text
     format: columns
-    images:
-      - <%= sprig_file('subtle_system/chakra-1.png') %>
     extra:
       items:
         - title: Left Aspect
@@ -688,17 +677,20 @@ records:
             <p>The left Nabhi is responsible for the ability to concentrate attention, and therefore stay in thoughtlessness and meditate. Therefore, this is one of the most important chakras in our delicate system.</p>
             <p>She is also responsible for material well-being and a sense of inner dignity.</p>
             <p>On the physical plane, the right Nabi corresponds to the liver. It comes out of balance, or "overheats" when we think too much and do not give ourselves a break.</p>
+          image_uuid: 1c4d27b2-b434-4f2d-ae3b-44c0aa47f22e
         - title: Central Aspect
           text: |-
             <p>The central Nabhi is responsible for the ability to concentrate attention, and therefore stay in thoughtlessness and meditate. Therefore, this is one of the most important chakras in our delicate system.</p>
             <p>She is also responsible for material well-being and a sense of inner dignity.</p>
             <p>On the physical plane, the right Nabi corresponds to the liver. It comes out of balance, or "overheats" when we think too much and do not give ourselves a break.</p>
+          image_uuid: 1c4d27b2-b434-4f2d-ae3b-44c0aa47f22e
         - title: Right Aspect
           text: |-
             <p>The right Nabhi is responsible for the ability to concentrate attention, and therefore stay in thoughtlessness and meditate. Therefore, this is one of the most important chakras in our delicate system.</p>
             <p>She is also responsible for material well-being and a sense of inner dignity.</p>
             <p>On the physical plane, the right Nabi corresponds to the liver. It comes out of balance, or "overheats" when we think too much and do not give ourselves a break.</p>
-  - sprig_id: 1102
+          image_uuid: 1c4d27b2-b434-4f2d-ae3b-44c0aa47f22e
+  - sprig_id: s_ssn_chakra_1_daily_life
     order: 2
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_1').id %>
@@ -710,16 +702,15 @@ records:
       <p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p>
       <p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p>
       <p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>
-    images:
-      - <%= sprig_file('subtle_system/background.jpg') %>
     extra:
+      image_uuid: 81cbd789-ebc6-474c-bf5f-6f0d3b5388eb
       decorations:
         enabled: [ sidetext, gradient ]
         options:
           sidetext: [ top-left ]
           gradient: [ right, orange ]
         sidetext: In Life
-  - sprig_id: 1103
+  - sprig_id: s_ssn_chakra_1_methods
     order: 3
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_1').id %>
@@ -736,24 +727,23 @@ records:
         options:
           sidetext: [ top-left ]
         sidetext: Methods of Cleaning
-  - sprig_id: 1104
+  - sprig_id: s_ssn_chakra_1_video
     order: 4
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_1').id %>
     content_type: video
+    format: single
     title: Shri Mataji on Mooladhara Chakra
-    images:
-      - <%= sprig_file('subtle_system/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
     extra:
+      image_uuid: e771ec54-298c-4fc0-922d-727ebb0b58ea
+      video_uuid: aa991d6f-e1f4-42e2-9b73-cfe9993a4ee1
       decorations:
         enabled: [ sidetext, gradient ]
         options:
           sidetext: [ top-right ]
           gradient: [ left, orange ]
         sidetext: Video
-  - sprig_id: 1105
+  - sprig_id: s_ssn_chakra_1_ancient_wisdom
     order: 5
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_1').id %>
@@ -772,15 +762,13 @@ records:
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_2
-  - sprig_id: 1201
+  - sprig_id: s_ssn_chakra_2_overview
     order: 1
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_2').id %>
     label: Chakra Overview
     content_type: text
     format: columns
-    images:
-      - <%= sprig_file('subtle_system/chakra-2.png') %>
     extra:
       items:
         - title: Left Aspect
@@ -788,40 +776,44 @@ records:
             <p>The left Nabhi is responsible for the ability to concentrate attention, and therefore stay in thoughtlessness and meditate. Therefore, this is one of the most important chakras in our delicate system.</p>
             <p>She is also responsible for material well-being and a sense of inner dignity.</p>
             <p>On the physical plane, the right Nabi corresponds to the liver. It comes out of balance, or "overheats" when we think too much and do not give ourselves a break.</p>
+          image_uuid: f9a75d1a-88a9-4ffe-9d61-e7f3b8180fd5
         - title: Central Aspect
           text: |-
             <p>The central Nabhi is responsible for the ability to concentrate attention, and therefore stay in thoughtlessness and meditate. Therefore, this is one of the most important chakras in our delicate system.</p>
             <p>She is also responsible for material well-being and a sense of inner dignity.</p>
             <p>On the physical plane, the right Nabi corresponds to the liver. It comes out of balance, or "overheats" when we think too much and do not give ourselves a break.</p>
+          image_uuid: f9a75d1a-88a9-4ffe-9d61-e7f3b8180fd5
         - title: Right Aspect
           text: |-
             <p>The right Nabhi is responsible for the ability to concentrate attention, and therefore stay in thoughtlessness and meditate. Therefore, this is one of the most important chakras in our delicate system.</p>
             <p>She is also responsible for material well-being and a sense of inner dignity.</p>
             <p>On the physical plane, the right Nabi corresponds to the liver. It comes out of balance, or "overheats" when we think too much and do not give ourselves a break.</p>
+          image_uuid: f9a75d1a-88a9-4ffe-9d61-e7f3b8180fd5
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_3
-  - sprig_id: 1301
+  - sprig_id: s_ssn_chakra_3_overview
     order: 1
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_3').id %>
     label: Chakra Overview
     content_type: text
     format: columns
-    images:
-      - <%= sprig_file('subtle_system/chakra-3.png') %>
     extra:
       items:
         - title: Left Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: e3cc1a66-8002-4d9d-89df-01010daa18bc
         - title: Central Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: e3cc1a66-8002-4d9d-89df-01010daa18bc
         - title: Right Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: e3cc1a66-8002-4d9d-89df-01010daa18bc
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_3b
-  - sprig_id: 1401
+  - sprig_id: s_ssn_chakra_3b_overview
     order: 1
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_3b').id %>
@@ -833,87 +825,91 @@ records:
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_4
-  - sprig_id: 1501
+  - sprig_id: s_ssn_chakra_4_overview
     order: 1
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_4').id %>
     label: Chakra Overview
     content_type: text
     format: columns
-    images:
-      - <%= sprig_file('subtle_system/chakra-4.png') %>
     extra:
       items:
         - title: Left Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: 48e69c98-b83d-4c8f-ac9c-90e0c2555212
         - title: Central Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: 48e69c98-b83d-4c8f-ac9c-90e0c2555212
         - title: Right Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: 48e69c98-b83d-4c8f-ac9c-90e0c2555212
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_5
-  - sprig_id: 1601
+  - sprig_id: s_ssn_chakra_5_overview
     order: 1
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_5').id %>
     label: Chakra Overview
     content_type: text
     format: columns
-    images:
-      - <%= sprig_file('subtle_system/chakra-5.png') %>
     extra:
       items:
         - title: Left Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: 9e936755-07b9-4c64-931f-f98be030eb8e
         - title: Central Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: 9e936755-07b9-4c64-931f-f98be030eb8e
         - title: Right Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: 9e936755-07b9-4c64-931f-f98be030eb8e
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_6
-  - sprig_id: 1701
+  - sprig_id: s_ssn_chakra_6_overview
     order: 1
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_6').id %>
     label: Chakra Overview
     content_type: text
     format: columns
-    images:
-      - <%= sprig_file('subtle_system/chakra-6.png') %>
     extra:
       items:
         - title: Left Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: 38ca0568-be12-4ef0-a87b-203e1330c25f
         - title: Central Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: 38ca0568-be12-4ef0-a87b-203e1330c25f
         - title: Right Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: 38ca0568-be12-4ef0-a87b-203e1330c25f
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_7
-  - sprig_id: 1801
+  - sprig_id: s_ssn_chakra_7_overview
     order: 1
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_7').id %>
     label: Chakra Overview
     content_type: text
     format: columns
-    images:
-      - <%= sprig_file('subtle_system/chakra-7.png') %>
     extra:
       items:
         - title: Left Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: bdbd3a77-fefe-47f3-94cb-30d2cc3637fc
         - title: Central Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: bdbd3a77-fefe-47f3-94cb-30d2cc3637fc
         - title: Right Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
+          image_uuid: bdbd3a77-fefe-47f3-94cb-30d2cc3637fc
 
 
 # FOR SUBTLE SYSTEM NODE: kundalini
-  - sprig_id: 1901
+  - sprig_id: s_ssn_kundalini_overview
     order: 1
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'kundalini').id %>
@@ -925,7 +921,7 @@ records:
 
 
 # FOR SUBTLE SYSTEM NODE: channel_center
-  - sprig_id: 2001
+  - sprig_id: s_ssn_channel_center_overview
     order: 1
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'channel_center').id %>
@@ -937,7 +933,7 @@ records:
 
 
 # FOR SUBTLE SYSTEM NODE: channel_left
-  - sprig_id: 2101
+  - sprig_id: s_ssn_channel_left_overview
     order: 1
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'channel_left').id %>
@@ -949,7 +945,7 @@ records:
 
 
 # FOR SUBTLE SYSTEM NODE: channel_right
-  - sprig_id: 2101
+  - sprig_id: s_ssn_channel_right_overview
     order: 1
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'channel_right').id %>
@@ -961,7 +957,7 @@ records:
 
 
 # FOR STATIC PAGE: world
-  - sprig_id: 2201
+  - sprig_id: s_sp_world
     order: 1
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'world').id %>
@@ -973,7 +969,7 @@ records:
 
 
 # FOR STATIC PAGE: country
-  - sprig_id: 2301
+  - sprig_id: s_sp_country
     order: 1
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'country').id %>
@@ -988,7 +984,7 @@ records:
 
 
 # FOR STATIC PAGE: city
-  - sprig_id: 2401
+  - sprig_id: s_sp_city_banner
     order: 1
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'city').id %>
@@ -999,7 +995,7 @@ records:
     action: Join the class
     extra:
       banner_style: city_page
-  - sprig_id: 2402
+  - sprig_id: s_sp_city_meditation_together
     order: 2
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'city').id %>
@@ -1009,13 +1005,13 @@ records:
     title: Meditation works better in a group
     text: |-
       <p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>
-  - sprig_id: 2403
+  - sprig_id: s_sp_city_sections
     order: 3
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'city').id %>
     content_type: special
     format: city_sections
-  - sprig_id: 2404
+  - sprig_id: s_sp_city_venue_map
     order: 4
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'city').id %>
@@ -1028,7 +1024,7 @@ records:
         options:
           sidetext: [ top-left ]
         sidetext: Locations
-  - sprig_id: 2405
+  - sprig_id: s_sp_city_venue_registraton
     order: 5
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'city').id %>
@@ -1036,7 +1032,7 @@ records:
     format: venue_registration
     title: Sign up for free classes near you
     action: Sign up
-  - sprig_id: 2406
+  - sprig_id: s_sp_city_local_contacts
     order: 6
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'city').id %>
@@ -1045,7 +1041,7 @@ records:
     title: Questions?
     subtitle: Ask the instructors directly!
     action: Ask
-  - sprig_id: 2407
+  - sprig_id: s_sp_city_faq
     order: 7
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'city').id %>
@@ -1058,7 +1054,7 @@ records:
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet harum iste similique, vel, cupiditate modi voluptatibus necessitatibus eaque ut rem, esse corrupti vero itaque eos fugiat quisquam ipsum mollitia libero.</p>
       <p><strong>Why is it free?</strong></p>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet harum iste similique, vel, cupiditate modi voluptatibus necessitatibus eaque ut rem, esse corrupti vero itaque eos fugiat quisquam ipsum mollitia libero.</p>
-  - sprig_id: 2408
+  - sprig_id: s_sp_city_signup_button
     order: 8
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'city').id %>
@@ -1070,7 +1066,7 @@ records:
 
 
 # FOR CITY: los_angeles
-  - sprig_id: 2501
+  - sprig_id: s_city_los_angeles_classes
     order: 1
     page_type: City
     page_id: <%= sprig_record(City, 'los_angeles').id %>
@@ -1081,25 +1077,23 @@ records:
       <p>Iste exercitationem quaerat, praesentium quod corrupti beatae eligendi quasi nostrum natus ut, ea accusantium repellat ex placeat expedita dolores ad quas optio.</p>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste exercitationem quaerat, praesentium quod corrupti beatae eligendi quasi nostrum natus ut, ea accusantium repellat ex placeat expedita dolores ad quas optio.</p>
       <p>Ea accusantium repellat ex placeat expedita dolores ad quas optio.</p>
-    images:
-      - <%= sprig_file('cities/class.jpg') %>
     extra:
+      image_uuid: 7378aa13-40df-4e60-85dd-af861dd1c763
       decorations:
         enabled: [ sidetext, triangle ]
         options:
           sidetext: [ top-left ]
         sidetext: Classes
-  - sprig_id: 2502
+  - sprig_id: s_city_los_angeles_video
     order: 2
     page_type: City
     page_id: <%= sprig_record(City, 'los_angeles').id %>
     content_type: video
+    format: single
     title: "It was great - I learned so much about myself"
-    images:
-      - <%= sprig_file('cities/video.jpg') %>
-    videos:
-      - <%= sprig_file('general/video.mp4') %>
     extra:
+      image_uuid: 54f99b6e-cc33-4ba7-b967-677c224f7c21
+      video_uuid: ebf1ea9e-f0eb-4f67-bc0c-beb6449e3e89
       decorations:
         enabled: [ sidetext ]
         options:

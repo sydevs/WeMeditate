@@ -58,8 +58,9 @@ en:
           normal: Normal Visibility
           high: High Visibility
         excerpt: Preview Content
-        banner: Banner Image (png)
-        thumbnail: Thumbnail (png)
+        attachments: Attachments
+        banner: Banner Image
+        thumbnail: Thumbnail
         sections: Content
 
       city:
@@ -180,6 +181,9 @@ en:
           # Image
           fit_container_width: Fit Content Width
           fit_page_width: Fit Page Width
+          # Video
+          single: Single
+          gallery: Gallery
           # Call to Action
           signup: Sign Up
           button: Button
@@ -199,9 +203,10 @@ en:
         subtitle: Subtitle
         text: Text
         quote: Quote
-        image: Image (png)
+        image: Image
+        thumbnail: Thumbnail
         credit: Credit
-        video: Video (mp4)
+        video: Video
         action: Action Text
         name: Name
         url: Link (url)
