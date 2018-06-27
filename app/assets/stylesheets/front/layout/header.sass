@@ -49,7 +49,6 @@ header
 
   &.sticky
     .full.topline,
-    .menubar,
     .breadcrumbs,
       display: none !important
 
@@ -60,8 +59,11 @@ header
       right: 0
       background: white
 
-  &:not(.sticky) .mini.topline
-    display: none
+  &:not(.sticky)
+    .menubar
+      > .logo,
+      > .classes
+        opacity: 0
 
   .topline
     display: flex
@@ -69,8 +71,7 @@ header
     align-items: flex-end
 
     text-align: center
-    padding: 10px 0
-    font-size: 0.8em
+    padding: 20px 0
     border-bottom: 1px solid $light-gray
 
     .logo svg
@@ -97,33 +98,44 @@ header
 
   .desktop
     .full.topline
-      height: 115px
+      height: 138px
 
-    .mini.topline
-      height: 76.5px
-      padding-bottom: 5px
-      align-items: center
-
-      .logo svg
-        height: 42px
-        width: auto
+      .logo, .action
+        padding-bottom: 18px
 
     .illustration-wrapper
       position: absolute
-      width: 100%
+      left: 0
+      right: 0
 
       svg
-        height: 90px
+        height: 100px
 
     > .menubar
       display: flex
-      justify-content: space-between
+      justify-content: space-evenly
       align-items: center
       position: relative
 
       font-size: 0.875em
       font-family: $raleway-medium
       border-bottom: 1px solid $light-gray
+
+      .logo, .classes
+        position: absolute
+        top: 0
+        bottom: 0
+        width: 50px
+        padding: 9px
+
+        svg
+          height: 100%
+
+      .logo
+        left: 0
+
+      .classes
+        right: 0
 
       .title
         font-family: $raleway-semi
@@ -272,14 +284,14 @@ html:not(.show-menu)
     .container
       background: transparent
 
-    .topline
-      .logo svg path
-        fill: white
+    .illustration-wrapper,
+    .burger-button
+      svg path
+        stroke: white
 
-      .illustration-wrapper,
-      .burger-button
-        svg path
-          stroke: white
+    .logo svg path,
+    .classes svg path
+      fill: white
 
     a
       color: white

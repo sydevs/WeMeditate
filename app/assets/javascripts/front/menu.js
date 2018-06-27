@@ -34,11 +34,12 @@ var Menu = {
   },
 
   _on_resize: function() {
-    Menu.stickyPoint = Menu.header.outerHeight(true)
+    let menubarHeight = Menu.header.find('.menubar').outerHeight(true)
+    Menu.stickyPoint = Menu.header.outerHeight(true) - menubarHeight
 
     $banner = $('main > section:first-child')
     if ($banner.length > 0 && $banner.hasClass('format-banner') && $banner.children('.content').hasClass('inverse')) {
-      Menu.inversePoint = $banner.outerHeight() - Menu.stickyPoint
+      Menu.inversePoint = $banner.outerHeight() - menubarHeight
     } else {
       Menu.inversePoint = 0
     }
