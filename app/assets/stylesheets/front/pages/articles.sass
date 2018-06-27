@@ -1,6 +1,40 @@
 @import "../../mixins/vars"
 
 body.articles-index
+  nav.filters
+    @include tablet-or-larger
+      .menu-button
+        display: none
+
+    @include mobile
+      justify-content: space-between
+      align-items: center
+
+      .menu-button
+        cursor: pointer
+
+        .icon
+          margin-left: 15px
+
+      &.show-menu
+        position: fixed
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+
+        z-index: 2000
+        background: white
+        flex-direction: column
+        justify-content: space-evenly
+
+        .menu-button
+          display: none
+
+      &:not(.show-menu)
+        .filter:not(.active)
+            display: none
+
   #grid
     position: relative
     //padding: 0 50px

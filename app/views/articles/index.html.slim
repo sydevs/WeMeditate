@@ -8,7 +8,10 @@
       a.filter.button class="#{'active' if selected_category_id == category.id}" data-filter=".#{dom_id(category)}" href="#"
         = category.name
     a.all.filter.button class="#{'active' unless @categories.any? {|c| c.id == selected_category_id}}" data-filter="" href="#"
-      ' All
+      | All
+    .menu-button
+      ' Filter
+      i.filters.icon
 
 .grid.container
   .grid.wrapper

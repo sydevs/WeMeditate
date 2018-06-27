@@ -24,17 +24,23 @@ const Grid = {
   },
 
   _init_group: function() {
+    const element = $(this)
     const group = this.dataset.group
     const allow_multiple = (typeof this.dataset.multiple !== 'undefined')
 
-    $(this).children('a').each(function() {
+    element.children('a').each(function() {
       if ($(this).hasClass('active')) {
         Grid.toggle_filter_by(group, this.dataset.filter, allow_multiple)
       }
     })
 
-    $(this).children('a').on('click', function(e) {
+    element.children('a').on('click', function(e) {
       Grid._on_filter_click.call(this, e, group, allow_multiple)
+      element.removeClass('show-menu')
+    })
+
+    element.children('.menu-button').on('click', function(e) {
+      element.addClass('show-menu')
     })
   },
 
@@ -66,7 +72,7 @@ const Grid = {
         current_filter = [filter]
       }
     } else {
-      if (current_filter == filter) {
+      if (current_filter == filter && current_filter != '') {
         current_filter = null
         active = false
         $('nav.filters > .all.filter').click()

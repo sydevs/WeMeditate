@@ -8,6 +8,7 @@ var Menu = {
   chapter_items: null,
   chapter_offsets: null,
 
+  menubarHeight: 0,
   chaptersStickyPoint: 0,
   stickyPoint: 0,
   inversePoint: 0,
@@ -20,6 +21,7 @@ var Menu = {
     Menu.chapter_items = Menu.chapters.find('.item')
     Menu.header.css('height', 'auto')
     Menu.header.on('click', '.burger-button', Menu.toggle_menu)
+    Menu.menubarHeight = Menu.header.find('.menubar').outerHeight(true)
 
     Menu.page_root.removeClass('show-menu')
 
@@ -27,7 +29,7 @@ var Menu = {
     $(window).resize(Menu._on_resize)
     Menu._on_resize()
 
-    zenscroll.setup(null, Menu.stickyPoint + Menu.chapters.outerHeight() + 10)
+    zenscroll.setup(null, Menu.menubarHeight + Menu.chapters.outerHeight() + 10)
     Menu._on_scroll()
   },
 
@@ -36,8 +38,7 @@ var Menu = {
   },
 
   _on_resize: function() {
-    let menubarHeight = Menu.header.find('.menubar').outerHeight(true)
-    Menu.stickyPoint = Menu.header.outerHeight(true) - menubarHeight
+    Menu.stickyPoint = Menu.header.outerHeight(true) - Menu.menubarHeight
 
     $banner = $('main > section:first-child')
     if ($banner.length > 0 && $banner.hasClass('format-banner') && $banner.children('.content').hasClass('inverse')) {
