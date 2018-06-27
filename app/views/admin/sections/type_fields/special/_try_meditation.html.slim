@@ -11,4 +11,4 @@
     = render 'admin/application/attachment_select', f: ff, field: :image, value: image_uuid, attachments: section.page.attachments
 
   = ff.input :video, wrapper_html: { class: 'sub' } do
-    = render 'admin/application/attachment_select', f: ff, field: :video, video: video_uuid, attachments: section.page.attachments
+    = render 'admin/application/attachment_select', f: ff, field: :video, value: video_uuid, attachments: section.page.attachments
