@@ -102,6 +102,7 @@ header
 
       .logo, .action
         padding-bottom: 18px
+        font-size: 0.85em
 
     .illustration-wrapper
       position: absolute
@@ -110,6 +111,7 @@ header
 
       svg
         height: 100px
+        max-width: 65%
 
     > .menubar
       display: flex
@@ -308,3 +310,6 @@ html.show-menu
 
     > .menu
       height: 100%
+
+      @include tablet-or-larger
+        display: none

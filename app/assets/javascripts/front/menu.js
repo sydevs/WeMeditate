@@ -21,6 +21,8 @@ var Menu = {
     Menu.header.css('height', 'auto')
     Menu.header.on('click', '.burger-button', Menu.toggle_menu)
 
+    Menu.page_root.removeClass('show-menu')
+
     $(window).scroll(Menu._on_scroll)
     $(window).resize(Menu._on_resize)
     Menu._on_resize()

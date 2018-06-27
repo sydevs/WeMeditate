@@ -3,7 +3,7 @@ module NavigationHelper
   def navigation
     @desktop_navigation ||= [
       {
-        title: 'Meditation Now',
+        title: 'Meditate Now',
         url: meditations_path,
         active: controller_name == 'meditations',
       },
