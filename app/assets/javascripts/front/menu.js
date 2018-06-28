@@ -42,7 +42,7 @@ var Menu = {
 
     $banner = $('main > section:first-child')
     if ($banner.length > 0 && $banner.hasClass('format-banner') && $banner.children('.content').hasClass('inverse')) {
-      Menu.inversePoint = $banner.outerHeight() - menubarHeight
+      Menu.inversePoint = $banner.outerHeight() - Menu.menubarHeight
     } else {
       Menu.inversePoint = 0
     }
