@@ -2,7 +2,7 @@ options:
   find_existing_by: ['page_type', 'page_id', 'order']
 records:
 
-# FOR ARTICLE: 1
+  # FOR ARTICLE: 1
   - sprig_id: s_a1_text_with_quote
     order: 1
     page_type: Article

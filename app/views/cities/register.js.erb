@@ -1,0 +1,9 @@
+var registration_message_elements = $('.registration-form .message')
+
+<% if @success %>
+  registration_message_elements.removeClass('negative').addClass('positive')
+<% else %>
+  registration_message_elements.removeClass('positive').addClass('negative')
+<% end %>
+
+registration_message_elements.text('<%= @message %>').show()

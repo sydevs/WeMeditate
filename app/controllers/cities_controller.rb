@@ -24,4 +24,44 @@ class CitiesController < ApplicationController
     ]
   end
 
+  def register
+    if not params[:email_address].present?
+      @message = 'You must provide an email address.'
+      @success = false
+    elsif not params[:first_name].present? or not params[:last_name].present?
+      @message = 'You must provide your full name.'
+      @success = false
+    else
+      city = City.friendly.find(params[:id])
+      email = params[:email_address].gsub(/\s/, '').downcase
+      email_hash = Digest::MD5.hexdigest(email)
+
+      begin
+        Gibbon::Request.new.lists(params[:mailchimp_list_id]).members(email_hash).upsert({
+          body: {
+            email_address: email,
+            status: 'subscribed',
+            language: I18n.locale,
+            signup: request.referer,
+            location: {
+              latitude: city.latitude,
+              longitude: city.longitude,
+            },
+            ip_signup: request.remote_ip,
+            merge_fields: {
+              FNAME: params[:first_name],
+              LNAME: params[:last_name],
+            },
+          },
+        })
+
+        @message = 'You have been registered.'
+        @success = true
+      rescue Gibbon::MailChimpError => error
+        @message = "#{error.title} - #{error.detail}"
+        @success = false
+      end
+    end
+  end
+
 end

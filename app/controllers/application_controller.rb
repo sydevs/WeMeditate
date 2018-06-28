@@ -31,14 +31,21 @@ class ApplicationController < ActionController::Base
       email = params[:email_address].gsub(/\s/, '').downcase
       email_hash = Digest::MD5.hexdigest(email)
 
-      #gibbon.lists(params[:mailchimp_list_id]).members(email_hash).upsert(body: {
-      #  email_address: email,
-      #  status: 'subscribed',
-      #  merge_fields: {},
-      #})
+      begin
+        Gibbon::Request.new.lists(params[:mailchimp_list_id]).members(email_hash).upsert(body: {
+          email_address: email,
+          status: 'subscribed',
+          language: I18n.locale,
+          signup: request.referer,
+          ip_signup: request.remote_ip,
+        })
 
-      @message = 'You have been subscribed.'
-      @success = true
+        @message = 'You have been subscribed.'
+        @success = true
+      rescue Gibbon::MailChimpError => error
+        @message = "#{error.detail}"
+        @success = false
+      end
     end
   end
 

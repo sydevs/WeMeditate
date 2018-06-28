@@ -1,18 +1,22 @@
 
+//- mailchimp_list_id = section.extra_attr 'mailchimp_list_id'
+- mailchimp_list_id = ENV['MAILCHIMP_LIST_ID']
+
 #signup
 
-- if @city.venues.present?
+- if @city.venues.present? and mailchimp_list_id.present?
   .wrapper.centered
     .simple.illustration.pre.divider
     h2.title = section.title
     .sub.title = section.subtitle
     .title = section.text
-    = form_tag subscribe_path, class: 'registration-form', remote: true do
+    = form_tag register_city_path(@city), class: 'registration-form', remote: true do
       p.message
       .fields
-        = hidden_field_tag :city_id, @city.id
+        = hidden_field_tag :mailchimp_list_id, mailchimp_list_id
         = email_field_tag :email_address, nil, placeholder: 'Your email'
-        = email_field_tag :name, nil, placeholder: 'Your name'
+        = text_field_tag :first_name, nil, placeholder: 'Your first name', class: 'first name'
+        = text_field_tag :last_name, nil, placeholder: 'last name', class: 'last name'
         input.classes.autocomplete list='classes-list' placeholder='Select class'
 
       p

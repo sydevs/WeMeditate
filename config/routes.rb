@@ -44,7 +44,10 @@ Rails.application.routes.draw do
         get '/category/:category_id', on: :collection, action: :index
       end
 
-      resources :cities, only: [:show, :index]
+      resources :cities, only: [:show, :index] do
+        post :register, on: :member
+      end
+
       get '/countries/:country_code', controller: :cities, action: :country, as: :country
 
       resources :categories, only: [:show] # TODO: Remove this

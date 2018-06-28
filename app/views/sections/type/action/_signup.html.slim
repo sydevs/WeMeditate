@@ -1,5 +1,6 @@
 
-- mailchimp_list_id = section.extra_attr 'mailchimp_list_id'
+//- mailchimp_list_id = section.extra_attr 'mailchimp_list_id'
+- mailchimp_list_id = ENV['MAILCHIMP_LIST_ID']
 
 - if mailchimp_list_id.present?
   .wrapper.centered
