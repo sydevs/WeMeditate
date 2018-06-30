@@ -116,7 +116,7 @@ section.type-text
         margin-top: -5px
         padding-right: 0
 
-    .wrapper
+    .content
       position: relative
 
       @include mobile
@@ -137,6 +137,9 @@ section.type-text
       @include tablet-or-smaller
         padding: 3.5% 4%
         width: auto
+
+      @include tablet
+        max-width: 80%
 
       p
         font-size: 0.95em

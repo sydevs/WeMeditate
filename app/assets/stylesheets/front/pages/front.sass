@@ -20,7 +20,8 @@ body.static-page-home
 
     &.format-box-with-lefthand-image img,
     &.format-box-with-righthand-image img
-      max-width: 52.5vw
+      @include tablet-or-larger
+        max-width: 52.5vw
 
     &.format-box-with-righthand-image .content-box
       margin-left: -460px

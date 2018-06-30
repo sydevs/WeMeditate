@@ -3,7 +3,7 @@
 
 .background style="background-image: url(#{section.image.url})"
   img src=image_path(section.image.url)
-  .content.wrapper
+  .content.container
     .content-box class="#{'inverse' if section.extra_attr('color', 'light') == 'light'}"
       h2.title = section.title
       = section.text&.html_safe
