@@ -125,6 +125,7 @@ header
 
       .logo, .classes
         position: absolute
+        text-align: center
         top: 0
         bottom: 0
         width: 50px
@@ -133,8 +134,15 @@ header
         svg
           height: 100%
 
+        svg path
+          stroke: #555
+
       .logo
         left: 0
+
+        svg path
+          fill: none
+          stroke-width: 1px
 
       .classes
         right: 0
@@ -286,14 +294,16 @@ html:not(.show-menu)
     .container
       background: transparent
 
+    .menubar .logo,
     .illustration-wrapper,
     .burger-button
       svg path
         stroke: white
 
-    .logo svg path,
-    .classes svg path
-      fill: white
+    .topline .logo,
+    .classes
+      svg path
+        fill: white
 
     a
       color: white
