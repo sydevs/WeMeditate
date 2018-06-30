@@ -7,9 +7,10 @@
   = form_tag contact_path, class: 'contact-form', remote: true do
     p.message
     .fields
-      = email_field_tag :email_address, nil, placeholder: 'Your email'
-      = text_field_tag :subject, nil, placeholder: 'Subject'
-      = text_area_tag :message, nil, placeholder: 'Message', rows: 1
+      = fields_for :contact do |f|
+        = f.email_field :email_address, placeholder: 'Your email'
+        = f.text_area :message, placeholder: 'Message', rows: 5
+        = f.hidden_field :gobbledigook
     p
       button.box.button = section.action
 

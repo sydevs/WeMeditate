@@ -86,7 +86,8 @@ gem 'route_translator'
 gem 'sprig'
 
 # Misc
-gem 'gibbon'
+gem 'gibbon' # For MailChimp Integration
+gem 'mail_form' # For the contact form
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

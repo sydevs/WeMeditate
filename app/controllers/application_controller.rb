@@ -9,17 +9,24 @@ class ApplicationController < ActionController::Base
   end
 
   def contact
-    if not params[:email_address].present?
+    contact_params = params.fetch(:contact, {}).permit(:email_address, :message, :gobbledigook)
+
+    if not contact_params[:email_address].present?
       @message = 'You must provide an email address.'
       @success = false
-    elsif not params[:subject].present? or not params[:message].present?
-      @message = 'You forgot to fill out a subject and message.'
+    elsif not contact_params[:message].present?
+      @message = 'You forgot to fill out a message.'
       @success = false
     else
-      # TODO: Send the email
+      contact = ContactForm.new(params[:contact])
 
-      @message = 'You\'re message has been sent.'
-      @success = true
+      if contact.deliver
+        @message = 'Your message has been received.'
+        @success = true
+      else
+        @message = contact.errors.full_messages.join(', ')
+        @success = true
+      end
     end
   end
 
