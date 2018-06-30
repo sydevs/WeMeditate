@@ -1,3 +1,4 @@
+@import "../../mixins/vars"
 
 body.static-page-home
   header
@@ -23,6 +24,9 @@ body.static-page-home
 
     &.format-box-with-righthand-image .content-box
       margin-left: -460px
+
+      @include desktop
+        margin-left: -530px
 
     &.format-box-over-image
       height: 100vh

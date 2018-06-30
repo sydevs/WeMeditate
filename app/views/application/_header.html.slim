@@ -1,33 +1,34 @@
 
 header class="#{'inverse' if action_name == 'front'}"
-  .desktop.container
-    .full.topline
-      a.logo href=root_path = inline_svg 'header/logo.svg'
-      a.illustration-wrapper href=root_path
-        = inline_svg 'header/illustration.svg'
-      a.action href=cities_path Classes<br>Near Me
+  .background
+    .desktop.container
+      .full.topline
+        a.logo href=root_path = inline_svg 'header/logo.svg'
+        a.illustration-wrapper href=root_path
+          = inline_svg 'header/illustration.svg'
+        a.action href=cities_path Classes<br>Near Me
 
-      //- unless current_user.present?
-        a.sign-in.action href=new_user_session_path SIGN IN
-      //- else
-        a.action href=admin_root_path ADMIN
+        //- unless current_user.present?
+          a.sign-in.action href=new_user_session_path SIGN IN
+        //- else
+          a.action href=admin_root_path ADMIN
 
-    nav.menubar
-      a.logo href=root_path = inline_svg 'graphics/lotus.svg'
-      - navigation do |nav|
-        = render 'header_nav_item', nav: nav
-      a.classes href=cities_path = inline_svg 'graphics/marker.svg'
+      nav.menubar
+        a.logo href=root_path = inline_svg 'graphics/lotus.svg'
+        - navigation do |nav|
+          = render 'header_nav_item', nav: nav
+        a.classes href=cities_path = inline_svg 'graphics/marker.svg'
 
-    - unless @breadcrumbs.nil?
-      nav.breadcrumbs class=content_for(:breadcrumbs_class)
-        - @breadcrumbs.each do |crumb|
-          a.item href=crumb[:url] = crumb[:name]
+      - unless @breadcrumbs.nil?
+        nav.breadcrumbs class=content_for(:breadcrumbs_class)
+          - @breadcrumbs.each do |crumb|
+            a.item href=crumb[:url] = crumb[:name]
 
-  .mobile.container
-    .topline
-      a.logo href=root_path = inline_svg 'header/logo-mini.svg'
-      a href='#' Come<br>Meditate
-      a.burger-button = inline_svg 'header/burger.svg'
+    .mobile.container
+      .topline
+        a.logo href=root_path = inline_svg 'header/logo-mini.svg'
+        a href='#' Come<br>Meditate
+        a.burger-button = inline_svg 'header/burger.svg'
 
   nav.menu
     - navigation do |nav|

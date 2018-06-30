@@ -10,8 +10,12 @@ header
   .burger-buttom
     cursor: pointer
 
-  > .container
+  > .background
     z-index: 1000
+    height: auto
+
+    > .container
+      max-width: 1042px
 
   > .menu
     display: flex
@@ -52,7 +56,7 @@ header
     .breadcrumbs,
       display: none !important
 
-    .container
+    .background
       position: fixed
       top: 0
       left: 0
@@ -291,7 +295,7 @@ header
 
 html:not(.show-menu)
   header.inverse
-    .container
+    .background
       background: transparent
 
     .menubar .logo,
