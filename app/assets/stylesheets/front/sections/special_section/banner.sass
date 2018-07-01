@@ -1,3 +1,4 @@
+@import "../../../mixins/functions"
 @import "../../../mixins/vars"
 
 section.type-special.format-banner
@@ -61,6 +62,7 @@ section.type-special.format-banner
       align-items: center
       justify-content: center
       letter-spacing: -1px
+      @include pulse-animation
 
       > *
         display: inline-block

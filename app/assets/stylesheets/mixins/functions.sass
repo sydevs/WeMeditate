@@ -19,3 +19,15 @@
 
     src: font-url('#{$file-path}.eot')
     src: font-url('#{$file-path}.eot?#iefix') format('embedded-opentype'), font-url('#{$file-path}.woff') format('woff'), font-url('#{$file-path}.ttf') format('truetype')
+
+@mixin pulse-animation
+  animation: pulse 2s infinite
+
+
+@keyframes pulse
+  from
+    transform: scale3d(1, 1, 1)
+  50%
+    transform: scale3d(1.05, 1.05, 1.05)
+  to
+    transform: scale3d(1, 1, 1)
