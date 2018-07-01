@@ -109,6 +109,9 @@ section.type-text
         > img
           display: block
 
+      .with.triangle::after
+        left: 65%
+
     .sidetext
       padding-right: 7%
 
@@ -124,7 +127,7 @@ section.type-text
         position: static
         padding: 0
         padding-right: 35px
-        padding-left: 70px
+        padding-left: 75px
 
     .content
       left: 50px
@@ -193,10 +196,13 @@ section.type-text
 
     @include mobile
       .container
-        padding-left: 70px
+        padding-left: 75px
 
       .image
         margin-right: -35px
+
+      .with.triangle::after
+        right: 65%
 
   &.format-box-with-lefthand-image
     .content-box
@@ -210,10 +216,13 @@ section.type-text
 
     @include mobile
       .container
-        padding-right: 70px
+        padding-right: 75px
 
       .image
         margin-left: -35px
+
+      .with.triangle::after
+        left: 65%
 
   &.format-grid
     .top-left.sidetext

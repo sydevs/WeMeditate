@@ -3,12 +3,13 @@
 
 .background style="background-image: url(#{section.image.url})"
   img src=image_path(section.image.url)
+
+  - if section.has_decoration? :triangle
+    .container.with.triangle.decoration class=section.decoration_options(:triangle)
+
   .content.container
     .content-box class="#{'inverse' if section.extra_attr('color', 'light') == 'light'}"
       h2.title = section.title
       = section.text&.html_safe
       - if section.action.present? and section.url.present?
         a.box.button href=section.url = section.action
-
-- if section.has_decoration? :triangle
-  .container.with.triangle.decoration class=section.decoration_options(:triangle)
