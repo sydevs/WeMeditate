@@ -46,8 +46,11 @@ body.articles-index
       box-sizing: border-box
 
   article
-    padding: 0 2vw
+    padding: 0 10px
     margin-bottom: 3em
+
+    @include tablet-or-smaller
+      padding: 0 25px
 
     .media
       img
