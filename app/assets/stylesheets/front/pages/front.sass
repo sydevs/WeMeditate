@@ -33,7 +33,8 @@ body.static-page-home
       height: 100vh
 
       .content-box
-        margin-left: 4.2%
+        @include laptop-or-larger
+          margin-left: 4.2%
 
     &.format-grid
       .title

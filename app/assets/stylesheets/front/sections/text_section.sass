@@ -133,7 +133,8 @@ section.type-text
       left: 50px
 
     .content-box
-      width: 45vw
+      max-width: 700px
+      width: 45%
       background: transparent
       padding: 35px 40px
       margin-left: 2%
@@ -143,7 +144,7 @@ section.type-text
         width: auto
 
       @include tablet
-        max-width: 80%
+        max-width: 50%
 
       p
         font-size: 0.95em
@@ -207,12 +208,19 @@ section.type-text
   &.format-box-with-lefthand-image
     .content-box
       margin-left: -140px
-      padding: 65px
       left: auto
+
+    @include desktop
+      .content-box
+        margin-left: -140px
 
     @include tablet
       .content
         align-items: flex-end
+
+      .content-box
+        padding: 65px
+        padding-right: 50px
 
     @include mobile
       .container
