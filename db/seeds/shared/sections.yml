@@ -61,7 +61,7 @@ records:
     action: Try Meditation
     url: '#'
     extra:
-      decorations: { enabled: [leaf] }
+      decorations: { enabled: [ leaf ] }
   - sprig_id: s_a1_image_fit_page_width
     order: 6
     page_type: Article
@@ -460,15 +460,67 @@ records:
 
 
 # FOR STATIC PAGE: contact
-  - sprig_id: s_sp_contact_form
+  - sprig_id: s_sp_contact_banner
     order: 1
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'contact').id %>
-    content_type: action
-    format: contact_form
+    content_type: special
+    format: banner
     title: Contact Us
-    text: Your contact information will only be used by us to reply to you.
     action: Submit
+    url: '#'
+    extra:
+      desktop_image_uuid: b8d5b8da-6a63-4e1e-b198-92e885620dce
+      banner_style: contact_page
+      color: light
+  - sprig_id: s_sp_contact_action
+    order: 2
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'contact').id %>
+    content_type: action
+    format: button
+    action: Come Meditate
+    url: '#'
+    extra:
+      decorations:
+        enabled: [ circle, gradient ]
+        options:
+          gradient: [ right, orange ]
+  - sprig_id: s_sp_contact_contacts
+    order: 3
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'contact').id %>
+    content_type: special
+    format: local_contacts
+    title: Contact any of these people for help
+    action: Contact Them
+    extra:
+      items:
+        - name: Celeste
+          location: New York
+          text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
+          url: '#'
+          image_uuid: 0d72e6fc-4d9d-4756-9468-f24e4f852c29
+        - name: Adam
+          location: Atlanta
+          text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
+          url: '#'
+          image_uuid: a5289277-0fa4-4731-9c15-ab890484b8c3
+        - name: James
+          location: Los Angeles
+          text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
+          url: '#'
+          image_uuid: 9b25751c-7dc2-45ed-bcb2-4944c0f58d69
+        - name: Anthony
+          location: Seattle
+          text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
+          url: '#'
+          image_uuid: 3c93c80b-8866-4e12-8799-3190a3683f0a
+        - name: Laura
+          location: Denver
+          text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
+          url: '#'
+          image_uuid: 7e109bcb-c278-4e0e-9c1b-f836edd9ca7b
 
 
 # FOR STATIC PAGE: shri_mataji

@@ -1,29 +1,29 @@
 
-- contacts = [ \
+- contacts = section.extra_attr 'items', [ \
   { \
-    name: 'Debra Doe',
-    url: 'https://www.facebook.com',
-    image_url: image_path('temp/instructors/1.jpg'),
+    'name' => 'Debra',
+    'url' => 'https://www.facebook.com',
+    'image_url' => image_path('temp/instructors/1.jpg'),
   },
   { \
-    name: 'Andy Arnoldsson',
-    url: 'https://www.facebook.com',
-    image_url: image_path('temp/instructors/2.jpg'),
+    'name' => 'Andy',
+    'url' => 'https://www.facebook.com',
+    'image_url' => image_path('temp/instructors/2.jpg'),
   },
   { \
-    name: 'Joe Jakobs',
-    url: 'https://www.facebook.com',
-    image_url: image_path('temp/instructors/3.jpg'),
+    'name' => 'Joe',
+    'url' => 'https://www.facebook.com',
+    'image_url' => image_path('temp/instructors/3.jpg'),
   },
   { \
-    name: 'John Stewart',
-    url: 'https://www.facebook.com',
-    image_url: image_path('temp/instructors/4.jpg'),
+    'name' => 'John',
+    'url' => 'https://www.facebook.com',
+    'image_url' => image_path('temp/instructors/4.jpg'),
   },
   { \
-    name: 'Michelle Murphy',
-    url: 'https://www.facebook.com',
-    image_url: image_path('temp/instructors/5.jpg'),
+    'name' => 'Michelle',
+    'url' => 'https://www.facebook.com',
+    'image_url' => image_path('temp/instructors/5.jpg'),
   },
 ]
 
@@ -31,7 +31,12 @@ h2.title = section.title
 p = section.subtitle
 .carousel data-style='contacts'
   - contacts.sample(3).each do |contact|
+    - image_url = contact['image_uuid'] ? section.image(contact['image_uuid']) : contact['image_url']
     .contact
-      img src=contact[:image_url]
-      .title = contact[:name]
-      a.box.button href=contact[:url] = section.action
+      img src=image_url
+      .title = contact['name']
+      - if contact['location']
+        .location = contact['location']
+      - if contact['text']
+        .text = contact['text']
+      a.box.button href=contact['url'] = section.action

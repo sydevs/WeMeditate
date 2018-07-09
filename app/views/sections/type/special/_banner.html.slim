@@ -24,6 +24,20 @@
       - when 'city_page'
         h1 = section.title.gsub('%city', @city.name)
         h2 = section.text
+      - when 'contact_page'
+        h1 = section.title
+        .content-box
+          h2 = section.text
+
+          = form_tag contact_path, class: 'contact-form', remote: true do
+            p.message
+            .fields
+              = fields_for :contact do |f|
+                = f.email_field :email_address, placeholder: 'Your email'
+                = f.text_area :message, placeholder: 'Message', rows: 4
+                = f.hidden_field :gobbledigook
+            p
+              button.box.button = section.action
 
   - case banner_style
     - when 'front_page'

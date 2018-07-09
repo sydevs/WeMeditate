@@ -1,8 +1,13 @@
 
 .section.wrapper.centered
-  - if section.has_decoration? :leaf
-    .simple.illustration.pre.divider
-  a.box.button href=section.url class="#{'scroll' if section.url[0,1] == '#'}"
-    = section.action
-  - if section.has_decoration? :leaf
-    .simple.illustration.post.divider
+  - if section.has_decoration? :circle
+    a.circle.button href=section.url
+      = inline_svg 'graphics/circle.svg'
+      .text = section.action
+  - else
+    - if section.has_decoration? :leaf
+      .simple.illustration.pre.divider
+    a.box.button href=section.url class="#{'scroll' if section.url[0,1] == '#'}"
+      = section.action
+    - if section.has_decoration? :leaf
+      .simple.illustration.post.divider

@@ -18,16 +18,14 @@ section.type-special.format-banner
     max-height: 985px
 
   .style-city-page,
-  .style-front-page
+  .style-front-page,
+  .style-contact-page
     padding-top: 215px
     padding-bottom: 134px
 
     display: flex
     flex-direction: column
     justify-content: center
-
-    &.inverse *
-      color: $color-text-inverse
 
     h1
       font-family: $raleway
@@ -42,6 +40,15 @@ section.type-special.format-banner
       bottom: 82px
       left: 0
       right: 0
+
+  .style-city-page,
+  .style-front-page
+    &.inverse *
+      color: $color-text-inverse
+
+  .style-contact-page
+    &.inverse > .container > *:not(.content-box)
+      color: $color-text-inverse
 
   .style-front-page
     h1
@@ -157,3 +164,33 @@ section.type-special.format-banner
         display: block
         margin: auto
         margin-top: 40px
+
+  .style-contact-page
+    h1
+      font-size: 2.5em
+      font-family: $raleway-medium
+      line-height: 1.9em
+      letter-spacing: 3px
+      margin: 1em
+
+    .content-box
+      background: white
+      max-width: 720px
+      padding: 50px 106px
+      text-align: left
+
+      h2
+        margin-top: 0
+
+      input, select, textarea
+        font-size: 1em
+        margin-bottom: 2em
+
+      textarea
+        padding-bottom: 0.2em
+
+      .button
+        font-size: 1em
+        margin-top: 50px
+        color: $color-text-dark
+        border-color: $color-text-dark

@@ -12,12 +12,38 @@ body.static-page
       margin-top: 3em
 
   &.static-page-contact
-    section.intro
-      display: none
+    header
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
 
-    section:last-child
-      @include tablet-or-larger
-        margin-bottom: 0
+    section
+      &.intro
+        display: none
+
+      &:not(:last-child)
+        margin-bottom: 2.5vh
+
+      &.type-special.format-local-contacts
+        margin-top: 80px
+
+        h2.title
+          font-size: 2.75em
+          font-family: $raleway
+          font-weight: 300
+          letter-spacing: 1px
+
+        .carousel
+          margin-top: 84px
+          max-width: 1154px
+
+        .contact
+          text-align: left
+          margin: 0
+
+          img
+            width: 240px
 
   &.static-page-country
     section:first-child

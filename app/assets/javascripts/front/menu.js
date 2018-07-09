@@ -29,7 +29,7 @@ var Menu = {
     $(window).resize(Menu._on_resize)
     Menu._on_resize()
 
-    zenscroll.setup(null, Menu.menubarHeight + Menu.chapters.outerHeight() + 10)
+    //zenscroll.setup(null, Menu.menubarHeight + Menu.chapters.outerHeight() + 10)
     Menu._on_scroll()
   },
 
@@ -40,9 +40,13 @@ var Menu = {
   _on_resize: function() {
     Menu.stickyPoint = Menu.header.outerHeight(true) - Menu.menubarHeight
 
-    $banner = $('main > section:first-child')
-    if ($banner.length > 0 && $banner.hasClass('format-banner') && $banner.children('.content').hasClass('inverse')) {
-      Menu.inversePoint = $banner.outerHeight() - Menu.menubarHeight
+    $banner = $('section.format-banner:first-child')
+    if ($banner.length > 0 && $banner.children('.content').hasClass('inverse')) {
+      if ($banner.children('.content').hasClass('style-contact-page')) {
+        Menu.inversePoint = Menu.stickyPoint
+      } else {
+        Menu.inversePoint = $banner.outerHeight() - Menu.menubarHeight
+      }
     } else {
       Menu.inversePoint = 0
     }

@@ -212,6 +212,7 @@ en:
         action: Action Text
         name: Name
         url: Link (url)
+        location: Location
         color: Colour
         colors:
           light: Light Text
@@ -221,6 +222,7 @@ en:
           front_page: Front Page
           treatments_page: Techniques Page
           city_page: City Page
+          contact_page: Contact Page
         decorations: Decorations
         decoration_types:
           sidetext: Side Text

@@ -10,4 +10,4 @@
 
 = f.fields_for :extra, f.object do |ff|
   //= ff.input :mailchimp_list_id, collection: [], selected: nil, disabled: !allow.update_structure?, wrapper_html: { class: 'sub for signup' }
-  = render 'admin/sections/decoration_fields', f: ff, collection: [:leaf], for: [:button]
+  = render 'admin/sections/decoration_fields', f: ff, collection: [:leaf, :circle, :gradient], for: [:button]

@@ -14,7 +14,7 @@
 = f.input :text, wrapper_html: { class: 'sub' }
 = f.input :action, wrapper_html: { class: 'sub' }
 
-- unless style == 'city_page'
+- unless ['city_page', 'contact_page'].include? style
   = f.input :url, wrapper_html: { class: 'sub' }
 
 = f.fields_for :extra, f.object do |ff|
@@ -27,5 +27,5 @@
   = ff.input :mobile_image, wrapper_html: { class: 'sub' } do
     = render 'admin/application/attachment_select', f: ff, field: :mobile_image, value: mobile_image_uuid, attachments: section.page.attachments
 
-  - unless style == 'city_page'
+  - unless ['city_page', 'contact_page'].include? style
     = ff.input :color, collection: [:light, :dark].map {|c| [human_enum_name(Section, :color, c), c] }, selected: f.object.extra_attr('color'), label: Section.human_attribute_name(:color), wrapper_html: { class: 'sub' }, required: false

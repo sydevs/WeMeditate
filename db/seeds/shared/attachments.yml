@@ -301,6 +301,44 @@ records:
     name: Banner - Mobile.jpg
     file: <%= sprig_file('treatments/banner-mobile.png') %>
 
+  # Attachments for Static Page - Contact Us
+  - sprig_id: sp_contact_banner
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'contact').id %>
+    uuid: <%= sprig_record(Section, 's_sp_contact_banner').extra['desktop_image_uuid'] %>
+    name: Banner.jpg
+    file: <%= sprig_file('static_pages/contact/banner.jpg') %>
+  - sprig_id: sp_contact_contact_1
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'contact').id %>
+    uuid: <%= sprig_record(Section, 's_sp_contact_contacts').extra['items'][0]['image_uuid'] %>
+    name: Contact 1.jpg
+    file: <%= sprig_file('static_pages/contact/contacts/1.jpg') %>
+  - sprig_id: sp_contact_contact_2
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'contact').id %>
+    uuid: <%= sprig_record(Section, 's_sp_contact_contacts').extra['items'][1]['image_uuid'] %>
+    name: Contact 2.jpg
+    file: <%= sprig_file('static_pages/contact/contacts/2.jpg') %>
+  - sprig_id: sp_contact_contact_3
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'contact').id %>
+    uuid: <%= sprig_record(Section, 's_sp_contact_contacts').extra['items'][2]['image_uuid'] %>
+    name: Contact 3.jpg
+    file: <%= sprig_file('static_pages/contact/contacts/3.jpg') %>
+  - sprig_id: sp_contact_contact_4
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'contact').id %>
+    uuid: <%= sprig_record(Section, 's_sp_contact_contacts').extra['items'][3]['image_uuid'] %>
+    name: Contact 4.jpg
+    file: <%= sprig_file('static_pages/contact/contacts/4.jpg') %>
+  - sprig_id: sp_contact_contact_5
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'contact').id %>
+    uuid: <%= sprig_record(Section, 's_sp_contact_contacts').extra['items'][4]['image_uuid'] %>
+    name: Contact 5.jpg
+    file: <%= sprig_file('static_pages/contact/contacts/5.jpg') %>
+
   # Attachments for Subtle System Nodes
   - sprig_id: ssn_chakra_1
     page_type: SubtleSystemNode
