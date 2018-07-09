@@ -425,9 +425,10 @@ records:
     extra:
       image_uuid: f354b762-2c6b-4479-9951-825f8b893256
       decorations:
-        enabled: [ sidetext ]
+        enabled: [ sidetext, gradient ]
         options:
           sidetext: [ top-left ]
+          gradient: [ right, gray ]
         sidetext: Developments
   - sprig_id: s_sp_home_grid
     order: 8

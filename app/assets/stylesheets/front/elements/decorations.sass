@@ -120,7 +120,7 @@
       width: 22vw
 
     @include laptop
-      width: 31vw
+      width: 27.9vw
 
     @include desktop
       width: 36vw
@@ -134,6 +134,12 @@
   &.orange::before
     opacity: 0.5
 
+  &.gray::before
+    top: auto
+    bottom: -12%
+    height: 75vh
+    width: 100%
+
   &.right.blue::before
     background: linear-gradient(to left,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
 
@@ -145,3 +151,10 @@
 
   &.left.orange::before
     background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.18) 25%,rgba(241,212,175,.7) 100%)
+
+  &.gray::before
+    background: linear-gradient(to left,rgba(232,232,232,.5) 0,rgba(255,255,255,.01) 100%)
+
+  &.left.gray::before
+    background: linear-gradient(to right,rgba(232,232,232,.5) 0,rgba(255,255,255,.01) 100%)
+

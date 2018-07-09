@@ -81,7 +81,6 @@ section.type-text
     height: 90vh
 
     @include mobile
-      height: auto
 
     &.with.gradient
       z-index: -1
@@ -93,7 +92,14 @@ section.type-text
       padding-left: 70px
       display: none
 
+    @include tablet-or-larger
+      .with.triangle
+        position: absolute
+        bottom: 0
+
     @include mobile
+      height: auto
+
       .content
         .content-box.inverse
           .title, p
@@ -131,6 +137,9 @@ section.type-text
 
     .content
       left: 50px
+
+      @include tablet
+        left: 80px
 
     .content-box
       max-width: 700px
@@ -184,7 +193,7 @@ section.type-text
           max-width: 100%
           max-height: none
 
-    &.with.gradient::before
+    &.with.gradient:not(.gray)::before
       top: -15rem
       height: 26rem
 
