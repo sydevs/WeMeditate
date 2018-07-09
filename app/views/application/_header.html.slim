@@ -14,7 +14,7 @@ header class="#{'inverse' if action_name == 'front'}"
           a.action href=admin_root_path ADMIN
 
       nav.menubar
-        a.logo href=root_path = inline_svg 'graphics/lotus.svg'
+        a.logo href=root_path = inline_svg 'header/logo-mini.svg'
         - navigation do |nav|
           = render 'header_nav_item', nav: nav
         a.classes href=cities_path = inline_svg 'graphics/marker.svg'
