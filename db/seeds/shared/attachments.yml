@@ -443,6 +443,36 @@ records:
 
 
   # Attachments for City - Los Angeles
+  - sprig_id: city_los_angeles_instructor_1
+    page_type: City
+    page_id: <%= sprig_record(City, 'los_angeles').id %>
+    uuid: <%= sprig_record(City, 'los_angeles').contacts[0]['image_uuid'] %>
+    name: Instructor 1.jpg
+    file: <%= sprig_file('cities/instructors/1.jpg') %>
+  - sprig_id: city_los_angeles_instructor_2
+    page_type: City
+    page_id: <%= sprig_record(City, 'los_angeles').id %>
+    uuid: <%= sprig_record(City, 'los_angeles').contacts[1]['image_uuid'] %>
+    name: Instructor 2.jpg
+    file: <%= sprig_file('cities/instructors/2.jpg') %>
+  - sprig_id: city_los_angeles_instructor_3
+    page_type: City
+    page_id: <%= sprig_record(City, 'los_angeles').id %>
+    uuid: <%= sprig_record(City, 'los_angeles').contacts[2]['image_uuid'] %>
+    name: Instructor 3.jpg
+    file: <%= sprig_file('cities/instructors/3.jpg') %>
+  - sprig_id: city_los_angeles_instructor_4
+    page_type: City
+    page_id: <%= sprig_record(City, 'los_angeles').id %>
+    uuid: <%= sprig_record(City, 'los_angeles').contacts[3]['image_uuid'] %>
+    name: Instructor 4.jpg
+    file: <%= sprig_file('cities/instructors/4.jpg') %>
+  - sprig_id: city_los_angeles_instructor_5
+    page_type: City
+    page_id: <%= sprig_record(City, 'los_angeles').id %>
+    uuid: <%= sprig_record(City, 'los_angeles').contacts[4]['image_uuid'] %>
+    name: Instructor 5.jpg
+    file: <%= sprig_file('cities/instructors/5.jpg') %>
   - sprig_id: city_los_angeles_classes
     page_type: City
     page_id: <%= sprig_record(City, 'los_angeles').id %>

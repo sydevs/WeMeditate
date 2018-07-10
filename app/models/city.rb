@@ -33,7 +33,11 @@ class City < ApplicationRecord
   end
 
   def banner
-    attachments.find_by(uuid: banner_uuid)&.file
+    image(banner_uuid)
+  end
+
+  def image uuid
+    attachments.find_by(uuid: uuid)&.file
   end
 
   def country_name

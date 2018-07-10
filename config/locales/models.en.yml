@@ -78,6 +78,7 @@ en:
         day_of_week: Day
         start_time: Starts At
         end_time: Ends At
+        url: Link
 
       static_page:
         title: Title

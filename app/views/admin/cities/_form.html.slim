@@ -53,6 +53,12 @@
     = f.label :banner
     = render 'admin/application/attachment_select', f: f, field: :banner, attachments: @city.attachments
 
+  - if allow.update_structure?
+    = render 'admin/application/repeatable_fields', f: f, attribute: :contacts, items: f.object.contacts do |ff, item|
+      = ff.text_field :name, value: item['name'], placeholder: City.human_attribute_name(:name), name: "#{ff.object_name}[name][]"
+      = ff.text_field :url, value: item['url'], placeholder: City.human_attribute_name(:url), name: "#{ff.object_name}[url][]"
+      = render 'admin/application/attachment_select', f: ff, placeholder: City.human_attribute_name(:image), name: "#{ff.object_name}[image_uuid][]", value: item['image_uuid'], attachments: @city.attachments
+
   - if allow.update_venues?
     = render 'admin/application/repeatable_fields', f: f, attribute: :venues, items: f.object.venues do |ff, item|
       = ff.text_field :room_information, value: item['room_information'], placeholder: City.human_attribute_name(:room_information), name: "#{ff.object_name}[room_information][]"

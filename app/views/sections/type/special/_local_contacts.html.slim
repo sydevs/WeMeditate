@@ -1,37 +1,12 @@
 
-- contacts = section.extra_attr 'items', [ \
-  { \
-    'name' => 'Debra',
-    'url' => 'https://www.facebook.com',
-    'image_url' => image_path('temp/instructors/1.jpg'),
-  },
-  { \
-    'name' => 'Andy',
-    'url' => 'https://www.facebook.com',
-    'image_url' => image_path('temp/instructors/2.jpg'),
-  },
-  { \
-    'name' => 'Joe',
-    'url' => 'https://www.facebook.com',
-    'image_url' => image_path('temp/instructors/3.jpg'),
-  },
-  { \
-    'name' => 'John',
-    'url' => 'https://www.facebook.com',
-    'image_url' => image_path('temp/instructors/4.jpg'),
-  },
-  { \
-    'name' => 'Michelle',
-    'url' => 'https://www.facebook.com',
-    'image_url' => image_path('temp/instructors/5.jpg'),
-  },
-]
+- is_city = (section.page.role == 'city')
+- contacts = is_city ? @city.contacts : section.extra_attr('items', [])
 
 h2.title = section.title
 p = section.subtitle
 .carousel data-style='contacts'
   - contacts.sample(3).each do |contact|
-    - image_url = contact['image_uuid'] ? section.image(contact['image_uuid']) : contact['image_url']
+    - image_url = is_city ? @city.image(contact['image_uuid']) : section.image(contact['image_uuid'])
     .contact
       img src=image_url
       .title = contact['name']

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180627090116) do
+ActiveRecord::Schema.define(version: 20180709080428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20180627090116) do
     t.jsonb "venues"
     t.integer "country"
     t.string "banner_uuid"
+    t.jsonb "contacts"
   end
 
   create_table "city_translations", force: :cascade do |t|
