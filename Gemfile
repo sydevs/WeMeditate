@@ -88,6 +88,7 @@ gem 'sprig'
 # Misc
 gem 'gibbon' # For MailChimp Integration
 gem 'mail_form' # For the contact form
+gem 'sidekiq' # To power active jobs
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

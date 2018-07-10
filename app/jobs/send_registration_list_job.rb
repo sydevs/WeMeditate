@@ -1,0 +1,2 @@
+class SendRegistrationListJob < ApplicationJob
+end

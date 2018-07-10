@@ -28,13 +28,14 @@ class CitiesController < ApplicationController
     if not params[:email_address].present?
       @message = 'You must provide an email address.'
       @success = false
-    elsif not params[:first_name].present? or not params[:last_name].present?
-      @message = 'You must provide your full name.'
+    elsif not params[:name].present?
+      @message = 'You must provide your name.'
       @success = false
     else
       city = City.friendly.find(params[:id])
       email = params[:email_address].gsub(/\s/, '').downcase
       email_hash = Digest::MD5.hexdigest(email)
+      name = params[:name].rpartition(' ')
 
       begin
         Gibbon::Request.new.lists(params[:mailchimp_list_id]).members(email_hash).upsert({
@@ -49,8 +50,8 @@ class CitiesController < ApplicationController
             },
             ip_signup: request.remote_ip,
             merge_fields: {
-              FNAME: params[:first_name],
-              LNAME: params[:last_name],
+              FNAME: name.first,
+              LNAME: name.count > 1 ? name.last : '',
             },
           },
         })
