@@ -382,6 +382,8 @@ records:
     title: About Us
     text: |-
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
+    action: Learn More
+    url: '#'
     extra:
       image_uuid: 724d1d5b-c37a-4a95-b794-7f5a839b3adc
       decorations:
