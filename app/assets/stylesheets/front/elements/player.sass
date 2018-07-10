@@ -1,43 +1,62 @@
 @import "../../mixins/vars"
 
-.plyr--full-ui.plyr--audio
-  input[type=range]
-    color: $color-player-blue
-    max-width: none
+.plyr--full-ui
+  &.plyr--audio,
+  &.plyr--video
+    input[type=range]
+      color: $color-player-blue
+      max-width: none
 
-  input[type=range]::-webkit-media-slider-thumb,
-  input[type=range]::-webkit-slider-thumb
-    width: 10px
-    height: 10px
-    border-radius: 0
-    border: 0
-    background: $color-player-blue
-    transition: background .2s ease, border .2s ease, transform .2s ease
-    box-shadow: 0 1px 1px $color-player, 0 0 0 1px $color-player
-    box-sizing: border-box
-    cursor: pointer
+    input[type=range]::-webkit-media-slider-thumb,
+    input[type=range]::-webkit-slider-thumb
+      width: 10px
+      height: 10px
+      border-radius: 0
+      border: 0
+      background: $color-player-blue
+      transition: background .2s ease, border .2s ease, transform .2s ease
+      box-shadow: 0 1px 1px $color-player, 0 0 0 1px $color-player
+      box-sizing: border-box
+      cursor: pointer
 
-  input[type=range]::-webkit-slider-runnable-track
-    background: linear-gradient(to right, $color-player-blue 0%, $color-player-blue 100%, $color-player-light 100%, $color-player-light 100%, $color-player-light 100%, $color-player-light 100%)
-    border: 0
-    border-radius: 0
-    height: 3px
-    transition: all .3s ease
-    -webkit-user-select: none
-    user-select: none
+    input[type=range]::-webkit-slider-runnable-track
+      background: linear-gradient(to right, $color-player-blue 0%, $color-player-blue 100%, $color-player-light 100%, $color-player-light 100%, $color-player-light 100%, $color-player-light 100%)
+      border: 0
+      border-radius: 0
+      height: 3px
+      transition: all .3s ease
+      -webkit-user-select: none
+      user-select: none
 
-  .plyr__control
-    svg
-      width: 13px
+    .plyr__controls
+      .plyr__control
+        svg
+          width: 13px
 
-  .plyr__control.plyr__tab-focus,
-  .plyr__control:hover,
-  .plyr__control[aria-expanded=true]
-    background: white
-    color: $color-player-blue
+        &.plyr__tab-focus,
+        &:hover,
+        &[aria-expanded=true]
+          background: white
+          color: $color-player-blue
 
-  .plyr__progress
-    margin-right: 10px
+    .plyr__progress
+      margin-right: 10px
 
-  .plyr__controls
-    padding-bottom: 0 !important
+    .plyr__control.plyr__control--overlaid
+      background: $color-player-blue
+
+  &.plyr--video
+    .plyr__control--overlaid
+      display: none
+
+    .plyr__controls
+      .plyr__control
+        &.plyr__tab-focus,
+        &:hover,
+        &[aria-expanded=true]
+          background: transparentize(black, 0.5)
+          color: $color-player-blue
+
+  &.plyr--audio
+    .plyr__controls
+      padding-bottom: 0 !important
