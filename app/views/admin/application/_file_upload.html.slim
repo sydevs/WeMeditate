@@ -2,9 +2,9 @@ script#qq-template type='text/template'
   .qq-uploader-selector
     a.ui.fluid.upload.label.qq-upload-button-selector
       i.upload.icon
-      | Upload File
+      = t('action.upload_file')
 
-    .ui.segment placeholder='Drop files here'
+    .ui.segment placeholder=t('messages.drop_files_here')
       //.qq-total-progress-bar-container-selector.qq-total-progress-bar-container
         .qq-total-progress-bar-selector.qq-progress-bar.qq-total-progress-bar aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" role="progressbar"
       .qq-upload-drop-area-selector.qq-upload-drop-area qq-hide-dropzone=""
@@ -16,25 +16,25 @@ script#qq-template type='text/template'
           input.qq-edit-filename-selector
           .ui.basic.size.label.qq-upload-size-selector
           .ui.basic.status.label.qq-upload-status-text-selector.qq-hide
-          .ui.compact.button.qq-upload-cancel-selector Cancel
-          .ui.compact.button.qq-upload-retry-selector Retry
-          .ui.compact.button.qq-upload-delete-selector Delete
+          .ui.compact.button.qq-upload-cancel-selector = t('action.cancel')
+          .ui.compact.button.qq-upload-retry-selector = t('action.retry')
+          .ui.compact.button.qq-upload-delete-selector = t('action.destroy')
 
       dialog.qq-alert-dialog-selector
         .qq-dialog-message-selector
         .qq-dialog-buttons
-          button.qq-cancel-button-selector type='button' Close
+          button.qq-cancel-button-selector type='button' = t('action.close')
       dialog.qq-confirm-dialog-selector
         .qq-dialog-message-selector
         .qq-dialog-buttons
-          button.qq-cancel-button-selector type='button' No
-          button.qq-ok-button-selector type='button' Yes
+          button.qq-cancel-button-selector type='button' = t('action.yes')
+          button.qq-ok-button-selector type='button' = t('action.no')
       dialog.qq-prompt-dialog-selector
         .qq-dialog-message-selector
         input type='text'
         .qq-dialog-buttons
-          button.qq-cancel-button-selector type='button' Cancel
-          button.qq-ok-button-selector type='button' Ok
+          button.qq-cancel-button-selector type='button' = t('action.cancel')
+          button.qq-ok-button-selector type='button' = t('action.okay')
 
 
   //.qq-uploader-selector.qq-uploader qq-drop-area-text=("Drop files here")

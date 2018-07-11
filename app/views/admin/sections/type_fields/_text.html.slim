@@ -5,10 +5,6 @@
 
 = f.input :quote, as: :text, input_html: { rows: 1 }, wrapper_html: { class: 'sub for quote' }
 
-//= f.input :images, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:image), files: f.object.images, wrapper_html: { class: 'sub for image columns' }, input_html: { accept: file_type_accepts(:image) }
-//= f.input :image, wrapper_html: { class: 'sub for image columns' } do
-  = render 'admin/application/attachment_select', f: f, field: :image, attachments: section.page.attachments
-
 = f.input :action, wrapper_html: { class: 'sub for action' }
 = f.input :url, as: :url, wrapper_html: { class: 'sub for action' }
 

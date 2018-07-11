@@ -13,6 +13,6 @@
 
   = f.input :attachments do
     - if @subtle_system_node.new_record?
-      p You must save this #{SubtleSystemNode.model_name.humanize} before you can add media to it.
+      p = t('messages.cant_add_media_to_new_record', target: SubtleSystemNode.model_name.humanize)
     - else
       #uploader data-endpoint=upload_to_admin_subtle_system_node_path(@subtle_system_node) data-files=attachments_json(@subtle_system_node) data-authenticity-token=form_authenticity_token

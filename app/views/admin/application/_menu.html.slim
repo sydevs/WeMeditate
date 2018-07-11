@@ -65,7 +65,7 @@
 .ui.vertical.text.menu
   = link_to root_path, class: 'item' do
     i.browser.icon
-    = translate :'action.view_site'
+    = t('action.view_site')
   = link_to destroy_user_session_path, class: 'item', method: :delete do
     i.sign.out.icon
-    = translate :'action.sign_out'
+    = t('action.sign_out')

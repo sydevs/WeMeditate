@@ -9,6 +9,6 @@
 
   = f.input :attachments do
     - if @static_page.new_record?
-      p You must save this #{StaticPage.model_name.humanize} before you can add media to it.
+      p = t('messages.cant_add_media_to_new_record', target: StaticPage.model_name.humanize)
     - else
       #uploader data-endpoint=upload_to_admin_static_page_path(@static_page) data-files=attachments_json(@static_page) data-authenticity-token=form_authenticity_token

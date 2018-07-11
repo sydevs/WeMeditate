@@ -7,7 +7,7 @@
 
   = f.input :attachments do
     - if @article.new_record?
-      p You must save this #{Article.model_name.humanize} before you can add media to it.
+      p = t('messages.cant_add_media_to_new_record', target: Article.model_name.humanize)
     - else
       #uploader data-endpoint=upload_to_admin_article_path(@article) data-files=attachments_json(@article) data-authenticity-token=form_authenticity_token
 

@@ -14,7 +14,7 @@ module Admin
 
     def destroy
       if @mood_filter.tracks.count > 0
-        redirect_to [:admin, MoodFilter], alert: 'You cannot delete a filter which has tracks attached to it. Reassign the tracks and try again.'
+        redirect_to [:admin, MoodFilter], alert: t('messages.result.cannot_delete_attached_record', model: MoodFilter.model_name.human.downcase, association: Meditation.model_name.human(count: -1).downcase)
       else
         super
       end

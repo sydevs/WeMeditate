@@ -12,3 +12,5 @@
       = fff.text_area :description, value: item['text'], placeholder: Section.human_attribute_name(:description), name: "#{fff.object_name}[text][]"
       = fff.url_field :url, value: item['url'], placeholder: Section.human_attribute_name(:url), name: "#{fff.object_name}[url][]"
       = render 'admin/application/attachment_select', f: fff, placeholder: Section.human_attribute_name(:image), name: "#{fff.object_name}[image_uuid][]", value: item['image_uuid'], attachments: section.page.attachments
+- else
+  p = translate 'messages.city_contacts_placeholder'

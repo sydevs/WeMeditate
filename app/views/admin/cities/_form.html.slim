@@ -14,12 +14,6 @@
           i.search.icon
           = f.text_field :name, class: 'prompt', autocomplete: 'off', placeholder: t('action.target.search_for', target: City.model_name.human)
 
-          //- if params[:city] && params[:city][:latitude] && params[:city][:longitude]
-            a#city_coordinates.ui.tag.label href=coordinates_url(params[:city][:latitude], params[:city][:longitude]) target="_blank"
-              i.marker.icon
-              span #{params[:city][:latitude]}, #{params[:city][:longitude]}
-          //- elsif @city.latitude.present? and @city.longitude.present?
-
           - if @city.latitude.present? and @city.longitude.present?
             a#city_coordinates.ui.tag.label href=coordinates_url(@city.latitude, @city.longitude) target="_blank"
               i.marker.icon
@@ -45,7 +39,7 @@
 
   = f.input :attachments do
     - if @city.new_record?
-      p You must save this #{City.model_name.humanize} before you can add media to it.
+      p = t('messages.cant_add_media_to_new_record', target: City.model_name.humanize)
     - else
       #uploader data-endpoint=upload_to_admin_city_path(@city) data-files=attachments_json(@city) data-authenticity-token=form_authenticity_token
 
@@ -80,15 +74,6 @@
               span = t('messages.not_set')
 
         .results
-
-      //- if item['latitude'].present? and item['longitude'].present?
-        a.ui.fluid.basic.label href=coordinates_url(item['latitude'], item['longitude'])
-          i.marker.icon
-          | #{item['latitude']}, #{item['longitude']}
-      //- else
-        a.ui.label
-          i.marker.icon
-          span = t('messages.not_set')
 
       .three.fields
         = ff.select :day_of_week, t('date.day_names').map.with_index {|x,i| [x,i]}, { selected: item['day_of_week'] }, { class: 'ui selection dropdown', name: "#{ff.object_name}[day_of_week][]" }

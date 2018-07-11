@@ -28,7 +28,7 @@ module Admin
 
       if @page.save
         @page.publish_drafts! if @page.has_paper_trail? # This line effectively disables drafts by always publishing the latest version.
-        redirect_to [:edit, :admin, @page], flash: { info: "Created successfully." }
+        redirect_to [:edit, :admin, @page], flash: { info: t('messages.result.created') }
       else
         render :new
       end
@@ -42,9 +42,9 @@ module Admin
 
         #redirect_to [:edit, :admin, @page]
         if policy(@page).review?
-          redirect_to [:admin, @page], flash: { info: "Saved successfully, you can now review and publish the changes." }
+          redirect_to [:admin, @page], flash: { info: t('messages.result.updated_and_review') }
         else
-          redirect_to [:edit, :admin, @page], flash: { info: "Saved successfully." }
+          redirect_to [:edit, :admin, @page], flash: { info: t('messages.result.updated') }
         end
       else
         render :edit

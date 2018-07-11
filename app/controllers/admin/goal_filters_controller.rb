@@ -14,7 +14,7 @@ module Admin
 
     def destroy
       if @goal_filter.meditations.count > 0
-        redirect_to [:admin, GoalFilter], alert: 'You cannot delete a filter which has tracks attached to it. Reassign the tracks and try again.'
+        redirect_to [:admin, GoalFilter], alert: t('messages.result.cannot_delete_attached_record', model: GoalFilter.model_name.human.downcase, association: Track.model_name.human(count: -1).downcase)
       else
         super
       end

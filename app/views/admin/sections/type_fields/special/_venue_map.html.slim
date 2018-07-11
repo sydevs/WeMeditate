@@ -1,5 +1,5 @@
 
-p A map of the city's classes will go here.
+p = translate 'messages.city_map_placeholder'
 
 = f.fields_for :extra, f.object do |ff|
   = render 'admin/sections/decoration_fields', f: ff, collection: [:sidetext]

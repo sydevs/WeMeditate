@@ -22,7 +22,7 @@ module Admin
 
     def destroy
       if @category.articles.count > 0
-        redirect_to [:admin, Category], alert: 'You cannot delete a category which has articles attached to it. Reassign the articles and try again.'
+        redirect_to [:admin, Category], alert: t('messages.result.cannot_delete_attached_record', model: Category.model_name.human.downcase, association: Article.model_name.human(count: -1).downcase)
       else
         super
       end

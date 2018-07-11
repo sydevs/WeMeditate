@@ -1,13 +1,6 @@
 
 = f.input :format, collection: Section::VIDEO_FORMATS.map {|k| [human_enum_name(section, :format, k), k]}, disabled: !allow.update_structure?, wrapper_html: { class: 'sub field-format' }
 = f.input :title, wrapper_html: { class: 'sub' }
-//= f.input :videos, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:video), files: f.object.videos, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:video) }
-//= f.input :images, as: :file, multiple: true, wrapper: :ui_file_input, icon: file_type_icon(:image), files: f.object.images, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:image) }
-//= f.input :video, wrapper_html: { class: 'sub' } do
-  = render 'admin/application/attachment_select', f: f, field: :video, attachments: section.page.attachments
-//= f.input :image, wrapper_html: { class: 'sub' } do
-  = render 'admin/application/attachment_select', f: f, field: :image, attachments: section.page.attachments
-
 
 = f.fields_for :extra, f.object do |ff|
   - items = f.object.extra_attr 'items', []

@@ -6,23 +6,23 @@
 p
   a.ui.basic.button href=url_for([:admin, page.class])
     i.left.arrow.icon
-    = translate 'action.target.back', target: page.class.model_name.human(count: -1)
+    = t('action.target.back', target: page.class.model_name.human(count: -1))
 
   a.ui.basic.button href=url_for([:edit, :admin, page])
-    = translate 'action.target.edit', target: page.model_name.human
+    = t('action.target.edit', target: page.model_name.human)
 
 p
   a.ui.basic.negative.button href=url_for([:review, :admin, page, do: 'discard']) data-method="patch"
-    = translate 'action.discard_changes'
+    = t('action.discard_changes')
 
   a.ui.basic.primary.button href=url_for([:review, :admin, page, do: 'publish']) data-method="patch"
-    = translate 'action.publish_changes'
+    = t('action.publish_changes')
 
 - page.drafts.each_with_index do |draft, i|
   table.ui.celled.striped.table
     thead
       tr
-        th colspan="4"
+        th colspan='4'
           = localize draft.created_at, format: :long
           - if draft.whodunnit
             '  by #{User.find(draft.whodunnit).email}
@@ -40,6 +40,6 @@ p
                 = change[1]
               - else
                 = change[0]
-                '  
+                '
                 i.right.arrow.circle.icon
                 = change[1]

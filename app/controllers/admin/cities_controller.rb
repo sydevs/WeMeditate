@@ -35,9 +35,6 @@ module Admin
         }
       end
 
-      puts "RESULTS #{results.pretty_inspect}"
-      puts "JSON #{json.pretty_inspect}"
-
       respond_to do |format|
         format.json { render json: { results: json }, status: :ok }
       end
@@ -59,16 +56,12 @@ module Admin
       end
 
       def update_params city_params
-        puts "BEFORE TRANSFORM #{city_params[:venues].inspect}"
-
         if city_params[:venues].present?
           city_params = city_params.to_h
           data = city_params[:venues]
           data = data.values.transpose.map { |vs| data.keys.zip(vs).to_h }
           city_params[:venues] = data
         end
-
-        puts "AFTER TRANSFORM #{city_params[:venues].inspect}"
 
         super city_params
       end
