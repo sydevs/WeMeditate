@@ -22,8 +22,8 @@
     = inline_svg 'sections/subtle-system/channels.svg'
 
   nav.primary.filters
-    .active.chakras.filter.button data-filter='.chakras.chart' Chakras
-    .channels.filter.button data-filter='.channels.chart' Channels
+    .active.chakras.filter.button data-filter='.chakras.chart' = t('sections.subtle_system.chakras')
+    .channels.filter.button data-filter='.channels.chart' = t('sections.subtle_system.channels')
 
   .articles
     - SubtleSystemNode.all.each do |subtle_system_node|
@@ -31,5 +31,5 @@
         .title = subtle_system_node.name
         p = subtle_system_node.excerpt
         a href=url_for(subtle_system_node)
-          ' Learn More
+          = t('sections.subtle_system.read_more')
           i.breadcrumb.icon

@@ -1,0 +1,64 @@
+
+en:
+  footer:
+    call_to_action:
+      title: Together - better!
+      subtitle: Come to class in your city or join free webinars.
+      sidetext: How To Meditate
+      actions:
+        meditate: Try it out<br>meditate
+        local: Meditation<br>In your town
+        online: Online classes<br>for meditation
+    share:
+      title: 'Share this:'
+  player:
+    pause: Pause
+    play: Play
+    '%_buffered': '% buffered'
+    rewind_10_secs: Rewind 10 secs
+    forward_10_secs: Forward 10 secs
+    unmute: Unmute
+    mute: Mute
+    volume: Volume
+    disable_captions: Disable captions
+    enable_captions: Enable captions
+    exit_fullscreen: Exit fullscreen
+    enter_fullscreen: Enter fullscreen
+  articles:
+    read_more: Learn More
+    load_more: Load more articles
+    filter: Filter
+    show_all: All
+  meditations:
+    subtitle: Subtitle for meditations
+    text: Listen to one of our guided meditations.
+    choose_duration: How much time do you have?
+    choose_goal: What is your goal?
+  tracks:
+    subtitle: Subtitle for music
+    text: It's easier to concentrate with music, so you get meditation deeper.
+    choose_mood: Choose the mood
+    choose_instruments: Select the instruments
+    playlist: Playlist
+  treatments:
+    music: Music
+    music_description: It's easier to concentrate with music, so it's deeper to meditate.
+    listen_to_music: Listen to music
+    read_more: More about the method
+  sections:
+    credit: Credit
+    show_more: Show More
+    show_less: Collapsee
+    country:
+      other_cities: Other Cities in %{country}
+      no_classes: No classes in %{country}?
+      no_classes_in_your_city: No classes in your city?
+      no_classes_in_your_country: No classes in your country?
+      no_classes_in_that_country: No classes for that country
+      meditate_online: Visit the free webinar!
+      go: Let's go
+    subtle_system:
+      chakras: Chakras
+      channels: Channels
+      read_more: Learn More
+

@@ -1,49 +1,16 @@
 
 section.footer
   .container.centered
-    .title Together - better!
-    .sub.title Come to class in your city or join free webinars.
-    .bottom-left.sidetext How To Meditate
+    .title = t('footer.call_to_action.title')
+    .sub.title = t('footer.call_to_action.subtitle')
+    .bottom-left.sidetext = t('footer.call_to_action.sidetext')
     .actions.wrapper
       a.item href="#"
         i.meditation.icon
-        .title Try it out<br>meditate
+        .title = t('footer.call_to_action.action.meditate')
       a.item href="#"
         i.location.icon
-        .title Meditation<br>In your town
+        .title = t('footer.call_to_action.action.local')
       a.item href="#"
         i.computer.icon
-        .title Online classes<br>for meditation
-
-//! together
-  section.s_together.wow.fadeIn data-wow-delay=".5s" data-wow-duration="3s" style=("background-image: url(#{image_path 'improving/bg_together.png'});")
-    .container
-      .title__wrapper
-        .s_title
-          span.text-width How to meditate
-        .title Together - better!
-        .description
-          | Come to class in your city or join free webinars.
-      .btn__item_container
-        .btn__item_wrap
-          a.btn_item href="#"
-            span.item__icon.icon-yoga
-            span.item__text
-              | Try it out
-              br/
-              | meditate
-        .btn__item_wrap
-          a.btn_item href="#"
-            span.item__icon.icon-location-icon
-            span.item__text
-              | Meditation
-              br/
-              | in your city
-        .btn__item_wrap
-          a.btn_item href="#"
-            span.item__icon.icon-notebook-icon
-            span.item__text
-              | Online classes
-              br/
-              | for meditation
-  /! /together
+        .title = t('footer.call_to_action.action.online')

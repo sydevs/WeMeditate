@@ -22,7 +22,7 @@ article id=dom_id(article) class=dom_id(article.category)
 
   .meta
     a href=article_path(article)
-      ' Learn More
+      = t('articles.read_more')
       i.breadcrumb.icon
 
     span.date = localize article.created_at, format: :date

@@ -8,14 +8,14 @@ section.intro
 #meditations-triangle.container.with.right.triangle.decoration
 
 .container
-  h2 Subtitle for meditations
-  p Listen to one of our guided meditations.
-  h3 How much time do you have?
+  h2 = t('meditations.subtitle')
+  p = t('meditations.text')
+  h3 = t('meditations.choose_duration')
   nav.duration.filters data-group='duration'
     - @duration_filters.each do |duration_filter|
       a.filter.box.button data-filter=".#{dom_id(duration_filter)}" class="#{'active' if duration_filter.minutes.to_s == params[:duration]}"
         = duration_filter.name
-  h3 What is your goal?
+  h3 = t('meditations.choose_goal')
   nav.goal.filters data-group='goals'
     - @goal_filters.each_with_index do |goal_filter, index|
       a.filter.box.button data-filter=".#{dom_id(goal_filter)}" class="#{'active' if goal_filter.id.to_s == params[:goal]}"
@@ -26,33 +26,3 @@ section.intro
     = render @meditations
 
 = render @static_page.sections.with_translations(locale)
-
-//! main
-  main.page-meditations
-    .container_narrow.container
-      h2.s_subtitle.wow.fadeIn data-wow-delay="1s" data-wow-duration="3s"
-        | Meditations
-      /! description
-      section.s__description
-        .section__wrap.has__triangle.has__triangle_right
-          .article
-            .article__content
-              h1.article__title Subtitle for meditations
-              p.article__text
-                | Listen to one of our guided meditations.
-      /! /description
-      /! music
-      section.s__music
-        .music__container
-          .music__subtitle How much time do you have?
-          .mood__container
-            = render @duration_filters
-          .music__subtitle What is your goal?
-          .mood__container
-            = render @goal_filters
-      /! music
-
-      ul
-        = render @meditations
-    /! /container
-  /! /main

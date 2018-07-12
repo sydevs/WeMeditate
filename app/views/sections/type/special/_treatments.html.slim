@@ -1,9 +1,6 @@
 
 - treatments = Treatment.where(id: section.extra_attr('treatment_ids', [])).all
 
-code = treatments.inspect
-code = section.extra.inspect
-
 - if treatments.present?
   .container = sidetext(section)
 
@@ -21,5 +18,5 @@ code = section.extra.inspect
 
   - if treatments.length > 2
     nav.filters data-group='amount'
-      a.initial.active.box.button data-filter='.initial' Collapse
-      a.box.button data-filter='*' Show More
+      a.initial.active.box.button data-filter='.initial' = t('sections.show_less')
+      a.box.button data-filter='*' = t('sections.show_more')

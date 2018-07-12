@@ -8,5 +8,5 @@ article id=dom_id(treatment) class="#{'reverse' if treatment_counter.even?}"
 
   .content
     .title = treatment.name
-    p Sahaja Yoga is a method of obtaining real experience introspection and worldview. She is based on the experience of Self-realization, accessible to every person from birth.
-    a.box.button href=treatment_path(treatment) More about the method
+    p = treatment.excerpt
+    a.box.button href=treatment_path(treatment) = t('treatments.read_more')

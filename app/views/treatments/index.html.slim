@@ -11,9 +11,9 @@
     .image
       img alt='Music' src=image_path("sections/music/treatment.jpg")
     .content
-      .title Music
-      p It's easier to concentrate with music, so it's deeper to meditate.
-      a.box.button href=tracks_path Listen to music
+      .title = t('treatments.music')
+      p = t('treatments.music_description')
+      a.box.button href=tracks_path = t('treatments.listen_to_music')
 
   = render @treatments
 

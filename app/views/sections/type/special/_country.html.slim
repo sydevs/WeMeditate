@@ -19,17 +19,15 @@
         a.city href=city_path(city) = city.name
 
     .extra style='display: none'
-      h3 Other Cities in #{country_name}
+      h3 = t('sections.country.other_cities', country: country_name)
       .cities
 
     .action
-      h3 No classes in your city?
-      p Visit the free webinar!
-      a.box.button href='#'
-        | Let's go
+      h3 = t('sections.country.no_classes_in_your_city')
+      p = t('sections.country.meditat')
+      a.box.button href='#' = t('sections.country.go')
   - else
     .static.action
-      h3 No classes in #{country_name}?
-      p Visit the free webinar!
-      a.box.button href='#'
-        | Let's go
+      h3 = t('sections.country.no_classes', country: country_name)
+      p = t('sections.country.meditat')
+      a.box.button href='#' = t('sections.country.go')
