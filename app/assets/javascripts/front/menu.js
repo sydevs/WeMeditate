@@ -18,9 +18,11 @@ var Menu = {
     Menu.page_root = $('html')
     Menu.header = $('header')
     Menu.chapters = $('.chapters')
+    Menu.submenu = $('.menu .item .container')
     Menu.chapter_items = Menu.chapters.find('.item')
     Menu.header.css('height', 'auto')
     Menu.header.on('click', '.burger-button', Menu.toggle_menu)
+    Menu.header.on('click', '.menu .button ', Menu.toggle_menu_item)
     Menu.menubarHeight = Menu.header.find('.menubar').outerHeight(true)
 
     Menu.page_root.removeClass('show-menu')
@@ -35,6 +37,17 @@ var Menu = {
 
   toggle_menu: function() {
     Menu.page_root.toggleClass('show-menu')
+    Menu.submenu.each(function () {
+        $(this).closest('.item').addClass('item-list')
+    })
+  },
+
+  toggle_menu_item: function(e) {
+      if (Menu.page_root.hasClass('show-menu') && $(this).closest('.item').hasClass('item-list')){
+          e.preventDefault()
+          $(this).closest('.item').toggleClass('show-content')
+      }
+
   },
 
   _on_resize: function() {
