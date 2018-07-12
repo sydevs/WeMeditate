@@ -2,9 +2,10 @@
 section.share
   .section.wrapper
     span = t('footer.share.title')
-    a href="#"
+    a href="https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}"
       i.facebook.icon
-    a href="#"
-      i.vk.icon
+    - if locale == :ru
+      a href="http://vk.com/share.php?url=#{request.original_url}"
+        i.vk.icon
     a href="#"
       i.instagram.icon
