@@ -7,16 +7,22 @@ header
   z-index: 1000
   padding-top: 5px
 
+  .mobile
+    display: block
+    @include laptop-or-larger
+      display: none
+
+  .desktop
+    display: none
+    @include laptop-or-larger
+      display: block
+
   .burger-buttom
     cursor: pointer
 
   > .background
     z-index: 1000
     height: auto
-
-    > .container
-      @include laptop
-        max-width: 1036.8px
 
   > .menu
     display: flex
@@ -35,6 +41,7 @@ header
     height: 0
     overflow: hidden
     transition: height 0.5s ease
+    background: $background-white
 
     > a
       width: 100%
@@ -46,14 +53,82 @@ header
       &.active
         background: $background-gray
 
+    @include tablet-or-smaller
+      .item
+        display: block
+        width: 100%
+
+        > a
+          font-size: 1.125em
+          padding: 15px 0
+          background-color: transparent
+          &:before
+            display: none
+          &:hover
+            color: inherit
+            
+      .container
+        padding: 0
+
+      .title,
+      .related-post
+        display: none
+        visibility: hidden
+
+      .links
+        opacity: 0
+        max-height: 0
+        transition: all 0.5s .3s ease
+        a
+          display: block
+          font-size: 1em
+          padding: 8px 0
+          opacity: .6
+          color: $color-text-normal
+
+          &:hover
+            opacity: 1
+            color: $color-text-normal
+
+      .item
+        transition: all 0.5s .3s ease
+        &.item-list
+          .button
+            padding-right: 25px
+            &:after
+              content: ''
+              position: absolute
+              display: inline-block
+              right: 0
+              top: 50%
+
+              width: 8px
+              height: 8px
+
+              border-left: 1px solid $color-text-normal
+              border-bottom: 1px solid $color-text-normal
+              transform: rotate(135deg)
+
+              margin-top: -4px
+
+      .show-content
+        background: linear-gradient(to right,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
+
+        .links
+          opacity: 1
+          max-height: 300px
+          margin-top: 0
+          transition: all 0.25s 0s ease
+
+
   .full.topline,
   .menubar,
-  .breadcrumbs,
+  .breadcrumbs
     transition: all 0.5s ease
 
   &.sticky
     .full.topline,
-    .breadcrumbs,
+    .breadcrumbs
       display: none !important
 
     .background
@@ -61,7 +136,7 @@ header
       top: 0
       left: 0
       right: 0
-      background: white
+      background: $background-white
 
   &:not(.sticky)
     .menubar
@@ -75,7 +150,7 @@ header
     align-items: flex-end
 
     text-align: center
-    padding: 20px 0
+    padding: 19px 0
     border-bottom: 1px solid $light-gray
 
     .logo svg
@@ -85,12 +160,13 @@ header
       color: $color-text-normal
       text-decoration: none
       z-index: 1
+      cursor: pointer
 
     svg, img
       height: 100%
 
     .burger-button,
-    .logo,
+    .logo
       svg path
         fill: #555
 
@@ -105,8 +181,14 @@ header
       height: 138px
 
       .logo, .action
-        padding-bottom: 18px
-        font-size: 0.85em
+        padding-bottom: 20px
+        font-size: 0.875em
+        
+      .action
+        color: #555
+        font-family: $raleway-medium
+        .static-page-home &
+          color: $color-text-inverse
 
     .illustration-wrapper
       position: absolute
@@ -123,7 +205,7 @@ header
       align-items: center
       position: relative
 
-      font-size: 0.95em
+      font-size: 1em
       font-family: $raleway-medium
       border-bottom: 1px solid $light-gray
 
@@ -138,18 +220,16 @@ header
         svg
           height: 100%
 
-        svg path
-          stroke: #555
-
       .logo
         left: 0
 
         svg path
-          fill: none
-          stroke-width: 2px
+          stroke: #555
 
       .classes
         right: 0
+        padding: 6.2px 0
+        width: 40px
 
       .title
         font-family: $raleway-semi
@@ -157,55 +237,85 @@ header
 
       > .item
         > a
-          padding: 0 1rem
-          line-height: 2.25rem
+          padding: 0 2rem
+          line-height: 2.18rem
+
+          @include desktop
+            padding: 0 5.5rem
+            line-height: 2.25rem
 
           &:hover
-            color: darken($color-text-normal, 20%)
+            color: $color-text-normal
 
         > .container
-          @include overlay(100%, auto, 0, 0)
-          background: $background-gray image-url("header/menu-background.png") bottom right
-          background-position: top
+          @include overlay(102%, auto, 0, 0)
+          position: absolute
+          background: $background-gray
           padding: 0
           z-index: 10
-          transition: height 0.5s cubic-bezier(.02, .01, .47, 1)
+          transition: max-height 0.5s cubic-bezier(.02, .01, .47, 1)
           transition-delay: 0.3s
           overflow: hidden
-          height: 320px
+          max-height: 500px
+
+          &:before
+            content: ''
+            position: absolute
+            top: 0
+            right: 0
+            height: 100%
+            min-height: 380px
+            width: 1250px
+            max-width: 90%
+            background: image-url("header/menu-background.png") no-repeat top right
+            background-size: 100% 100%
 
         &:not(:hover) > .container:not(:hover)
-          height: 0
+          max-height: 0
 
       .container
         > *
           padding-left: 80px
-          padding-right: 18px
+          padding-right: 20px
+
+          @include desktop
+            padding-left: 92px
 
           @include tablet
             padding-left: 30px
 
         > .title
-          font-size: 24px
+          font-size: 1.5em
           color: $dark-gray
           border-bottom: 1px solid $background-gray-divider
           line-height: 58px
           margin: 0
+          position: relative
+
+          @include tablet-or-smaller
+            display: none
 
         > .content
           display: flex
           align-items: flex-start
+          justify-content: space-between
           position: relative
+          padding-bottom: 18px
+
+          @include tablet-or-smaller
+            display: none
 
         ul
-          flex-grow: 1
+          flex-shrink: 0
+          width: 30%
+          margin: 33px 0 20px
 
           li
             margin-bottom: 10px
 
             a
               line-height: 21px
-              font-size: 18px
+              font-size: 1.125em
               font-family: $raleway-medium
               color: $color-text-normal
 
@@ -214,31 +324,44 @@ header
 
       .related-post
         margin-left: 18px
-        margin-bottom: 18px
-        max-width: 30%
-        height: 100%
+        flex-grow: 1
+
+        @include tablet-or-smaller
+          display: none
+
+        &-wrap
+          display: flex
+          flex: 1 1 auto
+          max-width: 640px
 
         > .title
           position: absolute
           bottom: 100%
           margin-bottom: 1em
-          font-size: 12px // TODO: Inconsistent use of rem vs px
+          font-size: .75em // TODO: Inconsistent use of rem vs px
           line-height: 1.75em
 
         a
           position: relative
-          display: inline-block
+          display: flex
+          justify-content: center
+          align-items: flex-start
           overflow: hidden
           background-position: center
+          font-family: $raleway-semi
+          font-size: 1.125rem
+          max-width: 100%
 
         img
-          max-height: 242px
+          width: 100%
+          height: auto
+          display: block
 
         .overlay:after
             content: ''
             display: block
             position: absolute
-            bottom: 10px
+            bottom: 16px
             left: 50%
             margin-left: -35.5px
 
@@ -278,12 +401,13 @@ header
     right: 0
 
     .topline
-      height: 85px
+      height: 84px
       align-items: center
 
       > *
         display: inline-block
-        height: 32px
+        height: 34px
+        margin-left: -5px
 
   // INVERSE TRANSITIONS
   .topline .logo svg path,
@@ -301,28 +425,79 @@ html:not(.show-menu)
     .illustration-wrapper,
     .burger-button
       svg path
-        stroke: white
+        stroke: $color-text-inverse
 
     .topline .logo,
     .classes
       svg path
-        fill: white
+        fill: $color-text-inverse
 
     a
-      color: white
+      color: $color-text-inverse
 
     .topline,
     .menubar
-      border-color: white
+      border-color: $color-text-inverse
 
 html.show-menu
   overflow: hidden
 
   header
     position: static
-
+    
+    .mobile
+      z-index: 999
+    
     > .menu
       height: 100%
+      background: $background-white
 
-      @include tablet-or-larger
+      @include laptop-or-larger
         display: none
+
+      .active
+        color: #000
+
+    .topline
+      border-bottom: 1px solid transparent
+
+      > a
+        visibility: hidden
+
+        &.burger-button,
+        &.logo
+          visibility: visible
+
+    .burger-button
+      position: relative
+
+      &:before, &:after
+        content: ""
+        position: absolute
+        background-color: #555
+        top: 15px
+        left: 0
+        right: 0
+        transition: all .5s ease
+        width: 30px
+        height: 1px
+        margin: 0 auto
+
+      &:before
+        transform: rotateZ(.7854rad)
+
+      &:after
+        transform: rotateZ(-.7854rad)
+
+      svg
+        opacity: 0
+
+
+.sticky
+  .mobile
+    background: $color-text-inverse
+    .logo,
+    .illustration-wrapper,
+    .burger-button
+      svg path
+        stroke: $color-text-normal !important
