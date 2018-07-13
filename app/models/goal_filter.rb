@@ -5,6 +5,7 @@ class GoalFilter < ApplicationRecord
 
   # Associations
   has_and_belongs_to_many :meditations
+  mount_uploader :icon, IconUploader
 
   # Validations
   validates :name, presence: true

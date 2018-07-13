@@ -1,12 +1,59 @@
 options:
-  find_existing_by: name
+  find_existing_by: order
 records:
-  - sprig_id: Go Deeper
-    name: Go Deeper
+  - sprig_id: calm
+    name: Calm
+    icon: <%= sprig_file('goal_filters/calm.svg') %>
     order: 1
-  - sprig_id: Feel Relaxed
-    name: Feel Relaxed
+  - sprig_id: self_confident
+    name: Self-confident
+    icon: <%= sprig_file('goal_filters/self-confident.svg') %>
     order: 2
-  - sprig_id: Forgive Others
-    name: Forgive Others
+  - sprig_id: satisfied
+    name: Satisfied
+    icon: <%= sprig_file('goal_filters/satisfied.svg') %>
     order: 3
+  - sprig_id: creative
+    name: Creative
+    icon: <%= sprig_file('goal_filters/creative.svg') %>
+    order: 4
+  - sprig_id: focused
+    name: Focused
+    icon: <%= sprig_file('goal_filters/focused.svg') %>
+    order: 5
+  - sprig_id: joyful
+    name: Joyful
+    icon: <%= sprig_file('goal_filters/joyful.svg') %>
+    order: 6
+  - sprig_id: love
+    name: Love
+    icon: <%= sprig_file('goal_filters/love.svg') %>
+    order: 7
+  - sprig_id: self_esteem
+    name: Self-esteem
+    icon: <%= sprig_file('goal_filters/self-esteem.svg') %>
+    order: 8
+  - sprig_id: humble
+    name: Humble
+    icon: <%= sprig_file('goal_filters/humble.svg') %>
+    order: 9
+  - sprig_id: silence
+    name: Silence
+    icon: <%= sprig_file('goal_filters/silence.svg') %>
+    order: 10
+  - sprig_id: harmony
+    name: Harmony
+    icon: <%= sprig_file('goal_filters/harmony.svg') %>
+    order: 11
+  - sprig_id: balanced
+    name: Balanced
+    icon: <%= sprig_file('goal_filters/balanced.svg') %>
+    order: 12
+  - sprig_id: dynamic
+    name: Dynamic
+    icon: <%= sprig_file('goal_filters/dynamic.svg') %>
+    order: 13
+  - sprig_id: happy
+    name: Happy
+    icon: <%= sprig_file('goal_filters/happy.svg') %>
+    order: 14
