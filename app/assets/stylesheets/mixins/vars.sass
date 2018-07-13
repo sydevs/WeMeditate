@@ -5,11 +5,10 @@ $raleway-bold: "raleway-bold", sans-serif
 $raleway-medium: "raleway-medium", sans-serif
 $raleway-semi: "raleway-semi", sans-serif
 
-$mobile-width: 480px
-$tablet-width: 768px
+$mobile-width: 320px
+$tablet-width: 640px
 $laptop-width: 992px
 $desktop-width: 1300px
-$large-desktop-width: 1800px
 
 $dark-gray: #7b7b7b
 $gray: #d7d7d6
@@ -72,21 +71,13 @@ $icon-filters: '\e917'
     @content
 
 @mixin tablet-or-smaller
-  @media only screen and (max-width: #{$tablet-width - 1px})
+  @media only screen and (max-width: #{$laptop-width - 1px})
     @content
 
 @mixin tablet-or-larger
   @media only screen and (min-width: #{$tablet-width})
     @content
 
-@mixin laptop-or-smaller
-  @media only screen and (max-width: #{$laptop-width - 1px})
-    @content
-
 @mixin laptop-or-larger
   @media only screen and (min-width: #{$laptop-width})
-    @content
-
-@mixin desktop-or-larger
-  @media only screen and (min-width: #{$large-desktop-width})
     @content

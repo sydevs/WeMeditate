@@ -7,6 +7,16 @@ header
   z-index: 1000
   padding-top: 5px
 
+  .mobile
+    display: block
+    @include laptop-or-larger
+      display: none
+
+  .desktop
+    display: none
+    @include laptop-or-larger
+      display: block
+
   .burger-buttom
     cursor: pointer
 
@@ -230,7 +240,7 @@ header
           padding: 0 2rem
           line-height: 2.18rem
 
-          @include desktop-or-larger
+          @include desktop
             padding: 0 5.5rem
             line-height: 2.25rem
 
@@ -268,14 +278,11 @@ header
           padding-left: 80px
           padding-right: 20px
 
-          @include desktop-or-larger
+          @include desktop
             padding-left: 92px
 
           @include tablet
             padding-left: 30px
-
-          @include laptop-or-smaller
-            padding-right: 12px
 
         > .title
           font-size: 1.5em
@@ -295,8 +302,6 @@ header
           position: relative
           padding-bottom: 18px
 
-          @include laptop-or-smaller
-            padding-bottom: 12px
           @include tablet-or-smaller
             display: none
 
@@ -447,7 +452,7 @@ html.show-menu
       height: 100%
       background: $background-white
 
-      @include tablet-or-larger
+      @include laptop-or-larger
         display: none
 
       .active
