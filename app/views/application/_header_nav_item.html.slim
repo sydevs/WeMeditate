@@ -14,9 +14,10 @@
             li
               a href=item[:url] = item[:title]
 
-        - nav[:content][:featured].each do |item|
-          .related-post
-            .title = item[:title]
-            a href=item[:url]
-              img src=item[:thumbnail]
-              .overlay Inspiration<br>comes from within
+        .related-post-wrap
+           - nav[:content][:featured].each do |item|
+              .related-post
+                .title = item[:title]
+                a href=item[:url]
+                  img src=item[:thumbnail]
+                  .overlay Inspiration<br>comes from within

@@ -27,9 +27,8 @@ header class="#{'inverse' if action_name == 'front'}"
     .mobile.container
       .topline
         a.logo href=root_path = inline_svg 'header/logo-mini.svg'
-        a href='#' Come<br>Meditate
         a.burger-button = inline_svg 'header/burger.svg'
 
   nav.menu
     - navigation do |nav|
-      a href=nav[:url] = nav[:title]
+      = render 'header_nav_item', nav: nav
