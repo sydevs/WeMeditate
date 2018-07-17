@@ -1,9 +1,63 @@
 
 - content_for :title, @static_page.title
 
-section.intro
+.container
+    .breadcrumbs test
+
+section.with.half.left.blue.gradient.page-title
   .container
     h1.title = Meditation.model_name.human(count: -1)
+
+section.meditation-video
+  .container
+    .grid-row
+      - @meditations.sample(3).each do |meditation|
+        .grid-sizer
+          .meditation-item
+            h3.meditation-header
+              = meditation.name
+            .video
+              .video-preview style="background-image: url(#{meditation.image.url})"
+                img src="#{meditation.image.url}"
+                a.video.button data-mfp-src="#video-popup" href="/uploads/attachment/file/40/video.mp4"
+              h4.video-title Video 1
+              p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+
+section.own-meditation
+
+    .container
+      .top-left.sidetext Set Up your own meditation
+      h2.title Set Up your own Meditation
+      form
+        input type="hidden" name="i-feel" method="get"
+        .select-meditation
+          .select-goals
+            .goals
+              a.active-goal.disable
+                span.active-goal-icon = inline_svg 'header/logo-mini.svg'
+                span.active-goal-header
+                  |I wish I feel
+
+                span.active-goal-text Choose feelings
+
+              .dropdown
+                a.btn-close
+                ul
+                  - @goal_filters.each_with_index do |goal_filter, index|
+                    li data-img="#{goal_filter.icon.url}"
+                      span
+                        = goal_filter.name
+          .duration
+            span.duration-title I have
+            - @duration_filters.each do |duration_filter|
+              label.radio
+                input type="radio" name="radio" value="#{duration_filter.id}"
+                .radio-text
+                  span
+                    = duration_filter.name
+        button.start-meditation type="submit" Start meditation
+
+
 
 #meditations-triangle.container.with.right.triangle.decoration
 

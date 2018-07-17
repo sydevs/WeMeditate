@@ -1,6 +1,28 @@
 @import "../../mixins/vars"
 
 body.meditations-index
+
+  main section
+    padding: 20px 0
+    margin-bottom: 0
+    
+    &.page-title
+      padding: 25px 0
+      
+    .title
+      text-align: center
+      font-size: 2.8125em
+      font-family: $raleway-bold
+      
+      @include tablet-or-smaller
+        font-size: 2.125em
+        line-height: 1.25em
+        
+    h2.title
+      font-family: $raleway-medium
+      font-weight: 500
+      margin: 35px 0 70px
+
   section.intro
     margin-bottom: 50px
 
@@ -17,11 +39,30 @@ body.meditations-index
       @include tablet-or-smaller
         margin: 10px 22px
 
+  .sidetext
+    display: none
+    @include desktop
+      display: block
+
   #meditations-triangle::after
     bottom: auto
     right: 10.5%
     top: -120px
     zoom: 0.875
+
+  .grid-row
+    display: flex
+    margin: 0 -15px
+    &.slick-slider
+      margin: 0
+      > *
+        padding: 0
+
+    > *
+      padding: 0 15px
+
+    .grid-sizer
+      width: 33.33%
 
   #grid
     article, .grid-sizer
@@ -33,7 +74,7 @@ body.meditations-index
       @include tablet
         width: 50%
 
-      @include mobile
+      @include tablet-or-smaller
         width: 100%
 
   article
@@ -61,3 +102,460 @@ body.meditations-index
       text-transform: uppercase
       padding: 1em
 
+  .meditation
+    &-item
+      margin-bottom: 50px
+      
+      .video
+        &-preview
+          display: block
+          padding-top: 57%
+          position: relative
+          overflow: hidden
+          background-size: cover
+          margin-bottom: 25px
+
+          .button.video
+            @include  desktop
+              width: 148px
+              height: 148px
+
+        &-title
+          font-size: 1.5em
+          font-family: $raleway-semi
+          margin: 20px 0
+
+      img
+        display: block
+        position: absolute
+        opacity: 0
+        z-index: -1
+        
+      p
+        margin-top: 0
+        font-size: 1.125em
+        line-height: 1.7em
+
+
+    &-header
+      font-size: 2em
+      font-family: $raleway
+      font-weight: normal
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+
+    &-img
+      display: block
+      position: absolute
+      opacity: 0
+      z-index: -1
+
+  .slick-dots
+    bottom: -10px
+    
+    li
+      button:before
+        opacity: .5
+        font-size: 12px
+        
+      &.slick-active
+        button:before
+          opacity: 1
+          color: $blue
+
+.own-meditation
+  background: image-url("sections/try-meditation/own-meditate-full-bg.jpg") no-repeat bottom center
+  background-size: cover
+  min-height: 1500px
+  
+  @include tablet-or-smaller
+    background: image-url("sections/try-meditation/own-meditate-mobile.png") no-repeat bottom center
+    background-size: contain
+    
+  @include mobile
+    min-height: 1300px
+
+  form
+    max-width: none
+    text-align: center
+    
+  .active-goal
+    position: relative
+    display: inline-block
+    height: 100px
+    padding: 0 100px
+    text-align: left
+    cursor: pointer
+    margin: 20px 0
+    
+    @include tablet-or-smaller
+      display: block
+      padding: 0 30px
+      margin-bottom: 0
+      height: auto
+      text-align: center
+
+    &-header
+      color: $dark-gray-d
+      font-size: 2em
+      
+      @include tablet-or-smaller
+        font-size: 1.625em
+
+    &.disable
+      .active-goal-header:after
+        content: '...'
+        display: inline-block
+        padding-left: 10px
+
+      .active-goal-text
+        font-size: 1rem
+        color: $color-text-darker
+        opacity: .4
+
+      .active-goal-icon
+        background-color: $blue
+        text-align: center
+        display: flex
+        align-items: center
+        justify-content: center
+
+        @include desktop
+          margin: 0
+          margin-top: -20px
+          background-color: transparent
+
+        svg
+          width: 80%
+          display: inline-block
+          padding: 0 10px
+          
+          path
+            fill: $color-text-inverse
+            stroke: $color-text-inverse
+            stroke-width: 3
+            stroke-linecap: round
+            
+            @include desktop
+              fill: #cecece
+              stroke: #cecece
+
+    &-icon
+      width: 80px
+      height: 80px
+
+      position: absolute
+      top: 50%
+      left: 0
+      border-radius: 100%
+      overflow: hidden
+      transform: translateY(-50%)
+      transition: hidden .3s ease
+      background: #ddd
+      margin: -20px
+      
+      @include tablet-or-smaller
+        margin: 25px auto
+        position: static
+        transform: translateY(0)
+        display: block
+        
+      svg
+        path,
+        g,
+        circle
+          fill: $color-text-inverse
+          stroke: $color-text-inverse
+
+    &-text
+      display: block
+      font-family: $raleway-bold
+      font-weight: bold
+      font-size: 2em
+      line-height: 1em
+      text-transform: lowercase
+
+      
+.select-meditation
+  display: flex
+  text-align: left
+  
+  @include tablet-or-smaller
+    display: block
+
+  .select-goals,
+  .duration
+    flex-grow: 1
+    width: 50%
+    position: relative
+
+    @include tablet-or-smaller
+      width: 100%
+      
+  .goals
+    position: relative
+    padding-left: 15%
+    
+    @include desktop
+      padding-left: 30%
+      
+    @include tablet-or-smaller
+      padding: 0
+      max-width: 350px
+      margin: 20px auto 40px
+
+    &:after
+      content: ''
+      position: absolute
+      display: inline-block
+      right: 55px
+      top: 50%
+
+      width: 14px
+      height: 14px
+
+      border-left: 1px solid $color-text-normal
+      border-bottom: 1px solid $color-text-normal
+      transform: rotate(-45deg)
+      margin-top: -18px
+      
+      @include tablet-or-smaller
+        border-left: none
+        transform: rotate(0deg)
+        height: 0
+        width: 60px
+        margin-left: -30px
+        left: 50%
+        right: auto
+        top: 100%
+        margin-top: 20px
+
+    &:before
+      content: ''
+      display: inline-block
+      position: absolute
+      right: 55px
+      bottom: -1px
+      width: 0
+      height: 0
+      border: 9px solid transparent
+      border-bottom: 12px solid $background-white
+      z-index: 91
+      opacity: 0
+      transition: all .5s ease
+      
+  .duration
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+
+    &-title
+      font-size: 2em
+      line-height: 80px
+      color: $dark-gray-d
+      padding: 0 40px
+      width: 100%
+      text-align: center
+      
+      @include desktop
+        width: auto
+        text-align: left
+        
+      @include tablet-or-smaller
+        font-size: 1.625em
+
+  .open
+    &:before
+      opacity: 1
+      
+    &:after
+      transform: rotate(135deg)
+
+    .dropdown
+      max-height: 800px
+      
+      @include tablet-or-smaller
+        max-height: none
+        
+      .btn-close
+        @include tablet-or-smaller
+          display: inline-block
+
+  .dropdown
+    position: absolute
+    top: 100%
+    left: 0
+    right: 0
+    background: $background-white
+    box-shadow: 1px 1px 60px 2px rgba(0, 0, 0, .2)
+    max-height: 0
+    overflow: hidden
+    transition: all .5s ease
+    z-index: 90
+    
+    @include tablet-or-smaller
+      position: fixed
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+      z-index: 9999
+      overflow: hidden
+
+    .btn-close
+      height: 34px
+      width: 34px
+      right: 15px
+      top: 15px
+      position: fixed
+      display: none
+
+      &:before, &:after
+        content: ""
+        position: absolute
+        background-color: #555
+        top: 15px
+        left: 0
+        right: 0
+        transition: all 0.5s ease
+        width: 30px
+        height: 1px
+        margin: 0 auto
+        
+      &:after
+        transform: rotateZ(-0.7854rad)
+        
+      &:before
+        transform: rotateZ(0.7854rad)
+
+    ul
+      display: flex
+      flex-wrap: wrap
+      padding: 27px 57px
+      align-items: flex-start
+      
+      @include tablet-or-smaller
+        overflow-y: auto
+        height: 100%
+
+    li
+      display: flex
+      position: relative
+      width: 50%
+      align-items: center
+      text-align: left
+      font-family: $raleway-bold
+      font-size: 1em
+      color: $color-text-dark
+      padding-left: 100px
+      height: 90px
+      cursor: pointer
+      
+      @include mobile
+        width: 100%
+
+      svg.invert
+        path,
+        g,
+        circle
+          fill: $color-text-inverse
+          stroke: $color-text-inverse
+
+    img,
+    svg
+      width: 80px
+      height: 80px
+
+      position: absolute
+      top: 50%
+      left: 0
+      border-radius: 100%
+      overflow: hidden
+      transform: translateY(-50%)
+      transition: all .3s ease
+
+
+.radio
+  display: inline-block
+  position: relative
+  width: 80px
+  height: 80px
+  margin: 0 5px
+  cursor: pointer
+  
+  input
+    position: absolute
+    z-index: -1
+    opacity: 0
+    
+  &-text
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    display: flex
+    justify-content: center
+    align-items: center
+    
+    &:before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      border: 1px solid $color-text-normal
+      border-radius: 100%
+      background: $color-text-inverse
+      
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      border-radius: 100%
+      background: $blue
+      border: 1px solid transparent
+      opacity: 0
+      transition: .2s
+      
+  span
+    position: relative
+    z-index: 99
+    width: 60px
+    font-size: 1rem
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    
+  input:checked + .radio-text
+    color: $color-text-inverse
+    
+  input:checked + .radio-text:after
+    opacity: 1
+
+
+.start-meditation
+  width: 280px
+  height: 280px
+  background: image-url("graphics/circle-dark.svg") no-repeat bottom center transparent
+  border: none
+  color: $color-text-dark
+  cursor: pointer
+  display: inline-block
+  font-size: 2em
+  margin-top: 75px
+  padding: 50px
+  
+  @include tablet-or-smaller
+    width: 250px
+    height: 250px
+    font-size: 1.825em
+    
+  &:focus
+    outline: none
