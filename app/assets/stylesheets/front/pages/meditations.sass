@@ -2,6 +2,11 @@
 
 body.meditations-index
 
+  &.open-menu
+    @include tablet-or-smaller
+      overflow: hidden
+      height: 100vh
+
   main section
     padding: 20px 0
     margin-bottom: 0
@@ -11,17 +16,29 @@ body.meditations-index
       
     .title
       text-align: center
-      font-size: 2.8125em
+      font-size: 2.125em
       font-family: $raleway-bold
-      
+      margin: 0
+      letter-spacing: .05em
+
+      @include desktop
+        font-size: 2.8125em
+        margin: 24px 0
+
       @include tablet-or-smaller
-        font-size: 2.125em
+        font-size: 1.675em
+
+      @include mobile
         line-height: 1.25em
         
     h2.title
       font-family: $raleway-medium
       font-weight: 500
-      margin: 35px 0 70px
+      letter-spacing: .02em
+      margin: 35px 0 25px
+
+      @include desktop
+        margin: 35px 0 50px
 
   section.intro
     margin-bottom: 50px
@@ -29,14 +46,14 @@ body.meditations-index
   nav.filters
     margin-bottom: 2.8em
 
-    @include tablet-or-smaller
+    @include mobile
       text-align: center
 
     .filter.button
       margin-right: 44px
       margin-bottom: 0.625em
 
-      @include tablet-or-smaller
+      @include mobile
         margin: 10px 22px
 
   .sidetext
@@ -74,7 +91,7 @@ body.meditations-index
       @include tablet
         width: 50%
 
-      @include tablet-or-smaller
+      @include mobile
         width: 100%
 
   article
@@ -113,17 +130,34 @@ body.meditations-index
           position: relative
           overflow: hidden
           background-size: cover
-          margin-bottom: 25px
+          margin-bottom: 18px
+
+          @include desktop
+            margin-bottom: 25px
+
+          @include tablet-or-smaller
+            margin-bottom: 13px
 
           .button.video
+            transform: translateX(-50%) translateY(-50%)
+            margin: 0
+            width: 110px
+            height: 110px
+            padding: 22px
+
             @include  desktop
               width: 148px
               height: 148px
 
+
         &-title
-          font-size: 1.5em
           font-family: $raleway-semi
-          margin: 20px 0
+          font-size: 1.125em
+          margin: 7px 0
+
+          @include desktop
+            font-size: 1.5em
+            margin: 20px 0
 
       img
         display: block
@@ -133,17 +167,29 @@ body.meditations-index
         
       p
         margin-top: 0
-        font-size: 1.125em
-        line-height: 1.7em
+        font-size: 0.875em
+        line-height: 1.5em
 
+        @include desktop
+          font-size: 1.125em
+          line-height: 1.7em
 
     &-header
-      font-size: 2em
+      font-size: 1.625em
       font-family: $raleway
       font-weight: normal
       white-space: nowrap
       overflow: hidden
       text-overflow: ellipsis
+      margin: 5px 0 20px
+
+      @include desktop
+        font-size: 2.1875em
+        margin-bottom: 28px
+
+      @include tablet-or-smaller
+        font-size: 1.5em
+        margin-bottom: 10px
 
     &-img
       display: block
@@ -168,13 +214,18 @@ body.meditations-index
   background: image-url("sections/try-meditation/own-meditate-full-bg.jpg") no-repeat bottom center
   background-size: cover
   min-height: 1500px
+
+  @include laptop
+    min-height: 1250px
   
   @include tablet-or-smaller
-    background: image-url("sections/try-meditation/own-meditate-mobile.png") no-repeat bottom center
-    background-size: contain
-    
+    background: image-url("sections/try-meditation/own-meditate-full-bg-tablet.png") no-repeat bottom center
+    background-size: cover
+    min-height: 130vw
+
   @include mobile
-    min-height: 1300px
+    min-height: auto
+    background-image: none
 
   form
     max-width: none
@@ -184,12 +235,21 @@ body.meditations-index
     position: relative
     display: inline-block
     height: 100px
-    padding: 0 100px
     text-align: left
     cursor: pointer
-    margin: 20px 0
-    
+    padding: 25px 90px 15px 122px
+    margin: 0
+    letter-spacing: 0
+
+    @include desktop
+      padding: 15px 90px 15px 115px
+      margin: 20px 0
+      letter-spacing: .08em
+
     @include tablet-or-smaller
+      padding: 25px 20px 15px 95px
+
+    @include mobile
       display: block
       padding: 0 30px
       margin-bottom: 0
@@ -198,10 +258,13 @@ body.meditations-index
 
     &-header
       color: $dark-gray-d
-      font-size: 2em
-      
+      font-size: 1.625em
+
+      @include desktop
+        font-size: 2em
+
       @include tablet-or-smaller
-        font-size: 1.625em
+        font-size: 1.5em
 
     &.disable
       .active-goal-header:after
@@ -211,7 +274,9 @@ body.meditations-index
 
       .active-goal-text
         font-size: 1rem
+        font-family: $raleway
         color: $color-text-darker
+        text-transform: none
         opacity: .4
 
       .active-goal-icon
@@ -242,8 +307,8 @@ body.meditations-index
               stroke: #cecece
 
     &-icon
-      width: 80px
-      height: 80px
+      width: 88px
+      height: 88px
 
       position: absolute
       top: 50%
@@ -253,9 +318,13 @@ body.meditations-index
       transform: translateY(-50%)
       transition: hidden .3s ease
       background: #ddd
-      margin: -20px
-      
+      margin: 0
+
       @include tablet-or-smaller
+        width: 70px
+        height: 70px
+      
+      @include mobile
         margin: 25px auto
         position: static
         transform: translateY(0)
@@ -276,12 +345,17 @@ body.meditations-index
       line-height: 1em
       text-transform: lowercase
 
-      
+  .mobile-img
+    display: none
+    @include mobile
+      display: block
+      margin: 70px -15px 0
+
 .select-meditation
   display: flex
   text-align: left
   
-  @include tablet-or-smaller
+  @include mobile
     display: block
 
   .select-goals,
@@ -290,17 +364,20 @@ body.meditations-index
     width: 50%
     position: relative
 
-    @include tablet-or-smaller
+    @include mobile
       width: 100%
       
   .goals
     position: relative
-    padding-left: 15%
-    
+    padding: 0
+
     @include desktop
-      padding-left: 30%
-      
+      padding-left: 26%
+
     @include tablet-or-smaller
+      padding-left: 16%
+
+    @include mobile
       padding: 0
       max-width: 350px
       margin: 20px auto 40px
@@ -319,9 +396,13 @@ body.meditations-index
       border-bottom: 1px solid $color-text-normal
       transform: rotate(-45deg)
       margin-top: -18px
-      
+
       @include tablet-or-smaller
+        display: none
+      
+      @include mobile
         border-left: none
+        display: inline-block
         transform: rotate(0deg)
         height: 0
         width: 60px
@@ -336,35 +417,50 @@ body.meditations-index
       display: inline-block
       position: absolute
       right: 55px
-      bottom: -1px
+      bottom: -16px
       width: 0
       height: 0
       border: 9px solid transparent
-      border-bottom: 12px solid $background-white
-      z-index: 91
+      border-bottom: 15px solid $background-white
+      z-index: 99
       opacity: 0
       transition: all .5s ease
       
   .duration
     align-items: center
     display: flex
-    flex-wrap: wrap
-    justify-content: center
+    justify-content: space-between
+
+    @include desktop
+      justify-content: center
+
+    @include mobile
+      display: block
+      text-align: center
+
 
     &-title
-      font-size: 2em
+      display: block
+      font-size: 1.625em
       line-height: 80px
       color: $dark-gray-d
-      padding: 0 40px
-      width: 100%
+      width: auto
       text-align: center
-      
+      padding: 0 20px 0 20px
+      letter-spacing: .02em
+
       @include desktop
-        width: auto
-        text-align: left
-        
+        font-size: 2em
+        max-width: 50%
+        padding: 0 27px 0 40px
+
+      @include laptop
+        flex: 1 1 auto
+
       @include tablet-or-smaller
-        font-size: 1.625em
+        font-size: 1.5em
+        flex: 1 1 auto
+
 
   .open
     &:before
@@ -394,8 +490,14 @@ body.meditations-index
     overflow: hidden
     transition: all .5s ease
     z-index: 90
+    margin-top: 15px
+
+    @include laptop
+      left: -15px
     
     @include tablet-or-smaller
+      display: flex
+      flex-direction: column
       position: fixed
       top: 0
       left: 0
@@ -403,6 +505,15 @@ body.meditations-index
       right: 0
       z-index: 9999
       overflow: hidden
+      margin: 0
+
+    .title
+      display: none
+      @include tablet-or-smaller
+        display: block
+        text-align: center
+        font-size: 1.5em
+        margin-top: 70px
 
     .btn-close
       height: 34px
@@ -435,10 +546,14 @@ body.meditations-index
       flex-wrap: wrap
       padding: 27px 57px
       align-items: flex-start
-      
+
+      @include laptop
+        padding: 25px
+
       @include tablet-or-smaller
         overflow-y: auto
-        height: 100%
+        max-height: 90%
+        flex: 1 1 auto
 
     li
       display: flex
@@ -452,6 +567,9 @@ body.meditations-index
       padding-left: 100px
       height: 90px
       cursor: pointer
+
+      @include laptop
+        padding-left: 90px
       
       @include mobile
         width: 100%
@@ -477,67 +595,73 @@ body.meditations-index
       transition: all .3s ease
 
 
-.radio
-  display: inline-block
-  position: relative
-  width: 80px
-  height: 80px
-  margin: 0 5px
-  cursor: pointer
-  
-  input
-    position: absolute
-    z-index: -1
-    opacity: 0
-    
-  &-text
-    position: absolute
-    width: 100%
-    height: 100%
-    top: 0
-    left: 0
-    display: flex
-    justify-content: center
-    align-items: center
-    
-    &:before
-      content: ''
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-      border: 1px solid $color-text-normal
-      border-radius: 100%
-      background: $color-text-inverse
-      
-    &:after
-      content: ''
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-      border-radius: 100%
-      background: $blue
-      border: 1px solid transparent
-      opacity: 0
-      transition: .2s
-      
-  span
+  .radio
+    display: inline-block
     position: relative
-    z-index: 99
-    width: 60px
-    font-size: 1rem
-    white-space: nowrap
-    overflow: hidden
-    text-overflow: ellipsis
-    
-  input:checked + .radio-text
-    color: $color-text-inverse
-    
-  input:checked + .radio-text:after
-    opacity: 1
+    width: 90px
+    height: 90px
+    margin: 0 10px
+    cursor: pointer
+
+    @include tablet-or-smaller
+      width: 66px
+      height: 66px
+      margin: 0 6px
+      &:last-child
+        margin-right: 0
+
+
+    input
+      position: absolute
+      z-index: -1
+      opacity: 0
+
+    &-text
+      position: absolute
+      width: 100%
+      height: 100%
+      top: 0
+      left: 0
+      display: flex
+      justify-content: center
+      align-items: center
+
+      &:before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        border: 1px solid #7b7b7b
+        border-radius: 100%
+        background: $color-text-inverse
+
+      &:after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        border-radius: 100%
+        background: $blue
+        border: 1px solid $blue
+        opacity: 0
+        transition: .2s
+
+    span
+      position: relative
+      z-index: 99
+      font-size: 0.875rem
+      font-family: $raleway-bold
+      color: #7b7b7b
+
+    input:checked + .radio-text span
+      color: $color-text-inverse
+
+    input:checked + .radio-text:after
+      opacity: 1
 
 
 .start-meditation
@@ -549,13 +673,14 @@ body.meditations-index
   cursor: pointer
   display: inline-block
   font-size: 2em
-  margin-top: 75px
+  margin-top: 50px
   padding: 50px
-  
+
   @include tablet-or-smaller
-    width: 250px
-    height: 250px
-    font-size: 1.825em
-    
+    width: 220px
+    height: 220px
+    font-size: 1.5em
+    padding: 40px
+
   &:focus
     outline: none

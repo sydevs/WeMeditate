@@ -6,7 +6,8 @@
 
 section.with.half.left.blue.gradient.page-title
   .container
-    h1.title = Meditation.model_name.human(count: -1)
+    /h1.title = Meditation.model_name.human(count: -1)
+    h1.title Meditate Now
 
 section.meditation-video
   .container
@@ -20,8 +21,8 @@ section.meditation-video
               .video-preview style="background-image: url(#{meditation.image.url})"
                 img src="#{meditation.image.url}"
                 a.video.button data-mfp-src="#video-popup" href="/uploads/attachment/file/40/video.mp4"
-              h4.video-title Video 1
-              p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+              h4.video-title Boost your confidence
+              p Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения.  
 
 section.own-meditation
 
@@ -29,7 +30,7 @@ section.own-meditation
       .top-left.sidetext Set Up your own meditation
       h2.title Set Up your own Meditation
       form
-        input type="hidden" name="i-feel" method="get"
+        input type="hidden" name="goal_filters" method="get"
         .select-meditation
           .select-goals
             .goals
@@ -42,6 +43,7 @@ section.own-meditation
 
               .dropdown
                 a.btn-close
+                h3.title Choose feelings
                 ul
                   - @goal_filters.each_with_index do |goal_filter, index|
                     li data-img="#{goal_filter.icon.url}"
@@ -49,13 +51,28 @@ section.own-meditation
                         = goal_filter.name
           .duration
             span.duration-title I have
-            - @duration_filters.each do |duration_filter|
+            .radio-wrap
+              /- @duration_filters.sample(3).each do |duration_filter|
+                /label.radio
+                  /input type="radio" name="radio" value="#{duration_filter.id}"
+                  /.radio-text
+                   / span #{duration_filter.minutes} min
               label.radio
-                input type="radio" name="radio" value="#{duration_filter.id}"
-                .radio-text
-                  span
-                    = duration_filter.name
+                input type="radio" name="duration_filter" value="5"
+                  .radio-text
+                    span 5 min
+              label.radio
+                input type="radio" name="duration_filter" value="10"
+                  .radio-text
+                    span 10 min
+              label.radio
+                input type="radio" name="duration_filter" value="15"
+                  .radio-text
+                    span 15 min
+
         button.start-meditation type="submit" Start meditation
+        .mobile-img
+          img src=image_path('sections/try-meditation/own-meditate-mobile.png')
 
 
 

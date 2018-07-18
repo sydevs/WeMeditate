@@ -20,7 +20,6 @@ var Meditation = {
 		Meditation.init_close_dropdown_listener()
 		Meditation.set_goal_icon()
 		Meditation._on_mobile()
-
 	},
 
 	set_goal_icon: function () {
@@ -38,7 +37,6 @@ var Meditation = {
 				color = img.find('path').css('fill') === 'none' ? img.find('path').css('stroke') : img.find('path').css('fill')
 				text = $(item).find('span').text()
 				img.css({'background-color': color}).addClass('invert')
-				console.log('!!!',$(item), text, color);
 			}
 		})
 
@@ -46,7 +44,7 @@ var Meditation = {
 		$('.active-goal-icon').find('svg').remove()
 		img.clone().appendTo($('.active-goal-icon'));
 
-		$('[name="i-feel"]').val(text)
+		$('[name="goal_filters"]').val(text.toLowerCase())
 
 		if ($(window).width() < 991) {
 			Meditation.close_dropdown()
@@ -65,6 +63,13 @@ var Meditation = {
 
 	close_dropdown: function () {
 		Meditation.goals_wrap.removeClass('open')
+		$('body').removeClass('open-menu')
+
+		if ($(window).width() < 740) {
+			$('html,body').animate({
+				scrollTop: $('.own-meditation').offset().top - 80
+			}, 0);
+		}
 	},
 
 	init_close_dropdown_listener: function () {
@@ -79,11 +84,11 @@ var Meditation = {
 
 	toggle_dropdown: function (e) {
 		$(this).parent().toggleClass('open')
-
+		$('body').toggleClass('open-menu')
 	},
 
 	_on_mobile: function () {
-		if ($(window).width() < 991) {
+		if ($(window).width() < 740) {
 			$('.meditation-video .grid-row').slick({
 				dots: true
 			})
