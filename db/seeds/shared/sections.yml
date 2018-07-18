@@ -301,7 +301,7 @@ records:
     content_type: special
     format: banner
     title: Meditation - this is inner peace
-    text: For meditation do not need special skills, quite simply
+    text: "For meditation you don't need special skills, quite simply"
     action: Feel
     url: '#'
     extra:
