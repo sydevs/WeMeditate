@@ -107,9 +107,8 @@ header
 
               border-left: 1px solid $color-text-normal
               border-bottom: 1px solid $color-text-normal
-              transform: rotate(135deg)
-
-              margin-top: -4px
+              transform: rotate(-45deg)
+              margin-top: -7px
 
       .show-content
         background: linear-gradient(to right,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
@@ -120,6 +119,12 @@ header
           margin-top: 0
           transition: all 0.25s 0s ease
 
+        &.item
+          &.item-list
+            .button
+              &:after
+                transform: rotate(135deg)
+                margin-top: -4px
 
   .full.topline,
   .menubar,
