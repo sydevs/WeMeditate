@@ -19,6 +19,10 @@ body.meditations-index
       align-items: center
       justify-content: center
 
+      @include mobile
+        font-size: 1.675em
+        line-height: 90px
+
       &:after
         width: 100%
         left: auto
@@ -69,6 +73,10 @@ body.meditations-index
     zoom: 0.875
 
   .meditation
+    &-wrap
+      display: flex
+      justify-content: flex-start
+
     &-item
       margin-bottom: 50px
 

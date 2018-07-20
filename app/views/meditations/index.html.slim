@@ -7,36 +7,37 @@ section.intro
 
 section.featured-meditations
   .container
-    - meditation = @meditations.sample
-    .meditation-item
-      h3.meditation-header
-        | Meditation of the day
-      .video
-        .video-preview style="background-image: url(#{meditation.image.url})"
-          img src="#{meditation.image.url}"
-          a.video.button href=meditation_url(meditation)
-        h4.video-title = meditation.name
-        p Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения.
-    - meditation = @meditations.sample
-    .meditation-item
-      h3.meditation-header
-        | Trending now
-      .video
-        .video-preview style="background-image: url(#{meditation.image.url})"
-          img src="#{meditation.image.url}"
-          a.video.button href=meditation_url(meditation)
-        h4.video-title = meditation.name
-        p Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения.
-    - meditation = @meditations.sample
-    .meditation-item
-      h3.meditation-header
-        | Let Fate Decide
-      .video
-        .video-preview style="background-image: url(#{meditation.image.url})"
-          img src="#{meditation.image.url}"
-          a.video.button href=meditation_url(meditation)
-        h4.video-title Generate a random meditation
-        p Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения.
+    .meditation-wrap
+      - meditation = @meditations.sample
+      .meditation-item
+        h3.meditation-header
+          | Meditation of the day
+        .video
+          .video-preview style="background-image: url(#{meditation.image.url})"
+            img src="#{meditation.image.url}"
+            a.video.button href=meditation_url(meditation)
+          h4.video-title = meditation.name
+          p Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения.
+      - meditation = @meditations.sample
+      .meditation-item
+        h3.meditation-header
+          | Trending now
+        .video
+          .video-preview style="background-image: url(#{meditation.image.url})"
+            img src="#{meditation.image.url}"
+            a.video.button href=meditation_url(meditation)
+          h4.video-title = meditation.name
+          p Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения.
+      - meditation = @meditations.sample
+      .meditation-item
+        h3.meditation-header
+          | Let Fate Decide
+        .video
+          .video-preview style="background-image: url(#{meditation.image.url})"
+            img src="#{meditation.image.url}"
+            a.video.button href=meditation_url(meditation)
+          h4.video-title Generate a random meditation
+          p Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения.
 
 section.custom-meditation
   .container

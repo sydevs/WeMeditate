@@ -12,6 +12,7 @@ var Meditation = {
     Meditation.dropdown_close = $('.select-meditation .dropdown .btn-close')
     Meditation.goals_wrapper = $('.select-meditation .goals')
     Meditation.goals = $('.select-meditation .dropdown li')
+    Meditation.slider = $('.featured-meditations .meditation-wrap')
 
     Meditation.select.on('click', '.active-goal', Meditation.toggle_dropdown)
     Meditation.goals.on('click', Meditation.toggle_active_goal)
@@ -20,6 +21,9 @@ var Meditation = {
     Meditation.init_close_dropdown_listener()
     Meditation.set_goal_icon()
     Meditation._on_mobile()
+
+    $(window).resize(Meditation._on_resize)
+    Meditation._on_resize()
   },
 
   set_goal_icon: function () {
@@ -87,11 +91,31 @@ var Meditation = {
     $('body').toggleClass('open-menu')
   },
 
+  init_slick: function () {
+    Meditation.slider.slick({
+      dots: true
+    })
+  },
+
+  destroy_slick: function () {
+    Meditation.slider.slick('unslick')
+  },
+
   _on_mobile: function () {
     if ($(window).width() < 740) {
-      $('.featured-meditations .container').slick({
-        dots: true
-      })
+      Meditation.init_slick()
+    }
+  },
+
+  _on_resize: function() {
+    if ($(window).width() > 739) {
+      if (Meditation.slider.hasClass('slick-initialized')) {
+        Meditation.destroy_slick();
+      }
+      return
+    }
+    if (!Meditation.slider.hasClass('slick-initialized')) {
+      return Meditation.init_slick()
     }
   },
 
