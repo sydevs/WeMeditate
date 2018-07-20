@@ -2,7 +2,6 @@
 @import "../../../mixins/vars"
 
 section.type-special.format-banner
-  z-index: -1
   text-align: center
 
   .background
@@ -26,6 +25,12 @@ section.type-special.format-banner
     display: flex
     flex-direction: column
     justify-content: center
+
+    .static-page-home &
+      padding: 25vh 0 0
+
+      @include mobile
+        padding: 0
 
     h1
       font-family: $raleway
@@ -51,20 +56,45 @@ section.type-special.format-banner
       color: $color-text-inverse
 
   .style-front-page
+    min-height: 100vh
+    margin: 0
+
+    h1, h2
+      max-width: 440px
+      margin-left: auto
+      margin-right: auto
+
+      @include mobile
+        max-width: 90%
+
     h1
       margin-top: 0
       margin-bottom: 1.1em
       padding: 0 5%
 
-      font-size: 2.3em
+      font-size: 2.5em
+      font-family: $raleway
       font-weight: 400
       line-height: 1.5em
 
     h2
-      padding: 0 10%
+      font-size: 1.5em
+      font-family: $raleway-medium
+      font-weight: 500
       line-height: 1.5em
 
+      padding: 0 10%
+      max-width: 380px
+      margin-bottom: 22%
+
+      @include mobile
+        max-width: 300px
+
+      @include laptop
+        margin-bottom: 22%
+
     .action
+      position: static
       display: flex
       align-items: center
       justify-content: center
@@ -73,19 +103,23 @@ section.type-special.format-banner
 
       > *
         display: inline-block
+        font-size: 1.05em
+        font-family: $raleway-medium
+        font-weight: 500
 
       svg
-        width: 40px
+        width: 47px
         margin: 0 22px
 
         path
           fill: white
 
       svg:first-child
-        transform: rotate(-90deg) scaleX(-1)
+        transform: rotate(90deg) scaleX(-1) scaleY(-1)
 
       svg:last-child
-        transform: rotate(90deg)
+        transform: rotate(-90deg) scaleY(-1)
+
 
     @include mobile
       padding: 0
@@ -145,7 +179,7 @@ section.type-special.format-banner
 
     h1
       font-size: 2.75em
-      font-family: raleway
+      font-family: $raleway
       font-weight: 200
 
     h2
