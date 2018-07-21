@@ -11,8 +11,17 @@ body.static-page-home
       margin-bottom: 0
 
     .full.topline
+      height: 190px
       padding-bottom: 50px
-      height: 173px
+
+      @include laptop
+        height: 180px
+
+      .logo, .action
+        padding-bottom: 10px
+
+      .action
+        color: $color-text-inverse
 
   main > section:last-child
     margin-bottom: 0
