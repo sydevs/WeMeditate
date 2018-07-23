@@ -30,25 +30,87 @@ body.static-page-home
     .content-box
       font-size: 1.1em
 
-    &.format-box-with-lefthand-image img,
-    &.format-box-with-righthand-image img
-      @include laptop-or-larger
-        max-width: 52.5vw
+      @include mobile
+        width: 100%
 
-    &.format-box-with-righthand-image .content-box
-      margin-left: -460px
+    //is it  move to app/assets/stylesheets/front/sections/text_section.sass?
+    &.format-box-with-lefthand-image,
+    &.format-box-with-righthand-image
+      img
+        @include laptop-or-larger
+          max-width: 52.5vw
 
-      @include desktop
-        margin-left: -530px
+      @include tablet-or-smaller
+        margin-bottom: 7vh
+
+        .container
+          display: flex
+          flex-direction: column
+
+        .image
+          display: flex
+
+          img
+            max-height: 560px
+
+        .content
+          position: static
+
+          &-box
+            max-width: 100%
+            width: 100%
+            padding: 92px 110px
+
+      @include mobile
+        .image
+          img
+            max-height: 320px
+
+        &.with.gradient::before
+          content: ''
+          display: block !important
+          height: 100vh
+
+    &.format-box-with-righthand-image
+      .content-box
+        margin-left: -493px
+
+      @include tablet-or-smaller
+        .image
+          justify-content: flex-end
+
+    &.format-box-with-lefthand-image
+      @include tablet-or-smaller
+      .image
+        justify-content: flex-start
+
+        &:before
+          left: 102%
+          bottom: -11.5%
+          z-index: 0
 
     &.format-box-over-image
-      height: 100vh
+      min-height: 100vh
 
       .content-box
         @include laptop-or-larger
           margin-left: 4.2%
 
     &.format-grid
+      background-color: $background-white
+      margin-bottom: 15vh
+
+      @include mobile
+        padding-top: 7vh
+
+      article
+        @include tablet
+          position: static !important
+          width: 100% !important
+
+          margin-bottom: 50px
+          padding: 0 110px !important
+
       .title
         margin-bottom: 0.5em
 
@@ -58,3 +120,76 @@ body.static-page-home
 
       p
         line-height: 1.8em
+  //
+  #sahaja-yoga
+    position: relative
+    z-index: 6
+
+    .image.with.circle.decoration::before
+      @include tablet-or-smaller
+        bottom: -15%
+        left: 90%
+
+      @include mobile
+        background-size: 480px 480px
+        background-position: 0 0
+        right: 29px
+        left: auto
+        bottom: 112px
+
+        height: 270px
+        width: 250px
+
+        overflow: hidden
+
+  #shri-mataji
+    .content
+      @include tablet
+        left: 0
+
+  .type-video
+    &.with.gradient::before
+      @include mobile
+        content: ''
+        display: block !important
+        top: -10%
+        bottom: -10%
+
+        height: 50vh
+
+    .container
+      z-index: 9
+      @include laptop-or-larger
+        overflow: hidden
+
+      @include mobile
+        padding: 0
+
+  #about-us
+    position: relative
+    z-index: 9
+
+  #about-us.left.orange.format-box-over-image
+    position: relative
+    z-index: 7
+
+    .content
+      @include tablet
+        justify-content: flex-end
+        left: 11vw
+        padding-bottom: 90px
+
+      &-box
+        @include tablet
+          max-width: 550px
+          padding: 45px 45px
+
+    p
+      @include tablet
+        margin-bottom: .5em
+
+  #events
+    @include tablet-or-smaller
+      .content
+        &-box
+          background-color: transparent

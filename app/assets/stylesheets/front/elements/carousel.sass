@@ -32,18 +32,57 @@
         content: $icon-arrow-right
 
   &.video
+    max-width: 780px
+
+    @include laptop-or-larger
+      position: static
+
+    @include tablet-or-smaller
+      max-width: 100%
+
     .slick-list
-      overflow: visible
+      @include laptop-or-larger
+        position: static
+        overflow: visible
 
     .slick-slide
+      opacity: .5
+
       .video.wrapper
-        max-width: 680px
+        max-width: 630px
         padding: 10px
+        height: 434px
+
+        @include tablet-or-smaller
+          max-width: 94vw
+          width: 90vw
+          overflow: hidden
+
+        @include mobile
+          height: 330px
+
+      .video-preview
+        background-size: cover
+        background-position: center center
+        height: 100%
+
+        @include tablet
+          display: flex
+          align-items: center
+          height: 100%
+          flex-direction: column
+          justify-content: center
+
+        img
+          opacity: 0
 
       &:not(.slick-active)
         .button, .title
           opacity: 0
           visibility: hidden
+
+    .slick-active
+      opacity: 1
 
     .slick-arrow
       @include tablet-or-larger
@@ -56,13 +95,20 @@
           color: white
 
         &.slick-prev
-          margin-left: 30px
+          margin-left: 0
 
         &.slick-next
-          margin-right: 30px
+          margin-right: 0
 
         &:hover
           background: gray
+
+      @include tablet
+        &.slick-prev
+          margin-left: -10px
+
+        &.slick-next
+          margin-right: -10px
 
       @include mobile
         width: 35px
