@@ -5,11 +5,12 @@
   - items = section.extra_attr('items', [])
 
   .wrapper
-    .video.carousel data-style='video'
-      - items.each_with_index do |item, index|
-        .video.wrapper
-          = render 'shared/video_preview', thumbnail: section.image(item['image_uuid']).url, video_url: section.video(item['video_uuid']).url
-          h3.title = item['title']
+    .container
+      .video.carousel data-style='video'
+        - items.each_with_index do |item, index|
+          .video.wrapper
+            = render 'shared/video_preview', thumbnail: section.image(item['image_uuid']).url, video_url: section.video(item['video_uuid']).url
+            h3.title = item['title']
 - else
   .video.wrapper
     = render 'shared/video_preview', thumbnail: section.image.url, video_url: section.video.url
