@@ -26,9 +26,12 @@ section.type-text
 
       position: absolute
       left: 50%
-      top: 10%
+      top: 7%
       min-height: 88%
       width: 100%
+
+      @include tablet
+        position: static
 
     .content-box
       background: white
@@ -45,7 +48,7 @@ section.type-text
         margin-left: -480px
 
       .box.button
-        margin-top: 2em
+        margin-top: 1.7em
 
       *:first-child
         margin-top: 0
@@ -77,16 +80,26 @@ section.type-text
         margin: 3em 0 !important
         padding: 0 !important
 
+      .sidetext
+        font-size: 1.875em
+        letter-spacing: .1em
+
+
   &.format-box-over-image
     height: 90vh
 
-    @include mobile
-
     &.with.gradient
-      z-index: -1
-
       &::before
         z-index: 0
+
+        @include laptop
+          width: 13vw
+
+        @include tablet
+          top: -10%
+
+        @include tablet-or-smaller
+          width: 13vw
 
     .background > img
       padding-left: 70px
@@ -96,12 +109,13 @@ section.type-text
       .with.triangle
         position: absolute
         bottom: 0
+        right: 20px
 
     @include mobile
       height: auto
 
       .content
-        .content-box.inverse
+        &-box.inverse
           .title, p
             color: $color-text-normal
 
@@ -110,10 +124,13 @@ section.type-text
             border-color: $color-text-dark
 
       .background
-        background: none !important
+        background-size: auto 57vh
+        background-position-y: 0
 
         > img
           display: block
+          height: 57vh
+          opacity: 0
 
       .with.triangle::after
         left: 65%
@@ -122,56 +139,52 @@ section.type-text
       padding-right: 7%
 
       @include mobile
-        background: white
-        margin-top: -5px
+        background-color: transparent
+        margin-top: 5px
         padding-right: 0
 
     .content
       position: relative
+      left: 50px
 
       @include mobile
         position: static
         padding: 0
         padding-right: 35px
-        padding-left: 75px
+        padding-left: 20px
 
-    .content
-      left: 50px
+      &-box
+        max-width: 700px
+        width: 45%
+        background: transparent
+        padding: 35px 40px
+        margin-left: 2%
 
-      @include tablet
-        left: 80px
+        @include tablet
+          max-width: 525px
+          padding: 100px 80px
+          width: auto
 
-    .content-box
-      max-width: 700px
-      width: 45%
-      background: transparent
-      padding: 35px 40px
-      margin-left: 2%
+        p
+          font-size: 1rem
+          letter-spacing: -0.35px
+          margin-bottom: 1.2em
 
-      @include tablet-or-smaller
-        padding: 3.5% 4%
-        width: auto
+        &.inverse
+          border: 2px solid $color-text-inverse
 
-      @include tablet
-        max-width: 50%
+          .title, p
+            color: $color-text-inverse
 
-      p
-        font-size: 0.95em
-        letter-spacing: -0.35px
-        margin-bottom: 1.2em
-
-      &.inverse
-        border: 2px solid $color-text-inverse
-
-        .title, p
-          color: $color-text-inverse
+            @include mobile
+              color: $color-text-normal
 
   &.format-box-with-righthand-image,
   &.format-box-with-lefthand-image
     .image
       &.with.circle.decoration::before
         position: absolute
-        left: 60.5%
+        left: 64.5%
         bottom: 8.5%
         z-index: 10
 
@@ -182,7 +195,7 @@ section.type-text
 
       img
         max-height: 92vh
-        max-width: 47.25vw
+        max-width: 50vw
 
         @include tablet-or-smaller
           max-width: none
@@ -203,29 +216,31 @@ section.type-text
 
     .image
       float: right
+      @include tablet
+        .content
+          align-items: flex-end
 
     @include mobile
       .container
-        padding-left: 75px
+        padding-left: 20px
 
       .image
-        margin-right: -35px
+        margin: 0
+        img
+          margin-right: -15px
 
       .with.triangle::after
         right: 65%
+
 
   &.format-box-with-lefthand-image
     .content-box
       margin-left: -140px
       left: auto
 
-    @include desktop
-      .content-box
-        margin-left: -140px
-
     @include tablet
       .content
-        align-items: flex-end
+        align-items: flex-start
 
       .content-box
         padding: 65px
@@ -233,10 +248,12 @@ section.type-text
 
     @include mobile
       .container
-        padding-right: 75px
+        padding-right: 20px
 
       .image
-        margin-left: -35px
+        margin: 0
+        img
+          left: -15px
 
       .with.triangle::after
         left: 65%
