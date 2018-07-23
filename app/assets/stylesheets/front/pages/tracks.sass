@@ -1,3 +1,4 @@
+@import "../../mixins/functions"
 @import "../../mixins/vars"
 
 body.tracks-index
@@ -58,9 +59,84 @@ body.tracks-index
     .current-info
       margin-left: 15px
 
-    .plyr__controls .extra
-      @include mobile
-        display: none
+    .info
+      padding-left: 70px
+
+    .plyr__controls
+      .extra
+        @include mobile
+          display: none
+
+      > .plyr__control
+        &:first-child
+          display: flex
+          position: absolute
+          top: -43px
+          border: 1px solid
+          border-radius: 0
+          width: 40px
+          height: 40px
+          background: #fff
+
+          > *
+            margin: auto
+
+          .equalizer
+            display: none
+            position: relative
+            height: 24px
+            line-height: 24px
+            font-size: 0
+            overflow: hidden
+
+            &-bar
+              display: inline-block
+              width: 1px
+              height: 100%
+              background: #9d9d9c
+              margin-right: 2px
+              transition: all .3s ease
+
+              &:nth-child(1)
+                height: 70%
+                @include equalize-animation
+
+              &:nth-child(2)
+                @include equalize-animation-2
+
+              &:nth-child(3)
+                height: 70%
+                @include equalize-animation
+                animation-duration: .2s
+
+              &:nth-child(4)
+                @include equalize-animation-2
+                animation-duration: 150ms
+
+              &:nth-child(5)
+                height: 70%
+                @include equalize-animation
+                animation-duration: 150ms
+
+              &:nth-child(6)
+                height: 70%
+                @include equalize-animation
+                animation-duration: .2s
+
+    .plyr--playing
+      .plyr__control
+        &:first-child
+          .equalizer
+            display: block
+            font-size: 30px
+
+          .icon--pressed
+            display: none
+
+
+    .plyr__progress--buffer
+      height: 2px
+      margin-top: -1px
 
     #track-player-title
       font-size: 1.5em
@@ -76,7 +152,6 @@ body.tracks-index
 
   .playlist
     position: relative
-    //max-height: 660px
     min-height: 460px
     width: 100%
     max-width: 638px

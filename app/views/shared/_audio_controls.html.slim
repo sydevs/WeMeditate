@@ -6,6 +6,10 @@
       use xlink:href='#plyr-play'
     span.label--pressed.plyr__tooltip role='tooltip' = t('player.pause')
     span.label--not-pressed.plyr__tooltip role='tooltip' = t('player.pause')
+    .equalizer
+      - 6.times do
+        span.equalizer-bar
+
   .plyr__progress
     label.plyr__sr-only for='plyr-seek-{id}' = t('player.seek')
     input data-plyr='seek' id='plyr-seek-{id}' max='100' min='0' step='0.01' type='range' value='0' /
