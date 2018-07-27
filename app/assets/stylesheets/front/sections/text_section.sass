@@ -109,11 +109,25 @@ section.type-text
       padding-left: 70px
       display: none
 
+
     @include tablet-or-larger
       .with.triangle
         position: absolute
         bottom: 0
-        right: 20px
+
+        &.right
+          right: 20px
+
+        &.left
+          left: 20px
+
+    @include desktop
+      .with.triangle
+        &.right
+          right: calc(50% - 640px)
+
+        &.left
+          left: calc(50% - 640px)
 
     @include mobile
       height: auto

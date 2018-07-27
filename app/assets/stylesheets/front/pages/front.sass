@@ -170,6 +170,9 @@ body.static-page-home
       #grid
         color: #9d9d9c
 
+        @include desktop-or-smaller
+          height: auto !important
+
         @include mobile
           margin-top: 0
 
@@ -177,19 +180,19 @@ body.static-page-home
           @include desktop-or-smaller
             min-height: auto
 
-          article
-            padding: 20px
-            font-size: 1.15em
+        article
+          padding: 20px
+          font-size: 1.15em
 
-            @include desktop-or-smaller
-              position: static
-              width: 100%
-              margin-bottom: 50px
-              padding: 0 110px
+          @include desktop-or-smaller
+            position: static !important
+            width: 100% !important
+            margin-bottom: 50px
+            padding: 0 110px !important
 
-            @include mobile
-              padding: 0
-              margin-bottom: 2em
+          @include mobile
+            padding: 0 !important
+            margin-bottom: 2em
 
         .title
           margin-bottom: 0.5em
@@ -245,6 +248,11 @@ body.static-page-home
 
         @include desktop-lg
           max-width: 700px
+
+        @include tablet
+          max-width: 510px
+          margin-top: 47px
+          padding: 90px 77px
 
       @include desktop-or-smaller
         left: 0
