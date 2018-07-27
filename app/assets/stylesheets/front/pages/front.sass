@@ -11,7 +11,7 @@ body.static-page-home
       margin-bottom: 0
 
     .full.topline
-      height: 190px
+      height: 194px
       padding-bottom: 50px
 
       @include laptop
@@ -26,40 +26,90 @@ body.static-page-home
   main > section:last-child
     margin-bottom: 0
 
+  .sidetext
+    @include desktop-or-smaller
+      &.top-left
+        padding-top: 77px
+
+      &.top-right
+        right: 2.2em
+        top: 1em
+
+    @include tablet-or-smaller
+      &.top-left
+        padding-top: 35px
+
+    @include mobile
+      font-size: 1.5em !important
+
+      &.top-right
+        margin-right: 0
+
+  .with.gradient
+    &::before
+      @include tablet-or-smaller
+        width: 22vw
+
+      @include laptop
+        width: 18vw
+
+
   section.type-text
+
+    @include laptop
+      overflow: hidden
+
     .content-box
       font-size: 1.1em
 
       @include mobile
         width: 100%
 
+      .title
+        @include laptop
+          font-size: 1.5em
+
+      p
+        font-size: 1.025em
+
+        @include laptop
+          font-size: 1.37em
+
     //is it  move to app/assets/stylesheets/front/sections/text_section.sass?
     &.format-box-with-lefthand-image,
     &.format-box-with-righthand-image
+      min-height: 100vh
+
       img
-        @include laptop-or-larger
+        @include desktop
           max-width: 52.5vw
 
       @include tablet-or-smaller
+        .content-box
+          padding: 88px 110px
+
+      @include desktop-or-smaller
         margin-bottom: 7vh
+
+        .image
+          display: flex
 
         .container
           display: flex
           flex-direction: column
 
-        .image
-          display: flex
-
-          img
-            max-height: 560px
-
         .content
           position: static
+          margin: 0
 
           &-box
             max-width: 100%
-            width: 100%
-            padding: 92px 110px
+            margin: 0
+
+      @include tablet-or-smaller
+        .image
+          img
+            max-height: 560px
 
       @include mobile
         .image
@@ -75,12 +125,15 @@ body.static-page-home
       .content-box
         margin-left: -493px
 
-      @include tablet-or-smaller
+        @include desktop-or-smaller
+          margin: 0
+
+      @include desktop-or-smaller
         .image
           justify-content: flex-end
 
     &.format-box-with-lefthand-image
-      @include tablet-or-smaller
+      @include desktop-or-smaller
       .image
         justify-content: flex-start
 
@@ -93,40 +146,78 @@ body.static-page-home
       min-height: 100vh
 
       .content-box
-        @include laptop-or-larger
-          margin-left: 4.2%
+        padding: 90px 100px
+        width: 100%
+        max-height: 550px
+
+        @include desktop
+          margin-top: 2.5em
+
+        @include desktop
+          margin-left: 3.2%
+
+        @include laptop
+          margin: 0
+          top: 7.5%
 
     &.format-grid
       background-color: $background-white
       margin-bottom: 15vh
 
-      @include mobile
-        padding-top: 7vh
+      @include desktop-or-smaller
+        margin-bottom: 0
 
-      article
-        @include tablet
-          position: static !important
-          width: 100% !important
+      #grid
+        color: #9d9d9c
 
-          margin-bottom: 50px
-          padding: 0 110px !important
+        @include mobile
+          margin-top: 0
 
-      .title
-        margin-bottom: 0.5em
+        &.items .grid-sizer
+          @include desktop-or-smaller
+            min-height: auto
 
-      article
-        padding: 20px
-        font-size: 1.15em
+          article
+            padding: 20px
+            font-size: 1.15em
 
-      p
-        line-height: 1.8em
+            @include desktop-or-smaller
+              position: static
+              width: 100%
+              margin-bottom: 50px
+              padding: 0 110px
+
+            @include mobile
+              padding: 0
+              margin-bottom: 2em
+
+        .title
+          margin-bottom: 0.5em
+          color: inherit
+          @include mobile
+            font-size: 1.25em !important
+
+        p
+          line-height: 1.8em
+          color: inherit
+          @include mobile
+            font-size: .875em !important
   //
   #sahaja-yoga
     position: relative
     z-index: 6
+    margin-bottom: -13vh
+    padding-bottom: 22vh
+
+    @include desktop-or-smaller
+      margin-bottom: -22vh
+
+    @include desktop
+      width: 100%
+      overflow: hidden
 
     .image.with.circle.decoration::before
-      @include tablet-or-smaller
+      @include desktop-or-smaller
         bottom: -15%
         left: 90%
 
@@ -143,12 +234,34 @@ body.static-page-home
         overflow: hidden
 
   #shri-mataji
+    @include desktop
+      margin-bottom: 30vh
+
+    @include desktop-or-smaller
+      margin-bottom: 150px
+
     .content
-      @include tablet
+      &-box
+        margin-left: -25px
+        max-width: 640px
+
+        @include desktop-lg
+          max-width: 700px
+
+      @include desktop-or-smaller
         left: 0
 
   .type-video
+    @include desktop-or-smaller
+      margin-bottom: 14vh
+
+    .wrapper
+      @include mobile
+        padding: 0 25px
+
     &.with.gradient::before
+      bottom: 4%
+
       @include mobile
         content: ''
         display: block !important
@@ -159,37 +272,106 @@ body.static-page-home
 
     .container
       z-index: 9
+
       @include laptop-or-larger
         overflow: hidden
 
       @include mobile
         padding: 0
 
+    .button.video
+      @include tablet
+        width: 170px
+        height: 170px
+
   #about-us
     position: relative
     z-index: 9
 
+    &:not(.format-box-over-image)
+      margin-bottom: 25vh
+
+      @include desktop-lg
+        margin-bottom: 14vh
+
+      @include mobile
+        margin-bottom: 15vh
+
+      @include desktop-or-smaller
+        margin-bottom: 100px
+
   #about-us.left.orange.format-box-over-image
     position: relative
     z-index: 7
+    overflow: visible
+
+    @include desktop-or-smaller
+      margin-bottom: 150px
+
+    @include mobile
+      margin-bottom: 15vh
+
+    .background
+      background-position: center top
 
     .content
-      @include tablet
+      top: 16%
+
+      @include desktop-lg
+        top: 20%
+
+      @include desktop-or-smaller
         justify-content: flex-end
+        left: 19vw
+        top: 0
+
+      @include tablet-or-smaller
         left: 11vw
-        padding-bottom: 90px
 
       &-box
+        padding: 40px 45px
+        margin-left: 2.5%
+        max-width: 550px
+
+        @include desktop-lg
+          padding: 83px 100px
+          margin-top: 0
+          max-width: 700px
+
+        @include desktop-or-smaller
+          width: 100%
+          padding: 45px 45px
+          max-width: 680px
+          margin-left: -15px
+
         @include tablet
           max-width: 550px
-          padding: 45px 45px
-
     p
-      @include tablet
+      @include desktop-or-smaller
         margin-bottom: .5em
 
   #events
-    @include tablet-or-smaller
+    margin-bottom: 22vh
+    &:before
+      bottom: 5%
+
+    @include desktop
+      margin-bottom: 14vh
+
+    @include desktop-or-smaller
+      margin-bottom: 100px
+
+    @include mobile
+      margin-bottom: 15vh
+
+    @include desktop-or-smaller
       .content
         &-box
           background-color: transparent
+
+      &.with.gradient.gray::before
+        bottom: 0
+
+  footer
+    @include desktop-or-smaller
+      margin-top: 3rem !important

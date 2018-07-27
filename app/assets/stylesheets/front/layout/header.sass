@@ -5,7 +5,8 @@ header
   position: relative
   min-height: 85px
   z-index: 1000
-  padding-top: 5px
+  @include desktop
+    padding-top: 5px
 
   .mobile
     display: block
@@ -404,13 +405,17 @@ header
     right: 0
 
     .topline
-      height: 84px
+      height: 87px
       align-items: center
 
       > *
         display: inline-block
         height: 34px
         margin-left: -5px
+
+    .burger-button
+      position: relative
+      top: 5px
 
   // INVERSE TRANSITIONS
   .topline .logo svg path,
@@ -473,6 +478,7 @@ html.show-menu
 
     .burger-button
       position: relative
+      top: 0
 
       &:before, &:after
         content: ""

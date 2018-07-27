@@ -1,5 +1,10 @@
 @import "../../mixins/vars"
 
+.carousel-wrap
+  overflow: hidden
+  @include tablet-or-smaller
+    overflow: visible
+
 .carousel.slick-slider
   max-width: 1000px
   width: 100%
@@ -34,6 +39,10 @@
   &.video
     max-width: 780px
 
+    @include laptop
+      //width: 87vw
+      max-width: 99%
+
     @include laptop-or-larger
       position: static
 
@@ -51,7 +60,11 @@
       .video.wrapper
         max-width: 630px
         padding: 10px
-        height: 434px
+
+
+        @include laptop
+          max-width: 78vw
+
 
         @include tablet-or-smaller
           max-width: 94vw
@@ -59,22 +72,35 @@
           overflow: hidden
 
         @include mobile
-          height: 330px
+
 
       .video-preview
         background-size: cover
         background-position: center center
-        height: 100%
+        height: 414px
+
+        @include laptop
+          height: 600px
 
         @include tablet
           display: flex
           align-items: center
-          height: 100%
           flex-direction: column
           justify-content: center
 
+
+        @include mobile
+          height: 310px
+
         img
           opacity: 0
+
+      .title
+        font-size: 1.5em
+        font-family: $raleway-bold
+        line-height: 1.7em
+        text-align: left
+        margin-top: 1.5em
 
       &:not(.slick-active)
         .button, .title
@@ -85,31 +111,35 @@
       opacity: 1
 
     .slick-arrow
-      @include tablet-or-larger
+      background: #999
+      width: 60px
+      height: 60px
+      margin-top: -43px
+
+
+      @include laptop
+        width: 100px
+        height: 100px
+        margin-top: -90px
         background: #999
-        width: 60px
-        height: 60px
-        margin-top: -30px
-
-        &::before
-          color: white
-
+      @include desktop
         &.slick-prev
           margin-left: 0
 
         &.slick-next
           margin-right: 0
 
-        &:hover
-          background: gray
-
       @include tablet
         &.slick-prev
-          margin-left: -10px
+          margin-left: -25px
 
         &.slick-next
-          margin-right: -10px
-
+          margin-right: -25px
+      @include tablet-or-larger
+        &::before
+          color: white
+          &:hover
+            background: gray
       @include mobile
         width: 35px
         height: auto
@@ -119,7 +149,7 @@
         background: white
 
         &.slick-prev
-          left: -35px
+          left: -25px
 
         &.slick-next
-          right: -35px
+          right: -25px

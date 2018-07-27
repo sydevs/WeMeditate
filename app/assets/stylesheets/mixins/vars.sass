@@ -8,7 +8,8 @@ $raleway-semi: "raleway-semi", sans-serif
 $mobile-width: 320px
 $tablet-width: 740px
 $laptop-width: 992px
-$desktop-width: 1300px
+$desktop-width: 1200px
+$desktop-lg-width: 1400px
 
 $dark-gray: #7b7b7b
 $gray: #d7d7d6
@@ -80,4 +81,12 @@ $icon-filters: '\e917'
 
 @mixin laptop-or-larger
   @media only screen and (min-width: #{$laptop-width})
+    @content
+
+@mixin desktop-or-smaller
+  @media only screen and (max-width: #{$desktop-width - 1px})
+    @content
+
+@mixin desktop-lg
+  @media only screen and (min-width: #{$desktop-lg-width})
     @content

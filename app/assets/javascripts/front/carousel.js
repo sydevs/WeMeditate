@@ -23,7 +23,7 @@ var Carousel = {
   },
 
   video_options: {
-    centerPadding: '6%',
+    centerPadding: '7%',
     centerMode: true,
     slidesToShow: 1,
     responsive: [
@@ -76,6 +76,12 @@ var Carousel = {
         $carousel.slick(Carousel.default_options)
       }
     })
+
+    if (jQuery( this ).closest('.menu-item').hasClass('menu-item-type-custom')) {
+      console.log('yes', jQuery( this ))
+    } else {
+      console.log('no', jQuery( this ))
+    }
   },
 }
 
