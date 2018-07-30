@@ -20,7 +20,7 @@ body.tracks-index
       line-height: 1em
 
     > h3
-      margin-top: 2em
+      margin-top: 2.2em
 
   .filters
     margin-left: 3px
@@ -29,29 +29,57 @@ body.tracks-index
       text-align: center
 
     .filter
-      margin-right: 44px
+      margin-right: 48px
 
       @include tablet-or-smaller
         margin: 10px 22px
+    &.mood
+      .filter
+        font-size: 16px
+        line-height: 29px
+        border-color: #9d9d9c
+        color: #9d9d9c
+        padding: 2px 0
+        display: inline-block
+        width: 130px
+        font-family: $raleway-semi
+        font-weight: 400
 
     &.instrument
+      display: flex
+      justify-content: flex-start
       @include mobile
         display: flex
         justify-content: space-around
 
       .filter
-        opacity: 0.4
+        display: flex
+        align-items: center
+        justify-content: flex-start
         margin: 0 30px
+        cursor: pointer
 
         @include mobile
           margin: 0 5px
 
+        &-icon
+          svg
+            fill: #9d9d9c
+            height: 50px
+            width: auto
+            transition: fill .3s ease
+        &-name
+          font-size: 1em
+          padding-left: 10px
+
         &.active,
         &:hover
           opacity: 0.95
+          svg
+            fill: $color-text-blue
 
       img
-        height: 45px
+        height: 50px
 
   .player
     margin-top: 3em
@@ -63,6 +91,7 @@ body.tracks-index
       padding-left: 70px
 
     .plyr__controls
+      color: #9d9d9c
       .extra
         @include mobile
           display: none
@@ -77,6 +106,10 @@ body.tracks-index
           width: 40px
           height: 40px
           background: #fff
+          &:hover
+            .equalizer-bar
+              background: $color-player-blue
+
 
           > *
             margin: auto
@@ -122,21 +155,60 @@ body.tracks-index
                 height: 70%
                 @include equalize-animation
                 animation-duration: .2s
-
-    .plyr--playing
-      .plyr__control
-        &:first-child
-          .equalizer
-            display: block
-            font-size: 30px
-
-          .icon--pressed
+        &[data-plyr="mute"]
+          width: 30px
+          height: 30px
+          position: relative
+          overflow: hidden
+          text-align: left
+          &:before
+            content: ''
+            display: inline-block
+            width: 17px
+            height: 20px
+            background: image-url("sections/music/volume.png") no-repeat
+            background-size: 17px 20px
+          &[aria-pressed="true"]
+            &:before
+              width: 12px
+          svg
             display: none
 
+    .plyr
+      &--playing
+        .plyr__control
+          &:first-child
+            .equalizer
+              display: block
+              font-size: 30px
 
-    .plyr__progress--buffer
-      height: 2px
-      margin-top: -1px
+            .icon--pressed
+              display: none
+
+      &__progress
+        font-size: 12px
+        //color: #9d9d9c
+        font-weight: 300
+        margin: 0
+        &--buffer
+          display: none
+
+      &__time
+        &--current,
+        &--duration
+          position: absolute
+          top: 100%
+
+        &--current
+          left: 0
+
+        &--duration
+          right: 0
+
+
+    .playlist
+      .info
+        padding-left: 0
 
     #track-player-title
       font-size: 1.5em
@@ -204,6 +276,7 @@ body.tracks-index
       margin-top: 5px
       font-size: 2em
       margin-right: 390px
+      border: 1px solid transparent
 
     .list
       position: relative

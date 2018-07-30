@@ -15,7 +15,8 @@
     input data-plyr='seek' id='plyr-seek-{id}' max='100' min='0' step='0.01' type='range' value='0' /
     progress.plyr__progress--buffer max='100' min='0' value='0' = t('player.%_buffered')
     span.plyr__tooltip role='tooltip' 00:00
-  span.plyr__time--current 00:00
+    span.plyr__time--current 00:00
+    span.plyr__time--duration
   button.extra.plyr__control data-plyr='rewind' type='button'
     svg role='presentation'
       use xlink:href='#plyr-rewind'

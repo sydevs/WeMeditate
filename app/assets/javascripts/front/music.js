@@ -25,6 +25,7 @@ var Music = {
     Music.player_title = $('#track-player-title')
     Music.player_artist = $('#track-player-artist')
     Music.mood_title = $('#track-mood-title')
+    Music.instrument_filters = $('.instrument .filter')
 
     Music.list = $('.playlist #grid')
     Music.track_selectors = Music.list.find('.track > a.info')
@@ -35,6 +36,8 @@ var Music = {
     Music.default_cover_url = Music.cover.attr('href')
 
     Music.filter_icons = $('#selected-filter-icons')
+
+    Music.set_instrument_icon()
 
     $('.instrument.filters > a').on('mouseup', Music._on_clicked_instrument_filter)
     $('.mood.filters > a').on('mouseup', Music._on_clicked_mood_filter)
@@ -71,6 +74,29 @@ var Music = {
     }
   },
 
+  _get_instrument_icon: function (container, url, add_class) {
+    let svg
+
+    $.get(url, function (data) {
+      if (data.rootElement.innerHTML.includes('<style>')) {
+        el = data.rootElement
+        el.innerHTML = el.innerHTML.replace("<style>",`<style>.${add_class} `)
+        svg = $(el).addClass(add_class)
+      } else {
+        svg = $(data.rootElement)
+      }
+
+      // container.children('svg').remove()
+      container.append(svg)
+    })
+  },
+
+  set_instrument_icon: function () {
+    Music.instrument_filters.each(function () {
+      Music._get_instrument_icon($(this).find('.filter-icon'), $(this).find('.filter-icon').data('img'), $(this).find('.filter-name').text())
+    })
+  },
+
   _on_select_track: function(e) {
     var image_url = this.dataset.artistImage
     Music.player_title.text(this.textContent)
@@ -91,7 +117,10 @@ var Music = {
     }
 
     Music.player.play()
+
     e.preventDefault()
+    Music.list.find('.track').removeClass('active')
+    $(this).closest('.track').addClass('active')
   },
 
   format_duration: function(seconds) {
