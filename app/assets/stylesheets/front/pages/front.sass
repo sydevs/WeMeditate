@@ -23,8 +23,12 @@ body.static-page-home
       .action
         color: $color-text-inverse
 
-  main > section:last-child
-    margin-bottom: 0
+  main
+    width: 100%
+    overflow: hidden
+
+    > section:last-child
+      margin-bottom: 0
 
   .sidetext
     @include desktop-or-smaller
@@ -55,10 +59,6 @@ body.static-page-home
 
 
   section.type-text
-
-    @include laptop
-      overflow: hidden
-
     .content-box
       font-size: 1.1em
 
@@ -75,7 +75,6 @@ body.static-page-home
         @include laptop
           font-size: 1.37em
 
-    //is it  move to app/assets/stylesheets/front/sections/text_section.sass?
     &.format-box-with-lefthand-image,
     &.format-box-with-righthand-image
       min-height: 100vh
@@ -203,7 +202,7 @@ body.static-page-home
           line-height: 1.8em
           color: inherit
           font-size: .875em !important
-  //
+
   #sahaja-yoga
     position: relative
     z-index: 6
@@ -212,10 +211,6 @@ body.static-page-home
 
     @include desktop-or-smaller
       margin-bottom: -22vh
-
-    @include desktop
-      width: 100%
-      overflow: hidden
 
     .image.with.circle.decoration::before
       @include desktop-or-smaller
@@ -279,9 +274,6 @@ body.static-page-home
     .container
       z-index: 9
 
-      @include laptop-or-larger
-        overflow: hidden
-
       @include mobile
         padding: 0
 
@@ -309,7 +301,6 @@ body.static-page-home
   #about-us.left.orange.format-box-over-image
     position: relative
     z-index: 7
-    overflow: visible
 
     @include desktop-or-smaller
       margin-bottom: 150px
@@ -352,6 +343,7 @@ body.static-page-home
 
         @include tablet
           max-width: 550px
+
     p
       @include desktop-or-smaller
         margin-bottom: .5em
