@@ -14,6 +14,12 @@ body.static-page-home
       height: 194px
       padding-bottom: 50px
 
+      @include desktop
+        height: 173px
+
+      @include desktop-lg
+        height: 194px
+
       @include laptop
         height: 180px
 
@@ -31,6 +37,20 @@ body.static-page-home
       margin-bottom: 0
 
   .sidetext
+    @include desktop
+      &.top-left
+        padding-top: 10px
+
+      &.top-right
+        right: .2em
+
+    @include desktop-lg
+      &.top-left
+        padding-top: 34px
+
+      &.top-right
+        right: 1em
+
     @include desktop-or-smaller
       &.top-left
         padding-top: 77px
@@ -57,6 +77,11 @@ body.static-page-home
       @include laptop
         width: 18vw
 
+      @include desktop
+        width: 31vw
+
+      @include desktop-lg
+        width: 36vw
 
   section.type-text
     .content-box
@@ -206,11 +231,10 @@ body.static-page-home
   #sahaja-yoga
     position: relative
     z-index: 6
-    margin-bottom: -13vh
-    padding-bottom: 22vh
+    margin-bottom: 9vh
 
-    @include desktop-or-smaller
-      margin-bottom: -22vh
+    @include desktop-lg
+      margin-bottom: 9vh
 
     .image.with.circle.decoration::before
       @include desktop-or-smaller

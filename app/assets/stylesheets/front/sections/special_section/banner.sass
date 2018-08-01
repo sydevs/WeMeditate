@@ -4,6 +4,9 @@
 section.type-special.format-banner
   text-align: center
 
+  @include desktop
+    min-height: 730px
+
   .background
     position: absolute
     top: 0
@@ -28,8 +31,12 @@ section.type-special.format-banner
 
     .static-page-home &
       padding: 0
+
       .container
+        max-width: 470px
+        width: 100%
         transform: translateY(30%)
+
         @include mobile
           transform: translateY(0%)
 
@@ -65,10 +72,6 @@ section.type-special.format-banner
     margin: 0
 
     h1, h2
-      max-width: 440px
-      margin-left: auto
-      margin-right: auto
-
       @include mobile
         max-width: 90%
 
@@ -88,8 +91,12 @@ section.type-special.format-banner
       font-weight: 500
       line-height: 1.5em
 
-      padding: 0 10%
       max-width: 380px
+      width: 100%
+
+      padding: 0 10%
+      margin-left: auto
+      margin-right: auto
       margin-bottom: 22%
 
       @include mobile

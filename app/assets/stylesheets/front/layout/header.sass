@@ -5,12 +5,9 @@ header
   position: relative
   min-height: 85px
   z-index: 1000
+
   @include desktop
     padding-top: 5px
-    zoom: .9
-
-  @include desktop-lg
-    zoom: 1
 
   .mobile
     display: block
@@ -165,6 +162,7 @@ header
 
     .logo svg
       width: 60px
+      height: 43px
 
     a
       color: $color-text-normal
@@ -188,6 +186,7 @@ header
 
   .desktop
     .full.topline
+      position: relative
       height: 138px
 
       .logo, .action
@@ -202,6 +201,7 @@ header
       position: absolute
       left: 0
       right: 0
+      bottom: 50px
 
       svg
         height: 100px
@@ -209,7 +209,7 @@ header
 
     > .menubar
       display: flex
-      justify-content: space-evenly
+      justify-content: space-around
       align-items: center
       position: relative
 
