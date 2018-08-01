@@ -10,14 +10,15 @@ section.intro
 .container
   h2 = t('tracks.subtitle')
   p = t('tracks.text')
-  pre = @mood_filters.to_json
-  pre = @instrument_filters.to_json
+
 
   h3 = t('tracks.choose_mood')
   nav.mood.filters data-group='moods'
     - @mood_filters.each do |mood_filter|
-      a.filter.box.button data-filter=".#{dom_id(mood_filter)}" = mood_filter.name
-        span.filter-icon data-img="#{instrument_filter.icon_url}"
+      a.filter.box.button data-filter=".#{dom_id(mood_filter)}"
+        span.filter-icon data-img=""
+          img src=image_path('graphics/test-filter-icon.png')
+        span.filter-name = mood_filter.name
 
   h3 = t('tracks.choose_instruments')
   nav.instrument.filters data-group='instruments' data-multiple=true
