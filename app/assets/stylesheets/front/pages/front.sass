@@ -64,7 +64,7 @@ body.static-page-home
         padding-top: 35px
 
     @include mobile
-      font-size: 1.5em !important
+      font-size: 1.7em !important
 
       &.top-right
         margin-right: 0
@@ -96,6 +96,9 @@ body.static-page-home
 
       p
         font-size: 1.025em
+        @include mobile
+          font-size: .9em
+          line-height: 1.8em
 
         @include laptop
           font-size: 1.37em
@@ -136,6 +139,9 @@ body.static-page-home
             max-height: 560px
 
       @include mobile
+        .content
+          padding: 0 5px
+
         .image
           img
             max-height: 320px
@@ -176,13 +182,14 @@ body.static-page-home
 
         @include desktop
           margin-top: 2.5em
-
-        @include desktop
           margin-left: 3.2%
 
         @include laptop
           margin: 0
           top: 7.5%
+
+        @include tablet-or-smaller
+          max-height: none
 
     &.format-grid
       background-color: $background-white
@@ -236,20 +243,29 @@ body.static-page-home
     @include desktop-lg
       margin-bottom: 9vh
 
+    @include tablet-or-smaller
+      margin-bottom: -1vh
+
+    @include laptop
+      margin-bottom: -5vh
+
     .image.with.circle.decoration::before
       @include desktop-or-smaller
         bottom: -15%
         left: 90%
 
+      @include laptop
+        bottom: -10%
+
       @include mobile
-        background-size: 480px 480px
+        background-size: 410px 410px
         background-position: 0 0
-        right: 29px
+        right: 9px
         left: auto
-        bottom: 112px
+        bottom: 51px
 
         height: 270px
-        width: 250px
+        width: 245px
 
         overflow: hidden
 
@@ -290,10 +306,11 @@ body.static-page-home
       @include mobile
         content: ''
         display: block !important
-        top: -10%
+        top: -2%
         bottom: -10%
 
         height: 50vh
+        width: 30vw
 
     .container
       z-index: 9
@@ -305,6 +322,12 @@ body.static-page-home
       @include tablet
         width: 170px
         height: 170px
+
+    .sidetext
+      @include mobile
+        top: 1.5em
+        font-size: 1.7em
+        right: 2.5em
 
   #about-us
     position: relative

@@ -403,8 +403,8 @@ header
         font-size: 0.5em
 
   .mobile
-    position: fixed
-    top: 0
+    position: fixed !important
+    top: 0 !important
     left: 0
     right: 0
 
@@ -507,6 +507,15 @@ html.show-menu
 
 
 .sticky
+  .desktop
+    .logo
+      svg
+        width: 24.5em
+        height: 18px
+    .classes
+      svg
+        width: 19px
+        height: 24px
   .mobile
     background: $color-text-inverse
     .logo,

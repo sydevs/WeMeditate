@@ -46,6 +46,9 @@ section.type-text
         width: 670px
         margin-left: -480px
 
+      @include tablet-or-smaller
+        max-height: none
+
       .box.button
         margin-top: 1.8em
         @include laptop
@@ -248,8 +251,8 @@ section.type-text
           align-items: flex-end
 
     @include mobile
-      .container
-        padding-left: 20px
+      //.container
+      //  padding-left: 20px
 
       .image
         margin: 0
