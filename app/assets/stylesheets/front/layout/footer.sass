@@ -45,16 +45,23 @@ footer
     @include mobile
       display: block
 
+    @include mobile-landscape
+      display: flex
+
     > *
       margin-bottom: 66px
       flex-grow: 1
 
       @include mobile
         margin-bottom: 36px
-        text-align: center !important
+        text-align: center
+
+      @include mobile-landscape
+        flex: 1 0 25%
+        text-align: left
 
       &:last-child
-        flex-grow: 0.1
+        //flex-grow: 0.1
         text-align: right
 
     nav
@@ -74,6 +81,9 @@ footer
         @include mobile
           font-size: 1.75em
           margin-top: 0.6em
+
+        @include mobile-landscape
+          font-size: 1em
 
         > a
           margin-right: 0.75em

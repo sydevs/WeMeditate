@@ -4,9 +4,6 @@
 section.type-special.format-banner
   text-align: center
 
-  @include desktop
-    min-height: 730px
-
   .background
     position: absolute
     top: 0
@@ -70,6 +67,9 @@ section.type-special.format-banner
     min-height: 100vh
     height: 560px
     margin: 0
+
+    @include desktop
+      min-height: 730px
 
     h1
       margin-top: 0

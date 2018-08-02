@@ -262,6 +262,11 @@ section.type-text
       .with.triangle::after
         right: 65%
 
+    @include mobile-landscape
+      .image
+        img
+          margin-right: 0
+
 
   &.format-box-with-lefthand-image
     .content-box
@@ -289,6 +294,11 @@ section.type-text
 
       .with.triangle::after
         left: 65%
+
+    @include mobile-landscape
+      .image
+        img
+          left: 0
 
   &.format-grid
     .top-left.sidetext

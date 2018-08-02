@@ -59,12 +59,24 @@ $icon-filters: '\e917'
   @media only screen and (max-width: #{$tablet-width - 1px})
     @content
 
+@mixin mobile-landscape
+  @media only screen and (max-width: #{$tablet-width - 1px}) and (orientation: landscape)
+    @content
+
 @mixin tablet
   @media only screen and (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px})
     @content
 
 @mixin laptop
   @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px})
+    @content
+
+@mixin laptop-portrait
+  @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px}) and (orientation: portrait)
+    @content
+
+@mixin laptop-landscape
+  @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px}) and (orientation: landscape)
     @content
 
 @mixin desktop

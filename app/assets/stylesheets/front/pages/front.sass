@@ -51,7 +51,7 @@ body.static-page-home
       &.top-right
         right: 1em
 
-    @include desktop-or-smaller
+    @include laptop-portrait
       &.top-left
         padding-top: 77px
 
@@ -86,6 +86,9 @@ body.static-page-home
   section.type-text
     .content-box
       font-size: 1.1em
+      @include laptop-landscape
+        zoom: .8
+        max-height: 590px
 
       @include mobile
         width: 100%
@@ -111,11 +114,7 @@ body.static-page-home
         @include desktop
           max-width: 52.5vw
 
-      @include tablet-or-smaller
-        .content-box
-          padding: 88px 110px
-
-      @include desktop-or-smaller
+      @include laptop-portrait
         margin-bottom: 7vh
 
         .image
@@ -134,9 +133,24 @@ body.static-page-home
             margin: 0
 
       @include tablet-or-smaller
+        margin-bottom: 7vh
         .image
+          display: flex
           img
             max-height: 560px
+
+        .container
+          display: flex
+          flex-direction: column
+
+        .content
+          position: static
+          margin: 0
+
+          &-box
+            padding: 88px 110px
+            max-width: 100%
+            margin: 0
 
       @include mobile
         .content
@@ -155,7 +169,10 @@ body.static-page-home
       .content-box
         margin-left: -493px
 
-        @include desktop-or-smaller
+        @include laptop-portrait
+          margin: 0
+
+        @include tablet-or-smaller
           margin: 0
 
       @include desktop-or-smaller
@@ -163,17 +180,31 @@ body.static-page-home
           justify-content: flex-end
 
     &.format-box-with-lefthand-image
-      @include desktop-or-smaller
-      .image
-        justify-content: flex-start
+      @include laptop-portrait
+        .image
+          justify-content: flex-start
 
-        &:before
-          left: 102%
-          bottom: -11.5%
-          z-index: 0
+          &:before
+            left: 102%
+            bottom: -11.5%
+            z-index: 0
+
+      @include tablet-or-smaller
+        .image
+          justify-content: flex-start
+
+          &:before
+            left: 102%
+            bottom: -11.5%
+            z-index: 0
 
     &.format-box-over-image
       min-height: 100vh
+
+      .background
+        @include mobile-landscape
+          background-size: 100% auto
+          padding-top: 51vh
 
       .content-box
         padding: 90px 100px
@@ -184,7 +215,10 @@ body.static-page-home
           margin-top: 2.5em
           margin-left: 3.2%
 
-        @include laptop
+        @include laptop-landscape
+          padding: 90px 130px
+
+        @include laptop-portrait
           margin: 0
           top: 7.5%
 
@@ -194,27 +228,43 @@ body.static-page-home
     &.format-grid
       background-color: $background-white
 
-      @include desktop-or-smaller
+      @include laptop-landscape
+        zoom: .85
+
+      @include laptop-portrait
         margin-bottom: 0
+
+      @include tablet-or-smaller
+        margin-bottom: 0
+
 
       #grid
         color: #9d9d9c
 
-        @include desktop-or-smaller
+        @include laptop-portrait
+          height: auto !important
+        @include tablet-or-smaller
           height: auto !important
 
         @include mobile
           margin-top: 0
 
         &.items .grid-sizer
-          @include desktop-or-smaller
+          @include laptop-portrait
+            min-height: auto
+          @include tablet-or-smaller
             min-height: auto
 
         article
           padding: 20px
           font-size: 1.15em
 
-          @include desktop-or-smaller
+          @include laptop-portrait
+            position: static !important
+            width: 100% !important
+            margin-bottom: 50px
+            padding: 0 110px !important
+          @include tablet-or-smaller
             position: static !important
             width: 100% !important
             margin-bottom: 50px
@@ -281,6 +331,9 @@ body.static-page-home
         @include desktop-lg
           max-width: 700px
 
+        @include laptop-landscape
+          max-width: 680px
+
         @include tablet
           max-width: 510px
           margin-top: 47px
@@ -308,6 +361,10 @@ body.static-page-home
 
         height: 50vh
         width: 30vw
+
+      @include mobile-landscape
+        bottom: 0
+        top: 0
 
     .container
       z-index: 9
@@ -366,6 +423,9 @@ body.static-page-home
         left: 19vw
         top: 0
 
+      @include laptop-landscape
+        left: 10vw
+
       @include tablet-or-smaller
         left: 11vw
 
@@ -399,6 +459,10 @@ body.static-page-home
       height: 621px
       @include desktop-lg
         bottom: 9%
+      @include laptop
+        bottom: -7%
+      @include laptop-portrait
+        bottom: -10%
 
     @include desktop
       margin-bottom: 22vh
@@ -411,7 +475,15 @@ body.static-page-home
     @include mobile
       margin-bottom: 15vh
 
-    @include desktop-or-smaller
+    @include laptop-portrait
+      .content
+        &-box
+          background-color: transparent
+
+      &.with.gradient.gray::before
+        bottom: 0
+
+    @include tablet-or-smaller
       .content
         &-box
           background-color: transparent
