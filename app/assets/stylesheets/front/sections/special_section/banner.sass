@@ -12,8 +12,8 @@ section.type-special.format-banner
     left: 0
     z-index: -1
 
-    @include desktop
-      min-height: 100vh
+    //@include desktop
+    //  min-height: 100vh
 
   .content
     height: 100vh
@@ -73,6 +73,7 @@ section.type-special.format-banner
 
     @include desktop
       min-height: 730px
+      height: 100vh
 
     h1
       margin-top: 0
@@ -83,6 +84,9 @@ section.type-special.format-banner
       font-family: $raleway
       font-weight: 400
       line-height: 1.4em
+
+      @include mobile
+        padding: 0 10%
 
     h2
       font-size: 1.5em

@@ -2,6 +2,10 @@
 
 .carousel-wrap
   overflow: hidden
+
+  @include laptop
+    overflow: hidden
+
   @include tablet-or-smaller
     overflow: visible
 
@@ -39,12 +43,12 @@
   &.video
     max-width: 780px
 
-    @include laptop
-      //width: 87vw
-      max-width: 99%
-
     @include laptop-or-larger
       position: static
+
+    @include laptop
+      max-width: 98%
+      overflow: hidden
 
     @include tablet-or-smaller
       max-width: 100%
@@ -61,18 +65,15 @@
         max-width: 630px
         padding: 10px
 
-
         @include laptop
-          max-width: 78vw
-
+          max-width: 94vw
+          width: 90vw
+          overflow: hidden
 
         @include tablet-or-smaller
           max-width: 94vw
           width: 90vw
           overflow: hidden
-
-        @include mobile
-
 
       .video-preview
         background-size: cover
@@ -116,13 +117,18 @@
       height: 60px
       margin-top: -43px
 
-
       @include laptop
         width: 100px
         height: 100px
         margin-top: -90px
         background: #999
+
+      @include tablet
+        margin-top: -27px
+
       @include desktop
+        margin-top: -57px
+
         &.slick-prev
           margin-left: 0
 
@@ -135,11 +141,14 @@
 
         &.slick-next
           margin-right: -25px
+
       @include tablet-or-larger
         &::before
           color: white
+
           &:hover
             background: gray
+
       @include mobile
         width: 35px
         height: auto

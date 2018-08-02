@@ -28,7 +28,7 @@ var Carousel = {
     slidesToShow: 1,
     responsive: [
       {
-        breakpoint: 992,
+        breakpoint: 1200,
         settings: {
           arrows: true,
           slidesToShow: 1,

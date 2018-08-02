@@ -67,6 +67,10 @@ $icon-filters: '\e917'
   @media only screen and (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px})
     @content
 
+@mixin tablet-portrait
+  @media only screen and (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px}) and (orientation: portrait)
+    @content
+
 @mixin laptop
   @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px})
     @content

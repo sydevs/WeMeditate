@@ -50,7 +50,11 @@ footer
 
     > *
       margin-bottom: 66px
-      flex-grow: 1
+      flex: 1 0 25%
+
+      @include desktop
+        &:nth-child(3)
+          padding-left: 80px
 
       @include mobile
         margin-bottom: 36px
@@ -61,7 +65,6 @@ footer
         text-align: left
 
       &:last-child
-        //flex-grow: 0.1
         text-align: right
 
     nav
