@@ -11,12 +11,12 @@ header
 
   .mobile
     display: block
-    @include laptop-or-larger
+    @include tablet
       display: none
 
   .desktop
     display: none
-    @include laptop-or-larger
+    @include tablet
       display: block
 
   .burger-buttom
@@ -25,6 +25,12 @@ header
   > .background
     z-index: 1000
     height: auto
+
+  &:not(.inverse)
+    .mobile
+      @include mobile
+        background: #fff
+
 
   > .menu
     display: flex
@@ -407,6 +413,8 @@ header
     top: 0 !important
     left: 0
     right: 0
+
+
 
     .topline
       height: 87px

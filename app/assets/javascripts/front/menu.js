@@ -86,7 +86,7 @@ var Menu = {
     let headerHeight = $headerContainer.hasClass('desktop') ? $headerContainer.find('.mini.topline').outerHeight() : $headerContainer.outerHeight()
 
     if (scrollTop > Menu.stickyPoint - headerHeight + 2) {
-      if (!Menu.header.hasClass('sticky')) {
+      if (!Menu.header.hasClass('sticky') && $headerContainer.hasClass('desktop')) {
         Menu.header.css('height', Menu.header.outerHeight() + 'px')
         Menu.header.addClass('sticky')
       }
