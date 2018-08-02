@@ -193,7 +193,6 @@ body.static-page-home
 
     &.format-grid
       background-color: $background-white
-      margin-bottom: 15vh
 
       @include desktop-or-smaller
         margin-bottom: 0
@@ -228,12 +227,10 @@ body.static-page-home
         .title
           margin-bottom: 0.5em
           color: inherit
-          font-size: 1.25em !important
 
         p
           line-height: 1.8em
           color: inherit
-          font-size: .875em !important
 
   #sahaja-yoga
     position: relative
@@ -398,10 +395,15 @@ body.static-page-home
   #events
     margin-bottom: 22vh
     &:before
-      bottom: 5%
+      bottom: -12%
+      height: 621px
+      @include desktop-lg
+        bottom: 9%
 
     @include desktop
-      margin-bottom: 14vh
+      margin-bottom: 22vh
+    @include desktop-lg
+      margin-bottom: 7vh
 
     @include desktop-or-smaller
       margin-bottom: 100px
@@ -416,7 +418,3 @@ body.static-page-home
 
       &.with.gradient.gray::before
         bottom: 0
-
-  footer
-    @include desktop-or-smaller
-      margin-top: 3rem !important
