@@ -353,6 +353,12 @@ body.static-page-home
     &.with.gradient::before
       bottom: 4%
 
+      @include desktop
+        bottom: 0
+
+      @include desktop-lg
+        bottom: 4%
+
       @include mobile
         content: ''
         display: block !important
@@ -417,6 +423,8 @@ body.static-page-home
 
       @include desktop-lg
         top: 20%
+      @include desktop
+        bottom: 100px
 
       @include desktop-or-smaller
         justify-content: flex-end
@@ -457,12 +465,14 @@ body.static-page-home
     &:before
       bottom: -12%
       height: 621px
+
       @include desktop-lg
-        bottom: 9%
+        bottom: 4%
       @include laptop
         bottom: -7%
       @include laptop-portrait
         bottom: -10%
+
 
     @include desktop
       margin-bottom: 22vh
