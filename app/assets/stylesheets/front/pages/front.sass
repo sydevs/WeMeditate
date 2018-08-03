@@ -18,7 +18,7 @@ body.static-page-home
         height: 173px
 
       @include desktop-lg
-        height: 194px
+        height: 191px
 
       @include laptop
         height: 180px
@@ -26,7 +26,7 @@ body.static-page-home
       .logo, .action
         padding-bottom: 10px
       .illustration-wrapper
-        top: 20px
+        top: 37px
       .action
         color: $color-text-inverse
 
@@ -161,7 +161,7 @@ body.static-page-home
         @include mobile-portrait
           font-size: .9em
           line-height: 1.8em
-        @include mobile-portrait
+        @include mobile-landscape
           font-size: 20px
           line-height: 28px
 
@@ -409,7 +409,7 @@ body.static-page-home
       margin-bottom: -1vh
 
     @include laptop
-      margin-bottom: -12vh
+      margin-bottom: -5vh
     @include laptop-landscape
       margin-bottom: 9vh
 
@@ -507,6 +507,8 @@ body.static-page-home
 
     @include desktop-or-smaller
       margin-bottom: 9vh
+    @include laptop-portrait
+      z-index: 9
 
     @include tablet-or-smaller
       margin-bottom: 16vh
@@ -527,6 +529,8 @@ body.static-page-home
         bottom: 8%
       @include tablet
         width: 17vw
+      @include laptop-portrait
+        top: -1%
       @include laptop-landscape
         width: 31vw
         bottom: -6%
@@ -643,9 +647,11 @@ body.static-page-home
 
       @include desktop-lg
         top: 20%
+        left: 50px
 
       @include desktop
         bottom: 100px
+        left: 7%
 
       @include desktop-or-smaller
         justify-content: flex-end

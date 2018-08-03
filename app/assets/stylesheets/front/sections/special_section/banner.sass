@@ -69,11 +69,17 @@ section.type-special.format-banner
 
   .style-front-page
     min-height: 100vh
-    //height: 560px
     margin: 0
+
+    @include desktop
+      height: 590px
 
     @include desktop-lg
       min-height: 730px
+      height: 100vh
+
+    @include mobile-landscape
+      min-height: 370px
       height: 100vh
 
     h1

@@ -422,9 +422,13 @@ header
     left: 0
     right: 0
 
+    &.container
+      padding: 0 15px
+
     .topline
-      height: 87px
+      height: 83px
       align-items: center
+
 
       > *
         display: inline-block
@@ -433,7 +437,7 @@ header
 
     .burger-button
       position: relative
-      top: 5px
+      top: 1px
 
   // INVERSE TRANSITIONS
   .topline .logo svg path,
@@ -519,7 +523,6 @@ html.show-menu
       svg
         opacity: 0
 
-
 .sticky
   .desktop
     .logo
@@ -540,3 +543,12 @@ html.show-menu
     .burger-button
       svg path
         stroke: $color-text-normal !important
+    .logo
+      svg
+        width: 50px
+        height: 31px
+
+.header-scroll
+  .mobile
+    .topline
+      height: 50px
