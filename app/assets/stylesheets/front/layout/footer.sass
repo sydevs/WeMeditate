@@ -83,6 +83,8 @@ footer
         line-height: 1.75em
         font-size: 1em
         margin-bottom: 1px
+        @include mobile
+          line-height: 2.3em
 
       .social
         margin-top: 0.9em
@@ -96,6 +98,9 @@ footer
 
         > a
           margin-right: 0.75em
+          color: #a0a09f
+          @include mobile-landscape
+            margin-right: 1.2em
 
           &:last-child
             margin-right: 0
