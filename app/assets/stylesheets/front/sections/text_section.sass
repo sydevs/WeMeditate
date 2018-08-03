@@ -130,8 +130,15 @@ section.type-text
 
         &.left
           left: 20px
-
     @include desktop
+      .with.triangle
+        &.right
+          right: calc(50% - 600px)
+
+        &.left
+          left: calc(50% - 600px)
+
+    @include desktop-lg
       .with.triangle
         &.right
           right: calc(50% - 640px)

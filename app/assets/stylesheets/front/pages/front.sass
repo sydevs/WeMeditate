@@ -605,6 +605,11 @@ body.static-page-home
 
 
     &.with.gradient::before
+
+      @include desktop
+        bottom: -15%
+      @include desktop-lg
+        bottom: -10%
       @include laptop
         bottom: -8%
       @include laptop-landscape
