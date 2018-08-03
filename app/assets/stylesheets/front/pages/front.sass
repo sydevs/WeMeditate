@@ -239,6 +239,13 @@ body.static-page-home
           height: 100vh
 
     &.format-box-with-righthand-image
+      .content
+        @include desktop
+          margin-left: -25px
+
+        @include desktop-lg
+          margin-left: 0
+
       .content-box
         margin-left: -493px
 
@@ -253,6 +260,13 @@ body.static-page-home
           justify-content: flex-end
 
     &.format-box-with-lefthand-image
+      .content
+        @include desktop
+          margin-left: 25px
+
+        @include desktop-lg
+          margin-left: 0
+
       @include laptop-portrait
         .image
           justify-content: flex-start
