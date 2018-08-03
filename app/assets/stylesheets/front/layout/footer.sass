@@ -59,12 +59,16 @@ footer
       @include mobile
         margin-bottom: 36px
         text-align: center
-        div
+        > div
           text-align: center
 
       @include mobile-landscape
         flex: 1 0 25%
         text-align: left
+        > div
+          text-align: left
+        &:last-child
+          text-align: right
 
       &:last-child
         text-align: right
