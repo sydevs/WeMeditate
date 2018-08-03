@@ -46,12 +46,14 @@
     @include laptop-or-larger
       position: static
 
-    @include laptop
+    @include laptop-portrait
       max-width: 98%
       overflow: hidden
 
     @include tablet-or-smaller
       max-width: 100%
+    @include laptop-landscape
+      max-width: 670px
 
     .slick-list
       @include laptop-or-larger
@@ -65,7 +67,7 @@
         max-width: 630px
         padding: 10px
 
-        @include laptop
+        @include laptop-portrait
           max-width: 94vw
           width: 90vw
           overflow: hidden
@@ -80,7 +82,7 @@
         background-position: center center
         height: 414px
 
-        @include laptop
+        @include laptop-portrait
           height: 600px
 
         @include tablet
@@ -117,7 +119,7 @@
       height: 60px
       margin-top: -43px
 
-      @include laptop
+      @include laptop-portrait
         width: 100px
         height: 100px
         margin-top: -90px

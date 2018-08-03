@@ -105,6 +105,15 @@ body.static-page-home
 
       &.right:after
         right: 30px
+    @include laptop-landscape
+      &:after
+        bottom: -111px
+
+      &.left:after
+        left: -15px
+
+      &.right:after
+        right: -15px
 
     @include mobile
       &:after
@@ -156,7 +165,9 @@ body.static-page-home
 
         @include laptop
           font-size: 1.37em
-
+        @include laptop-landscape
+          font-size: 1.1em
+          line-height: 1.9em
     &.format-box-with-lefthand-image,
     &.format-box-with-righthand-image
       min-height: 100vh
@@ -362,6 +373,11 @@ body.static-page-home
         p
           line-height: 1.8em
           color: inherit
+    @include laptop-landscape
+      .content
+        top: 5%
+        &-box
+          padding: 80px 60px 80px 35px
 
   #sahaja-yoga
     position: relative
@@ -378,6 +394,8 @@ body.static-page-home
 
     @include laptop
       margin-bottom: -12vh
+    @include laptop-landscape
+      margin-bottom: 9vh
 
     .image.with.circle.decoration::before
       @include desktop-or-smaller
@@ -386,6 +404,13 @@ body.static-page-home
 
       @include laptop
         bottom: -10%
+      @include laptop-landscape
+        left: 58%
+        bottom: 10.5%
+        width: 560px
+        height: 560px
+        margin-left: -280px
+        margin-bottom: -280px
 
       @include tablet
         bottom: -12%
@@ -417,6 +442,8 @@ body.static-page-home
 
     @include desktop-or-smaller
       margin-bottom: 150px
+    @include laptop-landscape
+      margin-bottom: 30vh
 
     @include mobile-portrait
       margin-bottom: 5vh
@@ -428,6 +455,9 @@ body.static-page-home
       @include laptop
         top: 11.5%
         left: 1%
+      @include laptop-landscape
+        top: 10%
+        left: 5%
 
       @include tablet
         left: 5px
@@ -464,6 +494,8 @@ body.static-page-home
 
     @include tablet-or-smaller
       margin-bottom: 16vh
+    @include laptop-landscape
+      margin-bottom: 27vh
 
     .wrapper
       @include mobile
@@ -479,6 +511,9 @@ body.static-page-home
         bottom: 8%
       @include tablet
         width: 17vw
+      @include laptop-landscape
+        width: 31vw
+        bottom: -6%
 
       @include mobile
         content: ''
@@ -539,6 +574,14 @@ body.static-page-home
       @include mobile-portrait
         margin-bottom: 6vh
 
+      @include laptop-landscape
+        margin-bottom: 25vh
+        .content
+          &-box
+            @include laptop
+              padding: 80px 76px
+              margin-left: -170px
+
   #about-us.left.orange.format-box-over-image
     position: relative
     z-index: 7
@@ -551,11 +594,17 @@ body.static-page-home
 
     @include mobile-portrait
       margin-bottom: 5vh
+    @include laptop-landscape
+      margin-bottom: 30vh
 
 
     &.with.gradient::before
       @include laptop
         bottom: -8%
+      @include laptop-landscape
+        width: 31vw
+        bottom: -15%
+
       @include mobile-landscape
         content: ''
         display: block
@@ -682,6 +731,9 @@ body.static-page-home
 
       &.with.gradient.gray::before
         bottom: 0
+    @include laptop-landscape
+      margin-bottom: 19vh
+      padding-bottom: 5vh
 
   footer
     @include tablet-or-smaller
