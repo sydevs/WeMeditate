@@ -149,7 +149,7 @@
           &:hover
             background: gray
 
-      @include mobile
+      @include mobile-portrait
         width: 35px
         height: auto
         line-height: 100%
@@ -162,3 +162,6 @@
 
         &.slick-next
           right: -25px
+      @include mobile-landscape
+        &:before
+          color: #fff

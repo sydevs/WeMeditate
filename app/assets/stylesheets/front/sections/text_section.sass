@@ -74,6 +74,14 @@ section.type-text
         padding: 65px
         margin-left: 0 !important
 
+
+    @include mobile-portrait
+      .content-box
+        width: auto
+        margin: 3em 0 !important
+        padding: 0 !important
+
+
     @include mobile
       .content
         position: static
@@ -82,10 +90,7 @@ section.type-text
         min-height: 0
 
       .content-box
-        width: auto
         max-height: none
-        margin: 3em 0 !important
-        padding: 0 !important
 
       .sidetext
         font-size: 1.875em
@@ -265,7 +270,7 @@ section.type-text
     @include mobile-landscape
       .image
         img
-          margin-right: 0
+          margin-right: 40px
 
 
   &.format-box-with-lefthand-image
@@ -298,7 +303,7 @@ section.type-text
     @include mobile-landscape
       .image
         img
-          left: 0
+          left: 40px
 
   &.format-grid
     .top-left.sidetext

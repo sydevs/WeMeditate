@@ -12,8 +12,9 @@ section.type-special.format-banner
     left: 0
     z-index: -1
 
-    //@include desktop
-    //  min-height: 100vh
+    @include mobile-portrait
+    background-size: cover
+    background-position: center
 
   .content
     height: 100vh
@@ -37,7 +38,7 @@ section.type-special.format-banner
         width: 100%
         transform: translateY(30%)
 
-        @include mobile
+        @include mobile-portrait
           transform: translateY(0%)
 
       @include mobile
@@ -68,7 +69,7 @@ section.type-special.format-banner
 
   .style-front-page
     min-height: 100vh
-    height: 560px
+    //height: 560px
     margin: 0
 
     @include desktop
@@ -85,7 +86,7 @@ section.type-special.format-banner
       font-weight: 400
       line-height: 1.4em
 
-      @include mobile
+      @include mobile-portrait
         padding: 0 10%
 
     h2
@@ -102,7 +103,7 @@ section.type-special.format-banner
       margin-right: auto
       margin-bottom: 22%
 
-      @include mobile
+      @include mobile-portrait
         max-width: 300px
 
       //@include desktop
@@ -136,7 +137,7 @@ section.type-special.format-banner
         transform: rotate(-90deg) scaleY(-1)
 
 
-    @include mobile
+    @include mobile-portrait
       padding: 0
 
       h1
@@ -170,9 +171,9 @@ section.type-special.format-banner
       font-family: $raleway
       color: $color-text-normal
 
-    @include mobile
-      min-height: 1100px
-      margin-bottom: -40vw
+    @include mobile-portrait
+      //min-height: 1100px
+      //margin-bottom: -40vw
 
       h1
         font-size: 1.875em
