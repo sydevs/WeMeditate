@@ -25,8 +25,10 @@ body.static-page-home
 
       .logo, .action
         padding-bottom: 10px
+
       .illustration-wrapper
         top: 37px
+
       .action
         color: $color-text-inverse
 
@@ -74,13 +76,13 @@ body.static-page-home
         margin-right: 1.2em
 
     @include mobile-landscape
-      color: #c1c1c0
+      color: $color-text-light-grey
       font-size: 27px !important
       line-height: 27px
       letter-spacing: 2px
+
       &.top-left
         padding-top: 57px
-
 
   .with.gradient
     &::before
@@ -106,6 +108,7 @@ body.static-page-home
 
       &.right:after
         right: 30px
+
     @include laptop-landscape
       &:after
         bottom: -111px
@@ -126,6 +129,7 @@ body.static-page-home
 
       &.right:after
         right: 30px
+
     @include mobile-landscape
       &:after
         bottom: -53vh
@@ -145,6 +149,7 @@ body.static-page-home
 
       .box.button
         margin-bottom: 2px
+
         @include desktop-lg
           margin-top: 2.4em
 
@@ -158,18 +163,21 @@ body.static-page-home
         @include desktop
           margin-bottom: .5em
 
-        @include mobile-portrait
+        @include mobile
           font-size: .9em
           line-height: 1.8em
+
         @include mobile-landscape
           font-size: 20px
           line-height: 28px
 
         @include laptop
           font-size: 1.37em
+
         @include laptop-landscape
           font-size: 1.1em
           line-height: 1.9em
+
     &.format-box-with-lefthand-image,
     &.format-box-with-righthand-image
       min-height: 100vh
@@ -195,6 +203,7 @@ body.static-page-home
           &-box
             max-width: 100%
             margin: 0
+
             @include mobile-landscape
               padding: 50px 30px
 
@@ -301,6 +310,7 @@ body.static-page-home
       .content
         @include mobile
           padding: 0 30px
+
         @include mobile-landscape
           position: absolute
           top: 100vh
@@ -337,7 +347,7 @@ body.static-page-home
         margin-bottom: 0
 
       #grid
-        color: #9d9d9c
+        color: $color-text-normal
 
         @include desktop-lg
           margin-top: 7.5em
@@ -389,9 +399,11 @@ body.static-page-home
         p
           line-height: 1.8em
           color: inherit
+
     @include laptop-landscape
       .content
         top: 5%
+
         &-box
           padding: 80px 60px 80px 35px
 
@@ -410,6 +422,7 @@ body.static-page-home
 
     @include laptop
       margin-bottom: -5vh
+
     @include laptop-landscape
       margin-bottom: 9vh
 
@@ -420,6 +433,7 @@ body.static-page-home
 
       @include laptop
         bottom: -10%
+
       @include laptop-landscape
         left: 58%
         bottom: 10.5%
@@ -443,6 +457,7 @@ body.static-page-home
         width: 245px
 
         overflow: hidden
+
       @include mobile-landscape
         background-size: 530px 530px
         right: 9px
@@ -458,25 +473,28 @@ body.static-page-home
 
     @include desktop-or-smaller
       margin-bottom: 150px
+
     @include laptop-landscape
       margin-bottom: 30vh
 
     @include mobile-portrait
       margin-bottom: 5vh
+
     @include mobile-landscape
       margin-bottom: 137vh
-
 
     .content
       @include laptop
         top: 11.5%
         left: 1%
+
       @include laptop-landscape
         top: 10%
         left: 5%
 
       @include tablet
         left: 5px
+
       @include mobile-landscape
         left: 0
 
@@ -494,6 +512,7 @@ body.static-page-home
           max-width: 510px
           margin-top: 47px
           padding: 90px 77px
+
         @include mobile-landscape
           max-width: 100%
           margin-top: 8px
@@ -507,11 +526,13 @@ body.static-page-home
 
     @include desktop-or-smaller
       margin-bottom: 9vh
+
     @include laptop-portrait
       z-index: 9
 
     @include tablet-or-smaller
       margin-bottom: 16vh
+
     @include laptop-landscape
       margin-bottom: 27vh
 
@@ -527,10 +548,13 @@ body.static-page-home
 
       @include desktop-lg
         bottom: 8%
+
       @include tablet
         width: 17vw
+
       @include laptop-portrait
         top: -1%
+
       @include laptop-landscape
         width: 31vw
         bottom: -6%
@@ -567,7 +591,7 @@ body.static-page-home
       @include mobile
         top: 1.5em
         font-size: 1.7em
-        //right: 2.5em
+
       @include mobile-landscape
         &.top-right
           top: 2.5em
@@ -593,6 +617,7 @@ body.static-page-home
 
       @include mobile-portrait
         margin-bottom: 6vh
+
       @include mobile-landscape
         .image img
           left: 28px
@@ -600,6 +625,7 @@ body.static-page-home
 
       @include laptop-landscape
         margin-bottom: 25vh
+
         .content
           &-box
             @include laptop
@@ -618,18 +644,20 @@ body.static-page-home
 
     @include mobile-portrait
       margin-bottom: 5vh
+
     @include laptop-landscape
       margin-bottom: 30vh
 
-
     &.with.gradient::before
-
       @include desktop
         bottom: -15%
+
       @include desktop-lg
         bottom: -10%
+
       @include laptop
         bottom: -8%
+
       @include laptop-landscape
         width: 31vw
         bottom: -15%
@@ -665,7 +693,6 @@ body.static-page-home
       @include tablet-or-smaller
         left: 11vw
 
-
       &-box
         padding: 40px 45px
         margin-left: 2.5%
@@ -684,6 +711,7 @@ body.static-page-home
 
         @include tablet
           max-width: 550px
+
         @include mobile-landscape
           top: 0
           left: 90px
@@ -694,17 +722,21 @@ body.static-page-home
     p
       @include desktop-or-smaller
         margin-bottom: .5em
+
       @include mobile-landscape
-        color: #fff
+        color: $color-text-inverse
         font-size: .9em
+
         &:not(:first-of-type)
           display: none
+
     @include mobile-landscape
       .title
-        color: #fff
+        color: $color-text-inverse
+
       .box.button
-        color: #fff
-        border-color: #fff
+        color: $color-text-inverse
+        border-color: $color-text-inverse
 
   #events
     margin-bottom: 22vh
@@ -725,6 +757,7 @@ body.static-page-home
 
       @include laptop-portrait
         bottom: -10%
+
       @include mobile-landscape
         height: 560px
 
@@ -743,6 +776,7 @@ body.static-page-home
     @include mobile
       margin-bottom: 20vh
       padding-bottom: 9vh
+
     @include mobile-landscape
       margin-bottom: 16vh
       padding-bottom: 20vh
@@ -762,6 +796,7 @@ body.static-page-home
 
       &.with.gradient.gray::before
         bottom: 0
+
     @include laptop-landscape
       margin-bottom: 19vh
       padding-bottom: 5vh
@@ -769,5 +804,6 @@ body.static-page-home
   footer
     @include tablet-or-smaller
       margin-top: 2em !important
+
     @include mobile-portrait
       margin-top: 5em !important

@@ -52,8 +52,10 @@
 
     @include tablet-or-smaller
       max-width: 100%
+
     @include laptop-landscape
       max-width: 670px
+
     @include mobile-landscape
       max-width: 94%
       overflow: hidden
@@ -93,7 +95,6 @@
           align-items: center
           flex-direction: column
           justify-content: center
-
 
         @include mobile
           height: 310px
@@ -167,6 +168,7 @@
 
         &.slick-next
           right: -25px
+
       @include mobile-landscape
         &:before
-          color: #fff
+          color: $color-text-inverse

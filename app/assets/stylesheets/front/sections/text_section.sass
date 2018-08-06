@@ -51,11 +51,13 @@ section.type-text
 
       .box.button
         margin-top: 1.8em
+
         @include laptop
           font-size: 1.1em
           margin-top: 1.3em
           padding: 1em 2em
           min-width: 205px
+
         @include laptop-landscape
           padding: 1.4em 2em
 
@@ -119,7 +121,6 @@ section.type-text
       padding-left: 70px
       display: none
 
-
     @include tablet-or-larger
       .with.triangle
         position: absolute
@@ -130,6 +131,7 @@ section.type-text
 
         &.left
           left: 20px
+
     @include desktop
       .with.triangle
         &.right
@@ -205,11 +207,6 @@ section.type-text
           padding: 100px 80px
           width: auto
 
-        //p
-        //  font-size: 1rem
-        //  letter-spacing: -0.35px
-        //  margin-bottom: 1.2em
-
         &.inverse
           border: 2px solid $color-text-inverse
 
@@ -241,10 +238,6 @@ section.type-text
         @include laptop-or-larger
           max-height: 800px
 
-        //@include tablet-or-smaller
-        //  max-width: none
-        //  max-height: 100vh
-
         @include mobile
           position: relative
           max-width: 100%
@@ -260,16 +253,15 @@ section.type-text
 
     .image
       float: right
+
       @include tablet
         .content
           align-items: flex-end
 
     @include mobile
-      //.container
-      //  padding-left: 20px
-
       .image
         margin: 0
+
         img
           margin-right: -25px
 
@@ -286,6 +278,7 @@ section.type-text
     .content-box
       margin-left: -140px
       left: auto
+
       @include desktop
         margin-left: -170px
 
@@ -303,6 +296,7 @@ section.type-text
 
       .image
         margin: 0
+
         img
           left: -25px
 
@@ -351,6 +345,7 @@ section.type-text
           line-height: 1.2em
           letter-spacing: 1px
           margin-bottom: 0.25em
+
           @include laptop
             font-size: 1.3em
 
