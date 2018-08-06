@@ -10,7 +10,16 @@ body.tracks-index
 
   .section.wrapper
     padding: 0 15px 0 60px
-    max-width: 1025px
+    max-width: 90%
+    margin-left: 0
+
+    @include desktop-lg
+      max-width: 1025px
+      margin-left: auto
+      margin-right: auto
+
+    @include tablet-or-smaller
+      padding: 0 15px 0 20px
 
   #tracks-triangle::after
     bottom: auto
@@ -30,6 +39,13 @@ body.tracks-index
       margin-top: 2.2em
       margin-bottom: 1.75em
 
+      @include tablet
+        margin-top: 2em
+        margin-bottom: 1em
+
+      @include mobile
+        margin-bottom: 1em
+
   .filters
     margin-left: 3px
     display: flex
@@ -42,7 +58,7 @@ body.tracks-index
       flex-wrap: wrap
 
     .filter
-      margin-right: 48px
+      margin-right: 30px
       display: flex
       align-items: center
       justify-content: flex-start
@@ -116,6 +132,9 @@ body.tracks-index
       .filter
         margin-right: 35px
 
+        @include tablet
+          margin-left: 0
+
         @include mobile
           margin: 20px 5px
           max-width: 250px
@@ -131,6 +150,9 @@ body.tracks-index
             height: 52px
             width: auto
             transition: fill .3s ease
+
+            @include tablet
+              width: 52px
 
             @include mobile
               height: 45px
@@ -153,19 +175,28 @@ body.tracks-index
 
   .player
     margin-top: 3.7em
-    margin-bottom: 7em
+    margin-bottom: 6em
     position: relative
+
+    @include tablet-or-smaller
+      margin-bottom: 4.5em
 
     .current-info
       margin-left: 15px
 
     .info
       padding-left: 80px
+      @include mobile
+        padding-left: 60px
 
     .plyr__controls
       color: $color-text-normal
       padding-left: 0
       padding-top: 35px
+
+      @include mobile
+        padding-right: 0
+        padding-top: 10px
 
       .extra
         @include mobile
@@ -254,17 +285,30 @@ body.tracks-index
           svg
             display: none
 
-        @include tablet-or-smaller
-          &[data-plyr="rewind"],
-          &[data-plyr="fast-forward"]
-            top: 100%
-            position: absolute
+        &[data-plyr="rewind"],
+        &[data-plyr="fast-forward"]
+          top: 114%
+          position: absolute
 
-          &[data-plyr="rewind"]
-            left: 25%
+          @include tablet-or-smaller
+            top: 102%
 
-          &[data-plyr="fast-forward"]
-            left: 40%
+          @include mobile
+            top: 67px
+            display: block
+
+        &[data-plyr="rewind"]
+          left: 25%
+
+          @include tablet-or-smaller
+            left: 28%
+
+        &[data-plyr="fast-forward"]
+          left: 38%
+
+          @include mobile
+            right: 30%
+            left: auto
 
     .plyr
       &--playing
@@ -280,6 +324,9 @@ body.tracks-index
       &__volume
         max-width: 10.5%
 
+        @include tablet
+          max-width: 15.5%
+
       &__progress
         font-size: 12px
         font-weight: 300
@@ -287,8 +334,15 @@ body.tracks-index
         margin: 0
         margin-right: 1.5%
 
+        @include tablet
+          max-width: 73%
+
         @include tablet-or-smaller
           margin-right: 0
+
+        @include mobile
+          width: 100%
+          max-width: 100%
 
         &--buffer
           display: none
@@ -298,13 +352,16 @@ body.tracks-index
         &--duration
           position: absolute
           top: 100%
+          font-family: $futura-book
+
+          @include mobile
+            top: 24px
 
         &--current
           left: 0
 
         &--duration
           right: 0
-
 
     .playlist
       .info
@@ -330,31 +387,37 @@ body.tracks-index
 
   .playlist
     position: relative
-    min-height: 460px
-    width: 59%
+    min-height: 610px
+    width: 56%
     max-width: 805px
     margin-left: auto
     margin-top: 60px
     padding: 50px 95px 60px 157px
     background: linear-gradient(to left,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
 
-    @include tablet
-      margin: auto
-      max-width: 766px
+    @include laptop
+      width: 64%
 
     @include tablet-or-smaller
-      margin-top: 50px
+      margin-right: 0
+      margin-top: 65px
       padding: 50px
       min-height: 0
+      width: 91%
+
+    @include desktop-lg
+      width: 59%
 
     @include mobile
       background: none
       padding: 0
+      width: 100%
+      margin-top: 128px
 
     > .title
       font-size: 1.5em
       line-height: 1.5em
-      margin-bottom: -0.9em
+      margin-bottom: 1.3em
       letter-spacing: 1px
 
       @include mobile
@@ -376,6 +439,9 @@ body.tracks-index
       left: -320px
       width: 385px
 
+      @include laptop
+        left: -266px
+
       @include tablet-or-smaller
         display: none
 
@@ -383,23 +449,34 @@ body.tracks-index
       position: absolute
       color: $color-text-normal
       letter-spacing: 2px
-      margin-top: 37px
+      margin-top: 0
       font-size: 2em
-      margin-right: 430px
+      margin-right: 415px
       padding-top: 0
+
+      @include desktop-lg
+        margin-right: 430px
+
+      @include laptop
+        margin-right: 57%
+
+      @include tablet
+        margin-right: 11%
 
     .list
       position: relative
       list-style: none
 
       @include tablet
-        max-width: 540px
+        max-width: 577px
+
+      .track
+        border: 1px solid transparent
 
     .list > *
       width: 100%
-      margin-bottom: 33px
+      margin-bottom: 18px
       padding-right: 50px
-
 
       .label
         display: block
@@ -408,16 +485,20 @@ body.tracks-index
         line-height: 1.5em
 
         i.icon
-          width: 35px
+          width: 44px
           font-size: 0.6em
           text-align: center
           margin-right: 5px
+          margin-top: 5px
+
+          @include tablet-or-smaller
+            width: 50px
 
       .artist
         display: block
         font-size: 0.75em
         line-height: 0.8em
-        padding: 4px 0 10px 40px
+        padding: 2px 0 10px 50px
 
         &:hover
           color: $color-text-orange
