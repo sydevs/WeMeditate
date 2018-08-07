@@ -51,18 +51,19 @@ section.custom-meditation
             a.active-goal.disabled
               span.active-goal-icon = inline_svg 'header/logo-mini.svg'
               span.active-goal-header
-                | I want to feel
+                | I wish I feel
 
               span.active-goal-text Choose feelings
 
             .dropdown
               a.btn-close
-              h3.title Choose feelings
-              ul
-                - @goal_filters.each_with_index do |goal_filter, index|
-                  li data-img="#{goal_filter.icon.url}"
-                    span
-                      = goal_filter.name
+              .choose-wrap
+                h3.title Choose feelings
+                ul
+                  - @goal_filters.each_with_index do |goal_filter, index|
+                    li data-img="#{goal_filter.icon.url}"
+                      span
+                        = goal_filter.name
         .duration
           span.duration-title I have
           .radio-wrap
@@ -76,6 +77,5 @@ section.custom-meditation
       .mobile-img
         img src=image_path('meditations/background-mobile.png')
 
-#meditations-triangle.container.with.right.triangle.decoration
 
 = render @static_page.sections.with_translations(locale)

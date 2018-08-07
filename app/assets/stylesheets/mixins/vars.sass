@@ -7,8 +7,10 @@ $raleway-semi: "raleway-semi", sans-serif
 
 $mobile-width: 320px
 $tablet-width: 740px
-$laptop-width: 960px
-$desktop-width: 1300px
+$laptop-width: 992px
+$desktop-width: 1200px
+$desktop-lg-width: 1400px
+
 
 $color-text-darker: #5e6063
 $color-text-dark: #7b7b7b
@@ -53,12 +55,33 @@ $icon-filters: '\e917'
   @media only screen and (max-width: #{$tablet-width - 1px})
     @content
 
+@mixin mobile-landscape
+  @media only screen and (max-width: #{$tablet-width - 1px}) and (orientation: landscape)
+    @content
+
+@mixin mobile-portrait
+  @media only screen and (max-width: #{$tablet-width - 1px}) and (orientation: portrait)
+    @content
+
+
 @mixin tablet
   @media only screen and (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px})
     @content
 
+@mixin tablet-portrait
+  @media only screen and (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px}) and (orientation: portrait)
+    @content
+
 @mixin laptop
   @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px})
+    @content
+
+@mixin laptop-portrait
+  @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px}) and (orientation: portrait)
+    @content
+
+@mixin laptop-landscape
+  @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px}) and (orientation: landscape)
     @content
 
 @mixin desktop
@@ -69,14 +92,18 @@ $icon-filters: '\e917'
   @media only screen and (max-width: #{$laptop-width - 1px})
     @content
 
-@mixin laptop-or-smaller
-  @media only screen and (max-width: #{$desktop-width - 1px})
-    @content
-
 @mixin tablet-or-larger
   @media only screen and (min-width: #{$tablet-width})
     @content
 
 @mixin laptop-or-larger
   @media only screen and (min-width: #{$laptop-width})
+    @content
+
+@mixin desktop-or-smaller
+  @media only screen and (max-width: #{$desktop-width - 1px})
+    @content
+
+@mixin desktop-lg
+  @media only screen and (min-width: #{$desktop-lg-width})
     @content
