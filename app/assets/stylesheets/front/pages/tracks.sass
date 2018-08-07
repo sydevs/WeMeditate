@@ -14,7 +14,8 @@ body.tracks-index
     margin-left: 0
 
     @include desktop-lg
-      max-width: 1025px
+      max-width: 1280px
+      padding: 0 15px
       margin-left: auto
       margin-right: auto
 
@@ -150,6 +151,7 @@ body.tracks-index
             height: 52px
             width: auto
             transition: fill .3s ease
+            max-width: 60px
 
             @include tablet
               width: 52px
@@ -175,7 +177,7 @@ body.tracks-index
 
   .player
     margin-top: 3.7em
-    margin-bottom: 6em
+    margin-bottom: 7.5em
     position: relative
 
     @include tablet-or-smaller
@@ -287,8 +289,9 @@ body.tracks-index
 
         &[data-plyr="rewind"],
         &[data-plyr="fast-forward"]
-          top: 114%
-          position: absolute
+          @include desktop-or-smaller
+            top: 114%
+            position: absolute
 
           @include tablet-or-smaller
             top: 102%
@@ -298,13 +301,15 @@ body.tracks-index
             display: block
 
         &[data-plyr="rewind"]
-          left: 25%
+          @include desktop-or-smaller
+            left: 25%
 
           @include tablet-or-smaller
             left: 28%
 
         &[data-plyr="fast-forward"]
-          left: 38%
+          @include desktop-or-smaller
+            left: 38%
 
           @include mobile
             right: 30%
