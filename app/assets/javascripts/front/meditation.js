@@ -125,7 +125,7 @@ var Meditation = {
     $.get(url, function (data) {
       if (data.rootElement.innerHTML.includes('<style>')) {
         el = data.rootElement
-        el.innerHTML = el.innerHTML.replace("<style>",`<style>.${add_class} `)
+        el.innerHTML = el.innerHTML.replace("<style>","<style>." + add_class + " ")
         svg = $(el).addClass(add_class)
       } else {
         svg = $(data.rootElement)
