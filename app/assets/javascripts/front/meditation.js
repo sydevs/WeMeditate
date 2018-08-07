@@ -122,18 +122,25 @@ var Meditation = {
   _get_goal_icon: function (container, url, add_class) {
     let svg
 
-    $.get(url, function (data) {
-      if (data.rootElement.innerHTML.includes('<style>')) {
-        el = data.rootElement
-        el.innerHTML = el.innerHTML.replace("<style>","<style>." + add_class + " ")
+    $.ajax({
+      url: url,
+      dataType: 'text',
+      type: 'GET',
+      error: function (jqXHR, status, errorThrown) {
+        alert('error');
+      }
+    })
+    .done(function (data) {
+      if (data.includes('<style>')) {
+        el = data
+        el = el.replace("<style>", "<style>." + add_class + " ")
         svg = $(el).addClass(add_class)
       } else {
-        svg = $(data.rootElement)
+        svg = data
       }
-
       container.children('svg').remove()
       container.append(svg)
-    })
+    });
   }
 }
 
