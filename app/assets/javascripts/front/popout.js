@@ -16,7 +16,7 @@ var Popout = {
       gallery: { enabled: true },
     })
 
-    $('a.video.button').magnificPopup({
+    $('a.video.button[data-mfp-src]').magnificPopup({
       key: 'video',
       callbacks: { open: Popout._on_video_open }
     })

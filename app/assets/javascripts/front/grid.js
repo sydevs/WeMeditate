@@ -89,7 +89,7 @@ const Grid = {
   apply_filters: function() {
     let filters = []
 
-    for (const key in Grid.active_filters) {
+    for (let key in Grid.active_filters) {
       if (Array.isArray(Grid.active_filters[key])) {
         filters = filters.concat(Grid.active_filters[key])
       } else {

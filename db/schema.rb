@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180713105127) do
+ActiveRecord::Schema.define(version: 20180721031705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -170,6 +170,7 @@ ActiveRecord::Schema.define(version: 20180713105127) do
     t.string "name", null: false
     t.string "slug", null: false
     t.jsonb "audio"
+    t.text "excerpt"
     t.index ["locale"], name: "index_meditation_translations_on_locale"
     t.index ["meditation_id"], name: "index_meditation_translations_on_meditation_id"
   end

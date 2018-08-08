@@ -1,0 +1,9 @@
+
+= f.input :title, wrapper_html: { class: 'sub' }
+= f.input :action, wrapper_html: { class: 'sub' }
+
+= f.fields_for :extra, f.object do |ff|
+  = ff.input :goal_title, value: f.object.extra_attr('goal_title'), label: Section.human_attribute_name(:goal_title), wrapper_html: { class: 'sub' }, required: false
+  = ff.input :goal_action, value: f.object.extra_attr('goal_action'), label: Section.human_attribute_name(:goal_action), wrapper_html: { class: 'sub' }, required: false
+  = ff.input :duration_title, value: f.object.extra_attr('duration_title'), label: Section.human_attribute_name(:duration_title), wrapper_html: { class: 'sub' }, required: false
+  = ff.input :duration_suffix, value: f.object.extra_attr('duration_suffix'), label: Section.human_attribute_name(:duration_suffix), wrapper_html: { class: 'sub' }, required: false

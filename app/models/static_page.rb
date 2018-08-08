@@ -51,6 +51,9 @@ class StaticPage < ApplicationRecord
       ensure_special_section_exists! :local_contacts
     when :subtle_system
       ensure_special_section_exists! :subtle_system
+    when :meditations
+      ensure_special_section_exists! :featured_meditations
+      ensure_special_section_exists! :custom_meditation
     end
   end
 

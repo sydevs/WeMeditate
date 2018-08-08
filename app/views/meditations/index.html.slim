@@ -3,26 +3,79 @@
 
 section.intro
   .container
-    h1.title = Meditation.model_name.human(count: -1)
+    h1.title = @static_page.title
 
-#meditations-triangle.container.with.right.triangle.decoration
+//section.featured-meditations
+  .container
+    .meditation-wrap
+      - meditation = @meditations.sample
+      .meditation-item
+        h3.meditation-header
+          | Meditation of the day
+        .video
+          .video-preview style="background-image: url(#{meditation.image.url})"
+            img src="#{meditation.image.url}"
+            a.video.button href=meditation_url(meditation)
+          h4.video-title = meditation.name
+          p Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения.
+      - meditation = @meditations.sample
+      .meditation-item
+        h3.meditation-header
+          | Trending now
+        .video
+          .video-preview style="background-image: url(#{meditation.image.url})"
+            img src="#{meditation.image.url}"
+            a.video.button href=meditation_url(meditation)
+          h4.video-title = meditation.name
+          p Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения.
+      - meditation = @meditations.sample
+      .meditation-item
+        h3.meditation-header
+          | Let Fate Decide
+        .video
+          .video-preview style="background-image: url(#{meditation.image.url})"
+            img src="#{meditation.image.url}"
+            a.video.button href=meditation_url(meditation)
+          h4.video-title Generate a random meditation
+          p Сахаджа Йога является методом получения реального опыта самосозерцания и мировозрения.
 
-.container
-  h2 = t('meditations.subtitle')
-  p = t('meditations.text')
-  h3 = t('meditations.choose_duration')
-  nav.duration.filters data-group='duration'
-    - @duration_filters.each do |duration_filter|
-      a.filter.box.button data-filter=".#{dom_id(duration_filter)}" class="#{'active' if duration_filter.minutes.to_s == params[:duration]}"
-        = duration_filter.name
-  h3 = t('meditations.choose_goal')
-  nav.goal.filters data-group='goals'
-    - @goal_filters.each_with_index do |goal_filter, index|
-      a.filter.box.button data-filter=".#{dom_id(goal_filter)}" class="#{'active' if goal_filter.id.to_s == params[:goal]}"
-        = goal_filter.name
+//section.custom-meditation
+  .container
+    .top-left.sidetext Set up your own meditation
+    h2.title Set up your own Meditation
+    form
+      input type="hidden" name="goal_filters" method="get"
+      .select-meditation
+        .select-goals
+          .goals
+            a.active-goal.disabled
+              span.active-goal-icon = inline_svg 'header/logo-mini.svg'
+              span.active-goal-header
+                | I wish I feel
 
-  #grid
-    .grid-sizer
-    = render @meditations
+              span.active-goal-text Choose feelings
+
+            .dropdown
+              a.btn-close
+              .choose-wrap
+                h3.title Choose feeling
+                ul
+                  - @goal_filters.each_with_index do |goal_filter, index|
+                    li data-img="#{goal_filter.icon.url}"
+                      span
+                        = goal_filter.name
+        .duration
+          span.duration-title I have
+          .radio-wrap
+            - @duration_filters.first(3).each do |duration_filter|
+              label.radio
+                input type="radio" name="radio" value="#{duration_filter.id}"
+                .radio-text
+                  span #{duration_filter.minutes} min
+
+      button.start-meditation type="submit" Start meditation
+      .mobile-img
+        img src=image_path('meditations/background-mobile.png')
+
 
 = render @static_page.sections.with_translations(locale)

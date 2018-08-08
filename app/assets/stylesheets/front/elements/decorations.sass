@@ -131,6 +131,20 @@
   &.left::before
     left: 0
 
+  &.left, &.right
+    &.half::before
+      top: 0
+      bottom: 0
+      width: auto
+      z-index: 0
+      display: block !important
+
+  &.half.left::before
+    right: 50%
+
+  &.half.right::before
+    left: 50%
+
   &.orange::before
     opacity: 0.5
 

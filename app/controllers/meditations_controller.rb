@@ -12,4 +12,8 @@ class MeditationsController < ApplicationController
     render layout: 'basic'
   end
 
+  def find
+    redirect_to meditation_url(Meditation.order('RANDOM()').first), status: :see_other
+  end
+
 end
