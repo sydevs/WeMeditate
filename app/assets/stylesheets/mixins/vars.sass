@@ -72,6 +72,7 @@ $icon-filters: '\e917'
   @media only screen and (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px}) and (orientation: portrait)
     @content
 
+
 @mixin laptop
   @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px})
     @content
@@ -84,9 +85,11 @@ $icon-filters: '\e917'
   @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px}) and (orientation: landscape)
     @content
 
+
 @mixin desktop
   @media only screen and (min-width: #{$desktop-width})
     @content
+
 
 @mixin tablet-or-smaller
   @media only screen and (max-width: #{$laptop-width - 1px})
@@ -94,6 +97,10 @@ $icon-filters: '\e917'
 
 @mixin tablet-or-larger
   @media only screen and (min-width: #{$tablet-width})
+    @content
+
+@mixin laptop-or-smaller
+  @media only screen and (max-width: #{$desktop-width - 1px})
     @content
 
 @mixin laptop-or-larger

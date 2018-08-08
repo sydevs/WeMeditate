@@ -3,7 +3,7 @@ class Meditation < ApplicationRecord
   extend CarrierwaveGlobalize
 
   # Extensions
-  translates :name, :slug, :audio
+  translates :name, :slug, :excerpt, :audio
   friendly_id :name, use: :globalize
 
   # Associations

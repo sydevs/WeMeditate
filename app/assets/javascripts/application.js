@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require ./front/libraries/polyfill.js
 //= require jquery
 //= require rails-ujs
 //= require turbolinks

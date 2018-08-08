@@ -717,6 +717,43 @@ records:
       <p>In people who have received self-realization, without medicines, the blood composition is corrected, the metabolism is normalized, stress is eliminated - the cause of many complex diseases.</p>
 
 
+# FOR STATIC PAGE: meditations
+  - sprig_id: s_sp_meditations_featured
+    order: 1
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'meditations').id %>
+    content_type: special
+    format: featured_meditations
+    extra:
+      daily_meditation: Meditation of the day
+      trending_meditation: Trending now
+      random_meditation:
+        header: Let Fate Decide
+        image_uuid: 5351293c-7aac-4e86-9292-255b5ffd43ee
+        title: Generate a random meditation
+        text: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
+  - sprig_id: s_sp_meditations_custom
+    order: 2
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'meditations').id %>
+    content_type: special
+    format: custom_meditation
+    title: Set up your own Meditation
+    action: Start meditation
+    extra:
+      goal_title: I want to feel
+      goal_action: Choose feelings
+      duration_title: I have
+      duration_suffix: min
+      decorations:
+        enabled: [ sidetext ]
+        options:
+          sidetext: [ top-left ]
+        sidetext: Set up your own Meditation
+
+
+
+
 # FOR SUBTLE SYSTEM NODE: chakra_1
   - sprig_id: s_ssn_chakra_1_overview
     order: 1
