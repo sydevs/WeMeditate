@@ -2,6 +2,10 @@
 @import "../../mixins/vars"
 
 body.articles-show
+  section
+    p
+      margin-bottom: 0.5em
+
   section.intro
     margin-bottom: 0
 
@@ -79,6 +83,249 @@ body.articles-show
         background-color: #8ec2bb
         transition: width 0.1s linear
 
+  .intro.banner
+    min-height: 45vh
+
+    @include desktop-lg
+      min-height: 50vh
+
+    @include tablet
+      min-height: 20vh
+
+    @include mobile
+      min-height: 25vh
+
   .wrapper
     @include mobile
       padding: 0 35px
+
+    .title
+      font-size: 1.4em
+      line-height: 1.25em
+      margin-bottom: 0.67em
+
+      @include desktop-lg
+        font-size: 1.5em
+
+    p
+      font-size: 1em
+      line-height: 2em
+
+      @include desktop-lg
+        font-size: 1.125em
+        line-height: 1.67em
+
+      @include tablet
+        font-size: 1.13em
+        line-height: 1.7em
+
+      @include mobile
+        line-height: 1.6em
+
+    .callout
+      margin: 42px -124px 42px 50px
+
+      @include desktop-lg
+        margin: 42px -180px 45px 50px
+
+      @include tablet
+        margin: 22px 7px 35px 34px
+
+      @include mobile
+        margin: 0
+
+      &.text
+        padding: 70px 0
+        line-height: 1.8em
+
+        @include tablet
+          padding: 67px 0
+
+        @include mobile
+          padding: 35px 0
+          margin: 0 0 15px
+
+    &.video
+      max-width: 635px
+
+      .title
+        margin-bottom: 3em
+
+  section.intro
+    .title
+      font-size: 2.1em
+      font-family: "raleway-bold", sans-serif
+      line-height: 80px
+
+      @include desktop-lg
+        font-size: 2.8em
+        line-height: 170px
+
+      @include mobile
+        font-size: 1.9em
+        line-height: 40px
+        margin: 0
+        padding: 3% 0
+        &:after
+          left: 0
+
+  section.type-text
+      .callout p
+        font-size: 1.1em
+        line-height: 2em
+
+        @include desktop-lg
+          font-size: 1.25em
+          line-height: 1.75em
+
+        @include tablet
+          font-size: 1.25em
+          line-height: 1.9em
+
+        @include mobile
+          font-size: 1.13em
+          line-height: 1.6em
+
+      .image.callout
+        max-width: 361px
+
+        @include desktop-lg
+          max-width: 400px
+
+        @include tablet
+          max-width: 400px
+
+        @include mobile
+          margin: 0
+          margin-bottom: 15px
+
+  section.type-image.format-fit-page-width
+    .background
+      min-height: 50vh
+
+      @include mobile
+        min-height: 25vh
+
+  section.type-quote
+    margin-top: 0
+    @include desktop-lg
+      margin-top: 7em
+
+    .quote
+      font-size: 1.3rem
+      margin-top: 45px
+
+      @include desktop-lg
+        font-size: 1.5em
+        margin-top: 50px
+
+      @include mobile
+        font-size: 1.1em
+
+    .subtitle
+      font-size: 0.8em
+
+      @include desktop-lg
+        font-size: 0.88em
+
+      @include mobile
+        font-size: 0.88em
+        line-height: 1.7em
+
+    .credit
+      font-size: 0.9em
+
+      @include desktop-lg
+        font-size: 1em
+
+      @include mobile
+        font-size: 1em
+
+    blockquote
+      @include mobile
+        margin: 58px 0
+
+  .button
+    &.box
+      padding: 1.2em 1.7em
+      font-size: 1em
+
+      @include desktop-lg
+        padding: 1.4em 2em
+
+      @include mobile
+        font-size: 0.96em
+        padding: 1.4em 1.7em
+
+  section.type-action.format-button,
+  section.type-text.format-just-text
+    margin-bottom: 6rem
+
+    @include mobile
+    section.type-text.format-just-text
+      margin-bottom: 3.3rem
+
+  .with.decoration.triangle
+    &:after
+      width: 246px
+      height: 218px
+      bottom: -96px
+      right: 5%
+
+    @include desktop-lg
+      &:after
+        bottom: -135px
+        width: 355px
+        height: 312.5px
+        right: 5px
+
+    @include laptop
+      &:after
+        bottom: -74px
+
+    @include laptop-landscape
+      &:after
+        right: 5px
+
+    @include tablet
+      &:after
+        width: 220px
+        height: 194px
+        bottom: -86px!important
+
+    @include mobile
+      &:after
+        display: none
+
+  section.type-action.format-button
+    @include mobile
+      .button
+        margin: 1.8em 0
+
+  section .type-video.format-single
+    margin-bottom: 2rem
+
+  section.share
+    margin-bottom: 7rem
+
+    @include mobile
+      margin-bottom: 3.3rem
+
+  figcaption.credit
+    @include mobile
+      font-size: 1em
+
+  .footer
+    .sidetext
+      color: $color-text-inverse
+
+      &.top-left
+        padding-right: 20px
+
+    @include mobile
+      .sidetext
+        color: $light-gray
+
+        &.top-left
+          padding-right: 58px
+

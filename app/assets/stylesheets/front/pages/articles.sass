@@ -2,6 +2,22 @@
 
 body.articles-index
   nav.filters
+    @include tablet-or-smaller
+      justify-content: space-between
+
+    @include desktop-lg
+      margin-bottom: 45px
+
+    .filter
+      font-weight: 600
+
+      @include desktop-lg
+        font-size: 1em
+        padding: 1.7em 1.5em
+
+    .button.filter
+      min-width: 130px
+
     @include tablet-or-larger
       .menu-button
         display: none
@@ -101,10 +117,20 @@ body.articles-index
       margin-bottom: 0.5em
       font-family: $raleway-semi
 
+      @include desktop-lg
+        font-size: 1.5em
+
+      @include tablet-or-smaller
+        font-size: 1.25em
+        margin-top: 1.8em
+
     p
-      font-size: 0.8em
+      font-size: 0.87em
       line-height: 1.75em
       margin-bottom: 1em
+
+      @include desktop-lg
+        font-size: 1em
 
     .meta
       display: flex
@@ -113,12 +139,36 @@ body.articles-index
       font-size: 0.9em
       margin-top: 2.35em
 
+      @include desktop-lg
+        font-size: 1em
+
+      @include tablet-or-smaller
+        font-size: 1em
+        margin-top: 2.7em
+
+      @include mobile
+        margin-top: 2.3em
+
       i.icon
         margin-left: 0.5em
         font-size: 0.75em
 
   .loadmore
+    margin-top: 2.7em
     margin-bottom: 2em
+
+    @include desktop-lg
+      margin-top: 3.7em
+
+  footer
+    margin-top: 6.5rem !important
+
+  .button
+    &.box
+      font-size: 0.87em
+
+      @include desktop-lg
+        font-size: 1em
 
   @include desktop
     #grid

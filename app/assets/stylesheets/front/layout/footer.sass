@@ -97,15 +97,27 @@ section.share
     margin-right: 2.75em
 
   a
-    font-size: 1.25em
+    color: $gray
+    font-size: 1.4em
     margin: 0 0.5em
 
 section.footer
-  min-height: 155vh
+  min-height: 1370px
+  //min-height: 155vh
   background-image: image-url('footer/together.png')
   background-position: center
   background-size: cover
-  margin-bottom: 8em
+  background-repeat: no-repeat
+  margin-bottom: 6em
+
+  @include desktop-lg
+    margin-bottom: 19em
+
+  @include mobile
+    min-height: auto
+    background-size: 1200px 890px
+    background-position: bottom center
+    margin-bottom: 9em
 
   &:before
     content: ''
@@ -121,34 +133,69 @@ section.footer
     height: 108%
     background: linear-gradient(to right,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
 
+    @include desktop-lg
+      height: 111%
+
   .container
-    padding-top: 240px
+    padding-top: 230px
     padding-bottom: 450px
 
+    @include desktop-lg
+      padding-top: 260px
+
+    @include tablet
+      padding-top: 260px
+
     @include mobile
-      padding-top: 0
-      padding-left: 15px
-      padding-right: 15px
+      padding: 0 15px 450px
 
   .title
-    font-size: 2.9em
+    font-size: 2.8em
     line-height: 1.25em
     color: $color-text-dark
     font-family: $raleway-medium
     margin-bottom: 0
 
+    @include desktop-lg
+      font-size: 3.13em
+
+    @include laptop
+      margin-bottom: 12px
+
+    @include tablet
+      font-size: 3.1em
+      margin-bottom: 12px
+
+    @include mobile
+      font-size: 1.88em
+
   .sub.title
     font-size: 1.75em
-    line-height: 1.2em
+    line-height: 1.25em
     color: $color-text-normal
     font-family: $raleway
+
+    @include laptop
+      font-size: 1.63em
 
   .actions
     display: flex
     justify-content: space-between
     text-align: center
-    max-width: 890px
-    margin-top: 144px
+    max-width: 935px
+    margin-top: 134px
+
+    @include desktop-lg
+      max-width: 1000px
+      margin-top: 162px
+
+    @include laptop
+      max-width: 795px
+      margin-top: 170px
+
+    @include tablet
+      max-width: 630px
+      margin-top: 230px
 
     .item
       width: 164px
@@ -161,21 +208,28 @@ section.footer
       color: $color-text-orange
 
     i.icon
-      font-size: 4em
-      margin-bottom: 0.4em
+      font-size: 4.4em
+      margin-bottom: 0.45em
+
+      @include laptop
+        margin-bottom: 0.35em
 
     .title
       font-size: 1.35em
-      line-height: 1.25em
+      line-height: 1.38em
       font-family: $raleway-semi
+
+      @include laptop
+        font-size: 1.3em
 
   @include mobile
     &::before
-      top: 14%
-      height: 94%
+      top: 17%
+      width: 36%
+      height: 90%
 
     .title
-      font-size: 1.75em
+      font-size: 1.88em
       line-height: 1em
       margin-bottom: 1em
       padding: 0 1em
@@ -190,15 +244,24 @@ section.footer
       color: $color-text-normal
 
     .actions
-      height: 620px
+      height: 603px
       margin-top: 85px
       flex-direction: column
       align-items: flex-end
 
+      &.wrapper
+        padding: 0 15px
+
+      .title
+        font-size: 1.44em
+
       .item
         i.icon
-          font-size: 5em
-          margin-bottom: 0.15em
+          font-size: 5.1em
+          margin-bottom: 0.2em
+
+          &.computer
+            font-size: 4.4em
 
         .title
           font-size: 1.1em
