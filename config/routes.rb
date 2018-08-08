@@ -50,8 +50,11 @@ Rails.application.routes.draw do
 
       get '/countries/:country_code', controller: :cities, action: :country, as: :country
 
+      resources :meditations, only: [:index, :show] do
+        post :find, on: :collection
+      end
+
       resources :categories, only: [:show] # TODO: Remove this
-      resources :meditations, only: [:index, :show]
       resources :treatments, only: [:index, :show]
       resources :tracks, only: [:index], path: 'music'
       resources :static_pages, only: [:show], path: 'page'

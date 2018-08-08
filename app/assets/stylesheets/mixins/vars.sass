@@ -6,17 +6,11 @@ $raleway-medium: "raleway-medium", sans-serif
 $raleway-semi: "raleway-semi", sans-serif
 
 $mobile-width: 320px
-$tablet-width: 640px
+$tablet-width: 740px
 $laptop-width: 992px
-$desktop-width: 1300px
+$desktop-width: 1200px
+$desktop-lg-width: 1400px
 
-$dark-gray: #7b7b7b
-$gray: #d7d7d6
-$light-gray: #9d9d9c
-$blue: #c5e0dc
-$light-blue: #ebf4f3
-$orange: #e08e79
-$gray-d: #dcdcdc
 
 $color-text-darker: #5e6063
 $color-text-dark: #7b7b7b
@@ -34,9 +28,12 @@ $color-player-blue: #c5e0dc
 $color-box-orange: #ff856f
 
 $color-country-map: rgb(249, 226, 200)
+$color-button-blue: #ebf4f3
+
+$color-divider-normal: #e8e8e8
+$color-divider-dark: #9d9d9c
 
 $background-gray: #f6f6f6
-$background-gray-divider: #e8e8e8
 $background-blue: #c5e0dc
 $background-white: #ffffff
 
@@ -58,17 +55,41 @@ $icon-filters: '\e917'
   @media only screen and (max-width: #{$tablet-width - 1px})
     @content
 
+@mixin mobile-landscape
+  @media only screen and (max-width: #{$tablet-width - 1px}) and (orientation: landscape)
+    @content
+
+@mixin mobile-portrait
+  @media only screen and (max-width: #{$tablet-width - 1px}) and (orientation: portrait)
+    @content
+
+
 @mixin tablet
   @media only screen and (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px})
     @content
+
+@mixin tablet-portrait
+  @media only screen and (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px}) and (orientation: portrait)
+    @content
+
 
 @mixin laptop
   @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px})
     @content
 
+@mixin laptop-portrait
+  @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px}) and (orientation: portrait)
+    @content
+
+@mixin laptop-landscape
+  @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px}) and (orientation: landscape)
+    @content
+
+
 @mixin desktop
   @media only screen and (min-width: #{$desktop-width})
     @content
+
 
 @mixin tablet-or-smaller
   @media only screen and (max-width: #{$laptop-width - 1px})
@@ -78,6 +99,18 @@ $icon-filters: '\e917'
   @media only screen and (min-width: #{$tablet-width})
     @content
 
+@mixin laptop-or-smaller
+  @media only screen and (max-width: #{$desktop-width - 1px})
+    @content
+
 @mixin laptop-or-larger
   @media only screen and (min-width: #{$laptop-width})
+    @content
+
+@mixin desktop-or-smaller
+  @media only screen and (max-width: #{$desktop-width - 1px})
+    @content
+
+@mixin desktop-lg
+  @media only screen and (min-width: #{$desktop-lg-width})
     @content
