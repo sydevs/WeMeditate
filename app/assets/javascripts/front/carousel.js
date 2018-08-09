@@ -9,6 +9,7 @@ var Carousel = {
         settings: {
           arrows: true,
           slidesToShow: 1,
+          centerPadding: '0',
         }
       },
       {
@@ -31,6 +32,7 @@ var Carousel = {
         settings: {
           arrows: true,
           slidesToShow: 1,
+          centerPadding: '0',
         }
       },
       {
