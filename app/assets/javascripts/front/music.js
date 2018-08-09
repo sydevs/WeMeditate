@@ -77,16 +77,21 @@ var Music = {
   _get_instrument_icon: function (container, url, add_class) {
     let svg
 
-    $.get(url, function (data) {
-      if (data.rootElement.innerHTML.includes('<style>')) {
-        el = data.rootElement
-        el.innerHTML = el.innerHTML.replace("<style>",`<style>.${add_class} `)
-        svg = $(el).addClass(add_class)
-      } else {
-        svg = $(data.rootElement)
+    $.ajax({
+      url: url,
+      dataType: 'text',
+      type: 'GET',
+      error: function (jqXHR, status, errorThrown) {
+        alert('error')
       }
-
-      // container.children('svg').remove()
+    }).done(function(data) {
+      console.log('------------', data);
+      if (data.includes('<style>')) {
+        svg = data.replace("<style>", "<style>." + add_class + " ")
+        svg = $(svg).addClass(add_class)
+      } else {
+        svg = data
+      }
       container.append(svg)
     })
   },
