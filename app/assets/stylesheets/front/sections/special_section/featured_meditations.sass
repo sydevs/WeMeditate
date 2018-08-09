@@ -5,7 +5,10 @@ section.type-special.format-featured-meditations
   margin-bottom: 0
 
   @include desktop
-    padding-top: 50px
+    padding-top: 35px
+
+  @include mobile
+    padding-top: 5px
 
   .container
     display: flex
@@ -13,12 +16,22 @@ section.type-special.format-featured-meditations
 
   .carousel
     text-align: left
+    max-width: 1280px
 
   .meditation
     display: inline-block
     width: 33.33%
     padding: 0 15px
-    margin-bottom: 50px
+    margin-bottom: 65px
+
+    @include desktop-or-smaller
+      margin-bottom: 30px
+
+    @include laptop
+      margin-bottom: -5px
+
+    @include mobile
+      margin-bottom: 0
 
     .header
       font-size: 1.625em
@@ -37,13 +50,24 @@ section.type-special.format-featured-meditations
         font-size: 1.5em
         margin-bottom: 10px
 
+      @include mobile
+        font-size: 1.38em
+        margin-top: 8px
+
     .title
       font-size: 1.125em
       margin: 7px 0
 
       @include desktop
         font-size: 1.5em
-        margin: 20px 0
+        margin: 20px 0 10px
+
+      @include laptop
+        margin: 7px 0 3px
+
+      @include mobile
+        margin: 3px 0
+        font-size: 1.1em
 
     p
       margin-top: 0
@@ -53,6 +77,9 @@ section.type-special.format-featured-meditations
       @include desktop
         font-size: 1.125em
         line-height: 1.7em
+
+      @include mobile
+        font-size: 0.81em
 
     .video-preview
       display: block
@@ -68,6 +95,9 @@ section.type-special.format-featured-meditations
       @include tablet-or-smaller
         margin-bottom: 13px
 
+      @include mobile
+        margin-bottom: 20px
+
     .video.button
       width: 110px
       height: 110px
@@ -78,13 +108,28 @@ section.type-special.format-featured-meditations
         height: 148px
         padding: 32px
 
+      @include  mobile
+        width: 100px
+        height: 100px
+
+  .slick-arrow
+    display: none !important
+
   .slick-dots
-    bottom: -10px
+    bottom: 0
+    margin: 0
+
+    li,
+    li button,
+    li button:before
+      width: 10px
+      height: 10px
 
     li
-      button::before
-        opacity: 0.5
-        font-size: 12px
+      button
+        &::before
+          opacity: 0.5
+          font-size: 6px
 
       &.slick-active button::before
         opacity: 1
