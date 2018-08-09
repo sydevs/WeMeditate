@@ -8,19 +8,25 @@ body.tracks-index
   section
     margin-bottom: 4rem
 
+    &.format-just-text
+      @include tablet-or-smaller
+        margin-bottom: 2.5rem
+
   .section.wrapper
-    padding: 0 15px 0 60px
+    padding: 0 15px
     max-width: 90%
     margin-left: 0
 
     @include desktop-lg
       max-width: 1280px
-      padding: 0 15px
       margin-left: auto
       margin-right: auto
 
-    @include tablet-or-smaller
-      padding: 0 15px 0 20px
+    @include desktop-or-smaller
+      max-width: 100%
+
+    @include mobile
+      padding: 0 25px
 
   #tracks-triangle::after
     bottom: auto
@@ -28,11 +34,25 @@ body.tracks-index
     top: -38px
     zoom: 1
 
+    @include tablet-or-smaller
+      width: 238.8px
+      height: 205px
+      right: 5.5%
+      top: -83px
+
+    @include mobile
+      display: none
+
 
   .container
     > h2
       font-size: 1.4em
       line-height: 1em
+
+    > p:last-of-type
+      margin-bottom: 6em
+      @include desktop-or-smaller
+        margin-bottom: 3em
 
     > h3
       font-family: $raleway
@@ -47,6 +67,7 @@ body.tracks-index
 
       @include mobile
         margin-bottom: 1em
+        margin-top: 1.7em
 
   .filters
     margin-left: 3px
@@ -138,7 +159,7 @@ body.tracks-index
           margin-left: 0
 
         @include mobile
-          margin: 20px 5px
+          margin: 15px 5px
           max-width: 250px
           width: 100%
 
@@ -181,14 +202,22 @@ body.tracks-index
     margin-bottom: 7.5em
     position: relative
 
+    @include desktop-or-smaller
+      margin-bottom: 6em
+
     @include tablet-or-smaller
       margin-bottom: 4.5em
+
+    @include mobile
+      margin-top: 2.3em
+      margin-bottom: 3.5em
 
     .current-info
       margin-left: 15px
 
     .info
       padding-left: 80px
+
       @include mobile
         padding-left: 60px
 
@@ -290,26 +319,20 @@ body.tracks-index
 
         &[data-plyr="rewind"],
         &[data-plyr="fast-forward"]
-          @include desktop-or-smaller
+          @include tablet-or-smaller
             top: 114%
             position: absolute
-
-          @include tablet-or-smaller
-            top: 102%
 
           @include mobile
             top: 67px
             display: block
 
         &[data-plyr="rewind"]
-          @include desktop-or-smaller
+          @include tablet-or-smaller
             left: 25%
 
-          @include tablet-or-smaller
-            left: 28%
-
         &[data-plyr="fast-forward"]
-          @include desktop-or-smaller
+          @include tablet-or-smaller
             left: 38%
 
           @include mobile
@@ -330,6 +353,9 @@ body.tracks-index
       &__volume
         max-width: 10.5%
 
+        @include laptop
+          max-width: 12.5%
+
         @include tablet
           max-width: 15.5%
 
@@ -339,6 +365,9 @@ body.tracks-index
         max-width: 67%
         margin: 0
         margin-right: 1.5%
+
+        @include laptop
+          max-width: 61%
 
         @include tablet
           max-width: 73%
@@ -374,8 +403,8 @@ body.tracks-index
         padding-left: 0
 
     #track-player-title
-      font-family: $raleway
-      font-weight: 400
+      font-family: $raleway-bold
+      font-weight: 700
       font-size: 1.5em
       line-height: 1.3em
       letter-spacing: -1px
@@ -429,6 +458,7 @@ body.tracks-index
       @include mobile
         font-size: 1.375em
         margin-bottom: 0.75em
+        padding-left: 15px
 
     #selected-filter-icons
       .filter-name
@@ -479,16 +509,22 @@ body.tracks-index
       .track
         border: 1px solid transparent
 
-    .list > *
+    .list > .track
       width: 100%
       margin-bottom: 18px
       padding-right: 50px
+
+      @include mobile
+        margin-bottom: 35px
 
       .label
         display: block
         color: $color-text-dark
         font-size: 1.31em
         line-height: 1.5em
+
+        @include mobile
+          font-size: 1em
 
         i.icon
           width: 44px
@@ -499,6 +535,10 @@ body.tracks-index
 
           @include tablet-or-smaller
             width: 50px
+
+          @include mobile
+            width: 35px
+            font-size: 1em
 
       .artist
         display: block
