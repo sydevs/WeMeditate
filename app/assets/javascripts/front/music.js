@@ -85,7 +85,6 @@ var Music = {
         alert('error')
       }
     }).done(function(data) {
-      console.log('------------', data);
       if (data.includes('<style>')) {
         svg = data.replace("<style>", "<style>." + add_class + " ")
         svg = $(svg).addClass(add_class)
