@@ -2,18 +2,18 @@
 //- mailchimp_list_id = section.extra_attr 'mailchimp_list_id'
 - mailchimp_list_id = ENV['MAILCHIMP_LIST_ID']
 
-- if mailchimp_list_id.present?
-  .wrapper.centered
-    .simple.illustration.pre.divider
-    h2.title = section.title
-    .sub.title = section.subtitle
-    .description = section.text
-    = form_tag subscribe_path, class: 'subscribe-form', remote: true do
-      = hidden_field_tag :mailchimp_list_id, mailchimp_list_id
-      p.message
-      .fields
-        = email_field_tag :email_address, nil, placeholder: 'Your email'
-      p
-        button.box.button = section.action
+//- if mailchimp_list_id.present?
+.wrapper.centered
+  .simple.illustration.pre.divider
+  h2.title = section.title
+  .sub.title = section.subtitle
+  .description = section.text
+  = form_tag subscribe_path, class: 'subscribe-form', remote: true do
+    = hidden_field_tag :mailchimp_list_id, mailchimp_list_id
+    p.message
+    .fields
+      = email_field_tag :email_address, nil, placeholder: 'Your email'
+    p
+      button.box.button = section.action
 
-    .simple.illustration.post.divider
+  .simple.illustration.post.divider

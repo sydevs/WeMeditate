@@ -51,7 +51,21 @@ var Carousel = {
     slidesToShow: 1,
   },
 
-  columns_options: {},
+  meditations_options: {
+    dots: true,
+    slidesToShow: 3,
+    responsive: [
+      {
+        breakpoint: 740,
+        settings: {
+          arrows: true,
+          slidesToShow: 1,
+        }
+      }
+    ]
+  },
+
+  contacts_options: {},
 
   contacts_options: {},
 
@@ -68,6 +82,8 @@ var Carousel = {
         $carousel.slick(Carousel.video_options)
       } else if (style == 'venues') {
         $carousel.slick(Carousel.venues_options)
+      } else if (style == 'meditations') {
+        $carousel.slick(Carousel.meditations_options)
       } else if (style == 'columns') {
         $carousel.slick(Carousel.columns_options)
       } else if (style == 'contacts') {

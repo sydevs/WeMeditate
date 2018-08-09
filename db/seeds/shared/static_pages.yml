@@ -29,7 +29,7 @@ records:
     title: Music
   - sprig_id: meditations
     role: <%= StaticPage.roles[:meditations] %>
-    title: Guided Meditations
+    title: Meditate Now
   - sprig_id: world
     role: <%= StaticPage.roles[:world] %>
     title: Meditation classes
