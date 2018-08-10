@@ -1,11 +1,14 @@
 @import "../../../mixins/vars"
 
 section.type-special.format-featured-meditations
-  padding: 20px 0
+  padding: 43px 0 20px
   margin-bottom: 0
 
-  @include desktop
-    padding-top: 35px
+  @include desktop-or-smaller
+    padding-top: 30px
+
+  @include tablet
+    padding-top: 20px
 
   @include mobile
     padding-top: 5px
@@ -23,19 +26,22 @@ section.type-special.format-featured-meditations
     display: inline-block
     width: 33.33%
     padding: 0 15px
-    margin-bottom: 65px
+    margin-bottom: 18px
+
+    @include desktop-lg
+      margin-bottom: 37px
 
     @include desktop-or-smaller
-      margin-bottom: 30px
+      margin-bottom: 25px
 
-    @include laptop
-      margin-bottom: -5px
+    @include tablet-or-smaller
+      margin-bottom: 20px
 
     @include mobile
       margin-bottom: 0
 
     .header
-      font-size: 1.625em
+      font-size: 1.88em
       font-family: $raleway
       font-weight: normal
       white-space: nowrap
@@ -43,12 +49,15 @@ section.type-special.format-featured-meditations
       text-overflow: ellipsis
       margin: 5px 0 20px
 
-      @include desktop
+      @include desktop-lg
         font-size: 2.1875em
         margin-bottom: 28px
 
+      @include desktop-or-smaller
+        font-size: 1.625em
+
       @include tablet-or-smaller
-        font-size: 1.5em
+        font-size: 1.37em
         margin-bottom: 10px
 
       @include mobile
@@ -56,15 +65,21 @@ section.type-special.format-featured-meditations
         margin-top: 8px
 
     .title
-      font-size: 1.125em
-      margin: 7px 0
+      font-size: 1.25em
+      margin: 7px 0 3px
 
-      @include desktop
+      @include desktop-lg
         font-size: 1.5em
         margin: 20px 0 10px
 
+      @include desktop-or-smaller
+        font-size: 1.125em
+
       @include laptop
         margin: 7px 0 3px
+
+      @include tablet-or-smaller
+        font-size: 1.1em
 
       @include mobile
         margin: 3px 0
@@ -72,12 +87,15 @@ section.type-special.format-featured-meditations
 
     p
       margin-top: 0
-      font-size: 0.875em
+      font-size: 1em
       line-height: 1.5em
 
-      @include desktop
+      @include desktop-lg
         font-size: 1.125em
         line-height: 1.7em
+
+      @include desktop-or-smaller
+        font-size: 0.875em
 
       @include mobile
         font-size: 0.81em
@@ -88,10 +106,13 @@ section.type-special.format-featured-meditations
       position: relative
       overflow: hidden
       background-size: cover
-      margin-bottom: 18px
+      margin-bottom: 20px
 
-      @include desktop
+      @include desktop-lg
         margin-bottom: 25px
+
+      @include desktop-or-smaller
+        margin-bottom: 18px
 
       @include tablet-or-smaller
         margin-bottom: 13px
@@ -135,4 +156,3 @@ section.type-special.format-featured-meditations
       &.slick-active button::before
         opacity: 1
         color: $color-text-blue
-

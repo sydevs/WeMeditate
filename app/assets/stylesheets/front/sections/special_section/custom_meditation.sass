@@ -5,8 +5,11 @@ section.type-special.format-custom-meditation
   padding: 20px 0
   margin-bottom: 0
   background-size: cover
-  min-height: 1500px
+  min-height: 1418px
   background: image-url("meditations/background.jpg") no-repeat bottom center
+
+  @include desktop-lg
+    min-height: 1500px
 
   @include laptop
     min-height: 1350px
@@ -25,7 +28,15 @@ section.type-special.format-custom-meditation
     padding: 0
 
   .sidetext
-    top: 110px
+    font-size: 1.88em
+    top: 33px
+    padding-top: 0
+
+    @include desktop-lg
+      font-size: 2.2em
+      top: 110px
+      padding-top: 34px
+
     @include laptop-or-smaller
       display: none
 
@@ -34,19 +45,25 @@ section.type-special.format-custom-meditation
 
   h2.title
     text-align: center
-    font-size: 2.125em
+    font-size: 2.19em
     font-family: $raleway-medium
     font-weight: 500
     letter-spacing: 0.02em
-    margin: 35px 0 25px
+    margin: 35px 0 8px
 
-    @include desktop
+    @include desktop-lg
       font-size: 2.8125em
       margin: 35px 0 50px
 
+    @include desktop-or-smaller
+      font-size: 2.125em
+
+    @include laptop
+      margin: 40px 0 25px
+
     @include tablet-or-smaller
       font-size: 1.675em
-      margin: 25px 0 25px
+      margin: 25px 0
 
     @include mobile
       line-height: 1.25em
@@ -64,7 +81,7 @@ section.type-special.format-custom-meditation
     padding: 25px 90px 15px 122px
 
     @include desktop
-      padding: 15px 90px 15px 115px
+      padding: 15px 122px 15px 115px
       margin: 20px 0
       letter-spacing: 0.08em
 
@@ -80,16 +97,13 @@ section.type-special.format-custom-meditation
 
     > .header
       color: $color-text-dark
-      font-size: 1.625em
+      font-size: 1.88em
 
       @include desktop-lg
         font-size: 2em
 
       @include desktop-or-smaller
         font-size: 1.5em
-
-      //@include tablet-or-smaller
-
 
       @include mobile
         font-size: 1.38em
@@ -135,7 +149,7 @@ section.type-special.format-custom-meditation
       > .header::after
         content: '...'
         display: inline-block
-        padding-left: 10px
+        padding-left: 24px
 
       > .text
         font-size: 1rem
@@ -151,9 +165,8 @@ section.type-special.format-custom-meditation
         align-items: center
         justify-content: center
 
-        @include desktop
+        @include desktop-lg
           margin: 0
-          margin-top: -20px
           background-color: transparent
 
         svg
@@ -167,7 +180,7 @@ section.type-special.format-custom-meditation
             stroke-width: 3
             stroke-linecap: round
 
-            @include desktop
+            @include desktop-lg
               fill: #CECECE
               stroke: #CECECE
 
@@ -192,9 +205,7 @@ section.type-special.format-custom-meditation
 
   .goal-field
     padding: 0
-
-    @include desktop
-      padding-left: 11%
+    text-align: right
 
     @include desktop-or-smaller
       text-align: center
@@ -220,7 +231,7 @@ section.type-special.format-custom-meditation
       border-left: 1px solid $color-text-normal
       border-bottom: 1px solid $color-text-normal
       transform: rotate(-45deg)
-      margin-top: -18px
+      margin-top: -27px
 
       @include tablet-or-smaller
         display: none
@@ -253,9 +264,12 @@ section.type-special.format-custom-meditation
     &.open
       &:before
         opacity: 1
+        @include laptop
+          transform: translateY(-15px)
 
       &:after
         transform: rotate(135deg)
+        margin-top: -15px
 
       .dropdown
         max-height: 800px
@@ -274,6 +288,15 @@ section.type-special.format-custom-meditation
 
     @include desktop
       justify-content: center
+      padding: 0 35px
+      margin-top: -9px
+
+    @include desktop-lg
+      padding: 0
+      margin-top: 0
+
+    @include tablet
+      padding-right: 10px
 
     @include mobile
       display: block
@@ -281,7 +304,7 @@ section.type-special.format-custom-meditation
 
     .title
       display: block
-      font-size: 1.625em
+      font-size: 1.88em
       line-height: 80px
       color: $color-text-dark
       font-family: $raleway
@@ -290,12 +313,13 @@ section.type-special.format-custom-meditation
       text-align: center
       padding: 0 20px 0 20px
       letter-spacing: .02em
+      flex: 1 1 auto
+      margin-bottom: 0
 
-
-      @include desktop
+      @include desktop-lg
         font-size: 2em
-        max-width: 50%
-        padding: 0 27px 0 40px
+        padding: 0
+        flex: 0 1 25%
 
       @include desktop-lg
         font-size: 2em
@@ -303,14 +327,6 @@ section.type-special.format-custom-meditation
       @include desktop-or-smaller
         font-size: 1.5em
         flex: 1 1 auto
-
-      //@include laptop
-      //  flex: 1 1 auto
-      //
-      //
-      //@include tablet-or-smaller
-
-
 
       @include mobile
         font-size: 1.38em
@@ -332,6 +348,7 @@ section.type-special.format-custom-meditation
 
     @include laptop
       left: -15px
+      transform: translateY(-15px)
 
     @include tablet-or-smaller
       display: flex
@@ -473,7 +490,7 @@ section.type-special.format-custom-meditation
       cursor: pointer
       width: 90px
       height: 90px
-      margin: 0 10px
+      margin: 0 12px
 
       @include tablet-or-smaller
         width: 66px
@@ -576,8 +593,14 @@ section.type-special.format-custom-meditation
   .circle.button
     border: none
     font-size: 2em
-    margin-top: 50px
+    margin-top: 17px
     padding: 50px
+
+    @include desktop-lg
+      margin-top: 50px
+
+    @include desktop-or-smaller
+      margin-top: 50px
 
     @include tablet-or-smaller
       width: 220px

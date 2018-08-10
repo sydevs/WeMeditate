@@ -7,9 +7,9 @@ body.meditations-index
     .title
       margin-top: 1em
       margin-bottom: 6px
-      font-size: 1.75em
+      font-size: 2.19em
       font-family: $raleway-bold
-      line-height: 86px
+      line-height: 92px
 
       display: flex
       align-items: center
@@ -18,6 +18,10 @@ body.meditations-index
       @include desktop-lg
         font-size: 2.8125em
         line-height: 170px
+
+      @include tablet-or-smaller
+        font-size: 1.75em
+        line-height: 86px
 
       @include mobile
         font-size: 1.675em
@@ -29,13 +33,3 @@ body.meditations-index
         width: 100%
         left: auto
         right: 50%
-
-  footer
-    margin-top: 10rem !important
-
-    @include desktop-or-smaller
-      margin-top: 3em !important
-
-    @include tablet-or-smaller
-      margin-top: 5rem !important
-

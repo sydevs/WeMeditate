@@ -51,6 +51,13 @@ var Meditation = {
     $('[name="goal_filter"]').val($goal.data('value'))
 
     Meditation.toggle_dropdown()
+
+    if ($(window).width() < 740) {
+      $('html,body').animate({
+        scrollTop: $('.format-custom-meditation').offset().top - 80
+      }, 0);
+    }
+
   },
 
   _on_select_goal: function(event) {
