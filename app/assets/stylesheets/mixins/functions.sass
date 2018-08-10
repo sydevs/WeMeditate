@@ -20,6 +20,19 @@
     src: font-url('#{$file-path}.eot')
     src: font-url('#{$file-path}.eot?#iefix') format('embedded-opentype'), font-url('#{$file-path}.woff') format('woff'), font-url('#{$file-path}.ttf') format('truetype')
 
+@mixin placeholder-color($color)
+  &::-webkit-input-placeholder
+    color: $color
+
+  &:-moz-placeholder
+    color: $color
+
+  &::-moz-placeholder
+    color: $color
+
+  &:-ms-input-placeholder
+    color: $color
+
 @mixin pulse-animation
   animation: pulse 2s infinite
 

@@ -126,7 +126,7 @@ body.articles-show
       margin: 42px -124px 42px 50px
 
       @include desktop-lg
-        margin: 42px -180px 45px 50px
+        margin: 23px -169px 45px 60px
 
       @include tablet
         margin: 22px 7px 35px 34px
@@ -137,6 +137,10 @@ body.articles-show
       &.text
         padding: 70px 0
         line-height: 1.8em
+
+        @include desktop-lg
+          &:after
+            left: 19%
 
         @include tablet
           padding: 67px 0
@@ -211,6 +215,9 @@ body.articles-show
     @include desktop-lg
       margin-top: 7em
 
+      blockquote
+        margin: 81px 0
+
     .quote
       font-size: 1.3rem
       margin-top: 45px
@@ -257,13 +264,24 @@ body.articles-show
         font-size: 0.96em
         padding: 1.4em 1.7em
 
-  section.type-action.format-button,
   section.type-text.format-just-text
-    margin-bottom: 6rem
+    margin-bottom: 6.5rem
 
     @include mobile
     section.type-text.format-just-text
       margin-bottom: 3.3rem
+
+  section.type-action.format-button
+    margin-bottom: 6rem
+
+  #section-2
+      margin-bottom: 4rem
+
+  #section-5
+    margin-bottom: 5rem
+
+    @include mobile
+      margin-bottom: 2em
 
   .with.decoration.triangle
     &:after
@@ -315,6 +333,87 @@ body.articles-show
     @include mobile
       font-size: 1em
 
+  section.type-action.format-signup
+    .pre.divider
+      margin-bottom: 2em
+
+      @include mobile
+        margin-bottom: 1.5em
+
+    @include desktop-lg
+      margin-bottom: 3em
+
+    .wrapper
+      @include desktop-lg
+        padding: 7.3em
+
+    h2.title
+      font-weight: 400
+
+      @include mobile
+        margin-bottom: 1.5em
+        position: relative
+        &:before
+          content: ''
+          position: absolute
+          width: 20px
+          height: 2px
+          background: $color-text-dark
+          bottom: -12px
+          left: 50%
+          margin-left: -7px
+
+    .sub.title
+      margin-bottom: 1.25em
+
+      @include desktop-lg
+        margin-bottom: 1.4em
+
+      @include mobile
+        margin-bottom: 0.8em
+
+    .description
+      font-size: 1.5em
+      line-height: 1.3em
+
+      @include mobile
+        font-size: 1em
+        line-height: 1.75em
+
+    .subscribe-form
+      margin-top: 4.5em
+
+      @include mobile
+        margin-bottom: 3em
+
+      .button
+        &.box
+          padding: 0.7em 2em
+          font-size: 0.9em
+          font-weight: 400
+
+          @include desktop-lg
+            padding: 1em 2em
+
+          @include mobile
+            padding: 1.2em 2em
+
+      input
+        @include placeholder-color($color-text-darker)
+
+        @include mobile
+          font-size: 0.9em
+          padding-bottom: 0.5em
+
+    .fields
+      margin-bottom: 3em
+
+    .post.divider
+      margin-top: 4em
+
+      @include mobile
+        margin-top: 0
+
   .footer
     .sidetext
       color: $color-text-inverse
@@ -324,7 +423,7 @@ body.articles-show
 
     @include mobile
       .sidetext
-        color: $light-gray
+        color: $color-text-normal
 
         &.top-left
           padding-right: 58px
