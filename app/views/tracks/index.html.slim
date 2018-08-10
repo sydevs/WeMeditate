@@ -16,7 +16,7 @@ section.intro
   nav.mood.filters data-group='moods'
     - @mood_filters.each do |mood_filter|
       a.filter.box.button data-filter=".#{dom_id(mood_filter)}"
-        span.filter-icon data-img=""
+        span.filter-icon
           img src=image_path('graphics/test-filter-icon.png')
         span.filter-name = mood_filter.name
 
@@ -24,7 +24,7 @@ section.intro
   nav.instrument.filters data-group='instruments' data-multiple=true
     - @instrument_filters.each_with_index do |instrument_filter, index|
       a.filter data-filter=".#{dom_id(instrument_filter)}"
-        span.filter-icon data-img="#{instrument_filter.icon_url}"
+        span.filter-icon data-image-url="#{instrument_filter.icon_url}"
         span.filter-name = instrument_filter.name
 
 section.player

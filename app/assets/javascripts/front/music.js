@@ -13,6 +13,9 @@ var Music = {
   default_cover_url: null,
   filter_icons: null,
 
+  instrument_filters: null,
+  mood_filters: null,
+
   load: function() {
     console.log('loading Music.js');
     var player = $('audio#player');
@@ -25,7 +28,8 @@ var Music = {
     Music.player_title = $('#track-player-title')
     Music.player_artist = $('#track-player-artist')
     Music.mood_title = $('#track-mood-title')
-    Music.instrument_filters = $('.instrument .filter')
+    Music.instrument_filters = $('.instrument.filters > a.filter')
+    Music.mood_filters = $('.mood.filters > a.filter')
 
     Music.list = $('.playlist #grid')
     Music.track_selectors = Music.list.find('.track > a.info')
@@ -37,10 +41,30 @@ var Music = {
 
     Music.filter_icons = $('#selected-filter-icons')
 
-    Music.set_instrument_icon()
+    Music.instrument_filters.on('mouseup', Music._on_clicked_instrument_filter)
+    Music.mood_filters.on('mouseup', Music._on_clicked_mood_filter)
 
-    $('.instrument.filters > a').on('mouseup', Music._on_clicked_instrument_filter)
-    $('.mood.filters > a').on('mouseup', Music._on_clicked_mood_filter)
+    Music.instrument_filters.each(function () {
+      let $element = $(this)
+      let $filter_icon = $(this).find('.filter-icon')
+      let url = $filter_icon.data('image-url')
+      let text = $element.find('.filter-name').text()
+
+      $.ajax({
+        url: url,
+        dataType: 'text',
+        type: 'GET',
+        error: function (jqXHR, status, errorThrown) {
+          alert('error')
+        }
+      }).done(function(svg) {
+        if (svg.includes('<style>')) {
+          svg = svg.replace("<style>", "<style>." + text + " ")
+        }
+
+        $(svg).addClass(text).appendTo($filter_icon)
+      })
+    })
   },
 
   _init_track: function() {
@@ -74,33 +98,6 @@ var Music = {
     }
   },
 
-  _get_instrument_icon: function (container, url, add_class) {
-    let svg
-
-    $.ajax({
-      url: url,
-      dataType: 'text',
-      type: 'GET',
-      error: function (jqXHR, status, errorThrown) {
-        alert('error')
-      }
-    }).done(function(data) {
-      if (data.includes('<style>')) {
-        svg = data.replace("<style>", "<style>." + add_class + " ")
-        svg = $(svg).addClass(add_class)
-      } else {
-        svg = data
-      }
-      container.append(svg)
-    })
-  },
-
-  set_instrument_icon: function () {
-    Music.instrument_filters.each(function () {
-      Music._get_instrument_icon($(this).find('.filter-icon'), $(this).find('.filter-icon').data('img'), $(this).find('.filter-name').text())
-    })
-  },
-
   _on_select_track: function(e) {
     var image_url = this.dataset.artistImage
     Music.player_title.text(this.textContent)
@@ -122,9 +119,9 @@ var Music = {
 
     Music.player.play()
 
-    e.preventDefault()
     Music.list.find('.track').removeClass('active')
     $(this).closest('.track').addClass('active')
+    e.preventDefault()
   },
 
   format_duration: function(seconds) {
