@@ -1,3 +1,4 @@
+@import "../../mixins/functions"
 @import "../../mixins/vars"
 
 body.tracks-index
@@ -7,117 +8,481 @@ body.tracks-index
   section
     margin-bottom: 4rem
 
+    &.format-just-text
+      @include tablet-or-smaller
+        margin-bottom: 2.5rem
+
+  .section.wrapper
+    padding: 0 15px
+    max-width: 90%
+    margin-left: 0
+
+    @include desktop-lg
+      max-width: 1280px
+      margin-left: auto
+      margin-right: auto
+
+    @include desktop-or-smaller
+      max-width: 100%
+
+    @include mobile
+      padding: 0 25px
+
   #tracks-triangle::after
     bottom: auto
-    right: 10.5%
-    top: -120px
-    zoom: 0.875
+    right: 14.5%
+    top: -38px
+    zoom: 1
+
+    @include tablet-or-smaller
+      width: 238.8px
+      height: 205px
+      right: 5.5%
+      top: -83px
+
+    @include mobile
+      display: none
+
 
   .container
     > h2
       font-size: 1.4em
       line-height: 1em
 
+    > p:last-of-type
+      margin-bottom: 6em
+      @include desktop-or-smaller
+        margin-bottom: 3em
+
     > h3
-      margin-top: 2em
+      font-family: $raleway
+      font-weight: 400
+      color: $color-text-darker
+      margin-top: 2.2em
+      margin-bottom: 1.75em
+
+      @include tablet
+        margin-top: 2em
+        margin-bottom: 1em
+
+      @include mobile
+        margin-bottom: 1em
+        margin-top: 1.7em
 
   .filters
     margin-left: 3px
+    display: flex
+    justify-content: flex-start
 
     @include tablet-or-smaller
       text-align: center
 
+    @include mobile
+      flex-wrap: wrap
+
     .filter
-      margin-right: 44px
+      margin-right: 30px
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      cursor: pointer
 
       @include tablet-or-smaller
         margin: 10px 22px
 
-    &.instrument
-      @include mobile
-        display: flex
-        justify-content: space-around
+      &-name
+        font-size: 1em
+        padding-left: 10px
 
+    &.mood
       .filter
-        opacity: 0.4
-        margin: 0 30px
+        min-width: 125px
+        font-size: 16px
+        font-family: $raleway-semi
+        font-weight: 400
+        line-height: 40px
+        color: $color-text-normal
+
+        padding: 0 9px
+        border-color: $color-text-normal
+        transition: border-color .3s .6s ease
+
+        @include tablet-or-smaller
+          flex-direction: column
+          padding: 9px
+          min-width: 120px
+          margin: 10px 15px
+
+          &:first-child
+            margin-left: 0
+
+          &:last-child
+            margin-right: 0
 
         @include mobile
-          margin: 0 5px
+          min-width: auto
+          width: 47%
+
+          &:nth-child(2n)
+            margin-right: 0
+            margin-left: 3%
+
+          &:nth-child(2n+1)
+            margin-left: 0
+            margin-right: 3%
+
+        &-icon
+          width: 25px
+          height: 25px
+          display: inline-block
+
+        &-name
+          font-family: $raleway-semi
+          font-weight: 500
+
+          @include tablet-or-smaller
+            padding: 0
+
+        &:hover
+          border: 1px solid $background-gray
+
+    &.instrument
+      @include mobile
+        flex-direction: column
+        justify-content: center
+        align-items: center
+
+      .filter
+        margin-right: 35px
+
+        @include tablet
+          margin-left: 0
+
+        @include mobile
+          margin: 15px 5px
+          max-width: 250px
+          width: 100%
+
+        &-icon
+          @include mobile
+            width: 40%
+            text-align: center
+
+          svg
+            fill: #9d9d9c
+            height: 52px
+            width: auto
+            transition: fill .3s ease
+            max-width: 60px
+
+            @include tablet
+              width: 52px
+
+            @include mobile
+              height: 45px
+
+        &-name
+          font-family: $raleway-semi
+          font-weight: 700
+          color: $color-text-normal
+          padding-left: 16px
 
         &.active,
         &:hover
           opacity: 0.95
 
+          svg
+            fill: $color-text-blue
+
       img
-        height: 45px
+        height: 50px
 
   .player
-    margin-top: 3em
+    margin-top: 3.7em
+    margin-bottom: 7.5em
+    position: relative
+
+    @include desktop-or-smaller
+      margin-bottom: 6em
+
+    @include tablet-or-smaller
+      margin-bottom: 4.5em
+
+    @include mobile
+      margin-top: 2.3em
+      margin-bottom: 3.5em
 
     .current-info
       margin-left: 15px
 
-    .plyr__controls .extra
+    .info
+      padding-left: 80px
+
       @include mobile
-        display: none
+        padding-left: 60px
+
+    .plyr__controls
+      color: $color-text-normal
+      padding-left: 0
+      padding-top: 35px
+
+      @include mobile
+        padding-right: 0
+        padding-top: 10px
+
+      .extra
+        @include mobile
+          display: none
+
+      > .plyr__control
+        &:first-child
+          display: flex
+          position: absolute
+          top: -47px
+          border: 1px solid
+          border-radius: 0
+          width: 36px
+          height: 36px
+          background: #fff
+
+          &:hover
+            .equalizer-bar
+              background: $color-player-blue
+
+          > *
+            margin: auto
+
+          .equalizer
+            display: none
+            position: relative
+            height: 24px
+            line-height: 24px
+            font-size: 0
+            overflow: hidden
+
+            &-bar
+              display: inline-block
+              width: 1px
+              height: 100%
+              background: $color-text-normal
+              margin-right: 2px
+              transition: all .3s ease
+
+              &:nth-child(1)
+                height: 70%
+                @include equalize-animation
+
+              &:nth-child(2)
+                @include equalize-animation-2
+
+              &:nth-child(3)
+                height: 70%
+                @include equalize-animation
+                animation-duration: .2s
+
+              &:nth-child(4)
+                @include equalize-animation-2
+                animation-duration: 150ms
+
+              &:nth-child(5)
+                height: 70%
+                @include equalize-animation
+                animation-duration: 150ms
+
+              &:nth-child(6)
+                height: 70%
+                @include equalize-animation
+                animation-duration: .2s
+
+        &[data-plyr="mute"]
+          width: 30px
+          height: 30px
+          position: relative
+          overflow: hidden
+          text-align: left
+          margin-left: 5.5%
+
+          &:before
+            content: ''
+            display: inline-block
+            width: 17px
+            height: 20px
+            background: image-url("sections/music/volume.png") no-repeat
+            background-size: 17px 20px
+            position: relative
+            top: -2px
+
+          &[aria-pressed="true"]
+            &:before
+              width: 12px
+
+          svg
+            display: none
+
+        &[data-plyr="rewind"],
+        &[data-plyr="fast-forward"]
+          @include tablet-or-smaller
+            top: 114%
+            position: absolute
+
+          @include mobile
+            top: 67px
+            display: block
+
+        &[data-plyr="rewind"]
+          @include tablet-or-smaller
+            left: 25%
+
+        &[data-plyr="fast-forward"]
+          @include tablet-or-smaller
+            left: 38%
+
+          @include mobile
+            right: 30%
+            left: auto
+
+    .plyr
+      &--playing
+        .plyr__control
+          &:first-child
+            .equalizer
+              display: block
+              font-size: 30px
+
+            .icon--pressed
+              display: none
+
+      &__volume
+        max-width: 10.5%
+
+        @include laptop
+          max-width: 12.5%
+
+        @include tablet
+          max-width: 15.5%
+
+      &__progress
+        font-size: 12px
+        font-weight: 300
+        max-width: 67%
+        margin: 0
+        margin-right: 1.5%
+
+        @include laptop
+          max-width: 61%
+
+        @include tablet
+          max-width: 73%
+
+        @include tablet-or-smaller
+          margin-right: 0
+
+        @include mobile
+          width: 100%
+          max-width: 100%
+
+        &--buffer
+          display: none
+
+      &__time
+        &--current,
+        &--duration
+          position: absolute
+          top: 100%
+          font-family: $futura-book
+
+          @include mobile
+            top: 24px
+
+        &--current
+          left: 0
+
+        &--duration
+          right: 0
+
+    .playlist
+      .info
+        padding-left: 0
 
     #track-player-title
+      font-family: $raleway-semi
+      font-weight: 500
       font-size: 1.5em
       line-height: 1.3em
-      letter-spacing: -1px
+      letter-spacing: 0
       color: $color-text-darker
 
+      @include mobile
+        font-family: $raleway
+        font-weight: 400
+
     #track-player-artist
+      font-family: $raleway
+      font-weight: 400
       font-size: 1em
       line-height: 1em
       margin-left: 1px
+      margin-top: .5em
+      display: block
       color: $color-text-normal
 
   .playlist
     position: relative
-    //max-height: 660px
-    min-height: 460px
-    width: 100%
-    max-width: 638px
+    min-height: 610px
+    width: 56%
+    max-width: 805px
     margin-left: auto
-    margin-top: 88px
-    padding: 50px 0 60px 144px
+    margin-top: 60px
+    padding: 50px 95px 60px 157px
     background: linear-gradient(to left,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
 
-    @include tablet
-      margin: auto
-      max-width: 766px
+    @include laptop
+      width: 64%
 
     @include tablet-or-smaller
-      margin-top: 50px
+      margin-right: 0
+      margin-top: 65px
       padding: 50px
       min-height: 0
+      width: 91%
+
+    @include desktop-lg
+      width: 59%
 
     @include mobile
       background: none
       padding: 0
+      width: 100%
+      margin-top: 128px
 
     > .title
       font-size: 1.5em
       line-height: 1.5em
-      margin-bottom: 0.4em
+      margin-bottom: 1.3em
       letter-spacing: 1px
 
       @include mobile
         font-size: 1.375em
         margin-bottom: 0.75em
+        padding-left: 15px
 
-    #selected-filter-icons img
-      height: 0.8em
-      opacity: 0.5
-      margin-left: 0.25em
+    #selected-filter-icons
+      .filter-name
+        display: none
+
+      img, svg
+        height: 25px
+        opacity: 0.5
+        margin-left: 0.25em
 
     .cover
       position: absolute
-      top: 102px
-      left: -288px
-      width: 348px
+      top: 115px
+      left: -320px
+      width: 385px
+
+      @include laptop
+        left: -266px
 
       @include tablet-or-smaller
         display: none
@@ -126,39 +491,66 @@ body.tracks-index
       position: absolute
       color: $color-text-normal
       letter-spacing: 2px
-      margin-top: 5px
+      margin-top: 0
       font-size: 2em
-      margin-right: 390px
+      margin-right: 415px
+      padding-top: 0
+
+      @include desktop-lg
+        margin-right: 430px
+
+      @include laptop
+        margin-right: 57%
+
+      @include tablet
+        margin-right: 11%
 
     .list
       position: relative
       list-style: none
 
       @include tablet
-        max-width: 540px
+        max-width: 577px
 
-    .list > *
+      .track
+        border: 1px solid transparent
+
+    .list > .track
       width: 100%
-      margin-bottom: 28px
-      padding-right: 150px
+      margin-bottom: 18px
+      padding-right: 50px
+
+      @include mobile
+        margin-bottom: 35px
 
       .label
         display: block
         color: $color-text-dark
-        font-size: 1.2em
+        font-size: 1.31em
         line-height: 1.5em
 
+        @include mobile
+          font-size: 1em
+
         i.icon
-          width: 35px
+          width: 44px
           font-size: 0.6em
           text-align: center
+          margin-right: 5px
+          margin-top: 5px
+
+          @include tablet-or-smaller
+            width: 50px
+
+          @include mobile
+            width: 35px
+            font-size: 1em
 
       .artist
         display: block
-        font-size: 0.7em
+        font-size: 0.75em
         line-height: 0.8em
-        padding-left: 35px
-        padding-bottom: 1em
+        padding: 2px 0 10px 50px
 
         &:hover
           color: $color-text-orange
@@ -166,7 +558,7 @@ body.tracks-index
       .duration
         position: absolute
         right: 7px
-        bottom: 12px
+        bottom: 17px
 
         font-family: $futura-book
         font-size: 0.7em
