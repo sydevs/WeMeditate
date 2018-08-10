@@ -29,7 +29,7 @@ var Meditation = {
         }
       }).done(function(svg) {
         if (svg.includes('<style>')) {
-          svg = svg.replace("<style>", "<style>." + text + " ")
+          svg = svg.replace('<style>', '<style>.' + text + ' ')
         }
 
         let $svg = $(svg).addClass(text).appendTo($element)

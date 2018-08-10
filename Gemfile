@@ -14,7 +14,7 @@ gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails'
 # Use Slim for views
 gem 'slim-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -47,7 +47,7 @@ gem 'autoprefixer-rails' # For automatic cross browser CSS compatibility
 gem 'semantic-ui-sass'
 gem 'jquery-rails'
 gem 'sortable-rails'
-gem 'google-analytics-rails'
+gem 'google-tag-manager-rails'
 gem 'jquery-slick-rails' # A slider library
 gem 'inline_svg' # To embed svg files
 

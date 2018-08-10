@@ -12,6 +12,10 @@ section.type-special.format-banner
     left: 0
     z-index: -1
 
+    @include mobile-portrait
+      background-size: cover
+      background-position: center
+
   .content
     height: 100vh
     max-height: 985px
@@ -27,7 +31,15 @@ section.type-special.format-banner
     justify-content: center
 
     .static-page-home &
-      padding: 25vh 0 0
+      padding: 0
+
+      .container
+        max-width: 470px
+        width: 100%
+        transform: translateY(30%)
+
+        @include mobile-portrait
+          transform: translateY(0%)
 
       @include mobile
         padding: 0
@@ -57,26 +69,31 @@ section.type-special.format-banner
 
   .style-front-page
     min-height: 100vh
-    height: 560px
     margin: 0
 
-    h1, h2
-      max-width: 440px
-      margin-left: auto
-      margin-right: auto
+    @include desktop
+      height: 590px
 
-      @include mobile
-        max-width: 90%
+    @include desktop-lg
+      min-height: 730px
+      height: 100vh
+
+    @include mobile-landscape
+      min-height: 370px
+      height: 100vh
 
     h1
       margin-top: 0
-      margin-bottom: 1.1em
+      margin-bottom: 1em
       padding: 0 5%
 
       font-size: 2.5em
       font-family: $raleway
       font-weight: 400
-      line-height: 1.5em
+      line-height: 1.4em
+
+      @include mobile-portrait
+        padding: 0 10%
 
     h2
       font-size: 1.5em
@@ -84,15 +101,16 @@ section.type-special.format-banner
       font-weight: 500
       line-height: 1.5em
 
-      padding: 0 10%
       max-width: 380px
+      width: 100%
+
+      padding: 0 10%
+      margin-left: auto
+      margin-right: auto
       margin-bottom: 22%
 
-      @include mobile
+      @include mobile-portrait
         max-width: 300px
-
-      @include laptop
-        margin-bottom: 22%
 
     .action
       position: static
@@ -122,7 +140,7 @@ section.type-special.format-banner
         transform: rotate(-90deg) scaleY(-1)
 
 
-    @include mobile
+    @include mobile-portrait
       padding: 0
 
       h1
@@ -133,7 +151,7 @@ section.type-special.format-banner
       h2
         font-size: 1.25em
         line-height: 1.3em
-        margin-bottom: 10vh
+        margin-bottom: 12vh
 
 
   .style-treatments-page
@@ -156,10 +174,7 @@ section.type-special.format-banner
       font-family: $raleway
       color: $color-text-normal
 
-    @include mobile
-      min-height: 1100px
-      margin-bottom: -40vw
-
+    @include mobile-portrait
       h1
         font-size: 1.875em
         margin-bottom: 0

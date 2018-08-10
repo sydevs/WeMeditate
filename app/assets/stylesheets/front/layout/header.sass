@@ -5,16 +5,20 @@ header
   position: relative
   min-height: 85px
   z-index: 1000
-  padding-top: 5px
+
+  @include desktop
+    padding-top: 5px
 
   .mobile
     display: block
-    @include laptop-or-larger
+
+    @include tablet-or-larger
       display: none
 
   .desktop
     display: none
-    @include laptop-or-larger
+
+    @include tablet-or-larger
       display: block
 
   .burger-buttom
@@ -23,6 +27,12 @@ header
   > .background
     z-index: 1000
     height: auto
+
+  &:not(.inverse)
+    .mobile
+      @include mobile
+        background: $background-white
+
 
   > .menu
     display: flex
@@ -62,8 +72,10 @@ header
           font-size: 1.125em
           padding: 15px 0
           background-color: transparent
+
           &:before
             display: none
+
           &:hover
             color: inherit
 
@@ -79,6 +91,7 @@ header
         opacity: 0
         max-height: 0
         transition: all 0.5s .3s ease
+
         a
           display: block
           font-size: 1em
@@ -92,9 +105,11 @@ header
 
       .item
         transition: all 0.5s .3s ease
+
         &.item-list
           .button
             padding-right: 25px
+
             &:after
               content: ''
               position: absolute
@@ -143,6 +158,9 @@ header
       right: 0
       background: $background-white
 
+    .mobile .topline
+      height: 50px
+
   &:not(.sticky)
     .menubar
       > .logo,
@@ -160,6 +178,8 @@ header
 
     .logo svg
       width: 60px
+      height: 43px
+      max-height: 100%
 
     a
       color: $color-text-normal
@@ -183,6 +203,7 @@ header
 
   .desktop
     .full.topline
+      position: relative
       height: 138px
 
       .logo, .action
@@ -197,6 +218,7 @@ header
       position: absolute
       left: 0
       right: 0
+      top: 15px
 
       svg
         height: 100px
@@ -204,7 +226,7 @@ header
 
     > .menubar
       display: flex
-      justify-content: space-evenly
+      justify-content: space-around
       align-items: center
       position: relative
 
@@ -398,19 +420,27 @@ header
         font-size: 0.5em
 
   .mobile
-    position: fixed
-    top: 0
+    position: fixed !important
+    top: 0 !important
     left: 0
     right: 0
 
+    &.container
+      padding: 0 15px
+
     .topline
-      height: 84px
+      height: 83px
       align-items: center
+
 
       > *
         display: inline-block
         height: 34px
         margin-left: -5px
+
+    .burger-button
+      position: relative
+      top: 1px
 
   // INVERSE TRANSITIONS
   .topline .logo svg path,
@@ -473,6 +503,7 @@ html.show-menu
 
     .burger-button
       position: relative
+      top: 0
 
       &:before, &:after
         content: ""
@@ -495,12 +526,28 @@ html.show-menu
       svg
         opacity: 0
 
-
 .sticky
+  .desktop
+    .logo
+      svg
+        width: 24.5em
+        height: 18px
+
+    .classes
+      svg
+        width: 19px
+        height: 24px
+
   .mobile
     background: $color-text-inverse
+
     .logo,
     .illustration-wrapper,
     .burger-button
       svg path
         stroke: $color-text-normal !important
+
+    .logo
+      svg
+        width: 50px
+        height: 31px
