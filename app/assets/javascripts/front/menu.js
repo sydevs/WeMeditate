@@ -90,12 +90,9 @@ var Menu = {
         Menu.header.css('height', Menu.header.outerHeight() + 'px')
         Menu.header.addClass('sticky')
       }
-      if (!Menu.header.hasClass('header-scroll') && $headerContainer.hasClass('mobile')) {
-        Menu.header.addClass('header-scroll')
-      }
     } else {
       Menu.header.css('height', 'auto')
-      Menu.header.removeClass('sticky header-scroll')
+      Menu.header.removeClass('sticky')
     }
 
     if (Menu.inversePoint > 0) {

@@ -30,8 +30,18 @@ section.type-text
       min-height: 88%
       width: 100%
 
-      @include tablet
+      @include tablet-or-smaller
         position: static
+
+      @include tablet
+        left: 20px
+        right: 15px
+        width: auto
+
+      @include mobile
+        height: auto
+        clear: both
+        min-height: 0
 
     .content-box
       background: white
@@ -48,6 +58,16 @@ section.type-text
 
       @include tablet-or-smaller
         max-height: none
+
+      @include tablet
+        max-width: 510px
+        padding: 65px
+        margin-left: 0 !important
+
+      @include mobile-portrait
+        width: auto
+        margin: 3em 0 !important
+        padding: 0 !important
 
       .box.button
         margin-top: 1.8em
@@ -67,39 +87,10 @@ section.type-text
       *:last-child
         margin-bottom: 0
 
-    @include tablet
-      .content
-        left: 20px
-        right: 15px
-        width: auto
-
-      .content-box
-        max-width: 510px
-        padding: 65px
-        margin-left: 0 !important
-
-
-    @include mobile-portrait
-      .content-box
-        width: auto
-        margin: 3em 0 !important
-        padding: 0 !important
-
-
-    @include mobile
-      .content
-        position: static
-        height: auto
-        clear: both
-        min-height: 0
-
-      .content-box
-        max-height: none
-
-      .sidetext
+    .sidetext
+      @include mobile
         font-size: 1.875em
         letter-spacing: .1em
-
 
   &.format-box-over-image
     height: 100vh
@@ -121,8 +112,8 @@ section.type-text
       padding-left: 70px
       display: none
 
-    @include tablet-or-larger
-      .with.triangle
+    .with.triangle.decoration
+      @include tablet-or-larger
         position: absolute
         bottom: 0
 
@@ -132,16 +123,14 @@ section.type-text
         &.left
           left: 20px
 
-    @include desktop
-      .with.triangle
+      @include desktop
         &.right
           right: calc(50% - 600px)
 
         &.left
           left: calc(50% - 600px)
 
-    @include desktop-lg
-      .with.triangle
+      @include desktop-lg
         &.right
           right: calc(50% - 640px)
 
@@ -151,14 +140,13 @@ section.type-text
     @include mobile
       height: auto
 
-      .content
-        &-box.inverse
-          .title, p
-            color: $color-text-normal
+      .inverse.content-box
+        .title, p
+          color: $color-text-normal
 
-          .box.button
-            color: $color-text-dark
-            border-color: $color-text-dark
+        .box.button
+          color: $color-text-dark
+          border-color: $color-text-dark
 
       .background
         background-size: auto 57vh
@@ -258,20 +246,19 @@ section.type-text
         .content
           align-items: flex-end
 
-    @include mobile
-      .image
+      @include mobile-landscape
+        img
+          margin-right: 40px
+
+      @include mobile
         margin: 0
 
         img
           margin-right: -25px
 
-      .with.triangle::after
+    .with.triangle.decoration::after
+      @include mobile
         right: 65%
-
-    @include mobile-landscape
-      .image
-        img
-          margin-right: 40px
 
 
   &.format-box-with-lefthand-image
@@ -282,31 +269,32 @@ section.type-text
       @include desktop
         margin-left: -170px
 
-    @include tablet
-      .content
-        align-items: flex-start
-
-      .content-box
+      @include tablet
         padding: 65px
         padding-right: 50px
 
-    @include mobile
-      .container
+    .content
+      @include tablet
+        align-items: flex-start
+
+    .container
+      @include mobile
         padding-right: 20px
 
-      .image
+    .image
+      @include mobile
         margin: 0
 
         img
           left: -25px
 
-      .with.triangle::after
-        left: 65%
-
-    @include mobile-landscape
-      .image
+      @include mobile-landscape
         img
           left: 40px
+
+    .with.triangle.decoration::after
+      @include mobile
+        left: 65%
 
   &.format-grid
     .top-left.sidetext
