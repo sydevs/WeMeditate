@@ -7,17 +7,19 @@ section
 
   .title
     font-size: 1.35em
-    line-height: 1.6em
+    line-height: 1.7em
     color: $color-text-dark
     font-family: $raleway-semi
     margin-bottom: 0.5em
 
   p
     font-size: 1em
-    line-height: 1.85em
+    line-height: 1.7em
     letter-spacing: 0.1px
     margin-top: 0.5em
     color: $color-text-normal
+    @include mobile
+      font-size: .9em
 
   .callout
     float: right

@@ -1,5 +1,14 @@
 @import "../../mixins/vars"
 
+.carousel-wrap
+  overflow: hidden
+
+  @include laptop
+    overflow: hidden
+
+  @include tablet-or-smaller
+    overflow: visible
+
 .carousel.slick-slider
   max-width: 1000px
   width: 100%
@@ -32,39 +41,121 @@
         content: $icon-arrow-right
 
   &.video
+    max-width: 780px
+
+    @include laptop-or-larger
+      position: static
+
+    @include laptop-portrait
+      max-width: 98%
+      overflow: hidden
+
+    @include tablet-or-smaller
+      max-width: 100%
+
+    @include laptop-landscape
+      max-width: 670px
+
+    @include mobile-landscape
+      max-width: 94%
+      overflow: hidden
+
     .slick-list
-      overflow: visible
+      @include laptop-or-larger
+        position: static
+        overflow: visible
 
     .slick-slide
+      opacity: .5
+
       .video.wrapper
-        max-width: 680px
+        max-width: 630px
         padding: 10px
+
+        @include laptop-portrait
+          max-width: 94vw
+          width: 90vw
+          overflow: hidden
+
+        @include tablet-or-smaller
+          max-width: 94vw
+          width: 90vw
+          overflow: hidden
+
+      .video-preview
+        background-size: cover
+        background-position: center center
+        height: 414px
+
+        @include laptop-portrait
+          height: 600px
+
+        @include tablet
+          display: flex
+          align-items: center
+          flex-direction: column
+          justify-content: center
+
+        @include mobile
+          height: 310px
+
+        img
+          opacity: 0
+
+      .title
+        font-size: 1.5em
+        font-family: $raleway-bold
+        line-height: 1.7em
+        text-align: left
+        margin-top: 1.5em
 
       &:not(.slick-active)
         .button, .title
           opacity: 0
           visibility: hidden
 
-    .slick-arrow
-      @include tablet-or-larger
-        background: #999
-        width: 60px
-        height: 60px
-        margin-top: -30px
+    .slick-active
+      opacity: 1
 
+    .slick-arrow
+      background: #999
+      width: 60px
+      height: 60px
+      margin-top: -43px
+
+      @include laptop-portrait
+        width: 100px
+        height: 100px
+        margin-top: -90px
+        background: #999
+
+      @include tablet
+        margin-top: -27px
+
+      @include desktop
+        margin-top: -57px
+
+        &.slick-prev
+          margin-left: 0
+
+        &.slick-next
+          margin-right: 0
+
+      @include tablet
+        &.slick-prev
+          margin-left: -25px
+
+        &.slick-next
+          margin-right: -25px
+
+      @include tablet-or-larger
         &::before
           color: white
 
-        &.slick-prev
-          margin-left: 30px
+          &:hover
+            background: gray
 
-        &.slick-next
-          margin-right: 30px
-
-        &:hover
-          background: gray
-
-      @include mobile
+      @include mobile-portrait
         width: 35px
         height: auto
         line-height: 100%
@@ -73,7 +164,11 @@
         background: white
 
         &.slick-prev
-          left: -35px
+          left: -25px
 
         &.slick-next
-          right: -35px
+          right: -25px
+
+      @include mobile-landscape
+        &:before
+          color: $color-text-inverse

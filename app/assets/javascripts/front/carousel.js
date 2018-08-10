@@ -9,6 +9,7 @@ var Carousel = {
         settings: {
           arrows: true,
           slidesToShow: 1,
+          centerPadding: '0',
         }
       },
       {
@@ -22,15 +23,16 @@ var Carousel = {
   },
 
   video_options: {
-    centerPadding: '6%',
+    centerPadding: '7%',
     centerMode: true,
     slidesToShow: 1,
     responsive: [
       {
-        breakpoint: 992,
+        breakpoint: 1200,
         settings: {
           arrows: true,
           slidesToShow: 1,
+          centerPadding: '0',
         }
       },
       {
@@ -90,6 +92,12 @@ var Carousel = {
         $carousel.slick(Carousel.default_options)
       }
     })
+
+    if (jQuery( this ).closest('.menu-item').hasClass('menu-item-type-custom')) {
+      console.log('yes', jQuery( this ))
+    } else {
+      console.log('no', jQuery( this ))
+    }
   },
 }
 

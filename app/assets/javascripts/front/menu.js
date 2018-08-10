@@ -82,17 +82,20 @@ var Menu = {
 
   _on_scroll: function() {
     let scrollTop = $(window).scrollTop()
-    let $headerContainer = Menu.header.children('.container:visible')
-    let headerHeight = $headerContainer.hasClass('desktop') ? $headerContainer.children('.mini.topline').outerHeight(true) : $headerContainer.outerHeight(true)
+    let $headerContainer = Menu.header.find('.container:visible')
+    let headerHeight = $headerContainer.hasClass('desktop') ? $headerContainer.find('.mini.topline').outerHeight() : $headerContainer.outerHeight()
 
-    if (scrollTop > Menu.stickyPoint - headerHeight) {
-      if (!Menu.header.hasClass('sticky')) {
+    if (scrollTop > Menu.stickyPoint - headerHeight + 2) {
+      if (!Menu.header.hasClass('sticky') && $headerContainer.hasClass('desktop')) {
         Menu.header.css('height', Menu.header.outerHeight() + 'px')
         Menu.header.addClass('sticky')
       }
+      if (!Menu.header.hasClass('header-scroll') && $headerContainer.hasClass('mobile')) {
+        Menu.header.addClass('header-scroll')
+      }
     } else {
       Menu.header.css('height', 'auto')
-      Menu.header.removeClass('sticky')
+      Menu.header.removeClass('sticky header-scroll')
     }
 
     if (Menu.inversePoint > 0) {
@@ -100,7 +103,7 @@ var Menu = {
     }
 
     if (Menu.chaptersStickyPoint > 0) {
-      let $chaptersContainer = Menu.chapters.children('.container')
+      let $chaptersContainer = Menu.chapters.find('.container')
       let chaptersHeight = $chaptersContainer.outerHeight()
 
       if (scrollTop > Menu.chaptersStickyPoint - headerHeight) {

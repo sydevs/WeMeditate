@@ -11,7 +11,7 @@
   &.mobile
     display: none
 
-    @include mobile
+    @include mobile-portrait
       display: block
 
       & + .background
@@ -41,6 +41,9 @@ a:not(:hover) > .overlay
     top: 50%
     left: 50%
     transform: translateX(-50%) translateY(-50%)
+
+    @include desktop
+      margin-left: -85px
 
     @include mobile
       width: 85px
