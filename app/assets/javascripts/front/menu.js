@@ -83,13 +83,17 @@ var Menu = {
   _on_scroll: function() {
     let scrollTop = $(window).scrollTop()
     let $headerContainer = Menu.header.find('.container:visible')
-    let headerHeight = $headerContainer.hasClass('desktop') ? $headerContainer.find('.mini.topline').outerHeight() : $headerContainer.outerHeight()
+    let headerHeight = $headerContainer.hasClass('desktop') ? $headerContainer.find('.menubar').outerHeight() : $headerContainer.outerHeight()
 
     if (scrollTop > Menu.stickyPoint - headerHeight + 2) {
       if (!Menu.header.hasClass('sticky') && $headerContainer.hasClass('desktop')) {
         Menu.header.css('height', Menu.header.outerHeight() + 'px')
         Menu.header.addClass('sticky')
       }
+      if (!Menu.header.hasClass('sticky') && $headerContainer.hasClass('mobile')) {
+        Menu.header.addClass('sticky')
+      }
+
     } else {
       Menu.header.css('height', 'auto')
       Menu.header.removeClass('sticky')

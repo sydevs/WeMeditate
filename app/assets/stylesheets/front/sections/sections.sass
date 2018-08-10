@@ -58,12 +58,27 @@ section.intro
 
   .title
     letter-spacing: 1px
-    font-size: 1.85em
     color: $color-text-dark
     font-weight: 700
-    line-height: 78px
-    margin-top: 62px
-    margin-bottom: 12px
+    margin-top: 1em
+    margin-bottom: 6px
+    font-size: 2.19em
+    font-family: $raleway-bold
+    line-height: 92px
+
+    @include desktop-lg
+      font-size: 2.8125em
+      line-height: 170px
+
+    @include tablet-or-smaller
+      font-size: 1.75em
+      line-height: 86px
+
+    @include mobile
+      font-size: 1.675em
+      line-height: 1.675em
+      padding: 22px 0
+      margin-bottom: 0
 
   .title:after
     display: block
