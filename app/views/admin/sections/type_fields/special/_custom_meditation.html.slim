@@ -1,0 +1,5 @@
+
+= f.fields_for :extra, f.object do |ff|
+  = ff.input :daily_meditation, value: f.object.extra_attr('daily_meditation'), label: Section.human_attribute_name(:daily_meditation), wrapper_html: { class: 'sub' }, required: false
+  = ff.input :trending_meditation, value: f.object.extra_attr('trending_meditation'), label: Section.human_attribute_name(:trending_meditation), wrapper_html: { class: 'sub' }, required: false
+  //= ff.input :action_text, value: f.object.extra_attr('action_text'), label: Section.human_attribute_name(:action_text), wrapper_html: { class: 'sub' }, required: false

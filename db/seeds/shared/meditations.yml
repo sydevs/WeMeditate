@@ -4,6 +4,7 @@ records:
   - sprig_id: 1
     name: First Meditation Experience
     slug: first-experience
+    excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-1.jpg') %>
     audio: <%= sprig_file('general/meditation.mp3') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 10).id %>
@@ -12,6 +13,7 @@ records:
   - sprig_id: 2
     name: Silent Meditation
     slug: silent
+    excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-2.jpg') %>
     audio: <%= sprig_file('general/meditation.mp3') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 5).id %>
@@ -20,6 +22,7 @@ records:
   - sprig_id: 3
     name: Long Meditation
     slug: long
+    excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-1.jpg') %>
     audio: <%= sprig_file('general/meditation.mp3') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 20).id %>
@@ -28,6 +31,7 @@ records:
   - sprig_id: 4
     name: Mooladhara
     slug: mooladhara
+    excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-2.jpg') %>
     audio: <%= sprig_file('general/meditation.mp3') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 5).id %>
@@ -36,6 +40,7 @@ records:
   - sprig_id: 5
     name: Balancing
     slug: balacing
+    excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-1.jpg') %>
     audio: <%= sprig_file('general/meditation.mp3') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 5).id %>

@@ -11,7 +11,7 @@
   &.mobile
     display: none
 
-    @include mobile
+    @include mobile-portrait
       display: block
 
       & + .background
@@ -40,15 +40,15 @@ a:not(:hover) > .overlay
     position: absolute
     top: 50%
     left: 50%
-    margin-top: -80px
-    margin-left: -80px
+    transform: translateX(-50%) translateY(-50%)
+
+    @include desktop
+      margin-left: -85px
 
     @include mobile
       width: 85px
       height: 85px
       padding: 10px
-      margin-top: -42.5px
-      margin-left: -42.5px
 
 #video-popup
   width: 544px

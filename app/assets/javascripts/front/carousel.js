@@ -9,6 +9,7 @@ var Carousel = {
         settings: {
           arrows: true,
           slidesToShow: 1,
+          centerPadding: '0',
         }
       },
       {
@@ -22,15 +23,16 @@ var Carousel = {
   },
 
   video_options: {
-    centerPadding: '6%',
+    centerPadding: '7%',
     centerMode: true,
     slidesToShow: 1,
     responsive: [
       {
-        breakpoint: 992,
+        breakpoint: 1200,
         settings: {
           arrows: true,
           slidesToShow: 1,
+          centerPadding: '0',
         }
       },
       {
@@ -49,7 +51,21 @@ var Carousel = {
     slidesToShow: 1,
   },
 
-  columns_options: {},
+  meditations_options: {
+    dots: true,
+    slidesToShow: 3,
+    responsive: [
+      {
+        breakpoint: 740,
+        settings: {
+          arrows: true,
+          slidesToShow: 1,
+        }
+      }
+    ]
+  },
+
+  contacts_options: {},
 
   contacts_options: {},
 
@@ -66,6 +82,8 @@ var Carousel = {
         $carousel.slick(Carousel.video_options)
       } else if (style == 'venues') {
         $carousel.slick(Carousel.venues_options)
+      } else if (style == 'meditations') {
+        $carousel.slick(Carousel.meditations_options)
       } else if (style == 'columns') {
         $carousel.slick(Carousel.columns_options)
       } else if (style == 'contacts') {
@@ -74,6 +92,12 @@ var Carousel = {
         $carousel.slick(Carousel.default_options)
       }
     })
+
+    if (jQuery( this ).closest('.menu-item').hasClass('menu-item-type-custom')) {
+      console.log('yes', jQuery( this ))
+    } else {
+      console.log('no', jQuery( this ))
+    }
   },
 }
 

@@ -13,19 +13,20 @@
   &.box
     border: 1px solid $color-text-dark
     color: $color-text-dark
-    padding: 1.2em 2em
+    padding: 1.5em 2em
     font-family: $raleway-bold
     font-size: 0.875em
+    min-width: 175px
 
     &.inverse
       color: $color-text-inverse
       border-color: $color-text-inverse
 
     &:after
-      background: $light-blue
+      background: $color-button-blue
 
     &:hover:not(.filter)
-      border-color: $light-blue
+      border-color: $color-button-blue
       color: $color-text-normal
 
   &.filter
@@ -54,12 +55,14 @@
       width: 100%
       height: 100%
 
-  &:not(.video):before
-    background: $background-gray
-    content: ''
-    z-index: -2
-    transition: all 1s ease
-    @include overlay(0, 0, 50%, 50%)
+  &.box,
+  &.filter,
+    &::before
+      background: $background-gray
+      content: ''
+      z-index: -2
+      transition: all 1s ease
+      @include overlay(0, 0, 50%, 50%)
 
   &.active:before,
   &:hover:before
@@ -67,34 +70,43 @@
     right: 0
 
   &.circle
-    width: 270px
-    height: 270px
+    width: 280px
+    height: 280px
     margin-left: -1px
+    font-size: 1.45em
+    color: $color-text-dark
+    transition: all 0.5s ease
 
-    svg path
-      stroke: $color-text-dark
-
-    > .text
+    > svg
       position: absolute
       left: 0
       right: 0
       top: 0
       bottom: 0
+      width: 100%
+      height: 100%
 
+      path
+        stroke: $color-text-dark
+        transition: stroke 0.5s ease
+
+    > .text
       display: flex
       text-align: center
       align-items: center
       justify-content: center
-      font-size: 1.45em
+      width: 100%
+      height: 100%
       line-height: 1em
       letter-spacing: -0.5px
-      padding: 60px
       margin: auto
-      color: $color-text-dark
-      transition: all 0.5s ease
 
     &:hover
       transform: scale(1.1)
+      color: $color-text-orange
+
+      svg path
+        stroke: $color-text-orange
 
 
 .inverse .box.button

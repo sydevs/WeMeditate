@@ -6,7 +6,7 @@ section.type-text
     font-size: 1.15em
     line-height: 1.9em
     font-family: $raleway-semi
-    color: $dark-gray
+    color: $color-text-dark
 
   .image.callout
     float: left
@@ -26,16 +26,28 @@ section.type-text
 
       position: absolute
       left: 50%
-      top: 10%
+      top: 6%
       min-height: 88%
       width: 100%
 
+      @include tablet-or-smaller
+        position: static
+
+      @include tablet
+        left: 20px
+        right: 15px
+        width: auto
+
+      @include mobile
+        height: auto
+        clear: both
+        min-height: 0
+
     .content-box
       background: white
-      padding: 65px 97px
-      width: 600px
-      max-width: 100%
-      max-height: 100%
+      padding: 100px 110px
+      max-width: 670px
+      max-height: 480px
       margin-left: -410px
       overflow: hidden
 
@@ -44,8 +56,30 @@ section.type-text
         width: 670px
         margin-left: -480px
 
+      @include tablet-or-smaller
+        max-height: none
+
+      @include tablet
+        max-width: 510px
+        padding: 65px
+        margin-left: 0 !important
+
+      @include mobile-portrait
+        width: auto
+        margin: 3em 0 !important
+        padding: 0 !important
+
       .box.button
-        margin-top: 2em
+        margin-top: 1.8em
+
+        @include laptop
+          font-size: 1.1em
+          margin-top: 1.3em
+          padding: 1em 2em
+          min-width: 205px
+
+        @include laptop-landscape
+          padding: 1.4em 2em
 
       *:first-child
         margin-top: 0
@@ -53,67 +87,75 @@ section.type-text
       *:last-child
         margin-bottom: 0
 
-    @include tablet
-      .content
-        left: 20px
-        right: 15px
-        width: auto
-
-      .content-box
-        max-width: 510px
-        padding: 65px
-        margin-left: 0 !important
-
-    @include mobile
-      .content
-        position: static
-        height: auto
-        clear: both
-        min-height: 0
-
-      .content-box
-        width: auto
-        max-height: none
-        margin: 3em 0 !important
-        padding: 0 !important
+    .sidetext
+      @include mobile
+        font-size: 1.875em
+        letter-spacing: .1em
 
   &.format-box-over-image
-    height: 90vh
-
-    @include mobile
+    height: 100vh
 
     &.with.gradient
-      z-index: -1
-
       &::before
         z-index: 0
+
+        @include laptop
+          width: 19vw
+
+        @include tablet
+          top: -10%
+
+        @include tablet-or-smaller
+          width: 13vw
 
     .background > img
       padding-left: 70px
       display: none
 
-    @include tablet-or-larger
-      .with.triangle
+    .with.triangle.decoration
+      @include tablet-or-larger
         position: absolute
         bottom: 0
+
+        &.right
+          right: 20px
+
+        &.left
+          left: 20px
+
+      @include desktop
+        &.right
+          right: calc(50% - 600px)
+
+        &.left
+          left: calc(50% - 600px)
+
+      @include desktop-lg
+        &.right
+          right: calc(50% - 640px)
+
+        &.left
+          left: calc(50% - 640px)
 
     @include mobile
       height: auto
 
-      .content
-        .content-box.inverse
-          .title, p
-            color: $color-text-normal
+      .inverse.content-box
+        .title, p
+          color: $color-text-normal
 
-          .box.button
-            color: $color-text-dark
-            border-color: $color-text-dark
+        .box.button
+          color: $color-text-dark
+          border-color: $color-text-dark
 
       .background
-        background: none !important
+        background-size: auto 57vh
+        background-position-y: 0
 
         > img
           display: block
+          height: 57vh
+          opacity: 0
 
       .with.triangle::after
         left: 65%
@@ -122,56 +164,52 @@ section.type-text
       padding-right: 7%
 
       @include mobile
-        background: white
-        margin-top: -5px
+        background-color: transparent
+        margin-top: 20px
         padding-right: 0
 
     .content
       position: relative
+      left: 50px
 
       @include mobile
         position: static
         padding: 0
         padding-right: 35px
-        padding-left: 75px
+        padding-left: 20px
 
-    .content
-      left: 50px
+      &-box
+        max-width: 700px
+        width: 45%
+        background: transparent
+        padding: 35px 40px
+        margin-left: 2%
+        @include laptop
+          max-width: 680px
+          margin-left: 0
+          width: 100%
+          padding: 100px 80px
 
-      @include tablet
-        left: 80px
+        @include tablet
+          max-width: 525px
+          padding: 100px 80px
+          width: auto
 
-    .content-box
-      max-width: 700px
-      width: 45%
-      background: transparent
-      padding: 35px 40px
-      margin-left: 2%
+        &.inverse
+          border: 2px solid $color-text-inverse
 
-      @include tablet-or-smaller
-        padding: 3.5% 4%
-        width: auto
+          .title, p
+            color: $color-text-inverse
 
-      @include tablet
-        max-width: 50%
-
-      p
-        font-size: 0.95em
-        letter-spacing: -0.35px
-        margin-bottom: 1.2em
-
-      &.inverse
-        border: 2px solid $color-text-inverse
-
-        .title, p
-          color: $color-text-inverse
+            @include mobile
+              color: $color-text-normal
 
   &.format-box-with-righthand-image,
   &.format-box-with-lefthand-image
     .image
       &.with.circle.decoration::before
         position: absolute
-        left: 60.5%
+        left: 64.5%
         bottom: 8.5%
         z-index: 10
 
@@ -181,17 +219,17 @@ section.type-text
         margin-bottom: -280px
 
       img
-        max-height: 92vh
-        max-width: 47.25vw
+        height: 100vh
+        max-height: 560px
+        width: auto
 
-        @include tablet-or-smaller
-          max-width: none
-          max-height: 100vh
+        @include laptop-or-larger
+          max-height: 800px
 
         @include mobile
           position: relative
           max-width: 100%
-          max-height: none
+          max-height: 320px
 
     &.with.gradient:not(.gray)::before
       top: -15rem
@@ -204,41 +242,58 @@ section.type-text
     .image
       float: right
 
-    @include mobile
-      .container
-        padding-left: 75px
+      @include tablet
+        .content
+          align-items: flex-end
 
-      .image
-        margin-right: -35px
+      @include mobile-landscape
+        img
+          margin-right: 40px
 
-      .with.triangle::after
+      @include mobile
+        margin: 0
+
+        img
+          margin-right: -25px
+
+    .with.triangle.decoration::after
+      @include mobile
         right: 65%
+
 
   &.format-box-with-lefthand-image
     .content-box
       margin-left: -140px
       left: auto
 
-    @include desktop
-      .content-box
-        margin-left: -140px
+      @include desktop
+        margin-left: -170px
 
-    @include tablet
-      .content
-        align-items: flex-end
-
-      .content-box
+      @include tablet
         padding: 65px
         padding-right: 50px
 
-    @include mobile
-      .container
-        padding-right: 75px
+    .content
+      @include tablet
+        align-items: flex-start
 
-      .image
-        margin-left: -35px
+    .container
+      @include mobile
+        padding-right: 20px
 
-      .with.triangle::after
+    .image
+      @include mobile
+        margin: 0
+
+        img
+          left: -25px
+
+      @include mobile-landscape
+        img
+          left: 40px
+
+    .with.triangle.decoration::after
+      @include mobile
         left: 65%
 
   &.format-grid
@@ -246,8 +301,8 @@ section.type-text
       padding-top: 10px
 
     .container
-      @include laptop-or-larger
-        padding: 0 65px
+      @include desktop
+        padding: 0 45px
 
       .title
         margin-bottom: 2em
@@ -279,11 +334,17 @@ section.type-text
           letter-spacing: 1px
           margin-bottom: 0.25em
 
+          @include laptop
+            font-size: 1.3em
+
         p
           font-size: 0.8em
           line-height: 1.75em
           margin-top: 0.4em
           letter-spacing: -0.1px
+
+          @include laptop
+            font-size: 1.05em
 
     .filters
       text-align: center
