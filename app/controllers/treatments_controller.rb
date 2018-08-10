@@ -13,18 +13,6 @@ class TreatmentsController < ApplicationController
 
   def show
     @treatment = Treatment.friendly.find(params[:id])
-    @sections = [
-      Section.new({
-        content_type: 'video',
-        images: [ @treatment.thumbnail ],
-        videos: [ @treatment.video ],
-      }),
-      Section.new({
-        content_type: 'text',
-        format: 'just_text',
-        text: @treatment.content,
-      }),
-    ]
 
     about_page = StaticPage.find_by(role: :about)
     treatments_page = StaticPage.find_by(role: :treatments)
