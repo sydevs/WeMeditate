@@ -93,6 +93,6 @@ Rails.application.configure do
   # Devise config
   config.action_mailer.default_url_options = { host: 'wemeditate.com', port: 3000 }
 
-  # Google Analytics
-  GA.tracker = ENV['GOOGLE_ANALYTICS_ID']
+  # Google Tag Manager
+  GoogleTagManager.gtm_id = ENV['GOOGLE_TAG_MANAGER_ID']
 end
