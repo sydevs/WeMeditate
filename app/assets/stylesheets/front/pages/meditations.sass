@@ -6,22 +6,18 @@ body.meditations-index
 
     .title
       margin-top: 1em
-      font-size: 2.8125em
+      margin-bottom: 6px
+      font-size: 1.75em
       font-family: $raleway-bold
-      line-height: 170px
+      line-height: 86px
 
       display: flex
       align-items: center
       justify-content: center
 
-      @include desktop-or-smaller
-        font-size: 2.2em
-        line-height: 100px
-
-      @include tablet-or-smaller
-        font-size: 1.75em
-        line-height: 86px
-        margin-bottom: 6px
+      @include desktop-lg
+        font-size: 2.8125em
+        line-height: 170px
 
       @include mobile
         font-size: 1.675em
