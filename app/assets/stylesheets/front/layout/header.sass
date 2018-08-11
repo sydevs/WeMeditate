@@ -53,6 +53,20 @@ header
     transition: height 0.5s ease
     background: $background-white
 
+    .menu-wrap
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      text-align: center
+      width: 100%
+
+      @include mobile-landscape
+        overflow-y: auto
+        max-height: 100vh
+        padding-top: 50px
+        display: block
+
     > a
       width: 100%
       font-size: 1.125em
@@ -91,6 +105,8 @@ header
         opacity: 0
         max-height: 0
         transition: all 0.5s .3s ease
+        overflow: hidden
+        width: 100%
 
         a
           display: block
@@ -130,6 +146,7 @@ header
 
         .links
           opacity: 1
+          //display: block
           max-height: 300px
           margin-top: 0
           transition: all 0.25s 0s ease

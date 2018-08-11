@@ -198,11 +198,17 @@ section.type-text
         &.inverse
           border: 2px solid $color-text-inverse
 
-          .title, p
+          p
             color: $color-text-inverse
 
             @include mobile
               color: $color-text-normal
+
+          .title
+            color: $color-text-inverse
+
+            @include mobile
+              color: $color-text-dark
 
   &.format-box-with-righthand-image,
   &.format-box-with-lefthand-image
@@ -250,7 +256,7 @@ section.type-text
         img
           margin-right: 40px
 
-      @include mobile
+      @include mobile-portrait
         margin: 0
 
         img
@@ -282,7 +288,7 @@ section.type-text
         padding-right: 20px
 
     .image
-      @include mobile
+      @include mobile-portrait
         margin: 0
 
         img

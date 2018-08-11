@@ -30,5 +30,6 @@ header class="#{'inverse' if action_name == 'front'}"
         a.burger-button = inline_svg 'header/burger.svg'
 
   nav.menu
-    - navigation do |nav|
-      = render 'header_nav_item', nav: nav
+    .menu-wrap
+      - navigation do |nav|
+        = render 'header_nav_item', nav: nav
