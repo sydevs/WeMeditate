@@ -6,9 +6,9 @@ records:
     audio: <%= sprig_file('general/music.mp3') %>
     artist_id: <%= sprig_record(Artist, 1).id %>
     mood_filter_ids:
-      - <%= sprig_record(MoodFilter, 'Peace').id %>
-      - <%= sprig_record(MoodFilter, 'Joy').id %>
-      - <%= sprig_record(MoodFilter, 'Innocence').id %>
+      - <%= sprig_record(MoodFilter, 'peaceful').id %>
+      - <%= sprig_record(MoodFilter, 'joyful').id %>
+      - <%= sprig_record(MoodFilter, 'integrated').id %>
     instrument_filter_ids:
       - <%= sprig_record(InstrumentFilter, 'Voice').id %>
       - <%= sprig_record(InstrumentFilter, 'Flute').id %>
@@ -17,8 +17,8 @@ records:
     audio: <%= sprig_file('general/music.mp3') %>
     artist_id: <%= sprig_record(Artist, 1).id %>
     mood_filter_ids:
-      - <%= sprig_record(MoodFilter, 'Peace').id %>
-      - <%= sprig_record(MoodFilter, 'Cheerfulness').id %>
+      - <%= sprig_record(MoodFilter, 'peaceful').id %>
+      - <%= sprig_record(MoodFilter, 'calm').id %>
     instrument_filter_ids:
       - <%= sprig_record(InstrumentFilter, 'Tabla').id %>
       - <%= sprig_record(InstrumentFilter, 'Sitar').id %>
@@ -27,8 +27,8 @@ records:
     audio: <%= sprig_file('general/music.mp3') %>
     artist_id: <%= sprig_record(Artist, 2).id %>
     mood_filter_ids:
-      - <%= sprig_record(MoodFilter, 'Peace').id %>
-      - <%= sprig_record(MoodFilter, 'Integration').id %>
+      - <%= sprig_record(MoodFilter, 'peaceful').id %>
+      - <%= sprig_record(MoodFilter, 'confident').id %>
     instrument_filter_ids:
       - <%= sprig_record(InstrumentFilter, 'Voice').id %>
   - sprig_id: 4
@@ -36,8 +36,8 @@ records:
     audio: <%= sprig_file('general/music.mp3') %>
     artist_id: <%= sprig_record(Artist, 3).id %>
     mood_filter_ids:
-      - <%= sprig_record(MoodFilter, 'Integration').id %>
-      - <%= sprig_record(MoodFilter, 'Joy').id %>
+      - <%= sprig_record(MoodFilter, 'integrated').id %>
+      - <%= sprig_record(MoodFilter, 'joyful').id %>
     instrument_filter_ids:
       - <%= sprig_record(InstrumentFilter, 'Tabla').id %>
       - <%= sprig_record(InstrumentFilter, 'Sitar').id %>

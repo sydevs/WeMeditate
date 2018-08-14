@@ -1,18 +1,23 @@
 options:
-  find_existing_by: name
+  find_existing_by: order
 records:
-  - sprig_id: Cheerfulness
-    name: Cheerfulness
+  - sprig_id: calm
+    name: Calm
+    icon: <%= sprig_file('goal_filters/calm.svg') %>
     order: 1
-  - sprig_id: Peace
-    name: Peace
+  - sprig_id: confident
+    name: Confident
+    icon: <%= sprig_file('mood_filters/confident.svg') %>
     order: 2
-  - sprig_id: Joy
-    name: Joy
+  - sprig_id: joyful
+    name: Joyful
+    icon: <%= sprig_file('mood_filters/joyful.svg') %>
     order: 3
-  - sprig_id: Integration
-    name: Integration
+  - sprig_id: integrated
+    name: Integrated
+    icon: <%= sprig_file('mood_filters/integrated.svg') %>
     order: 4
-  - sprig_id: Innocence
-    name: Innocence
+  - sprig_id: peaceful
+    name: Peaceful
+    icon: <%= sprig_file('mood_filters/peaceful.svg') %>
     order: 5

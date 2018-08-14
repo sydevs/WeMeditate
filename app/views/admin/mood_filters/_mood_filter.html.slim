@@ -12,3 +12,7 @@
 
   - content_for :fields, flush: true do
     = f.input :name, wrapper_html: { class: 'sub' }
+    = f.input :icon, wrapper: :ui_file_input, icon: :image, file: mood_filter.icon, wrapper_html: { class: 'sub' }
+
+    - if mood_filter.icon.present?
+      .item = image_tag mood_filter.icon.url, class: 'ui tiny image'

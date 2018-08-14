@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180814064856) do
+ActiveRecord::Schema.define(version: 20180814082702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,6 +197,7 @@ ActiveRecord::Schema.define(version: 20180814064856) do
   create_table "mood_filters", force: :cascade do |t|
     t.integer "order"
     t.jsonb "image"
+    t.string "icon"
   end
 
   create_table "mood_filters_tracks", id: false, force: :cascade do |t|
