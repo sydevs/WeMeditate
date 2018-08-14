@@ -1,6 +1,4 @@
 
-code = f.object.metatags.inspect
-
 = render 'admin/application/repeatable_fields', f: f, attribute: :metatags, horizontal: true, items: f.object.metatags.to_a do |ff, item|
   = ff.text_field :name, value: item[0], placeholder: t('metatag.key'), name: "#{ff.object_name}[keys][]"
   = ff.text_field :value, value: item[1], placeholder: t('metatag.value'), name: "#{ff.object_name}[values][]"
