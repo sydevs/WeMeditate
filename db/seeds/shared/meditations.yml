@@ -6,7 +6,7 @@ records:
     slug: first-experience
     excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-1.jpg') %>
-    audio: <%= sprig_file('general/meditation.mp3') %>
+    video: <%= sprig_file('general/video.mp4') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 10).id %>
     goal_filter_ids:
       - <%= sprig_record(GoalFilter, 'calm').id %>
@@ -15,7 +15,7 @@ records:
     slug: silent
     excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-2.jpg') %>
-    audio: <%= sprig_file('general/meditation.mp3') %>
+    video: <%= sprig_file('general/video.mp4') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 5).id %>
     goal_filter_ids:
       - <%= sprig_record(GoalFilter, 'love').id %>
@@ -24,7 +24,7 @@ records:
     slug: long
     excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-1.jpg') %>
-    audio: <%= sprig_file('general/meditation.mp3') %>
+    video: <%= sprig_file('general/video.mp4') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 20).id %>
     goal_filter_ids:
       - <%= sprig_record(GoalFilter, 'love').id %>
@@ -33,7 +33,7 @@ records:
     slug: mooladhara
     excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-2.jpg') %>
-    audio: <%= sprig_file('general/meditation.mp3') %>
+    video: <%= sprig_file('general/video.mp4') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 5).id %>
     goal_filter_ids:
       - <%= sprig_record(GoalFilter, 'joyful').id %>
@@ -42,7 +42,7 @@ records:
     slug: balacing
     excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-1.jpg') %>
-    audio: <%= sprig_file('general/meditation.mp3') %>
+    video: <%= sprig_file('general/video.mp4') %>
     duration_filter_id: <%= sprig_record(DurationFilter, 5).id %>
     goal_filter_ids:
       - <%= sprig_record(GoalFilter, 'silence').id %>

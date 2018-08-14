@@ -3,37 +3,3 @@
 body.treatments-show
   section.intro
     margin-bottom: 1em
-
-    .title
-      margin-top: 62px
-      font-size: 2.5em
-      font-family: $raleway-bold
-      line-height: 150px
-
-      display: flex
-      align-items: center
-      justify-content: center
-
-      @include mobile
-        margin-top: 26px
-
-      &:after
-        width: 100%
-        left: auto
-        right: 50%
-
-      > *
-        display: inline-block
-
-      svg
-        width: 40px
-        margin: 0 22px
-
-        @include mobile
-          display: none
-
-        &:first-child
-          transform: rotate(-90deg)
-
-        &:last-child
-          transform: rotate(90deg) scaleX(-1)

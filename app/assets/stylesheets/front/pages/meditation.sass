@@ -1,47 +1,5 @@
 @import "../../mixins/vars"
 
 body.meditations-show
-  position: absolute
-  top: 0
-  bottom: 0
-  left: 0
-  right: 0
-
-  .container
-    padding: 15px
-
-  .back
-    display: inline-block
-    width: 30px
-    height: 30px
-    line-height: 30px
-    margin: 15px
-    padding-right: 2px
-
-    text-align: center
-    background: transparentize(black, 0.7)
-    color: $color-player-blue
-
-    transition: background-color 1s ease
-    border-radius: 15px
-
-    &:hover
-      background: black
-
-  .plyr
-    position: absolute
-    bottom: 1em
-    left: 1em
-    right: 1em
-
-    .plyr__controls
-      padding: 0 5px
-      border-radius: 3px
-      background: transparentize(black, 0.7)
-      color: $color-player-blue
-
-      > .plyr__control
-        border-radius: 0
-
-        &:hover, &[aria-expanded=true]
-          background: black
+  section.intro
+    margin-bottom: 1em
