@@ -14,7 +14,7 @@ section.intro
     - @mood_filters.each do |mood_filter|
       a.filter.box.button data-filter=".#{dom_id(mood_filter)}"
         span.filter-icon
-          img src=image_path('graphics/test-filter-icon.png')
+          img src=image_path('temp/test-filter-icon.png')
         span.filter-name = mood_filter.name
 
   h3 = t('tracks.choose_instruments')
