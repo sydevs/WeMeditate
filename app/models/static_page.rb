@@ -12,7 +12,7 @@ class StaticPage < ApplicationRecord
   # Associations
   enum role: {
     home: 0, about: 1, contact: 2, shri_mataji: 3, subtle_system: 4, sahaja_yoga: 5,
-    treatments: 11, tracks: 12, meditations: 13, country: 14, world: 15, city: 16,
+    articles: 10, treatments: 11, tracks: 12, meditations: 13, country: 14, world: 15, city: 16,
   }
   has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
   has_many :attachments, as: :page, inverse_of: :page, dependent: :delete_all

@@ -3,7 +3,8 @@ class ArticlesController < ApplicationController
   ARTICLES_PER_PAGE = 10
 
   def index
-    # TODO: Implement a static page so we can add arbitrary sections, and meta tags
+    @static_page = StaticPage.includes(:sections).find_by(role: :articles)
+    @metatags = @static_page.get_metatags
 
     respond_to do |format|
       format.html {

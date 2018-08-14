@@ -1,12 +1,14 @@
 
+= render @static_page.sections.with_translations(locale)
+
 - selected_category_id = params[:category]&.to_i
 
 .container
   nav.primary.category.filters data-group='category'
     - @categories.each do |category|
-      a.filter.button class="#{'active' if selected_category_id == category.id}" data-filter=".#{dom_id(category)}" href="#"
+      a.filter.button class="#{'active' if selected_category_id == category.id}" data-filter=".#{dom_id(category)}"
         = category.name
-    a.all.filter.button class="#{'active' unless @categories.any? {|c| c.id == selected_category_id}}" data-filter="" href="#"
+    a.all.filter.button class="#{'active' unless @categories.any? {|c| c.id == selected_category_id}}" data-filter=""
       = t('articles.show_all')
     .menu-button
       = t('articles.filter')

@@ -21,6 +21,9 @@ records:
     role: <%= StaticPage.roles[:sahaja_yoga] %>
     title: About Sahaja Yoga
 
+  - sprig_id: articles
+    role: <%= StaticPage.roles[:articles] %>
+    title: Inspiration
   - sprig_id: treatments
     role: <%= StaticPage.roles[:treatments] %>
     title: Improving Meditation
