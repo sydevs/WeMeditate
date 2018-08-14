@@ -1056,13 +1056,13 @@ records:
       items:
         - title: Left Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
-          image_uuid: 38ca0568-be12-4ef0-a87b-203e1330c25f
+          image_uuid: 5d9ee17c-0ba7-44c9-9b06-8549ab63e65b
         - title: Central Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
           image_uuid: 38ca0568-be12-4ef0-a87b-203e1330c25f
         - title: Right Aspect
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus obcaecati officia praesentium, eius doloremque eaque non voluptatem molestias provident magni quibusdam iure. Nisi iure ad repellendus sequi, doloremque quis!
-          image_uuid: 38ca0568-be12-4ef0-a87b-203e1330c25f
+          image_uuid: 7f0b7d1a-cbfd-4b76-b5a2-2a65ca70fa4c
 
 
 # FOR SUBTLE SYSTEM NODE: chakra_7

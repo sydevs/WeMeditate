@@ -43,7 +43,7 @@ class Article < ApplicationRecord
   end
 
   def get_metatags
-    metatags.merge({
+    (metatags || {}).merge({
       'title' => title,
       'description' => excerpt,
     })

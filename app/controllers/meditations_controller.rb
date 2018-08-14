@@ -10,7 +10,6 @@ class MeditationsController < ApplicationController
 
   def show
     @meditation = Meditation.friendly.find(params[:id])
-    render layout: 'basic'
   end
 
   def find

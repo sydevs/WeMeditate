@@ -49,7 +49,7 @@ class City < ApplicationRecord
   end
 
   def get_metatags
-    metatags.merge({
+    (metatags || {}).merge({
       'title' => name,
     })
   end

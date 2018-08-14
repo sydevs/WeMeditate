@@ -373,9 +373,21 @@ records:
   - sprig_id: ssn_chakra_6
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_6').id %>
-    uuid: <%= sprig_record(Section, 's_ssn_chakra_6_overview').extra['items'][0]['image_uuid'] %>
-    name: Chakra.jpg
+    uuid: <%= sprig_record(Section, 's_ssn_chakra_6_overview').extra['items'][1]['image_uuid'] %>
+    name: Chakra Center.jpg
     file: <%= sprig_file('subtle_system/chakra-6.png') %>
+  - sprig_id: ssn_chakra_6_left
+    page_type: SubtleSystemNode
+    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_6').id %>
+    uuid: <%= sprig_record(Section, 's_ssn_chakra_6_overview').extra['items'][0]['image_uuid'] %>
+    name: Chakra Left.jpg
+    file: <%= sprig_file('subtle_system/chakra-6-left.png') %>
+  - sprig_id: ssn_chakra_6_right
+    page_type: SubtleSystemNode
+    page_id: <%= sprig_record(SubtleSystemNode, 'chakra_6').id %>
+    uuid: <%= sprig_record(Section, 's_ssn_chakra_6_overview').extra['items'][2]['image_uuid'] %>
+    name: Chakra Right.jpg
+    file: <%= sprig_file('subtle_system/chakra-6-right.png') %>
   - sprig_id: ssn_chakra_7
     page_type: SubtleSystemNode
     page_id: <%= sprig_record(SubtleSystemNode, 'chakra_7').id %>

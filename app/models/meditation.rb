@@ -22,7 +22,7 @@ class Meditation < ApplicationRecord
   alias thumbnail image
 
   def get_metatags
-    metatags.merge({
+    (metatags || {}).merge({
       'title' => name,
       'description' => excerpt,
     })
