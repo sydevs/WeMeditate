@@ -1,14 +1,11 @@
 doctype html
 html lang=locale
   head
-    title #{content_for :title} | We Meditate
-
+    = render 'application/metatags'
     = csrf_meta_tags
     meta charset="utf-8"
-    meta name="description" content=""
     meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-    meta property="og:image" content="path/to/image.jpg"
     link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon"
     link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png"
     link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-touch-icon-72x72.png"

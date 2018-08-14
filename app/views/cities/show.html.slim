@@ -1,6 +1,4 @@
 
-- content_for :title, @city.full_name
-
 - @static_page.sections.each_with_index do |section, index|
   - if section.special? and section.format == 'city_sections'
     = render @city.sections, index: index

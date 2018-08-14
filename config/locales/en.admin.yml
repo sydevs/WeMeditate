@@ -60,6 +60,9 @@ en:
       updated: Saved successfully.
       updated_and_review: Saved successfully, you can now review and publish the changes.
       cannot_delete_attached_record: You cannot delete a %{model} which has %{association} attached to it. Reassign the %{association} and try again.
+  metatag:
+    key: name
+    value: value
   time:
     formats:
       default: '%k:%M'

@@ -47,6 +47,7 @@ module Admin
             :country, :name, :slug, :address, :latitude, :longitude, :banner_uuid, :contacts,
             sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES,
             venues: {},
+            metatags: {},
           )
         else
           params.fetch(:city, {}).permit(

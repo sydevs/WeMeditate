@@ -17,7 +17,8 @@ module Admin
         if policy(@article || Article).update_structure?
           params.fetch(:article, {}).permit(
             :title, :slug, :category_id, :priority, :excerpt, :banner_uuid, :thumbnail_uuid, :video_uuid, :date,
-            sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES
+            sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES,
+            metatages: {}
           )
         else
           params.fetch(:article, {}).permit(

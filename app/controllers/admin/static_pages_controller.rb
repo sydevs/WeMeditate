@@ -28,7 +28,8 @@ module Admin
         if policy(@static_page || StaticPage).update_structure?
           params.fetch(:static_page, {}).permit(
             :title, :slug, :role,
-            sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES
+            sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES,
+            metatags: {}
           )
         else
           params.fetch(:static_page, {}).permit(

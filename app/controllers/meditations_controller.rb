@@ -5,6 +5,7 @@ class MeditationsController < ApplicationController
     @goal_filters = GoalFilter.all
     @duration_filters = DurationFilter.all
     @static_page = StaticPage.includes(:sections).find_by(role: :meditations)
+    @metatags = @static_page.get_metatags
   end
 
   def show

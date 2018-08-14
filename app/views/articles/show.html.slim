@@ -1,5 +1,4 @@
 
-- content_for :title, "Article: #{@article.title}"
 - banner_style = @article.banner.present? ? "background-image: url(#{@article.banner.url})" : nil
 - content_for :breadcrumbs_class, 'inverse' if banner_style
 - sections = @article.sections.with_translations(locale)

@@ -6,7 +6,7 @@ class StaticPage < ApplicationRecord
   include RequireApproval
 
   # Extensions
-  translates :title, :slug
+  translates :title, :slug, :metatags
   friendly_id :title, use: :globalize
 
   # Associations
@@ -31,6 +31,12 @@ class StaticPage < ApplicationRecord
 
   def self.available_roles
     StaticPage.roles.keys - StaticPage.pluck(:role)
+  end
+
+  def get_metatags
+    metatags.merge({
+      'title' => title,
+    })
   end
 
   def generate_required_sections!

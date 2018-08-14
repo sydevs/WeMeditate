@@ -7,7 +7,7 @@ class Article < ApplicationRecord
   include RequireApproval
 
   # Extensions
-  translates :title, :slug, :excerpt, :banner_uuid, :thumbnail_uuid
+  translates :title, :slug, :excerpt, :banner_uuid, :thumbnail_uuid, :metatags
   friendly_id :title, use: :globalize
 
   # Associations
@@ -40,6 +40,13 @@ class Article < ApplicationRecord
 
   def video
     attachments.find_by(uuid: video_uuid)&.file
+  end
+
+  def get_metatags
+    metatags.merge({
+      'title' => title,
+      'description' => excerpt,
+    })
   end
 
   private

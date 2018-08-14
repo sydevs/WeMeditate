@@ -28,7 +28,8 @@ module Admin
         if policy(@subtle_system_node || SubtleSystemNode).update_structure?
           params.fetch(:subtle_system_node, {}).permit(
             :name, :slug, :excerpt, :role,
-            sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES
+            sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES,
+            metatags: {}
           )
         else
           params.fetch(:subtle_system_node, {}).permit(

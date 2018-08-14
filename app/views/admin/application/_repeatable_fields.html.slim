@@ -1,6 +1,7 @@
 
 - groups = local_assigns[:for] || nil
 - subfield = false unless local_assigns[:subfield] == true
+- horizontal = false unless local_assigns[:horizontal] == true
 
 - classes = ["field-#{attribute}"]
 - classes << 'for' if groups.present?
@@ -12,7 +13,7 @@
 .field class=classes
   = f.label attribute
 
-  .repeatable.fields
+  .repeatable.fields class="#{'horizontal' if horizontal}"
     .wrapper
       .container
         - items.each do |item|

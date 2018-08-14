@@ -3,6 +3,8 @@ class ArticlesController < ApplicationController
   ARTICLES_PER_PAGE = 10
 
   def index
+    # TODO: Implement a static page so we can add arbitrary sections, and meta tags
+
     respond_to do |format|
       format.html {
         @categories = Category.all
@@ -22,6 +24,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.includes(:sections).friendly.find(params[:id])
+    @metatags = @article.get_metatags
     @breadcrumbs = [
       { name: 'Home', url: root_path },
       { name: Article.model_name.human(count: -1), url: articles_path },

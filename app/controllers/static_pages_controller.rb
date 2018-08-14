@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
 
   def show
     @static_page = StaticPage.includes(:sections).friendly.find(params[:id])
+    @metatags = @static_page.get_metatags
 
     if @static_page.role == 'about'
       @breadcrumbs = [

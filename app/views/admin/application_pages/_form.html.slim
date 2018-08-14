@@ -24,6 +24,9 @@
       - elsif sections.empty?
         .ui.label = translate 'messages.not_set'
 
+  - if policy(@static_page).update_structure?
+    = render 'admin/application/metatag_fields', f: f, model: model
+
   .ui.hidden.divider
 
   p
@@ -31,7 +34,7 @@
       i.left.arrow.icon
       = translate 'action.target.back', target: model.model_name.human(count: -1)
 
-    - if policy(page).review?
+    - if allow.review?
       button.ui.basic.primary.button
         = translate 'action.update_and_review_changes'
     - else

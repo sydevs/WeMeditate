@@ -20,7 +20,17 @@ module Admin
 
     private
       def meditation_params
-        params.fetch(:meditation, {}).permit(:name, :slug, :image, :audio, :duration_filter_id, goal_filter_ids: [])
+        result = params.fetch(:meditation, {}).permit(
+          :name, :slug, :image, :audio, :duration_filter_id,
+          goal_filter_ids: [],
+          metatags: {}
+        )
+
+        if result[:metatags].present?
+          result[:metatags] = result[:metatags][:keys].zip(result[:metatags][:values]).to_h
+        end
+
+        result
       end
 
   end

@@ -2,12 +2,14 @@ class CitiesController < ApplicationController
 
   def index
     @static_page = StaticPage.find_by(role: :world)
+    @metatags = @static_page.get_metatags
     @countries = City.distinct.pluck(:country)
     @cities = City.with_translations(I18n.locale).select(:name, :country, :slug)
   end
 
   def country
     @static_page = StaticPage.find_by(role: :country)
+    @metatags = @static_page.get_metatags
     @breadcrumbs = [
       { name: City.model_name.human(count: -1), url: cities_path },
       { name: I18nData.countries(I18n.locale)[params[:country_code].upcase] }
@@ -16,6 +18,7 @@ class CitiesController < ApplicationController
 
   def show
     @static_page = StaticPage.find_by(role: :city)
+    @metatags = @static_page.get_metatags
     @city = City.includes(:sections).friendly.find(params[:id])
     @breadcrumbs = [
       { name: City.model_name.human(count: -1), url: cities_path },

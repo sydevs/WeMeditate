@@ -31,3 +31,4 @@
     = f.input :audio, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:audio), file: meditation.audio, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:audio) }
     = f.association :duration_filter, wrapper_html: { class: 'sub' }
     = f.association :goal_filters, wrapper_html: { class: 'sub' }
+    = render 'admin/application/metatag_fields', f: f, model: Meditation

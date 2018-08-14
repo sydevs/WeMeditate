@@ -139,6 +139,13 @@ input + .ui.rounded.image
   .file.field .ui.icon.input i.icon
     font-size: 1.21428571em
 
+  .field-metatags
+    input:first-child
+      width: 30%
+
+    input:last-child
+      width: 70%
+
   .repeatable.fields
     width: 100%
     margin-left: 0
@@ -177,43 +184,63 @@ input + .ui.rounded.image
         label
           opacity: 0.65
 
-      .fields-wrapper
-        textarea, input, select, .ui.segment, .ui.dropdown
+    &.horizontal .fields-wrapper
+      textarea, input, select, .ui.segment, .ui.dropdown
+        display: inline-block
+
+        &:not(:first-child)
+          border-radius: 0
+
+        &:not(:last-child)
+          border-right: 0
+
+        &:first-child
           border-top-right-radius: 0
           border-bottom-right-radius: 0
 
-        > textarea,
-        > input,
-        > select,
-        > .ui.segment,
-        > .ui.dropdown
-          &:not(:last-child)
+        &:focus
+          + textarea,
+          + input,
+          + select
+            border-left-color: #85B7D9
+
+    &:not(.horizontal) .fields-wrapper
+      textarea, input, select, .ui.segment, .ui.dropdown
+        border-top-right-radius: 0
+        border-bottom-right-radius: 0
+
+      > textarea,
+      > input,
+      > select,
+      > .ui.segment,
+      > .ui.dropdown
+        &:not(:last-child)
+          border-bottom-left-radius: 0
+          border-bottom: 0
+
+          &:focus
+            + textarea,
+            + input,
+            + select
+              border-top-color: #85B7D9
+
+        &:not(:first-child)
+          border-top-left-radius: 0
+
+      > .fields
+        margin: 0
+        margin-right: -0.5px
+
+        &:not(:first-child) > *
+          border-top-left-radius: 0
+
+        &:not(:last-child)
+          > *:not(:first-child)
             border-bottom-left-radius: 0
-            border-bottom: 0
-
-            &:focus
-              + textarea,
-              + input,
-              + select
-                border-top-color: #85B7D9
-
-          &:not(:first-child)
-            border-top-left-radius: 0
-
-        > .fields
-          margin: 0
-          margin-right: -0.5px
-
-          &:not(:first-child) > *
-            border-top-left-radius: 0
-
-          &:not(:last-child)
-            > *:not(:first-child)
-              border-bottom-left-radius: 0
-
-            > *
-              border-bottom: 0
 
           > *
-            border-top-right-radius: 0
-            border-bottom-right-radius: 0
+            border-bottom: 0
+
+        > *
+          border-top-right-radius: 0
+          border-bottom-right-radius: 0

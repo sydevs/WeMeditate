@@ -6,7 +6,7 @@ class City < ApplicationRecord
   include RequireApproval
 
   # Extensions
-  translates :name, :slug
+  translates :name, :slug, :metatags
   friendly_id :name, use: :globalize
 
   # Associations
@@ -46,6 +46,12 @@ class City < ApplicationRecord
 
   def full_name
     "#{name}, #{country_name}"
+  end
+
+  def get_metatags
+    metatags.merge({
+      'title' => name,
+    })
   end
 
   def generate_default_sections!

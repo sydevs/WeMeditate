@@ -28,7 +28,16 @@ module Admin
 
     private
       def treatment_params
-        params.fetch(:treatment, {}).permit(:name, :slug, :excerpt, :content, :thumbnail, :video)
+        result = params.fetch(:treatment, {}).permit(
+          :name, :slug, :excerpt, :content, :thumbnail, :video,
+          metatags: {}
+        )
+
+        if result[:metatags].present?
+          result[:metatags] = result[:metatags][:keys].zip(result[:metatags][:values]).to_h
+        end
+
+        result
       end
 
   end

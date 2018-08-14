@@ -3,7 +3,7 @@ class Meditation < ApplicationRecord
   extend CarrierwaveGlobalize
 
   # Extensions
-  translates :name, :slug, :excerpt, :audio
+  translates :name, :slug, :excerpt, :audio, :metatags
   friendly_id :name, use: :globalize
 
   # Associations
@@ -20,4 +20,11 @@ class Meditation < ApplicationRecord
   validates :goal_filters, presence: true
 
   alias thumbnail image
+
+  def get_metatags
+    metatags.merge({
+      'title' => name,
+      'description' => excerpt,
+    })
+  end
 end

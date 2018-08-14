@@ -128,6 +128,10 @@ module Admin
           end
         end
 
+        if page_params[:metatags].present?
+          page_params[:metatags] = page_params[:metatags][:keys].zip(page_params[:metatags][:values]).to_h
+        end
+
         page_params
       end
 

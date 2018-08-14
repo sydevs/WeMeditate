@@ -1,6 +1,4 @@
 
-- content_for :title, @static_page.title
-
 section.intro
   .container
     h1.title = @static_page.title
@@ -10,7 +8,6 @@ section.intro
 .container
   h2 = t('tracks.subtitle')
   p = t('tracks.text')
-
 
   h3 = t('tracks.choose_mood')
   nav.mood.filters data-group='moods'

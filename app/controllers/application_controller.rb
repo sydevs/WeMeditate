@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   def front
     @static_page = StaticPage.includes(:sections).find_by(role: :home)
+    @metatags = @static_page.get_metatags
   end
 
   def contact

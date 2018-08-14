@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180721031705) do
+ActiveRecord::Schema.define(version: 20180810075349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20180721031705) do
     t.text "excerpt"
     t.string "banner_uuid"
     t.string "thumbnail_uuid"
+    t.jsonb "metatags"
     t.index ["article_id"], name: "index_article_translations_on_article_id"
     t.index ["locale"], name: "index_article_translations_on_locale"
   end
@@ -96,6 +97,7 @@ ActiveRecord::Schema.define(version: 20180721031705) do
     t.datetime "updated_at", null: false
     t.string "name", null: false
     t.string "slug", null: false
+    t.jsonb "metatags"
     t.index ["city_id"], name: "index_city_translations_on_city_id"
     t.index ["locale"], name: "index_city_translations_on_locale"
   end
@@ -171,6 +173,7 @@ ActiveRecord::Schema.define(version: 20180721031705) do
     t.string "slug", null: false
     t.jsonb "audio"
     t.text "excerpt"
+    t.jsonb "metatags"
     t.index ["locale"], name: "index_meditation_translations_on_locale"
     t.index ["meditation_id"], name: "index_meditation_translations_on_meditation_id"
   end
@@ -240,6 +243,7 @@ ActiveRecord::Schema.define(version: 20180721031705) do
     t.datetime "updated_at", null: false
     t.string "title", null: false
     t.string "slug", null: false
+    t.jsonb "metatags"
     t.index ["locale"], name: "index_static_page_translations_on_locale"
     t.index ["static_page_id"], name: "index_static_page_translations_on_static_page_id"
   end
@@ -260,6 +264,7 @@ ActiveRecord::Schema.define(version: 20180721031705) do
     t.string "name", null: false
     t.string "slug", null: false
     t.text "excerpt", null: false
+    t.jsonb "metatags"
     t.index ["locale"], name: "index_subtle_system_node_translations_on_locale"
     t.index ["subtle_system_node_id"], name: "index_subtle_system_node_translations_on_subtle_system_node_id"
   end
@@ -298,6 +303,7 @@ ActiveRecord::Schema.define(version: 20180721031705) do
     t.text "content"
     t.jsonb "thumbnail"
     t.jsonb "video"
+    t.jsonb "metatags"
     t.index ["locale"], name: "index_treatment_translations_on_locale"
     t.index ["treatment_id"], name: "index_treatment_translations_on_treatment_id"
   end

@@ -1,0 +1,8 @@
+
+- @metatags.each do |key, value|
+  - if key == 'title'
+    title #{value} | We Meditate
+  - elsif key == 'description'
+    meta name='description' content=value
+  - else
+    meta property=key content=value

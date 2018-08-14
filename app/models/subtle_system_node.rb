@@ -3,7 +3,7 @@ class SubtleSystemNode < ApplicationRecord
   extend CarrierwaveGlobalize
 
   # Extensions
-  translates :name, :slug, :excerpt
+  translates :name, :slug, :excerpt, :metatags
   friendly_id :name, use: :globalize
 
   # Associations
@@ -27,6 +27,13 @@ class SubtleSystemNode < ApplicationRecord
 
   def self.available_roles
     SubtleSystemNode.roles.keys - SubtleSystemNode.pluck(:role)
+  end
+
+  def get_metatags
+    metatags.merge({
+      'title' => name,
+      'description' => excerpt,
+    })
   end
 
   def generate_default_sections!
