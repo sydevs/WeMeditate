@@ -5,6 +5,7 @@ const SubtleSystem = {
   chakras_chart: null,
   channels_chart: null,
   active_node: '',
+  timeout: null,
 
   load: function() {
     console.log('loading SubtleSystem.js')
@@ -12,6 +13,7 @@ const SubtleSystem = {
     SubtleSystem.sections = $('section.type-special.format-subtle-system')
     SubtleSystem.sections.find('.filter').click(SubtleSystem._on_filter_click)
     SubtleSystem.sections.find('.trigger').mouseover(SubtleSystem._on_trigger_mouseover)
+    SubtleSystem.sections.find('.trigger').mouseout(SubtleSystem._on_trigger_mouseout)
   },
 
   _on_filter_click: function() {
@@ -24,16 +26,32 @@ const SubtleSystem = {
 
   _on_trigger_mouseover: function() {
     console.log('mouseover', this)
-    //$(SubtleSystem.active_node).stop().fadeOut('slow') //.removeClass('active')
+    //clearTimeout(SubtleSystem.timeout)
+    let new_active_node = '.' + $(this).data('class')
 
-    $(SubtleSystem.active_node).removeClass('active')
-    SubtleSystem.active_node = '.' + $(this).data('class')
+    if (new_active_node != SubtleSystem.active_node) {
+      let time = 0
 
-    setTimeout(function() {
-      $(SubtleSystem.active_node).addClass('active')
-      //$(SubtleSystem.active_node).stop().fadeIn('slow') //.addClass('active')
-    }, 300)
-  }
+      if ((SubtleSystem.active_node == '.chakra-2' || SubtleSystem.active_node == '.chakra-3') && new_active_node == '.chakra-3b') {
+        time = 300
+      } else if (SubtleSystem.active_node == '.chakra-3b' && (new_active_node == '.chakra-2' || new_active_node == '.chakra-3')) {
+        time = 300
+      }
+
+      SubtleSystem.timeout = setTimeout(function() {
+        console.log('select', new_active_node)
+        $(SubtleSystem.active_node).removeClass('active')
+        SubtleSystem.active_node = new_active_node
+        $(SubtleSystem.active_node).addClass('active')
+      }, time)
+    }
+  },
+
+  _on_trigger_mouseout: function() {
+    console.log('mouseout', this)
+    clearTimeout(SubtleSystem.timeout)
+    SubtleSystem.timeout = null
+  },
 
 }
 
