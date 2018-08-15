@@ -12,8 +12,13 @@
 
     .item
       i.volume.up.icon
-      a.content href=meditation.audio_url
-        = meditation.audio_identifier
+      a.content href=meditation.video_url
+        = meditation.video_identifier
+
+    .item
+      i.eye.icon
+      a.content href=meditation.video_url
+        = pluralize meditation.views, 'view'
 
     - if meditation.duration_filter.present?
       .item
@@ -28,7 +33,7 @@
     = f.input :name, wrapper_html: { class: 'sub' }
     = f.input :slug, label: url_for(meditation), wrapper: :slug, wrapper_html: { class: 'sub' }
     = f.input :image, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:image), file: meditation.image, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:image) }
-    = f.input :audio, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:audio), file: meditation.audio, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:audio) }
+    = f.input :video, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:video), file: meditation.video, wrapper_html: { class: 'sub' }, input_html: { accept: file_type_accepts(:video) }
     = f.association :duration_filter, wrapper_html: { class: 'sub' }
     = f.association :goal_filters, wrapper_html: { class: 'sub' }
     = render 'admin/application/metatag_fields', f: f, model: Meditation

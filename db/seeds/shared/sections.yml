@@ -395,24 +395,24 @@ records:
       mobile_image_uuid: 7749260b-0e6f-4d81-9876-2d3817e87566
       banner_style: front_page
       color: light
-  - sprig_id: s_sp_home_sahaja_yoga
+  - sprig_id: s_sp_home_meditate
     order: 2
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
     content_type: text
     format: box_with_righthand_image
-    title: Sahaja Yoga
+    title: Meditate
     text: |-
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
     action: Learn More
-    url: '/en/page/about-sahaja-yoga'
+    url: '/en/meditations'
     extra:
       image_uuid: 3e317127-071e-46bb-9d2c-5ee4ea0660d3
       decorations:
         enabled: [ sidetext, circle ]
         options:
           sidetext: [ top-left ]
-        sidetext: Self-Realization
+        sidetext: Meditate Now
   - sprig_id: s_sp_home_video_gallery
     order: 3
     page_type: StaticPage
@@ -459,7 +459,7 @@ records:
           triangle: [ left ]
         sidetext: Shri Mataji
       color: dark
-  - sprig_id: s_sp_home_meditation
+  - sprig_id: s_sp_home_music
     order: 5
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
@@ -469,26 +469,26 @@ records:
     text: |-
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
     action: Learn More
-    url: '/en/page/about-us'
+    url: '/en/music'
     extra:
       image_uuid: 724d1d5b-c37a-4a95-b794-7f5a839b3adc
       decorations:
         enabled: [ sidetext ]
         options:
           sidetext: [ top-right ]
-        sidetext: Meditation
+        sidetext: Music
   - sprig_id: s_sp_home_how_to_meditate
     order: 6
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
     content_type: text
     format: box_over_image
-    title: About Us
+    title: How to Meditate
     text: |-
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization.</p>
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview.</p>
     action: Learn More
-    url: '/en/treatments'
+    url: '/en/inspiration'
     extra:
       image_uuid: bf9468a2-b061-4137-9088-fe5395dd972d
       decorations:
@@ -505,11 +505,11 @@ records:
     page_id: <%= sprig_record(StaticPage, 'home').id %>
     content_type: text
     format: box_with_righthand_image
-    title: Events
+    title: Featured Article
     text: |-
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
-    action: More Events
-    url: '/en/inspiration?category=4'
+    action: Read More
+    url: '#'
     extra:
       image_uuid: f354b762-2c6b-4479-9951-825f8b893256
       decorations:
@@ -517,7 +517,7 @@ records:
         options:
           sidetext: [ top-left ]
           gradient: [ right, gray ]
-        sidetext: Developments
+        sidetext: Article
   - sprig_id: s_sp_home_grid
     order: 8
     page_type: StaticPage

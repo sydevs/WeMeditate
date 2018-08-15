@@ -51,7 +51,9 @@ Rails.application.routes.draw do
       get '/countries/:country_code', controller: :cities, action: :country, as: :country
 
       resources :meditations, only: [:index, :show] do
+        get :random, on: :collection
         post :find, on: :collection
+        post :record_view, on: :member
       end
 
       resources :categories, only: [:show] # TODO: Remove this
