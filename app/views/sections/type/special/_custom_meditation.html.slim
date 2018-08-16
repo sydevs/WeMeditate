@@ -17,7 +17,8 @@
           h3.title = section.extra_attr 'goal_action'
           ul.goals
             - @goal_filters.each_with_index do |goal_filter, index|
-              li.goal id=dom_id(goal_filter) data-image-url="#{goal_filter.icon.url}" data-value=goal_filter.id
+              li.goal id=dom_id(goal_filter) data-value=goal_filter.id
+                .inline-svg data-url="#{goal_filter.icon.url}" data-namespace="#{goal_filter.name.parameterize.downcase}" data-background='true'
                 span.text = goal_filter.name
 
       .duration-field
