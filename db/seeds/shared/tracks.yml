@@ -6,9 +6,9 @@ records:
     audio: <%= sprig_file('general/music.mp3') %>
     artist_id: <%= sprig_record(Artist, 1).id %>
     mood_filter_ids:
-      - <%= sprig_record(MoodFilter, 'peaceful').id %>
+      - <%= sprig_record(MoodFilter, 'dynamic').id %>
       - <%= sprig_record(MoodFilter, 'joyful').id %>
-      - <%= sprig_record(MoodFilter, 'integrated').id %>
+      - <%= sprig_record(MoodFilter, 'innocent').id %>
     instrument_filter_ids:
       - <%= sprig_record(InstrumentFilter, 'Voice').id %>
       - <%= sprig_record(InstrumentFilter, 'Flute').id %>
@@ -17,7 +17,7 @@ records:
     audio: <%= sprig_file('general/music.mp3') %>
     artist_id: <%= sprig_record(Artist, 1).id %>
     mood_filter_ids:
-      - <%= sprig_record(MoodFilter, 'peaceful').id %>
+      - <%= sprig_record(MoodFilter, 'dynamic').id %>
       - <%= sprig_record(MoodFilter, 'calm').id %>
     instrument_filter_ids:
       - <%= sprig_record(InstrumentFilter, 'Tabla').id %>
@@ -27,8 +27,8 @@ records:
     audio: <%= sprig_file('general/music.mp3') %>
     artist_id: <%= sprig_record(Artist, 2).id %>
     mood_filter_ids:
-      - <%= sprig_record(MoodFilter, 'peaceful').id %>
-      - <%= sprig_record(MoodFilter, 'confident').id %>
+      - <%= sprig_record(MoodFilter, 'innocent').id %>
+      - <%= sprig_record(MoodFilter, 'dynamic').id %>
     instrument_filter_ids:
       - <%= sprig_record(InstrumentFilter, 'Voice').id %>
   - sprig_id: 4
@@ -36,7 +36,7 @@ records:
     audio: <%= sprig_file('general/music.mp3') %>
     artist_id: <%= sprig_record(Artist, 3).id %>
     mood_filter_ids:
-      - <%= sprig_record(MoodFilter, 'integrated').id %>
+      - <%= sprig_record(MoodFilter, 'innocent').id %>
       - <%= sprig_record(MoodFilter, 'joyful').id %>
     instrument_filter_ids:
       - <%= sprig_record(InstrumentFilter, 'Tabla').id %>

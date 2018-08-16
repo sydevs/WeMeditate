@@ -5,9 +5,6 @@ var Meditation = {
 
   load: function () {
     console.log('loading Meditation.js')
-    //var player = $('audio#audio-player')
-    //Meditation.audio_player = new Plyr('audio#audio-player', player.data('controls'))
-
     let $context = $('section.type-special.format-custom-meditation').first()
     Meditation.goal_dropdown = $context.find('.dropdown')
 

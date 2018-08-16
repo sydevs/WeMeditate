@@ -5,19 +5,15 @@ records:
     name: Calm
     icon: <%= sprig_file('goal_filters/calm.svg') %>
     order: 1
-  - sprig_id: confident
-    name: Confident
-    icon: <%= sprig_file('mood_filters/confident.svg') %>
+  - sprig_id: dynamic
+    name: Dynamic
+    icon: <%= sprig_file('mood_filters/dynamic.svg') %>
     order: 2
   - sprig_id: joyful
     name: Joyful
     icon: <%= sprig_file('mood_filters/joyful.svg') %>
     order: 3
-  - sprig_id: integrated
-    name: Integrated
-    icon: <%= sprig_file('mood_filters/integrated.svg') %>
+  - sprig_id: innocent
+    name: Innocent
+    icon: <%= sprig_file('mood_filters/innocent.svg') %>
     order: 4
-  - sprig_id: peaceful
-    name: Peaceful
-    icon: <%= sprig_file('mood_filters/peaceful.svg') %>
-    order: 5
