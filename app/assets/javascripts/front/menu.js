@@ -43,11 +43,10 @@ var Menu = {
   },
 
   toggle_menu_item: function(e) {
-      if (Menu.page_root.hasClass('show-menu') && $(this).closest('.item').hasClass('item-list')){
-          e.preventDefault()
-          $(this).closest('.item').toggleClass('show-content')
-      }
-
+    if (Menu.page_root.hasClass('show-menu') && $(this).closest('.item').hasClass('item-list')){
+        e.preventDefault()
+        $(this).closest('.item').toggleClass('show-content')
+    }
   },
 
   _on_resize: function() {
@@ -82,8 +81,8 @@ var Menu = {
 
   _on_scroll: function() {
     let scrollTop = $(window).scrollTop()
-    let $headerContainer = Menu.header.find('.container:visible')
-    let headerHeight = $headerContainer.hasClass('desktop') ? $headerContainer.find('.mini.topline').outerHeight() : $headerContainer.outerHeight()
+    let $headerContainer = Menu.header.find('.container:visible').first()
+    let headerHeight = $headerContainer.hasClass('desktop') ? $headerContainer.find('.menubar').outerHeight() : $headerContainer.outerHeight()
 
     if (scrollTop > Menu.stickyPoint - headerHeight + 2) {
       if (!Menu.header.hasClass('sticky') && $headerContainer.hasClass('desktop')) {
@@ -103,16 +102,16 @@ var Menu = {
       let $chaptersContainer = Menu.chapters.find('.container')
       let chaptersHeight = $chaptersContainer.outerHeight()
 
-      if (scrollTop > Menu.chaptersStickyPoint - headerHeight) {
-        if (!Menu.chapters.hasClass('sticky')) {
-          Menu.chapters.css('height', chaptersHeight + 'px')
-          $chaptersContainer.css('top', headerHeight + 'px')
-          Menu.chapters.addClass('sticky')
-        }
-      } else {
+      console.log(scrollTop, '>', Menu.chaptersStickyPoint, '-', headerHeight, '=', scrollTop > Menu.chaptersStickyPoint - headerHeight)
+
+      if (scrollTop < Menu.chaptersStickyPoint - headerHeight) {
         Menu.chapters.css('height', 'auto')
         $chaptersContainer.css('top', 'auto')
         Menu.chapters.removeClass('sticky')
+      } else if (!Menu.chapters.hasClass('sticky')) {
+        Menu.chapters.css('height', chaptersHeight + 'px')
+        $chaptersContainer.css('top', headerHeight + 'px')
+        Menu.chapters.addClass('sticky')
       }
     }
 
