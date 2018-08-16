@@ -48,10 +48,12 @@ class City < ApplicationRecord
     "#{name}, #{country_name}"
   end
 
-  def get_metatags
-    (metatags || {}).merge({
+  def get_metatags static_page = nil
+    result = (metatags || {}).reverse_merge({
       'title' => name,
     })
+    result = static_page.get_metatags.merge(result) if static_page.present?
+    result
   end
 
   def generate_default_sections!

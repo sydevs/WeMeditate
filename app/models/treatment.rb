@@ -21,7 +21,7 @@ class Treatment < ApplicationRecord
   scope :untranslated, -> { joins(:translations).where.not(treatment_translations: { locale: I18n.locale }) }
 
   def get_metatags
-    (metatags || {}).merge({
+    (metatags || {}).reverse_merge({
       'title' => name,
       'description' => excerpt,
     })

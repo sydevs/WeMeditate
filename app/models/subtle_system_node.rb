@@ -30,7 +30,7 @@ class SubtleSystemNode < ApplicationRecord
   end
 
   def get_metatags
-    (metatags || {}).merge({
+    (metatags || {}).reverse_merge({
       'title' => name,
       'description' => excerpt,
     })

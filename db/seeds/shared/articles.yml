@@ -20,6 +20,7 @@ records:
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'wisdom').id %>
+    date: 2020-12-13
   - sprig_id: 4
     title: Article 4
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.

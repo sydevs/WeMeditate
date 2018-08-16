@@ -18,8 +18,8 @@ class CitiesController < ApplicationController
 
   def show
     @static_page = StaticPage.find_by(role: :city)
-    @metatags = @static_page.get_metatags
     @city = City.includes(:sections).friendly.find(params[:id])
+    @metatags = @city.get_metatags(@static_page)
     @breadcrumbs = [
       { name: City.model_name.human(count: -1), url: cities_path },
       { name: I18nData.countries(I18n.locale)[@city.country], url: country_path(country_code: @city.country) },

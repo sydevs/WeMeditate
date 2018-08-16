@@ -3,7 +3,7 @@ options:
 records:
   - sprig_id: calm
     name: Calm
-    icon: <%= sprig_file('goal_filters/calm.svg') %>
+    icon: <%= sprig_file('mood_filters/calm.svg') %>
     order: 1
   - sprig_id: dynamic
     name: Dynamic

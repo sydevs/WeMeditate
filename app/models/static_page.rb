@@ -34,7 +34,7 @@ class StaticPage < ApplicationRecord
   end
 
   def get_metatags
-    (metatags || {}).merge({
+    (metatags || {}).reverse_merge({
       'title' => title,
     })
   end

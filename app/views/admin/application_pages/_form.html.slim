@@ -24,7 +24,7 @@
       - elsif sections.empty?
         .ui.label = translate 'messages.not_set'
 
-  - if policy(@static_page).update_structure?
+  - if policy(page).update_structure?
     = render 'admin/application/metatag_fields', f: f, model: model
 
   .ui.hidden.divider
