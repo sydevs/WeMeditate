@@ -3,6 +3,8 @@
 
 - if section.format == 'gallery'
   - items = section.extra_attr('items', [])
+  - content_for :head do
+    meta name='turbolinks-cache-control' content='no-cache'
 
   .wrapper
     .container

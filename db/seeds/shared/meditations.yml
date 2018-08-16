@@ -7,7 +7,7 @@ records:
     excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-1.jpg') %>
     video: <%= sprig_file('general/video.mp4') %>
-    duration_filter_id: <%= sprig_record(DurationFilter, 10).id %>
+    duration_filter_id: <%= sprig_record(DurationFilter, 5).id %>
     goal_filter_ids:
       - <%= sprig_record(GoalFilter, 'calm').id %>
   - sprig_id: 2
@@ -16,7 +16,7 @@ records:
     excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-2.jpg') %>
     video: <%= sprig_file('general/video.mp4') %>
-    duration_filter_id: <%= sprig_record(DurationFilter, 5).id %>
+    duration_filter_id: <%= sprig_record(DurationFilter, 2).id %>
     goal_filter_ids:
       - <%= sprig_record(GoalFilter, 'love').id %>
   - sprig_id: 3
@@ -25,7 +25,7 @@ records:
     excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-1.jpg') %>
     video: <%= sprig_file('general/video.mp4') %>
-    duration_filter_id: <%= sprig_record(DurationFilter, 20).id %>
+    duration_filter_id: <%= sprig_record(DurationFilter, 10).id %>
     goal_filter_ids:
       - <%= sprig_record(GoalFilter, 'love').id %>
   - sprig_id: 4
@@ -34,7 +34,7 @@ records:
     excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-2.jpg') %>
     video: <%= sprig_file('general/video.mp4') %>
-    duration_filter_id: <%= sprig_record(DurationFilter, 5).id %>
+    duration_filter_id: <%= sprig_record(DurationFilter, 2).id %>
     goal_filter_ids:
       - <%= sprig_record(GoalFilter, 'joyful').id %>
   - sprig_id: 5
@@ -43,6 +43,6 @@ records:
     excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-1.jpg') %>
     video: <%= sprig_file('general/video.mp4') %>
-    duration_filter_id: <%= sprig_record(DurationFilter, 5).id %>
+    duration_filter_id: <%= sprig_record(DurationFilter, 2).id %>
     goal_filter_ids:
       - <%= sprig_record(GoalFilter, 'silence').id %>

@@ -1,4 +1,7 @@
 
+- content_for :head do
+  meta name='turbolinks-cache-control' content='no-cache'
+
 - is_city = (section.page.role == 'city')
 - contacts = is_city ? @city.contacts : section.extra_attr('items', [])
 

@@ -18,6 +18,8 @@ html lang=locale
     / iOS Safari
     meta name="apple-mobile-web-app-status-bar-style" content="#000"
 
+    = yield :head if content_for? :head
+
     = google_tag_manager
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

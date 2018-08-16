@@ -78,6 +78,8 @@ var Carousel = {
       $carousel = $(this)
       style = $carousel.data('style')
 
+      console.log('Init carousel', $carousel)
+
       if (style == 'video') {
         $carousel.slick(Carousel.video_options)
       } else if (style == 'venues') {

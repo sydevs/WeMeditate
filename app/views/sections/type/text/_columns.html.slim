@@ -1,4 +1,7 @@
 
+- content_for :head do
+  meta name='turbolinks-cache-control' content='no-cache'
+
 - items = section.extra_attr('items', [])
 
 .container = sidetext(section)

@@ -1,9 +1,9 @@
 options:
   find_existing_by: minutes
 records:
-  - sprig_id: 20
-    minutes: 20
   - sprig_id: 10
     minutes: 10
   - sprig_id: 5
     minutes: 5
+  - sprig_id: 2
+    minutes: 2

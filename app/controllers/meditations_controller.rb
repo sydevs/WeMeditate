@@ -33,8 +33,16 @@ class MeditationsController < ApplicationController
   end
 
   def find
-    #redirect_to meditation_url(Meditation.get(:random)), status: :see_other
-    redirect_to meditations_url
+    where = {}
+    where[:duration_filter_id] = params[:duration_filter] if params[:duration_filter].present?
+    where[:goal_filters] = { id: params[:goal_filter] } if params[:goal_filter].present?
+    meditation = Meditation.includes(:goal_filters).where(where).order('RANDOM()').first
+
+    if meditation.present?
+      redirect_to meditation_url(meditation), status: :see_other
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 
   def record_view
