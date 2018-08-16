@@ -175,6 +175,14 @@ records:
     name: Video.mp4
     file: <%= sprig_file('general/video.mp4') %>
 
+  # Attachments for Static Page - Meditations
+  - sprig_id: sp_meditations_random
+    page_type: StaticPage
+    page_id: <%= sprig_record(StaticPage, 'meditations').id %>
+    uuid: <%= sprig_record(Section, 's_sp_meditations_featured').extra['random_meditation']['image_uuid'] %>
+    name: Random Meditation.png
+    file: <%= sprig_file('general/video.jpg') %>
+
   # Attachments for Static Page - Home
   - sprig_id: sp_home_banner
     page_type: StaticPage
@@ -188,10 +196,10 @@ records:
     uuid: <%= sprig_record(Section, 's_sp_home_banner').extra['mobile_image_uuid'] %>
     name: Banner - Mobile.jpg
     file: <%= sprig_file('static_pages/front/banner-mobile.png') %>
-  - sprig_id: sp_home_sahaja_yoga
+  - sprig_id: sp_home_meditate
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
-    uuid: <%= sprig_record(Section, 's_sp_home_sahaja_yoga').extra['image_uuid'] %>
+    uuid: <%= sprig_record(Section, 's_sp_home_meditate').extra['image_uuid'] %>
     name: Sahaja Yoga.jpg
     file: <%= sprig_file('static_pages/front/sahaja-yoga.jpg') %>
   - sprig_id: sp_home_shri_mataji
@@ -200,10 +208,10 @@ records:
     uuid: <%= sprig_record(Section, 's_sp_home_shri_mataji').extra['image_uuid'] %>
     name: Shri Mataji.jpg
     file: <%= sprig_file('static_pages/front/shri-mataji.jpg') %>
-  - sprig_id: sp_home_meditation
+  - sprig_id: sp_home_music
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
-    uuid: <%= sprig_record(Section, 's_sp_home_meditation').extra['image_uuid'] %>
+    uuid: <%= sprig_record(Section, 's_sp_home_music').extra['image_uuid'] %>
     name: We Meditate.jpg
     file: <%= sprig_file('static_pages/front/we-meditate.jpg') %>
   - sprig_id: sp_home_how_to_meditate

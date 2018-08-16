@@ -814,9 +814,9 @@ records:
       daily_meditation: Meditation of the day
       trending_meditation: Trending now
       random_meditation:
-        header: Let Fate Decide
+        title: Let Fate Decide
         image_uuid: 5351293c-7aac-4e86-9292-255b5ffd43ee
-        title: Generate a random meditation
+        subtitle: Generate a random meditation
         text: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
   - sprig_id: s_sp_meditations_custom
     order: 2

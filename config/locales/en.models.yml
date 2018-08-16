@@ -88,6 +88,7 @@ en:
         role: Role
         roles:
           home: Home Page
+          articles: Articles Index Page
           meditations: Meditations Index Page
           treatments: Techniques Index Page
           tracks: Music Page
@@ -207,6 +208,8 @@ en:
           venue_map: Program Map
           venue_registration: Program Registration
           local_contacts: Local Contacts
+          featured_meditations: Featured Meditations
+          custom_meditation: Custom Meditation
         title: Title
         subtitle: Subtitle
         text: Text
@@ -251,6 +254,9 @@ en:
           colors:
             blue: blue
             orange: orange
+        daily_meditation: Daily Meditation Text
+        trending_meditation: Trending Meditation Text
+        random_meditation: Random Meditation Text
 
       track:
         title: Title

@@ -18,8 +18,8 @@
 
   - random_meditation_attrs = section.extra_attr 'random_meditation', {}
   .meditation
-    h3.header = random_meditation_attrs['header']
-    a.video-preview href=random_meditations_url style="background-image: url(#{meditation.image.url})"
+    h3.header = random_meditation_attrs['title']
+    a.video-preview href=random_meditations_url style="background-image: url(#{section.image(random_meditation_attrs['image_uuid']).url})"
       .video.button
-    h4.title = random_meditation_attrs['title']
+    h4.title = random_meditation_attrs['subtitle']
     p = random_meditation_attrs['text']

@@ -1,9 +1,14 @@
 
-= f.input :title, wrapper_html: { class: 'sub' }
-= f.input :action, wrapper_html: { class: 'sub' }
-
 = f.fields_for :extra, f.object do |ff|
-  = ff.input :goal_title, value: f.object.extra_attr('goal_title'), label: Section.human_attribute_name(:goal_title), wrapper_html: { class: 'sub' }, required: false
-  = ff.input :goal_action, value: f.object.extra_attr('goal_action'), label: Section.human_attribute_name(:goal_action), wrapper_html: { class: 'sub' }, required: false
-  = ff.input :duration_title, value: f.object.extra_attr('duration_title'), label: Section.human_attribute_name(:duration_title), wrapper_html: { class: 'sub' }, required: false
-  = ff.input :duration_suffix, value: f.object.extra_attr('duration_suffix'), label: Section.human_attribute_name(:duration_suffix), wrapper_html: { class: 'sub' }, required: false
+  = ff.input :daily_meditation, label: Section.human_attribute_name(:daily_meditation), input_html: { value: f.object.extra_attr('daily_meditation') }, wrapper_html: { class: 'sub' }, required: false
+  = ff.input :trending_meditation, label: Section.human_attribute_name(:trending_meditation), input_html: { value: f.object.extra_attr('trending_meditation') }, wrapper_html: { class: 'sub' }, required: false
+
+  .sub.field
+    = ff.label :random_meditation
+    - atts = f.object.extra_attr('random_meditation')
+    = ff.fields_for :random_meditation, atts do |fff|
+      = fff.text_field :title, value: atts['title'], placeholder: Section.human_attribute_name(:title), name: "#{ff.object_name}[title][]"
+      = render 'admin/application/attachment_select', f: ff, field: :image, value: atts['image_uuid'], attachments: section.page.attachments
+
+      = fff.text_field :subtitle, value: atts['subtitle'], placeholder: Section.human_attribute_name(:subtitle), name: "#{ff.object_name}[subtitle][]"
+      = fff.text_field :text, value: atts['text'], placeholder: Section.human_attribute_name(:text), name: "#{ff.object_name}[text][]"
