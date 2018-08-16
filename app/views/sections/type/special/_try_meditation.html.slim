@@ -2,8 +2,11 @@
 .container
   img alt=section.subtitle src=section.image.url
   .action
-    = inline_svg 'graphics/circle.svg'
-    .text = section.action
+    a.circle.button href=meditations_url
+      = inline_svg 'graphics/circle.svg'
+      .text = section.action
+    //= inline_svg 'graphics/circle.svg'
+    //.text = section.action
   .content
     a.video.button href=section.video.url data-mfp-src='#video-popup'
     h3 = section.title

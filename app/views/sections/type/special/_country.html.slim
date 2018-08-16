@@ -24,10 +24,10 @@
 
     .action
       h3 = t('sections.country.no_classes_in_your_city')
-      p = t('sections.country.meditat')
-      a.box.button href='#' = t('sections.country.go')
+      p = t('sections.country.meditate_online')
+      a.box.button href=meditations_url = t('sections.country.go')
   - else
     .static.action
       h3 = t('sections.country.no_classes', country: country_name)
-      p = t('sections.country.meditat')
-      a.box.button href='#' = t('sections.country.go')
+      p = t('sections.country.meditate_online')
+      a.box.button href=meditations_url = t('sections.country.go')

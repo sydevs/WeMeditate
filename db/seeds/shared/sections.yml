@@ -785,7 +785,7 @@ records:
     title: Awaken the inner energy!
     text: Before using methods to improve meditation, you need to awaken
     action: Vigorous
-    url: '#'
+    url: '/en/meditations'
     extra:
       desktop_image_uuid: f4381b4a-fcae-4fcf-818f-0e8f9735e142
       mobile_image_uuid: 59124e84-e2b1-4d78-8424-ff260710d64a

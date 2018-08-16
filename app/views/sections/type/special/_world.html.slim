@@ -12,7 +12,7 @@
     .webinar.action
       h3 = t('sections.country.no_classes_in_your_country')
       p = t('sections.country.meditate_online')
-      a.box.button href='#' = t('sections.country.go')
+      a.box.button href=meditations_url = t('sections.country.go')
 
 datalist#countries-list
   - country_names = I18nData.countries(locale)
