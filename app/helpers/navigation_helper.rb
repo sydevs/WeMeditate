@@ -43,4 +43,22 @@ module NavigationHelper
     end
   end
 
+  def mobile_navigation
+    yield ({
+      title: 'Front Page',
+      url: root_path,
+      active: controller_name == 'application' && action_name == 'front',
+    })
+
+    navigation do |nav|
+      yield nav
+    end
+
+    yield ({
+      title: 'Classes Near Me',
+      url: cities_path,
+      active: controller_name == 'cities',
+    })
+  end
+
 end

@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
 
         @breadcrumbs = [
           { name: 'Home', url: root_path },
-          { name: Article.model_name.human(count: -1) },
+          { name: @static_page.title }
         ]
       }
       format.js {

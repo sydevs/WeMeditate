@@ -1,12 +1,13 @@
 var Meditation = {
   // These variables will be set on load
-  audio_player: null,
+  video_player: null,
   goal_dropdown: null,
 
   load: function () {
     console.log('loading Meditation.js')
     let $context = $('section.type-special.format-custom-meditation').first()
     Meditation.goal_dropdown = $context.find('.dropdown')
+    Meditation.video_player = new Plyr('#meditation-player')
 
     $context.find('.active-goal').on('click', Meditation.toggle_dropdown)
     Meditation.goal_dropdown.on('click', '.close-button', Meditation.toggle_dropdown)

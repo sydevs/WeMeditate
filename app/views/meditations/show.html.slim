@@ -8,7 +8,8 @@ section.decorated.intro
 
 section.content-type-video.format-single
   .video.wrapper
-    = render 'shared/video_preview', thumbnail: @meditation.image.url, video_url: @meditation.video.url
+    video#meditation-player poster=@meditation.image.url
+      source src=@meditation.video.url type='video/mp4'
 
 section.content-type-text.format-just-text
   .section.wrapper = @meditation&.excerpt

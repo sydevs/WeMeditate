@@ -6,10 +6,28 @@ var Autocomplete = {
     $('.classes.autocomplete').each(Autocomplete._on_load_classes_autocomplete)
   },
 
+  unload: function() {
+    console.log('unloading Autocomplete.js')
+    Awesomplete.all.forEach(instance => {
+      $input = $(instance.input)
+      instance.destroy()
+      $input.replaceWith($input.data('original'))
+    })
+
+    Awesomplete.count = 0
+  },
+
+  create: function(input, settings) {
+    var original = input.outerHTML
+    var awesomplete = new Awesomplete(input, settings)
+    $(awesomplete.input).data('original', original)
+    return awesomplete
+  },
+
   _on_load_classes_autocomplete: function() {
     var $input = $(this)
 
-    var awesomplete = new Awesomplete(this, {
+    var awesomplete = Autocomplete.create(this, {
       minChars: 0,
       maxItems: 10,
       autoFirst: true
@@ -31,7 +49,7 @@ var Autocomplete = {
   _on_load_country_autocomplete: function() {
     var $input = $(this)
 
-    var awesomplete = new Awesomplete(this, {
+    var awesomplete = Autocomplete.create(this, {
       minChars: 0,
       maxItems: 5,
       autoFirst: true
@@ -49,7 +67,7 @@ var Autocomplete = {
     let $input = $(this)
     $input.val(selection.label).blur()
     $input.attr('disabled', true)
-    window.location.href = selection.value
+    Turbolinks.visit(selection.value)
     event.preventDefault()
   },
 
@@ -65,3 +83,4 @@ var Autocomplete = {
 }
 
 $(document).on('turbolinks:load', function() { Autocomplete.load() })
+$(document).on('turbolinks:before-cache', function() { Autocomplete.unload() })
