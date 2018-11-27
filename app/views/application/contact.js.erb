@@ -7,3 +7,5 @@ var contact_message_elements = $('.contact-form .message')
 <% end %>
 
 contact_message_elements.text('<%= @message %>').show()
+Forms.set_form_loading($('.contact-form'), false)
+console.log('Contact returned', '<%= @success %>', '<%= @message %>', contact_message_elements)

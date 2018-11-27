@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def contact
+    puts params.inspect
     contact_params = params.fetch(:contact, {}).permit(:email_address, :message, :gobbledigook)
 
     if not contact_params[:email_address].present?

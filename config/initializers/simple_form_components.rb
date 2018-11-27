@@ -28,7 +28,13 @@ module SimpleForm
         template.content_tag :a, class: 'ui basic label', href: media.url, target: '_blank' do
           content = ''
           content << template.content_tag(:i, '', class: "#{options[:icon]} icon") unless options[:icon].nil?
-          content << template.content_tag(:span, media.identifier.humanize)
+
+          if defined? media.file.identifier
+            content << template.content_tag(:span, media.file.identifier.humanize)
+          else
+            content << template.content_tag(:span, media.file.filename.humanize)
+          end
+
           content.html_safe
         end
       end

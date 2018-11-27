@@ -10,6 +10,9 @@
   color: $color-text-normal
   z-index: 1
 
+  &.disabled
+    opacity: 0.8
+
   &.box
     border: 1px solid $color-text-dark
     color: $color-text-dark
@@ -26,7 +29,7 @@
     &:after
       background: $color-button-blue
 
-    &:hover:not(.filter)
+    &:hover:not(.filter):not(.disabled)
       border-color: $color-button-blue
       color: $color-text-normal
 
@@ -46,7 +49,7 @@
     border: 1px solid transparent
     transition: all .5s ease
 
-    &:hover
+    &:hover:not(.disabled)
       border: 1px solid #dcdcdc
 
     &:after
@@ -66,7 +69,8 @@
       @include overlay(0, 0, 50%, 50%)
 
   &.active:before,
-  &:hover:before
+  &.disabled:before,
+  &:hover:not(.disabled):before
     left: 0
     right: 0
 
@@ -102,7 +106,7 @@
       letter-spacing: -0.5px
       margin: auto
 
-    &:hover
+    &:hover:not(.disabled)
       transform: scale(1.1)
       color: $color-text-orange
 

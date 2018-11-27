@@ -4,7 +4,7 @@
   .sub.title = section.subtitle
   .description = section.text
 
-  = form_tag contact_path, class: 'contact-form', remote: true do
+  = form_remote_tag contact_path, class: 'contact-form' do
     p.message
     .fields
       = fields_for :contact do |f|
