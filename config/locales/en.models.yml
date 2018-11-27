@@ -257,6 +257,7 @@ en:
         daily_meditation: Daily Meditation Text
         trending_meditation: Trending Meditation Text
         random_meditation: Random Meditation Text
+        treatment_ids: Treatments
 
       track:
         title: Title

@@ -14,7 +14,6 @@ let Page = {
   },
 
   _on_section_type_change: function() {
-    console.log('On section content type change')
     var section = $(this).closest('.section')
 
     section.removeClass(function (index, className) {
@@ -73,9 +72,15 @@ let Page = {
     $('.ui.accordion').accordion('close', 0)
 
     $(this).find('.section').each(function() {
-      var content_type = $(this).find('.static_page_sections_content_type select').val()
+      var content_type = $(this).find('.field-content-type select').val()
       if (typeof content_type !== 'undefined') {
         $(this).find('.grouped.fields.for:not(.'+content_type+') :input').attr('disabled', true)
+        $(this).find('.grouped.fields.for.'+content_type+' .field').each(function() {
+          if ($(this).css('display') == 'none') {
+            $(this).find(':input').attr('disabled', true)
+            console.log('disabling', $(this).find(':input'))
+          }
+        })
       }
     })
   },

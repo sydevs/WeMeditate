@@ -5,7 +5,7 @@
     svg.icon--not-pressed role='presentation'
       use xlink:href='#plyr-play'
     span.label--pressed.plyr__tooltip role='tooltip' = t('player.pause')
-    span.label--not-pressed.plyr__tooltip role='tooltip' = t('player.pause')
+    span.label--not-pressed.plyr__tooltip role='tooltip' = t('player.play')
     .equalizer
       - 6.times do
         span.equalizer-bar
@@ -17,14 +17,22 @@
     span.plyr__tooltip role='tooltip' 00:00
     span.plyr__time--current 00:00
     span.plyr__time--duration
-  button.extra.plyr__control data-plyr='rewind' type='button'
+  /button.extra.plyr__control data-plyr='rewind' type='button'
     svg role='presentation'
       use xlink:href='#plyr-rewind'
     span.plyr__tooltip role='tooltip' = t('player.rewind_10_secs')
-  button.extra.plyr__control data-plyr='fast-forward' type='button'
+  /button.extra.plyr__control data-plyr='fast-forward' type='button'
     svg role='presentation'
       use xlink:href='#plyr-fast-forward'
     span.plyr__tooltip role='tooltip' = t('player.forward_10_secs')
+  button.extra.plyr__control data-plyr='skip-back' type='button'
+    svg role='presentation'
+      use xlink:href='#plyr-rewind'
+    span.plyr__tooltip role='tooltip' = t('player.skip_back')
+  button.extra.plyr__control data-plyr='skip-forward' type='button'
+    svg role='presentation'
+      use xlink:href='#plyr-fast-forward'
+    span.plyr__tooltip role='tooltip' = t('player.skip_forward')
 
   button.extra.plyr__control aria-label='Mute' aria-pressed='false' data-plyr='mute' type='button'
     svg.icon--pressed role='presentation'

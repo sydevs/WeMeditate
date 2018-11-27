@@ -7,6 +7,8 @@ const SubtleSystem = {
   active_node: '',
   timeout: null,
 
+  scrollCutoff: 768,
+
   load: function() {
     console.log('loading SubtleSystem.js')
     SubtleSystem.active_node = ''
@@ -47,6 +49,16 @@ const SubtleSystem = {
         $(SubtleSystem.active_node).removeClass('active')
         SubtleSystem.active_node = new_active_node
         $(SubtleSystem.active_node).addClass('active')
+
+        if ($(window).width() <= SubtleSystem.scrollCutoff) {
+          var $target = $('#' + SubtleSystem.sections.find('.active.article').attr('id'))
+          console.log('scroll', $target.offset(), '-', $(window).height(), '+', $target.height())
+          var position = $target.offset().top - $(window).height() + $target.height() + 30
+          Menu.scroll.animateScroll(position, 2000, {
+            speed: 2000,
+            updateURL: false,
+          })
+        }
       }, time)
     }
   },

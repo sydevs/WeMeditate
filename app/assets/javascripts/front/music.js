@@ -18,12 +18,16 @@ var Music = {
 
   load: function() {
     console.log('loading Music.js');
-    var player = $('audio#player');
-    var controls = player.find('data-controls').text();
-    Music.player = new Plyr(player, {
+    var $player = $('audio#player');
+    var controls = $player.find('data-controls').text();
+    Music.player = new Plyr($player, {
       controls,
       invertTime: false
     });
+
+    $('.player').on('click', '[data-plyr="skip-back"]', Music._on_select_prev)
+    $('.player').on('click', '[data-plyr="skip-forward"]', Music._on_select_next)
+    Music.player.on('ended', Music._on_select_next)
 
     Music.player_title = $('#track-player-title')
     Music.player_artist = $('#track-player-artist')
@@ -99,7 +103,31 @@ var Music = {
 
     Music.list.find('.track').removeClass('active')
     $(this).closest('.track').addClass('active')
-    e.preventDefault()
+    if (e != null) e.preventDefault()
+  },
+
+  _on_select_next: function() {
+    console.log('attempt next')
+    $next_track = Music.list.children('.active.track').nextAll('.track').first()
+    if ($next_track.length == 0) {
+      $next_track = Music.list.children('.track').first()
+    }
+
+    next_track_selector = $next_track.children('a.info')[0]
+    console.log('next', next_track_selector)
+    Music._on_select_track.call(next_track_selector)
+  },
+
+  _on_select_prev: function() {
+    console.log('attempt previous')
+    $prev_track = Music.list.children('.active.track').prevAll('.track').first()
+    if ($prev_track.length == 0) {
+      $prev_track = Music.list.children('.track').last()
+    }
+
+    prev_track_selector = $prev_track.children('a.info')[0]
+    console.log('previous', prev_track_selector)
+    Music._on_select_track.call(prev_track_selector)
   },
 
   format_duration: function(seconds) {
