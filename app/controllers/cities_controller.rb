@@ -7,6 +7,10 @@ class CitiesController < ApplicationController
     @cities = City.with_translations(I18n.locale).select(:name, :country, :slug)
   end
 
+  def local
+    redirect_to cities_path
+  end
+
   def country
     @static_page = StaticPage.find_by(role: :country)
     @metatags = @static_page.get_metatags

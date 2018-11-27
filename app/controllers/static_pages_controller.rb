@@ -4,7 +4,8 @@ class StaticPagesController < ApplicationController
     @static_page = StaticPage.includes(:sections).friendly.find(params[:id])
     @metatags = @static_page.get_metatags
 
-    if @static_page.role == 'about'
+    case @static_page.role
+    when 'about'
       @breadcrumbs = [
         { name: 'Home', url: root_path },
         { name: @static_page.title }

@@ -1,7 +1,9 @@
 
 .item
-  - if nav[:active]
-    a.active.button = nav[:title]
+  - if nav[:content]
+    a.button onclick='void(0)' = nav[:title]
+  - elsif nav[:active]
+    a.active.button href=nav[:url] = nav[:title]
   - else
     a.button href=nav[:url] = nav[:title]
 

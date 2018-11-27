@@ -48,7 +48,7 @@ en:
   sections:
     credit: Credit
     show_more: Show More
-    show_less: Collapsee
+    show_less: Collapse
     country:
       other_cities: Other Cities in %{country}
       no_classes: No classes in %{country}?

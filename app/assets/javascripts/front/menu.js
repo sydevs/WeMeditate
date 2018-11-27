@@ -8,10 +8,13 @@ var Menu = {
   chapter_items: null,
   chapter_offsets: null,
 
+  scroll: null,
+
   menubarHeight: 0,
   chaptersStickyPoint: 0,
   stickyPoint: 0,
   inversePoint: 0,
+  scrollOffset: 0,
 
   load: function() {
     console.log('loading Menu.js')
@@ -30,9 +33,15 @@ var Menu = {
     $(window).scroll(Menu._on_scroll)
     $(window).resize(Menu._on_resize)
     Menu._on_resize()
-
-    //zenscroll.setup(null, Menu.menubarHeight + Menu.chapters.outerHeight() + 10)
     Menu._on_scroll()
+
+    if (Menu.scroll == null) {
+      Menu.scroll = new SmoothScroll('a[href*="#"]', {
+        offset: function() {
+          return Menu.stickyPoint
+        }
+      })
+    }
   },
 
   toggle_menu: function() {
@@ -65,7 +74,7 @@ var Menu = {
 
     if (Menu.chapters.length > 0) {
       Menu.chaptersStickyPoint = Menu.chapters.offset().top
-      let offset_adjustment = Menu.stickyPoint + 120
+      var offset_adjustment = Menu.stickyPoint
 
       Menu.chapter_offsets = []
       Menu.chapter_items.each(function() {
@@ -77,6 +86,8 @@ var Menu = {
       $last_section = $('article > section:last-child')
       Menu.chapter_offsets.push($last_section.offset().top + $last_section.outerHeight(true) - offset_adjustment)
     }
+
+    //zenscroll.setup(null, Menu.menubarHeight + Menu.chapters.outerHeight() + 10)
   },
 
   _on_scroll: function() {
@@ -102,7 +113,7 @@ var Menu = {
       let $chaptersContainer = Menu.chapters.find('.container')
       let chaptersHeight = $chaptersContainer.outerHeight()
 
-      console.log(scrollTop, '>', Menu.chaptersStickyPoint, '-', headerHeight, '=', scrollTop > Menu.chaptersStickyPoint - headerHeight)
+      //console.log(scrollTop, '>', Menu.chaptersStickyPoint, '-', headerHeight, '=', scrollTop > Menu.chaptersStickyPoint - headerHeight)
 
       if (scrollTop < Menu.chaptersStickyPoint - headerHeight) {
         Menu.chapters.css('height', 'auto')

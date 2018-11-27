@@ -59,7 +59,7 @@ records:
     content_type: action
     format: button
     action: Try Meditation
-    url: '#'
+    url: /en/meditations/first-experience
     extra:
       decorations: { enabled: [ leaf ] }
   - sprig_id: s_a1_image_fit_page_width
@@ -93,7 +93,7 @@ records:
     credit: Shri Mataji
     subtitle: Founder of the meditation method "Sahaja Yoga"
     action: Meditation with Shri Mataji
-    url: '#'
+    url: /en/meditations/first-experience
   - sprig_id: s_a1_just_text_3
     order: 9
     page_type: Article
@@ -205,7 +205,7 @@ records:
     credit: Shri Mataji
     subtitle: Founder of the meditation method "Sahaja Yoga"
     action: Meditation with Shri Mataji
-    url: '#'
+    url: /en/meditations/first-experience
   - sprig_id: s_a2_just_text_4
     order: 7
     page_type: Article
@@ -366,7 +366,7 @@ records:
     credit: Shri Mataji
     subtitle: Founder of the meditation method "Sahaja Yoga"
     action: Meditation with Shri Mataji
-    url: '#'
+    url: /en/meditations/first-experience
   - sprig_id: s_a3_video
     order: 12
     page_type: Article
@@ -405,7 +405,7 @@ records:
     text: |-
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
     action: Learn More
-    url: '/en/meditations'
+    url: '/en/meditations/first-experience'
     extra:
       image_uuid: 3e317127-071e-46bb-9d2c-5ee4ea0660d3
       decorations:
@@ -469,7 +469,7 @@ records:
     text: |-
       <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
     action: Learn More
-    url: '/en/music'
+    url: '/en/page/about-us'
     extra:
       image_uuid: 724d1d5b-c37a-4a95-b794-7f5a839b3adc
       decorations:
@@ -569,7 +569,7 @@ records:
     content_type: action
     format: button
     action: Come Meditate
-    url: '#'
+    url: /en/cities/local
     extra:
       decorations:
         enabled: [ circle, gradient ]
@@ -588,27 +588,27 @@ records:
         - name: Celeste
           location: New York
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
-          url: '#'
+          url: www.facebook.com
           image_uuid: 0d72e6fc-4d9d-4756-9468-f24e4f852c29
         - name: Adam
           location: Atlanta
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
-          url: '#'
+          url: www.facebook.com
           image_uuid: a5289277-0fa4-4731-9c15-ab890484b8c3
         - name: James
           location: Los Angeles
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
-          url: '#'
+          url: www.facebook.com
           image_uuid: 9b25751c-7dc2-45ed-bcb2-4944c0f58d69
         - name: Anthony
           location: Seattle
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
-          url: '#'
+          url: www.facebook.com
           image_uuid: 3c93c80b-8866-4e12-8799-3190a3683f0a
         - name: Laura
           location: Denver
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
-          url: '#'
+          url: www.facebook.com
           image_uuid: 7e109bcb-c278-4e0e-9c1b-f836edd9ca7b
 
 
@@ -640,7 +640,7 @@ records:
       <p>Shri Mataji maintained that there is an innate spiritual potential within every human being, and it can be spontaneously awakened, bringing one into the state of spontaneous meditation. The inner balance and stress-reduction that accompanies the practice of Sahaja Yoga meditation has already benefited hundreds of thousands worldwide.</p>
       <p>The ability to quickly and easily activate our innate, spiritual energy - and experience its benefits differentiates Sahaja Yoga from other forms of meditation. With practice, individuals are able to direct their own energy and redress mental, physical and emotional imbalances to achieve a state of well-being, serenity and fulfillment.</p>
     action: More about Sahaja Yoga
-    url: '#'
+    url: /en/page/about-sahaja-yoga
     extra:
       image_uuid: 79e97f7b-aca5-4c30-b0ad-87d0cd42c23b
       decorations:
@@ -658,6 +658,7 @@ records:
     format: try_meditation
     title: Meditation under the arm
     subtitle: Shri Mataji
+    url: /en/meditations/first-experience
     action: Try meditation right now
     extra:
       image_uuid: bd0d4e27-0780-4164-89d8-6fea3f318406
@@ -706,6 +707,12 @@ records:
       <p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>
     extra:
       items:
+        - title: Italy, 1986
+          text: Declared ‘Personality of the Year’ by the Italian Government.
+        - title: Moscow, Russia, 1989
+          text: Following Shri Mataji’s meeting with the USSR Minister of Health, Sahaja Yoga was granted full government sponsorship, including funding for scientific research.
+        - title: St. Petersburg, Russia, 1993
+          text: Appointed as Honorary Member of the Petrovskaya Academy of Art and Science. In the history of the Academy, only twelve people have been granted this honour, Einstein being one of them. Shri Mataji inaugurated the first International Conference on Medicine and Self-Knowledge, which became an annual event at the Academy thereafter.
         - title: Italy, 1986
           text: Declared ‘Personality of the Year’ by the Italian Government.
         - title: Moscow, Russia, 1989
@@ -785,7 +792,7 @@ records:
     title: Awaken the inner energy!
     text: Before using methods to improve meditation, you need to awaken
     action: Vigorous
-    url: '/en/meditations'
+    url: '/en/meditations/first-experience'
     extra:
       desktop_image_uuid: f4381b4a-fcae-4fcf-818f-0e8f9735e142
       mobile_image_uuid: 59124e84-e2b1-4d78-8424-ff260710d64a

@@ -87,7 +87,7 @@ $(document).on('turbolinks:load', function() {
       offset_top: 85
     });
   }
-  
+
   function fullScreenArticle(sSelector) {
     var element = $(sSelector),
       text = element.find('.container-text').html();

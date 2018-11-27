@@ -46,6 +46,7 @@ Rails.application.routes.draw do
 
       resources :cities, only: [:show, :index] do
         post :register, on: :member
+        get :local, on: :collection
       end
 
       get '/countries/:country_code', controller: :cities, action: :country, as: :country

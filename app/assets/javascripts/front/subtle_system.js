@@ -16,6 +16,10 @@ const SubtleSystem = {
     SubtleSystem.sections.find('.trigger').mouseout(SubtleSystem._on_trigger_mouseout)
   },
 
+  unload: function() {
+    $(SubtleSystem.active_node).removeClass('active')
+  },
+
   _on_filter_click: function() {
     console.log('click', this)
     var filter = $(this).data('filter')
@@ -56,3 +60,4 @@ const SubtleSystem = {
 }
 
 $(document).on('turbolinks:load', function() { SubtleSystem.load() })
+$(document).on('turbolinks:before-cache', function() { SubtleSystem.unload() })

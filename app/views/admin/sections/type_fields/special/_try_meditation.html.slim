@@ -2,6 +2,7 @@
 = f.input :action, wrapper_html: { class: 'sub' }
 = f.input :title, wrapper_html: { class: 'sub' }
 = f.input :subtitle, wrapper_html: { class: 'sub' }
+= f.input :url, wrapper_html: { class: 'sub' }
 
 = f.fields_for :extra, f.object do |ff|
   - image_uuid = f.object.extra_attr 'image_uuid'
