@@ -96,7 +96,7 @@ var Menu = {
     let headerHeight = $headerContainer.hasClass('desktop') ? $headerContainer.find('.menubar').outerHeight() : $headerContainer.outerHeight()
 
     if (scrollTop > Menu.stickyPoint - headerHeight + 2) {
-      if (!Menu.header.hasClass('sticky') && $headerContainer.hasClass('desktop')) {
+      if (!Menu.header.hasClass('sticky')) {
         Menu.header.css('height', Menu.header.outerHeight() + 'px')
         Menu.header.addClass('sticky')
       }

@@ -588,27 +588,27 @@ records:
         - name: Celeste
           location: New York
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
-          url: www.facebook.com
+          url: https://www.facebook.com/
           image_uuid: 0d72e6fc-4d9d-4756-9468-f24e4f852c29
         - name: Adam
           location: Atlanta
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
-          url: www.facebook.com
+          url: https://www.facebook.com/
           image_uuid: a5289277-0fa4-4731-9c15-ab890484b8c3
         - name: James
           location: Los Angeles
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
-          url: www.facebook.com
+          url: https://www.facebook.com/
           image_uuid: 9b25751c-7dc2-45ed-bcb2-4944c0f58d69
         - name: Anthony
           location: Seattle
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
-          url: www.facebook.com
+          url: https://www.facebook.com/
           image_uuid: 3c93c80b-8866-4e12-8799-3190a3683f0a
         - name: Laura
           location: Denver
           text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?
-          url: www.facebook.com
+          url: https://www.facebook.com/
           image_uuid: 7e109bcb-c278-4e0e-9c1b-f836edd9ca7b
 
 
