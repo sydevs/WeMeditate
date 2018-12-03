@@ -1,0 +1,41 @@
+
+- about_page = StaticPage.find_by(role: :about)
+- subtle_system_page = StaticPage.find_by(role: :subtle_system)
+- shri_mataji_page = StaticPage.find_by(role: :shri_mataji)
+- sahaja_yoga_page = StaticPage.find_by(role: :sahaja_yoga)
+- contact_page = StaticPage.find_by(role: :contact)
+
+footer.container.footer
+  .footer-divider
+    img src=image_path('footer/illustration.svg')
+  .footer-columns
+    .footer-column
+      nav.footer-navigation
+        a.footer-header href=url_for(about_page) = about_page.title
+        a.footer-header href=articles_path Events
+        a.footer-header href=articles_path Inspiration
+        a.footer-header href=tracks_path Music
+    .footer-column
+      nav.footer-navigation
+        .footer-header Meditation
+        a href=local_cities_path Come meditate
+        a href=meditations_path Online meditation classes
+        a href=url_for(subtle_system_page) = subtle_system_page.title
+        .footer-social
+          a href="#"
+            i.facebook.icon
+          a href="#"
+            i.vk.icon
+          a href="https://instagram.com/we-meditate"
+            i.instagram.icon
+    .footer-column
+      nav.footer-navigation
+        .footer-header About
+        a href=url_for(about_page) = about_page.title
+        a href=url_for(shri_mataji_page) = shri_mataji_page.title
+        a href=url_for(sahaja_yoga_page) = sahaja_yoga_page.title
+        a href=url_for(contact_page) = contact_page.title
+    .footer-column
+      ' Design By
+      img.footer-credit src=image_path('footer/daviann.svg')
+  .footer-copyright &copy; Yoga, 2017

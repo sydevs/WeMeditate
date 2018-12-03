@@ -1,36 +1,24 @@
 @import "../../mixins/vars"
 
 body.static-page-home
-  header
+  .header
     position: absolute
     top: 0
     left: 0
     right: 0
 
-    .topline > *
-      margin-bottom: 0
-
-    .full.topline
+    .desktop > .header-banner
       height: 194px
-      padding-bottom: 50px
+      padding-bottom: 60px
+
+      @include laptop
+        height: 180px
 
       @include desktop
         height: 173px
 
       @include desktop-lg
         height: 191px
-
-      @include laptop
-        height: 180px
-
-      .logo, .action
-        padding-bottom: 10px
-
-      .illustration-wrapper
-        top: 37px
-
-      .action
-        color: $color-text-inverse
 
   main
     width: 100%

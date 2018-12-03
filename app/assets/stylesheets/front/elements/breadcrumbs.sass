@@ -1,0 +1,23 @@
+@import "../../mixins/vars"
+
+.breadcrumbs
+  margin-top: 2.25em
+  font-size: 0.7em
+  z-index: 5
+
+  &-item
+    display: inline-block
+
+    &:not([href])
+      color: black
+
+    &:not(:last-child):after
+      font-family: $wemeditate-icons !important
+      content: $icon-breadcrumb
+      margin: 0 0.9em
+      font-size: 0.5em
+
+// ===== INVERSE ===== //
+.inverse.breadcrumbs .breadcrumbs
+  &-item
+    color: $color-text-inverse

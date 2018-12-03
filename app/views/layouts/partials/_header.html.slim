@@ -1,0 +1,29 @@
+
+header.header class="#{'inverse' if action_name == 'front'}"
+  .header-container
+    .header-wrap.desktop.container
+      .header-banner
+        a.header-banner-logo href=root_path = inline_svg 'header/logo.svg'
+        a.header-banner-illustration href=root_path
+          = inline_svg 'header/illustration.svg'
+        a.header-banner-action href=local_cities_path Classes<br>Near Me
+
+      nav.header-bar
+        a.header-bar-icon.logo href=root_path = inline_svg 'header/logo-mini.svg'
+        - navigation do |nav|
+          = render 'layouts/partials/bar_nav_item', nav: nav
+        a.header-bar-icon.marker href=local_cities_path = inline_svg 'graphics/marker.svg'
+
+      - unless @breadcrumbs.nil?
+        nav.header-breadcrumbs class=content_for(:breadcrumbs_class)
+          - @breadcrumbs.each do |crumb|
+            a.header-breadcrumbs-item href=crumb[:url] = crumb[:name]
+
+    .header-wrap.mobile.container
+      .header-bar
+        a.header-bar-icon.logo href=root_path = inline_svg 'header/logo-mini.svg'
+        a.header-bar-icon.burger = inline_svg 'header/burger.svg'
+
+  .header-menu
+    - mobile_navigation do |nav|
+      = render 'layouts/partials/menu_nav_item', nav: nav

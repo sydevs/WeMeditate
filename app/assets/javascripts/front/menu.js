@@ -2,8 +2,8 @@
 var Menu = {
   // These variables will be set on load
   is_front_page: false,
-  page_root: null,
   header: null,
+  menu: null,
   chapters: null,
   chapter_items: null,
   chapter_offsets: null,
@@ -18,17 +18,16 @@ var Menu = {
 
   load: function() {
     console.log('loading Menu.js')
-    Menu.page_root = $('html')
-    Menu.header = $('header')
+    Menu.header = $('header.header')
     Menu.chapters = $('.chapters')
-    Menu.submenu = $('.menu .item .container')
     Menu.chapter_items = Menu.chapters.find('.item')
     Menu.header.css('height', 'auto')
-    Menu.header.on('click', '.burger-button', Menu.toggle_menu)
-    Menu.header.on('click', '.menu .button ', Menu.toggle_menu_item)
-    Menu.menubarHeight = Menu.header.find('.menubar').outerHeight(true)
+    Menu.header.on('click', '.header-menu-item.submenu > a', Menu._on_toggle_submenu)
+    Menu.header.on('click', '.burger', Menu.toggle_menu)
+    Menu.menubarHeight = $('.header-bar:visible').outerHeight(true)
 
-    Menu.page_root.removeClass('show-menu')
+    $('html').removeClass('noscroll')
+    Menu.header.removeClass('show-menu')
 
     $(window).scroll(Menu._on_scroll)
     $(window).resize(Menu._on_resize)
@@ -45,23 +44,21 @@ var Menu = {
   },
 
   toggle_menu: function() {
-    Menu.page_root.toggleClass('show-menu')
-    Menu.submenu.each(function () {
-        $(this).closest('.item').addClass('item-list')
-    })
+    let show = !Menu.header.hasClass('show-menu')
+    Menu.header.toggleClass('show-menu', show)
+    $('html').toggleClass('noscroll', show)
   },
 
-  toggle_menu_item: function(e) {
-    if (Menu.page_root.hasClass('show-menu') && $(this).closest('.item').hasClass('item-list')){
-        e.preventDefault()
-        $(this).closest('.item').toggleClass('show-content')
-    }
+  _on_toggle_submenu: function(e) {
+    $(this).closest('.submenu').toggleClass('expand')
+    e.preventDefault()
   },
 
   _on_resize: function() {
-    Menu.stickyPoint = Menu.header.outerHeight(true) - Menu.menubarHeight
+    let desktop = Menu.header.find('.header-wrap:visible').first().hasClass('.desktop')
+    Menu.stickyPoint = desktop ? Menu.header.outerHeight(true) - Menu.menubarHeight : 0
 
-    $banner = $('section.format-banner:first-child')
+    let $banner = $('section.format-banner:first-child')
     if ($banner.length > 0 && $banner.children('.content').hasClass('inverse')) {
       if ($banner.children('.content').hasClass('style-contact-page')) {
         Menu.inversePoint = Menu.stickyPoint
@@ -74,7 +71,7 @@ var Menu = {
 
     if (Menu.chapters.length > 0) {
       Menu.chaptersStickyPoint = Menu.chapters.offset().top
-      var offset_adjustment = Menu.stickyPoint
+      let offset_adjustment = Menu.stickyPoint
 
       Menu.chapter_offsets = []
       Menu.chapter_items.each(function() {
@@ -86,16 +83,14 @@ var Menu = {
       $last_section = $('article > section:last-child')
       Menu.chapter_offsets.push($last_section.offset().top + $last_section.outerHeight(true) - offset_adjustment)
     }
-
-    //zenscroll.setup(null, Menu.menubarHeight + Menu.chapters.outerHeight() + 10)
   },
 
   _on_scroll: function() {
     let scrollTop = $(window).scrollTop()
-    let $headerContainer = Menu.header.find('.container:visible').first()
-    let headerHeight = $headerContainer.hasClass('desktop') ? $headerContainer.find('.menubar').outerHeight() : $headerContainer.outerHeight()
 
-    if (scrollTop > Menu.stickyPoint - headerHeight + 2) {
+    console.log('top', scrollTop, 'sticky', Menu.stickyPoint, 'menubar', Menu.menubarHeight)
+
+    if (scrollTop > Menu.stickyPoint) {
       if (!Menu.header.hasClass('sticky')) {
         Menu.header.css('height', Menu.header.outerHeight() + 'px')
         Menu.header.addClass('sticky')

@@ -31,7 +31,7 @@ body class=classes
   //.preloader
     image width="200" height="100" src=image_path('svg/preloader.svg') alt="preloader"
 
-  = render 'application/header'
+  = render 'layouts/partials/header'
   main = yield
-  = render 'application/footer'
+  = render 'layouts/partials/footer'
   = render 'shared/video_popup'

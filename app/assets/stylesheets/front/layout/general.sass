@@ -18,12 +18,13 @@ figure
 .centered
   text-align: center
 
-.mobile
-  display: none
+.noscroll
+  overflow: hidden
 
-  @include mobile
-    display: block
+.mobile
+  @include laptop-or-larger
+    display: none !important
 
 .desktop
-  @include mobile
+  @include tablet-or-smaller
     display: none
