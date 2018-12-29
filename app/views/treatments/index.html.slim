@@ -25,7 +25,7 @@
       p.treatments-item-text = t('treatments.music_description')
       a.button-box href=tracks_path = t('treatments.listen_to_music')
 
-  = render @treatments
+  = render @treatments, cached: true
 
 //.container.with.right.triangle.decoration
 .treatments-triangle.wrapper-outer.with-decoration.right.triangle

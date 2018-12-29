@@ -1,10 +1,10 @@
 class TracksController < ApplicationController
 
   def index
-    @tracks = Track.all
-    @mood_filters = MoodFilter.all
-    @instrument_filters = InstrumentFilter.all
-    @static_page = StaticPage.includes(:sections).find_by(role: :tracks)
+    @tracks = Track.includes_content.all
+    @mood_filters = MoodFilter.includes(:translations).all
+    @instrument_filters = InstrumentFilter.includes(:translations).all
+    @static_page = StaticPage.includes_content.find_by(role: :tracks)
     @metatags = @static_page.get_metatags
     @breadcrumbs = [
       { name: 'Home', url: root_path },

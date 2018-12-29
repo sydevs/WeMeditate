@@ -1,6 +1,6 @@
 
 - @static_page.sections.each_with_index do |section, index|
   - if section.special? and section.format == 'city_sections'
-    = render @city.sections, index: index
+    = render @city.sections, index: index, cached: true
   - else
-    = render section, index: index
+    = render section, index: index, cached: true

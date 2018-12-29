@@ -31,6 +31,17 @@ class City < ApplicationRecord
   # Callbacks
   after_create :disable_drafts
 
+  # Include everything necessary to render a preview of this model
+  def self.includes_preview
+    includes(:translations)
+  end
+
+  # Include everything necessary to render the full content of this model
+  def self.includes_content
+    includes(:attachments, :translations, sections: :translations)
+  end
+
+  # Check if coordinates have been defined
   def has_coordinates?
     latitude.present? and longitude.present?
   end

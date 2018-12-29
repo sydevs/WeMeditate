@@ -6,7 +6,7 @@ module Admin
 
     def index
       pages_name = @klass.name.pluralize.underscore
-      instance_variable_set('@'+pages_name, @klass.all)
+      instance_variable_set('@'+pages_name, @klass.includes(:translations).all)
     end
 
     def show
@@ -137,7 +137,7 @@ module Admin
 
     private
       def set_page
-        @page = @klass.includes(:sections).friendly.find(params[:id])
+        @page = @klass.includes_content.friendly.find(params[:id])
         set_instance_variable
       end
 

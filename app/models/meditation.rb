@@ -31,6 +31,16 @@ class Meditation < ApplicationRecord
 
   alias thumbnail image
 
+  # Include everything necessary to render a preview of this model
+  def self.includes_preview
+    includes(:translations, :duration_filter, goal_filters: :translations)
+  end
+
+  # Include everything necessary to render the full content of this model
+  def self.includes_content
+    includes(:translations)
+  end
+
   # Calculate and return a few special types of meditaitons
   def self.get type
     case type

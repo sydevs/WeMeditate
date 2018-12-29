@@ -1,9 +1,9 @@
 
-- about_page = StaticPage.find_by(role: :about)
-- subtle_system_page = StaticPage.find_by(role: :subtle_system)
-- shri_mataji_page = StaticPage.find_by(role: :shri_mataji)
-- sahaja_yoga_page = StaticPage.find_by(role: :sahaja_yoga)
-- contact_page = StaticPage.find_by(role: :contact)
+- about_page = static_page_preview_for(:about)
+- subtle_system_page = static_page_preview_for(:subtle_system)
+- shri_mataji_page = static_page_preview_for(:shri_mataji)
+- sahaja_yoga_page = static_page_preview_for(:sahaja_yoga)
+- contact_page = static_page_preview_for(:contact)
 
 footer.container.footer
   .footer-divider
@@ -20,7 +20,7 @@ footer.container.footer
         .footer-header Meditation
         a href=local_cities_path Come meditate
         a href=meditations_path Online meditation classes
-        a href=url_for(subtle_system_page) = subtle_system_page.title
+        a href=subtle_system_nodes_path = subtle_system_page.title
         .footer-social
           a href="#"
             i.facebook.icon

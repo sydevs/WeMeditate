@@ -1,7 +1,7 @@
 class SubtleSystemNodesController < ApplicationController
 
   def index
-    @static_page = StaticPage.includes(:sections).find_by(role: :subtle_system)
+    @static_page = StaticPage.includes_content.find_by(role: :subtle_system)
     @metatags = @static_page.get_metatags
     @breadcrumbs = [
       { name: 'Home', url: root_path },
@@ -10,8 +10,8 @@ class SubtleSystemNodesController < ApplicationController
   end
 
   def show
-    @subtle_system_node = SubtleSystemNode.friendly.find(params[:id])
-    subtle_system_page = StaticPage.find_by(role: :subtle_system)
+    @subtle_system_node = SubtleSystemNode.includes_content.friendly.find(params[:id])
+    subtle_system_page = StaticPage.includes_preview.find_by(role: :subtle_system)
     @metatags = @subtle_system_node.get_metatags
     @breadcrumbs = [
       { name: 'Home', url: root_path },

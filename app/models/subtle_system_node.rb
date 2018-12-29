@@ -35,6 +35,15 @@ class SubtleSystemNode < ApplicationRecord
   default_scope { order( :role ) }
   scope :untranslated, -> { joins(:translations).where.not(subtle_system_node_translations: { locale: I18n.locale }) }
 
+  # Include everything necessary to render a preview of this model
+  def self.includes_preview
+    includes(:translations)
+  end
+
+  # Include everything necessary to render the full content of this model
+  def self.includes_content
+    includes(:translations, :sections, :attachments)
+  end
 
   # Returns a list of which roles don't yet have a database representation.
   def self.available_roles

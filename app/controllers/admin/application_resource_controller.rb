@@ -5,7 +5,7 @@ module Admin
 
       def index
         resources_name = @klass.name.pluralize.underscore
-        instance_variable_set('@'+resources_name, @klass.all)
+        instance_variable_set('@'+resources_name, @klass.includes(:translations).all)
       end
 
       def show
@@ -36,7 +36,7 @@ module Admin
         end
 
         def set_resource
-          @resource = @klass.find(params[:id])
+          @resource = @klass.includes(:translations).find(params[:id])
           set_instance_variable
         end
 

@@ -1,5 +1,5 @@
 
-= render @static_page.sections.with_translations(locale)
+= render @static_page.sections, cached: true
 - selected_category_id = params[:category]&.to_i
 
 //.container

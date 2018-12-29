@@ -87,6 +87,6 @@
       img.playlist-cover src=image_path('sections/music/album.jpg')
       #grid.playlist-list
         .grid-sizer
-        = render @tracks
+        = render @tracks, cached: true
 
 = render @static_page.sections.with_translations(locale)

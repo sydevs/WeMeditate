@@ -13,5 +13,5 @@
       div = @subtle_system_node.name
       = inline_svg 'graphics/leaf.svg'
 
-= render @subtle_system_node.sections
+= render @subtle_system_node.sections, cached: true
 = render 'application/action_footer'

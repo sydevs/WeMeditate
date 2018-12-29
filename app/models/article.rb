@@ -39,6 +39,15 @@ class Article < ApplicationRecord
   # Callbacks
   after_create :disable_drafts
 
+  # Include everything necessary to render a preview of this model
+  def self.includes_preview
+    includes(:translations, category: :translations)
+  end
+
+  # Include everything necessary to render the full content of this model
+  def self.includes_content
+    includes(:attachments, :translations, category: :translations, sections: :translations)
+  end
 
   # Shorthand for the article banner image file
   def banner

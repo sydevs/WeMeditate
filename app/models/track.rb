@@ -25,4 +25,9 @@ class Track < ApplicationRecord
 
   # TODO: Change the database so that Track uses the same database name for it's name/title as every other resource.
   alias name title
+
+  # Include everything necessary to render the full content of this model
+  def self.includes_content
+    includes(:translations, artists: :translations, mood_filters: :translations, instrument_filters: :translations)
+  end
 end

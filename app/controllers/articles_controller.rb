@@ -3,13 +3,13 @@ class ArticlesController < ApplicationController
   ARTICLES_PER_PAGE = 10
 
   def index
-    @static_page = StaticPage.includes(:sections).find_by(role: :articles)
+    @static_page = StaticPage.includes_content.find_by(role: :articles)
     @metatags = @static_page.get_metatags
 
     respond_to do |format|
       format.html {
-        @categories = Category.all
-        @articles = Article.limit(ARTICLES_PER_PAGE)
+        @categories = Category.includes(:translations).all
+        @articles = Article.includes_preview.limit(ARTICLES_PER_PAGE)
 
         @breadcrumbs = [
           { name: 'Home', url: root_path },
@@ -17,14 +17,14 @@ class ArticlesController < ApplicationController
         ]
       }
       format.js {
-        @articles = Article.offset(params[:offset]).limit(ARTICLES_PER_PAGE)
+        @articles = Article.includes_preview.offset(params[:offset]).limit(ARTICLES_PER_PAGE)
         @next_offset = params[:offset].to_i + ARTICLES_PER_PAGE
       }
     end
   end
 
   def show
-    @article = Article.includes(:sections).friendly.find(params[:id])
+    @article = Article.includes_content.friendly.find(params[:id])
     @metatags = @article.get_metatags
     @breadcrumbs = [
       { name: 'Home', url: root_path },

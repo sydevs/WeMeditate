@@ -1,10 +1,10 @@
 class MeditationsController < ApplicationController
 
   def index
-    @meditations = Meditation.all
-    @goal_filters = GoalFilter.all
-    @duration_filters = DurationFilter.all
-    @static_page = StaticPage.includes(:sections).find_by(role: :meditations)
+    @meditations = Meditation.includes_preview.all
+    @goal_filters = GoalFilter.includes(:translations).all
+    @duration_filters = DurationFilter.includes(:translations).all
+    @static_page = StaticPage.includes_content.find_by(role: :meditations)
     @metatags = @static_page.get_metatags
 
     @breadcrumbs = [
@@ -20,7 +20,7 @@ class MeditationsController < ApplicationController
     # Increment the view counter for this page. This should be changed to be less naive, and actually check when people view the video.
     @meditation.update! views: @meditation.views + 1
 
-    meditations_page = StaticPage.find_by(role: :meditations)
+    meditations_page = StaticPage.includes_content.find_by(role: :meditations)
     @breadcrumbs = [
       { name: 'Home', url: root_path },
       { name: meditations_page.title, url: meditations_path },
@@ -36,12 +36,12 @@ class MeditationsController < ApplicationController
     where = {}
     where[:duration_filter_id] = params[:duration_filter] if params[:duration_filter].present?
     where[:goal_filters] = { id: params[:goal_filter] } if params[:goal_filter].present?
-    meditation = Meditation.includes(:goal_filters).where(where).order('RANDOM()').first
+    meditation = Meditation.joins(:goal_filters).where(where).order('RANDOM()').first
 
     if meditation.present?
       redirect_to meditation_url(meditation), status: :see_other
     else
-      raise ActionController::RoutingError.new('Not Found')
+      raise ActionController::RoutingError.new('Filter Not Found')
     end
   end
 

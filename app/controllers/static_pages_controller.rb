@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def show
-    @static_page = StaticPage.includes(:sections).friendly.find(params[:id])
+    @static_page = StaticPage.includes_content.friendly.find(params[:id])
     @metatags = @static_page.get_metatags
 
     case @static_page.role
@@ -11,7 +11,7 @@ class StaticPagesController < ApplicationController
         { name: @static_page.title }
       ]
     else
-      about_page = StaticPage.find_by(role: :about)
+      about_page = StaticPage.includes_preview.find_by(role: :about)
       @breadcrumbs = [
         { name: 'Home', url: root_path },
         { name: 'Learn More', url: static_page_path(about_page) },

@@ -5,6 +5,6 @@
       h1.banner-title = @static_page.title
 
 article
-  = render @static_page.sections.with_translations(locale)
+  = render @static_page.sections.with_translations(locale), cached: true
 
 = render 'application/action_footer'

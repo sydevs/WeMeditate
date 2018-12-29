@@ -40,6 +40,16 @@ class StaticPage < ApplicationRecord
   # Callbacks
   after_create :disable_drafts
 
+  # Include everything necessary to render a preview of this model
+  def self.includes_preview
+    joins(:translations)
+  end
+
+  # Include everything necessary to render the full content of this model
+  def self.includes_content
+    includes(:attachments, :translations, sections: :translations)
+  end
+
   # Returns a list of which roles don't yet have a database representation.
   def self.available_roles
     StaticPage.roles.keys - StaticPage.pluck(:role)

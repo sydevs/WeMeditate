@@ -1,55 +1,51 @@
 module NavigationHelper
 
   def navigation
-    @desktop_navigation ||= [
-      {
-        title: 'Meditate Now',
-        url: meditations_path,
-        active: controller_name == 'meditations',
-      },
-      {
-        title: 'Inspiration',
-        url: articles_path,
-        active: controller_name == 'articles',
-      },
-      {
-        title: 'Music',
-        url: tracks_path,
-        active: controller_name == 'tracks',
-      },
-      {
+    if not defined? @navigation
+      @navigation = []
+
+      [:meditations, :articles, :tracks].each do |role|
+        static_page = static_page_preview_for(role)
+        @navigation.push({
+          title: static_page.title,
+          url: static_page_path_for(static_page),
+          active: controller_name == role.to_s
+        })
+      end
+
+      @navigation.push({
         title: 'Learn More',
-        url: '#', #static_page_path(StaticPage.find_by(role: :about)),
+        url: '#', #static_page_path_for(static_page_preview_for(:about)),
         active: ['static_pages', 'subtle_system_nodes'].include?(controller_name),
         content: {
-          items: StaticPage.where(role: [:about, :contact, :sahaja_yoga, :shri_mataji]).map {|static_page| {
-            title: static_page.title,
-            url: static_page_path(static_page),
-          }} + [{
-            title: StaticPage.find_by(role: :subtle_system).title,
-            url: subtle_system_nodes_path,
-          }] + [{
-            title: StaticPage.find_by(role: :treatments).title,
-            url: treatments_path,
-          }],
-          featured: Treatment.first(2).map {|treatment| {
-            title: "#{Treatment.model_name.human}: #{treatment.name}",
-            url: treatment_path(treatment),
-            thumbnail: treatment.thumbnail.url,
-          }}
+          items: [:about, :contact, :sahaja_yoga, :shri_mataji, :subtle_system, :treatments].map { |role|
+            static_page = static_page_preview_for(role)
+            {
+              title: static_page.title,
+              url: static_page_path_for(static_page),
+            }
+          },
+          featured: Treatment.includes_preview.first(2).map { |treatment|
+            {
+              title: "#{Treatment.model_name.human}: #{treatment.name}",
+              url: treatment_path(treatment),
+              thumbnail: treatment.thumbnail.url,
+            }
+          }
         }
-      },
-    ]
+      })
+    end
 
-    @desktop_navigation.each do |item|
+    @navigation.each do |item|
       yield item
     end
   end
 
   def mobile_navigation
+    home_page = static_page_preview_for(:home)
     yield ({
-      title: 'Front Page',
-      url: root_path,
+      title: home_page.title,
+      url: static_page_path_for(home_page),
       active: controller_name == 'application' && action_name == 'front',
     })
 
