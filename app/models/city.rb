@@ -37,8 +37,12 @@ class City < ApplicationRecord
   end
 
   # Include everything necessary to render the full content of this model
-  def self.includes_content
-    includes(:attachments, :translations, sections: :translations)
+  def self.includes_content mode = :front
+    if mode == :admin
+      includes(:attachments, :translations)
+    else
+      includes(:attachments, :translations, sections: :translations)
+    end
   end
 
   # Check if coordinates have been defined

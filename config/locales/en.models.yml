@@ -201,6 +201,7 @@ en:
           try_meditation: Try Meditation
           subtle_system: Subtle System Diagram
           chakra: Chakra / Channel
+          articles: Article List
           treatments: Treatment List
           world: World Map
           country: Country Map
@@ -257,6 +258,7 @@ en:
         daily_meditation: Daily Meditation Text
         trending_meditation: Trending Meditation Text
         random_meditation: Random Meditation Text
+        article_ids: Articles
         treatment_ids: Treatments
 
       track:

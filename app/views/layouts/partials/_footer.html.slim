@@ -3,6 +3,7 @@
 - subtle_system_page = static_page_preview_for(:subtle_system)
 - shri_mataji_page = static_page_preview_for(:shri_mataji)
 - sahaja_yoga_page = static_page_preview_for(:sahaja_yoga)
+- treatments_page = static_page_preview_for(:treatments)
 - contact_page = static_page_preview_for(:contact)
 
 footer.container.footer
@@ -11,31 +12,30 @@ footer.container.footer
   .footer-columns
     .footer-column
       nav.footer-navigation
-        a.footer-header href=url_for(about_page) = about_page.title
-        a.footer-header href=articles_path Events
+        a.footer-header href=meditations_path Meditate Now
+        a.footer-header href=tracks_path Music for meditation
         a.footer-header href=articles_path Inspiration
-        a.footer-header href=tracks_path Music
     .footer-column
       nav.footer-navigation
-        .footer-header Meditation
-        a href=local_cities_path Come meditate
-        a href=meditations_path Online meditation classes
+        .footer-header Learn more
         a href=subtle_system_nodes_path = subtle_system_page.title
-        .footer-social
-          a href="#"
-            i.facebook.icon
-          a href="#"
-            i.vk.icon
-          a href="https://instagram.com/we-meditate"
-            i.instagram.icon
-    .footer-column
-      nav.footer-navigation
-        .footer-header About
-        a href=url_for(about_page) = about_page.title
         a href=url_for(shri_mataji_page) = shri_mataji_page.title
         a href=url_for(sahaja_yoga_page) = sahaja_yoga_page.title
+        a href=url_for(sahaja_yoga_page) = sahaja_yoga_page.title
+    .footer-column
+      nav.footer-navigation
+        .footer-header Come meditate
+        a href=local_cities_path Classes near me
+        a href=meditations_path Guided Meditations Online
+        a href='#' Privacy policy
         a href=url_for(contact_page) = contact_page.title
     .footer-column
-      ' Design By
-      img.footer-credit src=image_path('footer/daviann.svg')
-  .footer-copyright &copy; Yoga, 2017
+      .footer-social
+        .footer-header Follow us
+        a href="#"
+          i.facebook.icon
+        a href="#"
+          i.vk.icon
+        a href="https://instagram.com/we-meditate"
+          i.instagram.icon
+  .footer-copyright &copy; WeMeditate, 2019 | Design by Daviann

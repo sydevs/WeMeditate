@@ -1,0 +1,25 @@
+
+- articles = Article.where(id: section.extra_attr('article_ids', []))
+
+- if articles.present?
+  .wrapper-outer
+    = sidetext(section)
+
+    h2.text-title = section.title
+    .text-content = section.text&.html_safe
+
+    #grid.items
+      .grid-sizer
+      - articles.each_with_index do |article, index|
+        article.preview.grid-item id=dom_id(article) class="#{dom_id(article.category)} #{'initial' if index < 3}"
+          a.preview-title href=url_for(article) = article.title
+          p.preview-text = article.excerpt
+          .preview-meta
+            a.preview-meta-link href=article_path(article)
+              = t('articles.read_more')
+              i.breadcrumb.icon
+
+    - if articles.length > 3
+      nav.filter-group.outline data-group='amount'
+        a.initial.active.filter-button data-filter='.initial' = t('sections.show_less')
+        a.filter-button data-filter='*' = t('sections.show_more')

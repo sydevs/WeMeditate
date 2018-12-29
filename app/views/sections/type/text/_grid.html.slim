@@ -31,10 +31,10 @@
     - items.each_with_index do |item, index|
       article.grid-item class="#{'initial' if index < 3}"
         - if item['url'].present?
-          a.title href=item['url'] = item['title']
+          a.grid-item-title href=item['url'] = item['title']
         - else
-          .title = item['title']
-        p = item['text']
+          .grid-item-title = item['title']
+        p.grid-item-text = item['text']
 
   - if items.length > 3
     nav.filter-group.outline data-group='amount'

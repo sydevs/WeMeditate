@@ -15,6 +15,8 @@
   - desktop_image_uuid = f.object.extra_attr 'desktop_image_uuid'
   - mobile_image_uuid = f.object.extra_attr 'mobile_image_uuid'
 
+  = ff.hidden_field :banner_style, value: style
+
   = ff.input :desktop_image, wrapper_html: { class: 'sub' } do
     = render 'admin/application/attachment_select', f: ff, field: :desktop_image, value: desktop_image_uuid, attachments: section.page.attachments
 

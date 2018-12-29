@@ -42,7 +42,11 @@ class SubtleSystemNode < ApplicationRecord
 
   # Include everything necessary to render the full content of this model
   def self.includes_content
-    includes(:translations, :sections, :attachments)
+    if mode == :admin
+      includes(:attachments, :translations)
+    else
+      includes(:attachments, :translations, sections: :translations)
+    end
   end
 
   # Returns a list of which roles don't yet have a database representation.

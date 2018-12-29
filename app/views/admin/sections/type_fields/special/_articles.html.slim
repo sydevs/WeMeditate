@@ -1,0 +1,7 @@
+
+= f.input :title, wrapper_html: { class: 'sub' }
+= f.input :text, wrapper_html: { class: 'sub' }
+
+= f.fields_for :extra, f.object do |ff|
+  = ff.input :article_ids, collection: Article.all.map{ |a| [a.title, a.id.to_s]}, selected: f.object.extra_attr('article_ids'), input_html: { multiple: true }, wrapper_html: { class: 'sub' }, required: false, disabled: !allow.update_structure?
+  = render 'admin/sections/decoration_fields', f: ff, collection: [:sidetext]

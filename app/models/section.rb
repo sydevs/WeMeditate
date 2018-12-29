@@ -26,6 +26,9 @@ class Section < ApplicationRecord
   enum content_type: { text: 0, quote: 1, video: 2, image: 3, action: 5, special: 6 }
   enum visibility_type: { worldwide: 0, only_certain_countries: 1, except_certain_countries: 2 }
 
+  # Scopes
+  default_scope { order( :order ) }
+
   # Formats - A list of recognized non-special formats, which will be shown in the CMS
   TEXT_FORMATS = [:just_text, :with_quote, :with_image, :box_with_lefthand_image, :box_with_righthand_image, :box_over_image, :grid, :columns, :ancient_wisdom]
   IMAGE_FORMATS = [:fit_container_width, :fit_page_width]

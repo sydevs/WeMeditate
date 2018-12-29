@@ -386,9 +386,9 @@ records:
     page_id: <%= sprig_record(StaticPage, 'home').id %>
     content_type: special
     format: banner
-    title: Meditation - this is inner peace
-    text: For meditation do not need special skills, quite simply
-    action: Feel
+    title: Meditation is a state of inner peace.
+    text: No special skills are required, you just have to
+    action: Feel it
     url: '/en/meditations/first-experience'
     extra:
       desktop_image_uuid: ca2acb29-49bd-4605-ae26-29637c9b67c0
@@ -401,18 +401,18 @@ records:
     page_id: <%= sprig_record(StaticPage, 'home').id %>
     content_type: text
     format: box_with_righthand_image
-    title: Meditate
+    title: Meditate Now
     text: |-
-      <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
-    action: Learn More
-    url: '/en/meditations/first-experience'
+      <p>Whether you're looking to de-stress, boost your self-esteem or simply seeking a moment to pause, follow our easy yet effective guided meditations to elevate your state and establish peace within.</p>
+    action: Choose your meditation
+    url: '/en/meditations'
     extra:
       image_uuid: 3e317127-071e-46bb-9d2c-5ee4ea0660d3
       decorations:
         enabled: [ sidetext, circle ]
         options:
           sidetext: [ top-left ]
-        sidetext: Meditate Now
+        sidetext: Guided Meditations
   - sprig_id: s_sp_home_video_gallery
     order: 3
     page_type: StaticPage
@@ -421,7 +421,7 @@ records:
     format: gallery
     extra:
       items:
-        - title: Video 1
+        - title: "It literally changed my life"
           image_uuid: 2abac3e2-e4eb-4a3e-bac8-3da77c7c15cc
           video_uuid: ce9afd05-8ebd-4fb5-981b-ad609f28994e
         - title: Video 2
@@ -445,9 +445,9 @@ records:
     page_id: <%= sprig_record(StaticPage, 'home').id %>
     content_type: text
     format: box_over_image
-    title: Shri Mataji
+    title: Making History
     text: |-
-      <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
+      <p>Shri Mataji Nirmala Devi maintained that there is a powerful, yet loving energy lying within each human being, and through her immense compassion for humanity developed the meditation technique for awakening it, described as Self-Realization.</p>
     action: Learn More
     url: '/en/page/shri-mataji'
     extra:
@@ -465,11 +465,11 @@ records:
     page_id: <%= sprig_record(StaticPage, 'home').id %>
     content_type: text
     format: box_with_lefthand_image
-    title: About Us
+    title: Enhance the Experience
     text: |-
-      <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
-    action: Learn More
-    url: '/en/page/about-us'
+      <p>Music is a great aid to a deep meditation experience. Personalize the soundtrack to your session with our custom music player, featuring exclusive recordings from world class musicians.</p>
+    action: Discover my sound
+    url: '/en/music'
     extra:
       image_uuid: 724d1d5b-c37a-4a95-b794-7f5a839b3adc
       decorations:
@@ -483,11 +483,11 @@ records:
     page_id: <%= sprig_record(StaticPage, 'home').id %>
     content_type: text
     format: box_over_image
-    title: How to Meditate
+    title: Beyond the Practice
     text: |-
-      <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization.</p>
-      <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview.</p>
-    action: Learn More
+      <p>The benefits of meditation go far beyond what you experience during the sessions.</p>
+      <p>It has the power to improve every aspect of your life, from your personal growth, to your work and family life, and can even spark immense creativity...</p>
+    action: Get Inspired
     url: '/en/inspiration'
     extra:
       image_uuid: bf9468a2-b061-4137-9088-fe5395dd972d
@@ -497,7 +497,7 @@ records:
           sidetext: [ top-left ]
           triangle: [ right ]
           gradient: [ left, orange ]
-        sidetext: How to Meditate
+        sidetext: Results?
       color: light
   - sprig_id: s_sp_home_events
     order: 7
@@ -505,11 +505,11 @@ records:
     page_id: <%= sprig_record(StaticPage, 'home').id %>
     content_type: text
     format: box_with_righthand_image
-    title: Featured Article
+    title: Get Connected
     text: |-
-      <p>Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.</p>
-    action: Read More
-    url: '#'
+      <p>The experience of meditation is even stronger when it is shared! Discover the beauty of collective meditations, lead by experienced practitioners in hundreds of cities aroudn the world - always completely free.</p>
+    action: Classes near me
+    url: '/en/cities/local'
     extra:
       image_uuid: f354b762-2c6b-4479-9951-825f8b893256
       decorations:
@@ -517,21 +517,19 @@ records:
         options:
           sidetext: [ top-left ]
           gradient: [ right, gray ]
-        sidetext: Article
-  - sprig_id: s_sp_home_grid
+        sidetext: Meditation Classes
+  - sprig_id: s_sp_home_articles
     order: 8
     page_type: StaticPage
     page_id: <%= sprig_record(StaticPage, 'home').id %>
-    content_type: text
-    format: grid
-    extra:
-      items:
-        - title: Article Meate Meditate
-          text: Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.
-        - title: Article Meate Meditate
-          text: Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.
-        - title: Article Meate Meditate
-          text: Sahaja Yoga is a method of obtaining a real experience of self-contemplation and worldview. It is based on the experience of Self-realization, accessible to every person from birth.
+    content_type: special
+    format: articles
+#    extra:
+#      article_ids:
+#        - <%= sprig_record(Article, 1).id %>
+#        - <%= sprig_record(Article, 2).id %>
+#        - <%= sprig_record(Article, 3).id %>
+#        - <%= sprig_record(Article, 4).id %>
 
 
 # FOR STATIC PAGE: about

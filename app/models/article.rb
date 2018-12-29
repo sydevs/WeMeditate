@@ -45,8 +45,12 @@ class Article < ApplicationRecord
   end
 
   # Include everything necessary to render the full content of this model
-  def self.includes_content
-    includes(:attachments, :translations, category: :translations, sections: :translations)
+  def self.includes_content mode = :front
+    if mode == :admin
+      includes(:attachments, :translations, category: :translations)
+    else
+      includes(:attachments, :translations, category: :translations, sections: :translations)
+    end
   end
 
   # Shorthand for the article banner image file

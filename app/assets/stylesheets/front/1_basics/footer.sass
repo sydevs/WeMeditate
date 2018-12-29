@@ -42,9 +42,6 @@
     margin-bottom: 66px
     flex: 1 0 25%
 
-    &:last-child
-      text-align: right
-
     @include desktop
       &:nth-child(3)
         padding-left: 80px
@@ -53,17 +50,11 @@
       margin-bottom: 36px
       text-align: center
 
-      //> div
-      //  text-align: center
-
     @include mobile-landscape
       flex: 1 0 25%
 
       &:not(:last-child)
         text-align: left
-
-      //> div
-      //  text-align: left
 
   &-navigation
     > a
@@ -73,25 +64,10 @@
       &:not(.footer-header)
         font-size: 0.75em
 
-  &-social
-    margin-top: 0.9em
-
-    @include mobile
-      font-size: 1.75em
-      margin-top: 0.6em
-
-    @include mobile-landscape
-      font-size: 1em
-
-    > a
-      margin-right: 0.75em
-      color: #a0a09f
-
-      @include mobile-portrait
-        margin-right: 1.2em
-
-      &:last-child
-        margin-right: 0
+  &-social > a
+    font-size: 1.5em
+    margin-right: 1.1em
+    color: $color-text-normal
 
   &-divider
     display: flex

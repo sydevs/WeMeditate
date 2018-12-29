@@ -1,8 +1,8 @@
 @import "../../../mixins/vars"
 
-// TODO: This file is identical to special_sections/articles.sass - maybe we can consolidate them.
+// TODO: This file is identical to text_sections/text_grid.sass - maybe we can consolidate them.
 
-section.type-text.format-grid
+section.type-special.format-articles
   .top-left.sidetext
     padding-top: 10px
 
@@ -34,24 +34,24 @@ section.type-text.format-grid
         min-height: 0
         margin-bottom: 1em
 
-    &-item
-      &-title
-        font-size: 1.15em
-        line-height: 1.2em
-        letter-spacing: 1px
-        margin-bottom: 0.25em
+  .preview
+    &-title
+      font-size: 1.15em
+      line-height: 1.2em
+      letter-spacing: 1px
+      margin-bottom: 0.25em
 
-        @include laptop
-          font-size: 1.3em
+      @include laptop
+        font-size: 1.3em
 
-      &-text
-        font-size: 0.8em
-        line-height: 1.75em
-        margin-top: 0.4em
-        letter-spacing: -0.1px
+    &-text
+      font-size: 0.8em
+      line-height: 1.75em
+      margin-top: 0.4em
+      letter-spacing: -0.1px
 
-        @include laptop
-          font-size: 1.05em
+      @include laptop
+        font-size: 1.05em
 
   .filter-group
     justify-content: center
