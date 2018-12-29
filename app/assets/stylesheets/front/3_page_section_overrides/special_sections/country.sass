@@ -1,0 +1,36 @@
+@import "../../../mixins/vars"
+
+section.type-special.format-country
+  margin-bottom: 1rem
+
+  .map
+    height: 90vh
+    background: transparent
+    margin: 0 -15px
+
+    @include mobile
+      height: 0
+
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      background: linear-gradient(to left, transparentize(white, 0.5), transparent)
+
+    &-title,
+    &-subtitle
+      margin: 0
+      text-align: center
+      letter-spacing: 2px
+      margin-bottom: 0.45em
+
+    &-title
+      line-height: 1.2em
+      font-size: 2.45em
+      font-weight: $font-medium
+
+    &-subtitle
+      font-weight: $font-normal

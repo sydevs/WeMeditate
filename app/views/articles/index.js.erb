@@ -3,6 +3,7 @@ var items = $('<%=j render @articles %>')
 items.imagesLoaded(function() {
   Grid.container.append(items)
   Grid.container.isotope('appended', items)
+  Popout.init_popouts(items)
 })
 
 <% if Article.all.count > @next_offset %>

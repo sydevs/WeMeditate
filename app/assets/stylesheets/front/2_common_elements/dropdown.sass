@@ -1,0 +1,297 @@
+@import "../../mixins/vars"
+
+/* DROPDOWN
+  This file defines styling for the large dropdown used on the meditations page.
+  This is not styling for a select element, which is defined in `forms.sass`
+
+  The dropdown supports each item having an icon and title.
+  */
+
+// ===== DROPDOWN SELECTION ===== //
+// Styling for the currently selected item
+.dropdown
+  &-selection
+    display: block
+    position: relative
+    cursor: pointer
+    padding: 0 30px
+    text-align: center
+    width: 100%
+
+    @include tablet-or-larger
+      height: 100px
+      text-align: left
+
+    @include tablet
+      padding: 25px 45px 15px 95px
+
+    @include laptop
+      padding: 25px 90px 15px 122px
+
+    @include desktop
+      padding: 15px 90px 15px 115px
+      margin: 20px 0
+      letter-spacing: 0.08em
+
+  // This :after element is the dropdown arrow
+  &-selection:after
+    content: ''
+    display: block
+
+    @include tablet-or-larger
+      position: absolute
+      right: 55px
+      top: 50%
+
+      width: 14px
+      height: 14px
+
+      border-left: 1px solid $color-text-normal
+      border-bottom: 1px solid $color-text-normal
+      transform: rotate(-45deg)
+      margin-top: -18px
+
+    @include tablet
+      right: 5px
+
+    @include mobile
+      height: 0
+      width: 60px
+      border-bottom: 1px solid $color-text-normal
+      margin: 20px auto
+
+  &-title
+    color: $color-text-dark
+    font-size: 1.5em
+
+    @include laptop
+      font-size: 1.625em
+
+    @include desktop
+      font-size: 2em
+
+  &-icon
+    width: 70px
+    height: 70px
+    transition: hidden 0.3s ease
+    margin: 25px auto
+
+    border-radius: 100%
+    background: #DDD
+    overflow: hidden
+
+    @include tablet-or-larger
+      position: absolute
+      transform: translateY(-50%)
+      top: 50%
+      left: 0
+      margin: 0
+
+    @include laptop-or-larger
+      width: 88px
+      height: 88px
+
+    > svg
+      path, g, circle
+        fill: $color-text-inverse !important
+        stroke: $color-text-inverse !important
+
+  &-text
+    font-weight: $font-bold
+    font-size: 2em
+    line-height: 1em
+    text-transform: lowercase
+
+// ===== DEFAULT SELECTION ===== //
+// This is what is shown when nothing has been selected yet.
+.disabled.dropdown-selection .dropdown
+  &-title:after
+    content: '...'
+    display: inline-block
+    padding-left: 2px
+
+  &-text
+    font-size: 1rem
+    font-weight: $font-normal
+    color: $color-text-darker
+    opacity: 0.4
+    text-transform: none
+
+  &-icon
+    background-color: $color-text-blue
+    text-align: center
+    display: flex
+    align-items: center
+    justify-content: center
+
+    > svg
+      width: 80%
+      display: inline-block
+      padding: 0 10px
+
+      path
+        fill: $color-text-inverse
+        stroke: $color-text-inverse
+        stroke-width: 3
+        stroke-linecap: round
+
+        @include desktop
+          fill: #CECECE
+          stroke: #CECECE
+
+// ===== DROPDOWN POPUP ===== //
+// The list of choices that is shown when the dropdown is opened/expanded
+// On mobile this takes up the entire screen, laptops and larger it is just a popup
+.dropdown-popup
+  display: flex
+  flex-direction: column
+  position: fixed
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  z-index: $z-popup
+  max-height: 0
+  overflow: hidden
+
+  background: $background-white
+  transition: all 0.5s ease
+
+  @include laptop-or-larger
+    position: absolute
+    top: 100%
+    left: 0
+    right: 0
+    bottom: auto
+
+    margin-top: 15px
+    z-index: $z-dropdown
+    box-shadow: 1px 1px 60px 2px rgba(0, 0, 0, 0.2)
+
+  @include laptop
+    left: -15px
+
+  &-title
+    text-align: center
+    font-size: 1.5em
+    margin-top: 70px
+
+    @include laptop-or-larger
+      display: none
+
+  &-close
+    display: none
+    position: fixed
+    top: 15px
+    right: 15px
+    height: 34px
+    width: 34px
+
+    &:before, &:after
+      content: ""
+      position: absolute
+      top: 15px
+      left: 0
+      right: 0
+      width: 30px
+      height: 1px
+      margin: 0 auto
+
+      background-color: $color-header-svg
+      transition: all 0.5s ease
+
+    &:after
+      transform: rotateZ(-0.7854rad)
+
+    &:before
+      transform: rotateZ(0.7854rad)
+
+  > ul
+    display: flex
+    flex-wrap: wrap
+    padding: 27px 57px
+    align-items: flex-start
+
+    @include laptop
+      padding: 25px
+
+    @include tablet-or-smaller
+      overflow-y: auto
+      max-height: 90%
+      flex: 1 1 auto
+
+  > ul > li
+    display: flex
+    position: relative
+    align-items: center
+    text-align: left
+    font-weight: $font-bold
+    font-size: 1em
+    color: $color-text-dark
+    padding-left: 100px
+    width: 100%
+    height: 90px
+    cursor: pointer
+
+    @include laptop
+      padding-left: 90px
+
+    @include tablet-or-larger
+      width: 50%
+
+    img, svg
+      width: 80px
+      height: 80px
+
+      position: absolute
+      top: 50%
+      left: 0
+      border-radius: 100%
+      overflow: hidden
+      transform: translateY(-50%)
+      transition: all 0.3s ease
+
+    &:not(.active)
+      svg
+        background: none !important
+
+    &.active
+      path, g, circle
+        fill: $color-text-inverse
+        stroke: $color-text-inverse
+
+// This creates the "arrow" attached to the popup box
+.dropdown:before
+  content: ''
+  display: inline-block
+  position: absolute
+  right: 55px
+  bottom: -16px
+  width: 0
+  height: 0
+  border: 9px solid transparent
+  border-bottom: 15px solid $background-white
+  z-index: $z-dropdown + 1
+  opacity: 0
+  transition: all 0.5s ease
+
+
+// ===== EXPANDED DROPDOWN MENU ===== //
+// When the dropdown is opened/expanded, the popup should be shown.
+.dropdown.expand
+  &:before
+    opacity: 1
+
+  .dropdown-selection:after
+    @include tablet-or-larger
+      transform: rotate(135deg)
+
+  .dropdown-popup
+    max-height: 100vh
+
+    @include laptop-or-larger
+      max-height: 800px
+
+    &-close
+      @include tablet-or-smaller
+        display: block

@@ -4,23 +4,38 @@
 
 - items = section.extra_attr('items', [])
 
-.container = sidetext(section)
+//
+  .container = sidetext(section)
+  .container
+    - if section.title.present?
+      h2.title = section.title
+    = section.text&.html_safe
+    .carousel data-style='columns'
+      - items.each_with_index do |item, index|
+        article class="#{'central' if index == 1}"
+          .image
+            img src=section.image(item['image_uuid'])
+          - if item['url'].present?
+            a.title href=item['url'] = item['title']
+          - else
+            .title = item['title']
+          .text = item['text'].html_safe
 
-.container
+
+= sidetext(section, wrap: true)
+.wrapper-outer
   - if section.title.present?
-    h2.title = section.title
+    h2.text-title = section.title
 
   = section.text&.html_safe
 
   .carousel data-style='columns'
     - items.each_with_index do |item, index|
-      article class="#{'central' if index == 1}"
+      article.carousel-item class="#{'central' if index == 1}"
         .image
           img src=section.image(item['image_uuid'])
-
         - if item['url'].present?
-          a.title href=item['url'] = item['title']
+          a.text-title href=item['url'] = item['title']
         - else
-          .title = item['title']
-
-        .text = item['text'].html_safe
+          .text-title = item['title']
+        .text-content = item['text'].html_safe

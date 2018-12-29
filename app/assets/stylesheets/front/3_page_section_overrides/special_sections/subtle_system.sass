@@ -1,0 +1,208 @@
+@import "../../../mixins/vars"
+
+section.type-special.format-subtle-system
+  .filter-group
+    justify-content: center
+    padding-top: 0
+
+  .subtle-system
+    &-title
+      font-size: 2.6em
+      line-height: 1.7em
+      font-weight: $font-light
+      color: $color-text-lighter
+      margin-bottom: 0
+      text-align: center
+      letter-spacing: 1px
+
+    &-chart
+      margin: auto
+      position: relative
+
+      @include tablet-or-larger
+        max-width: 42%
+
+      &:not(.active)
+        display: none
+
+      > svg
+        margin-bottom: 2em
+
+    &-items
+      @include mobile
+        position: relative
+        height: 30vw
+
+    &-item .preview
+      &-title
+        font-size: 1.35em
+        margin-top: 0
+        margin-bottom: 0.5em
+
+      &-text
+        font-size: 0.8em
+        line-height: 1.75em
+        letter-spacing: -0.1px
+        margin-top: 0.5em
+
+      &-meta
+        margin-top: 2em
+
+    // Allow items and chart nodes to be hidden
+    &-item, .svg-chart-node
+      fill-opacity: 1
+      opacity: 0
+      visibility: hidden
+      transition: visibility 0s linear 0.6s, opacity 0.6s ease
+
+      &.active
+        opacity: 1
+        visibility: visible
+        transition-delay: 0s
+
+  // ===== CHANNEL CHART TWEAKS ===== //
+  #subtle-system-chart-channels
+    .transparent-lines
+      transition: all 0.6s ease
+
+    .svg-chart-node.active + g .transparent-lines
+      stroke: transparent
+
+    .svg-chart-node:not(.active) + g .transparent-lines
+      fill: transparent
+      stroke: gray
+
+    g.kundalini.node.active + g
+      stroke: #b38900
+
+  // ===== POSITION PREVIEWS ===== //
+  .subtle-system-item
+    position: absolute
+
+    @include mobile
+      top: 0
+
+    @include tablet
+      padding: 1em
+
+    @include laptop-or-larger
+      padding: 2em
+
+    @include tablet-or-larger
+      top: 4em
+      width: 320px
+      max-width: 45%
+      margin-top: 70px
+
+      &.chakra-7,
+      &.chakra-6
+        top: 0
+
+      &.chakra-5
+        top: 10%
+
+      &.chakra-4
+        top: 20%
+
+      &.chakra-3,
+      &.chakra-3b
+        top: 30%
+
+      &.chakra-2
+        top: 40%
+
+      &.chakra-1
+        top: 50%
+
+      &.kundalini,
+      &.channel-center,
+      &.channel-left,
+      &.channel-right,
+        top: 15%
+
+      &:nth-child(even)
+        left: 0
+
+      &:nth-child(odd)
+        right: 0
+
+
+  // ===== POSITIONING TRIGGERS ===== //
+  .subtle-system-trigger
+    display: block
+    width: 8%
+    height: 6%
+    margin-left: -4%
+
+    position: absolute
+    left: 50%
+    cursor: pointer
+
+    &[data-trigger='chakra-7']
+      top: 6%
+      width: 18%
+      height: 10%
+      margin-left: -9%
+
+    &[data-trigger='chakra-6']
+      top: 18%
+
+    &[data-trigger='chakra-5']
+      top: 31.5%
+
+    &[data-trigger='chakra-4']
+      top: 42%
+
+    &[data-trigger='chakra-3b']
+      top: 48.5%
+      width: 28%
+      height: 22.5%
+      margin-left: -14%
+
+    &[data-trigger='chakra-3']
+      top: 56.5%
+      z-index: 1
+
+    &[data-trigger='chakra-2']
+      top: 68%
+      z-index: 1
+
+    &[data-trigger='chakra-1']
+      top: 80.5%
+
+    &[data-trigger='kundalini']
+      top: 76%
+      height: 6.5%
+
+    &[data-trigger='channel-right'],
+    &[data-trigger='channel-center'],
+    &[data-trigger='channel-left'],
+      width: 3%
+      margin-left: -1.5%
+
+    &[data-trigger='channel-right'].for-head,
+    &[data-trigger='channel-left'].for-head,
+    &[data-trigger='channel-center']
+      top: 15%
+      height: 6%
+
+    &[data-trigger='channel-right'].for-body,
+    &[data-trigger='channel-left'].for-body
+      top: 21%
+
+    &[data-trigger='channel-center']
+      height: 61%
+
+    &[data-trigger='channel-left'].for-head
+      margin-left: -4.5%
+
+    &[data-trigger='channel-right'].for-head
+      margin-left: 1.5%
+
+    &[data-trigger='channel-right'].for-body
+      margin-left: -6.75%
+      height: 54%
+
+    &[data-trigger='channel-left'].for-body
+      margin-left: 3.75%
+      height: 67%

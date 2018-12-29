@@ -1,5 +1,5 @@
 
-article id=dom_id(article) class=dom_id(article.category)
+//article id=dom_id(article) class=dom_id(article.category)
   - if article.video.present?
     .media.video-preview
       img alt=article.title src=article.thumbnail.url
@@ -15,14 +15,35 @@ article id=dom_id(article) class=dom_id(article.category)
         .date
           span.day = article.date.strftime('%d')
           .month = article.date.strftime('%m')
-
   .title = article.title
   .content
     p = article.excerpt
-
   .meta
     a href=article_path(article)
       = t('articles.read_more')
       i.breadcrumb.icon
-
     span.date = localize article.created_at, format: :date
+
+
+article.preview.grid-item id=dom_id(article) class=dom_id(article.category)
+  - if article.video.present?
+    .preview-media
+      img alt=article.title src=article.thumbnail.url
+      a.video-button href=article.video.url data-mfp-src='#video-popup'
+  - else
+    a.preview-media href=article_path(article)
+      img alt=article.title src=article.thumbnail.url
+
+  - if article.date.present?
+    .preview-date
+      .preview-date-day = article.date.strftime('%d')
+      .preview-date-month = article.date.strftime('%m')
+
+  a.preview-title href=url_for(article) = article.title
+  p.preview-text = article.excerpt
+  .preview-meta
+    a.preview-meta-link href=article_path(article)
+      = t('articles.read_more')
+      i.breadcrumb.icon
+
+    .preview-meta-stat = localize article.created_at, format: :date

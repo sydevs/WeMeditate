@@ -1,0 +1,58 @@
+@import "./functions"
+@import "./vars"
+
+/* GENERICS
+  Some sets of rules need to be reused in various areas via the @include directive.
+  These are considered to be generic rules, and these classes should not be used directly anywhere in the html.
+  */
+
+// A generic styling for a box-shaped button, which the standard hover transition
+.generic-box-button
+  position: relative
+  display: inline-block
+
+  &.disabled
+    opacity: 0.8
+
+  // Creates a background behing the button which can be animated on hover.
+  &:before
+    background: $background-gray
+    content: ''
+    z-index: -1
+    transition: all 1s ease
+    @include overlay(0, 0, 50%, 50%)
+
+  // If the button is hovered or active then the background should be full.
+  &.active, &.disabled, &:hover
+    &:before
+      left: 0
+      right: 0
+
+// A generic definition for a credit for some piece of media.
+// A credit is usually attached to an image or video to note who the creator is.
+.generic-credit
+  position: absolute
+  writing-mode: vertical-rl
+  transform: rotate(180deg)
+  bottom: 0
+  right: 100%
+  margin-right: 15px
+  margin-bottom: 5px
+  color: $color-text-lighter
+  white-space: nowrap
+  font-size: 0.9em
+
+  @include mobile
+    position: static
+    transform: none
+    writing-mode: horizontal-tb
+    margin-top: 0.75em
+
+// Generic styling for the title of a page section
+// TODO: Evaluate if this is being used
+.generic-section-title
+  font-size: 1.35em
+  line-height: 1.7em
+  color: $color-text-dark
+  font-weight: $font-semibold
+  margin-bottom: 0.5em

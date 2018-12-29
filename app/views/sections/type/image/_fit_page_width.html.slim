@@ -1,5 +1,10 @@
 
-figure
+//figure
   .background style="background-image: url(#{image_path section.image.url})"
   .container.with.right.triangle.decoration
     figcaption.credit #{t 'sections.credit'} • #{section.credit}
+
+figure.image
+  .background-wrapper style="background-image: url(#{image_path section.image.url})"
+  .wrapper-outer.with-decoration.right.triangle
+    figcaption.image-credit #{t 'sections.credit'} • #{section.credit}

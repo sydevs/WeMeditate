@@ -1,5 +1,5 @@
 
-.container
+//.container
   = sidetext(section)
   .image
     img alt=section.image.identifier src=section.image.url
@@ -9,3 +9,17 @@
       = section.text&.html_safe
       - if section.action.present? and section.url.present?
         a.box.button href=section.url = section.action
+
+.wrapper-outer
+  = sidetext(section)
+  - if section.has_decoration? :triangle
+    .container.with.left.triangle.decoration class=section.decoration_options(:triangle)
+
+  .image
+    img alt=section.image.identifier src=section.image.url
+  .text-box-overlay
+    .text-box
+      h2.text-title = section.title
+      .text-content = section.text&.html_safe
+      - if section.action.present? and section.url.present?
+        a.button-box href=section.url = section.action

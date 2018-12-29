@@ -1,12 +1,26 @@
 
-.container = sidetext(section)
+//.old
+  .container = sidetext(section)
+  .background style="background-image: url(#{image_path 'sections/ancient-wisdom/background.png'})"
+    .container
+      img src=image_path('sections/ancient-wisdom/image.jpg')
+      .content
+        - if section.title.present?
+          h2.title = section.title
+        = section.text&.html_safe
+        - if section.action.present? and section.url.present?
+          a.box.button href=section.url = section.action
 
-.background style="background-image: url(#{image_path 'sections/ancient-wisdom/background.png'})"
-  .container
-    img src=image_path('sections/ancient-wisdom/image.jpg')
-    .content
-      - if section.title.present?
-        h2.title = section.title
-      = section.text&.html_safe
-      - if section.action.present? and section.url.present?
-        a.box.button href=section.url = section.action
+= sidetext(section, wrap: true)
+
+.background-wrapper style="background-image: url(#{image_path 'sections/ancient-wisdom/background.png'})"
+  .wrapper-outer
+    .ancient-wisdom-wrapper
+      img src=image_path('sections/ancient-wisdom/image.jpg')
+
+      .text
+        - if section.title.present?
+          h2.text-title = section.title
+        .text-content = section.text&.html_safe
+        - if section.action.present? and section.url.present?
+          a.button-box href=section.url = section.action

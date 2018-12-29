@@ -1,13 +1,18 @@
 
-- banner_style = @article.banner.present? ? "background-image: url(#{@article.banner.url})" : nil
-- content_for :breadcrumbs_class, 'inverse' if banner_style
+- banner_image_style = @article.banner.present? ? "background-image: url(#{@article.banner.url})" : nil
+- content_for :breadcrumbs_class, 'inverse' if banner_image_style
 - sections = @article.sections.with_translations(locale)
 
-section.intro class="#{'banner' if banner_style}" style=banner_style
+.banner style=banner_image_style class="#{'with-image' if banner_image_style}"
+  .wrapper-outer
+    .banner-title-box
+      h1.banner-title = @article.title
+
+//section.intro class="#{'banner' if banner_image_style}" style=banner_image_style
   .container
     h1.title = @article.title
 
-nav.chapters
+//nav.chapters
   .container
     - section_index = 0
     - chapter_index = 0
@@ -20,8 +25,21 @@ nav.chapters
           .title = section.title
           .progress data-id=section.chapter_slug
 
-article
+nav.chapters
+  .chapters-wrapper
+    - section_index = 0
+    - chapter_index = 0
+    - sections.each do |section|
+      - section_index += 1
+      - if section.chapter_start?
+        - chapter_index += 1
+        a.chapters-item href="##{section.chapter_slug}"
+          .chapters-item-number = chapter_index
+          .chapters-item-title = section.title
+          .chapters-item-progress data-id=section.chapter_slug
+
+article id=dom_id(@article)
   = render sections
 
 = render 'application/share_this'
-= render 'application/footer_together'
+= render 'application/action_footer'

@@ -1,14 +1,28 @@
 
-section.decorated.intro
+//section.decorated.intro
   .container
     .title
       = inline_svg 'graphics/leaf.svg'
       div = @treatment.name
       = inline_svg 'graphics/leaf.svg'
 
-section.content-type-video.format-single
+.banner.full-width
+  .wrapper-outer
+    .banner-title-box
+      = inline_svg 'graphics/leaf.svg'
+      h1.banner-title = @treatment.name
+      = inline_svg 'graphics/leaf.svg'
+
+//section.content-type-video.format-single
   .video.wrapper
     = render 'shared/video_preview', thumbnail: @treatment.thumbnail.url, video_url: @treatment.video.url
 
-section.content-type-text.format-just-text
+//section.content-type-text.format-just-text
   .section.wrapper = @treatment&.content&.html_safe
+
+article.wrapper-inner id=dom_id(@treatment)
+  .video-wrapper
+    video.inline-player poster=@treatment.thumbnail.url
+      source src=@treatment.video.url type='video/mp4'
+
+  .treatment-content = @treatment&.content&.html_safe

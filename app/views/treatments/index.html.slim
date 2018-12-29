@@ -1,9 +1,10 @@
 
 = render @static_page.sections.with_translations(locale)
 
-.container.with.right.triangle.decoration
+//.container.with.right.triangle.decoration
+.treatments-triangle.wrapper-outer.with-decoration.right.triangle
 
-.treatments.wrapper
+//.treatments.wrapper
   article.music
     .number 01
     .image
@@ -12,9 +13,21 @@
       .title = t('treatments.music')
       p = t('treatments.music_description')
       a.box.button href=tracks_path = t('treatments.listen_to_music')
+  = render partial: 'treatment_old', collection: @treatments
+
+.treatments-list.wrapper
+  .treatments-item.for-music
+    .treatments-item-number 01
+    .image
+      img alt='Music' src=image_path("sections/music/treatment.jpg")
+    .treatments-item-content
+      .treatments-item-title = t('treatments.music')
+      p.treatments-item-text = t('treatments.music_description')
+      a.button-box href=tracks_path = t('treatments.listen_to_music')
 
   = render @treatments
 
-.container.with.right.triangle.decoration
+//.container.with.right.triangle.decoration
+.treatments-triangle.wrapper-outer.with-decoration.right.triangle
 
-= render 'application/footer_together'
+= render 'application/action_footer'

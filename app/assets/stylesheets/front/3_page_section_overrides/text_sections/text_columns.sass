@@ -1,0 +1,41 @@
+@import "../../../mixins/vars"
+
+section.type-text.format-columns
+  .carousel-item
+    text-align: left
+    padding: 1em 1.5em
+    padding-left: 2em
+
+    @include tablet
+      padding-left: 80px
+      padding-right: 80px
+
+    @incude tablet-or-larger
+      padding: 1em 2em
+      padding-left: 2.5em
+
+    > .image
+      text-align: center
+      padding: 5px
+      margin-left: -0.5em
+
+      > img
+        height: 160px
+
+    &:not(.central) .image
+      @include laptop-or-larger
+        padding: 25px
+
+        > img
+          height: 120px
+
+  .text-title
+    font-size: 1.3em
+    line-height: 1em
+    margin-bottom: 0.85em
+    font-weight: $font-semibold
+    color: $color-text-dark
+
+  .text-content
+    font-size: 0.75em
+    line-height: 1.85em

@@ -4,7 +4,8 @@
 - index = (defined?(index) ? index : 0).to_i + (defined?(section_counter) ? section_counter : 0).to_i + 1
 
 - classes = ["type-#{section.content_type}", "format-#{section.format&.dasherize}"]
-- classes << ['with', section.decoration_options(:gradient).join(' '), 'gradient'] if section.has_decoration? :gradient
+//- classes << ['with', section.decoration_options(:gradient).join(' '), 'gradient'] if section.has_decoration? :gradient
+- classes << ['with-decoration', section.decoration_options(:gradient).join(' '), 'gradient'] if section.has_decoration? :gradient
 
 section id=section.chapter_slug class=classes data-section=index
   = render partial.join('/'), section: section

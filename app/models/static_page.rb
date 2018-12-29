@@ -1,3 +1,14 @@
+## STATIC PAGE
+# This represents a static webpage on the website, such as the Front Page, the Articles index, the Contact,
+# or certain other pages which will not be removed from the site in the foreseeable future.
+# This model allows us to define the content for those static pages in the CMS instead of hardcoding them in HTML/Slim files.
+#
+# There are a set number of static pages which are defined by the "role" enum, there should only ever be one static page for each role.
+
+## TYPE: PAGE
+# An article is considered to be a "Page"
+# This means it's content is defined by a collection of sections
+
 class StaticPage < ApplicationRecord
   extend FriendlyId
 
@@ -29,16 +40,20 @@ class StaticPage < ApplicationRecord
   # Callbacks
   after_create :disable_drafts
 
+  # Returns a list of which roles don't yet have a database representation.
   def self.available_roles
     StaticPage.roles.keys - StaticPage.pluck(:role)
   end
 
+  # Returns a list of HTML metatags to be included on this static page
   def get_metatags
     (metatags || {}).reverse_merge({
       'title' => title,
     })
   end
 
+  # Certain static pages must include some specific special sections
+  # This function generates those sections if they don't already exist.
   def generate_required_sections!
     case role.to_sym
     when :home
@@ -63,6 +78,7 @@ class StaticPage < ApplicationRecord
     end
   end
 
+  # Checks to see if a special section exists for this page, and creates it if it doesn't.
   def ensure_special_section_exists! format, attrs = {}
     unless sections.exists?(content_type: :special, format: format)
       sections.new(attrs.merge!(content_type: :special, format: format))
@@ -70,6 +86,7 @@ class StaticPage < ApplicationRecord
   end
 
   private
+    # TODO: This is a temporary measure to disable the draft system until issues with draft integration can be resolved.
     def disable_drafts
       update_column :published_at, DateTime.now
     end

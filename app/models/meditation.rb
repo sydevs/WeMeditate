@@ -1,3 +1,10 @@
+## MEDITATION
+# A meditation is a video, and some associated data which will take a user through a guided meditation experience.
+
+# TYPE: RESOURCE
+# A meditation is considered to be a "Resource".
+# This means it is a standalone model, but it's content is specialized, and not defined using a collection of page sections
+
 class Meditation < ApplicationRecord
   extend FriendlyId
   extend CarrierwaveGlobalize
@@ -24,20 +31,25 @@ class Meditation < ApplicationRecord
 
   alias thumbnail image
 
+  # Calculate and return a few special types of meditaitons
   def self.get type
     case type
     when :daily
+      # A different random meditation every day
       seed = Date.today.to_time.to_i / (60 * 60 * 24) / 999999.0
-      puts "SEED _ #{seed}"
+      #puts "SEED _ #{seed}"
       Meditation.connection.execute "SELECT setseed(#{seed})"
       Meditation.order('RANDOM()').first
     when :trending
+      # The meditation with the most views
       Meditation.with_translations(I18n.locale).order('meditation_translations.views DESC').first
     else
+      # A purely random meditation
       Meditation.order('RANDOM()').first
     end
   end
 
+  # Returns a list of HTML metatags to be included on this meditation's page
   def get_metatags
     (metatags || {}).reverse_merge({
       'title' => name,

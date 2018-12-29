@@ -1,3 +1,9 @@
+## ARTIST
+# An artist is the musical performer of a Track
+
+# TYPE: FILTER
+# An artist is considered to be a "Filter", which is used to categorize the Track model
+
 class Artist < ApplicationRecord
 
   # Associations

@@ -1,0 +1,96 @@
+@import "../../../mixins/vars"
+
+section.type-special.format-world
+  .old
+    padding-top: 1em
+    min-height: 660px
+
+    @include tablet
+      min-height: 660px * 0.7
+
+    @include mobile
+      min-height: 660px * 0.5
+
+    .map
+      position: absolute
+      right: 0
+      left: 0
+      z-index: -1
+
+      @include tablet-or-smaller
+        text-align: center
+
+      svg
+        opacity: 0.75
+        max-width: none
+
+        @include tablet
+          zoom: 0.7
+          margin-top: 6vh
+          margin-left: -60px
+
+        @include mobile
+          zoom: 0.5
+          margin-top: 12vh
+          margin-left: -20px
+
+
+        path
+          fill: $color-country-map
+          stroke: none
+          fill-opacity: 1
+
+    .webinar.action
+      text-align: center
+      padding: 4%
+      margin-bottom: -4%
+
+      &:not(.static)
+        @include laptop-or-larger
+          position: absolute
+          bottom: -40%
+          right: 0
+
+      h3
+        margin: 0
+        font-size: 1em
+
+      p
+        line-height: 1.4em
+        font-size: 0.85em
+        margin: 0.5em 0
+
+      .box.button
+        padding: 0.4em 1em
+
+    .wrapper
+      padding-top: 12%
+      text-align: center
+
+      .title
+        font-size: 2em
+        margin-bottom: 0.25em
+
+      p
+        margin-bottom: 2em
+
+      .country.action
+        max-width: 400px
+        width: 90%
+        margin: auto
+
+        &.no-results:after
+          content: attr(data-no-result)
+          color: $color-text-orange
+
+        input
+          appearance: none
+          width: 100%
+          margin-bottom: 1em
+          padding: 0.8em
+          font-size: 1em
+          background: white
+
+        ul > li
+          padding: 0.8em
+          font-size: 1em

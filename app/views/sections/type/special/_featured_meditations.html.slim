@@ -2,7 +2,7 @@
 - content_for :head do
   meta name='turbolinks-cache-control' content='no-cache'
 
-.meditations.carousel data-style='meditations'
+//.meditations.carousel data-style='meditations'
   - meditation = Meditation.get(:daily)
   .meditation
     h3.header = section.extra_attr 'daily_meditation'
@@ -10,7 +10,6 @@
       .video.button
     h4.title = meditation.name
     p = meditation.excerpt
-
   - meditation = Meditation.get(:trending)
   .meditation
     h3.header = section.extra_attr 'trending_meditation'
@@ -18,7 +17,6 @@
       .video.button
     h4.title = meditation.name
     p = meditation.excerpt
-
   - random_meditation_attrs = section.extra_attr 'random_meditation', {}
   .meditation
     h3.header = random_meditation_attrs['title']
@@ -26,3 +24,29 @@
       .video.button
     h4.title = random_meditation_attrs['subtitle']
     p = random_meditation_attrs['text']
+
+
+.meditations.carousel data-style='meditations'
+  - meditation = Meditation.get(:daily)
+  .preview
+    h3.preview-header = section.extra_attr 'daily_meditation'
+    a.preview-media.force-ratio href=meditation_url(meditation) style="background-image: url(#{meditation.image.url})"
+      .video-button
+    h4.preview-title = meditation.name
+    p.preview-text = meditation.excerpt
+
+  - meditation = Meditation.get(:trending)
+  .preview
+    h3.preview-header = section.extra_attr 'trending_meditation'
+    a.preview-media.force-ratio href=meditation_url(meditation) style="background-image: url(#{meditation.image.url})"
+      .video-button
+    h4.preview-title = meditation.name
+    p.preview-text = meditation.excerpt
+
+  - random_meditation_attrs = section.extra_attr 'random_meditation', {}
+  .preview
+    h3.preview-header = random_meditation_attrs['title']
+    a.preview-media.force-ratio href=random_meditations_url style="background-image: url(#{section.image(random_meditation_attrs['image_uuid']).url})"
+      .video-button
+    h4.preview-title = random_meditation_attrs['subtitle']
+    p.preview-text = random_meditation_attrs['text']

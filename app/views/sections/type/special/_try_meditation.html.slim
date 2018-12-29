@@ -1,5 +1,5 @@
 
-.container
+//.container
   img alt=section.subtitle src=section.image.url
   .action
     a.circle.button href=section.url
@@ -9,3 +9,14 @@
     a.video.button href=section.video.url data-mfp-src='#video-popup'
     h3 = section.title
     h4 = section.subtitle
+
+.wrapper-outer
+  img.realization-image alt=section.subtitle src=section.image.url
+  .realization-action
+    a.button-circle href=section.url
+      = inline_svg 'graphics/circle.svg'
+      .button-circle-text = section.action
+  .realization-content
+    a.video-button href=section.video.url data-mfp-src='#video-popup'
+    h3.realization-title = section.title
+    h4.realization-subtitle = section.subtitle

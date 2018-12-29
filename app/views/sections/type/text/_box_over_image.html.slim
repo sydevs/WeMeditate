@@ -1,15 +1,30 @@
 
-.container = sidetext(section)
 
-.background style="background-image: url(#{section.image.url})"
+//.old
+  .container = sidetext(section)
+  .background style="background-image: url(#{section.image.url})"
+    img src=image_path(section.image.url)
+    - if section.has_decoration? :triangle
+      .container.with.triangle.decoration class=section.decoration_options(:triangle)
+    .content.container
+      .content-box class="#{'inverse' if section.extra_attr('color', 'light') == 'light'}"
+        h2.title = section.title
+        = section.text&.html_safe
+        - if section.action.present? and section.url.present?
+          a.box.button href=section.url = section.action
+
+
+= sidetext(section, wrap: true)
+
+.background-wrapper style="background-image: url(#{section.image.url})"
   img src=image_path(section.image.url)
 
   - if section.has_decoration? :triangle
-    .container.with.triangle.decoration class=section.decoration_options(:triangle)
+    .wrapper-outer.with-decoration.triangle class=section.decoration_options(:triangle)
 
-  .content.container
-    .content-box class="#{'inverse' if section.extra_attr('color', 'light') == 'light'}"
-      h2.title = section.title
-      = section.text&.html_safe
+  .text-box-overlay.wrapper-outer
+    .text-box class="#{'inverse' if section.extra_attr('color', 'light') == 'light'}"
+      h2.text-title = section.title
+      .text-content = section.text&.html_safe
       - if section.action.present? and section.url.present?
-        a.box.button href=section.url = section.action
+        a.button-box href=section.url = section.action

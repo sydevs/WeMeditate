@@ -1,0 +1,49 @@
+@import "../../mixins/vars"
+
+/* RADIO BUTTONS
+  This file defines styles for a special type of large radio button set used on the meditations page.
+  This is not styling for the basic `input[type=radio]` element, which should be defined in `forms.sass`
+  */
+
+.radio-button
+  display: inline-block
+  cursor: pointer
+  width: 66px
+  height: 66px
+  margin: 0 6px
+
+  @include laptop-or-larger
+    width: 90px
+    height: 90px
+    margin: 0 10px
+
+  &-title
+    color: $color-text-dark
+    font-weight: $font-semibold
+    font-size: 1.5em
+
+  &-circle
+    border: 1px solid $color-text-dark
+    border-radius: 100%
+    width: 100%
+    height: 100%
+    cursor: pointer
+
+    display: flex
+    justify-content: center
+    align-items: center
+    transition: all 0.2s ease
+
+    color: $color-text-dark
+    font-weight: $font-bold
+    font-size: 0.875em
+
+  > input
+    display: none
+
+    // Highlight the corresponding button if the input has been selected
+    &:checked + .radio-button-circle
+      background: white
+      color: $color-text-inverse
+      background: $color-text-blue
+      border: 1px solid $color-text-blue

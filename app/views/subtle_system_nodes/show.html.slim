@@ -1,5 +1,12 @@
 
-section.intro
+.banner.full-width
+  .wrapper-outer
+    .banner-title-box
+      = inline_svg 'graphics/leaf.svg'
+      h1.banner-title = @subtle_system_node.name
+      = inline_svg 'graphics/leaf.svg'
+
+//section.intro
   .container
     .title
       = inline_svg 'graphics/leaf.svg'
@@ -7,4 +14,4 @@ section.intro
       = inline_svg 'graphics/leaf.svg'
 
 = render @subtle_system_node.sections
-= render 'application/footer_together'
+= render 'application/action_footer'

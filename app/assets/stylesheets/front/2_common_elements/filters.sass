@@ -1,0 +1,140 @@
+@import "../../mixins/functions"
+@import "../../mixins/vars"
+@import "../../mixins/generics"
+
+/* FILTERS
+  Throughout the site buttons are used to filter content.
+  This file defines the styling for those filter buttons
+  */
+
+.filter
+  &-group
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+
+    @include tablet-or-smaller
+      justify-content: center
+
+    &.has-menu:not(.show-menu)
+      .filter-button:not(.active)
+        @include mobile
+          display: none
+
+  // Used to open the mobile menu to select a filter
+  &-menu-button
+    cursor: pointer
+
+    > i.icon
+      margin-left: 15px
+
+    @include tablet-or-larger
+      display: none
+
+
+// ===== FILTER ITEM ===== //
+.filter-item
+  margin-right: 35px
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  cursor: pointer
+
+  color: $color-text-normal
+  font-weight: $font-semibold
+
+  &-icon
+    margin-right: 16px
+
+    > svg
+      fill: #9d9d9c
+      height: 52px
+      width: auto
+      transition: fill .3s ease
+      max-width: 60px
+
+      @include tablet
+        width: 52px
+
+      @include mobile
+        height: 45px
+
+  &.active,
+  &:hover
+    opacity: 0.95
+    color: $color-text-blue
+
+    .filter-item-icon > svg
+      fill: $color-text-blue
+
+
+// ===== FILTER BUTTON ===== //
+// This is an alternative to a filter item, which is styled more like a button
+.filter-button
+  @extend .generic-box-button
+  min-width: 117px
+  margin: 5px
+  padding: 1.2em 1.5em
+
+  font-size: 0.875em
+  line-height: 1em
+  font-weight: $font-normal
+  color: $color-text-normal
+  text-align: center
+  cursor: pointer
+
+  &-icon
+    margin-right: 10px
+    width: 25px
+    height: 25px
+    display: inline-block
+
+// For a coloured version of the button
+.filter-group.color
+  > .filter-button
+    &:before
+      background: $background-blue
+
+    &:hover,
+    &.active
+      color: $color-text-inverse
+
+// For an outlined version of the button
+.filter-group.outline
+  > .filter-button
+    font-size: 1rem
+    font-weight: $font-semibold
+    line-height: 40px
+    color: $color-text-normal
+
+    padding: 0 9px
+    border: 1px solid $color-text-normal
+    transition: border-color 0.3s 0.6s ease
+
+    &:hover
+      border-color: $background-gray
+
+
+// ===== SHOW MENU ===== //
+// Some filter groups use a popup menu for mobile support.
+.filter-group.show-menu
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+
+  z-index: 2000
+  background: white
+  flex-direction: column
+  justify-content: space-evenly
+  align-items: center
+
+  .filter
+    &-menu-button
+      display: none
+
+    &-button
+      font-size: 1em
+      font-family: $raleway-bold
+      line-height: 1.8em

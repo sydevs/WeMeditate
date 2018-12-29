@@ -1,0 +1,39 @@
+@import "../../mixins/functions"
+@import "../../mixins/vars"
+
+/* SIDETEXT
+  Many blocks throughout the site use a faded all caps title on the side of the screen.
+  This file defines styling for these so called "sidetexts"
+  */
+
+.sidetext
+  position: absolute
+  white-space: nowrap
+  color: $color-text-lightest
+  text-transform: uppercase
+  transform: rotate(-90deg)
+  font-size: 2.2em
+  letter-spacing: 4px
+  z-index: 1
+  user-select: none
+
+  &.top-left
+    transform-origin: top right
+    right: 100%
+    padding-top: 34px
+
+  &.top-right
+    transform-origin: top right
+    right: 1em
+    margin-right: 3.5%
+
+  &.bottom-left
+    transform-origin: top left
+    top: 100%
+    left: 2.25%
+
+  &.bottom-right
+    transform-origin: top left
+    top: 100%
+    left: 100%
+    margin-left: -3.5%

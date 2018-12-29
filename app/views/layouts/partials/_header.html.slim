@@ -1,7 +1,7 @@
 
 header.header class="#{'inverse' if action_name == 'front'}"
   .header-container
-    .header-wrap.desktop.container
+    .header-wrap.desktop.wrapper-outer
       .header-banner
         a.header-banner-logo href=root_path = inline_svg 'header/logo.svg'
         a.header-banner-illustration href=root_path
@@ -19,7 +19,7 @@ header.header class="#{'inverse' if action_name == 'front'}"
           - @breadcrumbs.each do |crumb|
             a.header-breadcrumbs-item href=crumb[:url] = crumb[:name]
 
-    .header-wrap.mobile.container
+    .header-wrap.mobile.wrapper-outer
       .header-bar
         a.header-bar-icon.logo href=root_path = inline_svg 'header/logo-mini.svg'
         a.header-bar-icon.burger = inline_svg 'header/burger.svg'

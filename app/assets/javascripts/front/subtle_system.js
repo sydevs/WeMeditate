@@ -1,41 +1,50 @@
+/** SUBTLE SYSTEM
+ * The Subtle System page include an interactive chart, this file defines behaviour for that chart.
+ */
 
 const SubtleSystem = {
   // To be defined on load
-  sections: null,
-  chakras_chart: null,
-  channels_chart: null,
+  context: null,
   active_node: '',
   timeout: null,
 
   scrollCutoff: 768,
 
-  load: function() {
+  // Called when turbolinks loads the page
+  load() {
     console.log('loading SubtleSystem.js')
     SubtleSystem.active_node = ''
-    SubtleSystem.sections = $('section.type-special.format-subtle-system')
-    SubtleSystem.sections.find('.filter').click(SubtleSystem._on_filter_click)
-    SubtleSystem.sections.find('.trigger').mouseover(SubtleSystem._on_trigger_mouseover)
-    SubtleSystem.sections.find('.trigger').mouseout(SubtleSystem._on_trigger_mouseout)
+    SubtleSystem.context = $('section.type-special.format-subtle-system')
+    SubtleSystem.context.find('.filter-button').click(SubtleSystem._on_filter_click)
+    SubtleSystem.context.find('.subtle-system-trigger').mouseover(SubtleSystem._on_trigger_mouseover)
+    SubtleSystem.context.find('.subtle-system-trigger').mouseout(SubtleSystem._on_trigger_mouseout)
   },
 
-  unload: function() {
+  // Called before turbolinks loads the next page
+  unload() {
+    console.log('unloading SubtleSystem.js')
     $(SubtleSystem.active_node).removeClass('active')
   },
 
-  _on_filter_click: function() {
+  // Triggered when one of the chart tabs/filters below the chart is clicked on.
+  // This allows us to switch between the two different versions of the chart.
+  _on_filter_click() {
     console.log('click', this)
     var filter = $(this).data('filter')
-    SubtleSystem.sections.find('.active').removeClass('active')
-    SubtleSystem.sections.find(filter).addClass('active')
+    SubtleSystem.context.find('.active').removeClass('active')
+    SubtleSystem.context.find(filter).addClass('active')
     $(this).addClass('active')
   },
 
-  _on_trigger_mouseover: function() {
+  // Triggered with a chakra/channel is hovered over.
+  _on_trigger_mouseover() {
     console.log('mouseover', this)
     //clearTimeout(SubtleSystem.timeout)
-    let new_active_node = '.' + $(this).data('class')
+    let new_active_node = '.' + $(this).data('trigger')
 
     if (new_active_node != SubtleSystem.active_node) {
+      // Some of the nodes are contained within other notes, so for some nodes,
+      // we use a timer to make sure that the person really wants to select the node they are hovering on.
       let time = 0
 
       if ((SubtleSystem.active_node == '.chakra-2' || SubtleSystem.active_node == '.chakra-3') && new_active_node == '.chakra-3b') {
@@ -45,15 +54,16 @@ const SubtleSystem = {
       }
 
       SubtleSystem.timeout = setTimeout(function() {
-        console.log('select', new_active_node)
+        // Select the new node, and deleselect the old one.
         $(SubtleSystem.active_node).removeClass('active')
         SubtleSystem.active_node = new_active_node
         $(SubtleSystem.active_node).addClass('active')
 
+        // If we are on mobile, scroll down to the description of the node we just selected.
         if ($(window).width() <= SubtleSystem.scrollCutoff) {
-          var $target = $('#' + SubtleSystem.sections.find('.active.article').attr('id'))
-          console.log('scroll', $target.offset(), '-', $(window).height(), '+', $target.height())
+          var $target = $('#' + SubtleSystem.context.find('.active.subtle-system-item').attr('id'))
           var position = $target.offset().top - $(window).height() + $target.height() + 30
+
           Menu.scroll.animateScroll(position, 2000, {
             speed: 2000,
             updateURL: false,
@@ -63,13 +73,14 @@ const SubtleSystem = {
     }
   },
 
-  _on_trigger_mouseout: function() {
+  // Triggered when the user stops hovering over a particular chakra/channel.
+  _on_trigger_mouseout() {
     console.log('mouseout', this)
+    // Clear the timeout because we don't want to select this node after all.
     clearTimeout(SubtleSystem.timeout)
     SubtleSystem.timeout = null
   },
-
 }
 
-$(document).on('turbolinks:load', function() { SubtleSystem.load() })
-$(document).on('turbolinks:before-cache', function() { SubtleSystem.unload() })
+$(document).on('turbolinks:load', () => { SubtleSystem.load() })
+$(document).on('turbolinks:before-cache', () => { SubtleSystem.unload() })

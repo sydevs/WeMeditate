@@ -1,7 +1,7 @@
 
 - url = ERB::Util.url_encode request.original_url.split('/', 3)[2]
 
-section.share
+//section.share
   .section.wrapper
     span = t('footer.share.title')
     a href="https://www.facebook.com/sharer/sharer.php?u=#{url}"
@@ -10,4 +10,15 @@ section.share
       a href="http://vk.com/share.php?url=#{url}"
         i.vk.icon
     a href="#"
+      i.instagram.icon
+
+.sharing-footer
+  .wrapper-inner
+    .sharing-footer-title = t('footer.share.title')
+    a.sharing-footer-item href="https://www.facebook.com/sharer/sharer.php?u=#{url}"
+      i.facebook.icon
+    - if locale == :ru
+      a.sharing-footer-item href="http://vk.com/share.php?url=#{url}"
+        i.vk.icon
+    a.sharing-footer-item href="#"
       i.instagram.icon

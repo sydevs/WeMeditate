@@ -1,0 +1,90 @@
+@import "../../mixins/functions"
+@import "../../mixins/vars"
+
+/* BASIC STYLING
+  This file defines basic site-wide styling for some html tags,
+  and for a small amount of utility classes
+  */
+
+// Define the fonts used in the application
++font-face("raleway", "RalewayExtraLight/RalewayExtraLight", 200)
++font-face("raleway", "RalewayLight/RalewayLight", 300)
++font-face("raleway", "RalewayRegular/RalewayRegular", 400)
++font-face("raleway", "RalewayMedium/RalewayMedium", 500)
++font-face("raleway", "RalewaySemiBold/RalewaySemiBold", 600)
++font-face("raleway", "RalewayBold/RalewayBold", 700)
++font-face("futura-book", "FuturaBook/FuturaBook")
+
+// TODO: Delete these old font definitions
++font-face("raleway-bold", "RalewayBold/RalewayBold")
++font-face("raleway-medium", "RalewayMedium/RalewayMedium")
++font-face("raleway-semi", "RalewaySemiBold/RalewaySemiBold")
+
+// ===== BASIC HTML TAGS ===== //
+// Standard site-wide styles
+html
+  overflow-x: hidden
+  font-size: 16px
+  font-family: $font-text
+  font-weight: $font-normal
+  color: $color-text-normal
+
+*
+  box-sizing: border-box
+  -webkit-text-size-adjust: none
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+
+section
+  position: relative
+  margin-bottom: $section-margin
+
+p
+  line-height: 1.7em
+  letter-spacing: 0.1px
+  margin-top: 0.5em
+
+strong, b
+  font-weight: $font-bold
+
+a
+  outline: none
+  text-decoration: none
+  color: $color-text-light
+  transition: all 0.3s ease
+
+  &:hover
+    color: $color-text-blue
+
+button
+  cursor: pointer
+
+h1
+  color: $color-text-dark
+  font-weight: $font-bold
+
+h2,h3,h4,h5,h6
+  color: $color-text-dark
+  font-weight: $font-semibold
+
+ul
+  list-style: none
+  padding: 0
+
+svg, img
+  max-width: 100%
+
+figure
+  position: relative
+  margin: 0
+
+// ===== UTILITY CLASSES ===== //
+.noscroll
+  overflow: hidden
+
+.mobile-only
+  @include tablet-or-larger
+    display: none !important
+
+.desktop-only
+  @include mobile
+    display: none !important

@@ -1,0 +1,141 @@
+@import "../../../mixins/vars"
+
+section.type-text
+  &.format-box-over-image,
+  &.format-box-with-righthand-image,
+  &.format-box-with-lefthand-image
+    .sidetext
+      @include mobile
+        font-size: 1.875em
+        letter-spacing: 0.1em
+
+
+
+// ===== BOX OVER IMAGE ===== //
+section.type-text.format-box-over-image
+  height: 100vh
+
+  @include tablet-or-larger
+    height: 100vh
+
+  &.with-decoration.gradient:before
+    z-index: 0
+
+    @include laptop
+      width: 19vw
+
+    @include tablet
+      top: -10%
+
+    @include tablet-or-smaller
+      width: 13vw
+
+  .background-wrapper
+    @include mobile
+      background-size: auto 57vh
+      background-position-y: 0
+
+    > img
+      padding-left: 70px
+      display: none
+
+      @include mobile
+        display: block
+        height: 57vh
+        opacity: 0
+
+  .with-decoration.triangle
+    @include tablet-or-smaller
+      &:after
+        right: 30px
+        left: auto
+
+  .sidetext
+    padding-right: 7%
+
+    @include mobile
+      background-color: transparent
+      margin-top: 20px
+      padding-right: 0
+
+  .text-box
+    max-width: 700px
+    width: 100%
+    //width: 45% // TODO: Delete this if possible
+    background: transparent
+    padding: 35px 40px
+    margin-left: 2%
+
+    @include tablet
+      max-width: 525px
+      padding: 100px 80px
+      //width: auto
+
+    @include laptop
+      max-width: 680px
+      margin-left: 0
+      //width: 100%
+      padding: 100px 80px
+
+    &-overlay
+      position: relative
+      left: 50px
+
+      @include mobile
+        position: static
+        padding: 0
+        padding-right: 35px
+        padding-left: 20px
+
+
+// ===== BOX NEXT TO IMAGE ===== //
+section.type-text.format-box-with-righthand-image,
+section.type-text.format-box-with-lefthand-image
+  &.with-decoration.gradient:not(.gray):before
+    top: -15rem
+    height: 26rem
+
+  .image
+    @include mobile
+      margin: 0
+
+section.type-text.format-box-with-righthand-image
+  .with-decoration.triangle.right:after
+    right: -108px
+
+  .image
+    float: right
+
+    img
+      @include mobile-landscape
+        margin-right: 40px
+
+      @include mobile
+        margin-right: -25px
+
+section.type-text.format-box-with-lefthand-image
+  .wrapper-outer
+    @include mobile
+      padding-right: 20px
+
+  .text-box
+    margin-left: -140px
+    left: auto
+
+    @include desktop
+      margin-left: -170px
+
+    @include tablet
+      padding: 65px
+      padding-right: 50px
+
+  .text-box-overlay
+    @include tablet
+      align-items: flex-start
+
+  .image > img
+    @include mobile
+      left: -25px
+
+    @include mobile-landscape
+      left: 40px

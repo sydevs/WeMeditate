@@ -1,15 +1,21 @@
+/** FORMS
+ * Handles forms on the public-facing side of the website.
+ * Primarily it handles the loading state for remote forms.
+ */
 
 const Forms = {
-
-  load: function() {
+  // Called when turbolinks loads the page
+  load() {
     $('form[data-remote]').on('ajax:beforeSend', Forms._on_submit_form)
   },
 
-  _on_submit_form: function() {
+  // Triggered when a remote form is submitted.
+  _on_submit_form() {
     Forms.set_form_loading($(this), true)
   },
 
-  set_form_loading: function($form, enabled) {
+  // Allows a form to be set as loading or not loading.
+  set_form_loading($form, enabled) {
     $form.toggleClass('loading', enabled)
     $form.find('input, textarea, select').attr('disabled', enabled ? 'disabled' : false)
     $form.find('button').toggleClass('disabled', enabled)
@@ -20,4 +26,4 @@ const Forms = {
   }
 }
 
-$(document).on('turbolinks:load', function() { Forms.load() })
+$(document).on('turbolinks:load', () => { Forms.load() })

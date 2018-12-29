@@ -1,12 +1,23 @@
 
+//
+  - content_for :callout, flush: true do
+    figure.image.callout
+      a.popout.mfp-image href=section.image.url
+        img alt=section.image.identifier src=section.image.url
+      figcaption.credit #{t 'sections.credit'} • #{section.credit}
+  .container = sidetext(section)
+  .section.wrapper
+    h2.title = section.title
+    = section.text&.sub('</p>', '</p>'+content_for(:callout)).html_safe
+
+
 - content_for :callout, flush: true do
   figure.image.callout
     a.popout.mfp-image href=section.image.url
       img alt=section.image.identifier src=section.image.url
-    figcaption.credit #{t 'sections.credit'} • #{section.credit}
+    figcaption.image-credit #{t 'sections.credit'} • #{section.credit}
 
-.container = sidetext(section)
-
-.section.wrapper
-  h2.title = section.title
-  = section.text&.sub('</p>', '</p>'+content_for(:callout)).html_safe
+= sidetext(section, wrap: true)
+.wrapper-inner
+  h2.text-title = section.title
+  .text-content = section.text&.sub('</p>', '</p>'+content_for(:callout)).html_safe

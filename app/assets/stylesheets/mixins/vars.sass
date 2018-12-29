@@ -1,23 +1,39 @@
-$futura-book: "futura-book", sans-serif
 
+/* VARIABLES
+  This file defines variables that are used through the front-end sass code.
+  */
+
+// ===== FONTS ===== //
+$font-text: "raleway", sans-serif
+$font-number: "futura-book", sans-serif
+
+$font-lighter: 200
+$font-light: 300
+$font-normal: 400
+$font-medium: 500
+$font-semibold: 600
+$font-bold: 700
+
+// TODO: Remove these old font variables
+$futura-book: "futura-book", sans-serif
 $raleway: "raleway", sans-serif
 $raleway-bold: "raleway-bold", sans-serif
 $raleway-medium: "raleway-medium", sans-serif
 $raleway-semi: "raleway-semi", sans-serif
 
-$font-normal: "raleway", sans-serif
-$font-medium: "raleway-medium", sans-serif
-$font-semibold: "raleway-semi", sans-serif
-$font-bold: "raleway-bold", sans-serif
-$font-numbers: "futura-book", sans-serif
 
-$mobile-width: 320px
+// ===== SIZES ===== //
+$section-margin: 4rem
+
+// These are the minimum widths for each device
+$mobile-width: 320px // This variable is not actually used
 $tablet-width: 769px
 $laptop-width: 992px
 $desktop-width: 1200px
 $desktop-lg-width: 1400px
 
 
+// ===== COLOURS ===== //
 $color-text-darkest: black
 $color-text-darker: #5e6063
 $color-text-dark: #7b7b7b
@@ -25,11 +41,13 @@ $color-text-normal: #9d9d9c
 $color-text-light: #c6c6c6
 $color-text-lighter: #d7d7d6
 $color-text-lightest: #e8e8e8
+
 $color-text-inverse: white
 $color-text-orange: #e08e79
 $color-text-blue: #c5e0dc
 $color-text-light-grey: #c1c1c0
 
+// TODO: Clean up the color variables below.
 $color-player: #d7d7d6
 $color-player-light: #eeeeee
 $color-player-blue: #c5e0dc
@@ -38,25 +56,28 @@ $color-box-orange: #ff856f
 $color-header-svg: #555555
 $color-country-map: rgb(249, 226, 200)
 $color-button-blue: #ebf4f3
+$color-button-video: #dcdcdc
+$color-chapters-progress: #8ec2bb
 
 $color-divider-normal: #e8e8e8
 $color-divider-dark: #9d9d9c
 
+// TODO: Remove these old color definitions
 $background-gray: #f6f6f6
 $background-blue: #c5e0dc
 $background-white: #ffffff
 
+
+// ===== Z-INDEX POSITIONING ===== //
+// TODO: Better implement the use of these variables across the code base.
 $z-popup: 2000
 $z-header: 1000
 $z-header-menu: 900
+$z-dropdown: 90
 
-$z-front: 10
-$z-above: 1
-$z-reset: 0
-$z-below: -1
-$z-back: -10
 
-$wemeditate-icons: 'wemeditate-icons'
+// ====== ICONS ===== //
+$wemeditate-icons: 'wemeditate-icons' // This is the font to use for icons
 $icon-arrow-left: '\e900'
 $icon-arrow-right: '\e901'
 $icon-breadcrumb: '\e906'
@@ -70,41 +91,25 @@ $icon-play: '\e905'
 $icon-filters: '\e917'
 
 
+// ===== MEDIA QUERIES ===== //
 @mixin mobile
   @media only screen and (max-width: #{$tablet-width - 1px})
     @content
 
-@mixin mobile-landscape
-  @media only screen and (max-width: #{$tablet-width - 1px}) and (orientation: landscape)
-    @content
-
-@mixin mobile-portrait
-  @media only screen and (max-width: #{$tablet-width - 1px}) and (orientation: portrait)
-    @content
-
-
 @mixin tablet
   @media only screen and (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px})
-    @content
-
-@mixin tablet-portrait
-  @media only screen and (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px}) and (orientation: portrait)
     @content
 
 @mixin laptop
   @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px})
     @content
 
-@mixin laptop-portrait
-  @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px}) and (orientation: portrait)
-    @content
-
-@mixin laptop-landscape
-  @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px}) and (orientation: landscape)
-    @content
-
 @mixin desktop
   @media only screen and (min-width: #{$desktop-width})
+    @content
+
+@mixin desktop-lg
+  @media only screen and (min-width: #{$desktop-lg-width})
     @content
 
 
@@ -128,6 +133,24 @@ $icon-filters: '\e917'
   @media only screen and (max-width: #{$desktop-width - 1px})
     @content
 
-@mixin desktop-lg
-  @media only screen and (min-width: #{$desktop-lg-width})
+
+// TODO: These landscape and portrait definitions were added by the contractor, figure out if they are actually useful and if not, remove them.
+@mixin mobile-landscape
+  @media only screen and (max-width: #{$tablet-width - 1px}) and (orientation: landscape)
+    @content
+
+@mixin mobile-portrait
+  @media only screen and (max-width: #{$tablet-width - 1px}) and (orientation: portrait)
+    @content
+
+@mixin tablet-portrait
+  @media only screen and (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px}) and (orientation: portrait)
+    @content
+
+@mixin laptop-portrait
+  @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px}) and (orientation: portrait)
+    @content
+
+@mixin laptop-landscape
+  @media only screen and (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px}) and (orientation: landscape)
     @content

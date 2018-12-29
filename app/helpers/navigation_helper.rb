@@ -22,10 +22,13 @@ module NavigationHelper
         url: '#', #static_page_path(StaticPage.find_by(role: :about)),
         active: ['static_pages', 'subtle_system_nodes'].include?(controller_name),
         content: {
-          items: StaticPage.where(role: [:about, :contact, :sahaja_yoga, :shri_mataji, :subtle_system]).map {|static_page| {
+          items: StaticPage.where(role: [:about, :contact, :sahaja_yoga, :shri_mataji]).map {|static_page| {
             title: static_page.title,
             url: static_page_path(static_page),
           }} + [{
+            title: StaticPage.find_by(role: :subtle_system).title,
+            url: subtle_system_nodes_path,
+          }] + [{
             title: StaticPage.find_by(role: :treatments).title,
             url: treatments_path,
           }],

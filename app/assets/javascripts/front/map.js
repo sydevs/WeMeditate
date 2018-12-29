@@ -1,30 +1,37 @@
+/** MAPS
+ * The city and country pages both make use of two different kinds of maps.
+ * We implement these using the Leaflet library.
+ *
+ * The country page uses a simple SVG map with Leaflet marker layer over top to position cities.
+ * The city page uses a more traditional embeded OpenStreetMaps map.
+ */
 
 const Map = {
+  // Viewport padding for the Leaflet maps.
   padding: [40, 0],
 
-  // These variables will be set on load
-  //maps: null,
-  //resizeTimer: null,
-
-  load: function() {
+  // Called when turbolinks loads the page
+  load() {
     console.log('loading Map.js')
-    //Map.maps = []
-    //Map.resizeTimer = null
-
-    $('.country.map').each(Map._load_country_map)
-    $('.city.map').each(Map._load_city_map)
-    //$(window).resize(Map._on_resize)
+    $('.map[data-type=country]').each(Map._load_country_map)
+    $('.map[data-type=city]').each(Map._load_city_map)
   },
 
-  get_city_html: function(name, url) {
-    return '<a class="city" href="'+url+'">'+name+'</a>'
+  // Returns markup for a map marker
+  get_marker_html(name, url) {
+    return '<a class="map-list-item" href="'+url+'">'+name+'</a>'
   },
 
-  setup_bounds: function(map, bounds) {
+  // Setups and maintains bounds for the map, by resizing it when the window is resized.
+  setup_bounds(map, bounds) {
     let resizeTimer = null
+
+    // Set up the initial bounds.
     map.fitBounds(bounds, { padding: Map.padding })
 
+    // Set up a callback on window resize
     $(window).resize(function() {
+      // We use a timer so that the map isn't resizing constantly when you drag the window on desktop.
       clearTimeout(resizeTimer)
       resizeTimer = setTimeout(function() {
         console.log('Resize', map)
@@ -37,9 +44,12 @@ const Map = {
     })
   },
 
-  _load_country_map: function() {
-    let element = $(this)
-    let bounds = element.data('bounds')
+  // Called on load to load any country maps on the page.
+  _load_country_map() {
+    let $map = $(this)
+    let bounds = $map.data('bounds')
+
+    // Initialize the map
     let map = new L.Map(this, {
       zoomSnap: 0,
       boxZoom: false,
@@ -52,41 +62,47 @@ const Map = {
       tap: false,
     })
 
-    //Map.maps.push(map)
-    //new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?', {}).addTo(map);
-
-    $.getJSON(element.data('src'), function(data) {
+    // Retrieve the country SVG
+    $.getJSON($map.data('src'), function(data) {
+      // Add the country SVG to the Leaflet map
       let layer = new L.GeoJSON(data)
-
       layer.addTo(map)
 
+      // Define the bounds of the map
       bounds = (bounds == null || typeof bounds === 'undefined') ? layer.getBounds() : bounds
       Map.setup_bounds(map, bounds)
       bounds = map.getBounds()
 
-      let extra_cities_container = element.parent().find('.extra')
-      extra_cities_container.children('.cities').empty()
+      // Get the container for listing cities which don't fit on the map.
+      let extra_markers_list = $map.siblings('.map-list.desktop-only')
+      extra_markers_list.children('.map-list-item').remove()
 
-      element.data('cities').forEach(function(city) {
-        let latlng = [city.latitude, city.longitude]
+      // For each marker, either place it on the map (if it is within bounds), or add it to the extras container.
+      $map.data('markers').forEach(function(marker) {
+        let latlng = [marker.latitude, marker.longitude]
 
         if (bounds.contains(latlng)) {
+          // Create a marker on the map.
           new L.marker(latlng, {
             icon: new L.DivIcon({
-              className: 'marker',
-              html: Map.get_city_html(city.name, city.url)
+              className: 'map-marker',
+              html: Map.get_marker_html(marker.name, marker.url)
             }),
           }).addTo(map)
         } else {
-          extra_cities_container.children('.cities').append('<p>' + Map.get_city_html(city.name, city.url) + '</p>')
-          extra_cities_container.show()
+          // Add the marker to the extra cities list.
+          extra_markers_list.append(Map.get_marker_html(marker.name, marker.url))
+          extra_markers_list.show()
         }
       })
     })
   },
 
-  _load_city_map: function() {
+  // Called on load to load any city maps on the page.
+  _load_city_map() {
     let markers = []
+
+    // Create the generic icon used for markers on this map.
     let Icon = L.Icon.extend({
       options: {
         iconUrl: '/maps/marker/icon.png',
@@ -100,14 +116,22 @@ const Map = {
       },
     })
 
+    // Initialize the leaflet map.
     let map = L.map(this, {
       zoomControl: false,
       attributionControl: false,
       scrollWheelZoom: false,
     })
 
+    // Add the zoom control to the top right of the map
     L.control.zoom({
       position: 'topright',
+    }).addTo(map)
+
+    // Add the tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
     }).addTo(map)
 
     //new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?', {}).addTo(map)
@@ -117,16 +141,14 @@ const Map = {
       attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map)*/
 
-    L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
-    }).addTo(map)
-
+    // Add each venue for this map as a marker
     $(this).data('venues').forEach(function(venue) {
       markers.push(L.marker([venue.latitude, venue.longitude], { icon: new Icon }))
     })
 
+    // Add the marker group to the map.
     let markerGroup = L.featureGroup(markers).addTo(map)
+    // Fit the map bounds to contain all markers.
     map.fitBounds(markerGroup.getBounds().pad(0.5))
   },
 }

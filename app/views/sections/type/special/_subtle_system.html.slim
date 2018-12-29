@@ -1,5 +1,5 @@
 
-.container
+//.container
   h2.title = section.title
   .active.chakras.chart
     .trigger.for-chakra-7 data-class='chakra-7'
@@ -20,11 +20,9 @@
     .trigger.for-channel-left-2 data-class='channel-left'
     .trigger.for-kundalini data-class='kundalini'
     = inline_svg 'sections/subtle-system/channels.svg'
-
   nav.primary.filters
     .active.chakras.filter.button data-filter='.chakras.chart' = t('sections.subtle_system.chakras')
     .channels.filter.button data-filter='.channels.chart' = t('sections.subtle_system.channels')
-
   .articles
     - SubtleSystemNode.all.each do |subtle_system_node|
       .article id=dom_id(subtle_system_node) class=subtle_system_node.role.to_s.dasherize
@@ -33,3 +31,34 @@
         a href=url_for(subtle_system_node)
           = t('sections.subtle_system.read_more')
           i.breadcrumb.icon
+
+.subtle-system.wrapper-outer
+  h2.subtle-system-title = section.title
+  .subtle-system-chart.active#subtle-system-chart-chakras
+    .subtle-system-trigger data-trigger='chakra-7'
+    .subtle-system-trigger data-trigger='chakra-6'
+    .subtle-system-trigger data-trigger='chakra-5'
+    .subtle-system-trigger data-trigger='chakra-4'
+    .subtle-system-trigger data-trigger='chakra-3b'
+    .subtle-system-trigger data-trigger='chakra-3'
+    .subtle-system-trigger data-trigger='chakra-2'
+    .subtle-system-trigger data-trigger='chakra-1'
+    .subtle-system-trigger data-trigger='kundalini'
+    = inline_svg 'sections/subtle-system/chakras.svg'
+  .subtle-system-chart#subtle-system-chart-channels
+    .subtle-system-trigger.for-head data-trigger='channel-right'
+    .subtle-system-trigger.for-body data-trigger='channel-right'
+    .subtle-system-trigger data-trigger='channel-center'
+    .subtle-system-trigger.for-head data-trigger='channel-left'
+    .subtle-system-trigger.for-body data-trigger='channel-left'
+    .subtle-system-trigger data-trigger='kundalini'
+    = inline_svg 'sections/subtle-system/channels.svg'
+
+  nav.filter-group.color
+    .filter-button.active data-filter='#subtle-system-chart-chakras'
+      = t('sections.subtle_system.chakras')
+    .filter-button data-filter='#subtle-system-chart-channels'
+      = t('sections.subtle_system.channels')
+
+  .subtle-system-items
+    = render SubtleSystemNode.all

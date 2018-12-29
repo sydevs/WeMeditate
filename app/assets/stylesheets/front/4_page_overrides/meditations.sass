@@ -1,0 +1,23 @@
+@import "../../mixins/vars"
+
+body.meditations-index
+  .banner .banner-title
+    font-weight: $font-bold
+    font-size: 1.675em
+    line-height: 1.675em
+    padding: 22px 0
+
+    @include tablet-or-larger
+      padding: 0
+
+    @include tablet
+      font-size: 1.75em
+      line-height: 86px
+
+    @include laptop
+      font-size: 2.2em
+      line-height: 100px
+
+    @include desktop
+      font-size: 2.8125em
+      line-height: 170px

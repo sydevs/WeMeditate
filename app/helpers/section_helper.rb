@@ -1,13 +1,24 @@
+## SECTION HELPER
+# Functions to support page sections
+
 module SectionHelper
 
+  # TODO: In the future these should probably be defined in the CMS
   SUPPORTED_COUNTRY_MAPS = ['us', 'ru']
   COUNTRY_BOUNDS = {
     us: [[49.384472, -124.7844079], [24.446667, -66.9513812]]
   }
 
-  def sidetext section
+  # Creates the markup for a sidetext element, if content for that element has been defined.
+  def sidetext section, wrap: false
     if section.has_decoration? :sidetext
-      content_tag :div, section.decoration_sidetext, class: "#{section.decoration_options(:sidetext).join(' ')} sidetext"
+      if wrap
+        content_tag :div, section.decoration_sidetext, class: 'wrapper-outer for-sidetext' do
+          content_tag :div, section.decoration_sidetext, class: "#{section.decoration_options(:sidetext).join(' ')} sidetext"
+        end
+      else
+        content_tag :div, section.decoration_sidetext, class: "#{section.decoration_options(:sidetext).join(' ')} sidetext"
+      end
     end
   end
 

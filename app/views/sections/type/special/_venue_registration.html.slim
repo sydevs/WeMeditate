@@ -4,26 +4,47 @@
 
 #signup
 
-- if @city.venues.present? and mailchimp_list_id.present?
-  .wrapper.centered
+- if @city.venues.present? #and mailchimp_list_id.present?
+  //.wrapper.centered
     .simple.illustration.pre.divider
     h2.title = section.title
     .sub.title = section.subtitle
     .title = section.text
-    = form_tag register_city_path(@city), class: 'registration-form', remote: true do
+    = form_tag register_city_path(@city), class: 'registration-form old', remote: true do
       p.message
       .fields
         = hidden_field_tag :mailchimp_list_id, mailchimp_list_id
         = email_field_tag :email_address, nil, placeholder: 'Your email'
         = text_field_tag :name, nil, placeholder: 'Your first name', class: 'first name'
         input.classes.autocomplete list='classes-list' placeholder='Select class'
-
       p
         button.box.button = section.action
-
     datalist#classes-list
       - @city.venues.each_with_index do |venue,i|
         - item = "#{venue['address']}, #{translate_day venue['day_of_week']} #{venue['start_time']} - #{venue['end_time']}"
         option value=item = item
-
     .simple.illustration.post.divider
+
+- if @city.venues.present? #and mailchimp_list_id.present?
+  = form_tag register_city_path(@city), class: 'inline registration form', remote: true do
+    .wrapper-inner
+      .divider.with-decoration.simple.up
+      h2.form-title = section.title
+      .form-subtitle = section.subtitle
+      .form-description = section.text
+      .form-fields
+        p.form-message
+        = hidden_field_tag :mailchimp_list_id, mailchimp_list_id
+        = email_field_tag :email_address, nil, placeholder: 'Your email'
+        = text_field_tag :name, nil, placeholder: 'Your name'
+        input.classes.autocomplete list='classes-list' placeholder='Select class'
+
+      p
+        button.button-box = section.action
+
+      datalist#classes-list
+        - @city.venues.each_with_index do |venue,i|
+          - item = "#{venue['address']}, #{translate_day venue['day_of_week']} #{venue['start_time']} - #{venue['end_time']}"
+          option value=item = item
+
+      .divider.with-decoration.simple.down

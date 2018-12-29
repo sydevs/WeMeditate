@@ -1,12 +1,14 @@
-var Meditation = {
+// TODO: Remove this file before committing, this file does not belong in the new refactor.
+
+const Meditation = {
   // These variables will be set on load
   video_player: null,
   goal_dropdown: null,
 
-  load: function () {
+  load() {
     console.log('loading Meditation.js')
     let $context = $('section.type-special.format-custom-meditation').first()
-    Meditation.goal_dropdown = $context.find('.dropdown')
+    Meditation.goal_dropdown = $context.find('.dropdown.old')
     Meditation.video_player = new Plyr('#meditation-player')
 
     $context.find('.active-goal').on('click', Meditation.toggle_dropdown)
@@ -14,7 +16,7 @@ var Meditation = {
     Meditation.goal_dropdown.on('click', 'li', Meditation._on_select_goal)
   },
 
-  set_active_goal: function($goal) {
+  set_active_goal($goal) {
     let $svg = $goal.children('svg')
     let color = $goal.children('svg').data('color')
     let text = $goal.children('.text').text()
@@ -28,7 +30,7 @@ var Meditation = {
     Meditation.toggle_dropdown()
   },
 
-  _on_select_goal: function(event) {
+  _on_select_goal(event) {
     let $target = $(this)
     Meditation.goal_dropdown.find('li').removeClass('active')
     $target.addClass('active')
@@ -36,10 +38,10 @@ var Meditation = {
     $('.active-goal').removeClass('disabled')
   },
 
-  toggle_dropdown: function() {
+  toggle_dropdown() {
     Meditation.goal_dropdown.parent().toggleClass('open')
     $('body').toggleClass('noscroll')
   },
 }
 
-$(document).on('turbolinks:load', Meditation.load)
+$(document).on('turbolinks:load', () => { Meditation.load })

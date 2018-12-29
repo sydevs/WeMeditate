@@ -5,16 +5,32 @@
 - is_city = (section.page.role == 'city')
 - contacts = is_city ? @city.contacts : section.extra_attr('items', [])
 
-h2.title = section.title
-p = section.subtitle
-.carousel data-style='contacts'
-  - contacts.sample(3).each do |contact|
-    - image_url = is_city ? @city.image(contact['image_uuid']) : section.image(contact['image_uuid'])
-    .contact
-      img src=image_url
-      .title = contact['name']
-      - if contact['location']
-        .location = contact['location']
-      - if contact['text']
-        .text = contact['text']
-      a.box.button href=contact['url'] = section.action
+//
+  h2.title = section.title
+  p = section.subtitle
+  .carousel data-style='contacts'
+    - contacts.sample(3).each do |contact|
+      - image_url = is_city ? @city.image(contact['image_uuid']) : section.image(contact['image_uuid'])
+      .contact
+        img src=image_url
+        .title = contact['name']
+        - if contact['location']
+          .location = contact['location']
+        - if contact['text']
+          .text = contact['text']
+        a.box.button href=contact['url'] = section.action
+
+.contacts
+  h2.contacts-title = section.title
+  h3.contacts-subtitle = section.subtitle
+  .carousel data-style='contacts'
+    - contacts.sample(3).each do |contact|
+      - image_url = is_city ? @city.image(contact['image_uuid']) : section.image(contact['image_uuid'])
+      .contacts-item
+        img src=image_url
+        .contacts-item-title = contact['name']
+        - if contact['location']
+          .contacts-item-location = contact['location']
+        - if contact['text']
+          .contacts-item-text = contact['text']
+        a.button-box href=contact['url'] = section.action

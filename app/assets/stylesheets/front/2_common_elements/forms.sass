@@ -1,0 +1,100 @@
+@import "../../mixins/functions"
+@import "../../mixins/vars"
+
+/* FORM
+  This file defines basic styling for forms used across the site.
+  */
+
+.form
+  &-fields
+    max-width: 510px
+    margin: auto
+
+  &-message
+    &.positive
+      color: darken($color-text-blue, 20%)
+
+    &.negative
+      color: $color-text-orange
+
+input, textarea, select
+  width: 100%
+  font-size: 0.8em
+  line-height: 1.35em
+  outline: transparent
+  background-color: transparent
+  border-radius: 0
+  padding-bottom: 1.2em
+  color: $color-text-dark
+  border: none
+  border-bottom: 1px solid $color-text-normal
+  margin-bottom: 1.5em
+  -webkit-appearance: none
+
+  &:disabled
+    color: $color-text-light
+    border: none
+
+textarea
+  resize: vertical
+
+// ===== INLINE FORM ===== //
+// An inline form is a special kind of pre-styled form, which is expected to take the entire page width.
+.inline.form
+  width: 100%
+  background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.18) 25%,rgba(241,212,175,.7) 100%)
+  padding: 60px 30px
+  text-align: center
+
+  @include tablet-or-larger
+    padding: 6.5em
+
+  .button-box
+    background: transparent
+
+    &:hover:not(.disabled)
+      border-color: $color-text-normal
+
+  .form
+    &-title
+      font-size: 1.8em
+      line-height: 1.6em
+      font-family: $raleway-medium
+      margin-bottom: 0.2em
+
+      @include mobile
+        font-size: 1.5em
+        margin-bottom: 0
+
+    &-subtitle
+      font-size: 1.125em
+      line-height: 1.1em
+      font-family: $raleway
+      margin-bottom: 1.4em
+
+    &-description
+      font-size: 1.35em
+      line-height: 1.6em
+      color: $color-text-dark
+      font-family: $raleway-semi
+      margin-bottom: 0.5em
+
+      @include mobile
+        font-size: 1em
+        line-height: 1.75em
+
+    &-fields
+      margin: 4em auto
+
+  .divider.with-decoration.up
+    // TODO: This doesn't seem to be working
+    margin-bottom: 3em
+
+    @include mobile
+      margin-bottom: -10px
+
+  .divider.with-decoration.down
+    margin-top: 3em
+
+    @include mobile
+      margin-top: 1.5em

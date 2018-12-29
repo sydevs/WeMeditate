@@ -1,17 +1,21 @@
+/** SVG
+ * This file is used to render inline SVG files.
+ * This is necessary when we can't render the SVG inline on the server side because the SVG comes from remote file storage.
+ */
 
-var SVG = {
-  // These variables will be set on load
-  video_player: null,
-
-  load: function() {
+const SVG = {
+  // Called when turbolinks loads the page
+  load() {
     console.log('loading SVG.js')
+    // Find and render all instances of "inline-svg"
     $('.inline-svg').each(function() {
       let $element = $(this)
       SVG.render($element, $element.data('url'), $element.data('namespace'), $element.data('background') == true)
     })
   },
 
-  render: function($target, url, namespace, background) {
+  // Render a specific .inline-svg instance.
+  render($target, url, namespace, background) {
     $.ajax({
       url: url,
       dataType: 'text',
@@ -36,4 +40,4 @@ var SVG = {
   },
 }
 
-$(document).on('turbolinks:load', function() { SVG.load() })
+$(document).on('turbolinks:load', () => { SVG.load() })

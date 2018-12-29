@@ -1,3 +1,9 @@
+## MOOD FILTER
+# An mood refers to the feeling given by a particular music track, so that users can filter by what they want to hear.
+
+# TYPE: FILTER
+# A mood is considered to be a "Filter", which is used to categorize the Track model
+
 class MoodFilter < ApplicationRecord
 
   # Extensions

@@ -1,6 +1,10 @@
+//
+  .container = sidetext(section)
+  .section.wrapper
+    h2.title = section.title
+    = section.text&.html_safe
 
-.container = sidetext(section)
-
-.section.wrapper
-  h2.title = section.title
-  = section.text&.html_safe
+= sidetext(section, wrap: true)
+.wrapper-inner
+  h2.text-title = section.title
+  .text-content = section.text&.html_safe

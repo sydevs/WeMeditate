@@ -1,3 +1,7 @@
+## CONTACT FORM MAILER
+# This mailer will send an email to the site admin.
+# Intended to be used when someone fills out the contact form.
+
 class ContactForm < MailForm::Base
   attribute :email_address, validate: /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
   attribute :message,       validate: true

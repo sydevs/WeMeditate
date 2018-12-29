@@ -1,0 +1,12 @@
+- treatment = treatment_old
+- index = (treatment_old_counter + 2).to_s.rjust(2, '0')
+
+article id=dom_id(treatment) class="#{'reverse' if treatment_old_counter.even?}"
+  .number = index
+  .image
+    img alt=treatment.name src=treatment.thumbnail.url
+
+  .content
+    .title = treatment.name
+    p = treatment.excerpt
+    a.box.button href=treatment_path(treatment) = t('treatments.read_more')

@@ -1,0 +1,50 @@
+@import "../../mixins/functions"
+@import "../../mixins/vars"
+
++font-face("wemeditate-icons", "wemeditate-icons/wemeditate-icons")
+
+/* ICONS
+  Styles to set up SVG icons which are used across the website.
+  */
+
+i.icon
+  display: inline-block
+
+  &:before
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: $wemeditate-icons !important
+    speak: none
+    font-style: normal
+    font-weight: normal
+    font-variant: normal
+    text-transform: none
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+  &.meditation:before
+    content: $icon-meditation
+  &.location:before
+    content: $icon-location
+  &.computer:before
+    content: $icon-computer
+
+  &.facebook:before
+    content: $icon-facebook
+  &.instagram:before
+    content: $icon-instagram
+  &.vk:before
+    content: $icon-vk
+
+  &.breadcrumb:before
+    content: $icon-breadcrumb
+  &.play:before
+    content: $icon-play
+  &.filters:before
+    content: $icon-filters
+
+  &.left.arrow:before
+    content: $icon-arrow-left
+  &.right.arrow:before
+    content: $icon-arrow-right

@@ -4,7 +4,7 @@
 - classes = ["style-#{banner_style.dasherize}"]
 - classes << 'inverse' if section.extra_attr('color', 'light') == 'light'
 
-.content class=classes
+//.content class=classes
   - if banner_style == 'city_page'
     .background style="background-image: url(#{image_path @city.banner.url})"
   - else
@@ -12,7 +12,6 @@
     - desktop_image = section.image(section.extra_attr('desktop_image_uuid'))
     .mobile.background style="background-image: url(#{image_path (mobile_image || desktop_image).url})"
     .background style="background-image: url(#{image_path desktop_image.url})"
-
   .container
     - case banner_style
       - when 'front_page'
@@ -28,8 +27,7 @@
         h1 = section.title
         .content-box
           h2 = section.text
-
-          = form_tag contact_path, class: 'contact-form', remote: true do
+          = form_tag contact_path, class: 'contact-form old', remote: true do
             p.message
             .fields
               = fields_for :contact do |f|
@@ -38,7 +36,6 @@
                 = f.hidden_field :gobbledigook
             p
               button.box.button = section.action
-
     - case banner_style
       - when 'front_page'
         a.action href=section.url
@@ -53,3 +50,55 @@
         a.action href='#section-1'
           div = section.action
           img src=image_path('graphics/arrow.png')
+
+
+.banner class=classes
+  - if banner_style == 'city_page'
+    .banner-background style="background-image: url(#{image_path @city.banner.url})"
+  - else
+    - mobile_image = section.image(section.extra_attr('mobile_image_uuid'))
+    - desktop_image = section.image(section.extra_attr('desktop_image_uuid'))
+    - if mobile_image
+      .banner-background.mobile-only style="background-image: url(#{image_path mobile_image.url})"
+    .banner-background style="background-image: url(#{image_path desktop_image.url})"
+
+  .wrapper-outer
+    - case banner_style
+      - when 'front_page'
+        h1.banner-title = section.title
+        h2.banner-subtitle = section.text
+      - when 'treatments_page'
+        h2.banner-subtitle = section.text
+        h1.banner-title = section.title
+      - when 'city_page'
+        h1.banner-title = section.title.gsub('%city', @city.name)
+        h2.banner-subtitle = section.text
+      - when 'contact_page'
+        h1.banner-title = section.title
+        .text-box
+          h2.banner-subtitle = section.text
+
+          = form_tag contact_path, class: 'form', remote: true do
+            p.form-message
+            .form-fields
+              = fields_for :contact do |f|
+                = f.email_field :email_address, placeholder: 'Your email'
+                = f.text_area :message, placeholder: 'Message', rows: 4
+                = f.hidden_field :gobbledigook
+            p
+              button.button-box = section.action
+
+    - if banner_style == 'front_page'
+      a.banner-action href=section.url
+        = inline_svg 'graphics/leaf.svg'
+        div = section.action
+        = inline_svg 'graphics/leaf.svg'
+    - elsif banner_style == 'treatments_page'
+      a.button-circle href=section.url
+        = inline_svg 'graphics/circle.svg'
+        .button-circle-text = section.action
+
+  - if banner_style == 'city_page'
+    a.banner-action href='#section-1'
+      div = section.action
+      img src=image_path('graphics/arrow.png')

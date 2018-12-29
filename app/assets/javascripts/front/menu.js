@@ -1,5 +1,10 @@
+/** HEADER / MENU
+ * This file handles the behaviour of the site-wide header.
+ * Notably it controls when the header should become fixed to the top of the page (aka sticky),
+ * and when the header should inverse it's colours (if relevant)
+ */
 
-var Menu = {
+const Menu = {
   // These variables will be set on load
   is_front_page: false,
   header: null,
@@ -16,11 +21,11 @@ var Menu = {
   inversePoint: 0,
   scrollOffset: 0,
 
-  load: function() {
+  load() {
     console.log('loading Menu.js')
     Menu.header = $('header.header')
     Menu.chapters = $('.chapters')
-    Menu.chapter_items = Menu.chapters.find('.item')
+    Menu.chapter_items = Menu.chapters.find('.chapters-item')
     Menu.header.css('height', 'auto')
     Menu.header.on('click', '.header-menu-item.submenu > a', Menu._on_toggle_submenu)
     Menu.header.on('click', '.burger', Menu.toggle_menu)
@@ -43,24 +48,24 @@ var Menu = {
     }
   },
 
-  toggle_menu: function() {
+  toggle_menu() {
     let show = !Menu.header.hasClass('show-menu')
     Menu.header.toggleClass('show-menu', show)
     $('html').toggleClass('noscroll', show)
   },
 
-  _on_toggle_submenu: function(e) {
+  _on_toggle_submenu(e) {
     $(this).closest('.submenu').toggleClass('expand')
     e.preventDefault()
   },
 
-  _on_resize: function() {
-    let desktop = Menu.header.find('.header-wrap:visible').first().hasClass('.desktop')
+  _on_resize() {
+    let desktop = Menu.header.find('.header-wrap:visible').hasClass('desktop')
     Menu.stickyPoint = desktop ? Menu.header.outerHeight(true) - Menu.menubarHeight : 0
 
     let $banner = $('section.format-banner:first-child')
-    if ($banner.length > 0 && $banner.children('.content').hasClass('inverse')) {
-      if ($banner.children('.content').hasClass('style-contact-page')) {
+    if ($banner.length > 0 && $banner.children('.banner').hasClass('inverse')) {
+      if ($banner.children('.banner').hasClass('style-contact-page')) {
         Menu.inversePoint = Menu.stickyPoint
       } else {
         Menu.inversePoint = $banner.outerHeight() - Menu.menubarHeight
@@ -85,10 +90,10 @@ var Menu = {
     }
   },
 
-  _on_scroll: function() {
+  _on_scroll() {
     let scrollTop = $(window).scrollTop()
 
-    console.log('top', scrollTop, 'sticky', Menu.stickyPoint, 'menubar', Menu.menubarHeight)
+    //console.log('top', scrollTop, 'sticky', Menu.stickyPoint, 'menubar', Menu.menubarHeight)
 
     if (scrollTop > Menu.stickyPoint) {
       if (!Menu.header.hasClass('sticky')) {
@@ -105,10 +110,13 @@ var Menu = {
     }
 
     if (Menu.chaptersStickyPoint > 0) {
-      let $chaptersContainer = Menu.chapters.find('.container')
+      let $headerWrap = Menu.header.find('.header-wrap:visible').first()
+      let headerHeight = $headerWrap.children('.header-bar').outerHeight()
+
+      let $chaptersContainer = Menu.chapters.children('.chapters-wrapper')
       let chaptersHeight = $chaptersContainer.outerHeight()
 
-      //console.log(scrollTop, '>', Menu.chaptersStickyPoint, '-', headerHeight, '=', scrollTop > Menu.chaptersStickyPoint - headerHeight)
+      console.log(scrollTop, '>', Menu.chaptersStickyPoint, '-', headerHeight, '=', scrollTop > Menu.chaptersStickyPoint - headerHeight)
 
       if (scrollTop < Menu.chaptersStickyPoint - headerHeight) {
         Menu.chapters.css('height', 'auto')
@@ -125,7 +133,7 @@ var Menu = {
       let $item = $(this)
       let targetTop = Menu.chapter_offsets[index]
       let targetBottom = Menu.chapter_offsets[index+1]
-      let $progress = $item.children('.progress')
+      let $progress = $item.children('.chapters-item-progress')
 
       if (scrollTop < targetBottom) {
         let percentage = (Math.max(0, Math.min(1, (scrollTop - targetTop) / (targetBottom - targetTop)))) * 100
@@ -139,4 +147,4 @@ var Menu = {
   },
 }
 
-$(document).on('turbolinks:load', function() { Menu.load() })
+$(document).on('turbolinks:load', () => { Menu.load() })

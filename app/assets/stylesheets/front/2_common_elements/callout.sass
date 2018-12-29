@@ -1,0 +1,55 @@
+@import "../../mixins/functions"
+@import "../../mixins/vars"
+
+/* CALLOUT
+  In various parts of the website we will have a paragraph with some extra content inserted on the side.
+  This file defines styles for these "callouts", which are intended to highlight parts of the content.
+  */
+
+.callout
+  float: right
+  max-width: 360px
+  width: 100%
+  margin: 15px -120px 45px 50px
+
+  @include mobile
+    float: none
+    max-width: none
+    margin-left: 0
+
+  @include tablet-or-smaller
+    margin-right: 0
+
+  // For an image-based callout
+  &.image
+    float: left
+    margin: 40px 45px 40px -118px
+
+    @include tablet-or-smaller
+      margin-left: 0
+
+  // For a text-based callout
+  &.text
+    position: relative
+    padding: 65px 0
+
+    > p
+      margin: 0
+      font-size: 1.15em
+      line-height: 1.9em
+      font-weight: $font-semibold
+      color: $color-text-dark
+
+    &:after
+      content: ''
+      position: absolute
+      left: 17%
+      top: 0
+      bottom: 0
+      right: 0
+
+      z-index: -1
+      background: linear-gradient(to left,rgba(255,255,255,.01) 0,rgba(255,255,255,.18) 25%,rgba(197,224,220,.3) 100%)
+
+      @include mobile
+        left: 50%

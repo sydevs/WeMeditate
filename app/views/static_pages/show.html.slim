@@ -1,9 +1,10 @@
 
-section.intro class="for-#{@static_page.role.to_s.dasherize}"
-  .container
-    h1.title = @static_page.title
+.banner
+  .wrapper-outer
+    .banner-title-box
+      h1.banner-title = @static_page.title
 
 article
   = render @static_page.sections.with_translations(locale)
 
-= render 'application/footer_together'
+= render 'application/action_footer'

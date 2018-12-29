@@ -1,2 +1,0 @@
-class RequestProgramsJob < ApplicationJob
-end

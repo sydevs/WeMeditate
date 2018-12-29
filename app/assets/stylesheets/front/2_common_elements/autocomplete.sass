@@ -1,0 +1,41 @@
+@import "../../mixins/functions"
+@import "../../mixins/vars"
+
+/* AUTOCOMPLETE (and AWESOMPLETE)
+  This file defines styling for an autocomplete input.
+  That is to say, a textbox where you can type, and it suggests options for what you are looking for.
+
+  Our autocomplete implementation is built on the Awesomplete library.
+  Core styling is defined by awesomplete, and adjustments are added here.
+  */
+
+div.awesomplete
+  width: 100%
+
+  // This list is where the autocomplete results will be shown.
+  // TODO: Refactor these css selectors to be more inline with the rest of the code base.
+  > ul
+    box-shadow: none
+    border-radius: 0
+    text-align: left
+    z-index: 700
+
+    &:before
+      display: none
+
+    > li
+      background: white
+      border: none
+
+      &:hover
+        background: transparentize($background-blue, 0.5)
+
+      &[aria-selected="true"]
+        background: $background-blue
+        color: $color-text-darker
+
+      /*
+        mark
+          background: none !important
+          font-family: $raleway-semi
+        */

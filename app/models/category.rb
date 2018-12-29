@@ -1,3 +1,9 @@
+## CATEGORY
+# Articles are placed into different categories which are defined by this model.
+
+# TYPE: FILTER
+# An category is considered to be a "Filter", which is used to categorize the Article model
+
 class Category < ApplicationRecord
   extend FriendlyId
 

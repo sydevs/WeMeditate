@@ -1,6 +1,11 @@
 
-section.intro
+//section.intro
   .container
     h1.title = @static_page.title
+
+.banner.full-width
+  .wrapper-outer
+    .banner-title-box
+      h1.banner-title = @static_page.title
 
 = render @static_page.sections.with_translations(locale)

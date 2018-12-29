@@ -1,0 +1,135 @@
+@import "../../mixins/vars"
+
+/* CONTENT PREVIEW
+  This defines some common styles for small preview blocks which show an excerpt of another page.
+  The best example of this being used is in the Inspiration (aka Articles index) page.
+  Normally a preview will include a title, one paragraph, an image (aka media), and a link to the source page.
+  */
+
+.preview
+  &-header
+    font-size: 1.5em
+    font-weight: $font-normal
+    color: $color-text-dark
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    margin: 5px 0 10px
+
+    @include desktop
+      font-size: 2.1875em
+      margin-bottom: 28px
+
+    @include laptop
+      font-size: 1.625em
+      margin-bottom: 20px
+
+  &-title
+    display: block
+    font-size: 1.125em
+    line-height: 1.7em
+    font-weight: $font-semibold
+    color: $color-text-dark
+    margin: 7px 0
+
+    @include desktop
+      font-size: 1.5em
+      margin: 20px 0
+
+    &:hover
+      color: $color-text-dark
+
+  &-text
+    font-size: 0.875em
+    line-height: 1.5em
+    margin: 1em 0
+
+    @include desktop
+      font-size: 1.125em
+      line-height: 1.7em
+
+  &-meta
+    display: flex
+    justify-content: space-between
+
+    font-size: 0.9em
+    margin-top: 2.35em
+
+    &-link > i.icon
+      margin-left: 0.5em
+      font-size: 0.75em
+
+    &-stat
+      font-family: $font-number
+
+  // A small date box which can appear over top of the preview media
+  &-date
+    position: absolute
+    top: 8px
+    left: 18px
+    width: 50px
+    height: 50px
+    padding: 3px
+
+    color: white
+    background: $color-box-orange
+    text-align: center
+
+    &-day
+      display: inline
+      font-weight: $font-semibold
+      border-bottom: 1px solid white
+      padding: 2px 3px
+      padding-top: 0
+      font-size: 1.1em
+
+    &-month
+      margin-top: 5px
+      font-size: 0.9em
+      font-family: $font-number
+
+
+
+// ===== PREVIEW MEDIA BOX ===== //
+// The image requires some special styling to account for video previews
+.preview
+  &-media
+    display: block
+    position: relative
+    cursor: initial
+    margin-bottom: 13px
+
+    @include laptop
+      margin-bottom: 18px
+
+    @include desktop
+      margin-bottom: 25px
+
+    > img
+      width: 100%
+
+    &[href]:not([href=""]):hover
+      opacity: 0.7
+      cursor: pointer
+
+    &.force-ratio
+      display: block
+      padding-top: 57%
+      position: relative
+      overflow: hidden
+      background-size: cover
+
+    .video-button
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translateX(-50%) translateY(-50%)
+
+      width: 100px
+      height: 100px
+      padding: 16px
+
+      @include desktop
+        width: 148px
+        height: 148px
+        padding: 32px

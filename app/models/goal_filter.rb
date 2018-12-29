@@ -1,3 +1,9 @@
+## GOAL FILTER
+# An goal is what a specific guided Meditation tries to achieve. Eg. "Peace", "Forgiveness", etc
+
+# TYPE: FILTER
+# A goal is considered to be a "Filter", which is used to categorize the Meditation model
+
 class GoalFilter < ApplicationRecord
 
   # Extentions

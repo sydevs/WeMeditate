@@ -1,7 +1,13 @@
+## REQUIRE APPROVAL CONCERN
+# This concern should be added to models that require an admin to approve any update,
+# before it is reflected in the public-facing website.
+# TODO: This feature is not fully implemented and should not yet be used.
 
 module RequireApproval
 
   def self.included base
+    # This code is commented out to temporarily disable the effects of this concern,
+    # until issues with the integration of drafts can be resolved.
     #base.paper_trail_options[:on] << :update
     #base.after_update :cycle_versions, if: Proc.new{ |r| !r.skip_version_cycle? }
   end

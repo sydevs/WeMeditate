@@ -1,15 +1,29 @@
 
-section.decorated.intro
+//section.decorated.intro
   .container
     .title
       = inline_svg 'graphics/leaf.svg'
       div = @meditation.name
       = inline_svg 'graphics/leaf.svg'
 
-section.content-type-video.format-single
+//section.content-type-video.format-single
   .video.wrapper
     video#meditation-player poster=@meditation.image.url
       source src=@meditation.video.url type='video/mp4'
 
-section.content-type-text.format-just-text
+//section.content-type-text.format-just-text
   .section.wrapper = @meditation&.excerpt
+
+.banner.full-width
+  .wrapper-outer
+    .banner-title-box
+      = inline_svg 'graphics/leaf.svg'
+      h1.banner-title = @meditation.name
+      = inline_svg 'graphics/leaf.svg'
+
+article.wrapper-outer id=dom_id(@meditation)
+  .video-wrapper
+    video.inline-player poster=@meditation.image.url
+      source src=@meditation.video.url type='video/mp4'
+
+  .wrapper-inner = @meditation&.excerpt

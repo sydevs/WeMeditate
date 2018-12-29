@@ -1,3 +1,11 @@
+## INSTRUMENT FILTER
+# An instrument filter signals what sounds are being used in a music Track,
+# so that users can filter Tracks for just the kind of music they want to listen to.
+# Eg. Sitar, Piano, Voice, Drums, etc
+
+# TYPE: FILTER
+# A goal is considered to be a "Filter", which is used to categorize the Track model
+
 class InstrumentFilter < ApplicationRecord
 
   # Extentions

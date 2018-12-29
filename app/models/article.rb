@@ -1,3 +1,12 @@
+## ARTICLE
+# An article is a dynamic page of content which form the "blog" feature of this website.
+# Articles might be announcements, lifestyle posts, upcoming events, inspiring imagery or any other topic.
+# Contrast this with StaticPage, SubtleSystemNode, or City which all have more specfic defined purposes.
+
+## TYPE: PAGE
+# An article is considered to be a "Page"
+# This means it's content is defined by a collection of sections
+
 class Article < ApplicationRecord
   extend FriendlyId
   extend CarrierwaveGlobalize
@@ -30,18 +39,23 @@ class Article < ApplicationRecord
   # Callbacks
   after_create :disable_drafts
 
+
+  # Shorthand for the article banner image file
   def banner
     attachments.find_by(uuid: banner_uuid)&.file
   end
 
+  # Shorthand for the article thumbnail image file
   def thumbnail
     attachments.find_by(uuid: thumbnail_uuid)&.file
   end
 
+  # Shorthand for the article video file
   def video
     attachments.find_by(uuid: video_uuid)&.file
   end
 
+  # Returns a list of HTML metatags to be included on this article's page
   def get_metatags
     (metatags || {}).reverse_merge({
       'title' => title,
@@ -50,6 +64,7 @@ class Article < ApplicationRecord
   end
 
   private
+    # TODO: This is a temporary measure to disable the draft system until issues with draft integration can be resolved.
     def disable_drafts
       update_column :published_at, DateTime.now
     end

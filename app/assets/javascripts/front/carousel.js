@@ -1,5 +1,15 @@
 
-var Carousel = {
+/** CAROUSEL
+ * A carousel is a kind of slideshow that displays one or more elements at a time,
+ * and then lets you swipe (or press an arrow button to see the rest).
+ * The website also sometimes uses this to collapse columns of content for mobile views.
+ *
+ * Our implementation is created using the Slick library.
+ * So this file mainly just defines configuration objects, and then passes them to Slick.
+ */
+
+const Carousel = {
+  // Various carousels have different configurations, this is the default.
   default_options: {
     centerPadding: '6%',
     slidesToShow: 3,
@@ -22,6 +32,7 @@ var Carousel = {
     ]
   },
 
+  // Configuration for a video-only carousel
   video_options: {
     centerPadding: '7%',
     centerMode: true,
@@ -46,11 +57,13 @@ var Carousel = {
     ]
   },
 
+  // Configuration for the "program venues" carousel.
   venues_options: {
     centerPadding: '60px',
     slidesToShow: 1,
   },
 
+  // Configuration for the "featured meditations" carousel.
   meditations_options: {
     dots: true,
     slidesToShow: 3,
@@ -65,42 +78,29 @@ var Carousel = {
     ]
   },
 
-  contacts_options: {},
-
-  contacts_options: {},
-
-  load: function() {
+  // Called when turbolinks loads the page
+  load() {
     console.log('loading Carousel.js')
-    Carousel.columns_options = Carousel.default_options
-    Carousel.contacts_options = Carousel.default_options
 
     $('.carousel').each(function() {
       $carousel = $(this)
-      style = $carousel.data('style')
 
-      console.log('Init carousel', $carousel)
-
-      if (style == 'video') {
-        $carousel.slick(Carousel.video_options)
-      } else if (style == 'venues') {
-        $carousel.slick(Carousel.venues_options)
-      } else if (style == 'meditations') {
-        $carousel.slick(Carousel.meditations_options)
-      } else if (style == 'columns') {
-        $carousel.slick(Carousel.columns_options)
-      } else if (style == 'contacts') {
-        $carousel.slick(Carousel.contacts_options)
-      } else {
-        $carousel.slick(Carousel.default_options)
+      switch ($carousel.data('style')) {
+        case 'video':
+          $carousel.slick(Carousel.video_options)
+          break
+        case 'venues':
+          $carousel.slick(Carousel.venues_options)
+          break
+        case 'meditations':
+          $carousel.slick(Carousel.meditations_options)
+          break
+        default:
+          $carousel.slick(Carousel.default_options)
+          break
       }
     })
-
-    if (jQuery( this ).closest('.menu-item').hasClass('menu-item-type-custom')) {
-      console.log('yes', jQuery( this ))
-    } else {
-      console.log('no', jQuery( this ))
-    }
   },
 }
 
-$(document).on('turbolinks:load', function() { Carousel.load() })
+$(document).on('turbolinks:load', () => { Carousel.load() })

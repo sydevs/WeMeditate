@@ -1,0 +1,49 @@
+@import "../../mixins/functions"
+@import "../../mixins/vars"
+
++font-face("raleway", "RalewayRegular/RalewayRegular")
++font-face("raleway", "RalewayExtraLight/RalewayExtraLight", 200)
++font-face("raleway", "RalewayLight/RalewayLight", 300)
+
++font-face("raleway-bold", "RalewayBold/RalewayBold")
++font-face("raleway-medium", "RalewayMedium/RalewayMedium")
++font-face("raleway-semi", "RalewaySemiBold/RalewaySemiBold")
++font-face("futura-book", "FuturaBook/FuturaBook")
+
+*
+  box-sizing: border-box
+  -webkit-text-size-adjust: none
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+
+body
+  font-family: $raleway
+  color: $color-text-normal
+
+strong, b
+  font-family: $raleway-bold
+
+a
+  outline: none
+  text-decoration: none
+  color: $color-text-light
+  transition: all 0.3s ease
+
+  &:hover
+    color: $color-text-blue
+
+button
+  cursor: pointer
+
+h1,h2,h3,h4,h5,h6,.title
+  color: $color-text-dark
+  font-family: $raleway-semi
+
+h1
+  font-family: $raleway-bold
+
+.title
+  font-size: 1.5em
+  line-height: 1.3em
+
+.date
+  font-family: $futura-book

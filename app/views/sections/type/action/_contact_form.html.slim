@@ -1,10 +1,9 @@
-.wrapper.centered
+//.wrapper.centered
   .simple.illustration.pre.divider
   h2.title = section.title
   .sub.title = section.subtitle
   .description = section.text
-
-  = form_remote_tag contact_path, class: 'contact-form' do
+  = form_tag contact_path, class: 'contact-form old', remote: true do
     p.message
     .fields
       = fields_for :contact do |f|
@@ -13,5 +12,24 @@
         = f.hidden_field :gobbledigook
     p
       button.box.button = section.action
-
   .simple.illustration.post.divider
+
+
+= form_tag contact_path, class: 'inline contact form', remote: true do
+  .wrapper-inner
+    .divider.with-decoration.simple.up
+
+    h2.form-title = section.title
+    .form-subtitle = section.subtitle
+    .form-description = section.text
+    .form-fields
+      p.form-message
+      = fields_for :contact do |f|
+        = f.email_field :email_address, placeholder: 'Your email'
+        = f.text_area :message, placeholder: 'Message', rows: 5
+        = f.hidden_field :gobbledigook
+
+    p
+      button.button-box = section.action
+
+    .divider.with-decoration.simple.down

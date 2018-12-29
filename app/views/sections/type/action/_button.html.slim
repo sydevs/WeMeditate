@@ -1,5 +1,5 @@
 
-.section.wrapper.centered
+//.section.wrapper.centered
   - if section.has_decoration? :circle
     a.circle.button href=section.url
       = inline_svg 'graphics/circle.svg'
@@ -11,3 +11,16 @@
       = section.action
     - if section.has_decoration? :leaf
       .simple.illustration.post.divider
+
+.wrapper-inner
+  - if section.has_decoration? :circle
+    a.button-circle href=section.url
+      = inline_svg 'graphics/circle.svg'
+      .button-circle-text = section.action
+  - else
+    - if section.has_decoration? :leaf
+      .divider.with-decoration.simple.up
+    a.button-box href=section.url class="#{'scroll' if section.url[0,1] == '#'}"
+      = section.action
+    - if section.has_decoration? :leaf
+      .divider.with-decoration.simple.down

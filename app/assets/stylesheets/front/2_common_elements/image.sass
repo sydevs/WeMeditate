@@ -1,0 +1,36 @@
+@import "../../mixins/functions"
+@import "../../mixins/generics"
+@import "../../mixins/vars"
+
+/* IMAGE
+  Most images are styled by their containing element, depending on where they are in the site.
+  But there are a few simple site-wide styles for image related content.
+  */
+
+.image
+  &.with-decoration.circle:before
+    position: absolute
+    left: 64.5%
+    bottom: 8.5%
+    z-index: 10
+
+    width: 560px
+    height: 560px
+    margin-left: -280px
+    margin-bottom: -280px
+
+  &-credit
+    @extend .generic-credit
+
+  > img
+    //height: 100vh // TODO: Remove this
+    max-height: 560px
+    width: auto
+
+    @include laptop-or-larger
+      max-height: 800px
+
+    @include mobile
+      position: relative
+      max-width: 100%
+      max-height: 320px

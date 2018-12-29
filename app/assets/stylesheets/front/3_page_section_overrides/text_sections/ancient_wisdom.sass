@@ -1,0 +1,35 @@
+@import "../../../mixins/vars"
+
+section.type-text.format-ancient-wisdom
+  .background-wrapper
+    padding: 20% 0 10%
+
+  .ancient-wisdom-wrapper
+    max-width: 944px
+
+    @include tablet-or-larger
+      display: flex
+      align-items: flex-start
+
+    > img
+      @include laptop-or-larger
+        width: 33.25vw
+        margin-right: 11.75vw
+
+      @include tablet
+        width: 37vw
+        margin-right: 4vw
+
+    .text-content
+      color: $color-text-inverse
+      font-size: 0.85em
+      margin-top: 1em
+      letter-spacing: 0.45px
+      line-height: 1.6em
+
+      // Emulate a header.
+      strong:first-child:last-child
+        display: block
+        font-size: 1.25em
+        margin-top: 1.25em
+        margin-bottom: 0

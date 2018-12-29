@@ -1,6 +1,12 @@
 
-.section.wrapper
+//.section.wrapper
   figure
     a.popout.mfp-image href=section.image.url
       img alt=section.image.identifier src=section.image.url
     figcaption.credit #{t 'sections.credit'} • #{section.credit}
+
+.wrapper-inner
+  figure.image
+    a.popout.mfp-image href=section.image.url
+      img alt=section.image.identifier src=section.image.url
+    figcaption.image-credit #{t 'sections.credit'} • #{section.credit}

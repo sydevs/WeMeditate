@@ -1,0 +1,59 @@
+@import "../../../mixins/vars"
+
+section.type-special.format-venue-map
+  .map
+    height: 90vh
+    max-height: 880px
+    margin-left: 38.5%
+    z-index: -1
+
+  .text-box
+    padding: 125px 95px
+    max-width: 525px
+    max-height: 96%
+
+  .text-title
+    margin: 0
+    margin-bottom: 76px
+    font-size: 1.4em
+    letter-spacing: 1.8px
+
+  .slick-arrow
+    position: absolute
+
+    &.slick-prev
+      left: -40px
+
+    &.slick-next
+      right: -40px
+
+  .venue
+    position: relative
+    padding-left: 30px
+
+    font-weight: $font-light
+    font-size: 0.85em
+    line-height: 2em
+    letter-spacing: 0.5px
+    text-align: left
+
+    // Add space for icons
+    > *:before
+      content: ''
+      width: 20px
+      height: 25px
+      display: block
+      position: absolute
+      left: 0
+
+    &-address-wrapper
+      margin-bottom: 1em
+
+      // Set the marker icon
+      &:before
+        background: image-url('sections/map/marker.svg')
+
+    &-time
+      // Set the time icon
+      &:before
+        background: image-url('sections/map/marker.svg')
