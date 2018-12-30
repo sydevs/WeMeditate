@@ -18,19 +18,19 @@ module StaticPageHelper
 
   def static_page_path_for static_page
     case static_page.role
-    when :home
+    when 'home'
       root_path
-    when :subtle_system
+    when 'subtle_system'
       subtle_system_nodes_path
-    when :articles
+    when 'articles'
       articles_path
-    when :treatments
+    when 'treatments'
       treatments_path
-    when :tracks
+    when 'tracks'
       tracks_path
-    when :meditations
+    when 'meditations'
       meditations_path
-    when :world, :country, :city
+    when 'world', 'country', 'city'
       # There is no single address for city and country pages, so just default to the world index
       cities_path
     else
