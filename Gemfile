@@ -71,6 +71,7 @@ gem 'sprig' # Used to populate the database with the pages and data used in the 
 gem 'gibbon' # For MailChimp Integration
 gem 'mail_form' # For the contact form
 gem 'sidekiq' # To power active jobs
+gem 'sitemap_generator' # For SEO purposes
 
 # Maybe needed later(?)
 # gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
