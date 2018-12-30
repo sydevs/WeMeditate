@@ -5,6 +5,16 @@ en:
     learn_more: Learn More
     classes_near_me: Classes<br>Near Me
     inspiration_from_within: Inspiration<br>comes from within
+  footer:
+    scroll_to_top: Back to Top
+    meditate_now: Meditate Now
+    music_for_meditation: Music for meditation
+    learn_more: Learn more
+    come_meditate: Come meditate
+    classes_near_me: Classes near me
+    online_meditations: Guided Meditations Online
+    follow_us: Follow us
+    design_by: Design by %{company}
   action_footer:
     title: Together - better!
     subtitle: Come to class in your city or join free webinars.

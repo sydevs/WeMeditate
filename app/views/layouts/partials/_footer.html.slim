@@ -5,37 +5,46 @@
 - sahaja_yoga_page = static_page_preview_for(:sahaja_yoga)
 - treatments_page = static_page_preview_for(:treatments)
 - contact_page = static_page_preview_for(:contact)
+- articles_page = static_page_preview_for(:articles)
 
 footer.container.footer
   .footer-divider
     img src=image_path('footer/illustration.svg')
+  a.footer-scroll href='#top' = translate 'footer.scroll_to_top'
   .footer-columns
-    .footer-column
+    .footer-column.desktop-only
       nav.footer-navigation
-        a.footer-header href=meditations_path Meditate Now
-        a.footer-header href=tracks_path Music for meditation
-        a.footer-header href=articles_path Inspiration
-    .footer-column
+        a.footer-header href=meditations_path = translate 'footer.meditate_now'
+        a.footer-header href=tracks_path = translate 'footer.music_for_meditation'
+        a.footer-header href=articles_path = articles_page.title
+    .footer-column.desktop-only
       nav.footer-navigation
-        .footer-header Learn more
+        .footer-header = translate 'footer.learn_more'
         a href=subtle_system_nodes_path = subtle_system_page.title
         a href=url_for(shri_mataji_page) = shri_mataji_page.title
         a href=url_for(sahaja_yoga_page) = sahaja_yoga_page.title
         a href=url_for(sahaja_yoga_page) = sahaja_yoga_page.title
-    .footer-column
+    .footer-column.desktop-only
       nav.footer-navigation
-        .footer-header Come meditate
-        a href=local_cities_path Classes near me
-        a href=meditations_path Guided Meditations Online
+        .footer-header = translate 'footer.come_meditate'
+        a href=local_cities_path = translate 'footer.classes_near_me'
+        a href=meditations_path = translate 'footer.online_meditations'
         a href='#' Privacy policy
         a href=url_for(contact_page) = contact_page.title
+    .footer-column.mobile-only
+      nav.footer-navigation
+        a.footer-header href=local_cities_path = translate 'footer.classes_near_me'
+        a.footer-header href='#' Privacy policy
+        a.footer-header href=url_for(contact_page) = contact_page.title
     .footer-column
       .footer-social
-        .footer-header Follow us
-        a href="#"
-          i.facebook.icon
-        a href="#"
-          i.vk.icon
+        .footer-header.desktop-only = translate 'footer.follow_us'
+        - if locale == :ru
+          a href="#"
+            i.vk.icon
+        - else
+          a href="#"
+            i.facebook.icon
         a href="https://instagram.com/we-meditate"
           i.instagram.icon
-  .footer-copyright &copy; WeMeditate, 2019 | Design by Daviann
+  .footer-copyright &copy; WeMeditate, 2019 | #{t 'footer.design_by', company: 'Daviann'}

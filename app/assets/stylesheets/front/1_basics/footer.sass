@@ -56,6 +56,27 @@
       &:not(:last-child)
         text-align: left
 
+  &-scroll
+    display: block
+    text-align: center
+    margin: 40px 0
+
+    @include laptop-or-larger
+      display: none
+
+    &:before
+      content: ''
+      display: block
+
+      width: 14px
+      height: 14px
+      margin: auto
+      margin-bottom: 10px
+
+      border-left: 1px solid $color-text-normal
+      border-bottom: 1px solid $color-text-normal
+      transform: rotate(135deg)
+
   &-navigation
     > a
       display: block
@@ -66,8 +87,10 @@
 
   &-social > a
     font-size: 1.5em
-    margin-right: 1.1em
     color: $color-text-normal
+
+    &:not(:last-child)
+      margin-right: 1.1em
 
   &-divider
     display: flex

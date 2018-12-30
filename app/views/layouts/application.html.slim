@@ -27,7 +27,7 @@ html lang=locale
 - classes = [controller_name, "#{controller_name}-#{action_name}"]
 - classes << "static-page static-page-#{@static_page.role.to_s.dasherize}" if @static_page.present?
 
-body class=classes
+body id='top' class=classes
   //.preloader
     image width="200" height="100" src=image_path('svg/preloader.svg') alt="preloader"
 
