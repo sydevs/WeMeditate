@@ -54,7 +54,7 @@ module NavigationHelper
     end
 
     yield ({
-      title: I18n.translate('header.classes_near_me'),
+      title: I18n.translate('header.classes_near_me').gsub('<br>', ' '),
       url: local_cities_path,
       active: controller_name == 'cities',
     })
