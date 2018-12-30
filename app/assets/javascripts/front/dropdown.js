@@ -7,21 +7,33 @@ const Dropdown = {
   // Called when turbolinks loads the page
   load() {
     console.log('loading Dropdown.js')
-    $root = $('body')
+    $root = $(document)
     $root.on('click', '.dropdown-selection', Dropdown._on_click_dropdown)
-    $root.on('click', '.dropdown-popup-close', Dropdown._on_toggle_dropdown)
+    $root.on('click', '.dropdown-popup-close', Dropdown._on_click_dropdown)
     $root.on('click', '.dropdown-popup li', Dropdown._on_select_item)
+    $root.click(Dropdown._on_click_anywhere)
   },
 
   // Triggered when the dropdown selection is clicked on.
-  _on_click_dropdown(e) {
-    $dropdown = $(e.currentTarget).closest('.dropdown')
+  _on_click_dropdown(event) {
+    console.log('click dropdown')
+    $dropdown = $(event.currentTarget).closest('.dropdown')
     Dropdown.toggle_popup($dropdown)
   },
 
+  _on_click_anywhere(event) {
+    console.log('click anywhere', event)
+    if ($(event.target).closest('.dropdown').length == 0) {
+      $('.dropdown.expand').each(function() {
+        Dropdown.toggle_popup($(this), false)
+      })
+    }
+  },
+
   // Triggered when a dropdown item is selected
-  _on_select_item(e) {
-    let $target = $(e.currentTarget)
+  _on_select_item(event) {
+    console.log('select item')
+    let $target = $(event.currentTarget)
     let $dropdown = $target.closest('.dropdown')
     let $selection = $dropdown.children('.dropdown-selection')
     $target.siblings('.active').removeClass('active')
@@ -40,10 +52,15 @@ const Dropdown = {
   },
 
   // Open the dropdown popup if it is closed, and vice versa.
-  toggle_popup($dropdown) {
-    $dropdown.toggleClass('expand')
-    $('body').toggleClass('noscroll')
+  toggle_popup($dropdown, state) {
+    console.log('toggle popup')
+    if (typeof state === 'undefined') {
+      state = !$dropdown.hasClass('expand')
+    }
+
+    $dropdown.toggleClass('expand', state)
+    $('body').toggleClass('noscroll', state)
   },
 }
 
-$(document).on('turbolinks:load', () => { Dropdown.load })
+$(document).on('turbolinks:load', () => { Dropdown.load() })

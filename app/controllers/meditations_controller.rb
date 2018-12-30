@@ -3,7 +3,7 @@ class MeditationsController < ApplicationController
   def index
     @meditations = Meditation.includes_preview.all
     @goal_filters = GoalFilter.includes(:translations).all
-    @duration_filters = DurationFilter.includes(:translations).all
+    @duration_filters = DurationFilter.all
     @static_page = StaticPage.includes_content.find_by(role: :meditations)
     @metatags = @static_page.get_metatags
 
