@@ -11,7 +11,6 @@ const Dropdown = {
     $root.on('click', '.dropdown-selection', Dropdown._on_click_dropdown)
     $root.on('click', '.dropdown-popup-close', Dropdown._on_click_dropdown)
     $root.on('click', '.dropdown-popup li', Dropdown._on_select_item)
-    $root.click(Dropdown._on_click_anywhere)
   },
 
   // Triggered when the dropdown selection is clicked on.
@@ -56,6 +55,12 @@ const Dropdown = {
     console.log('toggle popup')
     if (typeof state === 'undefined') {
       state = !$dropdown.hasClass('expand')
+    }
+
+    if (state) {
+      $(document).on('click', Dropdown._on_click_anywhere)
+    } else {
+      $(document).off('click', Dropdown._on_click_anywhere)
     }
 
     $dropdown.toggleClass('expand', state)
