@@ -58,10 +58,10 @@ Rails.application.routes.draw do
       end
 
       resources :categories, only: [:show] # TODO: Remove this
-      resources :treatments, only: [:index, :show]
+      resources :treatments, only: [:index, :show], path: 'techniques'
       resources :tracks, only: [:index], path: 'music'
       resources :static_pages, only: [:show], path: 'page'
-      resources :subtle_system_nodes, only: [:index, :show], path: 'subtle-system'
+      resources :subtle_system_nodes, only: [:index, :show], path: 'subtle_system'
     end
   end
 

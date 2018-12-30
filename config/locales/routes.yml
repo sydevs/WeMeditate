@@ -2,8 +2,11 @@
 en:
   routes:
     admin: admin
-    articles: articles
+    inspiration: inspiration
+    countries: countries
     cities: cities
-    categories: categories
     meditations: meditations
-    treatments: treatments
+    techniques: techniques
+    subtle_system: subtle-system
+    page: page
+    music: music
