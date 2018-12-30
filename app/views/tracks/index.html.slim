@@ -1,40 +1,17 @@
 
-//section.intro
-  .container
-    h1.title = @static_page.title
-
 .banner
   .wrapper-outer
     .banner-title-box
       h1.banner-title = @static_page.title
 
-//#tracks-triangle.container.with.right.triangle.decoration
 #tracks-triangle.wrapper-outer.with-decoration.right.triangle
-
-//.container
-  h2 = t('tracks.subtitle')
-  p = t('tracks.text')
-  h3 = t('tracks.choose_mood')
-  nav.mood.filters data-group='moods'
-    - @mood_filters.each do |mood_filter|
-      a.filter.box.button data-filter=".#{dom_id(mood_filter)}"
-        span.filter-icon
-          img src=mood_filter.icon_url
-        span.filter-name = mood_filter.name
-  h3 = t('tracks.choose_instruments')
-  nav.instrument.filters data-group='instruments' data-multiple=true
-    - @instrument_filters.each_with_index do |instrument_filter, index|
-      a.filter data-filter=".#{dom_id(instrument_filter)}"
-        span.filter-icon
-          .inline-svg data-url="#{instrument_filter.icon_url}" data-namespace="#{instrument_filter.name.parameterize.downcase}"
-        span.filter-name = instrument_filter.name
 
 .track-filters.wrapper-outer
   h2 = t('tracks.subtitle')
   p = t('tracks.text')
 
-  h3 = t('tracks.choose_mood')
-  nav.filter-group.outline data-group='moods'
+  //h3 = t('tracks.choose_mood')
+  //nav.filter-group.outline data-group='moods'
     - @mood_filters.each do |mood_filter|
       a.filter-button data-filter=".#{dom_id(mood_filter)}"
         span.filter-button-icon
@@ -42,31 +19,13 @@
         span.filter-button-name = mood_filter.name
 
   h3 = t('tracks.choose_instruments')
-  nav.filter-group data-group='instruments' data-multiple=true
+  //nav.filter-group data-group='instruments' data-multiple=true
+  nav.filter-group data-group='instruments'
     - @instrument_filters.each_with_index do |instrument_filter, index|
       a.filter-item data-filter=".#{dom_id(instrument_filter)}"
         span.filter-item-icon
           .inline-svg data-url="#{instrument_filter.icon_url}" data-namespace="#{instrument_filter.name.parameterize.downcase}"
         span.filter-item-name = instrument_filter.name
-
-//.player.old
-  .container
-    - track = @tracks.first
-    .info
-      #track-player-title = track.name
-      a#track-player-artist href=track.artist.url target='_blank' = track.artist.name
-    audio#player controls=true
-      data-controls="#{render('shared/audio_controls').html_safe}"
-      source src=track.audio_url type='audio/mp3'
-    .playlist
-      .title
-        = t('tracks.playlist')
-        span#selected-filter-icons
-      #track-mood-title.top-left.sidetext
-      img.cover#track-cover src=image_path('sections/music/album.jpg')
-      .list
-        .grid-sizer
-        = render partial: 'track_old', collection: @tracks
 
 .player
   .wrapper-outer
@@ -90,3 +49,47 @@
         = render @tracks, cached: true
 
 = render @static_page.sections.with_translations(locale)
+
+
+//section.intro
+  .container
+    h1.title = @static_page.title
+
+//#tracks-triangle.container.with.right.triangle.decoration
+
+//.container
+  h2 = t('tracks.subtitle')
+  p = t('tracks.text')
+  h3 = t('tracks.choose_mood')
+  nav.mood.filters data-group='moods'
+    - @mood_filters.each do |mood_filter|
+      a.filter.box.button data-filter=".#{dom_id(mood_filter)}"
+        span.filter-icon
+          img src=mood_filter.icon_url
+        span.filter-name = mood_filter.name
+  h3 = t('tracks.choose_instruments')
+  nav.instrument.filters data-group='instruments' data-multiple=true
+    - @instrument_filters.each_with_index do |instrument_filter, index|
+      a.filter data-filter=".#{dom_id(instrument_filter)}"
+        span.filter-icon
+          .inline-svg data-url="#{instrument_filter.icon_url}" data-namespace="#{instrument_filter.name.parameterize.downcase}"
+        span.filter-name = instrument_filter.name
+
+//.player.old
+  .container
+    - track = @tracks.first
+    .info
+      #track-player-title = track.name
+      a#track-player-artist href=track.artist.url target='_blank' = track.artist.name
+    audio#player controls=true
+      data-controls="#{render('shared/audio_controls').html_safe}"
+      source src=track.audio_url type='audio/mp3'
+    .playlist
+      .title
+        = t('tracks.playlist')
+        span#selected-filter-icons
+      #track-mood-title.top-left.sidetext
+      img.cover#track-cover src=image_path('sections/music/album.jpg')
+      .list
+        .grid-sizer
+        = render partial: 'track_old', collection: @tracks

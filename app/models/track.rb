@@ -28,6 +28,6 @@ class Track < ApplicationRecord
 
   # Include everything necessary to render the full content of this model
   def self.includes_content
-    includes(:translations, artists: :translations, mood_filters: :translations, instrument_filters: :translations)
+    includes(:translations, :artist, mood_filters: :translations, instrument_filters: :translations)
   end
 end

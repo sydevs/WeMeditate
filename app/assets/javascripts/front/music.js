@@ -79,7 +79,19 @@ const Music = {
       Music.filter_icons.children('.'+klass).remove()
     } else {
       let icon = $(element.children('.filter-item-icon').html()).addClass(klass)
-      Music.filter_icons.append(icon)
+      //Music.filter_icons.append(icon)
+      Music.filter_icons.html(icon)
+
+      if (Music.player.playing) {
+        $first_track = Music.list.children('.playlist-item:visible').first()
+        Music._on_select_track.call($first_track)
+      }
+
+      let offset = Music.player_title.offset().top - 60
+      Menu.scroll.animateScroll(offset, 4000, {
+        speed: 4000,
+        updateURL: false,
+      })
     }
   },
 
@@ -127,11 +139,11 @@ const Music = {
   // Triggered when the "next" button is pressed.
   _on_select_next() {
     // Find the next track
-    $next_track = Music.list.children('.active.playlist-item').nextAll('.playlist-item').first()
+    $next_track = Music.list.children('.active.playlist-item').nextAll('.playlist-item:visible').first()
 
     if ($next_track.length == 0) {
       // If there is no next track, then cycle to the beginning of the playlist.
-      $next_track = Music.list.children('.playlist-item').first()
+      $next_track = Music.list.children('.playlist-item:visible').first()
     }
 
     next_track_selector = $next_track.children('.playlist-label')[0]
@@ -143,11 +155,11 @@ const Music = {
   // Triggered when the "next" button is pressed.
   _on_select_prev() {
     // Find the previous track
-    $prev_track = Music.list.children('.active.playlist-item').prevAll('.playlist-item').first()
+    $prev_track = Music.list.children('.active.playlist-item').prevAll('.playlist-item:visible').first()
 
     if ($prev_track.length == 0) {
       // If there is not previous track, then cycle to the end of the playlist.
-      $prev_track = Music.list.children('.playlist-item').last()
+      $prev_track = Music.list.children('.playlist-item:visible').last()
     }
 
     prev_track_selector = $prev_track.children('.playlist-label')[0]

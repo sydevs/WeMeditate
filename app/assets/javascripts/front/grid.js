@@ -65,7 +65,8 @@ const Grid = {
       $(this).siblings('.active').removeClass('active')
     }
 
-    // Set the the new filter to active or note.
+    // Set the the new filter to active or not.
+    console.log('toggle active', active, this)
     $(this).toggleClass('active', active)
     e.preventDefault()
   },
