@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
 
   # A POST endpoint to submit a contact message to the site admins
   def contact
-    puts params.inspect
     contact_params = params.fetch(:contact, {}).permit(:email_address, :message, :gobbledigook)
 
     if not contact_params[:email_address].present?

@@ -1,4 +1,4 @@
-var contact_message_elements = $('.contact.form .form-message')
+var contact_message_elements = $('.form.for-contact .form-message')
 
 <% if @success %>
   contact_message_elements.removeClass('negative').addClass('positive')
@@ -7,5 +7,5 @@ var contact_message_elements = $('.contact.form .form-message')
 <% end %>
 
 contact_message_elements.text('<%= @message %>').show()
-Forms.set_form_loading($('.contact.form'), false)
+Forms.set_form_loading($('.form.for-contact'), false)
 console.log('Contact returned', '<%= @success %>', '<%= @message %>', contact_message_elements)

@@ -21,7 +21,7 @@ const Forms = {
     $form.find('button').toggleClass('disabled', enabled)
 
     if (enabled) {
-      $form.children('.message').removeClass('negative').addClass('positive').text('Loading...').show()
+      $form.children('.form-message').removeClass('negative').addClass('positive').text('Loading...').show()
     }
   }
 }

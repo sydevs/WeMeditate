@@ -78,7 +78,7 @@
         .text-box
           h2.banner-subtitle = section.text
 
-          = form_tag contact_path, class: 'form', remote: true do
+          = form_tag contact_path, class: 'form for-contact', remote: true do
             p.form-message
             .form-fields
               = fields_for :contact do |f|
