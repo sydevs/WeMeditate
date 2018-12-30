@@ -67,6 +67,14 @@
     .filter-item-icon > svg
       fill: $color-text-blue
 
+  &:not(.active):hover
+    @media (hover: none)
+      opacity: 1
+      color: inherit
+
+      .filter-item-icon > svg
+        fill: inherit
+
 
 // ===== FILTER BUTTON ===== //
 // This is an alternative to a filter item, which is styled more like a button
