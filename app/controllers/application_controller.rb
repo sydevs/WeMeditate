@@ -15,16 +15,16 @@ class ApplicationController < ActionController::Base
     contact_params = params.fetch(:contact, {}).permit(:email_address, :message, :gobbledigook)
 
     if not contact_params[:email_address].present?
-      @message = 'You must provide an email address.'
+      @message = I18n.translate('form.missing.email')
       @success = false
     elsif not contact_params[:message].present?
-      @message = 'You forgot to fill out a message.'
+      @message = I18n.translate('form.missing.message')
       @success = false
     else
       contact = ContactForm.new(params[:contact])
 
       if contact.deliver
-        @message = 'Your message has been received.'
+        @message = I18n.translate('form.success.contact')
         @success = true
       else
         @message = contact.errors.full_messages.join(', ')
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   # A POST endpoint to subscribe to the site's mailing list.
   def subscribe
     if not params[:email_address].present?
-      @message = 'You must provide an email address.'
+      @message = I18n.translate('form.missing.email')
       @success = false
     else
       email = params[:email_address].gsub(/\s/, '').downcase
@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
           ip_signup: request.remote_ip,
         })
 
-        @message = 'You have been subscribed.'
+        @message = I18n.translate('form.success.subscribe')
         @success = true
       rescue Gibbon::MailChimpError => error
         @message = "#{error.detail}"

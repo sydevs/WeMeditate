@@ -23,9 +23,10 @@ p
     thead
       tr
         th colspan='4'
-          = localize draft.created_at, format: :long
           - if draft.whodunnit
-            '  by #{User.find(draft.whodunnit).email}
+            = translate 'preview.header', user: User.find(draft.whodunnit).email, time: localize(draft.created_at, format: :long)
+          - else
+            = localize(draft.created_at, format: :long)
     tbody
       - draft.changeset.each do |key, change|
         tr

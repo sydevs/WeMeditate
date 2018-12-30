@@ -7,7 +7,7 @@ class TracksController < ApplicationController
     @static_page = StaticPage.includes_content.find_by(role: :tracks)
     @metatags = @static_page.get_metatags
     @breadcrumbs = [
-      { name: 'Home', url: root_path },
+      { name: StaticPageHelper.preview_for(:home).title, url: root_path },
       { name: @static_page.title }
     ]
   end

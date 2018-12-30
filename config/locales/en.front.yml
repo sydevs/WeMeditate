@@ -1,16 +1,34 @@
 
 en:
-  footer:
-    call_to_action:
-      title: Together - better!
-      subtitle: Come to class in your city or join free webinars.
-      sidetext: How To Meditate
-      actions:
-        meditate: Try it out<br>meditate
-        local: Meditation<br>In your town
-        online: Online classes<br>for meditation
-    share:
-      title: 'Share this:'
+  we_meditate: We Meditate
+  header:
+    learn_more: Learn More
+    classes_near_me: Classes<br>Near Me
+    inspiration_from_within: Inspiration<br>comes from within
+  action_footer:
+    title: Together - better!
+    subtitle: Come to class in your city or join free webinars.
+    sidetext: How To Meditate
+    actions:
+      meditate: Try it out<br>meditate
+      local: Meditation<br>In your town
+      online: Online classes<br>for meditation
+  sharing_footer:
+    title: 'Share this:'
+  form:
+    input:
+      email: Your email
+      message: Message
+      name: Your name
+      class: Select class
+    missing:
+      email: You must provide an email address.
+      message: You forgot to fill out a message.
+      name: You must provide your name.
+    success:
+      subscribe: You have been subscribed.
+      contact: Your message has been received.
+      register: You have been registered.
   player:
     pause: Pause
     play: Play

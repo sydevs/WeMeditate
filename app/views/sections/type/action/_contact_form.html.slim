@@ -25,8 +25,8 @@
     .form-fields
       p.form-message
       = fields_for :contact do |f|
-        = f.email_field :email_address, placeholder: 'Your email'
-        = f.text_area :message, placeholder: 'Message', rows: 5
+        = f.email_field :email_address, placeholder: t('form.input.email')
+        = f.text_area :message, placeholder: t('form.input.message'), rows: 5
         = f.hidden_field :gobbledigook
 
     p

@@ -33,10 +33,10 @@ class CitiesController < ApplicationController
 
   def register
     if not params[:email_address].present?
-      @message = 'You must provide an email address.'
+      @message = I18n.translate('form.missing.email')
       @success = false
     elsif not params[:name].present?
-      @message = 'You must provide your name.'
+      @message = I18n.translate('form.missing.name')
       @success = false
     else
       city = City.friendly.find(params[:id])
@@ -63,7 +63,7 @@ class CitiesController < ApplicationController
           },
         })
 
-        @message = 'You have been registered.'
+        @message = I18n.translate('form.success.register')
         @success = true
       rescue Gibbon::MailChimpError => error
         @message = "#{error.title} - #{error.detail}"

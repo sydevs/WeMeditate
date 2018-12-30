@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
         @articles = Article.includes_preview.limit(ARTICLES_PER_PAGE)
 
         @breadcrumbs = [
-          { name: 'Home', url: root_path },
+          { name: StaticPageHelper.preview_for(:home).title, url: root_path },
           { name: @static_page.title }
         ]
       }
@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
     @article = Article.includes_content.friendly.find(params[:id])
     @metatags = @article.get_metatags
     @breadcrumbs = [
-      { name: 'Home', url: root_path },
+      { name: StaticPageHelper.preview_for(:home).title, url: root_path },
       { name: Article.model_name.human(count: -1), url: articles_path },
       { name: @article.category.name, url: articles_path(category: @article.category.id) },
       { name: @article.title }

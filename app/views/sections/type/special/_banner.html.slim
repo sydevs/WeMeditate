@@ -82,8 +82,8 @@
             p.form-message
             .form-fields
               = fields_for :contact do |f|
-                = f.email_field :email_address, placeholder: 'Your email'
-                = f.text_area :message, placeholder: 'Message', rows: 4
+                = f.email_field :email_address, placeholder: t('form.input.email')
+                = f.text_area :message, placeholder: t('form.input.message'), rows: 4
                 = f.hidden_field :gobbledigook
             p
               button.button-box = section.action

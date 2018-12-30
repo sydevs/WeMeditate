@@ -35,9 +35,9 @@
       .form-fields
         p.form-message
         = hidden_field_tag :mailchimp_list_id, mailchimp_list_id
-        = email_field_tag :email_address, nil, placeholder: 'Your email'
-        = text_field_tag :name, nil, placeholder: 'Your name'
-        input.classes.autocomplete list='classes-list' placeholder='Select class'
+        = email_field_tag :email_address, nil, placeholder: t('form.input.email')
+        = text_field_tag :name, nil, placeholder: t('form.input.name')
+        input.classes.autocomplete list='classes-list' placeholder=t('form.input.class')
 
       p
         button.button-box = section.action

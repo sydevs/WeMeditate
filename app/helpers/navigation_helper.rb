@@ -14,7 +14,7 @@ module NavigationHelper
       end
 
       @navigation.push({
-        title: 'Learn More',
+        title: I18n.translate('header.learn_more'),
         url: '#', #static_page_path_for(static_page_preview_for(:about)),
         active: ['static_pages', 'subtle_system_nodes'].include?(controller_name),
         content: {
@@ -54,7 +54,7 @@ module NavigationHelper
     end
 
     yield ({
-      title: 'Classes Near Me',
+      title: I18n.translate('header.classes_near_me'),
       url: local_cities_path,
       active: controller_name == 'cities',
     })

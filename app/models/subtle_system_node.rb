@@ -64,11 +64,11 @@ class SubtleSystemNode < ApplicationRecord
 
   # Generates sections which should be included on every subtle system page.
   def generate_default_sections!
-    sections.new label: 'Chakra Overview', content_type: :text, format: :columns
-    sections.new label: 'In Daily Life', content_type: :text, format: :box_over_image
+    sections.new label: I18n.t('misc.default_sections.chakra_overview'), content_type: :text, format: :columns
+    sections.new label: I18n.t('misc.default_sections.in_daily_life'), content_type: :text, format: :box_over_image
     sections.new content_type: :special, format: :treatments
-    sections.new label: 'Shri Mataji\'s Video', content_type: :video
-    sections.new label: 'Ancient Wisdom', content_type: :text, format: :ancient_wisdom
+    sections.new label: I18n.t('misc.default_sections.shri_mataji_video'), content_type: :video
+    sections.new label: I18n.t('misc.default_sections.ancient_wisdom'), content_type: :text, format: :ancient_wisdom
   end
 
   # Generates sections which MUST be included on every subtle system node page.

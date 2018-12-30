@@ -8,7 +8,7 @@ class MeditationsController < ApplicationController
     @metatags = @static_page.get_metatags
 
     @breadcrumbs = [
-      { name: 'Home', url: root_path },
+      { name: StaticPageHelper.preview_for(:home).title, url: root_path },
       { name: @static_page.title }
     ]
   end
@@ -22,7 +22,7 @@ class MeditationsController < ApplicationController
 
     meditations_page = StaticPage.includes_content.find_by(role: :meditations)
     @breadcrumbs = [
-      { name: 'Home', url: root_path },
+      { name: StaticPageHelper.preview_for(:home).title, url: root_path },
       { name: meditations_page.title, url: meditations_path },
       { name: @meditation.name }
     ]

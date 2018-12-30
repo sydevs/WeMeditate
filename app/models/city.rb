@@ -83,8 +83,8 @@ class City < ApplicationRecord
 
   # Generates some default sections which should be included on every city page.
   def generate_default_sections!
-    sections.new label: 'What to Expect', content_type: :text, format: :box_over_image
-    sections.new label: 'Testimonial', content_type: :video
+    sections.new label: I18n.t('misc.default_sections.what_to_expect'), content_type: :text, format: :box_over_image
+    sections.new label: I18n.t('misc.default_sections.testimonials'), content_type: :video
   end
 
   private

@@ -2,6 +2,8 @@
 en:
   action:
     view_site: View Site
+    view_admin: Go To Admin Dashboard
+    sing_in: Log In
     sign_out: Log Out
     show: View
     update: Save
@@ -12,6 +14,7 @@ en:
     destroy: Delete
     review: Review
     retry: Retry
+    choose_file: Choose a file
     upload_file: Upload File
     close: Close
     'yes': 'Yes'
@@ -34,6 +37,7 @@ en:
         user: Invite %{target}
         track: Upload %{target}
   messages:
+    maintenance_mode: The website is under construction, come back soon.
     updated_on_by: Updated on %{date} by %{author}
     errors: Errors
     confirm_destroy: Are you sure you want to delete that?
@@ -63,6 +67,8 @@ en:
   metatag:
     key: name
     value: value
+  preview:
+    header: '%{time} by %{user}'
   time:
     formats:
       default: '%k:%M'
@@ -80,3 +86,11 @@ en:
     locale:
       worldwide: Worldwide
       all_languages: All Languages
+    default_sections:
+      what_to_expect: What to Expect
+      testimonials: Testimonial
+      chakra_overview: Chakra Overview
+      in_daily_life: In Daily Life
+      shri_mataji_video: Shri Mataji's Video
+      ancient_wisdom: Ancient Wisdom
+

@@ -1,12 +1,12 @@
 
 = inline_svg 'header/logo-small.svg'
 
-p = ENV['MAINTENANCE_MODE'] || 'The website is under construction, come back soon.'
+p = ENV['MAINTENANCE_MODE'] || translate('messages.maintenance_mode')
 
 - if current_user.present?
-  a href=admin_root_path Go To Admin Dashboard
+  a href=admin_root_path = translate 'action.view_admin'
 - else
-  a.sign-in href=new_user_session_path Sign In
+  a.sign-in href=new_user_session_path = translate 'action.sign_in'
 
 sass:
   body

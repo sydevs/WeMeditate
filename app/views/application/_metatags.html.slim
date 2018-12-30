@@ -1,7 +1,7 @@
 
 - @metatags&.each do |key, value|
   - if key == 'title'
-    title #{value} | We Meditate
+    title #{value} | #{translate 'we_meditate'}
   - elsif key == 'description'
     meta name='description' content=value
   - else

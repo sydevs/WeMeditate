@@ -11,7 +11,7 @@
     = hidden_field_tag(name, value)
 
   i.dropdown.icon
-  .default.text Choose a file
+  .default.text = translate 'action.choose_file'
   .menu
     - attachments.each do |attachment|
       .item data-value=attachment.uuid class="file-#{attachment.uuid}"
