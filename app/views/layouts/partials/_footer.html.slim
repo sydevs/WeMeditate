@@ -39,12 +39,7 @@ footer.container.footer
     .footer-column
       .footer-social
         .footer-header.desktop-only = translate 'footer.follow_us'
-        - if locale == :ru
-          a href="#"
-            i.vk.icon
-        - else
-          a href="#"
-            i.facebook.icon
-        a href="https://instagram.com/we-meditate"
-          i.instagram.icon
+        - I18n.translate('social_media').each do |type, url|
+          a href=url
+            i.icon class=type
   .footer-copyright &copy; WeMeditate, 2019 | #{t 'footer.design_by', company: 'Daviann'}

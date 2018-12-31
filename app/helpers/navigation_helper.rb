@@ -60,4 +60,16 @@ module NavigationHelper
     })
   end
 
+  def sharing_links
+    url = ERB::Util.url_encode request.original_url.split('/', 3)[2]
+
+    tag.div class: 'sharing-footer' do
+      tag.div class: 'wrapper-inner' do
+        concat tag.div I18n.t('sharing_footer.title'), class: 'sharing-footer-title'
+        I18n.translate('sharing').collect do |type, link|
+          concat tag.a (tag.i class: "#{type} icon"), class: 'sharing-footer-item', href: link.gsub('%{url}', url)
+        end
+      end
+    end
+  end
 end

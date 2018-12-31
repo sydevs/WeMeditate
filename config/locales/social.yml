@@ -1,0 +1,14 @@
+
+en:
+  sharing:
+    facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
+  social_media:
+    facebook: '#'
+    instagram: https://instagram.com/we-meditate
+
+ru:
+  sharing:
+    vk: http://vk.com/share.php?url=%{url}
+  social_media:
+    vk: '#'
+    instagram: '#'
