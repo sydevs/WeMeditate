@@ -72,15 +72,18 @@ const Music = {
   // The actual playlist filtering is handled by the `grid.js` file,
   // this callback just adds some visual icons to signal what has been selected.
   _on_clicked_instrument_filter() {
-    let element = $(this)
+    let $element = $(this)
     let klass = 'for-'+this.dataset.filter.slice(1)
 
-    if (element.hasClass('active')) {
+    if ($element.hasClass('active')) {
       Music.filter_icons.children('.'+klass).remove()
     } else {
-      let icon = $(element.children('.filter-item-icon').html()).addClass(klass)
+      let icon = $($element.children('.filter-item-icon').html()).addClass(klass)
+      let text = $element.children('.filter-button-name').text()
+
       //Music.filter_icons.append(icon)
       Music.filter_icons.html(icon)
+      Music.mood_title.text(text)
 
       if (Music.player.playing) {
         $first_track = Music.list.children('.playlist-item:visible').first()

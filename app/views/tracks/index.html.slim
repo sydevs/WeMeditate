@@ -7,8 +7,8 @@
 #tracks-triangle.wrapper-outer.with-decoration.right.triangle
 
 .track-filters.wrapper-outer
-  h2 = t('tracks.subtitle')
-  p = t('tracks.text')
+  //h2.track-filters-title = t('tracks.subtitle')
+  p.track-filters-text = t('tracks.text')
 
   //h3 = t('tracks.choose_mood')
   //nav.filter-group.outline data-group='moods'
@@ -18,7 +18,7 @@
           img src=mood_filter.icon_url
         span.filter-button-name = mood_filter.name
 
-  h3 = t('tracks.choose_instruments')
+  h3.track-filters-title-small = t('tracks.choose_instruments')
   //nav.filter-group data-group='instruments' data-multiple=true
   nav.filter-group data-group='instruments'
     - @instrument_filters.each_with_index do |instrument_filter, index|

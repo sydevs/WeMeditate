@@ -174,7 +174,7 @@
     border-radius: 0
     border: 0
     background: $color-player-blue
-    transition: background .2s ease, border .2s ease, transform .2s ease
+    transition: background 0.2s ease, border 0.2s ease, transform 0.2s ease
     box-shadow: none
     box-sizing: border-box
     cursor: pointer
@@ -200,30 +200,29 @@
     @include tablet-or-smaller
       height: 5px
 
-  .plyr__controls
-    .plyr__control
-      svg
-        width: 13px
+  &__controls .plyr__control
+    svg
+      width: 13px
 
-      &.plyr__tab-focus,
-      &:hover,
-      &[aria-expanded=true]
-        background: white
-        color: $color-player-blue
+    &.plyr__tab-focus,
+    &:hover,
+    &[aria-expanded=true]
+      background: white
+      color: $color-player-blue
 
-  .plyr__progress
+  &__progress
     margin-right: 10px
 
-  .plyr__control.plyr__control--overlaid
+  &__control.plyr__control--overlaid
     background: $color-player-blue
 
 
 // ===== VIDEO PLYR TWEAKS ===== //
 .plyr.plyr--video
-  .plyr__control--overlaid
-    display: none
-
   .plyr__controls
+    &--overlaid
+      display: none
+
     .plyr__control
       &.plyr__tab-focus,
       &:hover,
@@ -238,11 +237,11 @@
     &__volume
       max-width: 10.5%
 
-      @include laptop
-        max-width: 12.5%
-
       @include tablet
         max-width: 15.5%
+
+      @include laptop
+        max-width: 12.5%
 
     &__progress
       font-size: 12px
@@ -264,7 +263,7 @@
         width: 100%
         max-width: 100%
 
-      &--buffer
+      &__buffer
         display: none
 
     &__time
@@ -283,130 +282,127 @@
       &--duration
         right: 0
 
-  .plyr__controls
-    color: $color-text-normal
-    padding-left: 0
-    padding-bottom: 0
-    padding-top: 35px
+        &:before
+          content: none
 
-    @include mobile
-      padding-right: 0
-      padding-top: 10px
+    &__controls
+      color: $color-text-normal
+      padding-left: 0
+      padding-bottom: 0
+      padding-top: 35px
 
-    .extra
       @include mobile
+        padding-right: 0
+        padding-top: 10px
+
+  .plyr__controls > .plyr__control
+    &[data-plyr="play"]
+      display: flex
+      position: absolute
+      top: -47px
+      left: 0
+      border: 1px solid
+      border-radius: 0
+      width: 36px
+      height: 36px
+      background: #fff
+
+      &:hover .plyr--equalizer-bar
+        background: $color-player-blue
+
+      > *
+        margin: auto
+
+    &[data-plyr="mute"]
+      width: 30px
+      height: 30px
+      position: relative
+      overflow: hidden
+      text-align: left
+      margin-left: 5.5%
+
+      &:before
+        content: ''
+        display: inline-block
+        width: 17px
+        height: 20px
+        background: image-url("sections/music/volume.png") no-repeat
+        background-size: 17px 20px
+        position: relative
+        top: -2px
+
+      &[aria-pressed="true"]:before
+        width: 12px
+
+      svg
         display: none
 
-    > .plyr__control
-      &[data-plyr="play"]
-        display: flex
+    &[data-plyr="rewind"],
+    &[data-plyr="fast-forward"]
+      @include tablet-or-smaller
+        top: 114%
         position: absolute
-        top: -47px
-        border: 1px solid
-        border-radius: 0
-        width: 36px
-        height: 36px
-        background: #fff
 
-        &:hover
-          .equalizer-bar
-            background: $color-player-blue
+      @include mobile
+        top: 67px
+        display: block
 
-        > *
-          margin: auto
+    &[data-plyr="rewind"]
+      @include tablet-or-smaller
+        left: 25%
 
-        .equalizer
-          display: none
-          position: relative
-          height: 24px
-          line-height: 24px
-          font-size: 0
-          overflow: hidden
+    &[data-plyr="fast-forward"]
+      @include mobile
+        right: 30%
 
-          &-bar
-            display: inline-block
-            width: 1px
-            height: 100%
-            background: $color-text-normal
-            margin-right: 2px
-            transition: all .3s ease
+      @include tablet
+        left: 38%
 
-            &:nth-child(1)
-              height: 70%
-              @include equalize-animation
+  .plyr__equalizer
+    display: none
+    position: relative
+    height: 24px
+    line-height: 24px
+    font-size: 0
+    overflow: hidden
 
-            &:nth-child(2)
-              @include equalize-animation-2
+    &-bar
+      display: inline-block
+      width: 1px
+      height: 100%
+      background: $color-text-normal
+      margin-right: 2px
+      transition: all 0.3s ease
 
-            &:nth-child(3)
-              height: 70%
-              @include equalize-animation
-              animation-duration: .2s
+      &:nth-child(1)
+        height: 70%
+        @include equalize-animation
 
-            &:nth-child(4)
-              @include equalize-animation-2
-              animation-duration: 150ms
+      &:nth-child(2)
+        @include equalize-animation-2
 
-            &:nth-child(5)
-              height: 70%
-              @include equalize-animation
-              animation-duration: 150ms
+      &:nth-child(3)
+        height: 70%
+        @include equalize-animation
+        animation-duration: 0.2s
 
-            &:nth-child(6)
-              height: 70%
-              @include equalize-animation
-              animation-duration: .2s
+      &:nth-child(4)
+        @include equalize-animation-2
+        animation-duration: 150ms
 
-      &[data-plyr="mute"]
-        width: 30px
-        height: 30px
-        position: relative
-        overflow: hidden
-        text-align: left
-        margin-left: 5.5%
+      &:nth-child(5)
+        height: 70%
+        @include equalize-animation
+        animation-duration: 150ms
 
-        &:before
-          content: ''
-          display: inline-block
-          width: 17px
-          height: 20px
-          background: image-url("sections/music/volume.png") no-repeat
-          background-size: 17px 20px
-          position: relative
-          top: -2px
-
-        &[aria-pressed="true"]
-          &:before
-            width: 12px
-
-        svg
-          display: none
-
-      &[data-plyr="rewind"],
-      &[data-plyr="fast-forward"]
-        @include tablet-or-smaller
-          top: 114%
-          position: absolute
-
-        @include mobile
-          top: 67px
-          display: block
-
-      &[data-plyr="rewind"]
-        @include tablet-or-smaller
-          left: 25%
-
-      &[data-plyr="fast-forward"]
-        @include tablet-or-smaller
-          left: 38%
-
-        @include mobile
-          right: 30%
-          left: auto
+      &:nth-child(6)
+        height: 70%
+        @include equalize-animation
+        animation-duration: 0.2s
 
   &.plyr--playing
     .plyr__controls > .plyr__control[data-plyr=play]
-      .equalizer
+      .plyr__equalizer
         display: block
         font-size: 30px
 

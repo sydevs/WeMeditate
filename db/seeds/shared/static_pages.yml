@@ -29,7 +29,7 @@ records:
     title: Improving Meditation
   - sprig_id: tracks
     role: <%= StaticPage.roles[:tracks] %>
-    title: Music
+    title: Music for Meditation
   - sprig_id: meditations
     role: <%= StaticPage.roles[:meditations] %>
     title: Meditate Now
