@@ -38,7 +38,7 @@ const Popout = {
   // This will allow us to initialize popouts withing a specific context, this is useful when dynamic content is added to the page.
   init_popouts($context) {
     // Initialize all video buttons that specific a source for the video.
-    $('a.video-button[data-mfp-src]', $context).magnificPopup({
+    $('.video-button[data-mfp-src]', $context).magnificPopup({
       key: 'video',
       callbacks: { open: Popout._on_video_open }
     })
