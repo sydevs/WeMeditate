@@ -41,7 +41,7 @@ class SubtleSystemNode < ApplicationRecord
   end
 
   # Include everything necessary to render the full content of this model
-  def self.includes_content
+  def self.includes_content mode = :front
     if mode == :admin
       includes(:attachments, :translations)
     else

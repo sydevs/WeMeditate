@@ -64,8 +64,8 @@ const SubtleSystem = {
           var $target = $('#' + SubtleSystem.context.find('.active.subtle-system-item').attr('id'))
           var position = $target.offset().top - $(window).height() + $target.height() + 30
 
-          Menu.scroll.animateScroll(position, 2000, {
-            speed: 2000,
+          Menu.scroll.animateScroll(position, 4000, {
+            speed: 4000,
             updateURL: false,
           })
         }
