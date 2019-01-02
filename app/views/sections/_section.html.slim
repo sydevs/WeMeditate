@@ -1,11 +1,14 @@
-
-- partial = ['sections/type', section.content_type]
-- partial << section.format if [:text, :image, :action, :special].include? section.content_type.to_sym
 - index = (defined?(index) ? index : 0).to_i + (defined?(section_counter) ? section_counter : 0).to_i + 1
 
-- classes = ["type-#{section.content_type}", "format-#{section.format&.dasherize}"]
-//- classes << ['with', section.decoration_options(:gradient).join(' '), 'gradient'] if section.has_decoration? :gradient
-- classes << ['with-decoration', section.decoration_options(:gradient).join(' '), 'gradient'] if section.has_decoration? :gradient
+- if section.special? and section.format == 'city_sections'
+  = render @city.sections, index: index, cached: true
+- else
+  - partial = ['sections/type', section.content_type]
+  - partial << section.format if [:text, :image, :action, :special].include? section.content_type.to_sym
 
-section id=section.chapter_slug class=classes data-section=index
-  = render partial.join('/'), section: section
+  - classes = ["type-#{section.content_type}", "format-#{section.format&.dasherize}"]
+  //- classes << ['with', section.decoration_options(:gradient).join(' '), 'gradient'] if section.has_decoration? :gradient
+  - classes << ['with-decoration', section.decoration_options(:gradient).join(' '), 'gradient'] if section.has_decoration? :gradient
+
+  section id=section.chapter_slug class=classes data-section=index
+    = render partial.join('/'), section: section

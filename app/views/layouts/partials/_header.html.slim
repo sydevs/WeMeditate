@@ -10,8 +10,7 @@ header.header class="#{'inverse' if action_name == 'front'}"
 
       nav.header-bar
         a.header-bar-icon.logo href=root_path = inline_svg 'header/logo-mini.svg'
-        - navigation do |nav|
-          = render 'layouts/partials/bar_nav_item', nav: nav
+        = render partial: 'layouts/partials/bar_nav_item', collection: navigation_items
         a.header-bar-icon.marker href=local_cities_path = inline_svg 'graphics/marker.svg'
 
       - unless @breadcrumbs.nil?
@@ -25,5 +24,4 @@ header.header class="#{'inverse' if action_name == 'front'}"
         a.header-bar-icon.burger = inline_svg 'header/burger.svg'
 
   .header-menu
-    - mobile_navigation do |nav|
-      = render 'layouts/partials/menu_nav_item', nav: nav
+    = render partial: 'layouts/partials/menu_nav_item', collection: mobile_navigation_items

@@ -1,6 +1,6 @@
 module NavigationHelper
 
-  def navigation
+  def navigation_items
     if not defined? @navigation
       @navigation = []
 
@@ -36,28 +36,28 @@ module NavigationHelper
       })
     end
 
-    @navigation.each do |item|
-      yield item
-    end
+    @navigation
   end
 
-  def mobile_navigation
+  def mobile_navigation_items
+    mobile_navigation = []
     home_page = static_page_preview_for(:home)
-    yield ({
+
+    mobile_navigation.push({
       title: home_page.title,
       url: static_page_path_for(home_page),
       active: controller_name == 'application' && action_name == 'front',
     })
 
-    navigation do |nav|
-      yield nav
-    end
+    mobile_navigation += navigation_items
 
-    yield ({
+    mobile_navigation.push({
       title: I18n.translate('header.classes_near_me').gsub('<br>', ' '),
       url: local_cities_path,
       active: controller_name == 'cities',
     })
+
+    mobile_navigation
   end
 
   def sharing_links

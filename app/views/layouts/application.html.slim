@@ -31,7 +31,9 @@ body id='top' class=classes
   //.preloader
     image width="200" height="100" src=image_path('svg/preloader.svg') alt="preloader"
 
-  = render 'layouts/partials/header'
+  = render 'layouts/partials/header', cached: true
   main = yield
-  = render 'layouts/partials/footer'
-  = render 'shared/video_popup'
+  = render 'layouts/partials/footer', cached: true
+
+  #video-popup.mfp-hide
+    video#video-player controls=true
