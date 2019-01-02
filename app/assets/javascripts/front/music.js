@@ -34,8 +34,6 @@ const Music = {
     Music.player_title = $player.find('.player-selection-title')
     Music.player_artist = $player.find('.player-selection-artist')
     Music.mood_title = $player.find('.playlist-mood')
-    Music.instrument_filters = $('.filter-group[data-group="instruments"] > .filter-item')
-    Music.mood_filters = $('.filter-group[data-group="moods"] > .filter-button')
 
     Music.list = $player.find('.playlist-list')
     Music.track_selectors = Music.list.find('.playlist-label')
@@ -47,8 +45,8 @@ const Music = {
 
     Music.filter_icons = $player.find('.playlist-icons')
 
-    Music.instrument_filters.on('mouseup', Music._on_clicked_instrument_filter)
-    Music.mood_filters.on('mouseup', Music._on_clicked_mood_filter)
+    $('.filter-group[data-group="instruments"]').on('click', '.filter-item', Music._on_clicked_instrument_filter)
+    $('.filter-group[data-group="moods"]').on('click', '.filter-button', Music._on_clicked_mood_filter)
 
     // Override plyr's default behaviour so that it will skip tracks
     $player.on('click', '[data-plyr="skip-back"]', Music._on_select_prev)
@@ -71,23 +69,24 @@ const Music = {
   // Triggered when an instrument filter is selected
   // The actual playlist filtering is handled by the `grid.js` file,
   // this callback just adds some visual icons to signal what has been selected.
-  _on_clicked_instrument_filter() {
-    let $element = $(this)
+  _on_clicked_instrument_filter(event) {
+    console.log('clicked', this)
+    let $element = $(event.target)
     let klass = 'for-'+this.dataset.filter.slice(1)
 
     if ($element.hasClass('active')) {
       Music.filter_icons.children('.'+klass).remove()
     } else {
       let icon = $($element.children('.filter-item-icon').html()).addClass(klass)
-      let text = $element.children('.filter-button-name').text()
+      let text = $element.children('.filter-item-name').text()
 
       //Music.filter_icons.append(icon)
       Music.filter_icons.html(icon)
       Music.mood_title.text(text)
 
-      if (Music.player.playing) {
-        $first_track = Music.list.children('.playlist-item:visible').first()
-        Music._on_select_track.call($first_track)
+      if (!Music.player.playing) {
+        first_track = Grid.container.isotope('getFilteredItemElements')[0]
+        Music._on_select_track.call(first_track.getElementsByClassName('playlist-label')[0])
       }
 
       let offset = Music.player_title.offset().top - 60
@@ -101,8 +100,8 @@ const Music = {
   // Triggered when an mood filter is selected
   // The actual playlist filtering is handled by the `grid.js` file,
   // this callback just adds some text to signal what has been selected.
-  _on_clicked_mood_filter() {
-    let text = $(this).children('.filter-button-name').text()
+  _on_clicked_mood_filter(event) {
+    let text = $(event.target).children('.filter-button-name').text()
 
     if (Music.mood_title.text() == text) {
       Music.mood_title.text('')
