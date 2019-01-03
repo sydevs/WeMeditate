@@ -70,13 +70,10 @@ const Music = {
   // The actual playlist filtering is handled by the `grid.js` file,
   // this callback just adds some visual icons to signal what has been selected.
   _on_clicked_instrument_filter(event) {
-    console.log('clicked', this)
-    let $element = $(event.target)
+    let $element = $(event.currentTarget)
     let klass = 'for-'+this.dataset.filter.slice(1)
 
     if ($element.hasClass('active')) {
-      Music.filter_icons.children('.'+klass).remove()
-    } else {
       let icon = $($element.children('.filter-item-icon').html()).addClass(klass)
       let text = $element.children('.filter-item-name').text()
 
@@ -94,6 +91,9 @@ const Music = {
         speed: 4000,
         updateURL: false,
       })
+    } else {
+      Music.filter_icons.children('.'+klass).remove()
+      Music.mood_title.text('')
     }
   },
 
