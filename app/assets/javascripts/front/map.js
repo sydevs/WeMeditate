@@ -65,7 +65,9 @@ const Map = {
     // Retrieve the country SVG
     $.getJSON($map.data('src'), function(data) {
       // Add the country SVG to the Leaflet map
-      let layer = new L.GeoJSON(data)
+      let layer = new L.GeoJSON(data, {
+        interactive: false,
+      })
       layer.addTo(map)
 
       // Define the bounds of the map
@@ -124,9 +126,9 @@ const Map = {
     })
 
     // Add the zoom control to the top right of the map
-    L.control.zoom({
+    /*L.control.zoom({
       position: 'topright',
-    }).addTo(map)
+    }).addTo(map)*/
 
     // Add the tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
@@ -148,8 +150,11 @@ const Map = {
 
     // Add the marker group to the map.
     let markerGroup = L.featureGroup(markers).addTo(map)
+
     // Fit the map bounds to contain all markers.
-    map.fitBounds(markerGroup.getBounds().pad(0.5))
+    let bounds = markerGroup.getBounds().pad(0.5)
+    bounds = bounds.extend(new L.LatLng(bounds.getNorth(), bounds.getWest() - 0.05))
+    map.fitBounds(bounds)
   },
 }
 

@@ -51,19 +51,12 @@ module SectionHelper
     result.to_json
   end
 
-  def venues_json city
-    result = []
+  def venues_json
+    @venues_json ||= JSON.load(open('http://sahajdb.herokuapp.com/venues.json'))
+  end
 
-    city.venues&.each_with_index do |venue, index|
-      result << {
-        name: venue['address'],
-        latitude: venue['latitude'],
-        longitude: venue['longitude'],
-        index: index,
-      }
-    end
-
-    result.to_json
+  def venues_map_url
+    'http://sahajdb.herokuapp.com/venues/map'
   end
 
 end

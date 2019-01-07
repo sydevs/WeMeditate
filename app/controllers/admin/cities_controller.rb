@@ -46,7 +46,6 @@ module Admin
           params.fetch(:city, {}).permit(
             :country, :name, :slug, :address, :latitude, :longitude, :banner_uuid, :contacts,
             sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES,
-            venues: {},
             metatags: {},
           )
         else
@@ -54,17 +53,6 @@ module Admin
             sections_attributes: Admin::ApplicationPageController::TRANSLATABLE_SECTION_ATTRIBUTES,
           )
         end
-      end
-
-      def update_params city_params
-        if city_params[:venues].present?
-          city_params = city_params.to_h
-          data = city_params[:venues]
-          data = data.values.transpose.map { |vs| data.keys.zip(vs).to_h }
-          city_params[:venues] = data
-        end
-
-        super city_params
       end
 
   end

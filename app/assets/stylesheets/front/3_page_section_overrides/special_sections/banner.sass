@@ -23,8 +23,8 @@ section.type-special.format-banner
       left: 0
       right: 0
 
-  .inverse.banner .banner
-    &-title
+  .inverse.banner
+    .banner-title
       color: $color-text-inverse
 
   .text-box
@@ -158,6 +158,9 @@ section.type-special.format-banner
         &-text
           font-size: 1.25em
 
+    &.inverse .banner
+      &-title, &-subtitle, &-action
+        color: $color-text-inverse
 
   // ===== CONTACT PAGE STYLE ===== //
   .style-contact-page
@@ -216,3 +219,6 @@ section.type-special.format-banner
           margin: auto
           margin-top: 40px
 
+    &.inverse .banner
+      &-title, &-subtitle, &-action
+        color: $color-text-inverse

@@ -2,34 +2,22 @@
 - content_for :head do
   meta name='turbolinks-cache-control' content='no-cache'
 
-//.old
-  - if @city.venues.present?
-    .container = sidetext(section)
-    .content
-      .content-box
-        h2.title = section.title
-        - if @city.venues.present?
-          .carousel data-style='venues'
-            - @city.venues.each do |venue|
-              .venue
-                .address
-                  div = venue['room_information']
-                  div = venue['address']
-                .time #{translate_day venue['day_of_week']}. #{venue['start_time']} - #{venue['end_time']}
-    .city.map data-venues=venues_json(@city)
+- if venues_json
+  .temp-wrapper style='height: 100vh; position: relative'
+    = sidetext(section, wrap: true)
+    .map data-type='city' data-venues=venues_json.to_json
 
-- if @city.venues.present?
-  = sidetext(section, wrap: true)
-  .map data-type='city' data-venues=venues_json(@city)
-
-  .text-box-overlay
-    .text-box
-      h2.text-title = section.title
-      - if @city.venues.present?
+    .text-box-overlay
+      .text-box
+        h2.text-title = section.title
         .carousel data-style='venues'
-          - @city.venues.each do |venue|
-            .venue
-              .venue-address-wrapper
-                .venue-room = venue['room_information']
-                .venue-address = venue['address']
-              .venue-time #{translate_day venue['day_of_week']}. #{venue['start_time']} - #{venue['end_time']}
+          - venues_json.each do |id, venue|
+            - venue['events'].each do |event|
+              .venue
+                .venue-address-wrapper
+                  - if event['room'].present?
+                    .venue-room = event['room']
+                  .venue-address #{venue['address']['street']}, #{venue['address']['municipality']}
+                .venue-time = event['timing']
+
+iframe#external-map src=venues_map_url

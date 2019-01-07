@@ -6,7 +6,7 @@ header.header class="#{'inverse' if action_name == 'front'}"
         a.header-banner-logo href=root_path = inline_svg 'header/logo.svg'
         a.header-banner-illustration href=root_path
           = inline_svg 'header/illustration.svg'
-        a.header-banner-action href=local_cities_path = translate 'header.classes_near_me'
+        a.header-banner-action href=local_cities_path = translate('header.classes_near_me').html_safe
 
       nav.header-bar
         a.header-bar-icon.logo href=root_path = inline_svg 'header/logo-mini.svg'

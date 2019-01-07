@@ -24,19 +24,19 @@ records:
     banner_uuid: <%= SecureRandom.uuid %>
     contacts:
       - name: Sarah
-        url: '#'
+        url: https://www.facebook.com/
         image_uuid: 70fd93cd-935a-4abf-8411-12d53397e94a
       - name: Alan
-        url: '#'
+        url: https://www.facebook.com/
         image_uuid: ffa1ac9d-0d15-42fd-9d14-d23fa592629e
       - name: Jason
-        url: '#'
+        url: https://www.facebook.com/
         image_uuid: 2bcb774a-fdaf-453a-9b46-e58b1faf9e05
       - name: Alex
-        url: '#'
+        url: https://www.facebook.com/
         image_uuid: ccc5bffb-985f-45bf-98bd-a15b781bd8d3
       - name: Julie
-        url: '#'
+        url: https://www.facebook.com/
         image_uuid: 0e842e45-d8de-423b-b2c8-26ce94c4a6c9
     venues:
       - latitude: 34.0602743

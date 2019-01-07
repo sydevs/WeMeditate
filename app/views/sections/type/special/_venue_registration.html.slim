@@ -2,8 +2,6 @@
 //- mailchimp_list_id = section.extra_attr 'mailchimp_list_id'
 - mailchimp_list_id = ENV['MAILCHIMP_LIST_ID']
 
-#signup
-
 //- if @city.venues.present? #and mailchimp_list_id.present?
   .wrapper.centered
     .simple.illustration.pre.divider
@@ -25,9 +23,10 @@
         option value=item = item
     .simple.illustration.post.divider
 
-- if @city.venues.present? #and mailchimp_list_id.present?
+- if venues_json
   = form_tag register_city_path(@city), class: 'inline registration form', remote: true do
     .wrapper-inner
+      #signup
       .divider.with-decoration.simple.up
       h2.form-title = section.title
       .form-subtitle = section.subtitle
@@ -43,8 +42,8 @@
         button.button-box = section.action
 
       datalist#classes-list
-        - @city.venues.each_with_index do |venue,i|
-          - item = "#{venue['address']}, #{translate_day venue['day_of_week']} #{venue['start_time']} - #{venue['end_time']}"
-          option value=item = item
+        - venues_json.each do |id, venue|
+          - venue['events'].each do |event|
+            option value=event['id'] #{venue['address']['street']}, #{venue['address']['municipality']}, #{event['timing']}
 
       .divider.with-decoration.simple.down
