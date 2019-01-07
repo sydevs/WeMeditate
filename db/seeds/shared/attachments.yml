@@ -162,6 +162,66 @@ records:
     uuid: <%= sprig_record(Section, 's_a3_image_fit_page_width').extra['image_uuid'] %>
     name: Page Width.jpg
     file: <%= sprig_file('articles/page-width.jpg') %>
+  - sprig_id: a3_gallery_1
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    uuid: <%= sprig_record(Section, 's_a3_image_gallery').extra['image_uuids'][0] %>
+    name: Gallery 1.png
+    file: <%= sprig_file('articles/thumbnails/1.png') %>
+  - sprig_id: a3_gallery_2
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    uuid: <%= sprig_record(Section, 's_a3_image_gallery').extra['image_uuids'][1] %>
+    name: Gallery 2.png
+    file: <%= sprig_file('articles/thumbnails/2.png') %>
+  - sprig_id: a3_gallery_3
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    uuid: <%= sprig_record(Section, 's_a3_image_gallery').extra['image_uuids'][2] %>
+    name: Gallery 3.png
+    file: <%= sprig_file('articles/thumbnails/3.png') %>
+  - sprig_id: a3_gallery_4
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    uuid: <%= sprig_record(Section, 's_a3_image_gallery').extra['image_uuids'][3] %>
+    name: Gallery 4.png
+    file: <%= sprig_file('articles/thumbnails/4.png') %>
+  - sprig_id: a3_gallery_5
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    uuid: <%= sprig_record(Section, 's_a3_image_gallery').extra['image_uuids'][4] %>
+    name: Gallery 5.png
+    file: <%= sprig_file('articles/thumbnails/5.png') %>
+  - sprig_id: a3_gallery_6
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    uuid: <%= sprig_record(Section, 's_a3_image_gallery').extra['image_uuids'][5] %>
+    name: Gallery 6.png
+    file: <%= sprig_file('articles/thumbnails/6.png') %>
+  - sprig_id: a3_gallery_7
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    uuid: <%= sprig_record(Section, 's_a3_image_gallery').extra['image_uuids'][6] %>
+    name: Gallery 7.png
+    file: <%= sprig_file('articles/thumbnails/7.png') %>
+  - sprig_id: a3_gallery_8
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    uuid: <%= sprig_record(Section, 's_a3_image_gallery').extra['image_uuids'][7] %>
+    name: Gallery 8.png
+    file: <%= sprig_file('articles/thumbnails/8.png') %>
+  - sprig_id: a3_gallery_9
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    uuid: <%= sprig_record(Section, 's_a3_image_gallery').extra['image_uuids'][8] %>
+    name: Gallery 9.png
+    file: <%= sprig_file('articles/thumbnails/9.png') %>
+  - sprig_id: a3_gallery_10
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    uuid: <%= sprig_record(Section, 's_a3_image_gallery').extra['image_uuids'][9] %>
+    name: Gallery 10.png
+    file: <%= sprig_file('articles/thumbnails/10.png') %>
   - sprig_id: a3_video_thumbnail
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>

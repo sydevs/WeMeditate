@@ -22,7 +22,7 @@
 - if treatments.present?
   = sidetext(section, wrap: true)
 
-  #grid.treatments-list.wrapper
+  .grid.treatments-list.wrapper
     .grid-sizer
     - treatments.each_with_index do |treatment, index|
       article.treatments-item id=dom_id(treatment) class="#{'initial' if index < 2} #{'reverse' if index.even?}"

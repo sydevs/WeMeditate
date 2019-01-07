@@ -26,7 +26,7 @@
   h2.text-title = section.title
   .text-content = section.text&.html_safe
 
-  #grid.items
+  .grid.items id="grid-#{dom_id section}"
     .grid-sizer
     - items.each_with_index do |item, index|
       article.grid-item class="#{'initial' if index < 3}"
@@ -37,6 +37,6 @@
         p.grid-item-text = item['text']
 
   - if items.length > 3
-    nav.filter-group.outline data-group='amount'
+    nav.filter-group.outline data-group='amount' data-for="grid-#{dom_id section}"
       a.initial.active.filter-button data-filter='.initial' = t('sections.show_less')
       a.filter-button data-filter='*' = t('sections.show_more')

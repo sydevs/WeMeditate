@@ -8,7 +8,7 @@
     h2.text-title = section.title
     .text-content = section.text&.html_safe
 
-    #grid.items
+    .grid.items id="grid-#{dom_id section}"
       .grid-sizer
       - articles.each_with_index do |article, index|
         article.preview.grid-item id=dom_id(article) class="#{dom_id(article.category)} #{'initial' if index < 3}"
@@ -20,6 +20,6 @@
               i.breadcrumb.icon
 
     - if articles.length > 3
-      nav.filter-group.outline data-group='amount'
+      nav.filter-group.outline data-group='amount' data-for="grid-#{dom_id section}"
         a.initial.active.filter-button data-filter='.initial' = t('sections.show_less')
         a.filter-button data-filter='*' = t('sections.show_more')

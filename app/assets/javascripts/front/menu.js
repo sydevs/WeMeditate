@@ -116,7 +116,7 @@ const Menu = {
       let $chaptersContainer = Menu.chapters.children('.chapters-wrapper')
       let chaptersHeight = $chaptersContainer.outerHeight()
 
-      console.log(scrollTop, '>', Menu.chaptersStickyPoint, '-', headerHeight, '=', scrollTop > Menu.chaptersStickyPoint - headerHeight)
+      //console.log(scrollTop, '>', Menu.chaptersStickyPoint, '-', headerHeight, '=', scrollTop > Menu.chaptersStickyPoint - headerHeight)
 
       if (scrollTop < Menu.chaptersStickyPoint - headerHeight) {
         Menu.chapters.css('height', 'auto')

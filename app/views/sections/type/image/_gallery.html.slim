@@ -1,0 +1,15 @@
+
+- image_uuids = section.extra_attr('image_uuids', [])
+
+.wrapper-outer
+  = sidetext(section)
+
+  .grid.items id="grid-#{dom_id section}"
+    .grid-sizer
+    - image_uuids.each_with_index do |image_uuid, index|
+      img.grid-item class="#{'initial' if index < 9}" src=section.image(image_uuid).url
+
+  - if image_uuids.length > 9
+    nav.filter-group.outline data-group='amount' data-for="grid-#{dom_id section}"
+      a.initial.active.filter-button data-filter='.initial' = t('sections.show_less')
+      a.filter-button data-filter='*' = t('sections.show_more')

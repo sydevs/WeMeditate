@@ -14,7 +14,7 @@
       i.filters.icon
 
 .wrapper-outer
-  nav.filter-group.color.has-menu data-group='category'
+  nav.filter-group.color.has-menu data-group='category' data-for='grid-articles'
     - @categories.each do |category|
       a.filter-button class="#{'active' if selected_category_id == category.id}" data-filter=".#{dom_id(category)}"
         = category.name
@@ -38,7 +38,7 @@
 
 .grid.wrapper-outer
   .grid-wrapper
-    #grid
+    .grid id='grid-articles'
       .grid-sizer
       = render @articles
 

@@ -336,8 +336,26 @@ records:
     credit: John Smith
     extra:
       image_uuid: c93477d4-3a15-4642-993f-649564f92769
-  - sprig_id: s_a3_action_button
+  - sprig_id: s_a3_image_gallery
     order: 9
+    page_type: Article
+    page_id: <%= sprig_record(Article, 3).id %>
+    content_type: image
+    format: gallery
+    extra:
+      image_uuids:
+        - 9d54c83d-3167-470a-bd8d-3c2f5d413c3e
+        - a9d4150f-ec17-4a10-aaae-cb0b3a8da4c1
+        - 2a2c42a4-71e9-402f-b3c6-ae4223e43d3d
+        - 9bfb4693-10fb-4dea-a0d3-837d8a0ca0fe
+        - d529302c-d9c9-4482-a03a-d956c074a6fa
+        - 46090b41-ac81-48c0-b6ec-985305e14bb5
+        - 9ff12d69-1996-4145-a103-fa7e2e77dec1
+        - 3e444cea-92cf-4e65-9e33-cb47fc55f014
+        - 0f02d418-a802-4932-8f6f-433fcfc52557
+        - 3adebe22-699c-49d8-ab92-b20e2bc1e891
+  - sprig_id: s_a3_action_button
+    order: 10
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: action
@@ -345,7 +363,7 @@ records:
     action: Try Meditation
     url: '#'
   - sprig_id: s_a3_action_signup
-    order: 10
+    order: 11
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: action
@@ -357,7 +375,7 @@ records:
     extra:
       mailchimp_list_id: 1
   - sprig_id: s_a3_quote
-    order: 11
+    order: 12
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: quote
@@ -368,7 +386,7 @@ records:
     action: Meditation with Shri Mataji
     url: /en/meditations/first-experience
   - sprig_id: s_a3_video
-    order: 12
+    order: 13
     page_type: Article
     page_id: <%= sprig_record(Article, 3).id %>
     content_type: video

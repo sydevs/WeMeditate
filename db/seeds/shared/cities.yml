@@ -38,28 +38,28 @@ records:
       - name: Julie
         url: https://www.facebook.com/
         image_uuid: 0e842e45-d8de-423b-b2c8-26ce94c4a6c9
-    venues:
-      - latitude: 34.0602743
-        longitude: -118.2803541
-        room_information: Levitt Pavilion
-        address: 2230 W 6th St
-        day_of_week: 3
-        start_time: '11:00'
-        end_time: '13:00'
-      - latitude: 34.0432071
-        longitude: -118.2849729
-        room_information: Room 43b
-        address: Downtown Centre
-        day_of_week: 6
-        start_time: '8:00'
-        end_time: '9:30'
-      - latitude: 34.0432071
-        longitude: -118.2849729
-        room_information: Room 21
-        address: Downtown Centre
-        day_of_week: 4
-        start_time: '17:00'
-        end_time: '17:45'
+    # venues:
+    #   - latitude: 34.0602743
+    #     longitude: -118.2803541
+    #     room_information: Levitt Pavilion
+    #     address: 2230 W 6th St
+    #     day_of_week: 3
+    #     start_time: '11:00'
+    #     end_time: '13:00'
+    #   - latitude: 34.0432071
+    #     longitude: -118.2849729
+    #     room_information: Room 43b
+    #     address: Downtown Centre
+    #     day_of_week: 6
+    #     start_time: '8:00'
+    #     end_time: '9:30'
+    #   - latitude: 34.0432071
+    #     longitude: -118.2849729
+    #     room_information: Room 21
+    #     address: Downtown Centre
+    #     day_of_week: 4
+    #     start_time: '17:00'
+    #     end_time: '17:45'
   - sprig_id: detroit
     country: <%= City.countries['US'] %>
     name: Detroit

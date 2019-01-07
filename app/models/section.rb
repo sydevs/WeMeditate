@@ -31,7 +31,7 @@ class Section < ApplicationRecord
 
   # Formats - A list of recognized non-special formats, which will be shown in the CMS
   TEXT_FORMATS = [:just_text, :with_quote, :with_image, :box_with_lefthand_image, :box_with_righthand_image, :box_over_image, :grid, :columns, :ancient_wisdom]
-  IMAGE_FORMATS = [:fit_container_width, :fit_page_width]
+  IMAGE_FORMATS = [:fit_container_width, :fit_page_width, :gallery]
   VIDEO_FORMATS = [:single, :gallery]
   ACTION_FORMATS = [:signup, :button]
 

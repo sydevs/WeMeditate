@@ -11,7 +11,7 @@
   p.track-filters-text = t('tracks.text')
 
   //h3 = t('tracks.choose_mood')
-  //nav.filter-group.outline data-group='moods'
+  //nav.filter-group.outline data-group='moods' data-for='grid-tracks'
     - @mood_filters.each do |mood_filter|
       a.filter-button data-filter=".#{dom_id(mood_filter)}"
         span.filter-button-icon
@@ -20,7 +20,7 @@
 
   h3.track-filters-title-small = t('tracks.choose_instruments')
   //nav.filter-group data-group='instruments' data-multiple=true
-  nav.filter-group data-group='instruments'
+  nav.filter-group data-group='instruments' data-for='grid-tracks'
     - @instrument_filters.each_with_index do |instrument_filter, index|
       a.filter-item data-filter=".#{dom_id(instrument_filter)}"
         span.filter-item-icon
@@ -44,7 +44,7 @@
         span.playlist-icons
       .playlist-mood.top-left.sidetext
       img.playlist-cover src=image_path('sections/music/album.jpg')
-      #grid.playlist-list
+      .grid.playlist-list id="grid-tracks"
         .grid-sizer
         = render @tracks, cached: true
 

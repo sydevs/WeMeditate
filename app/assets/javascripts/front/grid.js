@@ -4,7 +4,7 @@
  */
 
 const Grid = {
-  container: null, // To be defined on load
+  containers: {}, // To be defined on load
   active_filters: {},
 
   // Called when turbolinks loads the page
@@ -13,52 +13,62 @@ const Grid = {
     Grid.container = $('#grid')
     Grid.active_filters = {} // Clear the filters list
 
-    if (Grid.container.length) {
+    $('.grid').each(function() {
+      let $container = $(this)
+      let id = $container.attr('id')
+      Grid.containers[id] = $container
+
       // Wait until all images are loaded before initialize the grid, to avoid sizing issues.
-      Grid.container.imagesLoaded(function() {
+      $container.imagesLoaded(function() {
+        let filter = $container.data('filter')
+
         // Initialize Isotope
-        Grid.container.isotope({
-          itemSelector: 'article',
+        $container.isotope({
+          filter: (typeof filter === 'undefined' ? '*' : filter),
+          itemSelector: '.grid-item',
           percentPosition: true,
           masonry: {
             columnWidth: '.grid-sizer',
           }
         })
-      })
 
-      $('.filter-group').each(Grid._init_filter_group)
-    }
+        $('.filter-group[data-for="'+id+'"]').each(Grid._init_filter_group)
+      })
+    })
   },
 
   // Initialize a given group of filters
   _init_filter_group() {
-    const element = $(this)
+    const $group = $(this)
     const group = this.dataset.group
     const allow_multiple = (typeof this.dataset.multiple !== 'undefined')
+    const grid = this.dataset.for
+
+    Grid.active_filters[grid] = {}
 
     // Detect any existing selected filters.
-    element.children('a').each(function() {
+    $group.children('a').each(function() {
       if ($(this).hasClass('active')) {
-        Grid.toggle_filter_by(group, this.dataset.filter, allow_multiple)
+        Grid.toggle_filter_by(grid, group, this.dataset.filter, allow_multiple)
       }
     })
 
     // When a filter clicked, trigger the appropriate handler
-    element.children('a').on('click', function(e) {
-      Grid._on_filter_click.call(this, e, group, allow_multiple)
-      element.removeClass('show-menu') // and hide the menu if we are using mobile
+    $group.children('a').on('click', function(e) {
+      Grid._on_filter_click.call(this, e, grid, group, allow_multiple)
+      $group.removeClass('show-menu') // and hide the menu if we are using mobile
     })
 
     // Open the mobile menu when the button is clicked.
-    element.children('.filter-menu-button').on('click', function(e) {
-      element.addClass('show-menu')
+    $group.children('.filter-menu-button').on('click', function(e) {
+      $group.addClass('show-menu')
     })
   },
 
   // Triggered when a filter is clicked
-  _on_filter_click(e, group, allow_multiple) {
+  _on_filter_click(e, grid, group, allow_multiple) {
     // Call another function to implement the filter.
-    let active = Grid.toggle_filter_by(group, this.dataset.filter, allow_multiple)
+    let active = Grid.toggle_filter_by(grid, group, this.dataset.filter, allow_multiple)
 
     if (!allow_multiple && active) {
       // If multiple filters are not allowed for this group, then deactivate the currently active filter.
@@ -74,8 +84,8 @@ const Grid = {
   // `group` is the name of the filter group we are operating on.
   // `filter` is the name of the filter we are enabling/disabling
   // `allow_multiple` signals whether other filters in this group can be active at the same time.
-  toggle_filter_by(group, filter, allow_multiple) {
-    let current_filter = Grid.active_filters[group]
+  toggle_filter_by(grid, group, filter, allow_multiple) {
+    let current_filter = Grid.active_filters[grid][group]
     let active = true
 
     // Configure the current filter.
@@ -110,28 +120,28 @@ const Grid = {
       }
     }
 
-    Grid.active_filters[group] = current_filter
-    Grid.apply_filters()
+    Grid.active_filters[grid][group] = current_filter
+    Grid.apply_filters(grid)
     return active
   },
 
   // Use Isotope to apply all existing filters that have been set.
-  apply_filters() {
+  apply_filters(grid) {
     let filters = []
 
-    for (let key in Grid.active_filters) {
-      if (Array.isArray(Grid.active_filters[key])) {
-        filters = filters.concat(Grid.active_filters[key])
+    for (let key in Grid.active_filters[grid]) {
+      if (Array.isArray(Grid.active_filters[grid][key])) {
+        filters = filters.concat(Grid.active_filters[grid][key])
       } else {
-        filters.push(Grid.active_filters[key])
+        filters.push(Grid.active_filters[grid][key])
       }
     }
 
-    console.log('Filter grid by', filters.join(''))
+    console.log('Filter', grid, 'by', filters.join(''))
 
     // Make the final call to Isotope
-    Grid.container.isotope({
-      filter: filters.join('')
+    Grid.containers[grid].isotope({
+      filter: filters.join(''),
     })
   },
 
