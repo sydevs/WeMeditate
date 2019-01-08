@@ -74,6 +74,9 @@ class City < ApplicationRecord
   def get_metatags static_page = nil
     result = (metatags || {}).reverse_merge({
       'title' => name,
+      'geo.placename' => name,
+      'geo.position' => "#{latitude}; #{longitude}" # TODO: Determine if we should actually be defining this, since a city is larger than a set of coords.
+      #'geo.region' => '' # TODO: Determine if we should define this. This is apparently the state/province code
     })
 
     # Merge in defaults if available
