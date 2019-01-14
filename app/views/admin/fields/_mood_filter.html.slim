@@ -1,0 +1,6 @@
+
+= f.input :name
+= f.input :icon, wrapper: :ui_file_input, icon: :image, file: record.icon
+
+- if record.icon.present?
+  .item = image_tag record.icon.url, class: 'ui tiny image'

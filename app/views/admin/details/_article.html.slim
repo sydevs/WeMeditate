@@ -1,0 +1,30 @@
+
+- if record.banner.present? or record.thumbnail.present?
+  .ui.right.floated.rounded.image
+    img src=(record.banner || record.thumbnail).url
+
+p.details.excerpt = record.excerpt
+
+.ui.details.list
+  - if record.translated_locales.include? I18n.locale
+    .item
+      i.linkify.icon
+      a.content href=url_for(record) target='_blank' = url_for(record)
+  - else
+    .item
+      i.orange.warning.sign.icon
+      .content = translate 'messages.no_translation'
+  .item
+    i.globe.icon
+    .content
+      = record.translated_locales.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
+  .item
+    i.hashtag.icon
+    .content = record.category.name
+  - if record.date.present?
+    .item
+      i.calendar.icon
+      .content = record.date
+  .item
+    i.unhide.icon
+    .content = human_enum_name(record, :priority)

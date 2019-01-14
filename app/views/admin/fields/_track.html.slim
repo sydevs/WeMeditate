@@ -1,0 +1,6 @@
+
+= f.input :name
+= f.association :artist, include_blank: 'None'
+= f.input :audio, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:audio), file: record.audio, input_html: { accept: file_type_accepts(:audio) }
+= f.association :mood_filters
+= f.association :instrument_filters

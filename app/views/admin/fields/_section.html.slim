@@ -1,0 +1,20 @@
+
+- allow = policy(record)
+
+= hidden_field_tag "#{record.page_type.underscore}_id", record.page_id
+
+.section class="type-#{record.content_type} format-#{record.format}"
+  - if record.special?
+    = f.hidden_field :content_type
+    = f.hidden_field :format
+  - else
+    = f.input :label, placeholder: record.content_type_name || record.format_name
+    = f.input :content_type, collection: Section.content_types.except(:special).keys.map {|k| [human_enum_name(record, :content_type, k), k]}, prompt: 'Choose a type', disabled: !allow.update_structure?, wrapper_html: { class: 'field-content-type' }
+
+  - if record.special?
+    = render "admin/sections/type_fields/special/#{record.format}", f: f, section: record, allow: allow
+  - else
+    - Section.content_types.except(:special).each do |type, v|
+      .grouped.fields.for class=type
+        .ui.divider
+        = render "admin/sections/type_fields/#{type}", f: f, section: record, allow: allow

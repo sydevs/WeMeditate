@@ -1,0 +1,4 @@
+
+= f.input :name
+= f.input :url, as: :url
+= f.input :image, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:image), file: record.image, input_html: { accept: file_type_accepts(:image) }

@@ -17,8 +17,8 @@ class StaticPage < ApplicationRecord
   include RequireApproval
 
   # Extensions
-  translates :title, :slug, :metatags
-  friendly_id :title, use: :globalize
+  translates :name, :slug, :metatags
+  friendly_id :name, use: :globalize
 
   # Associations
   enum role: {
@@ -29,28 +29,27 @@ class StaticPage < ApplicationRecord
   has_many :attachments, as: :page, inverse_of: :page, dependent: :delete_all
 
   # Validations
-  validates :title, presence: true
+  validates :name, presence: true
   validates :role, presence: true, uniqueness: true
   accepts_nested_attributes_for :sections, reject_if: :all_blank, allow_destroy: true
 
   # Scopes
   default_scope { order(:role) }
   scope :untranslated, -> { joins(:translations).where.not(static_page_translations: { locale: I18n.locale }) }
+  scope :q, -> (q) { joins(:translations).where('static_page_translations.name ILIKE ? OR role ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Callbacks
-  after_create :disable_drafts
+  after_create :disable_draft
 
-  # Include everything necessary to render a preview of this model
-  def self.includes_preview
-    joins(:translations)
-  end
-
-  # Include everything necessary to render the full content of this model
-  def self.includes_content mode = :front
-    if mode == :admin
-      includes(:attachments, :translations)
-    else
+  # Include everything necessary to render this model
+  def self.preload_for mode
+    case mode
+    when :preview
+      joins(:translations)
+    when :content
       includes(:attachments, :translations, sections: :translations)
+    when :admin
+      includes(:attachments, :translations)
     end
   end
 
@@ -62,7 +61,7 @@ class StaticPage < ApplicationRecord
   # Returns a list of HTML metatags to be included on this static page
   def get_metatags
     (metatags || {}).reverse_merge({
-      'title' => title,
+      'title' => name,
     })
   end
 

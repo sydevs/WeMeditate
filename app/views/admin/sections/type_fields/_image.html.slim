@@ -6,4 +6,4 @@
   - image_uuid = f.object.extra_attr 'image_uuid'
 
   = ff.input :image, wrapper_html: { class: 'sub' } do
-    = render 'admin/application/attachment_select', f: ff, field: :image, value: image_uuid, attachments: section.page.attachments
+    = render 'admin/partials/attachment_select', f: ff, field: :image, value: image_uuid, attachments: section.page.attachments

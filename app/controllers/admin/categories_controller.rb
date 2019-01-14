@@ -1,5 +1,5 @@
 module Admin
-  class CategoriesController < Admin::ApplicationResourceController
+  class CategoriesController < Admin::ApplicationRecordController
     prepend_before_action do
       set_model Category
     end
@@ -10,14 +10,6 @@ module Admin
 
     def update
       super category_params
-    end
-
-    def sort
-      params[:order].each_with_index do |id, index|
-        Category.find(id).update_attribute(:order, index)
-      end
-
-      redirect_to [:admin, Category]
     end
 
     def destroy

@@ -3,34 +3,34 @@ class ArticlesController < ApplicationController
   ARTICLES_PER_PAGE = 10
 
   def index
-    @static_page = StaticPage.includes_content.find_by(role: :articles)
+    @static_page = StaticPage.preload_for(:content).find_by(role: :articles)
     @metatags = @static_page.get_metatags
 
     respond_to do |format|
       format.html {
         @categories = Category.includes(:translations).all
-        @articles = Article.includes_preview.limit(ARTICLES_PER_PAGE)
+        @articles = Article.preload_for(:preview).limit(ARTICLES_PER_PAGE)
 
         @breadcrumbs = [
-          { name: StaticPageHelper.preview_for(:home).title, url: root_path },
-          { name: @static_page.title }
+          { name: StaticPageHelper.preview_for(:home).name, url: root_path },
+          { name: @static_page.name }
         ]
       }
       format.js {
-        @articles = Article.includes_preview.offset(params[:offset]).limit(ARTICLES_PER_PAGE)
+        @articles = Article.preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
         @next_offset = params[:offset].to_i + ARTICLES_PER_PAGE
       }
     end
   end
 
   def show
-    @article = Article.includes_content.friendly.find(params[:id])
+    @article = Article.preload_for(:content).friendly.find(params[:id])
     @metatags = @article.get_metatags
     @breadcrumbs = [
-      { name: StaticPageHelper.preview_for(:home).title, url: root_path },
+      { name: StaticPageHelper.preview_for(:home).name, url: root_path },
       { name: Article.model_name.human(count: -1), url: articles_path },
       { name: @article.category.name, url: articles_path(category: @article.category.id) },
-      { name: @article.title }
+      { name: @article.name }
     ]
   end
 

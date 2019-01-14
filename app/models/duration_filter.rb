@@ -13,8 +13,9 @@ class DurationFilter < ApplicationRecord
   # Validations
   validates :minutes, presence: true
 
-  #
+  # Scopes
   default_scope { order( :minutes ) }
+  scope :q, -> (q) { where(minutes: q) if q.present? }
 
   # Returns a localized name for the duration filter, eg. "5 minutes"
   def name

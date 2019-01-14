@@ -27,21 +27,21 @@ class City < ApplicationRecord
 
   # Scopes
   scope :untranslated, -> { joins(:translations).where.not(article_translations: { locale: I18n.locale }) }
+  scope :q, -> (q) { joins(:translations).where('city_translations.name ILIKE ?', "%#{q}%") if q.present? }
+  #scope :q, -> (q) { joins(:translations).where('city_translations.name ILIKE ? OR country ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Callbacks
   after_create :disable_drafts
 
-  # Include everything necessary to render a preview of this model
-  def self.includes_preview
-    includes(:translations)
-  end
-
-  # Include everything necessary to render the full content of this model
-  def self.includes_content mode = :front
-    if mode == :admin
-      includes(:attachments, :translations)
-    else
+  # Include everything necessary to render this model
+  def self.preload_for mode
+    case mode
+    when :preview
+      includes(:translations)
+    when :content
       includes(:attachments, :translations, sections: :translations)
+    when :admin
+      includes(:attachments, :translations)
     end
   end
 

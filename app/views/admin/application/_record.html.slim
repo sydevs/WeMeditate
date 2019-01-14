@@ -1,0 +1,42 @@
+
+- allow = policy(record)
+
+tr id=dom_id(record)
+  td
+    = record.name
+    - if allow.show?
+      a.action href=url_for([:admin, record])
+        = translate 'action.edit'
+    - elsif allow.edit?
+      a.action href=url_for([:edit, :admin, record])
+        = translate 'action.edit'
+    - if allow.destroy?
+      a.action href=url_for([:admin, record]) data={method: 'delete', remote: true, confirm: t('messages.confirm_destroy', default: 'Confirm Destroy')}
+        = translate 'action.destroy'
+    //- if allow.review?
+      a.action href=url_for([:admin, record])
+        = translate 'action.review'
+    - if record.viewable?
+      a.action href=url_for(record) target='_blank'
+        = translate 'action.show'
+
+  td.collapsing.right.aligned.disabled
+    = table_detail(record)
+
+  td.collapsing
+    - unless not defined? record.translated_locales or record.translated_locales.include? I18n.locale
+      = table_icon 'orange warning sign', t('tags.no_translation')
+
+    - if record.reviewable?
+      - if not record.published?
+        = table_icon 'dot circle', t('tags.unpublished_draft')
+      - elsif record.draft?
+        = table_icon "#{'orange' if allow.review?} exclamation circle", t('tags.unpublished_changes')
+      - else
+        = table_icon 'check circle', t('tags.published')
+
+    - if record.has_content?
+      - section_count = record.sections.count
+      = table_icon 'file', "#{section_count} #{Section.model_name.human(count: section_count)}", section_count
+
+    = table_icons(record)

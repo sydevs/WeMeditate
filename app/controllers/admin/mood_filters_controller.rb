@@ -1,5 +1,5 @@
 module Admin
-  class MoodFiltersController < Admin::ApplicationResourceController
+  class MoodFiltersController < Admin::ApplicationRecordController
     prepend_before_action do
       set_model MoodFilter
     end
@@ -20,17 +20,9 @@ module Admin
       end
     end
 
-    def sort
-      params[:order].each_with_index do |id, index|
-        MoodFilter.find(id).update_attribute(:order, index)
-      end
-
-      redirect_to [:admin, MoodFilter]
-    end
-
     private
       def mood_filter_params
-        params.fetch(:mood_filter, {}).permit(:name)
+        params.fetch(:mood_filter, {}).permit(:name, :icon)
       end
 
   end

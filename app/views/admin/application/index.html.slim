@@ -1,0 +1,3 @@
+
+- content_for :title, @model.model_name.human(count: -1)
+= render 'admin/application/index', model: @model, records: @records

@@ -7,7 +7,7 @@ module NavigationHelper
       [:meditations, :articles, :tracks].each do |role|
         static_page = static_page_preview_for(role)
         @navigation.push({
-          title: static_page.title,
+          title: static_page.name,
           url: static_page_path_for(static_page),
           active: controller_name == role.to_s
         })
@@ -21,11 +21,11 @@ module NavigationHelper
           items: [:about, :contact, :sahaja_yoga, :shri_mataji, :subtle_system, :treatments].map { |role|
             static_page = static_page_preview_for(role)
             {
-              title: static_page.title,
+              title: static_page.name,
               url: static_page_path_for(static_page),
             }
           },
-          featured: Treatment.includes_preview.first(2).map { |treatment|
+          featured: Treatment.preload_for(:preview).first(2).map { |treatment|
             {
               title: "#{Treatment.model_name.human}: #{treatment.name}",
               url: treatment_path(treatment),
@@ -44,7 +44,7 @@ module NavigationHelper
     home_page = static_page_preview_for(:home)
 
     mobile_navigation.push({
-      title: home_page.title,
+      title: home_page.name,
       url: static_page_path_for(home_page),
       active: controller_name == 'application' && action_name == 'front',
     })

@@ -12,7 +12,7 @@ en:
         other: Static Pages
       subtle_system_node:
         one: Subtle System Node
-        other: Subtle System
+        other: Subtle System Nodes
       category:
         one: Category
         other: Categories
@@ -270,6 +270,7 @@ en:
 
       meditation:
         title: Name
+        slug: URL
         file: Voice Over
         duration_filter: :activerecord.models.duration_filter.one
         goal_filters: :activerecord.models.goal_filter.other

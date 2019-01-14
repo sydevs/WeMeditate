@@ -1,0 +1,30 @@
+
+- content_for :title, @model.model_name.human(count: 1)
+- reorder = (params[:reorder] == 'true')
+
+- unless reorder
+  .actions
+    = table_action t('action.edit'), 'edit', url_for([:edit, :admin, @record])
+    //= table_action t('action.destroy'), 'trash', url_for([:destroy, :admin, @record])
+    = table_action t('action.show'), 'dashboard', url_for(@record), nil, true
+
+.details
+  h3 = @record.name
+  = render "admin/details/#{@record.model_name.param_key}", record: @record
+
+.clearfix
+
+.ui.divider
+
+- unless reorder or @record.sections.count <= 1
+  .actions = table_action t('action.target.reorder', target: Section.model_name.human), 'bars', url_for([:admin, @record, reorder: true])
+
+h4 Content
+
+- if @record.has_content?
+  = render 'admin/application/index', model: Section, parent: @record, records: @record.sections, navigation: false
+
+  - unless reorder
+    .ui.hidden.divider
+    = table_link t('action.target.back', target: @model.model_name.human(count: -1)), 'left arrow', url_for([:admin, @model])
+    = table_link t("action.create_model.target.#{Section.model_name.i18n_key}", target: Section.model_name.human, default: :'action.target.create'), 'plus', url_for([:new, :admin, @record, :section])

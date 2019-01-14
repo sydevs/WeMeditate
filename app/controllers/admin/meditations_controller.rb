@@ -1,5 +1,5 @@
 module Admin
-  class MeditationsController < Admin::ApplicationResourceController
+  class MeditationsController < Admin::ApplicationRecordController
     prepend_before_action do
       set_model Meditation
     end
@@ -21,14 +21,10 @@ module Admin
     private
       def meditation_params
         result = params.fetch(:meditation, {}).permit(
-          :name, :slug, :image, :audio, :duration_filter_id,
+          :name, :slug, :image, :video, :duration_filter_id,
           goal_filter_ids: [],
           metatags: {}
         )
-
-        if result[:metatags].present?
-          result[:metatags] = result[:metatags][:keys].zip(result[:metatags][:values]).to_h
-        end
 
         result
       end

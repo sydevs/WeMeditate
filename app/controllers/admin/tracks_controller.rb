@@ -1,5 +1,5 @@
 module Admin
-  class TracksController < Admin::ApplicationResourceController
+  class TracksController < Admin::ApplicationRecordController
     prepend_before_action do
       set_model Track
     end
@@ -14,7 +14,7 @@ module Admin
 
     private
       def track_params
-        params.fetch(:track, {}).permit(:title, :subtitle, :audio, :artist_id, mood_filter_ids: [], instrument_filter_ids: [])
+        params.fetch(:track, {}).permit(:name, :audio, :artist_id, mood_filter_ids: [], instrument_filter_ids: [])
       end
 
   end

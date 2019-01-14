@@ -1,0 +1,52 @@
+
+- allow = policy(record)
+- country_names = I18nData.countries(locale)
+= f.input :country, collection: City.countries.map {|k, v| [country_names[k], k]}, input_html: { class: 'ui search selection dropdown' }, disabled: !allow.update_structure?
+
+//= f.input :name, label: false do
+  img.ui.right.floated.image src=image_path('admin/powered-by-google.png') style='margin: 0'
+  = f.label :name
+  - if allow.update_structure?
+    .ui.city.search data-url=(lookup_admin_cities_path(type: 'locality') + '&q={query}')
+      .ui.right.labeled.left.icon.input
+        i.search.icon
+        = f.text_field :name, class: 'prompt', autocomplete: 'off', placeholder: t('action.target.search_for', target: City.model_name.human)
+
+        - if record.latitude.present? and record.longitude.present?
+          a#city_coordinates.ui.tag.label href=coordinates_url(record.latitude, record.longitude) target="_blank"
+            i.marker.icon
+            span #{record.latitude}, #{record.longitude}
+        - else
+          #city_coordinates.ui.tag.label
+            i.marker.icon
+            span = t('messages.not_set')
+
+      .results
+
+    = f.hidden_field :longitude
+    = f.hidden_field :latitude
+  - else
+    = f.text_field :name
+
+    - if record.latitude.present? and record.longitude.present?
+      a#city_coordinates.ui.tag.label href=coordinates_url(record.latitude, record.longitude) target="_blank"
+        i.marker.icon
+        span #{record.latitude}, #{record.longitude}
+
+= f.input :slug, label: (record.new_record? ? t("activerecord.attributes.#{f.object.model_name.i18n_key}.slug") : url_for(record)), wrapper: :slug
+
+= f.input :attachments do
+  - if record.new_record?
+    p = t('messages.cant_add_media_to_new_record', target: City.model_name.human)
+  - else
+    #uploader data-endpoint=upload_to_admin_city_path(record) data-files=attachments_json(record) data-authenticity-token=form_authenticity_token
+
+= f.input :banner, label: false do
+  = f.label :banner
+  = render 'admin/partials/attachment_select', f: f, field: :banner, attachments: record.attachments
+
+- if allow.update_structure?
+  = render 'admin/partials/repeatable_fields', f: f, attribute: :contacts, items: f.object.contacts do |ff, item|
+    = ff.text_field :name, value: item['name'], placeholder: City.human_attribute_name(:name), name: "#{ff.object_name}[name][]"
+    = ff.text_field :url, value: item['url'], placeholder: City.human_attribute_name(:url), name: "#{ff.object_name}[url][]"
+    = render 'admin/partials/attachment_select', f: ff, placeholder: City.human_attribute_name(:image), name: "#{ff.object_name}[image_uuid][]", value: item['image_uuid'], attachments: record.attachments

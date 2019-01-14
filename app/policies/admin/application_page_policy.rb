@@ -2,7 +2,7 @@ module Admin
   class ApplicationPagePolicy < Admin::ApplicationPolicy
 
     def show?
-      review?
+      update? || create? || destroy?
     end
 
     def update?

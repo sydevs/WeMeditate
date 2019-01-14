@@ -6,7 +6,7 @@ module StaticPageHelper
   # Creates the markup for a sidetext element, if content for that element has been defined.
   def self.preview_for role
     if not defined? @@static_page_previews
-      @@static_page_previews = StaticPage.includes_preview.all.index_by(&:role)
+      @@static_page_previews = StaticPage.preload_for(:preview).all.index_by(&:role)
     end
 
     @@static_page_previews[role.to_s]

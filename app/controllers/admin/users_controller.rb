@@ -1,15 +1,15 @@
 module Admin
-  class UsersController < Admin::ApplicationResourceController
+  class UsersController < Admin::ApplicationRecordController
     before_action :set_assignable_roles, only: [:index, :create, :update]
-    
+
     prepend_before_action do
       set_model User
     end
 
     def create
-      @user = User.new user_params
-      authorize @user
-      @user.invite!
+      @record = User.new user_params
+      authorize @record
+      @record.invite!
       redirect_to [:admin, User]
     end
 

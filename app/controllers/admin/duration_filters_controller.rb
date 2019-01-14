@@ -1,5 +1,5 @@
 module Admin
-  class DurationFiltersController < Admin::ApplicationResourceController
+  class DurationFiltersController < Admin::ApplicationRecordController
     prepend_before_action do
       set_model DurationFilter
     end
@@ -18,14 +18,6 @@ module Admin
       else
         super
       end
-    end
-
-    def sort
-      params[:order].each_with_index do |id, index|
-        DurationFilter.find(id).update_attribute(:order, index)
-      end
-
-      redirect_to [:admin, DurationFilter]
     end
 
     private

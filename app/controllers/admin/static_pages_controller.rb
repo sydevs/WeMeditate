@@ -1,17 +1,18 @@
 module Admin
-  class StaticPagesController < Admin::ApplicationPageController
+  class StaticPagesController < Admin::ApplicationRecordController
+    include HasContent, RequiresApproval
+
     prepend_before_action do
       set_model StaticPage
     end
 
     def new
-      @page = StaticPage.new role: params[:role]
-      @page.generate_required_sections!
-      set_instance_variable
+      @record = StaticPage.new role: params[:role]
+      @record.generate_required_sections!
     end
 
     def edit
-      @static_page.generate_required_sections!
+      @record.generate_required_sections!
       super
     end
 
@@ -25,16 +26,16 @@ module Admin
 
     protected
       def static_page_params
-        if policy(@static_page || StaticPage).update_structure?
+        if policy(@record || StaticPage).update_structure?
           params.fetch(:static_page, {}).permit(
-            :title, :slug, :role,
-            sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES,
+            :name, :slug, :role,
+            sections_attributes: ALL_SECTION_ATTRIBUTES,
             metatags: {}
           )
         else
           params.fetch(:static_page, {}).permit(
-            :title,
-            sections_attributes: Admin::ApplicationPageController::TRANSLATABLE_SECTION_ATTRIBUTES
+            :name,
+            sections_attributes: TRANSLATABLE_SECTION_ATTRIBUTES
           )
         end
       end

@@ -26,14 +26,10 @@ class Treatment < ApplicationRecord
   # Scopes
   default_scope { order( :order ) }
   scope :untranslated, -> { joins(:translations).where.not(treatment_translations: { locale: I18n.locale }) }
+  scope :q, -> (q) { joins(:translations).where('treatment_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
-  # Include everything necessary to render a preview of this model
-  def self.includes_preview
-    includes(:translations)
-  end
-
-  # Include everything necessary to render the full content of this model
-  def self.includes_content
+  # Include everything necessary to render this model
+  def self.preload_for mode
     includes(:translations)
   end
 

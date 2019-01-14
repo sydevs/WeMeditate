@@ -1,9 +1,4 @@
 module Admin
-  class CategoryPolicy < Admin::ApplicationResourcePolicy
-
-    def sort?
-      super_admin?
-    end
-
+  class CategoryPolicy < Admin::ApplicationFilterPolicy
   end
 end

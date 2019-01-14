@@ -28,17 +28,18 @@ class Meditation < ApplicationRecord
 
   # Scopes
   #default_scope { order( id: :desc ) }
+  scope :q, -> (q) { joins(:translations).where('meditation_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   alias thumbnail image
 
-  # Include everything necessary to render a preview of this model
-  def self.includes_preview
-    includes(:translations, :duration_filter, goal_filters: :translations)
-  end
-
-  # Include everything necessary to render the full content of this model
-  def self.includes_content
-    includes(:translations)
+  # Include everything necessary to render this model
+  def self.preload_for mode
+    case mode
+    when :preview
+      includes(:translations, :duration_filter, goal_filters: :translations)
+    when :content, :admin
+      includes(:translations)
+    end
   end
 
   # Calculate and return a few special types of meditaitons

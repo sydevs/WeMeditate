@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   # The root page of the website
   def front
-    @static_page = StaticPage.includes_content.find_by(role: :home)
+    @static_page = StaticPage.preload_for(:content).find_by(role: :home)
     @metatags = @static_page.get_metatags
   end
 

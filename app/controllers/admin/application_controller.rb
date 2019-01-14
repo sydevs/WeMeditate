@@ -5,7 +5,6 @@ module Admin
 
     def dashboard
     end
-    
+
   end
 end
-  

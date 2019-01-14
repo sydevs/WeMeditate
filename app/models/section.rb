@@ -8,7 +8,7 @@ class Section < ApplicationRecord
   extend CarrierwaveGlobalize
 
   # Extensions
-  has_paper_trail
+  #has_paper_trail
   translates :label, :title, :subtitle, :text, :quote, :credit, :action, :url, :extra
 
   attribute :label
@@ -20,11 +20,16 @@ class Section < ApplicationRecord
   attribute :action
   attribute :url
   attribute :extra
+  alias name label
 
   # Associations
   belongs_to :page, polymorphic: true
   enum content_type: { text: 0, quote: 1, video: 2, image: 3, action: 5, special: 6 }
   enum visibility_type: { worldwide: 0, only_certain_countries: 1, except_certain_countries: 2 }
+
+  # Validations
+  validates :content_type, presence: true
+  validates :format, presence: true, if: -> { content_type != quote }
 
   # Scopes
   default_scope { order( :order ) }
@@ -57,6 +62,22 @@ class Section < ApplicationRecord
     else
       default
     end
+  end
+
+  def name
+    if label.present?
+      label
+    elsif format.present?
+      format_name || content_type_name
+    end
+  end
+
+  def format_name
+    format.present? ? I18n.translate("activerecord.attributes.section.formats.#{format}") : nil
+  end
+
+  def content_type_name
+    content_type.present? ? I18n.translate("activerecord.attributes.section.content_types.#{content_type}") : nil
   end
 
   # Shorthand to access the main image associate with this section, if there is one.

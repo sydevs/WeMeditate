@@ -18,9 +18,8 @@ module Admin
     end
 
     def destroy?
-      super_admin?
+      false
     end
 
   end
 end
-  

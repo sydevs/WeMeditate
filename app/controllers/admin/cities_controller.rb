@@ -1,17 +1,18 @@
 module Admin
-  class CitiesController < Admin::ApplicationPageController
-    skip_before_action :set_page, only: [:lookup]
+  class CitiesController < Admin::ApplicationRecordController
+    include HasContent, RequiresApproval
+    skip_before_action :set_record, only: [:lookup]
+
     prepend_before_action do
       set_model City
     end
 
     def new
       super
-      @city.generate_default_sections!
+      @record.generate_default_sections!
     end
 
     def create
-      puts city_params
       super city_params
     end
 
@@ -42,15 +43,15 @@ module Admin
 
     protected
       def city_params
-        if policy(@city || City).update_structure?
+        if policy(@record || City).update_structure?
           params.fetch(:city, {}).permit(
             :country, :name, :slug, :address, :latitude, :longitude, :banner_uuid, :contacts,
-            sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES,
+            sections_attributes: ALL_SECTION_ATTRIBUTES,
             metatags: {},
           )
         else
           params.fetch(:city, {}).permit(
-            sections_attributes: Admin::ApplicationPageController::TRANSLATABLE_SECTION_ATTRIBUTES,
+            sections_attributes: TRANSLATABLE_SECTION_ATTRIBUTES,
           )
         end
       end

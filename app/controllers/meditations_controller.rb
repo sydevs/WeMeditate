@@ -1,15 +1,15 @@
 class MeditationsController < ApplicationController
 
   def index
-    @meditations = Meditation.includes_preview.all
+    @meditations = Meditation.preload_for(:preview).all
     @goal_filters = GoalFilter.includes(:translations).all
     @duration_filters = DurationFilter.all
-    @static_page = StaticPage.includes_content.find_by(role: :meditations)
+    @static_page = StaticPage.preload_for(:content).find_by(role: :meditations)
     @metatags = @static_page.get_metatags
 
     @breadcrumbs = [
-      { name: StaticPageHelper.preview_for(:home).title, url: root_path },
-      { name: @static_page.title }
+      { name: StaticPageHelper.preview_for(:home).name, url: root_path },
+      { name: @static_page.name }
     ]
   end
 
@@ -20,10 +20,10 @@ class MeditationsController < ApplicationController
     # Increment the view counter for this page. This should be changed to be less naive, and actually check when people view the video.
     @meditation.update! views: @meditation.views + 1
 
-    meditations_page = StaticPage.includes_content.find_by(role: :meditations)
+    meditations_page = StaticPage.preload_for(:content).find_by(role: :meditations)
     @breadcrumbs = [
-      { name: StaticPageHelper.preview_for(:home).title, url: root_path },
-      { name: meditations_page.title, url: meditations_path },
+      { name: StaticPageHelper.preview_for(:home).name, url: root_path },
+      { name: meditations_page.name, url: meditations_path },
       { name: @meditation.name }
     ]
   end

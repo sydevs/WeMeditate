@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190103120810) do
+ActiveRecord::Schema.define(version: 20190110133238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20190103120810) do
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title", null: false
+    t.string "name", null: false
     t.string "slug", null: false
     t.text "excerpt"
     t.string "banner_uuid"
@@ -242,7 +242,7 @@ ActiveRecord::Schema.define(version: 20190103120810) do
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title", null: false
+    t.string "name", null: false
     t.string "slug", null: false
     t.jsonb "metatags"
     t.index ["locale"], name: "index_static_page_translations_on_locale"
@@ -282,7 +282,7 @@ ActiveRecord::Schema.define(version: 20190103120810) do
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title", null: false
+    t.string "name", null: false
     t.index ["locale"], name: "index_track_translations_on_locale"
     t.index ["track_id"], name: "index_track_translations_on_track_id"
   end
@@ -331,12 +331,16 @@ ActiveRecord::Schema.define(version: 20190103120810) do
     t.integer "invitations_count", default: 0
     t.integer "role", default: 0
     t.string "languages"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
     t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
   create_table "version_associations", force: :cascade do |t|

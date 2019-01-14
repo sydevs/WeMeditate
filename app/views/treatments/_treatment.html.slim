@@ -1,7 +1,7 @@
 
 - index = (treatment_counter + 2).to_s.rjust(2, '0')
 
-article.treatments-item id=dom_id(treatment) class="#{'initial' if treatment_counter < initial} #{'reverse' if treatment_counter.even?}"
+article.treatments-item id=dom_id(treatment) class="#{'reverse' if treatment_counter.even?}"
   .treatments-item-number = index
 
   .image

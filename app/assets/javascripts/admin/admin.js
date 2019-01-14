@@ -6,6 +6,11 @@ let Admin = {
 
     $('form').on('submit', function() {
       $(this).addClass('loading')
+      $('#loader').addClass('active')
+    })
+
+    $('#pagination').on('click', 'a', function() {
+      $('#loader').addClass('active')
     })
 
     $('.sort-list').each(function() {

@@ -16,8 +16,8 @@ class Article < ApplicationRecord
   include RequireApproval
 
   # Extensions
-  translates :title, :slug, :excerpt, :banner_uuid, :thumbnail_uuid, :metatags
-  friendly_id :title, use: :globalize
+  translates :name, :slug, :excerpt, :banner_uuid, :thumbnail_uuid, :metatags
+  friendly_id :name, use: :globalize
 
   # Associations
   belongs_to :category
@@ -26,7 +26,7 @@ class Article < ApplicationRecord
   enum priority: { high: 1, normal: 0, low: -1 }
 
   # Validations
-  validates :title, presence: true
+  validates :name, presence: true
   validates :excerpt, presence: true
   validates :priority, presence: true
   accepts_nested_attributes_for :sections, reject_if: :all_blank, allow_destroy: true
@@ -35,21 +35,20 @@ class Article < ApplicationRecord
   default_scope { order( priority: :desc, updated_at: :desc ) }
   scope :untranslated, -> { joins(:translations).where.not(article_translations: { locale: I18n.locale }) }
   scope :published, -> { where.not(published_at: nil) }
+  scope :q, -> (q) { joins(:translations, category: :translations).where('article_translations.name ILIKE ? OR category_translations.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Callbacks
   after_create :disable_drafts
 
-  # Include everything necessary to render a preview of this model
-  def self.includes_preview
-    includes(:translations, category: :translations)
-  end
-
-  # Include everything necessary to render the full content of this model
-  def self.includes_content mode = :front
-    if mode == :admin
-      includes(:attachments, :translations, category: :translations)
-    else
+  # Include everything necessary to render this model
+  def self.preload_for mode
+    case mode
+    when :preview
+      includes(:translations, category: :translations)
+    when :content
       includes(:attachments, :translations, category: :translations, sections: :translations)
+    when :admin
+      includes(:attachments, :translations, category: :translations)
     end
   end
 
@@ -71,7 +70,7 @@ class Article < ApplicationRecord
   # Returns a list of HTML metatags to be included on this article's page
   def get_metatags
     (metatags || {}).reverse_merge({
-      'title' => title,
+      'title' => name,
       'description' => excerpt,
     })
   end

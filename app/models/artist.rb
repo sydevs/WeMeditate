@@ -14,4 +14,7 @@ class Artist < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :image, presence: true
 
+  # Scope
+  scope :q, -> (q) { where('name ILIKE ?', "%#{q}%") if q.present? }
+
 end

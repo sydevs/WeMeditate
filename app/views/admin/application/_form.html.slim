@@ -1,0 +1,26 @@
+
+- allow = policy(record)
+
+= simple_form_for [:admin, record], html: { id: "#{record.model_name.i18n_key}-form", class: "#{'error' if record.errors.present?}", novalidate: true } do |f|
+  = f.error :base
+
+  - if record.viewable?
+    = f.input :name
+    = f.input :slug, label: (record.new_record? ? t("activerecord.attributes.#{f.object.model_name.i18n_key}.slug") : url_for(record)), wrapper: :slug
+
+  = render "admin/fields/#{record.model_name.param_key}", f: f, record: record
+
+  - if record.viewable? and allow.update_structure?
+    = render 'admin/partials/repeatable_fields', f: f, attribute: :metatags, horizontal: true, items: f.object.metatags.to_a do |ff, item|
+      = ff.text_field :name, value: item[0], placeholder: t('metatag.key'), name: "#{ff.object_name}[keys][]"
+      = ff.text_field :value, value: item[1], placeholder: t('metatag.value'), name: "#{ff.object_name}[values][]"
+
+  .ui.hidden.divider
+
+  p
+    a.ui.basic.button href=url_for([:admin, defined?(record.page) ? record.page : record.class])
+      i.left.arrow.icon
+      = translate 'action.target.back', target: record.model_name.human(count: -1)
+    button.ui.basic.positive.button
+      = translate 'action.update'
+

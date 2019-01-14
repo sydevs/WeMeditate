@@ -1,5 +1,5 @@
 module Admin
-  class InstrumentFiltersController < Admin::ApplicationResourceController
+  class InstrumentFiltersController < Admin::ApplicationRecordController
     prepend_before_action do
       set_model InstrumentFilter
     end
@@ -18,14 +18,6 @@ module Admin
       else
         super
       end
-    end
-
-    def sort
-      params[:order].each_with_index do |id, index|
-        InstrumentFilter.find(id).update_attribute(:order, index)
-      end
-
-      redirect_to [:admin, InstrumentFilter]
     end
 
     private

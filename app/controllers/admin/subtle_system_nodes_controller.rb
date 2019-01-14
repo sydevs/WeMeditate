@@ -1,17 +1,17 @@
 module Admin
-  class SubtleSystemNodesController < Admin::ApplicationPageController
+  class SubtleSystemNodesController < Admin::ApplicationRecordController
     prepend_before_action do
       set_model SubtleSystemNode
     end
 
     def new
-      @page = SubtleSystemNode.new role: params[:role]
-      @page.generate_default_sections!
-      set_instance_variable
+      @record = SubtleSystemNode.new role: params[:role]
+      @record.generate_default_sections!
+      render 'admin/application/new'
     end
 
     def edit
-      @subtle_system_node.generate_required_sections!
+      @record.generate_required_sections!
       super
     end
 
@@ -25,16 +25,16 @@ module Admin
 
     protected
       def subtle_system_node_params
-        if policy(@subtle_system_node || SubtleSystemNode).update_structure?
+        if policy(@record || SubtleSystemNode).update_structure?
           params.fetch(:subtle_system_node, {}).permit(
             :name, :slug, :excerpt, :role,
-            sections_attributes: Admin::ApplicationPageController::ALL_SECTION_ATTRIBUTES,
+            sections_attributes: ALL_SECTION_ATTRIBUTES,
             metatags: {}
           )
         else
           params.fetch(:subtle_system_node, {}).permit(
             :name, :excerpt,
-            sections_attributes: Admin::ApplicationPageController::TRANSLATABLE_SECTION_ATTRIBUTES
+            sections_attributes: TRANSLATABLE_SECTION_ATTRIBUTES
           )
         end
       end

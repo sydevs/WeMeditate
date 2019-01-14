@@ -1,0 +1,5 @@
+
+= f.input :thumbnail, wrapper: :ui_file_input, icon: :image, file: record.thumbnail
+= f.input :excerpt, as: :text, input_html: { rows: 2 }
+= f.input :video, wrapper: :ui_file_input, icon: :video, file: record.video
+= f.input :content, as: :rich_text, input_html: { rows: 3 }

@@ -3,6 +3,7 @@ en:
   action:
     view_site: View Site
     view_admin: Go To Admin Dashboard
+    search: Search...
     sing_in: Log In
     sign_out: Log Out
     show: View
@@ -36,12 +37,20 @@ en:
       target:
         user: Invite %{target}
         track: Upload %{target}
+  tags:
+    published: Published
+    unpublished_changes: Has Unpublished Changes
+    unpublished_draft: Unpublished Draft
+    no_translation: No Translation
+    views:
+      one: 1 View
+      other: '%{count} Views'
   messages:
     maintenance_mode: The website is under construction, come back soon.
+    loading: Loading
     updated_on_by: Updated on %{date} by %{author}
     errors: Errors
-    confirm_destroy: Are you sure you want to delete that?
-    no_translation: Not Translated
+    confirm_destroy: Are you sure you want to delete that? This cannot be undone!
     no_models: No %{models}
     not_set: Not Set
     untranslated_pages: Untranslated Pages

@@ -9,7 +9,7 @@
   - video_uuid = f.object.extra_attr 'video_uuid'
 
   = ff.input :thumbnail, wrapper_html: { class: 'sub' } do
-    = render 'admin/application/attachment_select', f: ff, field: :image, value: image_uuid, attachments: section.page.attachments
+    = render 'admin/partials/attachment_select', f: ff, field: :image, value: image_uuid, attachments: section.page.attachments
 
   = ff.input :video, wrapper_html: { class: 'sub' } do
-    = render 'admin/application/attachment_select', f: ff, field: :video, value: video_uuid, attachments: section.page.attachments
+    = render 'admin/partials/attachment_select', f: ff, field: :video, value: video_uuid, attachments: section.page.attachments

@@ -39,7 +39,7 @@ records:
       - <%= sprig_record(GoalFilter, 'joyful').id %>
   - sprig_id: 5
     name: Balancing
-    slug: balacing
+    slug: balancing
     excerpt: Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.
     image: <%= sprig_file('meditations/background-1.jpg') %>
     video: <%= sprig_file('general/video.mp4') %>

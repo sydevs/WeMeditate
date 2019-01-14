@@ -1,5 +1,5 @@
 module Admin
-  class GoalFiltersController < Admin::ApplicationResourceController
+  class GoalFiltersController < Admin::ApplicationRecordController
     prepend_before_action do
       set_model GoalFilter
     end
@@ -20,17 +20,9 @@ module Admin
       end
     end
 
-    def sort
-      params[:order].each_with_index do |id, index|
-        GoalFilter.find(id).update_attribute(:order, index)
-      end
-
-      redirect_to [:admin, GoalFilter]
-    end
-
     private
       def goal_filter_params
-        params.fetch(:goal_filter, {}).permit(:name)
+        params.fetch(:goal_filter, {}).permit(:name, :icon)
       end
 
   end

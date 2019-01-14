@@ -20,5 +20,13 @@ class Category < ApplicationRecord
   # Scopes
   default_scope { order( :order ) }
   scope :untranslated, -> { joins(:translations).where.not(category_translations: { locale: I18n.locale }) }
+  scope :q, -> (q) { joins(:translations).where('category_translations.name ILIKE ?', "%#{q}%") if q.present? }
+
+  def preload_for mode
+    case mode
+    when :preview, :content, :admin
+      includes(:translations)
+    end
+  end
 
 end

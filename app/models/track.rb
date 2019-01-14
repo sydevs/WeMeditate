@@ -8,7 +8,7 @@
 class Track < ApplicationRecord
 
   # Extensions
-  translates :title
+  translates :name
 
   # Associations
   has_and_belongs_to_many :mood_filters
@@ -17,17 +17,20 @@ class Track < ApplicationRecord
   mount_uploader :audio, TrackUploader
 
   # Validations
-  validates :title, presence: true
+  validates :name, presence: true
   validates :audio, presence: true
   validates :mood_filters, presence: true
   validates :instrument_filters, presence: true
 
+  # Scopes
+  scope :q, -> (q) { joins(:translations, :artist).where('track_translations.name ILIKE ? OR artists.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
-  # TODO: Change the database so that Track uses the same database name for it's name/title as every other resource.
-  alias name title
 
   # Include everything necessary to render the full content of this model
-  def self.includes_content
-    includes(:translations, :artist, mood_filters: :translations, instrument_filters: :translations)
+  def self.preload_for mode
+    case mode
+    when :preview, :content, :admin
+      includes(:translations, :artist, mood_filters: :translations, instrument_filters: :translations)
+    end
   end
 end

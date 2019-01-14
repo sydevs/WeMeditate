@@ -1,0 +1,44 @@
+- reorder = (params[:reorder] == 'true')
+- show_navigation = (local_assigns[:navigation] != false)
+- allow = policy(model)
+
+- if reorder
+  = form_tag url_for([:sort, :admin, model]), method: :put
+    .actions
+      a.ui.tiny.compact.basic.button href=url_for([:admin, model])
+        = translate 'action.cancel'
+      button.ui.tiny.compact.basic.positive.right.labeled.icon.button
+        = translate 'action.update'
+        i.checkmark.icon
+
+    .clearfix
+
+    .ui.sort-list.items
+      - records.each do |record|
+        .sortable.item
+          .header.handle
+            i.bars.icon
+            = record.name
+          = hidden_field_tag 'order[]', record[:id], { id: "order_for_#{record.id}" }
+
+  .ui.hidden.divider
+- else
+  - if show_navigation
+    .actions = table_actions(model, records)
+
+    form method='GET' data-remote=true
+      span.ui.mini.left.icon.input#search
+        i.search.icon
+        input name='q' type='text' placeholder=t('action.search') value=params[:q]
+
+  table.ui.very.basic.compact.unstackable.models.table
+    tbody#records = render partial: 'record', collection: records
+
+  - if show_navigation
+    #pagination
+      = page_entries_info records
+      = paginate records, remote: true
+
+    .ui.hidden.divider
+
+    = table_navigation(model)

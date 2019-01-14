@@ -1,0 +1,29 @@
+
+.ui.models.table
+  td:not(:hover) .action
+    display: none
+
+  .action:before
+    content: ' - '
+
+  .instrument
+    display: inline-block
+    margin-right: 5px
+
+    img
+      height: 20px
+      opacity: 0.7
+
+  .goal
+    display: inline-block
+    margin-right: 5px
+
+    img
+      height: 30px
+      margin: -10px 0
+
+.actions
+  float: right
+
+  > *:last-child
+    margin-right: 0

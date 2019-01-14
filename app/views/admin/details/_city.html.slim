@@ -1,0 +1,20 @@
+
+.ui.details.list
+  .item
+    i.globe.icon
+    .content = record.country_name
+  .item
+    i.marker.icon
+    .content #{record.latitude}, #{record.longitude}
+  - if record.translated_locales.include? I18n.locale
+    .item
+      i.linkify.icon
+      a.content href=url_for(record) target='_blank' = url_for(record)
+  - else
+    .item
+      i.orange.warning.sign.icon
+      .content = translate 'messages.no_translation'
+  - if record.translated_locales.count > 1 or not record.translated_locales.include?(I18n.locale)
+    .item
+      i.globe.icon
+      .content = record.translated_locales.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
