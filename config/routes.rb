@@ -25,11 +25,13 @@ Rails.application.routes.draw do
           put :sort, on: :collection
         end
 
-        resources :articles, :static_pages, :cities, :subtle_system_nodes do
+        resources :articles, :static_pages, :cities, :subtle_system_nodes, except: [:destroy] do
           post :upload_media, on: :member, path: :media, as: :upload_to
           delete :destroy_media, on: :member, path: 'media/:qquuid', as: :destroy_media_for
           resources :sections, only: [:new, :create]
         end
+
+        resources :articles, :cities, :subtle_system_nodes, only: [:destroy]
 
         resources :users, :artists, :treatments, :meditations, :tracks, :sections,
                   :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters,
