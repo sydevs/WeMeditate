@@ -33,12 +33,17 @@ class Treatment < ApplicationRecord
     includes(:translations)
   end
 
-  # Returns a list of HTML metatags to be included on this static page
-  def get_metatags
-    (metatags || {}).reverse_merge({
+  # Returns a list of default HTML metatags to be included on this treatment's page
+  def default_metatags
+    {
       'title' => name,
       'description' => excerpt,
-    })
+    }
+  end
+
+  # Returns a list of HTML metatags to be included on this treatment's page
+  def get_metatags
+    (self[:metatags] || {}).reverse_merge(default_metatags)
   end
 
 end

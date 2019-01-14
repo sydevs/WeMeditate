@@ -76,6 +76,7 @@ en:
   metatag:
     key: name
     value: value
+    defaults: Default Meta Tags
   preview:
     header: '%{time} by %{user}'
   time:

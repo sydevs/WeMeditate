@@ -58,11 +58,16 @@ class StaticPage < ApplicationRecord
     StaticPage.roles.keys - StaticPage.pluck(:role)
   end
 
+  # Returns a list of default HTML metatags to be included on this static page
+  def default_metatags
+    {
+      'title' => name,
+    }
+  end
+
   # Returns a list of HTML metatags to be included on this static page
   def get_metatags
-    (metatags || {}).reverse_merge({
-      'title' => name,
-    })
+    (self[:metatags] || {}).reverse_merge(default_metatags)
   end
 
   # Certain static pages must include some specific special sections

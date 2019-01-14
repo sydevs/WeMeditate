@@ -69,17 +69,20 @@ class City < ApplicationRecord
     "#{name}, #{country_name}"
   end
 
-  # Returns a list of HTML metatags to be included on this city's page
-  # `static_page` should be a StaticPage model, and provides default metatags
-  def get_metatags static_page = nil
-    result = (metatags || {}).reverse_merge({
+  # Returns a list of default HTML metatags to be included on this city's page
+  def default_metatags
+    {
       'title' => name,
       'geo.placename' => name,
       'geo.position' => "#{latitude}; #{longitude}" # TODO: Determine if we should actually be defining this, since a city is larger than a set of coords.
       #'geo.region' => '' # TODO: Determine if we should define this. This is apparently the state/province code
-    })
+    }
+  end
 
-    # Merge in defaults if available
+  # Returns a list of HTML metatags to be included on this city's page
+  # `static_page` should be a StaticPage model, and provides default metatags
+  def get_metatags static_page = nil
+    result = (self[:metatags] || {}).reverse_merge(default_metatags)
     result = static_page.get_metatags.merge(result) if static_page.present?
     result
   end

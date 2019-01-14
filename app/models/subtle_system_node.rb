@@ -53,12 +53,17 @@ class SubtleSystemNode < ApplicationRecord
     SubtleSystemNode.roles.keys - SubtleSystemNode.pluck(:role)
   end
 
-  # Returns a list of HTML metatags to be included on this static page
-  def get_metatags
-    (metatags || {}).reverse_merge({
+  # Returns a list of default HTML metatags to be included on this subtle system node page
+  def default_metatags
+    {
       'title' => name,
       'description' => excerpt,
-    })
+    }
+  end
+
+  # Returns a list of HTML metatags to be included on this subtle system node page
+  def get_metatags
+    (self[:metatags] || {}).reverse_merge(default_metatags)
   end
 
   # Generates sections which should be included on every subtle system page.

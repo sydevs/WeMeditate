@@ -15,6 +15,17 @@
       = ff.text_field :name, value: item[0], placeholder: t('metatag.key'), name: "#{ff.object_name}[keys][]"
       = ff.text_field :value, value: item[1], placeholder: t('metatag.value'), name: "#{ff.object_name}[values][]"
 
+    .ui.accordion#metatags
+      .title
+        i.dropdown.icon
+        = translate 'metatag.defaults'
+      .content
+        .ui.list
+          - record.default_metatags.each do |key, value|
+            .item
+              strong = key
+              span "#{value}"
+
   .ui.hidden.divider
 
   p

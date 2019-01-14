@@ -60,11 +60,16 @@ class Meditation < ApplicationRecord
     end
   end
 
-  # Returns a list of HTML metatags to be included on this meditation's page
-  def get_metatags
-    (metatags || {}).reverse_merge({
+  # Returns a list of default HTML metatags to be included on this meditation's page
+  def default_metatags
+    {
       'title' => name,
       'description' => excerpt,
-    })
+    }
+  end
+
+  # Returns a list of HTML metatags to be included on this meditation's page
+  def get_metatags
+    (self[:metatags] || {}).reverse_merge(default_metatags)
   end
 end
