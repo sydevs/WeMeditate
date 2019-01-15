@@ -53,23 +53,6 @@ class SubtleSystemNode < ApplicationRecord
     SubtleSystemNode.roles.keys - SubtleSystemNode.pluck(:role)
   end
 
-  # Returns a list of default HTML metatags to be included on this subtle system node page
-  def default_metatags
-    super.merge!({
-      'title' => name,
-      'description' => excerpt,
-      'og:type' => 'article',
-      'og:title' => name,
-      'og:description' => excerpt,
-      'twitter:card' => 'summary',
-    })
-  end
-
-  # Returns a list of HTML metatags to be included on this subtle system node page
-  def get_metatags
-    (self[:metatags] || {}).reverse_merge(default_metatags)
-  end
-
   # Generates sections which should be included on every subtle system page.
   def generate_default_sections!
     sections.new label: I18n.t('misc.default_sections.chakra_overview'), content_type: :text, format: :columns

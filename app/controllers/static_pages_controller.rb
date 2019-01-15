@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
 
   def show
     @static_page = StaticPage.preload_for(:content).friendly.find(params[:id])
-    @metatags = @static_page.get_metatags
+    @metadata_record = @static_page
 
     case @static_page.role
     when 'about'

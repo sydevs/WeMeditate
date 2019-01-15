@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 
   def index
     @static_page = StaticPage.preload_for(:content).find_by(role: :articles)
-    @metatags = @static_page.get_metatags
+    @metadata_record = @static_page
 
     respond_to do |format|
       format.html {
@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.preload_for(:content).friendly.find(params[:id])
-    @metatags = @article.get_metatags
+    @metadata_record = @article
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },
       { name: Article.model_name.human(count: -1), url: articles_path },

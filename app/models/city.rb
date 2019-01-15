@@ -69,29 +69,6 @@ class City < ApplicationRecord
     "#{name}, #{country_name}"
   end
 
-  # Returns a list of default HTML metatags to be included on this city's page
-  def default_metatags
-    super.merge!({
-      'title' => name,
-      'og:type' => 'article',
-      'og:title' => name,
-      'og:image' => banner.url,
-      'og:article:modified_time' => (published_at || updated_at).to_s(:db),
-      'geo.placename' => name,
-      'geo.position' => "#{latitude}; #{longitude}", # TODO: Determine if we should actually be defining this, since a city is larger than a set of coords.
-      #'geo.region' => '' # TODO: Determine if we should define this. This is apparently the state/province code
-      'twitter:card' => 'summary_large_image',
-    })
-  end
-
-  # Returns a list of HTML metatags to be included on this city's page
-  # `static_page` should be a StaticPage model, and provides default metatags
-  def get_metatags static_page = nil
-    result = (self[:metatags] || {}).reverse_merge(default_metatags)
-    result = static_page.get_metatags.merge(result) if static_page.present?
-    result
-  end
-
   # Generates some default sections which should be included on every city page.
   def generate_default_sections!
     sections.new label: I18n.t('misc.default_sections.what_to_expect'), content_type: :text, format: :box_over_image

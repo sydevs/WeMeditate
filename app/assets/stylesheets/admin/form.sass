@@ -82,8 +82,8 @@
         display: none
 
   #metatags
-    margin-top: -1em
     padding-top: 0
+    margin-top: -1em
 
     .content
       padding: 0
@@ -91,5 +91,15 @@
     .list
       margin-left: 12px
 
-    strong:after
+    strong:not(.content):after
       content: ' => '
+
+  #jsonld
+    .content
+      padding: 0
+      max-height: 80vh
+      border-bottom: 1px solid darkgrey
+      overflow: auto
+
+    code
+      white-space: pre

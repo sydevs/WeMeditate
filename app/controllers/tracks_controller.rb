@@ -5,7 +5,7 @@ class TracksController < ApplicationController
     @mood_filters = MoodFilter.includes(:translations).all
     @instrument_filters = InstrumentFilter.includes(:translations).all
     @static_page = StaticPage.preload_for(:content).find_by(role: :tracks)
-    @metatags = @static_page.get_metatags
+    @metadata_record = @static_page
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },
       { name: @static_page.name }

@@ -3,7 +3,7 @@ class TreatmentsController < ApplicationController
   def index
     @treatments = Treatment.preload_for(:preview).all
     @static_page = StaticPage.preload_for(:content).find_by(role: :treatments)
-    @metatags = @static_page.get_metatags
+    @metadata_record = @static_page
     about_page = StaticPage.preload_for(:preview).find_by(role: :about)
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },
@@ -14,7 +14,7 @@ class TreatmentsController < ApplicationController
 
   def show
     @treatment = Treatment.preload_for(:content).friendly.find(params[:id])
-    @metatags = @treatment.get_metatags
+    @metadata_record = @treatment
 
     about_page = StaticPage.preload_for(:preview).find_by(role: :about)
     treatments_page = StaticPage.preload_for(:preview).find_by(role: :treatments)

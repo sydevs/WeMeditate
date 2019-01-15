@@ -1,7 +1,7 @@
 doctype html
 html lang=locale
   head
-    = render 'application/metatags'
+    = render_metatags @metadata_record
     = csrf_meta_tags
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
@@ -23,6 +23,7 @@ html lang=locale
     = google_tag_manager
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = render_structured_data @metadata_record
 
 - classes = [controller_name, "#{controller_name}-#{action_name}"]
 - classes << "static-page static-page-#{@static_page.role.to_s.dasherize}" if @static_page.present?

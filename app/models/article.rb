@@ -67,26 +67,6 @@ class Article < ApplicationRecord
     attachments.find_by(uuid: video_uuid)&.file
   end
 
-  # Returns a list of default HTML metatags to be included on this article's page
-  def default_metatags
-    super.merge!({
-      'title' => name,
-      'description' => excerpt,
-      'og:type' => 'article',
-      'og:title' => name,
-      'og:description' => excerpt,
-      'og:image' => banner&.url || thumbnail.url,
-      'og:article:section' => category.name,
-      'og:article:modified_time' => (published_at || updated_at).to_s(:db),
-      'twitter:card' => banner.present? ? 'summary_large_image' : 'summary',
-    })
-  end
-
-  # Returns a list of HTML metatags to be included on this article's page
-  def get_metatags
-    (self[:metatags] || {}).reverse_merge(default_metatags)
-  end
-
   private
     # TODO: This is a temporary measure to disable the draft system until issues with draft integration can be resolved.
     def disable_drafts

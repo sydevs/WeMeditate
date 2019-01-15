@@ -38,4 +38,26 @@ module StaticPageHelper
     end
   end
 
+  def static_page_url_for static_page
+    case static_page.role.to_sym
+    when :home
+      root_url
+    when :subtle_system
+      subtle_system_nodes_url
+    when :articles
+      articles_url
+    when :treatments
+      treatments_url
+    when :tracks
+      tracks_url
+    when :meditations
+      meditations_path
+    when :world, :country, :city
+      # There is no single address for city and country pages, so just default to the world index
+      cities_url
+    else
+      polymorphic_url(static_page)
+    end
+  end
+
 end

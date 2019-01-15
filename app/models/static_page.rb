@@ -58,25 +58,6 @@ class StaticPage < ApplicationRecord
     StaticPage.roles.keys - StaticPage.pluck(:role)
   end
 
-  # Returns a list of default HTML metatags to be included on this static page
-  def default_metatags
-    is_article = ['about', 'shri_mataji', 'subtle_system', 'sahaja_yoga', 'tracks', 'meditations', 'treatments'].include? role
-    title = (role == 'home' ? I18n.t('we_meditate') : name)
-
-    super.merge!({
-      'title' => title,
-      'og:type' => is_article ? 'article' : 'website',
-      'og:title' => title,
-      'og:article:modified_time' => (published_at || updated_at).to_s(:db),
-      'twitter:card' => 'summary',
-    })
-  end
-
-  # Returns a list of HTML metatags to be included on this static page
-  def get_metatags
-    (self[:metatags] || {}).reverse_merge(default_metatags)
-  end
-
   # Certain static pages must include some specific special sections
   # This function generates those sections if they don't already exist.
   def generate_required_sections!

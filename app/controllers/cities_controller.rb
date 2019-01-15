@@ -2,7 +2,7 @@ class CitiesController < ApplicationController
 
   def index
     @static_page = StaticPage.preload_for(:content).find_by(role: :world)
-    @metatags = @static_page.get_metatags
+    @metadata_record = @static_page
     @countries = City.distinct.pluck(:country)
     @cities = City.with_translations(I18n.locale).select(:name, :country, :slug)
   end
@@ -13,7 +13,7 @@ class CitiesController < ApplicationController
 
   def country
     @static_page = StaticPage.preload_for(:content).find_by(role: :country)
-    @metatags = @static_page.get_metatags
+    @metadata_record = @static_page
     @breadcrumbs = [
       { name: City.model_name.human(count: -1), url: cities_path },
       { name: I18nData.countries(I18n.locale)[params[:country_code].upcase] }
@@ -23,7 +23,7 @@ class CitiesController < ApplicationController
   def show
     @static_page = StaticPage.preload_for(:content).find_by(role: :city)
     @city = City.preload_for(:content).friendly.find(params[:id])
-    @metatags = @city.get_metatags(@static_page)
+    @metadata_record = @city
     @breadcrumbs = [
       { name: City.model_name.human(count: -1), url: cities_path },
       { name: I18nData.countries(I18n.locale)[@city.country], url: country_path(country_code: @city.country) },

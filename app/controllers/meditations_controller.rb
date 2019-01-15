@@ -5,7 +5,7 @@ class MeditationsController < ApplicationController
     @goal_filters = GoalFilter.includes(:translations).all
     @duration_filters = DurationFilter.all
     @static_page = StaticPage.preload_for(:content).find_by(role: :meditations)
-    @metatags = @static_page.get_metatags
+    @metadata_record = @static_page
 
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },
@@ -15,7 +15,7 @@ class MeditationsController < ApplicationController
 
   def show
     @meditation = Meditation.friendly.find(params[:id])
-    @metatags = @meditation.get_metatags
+    @metadata_record = @meditation
 
     # Increment the view counter for this page. This should be changed to be less naive, and actually check when people view the video.
     @meditation.update! views: @meditation.views + 1
