@@ -55,10 +55,14 @@ class SubtleSystemNode < ApplicationRecord
 
   # Returns a list of default HTML metatags to be included on this subtle system node page
   def default_metatags
-    {
+    super.merge!({
       'title' => name,
       'description' => excerpt,
-    }
+      'og:type' => 'article',
+      'og:title' => name,
+      'og:description' => excerpt,
+      'twitter:card' => 'summary',
+    })
   end
 
   # Returns a list of HTML metatags to be included on this subtle system node page

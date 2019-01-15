@@ -21,10 +21,16 @@
         = translate 'metatag.defaults'
       .content
         .ui.list
+          .item
+            strong og:url
+            span "#{polymorphic_url(record)}"
           - record.default_metatags.each do |key, value|
             .item
               strong = key
-              span "#{value}"
+              - if key == 'og:locale:alternate'
+                span = value.map &:to_s
+              - else
+                span "#{value}"
 
   .ui.hidden.divider
 

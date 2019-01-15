@@ -69,10 +69,17 @@ class Article < ApplicationRecord
 
   # Returns a list of default HTML metatags to be included on this article's page
   def default_metatags
-    {
+    super.merge!({
       'title' => name,
       'description' => excerpt,
-    }
+      'og:type' => 'article',
+      'og:title' => name,
+      'og:description' => excerpt,
+      'og:image' => banner&.url || thumbnail.url,
+      'og:article:section' => category.name,
+      'og:article:modified_time' => (published_at || updated_at).to_s(:db),
+      'twitter:card' => banner.present? ? 'summary_large_image' : 'summary',
+    })
   end
 
   # Returns a list of HTML metatags to be included on this article's page

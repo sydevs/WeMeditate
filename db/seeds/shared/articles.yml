@@ -1,78 +1,78 @@
 options:
-  find_existing_by: title
+  find_existing_by: name
 records:
   - sprig_id: 1
-    title: Article With Banner
+    name: Article With Banner
     slug: article-with-banner
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     banner_uuid: <%= SecureRandom.uuid %>
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'wisdom').id %>
   - sprig_id: 2
-    title: Article Without Banner
+    name: Article Without Banner
     slug: article-without-banner
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'experiences').id %>
   - sprig_id: 3
-    title: Test Article
+    name: Test Article
     slug: test-article
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'wisdom').id %>
     date: 2020-12-13
   - sprig_id: 4
-    title: Article 4
+    name: Article 4
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'creativity').id %>
   - sprig_id: 5
-    title: Article 5
+    name: Article 5
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'events').id %>
   - sprig_id: 6
-    title: Article 6
+    name: Article 6
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'experiences').id %>
   - sprig_id: 7
-    title: Article 7
+    name: Article 7
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'events').id %>
   - sprig_id: 8
-    title: Article 8
+    name: Article 8
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'creativity').id %>
   - sprig_id: 9
-    title: Article 9
+    name: Article 9
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'wisdom').id %>
   - sprig_id: 10
-    title: Article 10
+    name: Article 10
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'wisdom').id %>
   - sprig_id: 11
-    title: Article 11
+    name: Article 11
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'events').id %>
   - sprig_id: 12
-    title: Article 12
+    name: Article 12
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'creativity').id %>
   - sprig_id: 13
-    title: Article 13
+    name: Article 13
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'experiences').id %>
   - sprig_id: 14
-    title: Article 14
+    name: Article 14
     excerpt: In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.
     thumbnail_uuid: <%= SecureRandom.uuid %>
     category_id: <%= sprig_record(Category, 'wisdom').id %>

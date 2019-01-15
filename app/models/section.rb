@@ -29,7 +29,7 @@ class Section < ApplicationRecord
 
   # Validations
   validates :content_type, presence: true
-  validates :format, presence: true, if: -> { content_type != quote }
+  validates :format, presence: true, if: -> { content_type != 'quote' }
 
   # Scopes
   default_scope { order( :order ) }

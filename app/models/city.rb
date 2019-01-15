@@ -71,12 +71,17 @@ class City < ApplicationRecord
 
   # Returns a list of default HTML metatags to be included on this city's page
   def default_metatags
-    {
+    super.merge!({
       'title' => name,
+      'og:type' => 'article',
+      'og:title' => name,
+      'og:image' => banner.url,
+      'og:article:modified_time' => (published_at || updated_at).to_s(:db),
       'geo.placename' => name,
-      'geo.position' => "#{latitude}; #{longitude}" # TODO: Determine if we should actually be defining this, since a city is larger than a set of coords.
+      'geo.position' => "#{latitude}; #{longitude}", # TODO: Determine if we should actually be defining this, since a city is larger than a set of coords.
       #'geo.region' => '' # TODO: Determine if we should define this. This is apparently the state/province code
-    }
+      'twitter:card' => 'summary_large_image',
+    })
   end
 
   # Returns a list of HTML metatags to be included on this city's page

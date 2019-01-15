@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190110133238) do
+ActiveRecord::Schema.define(version: 20190115120637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,6 +181,8 @@ ActiveRecord::Schema.define(version: 20190110133238) do
   create_table "meditations", force: :cascade do |t|
     t.bigint "duration_filter_id"
     t.jsonb "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["duration_filter_id"], name: "index_meditations_on_duration_filter_id"
   end
 
@@ -311,6 +313,8 @@ ActiveRecord::Schema.define(version: 20190110133238) do
 
   create_table "treatments", force: :cascade do |t|
     t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

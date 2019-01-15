@@ -1,8 +1,8 @@
 options:
-  find_existing_by: title
+  find_existing_by: name
 records:
   - sprig_id: 1
-    title: Raag Darbari
+    name: Raag Darbari
     audio: <%= sprig_file('general/music.mp3') %>
     artist_id: <%= sprig_record(Artist, 1).id %>
     mood_filter_ids:
@@ -13,7 +13,7 @@ records:
       - <%= sprig_record(InstrumentFilter, 'Voice').id %>
       - <%= sprig_record(InstrumentFilter, 'Flute').id %>
   - sprig_id: 2
-    title: Raag Durga
+    name: Raag Durga
     audio: <%= sprig_file('general/music.mp3') %>
     artist_id: <%= sprig_record(Artist, 1).id %>
     mood_filter_ids:
@@ -23,7 +23,7 @@ records:
       - <%= sprig_record(InstrumentFilter, 'Tabla').id %>
       - <%= sprig_record(InstrumentFilter, 'Sitar').id %>
   - sprig_id: 3
-    title: Raag Jayjayvanti
+    name: Raag Jayjayvanti
     audio: <%= sprig_file('general/music.mp3') %>
     artist_id: <%= sprig_record(Artist, 2).id %>
     mood_filter_ids:
@@ -32,7 +32,7 @@ records:
     instrument_filter_ids:
       - <%= sprig_record(InstrumentFilter, 'Voice').id %>
   - sprig_id: 4
-    title: Brahma Shodile
+    name: Brahma Shodile
     audio: <%= sprig_file('general/music.mp3') %>
     artist_id: <%= sprig_record(Artist, 3).id %>
     mood_filter_ids:

@@ -36,11 +36,6 @@
             i.sun.icon
             = SubtleSystemNode.model_name.human(count: -1)
 
-        - if policy(Track).index?
-          = link_to [:admin, Track], class: "#{'active' if ['tracks', 'mood_filters', 'instrument_filters', 'artists'].include? controller_name} item"
-            i.music.icon
-            = Track.model_name.human(count: -1)
-
         - if policy(Meditation).index?
           = link_to [:admin, Meditation], class: "#{'active' if ['meditations', 'goal_filters', 'duration_filters'].include? controller_name} item"
             i.leaf.icon
@@ -50,6 +45,11 @@
           = link_to [:admin, Treatment], class: "#{'active' if controller_name == 'treatments'} item"
             i.first.aid.icon
             = Treatment.model_name.human(count: -1)
+
+        - if policy(Track).index?
+          = link_to [:admin, Track], class: "#{'active' if ['tracks', 'mood_filters', 'instrument_filters', 'artists'].include? controller_name} item"
+            i.music.icon
+            = Track.model_name.human(count: -1)
 
   - if policy(User).index?
     = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"

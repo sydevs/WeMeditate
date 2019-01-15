@@ -1,8 +1,13 @@
 
+meta property='og:url' content=request.original_url
+
 - @metatags&.each do |key, value|
   - if key == 'title'
     title #{value} | #{translate 'we_meditate'}
   - elsif key == 'description'
     meta name='description' content=value
+  - elsif key == 'og:locale:alternate'
+    - value.each do |alternate_locale|
+      meta property='og:locale:alternate' content=alternate_locale
   - else
     meta property=key content=value
