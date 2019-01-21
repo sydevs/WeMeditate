@@ -15,13 +15,11 @@ en:
     destroy: Delete
     review: Review
     retry: Retry
-    choose_file: Choose a file
-    upload_file: Upload File
     close: Close
-    'yes': 'Yes'
-    'no': 'No'
-    okay: Okay
+    select: Select
+    clean_up: Clean Up
     target:
+      upload: Upload %{target}
       edit: Edit %{target}
       reset: Reset %{target}
       add: Add %{target}
@@ -31,12 +29,16 @@ en:
       back: Back to %{target}
       reorder: Change %{target} Order
       search_for: Search for %{target}
-    create_model:
-      user: Invite
-      track: Upload
-      target:
-        user: Invite %{target}
-        track: Upload %{target}
+    choose_file:
+      image:
+        single: Choose an image
+        multiple: Choose images
+      video:
+        single: Choose a video file
+        multiple: Choose video files
+      audio:
+        single: Choose a audio file
+        multiple: Choose audio files
   tags:
     published: Published
     unpublished_changes: Has Unpublished Changes
@@ -48,6 +50,7 @@ en:
   messages:
     maintenance_mode: The website is under construction, come back soon.
     loading: Loading
+    upload_limitations: Images, video, and audio only, up to 10 MB each
     updated_on_by: Updated on %{date} by %{author}
     errors: Errors
     confirm_destroy: Are you sure you want to delete that? This cannot be undone!
@@ -61,7 +64,6 @@ en:
     latlong_not_found: Coordinates Not Found
     missing_pages: Missing Pages
     has_draft: Has Pending Changes
-    choose_file: Choose a file
     drop_files_here: Drop files here
     cant_add_media_to_new_record: You must save this %{target} before you can add media to it.
     city_content_placeholder: Each city page may define custom page content. That content will be inserted here.
@@ -72,6 +74,7 @@ en:
       created: Created successfully.
       updated: Saved successfully.
       updated_and_review: Saved successfully, you can now review and publish the changes.
+      deleted: Deleted successfully.
       cannot_delete_attached_record: You cannot delete a %{model} which has %{association} attached to it. Reassign the %{association} and try again.
   metadata:
     key: name

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   # The root page of the website
   def front
     @static_page = StaticPage.preload_for(:content).find_by(role: :home)
-    @metatags = @static_page.get_metatags
+    @metadata_record = @static_page
   end
 
   # A POST endpoint to submit a contact message to the site admins

@@ -22,5 +22,5 @@
         - if section.title.present?
           h2.text-title = section.title
         .text-content = section.text&.html_safe
-        - if section.action.present? and section.url.present?
+        /- if section.action.present? and section.url.present?
           a.button-box href=section.url = section.action

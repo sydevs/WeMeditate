@@ -24,7 +24,7 @@
   .ui.hidden.divider
 - else
   - if show_navigation
-    .actions = table_actions(model, records)
+    .table-actions = table_actions(model, records)
 
     form method='GET' data-remote=true
       span.ui.mini.left.icon.input#search

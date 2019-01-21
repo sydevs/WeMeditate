@@ -56,8 +56,8 @@
   - if banner_style == 'city_page'
     .banner-background style="background-image: url(#{image_path @city.banner.url})"
   - else
-    - mobile_image = section.image(section.extra_attr('mobile_image_uuid'))
-    - desktop_image = section.image(section.extra_attr('desktop_image_uuid'))
+    - mobile_image = section.image(section.extra_attr('mobile_image_id'))
+    - desktop_image = section.image(section.extra_attr('desktop_image_id'))
     - if mobile_image
       .banner-background.mobile-only style="background-image: url(#{image_path mobile_image.url})"
     .banner-background style="background-image: url(#{image_path desktop_image.url})"

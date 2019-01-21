@@ -21,10 +21,16 @@ p.details.excerpt = record.excerpt
   .item
     i.hashtag.icon
     .content = record.category.name
+  .item
+    i.unhide.icon
+    .content = human_enum_name(record, :priority)
   - if record.date.present?
     .item
       i.calendar.icon
       .content = record.date
-  .item
-    i.unhide.icon
-    .content = human_enum_name(record, :priority)
+
+  - video = MediaFile.find_by(id: record.video_id)
+  - if video.present?
+    .item
+      i.play.circle.icon
+      a.content href=video.file_url target='_blank' = video.name

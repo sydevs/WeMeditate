@@ -1,0 +1,21 @@
+
+- if defined? template and template == true
+  .media.column#media-file-template
+    .media-wrapper
+      .ui.blue.right.corner.label
+        i.checkmark.icon
+      a.media-image target='_blank'
+        i.fitted.icon
+      .media-meta
+        a.media-link target='_blank' = translate 'action.show'
+        .media-name
+- else
+  .media.column class="media-type-#{media_file.category}" data-value=media_file.id
+    .media-wrapper
+      .ui.blue.right.corner.label
+        i.checkmark.icon
+      a.media-image style="background-image: url(#{media_file.file_url})" href=media_file.file_url target='_blank'
+        i.fitted.icon
+      .media-meta
+        a.media-link href=media_file.file_url target='_blank' = translate 'action.show'
+        .media-name = media_file.name

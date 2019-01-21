@@ -6,9 +6,3 @@
     = human_enum_name(record, :role)
 
 = f.input :excerpt, as: :text, input_html: { rows: 2 }
-
-= f.input :attachments do
-  - if record.new_record?
-    p = t('messages.cant_add_media_to_new_record', target: SubtleSystemNode.model_name.human)
-  - else
-    #uploader data-endpoint=upload_to_admin_subtle_system_node_path(record) data-files=attachments_json(record) data-authenticity-token=form_authenticity_token

@@ -18,3 +18,5 @@
       .grouped.fields.for class=type
         .ui.divider
         = render "admin/sections/type_fields/#{type}", f: f, section: record, allow: allow
+
+= render 'admin/media_files/library', page: record.page

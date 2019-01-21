@@ -83,14 +83,6 @@ module Admin::ApplicationHelper
     content_tag(:a, name, html_options, &block)
   end
 
-  def attachments_json page
-    page.attachments.select(:uuid, :name, :size).as_json.to_json
-  end
-
-  def attachments_collection page
-    page.attachments.select(:name, :uuid).map{ |hash| [ hash['name'], hash['uuid'] ] }
-  end
-
   def subfield f, attribute, **args, &block
     render 'admin/fields/subfield', f: f, attribute: attribute, **args, &block
   end
@@ -109,6 +101,27 @@ module Admin::ApplicationHelper
 
   def slug_input f, **args
     render 'admin/fields/slug', f: f, **args
+  end
+
+  def media_input f, attribute, multiple: false, type: :image, **args
+    attribute = "#{attribute}_id"
+    file_id = args.key?(:value) ? args[:value] : f.object.send(attribute)
+    name = args[:name] || "#{f.object_name}[#{attribute}]"
+    name += '[]' if multiple
+    media = MediaFile.find_by(id: file_id)
+
+    tag.div class: 'ui media input', data: { multiple: multiple, type: type } do
+      concat f.input_field attribute, as: :hidden, **args
+      concat tag.div tag.input(nil, type: 'text', placeholder: args[:placeholder] || t("action.choose_file.#{type}.#{multiple ? 'multiple' : 'single'}"), value: media&.name), class: 'handle'
+
+      if not multiple and args[:preview] != false
+        if args[:preview] && type == :image
+          concat tag.a tag.img(src: media&.file_url), class: 'ui rounded image', href: media&.file_url, target: '_blank'
+        else
+          concat tag.a t('action.show'), class: 'ui basic small compact button', href: media&.file_url, target: '_blank', style: "#{'display: none' unless media&.file_url}"
+        end
+      end
+    end
   end
 
 end

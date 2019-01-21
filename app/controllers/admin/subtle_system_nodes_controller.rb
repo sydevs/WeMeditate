@@ -26,16 +26,9 @@ module Admin
     protected
       def subtle_system_node_params
         if policy(@record || SubtleSystemNode).update_structure?
-          params.fetch(:subtle_system_node, {}).permit(
-            :name, :slug, :excerpt, :role,
-            sections_attributes: ALL_SECTION_ATTRIBUTES,
-            metatags: {}
-          )
+          params.fetch(:subtle_system_node, {}).permit(:name, :slug, :excerpt, :role, metatags: {})
         else
-          params.fetch(:subtle_system_node, {}).permit(
-            :name, :excerpt,
-            sections_attributes: TRANSLATABLE_SECTION_ATTRIBUTES
-          )
+          params.fetch(:subtle_system_node, {}).permit(:name, :excerpt)
         end
       end
 

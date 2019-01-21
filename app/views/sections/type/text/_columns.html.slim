@@ -33,7 +33,7 @@
     - items.each_with_index do |item, index|
       article.carousel-item class="#{'central' if index == 1}"
         .image
-          img src=section.image(item['image_uuid'])
+          img src=section.image(item['image_id'])
         - if item['url'].present?
           a.text-title href=item['url'] = item['title']
         - else

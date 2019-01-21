@@ -1,6 +1,6 @@
 module Admin
   class CitiesController < Admin::ApplicationRecordController
-    include HasContent, RequiresApproval
+    include RequiresApproval
     skip_before_action :set_record, only: [:lookup]
 
     prepend_before_action do
@@ -43,17 +43,17 @@ module Admin
 
     protected
       def city_params
-        if policy(@record || City).update_structure?
-          params.fetch(:city, {}).permit(
-            :country, :name, :slug, :address, :latitude, :longitude, :banner_uuid, :contacts,
-            sections_attributes: ALL_SECTION_ATTRIBUTES,
-            metatags: {},
-          )
-        else
-          params.fetch(:city, {}).permit(
-            sections_attributes: TRANSLATABLE_SECTION_ATTRIBUTES,
-          )
+        city_params = params.fetch(:city, {}).permit(
+          :country, :name, :slug, :address, :latitude, :longitude, :banner_id,
+          contacts: {}, metatags: {},
+        )
+
+        if city_params[:contacts].present?
+          data = city_params[:contacts]
+          city_params[:contacts] = data.values.transpose.map { |vs| data.keys.zip(vs).to_h }
         end
+
+        city_params
       end
 
   end

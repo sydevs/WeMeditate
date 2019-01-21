@@ -25,11 +25,12 @@
   - items = section.extra_attr('items', [])
   - content_for :head do
     meta name='turbolinks-cache-control' content='no-cache'
+
   .carousel-wrap
     .video.carousel data-style='video'
       - items.each_with_index do |item, index|
         .video-wrapper
-          = render 'shared/video_preview', thumbnail: section.image(item['image_uuid']).url, video_url: section.video(item['video_uuid']).url
+          = render 'shared/video_preview', thumbnail: section.image(item['image_id']).url, video_url: section.video(item['video_id']).url
           h3.video-title = item['title']
 - else
   .video-wrapper

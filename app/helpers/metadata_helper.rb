@@ -67,8 +67,8 @@ module MetadataHelper
           tags.merge!({
             'description' => record.excerpt,
             'og:type' => 'video.other',
-            'og:image' => record.thumbnail.url,
-            'og:video' => record.video.url,
+            'og:image' => record.thumbnail&.url,
+            'og:video' => record.video&.url,
             'og:video:duration' => '', # TODO: Define this
             'og:video:release_date' => record.created_at.to_s(:db),
             'twitter:card' => 'player',
@@ -80,7 +80,7 @@ module MetadataHelper
           tags.merge!({
             'description' => record.excerpt,
             'og:type' => 'article',
-            'og:image' => record.banner&.url || record.thumbnail.url,
+            'og:image' => record.banner&.url || record.thumbnail&.url,
             'og:article:section' => record.category.name,
             'twitter:card' => record.banner.present? ? 'summary_large_image' : 'summary',
             'og:video' => record.video&.url,
@@ -100,7 +100,7 @@ module MetadataHelper
       when City
         tags.merge!({
           'og:type' => 'article',
-          'og:image' => record.banner.url,
+          'og:image' => record.banner&.url,
           'og:article:modified_time' => (record.published_at || record.updated_at).to_s(:db),
           'geo.placename' => record.name,
           'geo.position' => "#{record.latitude}; #{record.longitude}", # TODO: Determine if we should actually be defining this, since a city is larger than a set of coords.
@@ -159,10 +159,10 @@ module MetadataHelper
         page.merge!({
           '@type' => 'Article',
           'headline' => tags['og:title'],
-          'thumbnail_url' => record.thumbnail.url,
+          'thumbnail_url' => record.thumbnail&.url,
         })
 
-        if record.date
+        if record.date.present?
           objects.push({
             '@context' => 'http://schema.org',
             '@type' => 'Event',

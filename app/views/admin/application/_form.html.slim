@@ -4,6 +4,9 @@
 = simple_form_for [:admin, record], html: { id: "#{record.model_name.i18n_key}-form", class: "#{'error' if record.errors.present?}", novalidate: true } do |f|
   = f.error :base
 
+  - if record.errors.present?
+    code = record.errors.full_messages
+
   - if record.viewable?
     = f.input :name
     = f.input :slug, label: (record.new_record? ? t("activerecord.attributes.#{f.object.model_name.i18n_key}.slug") : url_for(record)), wrapper: :slug
@@ -15,21 +18,21 @@
       = ff.text_field :name, value: item[0], placeholder: t('metadata.key'), name: "#{ff.object_name}[keys][]"
       = ff.text_field :value, value: item[1], placeholder: t('metadata.value'), name: "#{ff.object_name}[values][]"
 
-    .ui.accordion#metatags
-      .title
-        i.dropdown.icon
-        = translate 'metadata.default_metatags'
-      .content
-        .ui.list
-          - default_metatags(record).each do |key, value|
-            .item
-              strong = key
-              - if value.is_a? Array
-                span = value
-              - else
-                span "#{value}"
-
     - unless record.new_record?
+      .ui.accordion#metatags
+        .title
+          i.dropdown.icon
+          = translate 'metadata.default_metatags'
+        .content
+          .ui.list
+            - default_metatags(record).each do |key, value|
+              .item
+                strong = key
+                - if value.is_a? Array
+                  span = value
+                - else
+                  span "#{value}"
+
       .ui.accordion#jsonld
         .title
           i.dropdown.icon

@@ -145,6 +145,14 @@ SimpleForm.setup do |config|
     end
   end
 
+  config.wrappers :ui_media_input, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
+    b.use :html5
+    b.wrapper tag: 'div', class: 'ui media input' do |input|
+      input.use :label_input
+      input.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
+    end
+  end
+
   # The default wrapper to be used by the FormBuilder.
   # config.default_wrapper = :default
   config.default_wrapper = :semantic

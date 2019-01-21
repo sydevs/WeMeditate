@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190115120637) do
+ActiveRecord::Schema.define(version: 20190117111639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,9 +23,10 @@ ActiveRecord::Schema.define(version: 20190115120637) do
     t.string "name", null: false
     t.string "slug", null: false
     t.text "excerpt"
-    t.string "banner_uuid"
-    t.string "thumbnail_uuid"
     t.jsonb "metatags"
+    t.integer "video_id"
+    t.integer "banner_id"
+    t.integer "thumbnail_id"
     t.index ["article_id"], name: "index_article_translations_on_article_id"
     t.index ["locale"], name: "index_article_translations_on_locale"
   end
@@ -36,7 +37,6 @@ ActiveRecord::Schema.define(version: 20190115120637) do
     t.bigint "category_id"
     t.integer "priority", default: 0, null: false
     t.datetime "published_at"
-    t.string "video_uuid"
     t.date "date"
     t.index ["category_id"], name: "index_articles_on_category_id"
   end
@@ -85,8 +85,8 @@ ActiveRecord::Schema.define(version: 20190115120637) do
     t.datetime "updated_at", null: false
     t.datetime "published_at"
     t.integer "country"
-    t.string "banner_uuid"
     t.jsonb "contacts"
+    t.integer "banner_id"
   end
 
   create_table "city_translations", force: :cascade do |t|
@@ -161,6 +161,26 @@ ActiveRecord::Schema.define(version: 20190115120637) do
     t.bigint "instrument_filter_id"
     t.index ["instrument_filter_id"], name: "index_instrument_filters_tracks_on_instrument_filter_id"
     t.index ["track_id"], name: "index_instrument_filters_tracks_on_track_id"
+  end
+
+  create_table "media_files", force: :cascade do |t|
+    t.string "name"
+    t.integer "category", default: 0
+    t.integer "usage_count", default: 0
+    t.jsonb "file"
+    t.string "page_type"
+    t.bigint "page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["page_type", "page_id"], name: "index_media_files_on_page_type_and_page_id"
+  end
+
+  create_table "media_files_pages", force: :cascade do |t|
+    t.bigint "media_file_id"
+    t.string "page_type"
+    t.bigint "page_id"
+    t.index ["media_file_id"], name: "index_media_files_pages_on_media_file_id"
+    t.index ["page_type", "page_id"], name: "index_media_files_pages_on_page_type_and_page_id"
   end
 
   create_table "meditation_translations", force: :cascade do |t|

@@ -1,6 +1,6 @@
 module Admin
   class ArticlesController < Admin::ApplicationRecordController
-    include HasContent, RequiresApproval
+    include RequiresApproval
 
     prepend_before_action do
       set_model Article
@@ -18,14 +18,12 @@ module Admin
       def article_params
         if policy(@article || Article).update_structure?
           params.fetch(:article, {}).permit(
-            :name, :slug, :category_id, :priority, :excerpt, :banner_uuid, :thumbnail_uuid, :video_uuid, :date,
-            sections_attributes: ALL_SECTION_ATTRIBUTES,
+            :name, :slug, :category_id, :priority, :excerpt, :banner_id, :thumbnail_id, :video_id, :date,
             metatages: {}
           )
         else
           params.fetch(:article, {}).permit(
-            :name, :slug, :excerpt, :banner_uuid, :thumbnail_uuid, :video_uuid,
-            sections_attributes: TRANSLATABLE_SECTION_ATTRIBUTES
+            :name, :slug, :excerpt, :banner_id, :thumbnail_id, :video_id,
           )
         end
       end

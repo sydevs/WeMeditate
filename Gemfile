@@ -67,6 +67,7 @@ gem 'i18n_data' # Adds some utility functions for localizing countries
 
 # Tools
 gem 'sprig' # Used to populate the database with the pages and data used in the designs, for quick deployment and recovery.
+gem 'seedbank' # Used to populate the database with the pages and data used in the designs, for quick deployment and recovery.
 
 # Misc
 gem 'gibbon' # For MailChimp Integration

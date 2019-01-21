@@ -32,7 +32,7 @@ class Section < ApplicationRecord
   validates :format, presence: true, if: -> { content_type != 'quote' }
 
   # Scopes
-  default_scope { order( :order ) }
+  default_scope { order(:order) }
 
   # Formats - A list of recognized non-special formats, which will be shown in the CMS
   TEXT_FORMATS = [:just_text, :with_quote, :with_image, :box_with_lefthand_image, :box_with_righthand_image, :box_over_image, :grid, :columns, :ancient_wisdom]
@@ -68,7 +68,9 @@ class Section < ApplicationRecord
     if label.present?
       label
     elsif format.present?
-      format_name || content_type_name
+      format_name
+    else
+      content_type_name
     end
   end
 
@@ -81,15 +83,15 @@ class Section < ApplicationRecord
   end
 
   # Shorthand to access the main image associate with this section, if there is one.
-  def image uuid = nil
-    uuid = extra_attr('image_uuid') if uuid.nil?
-    page.attachments.find_by(uuid: uuid)&.file
+  def image id = nil
+    id = extra_attr('image_id') if id.nil?
+    page.media_files.find_by(id: id)&.file
   end
 
   # Shorthand to access the main video associate with this section, if there is one.
-  def video uuid = nil
-    uuid = extra_attr('video_uuid') if uuid.nil?
-    page.attachments.find_by(uuid: uuid)&.file
+  def video id = nil
+    id = extra_attr('video_id') if id.nil?
+    page.media_files.find_by(id: id)&.file
   end
 
   # Shorthand to access the decoration configuration for this section

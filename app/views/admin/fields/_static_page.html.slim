@@ -6,8 +6,4 @@
     i.pin.icon
     = human_enum_name(record, :role)
 
-= f.input :attachments do
-  - if record.new_record?
-    p = t('messages.cant_add_media_to_new_record', target: StaticPage.model_name.humanize)
-  - else
-    #uploader data-endpoint=upload_to_admin_static_page_path(record) data-files=attachments_json(record) data-authenticity-token=form_authenticity_token
+= render 'admin/media_files/library', page: record

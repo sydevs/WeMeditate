@@ -2,7 +2,7 @@
 let Section = {
   form: null, // To be set on load
 
-  load: function() {
+  load() {
     console.log('Load Section.js')
     Section.form = $('#section-form')
     Section.form.on('change', '.section .field-content-type select', Section._on_section_type_change)
@@ -10,10 +10,10 @@ let Section = {
     Section.form.on('submit', Section._on_submit)
   },
 
-  _on_section_type_change: function() {
+  _on_section_type_change() {
     var section = $(this).closest('.section')
 
-    section.removeClass(function (index, className) {
+    section.removeClass((index, className) => {
       return (className.match(/(^|\s)(format|type)-\S+/g) || []).join(' ')
     });
 
@@ -24,17 +24,17 @@ let Section = {
     section.addClass('format-' + format)
   },
 
-  _on_section_format_change: function() {
+  _on_section_format_change() {
     var section = $(this).closest('.section')
 
-    section.removeClass(function (index, className) {
+    section.removeClass((index, className) => {
       return (className.match (/(^|\s)format-\S+/g) || []).join(' ')
     });
 
     section.addClass('format-' + $(this).children("option").filter(":selected").val())
   },
 
-  _on_submit: function() {
+  _on_submit() {
     var content_type = Section.form.find('.field-content-type select').val()
 
     if (typeof content_type !== 'undefined') {
@@ -51,7 +51,7 @@ let Section = {
   },
 }
 
-$(document).on('turbolinks:load', function() {
+$(document).on('turbolinks:load', () => {
   if ($('#section-form').length > 0) {
     Section.load()
   }

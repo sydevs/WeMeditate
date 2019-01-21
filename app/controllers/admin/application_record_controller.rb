@@ -8,6 +8,10 @@ module Admin
       render 'admin/application/index'
     end
 
+    def show
+      render 'admin/application/show'
+    end
+
     def new
       @record = @model.new
       render 'admin/application/new'

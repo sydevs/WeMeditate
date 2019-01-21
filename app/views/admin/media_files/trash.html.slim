@@ -1,0 +1,18 @@
+
+h2 = translate 'action.clean_up'
+
+p
+  a.ui.basic.button href=admin_media_files_path
+    i.left.arrow.icon
+    = translate 'action.target.back', target: MediaFile.model_name.human(count: -1)
+  a.ui.negative.labeled.icon.button href=clean_admin_media_files_path data-method='delete' data-confirm=t('messages.confirm_destroy', default: 'Confirm Destroy')
+    i.trash.icon
+    = translate 'action.destroy'
+
+p Found #{@media_files.count} unused media files.
+
+ul
+  - @media_files.each do |media|
+    li
+      a href=media.file_url target='_blank' = media.name
+      '  - #{media.updated_at.to_s(:long)}

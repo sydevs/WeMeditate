@@ -1,0 +1,3 @@
+$('#pagination').html('<%=j page_entries_info @media_files %><%=j paginate @media_files, remote: true %>')
+$('#media-files').html('<%=j render @media_files %>')
+$('#loader').removeClass('active')

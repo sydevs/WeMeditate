@@ -12,7 +12,7 @@
       .grid-sizer
       - articles.each_with_index do |article, index|
         article.preview.grid-item id=dom_id(article) class="#{dom_id(article.category)} #{'initial' if index < 3}"
-          a.preview-title href=url_for(article) = article.title
+          a.preview-title href=url_for(article) = article.name
           p.preview-text = article.excerpt
           .preview-meta
             a.preview-meta-link href=article_path(article)

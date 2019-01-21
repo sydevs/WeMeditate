@@ -25,7 +25,7 @@
   h3.contacts-subtitle = section.subtitle
   .carousel data-style='contacts'
     - contacts.sample(3).each do |contact|
-      - image_url = is_city ? @city.image(contact['image_uuid']) : section.image(contact['image_uuid'])
+      - image_url = is_city ? @city.image(contact['image_id']) : section.image(contact['image_id'])
       .contacts-item
         a.contacts-item-image href=contact['url'] target='_blank'
           img src=image_url

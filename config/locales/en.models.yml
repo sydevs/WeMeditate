@@ -46,6 +46,9 @@ en:
       goal_filter:
         one: Goal
         other: Goals
+      media_file:
+        one: Media File
+        other: Media Files
 
     attributes:
       article:

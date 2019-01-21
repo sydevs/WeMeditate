@@ -12,16 +12,13 @@
   = f.input :url, wrapper_html: { class: 'sub' }
 
 = f.fields_for :extra, f.object do |ff|
-  - desktop_image_uuid = f.object.extra_attr 'desktop_image_uuid'
-  - mobile_image_uuid = f.object.extra_attr 'mobile_image_uuid'
-
   = ff.hidden_field :banner_style, value: style
 
   = ff.input :desktop_image, wrapper_html: { class: 'sub' } do
-    = render 'admin/partials/attachment_select', f: ff, field: :desktop_image, value: desktop_image_uuid, attachments: section.page.attachments
+    = media_input ff, :desktop_image, preview: true, value: f.object.extra_attr('desktop_image_id')
 
   = ff.input :mobile_image, wrapper_html: { class: 'sub' } do
-    = render 'admin/partials/attachment_select', f: ff, field: :mobile_image, value: mobile_image_uuid, attachments: section.page.attachments
+    = media_input ff, :mobile_image, preview: true, value: f.object.extra_attr('mobile_image_id')
 
   - unless ['city_page', 'contact_page'].include? style
     = ff.input :color, collection: [:light, :dark].map {|c| [human_enum_name(Section, :color, c), c] }, selected: f.object.extra_attr('color'), label: Section.human_attribute_name(:color), wrapper_html: { class: 'sub' }, required: false

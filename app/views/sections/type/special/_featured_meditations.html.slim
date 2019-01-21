@@ -46,7 +46,7 @@
   - random_meditation_attrs = section.extra_attr 'random_meditation', {}
   .preview
     h3.preview-header = random_meditation_attrs['title']
-    a.preview-media.force-ratio href=random_meditations_url style="background-image: url(#{section.image(random_meditation_attrs['image_uuid']).url})"
+    a.preview-media.force-ratio href=random_meditations_url style="background-image: url(#{section.image(random_meditation_attrs['image_id']).url})"
       .video-button
     h4.preview-title = random_meditation_attrs['subtitle']
     p.preview-text = random_meditation_attrs['text']

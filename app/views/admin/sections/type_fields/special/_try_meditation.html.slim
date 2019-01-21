@@ -5,11 +5,8 @@
 = f.input :url, wrapper_html: { class: 'sub' }
 
 = f.fields_for :extra, f.object do |ff|
-  - image_uuid = f.object.extra_attr 'image_uuid'
-  - video_uuid = f.object.extra_attr 'video_uuid'
-
   = ff.input :thumbnail, wrapper_html: { class: 'sub' } do
-    = render 'admin/partials/attachment_select', f: ff, field: :image, value: image_uuid, attachments: section.page.attachments
+    = media_input ff, :image, preview: true, value: f.object.extra_attr('image_id')
 
   = ff.input :video, wrapper_html: { class: 'sub' } do
-    = render 'admin/partials/attachment_select', f: ff, field: :video, value: video_uuid, attachments: section.page.attachments
+    = media_input ff, :video, preview: true, value: f.object.extra_attr('video_id')

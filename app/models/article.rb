@@ -16,13 +16,13 @@ class Article < ApplicationRecord
   include RequireApproval
 
   # Extensions
-  translates :name, :slug, :excerpt, :banner_uuid, :thumbnail_uuid, :metatags
+  translates :name, :slug, :excerpt, :banner_id, :thumbnail_id, :video_id, :metatags
   friendly_id :name, use: :globalize
 
   # Associations
   belongs_to :category
   has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
-  has_many :attachments, as: :page, inverse_of: :page, dependent: :delete_all
+  has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
   enum priority: { high: 1, normal: 0, low: -1 }
 
   # Validations
@@ -46,25 +46,25 @@ class Article < ApplicationRecord
     when :preview
       includes(:translations, category: :translations)
     when :content
-      includes(:attachments, :translations, category: :translations, sections: :translations)
+      includes(:media_files, :translations, category: :translations, sections: :translations)
     when :admin
-      includes(:attachments, :translations, category: :translations)
+      includes(:media_files, :translations, category: :translations)
     end
   end
 
   # Shorthand for the article banner image file
   def banner
-    attachments.find_by(uuid: banner_uuid)&.file
+    media_files.find_by(id: banner_id)&.file
   end
 
   # Shorthand for the article thumbnail image file
   def thumbnail
-    attachments.find_by(uuid: thumbnail_uuid)&.file
+    media_files.find_by(id: thumbnail_id)&.file
   end
 
   # Shorthand for the article video file
   def video
-    attachments.find_by(uuid: video_uuid)&.file
+    media_files.find_by(id: video_id)&.file
   end
 
   private

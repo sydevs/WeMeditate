@@ -3,7 +3,7 @@
 - reorder = (params[:reorder] == 'true')
 
 - unless reorder
-  .actions
+  .table-actions
     = table_action t('action.edit'), 'edit', url_for([:edit, :admin, @record])
     //= table_action t('action.destroy'), 'trash', url_for([:destroy, :admin, @record])
     = table_action t('action.show'), 'dashboard', url_for(@record), nil, true
@@ -17,7 +17,7 @@
 .ui.divider
 
 - unless reorder or @record.sections.count <= 1
-  .actions = table_action t('action.target.reorder', target: Section.model_name.human), 'bars', url_for([:admin, @record, reorder: true])
+  .table-actions = table_action t('action.target.reorder', target: Section.model_name.human), 'bars', url_for([:admin, @record, reorder: true])
 
 h4 Content
 

@@ -14,14 +14,14 @@ class City < ApplicationRecord
 
   # Associations
   has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
-  has_many :attachments, as: :page, inverse_of: :page, dependent: :delete_all
+  has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
 
   # Validations
   validates :country, presence: true
   validates :name, presence: true
   validates :latitude, presence: true
   validates :longitude, presence: true
-  validates :banner_uuid, presence: true
+  validates :banner_id, presence: true
   accepts_nested_attributes_for :sections, reject_if: :all_blank, allow_destroy: true
   enum country: I18nData.countries.keys
 
@@ -39,9 +39,9 @@ class City < ApplicationRecord
     when :preview
       includes(:translations)
     when :content
-      includes(:attachments, :translations, sections: :translations)
+      includes(:media_files, :translations, sections: :translations)
     when :admin
-      includes(:attachments, :translations)
+      includes(:media_files, :translations)
     end
   end
 
@@ -52,12 +52,7 @@ class City < ApplicationRecord
 
   # Shorthand to access the banner file
   def banner
-    image(banner_uuid)
-  end
-
-  # Shorthand to reference attachments to this model
-  def image uuid
-    attachments.find_by(uuid: uuid)&.file
+    media_files.find_by(id: banner_id)&.file
   end
 
   # Returns a localized version of the city's country.

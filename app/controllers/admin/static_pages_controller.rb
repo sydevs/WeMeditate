@@ -1,6 +1,6 @@
 module Admin
   class StaticPagesController < Admin::ApplicationRecordController
-    include HasContent, RequiresApproval
+    include RequiresApproval
 
     prepend_before_action do
       set_model StaticPage
@@ -27,16 +27,9 @@ module Admin
     protected
       def static_page_params
         if policy(@record || StaticPage).update_structure?
-          params.fetch(:static_page, {}).permit(
-            :name, :slug, :role,
-            sections_attributes: ALL_SECTION_ATTRIBUTES,
-            metatags: {}
-          )
+          params.fetch(:static_page, {}).permit(:name, :slug, :role, metatags: {})
         else
-          params.fetch(:static_page, {}).permit(
-            :name,
-            sections_attributes: TRANSLATABLE_SECTION_ATTRIBUTES
-          )
+          params.fetch(:static_page, {}).permit(:name)
         end
       end
 

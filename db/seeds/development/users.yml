@@ -1,7 +1,0 @@
-options:
-  find_existing_by: email
-records:
-  - sprig_id: 1
-    email: super@test.com
-    role: <%= User.roles[:super_admin] %>
-    password: password

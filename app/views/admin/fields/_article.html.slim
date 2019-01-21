@@ -4,23 +4,19 @@
 = f.association :category, disabled: !allow.update_structure?
 = f.input :priority, collection: Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}, disabled: !allow.update_structure?
 
-= f.input :attachments do
-  - if record.new_record?
-    p = t('messages.cant_add_media_to_new_record', target: Article.model_name.human)
-  - else
-    #uploader data-endpoint=upload_to_admin_article_path(record) data-files=attachments_json(record) data-authenticity-token=form_authenticity_token
-
 = f.input :banner, label: false do
   = f.label :banner
-  = render 'admin/partials/attachment_select', f: f, field: :banner, attachments: record.attachments
+  = media_input f, :banner, preview: true
 
 = f.input :thumbnail, label: false do
   = f.label :thumbnail
-  = render 'admin/partials/attachment_select', f: f, field: :thumbnail, attachments: record.attachments
+  = media_input f, :thumbnail, preview: true
 
 = f.input :video, label: false do
   = f.label :video
-  = render 'admin/partials/attachment_select', f: f, field: :video, attachments: record.attachments
+  = media_input f, :video, type: :video
 
 = f.input :date, as: :string, wrapper_html: { class: 'ui date picker' }
 = f.input :excerpt, as: :text, input_html: { rows: 3 }
+
+= render 'admin/media_files/library', page: record

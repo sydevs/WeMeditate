@@ -8,7 +8,7 @@
     - atts = f.object.extra_attr('random_meditation')
     = ff.fields_for :random_meditation, atts do |fff|
       = fff.text_field :title, value: atts['title'], placeholder: Section.human_attribute_name(:title), name: "#{ff.object_name}[title][]"
-      = render 'admin/partials/attachment_select', f: ff, field: :image, value: atts['image_uuid'], attachments: section.page.attachments
+      = media_input fff, :image, preview: true, placeholder: Section.human_attribute_name(:image), value: atts['image_id']
 
       = fff.text_field :subtitle, value: atts['subtitle'], placeholder: Section.human_attribute_name(:subtitle), name: "#{ff.object_name}[subtitle][]"
       = fff.text_field :text, value: atts['text'], placeholder: Section.human_attribute_name(:text), name: "#{ff.object_name}[text][]"

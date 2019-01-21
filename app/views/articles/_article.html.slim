@@ -28,18 +28,18 @@
 article.preview.grid-item id=dom_id(article) class=dom_id(article.category)
   - if article.video.present?
     .preview-media
-      img alt=article.title src=article.thumbnail.url
+      img alt=article.name src=article.thumbnail.url
       a.video-button href=article.video.url data-mfp-src='#video-popup'
   - else
     a.preview-media href=article_path(article)
-      img alt=article.title src=article.thumbnail.url
+      img alt=article.name src=article.thumbnail.url
 
   - if article.date.present?
     .preview-date
       .preview-date-day = article.date.strftime('%d')
       .preview-date-month = article.date.strftime('%m')
 
-  a.preview-title href=url_for(article) = article.title
+  a.preview-title href=url_for(article) = article.name
   p.preview-text = article.excerpt
   .preview-meta
     a.preview-meta-link href=article_path(article)

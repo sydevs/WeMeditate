@@ -5,5 +5,9 @@ module Admin
       update? || create?
     end
 
+    def update_translation?
+      update_structure?
+    end
+
   end
 end
