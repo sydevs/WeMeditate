@@ -119,46 +119,47 @@ article.update!({
     image_id: attachment('articles/callout.jpg', 'Callout.jpg', :image, article),
   },
 }, {
-  content_type: :text,
-  format: :box_with_lefthand_image,
+  content_type: :textbox,
+  format: :righthand,
   text: paragraphs(4),
   extra: {
     image_id: attachment('articles/lefthand.jpg', 'Lefthand.jpg', :image, article),
   },
 }, {
-  content_type: :text,
-  format: :box_with_righthand_image,
+  content_type: :textbox,
+  format: :lefthand,
   text: paragraphs(4),
   extra: {
     image_id: attachment('articles/righthand.jpg', 'Righthand.jpg', :image, article),
   },
 }, {
-  content_type: :text,
-  format: :box_over_image,
+  content_type: :textbox,
+  format: :overtop,
   text: paragraphs(4),
   extra: {
     image_id: attachment('articles/behind.jpg', 'Background.jpg', :image, article),
   },
 }, {
-  content_type: :text,
+  content_type: :structured,
   format: :grid,
   text: paragraphs(1),
   extra: {
     items: 6.times.map {|i| { title: "Grid Item #{i}", text: sentences(3) }},
   },
 }, {
-  content_type: :text,
+  content_type: :structured,
   format: :columns,
   text: paragraphs(1),
   extra: {
     items: 3.times.map {|i| { title: "Column #{i}", text: sentences(3), image_id: attachment("subtle_system_nodes/chakra-1.png", 'Column.png', :image, article) }},
   },
 }, {
-  content_type: :text,
+  content_type: :textbox,
   format: :ancient_wisdom,
   text: '<p><strong>Header 1</strong></p><p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p><p><strong>Header 2</strong></p><p>Nullam at leo et lectus tristique ullamcorper. Morbi rhoncus dolor nec ornare dapibus. In lectus est, facilisis in sagittis eget, rutrum quis neque. Nam vitae ullamcorper lectus, et auctor justo. Mauris fringilla orci est, non facilisis urna euismod at. Cras lobortis tellus purus, id cursus purus rhoncus at. Donec scelerisque consectetur lacus, vitae ultricies lectus cursus quis. Ut quam est, dictum eu dapibus vitae, rhoncus eu nisi. Vivamus enim erat, sagittis a bibendum nec, varius non nulla. Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus. Phasellus malesuada mattis risus sit amet eleifend.</p>',
 }, {
-  content_type: :quote,
+  content_type: :text,
+  format: :just_quote,
   quote: 'Joy starts to descend on your head all the time, spilling throughout the whole being, making you absolutely calm and beautiful.',
   credit: 'Shri Mataji',
   subtitle: 'Founder of the meditation method "Sahaja Yoga"',
@@ -174,7 +175,7 @@ article.update!({
   },
 }, {
   content_type: :video,
-  format: :gallery,
+  format: :video_gallery,
   extra: {
     items: 4.times.map {|i| {
       title: "Video #{i+1}",
@@ -198,7 +199,7 @@ article.update!({
   }
 }, {
   content_type: :image,
-  format: :gallery,
+  format: :image_gallery,
   text: paragraphs(1),
   extra: {
     image_ids: 14.times.map{|i| attachment("articles/thumbnails/#{i+1}.png", "Gallery Image #{i+1}.png", :image, article)},
@@ -278,7 +279,8 @@ article.update!({
   title: 'Section 4',
   text: paragraphs(4),
 }, {
-  content_type: :quote,
+  content_type: :text,
+  format: :just_quote,
   quote: 'Joy starts to descend on your head all the time, spilling throughout the whole being, making you absolutely calm and beautiful.',
   credit: 'Shri Mataji',
   subtitle: 'Founder of the meditation method "Sahaja Yoga"',

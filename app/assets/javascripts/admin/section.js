@@ -1,54 +1,47 @@
 
 let Section = {
-  form: null, // To be set on load
+  // To be set on load
+  form: null,
+  content_type: null,
+  format: null,
+  fields: null,
 
   load() {
-    console.log('Load Section.js')
+    console.log('loading Section.js')
     Section.form = $('#section-form')
-    Section.form.on('change', '.section .field-content-type select', Section._on_section_type_change)
-    Section.form.on('change', '.section .field-format select', Section._on_section_format_change)
+    Section.fields = Section.form.find('.field.for, .fields.for')
+    Section.content_type = Section.form.find('#section-content-type select')
+    Section.format = Section.form.find('#section-format select')
+
+    Section.content_type.on('change', Section._on_type_change)
+    Section.format.on('change', Section._on_format_change)
     Section.form.on('submit', Section._on_submit)
+
+    Section._on_type_change.apply(Section.content_type, [false])
+    Section._on_format_change.apply(Section.format)
   },
 
-  _on_section_type_change() {
-    var section = $(this).closest('.section')
-
-    section.removeClass((index, className) => {
-      return (className.match(/(^|\s)(format|type)-\S+/g) || []).join(' ')
-    });
-
+  _on_type_change(change_format = true) {
     content_type = $(this).val()
-    section.addClass('type-' + content_type)
+    $items = Section.format.siblings('.menu').children('.item')
+    $items.hide()
 
-    format = $('.section .fields.for.'+content_type+' .field-format option:selected').val()
-    section.addClass('format-' + format)
+    Section.format.children('option.for-'+content_type).each((i, element) => {
+      format = $(element).val()
+      $items.filter('[data-value='+format+']').show()
+      if (i == 0 && change_format) Section.format.parent().dropdown('set selected', format)
+    })
   },
 
-  _on_section_format_change() {
-    var section = $(this).closest('.section')
-
-    section.removeClass((index, className) => {
-      return (className.match (/(^|\s)format-\S+/g) || []).join(' ')
-    });
-
-    section.addClass('format-' + $(this).children("option").filter(":selected").val())
+  _on_format_change() {
+    Section.fields.hide()
+    Section.fields.filter('.'+Section.content_type.val()+'-'+Section.format.val()).show()
   },
 
   _on_submit() {
-    var content_type = Section.form.find('.field-content-type select').val()
-
-    if (typeof content_type !== 'undefined') {
-      Section.form.find('.grouped.fields.for:not(.'+content_type+') :input').attr('disabled', true)
-      Section.form.find('.grouped.fields.for.'+content_type+' .field').each(function() {
-        $group = $(this)
-
-        if ($group.css('display') == 'none') {
-          $group.find(':input').attr('disabled', true)
-          console.log('disabling', $group.find(':input'))
-        }
-      })
-    }
+    Section.fields.filter(':not(:visible) :input').attr('disabled', true)
   },
+
 }
 
 $(document).on('turbolinks:load', () => {

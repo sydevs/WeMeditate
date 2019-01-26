@@ -13,9 +13,6 @@ tr id=dom_id(record)
     - if allow.destroy?
       a.action href=url_for([:admin, record]) data={method: 'delete', remote: true, confirm: t('messages.confirm_destroy', default: 'Confirm Destroy')}
         = translate 'action.destroy'
-    //- if allow.review?
-      a.action href=url_for([:admin, record])
-        = translate 'action.review'
     - if record.viewable?
       a.action href=url_for(record) target='_blank'
         = translate 'action.show'
@@ -30,8 +27,8 @@ tr id=dom_id(record)
     - if record.reviewable?
       - if not record.published?
         = table_icon 'dot circle', t('tags.unpublished_draft')
-      - elsif record.draft?
-        = table_icon "#{'orange' if allow.review?} exclamation circle", t('tags.unpublished_changes')
+      - elsif record.has_draft?
+        = table_icon "#{'orange' if allow.publish?} exclamation circle", t('tags.unpublished_changes')
       - else
         = table_icon 'check circle', t('tags.published')
 

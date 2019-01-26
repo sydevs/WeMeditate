@@ -9,19 +9,15 @@
 
 class Article < ApplicationRecord
   extend FriendlyId
-  extend CarrierwaveGlobalize
-
-  # Drafts
-  has_paper_trail ignore: [:published_at, :attachments]
-  include RequireApproval
+  include Draftable
 
   # Extensions
-  translates :name, :slug, :excerpt, :banner_id, :thumbnail_id, :video_id, :metatags
+  translates :name, :slug, :excerpt, :banner_id, :thumbnail_id, :video_id, :metatags, :draft
   friendly_id :name, use: :globalize
 
   # Associations
   belongs_to :category
-  has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
+  has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all, autosave: true
   has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
   enum priority: { high: 1, normal: 0, low: -1 }
 

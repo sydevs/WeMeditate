@@ -11,22 +11,19 @@
 
 class StaticPage < ApplicationRecord
   extend FriendlyId
-
-  # Drafts
-  has_paper_trail ignore: [:published_at]
-  include RequireApproval
+  include Draftable
 
   # Extensions
-  translates :name, :slug, :metatags
+  translates :name, :slug, :metatags, :draft
   friendly_id :name, use: :globalize
 
   # Associations
+  has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all, autosave: true
+  has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
   enum role: {
     home: 0, about: 1, contact: 2, shri_mataji: 3, subtle_system: 4, sahaja_yoga: 5,
     articles: 10, treatments: 11, tracks: 12, meditations: 13, country: 14, world: 15, city: 16,
   }
-  has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
-  has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
 
   # Validations
   validates :name, presence: true

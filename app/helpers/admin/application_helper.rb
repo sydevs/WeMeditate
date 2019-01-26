@@ -6,29 +6,12 @@ module Admin::ApplicationHelper
     en: 'gb',
   }
 
-  FILE_TYPE_METADATA = {
-    image: { accepts: 'image/png, image/jpg', icon: 'image' },
-    video: { accepts: 'video/mp4', icon: 'film' },
-    audio: { accepts: 'audio/mp3', icon: 'volume up' },
-    default: { accepts: '*', icon: 'file' },
-  }
-
   def country_flag country_code
     content_tag :i, nil, class: "#{country_code} flag"
   end
 
   def language_flag l=locale
     country_flag LANGUAGE_TO_FLAG_MAP[l]
-  end
-
-  def file_type_accepts type
-    type = :default unless FILE_TYPE_METADATA.has_key? type
-    FILE_TYPE_METADATA[type][:accepts]
-  end
-
-  def file_type_icon type
-    type = :default unless FILE_TYPE_METADATA.has_key? type
-    FILE_TYPE_METADATA[type][:icon]
   end
 
   def human_enum_name model, attr, value = nil
@@ -43,85 +26,19 @@ module Admin::ApplicationHelper
     "https://www.google.com/maps/search/?api=1&query=#{latitude}%2C#{longitude}"
   end
 
-  # This function is taken from https://www.pluralsight.com/guides/ruby-ruby-on-rails/ruby-on-rails-nested-attributes
-  def link_to_add_fields name = nil, f = nil, association = nil, options = nil, html_options = nil, &block
-    # If a block is provided there is no name attribute and the arguments are
-    # shifted with one position to the left. This re-assigns those values.
-    f, association, options, html_options = name, f, association, options if block_given?
-
-    options = {} if options.nil?
-    html_options = {} if html_options.nil?
-
-    if options.include? :locals
-      locals = options[:locals]
+  def published_at_detail_message record
+    if not record.published_at
+      translate 'tags.unpublished_draft'
+    elsif record.has_draft?
+      translate 'tags.published_ago', time_ago: time_ago_in_words(record.published_at)
     else
-      locals = {}
+      translate 'tags.published'
     end
-
-    if options.include? :partial
-      partial = options[:partial]
-    else
-      partial = 'admin/' + association.to_s.pluralize + '/form'
-    end
-
-    if options.include? :new_object
-      new_object = options[:new_object]
-    else
-      new_object = f.object.class.reflect_on_association(association).klass.new
-    end
-
-    puts new_object.inspect
-
-    # Render the form fields from a file with the association name provided
-    fields = f.fields_for(association, new_object, child_index: 'new_record') do |builder|
-      render(partial, locals.merge!(f: builder))
-    end
-
-    # The rendered fields are sent with the link within the data-form-prepend attr
-    html_options['data-form-prepend'] = raw CGI::escapeHTML( fields )
-
-    content_tag(:a, name, html_options, &block)
   end
 
-  def subfield f, attribute, **args, &block
-    render 'admin/fields/subfield', f: f, attribute: attribute, **args, &block
-  end
-
-  def file_input f, attribute, **args
-    render 'admin/fields/file', f: f, attribute: attribute, **args
-  end
-
-  def select_input f, attribute, options, **args
-    render 'admin/fields/select', f: f, attribute: attribute, options: options, **args
-  end
-
-  def multiselect_input f, attribute, options, **args
-    render 'admin/fields/select', f: f, attribute: attribute, options: options, multiple: true, **args
-  end
-
-  def slug_input f, **args
-    render 'admin/fields/slug', f: f, **args
-  end
-
-  def media_input f, attribute, multiple: false, type: :image, **args
-    attribute = "#{attribute}_id"
-    file_id = args.key?(:value) ? args[:value] : f.object.send(attribute)
-    name = args[:name] || "#{f.object_name}[#{attribute}]"
-    name += '[]' if multiple
-    media = MediaFile.find_by(id: file_id)
-
-    tag.div class: 'ui media input', data: { multiple: multiple, type: type } do
-      concat f.input_field attribute, as: :hidden, **args
-      concat tag.div tag.input(nil, type: 'text', placeholder: args[:placeholder] || t("action.choose_file.#{type}.#{multiple ? 'multiple' : 'single'}"), value: media&.name), class: 'handle'
-
-      if not multiple and args[:preview] != false
-        if args[:preview] && type == :image
-          concat tag.a tag.img(src: media&.file_url), class: 'ui rounded image', href: media&.file_url, target: '_blank'
-        else
-          concat tag.a t('action.show'), class: 'ui basic small compact button', href: media&.file_url, target: '_blank', style: "#{'display: none' unless media&.file_url}"
-        end
-      end
-    end
+  def updated_at_detail_message record
+    date = record.has_draft? ? record.updated_at : record.published_at
+    translate 'tags.updated_ago', time_ago: time_ago_in_words(date)
   end
 
 end

@@ -13,9 +13,8 @@ module Admin
       update_structure?
     end
 
-    # TODO: Remove this function and deal with the subsequent issue
-    def review?
-      false
+    def publish?
+      regional_admin? and locale_allowed?
     end
 
   end

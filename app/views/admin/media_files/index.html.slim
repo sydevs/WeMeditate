@@ -16,17 +16,3 @@
   .ui.padded.three.column.media.grid#media-files
     = render @media_files
     = render 'media_file', template: true
-    //- @media_files.each do |media_file|
-      .column
-        .media style="background-image: url(#{media_file.file_url})"
-          a.media-preview href=media_file.file.url target='_blank'
-            .ui.inverted.small.icon.header
-              i.zoom.icon
-              .media-name = media_file.name
-
-    //.column#media-file-template
-      .media
-        a.media-preview target='_blank'
-          .ui.inverted.small.icon.header
-            i.zoom.icon
-            .media-name

@@ -1,16 +1,12 @@
 
-- groups = local_assigns[:for] || nil
-- subfield = false unless local_assigns[:subfield] == true
 - horizontal = false unless local_assigns[:horizontal] == true
 
-- classes = ["field-#{attribute}"]
-- classes << 'for' if groups.present?
-- classes += groups if groups.present?
-- classes << 'sub' if subfield
+- draft_items = local_assigns.key?(:draft) ? local_assigns[:draft] : f.object.draft[attribute.to_s] if f.object.reviewable? and f.object.has_draft?
+- original_items = (local_assigns.key?(:items) ? local_assigns[:items] : f.object.send(attribute)&.to_a) || []
+- items = draft_items || original_items
 
-- items = [] if items.nil?
-
-.field class=classes
+.field class="#{local_assigns[:class]} #{'draft' if draft_items}" data-draft='repeatable'
+  = draft_reset_button(original_items) if draft_items
   = f.label attribute
 
   .repeatable.fields class="#{'horizontal' if horizontal}"

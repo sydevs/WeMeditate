@@ -64,21 +64,27 @@ SimpleForm.setup do |config|
 
   config.wrappers :slug, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
     b.use :html5
-    #b.use :label
-    b.wrapper tag: 'div', class: 'ui accordion' do |accordion|
-      accordion.wrapper tag: 'div', class: 'title' do |title|
-        title.wrapper tag: 'i', class: 'dropdown icon' do end
-        title.wrapper tag: 'i', class: 'linkify icon' do end
-        title.use :label
-      end
+    b.use :label
 
-      accordion.wrapper tag: 'div', class: 'content' do |content|
-        content.wrapper tag: 'div', class: 'ui icon input' do |input|
-          input.use :input
-          input.wrapper tag: 'i', class: 'linkify icon' do end
-        end
-      end
+    b.wrapper tag: 'div', class: 'ui labeled input' do |ba|
+      ba.use :slug_prefix
+      ba.use :input
     end
+
+    #b.wrapper tag: 'div', class: 'ui accordion' do |accordion|
+    #  accordion.wrapper tag: 'div', class: 'title' do |title|
+    #    title.wrapper tag: 'i', class: 'dropdown icon' do end
+    #    title.wrapper tag: 'i', class: 'linkify icon' do end
+    #    title.use :label
+    #  end
+    #
+    #  accordion.wrapper tag: 'div', class: 'content' do |content|
+    #    content.wrapper tag: 'div', class: 'ui icon input' do |input|
+    #      input.use :input
+    #      input.wrapper tag: 'i', class: 'linkify icon' do end
+    #    end
+    #  end
+    #end
 
     b.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
     b.use :error, wrap_with: { tag: 'div', class: 'ui red pointing above error label' }

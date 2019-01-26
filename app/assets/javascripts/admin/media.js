@@ -19,7 +19,35 @@ var Media = {
     Media.library.on('click', '.media-image', Media._on_select_media)
     Media.library.on('click', '.positive.button', Media._on_approve_selection)
     Media.library.on('click', '.negative.button', Media._on_cancel_selection)
-    $('.ui.media.input > .handle').click(Media._on_select_input)
+    $(document).on('click', '.ui.media.input > .handle', Media._on_select_input)
+  },
+
+  set_input($input) {
+    Media.input = $input
+    Media.allow_multiple_selection = $input.data('multiple') == true
+  },
+
+  set_value(value) {
+    if (Media.allow_multiple_selection) {
+      let $fields = Media.input.children('input[type=hidden]').remove()
+      let name = []
+
+      value.each((_, val) => {
+        $fields.first().clone().val(val.value).appendTo(Media.input)
+        name.push(val.name)
+      })
+
+      name = name.join(', ')
+      Media.input.find('input[type=text]').val(name)
+    } else {
+      Media.input.find('.ui.image').attr('href', value.url)
+      Media.input.find('img').attr('src', value.url)
+      Media.input.find('a.ui.button').attr('href', value.url).show()
+      Media.input.find('input[type=text]').val(value.name)
+      Media.input.children('input[type=hidden]').val(value.value)
+    }
+
+    Media._on_cancel_selection()
   },
 
   init_uploader() {
@@ -72,35 +100,10 @@ var Media = {
     })
   },
 
-  _on_select_input(event) {
-    console.log('on select input')
-    let $input = $(event.currentTarget).parent()
-    Media.input = $input
-    Media.allow_multiple_selection = $input.data('multiple') == true
-    Media.list.removeClass('media-filter-'+Media.type)
-    Media.type = $input.data('type')
-    Media.list.addClass('media-filter-'+Media.type)
-
-    if (Media.library.hasClass('uninitialized')) {
-      $.get(Media.library.data('index'), (response) => {
-        eval(response)
-        Media.library.removeClass('uninitialized')
-        Media.filter_for_input($input)
-      })
-
-      Media.list.children().hide()
-    } else {
-      Media.filter_for_input($input)
-    }
-
-    Media.library.find('.header-text').text($input.find('input[type=text]').attr('placeholder'))
-    Media.library.modal('show')
-  },
-
-  filter_for_input($input) {
+  update_media_filter() {
     Media.list.find('.active.media').removeClass('active')
 
-    $input.children('input[type=hidden]').each((index, element) => {
+    Media.input.children('input[type=hidden]').each((index, element) => {
       if (element.value) {
         let $media = Media.list.find('.media[data-value='+element.value+']').addClass('active')
         if (index == 0 && $media.length > 0) {
@@ -109,6 +112,30 @@ var Media = {
         }
       }
     })
+  },
+
+  _on_select_input(event) {
+    console.log('on select input')
+    let $input = $(event.currentTarget).parent()
+    Media.set_input($input)
+    Media.list.removeClass('media-filter-'+Media.type)
+    Media.type = $input.data('type')
+    Media.list.addClass('media-filter-'+Media.type)
+
+    if (Media.library.hasClass('uninitialized')) {
+      $.get(Media.library.data('index'), (response) => {
+        eval(response)
+        Media.library.removeClass('uninitialized')
+        Media.update_media_filter()
+      })
+
+      Media.list.children().hide()
+    } else {
+      Media.update_media_filter()
+    }
+
+    Media.library.find('.header-text').text($input.find('input[type=text]').attr('placeholder'))
+    Media.library.modal('show')
   },
 
   _on_select_media(event) {
@@ -133,20 +160,20 @@ var Media = {
     let $selection = Media.list.find('.active.media').removeClass('active')
 
     if (Media.allow_multiple_selection) {
-      let $fields = Media.input.children('input[type=hidden]').remove()
-
-      $selection.each((_, media) => {
-        $fields.first().clone().val(media.dataset.value).appendTo(Media.input)
-      })
-
-      Media.input.find('input[type=text]').val($selection.length + ' files') // TODO: Translate this, and make it use proper pluralization
+      Media.set_value($selection.map((_, media) => {
+        $media = $(media)
+        return {
+          name: $media.find('.media-name').text(),
+          value: $media.data('value'),
+          url: $media.find('.media-link').attr('href'),
+        }
+      }))
     } else {
-      let href = $selection.find('.media-link').attr('href')
-      Media.input.find('.ui.image').attr('href', href)
-      Media.input.find('img').attr('src', href)
-      Media.input.find('a.ui.button').attr('href', href).show()
-      Media.input.find('input[type=text]').val($selection.find('.media-name').text())
-      Media.input.children('input[type=hidden]').val($selection.data('value'))
+      Media.set_value({
+        name: $selection.find('.media-name').text(),
+        value: $selection.data('value'),
+        url: $selection.find('.media-link').attr('href'),
+      })
     }
 
     Media._on_cancel_selection()

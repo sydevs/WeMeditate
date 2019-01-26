@@ -3,17 +3,14 @@
 
 class City < ApplicationRecord
   extend FriendlyId
-
-  # Drafts
-  has_paper_trail ignore: [:published_at]
-  include RequireApproval
+  include Draftable
 
   # Extensions
-  translates :name, :slug, :metatags
+  translates :name, :slug, :metatags, :draft
   friendly_id :name, use: :globalize
 
   # Associations
-  has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
+  has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all, autosave: true
   has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
 
   # Validations
@@ -66,7 +63,7 @@ class City < ApplicationRecord
 
   # Generates some default sections which should be included on every city page.
   def generate_default_sections!
-    sections.new label: I18n.t('misc.default_sections.what_to_expect'), content_type: :text, format: :box_over_image
+    sections.new label: I18n.t('misc.default_sections.what_to_expect'), content_type: :textbox, format: :overtop
     sections.new label: I18n.t('misc.default_sections.testimonials'), content_type: :video
   end
 

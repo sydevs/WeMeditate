@@ -1,6 +1,12 @@
+require 'pathname'
+
 module SimpleForm
   module Components
-    module Icons
+    module Decorations
+      def slug_prefix wrapper_options = nil
+        template.content_tag :div, "#{Pathname(options[:url]).dirname.to_s}/", class: 'ui basic label' unless options[:url].nil?
+      end
+
       def icon wrapper_options = nil
         template.content_tag :i, '', class: "#{options[:icon]} icon" unless options[:icon].nil?
       end
@@ -9,7 +15,7 @@ module SimpleForm
     module Files
       def file_labels wrapper_options = nil
         if options[:files].present? or options[:file].present?
-            template.content_tag :div, class: 'ui fluid file labels' do
+          template.content_tag :div, class: 'ui fluid file labels' do
             content = ''
             content << file_html(options[:file]) unless options[:file].nil? or options[:file].file.nil?
 
@@ -42,5 +48,5 @@ module SimpleForm
   end
 end
 
-SimpleForm::Inputs::Base.send(:include, SimpleForm::Components::Icons)
+SimpleForm::Inputs::Base.send(:include, SimpleForm::Components::Decorations)
 SimpleForm::Inputs::Base.send(:include, SimpleForm::Components::Files)

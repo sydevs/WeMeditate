@@ -1,6 +1,6 @@
 module Admin
   class SectionsController < Admin::ApplicationRecordController
-    before_action :set_parent, only: [:new, :create]
+    before_action :set_parent, only: [:new, :create, :edit, :update, :sort]
     prepend_before_action do
       set_model Section
     end
@@ -22,7 +22,7 @@ module Admin
     end
 
     def update
-      super section_params
+      super section_params, [:admin, @parent]
     end
 
     def sort

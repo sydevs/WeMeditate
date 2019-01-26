@@ -1,22 +1,18 @@
 
 - allow = policy(record)
 
-= f.association :category, disabled: !allow.update_structure?
-= f.input :priority, collection: Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}, disabled: !allow.update_structure?
+= draftable_field f, :category, type: :association do |value|
+  - f.association :category, label: false, disabled: !allow.update_structure?, selected: value
 
-= f.input :banner, label: false do
-  = f.label :banner
-  = media_input f, :banner, preview: true
+= draftable_field f, :priority, type: :collection do |value|
+  - f.input_field :priority, collection: Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}, selected: value, disabled: !allow.update_structure?
 
-= f.input :thumbnail, label: false do
-  = f.label :thumbnail
-  = media_input f, :thumbnail, preview: true
+= draftable_media_field f, :banner_id, preview: true
+= draftable_media_field f, :thumbnail_id, preview: true
+= draftable_media_field f, :video_id, type: :video
 
-= f.input :video, label: false do
-  = f.label :video
-  = media_input f, :video, type: :video
-
-= f.input :date, as: :string, wrapper_html: { class: 'ui date picker' }
-= f.input :excerpt, as: :text, input_html: { rows: 3 }
+= draftable_date_field f
+= draftable_field f, :excerpt, type: :text do |value|
+  - f.input_field :excerpt, as: :text, rows: 3, value: value
 
 = render 'admin/media_files/library', page: record

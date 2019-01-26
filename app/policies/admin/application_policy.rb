@@ -21,7 +21,7 @@ module Admin
       super_admin?
     end
 
-    def review?
+    def publish?
       false
     end
 

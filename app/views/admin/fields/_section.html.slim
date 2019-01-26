@@ -7,16 +7,61 @@
   - if record.special?
     = f.hidden_field :content_type
     = f.hidden_field :format
+    = render "admin/special_sections/#{record.format}", f: f, section: record, allow: allow
   - else
     = f.input :label, placeholder: record.content_type_name || record.format_name
-    = f.input :content_type, collection: Section.content_types.except(:special).keys.map {|k| [human_enum_name(record, :content_type, k), k]}, prompt: 'Choose a type', disabled: !allow.update_structure?, wrapper_html: { class: 'field-content-type' }
+    // TODO: Translate the following line
+    = draftable_field f, :content_type, type: :collection, disabled: !allow.update_structure?, wrapper: { id: 'section-content-type' }, input: { collection: Section.content_types.except(:special).keys.map {|k| [human_enum_name(record, :content_type, k), k]}, prompt: 'Choose a type' }
+    = draftable_field f, :format, type: :collection, disabled: !allow.update_structure?, wrapper: { id: 'section-format' }, input: { collection: format_options(record) }
 
-  - if record.special?
-    = render "admin/sections/type_fields/special/#{record.format}", f: f, section: record, allow: allow
-  - else
-    - Section.content_types.except(:special).each do |type, v|
-      .grouped.fields.for class=type
-        .ui.divider
-        = render "admin/sections/type_fields/#{type}", f: f, section: record, allow: allow
+    = draftable_field f, :title, wrapper: { class: field_classes(:title) }
+    = draftable_field f, :subtitle, wrapper: { class: field_classes(:subtitle) }
+    = draftable_field f, :text, type: :text, wrapper: { class: field_classes(:text) }, input: { as: :text, rows: 2 }
+    = draftable_field f, :text, type: :rich_text, wrapper: { class: field_classes(:rich_text) }, input: { as: :rich_text, rows: 2 }
+    = draftable_field f, :quote, type: :text, wrapper: { class: field_classes(:quote) }, input: { as: :text, rows: 1 }
+    = draftable_field f, :action, wrapper: { class: field_classes(:action) }
+    = draftable_field f, :url, wrapper: { class: field_classes(:url) }
+    = draftable_field f, :credit, wrapper: { class: field_classes(:credit) }
+
+    = f.fields_for :extra, f.object do |ff|
+      = draftable_media_field ff, :image_id, preview: true, wrapper: { class: field_classes(:image) }, value: section_extra_value(record, :image_id), draft: section_extra_draft_value(record, :image_id)
+      = draftable_media_field ff, :image_ids, multiple: true, wrapper: { class: field_classes(:images) }, value: section_extra_value(record, :image_ids), draft: section_extra_draft_value(record, :image_ids)
+      = draftable_media_field ff, :video_id, wrapper: { class: field_classes(:video) }, value: section_extra_value(record, :video_id), draft: section_extra_draft_value(record, :video_id)
+      = draftable_media_field ff, :video_ids, multiple: true, wrapper: { class: field_classes(:video) }, value: section_extra_value(record, :video_ids), draft: section_extra_draft_value(record, :video_ids)
+
+      = render 'admin/partials/repeatable_fields', f: ff, attribute: :items, items: section_extra_value(record, :items), draft: section_extra_draft_value(record, :items), class: field_classes(:grid) do |fff, item|
+        = fff.text_field :title, value: item['title'], placeholder: Section.human_attribute_name(:title), name: "#{fff.object_name}[title][]"
+        = fff.text_area :text, value: item['text'], placeholder: Section.human_attribute_name(:text), name: "#{fff.object_name}[text][]", rows: 1
+        = fff.url_field :url, value: item['url'], placeholder: Section.human_attribute_name(:url), name: "#{fff.object_name}[url][]"
+
+      = render 'admin/partials/repeatable_fields', f: ff, attribute: :items, items: section_extra_value(record, :items), draft: section_extra_draft_value(record, :items), class: field_classes(:columns) do |fff, item|
+        = fff.text_field :title, value: item['title'], placeholder: Section.human_attribute_name(:title), name: "#{fff.object_name}[title][]"
+        = fff.text_area :text, value: item['text'], placeholder: Section.human_attribute_name(:text), name: "#{fff.object_name}[text][]", rows: 1
+        = media_input fff, :image, preview: false, input: { value: item['image_id'], placeholder: Section.human_attribute_name(:image), name: "#{fff.object_name}[image_id][]" }
+
+      = draftable_field ff, :color, type: :collection, wrapper: { class: field_classes(:color) }, input: { collection: [:light, :dark].map {|c| [human_enum_name(Section, :color, c), c] }, label: Section.human_attribute_name(:color) }, value: section_extra_value(record, :color), draft: section_extra_draft_value(record, :color)
+      /= ff.input :color, collection: [:light, :dark].map {|c| [human_enum_name(Section, :color, c), c] }, selected: color, label: Section.human_attribute_name(:color), wrapper_html: { class: 'sub for background' }, required: false
+
+      /= f.input :decorations, wrapper: :group, wrapper_html: { class: classes }, required: false do
+      = draftable_field ff, :decorations, type: :decorations, wrapper: { class: field_classes(:decorations) }, value: section_extra_value(record, :decorations), draft: section_extra_draft_value(record, :decorations) do
+        .inline.decoration.fields class=field_classes(:decorations_sidetext)
+          = decoration_type_input ff, :sidetext
+          = decoration_config_dropdown ff, :sidetext, :position, ['top-left', 'top-right', 'bottom-left', 'bottom-right']
+          = decoration_config_sidetext ff
+
+        .inline.decoration.fields class=field_classes(:decorations_leaf)
+          = decoration_type_input ff, :leaf
+
+        .inline.decoration.fields class=field_classes(:decorations_circle)
+          = decoration_type_input ff, :circle
+
+        .inline.decoration.fields class=field_classes(:decorations_triangle)
+          = decoration_type_input ff, :triangle
+          = decoration_config_dropdown ff, :triangle, :position, ['left', 'right']
+
+        .inline.decoration.fields class=field_classes(:decorations_gradient)
+          = decoration_type_input ff, :gradient
+          = decoration_config_dropdown ff, :gradient, :position, ['left', 'right']
+          = decoration_config_dropdown ff, :gradient, :color, ['orange', 'blue']
 
 = render 'admin/media_files/library', page: record.page

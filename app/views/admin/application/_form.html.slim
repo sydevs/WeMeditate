@@ -1,6 +1,9 @@
 
 - allow = policy(record)
 
+- if record.reviewable? and record.has_draft?
+  .ui.yellow.message This #{record.model_name.human} has unpublished changes. These will not be visible to the public until they have been reviewed by an administrator.
+
 = simple_form_for [:admin, record], html: { id: "#{record.model_name.i18n_key}-form", class: "#{'error' if record.errors.present?}", novalidate: true } do |f|
   = f.error :base
 
@@ -8,13 +11,13 @@
     code = record.errors.full_messages
 
   - if record.viewable?
-    = f.input :name
-    = f.input :slug, label: (record.new_record? ? t("activerecord.attributes.#{f.object.model_name.i18n_key}.slug") : url_for(record)), wrapper: :slug
+    = draftable_field f, :name
+    = draftable_slug_field f, url_for(record)
 
   = render "admin/fields/#{record.model_name.param_key}", f: f, record: record
 
   - if record.viewable? and allow.update_structure?
-    = render 'admin/partials/repeatable_fields', f: f, attribute: :metatags, horizontal: true, items: f.object.metatags.to_a do |ff, item|
+    = render 'admin/partials/repeatable_fields', f: f, attribute: :metatags, horizontal: true do |ff, item|
       = ff.text_field :name, value: item[0], placeholder: t('metadata.key'), name: "#{ff.object_name}[keys][]"
       = ff.text_field :value, value: item[1], placeholder: t('metadata.value'), name: "#{ff.object_name}[values][]"
 
@@ -43,9 +46,22 @@
   .ui.hidden.divider
 
   p
-    a.ui.basic.button href=url_for([:admin, defined?(record.page) ? record.page : record.class])
-      i.left.arrow.icon
-      = translate 'action.target.back', target: record.model_name.human(count: -1)
-    button.ui.basic.positive.button
-      = translate 'action.update'
+    - if allow.show?
+      a.ui.basic.button href=url_for([:admin, record])
+        i.left.arrow.icon
+        = translate 'action.back'
+    - else
+      a.ui.basic.button href=url_for([:admin, defined?(record.page) ? record.page : record.class])
+        i.left.arrow.icon
+        = translate 'action.target.back', target: record.model_name.human(count: -1)
+
+    - if allow.publish?
+      button.ui.basic.positive.button type='submit' name='draft' value='true'
+        = translate 'action.update_draft'
+
+      button.ui.basic.primary.button type='submit'
+        = translate 'action.publish'
+    - else
+      button.ui.basic.positive.button type='submit'
+        = translate 'action.update'
 

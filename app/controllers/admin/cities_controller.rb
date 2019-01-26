@@ -1,6 +1,5 @@
 module Admin
   class CitiesController < Admin::ApplicationRecordController
-    include RequiresApproval
     skip_before_action :set_record, only: [:lookup]
 
     prepend_before_action do

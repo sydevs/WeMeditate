@@ -1,7 +1,5 @@
 module Admin
   class ArticlesController < Admin::ApplicationRecordController
-    include RequiresApproval
-
     prepend_before_action do
       set_model Article
     end

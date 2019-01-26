@@ -13,10 +13,6 @@ Rails.application.routes.draw do
       namespace :admin do
         root to: 'application#dashboard'
 
-        resources :articles, :static_pages, :cities, only: [] do
-          patch :review, on: :member
-        end
-
         resources :cities, only: [] do
           get :lookup, on: :collection, constraints: { format: 'json' }
         end
@@ -26,8 +22,6 @@ Rails.application.routes.draw do
         end
 
         resources :articles, :static_pages, :cities, :subtle_system_nodes, except: [:destroy] do
-          #post :upload_media, on: :member, path: :media, as: :upload_to
-          #delete :destroy_media, on: :member, path: 'media/:qquuid', as: :destroy_media_for
           resources :media_files, only: [:index, :create]
           resources :sections, only: [:new, :create]
         end

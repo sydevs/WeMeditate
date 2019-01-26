@@ -49,8 +49,8 @@ front_page_video_id = attachment('general/video.mp4', 'Video.mp4', :video, stati
     color: 'light',
   },
 }, {
-  content_type: :text,
-  format: :box_with_righthand_image,
+  content_type: :textbox,
+  format: :lefthand,
   title: 'Meditate Now',
   text: '<p>Whether you\'re looking to de-stress, boost your self-esteem or simply seeking a moment to pause, follow our easy yet effective guided meditations to elevate your state and establish peace within.</p>',
   action: 'Choose your meditation',
@@ -68,7 +68,7 @@ front_page_video_id = attachment('general/video.mp4', 'Video.mp4', :video, stati
   },
 }, {
   content_type: :video,
-  format: :gallery,
+  format: :video_gallery,
   extra: {
     items: 4.times.map {|i|
       {
@@ -87,8 +87,8 @@ front_page_video_id = attachment('general/video.mp4', 'Video.mp4', :video, stati
     },
   },
 }, {
-  content_type: :text,
-  format: :box_over_image,
+  content_type: :textbox,
+  format: :overtop,
   title: 'Making History',
   text: '<p>Shri Mataji Nirmala Devi maintained that there is a powerful, yet loving energy lying within each human being, and through her immense compassion for humanity developed the meditation technique for awakening it, described as Self-Realization.</p>',
   action: 'Learn More',
@@ -106,8 +106,8 @@ front_page_video_id = attachment('general/video.mp4', 'Video.mp4', :video, stati
     color: 'dark',
   },
 }, {
-  content_type: :text,
-  format: :box_with_lefthand_image,
+  content_type: :textbox,
+  format: :righthand,
   title: 'Enhance the Experience',
   text: '<p>Music is a great aid to a deep meditation experience. Personalize the soundtrack to your session with our custom music player, featuring exclusive recordings from world class musicians.</p>',
   action: 'Discover my sound',
@@ -123,8 +123,8 @@ front_page_video_id = attachment('general/video.mp4', 'Video.mp4', :video, stati
     },
   },
 }, {
-  content_type: :text,
-  format: :box_over_image,
+  content_type: :textbox,
+  format: :overtop,
   title: 'Beyond the Practice',
   text: '<p>The benefits of meditation go far beyond what you experience during the sessions.</p><p>It has the power to improve every aspect of your life, from your personal growth, to your work and family life, and can even spark immense creativity...</p>',
   action: 'Get Inspired',
@@ -143,8 +143,8 @@ front_page_video_id = attachment('general/video.mp4', 'Video.mp4', :video, stati
     color: 'light',
   },
 }, {
-  content_type: :text,
-  format: :box_with_righthand_image,
+  content_type: :textbox,
+  format: :lefthand,
   title: 'Get Connected',
   text: '<p>The experience of meditation is even stronger when it is shared! Discover the beauty of collective meditations, lead by experienced practitioners in hundreds of cities aroudn the world - always completely free.</p>',
   action: 'Classes near me',
@@ -237,8 +237,8 @@ end
 
 # ===== CREATE SHRI MATAJI PAGE SECTIONS ===== #
 [{
-  content_type: :text,
-  format: :box_with_righthand_image,
+  content_type: :textbox,
+  format: :lefthand,
   title: 'Founder of Sahaja Yoga',
   text: '<p>Shri Mataji Nirmala Devi quietly transformed lives. For more than forty years, she travelled internationally, offering free public lectures and the experience of self-realization to all, regardless of race, religion or circumstance. She not only enabled people to pass this valuable experience on to others, but taught them the meditation technique necessary to sustain it, known as Sahaja Yoga.</p>',
   extra: {
@@ -252,8 +252,8 @@ end
     },
   },
 }, {
-  content_type: :text,
-  format: :box_over_image,
+  content_type: :textbox,
+  format: :overtop,
   title: 'What is Sahaja Yoga?',
   text: '<p>Shri Mataji maintained that there is an innate spiritual potential within every human being, and it can be spontaneously awakened, bringing one into the state of spontaneous meditation. The inner balance and stress-reduction that accompanies the practice of Sahaja Yoga meditation has already benefited hundreds of thousands worldwide.</p><p>The ability to quickly and easily activate our innate, spiritual energy - and experience its benefits differentiates Sahaja Yoga from other forms of meditation. With practice, individuals are able to direct their own energy and redress mental, physical and emotional imbalances to achieve a state of well-being, serenity and fulfillment.</p>',
   action: 'More about Sahaja Yoga',
@@ -282,8 +282,8 @@ end
     video_id: attachment('general/video.mp4', 'Video.mp4', :image, static_pages[:shri_mataji]),
   },
 }, {
-  content_type: :text,
-  format: :box_with_righthand_image,
+  content_type: :textbox,
+  format: :lefthand,
   title: 'Social Work',
   text: '<p>Brought up in a family that considered self-sacrifice the highest calling, Shri Mataji dedicated her life to a continuous program of public and spiritual work.She created charitable organizations such as the Vishwa Nirmala Prem Ashram for destitute women and orphan children, founded international schools promoting a holistic and balanced education, established health clinics, created a classical art academy, and much more. All of these endeavors complemented her global work of spiritual transformation.</p>',
   extra: {
@@ -297,8 +297,8 @@ end
     },
   },
 }, {
-  content_type: :text,
-  format: :box_with_lefthand_image,
+  content_type: :textbox,
+  format: :righthand,
   title: 'Shri Mataji\'s Family',
   text: '<p>Brought up in a family that considered self-sacrifice the highest calling, Shri Mataji dedicated her life to a continuous program of public and spiritual work.She created charitable organizations such as the Vishwa Nirmala Prem Ashram for destitute women and orphan children, founded international schools promoting a holistic and balanced education, established health clinics, created a classical art academy, and much more. All of these endeavors complemented her global work of spiritual transformation.</p>',
   extra: {
@@ -313,7 +313,7 @@ end
     },
   },
 }, {
-  content_type: :text,
+  content_type: :structured,
   format: :grid,
   title: 'Awards',
   text: '<p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>',

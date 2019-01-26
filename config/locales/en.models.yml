@@ -174,31 +174,36 @@ en:
         content_types:
           text: Text
           video: Video
-          quote: Quote
           image: Image
           action: Call to Action
+          textbox: Text Box
+          structured: Structured Content
           special: Special
         format: Format
         formats:
           # Text
           just_text: Just Text
-          with_quote: Text With Quote Insert
-          with_image: Text With Image Insert
-          box_with_lefthand_image: Text Box With Left-Hand Image
-          box_with_righthand_image: Text Box With Right-Hand Image
-          box_over_image: Text Box Over Image
-          grid: Text Grid
-          columns: Text Columns
-          ancient_wisdom: Ancient Wisdom
+          just_quote: Just Quote
+          with_image: Image Insert
+          with_quote: Quote Insert
           # Image
           fit_container_width: Fit Content Width
           fit_page_width: Fit Page Width
+          image_gallery: Gallery
           # Video
           single: Single
-          gallery: Gallery
-          # Call to Action
+          video_gallery: Gallery
+          # Action
           signup: Sign Up
           button: Button
+          # Textbox
+          lefthand: Left-Hand Image
+          righthand: Right-Hand Image
+          overtop: Background Image
+          ancient_wisdom: Ancient Wisdom
+          # Structured
+          grid: Grid
+          columns: Columns
           # Special
           banner: Banner
           try_meditation: Try Meditation
@@ -214,6 +219,30 @@ en:
           local_contacts: Local Contacts
           featured_meditations: Featured Meditations
           custom_meditation: Custom Meditation
+        labels:
+          # Text
+          just_text: Text
+          just_quote: Quote
+          with_image: Text with Image
+          with_quote: Text with Quote
+          # Image
+          fit_container_width: Narrow Image
+          fit_page_width: Wide Image
+          image_gallery: Image Gallery
+          # Video
+          single: Video
+          video_gallery: Video Gallery
+          # Action
+          signup: Sign Up Form
+          button: Link Button
+          # Textbox
+          lefthand: Text Box with Left-Hand Image
+          righthand: Text Box with Right-Hand Image
+          overtop: Text Box over Image
+          ancient_wisdom: Ancient Wisdom
+          # Structured
+          grid: Text Grid
+          columns: Columns
         title: Title
         subtitle: Subtitle
         text: Text

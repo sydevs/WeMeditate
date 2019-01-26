@@ -198,7 +198,7 @@ module MetadataHelper
             'headline' => tags['og:title'],
             'thumbnail_url' => tags['og:image'],
           })
-        elsif 'contact'
+        elsif record.role == 'contact'
           # TODO: Add special markup for this page
           page.merge!({
             '@type' => 'WebPage',
@@ -218,17 +218,25 @@ module MetadataHelper
 
           records_name = (record.role == 'subtle_system' ? 'subtle_system_nodes' : record.role)
 
-          if 'admin'
-            list['itemListElement'] = "<list of #{records_name}>"
-          else
-            list['itemListElement'] = instance_variable_get("@#{records_name}").each_with_index.map { |record, index|
-              {
-                '@type' => 'ListItem',
-                'position' => index,
-                'url' => polymorphic_url(record),
-              }
+          list['itemListElement'] = instance_variable_get("@#{records_name}").each_with_index.map { |record, index|
+            {
+              '@type' => 'ListItem',
+              'position' => index,
+              'url' => polymorphic_url(record),
             }
-          end
+          }
+
+          #if 'admin'
+          #  list['itemListElement'] = "<list of #{records_name}>"
+          #else
+          #  list['itemListElement'] = instance_variable_get("@#{records_name}").each_with_index.map { |record, index|
+          #    {
+          #      '@type' => 'ListItem',
+          #      'position' => index,
+          #      'url' => polymorphic_url(record),
+          #    }
+          #  }
+          #end
 
           objects.push list
         end

@@ -8,7 +8,7 @@ end
 
 
 # Core gems
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2.2'
 gem 'pg', '~> 0.18' # Use postgresql as the database for Active Record
 gem 'puma', '~> 3.7' # Use Puma as the app server
 gem 'sassc-rails' # Use SASS for stylesheets
@@ -16,7 +16,7 @@ gem 'slim-rails' # Use Slim for views
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 
 gem 'turbolinks', '~> 5' # Makes navigating your web application faster.
-gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+#gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
 # Users
 gem 'devise' # Adds all the core features for users - user sessions, login, password recovery, etc
@@ -33,7 +33,6 @@ gem 'jquery-slick-rails' # A slider library
 gem 'inline_svg' # To embed svg files
 
 # Models
-gem 'paper_trail' # Adds support for versioning models (which we want for drafts)
 gem 'friendly_id' # Model routes use a slug instead of an ID number
 gem 'geocoder' # Integrates with Google Maps or other providers to geocode addresses
 gem 'jsonb_accessor' # Makes it simpler to access attributes of a jsonb database column
@@ -53,9 +52,8 @@ gem 'kaminari' # For pagination
 
 # Globalize (translatable models)
 gem 'globalize' # Support for translating models
-gem 'carrierwave_globalize', github: 'Ardnived/carrierwave_globalize' # for carrierwave support (referencing my own repo to add multi-uploader support)
+gem 'carrierwave_globalize' # for carrierwave support (referencing my own repo to add multi-uploader support)
 #gem 'carrierwave_globalize', path: '~/Documents/Projects/Other/carrierwave_globalize' # for multiple uploaders support
-gem 'globalize-versioning', github: 'aaroncraigie/globalize-versioning' # for paper_trail translation support
 gem 'friendly_id-globalize' # for friendly_id support
 
 # Localization

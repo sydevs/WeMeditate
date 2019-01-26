@@ -4,7 +4,7 @@ module Admin
       super_admin? and SubtleSystemNode.available_roles.present?
     end
 
-    def review?
+    def publish?
       false
     end
 

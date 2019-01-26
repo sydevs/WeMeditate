@@ -8,16 +8,22 @@ en:
     sign_out: Log Out
     show: View
     update: Save
-    update_and_done: Save & Done
+    update_draft: Save Draft
     cancel: Cancel
     create: New
     edit: Edit
     destroy: Delete
-    review: Review
     retry: Retry
     close: Close
     select: Select
+    back: Back
     clean_up: Clean Up
+    publish: Publish
+    draft:
+      reset: Discard Draft Value
+      redo: Use Draft Value
+      reset_tooltip: Reset to "%{value}"
+      redo_tooltip: Set to "%{value}"
     target:
       upload: Upload %{target}
       edit: Edit %{target}
@@ -44,6 +50,8 @@ en:
     unpublished_changes: Has Unpublished Changes
     unpublished_draft: Unpublished Draft
     no_translation: No Translation
+    updated_ago: Modified %{time_ago} ago
+    published_ago: Published %{time_ago} ago
     views:
       one: 1 View
       other: '%{count} Views'
@@ -73,9 +81,11 @@ en:
     result:
       created: Created successfully.
       updated: Saved successfully.
-      updated_and_review: Saved successfully, you can now review and publish the changes.
       deleted: Deleted successfully.
+      saved_but_needs_review: Saved successfully, changes will be published after they are reviewed.
       cannot_delete_attached_record: You cannot delete a %{model} which has %{association} attached to it. Reassign the %{association} and try again.
+      published: Published successfully.
+      discarded_drafts: Drafts successfully deleted.
   metadata:
     key: name
     value: value

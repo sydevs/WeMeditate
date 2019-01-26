@@ -103,3 +103,40 @@
 
     code
       white-space: pre
+
+  .field
+    .reset, .redo
+      margin-top: -7px
+
+    &.draft
+      .redo
+        display: none
+
+      .reset
+        color: transparentize(#B58105, 0.1) !important
+
+      .reset, input[type=text], .ui.basic.label,
+      textarea, .ui.dropdown, .ql-snow,
+      .ui.checkbox label:before
+        box-shadow: 0px 0px 0px 100px #FFF8DB inset !important
+        border-color: #B58105
+
+    &:not(.draft) .reset
+      display: none
+
+  .inline.decoration.fields
+    margin-bottom: 0.25em
+
+    > *:not(:first-child)
+      margin-right: 0.75em
+
+    .ui.dropdown
+      padding: 0 0.25em
+
+    input[type="text"]
+      padding: 0
+      padding-top: 1px
+      border-top: none
+      border-left: none
+      border-right: none
+      border-radius: 0

@@ -25,16 +25,8 @@ module Admin
       super and record.translated_locales.include? I18n.locale
     end
 
-    def upload_media?
-      update_translation?
-    end
-
-    def destroy_media?
-      update_structure?
-    end
-
-    def review?
-      record.draft? and regional_admin? and locale_allowed?
+    def publish?
+      regional_admin? and locale_allowed?
     end
 
   end

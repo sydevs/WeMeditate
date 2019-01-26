@@ -32,14 +32,21 @@ module Admin
       end
     end
 
-    def update page_params
+    def update page_params, redirect = nil
       @record.attributes = update_params(page_params)
+      allow = policy(@record)
+      redirect = (allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
 
-      if @record.save
-        if policy(@record).review?
-          redirect_to [:admin, @record], flash: { notice: t('messages.result.updated_and_review') }
+      if @record.valid?
+        if allow.publish? and params[:draft] != 'true'
+          @record.published_at = DateTime.now if @record.respond_to? :published_at
+          @record.draft = nil
+          @record.save!
+          redirect_to redirect, flash: { notice: t('messages.result.updated') }
         else
-          redirect_to [:edit, :admin, @record], flash: { notice: t('messages.result.updated') }
+          @record.record_draft!
+          @record.save!
+          redirect_to redirect, flash: { notice: t('messages.result.saved_but_needs_review') }
         end
       else
         render :edit

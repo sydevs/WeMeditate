@@ -6,7 +6,7 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def reviewable?
-    self.respond_to? :versions
+    self.respond_to? :draft
   end
 
   def has_content?

@@ -51,7 +51,7 @@ end
   overview_image_id = attachment("subtle_system_nodes/#{role.to_s.dasherize}.png", 'Chakra Overview.png', :image, subtle_system_node)
 
   [{
-    content_type: :text,
+    content_type: :structured,
     format: :columns,
     label: 'Chakra Overview',
     extra: {
@@ -70,8 +70,8 @@ end
       }]
     }
   }, {
-    content_type: :text,
-    format: :box_over_image,
+    content_type: :textbox,
+    format: :overtop,
     label: 'In Daily Life',
     title: "How to open #{name}?",
     text: '<p>It is important to try to show Nabhi quality in your life - it will automatically purify and make this chakra stronger, and meditations will become deeper. If we are calm and generous, we have order in affairs and at home, Nabi will be in good condition. On the contrary, if a person is dishonest with money, materialistic, or often fussing about small things, then Nabhi will be in imbalance.</p><p>Quality Nabi: peace, pure attention, generosity, the quality of an ideal housewife, attention to spiritual growth. What blocks: anxiety, greed, stress, materialism, fatty and heavy food.</p><p>To demonstrate the qualities of Nabis and balance this chakra can help simple methods of cleaning this chakra.</p>',

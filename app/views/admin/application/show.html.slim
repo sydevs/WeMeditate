@@ -1,16 +1,25 @@
 
 - content_for :title, @model.model_name.human(count: 1)
 - reorder = (params[:reorder] == 'true')
+- allow = policy(@record)
 
 - unless reorder
   .table-actions
-    = table_action t('action.edit'), 'edit', url_for([:edit, :admin, @record])
-    //= table_action t('action.destroy'), 'trash', url_for([:destroy, :admin, @record])
+    = table_action t('action.edit'), "#{'orange' if @record.draft.present? and allow.publish?} edit", url_for([:edit, :admin, @record])
     = table_action t('action.show'), 'dashboard', url_for(@record), nil, true
 
 .details
   h3 = @record.name
   = render "admin/details/#{@record.model_name.param_key}", record: @record
+
+  - if @record.reviewable?
+    .ui.small.details.list
+      .item
+        i.bullhorn.icon
+        .content = published_at_detail_message(@record)
+      .item
+        i.edit.icon class="#{'orange' if @record.has_draft? and allow.publish?}"
+        .content = updated_at_detail_message(@record)
 
 .clearfix
 

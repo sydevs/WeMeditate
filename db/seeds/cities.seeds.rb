@@ -45,8 +45,8 @@ end
   city.update!(atts)
 
   [{
-    content_type: :text,
-    format: :box_with_righthand_image,
+    content_type: :textbox,
+    format: :lefthand,
     title: 'What to expect at a class?',
     text: '<p>Iste exercitationem quaerat, praesentium quod corrupti beatae eligendi quasi nostrum natus ut, ea accusantium repellat ex placeat expedita dolores ad quas optio.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste exercitationem quaerat, praesentium quod corrupti beatae eligendi quasi nostrum natus ut, ea accusantium repellat ex placeat expedita dolores ad quas optio.</p><p>Ea accusantium repellat ex placeat expedita dolores ad quas optio.</p>',
     extra: {
