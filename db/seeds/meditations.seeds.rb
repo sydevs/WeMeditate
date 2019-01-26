@@ -14,7 +14,7 @@ goal_filters = {}
   goal_filters[key].update!({
     name: name,
     order: index,
-    icon: file_root.join("goal_filters/#{name.dasherize}.svg").open,
+    icon: file_root.join("goal_filters/#{name.dasherize.downcase}.svg").open,
   })
 
   puts "Created Goal Filter - #{name}"

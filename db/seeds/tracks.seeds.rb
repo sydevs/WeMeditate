@@ -33,7 +33,7 @@ instrument_filters = {}
   instrument_filters[key].update!({
     name: name,
     order: index,
-    icon: file_root.join("instrument_filters/#{name.dasherize}.svg").open,
+    icon: file_root.join("instrument_filters/#{name.dasherize.downcase}.svg").open,
   })
 
   puts "Created Instrument Filter - #{name}"
@@ -48,7 +48,7 @@ mood_filters = {}
   mood_filters[key].update!({
     name: name,
     order: index,
-    icon: file_root.join("mood_filters/#{name.dasherize}.svg").open,
+    icon: file_root.join("mood_filters/#{name.dasherize.downcase}.svg").open,
   })
 
   puts "Created Mood Filter - #{name}"

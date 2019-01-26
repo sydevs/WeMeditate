@@ -48,7 +48,7 @@ end
     excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias quam, corporis quia exercitationem aspernatur numquam?',
   })
 
-  overview_image_id = attachment("subtle_system_nodes/#{role.to_s.dasherize}.png", 'Chakra Overview.png', :image, subtle_system_node)
+  overview_image_id = attachment("subtle_system_nodes/#{role.to_s.dasherize.downcase}.png", 'Chakra Overview.png', :image, subtle_system_node)
 
   [{
     content_type: :structured,
