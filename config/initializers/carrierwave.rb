@@ -1,6 +1,5 @@
 CarrierWave.configure do |config|
   config.storage = Rails.env.production? ? :gcloud : :file
-  puts "CARRIERWAVE STORAGE #{Rails.env.production? ? :gcloud : :file}"
   config.asset_host = ActionController::Base.asset_host
   config.gcloud_bucket = 'wemeditate.co'
   config.gcloud_bucket_is_public = true
