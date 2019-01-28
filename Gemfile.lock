@@ -251,6 +251,7 @@ GEM
     rails-i18n (5.1.3)
       i18n (>= 0.7, < 2)
       railties (>= 5.0, < 6)
+    rails_serve_static_assets (0.0.5)
     railties (5.2.2)
       actionpack (= 5.2.2)
       activesupport (= 5.2.2)
@@ -403,6 +404,7 @@ DEPENDENCIES
   rack-raw-upload
   rails (~> 5.2.2)
   rails-i18n
+  rails_serve_static_assets
   regulator
   route_translator
   sassc-rails
@@ -427,4 +429,4 @@ RUBY VERSION
    ruby 2.4.3p205
 
 BUNDLED WITH
-   1.15.2
+   2.0.1

@@ -15,6 +15,7 @@ gem 'sassc-rails' # Use SASS for stylesheets
 gem 'slim-rails' # Use Slim for views
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 
+gem 'rails_serve_static_assets' # Allow the heroku app to serve static files
 gem 'turbolinks', '~> 5' # Makes navigating your web application faster.
 #gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
