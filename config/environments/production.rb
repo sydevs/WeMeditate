@@ -41,6 +41,7 @@ Rails.application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   #config.action_controller.asset_host = 'http://wemeditate.co'
+  config.action_controller.asset_host = 'https://storage.googleapis.com/wemeditate.co'
 
   # More secure csrf tokens
   config.action_controller.per_form_csrf_tokens = true
