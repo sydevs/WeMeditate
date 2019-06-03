@@ -1,0 +1,5 @@
+
+var items = $('<%=j render @articles %>')
+var loadmore = Application.loadmores[<%= params[:loadmore] %>]
+loadmore.addContent(items)
+loadmore.setLoadMoreUrl('<%= @loadmore_url %>')

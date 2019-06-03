@@ -1,8 +1,11 @@
 
-= f.input :role do
-  = f.hidden_field :role
-  .ui.icon.label
-    i.pin.icon
-    = human_enum_name(record, :role)
+- if record.new_record?
+  = f.input :role, collection: SubtleSystemNode.available_roles.map { |k| [human_enum_name(record, :role, k), k] }, selected: SubtleSystemNode.available_roles.first
+- else
+  = f.input :role do
+    = f.hidden_field :role
+    .ui.icon.label
+      i.pin.icon
+      = human_enum_name(record, :role)
 
 = f.input :excerpt, as: :text, input_html: { rows: 2 }

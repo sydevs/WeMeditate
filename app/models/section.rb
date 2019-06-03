@@ -5,6 +5,7 @@
 # The Section model is a unique kind of model that is used by all "Page"-type models to build their content.
 
 class Section < ApplicationRecord
+
   include Draftable
 
   # Extensions
@@ -20,7 +21,6 @@ class Section < ApplicationRecord
   attribute :url
   attribute :extra
   attribute :draft
-  alias name label
 
   # Associations
   belongs_to :page, polymorphic: true, touch: true
@@ -34,27 +34,17 @@ class Section < ApplicationRecord
 
   # Scopes
   default_scope { order(:order) }
-  #scope :q, -> (q) { joins(:translations).where('label ILIKE ?', "%#{q}%") if q.present? }
+  # scope :q, -> (q) { joins(:translations).where('label ILIKE ?', "%#{q}%") if q.present? }
 
   # Formats - A list of recognized non-special formats, which will be shown in the CMS
   FORMATS = {
-    text: [:just_text, :just_quote, :with_quote, :with_image],
-    image: [:fit_container_width, :fit_page_width, :image_gallery],
-    video: [:single, :video_gallery],
-    action: [:signup, :button],
-    textbox: [:lefthand, :righthand, :overtop, :ancient_wisdom],
-    structured: [:grid, :columns],
-  }
-
-  # Check whether this section indicates the start of a new chapter for the article
-  def chapter_start?
-    content_type == 'text' and title.present?
-  end
-
-  # Return the string that should be used as an HTML # anchor for this chapter
-  def chapter_slug
-    title&.parameterize
-  end
+    text: %i[just_text just_quote with_quote with_image],
+    image: %i[fit_container_width fit_page_width image_gallery],
+    video: %i[single video_gallery],
+    action: %i[signup button],
+    textbox: %i[lefthand righthand overtop ancient_wisdom],
+    structured: %i[grid columns],
+  }.freeze
 
   # Is this a special section?
   def special?
@@ -91,13 +81,26 @@ class Section < ApplicationRecord
   # Shorthand to access the main image associate with this section, if there is one.
   def image id = nil
     id = extra_attr('image_id') if id.nil?
-    page.media_files.find_by(id: id)&.file
+    media_file(id)&.file
   end
 
   # Shorthand to access the main video associate with this section, if there is one.
   def video id = nil
     id = extra_attr('video_id') if id.nil?
-    page.media_files.find_by(id: id)&.file
+    media_file(id)&.file
+  end
+
+  def media_file id
+    page.media_files.find_by(id: id)
+  end
+
+  def desktop_image
+    @desktop_image ||= media_file(extra_attr('desktop_image_id'))&.file
+  end
+
+  def mobile_image
+    id = extra_attr('mobile_image_id')
+    @mobile_image ||= (id.present? && media_file(id)&.file) || desktop_image
   end
 
   # Shorthand to access the decoration configuration for this section
@@ -111,19 +114,19 @@ class Section < ApplicationRecord
 
   # Returns whether this section has a specific decoration enabled
   def has_decoration? type, draft: false
-    data = decorations_draft || decorations if draft
+    data = draft ? decorations_draft || decorations : decorations
     data['enabled'].include?(type.to_s) if data.present?
   end
 
   # Returns the configuration for a specific decoration, if there is one.
   def decoration_options type, draft: false
-    data = decorations_draft || decorations if draft
+    data = draft ? decorations_draft || decorations : decorations
     defined?(data['options'][type.to_s]) ? (data['options'][type.to_s] || []) : []
   end
 
   # Returns the content for this section's sidetext (which is considered a kind of decoration)
   def decoration_sidetext draft: false
-    data = decorations_draft || decorations if draft
+    data = draft ? decorations_draft || decorations : decorations
     data['sidetext'] || ''
   end
 
@@ -149,4 +152,5 @@ class Section < ApplicationRecord
   def published?
     page.published_at != nil
   end
+
 end

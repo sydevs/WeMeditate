@@ -5,8 +5,8 @@ module StaticPageHelper
 
   # Creates the markup for a sidetext element, if content for that element has been defined.
   def self.preview_for role
-    if not defined? @@static_page_previews
-      @@static_page_previews = StaticPage.preload_for(:preview).all.index_by(&:role)
+    unless defined? @@static_page_previews
+      @@static_page_previews = StaticPage.preload_for(:preview).all.index_by(&:role) # rubocop:disable Style/ClassVars
     end
 
     @@static_page_previews[role.to_s]
@@ -23,16 +23,13 @@ module StaticPageHelper
     when :subtle_system
       subtle_system_nodes_path
     when :articles
-      articles_path
+      categories_path
     when :treatments
       treatments_path
     when :tracks
       tracks_path
     when :meditations
       meditations_path
-    when :world, :country, :city
-      # There is no single address for city and country pages, so just default to the world index
-      cities_path
     else
       static_page_path(static_page)
     end
@@ -52,9 +49,6 @@ module StaticPageHelper
       tracks_url
     when :meditations
       meditations_path
-    when :world, :country, :city
-      # There is no single address for city and country pages, so just default to the world index
-      cities_url
     else
       polymorphic_url(static_page)
     end

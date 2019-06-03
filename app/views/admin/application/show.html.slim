@@ -5,7 +5,7 @@
 
 - unless reorder
   .table-actions
-    = table_action t('action.edit'), "#{'orange' if @record.draft.present? and allow.publish?} edit", url_for([:edit, :admin, @record])
+    = table_action t('action.edit'), "#{'orange' if allow.publish? and @record.draft.present?} edit", url_for([:edit, :admin, @record])
     = table_action t('action.show'), 'dashboard', url_for(@record), nil, true
 
 .details
@@ -18,15 +18,17 @@
         i.bullhorn.icon
         .content = published_at_detail_message(@record)
       .item
-        i.edit.icon class="#{'orange' if @record.has_draft? and allow.publish?}"
+        i.edit.icon class="#{'orange' if allow.publish? and @record.has_draft?}"
         .content = updated_at_detail_message(@record)
 
 .clearfix
 
 .ui.divider
 
-- unless reorder or @record.sections.count <= 1
-  .table-actions = table_action t('action.target.reorder', target: Section.model_name.human), 'bars', url_for([:admin, @record, reorder: true])
+.table-actions
+  = table_action t('action.write'), 'bars', url_for([:write, :admin, @record])
+  - unless reorder or @record.sections.count <= 1
+    = table_action t('action.target.reorder', target: Section.model_name.human), 'bars', url_for([:admin, @record, reorder: true])
 
 h4 Content
 

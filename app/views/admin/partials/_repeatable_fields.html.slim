@@ -5,8 +5,8 @@
 - original_items = (local_assigns.key?(:items) ? local_assigns[:items] : f.object.send(attribute)&.to_a) || []
 - items = draft_items || original_items
 
-.field class="#{local_assigns[:class]} #{'draft' if draft_items}" data-draft='repeatable'
-  = draft_reset_button(original_items) if draft_items
+.field id=local_assigns[:id] class="#{local_assigns[:class]} #{'draft' if draft_items}" data-draft='repeatable'
+  = draft_reset_buttons(:repeatable, original_items, draft_items) if draft_items
   = f.label attribute
 
   .repeatable.fields class="#{'horizontal' if horizontal}"
@@ -16,14 +16,24 @@
           = f.fields_for attribute, item do |ff|
             .row
               .fields-wrapper = yield ff, item
-              .ui.remove.button
-                i.trash.icon
+              .actions
+                .ui.remove.button
+                  i.fitted.trash.icon
+                .ui.move-up.button
+                  i.fitted.arrow.up.icon
+                .ui.move-down.button
+                  i.fitted.arrow.down.icon
 
         = f.fields_for attribute do |ff|
           .template.row
             .fields-wrapper = yield ff, {}
-            .ui.remove.button
-              i.trash.icon
+            .actions
+              .ui.remove.button
+                i.fitted.trash.icon
+              .ui.move-up.button
+                i.move-up.fitted.arrow.up.icon
+              .ui.move-down.button
+                i.move-down.fitted.arrow.down.icon
 
       .ui.basic.tiny.compact.add.button
         i.plus.icon

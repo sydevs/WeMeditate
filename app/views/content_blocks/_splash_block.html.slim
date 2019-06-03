@@ -1,0 +1,20 @@
+
+- image_url = @record.media_file(block[:image][:id]).large.url if block[:image]
+- classes = ["content__splash--#{block[:style]}"]
+- classes << 'content__splash--invert' if block[:style] == 'home' # TODO: This needs to be configurable.
+
+.content__splash class=classes style=("background-image: url(#{image_url})" if image_url)
+  - if block[:style] == 'treatments'
+    .content__splash__gradient.gradient.gradient--right.gradient--orange
+
+  .content__splash__wrapper
+    h1.content__splash__title = block[:title]
+    .content__splash__text = block[:text]
+
+    - if block[:style] == 'treatments'
+      a.content__splash__action.button.button--circle href=block[:url] = block[:action]
+    - else
+      .content__splash__action
+        = inline_svg 'graphics/leaves.svg', class: 'content__splash__action__leaf'
+        a.content__splash__action__text href=block[:url] = block[:action]
+        = inline_svg 'graphics/leaves.svg', class: 'content__splash__action__leaf'

@@ -1,0 +1,92 @@
+@import "../../mixins/*"
+
+/* TEXT BOX
+  This is a float box which contains text,
+  and is usually displayed partially covering some other content, like an image.
+  */
+
+// ===== TEXT BOX OVERLAY ===== //
+// The overlay is used to wrap and position the text box.
+.text-box-overlay
+  clear: both
+
+  @include tablet-or-larger
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    position: absolute
+    left: 0%
+    top: 6%
+    min-height: 88%
+
+  @include laptop
+    left: 12%
+
+  @include desktop
+    left: 5%
+
+// Only applied when a text box is within an overlay.
+// Mainly positioning of the text box.
+.text-box-overlay > .text-box
+  @include tablet
+    max-width: 575px
+    width: 67.5vw
+    padding: 100px
+
+  @include laptop-or-larger
+    max-width: 630px
+    padding: 84px
+    padding-top: 60px
+    background: white
+
+    > .button-box
+      background: white
+
+  @include desktop
+    padding: 68px
+    padding-top: 95px
+
+// ===== TEXT BOX ===== //
+// This is the text box itself
+.text-box
+  overflow: hidden
+  margin: 0
+
+  > .button-box
+    margin-top: 64px
+
+  .text
+    &-title
+      letter-spacing: 0.25px
+
+      @include laptop-or-larger
+        margin-bottom: 1.17em
+
+    &-content > p
+      line-height: 1.75
+      letter-spacing: 0.44px
+
+      @include laptop-or-larger
+        font-size: 1.8rem
+        line-height: 1.6667
+        letter-spacing: 0.2px
+
+  .text-content > p, > *
+    &:first-child,
+      margin-top: 0
+
+    &:last-child
+      margin-bottom: 0
+
+// ===== INVERSE TEXT BOX ===== //
+// If the background content is bright, then the text box can need to be inverted.
+.inverse.text-box
+  @include tablet-or-larger
+    border: 2px solid $color-text-inverse
+
+    .text-title, p
+      color: $color-text-inverse
+
+    > .button-box
+      background: none

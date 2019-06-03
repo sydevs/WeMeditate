@@ -1,0 +1,22 @@
+
+- callout_mode = block[:callout].present? ? block[:callout] : 'none'
+- classes = ['content__quote']
+- classes << "content__quote--callout" unless callout_mode == 'none'
+- classes << "content__quote--callout-#{callout_mode}"
+
+
+.content__quote class=classes
+  blockquote.content__quote__block
+    - if callout_mode == 'none'
+      .divider.divider--leaf.divider--leaf-up
+
+    p.content__quote__text = block[:text]
+
+    - if block[:credit].present?
+      .content__quote__credit = block[:credit]
+
+    - if block[:caption].present?
+      .content__quote__caption = block[:caption]
+
+    - if callout_mode == 'none'
+      .divider.divider--leaf.divider--leaf-down

@@ -1,28 +1,19 @@
 
-//section.decorated.intro
-  .container
-    .title
-      = inline_svg 'graphics/leaf.svg'
-      div = @treatment.name
-      = inline_svg 'graphics/leaf.svg'
+// TODO: The set image sizes for the below image
+- image_sizes = ''
 
-.banner.full-width
-  .wrapper-outer
-    .banner-title-box
-      = inline_svg 'graphics/leaf.svg'
-      h1.banner-title = @treatment.name
-      = inline_svg 'graphics/leaf.svg'
+main.scrollspy-target id=dom_id(@treatment)
+  h1.banner
+    = translate 'treatments.title_prefix'
+    br
+    = @treatment.name
 
-//section.content-type-video.format-single
-  .video.wrapper
-    = render 'shared/video_preview', thumbnail: @treatment.thumbnail.url, video_url: @treatment.video.url
+  .treatment__media
+    - if @treatment.video.present?
+      .video
+        = smart_image_tag @treatment.thumbnail, image_sizes, class: 'video__thumbnail', alt: @treatment.name
+        a.video__button href=@treatment.video.url data-mfp-src='#video-popup'
+    - else
+      = smart_image_tag @treatment.thumbnail, image_sizes
 
-//section.content-type-text.format-just-text
-  .section.wrapper = @treatment&.content&.html_safe
-
-article.wrapper-inner id=dom_id(@treatment)
-  .video-wrapper
-    video.inline-player poster=@treatment.thumbnail.url
-      source src=@treatment.video.url type='video/mp4'
-
-  .treatment-content = @treatment&.content&.html_safe
+  = render_content @treatment

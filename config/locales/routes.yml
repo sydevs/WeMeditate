@@ -4,9 +4,28 @@ en:
     admin: admin
     inspiration: inspiration
     countries: countries
-    cities: cities
     meditations: meditations
     techniques: techniques
     subtle_system: subtle-system
     page: page
     music: music
+ru:
+  routes:
+    admin: admin_ru
+    inspiration: inspiration_ru
+    countries: countries_ru
+    meditations: meditations_ru
+    techniques: techniques_ru
+    subtle_system: subtle-system_ru
+    page: page_ru
+    music: music_ru
+de:
+  routes:
+    admin: admin_de
+    inspiration: inspiration_de
+    countries: countries_de
+    meditations: meditations_de
+    techniques: techniques_de
+    subtle_system: subtle-system_de
+    page: page_de
+    music: music_de

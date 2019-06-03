@@ -1,0 +1,19 @@
+
+- style = f.object.extra_attr('splash_style')
+
+= f.input :splash_style do
+  .ui.label = human_enum_name(Section, :splash_style, style)
+
+= draftable_field f, :title
+= draftable_field f, :text
+= draftable_field f, :action
+= draftable_field f, :url
+
+= f.fields_for :extra, f.object do |ff|
+  = ff.hidden_field :splash_style, value: style
+
+  = draftable_media_field ff, :desktop_image_id, preview: true, value: section_extra_value(section, :desktop_image_id), draft: section_extra_draft_value(section, :desktop_image_id)
+  = draftable_media_field ff, :mobile_image_id, preview: true, value: section_extra_value(section, :mobile_image_id), draft: section_extra_draft_value(section, :mobile_image_id)
+
+  - colors = %i[light dark].map {|c| [human_enum_name(Section, :color, c), c] }
+  = draftable_field ff, :color, type: :collection, wrapper: { class: field_classes(:color) }, input: { collection: colors, label: Section.human_attribute_name(:color) }, value: section_extra_value(section, :color), draft: section_extra_draft_value(section, :color)

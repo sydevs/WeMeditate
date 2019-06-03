@@ -5,8 +5,11 @@
   .wrapper-outer
     = sidetext(section)
 
-    h2.text-title = section.title
-    .text-content = section.text&.html_safe
+    - if section.title.present?
+      h2.text-title class="#{'with-decoration leaf' if section.has_decoration? :leaf}" = section.title
+
+    - if section.text.present?
+      .text-content = section.text&.html_safe
 
     .grid.items id="grid-#{dom_id section}"
       .grid-sizer

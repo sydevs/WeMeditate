@@ -18,13 +18,13 @@ class Track < ApplicationRecord
 
   # Validations
   validates :name, presence: true
+  validates :artist, presence: true
   validates :audio, presence: true
   validates :mood_filters, presence: true
   validates :instrument_filters, presence: true
 
   # Scopes
   scope :q, -> (q) { joins(:translations, :artist).where('track_translations.name ILIKE ? OR artists.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
-
 
   # Include everything necessary to render the full content of this model
   def self.preload_for mode
@@ -33,4 +33,5 @@ class Track < ApplicationRecord
       includes(:translations, :artist, mood_filters: :translations, instrument_filters: :translations)
     end
   end
+
 end

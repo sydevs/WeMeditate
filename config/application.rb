@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 
 module Wemeditate
   class Application < Rails::Application
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
@@ -17,5 +18,7 @@ module Wemeditate
     # -- all .rb files in that directory are automatically loaded.
 
     config.twitter_handle = '@wemeditate'
+    config.exceptions_app = self.routes
+
   end
 end

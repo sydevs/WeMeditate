@@ -1,12 +1,8 @@
 
-= f.input :action, wrapper_html: { class: 'sub' }
-= f.input :title, wrapper_html: { class: 'sub' }
-= f.input :subtitle, wrapper_html: { class: 'sub' }
-= f.input :url, wrapper_html: { class: 'sub' }
+= draftable_field f, :action
+= draftable_field f, :title
+= draftable_field f, :url
 
 = f.fields_for :extra, f.object do |ff|
-  = ff.input :thumbnail, wrapper_html: { class: 'sub' } do
-    = media_input ff, :image, preview: true, value: f.object.extra_attr('image_id')
-
-  = ff.input :video, wrapper_html: { class: 'sub' } do
-    = media_input ff, :video, preview: true, value: f.object.extra_attr('video_id')
+  = draftable_media_field ff, :image_id, preview: true, value: section_extra_value(section, :image_id), draft: section_extra_draft_value(section, :image_id)
+  = draftable_media_field ff, :video_id, type: :video, value: section_extra_value(section, :video_id), draft: section_extra_draft_value(section, :video_id)

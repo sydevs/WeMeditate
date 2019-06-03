@@ -1,0 +1,62 @@
+@import "../../mixins/*"
+
+/* GRID
+  A grid uses the Isotope library to display and filter blocks of content.
+  Usually they are sorted in a pinterest style.
+  */
+
+.grid
+  position: relative
+  margin: auto
+
+  &-wrapper
+    @include tablet-or-larger
+      margin: 0 (-$gutter-width / 2)
+
+  // Define some default grid widths for different screen sizes
+  &-sizer,
+  &-item
+    width: 100%
+    box-sizing: border-box
+
+    @include tablet
+      width: 33.3333%
+
+    @include laptop-or-larger
+      width: 25%
+
+  &-item
+    margin-top: 45px
+
+    @include tablet-or-larger
+      padding: 0 ($gutter-width / 2)
+      margin-bottom: 41.5px
+
+  &-item-title
+    margin-bottom: 16px
+
+    color: $color-text-dark
+    font-weight: $font-semibold
+    font-size: 2.2rem
+    line-height: 1.41
+    letter-spacing: 0.41px
+
+
+  // Some extra styling for the button that loads more items
+  &-loadmore.filter-group
+    margin: 56px 0
+    text-align: center
+
+    // Hide the buttons so that we only see "Show More" before it has been pressed.
+    .active, .initial
+      display: none
+
+    .filter-button
+      min-width: 258px
+      font-size: 1.6rem
+      line-height: 65px
+      letter-spacing: 0.2px
+
+  // Some adjustments to previews in the grid
+  &-item.preview .preview-date
+    left: 8px + ($gutter-width / 2)

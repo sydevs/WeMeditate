@@ -53,8 +53,7 @@ gem 'kaminari' # For pagination
 
 # Globalize (translatable models)
 gem 'globalize' # Support for translating models
-gem 'carrierwave_globalize' # for carrierwave support (referencing my own repo to add multi-uploader support)
-#gem 'carrierwave_globalize', path: '~/Documents/Projects/Other/carrierwave_globalize' # for multiple uploaders support
+gem 'carrierwave_globalize' # for carrierwave support
 gem 'friendly_id-globalize' # for friendly_id support
 
 # Localization
@@ -84,7 +83,7 @@ gem 'sitemap_generator' # For SEO purposes
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
@@ -106,4 +105,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

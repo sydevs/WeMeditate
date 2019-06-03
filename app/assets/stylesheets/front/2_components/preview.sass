@@ -1,0 +1,149 @@
+@import "../../mixins/*"
+
+/* CONTENT PREVIEW
+  This defines some common styles for small preview blocks which show an excerpt of another page.
+  The best example of this being used is in the Inspiration (aka Articles index) page.
+  Normally a preview will include a title, one paragraph, an image (aka media), and a link to the source page.
+  */
+
+.preview
+  &__header
+    font-size: 2.2rem
+    font-weight: $font-medium
+    color: $color-text-dark
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    margin: 0
+    margin-bottom: 15px
+
+    @include laptop-or-larger
+      margin-bottom: 20px
+      font-size: 2.8rem
+      letter-spacing: 0.25px
+
+    @include desktop
+      font-size: 3.5rem
+
+    @include widescreen
+      margin-bottom: 45px
+
+  &__title
+    display: block
+    font-weight: $font-bold
+    font-size: 2rem
+    line-height: 1.2265
+    letter-spacing: 0.7px
+    color: $color-text-dark
+    margin-top: 0
+    margin-bottom: 16px
+
+    @include tablet-or-larger
+      font-weight: $font-semibold
+      font-size: 2.4rem
+
+    &:hover
+      color: $color-text-dark
+
+  &__text
+    color: $color-text-dark
+    font-size: 1.6rem
+    line-height: 1.786
+    letter-spacing: 0.4px
+    margin-top: 1em
+    margin-bottom: 0
+
+    @include laptop-or-larger
+      font-size: 1.4rem
+
+  &__meta
+    display: flex
+    justify-content: space-between
+
+    font-size: 1.6rem
+    line-height: 30px
+    margin-top: 28px
+
+    @include laptop-or-larger
+      margin-top: 34px
+
+    &__link
+      color: $color-text-dark
+
+    &__link > i.icon
+      margin-left: 0.75em
+      font-size: 0.6em
+
+    &__stat
+      color: $color-text-light
+      font-family: $font-number
+      font-size: 1.5rem
+      line-height: 30px
+
+  // A small date box which can appear over top of the preview media
+  &__date
+    position: absolute
+    top: ($gutter-width / 2) + 8px
+    left: ($gutter-width / 2) + 8px
+    width: 50px
+    padding: 4px
+
+    color: white
+    font-weight: $font-semibold
+    background: $color-box-orange
+    text-align: center
+
+    &__month
+      margin-top: 5px
+      font-size: 1.5rem
+      padding-bottom: 2px
+
+    &__day
+      display: inline
+      font-size: 1.6rem
+      font-family: $font-number
+
+// ===== PREVIEW MEDIA BOX ===== //
+// The image requires some special styling to account for video previews
+.preview__media
+  display: block
+  position: relative
+  cursor: initial
+  margin-bottom: 36px
+
+  @include tablet-or-larger
+    margin-bottom: 24px
+
+  &__thumbnail
+    width: 100%
+
+  &[href]:not([href=""]):hover
+    cursor: pointer
+
+    @include laptop-or-larger
+      opacity: 0.7
+
+.preview__media--force-ratio
+  height: 0 !important
+  padding-top: 57%
+  position: relative
+  overflow: hidden
+
+  .preview__media__thumbnail
+    position: absolute
+    top: 0
+    height: 100%
+
+// ===== SMALL VARIATION ==== //
+.preview--small
+  .preview__media
+    margin-bottom: 16px
+
+  .preview__title
+    font-size: 1.8rem
+    margin-bottom: 8px
+
+  .preview__text
+    font-size: 1.4rem
+    line-height: 1.5
+    margin-top: 8px

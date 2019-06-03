@@ -1,49 +1,28 @@
 
-//article id=dom_id(article) class=dom_id(article.category)
-  - if article.video.present?
-    .media.video-preview
-      img alt=article.title src=article.thumbnail.url
-      a.video.button href=article.video.url data-mfp-src='#video-popup'
-      - if article.date.present?
-        .date
-          span.day = article.date.strftime('%d')
-          .month = article.date.strftime('%m')
-  - else
-    a.media href=article_path(article)
-      img alt=article.title src=article.thumbnail.url
-      - if article.date.present?
-        .date
-          span.day = article.date.strftime('%d')
-          .month = article.date.strftime('%m')
-  .title = article.title
-  .content
-    p = article.excerpt
-  .meta
-    a href=article_path(article)
-      = t('articles.read_more')
-      i.breadcrumb.icon
-    span.date = localize article.created_at, format: :date
+/- image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 1197px) calc(34vw - 32px), (max-width: 1599px) 270px, (max-width: 2179px) 320px, 360px'
+// This is a simplified version of the above sizes, which takes advantage of the fact that we know that the small image is 360px
+// So the last 3 rules from the above ruleset would resolve to the same image.
+- image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 1197px) calc(34vw - 32px), 360px'
 
-
-article.preview.grid-item id=dom_id(article) class=dom_id(article.category)
+article.inspiration__item.preview id=dom_id(article) class=dom_id(article.category)
   - if article.video.present?
-    .preview-media
-      img alt=article.name src=article.thumbnail.url
-      a.video-button href=article.video.url data-mfp-src='#video-popup'
+    .preview__media.video
+      = smart_image_tag article.thumbnail, image_sizes, lazy: false, class: 'preview__media__thumbnail video__thumbnail', alt: article.name
+      a.video__button href=article.video.url data-mfp-src='#video-popup'
   - else
-    a.preview-media href=article_path(article)
-      img alt=article.name src=article.thumbnail.url
+    a.preview__media href=article_path(article)
+      = smart_image_tag article.thumbnail, image_sizes, lazy: false, class: 'preview__media__thumbnail', alt: article.name
 
   - if article.date.present?
-    .preview-date
-      .preview-date-day = article.date.strftime('%d')
-      .preview-date-month = article.date.strftime('%m')
+    .preview__date
+      .preview__date__month = article.date.strftime('%b')
+      .preview__date__day = article.date.strftime('%d')
 
-  a.preview-title href=url_for(article) = article.name
-  p.preview-text = article.excerpt
-  .preview-meta
-    a.preview-meta-link href=article_path(article)
+  a.preview__title href=url_for(article) = article.name
+  p.preview__text = article.excerpt
+  .preview__meta
+    a.preview__meta__link href=article_path(article)
       = t('articles.read_more')
       i.breadcrumb.icon
 
-    .preview-meta-stat = localize article.created_at, format: :date
+    //.preview__meta__stat = localize article.created_at, format: :date

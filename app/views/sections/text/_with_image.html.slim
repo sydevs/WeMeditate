@@ -1,20 +1,9 @@
 
-//
-  - content_for :callout, flush: true do
-    figure.image.callout
-      a.popout.mfp-image href=section.image.url
-        img alt=section.image.identifier src=section.image.url
-      figcaption.credit #{t 'sections.credit'} • #{section.credit}
-  .container = sidetext(section)
-  .section.wrapper
-    h2.title = section.title
-    = section.text&.sub('</p>', '</p>'+content_for(:callout)).html_safe
-
-
 - content_for :callout, flush: true do
   figure.image.callout
     a.popout.mfp-image href=section.image.url
-      img alt=section.image.identifier src=section.image.url
+      /img alt=section.image.identifier src=section.image.url
+      = smart_image_tag section.image, '(max-width: 814px) calc(100vw - 48px), 400px'
     figcaption.image-credit #{t 'sections.credit'} • #{section.credit}
 
 = sidetext(section, wrap: true)

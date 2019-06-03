@@ -1,0 +1,231 @@
+@import "../../mixins/*"
+
+/* PLAYER (and PLYR)
+  We are using the plyr library to play video and audio content.
+  Most of the basic styling for the media controls are defined by plyr.
+  But some adjustments to the base styles are needed.
+  */
+
+// ===== PLAYER ===== //
+.player
+  &-selection
+    padding-left: 80px
+
+    &-title
+      font-weight: $font-semibold
+      font-size: 2.4rem
+      line-height: 1.25
+      letter-spacing: 1.25px
+      color: $color-text-dark
+
+    &-artist
+      display: block
+      margin-top: 8px
+
+      font-weight: $font-normal
+      font-size: 1.6rem
+      line-height: 1
+      color: $color-text-normal !important
+
+// ===== PLAYER PLAYLIST ===== //
+.playlist
+  max-width: 805px
+  width: 100%
+  margin-top: 54px
+  margin-left: auto
+
+  @include tablet
+    width: 83.5%
+    margin-top: 70px
+    padding: 50px 0
+    padding-left: 39.1%
+
+  @include tablet-or-larger
+    @include gradient(to left, $color-gradient-blue)
+    min-height: 610px
+
+  @include laptop-or-larger
+    width: 56%
+    margin-top: 60px
+    padding: 52px 0
+    padding-left: 162px
+    padding-right: 0
+
+  &-title
+    font-weight: $font-medium
+    font-size: 2.4rem
+    line-height: 1.25
+    letter-spacing: 0.45px
+    color: $color-text-dark
+
+    text-align: center
+    margin-bottom: 40px
+
+    @include tablet-or-larger
+      text-align: left
+      margin-bottom: 42px
+
+  &-sidetext
+    @extend %generic-sidetext
+    transform-origin: top right
+    right: 100%
+    padding-top: 14px
+    padding-right: 18px
+
+    @include laptop-or-larger
+      top: 95px
+      padding-top: 11.5563%
+
+  &-cover
+    display: none
+
+    @include tablet-or-larger
+      display: block
+      position: absolute
+      top: 136px
+      left: 78px
+      width: 40.77%
+
+    @include laptop-or-larger
+      top: 112px
+      left: 20.2%
+      width: 30%
+
+  &-list
+    position: relative
+    list-style: none
+
+    @include tablet
+      max-width: 577px
+      margin-left: -12px
+
+    @include laptop-or-larger
+      margin-left: 12px
+
+  &-item
+    position: relative
+    border: 1px solid transparent
+    width: 100%
+    margin-top: 0
+    margin-bottom: 28px
+    padding-right: 50px
+
+    @include tablet-or-larger
+      margin-bottom: 28px
+
+    &.active
+      border-color: $background-blue
+
+  &-label
+    display: block
+    color: $color-text-dark !important
+    font-size: 2.1rem
+    line-height: 1.25
+
+    > i.icon
+      width: 27px
+      font-size: 1.2rem
+      text-align: left
+
+  &-artist
+    display: block
+    font-size: 1.4rem
+    line-height: 1.5
+    letter-spacing: 0.39px
+    padding-left: 27px
+
+    &:hover
+      color: $color-text-orange !important
+
+  &-duration
+    position: absolute
+    right: 12px
+    bottom: 5px
+
+    font-family: $font-number
+    font-size: 1.3rem
+
+
+// ===== PLYR UI TWEAKS ===== //
+// PROGRESS BARS
+.plyr
+  input[type=range]
+    color: $color-player-blue
+    max-width: none
+
+  input[type=range]::-webkit-media-slider-thumb,
+  input[type=range]::-webkit-slider-thumb
+    width: 16px
+    height: 16px
+    border-radius: 0
+    border: 0
+    background: $color-player-blue
+    transition: background 0.2s ease, border 0.2s ease, transform 0.2s ease
+    box-shadow: none
+    box-sizing: border-box
+    cursor: pointer
+
+    @include tablet-or-larger
+      width: 11px
+      height: 11px
+
+  input[type=range]::-webkit-slider-runnable-track
+    border: 0
+    border-radius: 0
+    height: 6px
+    transition: all 0.3s ease
+    user-select: none
+
+    @include tablet-or-larger
+      height: 1px
+
+// CONTROL COLOURNG
+.plyr__control
+  &:hover,
+  &[aria-expanded=true]
+    background: white
+    color: $color-player-blue
+
+// ADDITIONAL TWEAKS
+.plyr
+  &__time
+    font-size: 1.2rem
+    line-height: 1.6667
+    color: $color-text-light
+
+  button:not([data-plyr="play"]) svg
+    @include tablet-or-larger
+      height: 11px
+
+
+// ===== VIDEO PLYR TWEAKS ===== //
+.plyr.plyr--video
+  .plyr__controls--overlaid
+    display: none
+
+  .plyr__control
+    &.plyr__tab-focus,
+    &:hover,
+    &[aria-expanded=true]
+      background: transparentize(black, 0.5)
+      color: $color-player-blue
+
+
+// ===== MINI AUDIO PLYR TWEAKS ===== //
+.mini.player
+  padding-bottom: 16px
+
+  .playlist
+    display: none
+
+.mini.player .plyr.plyr--audio
+  @include tablet-or-larger
+    .plyr__skip
+      position: absolute
+      top: -48px
+
+    .plyr__time
+      padding-right: 230px
+
+    .plyr__control[data-plyr="mute"]
+      margin-left: 48px

@@ -10,15 +10,13 @@ class MediaFile < ActiveRecord::Base
 
   # Associations
   belongs_to :page, polymorphic: true
-  mount_uploader :file, AttachmentUploader
-  enum category: { image: 0, video: 1, audio: 2 }
+  mount_uploader :file, MediaFileUploader
 
   # Validations
-  validates :name, presence: true
-  validates :category, presence: true
+  # validates :name, presence: true
   validates :file, presence: true
 
   # Scopes
-  default_scope { order( updated_at: :desc ) }
+  default_scope { order(updated_at: :desc) }
 
 end

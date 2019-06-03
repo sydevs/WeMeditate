@@ -29,7 +29,7 @@ module Admin
       false
     end
 
-
+    # HELPER METHODS
     def super_admin?
       user.super_admin?
     end

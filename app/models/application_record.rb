@@ -1,24 +1,25 @@
 class ApplicationRecord < ActiveRecord::Base
+
   self.abstract_class = true
 
-  def self.preload_for mode
-    self # Subclasses will override this to provide real preloading behaviour
+  def self.preload_for _mode
+    self # Subclasses override this to provide real preloading behaviour
   end
 
   def reviewable?
-    self.respond_to? :draft
+    respond_to?(:draft)
   end
 
   def has_content?
-    self.respond_to? :sections
+    respond_to?(:content)
   end
 
   def viewable?
-    self.respond_to?(:slug) and self.respond_to?(:metatags)
+    respond_to?(:slug) and respond_to?(:metatags)
   end
 
   def translatable?
-    self.respond_to?(:translated_locales)
+    respond_to?(:translated_locales)
   end
 
 end

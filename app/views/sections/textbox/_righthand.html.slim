@@ -1,22 +1,11 @@
 
-//.container
-  = sidetext(section)
-  .image
-    img alt=section.image.identifier src=section.image.url
-  .content
-    .content-box
-      h2.title = section.title
-      = section.text&.html_safe
-      - if section.action.present? and section.url.present?
-        a.box.button href=section.url = section.action
-
 .wrapper-outer
   = sidetext(section)
   - if section.has_decoration? :triangle
     .container.with.left.triangle.decoration class=section.decoration_options(:triangle)
 
   .image
-    img alt=section.image.identifier src=section.image.url
+    = smart_image_tag section.image, '(max-width: 767px) calc(60vw - 48px), 50vw'
   .text-box-overlay
     .text-box
       h2.text-title = section.title

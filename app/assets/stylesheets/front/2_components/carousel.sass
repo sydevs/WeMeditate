@@ -1,0 +1,25 @@
+@import "../../mixins/*"
+
+/* CAROUSEL
+  A carousel is a slideshow of content. One or more items are shown at a time,
+  with arrows to scroll to the next item.
+
+  Most of the basic styling for these carousels is defined by the Slick library that we are using.
+  */
+
+// ===== SLICK ADJUSTMENTS ===== //
+.slick-dots
+  left: 0
+  right: 0
+
+  li
+    margin: 0 1px
+
+  li button:before
+    font-size: 6px
+    opacity: 1
+    color: $color-graphic-darker
+
+  li.slick-active button:before
+    font-size: 8px
+    color: $color-text-blue

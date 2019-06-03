@@ -1,8 +1,7 @@
 module Admin
   class DurationFiltersController < Admin::ApplicationRecordController
-    prepend_before_action do
-      set_model DurationFilter
-    end
+
+    prepend_before_action { @model = DurationFilter }
 
     def create
       super duration_filter_params
@@ -13,14 +12,16 @@ module Admin
     end
 
     def destroy
-      if @duration_filter.meditations.count > 0
-        redirect_to [:admin, DurationFilter], alert: t('messages.result.cannot_delete_attached_record', model: DurationFilter.model_name.human.downcase, association: Meditation.model_name.human(count: -1).downcase)
+      if @duration_filter.meditations.present?
+        message = t('messages.result.cannot_delete_attached_record', model: DurationFilter.model_name.human.downcase, association: Meditation.model_name.human(count: -1).downcase)
+        redirect_to [:admin, DurationFilter], alert: message
       else
         super
       end
     end
 
     private
+
       def duration_filter_params
         params.fetch(:duration_filter, {}).permit(:minutes)
       end

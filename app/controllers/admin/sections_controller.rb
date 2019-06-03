@@ -1,9 +1,8 @@
 module Admin
   class SectionsController < Admin::ApplicationRecordController
-    before_action :set_parent, only: [:new, :create, :edit, :update, :sort]
-    prepend_before_action do
-      set_model Section
-    end
+
+    before_action :set_parent, only: %i[new create edit update sort]
+    prepend_before_action { @model = Section }
 
     def new
       @record = @parent.sections.new
@@ -35,11 +34,27 @@ module Admin
       redirect_to [:admin, @parent]
     end
 
+    protected
+
+      def update_params record_params
+        if record_params[:extra].present? and not record_params[:extra][:items].nil?
+          if record_params[:extra][:items].present?
+            data = record_params[:extra][:items]
+            record_params[:extra][:items] = data.values.transpose.map { |vs| data.keys.zip(vs).to_h }
+          else
+            record_params[:extra][:items] = []
+          end
+        end
+
+        super record_params
+      end
+
     private
+
       CONTENT_ATTRIBUTES = [
         :title, :subtitle, :sidetext, :text, :quote, :credit, :url, :action, # These are the options for different content_types
         extra: {}, # For extra attributes sections
-      ]
+      ].freeze
 
       ALL_SECTION_ATTRIBUTES = [
         :id, :label, :order, :_destroy, # Meta fields
@@ -63,8 +78,6 @@ module Admin
           @parent = Article.friendly.find(params[:article_id])
         elsif params[:static_page_id].present?
           @parent = StaticPage.friendly.find(params[:static_page_id])
-        elsif params[:city_id].present?
-          @parent = City.friendly.find(params[:city_id])
         elsif params[:subtle_system_node_id].present?
           @parent = SubtleSystemNode.friendly.find(params[:subtle_system_node_id])
         end

@@ -1,0 +1,16 @@
+@import "../../../mixins/*"
+
+section.type-text.format-just-quote
+  text-align: center
+
+  .divider.up
+    margin-bottom: 42px
+
+    @include laptop-or-larger
+      margin-bottom: 46px
+
+  .divider.down
+    margin-top: 42px
+
+    @include laptop-or-larger
+      margin-top: 46px

@@ -2,52 +2,49 @@ module Admin::SectionHelper
 
   SECTION_FIELDS_MAP = {
     text: {
-      default: [],
-      just_text: [:title, :rich_text],
-      just_quote: [:subtitle, :text, :credit, :action, :url],
-      with_image: [:title, :rich_text, :image, :credit],
-      with_quote: [:title, :rich_text, :quote],
+      default: %i[],
+      just_text: %i[title rich_text],
+      just_quote: %i[subtitle text credit action url],
+      with_image: %i[title rich_text image credit],
+      with_quote: %i[title rich_text quote],
     },
     image: {
-      default: [],
-      fit_container_width: [:image, :credit],
-      fit_page_width: [:image, :credit],
-      image_gallery: [:images],
+      default: %i[],
+      fit_container_width: %i[title subtitle image credit],
+      fit_page_width: %i[title subtitle image credit],
+      image_gallery: %i[images],
     },
     video: {
-      default: [:decorations, :decorations_sidetext],
-      single: [:video],
-      video_gallery: [:videos],
+      default: %i[decorations decorations_sidetext],
+      single: %i[video],
+      video_gallery: %i[videos],
     },
     action: {
-      default: [:action],
-      signup: [:title, :subtitle, :text],
-      button: [:url, :decorations, :decorations_leaf, :decorations_circle],
+      default: %i[action],
+      signup: %i[title subtitle text],
+      button: %i[url decorations decorations_leaf decorations_circle],
     },
     textbox: {
-      default: [:title, :image, :decorations, :decorations_sidetext, :decorations_triangle, :decorations_circle, :decorations_gradient],
-      lefthand: [:text],
-      righthand: [:text],
-      overtop: [:text, :color],
-      ancient_wisdom: [:rich_text],
+      default: %i[title image decorations decorations_sidetext decorations_triangle decorations_circle decorations_gradient],
+      lefthand: %i[text],
+      righthand: %i[text],
+      overtop: %i[text color],
+      ancient_wisdom: %i[rich_text],
     },
     structured: {
-      default: [:decorations, :decorations_sidetext],
-      columns: [:columns],
-      grid: [:title, :text, :grid],
+      default: %i[decorations decorations_sidetext],
+      columns: %i[columns],
+      grid: %i[title text grid],
     },
-  }
+  }.freeze
 
   def section_extra_value section, attribute
     section.extra_attr(attribute.to_s)
   end
 
   def section_extra_draft_value section, attribute
-    if section.draft.present? and section.draft['extra'].present? and section.draft['extra'].key?(attribute.to_s)
-      section.draft['extra'][attribute.to_s]
-    else
-      nil
-    end
+    has_draft = section.draft.present? and section.draft['extra'].present? and section.draft['extra'].key?(attribute.to_s)
+    section.draft['extra'][attribute.to_s] if has_draft
   end
 
   def format_options record
@@ -68,17 +65,17 @@ module Admin::SectionHelper
 
       SECTION_FIELDS_MAP.each do |content_type, format_fields_map|
         formats = format_fields_map.keys - [:default]
-        format_fields_map[:default].each do |field|
-          result[field] ||= ['for']
+        format_fields_map[:default].each do |fromat_field|
+          result[fromat_field] ||= ['for']
           formats.each do |format|
-            result[field] << "#{content_type}-#{format}"
+            result[fromat_field] << "#{content_type}-#{format}"
           end
         end
 
         formats.each do |format|
-          format_fields_map[format].each do |field|
-            result[field] ||= ['for']
-            result[field] << "#{content_type}-#{format}"
+          format_fields_map[format].each do |fromat_field|
+            result[fromat_field] ||= ['for']
+            result[fromat_field] << "#{content_type}-#{format}"
           end
         end
       end
@@ -97,7 +94,8 @@ module Admin::SectionHelper
     if value
       I18n.translate "activerecord.attributes.section.decoration_options.#{option.to_s.pluralize}.#{value}"
     else
-      I18n.translate "activerecord.attributes.section.decoration_options.#{option.to_s}"
+      I18n.translate "activerecord.attributes.section.decoration_options.#{option}"
     end
   end
+
 end

@@ -1,0 +1,6 @@
+
+= sidetext(section, wrap: true)
+
+.video-wrapper
+  = render 'shared/video_preview', thumbnail: section.image.url, video_url: section.video.url
+  h3.video-title = section.title

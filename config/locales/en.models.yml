@@ -4,9 +4,6 @@ en:
       article:
         one: Article
         other: Articles
-      city:
-        one: City
-        other: Cities
       static_page:
         one: Static Page
         other: Static Pages
@@ -68,22 +65,6 @@ en:
         sections: Content
         metatags: Meta Tags
 
-      city:
-        name: Name
-        slug: URL
-        latitude: Latitude
-        longitude: Longitude
-        banner: Banner Image (png)
-        sections: Content
-        venues: Program Venues
-        address: Street Address
-        room_information: Room Information (optional)
-        day_of_week: Day
-        start_time: Starts At
-        end_time: Ends At
-        url: Link
-        metatags: Meta Tags
-
       static_page:
         title: Title
         slug: URL
@@ -98,10 +79,8 @@ en:
           shri_mataji: About Shri Mataji
           subtle_system: About Subtle System
           sahaja_yoga: About Sahaja Yoga
-          about: About Us
-          world: World Page
-          country: Country Page
-          city: City Page
+          about: About Page
+          classes: Classes Page
         sections: Content
         metatags: Meta Tags
 
@@ -110,17 +89,17 @@ en:
         slug: URL
         excerpt: Excerpt
         roles:
-          chakra_1: 'Chakra: Mooladhara'
-          chakra_2: 'Chakra: Swadhisthan'
-          chakra_3: 'Chakra: Nabhi'
-          chakra_3b: 'Chakra: Void'
-          chakra_4: 'Chakra: Anahat'
-          chakra_5: 'Chakra: Vishuddhi'
-          chakra_6: 'Chakra: Agnya'
-          chakra_7: 'Chakra: Sahasrara'
-          channel_left: 'Channel: Ida (Left)'
-          channel_right: 'Channel: Pingala (Right)'
-          channel_center: 'Channel: Sushumna (Center)'
+          chakra_1: Mooladhara Chakra
+          chakra_2: Swadhisthan Chakra
+          chakra_3: Nabhi Chakra
+          chakra_3b: Void
+          chakra_4: Anahat Chakra
+          chakra_5: Vishuddhi Chakra
+          chakra_6: Agnya Chakra
+          chakra_7: Sahasrara Chakra
+          channel_left: Ida (Left) Channel
+          channel_right: Pingala (Right) Channel
+          channel_center: Sushumna (Center) Channel
           kundalini: Kundalini
         metatags: Meta Tags
 
@@ -199,23 +178,17 @@ en:
           lefthand: Left-Hand Image
           righthand: Right-Hand Image
           overtop: Background Image
-          ancient_wisdom: Ancient Wisdom
+          ancient_wisdom: Ancient Knowledge
           # Structured
           grid: Grid
           columns: Columns
           # Special
-          banner: Banner
+          splash: Splash Screen
           try_meditation: Try Meditation
           subtle_system: Subtle System Diagram
           chakra: Chakra / Channel
           articles: Article List
           treatments: Treatment List
-          world: World Map
-          country: Country Map
-          city_sections: City Content
-          venue_map: Program Map
-          venue_registration: Program Registration
-          local_contacts: Local Contacts
           featured_meditations: Featured Meditations
           custom_meditation: Custom Meditation
         labels:
@@ -238,7 +211,7 @@ en:
           lefthand: Text Box with Left-Hand Image
           righthand: Text Box with Right-Hand Image
           overtop: Text Box over Image
-          ancient_wisdom: Ancient Wisdom
+          ancient_wisdom: Ancient Knowledge
           # Structured
           grid: Text Grid
           columns: Columns
@@ -262,8 +235,12 @@ en:
         banner_styles:
           front_page: Front Page
           treatments_page: Techniques Page
-          city_page: City Page
           contact_page: Contact Page
+        splash_style: Splash Style
+        splash_styles:
+          standard: Standard
+          alternate: Alternate
+        # Decoration Labels
         decorations: Decorations
         decoration_types:
           sidetext: Side Text
@@ -286,11 +263,15 @@ en:
           colors:
             blue: blue
             orange: orange
+        # Special Section Labels
         daily_meditation: Daily Meditation Text
         trending_meditation: Trending Meditation Text
         random_meditation: Random Meditation Text
         article_ids: Articles
         treatment_ids: Treatments
+        goal_title: Goal Title
+        goal_action: Goal Action
+        duration_title: Duration Title
 
       track:
         title: Title

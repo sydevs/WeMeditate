@@ -1,10 +1,8 @@
 
-.banner
-  .wrapper-outer
-    .banner-title-box
-      h1.banner-title = @static_page.name
+main.scrollspy-target
+  - unless @static_page.contact?
+    h1.banner.banner--left = @static_page.name
 
-article
-  = render @static_page.sections.with_translations(locale), cached: true
+  = render_content @static_page
 
-= render 'application/action_footer'
+= render 'application/actions_footer'

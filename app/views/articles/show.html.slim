@@ -1,44 +1,7 @@
 
-- banner_image_style = @article.banner.present? ? "background-image: url(#{@article.banner.url})" : nil
-- content_for :breadcrumbs_class, 'inverse' if banner_image_style
-
-.banner style=banner_image_style class="#{'with-image' if banner_image_style}"
-  .wrapper-outer
-    .banner-title-box
-      h1.banner-title = @article.name
-
-//section.intro class="#{'banner' if banner_image_style}" style=banner_image_style
-  .container
-    h1.title = @article.title
-
-//nav.chapters
-  .container
-    - section_index = 0
-    - chapter_index = 0
-    - sections.each do |section|
-      - section_index += 1
-      - if section.chapter_start?
-        - chapter_index += 1
-        a.item href="##{section.chapter_slug}"
-          .number = chapter_index
-          .title = section.title
-          .progress data-id=section.chapter_slug
-
-nav.chapters
-  .chapters-wrapper
-    - section_index = 0
-    - chapter_index = 0
-    - @article.sections.each do |section|
-      - section_index += 1
-      - if section.chapter_start?
-        - chapter_index += 1
-        a.chapters-item href="##{section.chapter_slug}"
-          .chapters-item-number = chapter_index
-          .chapters-item-title = section.title
-          .chapters-item-progress data-id=section.chapter_slug
-
-article id=dom_id(@article)
-  = render @article.sections, cached: true
+main.scrollspy-target id=dom_id(@article)
+  h1.banner = @article.name
+  = render_content @article
 
 = sharing_links
-= render 'application/action_footer'
+= render 'application/actions_footer'

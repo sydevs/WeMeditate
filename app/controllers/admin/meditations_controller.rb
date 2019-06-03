@@ -1,8 +1,7 @@
 module Admin
   class MeditationsController < Admin::ApplicationRecordController
-    prepend_before_action do
-      set_model Meditation
-    end
+
+    prepend_before_action { @model = Meditation }
 
     def create
       super meditation_params
@@ -13,12 +12,14 @@ module Admin
     end
 
     protected
+
       def set_resource
         @resource = Meditation.friendly.find(params[:id])
         @meditation = @resource
       end
 
     private
+
       def meditation_params
         result = params.fetch(:meditation, {}).permit(
           :name, :slug, :image, :video, :duration_filter_id,

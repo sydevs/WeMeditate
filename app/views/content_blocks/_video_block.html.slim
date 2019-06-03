@@ -1,0 +1,29 @@
+
+- isGallery = block[:asGallery] == true
+
+.content__video class="content__video--#{isGallery ? 'gallery' : 'single'}"
+  = render_decoration :gradient, block, size: :medium
+
+  - if isGallery
+    .content__video__sidetext = render_decoration :sidetext, block, static: true, alignment: :right
+
+    .content__video__gallery.js-carousel data-style='video'
+      - block[:items].each do |item|
+        figure.content__video__item
+          .content__video__media.video
+            // TODO: Re-evaluate image_sizes
+            = vimeo_image_tag item[:preview], '100vw', class: 'video__thumbnail'
+            a.video__button.js-video href="https://api.vimeo.com/videos/#{item[:vimeo_id]}" data-id=item[:vimeo_id] data-mfp-src='#video-popup'
+
+          figcaption.content__video__title = item[:title]
+  - else
+    .content__video__sidetext = render_decoration :sidetext, block, alignment: :left
+
+    - item = block[:items].first
+    figure.content__video__item
+      .content__video__media.video
+        // TODO: Re-evaluate image_sizes
+        = vimeo_image_tag item[:preview], '100vw', class: 'video__thumbnail'
+        a.video__button.js-video href="https://api.vimeo.com/videos/#{item[:vimeo_id]}" data-id=item[:vimeo_id] data-mfp-src='#video-popup'
+
+      figcaption.content__video__title = item[:title]

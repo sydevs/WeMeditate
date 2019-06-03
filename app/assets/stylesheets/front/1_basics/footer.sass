@@ -1,122 +1,156 @@
-@import "../../mixins/vars"
+@import "../../mixins/*"
 
 /* FOOTER
   Styling for the site-wide footer which is used at the very bottom of every page.
   */
 
+// ===== FOOTER LAYOUT ===== //
 .footer
-  margin-top: 5rem
+  @extend %wide-content-width
+  margin-top: 100px
 
-  a:hover
+.footer__columns
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  border-bottom: 1px solid $color-graphic-normal
+  padding: 0 3%
+
+  @include tablet-or-smaller
+    display: block
+
+.footer__column
+  margin-bottom: 55px
+  text-align: center
+  flex: 1 0 25%
+
+  @include laptop-or-larger
+    margin-bottom: 50px
+    text-align: left
+
+  @include desktop
+    &:nth-child(3)
+      padding-left: 80px
+
+.footer__navigation--bold
+  .footer__link
+    @extend .footer__header
+    margin-bottom: 20px
+
+.footer__divider
+  display: flex
+  align-items: center
+  margin-bottom: 60px
+
+  img
+    height: 52px
+    margin: 0px 20px
+
+  &:before,
+  &:after
+    content: ''
+    margin-top: -2px
+    height: 1px
+    width: 100%
+    position: relative
+    background-color: $color-graphic-normal
+    display: inline-block
+
+.footer__header--social,
+.footer__column--desktop
+  @include tablet-or-smaller
+    display: none
+
+.footer__column--mobile
+  @include laptop-or-larger
+    display: none
+
+// ===== FOOTER CONTENT ===== //
+.footer__header
+  display: block
+  font-size: 1.5rem
+  line-height: 2
+  letter-spacing: 0.21px
+  margin-bottom: 13px
+
+  font-weight: $font-bold
+  color: $color-text-normal
+
+  @include laptop-or-larger
+    font-weight: $font-semibold
+    font-size: 1.7rem
+    line-height: 1.1765
+    margin-bottom: 16px
+
+  @include widescreen
+    font-size: 2rem
+
+.footer__link
+  display: block
+  margin-bottom: 8px
+  font-size: 1.3rem
+  line-height: 1.154
+  color: $color-text-normal
+
+  @include widescreen
+    font-size: 1.6rem
+
+  &:hover
     color: $color-text-dark
 
-  &-header
-    font-weight: $font-semibold
-    color: $color-text-normal
-    line-height: 1.75em
-    margin-bottom: 1px
+.footer__copyright
+  height: 75px
+  padding: 35px 0
 
-    @include mobile-portrait
-      line-height: 2.3em
+  font-size: 1.4rem
+  line-height: 1.15
+  text-align: center
 
-  &-sidetext
-    color: $color-text-inverse
-    letter-spacing: 0
-    font-size: 2em
-    z-index: 5
+  @include laptop-or-larger
+    height: 176px
+    padding: 55px 0
+    line-height: 1.3rem
 
-  &-columns
-    display: flex
-    justify-content: space-between
-    flex-wrap: wrap
-    border-bottom: 1px solid $color-divider-normal
-    padding: 0 4%
+// ===== MOBILE SCROLLBACK LINK ===== //
+.footer__scrollback
+  display: block
+  text-align: center
+  width: 120px
+  margin: auto
+  margin-top: 48px
+  margin-bottom: 37.5px
 
-    @include mobile
-      display: block
+  font-size: 1.4rem
+  line-height: 1.1429
+  letter-spacing: 0.2px
+  color: $color-text-normal
 
-    @include mobile-landscape
-      display: flex
+  @include laptop-or-larger
+    display: none
 
-  &-column
-    margin-bottom: 66px
-    flex: 1 0 25%
-
-    @include desktop
-      &:nth-child(3)
-        padding-left: 80px
-
-    @include mobile
-      margin-bottom: 36px
-      text-align: center
-
-    @include mobile-landscape
-      flex: 1 0 25%
-
-      &:not(:last-child)
-        text-align: left
-
-  &-scroll
+  &:before
+    content: ''
     display: block
-    text-align: center
-    margin: 40px 0
+
+    width: 0.9rem
+    height: 0.9rem
+    margin: auto
+    margin-bottom: 1rem
+
+    border-left: 1px solid $color-text-normal
+    border-bottom: 1px solid $color-text-normal
+    transform: rotate(135deg)
+
+// ===== SOCIAL LINKS ===== //
+.footer__social
+  flex: 1 0 12%
+
+  &__link
+    font-size: 4.3rem
+    color: $color-text-normal
 
     @include laptop-or-larger
-      display: none
-
-    &:before
-      content: ''
-      display: block
-
-      width: 14px
-      height: 14px
-      margin: auto
-      margin-bottom: 10px
-
-      border-left: 1px solid $color-text-normal
-      border-bottom: 1px solid $color-text-normal
-      transform: rotate(135deg)
-
-  &-navigation
-    > a
-      display: block
-      line-height: 2em
-
-      &:not(.footer-header)
-        font-size: 0.75em
-
-  &-social > a
-    font-size: 1.5em
-    color: $color-text-normal
+      font-size: 3rem
 
     &:not(:last-child)
-      margin-right: 1.1em
-
-  &-divider
-    display: flex
-    align-items: center
-    margin-bottom: 35px
-
-    > img
-      min-width: 188px
-      height: 48px
-      margin: 0px 20px
-
-    &:before,
-    &:after
-      content: ''
-      margin-top: -2px
-      height: 1px
-      width: 100%
-      position: relative
-      background-color: $color-divider-normal
-      display: inline-block
-
-  &-credit
-    height: 2.5em
-
-  &-copyright
-    text-align: center
-    line-height: 110px
-    font-size: 12px
-
+      margin-right: 40px

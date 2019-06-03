@@ -7,14 +7,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable, :validatable, :invitable, :lockable
 
   # Associations
-  enum role: [ :translator, :editor, :regional_admin, :super_admin ]
+  enum role: %i[translator editor regional_admin super_admin]
 
   # Validations
   validates :email, presence: true
   validates :role, presence: true
 
   # Scopes
-  default_scope { order( :email ) }
+  default_scope { order(:email) }
   scope :pending, -> { where.not(invitation_created_at: nil).where(invitation_accepted_at: nil) }
   scope :q, -> (q) { where('email ILIKE ?', "%#{q}%") if q.present? }
 
@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   # Override this setter so that a user cannot have languages which the website doesn't support.
   def languages= list
-    list &= I18n.available_locales.map {|l| l.to_s} # only allow locales from the list of available locales
+    list &= I18n.available_locales.map(&:to_s) # only allow locales from the list of available locales
     super list.join(',')
   end
 
@@ -43,12 +43,13 @@ class User < ApplicationRecord
     if all_languages?
       I18n.available_locales
     else
-      languages.map &:to_sym
+      languages.map(&:to_sym)
     end
   end
 
   # Returns true if the user is able to manage all languages.
   def all_languages?
-    not self[:languages].present? #or current_user&.super_admin?
+    not self[:languages].present? # or current_user&.super_admin?
   end
+
 end

@@ -1,25 +1,6 @@
 
 - items = section.extra_attr('items', [])
 
-//.container
-  = sidetext(section)
-  h2.title = section.title
-  = section.text&.html_safe
-  #grid.items
-    .grid-sizer
-    - items.each_with_index do |item, index|
-      article class="#{'initial' if index < 3}"
-        - if item['url'].present?
-          a.title href=item['url'] = item['title']
-        - else
-          .title = item['title']
-        p = item['text']
-  - if items.length > 3
-    nav.filters data-group='amount'
-      a.initial.active.box.button data-filter='.initial' = t('sections.show_less')
-      a.box.button data-filter='*' = t('sections.show_more')
-
-
 .wrapper-outer
   = sidetext(section)
 
@@ -37,6 +18,6 @@
         p.grid-item-text = item['text']
 
   - if items.length > 3
-    nav.filter-group.outline data-group='amount' data-for="grid-#{dom_id section}"
+    nav.filter-group.outline.grid-loadmore data-group='amount' data-for="grid-#{dom_id section}"
       a.initial.active.filter-button data-filter='.initial' = t('sections.show_less')
       a.filter-button data-filter='*' = t('sections.show_more')

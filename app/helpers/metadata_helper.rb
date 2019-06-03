@@ -5,10 +5,10 @@ module MetadataHelper
     'name' => I18n.translate('we_meditate'),
     'logo' => {
       '@type' => 'ImageObject',
-      'url' => ApplicationController.helpers.image_path('header/logo-small.svg'),
+      'url' => ApplicationController.helpers.image_path('header/logo.svg'),
     },
     'sameAs' => I18n.translate('social_media').values,
-  }
+  }.freeze
 
   def render_metatags record
     capture do
@@ -33,14 +33,7 @@ module MetadataHelper
   end
 
   def metatags record
-    @metatags ||= begin
-      tags = (record.metatags || {}).reverse_merge(default_metatags(record))
-      if record.is_a? City
-        (static_page_preview_for(:city).metatags || {}).merge(tags)
-      else
-        tags
-      end
-    end
+    @metatags ||= (record.metatags || {}).reverse_merge(default_metatags(record))
   end
 
   def default_metatags record
@@ -61,6 +54,7 @@ module MetadataHelper
         tags['og:article:modified_time'] = (record.published_at || record.updated_at).to_s(:db)
       end
 
+      # rubocop:disable Performance/RedundantMerge
       case record
       when Article
         if record.video.present?
@@ -72,9 +66,9 @@ module MetadataHelper
             'og:video:duration' => '', # TODO: Define this
             'og:video:release_date' => record.created_at.to_s(:db),
             'twitter:card' => 'player',
-            #'twitter:player:url' => '', # TODO: We must have an embeddable video iframe to reference here.
-            #'twitter:player:width' => '',
-            #'twitter:player:height' => '',
+            # 'twitter:player:url' => '', # TODO: We must have an embeddable video iframe to reference here.
+            # 'twitter:player:width' => '',
+            # 'twitter:player:height' => '',
           })
         else
           tags.merge!({
@@ -84,11 +78,11 @@ module MetadataHelper
             'og:article:section' => record.category.name,
             'twitter:card' => record.banner.present? ? 'summary_large_image' : 'summary',
             'og:video' => record.video&.url,
-            #'og:video:duration' => '', # TODO: Define this
+            # 'og:video:duration' => '', # TODO: Define this
           })
         end
       when StaticPage
-        is_article = ['about', 'shri_mataji', 'subtle_system', 'sahaja_yoga', 'tracks', 'meditations', 'treatments'].include? record.role
+        is_article = %w[about shri_mataji subtle_system sahaja_yoga tracks meditations treatments].include? record.role
         tags['title'] = translate('we_meditate') if record.role == 'home'
 
         tags.merge!({
@@ -96,16 +90,6 @@ module MetadataHelper
           'og:type' => is_article ? 'article' : 'website',
           'og:article:modified_time' => (record.published_at || record.updated_at).to_s(:db),
           'twitter:card' => 'summary',
-        })
-      when City
-        tags.merge!({
-          'og:type' => 'article',
-          'og:image' => record.banner&.url,
-          'og:article:modified_time' => (record.published_at || record.updated_at).to_s(:db),
-          'geo.placename' => record.name,
-          'geo.position' => "#{record.latitude}; #{record.longitude}", # TODO: Determine if we should actually be defining this, since a city is larger than a set of coords.
-          #'geo.region' => '' # TODO: Determine if we should define this. This is apparently the state/province code
-          'twitter:card' => 'summary_large_image',
         })
       when Meditation, Treatment
         tags.merge!({
@@ -115,9 +99,9 @@ module MetadataHelper
           'og:video:duration' => '', # TODO: Define this
           'og:video:release_date' => record.created_at.to_s(:db),
           'twitter:card' => 'player',
-          #'twitter:player:url' => '', # TODO: We must have an embeddable video iframe to reference here.
-          #'twitter:player:width' => '',
-          #'twitter:player:height' => '',
+          # 'twitter:player:url' => '', # TODO: We must have an embeddable video iframe to reference here.
+          # 'twitter:player:width' => '',
+          # 'twitter:player:height' => '',
         })
       when SubtleSystemNode
         tags.merge!({
@@ -130,6 +114,7 @@ module MetadataHelper
         'og:title' => tags['title'],
         'og:description' => tags['description'],
       })
+      # rubocop:enable Performance/RedundantMerge
     end
   end
 
@@ -154,6 +139,7 @@ module MetadataHelper
 
       objects.push(page)
 
+      # rubocop:disable Performance/RedundantMerge
       case record
       when Article
         page.merge!({
@@ -172,7 +158,7 @@ module MetadataHelper
             'startDate' => record.date.to_s(:db),
             'image' => tags['og:image'],
             'video' => tags['og:video'],
-            #'location' => {}, # TODO: Define this - https://developers.google.com/search/docs/data-types/event
+            # 'location' => {}, # TODO: Define this - https://developers.google.com/search/docs/data-types/event
           })
         end
 
@@ -192,7 +178,7 @@ module MetadataHelper
           })
         end
       when StaticPage
-        if ['about', 'shri_mataji', 'sahaja_yoga', 'tracks'].include? record.role
+        if %w[about shri_mataji sahaja_yoga tracks].include? record.role
           page.merge!({
             '@type' => 'Article',
             'headline' => tags['og:title'],
@@ -209,7 +195,7 @@ module MetadataHelper
           })
         end
 
-        if ['articles', 'meditations', 'treatments', 'tracks', 'subtle_system'].include? record.role
+        if %w[articles meditations treatments subtle_system].include? record.role
           list = {
             '@context' => 'https://schema.org',
             '@type' => 'ItemList',
@@ -217,26 +203,28 @@ module MetadataHelper
           }
 
           records_name = (record.role == 'subtle_system' ? 'subtle_system_nodes' : record.role)
+          records = instance_variable_get("@#{records_name}")
+          if records
+            list['itemListElement'] = records.each_with_index.map do |item, index|
+              {
+                '@type' => 'ListItem',
+                'position' => index,
+                'url' => polymorphic_url(item),
+              }
+            end
+          end
 
-          list['itemListElement'] = instance_variable_get("@#{records_name}").each_with_index.map { |record, index|
-            {
-              '@type' => 'ListItem',
-              'position' => index,
-              'url' => polymorphic_url(record),
-            }
-          }
-
-          #if 'admin'
-          #  list['itemListElement'] = "<list of #{records_name}>"
-          #else
-          #  list['itemListElement'] = instance_variable_get("@#{records_name}").each_with_index.map { |record, index|
-          #    {
-          #      '@type' => 'ListItem',
-          #      'position' => index,
-          #      'url' => polymorphic_url(record),
-          #    }
-          #  }
-          #end
+          # if 'admin'
+          #   list['itemListElement'] = "<list of #{records_name}>"
+          # else
+          #   list['itemListElement'] = instance_variable_get("@#{records_name}").each_with_index.map { |record, index|
+          #     {
+          #       '@type' => 'ListItem',
+          #       'position' => index,
+          #       'url' => polymorphic_url(record),
+          #     }
+          #   }
+          # end
 
           objects.push list
         end
@@ -257,20 +245,21 @@ module MetadataHelper
           'headline' => tags['og:title'],
         })
       end
+      # rubocop:enable Performance/RedundantMerge
 
       if @breadcrumbs
         objects.push {
           {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": @breadcrumbs.each_with_index.map { |crumb, index|
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            'itemListElement': @breadcrumbs.each_with_index.map { |crumb, index|
               {
                 '@type' => 'ListItem',
                 'position' => index,
                 'name' => crumb[:name],
                 'item' => crumb[:url] || tags['og:url'],
               }
-            }
+            },
           }
         }
       end

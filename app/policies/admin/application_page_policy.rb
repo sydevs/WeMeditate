@@ -9,6 +9,10 @@ module Admin
       update_translation? or update_structure?
     end
 
+    def write?
+      update?
+    end
+
     def update_translation?
       translator? and locale_allowed?
     end

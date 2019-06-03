@@ -1,0 +1,102 @@
+
+.codex-editor
+  max-width: 650px
+
+.codex-editor__redactor
+  min-height: 260px
+  padding-bottom: 30px
+
+.ce-block
+  padding-left: 10px
+  padding-right: 45px
+  border: solid transparent
+  border-width: 0 2px
+
+.ce-block--focused
+  background: none
+  border-color: transparentize(black, 0.5)
+
+.cdx-block
+  padding-bottom: 1em
+
+.ce-toolbox__button--active
+  animation: none
+
+// SETTINGS
+.ce-settings i.icon
+  height: auto
+
+.cdx-settings-button--disabled
+  cursor: default
+  opacity: 0.8
+  background: none !important
+
+// INPUTS
+.cdx-input
+  outline: none
+  border: none
+  box-shadow: none
+  padding: 0
+  border-radius: 0
+
+  &--title
+    font-weight: bold
+    margin-bottom: 10px
+
+  &--textarea
+    min-height: 58px
+    resize: none
+
+  &--caption
+    font-style: italic
+
+  &--url
+    padding: 0 5px
+    opacity: 0.8
+    font-style: italic
+
+  &--button
+    border: 2px solid darkgray
+    margin-top: 10px
+    margin-bottom: 5px
+    padding: 0.5em 1em
+    text-align: center
+
+    display: inline-block
+    min-width: 120px
+    max-width: 200px
+    width: auto
+    white-space: nowrap
+    overflow: hidden
+
+// UPLOADER INPUT
+.cdx-input__uploader
+  border: 2px dashed lightgray
+  border-radius: 6px
+  color: lightgray
+  text-align: center
+  font-weight: bold
+  font-size: 18px
+  line-height: 20px
+  padding: 10px
+  transition: color 0.2s
+
+  &:hover
+    cursor: pointer
+    border-color: gray
+    color: gray
+
+  &--dropping
+    border-color: #85B7D9
+    color: #85B7D9
+
+  &--error
+    border-color: lightred
+    color: lightred
+
+  input
+    width: 0 !important
+    height: 0 !important
+    overflow: hidden !important
+    padding: 0 !important
+    border: none !important

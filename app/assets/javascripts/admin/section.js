@@ -5,6 +5,7 @@ let Section = {
   content_type: null,
   format: null,
   fields: null,
+  items_input: null,
 
   load() {
     console.log('loading Section.js')
@@ -12,6 +13,7 @@ let Section = {
     Section.fields = Section.form.find('.field.for, .fields.for')
     Section.content_type = Section.form.find('#section-content-type select')
     Section.format = Section.form.find('#section-format select')
+    Section.items_input = Section.form.find('#items-input')
 
     Section.content_type.on('change', Section._on_type_change)
     Section.format.on('change', Section._on_format_change)
@@ -19,6 +21,11 @@ let Section = {
 
     Section._on_type_change.apply(Section.content_type, [false])
     Section._on_format_change.apply(Section.format)
+  },
+
+  set_items_fields(mode) {
+    Section.items_input.find('input[type=url]').toggle(mode == 'grid')
+    Section.items_input.find('.media.input').toggle(mode == 'columns')
   },
 
   _on_type_change(change_format = true) {
@@ -34,14 +41,21 @@ let Section = {
   },
 
   _on_format_change() {
+    var content_type = Section.content_type.val()
+    var format = Section.format.val()
+
     Section.fields.hide()
-    Section.fields.filter('.'+Section.content_type.val()+'-'+Section.format.val()).show()
+    Section.fields.filter('.'+content_type+'-'+format).show()
+
+    if (Section.items_input.css('display') != 'none') {
+      Section.items_input.find('input[type=url]').toggle(format == 'grid')
+      Section.items_input.find('.media.input').toggle(format == 'columns')
+    }
   },
 
   _on_submit() {
     Section.fields.filter(':not(:visible) :input').attr('disabled', true)
   },
-
 }
 
 $(document).on('turbolinks:load', () => {

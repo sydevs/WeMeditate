@@ -1,13 +1,10 @@
 - index = (defined?(index) ? index : 0).to_i + (defined?(section_counter) ? section_counter : 0).to_i + 1
 
-- if section.special? and section.format == 'city_sections'
-  = render @city.sections, index: index, cached: true
-- else
-  - classes = ["type-#{section.content_type}", "format-#{section.format&.dasherize}"]
-  - classes << ['with-decoration', section.decoration_options(:gradient).join(' '), 'gradient'] if section.has_decoration? :gradient
+- classes = ["type-#{section.content_type}", "format-#{section.format&.dasherize}"]
+- classes << ['with-decoration', section.decoration_options(:gradient).join(' '), 'gradient'] if section.has_decoration? :gradient
 
-  section id=section.chapter_slug class=classes data-section=index
-    = render "sections/#{section.content_type}/#{section.format}", section: section
+section class=classes data-section=index
+  = render "sections/#{section.content_type}/#{section.format}", section: section
 
 - if index == 1
   #content

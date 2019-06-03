@@ -1,2 +1,9 @@
 
-= render @static_page.sections.with_translations(locale), cached: true
+main
+  .subtle_system
+    h1.subtle_system__title = translate 'subtle_system.title'
+
+    .subtle_system__list
+      = render (@subtle_system_nodes || SubtleSystemNode.all), cached: true
+
+  = render_content @static_page

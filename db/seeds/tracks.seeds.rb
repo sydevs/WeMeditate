@@ -1,5 +1,5 @@
+require_relative 'support'
 
-file_root = Rails.root.join('db/seeds/files')
 puts ' -- Start Track Seeds -- '
 
 # ===== CREATE ARTISTS ===== #
@@ -17,7 +17,10 @@ artists = {}
 }, {
   name: 'TEV Orchestra',
   url: 'http://www.theatreofeternalvalues.com',
-}].each_with_index do |atts, index|
+}, {
+  name: 'Shivakumar Sharma',
+  url: 'http://www.santoor.com/',
+}].each_with_index do |atts, index| # rubocop:disable Style/TrailingCommaInArrayLiteral
   atts[:image] = file_root.join("artists/#{index + 1}.jpg").open
   artists[index] = Artist.find_or_initialize_by(name: atts[:name])
   artists[index].update!(atts)
@@ -27,7 +30,7 @@ end
 # ===== CREATE INSTRUMENTS ===== #
 instrument_filters = {}
 
-['Voice', 'Sitar', 'Tabla', 'Flute'].each_with_index do |name, index|
+%w[Sitar Vocal Flute].each_with_index do |name, index|
   key = name.underscore.to_sym
   instrument_filters[key] = InstrumentFilter.find_or_initialize_by(order: index)
   instrument_filters[key].update!({
@@ -42,7 +45,7 @@ end
 # ===== CREATE MOODS ===== #
 mood_filters = {}
 
-['Calm', 'Dynamic', 'Joyful', 'Innocent'].each_with_index do |name, index|
+%w[Calm Dynamic Joyful Innocent].each_with_index do |name, index|
   key = name.underscore.to_sym
   mood_filters[key] = MoodFilter.find_or_initialize_by(order: index)
   mood_filters[key].update!({
@@ -56,29 +59,29 @@ end
 
 # ===== CREATE TRACKS ===== #
 [{
-  name: 'Raag Darbari',
-  artist: artists[0],
-  mood_filters: [:dynamic, :joyful, :innocent],
-  instrument_filters: [:voice, :flute],
-}, {
   name: 'Raag Durga',
+  artist: artists[4],
+  mood_filters: %i[dynamic joyful innocent],
+  instrument_filters: %i[vocal flute],
+}, {
+  name: 'Morning Meditation',
   artist: artists[0],
-  mood_filters: [:dynamic, :calm],
-  instrument_filters: [:tabla, :sitar],
+  mood_filters:  %i[dynamic calm],
+  instrument_filters: %i[tabla sitar],
 }, {
   name: 'Raag Jayjayvanti',
   artist: artists[1],
-  mood_filters: [:dynamic, :innocent],
-  instrument_filters: [:voice],
+  mood_filters:  %i[dynamic innocent],
+  instrument_filters: %i[vocal],
 }, {
   name: 'Brahma Shodile',
   artist: artists[2],
-  mood_filters: [:joyful, :innocent],
-  instrument_filters: [:tabla, :sitar, :flute],
-}].each_with_index do |atts, index|
-  atts[:audio] = file_root.join("general/music.mp3").open
-  atts[:mood_filters].map! {|k| mood_filters[k]}
-  atts[:instrument_filters].map! {|k| instrument_filters[k]}
+  mood_filters:  %i[joyful innocent],
+  instrument_filters: %i[tabla sitar flute],
+}].each do |atts| # rubocop:disable Style/TrailingCommaInArrayLiteral
+  atts[:audio] = file_root.join('general/music.mp3').open
+  atts[:mood_filters].map! { |k| mood_filters[k] }
+  atts[:instrument_filters].map! { |k| instrument_filters[k] }
   Track.find_or_initialize_by(name: atts[:name]).update!(atts)
   puts "Created Track - #{atts[:name]}"
 end

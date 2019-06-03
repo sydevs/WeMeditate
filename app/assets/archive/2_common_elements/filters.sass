@@ -1,0 +1,151 @@
+@import "../../mixins/*"
+
+/* FILTERS
+  Throughout the site buttons are used to filter content.
+  This file defines the styling for those filter buttons
+  */
+
+.filter-group
+  text-align: center
+
+  @include tablet-or-larger
+    text-align: left
+
+
+// ===== FILTER ITEM ===== //
+.filter-item
+  cursor: pointer
+  display: block
+  width: 140px
+  margin: 24px auto
+
+  font-size: 1.8rem
+  letter-spacing: 0.2px
+  color: $color-text-dark
+
+  @include tablet-or-larger
+    display: inline-block
+    width: auto
+    margin: 6px 0
+    margin-right: 72px
+
+  &-icon
+    width: 40%
+    text-align: left
+    display: inline-block
+
+    @include tablet-or-larger
+      width: auto
+      margin-right: 18px
+
+    > svg
+      fill: $color-text-normal
+      height: 56px
+      width: auto
+      transition: fill 0.3s ease
+      max-width: 60px
+
+  &-name
+    width: 60%
+    line-height: 60px
+    vertical-align: bottom
+    text-align: right
+    display: inline-block
+
+    @include tablet-or-larger
+      width: auto
+      text-align: left
+
+  &.active,
+  &:hover
+    opacity: 0.95
+    color: $color-text-blue
+
+    .filter-item-icon > svg
+      fill: $color-text-blue
+
+  &:not(.active):hover
+    @media (hover: none)
+      opacity: 1
+      color: inherit
+
+      .filter-item-icon > svg
+        fill: inherit
+
+
+// ===== FILTER BUTTON ===== //
+.filter-button
+  @extend %generic-box-button
+  min-width: 90px
+  padding: 10px 12px
+
+  font-size: 1.5rem
+  line-height: 1.2
+  font-weight: $font-normal
+  color: $color-text-darker
+  text-align: center
+  cursor: pointer
+
+  @include tablet-or-larger
+    font-size: 1.6rem
+    line-height: 1.1875
+    padding: 20px
+    margin: 0 15px
+
+  @include laptop
+    padding: 16px
+    margin: 0 30px
+
+  @include desktop
+    padding: 23px
+    margin: 0 45px
+
+  &:not(:last-child)
+    @include mobile
+      margin-right: 8px
+
+  &-icon
+    margin-right: 10px
+    width: 25px
+    height: 25px
+    display: inline-block
+
+
+// ===== FILTER GROUP VARIATIONS ===== //
+
+// STRIP
+// For a strip version of the button
+.filter-group.strip
+  white-space: nowrap
+  overflow-x: auto
+
+  > .filter-button
+    border: 1px solid $color-graphic-dark
+
+    @include tablet-or-larger
+      border: none
+
+    &:before
+      background: $background-blue
+
+    &:hover,
+    &.active
+      color: $color-text-inverse
+      border-color: $background-blue
+
+// OUTLINE
+// For an outlined version of the button
+.filter-group.outline
+  > .filter-button
+    font-size: 1rem
+    font-weight: $font-semibold
+    line-height: 40px
+    color: $color-text-normal
+    margin: 5px
+
+    padding: 0 9px
+    border: 1px solid $color-text-normal
+    transition: border-color 0.3s 0.6s ease
+
+    &:hover
+      border-color: $background-gray

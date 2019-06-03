@@ -7,12 +7,14 @@
 = draftable_field f, :priority, type: :collection do |value|
   - f.input_field :priority, collection: Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}, selected: value, disabled: !allow.update_structure?
 
-= draftable_media_field f, :banner_id, preview: true
-= draftable_media_field f, :thumbnail_id, preview: true
-= draftable_media_field f, :video_id, type: :video
-
-= draftable_date_field f
+= draftable_media_field f, :thumbnail_id, preview: true, wrapper: { required: true }
 = draftable_field f, :excerpt, type: :text do |value|
   - f.input_field :excerpt, as: :text, rows: 3, value: value
 
-= render 'admin/media_files/library', page: record
+= draftable_media_field f, :video_id, type: :video
+= draftable_date_field f
+
+// TODO: Remove this page banner which is no longer used.
+// = draftable_media_field f, :banner_id, preview: true
+
+= render 'admin/media_files/library', page: record unless record.new_record?

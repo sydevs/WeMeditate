@@ -10,33 +10,29 @@
 # This means it's content is defined by a collection of sections
 
 class StaticPage < ApplicationRecord
+
   extend FriendlyId
+  include HasContent
   include Draftable
 
   # Extensions
-  translates :name, :slug, :metatags, :draft
+  translates :name, :slug, :metatags, :content, :draft
   friendly_id :name, use: :globalize
 
   # Associations
-  has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all, autosave: true
-  has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
   enum role: {
     home: 0, about: 1, contact: 2, shri_mataji: 3, subtle_system: 4, sahaja_yoga: 5,
-    articles: 10, treatments: 11, tracks: 12, meditations: 13, country: 14, world: 15, city: 16,
+    articles: 10, treatments: 11, tracks: 12, meditations: 13, classes: 14,
   }
 
   # Validations
   validates :name, presence: true
   validates :role, presence: true, uniqueness: true
-  accepts_nested_attributes_for :sections, reject_if: :all_blank, allow_destroy: true
 
   # Scopes
   default_scope { order(:role) }
   scope :untranslated, -> { joins(:translations).where.not(static_page_translations: { locale: I18n.locale }) }
   scope :q, -> (q) { joins(:translations).where('static_page_translations.name ILIKE ? OR role ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
-
-  # Callbacks
-  after_create :disable_drafts
 
   # Include everything necessary to render this model
   def self.preload_for mode
@@ -44,7 +40,7 @@ class StaticPage < ApplicationRecord
     when :preview
       joins(:translations)
     when :content
-      includes(:media_files, :translations, sections: :translations)
+      includes(:media_files, :translations, sections: :translations).order('sections.order')
     when :admin
       includes(:media_files, :translations)
     end
@@ -65,14 +61,6 @@ class StaticPage < ApplicationRecord
       ensure_special_section_exists! :try_meditation
     when :treatments
       ensure_special_section_exists! :banner, { extra: { 'banner_style' => 'treatments_page' } }
-    when :country
-      ensure_special_section_exists! :country
-    when :city
-      ensure_special_section_exists! :banner, { extra: { 'banner_style' => 'city_page' } }
-      ensure_special_section_exists! :city_sections
-      ensure_special_section_exists! :venue_map
-      ensure_special_section_exists! :venue_registration
-      ensure_special_section_exists! :local_contacts
     when :subtle_system
       ensure_special_section_exists! :subtle_system
     when :meditations
@@ -83,14 +71,8 @@ class StaticPage < ApplicationRecord
 
   # Checks to see if a special section exists for this page, and creates it if it doesn't.
   def ensure_special_section_exists! format, attrs = {}
-    unless sections.exists?(content_type: :special, format: format)
-      sections.new(attrs.merge!(content_type: :special, format: format))
-    end
+    return if sections.exists?(content_type: :special, format: format)
+    sections.new(attrs.merge!(content_type: :special, format: format))
   end
 
-  private
-    # TODO: This is a temporary measure to disable the draft system until issues with draft integration can be resolved.
-    def disable_drafts
-      update_column :published_at, DateTime.now
-    end
 end

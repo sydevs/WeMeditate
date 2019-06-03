@@ -1,66 +1,58 @@
-/** DROPDOWN
- * This file implements a generic dropdown where items can use markup. This is not a select element.
- * This is used on the Meditations index page.
- */
 
-const Dropdown = {
-  // Called when turbolinks loads the page
-  load() {
-    $root = $(document)
-    $root.on('click', '.dropdown-selection', Dropdown._on_click_dropdown)
-    $root.on('click', '.dropdown-popup-close', Dropdown._on_click_dropdown)
-    $root.on('click', '.dropdown-popup li', Dropdown._on_select_item)
-  },
+class Dropdown {
 
-  // Triggered when the dropdown selection is clicked on.
-  _on_click_dropdown(event) {
-    $dropdown = $(event.currentTarget).closest('.dropdown')
-    Dropdown.toggle_popup($dropdown)
-  },
+  constructor(element) {
+    this.container = element
+    this.selectionContainer = element.querySelector('.dropdown__selection')
+    this.input = element.querySelector('.js-dropdown-input')
 
-  _on_click_anywhere(event) {
-    if ($(event.target).closest('.dropdown').length == 0) {
-      $('.dropdown.expand').each(function() {
-        Dropdown.toggle_popup($(this), false)
-      })
-    }
-  },
-
-  // Triggered when a dropdown item is selected
-  _on_select_item(event) {
-    let $target = $(event.currentTarget)
-    let $dropdown = $target.closest('.dropdown')
-    let $selection = $dropdown.children('.dropdown-selection')
-    $target.siblings('.active').removeClass('active')
-    $target.addClass('active')
-
-    let $svg = $target.children('svg')
-    let color = $svg.data('color')
-    let text = $target.children('.dropdown-popup-text').text()
-
-    $dropdown.children('input').val($target.data('value'))
-    $selection.children('.dropdown-text').text(text).css('color', color)
-    $selection.find('.dropdown-icon > svg').replaceWith($svg.clone())
-    $selection.removeClass('disabled')
-
-    Dropdown.toggle_popup($dropdown) // Close it
-  },
-
-  // Open the dropdown popup if it is closed, and vice versa.
-  toggle_popup($dropdown, state) {
-    if (typeof state === 'undefined') {
-      state = !$dropdown.hasClass('expand')
+    const items = element.querySelectorAll('.dropdown__item')
+    for (let index = 0; index < items.length; index++) {
+      items[index].addEventListener('click', event => this.selectItem(event.currentTarget))
     }
 
-    if (state) {
-      $(document).on('click', Dropdown._on_click_anywhere)
+    this.selectionContainer.addEventListener('click', _event => this.togglePopup())
+    element.querySelector('.dropdown__close').addEventListener('click', _event => this.togglePopup(false))
+  }
+
+  togglePopup(forceState = null) {
+    const openPopup = (forceState === null ? !this.container.classList.contains('dropdown--open') : forceState)
+
+    if (openPopup) {
+      document.addEventListener('click', this._onClickAnywhere)
     } else {
-      $(document).off('click', Dropdown._on_click_anywhere)
+      document.removeEventListener('click', this._onClickAnywhere)
     }
 
-    $dropdown.toggleClass('expand', state)
-    $('body').toggleClass('noscroll', state)
-  },
-}
+    this.container.classList.toggle('dropdown--open', openPopup)
+    document.body.classList.toggle('noscroll', openPopup)
+  }
 
-$(document).on('turbolinks:load', () => { Dropdown.load() })
+  selectItem(item) {
+    const svg = item.querySelector('svg')
+    const text = item.querySelector('.dropdown__item__text').innerText
+    const color = svg.firstChild.getAttribute('stroke') || svg.firstChild.getAttribute('fill')
+
+    const activeItem = item.parentNode.querySelector('.dropdown__item--active')
+    if (activeItem) activeItem.classList.remove('dropdown__item--active')
+    this.input.value = item.dataset.value
+
+    const dropdownIcon = this.selectionContainer.querySelector('.dropdown__selection__icon')
+    dropdownIcon.style.background = color
+
+    const dropdownText = this.selectionContainer.querySelector('.dropdown__selection__text')
+    dropdownText.innerText = text
+    dropdownText.style.color = color
+    this.selectionContainer.querySelector('svg').replaceWith(svg.cloneNode(true))
+    this.selectionContainer.classList.remove('dropdown__selection--inactive')
+
+    this.togglePopup() // Aka, close it
+  }
+
+  _onClickAnywhere(event) {
+    if (event.target.closest('.dropdown') == null) {
+      this.togglePopup(false)
+    }
+  }
+
+}

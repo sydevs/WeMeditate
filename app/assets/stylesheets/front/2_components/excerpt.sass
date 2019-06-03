@@ -1,0 +1,119 @@
+@import "../../mixins/*"
+
+/* EXCERPT
+  Similar to a preview, but a little bit more long form.
+  Suitable to a vertical layout, as opposed to preview which is good for a horizontal or grid layout.
+  */
+
+.excerpt_list
+  max-width: 992px
+  margin: auto
+  margin-top: 180px
+
+.excerpt
+  position: relative
+  margin-bottom: 150px
+
+  @include tablet
+    margin-bottom: 250px
+
+  @include laptop-or-larger
+    margin-bottom: 280px
+
+  &:last-child
+    @include mobile
+      margin-bottom: 0
+
+.excerpt__index
+  position: absolute
+  top: -74px
+
+  color: $color-text-lighter
+  font-size: 3.5rem
+  letter-spacing: 2.16px
+
+// ===== EXCERPT CONTENT ===== //
+.excerpt__image
+  margin-bottom: 65px
+  width: 100%
+  max-width: 400px
+
+.excerpt__content
+  @include laptop-or-larger
+    padding: 0 40px
+
+.excerpt__title
+  font-weight: $font-semibold
+  font-size: 2.2rem
+  line-height: 1.41
+  letter-spacing: 0.41px
+  color: $color-text-dark
+  margin-bottom: 16px
+
+  @include laptop-or-larger
+    font-size: 2.4rem
+
+.excerpt__text
+  font-size: 1.8rem
+  line-height: 1.6667
+
+  @include tablet-or-larger
+    min-height: 172px
+
+.excerpt__link
+  color: $color-text-dark
+
+  > i.icon
+    margin-left: 0.75em
+    font-size: 0.6em
+
+.excerpt__button
+    margin-top: 32px
+    padding: 22px 32px
+
+// ===== LEFT / RIGHT VARIATIONS ===== //
+// Basic template for the gradient used on each time of treatment item.
+.excerpt:after
+  display: block
+  content: ''
+
+  position: absolute
+  top: -112px
+  width: 106px + ($gutter-width * 3)
+  height: 242px
+  z-index: -1
+
+  @include laptop-or-larger
+    top: -108px
+    width: 371px
+
+.excerpt
+  @each $side in left right
+    $opposite: right !default
+    @if $side == right
+      $opposite: left
+
+    &--#{$side}
+      &:after
+        #{$side}: -($gutter-width * 4)
+        @include gradient(to #{$opposite}, 'blue')
+
+        @include laptop-or-larger
+          #{$side}: -131px
+
+      .excerpt__image
+        float: $opposite
+        margin-#{$opposite}: -$gutter-width
+        margin-#{$side}: 100%
+
+        @include tablet-or-larger
+          float: $side
+          margin: 0
+          margin-#{$opposite}: 64px
+
+      .excerpt__content
+        @include tablet-or-larger
+          margin-#{$side}: 464px
+
+      .excerpt__index
+        #{$side}: 0

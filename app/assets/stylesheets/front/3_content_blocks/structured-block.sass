@@ -1,0 +1,48 @@
+@import "../../mixins/*"
+
+.content__structured
+  margin-top: 50px
+  margin-bottom: 50px
+
+.content__structured:not(.content__structured--accordion)
+  @extend %wide-content-width
+
+.content__structured--accordion
+  @extend %narrow-content-width
+
+// ===== CONTENT ===== //
+.content__structured__item
+  padding: 15px
+
+.content__structured__image
+  width: 100%
+
+.content__structured__title
+  margin-bottom: 16px
+
+  color: $color-text-dark
+  font-weight: $font-semibold
+  font-size: 2.2rem
+  line-height: 1.41
+  letter-spacing: 0.41px
+
+.content__structured__text
+  font-size: 1.6rem
+  line-height: 1.875
+  letter-spacing: 0.18px
+  margin-top: 0.5em
+  margin-bottom: 0.5em
+
+.content__structured__loadmore
+  text-align: center
+  margin-top: 50px
+
+// ===== COLUMNS ===== //
+.content__structured--columns
+  text-align: center
+
+  .content__structured__item
+    max-width: 400px
+
+  .content__structured__text
+    text-align: left

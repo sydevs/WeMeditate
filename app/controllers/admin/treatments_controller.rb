@@ -1,8 +1,7 @@
 module Admin
   class TreatmentsController < Admin::ApplicationRecordController
-    prepend_before_action do
-      set_model Treatment
-    end
+
+    prepend_before_action { @model = Treatment }
 
     def create
       super treatment_params
@@ -13,13 +12,12 @@ module Admin
     end
 
     private
+
       def treatment_params
-        result = params.fetch(:treatment, {}).permit(
+        params.fetch(:treatment, {}).permit(
           :name, :slug, :excerpt, :content, :thumbnail, :video,
           metatags: {}
         )
-
-        result
       end
 
   end

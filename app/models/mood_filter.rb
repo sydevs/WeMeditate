@@ -18,7 +18,7 @@ class MoodFilter < ApplicationRecord
   validates :icon, presence: true
 
   # Scopes
-  default_scope { order( :order ) }
+  default_scope { order(:order) }
   scope :untranslated, -> { joins(:translations).where.not(mood_filter_translations: { locale: I18n.locale }) }
   scope :q, -> (q) { joins(:translations).where('mood_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
 

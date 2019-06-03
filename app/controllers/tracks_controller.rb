@@ -8,7 +8,7 @@ class TracksController < ApplicationController
     @metadata_record = @static_page
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },
-      { name: @static_page.name }
+      { name: @static_page.name },
     ]
   end
 

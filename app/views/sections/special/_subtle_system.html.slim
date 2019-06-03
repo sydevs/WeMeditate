@@ -1,37 +1,4 @@
 
-//.container
-  h2.title = section.title
-  .active.chakras.chart
-    .trigger.for-chakra-7 data-class='chakra-7'
-    .trigger.for-chakra-6 data-class='chakra-6'
-    .trigger.for-chakra-5 data-class='chakra-5'
-    .trigger.for-chakra-4 data-class='chakra-4'
-    .trigger.for-chakra-3b data-class='chakra-3b'
-    .trigger.for-chakra-3 data-class='chakra-3'
-    .trigger.for-chakra-2 data-class='chakra-2'
-    .trigger.for-chakra-1 data-class='chakra-1'
-    .trigger.for-kundalini data-class='kundalini'
-    = inline_svg 'sections/subtle-system/chakras.svg'
-  .channels.chart
-    .trigger.for-channel-right-1 data-class='channel-right'
-    .trigger.for-channel-right-2 data-class='channel-right'
-    .trigger.for-channel-center data-class='channel-center'
-    .trigger.for-channel-left-1 data-class='channel-left'
-    .trigger.for-channel-left-2 data-class='channel-left'
-    .trigger.for-kundalini data-class='kundalini'
-    = inline_svg 'sections/subtle-system/channels.svg'
-  nav.primary.filters
-    .active.chakras.filter.button data-filter='.chakras.chart' = t('sections.subtle_system.chakras')
-    .channels.filter.button data-filter='.channels.chart' = t('sections.subtle_system.channels')
-  .articles
-    - SubtleSystemNode.all.each do |subtle_system_node|
-      .article id=dom_id(subtle_system_node) class=subtle_system_node.role.to_s.dasherize
-        .title = subtle_system_node.name
-        p = subtle_system_node.excerpt
-        a href=url_for(subtle_system_node)
-          = t('sections.subtle_system.read_more')
-          i.breadcrumb.icon
-
 .subtle-system.wrapper-outer
   h2.subtle-system-title = section.title
   .subtle-system-chart.active#subtle-system-chart-chakras
@@ -44,7 +11,7 @@
     .subtle-system-trigger data-trigger='chakra-2'
     .subtle-system-trigger data-trigger='chakra-1'
     .subtle-system-trigger data-trigger='kundalini'
-    = inline_svg 'sections/subtle-system/chakras.svg'
+    = inline_svg 'subtle-system/chakras.svg'
   .subtle-system-chart#subtle-system-chart-channels
     .subtle-system-trigger.for-head data-trigger='channel-right'
     .subtle-system-trigger.for-body data-trigger='channel-right'
@@ -52,13 +19,13 @@
     .subtle-system-trigger.for-head data-trigger='channel-left'
     .subtle-system-trigger.for-body data-trigger='channel-left'
     .subtle-system-trigger data-trigger='kundalini'
-    = inline_svg 'sections/subtle-system/channels.svg'
+    = inline_svg 'subtle-system/channels.svg'
 
-  nav.filter-group.color
+  nav.filter-group.strip
     .filter-button.active data-filter='#subtle-system-chart-chakras'
       = t('sections.subtle_system.chakras')
     .filter-button data-filter='#subtle-system-chart-channels'
       = t('sections.subtle_system.channels')
 
   .subtle-system-items
-    = render SubtleSystemNode.all, cached: true
+    = render (@subtle_system_nodes || SubtleSystemNode.all), cached: true

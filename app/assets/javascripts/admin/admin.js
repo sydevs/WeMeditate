@@ -26,27 +26,6 @@ let Admin = {
         })
       })
     })
-
-    $('.ui.city.search').each(function() {
-      $(this).search({
-        searchDelay: 300,
-        minCharacters: 3,
-        selectFirstResult: true,
-        searchOnFocus: false,
-        fullTextSearch: true,
-        apiSettings: {
-          url: $(this).data('url'),
-        },
-        onSelect: function(result, response) {
-          $('#city_name').val(result.name)
-          $('#city_latitude').val(result.latitude)
-          $('#city_longitude').val(result.longitude)
-          $('#city_coordinates span').text(result.latitude + ', ' + result.longitude)
-          $(this).search('hide results')
-          return false
-        },
-      })
-    })
   },
 
   initialize: function(scope) {
@@ -70,49 +49,7 @@ let Admin = {
       }
     })
 
-    $('.ui.venue.search').each(function() {
-      $(this).search({
-        searchDelay: 300,
-        minCharacters: 3,
-        selectFirstResult: true,
-        searchOnFocus: false,
-        fullTextSearch: true,
-        apiSettings: {
-          url: $(this).data('url'),
-        },
-        onSelect: function(result, response) {
-          //$('#city_name').val(result.city_name)
-          //$('#city_latitude').val(result.latitude)
-          //$('#city_longitude').val(result.longitude)
-          //$('#city_coordinates span')
-          $(this).siblings('.latitude').val(result.latitude)
-          $(this).siblings('.longitude').val(result.longitude)
-          $(this).find('.label span').text(result.latitude + ', ' + result.longitude)
-          //$(this).search('hide results')
-          //return false
-        },
-      })
-    })
-
-    scope.find('.repeatable.fields').each(function() {
-      $(this).repeatable_fields({
-        row_count_placeholder: '{{row-count-placeholder}}',
-        after_add: function(container, new_row) {
-          Admin.initialize(new_row)
-
-          var row_count = $(container).attr('data-rf-row-count')
-          row_count++
-
-          $('*', new_row).each(function() {
-            $.each(this.attributes, function() {
-              this.value = this.value.replace('{{row-count-placeholder}}', row_count - 1)
-            })
-          })
-
-			    $(container).attr('data-rf-row-count', row_count)
-        }
-      })
-    })
+    RepeatableFields.initialize(scope)
 
     scope.find('.rich-text-editor').each(function() {
       let input = $(this).prev('input')

@@ -1,10 +1,8 @@
 module Admin
   class UsersController < Admin::ApplicationRecordController
-    before_action :set_assignable_roles, only: [:index, :create, :update]
 
-    prepend_before_action do
-      set_model User
-    end
+    before_action :set_assignable_roles, only: %i[index create update]
+    prepend_before_action { @model = User }
 
     def create
       @record = User.new user_params
@@ -18,6 +16,7 @@ module Admin
     end
 
     private
+
       def user_params
         params.fetch(:user, {}).permit(:email, :role, languages: [])
       end

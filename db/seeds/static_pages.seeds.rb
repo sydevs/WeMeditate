@@ -1,535 +1,425 @@
+# rubocop:disable Layout/IndentArray
+require_relative 'support'
 
-file_root = Rails.root.join('db/seeds/files')
 puts ' -- Start Static Page Seeds -- '
-
-def attachment path, name, type, parent
-  media_file = parent.media_files.find_or_initialize_by(name: name)
-  media_file.update!({ name: name, category: type, file: Rails.root.join('db/seeds/files').join(path).open })
-  media_file.id
-end
 
 # ===== CREATE STATIC PAGES ===== #
 static_pages = {}
 
 {
-  home: 'Front Page',
+  home: 'Home Page',
   about: 'About Us',
   contact: 'Contact Us',
   shri_mataji: 'Shri Mataji',
   subtle_system: 'Chakras & Channels',
-  sahaja_yoga: 'About Sahaja Yoga',
+  sahaja_yoga: 'Sahaja Yoga',
   articles: 'Inspiration',
   treatments: 'Improving Meditation',
   tracks: 'Music for Meditation',
   meditations: 'Meditate Now',
-  world: 'Meditation classes',
-  country: 'Meditation classes',
-  city: 'City Page Template',
+  classes: 'Classes Near Me',
 }.each do |role, name|
   static_pages[role] = StaticPage.find_or_initialize_by(role: role)
   static_pages[role].update!(name: name)
   puts "Created Static Page - #{role}"
 end
 
-
-# ===== CREATE FRONT PAGE SECTIONS ===== #
-front_page_video_id = attachment('general/video.mp4', 'Video.mp4', :video, static_pages[:home])
-
-[{
-  content_type: :special,
-  format: :banner,
-  title: 'Meditation is a state of inner peace.',
-  text: 'No special skills are required, you just have to',
-  action: 'Feel it',
-  url: '/en/meditations/first-experience',
-  extra: {
-    desktop_image_id: attachment('general/background.jpg', 'Banner.png', :image, static_pages[:home]),
-    mobile_image_id: attachment('static_pages/front/banner-mobile.png', 'Banner Mobile.png', :image, static_pages[:home]),
-    banner_style: 'front_page',
-    color: 'light',
+# ===== CREATE HOME PAGE CONTENT ===== #
+static_pages[:home].update!(content: content([
+  {
+    type: :splash,
+    data: {
+      image: content_attachment('general/background.jpg', static_pages[:home]),
+      title: 'Meditation is a state of inner peace.',
+      text: 'No special skills are required, you just have to',
+      action: 'Feel it',
+      url: '/en/meditations/first-experience',
+      style: :home,
+    },
   },
-}, {
-  content_type: :textbox,
-  format: :lefthand,
-  title: 'Meditate Now',
-  text: '<p>Whether you\'re looking to de-stress, boost your self-esteem or simply seeking a moment to pause, follow our easy yet effective guided meditations to elevate your state and establish peace within.</p>',
-  action: 'Choose your meditation',
-  url: '/en/meditations',
-  extra: {
-    image_id: attachment('static_pages/front/sahaja-yoga.jpg', 'Sahaja Yoga.jpg', :image, static_pages[:home]),
-    decorations: {
-      enabled: ['sidetext', 'circle'],
-      options: {
-        sidetext: ['top-left'],
+  {
+    type: :textbox,
+    data: {
+      image: content_attachment('static_pages/front/sahaja-yoga.jpg', static_pages[:home]),
+      title: 'Choose your meditation',
+      text: '<p>Whether you’re looking to de-stress, boost your self-esteem or simply seeking a moment to pause, follow our easy yet effective guided meditations to elevate your state and establish peace within.</p>',
+      action: 'Meditate Now',
+      url: '/en/meditations',
+      alignment: :left,
+      decorations: {
+        sidetext: 'Guided Meditations',
+        circle: true,
       },
-      sidetext: 'Guided Meditations',
-
     },
   },
-}, {
-  content_type: :video,
-  format: :video_gallery,
-  extra: {
-    items: 4.times.map {|i|
-      {
-        title: "Video #{i+1}",
-        image_id: attachment("static_pages/front/slide-#{i+1}.jpg", "Video #{i+1}.jpg", :image, static_pages[:home]),
-        video_id: front_page_video_id,
-      }
-    },
-    decorations: {
-      enabled: ['sidetext', 'gradient'],
-      options: {
-        sidetext: ['top-right'],
-        gradient: ['right', 'blue'],
+  {
+    type: :video,
+    data: {
+      items: Array.new(3) { |_i| vimeo_attachment },
+      asGallery: true,
+      decorations: {
+        gradient: { alignment: :right, color: :blue },
+        sidetext: 'Stories',
       },
-      sidetext: 'Video',
     },
   },
-}, {
-  content_type: :textbox,
-  format: :overtop,
-  title: 'Making History',
-  text: '<p>Shri Mataji Nirmala Devi maintained that there is a powerful, yet loving energy lying within each human being, and through her immense compassion for humanity developed the meditation technique for awakening it, described as Self-Realization.</p>',
-  action: 'Learn More',
-  url: '/en/page/shri-mataji',
-  extra: {
-    image_id: attachment('static_pages/front/shri-mataji.jpg', 'Shri Mataji.jpg', :image, static_pages[:home]),
-    decorations: {
-      enabled: ['sidetext', 'triangle'],
-      options: {
-        sidetext: ['top-left'],
-        triangle: ['left'],
+  {
+    type: :textbox,
+    data: {
+      image: content_attachment('static_pages/front/shri-mataji.jpg', static_pages[:home]),
+      title: 'Making History',
+      text: '<p>Shri Mataji Nirmala Devi maintained that there is a powerful, yet loving energy lying within each human being, and through her immense compassion for humanity developed the meditation technique for awakening it, described as Self-Realization.</p>',
+      action: 'Learn More',
+      url: '/en/page/shri-mataji',
+      alignment: :center,
+      decorations: {
+        triangle: { alignment: :left },
+        sidetext: 'Shri Mataji',
       },
-      sidetext: 'Shri Mataji',
     },
-    color: 'dark',
   },
-}, {
-  content_type: :textbox,
-  format: :righthand,
-  title: 'Enhance the Experience',
-  text: '<p>Music is a great aid to a deep meditation experience. Personalize the soundtrack to your session with our custom music player, featuring exclusive recordings from world class musicians.</p>',
-  action: 'Discover my sound',
-  url: '/en/music',
-  extra: {
-    image_id: attachment('static_pages/front/music.jpg', 'Music.jpg', :image, static_pages[:home]),
-    decorations: {
-      enabled: ['sidetext'],
-      options: {
-        sidetext: ['top-right'],
+  {
+    type: :textbox,
+    data: {
+      image: content_attachment('static_pages/front/music.jpg', static_pages[:home]),
+      title: 'Enhance the Experience',
+      text: '<p>Music is a great aid to a deep meditation experience. Personalize the soundtrack to your session with our custom music player, featuring exclusive recordings from world class musicians.</p>',
+      action: 'Discover my sound',
+      url: '/en/music',
+      alignment: :right,
+      decorations: { sidetext: 'Music' },
+    },
+  },
+  {
+    type: :textbox,
+    data: {
+      image: content_attachment('static_pages/front/meditation.jpg', static_pages[:home]),
+      title: 'Beyond the Practice',
+      text: '<p>The benefits of meditation go far beyond what you experience during the sessions.</p><p>It has the power to improve every aspect of your life, from your personal growth, to your work and family life, and can even spark immense creativity...</p>',
+      action: 'Get Inspired',
+      url: '/en/inspiration',
+      alignment: :center,
+      invert: true,
+      decorations: {
+        gradient: { alignment: :left, color: :orange },
+        triangle: { alignment: :right },
+        sidetext: 'Results?',
       },
-      sidetext: 'Music',
     },
   },
-}, {
-  content_type: :textbox,
-  format: :overtop,
-  title: 'Beyond the Practice',
-  text: '<p>The benefits of meditation go far beyond what you experience during the sessions.</p><p>It has the power to improve every aspect of your life, from your personal growth, to your work and family life, and can even spark immense creativity...</p>',
-  action: 'Get Inspired',
-  url: '/en/inspiration',
-  extra: {
-    image_id: attachment('static_pages/front/meditation.jpg', 'Meditation.jpg', :image, static_pages[:home]),
-    decorations: {
-      enabled: ['sidetext', 'triangle', 'gradient'],
-      options: {
-        sidetext: ['top-left'],
-        triangle: ['right'],
-        gradient: ['left', 'orange'],
+  {
+    type: :textbox,
+    data: {
+      image: content_attachment('static_pages/front/classes.jpg', static_pages[:home]),
+      title: 'Get Connected',
+      text: '<p>The experience of meditation is even stronger when it is shared! Discover the beauty of collective meditations, lead by experienced practitioners in hundreds of cities aroudn the world - always completely free.</p>',
+      action: 'Classes near me',
+      url: '/en/cities/local',
+      alignment: :left,
+      decorations: {
+        sidetext: 'Meditation Classes',
+        gradient: {
+          color: :gray,
+          alignment: :right,
+        },
       },
-      sidetext: 'Results?',
     },
-    color: 'light',
-  },
-}, {
-  content_type: :textbox,
-  format: :lefthand,
-  title: 'Get Connected',
-  text: '<p>The experience of meditation is even stronger when it is shared! Discover the beauty of collective meditations, lead by experienced practitioners in hundreds of cities aroudn the world - always completely free.</p>',
-  action: 'Classes near me',
-  url: '/en/cities/local',
-  extra: {
-    image_id: attachment('static_pages/front/events.jpg', 'Events.jpg', :image, static_pages[:home]),
-    decorations: {
-      enabled: ['sidetext', 'gradient'],
-      options: {
-        sidetext: ['top-left'],
-        gradient: ['right', 'gray'],
+  }, {
+    type: :header,
+    data: {
+      text: 'FAQ',
+      centered: true,
+    },
+  }, {
+    type: :link,
+    data: {
+      format: :articles,
+      items: Article.where(name: ['Why Meditate?', 'Is it right for me?', 'Who else is doing it?']).map { |article|
+        { id: article.id, name: article.name }
       },
-      sidetext: 'Meditation Classes',
     },
   },
-}, {
-  content_type: :special,
-  format: :articles,
-  extra: {
-    article_ids: Article.all.sample(4).map(&:id),
-  },
-}].each_with_index do |atts, index|
-  section = static_pages[:home].sections.find_or_initialize_by(order: index)
-  atts[:order] = index
-  section.update!(atts)
-end
+]))
 
 # ===== CREATE ABOUT PAGE SECTIONS ===== #
-[{
-  content_type: :text,
-  format: :just_text,
-  title: 'About We Meditate',
-  text: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante. Praesent venenatis libero ante, in vestibulum eros aliquam eu. Vivamus non efficitur turpis. Integer vitae nunc id ligula luctus mollis ut sit amet velit. Praesent congue sed mauris vitae aliquam.</p><p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p><p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>',
-}].each_with_index do |atts, index|
-  section = static_pages[:about].sections.find_or_initialize_by(order: index)
-  atts[:order] = index
-  section.update!(atts)
-end
+static_pages[:about].update!(content: content([
+  {
+    type: :header,
+    data: {
+      text: 'About We Meditate',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: sentences(5),
+    },
+  },
+]))
 
 # ===== CREATE CONTACT PAGE SECTIONS ===== #
-[{
-  content_type: :special,
-  format: :banner,
-  title: 'Contact Us',
-  action: 'Submit',
-  url: '#',
-  extra: {
-    desktop_image_id: attachment('static_pages/contact/banner.jpg', 'Banner.jpg', :image, static_pages[:contact]),
-    banner_style: 'contact_page',
-    color: 'light',
-  },
-}, {
-  content_type: :action,
-  format: :button,
-  action: 'Come Meditate',
-  url: '/en/cities/local',
-  extra: {
-    decorations: {
-      enabled: ['circle', 'gradient'],
-      options: {
-        gradient: ['right', 'orange'],
-      },
+static_pages[:contact].update!(content: content([
+  {
+    type: :form,
+    data: {
+      title: 'Still have questions? Get in touch',
+      action: 'Submit',
+      format: :contact,
     },
   },
-}, {
-  content_type: :special,
-  format: :local_contacts,
-  title: 'Contact any of these people for help',
-  action: 'Contact Them',
-  extra: {
-    items: [
-      { name: 'Celeste', location: 'New York' },
-      { name: 'Adam', location: 'Atlanta' },
-      { name: 'James', location: 'Los Angeles' },
-      { name: 'Anthony', location: 'Seattle' },
-      { name: 'Laura', location: 'Denver' },
-    ].each_with_index.map {|atts, i|
-      atts.merge({
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum accusantium beatae labore quod hic culpa officia ut eligendi unde, nemo veniam eius at molestiae voluptatibus, eaque maiores, illo quos totam?',
-        url: 'https://www.facebook.com/',
-        image_id: attachment("static_pages/contact/contacts/#{i+1}.jpg", "Contact #{i+1}.jpg", :image, static_pages[:contact]),
-      })
-    },
-  },
-}].each_with_index do |atts, index|
-  section = static_pages[:contact].sections.find_or_initialize_by(order: index)
-  atts[:order] = index
-  section.update!(atts)
-end
+]))
 
 # ===== CREATE SHRI MATAJI PAGE SECTIONS ===== #
-[{
-  content_type: :textbox,
-  format: :lefthand,
-  title: 'Founder of Sahaja Yoga',
-  text: '<p>Shri Mataji Nirmala Devi quietly transformed lives. For more than forty years, she travelled internationally, offering free public lectures and the experience of self-realization to all, regardless of race, religion or circumstance. She not only enabled people to pass this valuable experience on to others, but taught them the meditation technique necessary to sustain it, known as Sahaja Yoga.</p>',
-  extra: {
-    image_id: attachment('static_pages/shri-mataji/founder.jpg', 'Founder.jpg', :image, static_pages[:shri_mataji]),
-    decorations: {
-      enabled: ['sidetext'],
-      options: {
-        sidetext: ['top-left'],
+static_pages[:shri_mataji].update!(content: content([
+  {
+    type: :textbox,
+    data: {
+      image: content_attachment('static_pages/shri-mataji/founder.jpg', static_pages[:shri_mataji]),
+      title: 'The founder of Sahaja Yoga',
+      text: '<p>Shri Mataji Nirmala Devi discovered a unique method of meditation "Sahaja Yoga", which allows one to achieve inner enlightenment, and reveals the true potential of mankind. Shri Mataji devoted her entire life to the development and dissemination of this method, and today hundreds of thousands of people around the world practice Sahaja Yoga.</p>',
+      alignment: :left,
+      decorations: {
+        sidetext: 'The Founder',
+        circle: true,
       },
-      sidetext: 'Founder',
     },
   },
-}, {
-  content_type: :textbox,
-  format: :overtop,
-  title: 'What is Sahaja Yoga?',
-  text: '<p>Shri Mataji maintained that there is an innate spiritual potential within every human being, and it can be spontaneously awakened, bringing one into the state of spontaneous meditation. The inner balance and stress-reduction that accompanies the practice of Sahaja Yoga meditation has already benefited hundreds of thousands worldwide.</p><p>The ability to quickly and easily activate our innate, spiritual energy - and experience its benefits differentiates Sahaja Yoga from other forms of meditation. With practice, individuals are able to direct their own energy and redress mental, physical and emotional imbalances to achieve a state of well-being, serenity and fulfillment.</p>',
-  action: 'More about Sahaja Yoga',
-  url: '/en/page/about-sahaja-yoga',
-  extra: {
-    image_id: attachment('static_pages/shri-mataji/sahaja-yoga.jpg', 'Sahaja Yoga.jpg', :image, static_pages[:shri_mataji]),
-    decorations: {
-      enabled: ['sidetext', 'triangle'],
-      options: {
-        sidetext: ['top-left'],
-        triangle: ['right'],
-      },
-      sidetext: 'Sahaja Yoga',
+  {
+    type: :textbox,
+    data: {
+      image: content_attachment('static_pages/shri-mataji/master-of-yoga.jpg', static_pages[:shri_mataji]),
+      title: 'The great master of yoga',
+      text: '<p>Shri Mataji showed that within each person there is a motherly spiritual energy called "Kundalini", the awakening of which leads a person to a state of spontaneous meditation. Unlike many ancient teachers who were only able to share this experience with a few individuals, Shri Mataji could raise the Kundalini in thousands of people, which was previously considered impossible.</p><p>It is the opportunity to awaken this inner spiritual energy that distinguishes Sahaja Yoga from other methods of meditation. It is an extraordinary living experience which allows us to touch the very essence of ourselves, to uncover our very best qualities and to achieve a state of complete peace and satisfaction.</p>',
+      alignment: :center,
+      decorations: { triangle: { alignment: :left } },
     },
-    color: 'light',
-  },
-}, {
-  content_type: :special,
-  format: :try_meditation,
-  title: 'Meditation under the arm',
-  subtitle: 'Shri Mataji',
-  url: '/en/meditations/first-experience',
-  action: 'Try meditation right now',
-  extra: {
-    image_id: attachment('static_pages/shri-mataji/try-meditation.jpg', 'Try Meditation.jpg', :image, static_pages[:shri_mataji]),
-    video_id: attachment('general/video.mp4', 'Video.mp4', :image, static_pages[:shri_mataji]),
-  },
-}, {
-  content_type: :textbox,
-  format: :lefthand,
-  title: 'Social Work',
-  text: '<p>Brought up in a family that considered self-sacrifice the highest calling, Shri Mataji dedicated her life to a continuous program of public and spiritual work.She created charitable organizations such as the Vishwa Nirmala Prem Ashram for destitute women and orphan children, founded international schools promoting a holistic and balanced education, established health clinics, created a classical art academy, and much more. All of these endeavors complemented her global work of spiritual transformation.</p>',
-  extra: {
-    image_id: attachment('static_pages/shri-mataji/social-work.jpg', 'Social Work.jpg', :image, static_pages[:shri_mataji]),
-    decorations: {
-      enabled: ['sidetext'],
-      options: {
-        sidetext: ['top-left'],
-      },
-      sidetext: 'Social Work',
+  }, {
+    type: :video,
+    data: {
+      items: [vimeo_attachment],
     },
   },
-}, {
-  content_type: :textbox,
-  format: :righthand,
-  title: 'Shri Mataji\'s Family',
-  text: '<p>Brought up in a family that considered self-sacrifice the highest calling, Shri Mataji dedicated her life to a continuous program of public and spiritual work.She created charitable organizations such as the Vishwa Nirmala Prem Ashram for destitute women and orphan children, founded international schools promoting a holistic and balanced education, established health clinics, created a classical art academy, and much more. All of these endeavors complemented her global work of spiritual transformation.</p>',
-  extra: {
-    image_id: attachment('static_pages/shri-mataji/family.jpg', 'Family.jpg', :image, static_pages[:shri_mataji]),
-    decorations: {
-      enabled: ['sidetext', 'gradient'],
-      options: {
-        sidetext: ['top-right'],
-        gradient: ['right', 'blue'],
+  {
+    type: :textbox,
+    data: {
+      image: content_attachment('static_pages/shri-mataji/social-work.jpg', static_pages[:shri_mataji]),
+      title: 'A life dedicated to humanity',
+      text: '<p>Shri Mataji not only founded and spread the method of Sahaja Yoga far across the world, but also created many non-profit organizations in various fields of public life.</p><p>From a centre for destitute women and orphans and international schools with comprehensive and balanced education, to health centres using the methods of Sahaja Yoga and academies teaching classical arts - the list of Shri Mataji’s achievements is striking in its diversity.</p>',
+      alignment: :left,
+      stretch: true,
+      decorations: {
+        sidetext: 'Social Work',
+        gradient: { alignment: :right, color: :blue },
       },
-      sidetext: 'Family',
     },
   },
-}, {
-  content_type: :structured,
-  format: :grid,
-  title: 'Awards',
-  text: '<p>Phasellus tempor sem ut libero consectetur feugiat. Nulla ultrices ut felis id consequat. Nam semper vel augue sit amet semper. Donec ut feugiat purus. Duis facilisis, tellus vel pretium auctor, mauris odio ultricies ligula, eu scelerisque lorem lectus in erat. Duis quam orci, tristique ut iaculis ac, lacinia sit amet sem. Integer vitae lacinia enim, ut egestas eros. Proin feugiat id tortor a pulvinar. Nunc at augue iaculis, facilisis ex eget, vulputate dui.</p>',
-  extra: {
-    items: [
-      { title: 'Italy, 1986', text: 'Declared ‘Personality of the Year’ by the Italian Government.' },
-      { title: 'Moscow, Russia, 1989', text: 'Following Shri Mataji’s meeting with the USSR Minister of Health, Sahaja Yoga was granted full government sponsorship, including funding for scientific research.' },
-      { title: 'St. Petersburg, Russia, 1993', text: 'Appointed as Honorary Member of the Petrovskaya Academy of Art and Science. In the history of the Academy, only twelve people have been granted this honour, Einstein being one of them. Shri Mataji inaugurated the first International Conference on Medicine and Self-Knowledge, which became an annual event at the Academy thereafter.' },
-      { title: 'Italy, 1986', text: 'Declared ‘Personality of the Year’ by the Italian Government.' },
-      { title: 'Moscow, Russia, 1989', text: 'Following Shri Mataji’s meeting with the USSR Minister of Health, Sahaja Yoga was granted full government sponsorship, including funding for scientific research.' },
-      { title: 'St. Petersburg, Russia, 1993', text: 'Appointed as Honorary Member of the Petrovskaya Academy of Art and Science. In the history of the Academy, only twelve people have been granted this honour, Einstein being one of them. Shri Mataji inaugurated the first International Conference on Medicine and Self-Knowledge, which became an annual event at the Academy thereafter.' },
-    ],
+  {
+    type: :textbox,
+    data: {
+      image: content_attachment('static_pages/shri-mataji/family.jpg', static_pages[:shri_mataji]),
+      title: 'Life among great people',
+      text: '<p>Right from the beginning, Shri Mataji was always surrounded by outstanding people. Her parents were scholars and political activists who played an important role in the liberation movement of India, seeking independence of their country together with Mahatma Gandhi, who noticed the extraordinary potential of the young Shri Mataji and consulted her on spiritual issues.</p><p>Throughout her life, Shri Mataji was often in the circle of prominent political and public figures. Her husband, Sir Chandrika Prasad Srivastava, started out as a young officer in the Indian Civil Service but soon rose through the ranks to become Private Secretary to the Prime Minister of India, Lal Bahadur Shastri. Later, he was appointed Secretary General of the United Nations International Maritime Organisation in London, and served in this post for four successive terms. For his relentless dedication to public service and exceptional achievements, he was awarded a knighthood by Queen Elizabeth II, the first Indian to receive such honour after India gained independence. </p>',
+      alignment: :right,
+      stretch: true,
+      decorations: { sidetext: 'Family' },
+    },
+  }, {
+    type: :header,
+    data: {
+      text: 'Early Years',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: 'Shri Mataji was born on the 21st of March, 1923 in Chhindwara, India under the name of Nirmala Srivastava, into a truly unique family. Descended from the royal Shalivahana dynasty of India, she was raised Christian following her forefathers’ decision to convert from Hinduism in light of the cruel treatment of widows. Her parents were highly educated; her father a lawyer and scientist, fluently speaking 14 languages ​​and famous for translating the Qur\'an into Hindi, and her mother was the first woman in India to receive an honors degree in mathematics.',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: 'The parents of Shri Mataji also actively participated in the struggle for India\'s independence from British occupation, both jailed several times for their involvement. Shri Mataji herself often visited the ashram of Mahatma Gandhi as a child, discussing with him means to bring about social and spiritual liberation. In 1942, Shri Mataji, as a teenager, was even detained and tortured by British soldiers for participating in the liberation movement. However, this was considered a necessary sacrifice - so much was the conviction that the internal liberation of people can come only after the country\'s liberation from foreign rule.',
+    },
+  }, {
+    type: :image,
+    data: {
+      items: [{
+        image: content_attachment('static_pages/shri-mataji/early-years.jpg', static_pages[:shri_mataji]),
+        caption: 'Shri Mataji with family, second from the left, middle row. In the middle - Shri Mataji’s parents.',
+      }], # rubocop:disable Style/TrailingCommaInArrayLiteral
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: 'In 1947, Shri Mataji married a young political figure, Chandrika Prasad, later known as Sir CP, with whom she had two daughters. They led a family life in India, and Shri Mataji was a housewife and raised the daughters while Sir CP helped develop the newly liberated country and moved up the political ladder, serving in various posts in the state hierarchy. However, Shri Mataji always remembered her true destiny - the search for a method for the spiritual enlightenment of mankind.',
+    },
+  }, {
+    type: :quote,
+    data: {
+      text: 'When are you finally going to start your spiritual work? Now you are free, and you have to start.',
+      credit: 'Mahatma Gandhi',
+      caption: 'in a conversation with Shri Mataji, the day before he was assasinated',
+    },
+  }, {
+    type: :header,
+    data: {
+      text: 'The founding of ‘Sahaja Yoga’',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: 'Shri Mataji always knew that the meaning of her life was to find a way to teach as many people as possible the truth of meditation, because only through the inner transformation of every person can the whole society become harmonious.',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: 'She also saw how many people try to learn the truth, and how many so-called "gurus" use this pure impulse for their own enrichment. After attending a lecture of one of such pseudo-teachers, she saw how he manipulated people, and was absolutely disgusted by this attitude. Shri Mataji spent the whole of that night on a beach in Nargol, West India, contemplating this dilemma. She knew that in order for people to reach a higher awareness of themselves they must be able to go beyond their minds and be connected to their subtle being.',
+    },
+  }, {
+    type: :header,
+    data: {
+      text: 'From Nirmala to ‘Shri Mataji’',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: 'В скором времени Шри Матаджи начала обучать этому новому методу первых учеников в Индии. Это был непростой процесс – пробуждение кундалини - ведь издревне было известно, что только самые достойные йоги достигали такого пробуждения.',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: 'Однако присутствие Шри Матаджи и ее терпеливая работа над людьми, казалось, были катализатором этого процесса, и через некоторое время ее ученики достигали этого удивительного состояния внутренней свободы и легкости, а также чувствовали прохладый поток на ладонях и над головой. Именно из-за этого эффекта присутствия Шри Матаджи и ее терпеливой и бескорыстной работы над людьми, ее ученики дали ей имя «Шри Матаджи», что дословно означает «уважаемая (святая) мать».',
+    },
   },
-}].each_with_index do |atts, index|
-  section = static_pages[:shri_mataji].sections.find_or_initialize_by(order: index)
-  atts[:order] = index
-  section.update!(atts)
-end
-
-# ===== CREATE SUBTLE SYSTEM PAGE SECTIONS ===== #
-[{
-  content_type: :special,
-  format: :subtle_system,
-  title: 'Hover over a chakra to learn more',
-}].each_with_index do |atts, index|
-  section = static_pages[:subtle_system].sections.find_or_initialize_by(order: index)
-  atts[:order] = index
-  section.update!(atts)
-end
+  {
+    type: :textbox,
+    data: {
+      image: content_attachment('static_pages/shri-mataji/sharing-the-experience.jpg', static_pages[:shri_mataji]),
+      title: 'Sharing the experience',
+      text: '<p>Метод медитации, открытый Шри Матаджи, начал распространяться по всему миру после того, как она с семьей переехала Лондон: ее муж Сэр Си Пи был назначен главой морской организации ООН и был переведен на службу в этот город.</p><p>От первых учеников, которых Шри Матаджи буквально приютила в своем доме в Лондоне, обучая их основам медитации и постепенно восстанавливая их разрушенные тонкие тела, до выступлений на международных конференциях в многотысячных залах в столицах стран Европы и Америми, - учение Шри Матаджи находило отклик у самых разных частей общества по всему миру.</p>',
+      alignment: :left,
+      stretch: true,
+      decorations: {
+        sidetext: 'Spreading the Word',
+        gradient: { alignment: :right, color: :blue },
+      },
+    },
+  },
+  {
+    type: :textbox,
+    data: {
+      image: content_attachment('static_pages/shri-mataji/vision.jpg', static_pages[:shri_mataji]),
+      title: 'The global vision',
+      text: '<p>Right from the beginning, Shri Mataji was always surrounded by outstanding people. Her parents were scholars and political activists who played an important role in the liberation movement of India, seeking independence of their country together with Mahatma Gandhi, who noticed the extraordinary potential of the young Shri Mataji and consulted her on spiritual issues.</p><p>Throughout her life, Shri Mataji was often in the circle of prominent political and public figures. Her husband, Sir Chandrika Prasad Srivastava, started out as a young officer in the Indian Civil Service but soon rose through the ranks to become Private Secretary to the Prime Minister of India, Lal Bahadur Shastri. Later, he was appointed Secretary General of the United Nations International Maritime Organisation in London, and served in this post for four successive terms. For his relentless dedication to public service and exceptional achievements, he was awarded a knighthood by Queen Elizabeth II, the first Indian to receive such honour after India gained independence.</p>',
+      alignment: :right,
+      stretch: true,
+      decorations: { sidetext: 'Vision' },
+    },
+  }, {
+    type: :header,
+    data: {
+      text: 'Recognition around the world',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: 'Noble peace prize nomination twice. Personal recognition from Claes Nobel 1997 Mr. Claes Nobel, grandnephew of Alfred Nobel, chairman of United Earth and The National Society of High School Scholars, honoured the life and work of Shri Mataji in a public speech at the Royal Albert Hall.Recognizing the scientific and verifiable nature of her teachings, the Petrovskaya Academy of Arts and Sciences in St. Petersburg bestowed an Honorary Membership upon Shri Mataji, telling her, “You are even higher than science.”',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: 'Некоторые из выдающихся моментов жизни Шри Матаджи включают:',
+    },
+  }, {
+    type: :structured,
+    data: {
+      items: [
+        { title: 'Italy, 1986', text: 'Declared ‘Personality of the Year’ by the Italian Government.' },
+        { title: 'Moscow, Russia, 1989', text: 'Following Shri Mataji’s meeting with the USSR Minister of Health, Sahaja Yoga was granted full government sponsorship, including funding for scientific research.' },
+        { title: 'St. Petersburg, Russia, 1993', text: 'Appointed as Honorary Member of the Petrovskaya Academy of Art and Science. In the history of the Academy, only twelve people have been granted this honour, Einstein being one of them. Shri Mataji inaugurated the first International Conference on Medicine and Self-Knowledge, which became an annual event at the Academy thereafter.' },
+        { title: 'Italy, 1986', text: 'Declared ‘Personality of the Year’ by the Italian Government.' },
+        { title: 'Moscow, Russia, 1989', text: 'Following Shri Mataji’s meeting with the USSR Minister of Health, Sahaja Yoga was granted full government sponsorship, including funding for scientific research.' },
+        { title: 'St. Petersburg, Russia, 1993', text: 'Appointed as Honorary Member of the Petrovskaya Academy of Art and Science. In the history of the Academy, only twelve people have been granted this honour, Einstein being one of them. Shri Mataji inaugurated the first International Conference on Medicine and Self-Knowledge, which became an annual event at the Academy thereafter.' },
+      ],
+      format: :grid,
+    },
+  },
+]))
 
 # ===== CREATE SAHAJA YOGA PAGE SECTIONS ===== #
-[{
-  content_type: :text,
-  format: :just_text,
-  title: 'About Sahaja Yoga',
-  text: '<p>Coming soon</p>',
-}].each_with_index do |atts, index|
-  section = static_pages[:sahaja_yoga].sections.find_or_initialize_by(order: index)
-  atts[:order] = index
-  section.update!(atts)
-end
+static_pages[:sahaja_yoga].update!(content: content([
+  {
+    type: :header,
+    data: {
+      text: 'About Sahaja Yoga',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: 'Coming soon',
+    },
+  },
+]))
 
 # ===== CREATE TRACKS PAGE SECTIONS ===== #
-4.times.map {|i|
+static_pages[:tracks].update!(content: content([
   {
-    content_type: :text,
-    format: :just_text,
-    title: 'Header',
-    text: '<p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>',
-  }
-}.each_with_index do |atts, index|
-  section = static_pages[:tracks].sections.find_or_initialize_by(order: index)
-  atts[:order] = index
-  section.update!(atts)
-end
-
-# ===== CREATE TREATMENTS PAGE SECTIONS ===== #
-[{
-  content_type: :special,
-  format: :banner,
-  title: 'Awaken the inner energy!',
-  text: 'Before using methods to improve meditation, you need to awaken',
-  action: 'Vigorous',
-  url: '/en/meditations/first-experience',
-  extra: {
-    desktop_image_id: attachment('treatments/banner.png', 'Desktop Banner.png', :image, static_pages[:treatments]),
-    mobile_image_id: attachment('treatments/banner-mobile.png', 'Mobile Banner.png', :image, static_pages[:treatments]),
-    banner_style: 'treatments_page',
-    color: 'dark',
-  },
-}, {
-  content_type: :text,
-  format: :just_text,
-  title: 'Methods for improving meditation',
-  text: '<p>Using simple methods, a person gets the opportunity to purify his energy centers and thereby adjust the state of his organs and systems (blood, lymphatic, etc.).</p><p>In people who have received self-realization, without medicines, the blood composition is corrected, the metabolism is normalized, stress is eliminated - the cause of many complex diseases.</p>',
-}].each_with_index do |atts, index|
-  section = static_pages[:treatments].sections.find_or_initialize_by(order: index)
-  atts[:order] = index
-  section.update!(atts)
-end
-
-# ===== CREATE MEDITATIONS PAGE SECTIONS ===== #
-[{
-  content_type: :special,
-  format: :featured_meditations,
-  extra: {
-    daily_meditation: 'Meditation of the day',
-    trending_meditation: 'Trending now',
-    random_meditation: {
-      title: 'Let Fate Decide',
-      image_id: attachment('general/video.jpg', 'Random Meditation.png', :image, static_pages[:meditations]),
-      subtitle: 'Generate a random meditation',
-      text: 'Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.',
+    type: :header,
+    data: {
+      text: 'Header',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: sentences(4),
     },
   },
-}, {
-  content_type: :special,
-  format: :custom_meditation,
-  title: 'Set up your own Meditation',
-  action: 'Start meditation',
-  extra: {
-    goal_title: 'I want to feel',
-    goal_action: 'Choose feelings',
-    duration_title: 'I have',
-    duration_suffix: 'min',
-    decorations: {
-      enabled: ['sidetext'],
-      options: {
-        sidetext: ['top-left'],
-      },
-      sidetext: 'Set up your own Meditation',
+  {
+    type: :header,
+    data: {
+      text: 'Header',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: sentences(4),
     },
   },
-}].each_with_index do |atts, index|
-  section = static_pages[:meditations].sections.find_or_initialize_by(order: index)
-  atts[:order] = index
-  section.update!(atts)
-end
+  {
+    type: :header,
+    data: {
+      text: 'Header',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: sentences(4),
+    },
+  },
+  {
+    type: :header,
+    data: {
+      text: 'Header',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: sentences(4),
+    },
+  },
+]))
 
 # ===== CREATE TREATMENTS PAGE SECTIONS ===== #
-[{
-  content_type: :special,
-  format: :banner,
-  title: 'Awaken the inner energy!',
-  text: 'Before using methods to improve meditation, you need to awaken',
-  action: 'Vigorous',
-  url: '/en/meditations/first-experience',
-  extra: {
-    desktop_image_id: attachment('treatments/banner.png', 'Desktop Banner.png', :image, static_pages[:treatments]),
-    mobile_image_id: attachment('treatments/banner-mobile.png', 'Mobile Banner.png', :image, static_pages[:treatments]),
-    banner_style: 'treatments_page',
-    color: 'dark',
+static_pages[:treatments].update!(content: content([
+  {
+    type: :header,
+    data: {
+      text: 'Methods for improving meditation',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: 'The state of pure meditation is reached when the Kundalini energy within is raised through all of our energy centers, or chakras, Using some simple methods to cleanse our chakras we can make this process easier and thus achieve a longer and deeper experience of thoughtless awareness.',
+    },
   },
-}, {
-  content_type: :text,
-  format: :just_text,
-  title: 'Methods for improving meditation',
-  text: '<p>Using simple methods, a person gets the opportunity to purify his energy centers and thereby adjust the state of his organs and systems (blood, lymphatic, etc.).</p><p>In people who have received self-realization, without medicines, the blood composition is corrected, the metabolism is normalized, stress is eliminated - the cause of many complex diseases.</p>',
-}].each_with_index do |atts, index|
-  section = static_pages[:treatments].sections.find_or_initialize_by(order: index)
-  atts[:order] = index
-  section.update!(atts)
-end
-
-# ===== CREATE COUNTRY PAGE SECTIONS ===== #
-[{
-  content_type: :special,
-  format: :country,
-  title: 'It\'s much easier to meditate together!',
-  text: 'Come to free classes in your city',
-  extra: {
-    action_title: 'No classes in your city?',
-    action_subtitle: 'Visit the free webinar!',
-    action_text: 'Let\'s go',
-  },
-}].each_with_index do |atts, index|
-  section = static_pages[:country].sections.find_or_initialize_by(order: index)
-  atts[:order] = index
-  section.update!(atts)
-end
-
-# ===== CREATE WORLD PAGE SECTIONS ===== #
-[{
-  content_type: :special,
-  format: :world,
-  title: 'Find local classes near you',
-  text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-  action: 'Choose a country',
-}].each_with_index do |atts, index|
-  section = static_pages[:world].sections.find_or_initialize_by(order: index)
-  atts[:order] = index
-  section.update!(atts)
-end
-
-# ===== CREATE CITY PAGE SECTIONS ===== #
-[{
-  content_type: :special,
-  format: :banner,
-  title: 'Meditation in %city',
-  text: 'Free classes for beginners - unlock your true potential',
-  action: 'Join the class',
-  extra: { banner_style: 'city_page' }
-}, {
-  label: 'Better to Meditation Together',
-  content_type: :text,
-  format: :just_text,
-  title: 'Meditation works better in a group',
-  text: '<p>In congue elit eu accumsan egestas. Morbi vitae malesuada nisi. Duis elit dolor, varius feugiat tempus eu, dignissim ut lectus. Praesent sit amet est et nisl mattis facilisis. Cras sed mauris sed arcu fermentum interdum vel imperdiet enim. Nulla bibendum sed tortor vel rhoncus. Donec ac tellus accumsan nibh rutrum faucibus non non odio.</p>',
-}, {
-  content_type: :special,
-  format: :city_sections,
-}, {
-  content_type: :special,
-  format: :venue_map,
-}, {
-  content_type: :special,
-  format: :local_contacts,
-  title: 'Questions?',
-  subtitle: 'Ask the instructors directly!',
-  action: 'Ask',
-}, {
-  label: 'Frequently Asked Questions',
-  content_type: :text,
-  format: :just_text,
-  title: 'FAQ',
-  text: '<p><strong>What to bring with me?</strong></p><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet harum iste similique, vel, cupiditate modi voluptatibus necessitatibus eaque ut rem, esse corrupti vero itaque eos fugiat quisquam ipsum mollitia libero.</p><p><strong>Why is it free?</strong></p><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet harum iste similique, vel, cupiditate modi voluptatibus necessitatibus eaque ut rem, esse corrupti vero itaque eos fugiat quisquam ipsum mollitia libero.</p>',
-}, {
-  label: 'Sign Up Button',
-  content_type: :action,
-  format: :button,
-  action: 'Sign up for a free class',
-  url: '#signup',
-}].each_with_index do |atts, index|
-  section = static_pages[:city].sections.find_or_initialize_by(order: index)
-  atts[:order] = index
-  section.update!(atts)
-end
+]))
 
 puts ' -- Finished Static Page Seeds -- '
+# rubocop:enable Layout/IndentArray

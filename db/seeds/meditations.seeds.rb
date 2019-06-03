@@ -1,5 +1,5 @@
+require_relative 'support'
 
-file_root = Rails.root.join('db/seeds/files')
 puts ' -- Start Meditation Seeds -- '
 
 # ===== CREATE GOALS ===== #
@@ -7,7 +7,7 @@ goal_filters = {}
 
 [
   'Calm', 'Self-confident', 'Satisfied', 'Creative', 'Focused', 'Joyful', 'Love',
-  'Self-esteem', 'Humble', 'Silence', 'Harmony', 'Balanced', 'Dynamic', 'Happy'
+  'Self-esteem', 'Humble', 'Silence', 'Harmony', 'Balanced', 'Dynamic', 'Happy',
 ].each_with_index do |name, index|
   key = name.underscore.to_sym
   goal_filters[key] = GoalFilter.find_or_initialize_by(order: index)
@@ -23,39 +23,39 @@ end
 # ===== CREATE DURATIONS ===== #
 duration_filters = {}
 
-[10, 5, 2].each_with_index do |minutes, index|
+[20, 10, 5].each do |minutes|
   duration_filters[minutes] = DurationFilter.find_or_initialize_by(minutes: minutes)
-  duration_filters[minutes].update!({minutes: minutes})
+  duration_filters[minutes].update!(minutes: minutes)
   puts "Created Duration Filter - #{minutes}"
 end
 
 # ===== CREATE TRACKS ===== #
 [{
   name: 'First Meditation Experience',
-  goal_filters: [:harmony, :self_confident],
-  duration_filter: 5,
-}, {
-  name: 'Silent Meditation',
-  goal_filters: [:silence, :calm],
-  duration_filter: 2,
-}, {
-  name: 'Long Meditation',
-  goal_filters: [:love],
+  goal_filters: %i[harmony self_confident],
   duration_filter: 10,
 }, {
-  name: 'Four Petals',
-  goal_filters: [:balanced],
+  name: 'Silent Meditation',
+  goal_filters: %i[silence calm],
   duration_filter: 5,
 }, {
+  name: 'Long Meditation',
+  goal_filters: %i[love],
+  duration_filter: 20,
+}, {
+  name: 'Four Petals',
+  goal_filters: %i[balanced],
+  duration_filter: 10,
+}, {
   name: 'Balancing',
-  goal_filters: [:balanced],
-  duration_filter: 2,
-}].each_with_index do |atts, index|
+  goal_filters: %i[balanced],
+  duration_filter: 5,
+}].each_with_index do |atts, index| # rubocop:disable Style/TrailingCommaInArrayLiteral
   atts[:image] = file_root.join("meditations/background-#{(index % 2) + 1}.jpg").open
   atts[:video] = file_root.join('general/video.mp4').open
-  atts[:goal_filters].map! {|k| goal_filters[k]}
+  atts[:goal_filters].map! { |k| goal_filters[k] }
   atts[:duration_filter] = duration_filters[atts[:duration_filter]]
-  atts[:excerpt] = 'Sahaja Yoga is a method of obtaining a real experience of introspection and worldview.'
+  atts[:excerpt] = 'Feel like you’re in need of a pick me up? Banish those negative thoughts which are putting you down and boost your confidence.'
   Meditation.find_or_initialize_by(name: atts[:name]).update!(atts)
   puts "Created Meditation - #{atts[:name]}"
 end

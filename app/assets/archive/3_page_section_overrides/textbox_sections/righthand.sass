@@ -1,0 +1,36 @@
+@import "../../../mixins/*"
+
+section.type-textbox.format-righthand
+  .text-box-overlay
+    @include tablet
+      position: static
+      min-height: 0
+      width: 100%
+
+  .text-box-overlay
+    @include laptop
+      right: 10.5%
+      left: auto
+
+    @include desktop
+      right: 13.25%
+      left: auto
+
+  .text-box
+    @include tablet
+      max-width: none
+      width: auto
+
+    @include laptop-or-larger
+      padding-top: 89px
+      padding-left: 114px
+      padding-right: 24px
+
+  .image
+    margin-left: -$gutter-width
+
+    @include tablet-or-larger
+      margin-left: 0
+
+    img
+      float: left

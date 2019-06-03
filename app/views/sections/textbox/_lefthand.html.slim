@@ -1,26 +1,11 @@
 
-//.container
-  = sidetext(section)
-  - if section.has_decoration? :triangle
-    .container.with.right.triangle.decoration class=section.decoration_options(:triangle)
-  //- if section.has_decoration? :circle
-    .circle = inline_svg 'graphics/circle.svg'
-  .image class="#{'with circle decoration' if section.has_decoration?(:circle)}"
-    img alt=section.image.identifier src=section.image.url
-  .content
-    .content-box
-      h2.title = section.title
-      = section.text&.html_safe
-      - if section.action.present? and section.url.present?
-        a.box.button href=section.url = section.action
-
 .wrapper-outer
   = sidetext(section)
   - if section.has_decoration? :triangle
     .container.with.right.triangle.decoration class=section.decoration_options(:triangle)
 
   .image class="#{'with-decoration circle' if section.has_decoration?(:circle)}"
-    img alt=section.image.identifier src=section.image.url
+    = smart_image_tag section.image, '(max-width: 767px) calc(60vw - 48px), 50vw'
 
   .text-box-overlay
     .text-box

@@ -1,8 +1,7 @@
 module Admin
   class SubtleSystemNodesController < Admin::ApplicationRecordController
-    prepend_before_action do
-      set_model SubtleSystemNode
-    end
+
+    prepend_before_action { @model = SubtleSystemNode }
 
     def new
       @record = SubtleSystemNode.new role: params[:role]
@@ -24,9 +23,10 @@ module Admin
     end
 
     protected
+
       def subtle_system_node_params
         if policy(@record || SubtleSystemNode).update_structure?
-          params.fetch(:subtle_system_node, {}).permit(:name, :slug, :excerpt, :role, metatags: {})
+          params.fetch(:subtle_system_node, {}).permit(:name, :slug, :excerpt, :role, :content, metatags: {})
         else
           params.fetch(:subtle_system_node, {}).permit(:name, :excerpt)
         end

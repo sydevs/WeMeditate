@@ -1,10 +1,15 @@
+@import './vars'
 
 /* FUNCTIONS
   This file defines functions that are used through the front-end sass code.
   */
 
+// When you use purely transparent values it can mess up gradient rendering on some sites.
+@mixin gradient($direction, $color)
+  background: linear-gradient($direction, rgba(255,255,255,.01) 0, rgba(255,255,255,0.18) 25%, map-get($color-gradient, #{$color}) 100%)
+
 // A shorthand to create an absolute positioning
-@mixin overlay($top, $bottom, $left, $right)
+@mixin overlay($top: 0, $bottom: 0, $left: 0, $right: 0)
   position: absolute
   top: $top
   bottom: $bottom
@@ -12,10 +17,19 @@
   right: $right
 
 // A shorthand to scale the triangle decoration which is used in various parts of the site
-@mixin triangle-size($size)
-  bottom: -108px * $size
-  width: 284px * $size
-  height: 250px * $size
+// TODO: Deprecated
+@mixin triangle-size($size, $offset: null)
+  &:after
+    bottom: -108px * $size
+    width: 284px * $size
+    height: 250px * $size
+
+  @if $offset != null
+    &.triangle--right:after
+      right: $offset
+
+    &.triangle--left:after
+      left: $offset
 
 // Complete definition for a font
 @mixin font-face($font-family, $file-path, $weight: normal, $style: normal)
@@ -39,15 +53,26 @@
   to
     transform: scale3d(1, 1, 1)
 
+// Implements a background image which is roughly responsive to screen size and dpi.
+// Assumes that the file has `mobile`, `tablet`, and `desktop` variations.
+@mixin responsive-background($path, $extension)
+  background-image: image-url("#{$path}-mobile.#{$extension}")
 
-// TODO: Evaluate if these equalize animations are being used, and if so comment them properly
-@mixin equalize-animation
-  animation: equalize .5s ease infinite
+  @media (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px}), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+    background-image: image-url("#{$path}-tablet.#{$extension}")
 
-@mixin equalize-animation-2
-  animation: equalize .5s linear infinite
+  @media (min-width: #{$laptop-width}), (min-width: #{$tablet-width}) and (-webkit-min-device-pixel-ratio: 2), (min-width: #{$tablet-width}) and (min-resolution: 192dpi)
+    background-image: image-url("#{$path}-desktop.#{$extension}")
 
-@keyframes equalize
+
+// These mixins are used to animate the equalizer animation that is shown in the play button when you are listening to a music track.
+@mixin equalizer-animation
+  animation: equalizer 0.5s ease infinite
+
+@mixin equalizer-animation-2
+  animation: equalizer 0.5s linear infinite
+
+@keyframes equalizer
   from
     transform: translate3d(0,0,0)
   50%

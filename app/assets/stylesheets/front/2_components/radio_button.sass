@@ -1,0 +1,53 @@
+@import "../../mixins/*"
+
+/* RADIO BUTTONS
+  This file defines styles for a special type of large radio button set used on the meditations page.
+  This is not styling for the basic `input[type=radio]` element, which should be defined in `forms.sass`
+  */
+
+.radio_group--error .radio__button
+  border-color: $color-error
+
+.radio
+  display: inline-block
+  cursor: pointer
+  width: 92px
+  height: 92px
+  margin: 0 6px
+
+  @include tablet
+    width: 70px
+    height: 70px
+
+  @include widescreen
+    width: 122px
+    height: 122px
+
+  &__button
+    border: 1px solid $color-text-dark
+    border-radius: 100%
+    width: 100%
+    height: 100%
+    cursor: pointer
+
+    display: flex
+    justify-content: center
+    align-items: center
+    transition: all 0.2s ease
+
+    background: transparent
+    color: $color-text-dark
+    font-weight: $font-bold
+    font-size: 1.6rem
+
+    @include tablet
+      font-size: 1.4rem
+
+  > input
+    display: none
+
+    // Highlight the corresponding button if the input has been selected
+    &:checked + .radio__button
+      color: $color-text-inverse
+      background: $color-text-blue
+      border: 1px solid $color-text-blue

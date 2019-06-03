@@ -1,0 +1,35 @@
+@import "../../mixins/*"
+
+/* QUOTE
+  This file defines styling for a quote block that might be included in article or any other page.
+  */
+
+.quote
+  margin: 72px 0
+  color: $color-text-dark
+
+  @include laptop-or-larger
+    margin-bottom: 80px
+
+  &-text, &-credit
+    font-weight: $font-medium
+    font-size: 1.6rem
+    line-height: 1.875
+
+  &-text
+    margin-bottom: 24px
+
+    @include laptop-or-larger
+      font-size: 2.3rem
+      line-height: 1.6
+      margin-bottom: 16px
+
+  &-credit
+    @include laptop-or-larger
+      font-size: 1.8rem
+      line-height: 1.4
+
+  &-subtitle
+    font-weight: $font-light
+    font-size: 1.4rem
+    line-height: 30px

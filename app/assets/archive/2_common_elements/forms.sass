@@ -1,0 +1,118 @@
+@import "../../mixins/*"
+
+/* FORM
+  This file defines basic styling for forms used across the site.
+  */
+
+.form
+  &-fields
+    max-width: 510px
+    margin: auto
+
+  &-message
+    &.positive
+      color: darken($color-text-blue, 20%)
+
+    &.negative
+      color: $color-text-orange
+
+input, textarea, select
+  width: 100%
+  font-size: 1.3rem
+  line-height: 1.154
+  outline: transparent
+  background-color: transparent
+  border-radius: 0
+  padding: 8px 0
+  color: $color-text-dark
+  border: none
+  border-bottom: 1px solid $color-text-normal
+  margin-bottom: 1.5em
+  -webkit-appearance: none
+
+  @include laptop-or-larger
+    font-size: 1.6rem
+    padding: 16px 0
+
+  &:disabled
+    color: $color-text-light
+    border: none
+
+textarea
+  resize: vertical
+
+// ===== INLINE FORM ===== //
+// An inline form is a special kind of pre-styled form, which is expected to take the entire page width.
+.inline.form
+  width: 100%
+  @include gradient(to right, transparentize(#FAF0E3, 0.01))
+  text-align: center
+
+  .wrapper-inner
+    padding-top: 56px
+    padding-bottom: 56px
+
+    @include laptop-or-larger
+      padding-top: 115px
+      padding-bottom: 115px
+
+  .form
+    &-title
+      font-weight: $font-medium
+      font-size: 2.2rem
+      line-height: 1.3636
+      margin-bottom: 4px
+
+      @include laptop-or-larger
+        font-size: 3rem
+
+    &-subtitle
+      font-weight: $font-normal
+      font-size: 1.7rem
+      line-height: 1.7647
+      margin-bottom: 6px
+
+      @include laptop-or-larger
+        line-height: 1
+        margin-bottom: 24px
+
+    &-description
+      color: $color-text-dark
+      font-weight: $font-semibold
+      font-size: 1.5rem
+      line-height: 1.7335
+      margin-bottom: 46px
+      padding: 0 ($gutter-width / 2)
+
+      @include laptop-or-larger
+        font-size: 2.3rem
+        margin-bottom: 55px
+
+    &-fields
+      margin-top: 46px
+      margin-bottom: 62px
+
+      @include laptop-or-larger
+        margin-bottom: 70px
+
+      > *:last-child
+        margin-bottom: 0
+
+  .divider.up
+    margin-bottom: 34px
+
+    @include laptop-or-larger
+      margin-bottom: 54px
+
+  .divider.down
+    margin-top: 34px
+
+    @include laptop-or-larger
+      margin-top: 54px
+
+  .button-box
+    background: transparent
+    width: 230px
+
+    &:hover:not(.disabled)
+      border-color: $color-text-normal

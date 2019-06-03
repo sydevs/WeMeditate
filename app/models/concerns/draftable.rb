@@ -3,10 +3,11 @@
 # before it is reflected in the public-facing website.
 
 module Draftable
+
   extend ActiveSupport::Concern
 
   included do |base|
-
+    # Do nothing for now
   end
 
   def published?
@@ -27,31 +28,30 @@ module Draftable
     changes.each do |key, (old_value, new_value)|
       if key == 'extra'
         self[key] = old_value
-        draft[key] = new_value.map{ |key, new_val| [key, new_val] if new_val != old_value[key] }.compact.to_h
+        draft[key] = new_value.map { |child_key, new_val| [child_key, new_val] if new_val != old_value[child_key] }.compact.to_h
       elsif key != 'label'
         self[key] = old_value
         draft[key] = new_value
       end
     end
 
-    puts "SET DRAFT #{draft.inspect}"
     self[:draft] = draft
   end
 
   def reify_draft!
-    if draft.present?
-      draft.each do |key, value|
-        if key == 'extra'
-          self[key].merge!(value)
-        else
-          self[key] = value
-        end
+    return unless draft.present?
+
+    draft.each do |key, value|
+      if key == 'extra'
+        self[key].merge!(value)
+      else
+        self[key] = value
       end
     end
   end
 
   def discard_draft!
-    draft = nil
+    self.draft = nil
   end
 
 end

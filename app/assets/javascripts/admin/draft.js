@@ -27,7 +27,6 @@ const Draft = {
         break
       case 'collection':
       case 'association':
-        console.log('set select', $field.find('select'), value)
         $field.find('.ui.selection').dropdown('set selected', value)
         break
       case 'media':
@@ -35,48 +34,49 @@ const Draft = {
         Media.set_value(value)
         break
       case 'decorations':
-        console.log('reset', value)
         if (typeof value === 'undefined') value = { enabled: [], options: {} }
-
-        // Loop through each decoration
-        $decorations = $field.children('.decoration').each((_, decoration) => {
-          console.log('set decoration', decoration)
-          $decoration = $(decoration)
-          $checkbox = $decoration.find('input[type=checkbox]')
-          console.log($checkbox)
-          type = $checkbox.val() // Get the type of the decoration
-          enabled = value.enabled.indexOf(type) != -1
-
-          // Set the checkbox value
-          $checkbox.prop('checked', enabled)
-
-          if (enabled) {
-            // Loop through each dropdown
-            console.log(type, 'vs', value.options)
-            if (type in value.options) {
-              $decoration.find('.ui.dropdown').each((_, dropdown) => {
-                $dropdown = $(dropdown)
-                $dropdown.find('.item').each((_, item) => {
-                  console.log('dropdown test', item.dataset.value, 'vs', value.options[type])
-                  if (value.options[type].indexOf(item.dataset.value) != -1) {
-                    $dropdown.dropdown('set selected', item.dataset.value)
-                  }
-                })
-              })
-            } else {
-              $decoration.find('.ui.dropdown').dropdown('clear')
-            }
-
-            if (type == 'sidetext') $decoration.find('.section_extra_sidetext > input').val(value.sidetext)
-          } else {
-            $decoration.find('.ui.dropdown').dropdown('clear')
-            if (type == 'sidetext') $decoration.find('.section_extra_sidetext > input').val('')
-          }
-        })
+        Draft.set_decorations($field, value)
+        break
+      case 'repeatable':
+        RepeatableFields.reset($field, value)
         break
       default:
         console.error('TODO: Draft reset is not yet implemented for', $field.data('draft'))
     }
+  },
+
+  set_decorations($field, value) {
+    // Loop through each decoration
+    $decorations = $field.children('.decoration').each((_, decoration) => {
+      $decoration = $(decoration)
+      $checkbox = $decoration.find('input[type=checkbox]')
+      type = $checkbox.val() // Get the type of the decoration
+      enabled = value.enabled.indexOf(type) != -1
+
+      // Set the checkbox value
+      $checkbox.prop('checked', enabled)
+
+      if (enabled) {
+        // Loop through each dropdown
+        if (type in value.options) {
+          $decoration.find('.ui.dropdown').each((_, dropdown) => {
+            $dropdown = $(dropdown)
+            $dropdown.find('.item').each((_, item) => {
+              if (value.options[type].indexOf(item.dataset.value) != -1) {
+                $dropdown.dropdown('set selected', item.dataset.value)
+              }
+            })
+          })
+        } else {
+          $decoration.find('.ui.dropdown').dropdown('clear')
+        }
+
+        if (type == 'sidetext') $decoration.find('.section_extra_sidetext > input').val(value.sidetext)
+      } else {
+        $decoration.find('.ui.dropdown').dropdown('clear')
+        if (type == 'sidetext') $decoration.find('.section_extra_sidetext > input').val('')
+      }
+    })
   },
 }
 

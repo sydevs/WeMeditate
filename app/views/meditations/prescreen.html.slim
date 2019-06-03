@@ -1,0 +1,32 @@
+
+main
+  h1.banner = @static_page.name
+
+  .meditations__prescreen
+    .meditations__gradient.gradient.gradient--blue.gradient--left
+
+    .meditations__prescreen__content
+      .meditations__prescreen__title
+        - kundalini = "<abbr title=\"#{t('meditations.prescreen.explanation')}\">#{t('meditations.prescreen.kundalini')}</abbr>"
+        = translate('meditations.prescreen.title', kundalini: kundalini).html_safe
+
+      .meditations__prescreen__explanation
+        = translate 'meditations.prescreen.explanation'
+        a href='#'
+          = translate 'meditations.prescreen.learn_more'
+          i.breadcrumb.icon
+
+      button.meditations__prescreen__action.button.button--circle type='submit'
+        = inline_svg 'graphics/circle.svg'
+        .button__text = translate 'meditations.prescreen.action'
+
+      .meditations__prescreen__skip
+        span = translate 'meditations.prescreen.skip_text'
+        a href=meditations_path(prescreen: false)
+          = translate 'meditations.prescreen.skip_action'
+          i.breadcrumb.icon
+
+    // TODO: Render this with static_image_tag
+    img.meditations__image src=image_path('meditations/splash.jpg')
+
+  = render_content @static_page

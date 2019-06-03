@@ -2,37 +2,39 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
 
+  get '404', to: 'application#error'
+  get '422', to: 'application#error'
+  get '500', to: 'application#error'
   get 'switch_user' => 'switch_user#set_current_user'
   get :maintenance, to: 'application#maintenance'
+  get 'robots.txt', to: 'application#robots', defaults: { format: :txt }
   get '/', to: redirect('/en')
 
   scope ':locale' do
     localized do
-      root to: 'application#front'
+      root to: 'application#home'
 
       namespace :admin do
         root to: 'application#dashboard'
-
-        resources :cities, only: [] do
-          get :lookup, on: :collection, constraints: { format: 'json' }
-        end
 
         resources :treatments, :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters, :sections, only: [] do
           put :sort, on: :collection
         end
 
-        resources :articles, :static_pages, :cities, :subtle_system_nodes, except: [:destroy] do
-          resources :media_files, only: [:index, :create]
-          resources :sections, only: [:new, :create]
+        resources :articles, :static_pages, :subtle_system_nodes, except: %i[destroy] do
+          get :write, on: :member
+          resources :media_files, only: %i[index create]
+          resources :sections, only: %i[new create]
         end
 
-        resources :articles, :cities, :subtle_system_nodes, only: [:destroy]
+        resources :articles, :subtle_system_nodes, only: %i[destroy]
 
         resources :users, :artists, :treatments, :meditations, :tracks, :sections,
                   :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters,
-                  only: [:index, :new, :edit, :create, :update, :destroy]
+                  only: %i[index new edit create update destroy]
 
-        resources :sections, only: [:edit, :update, :destroy]
+        resources :sections, only: %i[edit update destroy]
+
 =begin
         resources :media_files, only: [:index, :create] do
           get :clean, to: 'media_files#trash', on: :collection
@@ -43,30 +45,23 @@ Rails.application.routes.draw do
 
       post :contact, to: 'application#contact'
       post :subscribe, to: 'application#subscribe'
+      get :map, to: 'application#map'
 
-      resources :articles, only: [:index, :show], path: 'inspiration' do
+      resources :articles, only: %i[show] do
         get '/category/:category_id', on: :collection, action: :index
       end
 
-      resources :cities, only: [:show, :index] do
-        post :register, on: :member
-        get :local, on: :collection
-      end
-
-      get '/countries/:country_code', controller: :cities, action: :country, as: :country
-
-      resources :meditations, only: [:index, :show] do
+      resources :meditations, only: %i[index show] do
         get :random, on: :collection
         post :find, on: :collection
         post :record_view, on: :member
       end
 
-      #resources :categories, only: [:show] # TODO: Remove this
-      resources :treatments, only: [:index, :show], path: 'techniques'
-      resources :tracks, only: [:index], path: 'music'
-      resources :static_pages, only: [:show], path: 'page'
-      resources :subtle_system_nodes, only: [:index, :show], path: 'subtle_system'
+      resources :categories, only: %i[index show], path: 'inspiration'
+      resources :treatments, only: %i[index show], path: 'techniques'
+      resources :tracks, only: %i[index], path: 'music'
+      resources :static_pages, only: %i[show], path: 'page'
+      resources :subtle_system_nodes, only: %i[index show], path: 'subtle_system'
     end
   end
-
 end

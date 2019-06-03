@@ -1,0 +1,58 @@
+
+/*.ce-block:not(.ce-block--focused)
+  .cdx-link__search_wrapper,
+  .cdx-link__search_results
+    display: none !important*/
+
+.cdx-link__format
+  margin: 2px
+  margin-bottom: 5px
+  font-size: 1.2em
+
+.cdx-link__format .icon
+  margin-right: 8px
+
+// ITEM LISTS
+.cdx-link .ui.list
+  margin: 0
+  padding: 3px 5px
+
+  i.plus.icon:hover
+    color: #21BA45
+
+  i.check.icon
+    color: #21BA45
+
+  i.check.icon:hover
+    color: #DB2828
+
+  i.check.icon:hover:before
+    content: "\f056"
+
+// FIELDS
+.cdx-link
+  &__search_wrapper
+    margin-top: 15px
+
+// TUNES
+.cdx-link
+  &--button
+    text-align: center
+
+    .cdx-link__items__container,
+    .cdx-link__search_results,
+    .cdx-link__search_wrapper
+      display: none !important
+
+  &--articles,
+  &--treatments
+    border: 1px solid rgba(0, 0, 0, 0.2)
+    border-left: none
+    border-right: none
+    padding: 5px
+    padding-bottom: 10px
+    margin: 3em 0
+
+    .cdx-link__action,
+    .cdx-link__url
+      display: none !important

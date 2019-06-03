@@ -1,0 +1,17 @@
+
+.actions_footer
+  .actions_footer__lead
+    .actions_footer__title = t('actions_footer.title')
+    .actions_footer__subtitle = t('actions_footer.subtitle')
+
+  .actions_footer__sidetext_wrapper
+    .actions_footer__sidetext
+      .sidetext.sidetext--overlay.sidetext--left = t('actions_footer.sidetext')
+
+  .actions_footer__content
+    a.actions_footer__item href=meditations_url
+      i.meditation.icon
+      .actions_footer__item__title = t('actions_footer.actions.online')
+    a.actions_footer__item href='#'
+      i.location.icon
+      .actions_footer__item__title = t('actions_footer.actions.local')

@@ -1,4 +1,8 @@
 
+/- image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 1197px) calc(34vw - 32px), (max-width: 1599px) 270px, (max-width: 2179px) 320px, 360px'
+// This is a simplified version of the above sizes, which takes advantage of the fact that we know that the small image is 360px
+// So the last 3 rules from the above ruleset would resolve to the same image.
+- image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 1197px) calc(34vw - 32px), 360px'
 - image_ids = section.extra_attr('image_ids', [])
 
 .wrapper-outer
@@ -7,7 +11,8 @@
   .grid.items id="grid-#{dom_id section}"
     .grid-sizer
     - image_ids.each_with_index do |image_id, index|
-      img.grid-item class="#{'initial' if index < 9}" src=section.image(image_id).url
+      /img.grid-item class="#{'initial' if index < 9}" src=section.image(image_id).url
+      = smart_image_tag section.image(image_id), '', class: "grid-item #{'initial' if index < 9}"
 
   - if image_ids.length > 9
     nav.filter-group.outline data-group='amount' data-for="grid-#{dom_id section}"

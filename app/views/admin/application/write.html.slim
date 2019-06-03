@@ -1,0 +1,54 @@
+
+- content_for :title, t('action.target.write', target: @record.model_name.human)
+- allow = policy(@record)
+- data = { content: @record.content || {}, upload: url_for([:admin, @record, :media_files]), triangle: image_path('graphics/triangle.svg') }
+
+= simple_form_for [:admin, @record], html: { id: "editor-form" } do |f|
+  = f.hidden_field :content, as: :hidden, id: 'content-input'
+
+  - if @splash_style
+    #splash-editor.ce-block data-style=@splash_style
+      .cdx-splash.cdx-block class="cdx-splash--#{@splash_style}"
+        #splash-background
+          #splash-background-image
+          #splash-title.cdx-input.cdx-input--title contenteditable=true data-placeholder="Enter some leading text"
+          #splash-text.cdx-input.cdx-input--text contenteditable=true data-placeholder="Enter a subtitle"
+          #splash-action.cdx-input.cdx-input--button contenteditable=true data-placeholder="Button Text"
+          #splash-url.cdx-input.cdx-input--url contenteditable=true data-placeholder="Enter url link"
+
+        #splash-uploader
+
+
+  #content-editor data=data
+
+  p
+    - if allow.show?
+      a.ui.basic.button href=url_for([:admin, @record])
+        i.left.arrow.icon
+        = translate 'action.back'
+    - else
+      a.ui.basic.button href=url_for([:admin, defined?(@record.page) ? @record.page : @record.class])
+        i.left.arrow.icon
+        = translate 'action.target.back', target: @record.model_name.human(count: -1)
+
+    - if allow.publish?
+      button.ui.basic.positive.button type='submit' name='draft' value='true'
+        = translate 'action.update'
+
+      button.ui.basic.positive.button type='submit' name='preview' value='true'
+        = translate 'action.preview'
+
+      - unless @record.is_a? Article and @record.new_record?
+        button.ui.basic.primary.button type='submit'
+          = translate 'action.publish'
+    - else
+      button.ui.basic.positive.button type='submit'
+        = translate 'action.update'
+
+    div#upload-loader style='display: none'
+      i.notched.circle.loading.icon
+      span
+
+hr
+code = @record.content.inspect
+//code = JSON.parse(@record.content).inspect

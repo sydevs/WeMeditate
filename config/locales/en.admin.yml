@@ -4,21 +4,19 @@ en:
     view_site: View Site
     view_admin: Go To Admin Dashboard
     search: Search...
-    sing_in: Log In
+    sign_in: Log In
     sign_out: Log Out
     show: View
+    preview: Preview
     update: Save
-    update_draft: Save Draft
+    publish: Publish
     cancel: Cancel
     create: New
     edit: Edit
+    write: Write
     destroy: Delete
-    retry: Retry
-    close: Close
-    select: Select
     back: Back
     clean_up: Clean Up
-    publish: Publish
     draft:
       reset: Discard Draft Value
       redo: Use Draft Value
@@ -27,6 +25,7 @@ en:
     target:
       upload: Upload %{target}
       edit: Edit %{target}
+      write: Write %{target}
       reset: Reset %{target}
       add: Add %{target}
       create: New %{target}
@@ -66,7 +65,6 @@ en:
     not_set: Not Set
     untranslated_pages: Untranslated Pages
     untranslated_resources: Untranslated Resources
-    available_cities: Cities in %{language}
     pending_users: Pending Invitations
     empty_model_table: None
     latlong_not_found: Coordinates Not Found
@@ -74,10 +72,6 @@ en:
     has_draft: Has Pending Changes
     drop_files_here: Drop files here
     cant_add_media_to_new_record: You must save this %{target} before you can add media to it.
-    city_content_placeholder: Each city page may define custom page content. That content will be inserted here.
-    city_contacts_placeholder: A list of local contacts for this city will go here.
-    city_map_placeholder: A map of the city's classes will go here.
-    city_registration_placeholder: A signup form for the cities classes will go here.
     result:
       created: Created successfully.
       updated: Saved successfully.
@@ -100,7 +94,7 @@ en:
       date: :date.formats.default
   date:
     formats:
-      default: '%d.%m.%Y'
+      default: '%d %b %Y'
       date: :date.formats.default
   misc:
     dashboard: Dashboard
@@ -116,5 +110,5 @@ en:
       chakra_overview: Chakra Overview
       in_daily_life: In Daily Life
       shri_mataji_video: Shri Mataji's Video
-      ancient_wisdom: Ancient Wisdom
+      ancient_wisdom: Ancient Knowledge
 

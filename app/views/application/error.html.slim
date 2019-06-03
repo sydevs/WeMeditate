@@ -1,0 +1,12 @@
+
+h1.banner.wrapper-outer = translate 'errors.title'
+
+.wrapper-inner
+  h2.error-subtitle = translate "errors.#{response.status}", default: :'errors.500'
+  p.error-status = "(#{response.status})"
+
+  p.error-list-title = translate 'errors.choices'
+  ul.error-list.list
+    - %i[meditations tracks articles].each do |role|
+      - page = static_page_preview_for(role)
+      li: a href=static_page_path_for(page) = page.name

@@ -1,13 +1,12 @@
 
 - index = (treatment_counter + 2).to_s.rjust(2, '0')
 
-article.treatments-item id=dom_id(treatment) class="#{'reverse' if treatment_counter.even?}"
-  .treatments-item-number = index
+article.excerpt id=dom_id(treatment) class="excerpt--#{treatment_counter.odd? ? 'left' : 'right'}"
+  .excerpt__index = index
 
-  .image
-    img alt=treatment.name src=treatment.thumbnail.url
+  = smart_image_tag treatment.thumbnail, '100vw', class: 'excerpt__image', alt: treatment.name
 
-  .treatments-item-content
-    .treatments-item-title = treatment.name
-    p.treatments-item-text = treatment.excerpt
-    a.button-box href=treatment_path(treatment) = t('treatments.read_more')
+  .excerpt__content
+    h3.excerpt__title = treatment.name
+    p.excerpt__text = treatment.excerpt
+    a.excerpt__button.button.button--box href=treatment_path(treatment) = t('treatments.read_more')

@@ -1,0 +1,77 @@
+@import "../../mixins/*"
+
+/* BUTTONS
+  This file defines base styles for various kinds of buttons used throughout the website.
+  */
+
+.button-box
+  @extend %generic-box-button
+  min-width: 174px
+  padding: 1.375em 1.8em
+  border: 1px solid $color-text-dark
+  z-index: 1
+
+  color: $color-text-dark
+  font-weight: $font-semibold
+  font-size: 1.6rem
+  line-height: 1.1875
+  letter-spacing: 0.2px
+  text-align: center
+
+  &.inverse
+    color: $color-text-inverse
+    border-color: $color-text-inverse
+
+  &:hover:not(.disabled)
+    border-color: $color-button-blue
+    color: $color-text-normal
+
+  /*&:after
+    background: $color-button-blue
+    */
+
+// ===== CIRCLE BUTTON ===== //
+.button-circle
+  position: relative
+  display: inline-block
+  width: 280px
+  height: 280px
+  font-size: 1.75rem
+  color: $color-text-dark
+  transition: all 0.5s ease
+  background: none
+
+  &-text
+    display: flex
+    text-align: center
+    align-items: center
+    justify-content: center
+    width: 100%
+    height: 100%
+    margin: auto
+    padding: 15%
+
+  > svg
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    width: 100%
+    height: 100%
+
+    > path
+      stroke: $color-text-dark
+      transition: stroke 0.5s ease
+
+  &:hover:not(.disabled)
+    transform: scale(1.1)
+    color: $color-text-orange
+
+    > svg > path
+      stroke: $color-text-orange
+
+.inverse > .button-box
+  @include tablet-or-larger
+    color: $color-text-inverse
+    border-color: $color-text-inverse

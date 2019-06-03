@@ -9,7 +9,6 @@
     .equalizer
       - 6.times do
         span.equalizer-bar
-
   .plyr__progress
     label.plyr__sr-only for='plyr-seek-{id}' = t('player.seek')
     input data-plyr='seek' id='plyr-seek-{id}' max='100' min='0' step='0.01' type='range' value='0'
@@ -17,7 +16,6 @@
     span.plyr__tooltip role='tooltip' 00:00
     span.plyr__time--current 00:00
     span.plyr__time--duration
-
   /button.extra.plyr__control data-plyr='rewind' type='button'
     svg role='presentation'
       use xlink:href='#plyr-rewind'
@@ -34,7 +32,6 @@
     svg role='presentation' viewBox='0 0 18 16'
       use xlink:href='#plyr-fast-forward'
     span.plyr__tooltip role='tooltip' = t('player.skip_forward')
-
   button.extra.plyr__control aria-label='Mute' aria-pressed='false' data-plyr='mute' type='button'
     svg.icon--pressed role='presentation'
       use xlink:href='#plyr-muted'
@@ -60,7 +57,6 @@
     span.label--pressed.plyr__tooltip role='tooltip' = t('player.exit_fullscreen')
     span.label--not-pressed.plyr__tooltip role='tooltip' = t('player.enter_fullscreen')
 
-
 .plyr__controls
   // ===== PLAY BUTTON ===== //
   button.plyr__control aria-label=t('player.play_title', title: '{title}') data-plyr='play' type='button'
@@ -71,25 +67,28 @@
     span.label--pressed.plyr__tooltip role='tooltip' = t('player.pause')
     span.label--not-pressed.plyr__tooltip role='tooltip' = t('player.play')
     .plyr__equalizer
-      - 6.times do
+      - 7.times do
         span.plyr__equalizer-bar
 
   // ===== TIME CONTROLS ===== //
   .plyr__progress
     input aria-label=t('player.seek') data-plyr='seek' max='100' min='0' step='0.01' type='range' value='0'
-    progress.plyr__progress__buffer max='100' min='0' value='0' = t('player.%_buffered')
+    //progress.plyr__progress__buffer max='100' min='0' value='0' = t('player.%_buffered')
     span.plyr__tooltip role='tooltip' 00:00
-  .plyr__time.plyr__time--current aria-label=t('player.current_time') 00:00
-  .plyr__time.plyr__time--duration aria-label=t('player.duration') 00:00
 
-  button.plyr__control data-plyr='skip-back' type='button'
-    svg role='presentation' viewBox='0 0 18 16'
-      use xlink:href='#plyr-rewind'
-    span.plyr__tooltip role='tooltip' = t('player.skip_back')
-  button.plyr__control data-plyr='skip-forward' type='button'
-    svg role='presentation' viewBox='0 0 18 16'
-      use xlink:href='#plyr-fast-forward'
-    span.plyr__tooltip role='tooltip' = t('player.skip_forward')
+  .plyr__time
+    .plyr__time--current aria-label=t('player.current_time') 00:00
+    .plyr__time--duration aria-label=t('player.duration') 00:00
+
+  .plyr__skip
+    button.plyr__control data-plyr='skip-back' type='button'
+      svg role='presentation' viewBox='0 0 18 16'
+        use xlink:href='#plyr-rewind'
+      span.plyr__tooltip role='tooltip' = t('player.skip_back')
+    button.plyr__control data-plyr='skip-forward' type='button'
+      svg role='presentation' viewBox='0 0 18 16'
+        use xlink:href='#plyr-fast-forward'
+      span.plyr__tooltip role='tooltip' = t('player.skip_forward')
 
   //button.plyr__control data-plyr='restart' type='button'
     svg role='presentation'

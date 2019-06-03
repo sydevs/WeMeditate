@@ -6,5 +6,5 @@ User.find_or_create_by(email: 'super@test.com').update!({
   password: 'password',
 })
 
-puts "Created User - super@test.com"
+puts 'Created User - super@test.com'
 puts ' -- Finished User Seeds -- '

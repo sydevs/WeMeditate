@@ -1,0 +1,37 @@
+
+- callout_mode = block[:callout].present? ? block[:callout] : 'none'
+- isGallery = block[:asGallery] == 'true'
+- isSingle = !isGallery && callout_mode == 'none'
+- classes = []
+- classes << "content__image--#{isGallery ? 'gallery' : 'single'}" unless block[:callout].present?
+- classes << "content__image--stretch" if block[:stretch] == 'true'
+- classes << 'content__image--callout' unless callout_mode == 'none'
+- classes << "content__image--callout-#{callout_mode}"
+- classes << 'js-grid' if isGallery
+
+- items = isGallery ? block[:items] : [block[:items].first]
+
+- if block[:stretch]
+  - image_sizes = '100vw'
+- elsif block[:callout].present?
+  - image_sizes = '(max-width: 814px) calc(100vw - 48px), 400px'
+- else
+  - image_sizes = '(max-width: 814px) calc(100vw - 48px), 766px'
+
+.content__image class=classes
+  - items.each do |item|
+    figure.content__image__item
+      = smart_image_tag @record.media_file(item[:image][:id]), image_sizes, lazy: false, class: 'content__image__img'
+
+      - if isSingle
+        .content__image__triangle = render_decoration :triangle, block
+
+      .content__image__item__content
+        - if item[:credit]
+          .content__image__credit #{translate 'sections.credit'} • #{item[:credit]}
+
+        - if item[:caption]
+          figcaption.content__image__caption = item[:caption]
+
+  - unless isSingle
+    .content__image__triangle = render_decoration :triangle, block

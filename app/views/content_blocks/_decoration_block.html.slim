@@ -1,0 +1,14 @@
+
+- classes = ["content__decoration--#{block[:format]}"]
+- classes << "content__decoration--#{block[:alignment]}"
+- classes << "content__decoration--#{block[:size]}" if block[:size]
+- classes << "content__decoration--#{block[:color]}" if block[:color]
+
+.content__decoration
+  - if block[:format] == 'triangle'
+    .triangle classes="triangle--#{block[:size]} triangle--#{block[:alignment]}"
+  - if block[:format] == 'sidetext'
+    .sidetext classes="sidetext--#{block[:alignment]}"
+      = block[:text]
+  - if block[:format] == 'gradient'
+    .gradient classes="gradient--#{block[:size]} gradient--#{block[:color]} gradient--#{block[:alignment]}"

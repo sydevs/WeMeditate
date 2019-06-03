@@ -10,14 +10,14 @@ module Admin::TableHelper
   end
 
   def table_action label, icon, url, classes = nil, new_tab = false
-    tag.a class: "ui tiny compact basic labeled icon button #{classes}", href: url, target: "#{'_blank' if new_tab}" do
+    tag.a class: "ui tiny compact basic labeled icon button #{classes}", href: url, target: ('_blank' if new_tab).to_s do
       concat tag.i class: "#{icon} icon"
       concat label
     end
   end
 
   def table_link label, icon, url
-    tag.a class: "ui compact basic button", href: url do
+    tag.a class: 'ui compact basic button', href: url do
       concat tag.i class: "#{icon} icon"
       concat label
     end
@@ -27,8 +27,6 @@ module Admin::TableHelper
     case record
     when Article
       record.category.name
-    when City
-      record.country_name
     when StaticPage, SubtleSystemNode, User
       human_enum_name(record, :role)
     when Track
@@ -124,4 +122,5 @@ module Admin::TableHelper
       end
     end
   end
+
 end

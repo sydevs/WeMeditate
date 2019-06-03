@@ -1,5 +1,6 @@
 
 en:
+  share: 'Share: '
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
   social_media:
@@ -7,6 +8,7 @@ en:
     instagram: https://instagram.com/we-meditate
 
 ru:
+  share: 'Share: '
   sharing:
     vk: http://vk.com/share.php?url=%{url}
   social_media:

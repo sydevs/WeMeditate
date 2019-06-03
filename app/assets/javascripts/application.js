@@ -14,5 +14,4 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery.slick
-//= require ./front/svg.js
 //= require_tree ./front

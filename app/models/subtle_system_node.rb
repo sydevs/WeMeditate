@@ -10,11 +10,13 @@
 # This means it's content is defined by a collection of sections
 
 class SubtleSystemNode < ApplicationRecord
+
   extend FriendlyId
-  extend CarrierwaveGlobalize
+  include HasContent
+  include Draftable
 
   # Extensions
-  translates :name, :slug, :excerpt, :metatags
+  translates :name, :slug, :excerpt, :metatags, :content, :draft
   friendly_id :name, use: :globalize
 
   # Associations
@@ -22,17 +24,14 @@ class SubtleSystemNode < ApplicationRecord
     chakra_1: 1, chakra_2: 2, chakra_3: 3, chakra_3b: 4, chakra_4: 5, chakra_5: 6, chakra_6: 7, chakra_7: 8,
     channel_left: 9, channel_right: 10, channel_center: 11, kundalini: 12,
   }
-  has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all
-  has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
 
   # Validations
   validates :name, presence: true
   validates :role, presence: true, uniqueness: true
   validates :excerpt, presence: true
-  accepts_nested_attributes_for :sections, reject_if: :all_blank, allow_destroy: true
 
   # Scopes
-  default_scope { order( :role ) }
+  default_scope { order(:role) }
   scope :untranslated, -> { joins(:translations).where.not(subtle_system_node_translations: { locale: I18n.locale }) }
   scope :q, -> (q) { joins(:translations).where('subtle_system_node_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
@@ -42,7 +41,7 @@ class SubtleSystemNode < ApplicationRecord
     when :preview
       joins(:translations)
     when :content
-      includes(:media_files, :translations, sections: :translations)
+      includes(:media_files, :translations, sections: :translations).order('sections.order')
     when :admin
       includes(:media_files, :translations)
     end
@@ -69,9 +68,8 @@ class SubtleSystemNode < ApplicationRecord
 
   # Checks to see if a special section exists for this page, and creates it if it doesn't.
   def ensure_special_section_exists! format
-    unless sections.exists?(content_type: :special, format: format)
-      sections.new(content_type: :special, format: format)
-    end
+    return if sections.exists?(content_type: :special, format: format)
+    sections.new(content_type: :special, format: format)
   end
 
 end

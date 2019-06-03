@@ -1,0 +1,164 @@
+@import "../../mixins/*"
+
+.content__splash
+  height: 100vh
+  min-height: 100vh
+  max-height: 1024px
+
+  text-align: center
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+
+  @include mobile
+    background-position-x: -85vh
+
+  @include tablet
+    background-position-x: -74vh
+
+  &__wrapper
+    @extend %narrow-content-width
+
+  &__title
+    font-size: 3rem
+    line-height: 1.1667
+    letter-spacing: 0.8px
+    margin: auto
+
+    @include tablet-or-larger
+      font-size: 4.5rem
+      line-height: 1.2222
+
+  &__text
+    font-weight: $font-normal
+    font-size: 2.2rem
+    line-height: 1.1364
+    letter-spacing: 0.69px
+
+    width: 100%
+    margin: auto
+
+// ===== HOME PAGE ===== //
+.content__splash--home
+  padding-top: 28vh
+
+  @include tablet-or-larger
+    padding-top: 40vh
+
+  @include laptop-or-larger
+    min-height: 370px
+    padding-top: 43.5vh
+
+  @include desktop
+    padding-top: 430px
+
+  @include widescreen
+    min-height: 730px
+
+  .content__splash__title
+    margin-bottom: 10vh
+    font-weight: $font-normal
+
+    @include tablet-or-larger
+      font-size: 4.5rem
+      line-height: 1.2222
+      max-width: 500px
+      margin-bottom: 4.5vh
+
+    @include laptop
+      margin-bottom: 5vh
+
+    @include desktop
+      margin-bottom: 40px
+
+  .content__splash__text
+    max-width: 225px
+    margin-bottom: 12vh
+
+    @include tablet-or-larger
+      max-width: 360px
+      font-size: 2.4rem
+      line-height: 1.5
+      margin-bottom: 14vh
+
+    @include laptop
+      margin-bottom: 10vh
+
+    @include desktop
+      margin-bottom: 80px
+
+// HOME PAGE ACTION
+.content__splash--home .content__splash__action
+  display: flex
+  align-items: center
+  justify-content: center
+
+  font-weight: $font-medium
+  font-size: 3rem
+  line-height: 1.0333
+  letter-spacing: normal
+
+  @include pulse-animation
+
+  &__text
+    width: 150px
+
+  &__leaf
+    width: 1.7217em
+
+    &:first-child
+      transform: rotate(90deg) scaleX(-1) scaleY(-1)
+
+    &:last-child
+      transform: rotate(-90deg) scaleY(-1)
+
+    path
+      fill: $color-graphic-normal
+
+
+// ===== TREATMENTS PAGE ===== //
+.content__splash--treatments
+  min-height: 0
+  height: 125vh
+  padding-top: 35px
+  background-position: bottom center
+
+  @include tablet-or-larger
+    margin-top: 74px
+    padding-top: 6.5vh
+    max-height: 1346px
+
+  .content__splash__title
+    font-size: 2.8rem
+    line-height: 1.1786
+    letter-spacing: 0.93px
+    margin-bottom: 46px
+
+    @include tablet-or-larger
+      font-size: 4.5rem
+      latter-spacing: 1.5px
+
+  .content__splash__text
+    line-height: 1.41
+    max-width: 250px
+    margin-bottom: 24px
+
+    @include tablet-or-larger
+      max-width: none
+      font-size: 3.5rem
+
+  .content__splash__image
+    height: 100vw
+    margin: 0 -$gutter-width
+    margin-top: -100px
+
+// ===== INVERTED COLOURS FOR A DARK BACKGROUND IMAGE ===== //
+.content__splash--invert
+  .content__splash__title,
+  .content__splash__text,
+  .content__splash__action,
+  .content__splash__action__text
+    color: $color-text-inverse
+
+  .content__splash__action path
+    fill: $color-text-inverse

@@ -1,0 +1,35 @@
+
+.content__structured class="content__structured--#{block[:format]}"
+  - if block[:format] == 'grid'
+    .content__structured__grid.js-grid data-max-columns=3
+      - block[:items].first(3).each do |item|
+        article.content__structured__item
+          h3.content__structured__title = item[:title]
+          .content__structured__text = item[:text].html_safe
+
+    - if block[:items].count > 3
+      .content__structured__loadmore.js-loadmore
+        button.button.button--box
+          = translate 'sections.show_more'
+        template
+          - block[:items].drop(3).each do |item|
+            article.content__structured__item
+              h3.content__structured__title = item[:title]
+              .content__structured__text = item[:text].html_safe
+
+  - elsif block[:format] == 'accordion'
+    .content__structured__accordion.js-accordion
+      - block[:items].each do |item|
+        article.content__structured__item
+          h3.content__structured__title = item[:title]
+          .content__structured__text = item[:text].html_safe
+
+  - elsif block[:format] == 'columns'
+    .content__structured__columns.js-carousel
+      - block[:items].first(3).each do |item|
+        article.content__structured__item
+          - if item[:image]
+            - image_sizes = '100vw' # TODO: Define these image sizes properly
+            = smart_image_tag @record.media_file(item[:image][:id]), image_sizes, lazy: false, class: 'content__structured__image'
+          h3.content__structured__title = item[:title]
+          .content__structured__text = item[:text].html_safe

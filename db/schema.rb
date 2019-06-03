@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_23_115234) do
+ActiveRecord::Schema.define(version: 2019_04_20_102629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_01_23_115234) do
     t.integer "banner_id"
     t.integer "thumbnail_id"
     t.json "draft"
+    t.jsonb "content", default: {}
     t.index ["article_id"], name: "index_article_translations_on_article_id"
     t.index ["locale"], name: "index_article_translations_on_locale"
   end
@@ -77,30 +78,6 @@ ActiveRecord::Schema.define(version: 2019_01_23_115234) do
     t.string "slug", null: false
     t.index ["category_id"], name: "index_category_translations_on_category_id"
     t.index ["locale"], name: "index_category_translations_on_locale"
-  end
-
-  create_table "cities", force: :cascade do |t|
-    t.float "latitude", null: false
-    t.float "longitude", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "published_at"
-    t.integer "country"
-    t.jsonb "contacts"
-    t.integer "banner_id"
-  end
-
-  create_table "city_translations", force: :cascade do |t|
-    t.integer "city_id", null: false
-    t.string "locale", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name", null: false
-    t.string "slug", null: false
-    t.jsonb "metatags"
-    t.json "draft"
-    t.index ["city_id"], name: "index_city_translations_on_city_id"
-    t.index ["locale"], name: "index_city_translations_on_locale"
   end
 
   create_table "duration_filters", force: :cascade do |t|
@@ -271,6 +248,7 @@ ActiveRecord::Schema.define(version: 2019_01_23_115234) do
     t.string "slug", null: false
     t.jsonb "metatags"
     t.json "draft"
+    t.jsonb "content", default: {}
     t.index ["locale"], name: "index_static_page_translations_on_locale"
     t.index ["static_page_id"], name: "index_static_page_translations_on_static_page_id"
   end
@@ -292,6 +270,8 @@ ActiveRecord::Schema.define(version: 2019_01_23_115234) do
     t.string "slug", null: false
     t.text "excerpt", null: false
     t.jsonb "metatags"
+    t.json "draft"
+    t.jsonb "content", default: {}
     t.index ["locale"], name: "index_subtle_system_node_translations_on_locale"
     t.index ["subtle_system_node_id"], name: "index_subtle_system_node_translations_on_subtle_system_node_id"
   end
@@ -300,6 +280,7 @@ ActiveRecord::Schema.define(version: 2019_01_23_115234) do
     t.integer "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "published_at"
     t.index ["role"], name: "index_subtle_system_nodes_on_role", unique: true
   end
 
@@ -327,10 +308,10 @@ ActiveRecord::Schema.define(version: 2019_01_23_115234) do
     t.string "name", null: false
     t.string "slug", null: false
     t.text "excerpt", null: false
-    t.text "content"
     t.jsonb "thumbnail"
     t.jsonb "video"
     t.jsonb "metatags"
+    t.jsonb "content", default: {}
     t.index ["locale"], name: "index_treatment_translations_on_locale"
     t.index ["treatment_id"], name: "index_treatment_translations_on_treatment_id"
   end

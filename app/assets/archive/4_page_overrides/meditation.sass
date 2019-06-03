@@ -1,0 +1,20 @@
+@import "../../mixins/*"
+
+body.meditations-show
+  .banner
+    @include laptop-or-larger
+      margin-top: 95px
+      margin-bottom: 54px
+
+  article
+    margin-bottom: 68.5px
+
+    @include laptop-or-larger
+      margin-bottom: 146px
+
+  .video-preview
+    margin: 0 46px
+
+  .video-button
+    width: 160px
+    height: 160px

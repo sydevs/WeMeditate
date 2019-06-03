@@ -1,7 +1,7 @@
 doctype html
 html lang=locale
   head
-    = render_metatags @metadata_record
+    = render_metatags @metadata_record if @metadata_record.present?
     = csrf_meta_tags
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
@@ -23,7 +23,7 @@ html lang=locale
     = google_tag_manager
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    = render_structured_data @metadata_record
+    = render_structured_data @metadata_record if @metadata_record.present?
 
 - classes = [controller_name, "#{controller_name}-#{action_name}"]
 - classes << "static-page static-page-#{@static_page.role.to_s.dasherize}" if @static_page.present?
@@ -33,7 +33,7 @@ body id='top' class=classes
     image width="200" height="100" src=image_path('svg/preloader.svg') alt="preloader"
 
   = render 'layouts/partials/header', cached: true
-  main = yield
+  = yield
   = render 'layouts/partials/footer', cached: true
 
   #video-popup.mfp-hide

@@ -1,11 +1,90 @@
 
-//section.intro
-  .container
-    h1.title = @static_page.title
+// TODO: Define these image sizes
+- image_sizes = '34vw'
 
-.banner.full-width
-  .wrapper-outer
-    .banner-title-box
-      h1.banner-title = @static_page.name
+- content_for :head do
+  meta name='turbolinks-cache-control' content='no-cache'
 
-= render @static_page.sections, cached: true
+main
+  h1.banner = @static_page.name
+
+  .meditations
+    .meditations__featured.js-carousel data-style='meditations'
+      - meditation = Meditation.get(:daily)
+      .meditations__featured__item.preview.preview--small
+        h2.preview__header = translate 'meditations.daily_meditation'
+        a.preview__media.preview__media--force-ratio.video href=meditation_url(meditation)
+          = smart_image_tag meditation.image, image_sizes, class: 'preview__media__thumbnail', alt: meditation.name
+          .video__button.video__button--small
+        h3.preview__title = meditation.name
+        p.preview__text = meditation.excerpt
+
+      - meditation = Meditation.get(:trending)
+      .meditations__featured__item.preview.preview--small
+        h2.preview__header = translate 'meditations.trending_meditation'
+        a.preview__media.preview__media--force-ratio.video href=meditation_url(meditation)
+          = smart_image_tag meditation.image, image_sizes, class: 'preview__media__thumbnail', alt: meditation.name
+          .video__button.video__button--small
+        h3.preview__title = meditation.name
+        p.preview__text = meditation.excerpt
+
+      .meditations__featured__item.preview.preview--small
+        h2.preview__header = translate 'meditations.random_meditation'
+        a.preview__media.preview__media--force-ratio.video href=random_meditations_url
+          = static_image_tag 'meditations/random', image_sizes, class: 'preview__media__thumbnail', alt: t('featured_meditations.random_title')
+          .video__button.video__button--small
+        h3.preview__title = translate 'meditations.random_meditation_title'
+        p.preview__text = translate 'meditations.random_meditation_description'
+
+    .meditations__index-action
+      a.meditations__index-action__link href=meditations_path
+        // TODO: Translate this
+        span.meditations__index-action__text See all meditations
+        i.breadcrumb.icon
+
+    .meditations__custom
+      .meditations__gradient.gradient.gradient--blue.gradient--left
+
+      .meditations__custom__content
+        h2.meditations__custom__title = translate 'meditations.custom_meditation'
+
+        = form_tag find_meditations_url, method: :post, class: 'meditations__custom__form' do
+          .meditations__custom__goal
+            .meditations__custom__goal__input.dropdown.js-dropdown
+              = hidden_field_tag :goal_filter, nil, class: 'js-dropdown-input'
+              a.dropdown__selection.dropdown__selection--inactive
+                .dropdown__selection__title = translate 'meditations.choose_goal'
+                .dropdown__selection__text = translate 'meditations.goal_action'
+                .dropdown__selection__icon
+                  = inline_svg 'header/logo-small.svg'
+                  span = translate 'meditations.goal_action'
+
+              .dropdown__popup
+                .dropdown__close
+                h3.dropdown__popup__title = translate 'meditations.goal_action'
+                ul.dropdown__list
+                  - @goal_filters.each_with_index do |goal_filter, index|
+                    li.dropdown__item id=dom_id(goal_filter) data-value=goal_filter.id
+                      .js-inline-svg data-url="#{goal_filter.icon.url}" data-namespace="#{goal_filter.name.parameterize.downcase}" data-background='true'
+                      span.dropdown__item__text = goal_filter.name
+
+          .meditations__custom__duration
+            .radio_group
+              .meditations__custom__duration__title = translate 'meditations.choose_duration'
+              .meditations__custom__duration__input.radio_wrapper
+                - @duration_filters.first(3).each_with_index do |duration_filter, index|
+                  label.radio
+                    = radio_button_tag :duration_filter, duration_filter.id
+                    .radio__button #{duration_filter.minutes} #{translate 'meditations.minutes'}
+
+          .clearfix
+          button.meditations__custom__submit.button.button--circle type='submit'
+            = inline_svg 'graphics/circle.svg'
+            .button__text = translate 'meditations.submit'
+
+      // TODO: Render this with static_image_tag
+      .meditations__image
+        img.meditations__image__background src=image_path('meditations/splash.jpg')
+        img.meditations__image__foreground src=image_path('meditations/splash-overlay.png')
+
+  = render_content @static_page

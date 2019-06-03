@@ -1,22 +1,18 @@
 
-//.container
-  img alt=section.subtitle src=section.image.url
-  .action
-    a.circle.button href=section.url
-      = inline_svg 'graphics/circle.svg'
-      .text = section.action
-  .content
-    a.video.button href=section.video.url data-mfp-src='#video-popup'
-    h3 = section.title
-    h4 = section.subtitle
+.realization
+  .wrapper-outer
+    h2.section-title.mobile-visible = section.title
 
-.wrapper-outer
-  img.realization-image alt=section.subtitle src=section.image.url
-  .realization-action
-    a.button-circle href=section.url
-      = inline_svg 'graphics/circle.svg'
-      .button-circle-text = section.action
-  .realization-content
-    a.video-button href=section.video.url data-mfp-src='#video-popup'
-    h3.realization-title = section.title
-    h4.realization-subtitle = section.subtitle
+    - image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 1197px) 810px, (max-width: 1599px) 880px, 1045px'
+    = smart_image_tag section.image, image_sizes, class: 'realization-image', alt: section.title
+
+    .realization-title.mobile-hidden
+      .button-circle
+        = inline_svg 'graphics/circle.svg'
+        .button-circle-text = section.title
+
+  .realization-action-wrapper
+    .wrapper-outer
+      .realization-action
+        a.video-button href=section.video.url data-mfp-src='#video-popup'
+        .realization-action-title = section.action

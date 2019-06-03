@@ -1,95 +1,51 @@
 
-.banner
-  .wrapper-outer
-    .banner-title-box
-      h1.banner-title = @static_page.name
+- first_track = @tracks.first
+- playlist = playlist_data(@tracks)
 
-#tracks-triangle.wrapper-outer.with-decoration.right.triangle
+main
+  h1.banner.banner--left = @static_page.name
 
-.track-filters.wrapper-outer
-  //h2.track-filters-title = t('tracks.subtitle')
-  p.track-filters-text = t('tracks.text')
+  .music
+    .music__triangle
+      .triangle.triangle--right.triangle--large
 
-  //h3 = t('tracks.choose_mood')
-  //nav.filter-group.outline data-group='moods' data-for='grid-tracks'
-    - @mood_filters.each do |mood_filter|
-      a.filter-button data-filter=".#{dom_id(mood_filter)}"
-        span.filter-button-icon
-          img src=mood_filter.icon_url
-        span.filter-button-name = mood_filter.name
+    p.music__description = translate 'tracks.text'
 
-  h3.track-filters-title-small = t('tracks.choose_instruments')
-  //nav.filter-group data-group='instruments' data-multiple=true
-  nav.filter-group data-group='instruments' data-for='grid-tracks'
-    - @instrument_filters.each_with_index do |instrument_filter, index|
-      a.filter-item data-filter=".#{dom_id(instrument_filter)}"
-        span.filter-item-icon
-          .inline-svg data-url="#{instrument_filter.icon_url}" data-namespace="#{instrument_filter.name.parameterize.downcase}"
-        span.filter-item-name = instrument_filter.name
+    //h3.music__title = translate 'tracks.choose_mood'
+    //.music__filter__group.button_group id="music-player-mood-filters"
+      - @mood_filters.each do |mood_filter|
+        a.button.button--box.button--small data-filter=mood_filter.id
+          img.button__icon src=mood_filter.icon_url
+          span.button__text = mood_filter.name
 
-.player
-  .wrapper-outer
-    - track = @tracks.first
-    .player-selection
-      .player-selection-title = track.name
-      a.player-selection-artist href=track.artist.url target='_blank' = track.artist.name
+    h3.music__title = translate 'tracks.choose_instruments'
+    .music__filter__group.button_group id="music-player-instrument-filters"
+      - @instrument_filters.each do |instrument_filter|
+        a.button.button--icon data-filter=instrument_filter.id
+          span.button__icon
+            .js-inline-svg data-url="#{instrument_filter.icon_url}" data-namespace="#{instrument_filter.name.parameterize.downcase}"
+          span.button__text = instrument_filter.name
 
-    audio#track-player controls=true
-      data-controls="#{render('shared/audio_controls').html_safe}"
-      source src=track.audio_url type='audio/mp3'
+    .player id='music-player' data-playlist=playlist.to_json
+      .player__selection
+        .player__selection__title = first_track.name
+        a.player__selection__artist href=first_track.artist.url target='_blank' = first_track.artist.name
 
-    .playlist
-      .playlist-title
-        = t('tracks.playlist')
-        span.playlist-icons
-      .playlist-mood.top-left.sidetext
-      img.playlist-cover src=image_path('sections/music/album.jpg')
-      .grid.playlist-list id="grid-tracks"
-        .grid-sizer
-        = render @tracks, cached: true
+      audio.player__controls controls=true
+        data-controls="#{render('shared/audio_controls').html_safe}"
+        source src=first_track.audio_url type='audio/mp3'
 
-= render @static_page.sections.with_translations(locale)
+      .player__cover
+        .player__cover__image
+          .player__sidetext.sidetext.sidetext--overlay.sidetext--left Sitar
+          = static_image_tag 'music/album', '(max-width: 1024px) 42vw, 500px', class: 'player__cover__image'
 
+      .player__playlist
+        .player__playlist__title
+          = t('tracks.playlist')
+          span.player__icons
+        .player__sidetext
+        .player__playlist__list id='music-player-playlist'
+          = render @tracks, cached: true
 
-//section.intro
-  .container
-    h1.title = @static_page.title
-
-//#tracks-triangle.container.with.right.triangle.decoration
-
-//.container
-  h2 = t('tracks.subtitle')
-  p = t('tracks.text')
-  h3 = t('tracks.choose_mood')
-  nav.mood.filters data-group='moods'
-    - @mood_filters.each do |mood_filter|
-      a.filter.box.button data-filter=".#{dom_id(mood_filter)}"
-        span.filter-icon
-          img src=mood_filter.icon_url
-        span.filter-name = mood_filter.name
-  h3 = t('tracks.choose_instruments')
-  nav.instrument.filters data-group='instruments' data-multiple=true
-    - @instrument_filters.each_with_index do |instrument_filter, index|
-      a.filter data-filter=".#{dom_id(instrument_filter)}"
-        span.filter-icon
-          .inline-svg data-url="#{instrument_filter.icon_url}" data-namespace="#{instrument_filter.name.parameterize.downcase}"
-        span.filter-name = instrument_filter.name
-
-//.player.old
-  .container
-    - track = @tracks.first
-    .info
-      #track-player-title = track.name
-      a#track-player-artist href=track.artist.url target='_blank' = track.artist.name
-    audio#player controls=true
-      data-controls="#{render('shared/audio_controls').html_safe}"
-      source src=track.audio_url type='audio/mp3'
-    .playlist
-      .title
-        = t('tracks.playlist')
-        span#selected-filter-icons
-      #track-mood-title.top-left.sidetext
-      img.cover#track-cover src=image_path('sections/music/album.jpg')
-      .list
-        .grid-sizer
-        = render partial: 'track_old', collection: @tracks
+  = render_content @static_page

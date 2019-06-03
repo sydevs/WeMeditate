@@ -1,33 +1,59 @@
 
-= render @static_page.sections.with_translations(locale)
+- first_track = @tracks.first
 
-//.container.with.right.triangle.decoration
-.treatments-triangle.wrapper-outer.with-decoration.right.triangle
+main id=dom_id(@static_page)
+  .treatments__splash
+    .treatments__splash__gradient.gradient.gradient--right.gradient--orange
+    .treatments__splash__content
+      h1.treatments__splash__title = translate 'treatments.splash.title'
+      .treatments__splash__subtitle
+        - kundalini = "<abbr title=\"#{t('treatments.splash.explanation')}\">#{t('treatments.splash.kundalini')}</abbr>"
+        = translate('treatments.splash.subtitle', kundalini: kundalini).html_safe
 
-//.treatments.wrapper
-  article.music
-    .number 01
-    .image
-      img alt='Music' src=image_path("sections/music/treatment.jpg")
-    .content
-      .title = t('treatments.music')
-      p = t('treatments.music_description')
-      a.box.button href=tracks_path = t('treatments.listen_to_music')
-  = render partial: 'treatment_old', collection: @treatments
+      a.treatments__splash__button.button.button--circle href='#'
+        = inline_svg 'graphics/circle.svg'
+        .button__text = translate 'treatments.splash.action'
 
-.treatments-list.wrapper
-  .treatments-item.for-music
-    .treatments-item-number 01
-    .image
-      img alt='Music' src=image_path("sections/music/treatment.jpg")
-    .treatments-item-content
-      .treatments-item-title = t('treatments.music')
-      p.treatments-item-text = t('treatments.music_description')
-      a.button-box href=tracks_path = t('treatments.listen_to_music')
+      .treatments__splash__skip
+        span = translate 'treatments.splash.skip_text'
+        a href=meditations_path(prescreen: false)
+          = translate 'treatments.splash.skip_action'
+          i.breadcrumb.icon
 
-  = render @treatments, cached: true
+    // TODO: Render this with static_image_tag
+    .treatments__splash__image
+      img.treatments__splash__image__background src=image_path('meditations/splash.jpg')
+      img.treatments__splash__image__foreground src=image_path('meditations/splash-overlay.png')
 
-//.container.with.right.triangle.decoration
-.treatments-triangle.wrapper-outer.with-decoration.right.triangle
+  .treatments__content-wrapper
+    .treatments__content
+      = render_content @static_page
 
-= render 'application/action_footer'
+    .treatments__triangle.triangle.triangle--large.triangle--right
+
+  .treatments__list
+    .excerpt_list
+      .excerpt.excerpt--left
+        .excerpt__index 01
+        // TODO: Translate this next line
+        = static_image_tag 'music/treatment', '(min-width: 450px) 500px, 85vw', alt: 'Music', class: 'excerpt__image'
+
+        .excerpt__content
+          h3.excerpt__title = translate 'treatments.music.title'
+          p.excerpt__text = translate 'treatments.music.description'
+
+          .player.player--mini id='music-player' data-playlist=playlist_data(@tracks).to_json
+            .player__selection
+              .player__selection__title = first_track.name
+              a.player__selection__artist href=first_track.artist.url target='_blank' = first_track.artist.name
+
+            audio.player__controls controls=true
+              data-controls="#{render('shared/audio_controls').html_safe}"
+              source src=first_track.audio_url type='audio/mp3'
+
+          a.excerpt__button.button.button--box href=tracks_path
+            = translate 'treatments.music.read_more'
+
+      = render @treatments, cached: true
+
+= render 'application/actions_footer'

@@ -1,0 +1,138 @@
+@import "../../mixins/*"
+
+/* TREATMENTS LIST
+  Styling to display a list of treatments
+  */
+
+.treatments-list
+  max-width: 992px
+  margin: auto
+  margin-top: 180px
+
+// ===== TREATMENT ITEM ===== //
+.treatments-item
+  position: relative
+  overflow: hidden
+  margin-bottom: 150px
+
+  @include tablet-or-larger
+    margin-bottom: 280px
+
+  &:last-child
+    @include mobile
+      margin-bottom: 0
+
+  &-image
+    margin-bottom: 65px
+    width: 100%
+    max-width: 400px
+
+  &-number
+    position: absolute
+    top: -74px
+
+    color: $color-text-lighter
+    font-size: 3.5rem
+    letter-spacing: 2.16px
+
+  &-content
+    @include laptop-or-larger
+      padding: 0 40px
+
+  &-title
+    font-weight: $font-semibold
+    font-size: 2.2rem
+    line-height: 1.41
+    letter-spacing: 0.41px
+    color: $color-text-dark
+    margin-bottom: 16px
+
+    @include laptop-or-larger
+      font-size: 2.4rem
+
+  &-text
+    font-size: 1.8rem
+    line-height: 1.6667
+
+    @include tablet-or-larger
+      min-height: 172px
+
+  &-link
+    color: $color-text-dark
+
+  &-link > i.icon
+    margin-left: 0.75em
+    font-size: 0.6em
+
+  .player
+    margin-top: 64px
+
+  .button-box
+    margin-top: 32px
+    padding: 22px 32px
+
+// Basic template for the gradient used on each time of treatment item.
+.treatments-item:after
+  display: block
+  content: ''
+
+  position: absolute
+  top: -112px
+  width: 106px + ($gutter-width * 3)
+  height: 242px
+  z-index: -1
+
+  @include laptop-or-larger
+    top: -108px
+    width: 371px
+
+
+// ===== LEFTHAND TREATMENT ITEM ===== //
+.left.treatments-item
+  .treatments-item-image
+    float: right
+    margin-right: -$gutter-width
+
+    @include tablet-or-larger
+      float: left
+      margin: 0
+      margin-right: 64px
+
+  .treatments-item-content
+    @include tablet-or-larger
+      margin-left: 464px
+
+  .treatments-item-number
+    left: 0
+
+  &:after
+    left: -($gutter-width * 4)
+    @include gradient(to right, $color-gradient-blue)
+
+    @include laptop-or-larger
+      left: -131px
+
+
+// ===== RIGHTHAND TREATMENT ITEM ===== //
+.right.treatments-item
+  .treatments-item-image
+    float: left
+    margin-left: -$gutter-width
+
+    @include tablet-or-larger
+      float: right
+      margin: 0
+
+  .treatments-item-content
+    @include tablet-or-larger
+      margin-right: 464px
+
+  .treatments-item-number
+    right: 0
+
+  &:after
+    right: -($gutter-width * 4)
+    @include gradient(to left, $color-gradient-orange)
+
+    @include laptop-or-larger
+      right: -131px

@@ -1,11 +1,20 @@
 module Admin
   class ApplicationRecordController < Admin::ApplicationController
-    before_action :set_record, only: [:show, :edit, :update, :destroy]
-    before_action :authorize!, except: [:create]
+
+    before_action :set_record, only: %i[show edit write update destroy]
+    before_action :authorize!, except: %i[create]
 
     def index
-      @records = @model.q(params[:q]).page(params[:page]).all
-      render 'admin/application/index'
+      respond_to do |format|
+        format.html do
+          @records = @model.q(params[:q]).page(params[:page]).all
+          render 'admin/application/index'
+        end
+
+        format.json do
+          render json: @model.select(:id, :name).q(params[:q]).to_json(only: %i[id name])
+        end
+      end
     end
 
     def show
@@ -21,12 +30,16 @@ module Admin
       render 'admin/application/edit'
     end
 
-    def create record_params
+    def write
+      render 'admin/application/write'
+    end
+
+    def create record_params, redirect = nil
       @record = @model.new update_params(record_params)
       authorize @record
 
       if @record.save
-        redirect_to [:edit, :admin, @record], flash: { notice: t('messages.result.created') }
+        redirect_to (redirect || [:edit, :admin, @record]), flash: { notice: t('messages.result.created') }
       else
         render :new
       end
@@ -35,19 +48,22 @@ module Admin
     def update page_params, redirect = nil
       @record.attributes = update_params(page_params)
       allow = policy(@record)
-      redirect = (allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
+      will_publish = allow.publish? and params[:draft] != 'true'
+      # redirect = (allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
+      redirect = [(page_params[:content].present? ? :write : :edit), :admin, @record] if redirect.nil?
 
-      if @record.valid?
-        if allow.publish? and params[:draft] != 'true'
-          @record.published_at = DateTime.now if @record.respond_to? :published_at
-          @record.draft = nil
-          @record.save!
-          redirect_to redirect, flash: { notice: t('messages.result.updated') }
-        else
-          @record.record_draft!
-          @record.save!
-          redirect_to redirect, flash: { notice: t('messages.result.saved_but_needs_review') }
-        end
+      if will_publish
+        @record.published_at = Time.now.to_date if @record.respond_to? :published_at
+        @record.consolidate_media_files! if @record.has_content?
+        @record.discard_draft!
+      else
+        @record.record_draft!
+      end
+
+      if @record.save
+        redirect_to redirect, flash: {
+          notice: will_publish ? t('messages.result.updated') : t('messages.result.saved_but_needs_review'),
+        }
       else
         render :edit
       end
@@ -77,35 +93,26 @@ module Admin
     end
 
     protected
-      def set_model model
-        @model = model
-      end
 
       def update_params record_params
-        if record_params[:sections_attributes].present?
-          #record_params = record_params.to_h
-          record_params[:sections_attributes].each do |key, data|
-            if data[:extra].present? and data[:extra][:items].present?
-              data = data[:extra][:items]
-              data = data.values.transpose.map { |vs| data.keys.zip(vs).to_h }
-              record_params[:sections_attributes][key][:extra][:items] = data
-            end
-          end
-        end
-
         if record_params[:metatags].present?
           record_params[:metatags] = record_params[:metatags][:keys].zip(record_params[:metatags][:values]).to_h
+        elsif @model.column_names.include? 'metatags'
+          record_params[:metatags] = []
         end
 
         record_params
       end
 
     private
+
       def set_record
-        if defined? @model.friendly
-          @record = @model.preload_for(:admin).friendly.find(params[:id])
-        else
-          @record = @model.preload_for(:admin).find(params[:id])
+        @record = begin
+          if defined? @model.friendly
+            @model.preload_for(:admin).friendly.find(params[:id])
+          else
+            @model.preload_for(:admin).find(params[:id])
+          end
         end
       end
 

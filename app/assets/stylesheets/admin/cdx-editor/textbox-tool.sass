@@ -1,0 +1,67 @@
+
+.cdx-textbox
+  display: flex
+  padding: 3em 0
+
+.cdx-textbox-fields
+  flex-grow: 1
+  padding: 10px
+  border: 1px solid rgba(0,0,0,0.2)
+
+.cdx-textbox .cdx-input__uploader,
+.cdx-textbox .ui.placeholder
+  height: 100%
+
+.cdx-textbox__image__remove
+  position: absolute
+  top: 5px
+  right: 5px
+  background: white
+  overflow: hidden
+  width: 18px !important
+  height: 18px !important
+  border-radius: 100%
+
+  &:hover
+    color: #DB2828
+
+.ce-block:not(.ce-block--focused) .cdx-textbox__image__remove
+  display: none
+
+// FIELDS
+.cdx-textbox
+  &__image
+    position: relative
+    width: 150px
+    text-align: center
+
+    img
+      min-width: 150px
+      width: 100%
+
+  &__text
+    margin-bottom: 15px
+
+  &__url
+    border-left: 2px solid gray
+
+// SETTINGS
+.cdx-textbox-settings .cdx-settings-button
+  &__asWisdom,
+  &__invert
+    width: 51px
+
+// TUNES
+.cdx-textbox
+  &--asWisdom
+    background: beige
+    padding: 10px
+
+  &--right
+    flex-direction: row-reverse
+
+  &--center
+    flex-direction: column
+
+    .cdx-textbox__image
+      width: 100%

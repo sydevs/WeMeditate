@@ -1,10 +1,14 @@
 
-//figure
-  .background style="background-image: url(#{image_path section.image.url})"
-  .container.with.right.triangle.decoration
-    figcaption.credit #{t 'sections.credit'} • #{section.credit}
+- if section.title
+  .wrapper-inner
+    h2.section-title = section.title
 
 figure.image
   .background-wrapper style="background-image: url(#{image_path section.image.url})"
   .wrapper-outer.with-decoration.right.triangle
-    figcaption.image-credit #{t 'sections.credit'} • #{section.credit}
+    - if section.credit
+      figcaption.image-credit #{t 'sections.credit'} • #{section.credit}
+
+- if section.subtitle
+  .wrapper-inner
+    p = section.subtitle

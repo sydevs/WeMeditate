@@ -1,0 +1,15 @@
+
+.header__dropdown
+  h4.header__dropdown__title = nav[:title]
+  .header__dropdown__content
+    ul.header__dropdown__list
+      - nav[:content][:items].each do |item|
+        li: a.header__dropdown__item href=item[:url] = item[:title]
+
+    .header__featured_wrapper
+      - nav[:content][:featured].each do |item|
+          .header__featured
+            .header__featured__title = item[:title]
+            a.header__featured__link href=item[:url]
+              img.header__featured__image src=item[:thumbnail]
+              .header__featured__overlay = translate 'header.inspiration_from_within'

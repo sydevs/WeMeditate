@@ -1,0 +1,43 @@
+@import "../../mixins/*"
+
+/* WRAPPERS
+  Throughout the site there are a couple common sizes that content has to be constrained to.
+  */
+
+.wrapper
+  &-outer
+    position: relative
+    width: 100%
+    max-width: $laptop-content-width + ($gutter-width * 2)
+    margin-left: auto
+    margin-right: auto
+    padding: 0 $gutter-width
+
+    @include desktop
+      max-width: $desktop-content-width + ($gutter-width * 2)
+
+    @include widescreen
+      max-width: $widescreen-content-width + ($gutter-width * 2)
+
+    &:after
+      content: ''
+      display: block
+      clear: both
+
+  &-inner
+    width: 100%
+    max-width: 766px + ($gutter-width * 2)
+    padding: 0 $gutter-width
+    margin: 0 auto
+
+// TODO: Evaluate if this background-wrapper is still being used. If it is, comment it properly.
+.background-wrapper
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+  width: 100%
+  height: 100%
+
+  &.mobile-visible + .background-wrapper
+    @include tablet-or-smaller
+      display: none

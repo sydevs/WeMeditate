@@ -1,0 +1,37 @@
+@import "../../../mixins/*"
+
+section.type-action.format-button
+  text-align: center
+  padding: 30px 0
+
+  &.with-decoration.gradient
+    &:before
+      width: auto
+      bottom: -100%
+
+    &.right::before
+      left: 50%
+
+    &.left::before
+      right: 50%
+
+  .button
+    &-box,
+    &-circle
+      margin: 2.45em 0
+
+    &-box
+      @include mobile
+        width: 248px
+
+      @include tablet-or-larger
+        min-width: 260px
+
+    &-circle
+      width: 300px
+      height: 300px
+
+      &-text
+        font-size: 1.8em
+        line-height: 1.25em
+

@@ -1,0 +1,116 @@
+@import "../../../mixins/*"
+
+section.type-textbox.format-overtop
+  @include tablet-or-larger
+    height: 90vh
+    margin-bottom: $section-margin * 2
+
+  .background-wrapper
+    @include mobile
+      background: none !important
+
+    img
+      display: block // This is necessary to remove the unexplained space after the img tag.
+      width: 100%
+
+      @include tablet-or-larger
+        display: none
+
+  .wrapper-outer.for-content
+    height: 100%
+
+  .text-box-overlay
+    @include tablet-or-larger
+      position: absolute
+      top: 5.5vh
+
+    @include laptop-or-larger
+      left: 8%
+
+  .text-box
+    background: none
+
+    @include tablet-or-larger
+      margin-top: 100px
+      padding: 90px
+
+    @include desktop
+      max-width: 690px
+
+    > .button-box
+      margin-top: 43px
+      background: none
+
+  .inverse.text-box
+    @include tablet-or-larger
+      margin-top: 6.25vh
+      margin-left: 10vw
+      padding: 55px 75px
+      max-width: 600px
+
+    @include laptop
+      padding: 90px 75px
+
+    @include desktop
+      margin-left: 1vw
+      margin-top: 120px
+      padding: 100px 130px
+      max-width: 690px
+
+    .text-content > p
+      @include laptop-or-larger
+        line-height: 1.85
+
+  .text-box:not(.inverse)
+    @include laptop-or-larger
+      margin-top: 15px
+      padding: 68px
+
+      .text-title
+        margin-bottom: 50px
+
+      > .button-box
+        margin-top: 60px
+
+  .text-title
+    @include tablet
+      margin-bottom: 0.625em
+
+    @include laptop-or-larger
+      margin-bottom: 1em
+
+  .text-content > p
+    line-height: 1.5625
+
+    @include tablet-or-larger
+      font-size: 1.8rem
+      line-height: 1.6667
+      letter-spacing: 0.2px
+
+  .sidetext
+    @include mobile
+      font-size: 3rem
+      letter-spacing: 1.85px
+      padding-top: 45px
+
+    &.top-left
+      @include tablet
+        padding-top: 30px
+
+      @include laptop
+        padding-top: 5px
+
+    &.bottom-left
+      @include tablet
+        left: 30px
+
+    &.top-left, &.top-right
+      top: 5vw
+
+      @include tablet-or-larger
+        top: 70px
+
+  .with-decoration.triangle
+    @include tablet-or-larger
+      position: relative
+      top: 100%

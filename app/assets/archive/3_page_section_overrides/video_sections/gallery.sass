@@ -1,0 +1,12 @@
+@import "../../../mixins/*"
+
+section.type-video.format-video-gallery
+  &.with-decoration.gradient
+    &:before
+      top: -9%
+      bottom: -12%
+
+    .video-title
+      @include tablet-or-smaller
+        padding-right: 18vw
+        padding-right: calc(24.5vw - $gutter-width)

@@ -1,0 +1,25 @@
+@import "../../mixins/*"
+
+/* SOCIAL MEDIA SHARING LINKS
+  Some pages have links just above the footer to share the page on social media.
+  */
+
+.sharing_links
+  @extend %narrow-content-width
+  margin-top: 40px
+
+  &__title
+    display: inline-block
+    font-size: 1.8rem
+    line-height: 38px
+    margin-right: 20px
+
+  &__item
+    display: inline-block
+    vertical-align: bottom
+    font-size: 38px
+    line-height: 38px
+    margin-right: 20px
+
+    i.icon
+      display: block

@@ -8,7 +8,7 @@
   = link_to [:admin, :root], class: "#{'active' if action_name == 'dashboard'} item"
     = translate 'misc.dashboard'
 
-  - if policy(Article).index? or policy(City).index? or policy(StaticPage).index?
+  - if policy(Article).index? or policy(StaticPage).index? or policy(SubtleSystemNode).index?
     .item
       .title = translate 'misc.menu.pages'
       .menu
@@ -17,28 +17,23 @@
             i.file.text.icon
             = Article.model_name.human(count: -1)
 
-        - if policy(City).index?
-          = link_to [:admin, City], class: "#{'active' if controller_name == 'cities'} item"
-            i.university.icon
-            = City.model_name.human(count: -1)
-
         - if policy(StaticPage).index?
           = link_to [:admin, StaticPage], class: "#{'active' if controller_name == 'static_pages'} item"
             i.file.icon
             = StaticPage.model_name.human(count: -1)
 
-  - if policy(Category).index? or policy(Track).index? or policy(Meditation).index? or policy(Treatment).index?
-    .item
-      .title = translate 'misc.menu.resources'
-      .menu
         - if policy(SubtleSystemNode).index?
           = link_to [:admin, SubtleSystemNode], class: "#{'active' if controller_name == 'subtle_system_nodes'} item"
             i.sun.icon
             = SubtleSystemNode.model_name.human(count: -1)
 
+  - if policy(Track).index? or policy(Meditation).index? or policy(Treatment).index?
+    .item
+      .title = translate 'misc.menu.resources'
+      .menu
         - if policy(Meditation).index?
           = link_to [:admin, Meditation], class: "#{'active' if ['meditations', 'goal_filters', 'duration_filters'].include? controller_name} item"
-            i.leaf.icon
+            i.fire.icon
             = Meditation.model_name.human(count: -1)
 
         - if policy(Treatment).index?

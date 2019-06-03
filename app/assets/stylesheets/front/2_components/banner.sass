@@ -1,0 +1,64 @@
+@import "../../mixins/*"
+
+/* BANNER
+  Banners are used at the top of most pages
+  A banner is designed to display the title of the page in a stylized manner.
+  Optionally an image may be added.
+  */
+
+.banner
+  position: relative
+  margin: 28px auto
+  padding: 24px $gutter-width
+  text-align: center
+
+  font-weight: $font-bold
+  font-size: 2.8rem
+  line-height: 1.4
+  letter-spacing: 1px
+
+  @include tablet-or-larger
+    margin-top: 80px
+    margin-bottom: 60px
+    font-size: 3.2rem
+    letter-spacing: 1.5px
+    padding-top: 32px
+    padding-bottom: 32px
+
+  @include laptop-or-larger
+    font-size: 3.6rem
+    margin-bottom: 80px
+
+  @include widescreen
+    padding-top: 48px
+    padding-bottom: 48px
+
+  &:before
+    @include overlay(0, auto, 0, auto)
+    @include gradient(to right, 'blue')
+
+    display: block
+    content: ''
+    height: 100%
+    //width: 41.6%
+    width: 50%
+    z-index: -1
+
+    /*@include tablet-or-larger
+      width: 50%*/
+
+.banner--left
+  @extend %wide-content-width
+  margin-bottom: 40px
+
+  @include tablet-or-larger
+    text-align: left
+    padding-left: $gutter-width * 2
+
+  @include laptop-or-larger
+    margin-bottom: 60px
+    padding-left: $gutter-width * 3
+
+  &:before
+    @include tablet-or-larger
+      width: 30%

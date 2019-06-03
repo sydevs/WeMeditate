@@ -1,0 +1,145 @@
+@import "../../mixins/*"
+
+/* FOOTER
+  Styling for the site-wide footer which is used at the very bottom of every page.
+  */
+
+.footer
+  a:hover
+    color: $color-text-dark
+
+  &-sidetext
+    color: $color-text-inverse
+    letter-spacing: 0
+    font-size: 2em
+    z-index: 5
+
+  &-columns
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    border-bottom: 1px solid $color-graphic-normal
+    padding: 0 3%
+
+    @include tablet-or-smaller
+      display: block
+
+  &-column
+    margin-bottom: 55px
+    text-align: center
+    flex: 1 0 25%
+
+    @include laptop-or-larger
+      margin-bottom: 50px
+      text-align: left
+
+    @include desktop
+      &:nth-child(3)
+        padding-left: 80px
+
+  &-scroll
+    display: block
+    text-align: center
+    width: 120px
+    margin: auto
+    margin-top: 48px
+    margin-bottom: 37.5px
+
+    font-size: 1.4rem
+    line-height: 1.1429
+    letter-spacing: 0.2px
+
+    @include laptop-or-larger
+      display: none
+
+    &:before
+      content: ''
+      display: block
+
+      width: 0.9rem
+      height: 0.9rem
+      margin: auto
+      margin-bottom: 1rem
+
+      border-left: 1px solid $color-text-normal
+      border-bottom: 1px solid $color-text-normal
+      transform: rotate(135deg)
+
+  &-navigation
+    &-header
+      display: block
+      font-size: 1.5rem
+      line-height: 1.2
+      letter-spacing: 0.21px
+      margin-bottom: 20px
+
+      font-weight: $font-semibold
+      color: $color-text-normal
+
+      @include laptop-or-larger
+        font-size: 1.7rem
+        line-height: 1.1765
+        margin-bottom: 16px
+
+      @include widescreen
+        font-size: 2rem
+
+    &-link
+      display: block
+      font-size: 1.3rem
+      line-height: 1.154
+      margin-bottom: 8px
+
+      @include widescreen
+        font-size: 1.6rem
+
+    div.footer-navigation-header
+      margin-bottom: 13px
+
+  &-social
+    flex: 1 0 12%
+
+    &-link
+      font-size: 4.3rem
+      color: $color-text-normal
+
+      @include laptop-or-larger
+        font-size: 3rem
+
+      &:not(:last-child)
+        margin-right: 40px
+
+  &-divider
+    display: flex
+    align-items: center
+    margin-bottom: 60px
+
+    img
+      height: 52px
+      margin: 0px 20px
+
+    &:before,
+    &:after
+      content: ''
+      margin-top: -2px
+      height: 1px
+      width: 100%
+      position: relative
+      background-color: $color-graphic-normal
+      display: inline-block
+
+  &-credit
+    height: 2.5em
+
+  &-copyright
+    height: 75px
+    padding: 35px 0
+
+    font-size: 1.4rem
+    line-height: 1.15
+    text-align: center
+
+    @include laptop-or-larger
+      height: 176px
+      padding: 55px 0
+      line-height: 1.3rem

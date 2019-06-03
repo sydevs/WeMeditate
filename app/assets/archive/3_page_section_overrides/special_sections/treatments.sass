@@ -1,0 +1,40 @@
+@import "../../../mixins/*"
+
+section.type-special.format-treatments
+  .treatments-item
+    margin-bottom: 60px
+
+    &:after
+      @include mobile
+        // Hide the gradient
+        display: none
+
+    &-image
+      @include mobile
+        float: none
+        margin: 0
+        margin-bottom: 37px
+
+    &-title
+      font-size: 1.8rem
+      line-height: 1.1111
+      margin-bottom: 18px
+
+    &-content > p
+      font-size: 1.4rem
+      lineheight: 1.7858
+      margin-bottom: 18px
+
+  .filter-button
+    font-size: 1.6rem
+    line-height: 1em
+    padding: 1.5em 2em
+    min-width: 175px
+    color: $color-text-dark
+
+    &.initial, &.active
+      display: none
+
+  .sidetext
+    @include mobile
+      display: none

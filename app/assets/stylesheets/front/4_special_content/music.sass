@@ -1,0 +1,49 @@
+@import "../../mixins/*"
+
+.music
+  @extend %wide-content-width
+  margin-bottom: 100px
+
+  @include laptop-or-larger
+    padding-left: $gutter-width * 3
+
+.music__title
+  font-weight: $font-semibold
+  font-size: 2.4rem
+  line-height: 1.25
+  color: $color-text-dark
+  margin-top: 40px
+  margin-bottom: 32px
+  text-align: center
+
+  @include tablet-or-larger
+    text-align: left
+    margin-top: 82px
+
+.music__description
+  max-width: 454px
+
+  font-size: 1.6rem
+  line-height: 1.875
+  letter-spacing: 0.18px
+
+  @include tablet
+    font-size: 1.8rem
+    line-height: 1.6667
+    letter-spacing: 0.2px
+
+.music__triangle
+  @include mobile
+    display: none
+
+  @include laptop-or-larger
+    position: relative
+    top: 40px
+
+// ===== MUSIC FILTERS ===== //
+.music__filter__group
+  margin-bottom: 64px
+
+  @include mobile
+    display: flex
+    flex-direction: column

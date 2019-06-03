@@ -1,0 +1,48 @@
+@import "../../../mixins/*"
+
+section.type-special.format-featured-meditations
+  margin-bottom: 12px
+
+  @include widescreen
+    margin-bottom: 66px
+
+  .wrapper-outer
+    padding: 0 ($gutter-width / 2)
+
+  .preview
+    display: inline-block
+    width: 33.33%
+    padding: 0 $gutter-width
+    text-align: left
+    padding: 0 ($gutter-width / 2)
+
+    &-title
+      margin-top: 18px
+      margin-bottom: 10px
+      letter-spacing: 0.34px
+
+      @include laptop-or-larger
+        margin-bottom: 20px
+
+      @include widescreen
+        margin-top: 32px
+        margin-bottom: 30px
+
+    &-text
+      line-height: 1.4286
+      letter-spacing: 0.16px
+      margin-top: 0
+
+      @include laptop-or-larger
+        font-size: 1.8rem
+        line-height: 1.6667
+        letter-spacing: 0.2px
+
+  .slick-dots
+    margin: 0
+    position: relative
+    bottom: 5px
+
+    li
+      margin: 0
+      width: 18px

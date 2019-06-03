@@ -8,7 +8,7 @@ class Artist < ApplicationRecord
 
   # Associations
   has_many :tracks
-  mount_uploader :image, GenericImageUploader
+  mount_uploader :image, ImageUploader
 
   # Validations
   validates :name, presence: true, uniqueness: true

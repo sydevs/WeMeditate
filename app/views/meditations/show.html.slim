@@ -1,29 +1,11 @@
 
-//section.decorated.intro
-  .container
-    .title
-      = inline_svg 'graphics/leaf.svg'
-      div = @meditation.name
-      = inline_svg 'graphics/leaf.svg'
+main id=dom_id(@meditation)
+  h1.banner = @meditation.name
 
-//section.content-type-video.format-single
-  .video.wrapper
-    video#meditation-player poster=@meditation.image.url
-      source src=@meditation.video.url type='video/mp4'
-
-//section.content-type-text.format-just-text
-  .section.wrapper = @meditation&.excerpt
-
-.banner.full-width
-  .wrapper-outer
-    .banner-title-box
-      = inline_svg 'graphics/leaf.svg'
-      h1.banner-title = @meditation.name
-      = inline_svg 'graphics/leaf.svg'
-
-article.wrapper-outer id=dom_id(@meditation)
-  .video-wrapper
-    video.inline-player poster=@meditation.image.url
-      source src=@meditation.video.url type='video/mp4'
-
-  .wrapper-inner = @meditation&.excerpt
+  .meditation__media
+    figure.content__video__item
+      .content__video__media.video
+        // TODO: Re-evaluate image_sizes
+        = vimeo_image_tag @meditation.image, '100vw', class: 'video__thumbnail'
+        a.video__button.js-video href=@meditation.video.url data-mfp-src='#video-popup'
+        //a.video__button.js-video href="https://api.vimeo.com/videos/#{@meditation.vimeo_id}" data-id=@meditation.vimeo_id data-mfp-src='#video-popup'

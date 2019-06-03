@@ -1,0 +1,33 @@
+
+- isWisdom = (block[:asWisdom] == true)
+- classes = ["content__textbox--#{block[:alignment]}"]
+- classes << 'content__textbox--invert' if isWisdom or block[:invert] == true
+- classes << "content__textbox--#{block[:stretch] == true ? 'stretch' : 'overlay'}"
+- classes << "content__textbox--wisdom" if isWisdom
+
+.content__textbox class=classes
+  .content__textbox__decoration.content__textbox__decoration--gradient
+    .content__textbox__gradient
+      = render_decoration :gradient, block
+
+  .content__textbox__decoration.content__textbox__decoration--sidetext
+    .content__textbox__sidetext
+      = render_decoration :sidetext, block, alignment: (block[:alignment] == 'right' ? :right : :left)
+
+  - if isWisdom
+    .content__textbox__graphic = inline_svg 'content/ancient-wisdom.svg'
+
+  .content__textbox__image
+    = smart_image_tag @record.media_file(block[:image][:id]), block[:alignment] == 'center' ? '100vw' : '(max-width: 767px) calc(60vw - 48px), 50vw'
+
+  .content__textbox__box_wrapper
+    .content__textbox__box
+      h2.content__textbox__title = block[:title]
+      .content__textbox__text = block[:text].html_safe
+
+      - if block[:action].present? and block[:url].present?
+        a.content__textbox__button.button.button--box.button--large href=block[:url] = block[:action]
+
+.content__textbox__decoration.content__textbox__decoration--triangle
+  .content__textbox__triangle
+    = render_decoration :triangle, block

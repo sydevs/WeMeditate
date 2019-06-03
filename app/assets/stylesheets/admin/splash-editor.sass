@@ -1,0 +1,43 @@
+
+#splash-editor
+  width: 650px
+  margin-bottom: 50px
+  text-align: center
+
+  .cdx-input--button
+    border-color: #777777
+
+  [contenteditable]
+    cursor: text
+
+  // PLACEHOLDER HACK
+  [contenteditable]:empty:before
+    content: attr(data-placeholder)
+    color: gray
+    display: block // For Firefox
+
+  [contenteditable]:focus:before
+    color: darkgray
+
+#splash-background
+  position: relative
+  padding: 100px 0
+  margin-bottom: 10px
+
+#splash-background-image
+  opacity: 0.4
+
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: -1
+
+  background-color: gray
+  background-size: cover
+
+.cdx-splash--treatments
+  #splash-uploader,
+  #splash-background-image
+    display: none

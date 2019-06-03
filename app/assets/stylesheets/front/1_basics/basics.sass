@@ -1,5 +1,4 @@
-@import "../../mixins/functions"
-@import "../../mixins/vars"
+@import "../../mixins/*"
 
 /* BASIC STYLING
   This file defines basic site-wide styling for some html tags,
@@ -15,36 +14,46 @@
 +font-face("raleway", "RalewayBold/RalewayBold", 700)
 +font-face("futura-book", "FuturaBook/FuturaBook")
 
-// TODO: Delete these old font definitions
-+font-face("raleway-bold", "RalewayBold/RalewayBold")
-+font-face("raleway-medium", "RalewayMedium/RalewayMedium")
-+font-face("raleway-semi", "RalewaySemiBold/RalewaySemiBold")
-
 // ===== BASIC HTML TAGS ===== //
 // Standard site-wide styles
+*
+  box-sizing: border-box
+
 html
   overflow-x: hidden
-  font-size: 16px
+  font-size: 62.5% // Effectively this means 10px as standard zoom.
   font-family: $font-text
   font-weight: $font-normal
   color: $color-text-normal
 
-*
-  box-sizing: border-box
+body
+  font-size: 16px
+  font-size: 1.6rem // Default font size for the document.
   -webkit-text-size-adjust: none
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 
+// TODO: Deprecated
 section
   position: relative
   margin-bottom: $section-margin
 
-p
-  line-height: 1.7em
-  letter-spacing: 0.1px
-  margin-top: 0.5em
+  @include laptop-or-larger
+    margin-bottom: $section-margin * 1.75
+
+    &:last-child
+      margin-bottom: 0
+
+  @include desktop
+    margin-bottom: $section-margin * 2.25
+
+/*p
+  font-size: 1.6rem
+  line-height: 1.875
+  letter-spacing: 0.18px
+  margin: 0.5em 0*/
 
 strong, b
-  font-weight: $font-bold
+  font-weight: $font-semibold
 
 a
   outline: none
@@ -58,6 +67,20 @@ a
 button
   cursor: pointer
 
+/*ul
+  list-style: none
+  padding: 0*/
+
+img
+  max-width: 100%
+  object-fit: cover
+  display: block
+
+blockquote,
+figure
+  margin: 0
+
+// ===== TITLES ===== //
 h1
   color: $color-text-dark
   font-weight: $font-bold
@@ -66,29 +89,13 @@ h2,h3,h4,h5,h6
   color: $color-text-dark
   font-weight: $font-semibold
 
-ul
-  list-style: none
-  padding: 0
+h1,h2,h3,h4,h5,h6
+  margin: 0.83em 0
 
-svg, img
-  max-width: 100%
-
-figure
-  position: relative
-  margin: 0
-
-br
-  @include mobile
-    display: none !important
 
 // ===== UTILITY CLASSES ===== //
+.clearfix
+  clear: both
+
 .noscroll
   overflow: hidden
-
-.mobile-only
-  @include tablet-or-larger
-    display: none !important
-
-.desktop-only
-  @include mobile
-    display: none !important

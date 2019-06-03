@@ -1,6 +1,7 @@
 module Admin
   class MediaFilesController < Admin::ApplicationController
-    before_action :set_parent, only: [:index, :create]
+
+    before_action :set_parent, only: %i[index create]
     before_action :authorize!
 
     def index
@@ -9,7 +10,7 @@ module Admin
 
     def create
       @media_file = @parent.media_files.create! media_file_params
-      render json: @media_file.to_json
+      render json: { id: @media_file.id, preview: @media_file.file.small.url }.to_json
     end
 
     def trash
@@ -22,10 +23,9 @@ module Admin
     end
 
     protected
+
       def media_file_params
-        result = params.permit(:name, :file)
-        result[:category] = params[:type].split('/')[0]
-        result
+        params.permit(:name, :file)
       end
 
       def set_parent
@@ -33,8 +33,6 @@ module Admin
           @parent = Article.friendly.find(params[:article_id])
         elsif params[:static_page_id].present?
           @parent = StaticPage.friendly.find(params[:static_page_id])
-        elsif params[:city_id].present?
-          @parent = City.friendly.find(params[:city_id])
         elsif params[:subtle_system_node_id].present?
           @parent = SubtleSystemNode.friendly.find(params[:subtle_system_node_id])
         end
