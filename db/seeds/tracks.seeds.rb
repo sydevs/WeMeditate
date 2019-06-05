@@ -66,18 +66,18 @@ end
 }, {
   name: 'Morning Meditation',
   artist: artists[0],
-  mood_filters:  %i[dynamic calm],
-  instrument_filters: %i[tabla sitar],
+  mood_filters: %i[dynamic calm],
+  instrument_filters: %i[sitar],
 }, {
   name: 'Raag Jayjayvanti',
   artist: artists[1],
-  mood_filters:  %i[dynamic innocent],
+  mood_filters: %i[dynamic innocent],
   instrument_filters: %i[vocal],
 }, {
   name: 'Brahma Shodile',
   artist: artists[2],
-  mood_filters:  %i[joyful innocent],
-  instrument_filters: %i[tabla sitar flute],
+  mood_filters: %i[joyful innocent],
+  instrument_filters: %i[sitar flute],
 }].each do |atts| # rubocop:disable Style/TrailingCommaInArrayLiteral
   atts[:audio] = file_root.join('general/music.mp3').open
   atts[:mood_filters].map! { |k| mood_filters[k] }
