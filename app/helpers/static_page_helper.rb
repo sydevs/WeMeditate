@@ -16,8 +16,9 @@ module StaticPageHelper
     StaticPageHelper.preview_for role
   end
 
-  def static_page_path_for static_page
-    case static_page.role.to_sym
+  def static_page_path_for page_or_role
+    role = page_or_role.is_a?(StaticPage) ? page_or_role.role : page_or_role
+    case role.to_sym
     when :home
       root_path
     when :subtle_system
@@ -31,12 +32,13 @@ module StaticPageHelper
     when :meditations
       meditations_path
     else
-      static_page_path(static_page)
+      static_page_path(static_page_preview_for(role))
     end
   end
 
-  def static_page_url_for static_page
-    case static_page.role.to_sym
+  def static_page_url_for page_or_role
+    role = page_or_role.is_a?(StaticPage) ? page_or_role.role : page_or_role
+    case role.to_sym
     when :home
       root_url
     when :subtle_system
@@ -50,7 +52,7 @@ module StaticPageHelper
     when :meditations
       meditations_path
     else
-      polymorphic_url(static_page)
+      static_page_url(static_page_preview_for(role))
     end
   end
 

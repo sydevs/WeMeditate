@@ -12,7 +12,7 @@ header#header.header class=classes
           span = translate('we_meditate').capitalize
         .header__illustration
           = inline_svg 'header/illustration.svg'
-        a.header__action href='local_cities_path' = translate('header.classes_near_me').html_safe
+        a.header__action href=static_page_path_for(:classes) = translate('header.classes_near_me').html_safe
 
       nav.header__navigation
         a.header__navigation__logo href=root_path = inline_svg 'header/logo-small.svg'
@@ -26,7 +26,7 @@ header#header.header class=classes
 
             = render 'layouts/partials/header_dropdown', nav: nav if nav[:content]
 
-        a.header__navigation__marker href='local_cities_path' = inline_svg 'graphics/marker.svg'
+        a.header__navigation__marker href=static_page_path_for(:classes) = inline_svg 'graphics/marker.svg'
 
     .header__wrapper.header__wrapper--mobile
       .header__navigation
@@ -54,37 +54,3 @@ header#header.header class=classes
           ul.header__menu__submenu
             - nav[:content][:items].each do |item|
               li: a.header__menu__submenu_item href=item[:url] = item[:title]
-
-
-//header.header class="#{'inverse' if action_name == 'front'}"
-  .header-container
-    .header-wrap.desktop.wrapper-outer
-      .header-banner
-        a.header-banner-logo href=root_path
-          = inline_svg 'header/logo-mini.svg'
-          span = translate('we_meditate').capitalize
-        a.header-banner-illustration href=root_path
-          = inline_svg 'header/illustration.svg'
-        a.header-banner-action href='local_cities_path' = translate('header.classes_near_me').html_safe
-
-      nav.header-bar
-        a.header-bar-icon.logo href=root_path = inline_svg 'header/logo-small.svg'
-        = render partial: 'layouts/partials/bar_nav_item', collection: navigation_items
-        a.header-bar-icon.marker href='local_cities_path' = inline_svg 'graphics/marker.svg'
-
-    .header-wrap.mobile.wrapper-outer
-      .header-bar
-        a.header-bar-icon.logo href=root_path = inline_svg 'header/logo-small.svg'
-        a.header-bar-icon.burger = inline_svg 'header/burger.svg'
-
-    #header-scrollspy.wrapper-outer
-      #header-scrollspy-progress
-
-    - unless @breadcrumbs.nil?
-      nav.header-breadcrumbs
-        .wrapper-outer
-          - @breadcrumbs.each do |crumb|
-            a.header-breadcrumbs-item href=crumb[:url] = crumb[:name]
-
-  .header-menu
-    = render partial: 'layouts/partials/menu_nav_item', collection: mobile_navigation_items

@@ -18,6 +18,7 @@ static_pages = {}
   tracks: 'Music for Meditation',
   meditations: 'Meditate Now',
   classes: 'Classes Near Me',
+  self_realization: 'Self-Realization',
 }.each do |role, name|
   static_pages[role] = StaticPage.find_or_initialize_by(role: role)
   static_pages[role].update!(name: name)
@@ -243,7 +244,7 @@ static_pages[:shri_mataji].update!(content: content([
       items: [{
         image: content_attachment('static_pages/shri-mataji/early-years.jpg', static_pages[:shri_mataji]),
         caption: 'Shri Mataji with family, second from the left, middle row. In the middle - Shri Mataji’s parents.',
-      }], # rubocop:disable Style/TrailingCommaInArrayLiteral
+      }],
     },
   }, {
     type: :paragraph,
@@ -370,8 +371,7 @@ static_pages[:tracks].update!(content: content([
     data: {
       text: sentences(4),
     },
-  },
-  {
+  }, {
     type: :header,
     data: {
       text: 'Header',
@@ -381,8 +381,7 @@ static_pages[:tracks].update!(content: content([
     data: {
       text: sentences(4),
     },
-  },
-  {
+  }, {
     type: :header,
     data: {
       text: 'Header',
@@ -392,8 +391,7 @@ static_pages[:tracks].update!(content: content([
     data: {
       text: sentences(4),
     },
-  },
-  {
+  }, {
     type: :header,
     data: {
       text: 'Header',
@@ -417,6 +415,57 @@ static_pages[:treatments].update!(content: content([
     type: :paragraph,
     data: {
       text: 'The state of pure meditation is reached when the Kundalini energy within is raised through all of our energy centers, or chakras, Using some simple methods to cleanse our chakras we can make this process easier and thus achieve a longer and deeper experience of thoughtless awareness.',
+    },
+  },
+]))
+
+# ===== CREATE CLASSES SECTIONS ===== #
+static_pages[:classes].update!(content: content([
+  {
+    type: :textbox,
+    data: {
+      image: content_attachment('static_pages/classes/class.jpg', static_pages[:classes]),
+      title: 'Group meditation works better',
+      text: '<p>Whether you’re looking to de-stress, boost your self-esteem or simply seeking a moment to pause, follow our easy yet effective guided meditations to elevate your state and establish peace within.</p>',
+      alignment: :left,
+      decorations: { circle: true },
+    },
+  }, {
+    type: :textbox,
+    data: {
+      image: content_attachment('static_pages/classes/class.jpg', static_pages[:classes]),
+      title: 'You get support from an expert',
+      text: '<p>The benefits of meditation go far beyond what you experience during the sessions. It has the power to improve every aspect of your life, from your personal growth, to your work and family life, and can even spark immense creativity...</p>',
+      alignment: :right,
+      decorations: { circle: true },
+    },
+  }, {
+    type: :textbox,
+    data: {
+      image: content_attachment('static_pages/classes/class.jpg', static_pages[:classes]),
+      title: 'What to expect at a class?',
+      text: '<p>The benefits of meditation go far beyond what you experience during the sessions. It has the power to improve every aspect of your life, from your personal growth, to your work and family life, and can even spark immense creativity...</p>',
+      alignment: :left,
+    },
+  }, {
+    type: :structured,
+    data: {
+      items: [
+        { title: 'Why is it free?', text: sentences(4) },
+        { title: 'What do I bring?', text: sentences(4) },
+        { title: 'Do I need to have meditated before?', text: sentences(4) },
+      ],
+      format: :accordion,
+    },
+  },
+]))
+
+# ===== CREATE SELF REALIZATION SECTIONS ===== #
+static_pages[:self_realization].update!(content: content([
+  {
+    type: :video,
+    data: {
+      items: [vimeo_attachment],
     },
   },
 ]))

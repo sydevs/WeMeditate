@@ -6,6 +6,8 @@
 - treatments_page = static_page_preview_for(:treatments)
 - contact_page = static_page_preview_for(:contact)
 - articles_page = static_page_preview_for(:articles)
+- classes_page = static_page_preview_for(:classes)
+- self_realization_page = static_page_preview_for(:self_realization)
 
 footer.footer
   .footer__divider: img src=image_path('footer/illustration.svg')
@@ -21,22 +23,22 @@ footer.footer
     .footer__column.footer__column--desktop
       nav.footer__navigation
         .footer__header = translate 'footer.learn_more'
+        a.footer__link href=url_for(self_realization_page) = self_realization_page.name
         a.footer__link href=subtle_system_nodes_path = subtle_system_page.name
         a.footer__link href=url_for(shri_mataji_page) = shri_mataji_page.name
-        a.footer__link href=url_for(sahaja_yoga_page) = sahaja_yoga_page.name
         a.footer__link href=url_for(sahaja_yoga_page) = sahaja_yoga_page.name
 
     .footer__column.footer__column--desktop
       nav.footer__navigation
         .footer__header = translate 'footer.come_meditate'
-        a.footer__link href='local_cities_path' = translate 'footer.classes_near_me'
+        a.footer__link href=url_for(classes_page) = classes_page.name
         a.footer__link href=meditations_path = translate 'footer.online_meditations'
         a.footer__link href='#' Privacy policy
         a.footer__link href=url_for(contact_page) = contact_page.name
 
     .footer__column.footer__column--mobile
       nav.footer__navigation.footer__navigation--bold
-        a.footer__link href='local_cities_path' = translate 'footer.classes_near_me'
+        a.footer__link href=url_for(classes_page) = classes_page.name
         a.footer__link href=url_for(contact_page) = contact_page.name
         a.footer__link href='#' Privacy policy
 
@@ -48,43 +50,3 @@ footer.footer
             i.icon class=type
 
   .footer__copyright &copy; WeMeditate, 2019
-
-
-//footer.footer.wrapper-outer
-  .footer-divider
-    img.lazyload src=image_path('footer/illustration.svg')
-  a.footer-scroll href='#top' = translate 'footer.scroll_to_top'
-  .footer-columns
-    .footer-column.mobile-hidden
-      nav.footer-navigation
-        a.footer-navigation-header href=meditations_path = translate 'footer.meditate_now'
-        a.footer-navigation-header href=tracks_path = translate 'footer.music_for_meditation'
-        a.footer-navigation-header href=articles_path = articles_page.name
-    .footer-column.mobile-hidden
-      nav.footer-navigation
-        .footer-navigation-header = translate 'footer.learn_more'
-        a.footer-navigation-link href=subtle_system_nodes_path = subtle_system_page.name
-        a.footer-navigation-link href=url_for(shri_mataji_page) = shri_mataji_page.name
-        a.footer-navigation-link href=url_for(sahaja_yoga_page) = sahaja_yoga_page.name
-        a.footer-navigation-link href=url_for(sahaja_yoga_page) = sahaja_yoga_page.name
-    .footer-column.mobile-hidden
-      nav.footer-navigation
-        .footer-navigation-header = translate 'footer.come_meditate'
-        a.footer-navigation-link href='local_cities_path' = translate 'footer.classes_near_me'
-        a.footer-navigation-link href=meditations_path = translate 'footer.online_meditations'
-        a.footer-navigation-link href='#' Privacy policy
-        a.footer-navigation-link href=url_for(contact_page) = contact_page.name
-    .footer-column.mobile-visible
-      nav.footer-navigation
-        a.footer-navigation-header href='local_cities_path' = translate 'footer.classes_near_me'
-        a.footer-navigation-header href='#' Privacy policy
-        a.footer-navigation-header href=url_for(contact_page) = contact_page.name
-    .footer-column.footer-social
-      .footer-navigation
-        .footer-navigation-header.mobile-hidden = translate 'footer.follow_us'
-        - I18n.translate('social_media').each do |type, url|
-          a.footer-social-link href=url
-            i.icon class=type
-  .footer-copyright
-    div &copy; WeMeditate, 2019
-    //div = translate 'footer.design_by', company: 'Daviann'

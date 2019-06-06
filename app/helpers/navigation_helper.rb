@@ -16,7 +16,7 @@ module NavigationHelper
 
     @navigation.push({
       title: I18n.translate('header.learn_more'),
-      url: '#', # static_page_path_for(static_page_preview_for(:about)),
+      url: '#', # static_page_path_for(:about),
       active: %w[static_pages subtle_system_nodes].include?(controller_name),
       content: {
         items: %i[about contact sahaja_yoga shri_mataji subtle_system treatments].map { |role|
