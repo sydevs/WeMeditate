@@ -1,0 +1,33 @@
+
+- kundalini = "<abbr class=\"prescreen__abbr prescreen__abbr--active\" title=\"#{t("#{translations}.explanation.text")}\">#{t("#{translations}.kundalini")}</abbr>"
+- gradient_classes = (type == :treatments ? 'gradient--right gradient--orange' : 'gradient--left gradient--blue')
+
+.prescreen id="prescreen" class="prescreen--#{type}"
+  .prescreen__gradient.gradient class=gradient_classes
+  .prescreen__content
+    - if I18n.exists? "#{translations}.subtitle"
+      h1.prescreen__title = translate "#{translations}.title"
+      .prescreen__subtitle = translate("#{translations}.subtitle", kundalini: kundalini).html_safe
+    - else
+      h1.prescreen__title = translate("#{translations}.title", kundalini: kundalini).html_safe
+
+    .prescreen__explanation-wrapper
+      .prescreen__explanation
+        = translate "#{translations}.explanation.text"
+        a.prescreen__explanation__link href='#'
+          = translate "#{translations}.explanation.learn_more"
+          i.breadcrumb.icon
+
+    a.prescreen__button.button.button--circle href='#'
+      = inline_svg 'graphics/circle.svg'
+      .button__text = translate "#{translations}.action"
+
+    .prescreen__skip
+      span.prescreen__skip__text = translate "#{translations}.skip.text"
+      a.prescreen__skip__link href=skip_url
+        span = translate "#{translations}.skip.action"
+        i.breadcrumb.icon
+
+  .prescreen__image
+    = static_image_tag 'meditations/prescreen-background', '100vw', class: 'prescreen__image__background'
+    = static_image_tag 'meditations/prescreen-foreground', '100vw', class: 'prescreen__image__foreground'

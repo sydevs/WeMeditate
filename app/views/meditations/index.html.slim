@@ -82,9 +82,8 @@ main
             = inline_svg 'graphics/circle.svg'
             .button__text = translate 'meditations.submit'
 
-      // TODO: Render this with static_image_tag
       .meditations__image
-        img.meditations__image__background src=image_path('meditations/splash.jpg')
-        img.meditations__image__foreground src=image_path('meditations/splash-overlay.png')
+        = static_image_tag 'meditations/prescreen-background', '100vw', class: 'meditations__image__background'
+        = static_image_tag 'meditations/prescreen-foreground', '100vw', class: 'meditations__image__foreground'
 
   = render_content @static_page

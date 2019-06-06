@@ -28,44 +28,6 @@
   width: 50%
   z-index: 1
 
-// ===== MEDITATIONS PRESCREEN ===== //
-.meditations__prescreen
-  padding-top: 80px
-  margin-bottom: 100px
-  position: relative
-
-  &__content
-    @extend %narrow-content-width
-    position: relative
-    z-index: 1
-
-  &__title
-    text-align: center
-    font-weight: $font-normal
-    font-size: 3.5rem
-    margin-bottom: 30px
-
-  &__title abbr
-    text-decoration: underline dashed
-    cursor: pointer
-
-    &:after
-      content: '?'
-      vertical-align: super
-      font-size: 50%
-      text-decoration: none
-
-  &__explanation
-    border: 1px solid $color-graphic-dark
-    border-left: none
-    border-right: none
-
-  /*&__explanation:not(.meditations__prescreen--opened)
-    display: none*/
-
-  &__skip
-    text-align: center
-
 // ===== FEATURED MEDITATIONS ===== //
 .meditations__featured
   @extend %wide-content-width
@@ -130,7 +92,7 @@
       width: 50%
 
   &__goal
-    z-index: 2
+    z-index: 3
 
     @include tablet-or-larger
       float: left
@@ -178,7 +140,6 @@
       margin-bottom: 130px
 
   &__duration__title
-    display: inline-block
     padding: 0 36px
     vertical-align: bottom
 
@@ -188,10 +149,12 @@
     line-height: 92px
 
     @include tablet
+      display: inline-block
       line-height: 70px
       padding: 0 27px
 
     @include laptop-or-larger
+      display: inline-block
       font-size: 2.8rem
 
   &__duration__input
@@ -209,6 +172,7 @@
 
   &__submit
     margin-top: 48px
+    z-index: 2
 
     @include tablet
       margin-top: 24px

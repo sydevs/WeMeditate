@@ -64,11 +64,13 @@ en:
     prescreen:
       title: Unlock guided meditations by awakening your %{kundalini} first
       kundalini: inner energy
-      explanation: Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation.
       action: Awaken Your Inner Energy
-      skip_text: Meditated with us before?
-      skip_action: Explore guided meditations
-      learn_more: Learn more
+      explanation:
+        text: Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation.
+        learn_more: Learn more
+      skip:
+        text: Meditated with us before?
+        action: Explore guided meditations
     custom_meditation: Set Up your own Meditation
     daily_meditation: Meditation of the day
     trending_meditation: Trending now
@@ -89,14 +91,17 @@ en:
   treatments:
     title_prefix: 'Cleansing Technique:'
     read_more: Learn more
-    splash:
+    prescreen:
       title: Before using methods to improve meditation, you need to
       subtitle: Awaken your %{kundalini}!
       kundalini: inner energy
-      explanation: Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation.
       action: Awaken Now
-      skip_text: Meditated with us before?
-      skip_action: Improve your meditation!
+      explanation:
+        text: Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation.
+        learn_more: Learn more
+      skip:
+        text: Meditated with us before?
+        action: Improve your meditation!
     music:
       title: Music
       description: Music can be both relaxing and gently stimulating, bringing us into balance and allowing our minds to go thoughtless, Explore our curated collection of specially composed tracks, created to enable a deeper state of meditation.

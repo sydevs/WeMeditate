@@ -1,9 +1,11 @@
 module ImageHelper
-  STATIC_IMAGE_PNGS = %w[ancient-wisdom/background].freeze
+
+  STATIC_IMAGE_PNGS = %w[meditations/prescreen-foreground].freeze
   STATIC_IMAGE_VERSIONS = {
+    'meditations/prescreen-background' => { large: 1920, medium: 960, small: 480 },
+    'meditations/prescreen-foreground' => { large: 1920, medium: 960, small: 480 },
     'music/album' => { large: 900, medium: 500, small: 225 },
     'music/treatment' => { medium: 400, small: 200 },
-    'ancient-wisdom/image' => { medium: 560, small: 280 },
     'meditations/random' => { large: 1920 }, # TODO: Optimize this for different resolutions, and it's max width which is much lower than 1920
   }.freeze
 

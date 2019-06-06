@@ -16,6 +16,7 @@ const Application = {
     Application.subtleSystem = Application.loadFirst('subtle-system', SubtleSystem)
     Application.musicPlayer = Application.loadFirst('music-player', MusicPlayer)
     Application.customMeditation = Application.loadFirst('custom-meditation', CustomMeditation)
+    Application.prescreen = Application.loadFirst('prescreen', Prescreen)
   },
 
   loadAll(selector, Klass) {

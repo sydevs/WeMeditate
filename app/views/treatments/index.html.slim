@@ -2,28 +2,7 @@
 - first_track = @tracks.first
 
 main id=dom_id(@static_page)
-  .treatments__splash
-    .treatments__splash__gradient.gradient.gradient--right.gradient--orange
-    .treatments__splash__content
-      h1.treatments__splash__title = translate 'treatments.splash.title'
-      .treatments__splash__subtitle
-        - kundalini = "<abbr title=\"#{t('treatments.splash.explanation')}\">#{t('treatments.splash.kundalini')}</abbr>"
-        = translate('treatments.splash.subtitle', kundalini: kundalini).html_safe
-
-      a.treatments__splash__button.button.button--circle href='#'
-        = inline_svg 'graphics/circle.svg'
-        .button__text = translate 'treatments.splash.action'
-
-      .treatments__splash__skip
-        span = translate 'treatments.splash.skip_text'
-        a href=meditations_path(prescreen: false)
-          = translate 'treatments.splash.skip_action'
-          i.breadcrumb.icon
-
-    // TODO: Render this with static_image_tag
-    .treatments__splash__image
-      img.treatments__splash__image__background src=image_path('meditations/splash.jpg')
-      img.treatments__splash__image__foreground src=image_path('meditations/splash-overlay.png')
+  = render 'meditations/prescreen', translations: 'treatments.prescreen', type: :treatments, skip_url: '#techniques'
 
   .treatments__content-wrapper
     .treatments__content
@@ -31,7 +10,7 @@ main id=dom_id(@static_page)
 
     .treatments__triangle.triangle.triangle--large.triangle--right
 
-  .treatments__list
+  .treatments__list id='techniques'
     .excerpt_list
       .excerpt.excerpt--left
         .excerpt__index 01
