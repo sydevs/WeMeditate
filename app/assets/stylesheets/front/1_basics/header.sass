@@ -378,7 +378,7 @@
       color: black
 
     &:not(:last-child)::after
-      font-family: $wemeditate-icons !important
+      font-family: $font-icons !important
       content: $icon-breadcrumb
       margin: 0 0.9em
       font-size: 0.5em
@@ -423,35 +423,29 @@
     line-height: 4
     transition: all 0.3s ease
     color: $color-header-light
-/*
-  &-logo
+
+// The "burger" button, is the button that opens and closes the menu.
+.header__navigation__burger
+  cursor: pointer
+  position: relative
+  top: 0
+
+  svg
+    opacity: 1
+
+  &:before, &:after
+    content: ""
+    position: absolute
+    background-color: $color-graphic-normal
+    top: 15px
+    left: 0
+    right: 0
+    transition: all 0.5s ease
+    width: 30px
+    height: 1px
+    margin: 0 auto
     opacity: 0
 
-  // The "burger" button, is the button that opens and closes the menu.
-  &-burger
-    position: relative
-    top: 0
-
-    &:before, &:after
-      content: ""
-      position: absolute
-      background-color: #555
-      top: 15px
-      left: 0
-      right: 0
-      transition: all .5s ease
-      width: 30px
-      height: 1px
-      margin: 0 auto
-
-    &:before
-      transform: rotateZ(.7854rad)
-
-    &:after
-      transform: rotateZ(-.7854rad)
-
-    svg
-      opacity: 0*/
 
 // ===== MOBILE SUBMENU ===== //
 // Some items in the mobile menu may open up to show more links.
@@ -518,25 +512,12 @@
   &__navigation
     border-bottom: 1px solid transparent
 
-  &__navigation_burger
-    cursor: pointer
-    position: relative
-    top: 0
-
+  &__navigation__burger
     svg
       opacity: 0
 
     &:before, &:after
-      content: ""
-      position: absolute
-      background-color: $color-graphic-normal
-      top: 15px
-      left: 0
-      right: 0
-      transition: all 0.5s ease
-      width: 30px
-      height: 1px
-      margin: 0 auto
+      opacity: 1
 
     &:before
       transform: rotateZ(0.7854rad)

@@ -59,6 +59,11 @@
   @include laptop-or-larger
     margin-left: -108px
 
+.player__icons > svg
+  height: 25px
+  margin-left: 6px
+  fill: $color-text-dark
+
 // ===== PLAYER PLAYLIST ===== //
 .player__playlist
   max-width: 805px
@@ -95,7 +100,7 @@
     color: $color-text-dark
     margin-bottom: 40px
 
-  &__sidetext
+  /*&__sidetext
     @extend %generic-sidetext
     transform-origin: top right
     right: 100%
@@ -104,7 +109,7 @@
 
     @include laptop-or-larger
       top: 95px
-      padding-top: 11.5563%
+      padding-top: 11.5563%*/
 
   &__list
     position: relative

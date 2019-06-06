@@ -46,6 +46,10 @@ class Dropdown {
     this.selectionContainer.querySelector('svg').replaceWith(svg.cloneNode(true))
     this.selectionContainer.classList.remove('dropdown__selection--inactive')
 
+    const event =  new Event('change')
+    event.detail = item
+    this.container.dispatchEvent(event)
+
     this.togglePopup() // Aka, close it
   }
 

@@ -24,11 +24,11 @@ class Header {
     this._onScroll()
 
     // Fix some really weird bug with smooth scroll
-    /*if (this.scroll == null) {
+    if (this.scroll == null) {
       this.scroll = new SmoothScroll('a[href*="#"]', {
         offset: function() { return this.stickyPoint }
       })
-    }*/
+    }
 
     let $scrollspyTarget = $('.scrollspy-target')
     if ($scrollspyTarget.length > 0) {
@@ -46,8 +46,15 @@ class Header {
   }
 
   toggleSubmenu(element) {
-    console.log('toggle submenu', element)
     element.closest('.header__menu__item--submenu').classList.toggle('header__menu__item--expand')
+  }
+
+  scrollTo(element, offset = 60, speed = 3000) {
+    const bodyRect = document.body.getBoundingClientRect()
+    const elementRect = element.getBoundingClientRect()
+    const target = elementRect.top - bodyRect.top - offset
+    console.log('scroll to', target)
+    this.scroll.animateScroll(target, speed, { speed: speed, updateURL: false })
   }
 
   _onResize() {

@@ -12,17 +12,6 @@
     margin-top: 150px
     margin-bottom: 160px
 
-.content__textbox__image img
-  height: 51vh
-  display: inline-block
-
-  @include laptop-or-larger
-    height: auto
-    display: inline-block
-    -webkit-user-drag: none // autoprefixer doesn't appear to handle this one.
-    user-drag: none
-    user-select: none
-
 .content__textbox__sidetext,
 .content__textbox__triangle,
 .content__textbox__gradient
@@ -45,6 +34,11 @@
   position: relative
   top: -160px
 
+.content__textbox__circle
+  position: absolute
+  left: -160px
+  bottom: -160px
+
 // Desktop sizing
 .content__textbox:not(.content__textbox--center)
   @include desktop
@@ -56,10 +50,26 @@
 
 // ===== CONTENT ===== //
 .content__textbox__image
+  overflow: hidden
   margin-bottom: 56px
 
   @include laptop-or-larger
     margin-bottom: 0
+
+.content__textbox__img
+  height: 51vh
+  position: relative
+  display: inline-block
+
+  @include laptop-or-larger
+    height: auto
+    display: inline-block
+    -webkit-user-drag: none // autoprefixer doesn't appear to handle this one.
+    user-drag: none
+    user-select: none
+
+  img
+    height: 100%
 
 .content__textbox__title
   font-weight: $font-bold
@@ -98,7 +108,7 @@
   .content__textbox__image
     margin-top: $gutter-width + 134px
 
-  .content__textbox__image img
+  .content__textbox__img
     max-height: 80vh
     margin-bottom: 54px
 
@@ -141,7 +151,7 @@
       height: 100%
       z-index: -1
 
-  .content__textbox__image img
+  .content__textbox__img
     @include laptop-or-larger
       height: 100%
 
@@ -175,7 +185,7 @@
 // ===== ALIGNED ===== //
 // CENTERED
 .content__textbox--center:not(.content__textbox--wisdom)
-  .content__textbox__image img
+  .content__textbox__img
     width: 100%
 
     @include laptop-or-larger
@@ -227,9 +237,9 @@
           margin-#{$opposite}: 0
           padding-#{$opposite}: $gutter-width
 
-          img
-            max-height: 91vh
-            float: $opposite
+      .content__textbox__img
+        max-height: 91vh
+        float: $opposite
 
 // ===== INVERTED ===== //
 .content__textbox--invert

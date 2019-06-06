@@ -21,7 +21,8 @@ class Loadmore {
     const event =  new Event('contentchange')
     event.detail = content
 
-    this.target.append(content)
+    $(this.target).append(content)
+    console.log('add content', content, 'to', this.target)
     this.target.dispatchEvent(event)
   }
 

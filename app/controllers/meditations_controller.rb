@@ -46,7 +46,7 @@ class MeditationsController < ApplicationController
     where[:duration_filter_id] = params[:duration_filter] if params[:duration_filter].present?
     where[:goal_filters] = { id: params[:goal_filter] } if params[:goal_filter].present?
     meditation = Meditation.joins(:goal_filters).where(where).order('RANDOM()').first
-    raise ActionController::RoutingError, 'No Meditation Found for the given filters' unless meditation.present?
+    raise ActiveRecord::RecordNotFound, 'No meditation found for the given filters' unless meditation.present?
 
     redirect_to meditation_url(meditation), status: :see_other
   end

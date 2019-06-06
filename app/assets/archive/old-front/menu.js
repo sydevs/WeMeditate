@@ -9,7 +9,7 @@ const Menu = {
   is_front_page: false,
   header: null,
   menu: null,
-  scrollspy: null,
+  scroll: null,
 
   scrollspy: null,
   scrollspyTop: null,

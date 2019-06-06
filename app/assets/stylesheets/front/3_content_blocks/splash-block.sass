@@ -2,8 +2,8 @@
 
 .content__splash
   height: 100vh
-  min-height: 100vh
   max-height: 1024px
+  padding-top: 70px
 
   text-align: center
   background-repeat: no-repeat
@@ -12,9 +12,15 @@
 
   @include mobile
     background-position-x: -85vh
+    min-height: 450px
 
   @include tablet
     background-position-x: -74vh
+    min-height: 540px
+
+  @include laptop-or-larger
+    min-height: 700px
+    padding-top: 234px
 
   &__wrapper
     @extend %narrow-content-width
@@ -40,22 +46,8 @@
 
 // ===== HOME PAGE ===== //
 .content__splash--home
-  padding-top: 28vh
-
-  @include tablet-or-larger
-    padding-top: 40vh
-
-  @include laptop-or-larger
-    min-height: 370px
-    padding-top: 43.5vh
-
-  @include desktop
-    padding-top: 430px
-
-  @include widescreen
-    min-height: 730px
-
   .content__splash__title
+    margin-top: 18.5%
     margin-bottom: 10vh
     font-weight: $font-normal
 
@@ -63,12 +55,15 @@
       font-size: 4.5rem
       line-height: 1.2222
       max-width: 500px
+      margin-top: 15%
       margin-bottom: 4.5vh
 
     @include laptop
+      margin-top: 18%
       margin-bottom: 5vh
 
     @include desktop
+      margin-top: 196px
       margin-bottom: 40px
 
   .content__splash__text

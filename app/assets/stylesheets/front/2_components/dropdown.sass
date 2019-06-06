@@ -117,8 +117,16 @@
     line-height: 1
     text-transform: lowercase
 
-.dropdown__selection--error
-  border-color: $color-error
+.dropdown--error
+  .dropdown__selection:after
+    @include laptop-or-larger
+      border-color: $color-error
+
+  .dropdown__selection__icon
+    border-color: $color-error !important
+
+  .dropdown__selection--inactive .dropdown__selection__text
+    color: $color-error
 
 // ===== DEFAULT SELECTION ===== //
 // This is what is shown when nothing has been selected yet.
@@ -177,7 +185,7 @@
   display: flex
   flex-direction: column
   position: fixed
-  top: 0
+  top: 70px
   left: 0
   bottom: 0
   right: 0
@@ -210,7 +218,6 @@
     text-align: center
     font-weight: $font-normal
     font-size: 2.8rem
-    margin-top: 58px
 
     @include laptop-or-larger
       display: none
@@ -276,10 +283,11 @@
 .dropdown__close
   display: none
   position: fixed
-  top: 26px
+  top: 95px
   right: 20px
   height: 34px
   width: 34px
+  cursor: pointer
 
   &:before, &:after
     content: ""

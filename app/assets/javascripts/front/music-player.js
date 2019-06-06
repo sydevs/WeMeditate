@@ -8,6 +8,8 @@ class MusicPlayer {
     this.container = element
     this.player = new Plyr(audioPlayer, { controls, invertTime: true })
     this.selectionContainer = element.querySelector('.player__selection')
+    this.sidetext = element.querySelector('.player__sidetext')
+    this.icons = element.querySelector('.player__icons')
     this.playlist = JSON.parse(element.dataset.playlist)
     this.mini = element.classList.contains('player--mini')
     this.currentTrackIndex = 0
@@ -24,7 +26,7 @@ class MusicPlayer {
   }
 
   initFullPlayer() {
-    this.coverImage = this.container.querySelector('.player__cover__image')
+    this.coverImage = this.container.querySelector('.player__cover__img')
     this.playlistContainer = document.getElementById('music-player-playlist')
     for (let i = 0; i < this.playlistContainer.childElementCount; i++) {
       this.initTrack(this.playlistContainer.children[i])
@@ -34,7 +36,8 @@ class MusicPlayer {
     //this.initFilterGroup('mood')
     this.initFilterGroup('instrument')
 
-    this.defaultCoverUrl = this.coverImage.getAttribute('src')
+    this.defaultCoverJpgSrcset = this.coverImage.getAttribute('data-srcset')
+    this.defaultCoverWebpSrcset = this.coverImage.previousSibling.getAttribute('data-srcset')
   }
 
   initFilterGroup(type) {
@@ -75,6 +78,13 @@ class MusicPlayer {
       this.filters[type] = filter
     }
 
+    if (type == 'instrument') {
+      this.sidetext.innerText = element.innerText
+    }
+
+    this.icons.innerHTML = ''
+    this.icons.appendChild(element.querySelector('svg').cloneNode(true))
+
     element.classList.add('button--active')
     this.applyFilters()
   }
@@ -89,6 +99,9 @@ class MusicPlayer {
     if (!this.isTrackAvailable(this.playlist[this.currentTrackIndex])) {
       this.selectNextTrack(true)
     }
+
+    //this.scrollToPlayer()
+    Application.header.scrollTo(this.container)
   }
 
   isTrackAvailable(data) {
@@ -117,8 +130,7 @@ class MusicPlayer {
     this.player.play()
 
     if (!this.mini) {
-      const imageUrl = data.artist.image ? data.artist.image : this.defaultCoverUrl
-      this.coverImage.setAttribute('src', imageUrl)
+      this.setCoverImage(data.artist.image_srcset)
       this.playlistContainer.children[this.currentTrackIndex].classList.remove('player__item--active')
       this.currentTrackIndex = data.index
       this.playlistContainer.children[this.currentTrackIndex].classList.add('player__item--active')
@@ -158,6 +170,23 @@ class MusicPlayer {
     }
 
     this.selectTrack(this.playlist[index])
+  }
+
+  scrollToPlayer() {
+    let bodyRect = document.body.getBoundingClientRect()
+    let containerRect = this.container.getBoundingClientRect()
+    let offset = containerRect.top - bodyRect.top - 60
+    Application.header.scroll.animateScroll(offset, 3000, { speed: 3000, updateURL: false })
+  }
+
+  setCoverImage(srcset) {
+    if (srcset) {
+      this.coverImage.setAttribute('srcset', srcset.jpg)
+      this.coverImage.previousSibling.setAttribute('srcset', srcset.webp)
+    } else {
+      this.coverImage.setAttribute('srcset', this.defaultCoverJpgSrcset)
+      this.coverImage.previousSibling.setAttribute('srcset', this.defaultCoverWebpSrcset)
+    }
   }
 
   static formatDuration(seconds) {

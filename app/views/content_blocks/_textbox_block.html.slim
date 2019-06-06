@@ -18,7 +18,10 @@
     .content__textbox__graphic = inline_svg 'content/ancient-wisdom.svg'
 
   .content__textbox__image
-    = smart_image_tag @record.media_file(block[:image][:id]), block[:alignment] == 'center' ? '100vw' : '(max-width: 767px) calc(60vw - 48px), 50vw'
+    .content__textbox__img
+      = smart_image_tag @record.media_file(block[:image][:id]), block[:alignment] == 'center' ? '100vw' : '(max-width: 767px) calc(60vw - 48px), 50vw'
+      .content__textbox__circle
+        = render_decoration :circle, block
 
   .content__textbox__box_wrapper
     .content__textbox__box

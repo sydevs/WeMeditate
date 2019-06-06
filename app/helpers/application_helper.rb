@@ -2,6 +2,13 @@ module ApplicationHelper
 
   def playlist_data tracks
     tracks.each_with_index.map do |track, index|
+      jpg_srcset = []
+      webp_srcset = []
+      track.artist.image.versions.values.each do |version|
+        jpg_srcset << "#{version.url} #{version.width}w"
+        webp_srcset << "#{version.webp.url} #{version.width}w"
+      end
+
       {
         index: index,
         name: track.name,
@@ -11,7 +18,10 @@ module ApplicationHelper
         artist: {
           name: track.artist.name,
           url: track.artist.url,
-          image: track.artist.image_url,
+          image_srcset: {
+            jpg: jpg_srcset.join(', '),
+            webp: webp_srcset.join(', '),
+          },
         },
       }
     end
@@ -32,11 +42,13 @@ module ApplicationHelper
 
     data = block[:decorations][type]
     classes = [type]
-    classes << "#{type}--#{args[:alignment] || data[:alignment] || 'left'}"
+    classes << "#{type}--#{args[:alignment] || data[:alignment] || 'left'}" unless type == :circle
     classes << "gradient--#{data[:color] || 'orange'}" if type == :gradient
     classes << "gradient--#{args[:size] || data[:size] || 'medium'}" if type == :gradient
 
-    if type == :sidetext
+    if type == :circle
+      inline_svg 'graphics/circle.svg', class: classes
+    elsif type == :sidetext
       classes << 'sidetext--overlay' unless args[:static]
       content_tag :div, data, class: classes
     else
