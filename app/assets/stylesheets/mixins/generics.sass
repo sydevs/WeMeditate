@@ -93,6 +93,36 @@
     transform-origin: center
     transform: rotate(-90deg)
 
+// Video button styling
+%video-button
+  display: inline-block
+  position: relative
+
+  border: 1px solid transparent
+  transition: all 0.5s ease
+
+  width: 100px
+  height: 100px
+  padding: 16px
+
+  @include desktop
+    width: 148px
+    height: 148px
+    padding: 32px
+
+  &:hover
+    border-color: $color-button-video
+    cursor: pointer
+
+  &:after
+    background-image: image-url('graphics/play-video.svg')
+    background-position: center
+    background-size: cover
+    display: block
+    content: ''
+    width: 100%
+    height: 100%
+
 // For wide
 %wide-content-width
   width: 100%

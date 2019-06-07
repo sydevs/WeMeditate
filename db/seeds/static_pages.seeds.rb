@@ -183,8 +183,7 @@ static_pages[:shri_mataji].update!(content: content([
         circle: true,
       },
     },
-  },
-  {
+  }, {
     type: :textbox,
     data: {
       image: content_attachment('static_pages/shri-mataji/master-of-yoga.jpg', static_pages[:shri_mataji]),
@@ -194,13 +193,16 @@ static_pages[:shri_mataji].update!(content: content([
       decorations: { triangle: { alignment: :left } },
     },
   }, {
-    type: :video,
+    type: :textbox,
     data: {
-      format: :featured,
-      items: [vimeo_attachment],
+      image: content_attachment('static_pages/shri-mataji/try-meditation.jpg', static_pages[:shri_mataji]),
+      title: 'Try Guided Meditation with Shri Mataji',
+      action: 'Start meditation',
+      url: 'https://vimeo.com/266576047',
+      alignment: :right,
+      asVideo: true,
     },
-  },
-  {
+  }, {
     type: :textbox,
     data: {
       image: content_attachment('static_pages/shri-mataji/social-work.jpg', static_pages[:shri_mataji]),
@@ -213,8 +215,7 @@ static_pages[:shri_mataji].update!(content: content([
         gradient: { alignment: :right, color: :blue },
       },
     },
-  },
-  {
+  }, {
     type: :textbox,
     data: {
       image: content_attachment('static_pages/shri-mataji/family.jpg', static_pages[:shri_mataji]),

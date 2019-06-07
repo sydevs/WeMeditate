@@ -45,18 +45,8 @@
   &__url
     border-left: 2px solid gray
 
-// SETTINGS
-.cdx-textbox-settings .cdx-settings-button
-  &__asWisdom,
-  &__invert
-    width: 51px
-
 // TUNES
 .cdx-textbox
-  &--asWisdom
-    background: beige
-    padding: 10px
-
   &--right
     flex-direction: row-reverse
 
@@ -65,3 +55,16 @@
 
     .cdx-textbox__image
       width: 100%
+
+  &--asWisdom
+    background: beige
+    padding: 10px
+
+  &--asVideo
+    .cdx-textbox__text
+      display: none
+
+    .cdx-textbox__url:after
+      content: ' (Vimeo URL)'
+      opacity: 0.5
+      font-size: 80%

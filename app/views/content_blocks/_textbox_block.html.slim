@@ -1,9 +1,11 @@
 
 - isWisdom = (block[:asWisdom] == true)
+- isVideo = (block[:asVideo] == true)
 - classes = ["content__textbox--#{block[:alignment]}"]
 - classes << 'content__textbox--invert' if isWisdom or block[:invert] == true
 - classes << "content__textbox--#{block[:stretch] == true ? 'stretch' : 'overlay'}"
 - classes << "content__textbox--wisdom" if isWisdom
+- classes << "content__textbox--video" if isVideo
 
 .content__textbox class=classes
   .content__textbox__decoration.content__textbox__decoration--gradient
@@ -17,19 +19,28 @@
   - if isWisdom
     .content__textbox__graphic = inline_svg 'content/ancient-wisdom.svg'
 
+  - if isVideo
+    h2.content__textbox__title = block[:title]
+
   .content__textbox__image
     .content__textbox__img
       = smart_image_tag @record.media_file(block[:image][:id]), block[:alignment] == 'center' ? '100vw' : '(max-width: 767px) calc(60vw - 48px), 50vw'
       .content__textbox__circle
         = render_decoration :circle, block
 
-  .content__textbox__box_wrapper
-    .content__textbox__box
-      h2.content__textbox__title = block[:title]
-      .content__textbox__text = block[:text].html_safe
+      - if isVideo
+        .content__textbox__action
+          a.content__textbox__action__button href=block[:url]
+          .content__textbox__action__text = block[:action]
 
-      - if block[:action].present? and block[:url].present?
-        a.content__textbox__button.button.button--box.button--large href=block[:url] = block[:action]
+  - unless isVideo
+    .content__textbox__box_wrapper
+      .content__textbox__box
+        h2.content__textbox__title = block[:title]
+        .content__textbox__text = block[:text].html_safe
+
+        - if block[:action].present? and block[:url].present?
+          a.content__textbox__button.button.button--box.button--large href=block[:url] = block[:action]
 
 .content__textbox__decoration.content__textbox__decoration--triangle
   .content__textbox__triangle

@@ -26,6 +26,7 @@ class TextboxTool extends EditorTool {
       url: data.url || '',
       alignment: ['left', 'center', 'right'].includes(data.alignment) ? data.alignment : 'left',
       asWisdom: data.asWisdom || false,
+      asVideo: data.asVideo || false,
       invert: data.invert || false,
       decorations: data.decorations || {},
     }, { // Config
@@ -43,6 +44,11 @@ class TextboxTool extends EditorTool {
           name: 'asWisdom',
           label: 'Ancient Wisdom Style',
           icon: 'university',
+        },
+        {
+          name: 'asVideo',
+          label: 'Video',
+          icon: 'play',
         },
         {
           name: 'invert',
@@ -145,8 +151,14 @@ class TextboxTool extends EditorTool {
     if (active && tune.name == 'asWisdom') {
       if (this.data.alignment == 'center') this.setTuneValue('alignment', 'left')
       this.setTuneBoolean('invert', false)
+      this.setTuneBoolean('asVideo', false)
+    } else if (active && tune.name == 'asVideo') {
+      if (this.data.alignment == 'center') this.setTuneValue('alignment', 'right')
+      this.setTuneBoolean('invert', false)
+      this.setTuneBoolean('asWisdom', false)
     } else if (active && (tune.name == 'center' || tune.name == 'invert')) {
       this.setTuneBoolean('asWisdom', false)
+      this.setTuneBoolean('asVideo', false)
     }
   }
 
