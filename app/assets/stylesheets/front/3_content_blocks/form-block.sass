@@ -94,7 +94,7 @@
 
 // ===== INPUTS ===== //
 .content__form
-  input, textarea, select
+  input:not([type="checkbox"]), textarea, select
     width: 100%
     font-size: 1.3rem
     line-height: 1.154
@@ -115,6 +115,9 @@
     &:disabled
       color: $color-text-light
       border: none
+
+  input[type="checkbox"]
+    margin-right: 4px
 
   textarea
     resize: vertical

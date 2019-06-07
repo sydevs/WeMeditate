@@ -26,6 +26,7 @@ en:
     input:
       email: Your email
       message: Message
+      privacy: I have read and agree with the %{link}.
       name: Your name
       class: Select class
     missing:

@@ -8,6 +8,7 @@
 - articles_page = static_page_preview_for(:articles)
 - classes_page = static_page_preview_for(:classes)
 - self_realization_page = static_page_preview_for(:self_realization)
+- privacy_page = static_page_preview_for(:privacy)
 
 footer.footer
   .footer__divider: img src=image_path('footer/illustration.svg')
@@ -33,14 +34,14 @@ footer.footer
         .footer__header = translate 'footer.come_meditate'
         a.footer__link href=url_for(classes_page) = classes_page.name
         a.footer__link href=meditations_path = translate 'footer.online_meditations'
-        a.footer__link href='#' Privacy policy
+        a.footer__link href=url_for(privacy_page) = privacy_page.name
         a.footer__link href=url_for(contact_page) = contact_page.name
 
     .footer__column.footer__column--mobile
       nav.footer__navigation.footer__navigation--bold
         a.footer__link href=url_for(classes_page) = classes_page.name
         a.footer__link href=url_for(contact_page) = contact_page.name
-        a.footer__link href='#' Privacy policy
+        a.footer__link href=url_for(privacy_page) = privacy_page.name
 
     .footer__column.footer__social
       .footer__navigation

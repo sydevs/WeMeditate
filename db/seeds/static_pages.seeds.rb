@@ -19,6 +19,7 @@ static_pages = {}
   meditations: 'Meditate Now',
   classes: 'Classes Near Me',
   self_realization: 'The First Experience',
+  privacy: 'Privacy Notice',
 }.each do |role, name|
   static_pages[role] = StaticPage.find_or_initialize_by(role: role)
   static_pages[role].update!(name: name)
@@ -468,6 +469,26 @@ static_pages[:self_realization].update!(content: content([
     type: :video,
     data: {
       items: [vimeo_attachment],
+    },
+  },
+]))
+
+# ===== CREATE SELF REALIZATION SECTIONS ===== #
+static_pages[:privacy].update!(content: content([
+  {
+    type: :header,
+    data: {
+      text: 'Background',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: 'WeMeditate understands that your privacy is important to you and that you care about how your information is used and shared online. We respect and value the privacy of everyone who visits Our Site and will only collect and use information in ways that are useful to you and in a manner consistent with your rights and Our obligations under the law.',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: 'This Policy applies to Our use of any and all data collected by us in relation to your use of Our Site. Please read this Privacy Policy carefully and ensure that you understand it. Your acceptance of Our Privacy Policy is deemed to occur upon your first use of Our Site. If you do not accept and agree with this Privacy Policy, you must stop using Our Site immediately.',
     },
   },
 ]))

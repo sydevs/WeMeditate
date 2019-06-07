@@ -1,4 +1,5 @@
 
+- privacy_page = static_page_preview_for(:privacy)
 - url = (block[:format] == 'contact' ? contact_path : subscribe_path)
 - classes = ['content__form']
 - classes << "content__form--#{block[:format]}"
@@ -16,6 +17,9 @@
         = f.email_field :email_address, placeholder: t('form.input.email')
         - if block[:format] == 'contact'
           = f.text_area :message, placeholder: t('form.input.message'), rows: 5
+        label.content__form__label
+          = f.check_box :privacy
+          = t('form.input.privacy', link: "<a href=\"#{url_for(privacy_page)}\">#{privacy_page.name.downcase}</a>").html_safe
         = f.hidden_field :gobbledigook
 
     button.button.button--box = block[:action]
