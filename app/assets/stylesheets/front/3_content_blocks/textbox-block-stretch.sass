@@ -1,0 +1,31 @@
+@import "../../mixins/*"
+
+// ===== CONTENT ===== //
+.content__textbox--stretch .content__textbox
+  &__img
+    height: 91vh
+
+  &__box_wrapper
+    @extend %wide-content-width
+
+  &__box
+    padding-top: 80px
+    max-width: $narrow-content-width
+
+
+// ===== ALIGNED ===== //
+.content__textbox--stretch.content__textbox
+  @each $side in left right
+    $opposite: right !default
+    @if $side == right
+      $opposite: left
+
+    &--#{$side}
+      .content__textbox__image
+        float: $opposite
+        margin-#{$side}: 2 * $gutter-width
+        margin-bottom: $gutter-width
+
+      .content__textbox__box
+        padding-#{$side}: $gutter-width
+        margin-#{$opposite}: auto

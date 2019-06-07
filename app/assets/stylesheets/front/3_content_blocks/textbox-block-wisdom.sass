@@ -1,0 +1,52 @@
+@import "../../mixins/*"
+
+.content__textbox--wisdom
+  background-image: image-url('content/ancient-wisdom.jpg')
+  background-size: cover
+  background-position: center
+  padding-top: 100px
+  padding-bottom: 50px
+
+// ===== CONTENT ===== //
+.content__textbox--wisdom .content__textbox
+  &__graphic
+    position: absolute
+    right: 0
+    margin-right: -20%
+    width: 40%
+    z-index: -1
+
+  &__image
+    margin-top: $gutter-width + 134px
+
+  &__img
+    max-height: 80vh
+    margin-bottom: 54px
+
+  &__title
+    position: absolute
+    margin: 0
+
+    font-weight: $font-normal
+    font-size: 3.5rem
+
+// ===== ALIGNED ===== //
+.content__textbox--wisdom.content__textbox
+  @each $side in left right
+    $opposite: right !default
+    @if $side == right
+      $opposite: left
+
+    &--#{$side}
+      .content__textbox__title
+        @include laptop-or-larger
+          float: $opposite
+
+      .content__textbox__text
+        padding-#{$side}: 60px
+        padding-#{$opposite}: 30%
+
+      .content__textbox__image
+        @include laptop-or-larger
+          float: $opposite
+          margin-#{$side}: 54px

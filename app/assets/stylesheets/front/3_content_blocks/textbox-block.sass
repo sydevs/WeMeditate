@@ -4,6 +4,7 @@
   min-height: 91vh
   margin-top: 100px
   margin-bottom: 50px
+  position: relative
 
   @include tablet
     margin-bottom: 100px
@@ -12,34 +13,11 @@
     margin-top: 150px
     margin-bottom: 160px
 
-.content__textbox__sidetext,
-.content__textbox__triangle,
-.content__textbox__gradient
-  position: relative
-
 .content__textbox:not(.content__textbox--center),
-.content__textbox--center .content__textbox__box_wrapper,
-.content__textbox--center .content__textbox__decoration--sidetext,
-.content__textbox__decoration--triangle,
-.content__textbox__gradient
+.content__textbox--center .content__textbox__box_wrapper
   @extend %wide-content-width
 
-.content__textbox__decoration--gradient
-  @include overlay
-
-.content__textbox__gradient
-  height: 100%
-
-.content__textbox__decoration--triangle
-  position: relative
-  top: -160px
-
-.content__textbox__circle
-  position: absolute
-  left: -160px
-  bottom: -160px
-
-// Desktop sizing
+// Extra desktop sizing
 .content__textbox:not(.content__textbox--center)
   @include desktop
     min-height: 900px
@@ -48,6 +26,7 @@
     @include desktop
       min-height: 900px
 
+  
 // ===== CONTENT ===== //
 .content__textbox__image
   overflow: hidden
@@ -90,251 +69,33 @@
 .content__textbox__button
   margin-top: 24px
 
-// ===== WISDOM ===== //
-.content__textbox--wisdom
-  background-image: image-url('content/ancient-wisdom.jpg')
-  background-size: cover
-  background-position: center
-  padding-top: 100px
-  padding-bottom: 50px
 
-  .content__textbox__graphic
-    position: absolute
-    right: 0
-    margin-right: -20%
-    width: 40%
-    z-index: -1
-
-  .content__textbox__image
-    margin-top: $gutter-width + 134px
-
-  .content__textbox__img
-    max-height: 80vh
-    margin-bottom: 54px
-
-  .content__textbox__title
-    position: absolute
-    margin: 0
-
-    font-weight: $font-normal
-    font-size: 3.5rem
-
-// ===== ALIGNED WISDOM ===== //
-.content__textbox--wisdom.content__textbox
-  @each $side in left right
-    $opposite: right !default
-    @if $side == right
-      $opposite: left
-
-    &--#{$side}
-      .content__textbox__title
-        @include laptop-or-larger
-          float: $opposite
-
-      .content__textbox__text
-        padding-#{$side}: 60px
-        padding-#{$opposite}: 30%
-
-      .content__textbox__image
-        @include laptop-or-larger
-          float: $opposite
-          margin-#{$side}: 54px
-
-// ===== FEATURED VIDEO ===== //
-.content__textbox--video
-  .content__textbox__image
-    padding-bottom: 150px
-
-  .content__textbox__title
-    @include tablet-or-larger
-      background: image-url('graphics/circle.svg')
-      background-size: contain
-      width: 300px
-      height: 300px
-      padding: 45px
-
-      display: flex
-      align-items: center
-      text-align: center
-
-      position: absolute
-      left: 50%
-
-    @include laptop-or-larger
-      width: 400px
-      height: 400px
-      padding: 60px
-      margin-left: 5%
-
-  .content__textbox__action
-    position: absolute
-    left: 100%
-    right: 100%
-
-    margin-left: -50px
-    margin-top: -50px
-
-    @include desktop
-      margin-left: -74px
-      margin-top: -74px
-
-  .content__textbox__action:before
-    // Background behind the action area
-    content: ''
-    position: absolute
-    top: -100px
-    bottom: -100px
-    left: -75vw
-    right: -75vw
-    z-index: -1
-
-    @include tablet-or-larger
-      left: -30vw
-
-  .content__textbox__action__button
-    @extend %video-button
-    border-color: white
-
-  .content__textbox__action__text
-    font-weight: $font-bold
-
-    @include mobile
-      text-align: center
-      width: 100px
-      font-size: 1.3rem
-
-    @include tablet-or-larger
-      font-size: 1.8rem
-      line-height: 100px
-      white-space: nowrap
-
-// ===== ALIGNED FEATURED VIDEO ===== //
-.content__textbox--video.content__textbox
-  @each $side in left right
-    $opposite: right !default
-    @if $side == right
-      $opposite: left
-
-    &--#{$side}
-      .content__textbox__action:before
-        @include gradient(to #{$opposite}, 'gray')
-
-      .content__textbox__action__button
-        @include tablet-or-larger
-          float: $opposite
-          margin-#{$opposite}: 10px
-
-// ===== OVERLAY ===== //
-.content__textbox--overlay
+// ===== DECORATIONS ===== //
+.content__textbox__sidetext,
+.content__textbox__triangle,
+.content__textbox__gradient
   position: relative
 
-  .content__textbox__image
-    @include laptop-or-larger
-      @include overlay
-      width: 100%
-      height: 100%
-      z-index: -1
+.content__textbox--center .content__textbox__decoration--sidetext,
+.content__textbox__decoration--triangle,
+.content__textbox__gradient
+  @extend %wide-content-width
 
-  .content__textbox__img
-    @include laptop-or-larger
-      height: 100%
+.content__textbox__decoration--gradient
+  @include overlay
 
-  .content__textbox__box_wrapper
-    @include laptop-or-larger
-      display: flex
-      flex-direction: column
-      justify-content: center
+.content__textbox__gradient
+  height: 100%
 
-      padding-top: 6vh
-      padding-bottom: 6vh
-      min-height: 91vh
+.content__textbox__decoration--triangle
+  position: relative
+  top: -160px
 
-  .content__textbox__box
-    @include tablet
-      padding: 0 100px
-      padding-top: 20px
+.content__textbox__circle
+  position: absolute
+  left: -160px
+  bottom: -160px
 
-    @include laptop-or-larger
-      max-width: 630px
-      min-width: 540px
-      margin: auto
-      padding: 84px
-      padding-top: 60px
-      background: white
-
-    @include desktop
-      padding: 68px
-      padding-top: 95px
-
-// ===== STRETCHED ===== //
-.content__textbox__box
-  padding: 80px
-
-// ===== ALIGNED ===== //
-// CENTERED
-.content__textbox--center:not(.content__textbox--wisdom)
-  .content__textbox__img
-    width: 100%
-
-    @include laptop-or-larger
-      object-position: left
-
-  .content__textbox__box_wrapper
-    @include laptop-or-larger
-      padding-bottom: 6vh
-
-  .content__textbox__box
-    @include laptop-or-larger
-      max-width: 600px
-      padding: 80px 75px
-      background: none
-      margin-left: 58px
-
-    @include desktop
-      margin-left: 5%
-
-  .content__textbox__sidetext
-    top: 60px
-
-  + .content__textbox__decoration--triangle
-    display: none
-
-    @include laptop-or-larger
-      display: block
-
-// LEFT + RIGHT ALIGNED
-.content__textbox
-  @each $side in left right
-    $opposite: right !default
-    @if $side == right
-      $opposite: left
-
-    &--#{$side}.content__textbox--stretch
-      .content__textbox__image
-        float: $opposite
-        margin-#{$side}: 2 * $gutter-width
-
-    &--#{$side}.content__textbox--overlay
-      .content__textbox__box
-        @include laptop
-          margin-#{$side}: 8%
-
-        @include desktop
-          margin-#{$side}: 13.25%
-
-      .content__textbox__image
-        text-align: $opposite
-        margin-left: -$gutter-width
-        margin-right: -$gutter-width
-
-        @include laptop-or-larger
-          margin-left: 0
-          margin-right: 0
-          padding-#{$opposite}: $gutter-width
-
-      .content__textbox__img
-        max-height: 91vh
-        float: $opposite
 
 // ===== INVERTED ===== //
 .content__textbox--invert
