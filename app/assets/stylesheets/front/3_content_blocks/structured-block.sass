@@ -46,3 +46,31 @@
 
   .content__structured__text
     text-align: left
+
+// ===== ACCORDION ===== //
+.content__structured--accordion
+  .content__structured__title
+    position: relative
+    cursor: pointer
+
+  .content__structured__title:after
+    font-family: $font-icons !important
+    content: $icon-arrow-left
+    position: absolute
+    right: 0
+    transform: rotate(90deg)
+    transition: transform 0.3s 
+
+  .content__structured__item:not(:last-child)
+    border-bottom: 1px solid $color-graphic-normal
+
+  .content__structured__text
+    transition: max-height 0.5s ease
+    overflow: auto
+
+  .content__structured__item--closed
+    .content__structured__title:after
+      transform: rotate(-90deg)
+
+    .content__structured__text
+      max-height: 0 !important

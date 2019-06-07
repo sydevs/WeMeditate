@@ -4,6 +4,7 @@ const Application = {
     Application.loadImages()
     Application.videoPlayer = Video.loadPlayer('video-player')
 
+    Application.accordions = Application.loadAll('accordion', Accordion)
     Application.carousels = Application.loadAll('carousel', Carousel)
     Application.dropdowns = Application.loadAll('dropdown', Dropdown)
     Application.forms = Application.loadAll('form', Form)
