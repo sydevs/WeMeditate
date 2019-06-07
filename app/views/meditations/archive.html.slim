@@ -1,0 +1,12 @@
+
+main
+  h1.banner = translate 'meditations.archive.title'
+
+  .meditations__grid-wrapper
+    .meditations__grid.js-grid
+      = render @meditations
+
+      - if @loadmore_url
+        .meditations__grid__loadmore.js-loadmore
+          = link_to @loadmore_url, remote: 'true', class: 'button button--box button--large' do
+            = t('meditations.archive.load_more')

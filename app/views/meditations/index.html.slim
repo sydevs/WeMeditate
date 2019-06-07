@@ -37,9 +37,8 @@ main
         p.preview__text = translate 'meditations.random_meditation_description'
 
     .meditations__index-action
-      a.meditations__index-action__link href=meditations_path
-        // TODO: Translate this
-        span.meditations__index-action__text See all meditations
+      a.meditations__index-action__link href=archive_meditations_path
+        span.meditations__index-action__text = translate 'meditations.archive.see_all_meditations'
         i.breadcrumb.icon
 
     .meditations__custom id='custom-meditation'

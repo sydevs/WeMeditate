@@ -83,6 +83,11 @@ en:
     goal_action: Select mood
     submit: Start meditation
     minutes: min
+    archive:
+      see_all_meditations: See all meditations
+      title: Guided Meditations
+      view_meditation: View meditation
+      load_more: Load more
   tracks:
     subtitle: Subtitle for music
     text: Enjoy a curated collection of meditation music we produced to help you disconnect from your surroundings and achieve a true state of inner peace.

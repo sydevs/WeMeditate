@@ -52,6 +52,7 @@ Rails.application.routes.draw do
       end
 
       resources :meditations, only: %i[index show] do
+        get :archive, on: :collection
         get :random, on: :collection
         post :find, on: :collection
         post :record_view, on: :member

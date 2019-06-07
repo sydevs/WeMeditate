@@ -1,5 +1,7 @@
 class MeditationsController < ApplicationController
 
+  MEDITATIONS_PER_PAGE = 10
+
   def index
     @record = StaticPage.preload_for(:content).find_by(role: :meditations)
 
@@ -18,6 +20,32 @@ class MeditationsController < ApplicationController
       @duration_filters = DurationFilter.all
     else
       render :prescreen
+    end
+  end
+
+  def archive
+    next_offset = params[:offset].to_i + MEDITATIONS_PER_PAGE
+    @meditations = Meditation.preload_for(:preview).offset(params[:offset]).limit(MEDITATIONS_PER_PAGE)
+
+    if @meditations.count < next_offset
+      @loadmore_url = nil
+    else
+      @loadmore_url = archive_meditations_path(format: 'js', offset: next_offset)
+    end
+
+    respond_to do |format|
+      format.html do
+        @breadcrumbs = [
+          { name: StaticPageHelper.preview_for(:home).name, url: root_path },
+          { name: StaticPageHelper.preview_for(:meditations).name, url: meditations_path },
+          { name: translate('meditations.archive.title') },
+        ]
+        render :archive
+      end
+
+      format.js do
+        render :archive
+      end
     end
   end
 

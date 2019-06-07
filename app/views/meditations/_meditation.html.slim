@@ -1,0 +1,12 @@
+
+/- image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 1197px) calc(34vw - 32px), (max-width: 1599px) 270px, (max-width: 2179px) 320px, 360px'
+// This is a simplified version of the above sizes, which takes advantage of the fact that we know that the small image is 360px
+// So the last 3 rules from the above ruleset would resolve to the same image.
+- image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 1197px) calc(34vw - 32px), 360px'
+
+.meditations__grid__item.preview.preview--small
+  a.preview__media.preview__media--force-ratio.video href=meditation_path(meditation)
+    = smart_image_tag meditation.image, image_sizes, class: 'preview__media__thumbnail', alt: meditation.name
+    .video__button.video__button--small
+  h3.preview__title = meditation.name
+  p.preview__text = meditation.excerpt

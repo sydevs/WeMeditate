@@ -4,6 +4,25 @@
 .meditation__media
   @extend %wide-content-width
 
+// ===== MEDITATIONS ARCHIVE ===== //
+.meditations__grid-wrapper
+  @extend %wide-content-width
+  margin-bottom: 64px
+
+.meditations__grid
+  position: relative
+  margin: 0 (-$gutter-width / 2)
+  margin-top: $gutter-width
+
+  &__item
+    box-sizing: border-box
+    padding: $gutter-width / 2
+    padding-bottom: 42px
+
+  &__loadmore
+    text-align: center
+    margin-top: 50px
+
 // ===== MEDITATION IMAGES ===== //
 .meditations__image
   margin-top: -28%
