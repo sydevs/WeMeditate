@@ -93,8 +93,13 @@
 
 .content__textbox__circle
   position: absolute
-  left: -160px
   bottom: -160px
+
+// ===== ALIGNED ===== //
+@each $side in left right
+  .content__textbox--#{$side}
+    .content__textbox__circle
+      #{$side}: -160px
 
 
 // ===== INVERTED ===== //

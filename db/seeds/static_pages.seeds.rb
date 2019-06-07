@@ -434,21 +434,24 @@ static_pages[:classes].update!(content: content([
       decorations: { circle: true },
     },
   }, {
-    type: :textbox,
+    type: :header,
     data: {
-      image: content_attachment('static_pages/classes/class.jpg', static_pages[:classes]),
-      title: 'You get support from an expert',
-      text: '<p>The benefits of meditation go far beyond what you experience during the sessions. It has the power to improve every aspect of your life, from your personal growth, to your work and family life, and can even spark immense creativity...</p>',
-      alignment: :right,
-      decorations: { circle: true },
+      text: 'You get support from an expert',
     },
   }, {
-    type: :textbox,
+    type: :paragraph,
     data: {
-      image: content_attachment('static_pages/classes/class.jpg', static_pages[:classes]),
-      title: 'What to expect at a class?',
-      text: '<p>The benefits of meditation go far beyond what you experience during the sessions. It has the power to improve every aspect of your life, from your personal growth, to your work and family life, and can even spark immense creativity...</p>',
-      alignment: :left,
+      text: 'The benefits of meditation go far beyond what you experience during the sessions. It has the power to improve every aspect of your life, from your personal growth, to your work and family life, and can even spark immense creativity...',
+    },
+  },{
+    type: :header,
+    data: {
+      text: 'What to expect at a class?',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: 'The benefits of meditation go far beyond what you experience during the sessions. It has the power to improve every aspect of your life, from your personal growth, to your work and family life, and can even spark immense creativity...',
     },
   }, {
     type: :structured,
