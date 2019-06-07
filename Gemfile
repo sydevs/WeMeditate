@@ -6,18 +6,17 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Core gems
-gem 'rails', '~> 5.2.2'
 gem 'pg', '~> 0.18' # Use postgresql as the database for Active Record
 gem 'puma', '~> 3.7' # Use Puma as the app server
+gem 'rails', '~> 5.2.2'
 gem 'sassc-rails' # Use SASS for stylesheets
 gem 'slim-rails' # Use Slim for views
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 
 gem 'rails_serve_static_assets' # Allow the heroku app to serve static files
 gem 'turbolinks', '~> 5' # Makes navigating your web application faster.
-#gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+# gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
 # Users
 gem 'devise' # Adds all the core features for users - user sessions, login, password recovery, etc
@@ -25,13 +24,13 @@ gem 'devise_invitable' # Adds support to invite users by email
 gem 'regulator' # Adds permissions, so we can control users' access to certain pages
 
 # Front End
-gem 'normalize-rails' # To normalize CSS
 gem 'autoprefixer-rails' # For automatic cross browser CSS compatibility
-gem 'semantic-ui-sass' # CSS framework for the admin/CMS pages
-gem 'jquery-rails' # Add jQuery
 gem 'google-tag-manager-rails'
-gem 'jquery-slick-rails' # A slider library
 gem 'inline_svg' # To embed svg files
+gem 'jquery-rails' # Add jQuery
+gem 'jquery-slick-rails' # A slider library
+gem 'normalize-rails' # To normalize CSS
+gem 'semantic-ui-sass' # CSS framework for the admin/CMS pages
 
 # Models
 gem 'friendly_id' # Model routes use a slug instead of an ID number
@@ -45,27 +44,27 @@ gem 'mini_magick' # Image processing during upload
 gem 'rack-raw-upload'
 
 # Admin
-gem 'simple_form' # Takes care of grunt work when creating forms
 gem 'autosize' # To automatically grow text areas
-gem 'quilljs-rails' # A wysiwyg text editor
-gem 'sortable-rails' # Allows us to sort models with a drag and drop interface
 gem 'kaminari' # For pagination
+gem 'simple_form' # Takes care of grunt work when creating forms
+gem 'sortable-rails' # Allows us to sort models with a drag and drop interface
+gem 'quilljs-rails' # A wysiwyg text editor
 
 # Globalize (translatable models)
-gem 'globalize' # Support for translating models
 gem 'carrierwave_globalize' # for carrierwave support
+gem 'globalize' # Support for translating models
 gem 'friendly_id-globalize' # for friendly_id support
 
 # Localization
-gem 'rails-i18n' # Localization of rails features
 gem 'carrierwave-i18n' # Localization of carrierwave
+gem 'i18n_data' # Adds some utility functions for localizing countries
+gem 'rails-i18n' # Localization of rails features
 gem 'devise-i18n' # Localization for devise
 gem 'route_translator' # Adds support for translating URLs
-gem 'i18n_data' # Adds some utility functions for localizing countries
 
 # Tools
-gem 'sprig' # Used to populate the database with the pages and data used in the designs, for quick deployment and recovery.
 gem 'seedbank' # Used to populate the database with the pages and data used in the designs, for quick deployment and recovery.
+gem 'sprig' # Used to populate the database with the pages and data used in the designs, for quick deployment and recovery.
 
 # Misc
 gem 'gibbon' # For MailChimp Integration
@@ -80,7 +79,6 @@ gem 'sitemap_generator' # For SEO purposes
 # gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
 # gem 'capistrano-rails', group: :development # Use Capistrano for deployment
 
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -90,18 +88,16 @@ group :development, :test do
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors' # More information about the error when you get a 500 (or other error) in the browser
   gem 'binding_of_caller' # Works with `better_errors` to let you query the code state in browser when an error occurs.
-  gem 'switch_user', github: 'tslocke/switch_user' # Quickly switch between users without having to login/logout in development
+  gem 'dotenv' # Should load .env file automatically, but doesn't seem to be working.
   gem 'i18n_generators'
   gem 'letter_opener' # Let's us capture test emails to verify that they were sent, and what markup was actually sent.
-  gem 'dotenv' # Should load .env file automatically, but doesn't seem to be working.
+  gem 'listen', '>= 3.0.5', '< 3.2' # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'spring' # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'switch_user', github: 'tslocke/switch_user' # Quickly switch between users without having to login/logout in development
+  gem 'web-console', '>= 3.3.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

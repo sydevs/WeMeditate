@@ -18,7 +18,7 @@ static_pages = {}
   tracks: 'Music for Meditation',
   meditations: 'Meditate Now',
   classes: 'Classes Near Me',
-  self_realization: 'Self-Realization',
+  self_realization: 'The First Experience',
 }.each do |role, name|
   static_pages[role] = StaticPage.find_or_initialize_by(role: role)
   static_pages[role].update!(name: name)
@@ -196,6 +196,7 @@ static_pages[:shri_mataji].update!(content: content([
   }, {
     type: :video,
     data: {
+      format: :featured,
       items: [vimeo_attachment],
     },
   },
