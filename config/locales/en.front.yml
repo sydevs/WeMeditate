@@ -26,7 +26,9 @@ en:
     input:
       email: Your email
       message: Message
-      privacy: I have read and agree with the %{link}.
+      privacy:
+        text: By submitting this form, I agree to the processing of my personal data to receive guided meditations and other emails from WeMeditate.
+        learn_more: Learn more.
       name: Your name
       class: Select class
     missing:

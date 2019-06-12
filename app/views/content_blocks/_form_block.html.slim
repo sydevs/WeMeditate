@@ -19,7 +19,8 @@
           = f.text_area :message, placeholder: t('form.input.message'), rows: 5
         label.content__form__label
           = f.check_box :privacy
-          = t('form.input.privacy', link: "<a href=\"#{url_for(privacy_page)}\">#{privacy_page.name.downcase}</a>").html_safe
+          = translate 'form.input.privacy.text'
+          a href=url_for(privacy_page) = translate 'form.input.privacy.learn_more'
         = f.hidden_field :gobbledigook
 
     button.button.button--box = block[:action]
