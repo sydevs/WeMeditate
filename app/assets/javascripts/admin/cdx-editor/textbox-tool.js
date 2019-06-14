@@ -31,7 +31,7 @@ class TextboxTool extends EditorTool {
       decorations: data.decorations || {},
     }, { // Config
       id: 'textbox',
-      decorations: true,
+      decorations: ['triangle', 'gradient', 'sidetext', 'circle'],
       fields: {
         image: { label: 'Image', input: false },
         title: { label: 'Title', input: 'title' },
@@ -89,6 +89,7 @@ class TextboxTool extends EditorTool {
     const fieldsContainer = make('div', this.CSS.fieldsContainer, { innerHTML: container.innerHTML })
     container.innerHTML = null
     container.append(fieldsContainer)
+    this.renderDecorations(container)
 
     this.imageContainer = make('div', [this.CSS.input, this.CSS.fields.image], {}, container)
 

@@ -19,7 +19,7 @@ class StructuredTool extends EditorTool {
       decorations: data.decorations || {},
     }, { // Config
       id: 'structured',
-      decorations: true,
+      decorations: false,
       fields: {},
       tunes: [
         {

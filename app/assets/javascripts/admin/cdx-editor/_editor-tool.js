@@ -7,6 +7,7 @@ class EditorTool {
     this.data = data
     this.id = config.id
     this.allowDecoration = Boolean(config.decorations)
+    this.allowedDecorations = config.decorations || []
     this.fields = config.fields || {}
     this.tunes = config.tunes || {}
     this.CSS = {
@@ -16,11 +17,21 @@ class EditorTool {
       settingsButton: this.api.styles.settingsButton,
       settingsButtonActive: this.api.styles.settingsButtonActive,
       settingsButtonDisabled: `${this.api.styles.settingsButton}--disabled`,
+      settingsSelect: 'ce-settings-select',
+      settingsInput: 'ce-settings-input',
       settingsButtons: {},
       settings: {},
       fields: {},
       input: this.api.styles.input,
       inputs: {},
+    }
+
+    this.decorationsAttributes = {
+      triangle: { title: 'Triangle', icon: 'counterclockwise rotated play' },
+      gradient: { title: 'Gradient', icon: 'counterclockwise rotated bookmark' },
+      sidetext: { title: 'Vertical Text', icon: 'clockwise rotated heading' },
+      circle: { title: 'Circle', icon: 'circle outline' },
+      leaves: { title: 'Leaves', icon: 'leaf' },
     }
 
     for (let key in this.fields) {
@@ -43,6 +54,8 @@ class EditorTool {
   // Create tool container with inputs
   render() {
     const container = make('div', [this.CSS.baseClass, this.CSS.container])
+    this.renderDecorations(container)
+
     for (let key in this.fields) {
       const field = this.fields[key]
       if (field.input === false) continue
@@ -74,6 +87,7 @@ class EditorTool {
     return result
   }
 
+
   // =============== SAVING =============== //
 
   // Extract data from tool element
@@ -84,8 +98,30 @@ class EditorTool {
       newData[key] = toolElement.querySelector(`.${this.CSS.fields[key]}`).innerHTML
     }
 
-    if (this.allowDecoration) newData.decorations = JSON.parse(this.container.dataset.decorations)
+    if (this.allowDecoration) newData.decorations = this.getDecorationsData()
     return Object.assign(this.data, newData)
+  }
+
+  getDecorationsData() {
+    const result = {}
+    
+    for (let index = 0; index < this.allowedDecorations.length; index++) {
+      const key = this.allowedDecorations[index]
+
+      if (this.isDecorationSelected(key) && this.allowedDecorations.indexOf(key) != -1) {
+        if (key == 'triangle') {
+          result[key] = { alignment: this.triangleAlignment.value }
+        } else if (key == 'gradient') {
+          result[key] = { alignment: this.gradientAlignment.value, color: this.gradientColor.value }
+        } else if (key == 'sidetext') {
+          result[key] = this.sidetextInput.value
+        } else {
+          result[key] = true
+        }
+      }
+    }
+
+    return result
   }
 
 
@@ -148,7 +184,6 @@ class EditorTool {
   }
 
   setTuneEnabled(key, enabled) {
-    console.log('set tune enabled', key, enabled, 'on', this.CSS.settingsButtons[key], 'in', this.settingsContainer, '-', this.settingsContainer.querySelector(this.CSS.settingsButtons[key]))
     this.settingsContainer.querySelector(`.${this.CSS.settingsButtons[key]}`).classList.toggle(this.CSS.settingsButtonDisabled, !enabled)
   }
 
@@ -158,6 +193,137 @@ class EditorTool {
       const tune = this.tunes[i]
       element.classList.toggle(this.CSS.settingsButtonActive, this.isTuneActive(tune))
     }
+  }
+
+  // =============== DECORATIONS =============== //
+
+  renderDecorations(container) {
+    if (!this.allowDecoration) return
+
+    this.decorationsButton = make('div', ['ce-toolbar__settings-btn', 'ce-toolbar__settings-btn--decorations'], {
+      innerHTML: '<i class="leaf icon link"></i>'
+    }, container)
+
+    this.decorationsButton.addEventListener('click', () => { this.toggleDecorationsDropdown() })
+
+    this.decorationsDropdown = make('div', ['ce-settings', 'ce-settings--decorations'], {}, container)
+    const buttonWrapper = make('div', 'ce-settings__default-zone', {}, this.decorationsDropdown)
+
+    this.decorationButtons = {}
+    for (let index = 0; index < this.allowedDecorations.length; index++) {
+      const key = this.allowedDecorations[index]
+      this.decorationButtons[key] = this.renderDecorationsButton(key, buttonWrapper)
+    }
+
+    const inputWrapper = make('div', 'ce-settings__input-zone', {}, this.decorationsDropdown)
+    let value
+
+    if (this.allowedDecorations.indexOf('triangle') >= 0) {
+      value = (this.data.decorations && this.data.decorations.triangle && this.data.decorations.triangle.alignment) || 'left'
+
+      this.triangleAlignment = this.renderDecorationsSelect({
+        left: 'Left Triangle',
+        right: 'Right Triangle',
+      }, value, inputWrapper)
+    }
+
+    if (this.allowedDecorations.indexOf('gradient') >= 0) {
+      value = (this.data.decorations && this.data.decorations.gradient && this.data.decorations.gradient.alignment) || 'left'
+      this.gradientAlignment = this.renderDecorationsSelect({
+        left: 'Left Gradient',
+        right: 'Right Gradient',
+      }, value, inputWrapper)
+
+      value = (this.data.decorations && this.data.decorations.gradient && this.data.decorations.gradient.color) || 'orange'
+      this.gradientColor = this.renderDecorationsSelect({
+        orange: 'Orange Gradient',
+        blue: 'Blue Gradient',
+        gray: 'Gray Gradient',
+      }, value, inputWrapper)
+    }
+
+    if (this.allowedDecorations.indexOf('sidetext') >= 0) {
+      this.sidetextInput = make('input', this.CSS.settingsInput, {
+        type: 'unstyled',
+        placeholder: 'Enter vertical text',
+        value: (this.data.decorations && this.data.decorations.sidetext) || '',
+      }, inputWrapper)
+      this.sidetextInput.style.display = 'none'
+    }
+
+    for (let key in this.data.decorations) {
+      this.setDecorationSelection(key, Boolean(this.data.decorations[key]))
+    }
+  }
+
+  renderDecorationsButton(key, container = null) {
+    const button = make('div', [this.CSS.settingsButton, `${this.CSS.settingsButton}--${key}`], {
+      innerHTML: `<i class="${this.decorationsAttributes[key].icon} icon"></i>`,
+      title: this.decorationsAttributes[key].title,
+    }, container)
+
+    button.addEventListener('click', () => this.setDecorationSelection(key, !this.isDecorationSelected(key)))
+    return button
+  }
+
+  renderDecorationsSelect(options, selected = null, container = null) {
+    const optionsHTML = []
+    for (let key in options) {
+      if (key == selected) {
+        optionsHTML.push(`<option selected="selected" value="${key}">${options[key]}</option>`)
+      } else {
+        optionsHTML.push(`<option value="${key}">${options[key]}</option>`)
+      }
+    }
+
+    const select = make('select', this.CSS.settingsSelect, {
+      innerHTML: optionsHTML.join(''),
+    }, container)
+
+    select.style.display = 'none'
+    return select
+  }
+
+  toggleDecorationsDropdown(open = null) {
+    if (open === null) open = !this.decorationsDropdown.classList.contains('ce-settings--opened')
+    const dismissDecorations = () => { this.toggleDropdown(false) }
+
+    if (open) {
+      document.addEventListener('click', dismissDecorations)
+    } else {
+      document.removeEventListener('click', dismissDecorations)
+    }
+
+    this.decorationsDropdown.classList.toggle('ce-settings--opened', open)
+  }
+
+  isDecorationSelected(slug) {
+    return this.decorationButtons[slug].classList.contains(this.CSS.settingsButtonActive)
+  }
+
+  isAnyDecorationSelected() {
+    for (let index = 0; index < this.allowedDecorations.length; index++) {
+      const key = this.allowedDecorations[index]
+      if (this.isDecorationSelected(key)) return true
+    }
+
+    return false
+  }
+
+  setDecorationSelection(slug, selected) {
+    if (this.allowedDecorations.indexOf(slug) == -1) return
+    this.decorationButtons[slug].classList.toggle(this.CSS.settingsButtonActive, selected)
+
+    if (slug == 'sidetext') {
+      $(this.sidetextInput).toggle(selected)
+    } else if (slug == 'triangle') {
+      $(this.triangleAlignment).toggle(selected)
+    } else if (slug == 'gradient') {
+      $(this.gradientAlignment).toggle(selected)
+      $(this.gradientColor).toggle(selected)
+    }
+
+    this.decorationsButton.classList.toggle(this.CSS.settingsButtonActive, this.isAnyDecorationSelected())
   }
 }
 

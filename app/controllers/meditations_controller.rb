@@ -24,6 +24,7 @@ class MeditationsController < ApplicationController
   end
 
   def archive
+    # TODO: There is no title defined for this view because there is no @records variable
     next_offset = params[:offset].to_i + MEDITATIONS_PER_PAGE
     @meditations = Meditation.preload_for(:preview).offset(params[:offset]).limit(MEDITATIONS_PER_PAGE)
 

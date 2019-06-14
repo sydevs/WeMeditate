@@ -24,7 +24,7 @@ class LinkTool extends EditorTool {
       decorations: data.decorations || {},
     }, { // Config
       id: 'link',
-      decorations: ['sidetext'],
+      decorations: ['sidetext', 'leaves'],
       fields: {
         items: { label: 'Items', input: false },
         action: { label: 'Button Text', input: 'button' },
@@ -92,7 +92,13 @@ class LinkTool extends EditorTool {
       })
     }
 
-    container.addEventListener('click', (event) => {
+    this.searchContainer.addEventListener('click', (event) => {
+      if (event.target.classList.contains('link') && event.target.classList.contains('icon')) {
+        this._onItemIconClick(event)
+      }
+    })
+
+    this.itemsContainer.addEventListener('click', (event) => {
       if (event.target.classList.contains('link') && event.target.classList.contains('icon')) {
         this._onItemIconClick(event)
       }

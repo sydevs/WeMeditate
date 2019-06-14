@@ -20,6 +20,7 @@ class HeaderTool extends EditorTool {
       centered: data.centered || false,
     }, { // Config
       id: 'header',
+      decorations: false,
       fields: {
         text: { label: '', input: 'title' },
       },

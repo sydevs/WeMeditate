@@ -21,7 +21,6 @@ const Editor = {
       form: FormTool,
       textbox: TextboxTool,
       structured: StructuredTool,
-      decoration: DecorationTool,
     },
     autofocus: true,
   },
@@ -45,7 +44,6 @@ const Editor = {
         Editor.options.data = Editor.processDataForLoad(editor.dataset.content)
       }
 
-      Editor.options.onReady = () => DecorationsToolbar.load(editor)
       Editor.instance = new EditorJS(Editor.options)
     }
   },
