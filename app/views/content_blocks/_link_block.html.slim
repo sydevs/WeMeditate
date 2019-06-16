@@ -4,6 +4,7 @@
 - treatments = Treatment.where(id: item_ids) if block[:format] == 'treatments'
 
 - classes = ["content__link--#{block[:format]}"]
+- classes << 'content__link--leaves' if block[:decorations] && block[:decorations][:leaves]
 
 .content__link class=classes
   - if block[:format] == 'button'

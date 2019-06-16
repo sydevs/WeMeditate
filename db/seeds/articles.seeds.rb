@@ -184,6 +184,7 @@ article.update!(content: content([
       action: 'Try Meditation',
       url: '/en/meditations/first-experience',
       format: :button,
+      decorations: { leaves: true },
     },
   }, {
     type: :image,

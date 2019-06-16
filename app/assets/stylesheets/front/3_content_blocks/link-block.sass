@@ -10,6 +10,20 @@
 .content__link__loadmore
   text-align: center
 
+.content__link--leaves
+  &:before, &:after
+    content: ''
+    background-image: image-url('graphics/leaves.svg')
+    background-repeat: no-repeat
+    background-position: center
+    width: 30px
+    height: 30px
+    display: block
+    margin: 30px auto
+
+  &:after
+    transform: rotate(180deg)
+
 // ===== SIMPLE BUTTON LINK ===== //
 .content__link--button
   text-align: center
