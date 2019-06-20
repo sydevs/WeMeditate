@@ -16,6 +16,9 @@
     border-radius: 0.28571429rem
     margin-bottom: 2px
 
+    &.placeholder
+      padding-top: 200px
+
   &__items__remove
     position: absolute
     top: 5px
@@ -44,6 +47,10 @@
 
   &--stretch
     width: 100%
+
+  &--asGallery
+    .cdx-video__items__image.placeholder
+      padding-top: 56.25%
 
   &:not(.cdx-video--asGallery)
     .cdx-video__item

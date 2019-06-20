@@ -38,7 +38,7 @@ const Application = {
   },
 
   loadImages() {
-    new LazyLoad({ elements_selector: '.js-image' })
+    Application.lazyloader = new LazyLoad({ elements_selector: '.js-image' })
 
     // Find and render all instances of "[data-svg]"
     document.querySelectorAll('.js-inline-svg').forEach(element => {

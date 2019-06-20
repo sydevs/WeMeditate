@@ -1,3 +1,6 @@
+require 'net/http'
+require 'net/https'
+require 'uri'
 
 def file_root
   Rails.root.join('db/seeds/files')
@@ -48,11 +51,23 @@ def paragraphs count
 end
 
 def vimeo_attachment vimeo_id = nil
-  vimeo_id ||= 288344114
-  {
+  vimeo_id ||= [343376322, 238447552, 298038460, 249414159, 178920145].sample
+  puts "Loading Vimeo ##{vimeo_id}"
+  uri = URI("https://api.vimeo.com/videos/#{vimeo_id}?fields=name,pictures.sizes")
+  request = Net::HTTP::Get.new(uri)
+  request['Authorization'] = "Bearer #{ENV['VIMEO_ACCESS_KEY']}"
+
+  response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+    http.request(request)
+  end
+
+  response = JSON.parse(response.body)
+
+  return {
     vimeo_id: vimeo_id,
-    preview: "https://via.placeholder.com/160x90?text=V#{vimeo_id}",
-    title: "Video ##{vimeo_id}",
+    title: response['name'],
+    thumbnail: response['pictures']['sizes'].last['link'],
+    thumbnail_srcset: response['pictures']['sizes'].map { |pic| "#{pic['link']} #{pic['width']}w" }.join(','),
   }
 end
 

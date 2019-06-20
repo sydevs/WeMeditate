@@ -70,12 +70,16 @@ class VideoTool extends EditorTool {
     const container = make('div', this.CSS.item.container, {})
     container.dataset.vimeoId = item.vimeo_id
 
-    const img = make('div', [this.CSS.item.image, 'ui', 'fluid', 'rounded', 'image'], {}, container)
-    make('img', null, { src: item.preview }, img)
+    if (item.thumbnail) {
+      const img = make('div', [this.CSS.item.image, 'ui', 'fluid', 'rounded', 'image'], {}, container)
+      make('img', null, { src: item.thumbnail, srcset: item.thumbnail_srcset, sizes: '586px' }, img)
+    } else {
+      make('div', [this.CSS.item.image, 'ui', 'fluid', 'placeholder'], {}, container)
+    }
 
     let title = make('div', [this.CSS.input, this.CSS.inputs.title, this.CSS.item.title], {
       contentEditable: true,
-      innerHTML: item.title || '',
+      innerHTML: item.title || `Video #${item.vimeo_id}`,
     }, container)
 
     title.dataset.placeholder = 'Enter a title'
@@ -88,36 +92,24 @@ class VideoTool extends EditorTool {
 
   retrieveVimeoVideo(vimeo_id) {
     this.searchInput.parentNode.classList.add('loading')
+    const item = this.renderItem({ vimeo_id: vimeo_id })
+    this.itemsContainer.appendChild(item)
 
-    setTimeout(() => {
-      this.searchInput.parentNode.classList.remove('loading')
-      this.searchInput.value = ''
-      this.itemsContainer.appendChild(this.renderItem({
-        vimeo_id: vimeo_id,
-        preview: 'https://via.placeholder.com/160x90?text=V'+vimeo_id,
-        title: 'Video Title',
-      }))
-
-      // Hide the uploader if we are using the single uploader and there is already an uploaded image.
-      /*if (!this.allowMultiple && this.itemsContainer.childElementCount > 0) {
-        $(this.searchInput.parentNode).hide()
-      }*/
-    }, 1000)
-
-    /*$.ajax({
-      url: `https://api.vimeo.com/videos/${vimeo_id}`,
+    $.ajax({
+      url: `/en/admin/vimeo_data?vimeo_id=${vimeo_id}`,
       type: 'GET',
       dataType: 'json',
-      success: function(result) {
+      success: (result) => {
         this.searchInput.parentNode.classList.remove('loading')
         this.searchInput.value = ''
-        this.itemsContainer.appendChild(this.renderItem({
-          vimeo_id: vimeo_id,
-          preview: result['pictures']['sizes'][1]['link_with_play_button'],
-          title: result['name'],
-        }))
+        item.replaceWith(this.renderItem(result))
+
+        // Hide the uploader if we are using the single uploader and there is already an uploaded image.
+        /*if (!this.allowMultiple && this.itemsContainer.childElementCount > 0) {
+          $(this.searchInput.parentNode).hide()
+        }*/
       },
-    })*/
+    })
   }
 
   removeItem(item) {
@@ -140,10 +132,12 @@ class VideoTool extends EditorTool {
 
     for (let i = 0; i < this.itemsContainer.childElementCount; i++) {
       const item = this.itemsContainer.children[i]
+      const imageElement = item.querySelector(`.${this.CSS.item.image} img`)
       console.log('saving thumbnail', `.${this.CSS.item.image}`, 'in', item, '=', item.querySelector(`.${this.CSS.item.image}`))
       new_data.items.push({
         vimeo_id: item.dataset.vimeoId,
-        preview: item.querySelector(`.${this.CSS.item.image} img`).src,
+        thumbnail: imageElement.src,
+        thumbnail_srcset: imageElement.srcset,
         title: item.querySelector(`.${this.CSS.item.title}`).innerText,
       })
 

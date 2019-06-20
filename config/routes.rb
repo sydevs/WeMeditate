@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
       namespace :admin do
         root to: 'application#dashboard'
+        get :vimeo_data, to: 'application#vimeo_data', constraints: { format: :json }
 
         resources :treatments, :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters, :sections, only: [] do
           put :sort, on: :collection

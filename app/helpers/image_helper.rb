@@ -51,19 +51,8 @@ module ImageHelper
     end
   end
 
-  def vimeo_image_tag path, sizes, **args
-    # TODO: Re-implement lazyloading
-    """
-    args[:class] ||= ''
-    args[:class] << ' js-image'
-
-    capture do
-      concat content_tag(:noscript, tag.img(src: path, **args))
-      concat tag.img data: { src: path }, **args
-      # concat tag.img data: { srcset: srcset, sizes: sizes }, **args
-    end
-    """
-    tag.img src: path, **args
+  def vimeo_image_tag vimeo_object, sizes, **args
+    picture_tag vimeo_object[:thumbnail], vimeo_object[:thumbnail_srcset], nil, sizes, **args
   end
 
   def picture_tag _src, srcset, webp_srcset, sizes, **args
@@ -75,10 +64,10 @@ module ImageHelper
         args[:class] ||= ''
         args[:class] << ' js-image'
 
-        concat tag.source type: 'image/webp', data: { srcset: webp_srcset, sizes: sizes }
+        concat tag.source type: 'image/webp', data: { srcset: webp_srcset, sizes: sizes } unless webp_srcset.nil?
         concat tag.img data: { srcset: srcset, sizes: sizes }, **args
       else
-        concat tag.source type: 'image/webp', srcset: webp_srcset, sizes: sizes
+        concat tag.source type: 'image/webp', srcset: webp_srcset, sizes: sizes unless webp_srcset.nil?
         concat tag.img srcset: srcset, sizes: sizes, **args
       end
     end
