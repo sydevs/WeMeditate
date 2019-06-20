@@ -14,14 +14,14 @@
     .content__form__fields
       .content__form__message
       = fields_for :contact do |f|
+        = f.hidden_field :gobbledigook
         = f.email_field :email_address, placeholder: t('form.input.email')
         - if block[:format] == 'contact'
           = f.text_area :message, placeholder: t('form.input.message'), rows: 5
-        label.content__form__label
-          = f.check_box :privacy
+          
+        .content__form__privacy
           = translate 'form.input.privacy.text'
           a href=url_for(privacy_page) = translate 'form.input.privacy.learn_more'
-        = f.hidden_field :gobbledigook
 
     button.button.button--box = block[:action]
 
