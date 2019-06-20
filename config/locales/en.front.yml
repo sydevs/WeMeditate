@@ -27,7 +27,7 @@ en:
       email: Your email
       message: Message
       privacy:
-        text: By submitting this form, I agree to the processing of my personal data to receive guided meditations and other emails from WeMeditate.
+        text: By submitting this form, you agree to the processing of my personal data to receive guided meditations and other emails from WeMeditate.
         learn_more: Learn more.
       name: Your name
       class: Select class
@@ -117,10 +117,11 @@ en:
   sections:
     credit: Credit
     show_more: Show More
-    subtle_system:
-      chakras: Chakras
-      channels: Channels
-      read_more: Learn More
+  subtle_system:
+    title: Tap to learn more
+    chakras: Chakras
+    channels: Channels
+    read_more: Learn More
   errors:
     title: Oops...
     choices: 'Try one of these instead:'

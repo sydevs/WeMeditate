@@ -1,0 +1,180 @@
+@import "../../mixins/*"
+
+.subtle-system-title
+  font-weight: $font-normal
+  font-size: 3rem
+  letter-spacing: 0.8px
+  text-align: center
+
+  margin-top: 35px
+  margin-bottom: 22px
+
+.subtle-system
+  margin-bottom: 100px
+  position: relative
+
+.subtle-system__chart
+  height: 550px
+  min-height: 400px
+  max-height: 80vh
+
+  display: block
+  margin: auto
+
+.subtle-system__toggle
+  margin-bottom: 28px
+  line-height: 25px
+  text-align: center
+
+.subtle-system__toggle__item
+  display: inline
+  padding: 0 8px
+  cursor: pointer
+
+.subtle-system__toggle__item--active
+  font-weight: $font-bold
+
+  
+// ===== EXCERPTS ===== //
+.subtle-system__list
+  @extend %wide-content-width
+
+  @include mobile
+    position: relative
+    height: 30vw
+
+.subtle-system__item
+  opacity: 0
+  visibility: hidden
+  transition: visibility 0s linear 0.6s, opacity 0.6s ease
+  background: transparentize(white, 0.5)
+  box-shadow: 0px 0px 10px 5px transparentize(white, 0.5)
+
+  &--active
+    opacity: 1
+    visibility: visible
+    transition-delay: 0s
+
+// POSITIONING
+.subtle-system__item
+  position: absolute
+
+  @include mobile
+    top: 0
+
+  @include tablet
+    padding: 1em
+
+  @include laptop-or-larger
+    padding: 2em
+
+  @include tablet-or-larger
+    top: 4em
+    width: 320px
+    max-width: 45%
+    margin-top: 70px
+
+    &--chakra-7,
+    &--chakra-6
+      top: 0
+
+    &--chakra-5
+      top: 10%
+
+    &--chakra-4
+      top: 20%
+
+    &--chakra-3,
+    &--chakra-3b
+      top: 30%
+
+    &--chakra-2
+      top: 40%
+
+    &--chakra-1
+      top: 50%
+
+    &--kundalini,
+    &--channel-center,
+    &--channel-left,
+    &--channel-right,
+      top: 15%
+
+    &:nth-child(even)
+      left: 0
+      padding-right: 0
+
+    &:nth-child(odd)
+      right: 0
+      padding-left: 0
+
+// ===== HOT SPOTS ===== //
+#hot_spots_core
+  opacity: 0
+
+#hover_chakras > *
+  opacity: 0
+  transition: opacity 0.5s
+  cursor: pointer
+
+  &.active
+    opacity: 1
+
+.subtle-system--no-animation
+  #hot_spots_glow
+    transition: opacity 1s
+    opacity: 0
+
+  /*#hot_spots_glow circle
+    animation: none*/
+
+  /*#hot_spots_core
+    transition: opacity 3s
+    opacity: 1*/
+
+.subtle-system--chakras
+  #hover_channels
+    display: none
+
+.subtle-system--channels
+  #hover_chakras,
+  #hot_spots_glow
+    display: none
+
+
+// ===== HOT SPOT ANIMATIONS ===== //
+$chakra-position-x: 220.92192px
+$chakra-position-y: ()
+$chakra-position-y: map-merge($chakra-position-y, ('chakra_1': 508.87664px))
+$chakra-position-y: map-merge($chakra-position-y, ('kundalini': 469.49435px))
+$chakra-position-y: map-merge($chakra-position-y, ('chakra_2': 426.87665px))
+$chakra-position-y: map-merge($chakra-position-y, ('chakra_3': 357.10004px))
+$chakra-position-y: map-merge($chakra-position-y, ('chakra_4': 254.04523px))
+$chakra-position-y: map-merge($chakra-position-y, ('chakra_5': 183.63963px))
+$chakra-position-y: map-merge($chakra-position-y, ('chakra_6': 93.96744px))
+$chakra-position-y: map-merge($chakra-position-y, ('chakra_7': 37.41042px))
+
+@mixin chakra-pulse-animation($key, $i)
+  $x: $chakra-position-x
+  $y: map-get($chakra-position-y, $key)
+  transform: translate($x, $y) scale(0.2) translate(-$x, -$y)
+  animation: #{$key}-pulse 6s infinite
+
+  @keyframes #{$key}-pulse
+    from
+      transform: translate($x, $y) scale(0.2) translate(-$x, -$y)
+    #{$i * 5}%
+      transform: translate($x, $y) scale(0.2) translate(-$x, -$y)
+    #{$i * 5 + 10}%
+      transform: scale(1)
+    60%
+      transform: scale(1)
+    100%
+      transform: translate($x, $y) scale(0.2) translate(-$x, -$y)
+
+$glows: kundalini chakra_1 chakra_2 chakra_3 chakra_4 chakra_5 chakra_6 chakra_7
+@for $i from 1 through length($glows)
+  $key: nth($glows, $i)
+  ##{$key}_glow circle
+    @include chakra-pulse-animation($key, $i)
+    //animation-delay: #{$i * 0.5}s
