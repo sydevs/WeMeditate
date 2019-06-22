@@ -16,7 +16,7 @@
             = vimeo_image_tag item, '100vw', class: 'video__thumbnail', lazy: false
             a.video__button.js-video href="https://api.vimeo.com/videos/#{item[:vimeo_id]}" data-id=item[:vimeo_id] data-mfp-src='#video-popup'
 
-          figcaption.content__video__title = item[:title]
+          figcaption.content__video__name = item[:title]
   - else
     h2.content__video__title = block[:decorations]&[:sidetext]
     .content__video__sidetext = render_decoration :sidetext, block, alignment: :left

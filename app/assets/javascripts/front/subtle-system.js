@@ -64,11 +64,11 @@ class SubtleSystem {
   }
 
   onNodeClick(node) {
-    // If we are on mobile, scroll down to the description of the node we just selected.
-    /*if (window.innerWidth <= 768) {
-      var position = $(this.container).offset().bottom - 100
-      Application.header.scroll.animateScroll(position, 4000, { speed: 4000, updateURL: false })
-    }*/
+    if (window.innerWidth <= 768) {
+      const selector = node.id.replace(/_/g, '-')
+      const item = this.container.querySelector(`.subtle-system__item--${selector}`)
+      zenscroll.intoView(item)
+    }
   }
 
   setNodeSelected(id, selected) {
@@ -76,7 +76,9 @@ class SubtleSystem {
 
     const selector = id.replace(/_/g, '-')
     this.container.querySelector(`#${id}`).classList.toggle('active', selected)
-    this.container.querySelector(`.subtle-system__item--${selector}`).classList.toggle('subtle-system__item--active', selected)
+    const item = this.container.querySelector(`.subtle-system__item--${selector}`)
+    item.classList.toggle('subtle-system__item--active', selected)
+
   }
 
 }

@@ -35,7 +35,7 @@ static_pages[:home].update!(content: content([
       title: 'Meditation is a state of inner peace.',
       text: 'No special skills are required, you just have to',
       action: 'Feel it',
-      url: '/en/meditations/first-experience',
+      url: '/en/page/self-realization',
       style: :home,
     },
   },

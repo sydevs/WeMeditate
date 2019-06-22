@@ -182,7 +182,7 @@ article.update!(content: content([
     type: :link,
     data: {
       action: 'Try Meditation',
-      url: '/en/meditations/first-experience',
+      url: '/en/page/self-realization',
       format: :button,
       decorations: { leaves: true },
     },
@@ -227,7 +227,7 @@ article.update!(content: content([
     type: :link,
     data: {
       action: 'Meditation with Shri Mataji',
-      url: '/en/meditations/first-experience',
+      url: '/en/page/self-realization',
       format: :button,
     },
   }, {

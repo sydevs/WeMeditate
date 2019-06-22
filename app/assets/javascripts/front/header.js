@@ -23,13 +23,6 @@ class Header {
     this._onResize()
     this._onScroll()
 
-    // Fix some really weird bug with smooth scroll
-    if (this.scroll == null) {
-      this.scroll = new SmoothScroll('a[href*="#"]', {
-        offset: function() { return this.stickyPoint }
-      })
-    }
-
     let $scrollspyTarget = $('.scrollspy-target')
     if ($scrollspyTarget.length > 0) {
       this.scrollspyTop = $scrollspyTarget.offset().top
@@ -59,7 +52,9 @@ class Header {
 
   _onResize() {
     const isDesktop = $(this.desktopWrapper).is(':visible')
-    this.stickyPoint = isDesktop ? $(this.container).outerHeight(true) - this.navigationHeight : 0
+    this.headerHeight = $(this.container).outerHeight(true)
+    this.stickyPoint = isDesktop ? this.headerHeight - this.navigationHeight : 0
+    if (typeof zenscroll !== 'undefined') zenscroll.setup(null, this.headerHeight)
 
     let $splash = $('.content__splash')
     if ($splash.length > 0 && $splash.hasClass('content__splash--invert')) {

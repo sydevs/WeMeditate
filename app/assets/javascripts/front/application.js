@@ -18,6 +18,11 @@ const Application = {
     Application.musicPlayer = Application.loadFirst('music-player', MusicPlayer)
     Application.customMeditation = Application.loadFirst('custom-meditation', CustomMeditation)
     Application.prescreen = Application.loadFirst('prescreen', Prescreen)
+
+    document.querySelector('.footer__scrollback').addEventListener('click', event => {
+      zenscroll.toY(0)
+      event.preventDefault()
+    })
   },
 
   loadAll(selector, Klass) {
