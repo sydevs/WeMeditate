@@ -37,7 +37,7 @@
                   = t('articles.read_more')
                   i.breadcrumb.icon
   - elsif block[:format] == 'treatments'
-    h2.content__link__title = block[:decorations]&[:sidetext]
+    h2.content__link__title = block[:decorations] && block[:decorations][:sidetext]
     .content__link__sidetext = render_decoration :sidetext, block, alignment: :left
 
     .content__link__treatment_list.excerpt_list

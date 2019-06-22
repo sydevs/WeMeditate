@@ -18,7 +18,7 @@
 
           figcaption.content__video__name = item[:title]
   - else
-    h2.content__video__title = block[:decorations]&[:sidetext]
+    h2.content__video__title = block[:decorations] && block[:decorations][:sidetext]
     .content__video__sidetext = render_decoration :sidetext, block, alignment: :left
 
     - item = block[:items].first
