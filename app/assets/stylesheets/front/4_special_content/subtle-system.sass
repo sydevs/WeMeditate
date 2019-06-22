@@ -9,22 +9,35 @@
   margin-top: 35px
   margin-bottom: 22px
 
+  @include tablet-or-larger
+    margin-top: 80px
+
 .subtle-system
+  @extend %wide-content-width
+  max-width: $desktop-content-width
   margin-bottom: 100px
   position: relative
+  text-align: center
 
 .subtle-system__chart
-  height: 550px
   min-height: 400px
-  max-height: 80vh
+  max-height: 550px
+  max-width: 100%
 
   display: block
   margin: auto
 
+  @include tablet-or-larger
+    height: 550px
+    max-height: 80vh
+
 .subtle-system__toggle
   margin-bottom: 28px
   line-height: 25px
-  text-align: center
+  display: inline-block
+
+  @include tablet-or-larger
+    font-size: 1.8rem
 
 .subtle-system__toggle__item
   display: inline
@@ -37,7 +50,8 @@
   
 // ===== EXCERPTS ===== //
 .subtle-system__list
-  @extend %wide-content-width
+  text-align: left
+  margin-top: 50px
 
   @include mobile
     position: relative
@@ -121,12 +135,12 @@
     opacity: 1
 
 .subtle-system--no-animation
-  #hot_spots_glow
+  /*#hot_spots_glow
     transition: opacity 1s
-    opacity: 0
+    opacity: 0*/
 
-  /*#hot_spots_glow circle
-    animation: none*/
+  #hot_spots_glow circle
+    animation: none
 
   /*#hot_spots_core
     transition: opacity 3s

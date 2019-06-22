@@ -17,14 +17,18 @@
 .prescreen--meditations
   margin-bottom: 180px
 
+
 // ===== CONTENT ===== //
 .prescreen
   &__title
     text-align: center
     font-weight: $font-normal
-    font-size: 2.6rem
+    font-size: 1.8rem
     margin-top: 10px
     margin-bottom: 30px
+
+    @include tablet-or-larger
+      font-size: 2.6rem
 
     @include desktop
       font-size: 3.5rem
@@ -32,9 +36,12 @@
   &__subtitle
     text-align: center
     font-weight: $font-bold
-    font-size: 3.5rem
+    font-size: 2rem
     letter-spacing: 1.5px
     margin-bottom: 30px
+
+    @include tablet-or-larger
+      font-size: 3.5rem
 
     @include desktop
       font-size: 4.5rem
@@ -48,24 +55,41 @@
 
     &:before
       content: ''
-      border-bottom: 2px dashed
       position: absolute
-      bottom: 0
+      bottom: -2px
       left: 0
       right: 10px
+      opacity: 0.5
+
+      border-bottom: dashed 1.5px
+
+      @include laptop-or-larger
+        border-image-source: image-url('meditations/prescreen-border.png')
+        border-image-width: 1
+        border-image-slice: 2
+        border-image-repeat: round
 
     &:after
       content: '?'
       vertical-align: super
       font-size: 50%
       text-decoration: none
+      
+      position: relative
+      left: 1px
+      top: -2px
+
+  &__button
+    @include mobile
+      font-size: 2.2rem
+      padding: 40px
 
 // ===== EXPLANATION ===== //
 .prescreen__explanation-wrapper
   max-height: 200px
   transition: max-height 0.8s ease
   overflow: hidden
-  margin-bottom: 20px
+  margin-bottom: 15px
 
   &:not(.prescreen__explanation-wrapper--opened)
     max-height: 0
@@ -92,24 +116,31 @@
 // ===== SKIP LINK ===== //
 .prescreen__skip
   text-align: center
-  margin-top: 60px
+  margin-top: 50px
+  font-size: 1.6rem
 
   @include tablet-or-larger
+    font-size: 2rem
+    margin-top: 60px
+    margin-left: 32px
     margin-bottom: 60px
 
   &__text
     @include mobile
       display: block
-      margin-bottom: 12px
+      margin-bottom: 8px
 
   &__link
     margin-left: 6px
+
+    span
+      border-bottom: 1px dashed transparent
 
     &:not(:hover)
       color: $color-text-normal
 
     &:not(:hover) span
-      border-bottom: 1px dashed $color-text-normal
+      border-color: $color-text-normal
 
     &:hover
       color: darken($color-text-blue, 20%)

@@ -1,7 +1,7 @@
 
 main.scrollspy-target id=dom_id(@article)
   h1.banner = @article.name
-  = render_content @article
+  .content = render_content @article
 
 = sharing_links
 = render 'application/actions_footer'

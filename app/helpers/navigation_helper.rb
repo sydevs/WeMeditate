@@ -53,7 +53,7 @@ module NavigationHelper
 
     mobile_navigation.push({
       title: I18n.translate('header.classes_near_me').gsub('<br>', ' '),
-      url: '#',
+      url: static_page_path_for(:classes),
       active: controller_name == 'classes',
     })
 

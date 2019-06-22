@@ -48,6 +48,9 @@
   .content__textbox__img
     width: 100%
 
+    img
+      width: 100%
+
     @include laptop-or-larger
       object-position: left
 
@@ -73,6 +76,11 @@
 
     @include laptop-or-larger
       display: block
+
+  &:not(.content__textbox--invert)
+    .content__textbox__text > p:not(:first-child)
+      @include laptop-or-larger
+        padding-right: 130px
 
 // ==== LEFT + RIGHT ALIGNED ===== //
 .content__textbox--overlay.content__textbox

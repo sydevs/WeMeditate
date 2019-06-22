@@ -1,6 +1,6 @@
 
 - callout_mode = block[:callout].present? ? block[:callout] : 'none'
-- isGallery = block[:asGallery] == 'true'
+- isGallery = block[:asGallery] == true
 - isSingle = !isGallery && callout_mode == 'none'
 - classes = []
 - classes << "content__image--#{isGallery ? 'gallery' : 'single'}" unless block[:callout].present?

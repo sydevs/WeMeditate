@@ -46,21 +46,34 @@
 
 // ===== HOME PAGE ===== //
 .content__splash--home
+  .content__splash__wrapper
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    padding-bottom: 15%
+    
+    @include laptop-or-larger
+      position: static
+      padding-bottom: 0
+
   .content__splash__title
-    margin-top: 18.5%
+    margin-top: 22%
     margin-bottom: 10vh
+    padding: 0 3vw
     font-weight: $font-normal
 
     @include tablet-or-larger
       font-size: 4.5rem
       line-height: 1.2222
       max-width: 500px
-      margin-top: 15%
+      margin-top: 20%
       margin-bottom: 4.5vh
 
-    @include laptop
-      margin-top: 18%
+    @include laptop-or-larger
+      margin-top: 15%
       margin-bottom: 5vh
+      padding: 0
 
     @include desktop
       margin-top: 196px

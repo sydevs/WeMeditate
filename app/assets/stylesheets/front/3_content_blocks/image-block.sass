@@ -19,8 +19,9 @@
 
 // ===== MEDIA CAPTION ===== //
 .content__image__caption
+  margin: 10px 0
   font-size: 1.4rem
-  line-height: 40px
+  line-height: 1.5
   opacity: 0.8
 
 .content__image__credit
@@ -42,8 +43,12 @@
 
 // ===== SINGLE IMAGE ===== //
 .content__image--single
-  margin-top: 65px
-  margin-bottom: 65px
+  margin-top: 40px
+  margin-bottom: 40px
+
+  @include tablet-or-larger
+    margin-top: 65px
+    margin-bottom: 65px
 
 .content__image--single img
   width: 100%

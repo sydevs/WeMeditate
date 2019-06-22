@@ -125,6 +125,8 @@
   position: absolute
   z-index: -10
   width: 24.5%
+  top: 0
+  bottom: 0
 
   @include tablet
     width: 18.5%
@@ -132,28 +134,28 @@
   @include laptop
     width: 31%
 
-// TODO: Resolve this
-.gradient--small:before,
-.gradient--medium:before,
-.gradient--large:before
+  @include laptop-or-larger
+    bottom: -11.5%
+
+.gradient--tall:before
   top: -40px
-  bottom: 0
 
   @include laptop-or-larger
     top: -30%
-    bottom: -11.5%
 
-/*.gradient--small:before
-  top: -11%
-  bottom: -11.5%*/
+.gradient--long:before
+  @include laptop-or-larger
+    bottom: -32%
 
-/*.gradient--medium:before
-  top: -30%
-  bottom: -30%*/
+  @include desktop
+    bottom: -10%
 
-/*.gradient--large:before
-  top: -50%
-  bottom: -50%*/
+  @include widescreen
+    bottom: -8%
+
+.gradient--wide:before
+  @include laptop-or-larger
+    width: 40%
 
 .gradient--gray:before
   top: 50%

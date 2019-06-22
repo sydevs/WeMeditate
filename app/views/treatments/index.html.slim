@@ -5,7 +5,7 @@ main id=dom_id(@static_page)
   = render 'meditations/prescreen', translations: 'treatments.prescreen', type: :treatments, skip_url: '#techniques'
 
   .treatments__content-wrapper
-    .treatments__content
+    .treatments__content.content
       = render_content @static_page
 
     .treatments__triangle.triangle.triangle--large.triangle--right

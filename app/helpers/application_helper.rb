@@ -44,7 +44,12 @@ module ApplicationHelper
     classes = [type]
     classes << "#{type}--#{args[:alignment] || data[:alignment] || 'left'}" unless type == :circle
     classes << "gradient--#{data[:color] || 'orange'}" if type == :gradient
-    classes << "gradient--#{args[:size] || data[:size] || 'medium'}" if type == :gradient
+
+    if type == :gradient && args[:size]
+      for size in args[:size] do
+        classes << "gradient--#{size}"
+      end
+    end
 
     if type == :circle
       inline_svg 'graphics/circle.svg', class: classes

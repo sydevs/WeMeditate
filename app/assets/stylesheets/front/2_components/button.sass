@@ -34,6 +34,7 @@
   line-height: 1.1875
   letter-spacing: 0.2px
   text-align: center
+  background-color: transparent
 
   position: relative
   display: inline-block
@@ -190,16 +191,21 @@
   display: flex
   align-items: center
   margin: 20px auto
-  width: 220px
-  height: 220px
+  width: 200px
+  height: 200px
   padding: 54px
   transition: all 0.5s ease
   background: none
 
   font-weight: $font-normal
   text-align: center
-  font-size: 2.6rem
+  font-size: 2.4rem
   line-height: 1.1667
+
+  @include tablet
+    width: 220px
+    height: 220px
+    font-size: 2.6rem
 
   @include laptop-or-larger
     width: 280px

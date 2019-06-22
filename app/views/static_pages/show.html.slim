@@ -3,6 +3,6 @@ main.scrollspy-target
   - unless @static_page.contact?
     h1.banner.banner--left = @static_page.name
 
-  = render_content @static_page
+  .content = render_content @static_page
 
 = render 'application/actions_footer'

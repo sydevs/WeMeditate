@@ -10,6 +10,14 @@
   position: relative
 
 .content__video__title
+  @include tablet-or-larger
+    font-weight: $font-bold
+    font-size: 2.8rem
+    line-height: 1.25
+    letter-spacing: 0.25px
+    margin-bottom: 60px
+
+.content__video__name
   font-weight: $font-bold
   font-size: 2.4rem
   line-height: 1.3
@@ -18,10 +26,9 @@
   text-align: left
   margin-top: 24px
   margin-bottom: 0
-  padding: 0 ($gutter-width / 2)
 
-  @include laptop-or-larger
-    padding: 0
+  @include tablet
+    padding: 0 ($gutter-width / 2)
 
   @include desktop
     margin-top: 36px
@@ -38,6 +45,17 @@
     max-width: 660px
     margin: 0 auto
     padding: 0
+
+  .content__video__title
+    @include laptop-or-larger
+      display: none
+
+  .content__video__sidetext
+    display: none
+
+    @include laptop-or-larger
+      display: block
+
 
 // ===== VIDEO GALLERY ===== //
 // TODO: This reference to .gradient shouldn't be allowed.

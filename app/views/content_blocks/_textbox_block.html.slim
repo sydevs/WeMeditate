@@ -10,7 +10,8 @@
 .content__textbox class=classes
   .content__textbox__decoration.content__textbox__decoration--gradient
     .content__textbox__gradient
-      = render_decoration :gradient, block
+      - gradient_size = block[:alignment] == 'center' ? %i[wide] : %i[wide long]
+      = render_decoration :gradient, block, size: gradient_size
 
   .content__textbox__decoration.content__textbox__decoration--sidetext
     .content__textbox__sidetext

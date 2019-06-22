@@ -1,11 +1,44 @@
 @import "../../mixins/*"
 
+$image-height: 80vh
+$gradient-padding: 150px
+
 // ===== CONTENT ===== //
+.content__textbox--video
+  //@extend %narrow-content-width
+  min-height: calc(#{$image-height} + #{$gradient-padding})
+
 .content__textbox--video .content__textbox
   &__image
-    padding-bottom: 150px
+    padding-bottom: $gradient-padding
+
+  &__img img
+    height: $image-height
 
   &__title
+    @include tablet-or-larger
+      position: absolute
+      left: 50%
+      top: 8%
+
+      max-width: 380px
+      text-align: center
+      font-size: 3rem
+
+      &:before, &:after
+        content: ''
+        background-image: image-url('graphics/leaves.svg')
+        background-repeat: no-repeat
+        background-position: center
+        width: 30px
+        height: 30px
+        display: block
+        margin: 30px auto
+
+      &:after
+        transform: rotate(180deg)
+
+  /*&__title
     @include tablet-or-larger
       background: image-url('graphics/circle.svg')
       background-size: contain
@@ -24,10 +57,10 @@
       width: 400px
       height: 400px
       padding: 60px
-      margin-left: 5%
+      margin-left: 5%*/
 
 // ===== VIDEO ACTION ===== //
-.content__textbox--video.content__textbox__action
+.content__textbox--video .content__textbox__action
   position: absolute
   left: 100%
   right: 100%
@@ -35,9 +68,9 @@
   margin-left: -50px
   margin-top: -50px
 
-  @include desktop
-    margin-left: -74px
-    margin-top: -74px
+  @include tablet-or-larger
+    margin-left: -85px
+    margin-top: -85px
 
   &:before
     // Background behind the action area
@@ -50,11 +83,17 @@
     z-index: -1
 
     @include tablet-or-larger
-      left: -30vw
+      left: -40vw
 
   &__button
     @extend %video-button
     border-color: white
+
+    @include tablet-or-larger
+      width: 170px
+      height: 170px
+      padding: 32px
+      margin-right: 12px
 
   &__text
     font-weight: $font-bold
@@ -66,7 +105,7 @@
 
     @include tablet-or-larger
       font-size: 1.8rem
-      line-height: 100px
+      line-height: 170px
       white-space: nowrap
 
 // ===== ALIGNED ===== //

@@ -37,6 +37,7 @@
                   = t('articles.read_more')
                   i.breadcrumb.icon
   - elsif block[:format] == 'treatments'
+    h2.content__link__title = block[:decorations]&[:sidetext]
     .content__link__sidetext = render_decoration :sidetext, block, alignment: :left
 
     .content__link__treatment_list.excerpt_list
@@ -47,12 +48,15 @@
           .excerpt__content
             h3.excerpt__title = treatment.name
             p.excerpt__text = treatment.excerpt
-            a.excerpt__button.button.button--box href=treatment_path(treatment) = t('treatments.read_more')
+            //a.excerpt__button.button.button--box href=treatment_path(treatment) = t('treatments.read_more')
+            a.excerpt__link href=treatment_path(treatment)
+              = t('treatments.read_more')
+              i.breadcrumb.icon
 
     - if treatments.count > 2
       .content__link__loadmore.js-loadmore
         button.button.button--box
-          = translate 'sections.show_more'
+          = translate block[:format] == 'treatments' ? 'treatments.show_more' : 'sections.show_more'
         template
           - treatments.drop(2).each_with_index do |treatment, index|
             article.content__link__treatment.excerpt class="excerpt--#{index.odd? ? 'right' : 'left'}"

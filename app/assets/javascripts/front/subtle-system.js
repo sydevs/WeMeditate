@@ -24,6 +24,10 @@ class SubtleSystem {
       this.activeTab = element
       this.container.classList.add(`subtle-system--${element.dataset.tab}`)
       this.activeTab.classList.add('subtle-system__toggle__item--active')
+
+      this.container.classList.remove('subtle-system--no-animation')
+      this.setNodeSelected(this.activeNode, false)
+      this.activeNode = null
     }
   }
 
@@ -45,16 +49,8 @@ class SubtleSystem {
         // Select the new node, and deselect the old one.
         this.container.classList.add('subtle-system--no-animation')
 
-        if (this.activeNode) {
-          const activeNodeSelector = this.activeNode.replace(/_/g, '-')
-          this.container.querySelector(`#${this.activeNode}`).classList.remove('active')
-          this.container.querySelector(`.subtle-system__item--${activeNodeSelector}`).classList.remove('subtle-system__item--active')
-        }
-
-        const targetNodeSelector = targetActiveNode.replace(/_/g, '-')
-        console.log('select', `.${targetNodeSelector}`)
-        this.container.querySelector(`#${targetActiveNode}`).classList.add('active')
-        this.container.querySelector(`.subtle-system__item--${targetNodeSelector}`).classList.add('subtle-system__item--active')
+        this.setNodeSelected(this.activeNode, false)
+        this.setNodeSelected(targetActiveNode, true)
         this.activeNode = targetActiveNode
       }, time)
     }
@@ -73,6 +69,14 @@ class SubtleSystem {
       var position = $(this.container).offset().bottom - 100
       Application.header.scroll.animateScroll(position, 4000, { speed: 4000, updateURL: false })
     }*/
+  }
+
+  setNodeSelected(id, selected) {
+    if (!id) return
+
+    const selector = id.replace(/_/g, '-')
+    this.container.querySelector(`#${id}`).classList.toggle('active', selected)
+    this.container.querySelector(`.subtle-system__item--${selector}`).classList.toggle('subtle-system__item--active', selected)
   }
 
 }

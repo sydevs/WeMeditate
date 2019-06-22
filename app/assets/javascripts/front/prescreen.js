@@ -10,8 +10,8 @@ class Prescreen {
   }
 
   _onClickAbbreviation() {
-    this.explanation.classList.add('prescreen__explanation-wrapper--opened')
-    this.abbreviation.classList.remove('prescreen__abbr--active')
+    this.explanation.classList.toggle('prescreen__explanation-wrapper--opened')
+    //this.abbreviation.classList.toggle('prescreen__abbr--active')
   }
 
 }

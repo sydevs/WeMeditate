@@ -3,7 +3,7 @@
 - selected_category_id = nil unless @categories.any? {|c| c.id == selected_category_id}
 
 main
-  = render_content @static_page
+  .content = render_content @static_page
 
   .inspiration
     .inspiration__filters.button_group.button_group--centered

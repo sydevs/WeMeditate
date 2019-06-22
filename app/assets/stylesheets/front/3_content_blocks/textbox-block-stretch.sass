@@ -2,18 +2,69 @@
 
 // ===== CONTENT ===== //
 .content__textbox--stretch .content__textbox
+  &__image
+    margin-left: -24px
+    margin-right: -24px
+
+    @include laptop-or-larger
+      margin: 0
+      margin-bottom: 100px
+
   &__img
-    height: 91vh
+    @include laptop-or-larger
+      height: 91vh
+
+    @include widescreen
+      max-height: 900px
 
   &__box_wrapper
     @extend %wide-content-width
 
+    @include mobile
+      padding: 0
+
   &__box
-    padding-top: 80px
     max-width: $narrow-content-width
 
+    @include tablet
+      padding-left: $gutter-width * 2
+      padding-right: $gutter-width * 2
+
+    @include laptop-or-larger
+      padding-top: 80px
+
+    @include widescreen
+      max-width: 680px
 
 // ===== ALIGNED ===== //
+.content__textbox--stretch.content__textbox--left
+  .content__textbox__box
+    @include laptop-or-larger
+      padding-left: 80px
+
+    @include widescreen
+      padding-left: 150px
+
+  .content__textbox__image
+    @include laptop-or-larger
+      margin-left: 72px
+  
+.content__textbox--stretch.content__textbox--right
+  .content__textbox__box
+    @include laptop-or-larger
+      padding-top: 160px
+
+    @include widescreen
+      padding-right: 180px
+
+  .content__textbox__image
+    @include laptop-or-larger
+      margin-right: 120px
+
+  .content__textbox__sidetext
+    @include laptop-or-larger
+      right: $gutter-width
+
 .content__textbox--stretch.content__textbox
   @each $side in left right
     $opposite: right !default
@@ -22,10 +73,10 @@
 
     &--#{$side}
       .content__textbox__image
-        float: $opposite
-        margin-#{$side}: 2 * $gutter-width
-        margin-bottom: $gutter-width
+        text-align: $opposite
+
+        @include laptop-or-larger
+          float: $opposite
 
       .content__textbox__box
-        padding-#{$side}: $gutter-width
         margin-#{$opposite}: auto

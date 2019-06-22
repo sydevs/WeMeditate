@@ -16,6 +16,9 @@
 
 .content__structured__image
   width: 100%
+  max-height: 200px
+  margin: auto
+  object-fit: contain
 
 .content__structured__title
   margin-bottom: 16px
@@ -35,7 +38,17 @@
 
 .content__structured__loadmore
   text-align: center
-  margin-top: 50px
+  margin-top: 30px
+
+  @include tablet-or-larger
+    margin-top: 50px
+
+// ===== COLUMNS ===== //
+.content__structured--grid
+  margin-top: 20px
+
+  @include tablet-or-larger
+    margin-top: 100px
 
 // ===== COLUMNS ===== //
 .content__structured--columns

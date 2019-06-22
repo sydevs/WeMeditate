@@ -62,26 +62,30 @@
 
 .excerpt__link
   color: $color-text-dark
+  font-weight: $font-medium
+  font-size: 1.8rem
+  line-height: 1.6667
 
   > i.icon
     margin-left: 0.75em
     font-size: 0.6em
 
-.excerpt__button
+/*.excerpt__button
     margin-top: 32px
-    padding: 22px 32px
+    padding: 22px 32px*/
 
 // ===== LEFT / RIGHT VARIATIONS ===== //
 // Basic template for the gradient used on each time of treatment item.
 .excerpt:after
-  display: block
-  content: ''
+  @include tablet-or-larger
+    display: block
+    content: ''
 
-  position: absolute
-  top: -112px
-  width: 106px + ($gutter-width * 3)
-  height: 242px
-  z-index: -1
+    position: absolute
+    top: -112px
+    width: 106px + ($gutter-width * 3)
+    height: 242px
+    z-index: -1
 
   @include laptop-or-larger
     top: -108px
@@ -103,7 +107,6 @@
 
       .excerpt__image
         float: $opposite
-        margin-#{$opposite}: -$gutter-width
         margin-#{$side}: 100%
 
         @include tablet-or-larger
