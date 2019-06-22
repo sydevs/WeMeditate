@@ -3,6 +3,8 @@
 # TYPE: FILE
 # A file that can be attached to any file
 
+# TODO: Deprecated
+
 class MediaFile < ActiveRecord::Base
 
   # Extensions

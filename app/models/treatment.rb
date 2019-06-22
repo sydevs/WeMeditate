@@ -11,7 +11,7 @@ class Treatment < ApplicationRecord
   extend CarrierwaveGlobalize
 
   # Extensions
-  translates :name, :slug, :excerpt, :content, :thumbnail, :video, :metatags
+  translates :name, :slug, :excerpt, :content, :thumbnail, :horizontal_vimeo_id, :vertical_vimeo_id, :metatags
   friendly_id :name, use: :globalize
 
   # Validations
@@ -19,9 +19,9 @@ class Treatment < ApplicationRecord
   validates :excerpt, presence: true
   validates :content, presence: true
   validates :thumbnail, presence: true
-  validates :video, presence: true
+  validates :horizontal_vimeo_id, presence: true
+  validates :vertical_vimeo_id, presence: true
 
-  mount_translated_uploader :video, VideoUploader
   mount_translated_uploader :thumbnail, TreatmentImageUploader
 
   # Scopes

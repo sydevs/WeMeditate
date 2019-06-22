@@ -71,21 +71,6 @@ SimpleForm.setup do |config|
       ba.use :input
     end
 
-    #b.wrapper tag: 'div', class: 'ui accordion' do |accordion|
-    #  accordion.wrapper tag: 'div', class: 'title' do |title|
-    #    title.wrapper tag: 'i', class: 'dropdown icon' do end
-    #    title.wrapper tag: 'i', class: 'linkify icon' do end
-    #    title.use :label
-    #  end
-    #
-    #  accordion.wrapper tag: 'div', class: 'content' do |content|
-    #    content.wrapper tag: 'div', class: 'ui icon input' do |input|
-    #      input.use :input
-    #      input.wrapper tag: 'i', class: 'linkify icon' do end
-    #    end
-    #  end
-    #end
-
     b.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
     b.use :error, wrap_with: { tag: 'div', class: 'ui red pointing above error label' }
   end
@@ -117,14 +102,14 @@ SimpleForm.setup do |config|
       ba.use :input
       ba.use :icon
     end
-    b.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
+    b.use :hint, wrap_with: { tag: 'div', class: 'hint' }
   end
 
   config.wrappers :ui_date, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
     b.use :html5
     b.use :label
     b.use :input, class: 'ui dropdown'
-    b.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
+    b.use :hint, wrap_with: { tag: 'div', class: 'hint' }
   end
 
   config.wrappers :ui_checkbox, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|

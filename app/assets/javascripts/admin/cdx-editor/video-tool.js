@@ -95,20 +95,15 @@ class VideoTool extends EditorTool {
     const item = this.renderItem({ vimeo_id: vimeo_id })
     this.itemsContainer.appendChild(item)
 
-    $.ajax({
-      url: `/en/admin/vimeo_data?vimeo_id=${vimeo_id}`,
-      type: 'GET',
-      dataType: 'json',
-      success: (result) => {
-        this.searchInput.parentNode.classList.remove('loading')
-        this.searchInput.value = ''
-        item.replaceWith(this.renderItem(result))
+    Editor.retrieveVimeoVideo(vimeo_id, (result) => {
+      this.searchInput.parentNode.classList.remove('loading')
+      this.searchInput.value = ''
+      item.replaceWith(this.renderItem(result))
 
-        // Hide the uploader if we are using the single uploader and there is already an uploaded image.
-        /*if (!this.allowMultiple && this.itemsContainer.childElementCount > 0) {
-          $(this.searchInput.parentNode).hide()
-        }*/
-      },
+      // Hide the uploader if we are using the single uploader and there is already an uploaded image.
+      /*if (!this.allowMultiple && this.itemsContainer.childElementCount > 0) {
+        $(this.searchInput.parentNode).hide()
+      }*/
     })
   }
 

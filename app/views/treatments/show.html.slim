@@ -9,10 +9,11 @@ main.scrollspy-target id=dom_id(@treatment)
     = @treatment.name
 
   .treatment__media
-    - if @treatment.video.present?
+    - if @treatment.horizontal_vimeo_id.present?
       .video
         = smart_image_tag @treatment.thumbnail, image_sizes, class: 'video__thumbnail', alt: @treatment.name
-        a.video__button href=@treatment.video.url data-mfp-src='#video-popup'
+        a.video__button.js-video href="https://vimeo.com/#{@treatment.horizontal_vimeo_id}" data-id=@treatment.horizontal_vimeo_id data-mfp-src='#video-popup'
+        // TODO: Allow vertical videos
     - else
       = smart_image_tag @treatment.thumbnail, image_sizes
 

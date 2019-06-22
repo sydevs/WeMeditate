@@ -62,9 +62,9 @@ module MetadataHelper
             'description' => record.excerpt,
             'og:type' => 'video.other',
             'og:image' => record.thumbnail&.url,
-            'og:video' => record.video&.url,
-            'og:video:duration' => '', # TODO: Define this
-            'og:video:release_date' => record.created_at.to_s(:db),
+            # 'og:video' => record.video&.url, # TODO: Make this work with the new Vimeo integration
+            # 'og:video:duration' => '', # TODO: Define this
+            # 'og:video:release_date' => record.created_at.to_s(:db),
             'twitter:card' => 'player',
             # 'twitter:player:url' => '', # TODO: We must have an embeddable video iframe to reference here.
             # 'twitter:player:width' => '',
@@ -77,7 +77,7 @@ module MetadataHelper
             'og:image' => record.banner&.url || record.thumbnail&.url,
             'og:article:section' => record.category.name,
             'twitter:card' => record.banner.present? ? 'summary_large_image' : 'summary',
-            'og:video' => record.video&.url,
+            # 'og:video' => record.video&.url, # TODO: Make this work with the new Vimeo integration
             # 'og:video:duration' => '', # TODO: Define this
           })
         end
@@ -95,9 +95,9 @@ module MetadataHelper
         tags.merge!({
           'og:type' => 'video.other',
           'og:image' => record.thumbnail.url,
-          'og:video' => record.video.url,
-          'og:video:duration' => '', # TODO: Define this
-          'og:video:release_date' => record.created_at.to_s(:db),
+          # 'og:video' => record.video&.url, # TODO: Make this work with the new Vimeo integration
+          # 'og:video:duration' => '', # TODO: Define this
+          # 'og:video:release_date' => record.created_at.to_s(:db),
           'twitter:card' => 'player',
           # 'twitter:player:url' => '', # TODO: We must have an embeddable video iframe to reference here.
           # 'twitter:player:width' => '',

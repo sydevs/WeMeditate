@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_20_102629) do
+ActiveRecord::Schema.define(version: 2019_06_22_160531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(version: 2019_04_20_102629) do
     t.string "slug", null: false
     t.text "excerpt"
     t.jsonb "metatags"
-    t.integer "video_id"
     t.integer "banner_id"
     t.integer "thumbnail_id"
     t.json "draft"
     t.jsonb "content", default: {}
+    t.integer "vimeo_id"
     t.index ["article_id"], name: "index_article_translations_on_article_id"
     t.index ["locale"], name: "index_article_translations_on_locale"
   end
@@ -171,8 +171,9 @@ ActiveRecord::Schema.define(version: 2019_04_20_102629) do
     t.string "slug", null: false
     t.text "excerpt"
     t.jsonb "metatags"
-    t.jsonb "video"
     t.integer "views", default: 0, null: false
+    t.integer "horizontal_vimeo_id"
+    t.integer "vertical_vimeo_id"
     t.index ["locale"], name: "index_meditation_translations_on_locale"
     t.index ["meditation_id"], name: "index_meditation_translations_on_meditation_id"
   end
@@ -309,9 +310,10 @@ ActiveRecord::Schema.define(version: 2019_04_20_102629) do
     t.string "slug", null: false
     t.text "excerpt", null: false
     t.jsonb "thumbnail"
-    t.jsonb "video"
     t.jsonb "metatags"
     t.jsonb "content", default: {}
+    t.integer "horizontal_vimeo_id"
+    t.integer "vertical_vimeo_id"
     t.index ["locale"], name: "index_treatment_translations_on_locale"
     t.index ["treatment_id"], name: "index_treatment_translations_on_treatment_id"
   end

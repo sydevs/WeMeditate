@@ -52,7 +52,8 @@ end
   duration_filter: 5,
 }].each_with_index do |atts, index| # rubocop:disable Style/TrailingCommaInArrayLiteral
   atts[:image] = file_root.join("meditations/background-#{(index % 2) + 1}.jpg").open
-  atts[:video] = file_root.join('general/video.mp4').open
+  atts[:vertical_vimeo_id] = 152153054
+  atts[:horizontal_vimeo_id] = 208643382
   atts[:goal_filters].map! { |k| goal_filters[k] }
   atts[:duration_filter] = duration_filters[atts[:duration_filter]]
   atts[:excerpt] = 'Feel like you’re in need of a pick me up? Banish those negative thoughts which are putting you down and boost your confidence.'

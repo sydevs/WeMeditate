@@ -6,6 +6,8 @@ require 'sitemap_generator'
 # SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 # SitemapGenerator::Sitemap.adapter = SitemapGenerator::WaveAdapter.new
 
+# TODO: Rewrite this for the new content system
+
 HOSTS = {
   en: 'https://wemeditate.co',
   ru: 'https://wemeditate.ru',

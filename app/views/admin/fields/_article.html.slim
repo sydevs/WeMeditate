@@ -11,7 +11,8 @@
 = draftable_field f, :excerpt, type: :text do |value|
   - f.input_field :excerpt, as: :text, rows: 3, value: value
 
-= draftable_media_field f, :video_id, type: :video
+// TODO: Does this vimeo_id render properly?
+= draftable_field f, :vimeo_id, type: :integer
 = draftable_date_field f
 
 // TODO: Remove this page banner which is no longer used.

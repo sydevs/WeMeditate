@@ -14,7 +14,7 @@ class Article < ApplicationRecord
   include Draftable
 
   # Extensions
-  translates :name, :slug, :excerpt, :banner_id, :thumbnail_id, :video_id, :metatags, :content, :draft
+  translates :name, :slug, :excerpt, :banner_id, :thumbnail_id, :vimeo_id, :metatags, :content, :draft
   friendly_id :name, use: :globalize
 
   # Associations
@@ -59,7 +59,7 @@ class Article < ApplicationRecord
 
   # Shorthand for the article video file
   def video
-    media_files.find_by(id: video_id)&.file
+    media_files.find_by(id: vimeo_id)&.file
   end
 
 end

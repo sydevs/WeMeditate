@@ -5,10 +5,10 @@
 - image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 1197px) calc(34vw - 32px), 360px'
 
 article.inspiration__item.preview id=dom_id(article) class=dom_id(article.category)
-  - if article.video.present?
+  - if article.vimeo_id.present?
     .preview__media.video
       = smart_image_tag article.thumbnail, image_sizes, lazy: false, class: 'preview__media__thumbnail video__thumbnail', alt: article.name
-      a.video__button href=article.video.url data-mfp-src='#video-popup'
+      a.video__button.js-video href="https://vimeo.com/#{article.vimeo_id}" data-id=article.vimeo_id data-mfp-src='#video-popup'
   - elsif article.thumbnail.present?
     a.preview__media href=article_path(article)
       = smart_image_tag article.thumbnail, image_sizes, lazy: false, class: 'preview__media__thumbnail', alt: article.name

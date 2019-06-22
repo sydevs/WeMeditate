@@ -1,5 +1,6 @@
 
 = f.input :image, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:image), file: record.image, input_html: { accept: file_type_accepts(:image) }
-= f.input :video, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:video), file: record.video, input_html: { accept: file_type_accepts(:video) }
+= f.input :horizontal_vimeo_id, wrapper: :ui_input, icon: :video
+= f.input :vertical_vimeo_id, wrapper: :ui_input, icon: :video
 = f.association :duration_filter
 = f.association :goal_filters

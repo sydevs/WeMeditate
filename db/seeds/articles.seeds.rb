@@ -22,7 +22,7 @@ end
     thumbnail_id: attachment("articles/thumbnails/#{index}.png", 'Thumbnail.png', :image, article),
     category: categories.values.sample,
     date: '',
-    video_id: '',
+    vimeo_id: '',
   })
 
   puts "Created Generic Article #{index}"
@@ -35,7 +35,7 @@ Article.all.sample(5).each do |article|
 end
 
 Article.all.sample(5).each do |article|
-  article.update!(video_id: attachment('general/video.mp4', 'Featured Video.mp4', :video, article))
+  article.update!(vimeo_id: 208643382)
   puts "Added Video to #{article.name}"
 end
 

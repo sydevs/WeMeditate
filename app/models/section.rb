@@ -4,6 +4,8 @@
 # TYPE: SECTION
 # The Section model is a unique kind of model that is used by all "Page"-type models to build their content.
 
+# TODO: Deprecated
+
 class Section < ApplicationRecord
 
   include Draftable

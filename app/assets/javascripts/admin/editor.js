@@ -69,6 +69,20 @@ const Editor = {
     })
   },
 
+  retrieveVimeoVideo(vimeo_id, callback) {
+    Editor.adjust_pending_uploads(+1)
+
+    $.ajax({
+      url: `/en/admin/vimeo_data?vimeo_id=${vimeo_id}`,
+      type: 'GET',
+      dataType: 'json',
+      success: function(result) {
+        Editor.adjust_pending_uploads(-1)
+        callback(result)
+      },
+    })
+  }
+
   adjust_pending_uploads(adjustment) {
     Editor.pending_uploads += adjustment
     if (Editor.pending_uploads > 0) {

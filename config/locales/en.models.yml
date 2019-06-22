@@ -60,7 +60,7 @@ en:
         excerpt: Preview Content
         banner: Banner Image
         thumbnail: Thumbnail
-        video: Featured Video
+        vimeo_id: Featured Video (Vimeo ID)s
         date: Date
         sections: Content
         metatags: Meta Tags
@@ -118,7 +118,8 @@ en:
         excerpt: Excerpt
         content: Content
         thumbnail: Thumbnail (png)
-        video: Video (mp4)
+        horizontal_vimeo_id: Horizontal Video (Vimeo ID)
+        vertical_vimeo_id: Vertical Video (Vimeo ID)
         metatags: Meta Tags
 
       instrument_filter:
@@ -156,7 +157,7 @@ en:
           video: Video
           image: Image
           action: Call to Action
-          textbox: Text Box
+          textbox: Text Boxf
           structured: Structured Content
           special: Special
         format: Format
@@ -285,7 +286,8 @@ en:
       meditation:
         title: Name
         slug: URL
-        file: Voice Over
+        horizontal_vimeo_id: Horizontal Video (Vimeo ID)
+        vertical_vimeo_id: Vertical Video (Vimeo ID)
         duration_filter: :activerecord.models.duration_filter.one
         goal_filters: :activerecord.models.goal_filter.other
         metatags: Meta Tags

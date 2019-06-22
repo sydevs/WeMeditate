@@ -29,8 +29,7 @@ p.details.excerpt = record.excerpt
       i.calendar.icon
       .content = record.date
 
-  - video = MediaFile.find_by(id: record.video_id)
-  - if video.present?
+  - if vimeo_id.present?
     .item
       i.play.circle.icon
-      a.content href=video.file_url target='_blank' = video.name
+      a.content href="https://vimeo.com/#{vimeo_id}" target='_blank' = video.name

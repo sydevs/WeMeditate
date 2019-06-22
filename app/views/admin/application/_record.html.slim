@@ -32,8 +32,4 @@ tr id=dom_id(record)
       - else
         = table_icon 'check circle', t('tags.published')
 
-    - if record.has_content?
-      - section_count = record.sections.count
-      = table_icon 'file', "#{section_count} #{Section.model_name.human(count: section_count)}", section_count
-
     = table_icons(record)

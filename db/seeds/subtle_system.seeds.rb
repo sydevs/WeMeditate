@@ -37,7 +37,8 @@ treatments = []
   treatment.update!(atts.merge({
     order: index,
     thumbnail: file_root.join("treatments/#{index + 2}.jpg").open,
-    video: file_root.join('general/video.mp4').open,
+    vertical_vimeo_id: 152153054,
+    horizontal_vimeo_id: 208643382,
     content: content([
       { type: :header, data: { text: 'When is it used?' } },
       { type: :paragraph, data: { text: 'You may have experienced the soothing feeling of sitting on the bank of a river, or standing on an ocean shore, with your feet in the cool water on a hot day. Maybe you were chatting with a friend and enjoying the view, not really paying attention to your state of being, but nevertheless the water would have cooled you down, relaxed and invigorated you.' } },
