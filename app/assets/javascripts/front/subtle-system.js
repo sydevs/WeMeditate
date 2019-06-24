@@ -17,6 +17,12 @@ class SubtleSystem {
     element.querySelector('.subtle-system__toggle').addEventListener('click', event => this.onSelectTab(event.target))
   }
 
+  unload() {
+    this.container.classList.remove('subtle-system--no-animation')
+    this.setNodeSelected(this.activeNode, false)
+    this.activeNode = null
+  }
+
   onSelectTab(element) {
     if (element.dataset.tab != this.activeTab.dataset.tab) {
       this.activeTab.classList.remove('subtle-system__toggle__item--active')

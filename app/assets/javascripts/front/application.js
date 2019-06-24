@@ -1,28 +1,57 @@
 
 const Application = {
-  load() {
-    Application.loadImages()
+
+  init() {
     Application.videoPlayer = Video.loadPlayer('video-player')
-
-    Application.accordions = Application.loadAll('accordion', Accordion)
-    Application.carousels = Application.loadAll('carousel', Carousel)
-    Application.dropdowns = Application.loadAll('dropdown', Dropdown)
-    Application.forms = Application.loadAll('form', Form)
-    Application.grids = Application.loadAll('grid', Grid)
-    Application.loadmores = Application.loadAll('loadmore', Loadmore)
-    Application.videos = Application.loadAll('video', Video)
-    Application.imageGalleries = Application.loadAll('gallery', ImageGallery)
-
-    Application.header = Application.loadFirst('header', Header)
-    Application.subtleSystem = Application.loadFirst('subtle-system', SubtleSystem)
-    Application.musicPlayer = Application.loadFirst('music-player', MusicPlayer)
-    Application.customMeditation = Application.loadFirst('custom-meditation', CustomMeditation)
-    Application.prescreen = Application.loadFirst('prescreen', Prescreen)
 
     document.querySelector('.footer__scrollback').addEventListener('click', event => {
       zenscroll.toY(0)
       event.preventDefault()
     })
+  },
+
+  load() {
+    Application.loadImages()
+
+    Application.elements = {}
+    Application.loadAll('accordion', Accordion)
+    Application.loadAll('carousel', Carousel)
+    Application.loadAll('dropdown', Dropdown)
+    Application.loadAll('form', Form)
+    Application.loadAll('grid', Grid)
+    Application.loadAll('loadmore', Loadmore)
+    Application.loadAll('video', Video)
+    Application.loadAll('gallery', ImageGallery)
+
+    Application.element = {}
+    Application.loadFirst('header', Header)
+    Application.loadFirst('subtle-system', SubtleSystem)
+    Application.loadFirst('music-player', MusicPlayer)
+    Application.loadFirst('custom-meditation', CustomMeditation)
+    Application.loadFirst('prescreen', Prescreen)
+  },
+
+  unload() {
+    for (let id in Application.element) {
+      console.log('unloading', id)
+      let element = Application.element[id]
+      if (typeof element.unload === 'function') {
+        element.unload()
+      }
+    }
+
+    for (let selector in Application.elements) {
+      console.log('unloading', selector)
+      for (let key in Application.elements[selector]) {
+        let element = Application.elements[selector][key]
+        if (typeof element.unload === 'function') {
+          element.unload()
+        }
+      }
+    }
+
+    Application.elements = {}
+    Application.element = {}
   },
 
   loadAll(selector, Klass) {
@@ -33,13 +62,13 @@ const Application = {
       result.push(new Klass(element, result.length))
     })
 
-    return result
+    Application.elements[selector] = result
   },
 
   loadFirst(id, Klass) {
     console.log('Init', id, 'on', document.getElementById(id))
     var element = document.getElementById(id)
-    if (element) return new Klass(element)
+    if (element) Application.element[id] = new Klass(element)
   },
 
   loadImages() {
@@ -75,4 +104,6 @@ const Application = {
   },
 }
 
-jQuery(document).on('turbolinks:load', ()  => Application.load())
+document.addEventListener('ready', ()  => Application.init())
+document.addEventListener('turbolinks:load', ()  => Application.load())
+document.addEventListener('turbolinks:before-cache', ()  => Application.unload())

@@ -27,8 +27,9 @@ class Header {
     if ($scrollspyTarget.length > 0) {
       this.scrollspyTop = $scrollspyTarget.offset().top
       this.scrollspyHeight = $scrollspyTarget.height()
+      this.scrollspy.style.display = null
     } else {
-      this.scrollspy.remove()
+      this.scrollspy.style.display = 'none'
     }
   }
 

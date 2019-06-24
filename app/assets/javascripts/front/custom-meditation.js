@@ -27,9 +27,9 @@ class CustomMeditation {
     this.hasGoalValue = true
 
     if (window.innerWidth < 768) {
-      Application.header.scrollTo(this.durationSection, 100, 2000)
+      zenscroll.center(this.durationSection)
     } else {
-      Application.header.scrollTo(this.container)
+      zenscroll.to(this.container)
     }
   }
 

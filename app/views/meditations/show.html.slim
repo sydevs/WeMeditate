@@ -6,6 +6,6 @@ main id=dom_id(@meditation)
     figure.content__video__item
       .content__video__media.video
         // TODO: Re-evaluate image_sizes
-        = vimeo_image_tag @meditation.image, '100vw', class: 'video__thumbnail'
+        = smart_image_tag @meditation.image, '100vw', class: 'video__thumbnail'
         a.video__button.js-video href="https://vimeo.com/#{@meditation.horizontal_vimeo_id}" data-id=@meditation.horizontal_vimeo_id data-mfp-src='#video-popup'
         // TODO: Allow vertical videos

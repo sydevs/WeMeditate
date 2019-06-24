@@ -13,15 +13,21 @@ class Dropdown {
 
     this.selectionContainer.addEventListener('click', _event => this.togglePopup())
     element.querySelector('.dropdown__close').addEventListener('click', _event => this.togglePopup(false))
+
+    this.onClickElsewhere = event => {
+      if (event.target.closest('.dropdown') == null) {
+        this.togglePopup(false)
+      }
+    }
   }
 
   togglePopup(forceState = null) {
     const openPopup = (forceState === null ? !this.container.classList.contains('dropdown--open') : forceState)
 
     if (openPopup) {
-      document.addEventListener('click', this._onClickAnywhere)
+      document.addEventListener('click', this.onClickElsewhere)
     } else {
-      document.removeEventListener('click', this._onClickAnywhere)
+      document.removeEventListener('click', this.onClickElsewhere)
     }
 
     this.container.classList.toggle('dropdown--open', openPopup)
@@ -51,12 +57,6 @@ class Dropdown {
     this.container.dispatchEvent(event)
 
     this.togglePopup() // Aka, close it
-  }
-
-  _onClickAnywhere(event) {
-    if (event.target.closest('.dropdown') == null) {
-      this.togglePopup(false)
-    }
   }
 
 }

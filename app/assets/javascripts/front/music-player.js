@@ -100,8 +100,7 @@ class MusicPlayer {
       this.selectNextTrack(true)
     }
 
-    //this.scrollToPlayer()
-    Application.header.scrollTo(this.container)
+    zenscroll.to(this.container)
   }
 
   isTrackAvailable(data) {
@@ -170,13 +169,6 @@ class MusicPlayer {
     }
 
     this.selectTrack(this.playlist[index])
-  }
-
-  scrollToPlayer() {
-    let bodyRect = document.body.getBoundingClientRect()
-    let containerRect = this.container.getBoundingClientRect()
-    let offset = containerRect.top - bodyRect.top - 60
-    Application.header.scroll.animateScroll(offset, 3000, { speed: 3000, updateURL: false })
   }
 
   setCoverImage(srcset) {
