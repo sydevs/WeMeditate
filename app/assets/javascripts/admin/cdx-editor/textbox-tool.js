@@ -42,7 +42,7 @@ class TextboxTool extends EditorTool {
       tunes: [
         {
           name: 'asWisdom',
-          label: 'Ancient Wisdom Style',
+          label: 'Ancient Knowledge Style',
           icon: 'university',
         },
         {

@@ -13,9 +13,9 @@
     margin-top: 150px
     margin-bottom: 160px
 
-.content__textbox:not(.content__textbox--center),
-.content__textbox--center .content__textbox__box_wrapper
+.content__textbox__wrapper
   @extend %wide-content-width
+  position: relative
 
 // Extra desktop sizing
 .content__textbox:not(.content__textbox--center)
@@ -29,8 +29,8 @@
   
 // ===== CONTENT ===== //
 .content__textbox__image
-  overflow: hidden
   margin-bottom: 56px
+  overflow: visible
 
   @include laptop-or-larger
     margin-bottom: 0
@@ -76,13 +76,9 @@
 .content__textbox__gradient
   position: relative
 
-.content__textbox--center .content__textbox__decoration--sidetext,
-.content__textbox__decoration--triangle,
-.content__textbox__gradient
-  @extend %wide-content-width
-
 .content__textbox__decoration--gradient
   @include overlay
+  z-index: -1
 
 .content__textbox__gradient
   height: 100%

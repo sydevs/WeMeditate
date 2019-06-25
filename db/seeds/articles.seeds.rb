@@ -568,7 +568,7 @@ article.update!(content: content([
     type: :textbox,
     data: {
       image: content_attachment('articles/ancient-wisdom.jpg', article),
-      title: 'Ancient Wisdom',
+      title: 'Ancient Knowledge',
       text: paragraphs(2),
       action: 'Read More',
       url: '/en',
@@ -579,7 +579,7 @@ article.update!(content: content([
     type: :textbox,
     data: {
       image: content_attachment('articles/ancient-wisdom.jpg', article),
-      title: 'Ancient Wisdom',
+      title: 'Ancient Knowledge',
       text: paragraphs(2),
       action: 'Learn More',
       url: '/en',
