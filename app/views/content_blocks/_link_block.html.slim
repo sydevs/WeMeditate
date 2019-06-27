@@ -10,6 +10,7 @@
   - if block[:format] == 'button'
     a.button.button--box href=block[:url] class="#{'scroll' if block[:url][0,1] == '#'}"
       = block[:action]
+
   - elsif block[:format] == 'articles'
     .content__link__sidetext = render_decoration :sidetext, block, alignment: :left
 
@@ -36,6 +37,7 @@
                 a.preview__meta__link href=article_path(article)
                   = t('articles.read_more')
                   i.breadcrumb.icon
+
   - elsif block[:format] == 'treatments'
     h2.content__link__title = block[:decorations] && block[:decorations][:sidetext]
     .content__link__sidetext = render_decoration :sidetext, block, alignment: :left
@@ -65,4 +67,7 @@
               .excerpt__content
                 h3.excerpt__title = treatment.name
                 p.excerpt__text = treatment.excerpt
-                a.excerpt__button.button.button--box href=treatment_path(treatment) = t('treatments.read_more')
+                //a.excerpt__button.button.button--box href=treatment_path(treatment) = t('treatments.read_more')
+                a.excerpt__link href=treatment_path(treatment)
+                  = t('treatments.read_more')
+                  i.breadcrumb.icon
