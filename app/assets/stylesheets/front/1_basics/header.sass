@@ -12,7 +12,8 @@
 .header *
   transition: all 0.2s ease
 
-.header a
+.header__banner a,
+.header__navigation a
   color: $color-header
   font-weight: $font-medium
   text-decoration: none
@@ -354,10 +355,30 @@
     background-color: $color-scrollspy
     transition: width 0.1s linear
 
+// ===== COOKIE NOTICE ===== //
+.header__cookie-notice
+  @extend %wide-content-width
+  background: white
+
+.header__cookie-notice__text
+  padding: 8px
+  border-bottom: 1px solid $color-graphic-normal
+  font-size: 1.4rem
+  line-height: 20px
+
+  a
+    margin-left: 4px
+
+.header__cookie-notice__close
+  @extend %close-icon
+  float: right
+  width: 20px
+  height: 20px
+
 
 // ===== BREADCRUMBS ===== //
 // The page breadcrumbs that appear just under the header.
-.header__breadcrumbs_wrapper
+.header__breadcrumbs-wrapper
   position: absolute
   width: 100%
 
@@ -426,25 +447,14 @@
 
 // The "burger" button, is the button that opens and closes the menu.
 .header__navigation__burger
-  cursor: pointer
-  position: relative
-  top: 0
+  @extend %close-icon
 
   svg
     opacity: 1
 
   &:before, &:after
-    content: ""
-    position: absolute
-    background-color: $color-graphic-normal
-    top: 15px
-    left: 0
-    right: 0
-    transition: all 0.5s ease
-    width: 30px
-    height: 1px
-    margin: 0 auto
     opacity: 0
+    transform: rotateZ(0)
 
 
 // ===== MOBILE SUBMENU ===== //
@@ -555,23 +565,19 @@
 // ===== INVERSE HEADER ===== //
 // Some pages use a background image at the top of the page
 // In such cases the header needs to be bright on a dark background.
-.header--invert:not(.header--show-menu)
-  a:not(.header__dropdown__item)
+.header--invert:not(.header--show-menu) .header
+  &__banner a,
+  &__navigation a:not(.header__dropdown__item)
     color: $color-text-inverse
 
-.header--invert:not(.header--show-menu) .header
   &__container
     background: transparent
-
-  /*&__navigation__item:not(.header__navigation__item--active):hover
-    .header__navigation__link
-      opacity: 0.75*/
 
   &__navigation__link:before
     background: transparentize(white, 0.6)
 
   &__banner,
-  &__navigation,
+  &__navigation
     border-color: $color-text-inverse
 
   &__navigation__burger path,
@@ -589,6 +595,20 @@
     &:not([href])
       color: $color-text-normal
 
+.header--invert .header__cookie-notice
+  background: none
+
+  &__text
+    margin-top: 2px
+    border-color: transparent
+    background: transparentize($color-text-inverse, 0.25)
+
+  &__close
+    margin-left: 4px
+    margin-bottom: 100%
+
+    &:after, &:before
+      background-color: $color-text-dark
 
 // ===== HOME PAGE TWEAKS ===== //
 .header--home

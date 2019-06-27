@@ -36,8 +36,15 @@ header#header.header class=classes
     .header__scrollspy
       #scrollspy-progress.header__scrollspy__progress
 
+    - unless cookies[:notice] == 'dismissed'
+      .header__cookie-notice
+        .header__cookie-notice__text
+          .header__cookie-notice__close
+          = translate 'header.cookie_notice'
+          a href=static_page_url_for(:privacy) = translate 'header.learn_more'
+
     - unless @breadcrumbs.nil?
-      .header__breadcrumbs_wrapper
+      .header__breadcrumbs-wrapper
         nav.header__breadcrumbs
           - @breadcrumbs.each do |crumb|
             a.header__breadcrumbs__item href=crumb[:url] = crumb[:name]

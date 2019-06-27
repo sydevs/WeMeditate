@@ -4,6 +4,7 @@ class Header {
   constructor(element) {
     this.container = element
     this.scrollspy = document.getElementById('scrollspy-progress')
+    this.cookieNotice = document.querySelector('.header__cookie-notice')
     this.container.style.height = 'auto'
     this.navigationHeight = $('.header__navigation', element).outerHeight(true)
 
@@ -31,6 +32,11 @@ class Header {
     } else {
       this.scrollspy.style.display = 'none'
     }
+
+    document.querySelector('.header__cookie-notice__close').addEventListener('click', () => {
+      this.cookieNotice.remove()
+      document.cookie = 'notice=dismissed'
+    })
   }
 
   toggleMenu() {
@@ -53,7 +59,7 @@ class Header {
 
   _onResize() {
     const isDesktop = $(this.desktopWrapper).is(':visible')
-    this.headerHeight = $(this.container).outerHeight(true)
+    this.headerHeight = $(this.desktopWrapper).outerHeight(true)
     this.stickyPoint = isDesktop ? this.headerHeight - this.navigationHeight : 0
     if (typeof zenscroll !== 'undefined') zenscroll.setup(null, this.headerHeight)
 
