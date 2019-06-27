@@ -14,7 +14,7 @@ class MeditationsController < ApplicationController
       { name: @record.name },
     ]
 
-    if params[:prescreen] == 'false'
+    if cookies[:prescreen] == 'dismissed'
       @meditations = Meditation.preload_for(:preview).all
       @goal_filters = GoalFilter.includes(:translations).all
       @duration_filters = DurationFilter.all

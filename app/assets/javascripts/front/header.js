@@ -33,10 +33,13 @@ class Header {
       this.scrollspy.style.display = 'none'
     }
 
-    document.querySelector('.header__cookie-notice__close').addEventListener('click', () => {
-      this.cookieNotice.remove()
-      document.cookie = 'notice=dismissed'
-    })
+    const cookieNoticeClose = document.querySelector('.header__cookie-notice__close')
+    if (cookieNoticeClose) {
+      cookieNoticeClose.addEventListener('click', () => {
+        this.cookieNotice.remove()
+        document.cookie = 'notice=dismissed'
+      })
+    }
   }
 
   toggleMenu() {

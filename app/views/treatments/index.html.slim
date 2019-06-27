@@ -2,7 +2,8 @@
 - first_track = @tracks.first
 
 main id=dom_id(@static_page)
-  = render 'meditations/prescreen', translations: 'treatments.prescreen', type: :treatments, skip_url: '#techniques'
+  - if cookies[:prescreen] != 'dismissed'
+    = render 'meditations/prescreen', translations: 'treatments.prescreen', type: :treatments, skip_url: '#techniques'
 
   .treatments__content-wrapper
     .treatments__content.content
