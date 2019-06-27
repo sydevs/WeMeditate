@@ -118,7 +118,9 @@ en:
     credit: Credit
     show_more: Show More
   subtle_system:
-    title: Tap to learn more
+    title:
+      desktop: Hover to learn more
+      mobile: Tap to learn more
     chakras: Chakras
     channels: Channels
     read_more: Learn More

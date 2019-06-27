@@ -12,6 +12,16 @@
   @include tablet-or-larger
     margin-top: 80px
 
+  &__mobile
+    @include laptop-or-larger
+      display: none
+  
+  &__desktop
+    display: none
+
+    @include laptop-or-larger
+      display: block
+
 .subtle-system
   @extend %wide-content-width
   max-width: $desktop-content-width
