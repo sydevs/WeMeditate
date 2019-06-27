@@ -17,9 +17,10 @@ $gradient-padding: 150px
   &__title
     @include tablet-or-larger
       position: absolute
-      left: 50%
+      left: 65%
       top: 8%
 
+      width: 30%
       max-width: 380px
       text-align: center
       font-size: 3rem
@@ -36,6 +37,9 @@ $gradient-padding: 150px
 
       &:after
         transform: rotate(180deg)
+
+    @include laptop-or-larger
+      left: 50%
 
   /*&__title
     @include tablet-or-larger
