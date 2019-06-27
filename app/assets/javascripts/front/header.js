@@ -84,7 +84,13 @@ class Header {
     }
 
     if (this.scrollspyTop != null) {
-      let percentage = (Math.max(0, Math.min(1, (scrollTop - this.scrollspyTop) / (this.scrollspyHeight - screen.height)))) * 100
+      let percentage = 0
+
+      if (scrollTop >= this.scrollspyTop && this.scrollspyHeight >= window.innerHeight) {
+        percentage = Math.min(1, (scrollTop - this.scrollspyTop) / (this.scrollspyHeight - window.innerHeight)) * 100
+      }
+
+      console.log(percentage, 'from', scrollTop, '-', this.scrollspyTop, '/', this.scrollspyHeight, '-', window.innerHeight)
       this.scrollspy.style.width = `${percentage}%`
     }
   }
