@@ -49,6 +49,11 @@
     max-width: none
     padding: 0
 
+  .content__textbox__box_wrapper,
+  .content__textbox__decoration--sidetext,
+  .content__textbox__decoration--triangle
+    @extend %wide-content-width
+
   .content__textbox__img
     width: 100%
 
@@ -59,8 +64,6 @@
       object-position: left
 
   .content__textbox__box_wrapper
-    @extend %wide-content-width
-
     @include laptop-or-larger
       padding-bottom: 6vh
 
