@@ -2,8 +2,6 @@
 const Application = {
 
   init() {
-    Application.videoPlayer = Video.loadPlayer('video-player')
-
     document.querySelector('.footer__scrollback').addEventListener('click', event => {
       zenscroll.toY(0)
       event.preventDefault()
@@ -12,6 +10,7 @@ const Application = {
 
   load() {
     Application.loadImages()
+    Application.videoPlayer = Video.loadPlayer('video-player')
 
     Application.elements = {}
     Application.loadAll('accordion', Accordion)

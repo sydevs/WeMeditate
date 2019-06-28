@@ -1,6 +1,5 @@
 
-// TODO: The set image sizes for the below image
-- image_sizes = ''
+- image_sizes = '(max-width: 447px) calc(100v - 48px), 400px'
 
 main.scrollspy-target id=dom_id(@treatment)
   h1.banner
@@ -12,8 +11,8 @@ main.scrollspy-target id=dom_id(@treatment)
     - if @treatment.horizontal_vimeo_id.present?
       .video
         = smart_image_tag @treatment.thumbnail, image_sizes, class: 'video__thumbnail', alt: @treatment.name
-        a.video__button.js-video href="https://vimeo.com/#{@treatment.horizontal_vimeo_id}" data-id=@treatment.horizontal_vimeo_id data-mfp-src='#video-popup'
-        // TODO: Allow vertical videos
+        a.video__button.video__button--horizontal.js-video href="https://vimeo.com/#{@treatment.horizontal_vimeo_id}" data-id=@treatment.horizontal_vimeo_id data-mfp-src='#video-popup'
+        a.video__button.video__button--vertical.js-video href="https://vimeo.com/#{@treatment.vertical_vimeo_id}" data-id=@treatment.vertical_vimeo_id data-mfp-src='#video-popup'
     - else
       = smart_image_tag @treatment.thumbnail, image_sizes
 
