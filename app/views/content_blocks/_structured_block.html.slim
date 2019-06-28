@@ -25,7 +25,7 @@
           .content__structured__text = item[:text].html_safe
 
   - elsif block[:format] == 'columns'
-    .content__structured__columns.js-carousel data-style="video"
+    .content__structured__columns.js-carousel
       - block[:items].first(3).each do |item|
         article.content__structured__item
           - if item[:image]

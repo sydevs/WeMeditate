@@ -1,5 +1,7 @@
 @import "../../mixins/*"
 
+$item-padding: 15px
+
 .content__structured
   margin-top: 50px
   margin-bottom: 50px
@@ -12,7 +14,9 @@
 
 // ===== CONTENT ===== //
 .content__structured__item
-  padding: 15px
+  @include tablet-or-larger
+    padding-left: $item-padding
+    padding-right: $item-padding
 
 .content__structured__image
   width: 100%
@@ -36,6 +40,12 @@
   margin-top: 0.5em
   margin-bottom: 0.5em
 
+  @include tablet-or-larger
+    font-size: 1.5rem
+
+  @include desktop
+    font-size: 1.6rem
+
 .content__structured__loadmore
   text-align: center
   margin-top: 30px
@@ -52,13 +62,27 @@
 
 // ===== COLUMNS ===== //
 .content__structured--columns
+  $image-height: 200px
   text-align: center
 
   .content__structured__item
-    max-width: 400px
-
-  .content__structured__text
+    max-width: 400px + ($item-padding * 2)
     text-align: left
+
+    @include tablet-or-larger
+      padding-left: $item-padding * 2
+      padding-right: $item-padding * 2
+
+  .content__structured__image
+    height: $image-height
+    margin-bottom: 60px
+
+    @include tablet-or-larger
+      margin-bottom: 30px
+
+  .slick-dots
+    top: $image-height
+    bottom: auto
 
 // ===== ACCORDION ===== //
 .content__structured--accordion
