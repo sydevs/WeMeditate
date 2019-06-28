@@ -14,7 +14,7 @@ class MeditationsController < ApplicationController
       { name: @record.name },
     ]
 
-    if cookies[:prescreen] == 'dismissed'
+    if true || cookies[:prescreen] == 'dismissed'
       @meditations = Meditation.preload_for(:preview).all
       @goal_filters = GoalFilter.includes(:translations).all
       @duration_filters = DurationFilter.all
@@ -51,12 +51,11 @@ class MeditationsController < ApplicationController
   end
 
   def show
-    @meditation = Meditation.friendly.find(params[:id])
-    @metadata_record = @meditation
+    @record = Meditation.friendly.find(params[:id])
 
-    # Increment the view counter for this page.
-    # TODO: This should be changed to be less naive, and actually check when people view the video.
-    @meditation.update! views: @meditation.views + 1
+    # TODO: Deprecated
+    @meditation = @record
+    @metadata_record = @meditation
 
     meditations_page = StaticPage.preload_for(:content).find_by(role: :meditations)
     @breadcrumbs = [
@@ -64,6 +63,14 @@ class MeditationsController < ApplicationController
       { name: meditations_page.name, url: meditations_path },
       { name: @meditation.name },
     ]
+
+    if cookies[:prescreen] == 'dismissed'
+      # Increment the view counter for this page.
+      # TODO: This should be changed to be less naive, and actually check when people view the video.
+      @meditation.update! views: @meditation.views + 1
+    else
+      render :prescreen
+    end
   end
 
   def random

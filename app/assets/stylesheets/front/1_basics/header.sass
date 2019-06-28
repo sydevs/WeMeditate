@@ -8,7 +8,6 @@
   position: relative
   z-index: $z-header
   font-weight: $font-medium
-  background: white
 
 .header *
   transition: all 0.2s ease
@@ -20,6 +19,7 @@
   text-decoration: none
 
 .header__container
+  background: white
   height: auto
   z-index: $z-header
 
@@ -359,7 +359,6 @@
 // ===== COOKIE NOTICE ===== //
 .header__cookie-notice
   @extend %wide-content-width
-  background: white
 
 .header__cookie-notice__text
   padding: 8px
@@ -567,6 +566,9 @@
 // Some pages use a background image at the top of the page
 // In such cases the header needs to be bright on a dark background.
 .header--invert:not(.header--show-menu) .header
+  &__container
+    background: none
+
   &__banner a,
   &__navigation a:not(.header__dropdown__item)
     color: $color-text-inverse
@@ -594,8 +596,6 @@
       color: $color-text-inverse
 
 .header--invert .header__cookie-notice
-  background: none
-
   &__text
     margin-top: 2px
     border-color: transparent
@@ -612,7 +612,6 @@
 // This causes the header to hover over the page.
 .header--overlay
   position: absolute
-  background: none
   width: 100%
 
   .header__banner
