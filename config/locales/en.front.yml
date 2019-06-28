@@ -125,6 +125,8 @@ en:
     chakras: Chakras
     channels: Channels
     read_more: Learn More
+  classes:
+    prompt: Enter your city or post code
   errors:
     title: Oops...
     choices: 'Try one of these instead:'

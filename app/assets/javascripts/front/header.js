@@ -5,6 +5,7 @@ class Header {
     this.container = element
     this.scrollspy = document.getElementById('scrollspy-progress')
     this.cookieNotice = document.querySelector('.header__cookie-notice')
+    this.splash = document.querySelector('.js-splash')
     this.container.style.height = 'auto'
     this.navigationHeight = $('.header__navigation', element).outerHeight(true)
 
@@ -24,13 +25,18 @@ class Header {
     this._onResize()
     this._onScroll()
 
+    this.container.classList.toggle('header--overlay', this.splash)
+    this.container.classList.toggle('header--invert', this.splash && this.splash.dataset.invert)
+
     let $scrollspyTarget = $('.scrollspy-target')
-    if ($scrollspyTarget.length > 0) {
-      this.scrollspyTop = $scrollspyTarget.offset().top
-      this.scrollspyHeight = $scrollspyTarget.height()
-      this.scrollspy.style.display = null
-    } else {
-      this.scrollspy.style.display = 'none'
+    if (this.scrollspy) {
+      if ($scrollspyTarget.length > 0) {
+        this.scrollspyTop = $scrollspyTarget.offset().top
+        this.scrollspyHeight = $scrollspyTarget.height()
+        this.scrollspy.style.display = null
+      } else {
+        this.scrollspy.style.display = 'none'
+      }
     }
 
     const cookieNoticeClose = document.querySelector('.header__cookie-notice__close')
@@ -52,23 +58,14 @@ class Header {
     element.closest('.header__menu__item--submenu').classList.toggle('header__menu__item--expand')
   }
 
-  scrollTo(element, offset = 60, speed = 3000) {
-    const bodyRect = document.body.getBoundingClientRect()
-    const elementRect = element.getBoundingClientRect()
-    const target = elementRect.top - bodyRect.top - offset
-    console.log('scroll to', target)
-    this.scroll.animateScroll(target, speed, { speed: speed, updateURL: false })
-  }
-
   _onResize() {
     const isDesktop = $(this.desktopWrapper).is(':visible')
     this.headerHeight = $(this.desktopWrapper).outerHeight(true)
     this.stickyPoint = isDesktop ? this.headerHeight - this.navigationHeight : 0
     if (typeof zenscroll !== 'undefined') zenscroll.setup(null, this.headerHeight)
 
-    let $splash = $('.content__splash')
-    if ($splash.length > 0 && $splash.hasClass('content__splash--invert')) {
-      this.inversionPoint = $splash.outerHeight() - this.navigationHeight
+    if (this.splash && this.splash.dataset.invert) {
+      this.inversionPoint = $(this.splash).outerHeight() - this.navigationHeight
     } else {
       this.inversionPoint = 0
     }
@@ -92,7 +89,7 @@ class Header {
       this.container.classList.toggle('header--invert', scrollTop < this.inversionPoint)
     }
 
-    if (this.scrollspyTop != null) {
+    if (this.scrollspy && this.scrollspyTop) {
       let percentage = 0
 
       if (scrollTop >= this.scrollspyTop && this.scrollspyHeight >= window.innerHeight) {

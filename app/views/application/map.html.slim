@@ -1,2 +1,4 @@
 
-iframe src='http://sahajdb.herokuapp.com/venues/map' frameBorder='0' style='width: 100vw; height: calc(100vh - 70px)'
+- url = "http://sahajdb.herokuapp.com/venues/map?q=#{params[:q]}"
+- url = "http://sahajdb.herokuapp.com/venues/map" # TODO: Swap out for a query like above
+iframe src=url frameBorder='0' style='width: 100vw; height: calc(100vh - 70px)'

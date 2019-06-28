@@ -16,7 +16,7 @@
         = translate "#{translations}.explanation.text"
         a.prescreen__explanation__link href=static_page_path_for(:self_realization)
           = translate "#{translations}.explanation.learn_more"
-          i.breadcrumb.icon
+          i.icon.icon--breadcrumb
 
     a.prescreen__button.button.button--circle href=static_page_path_for(:self_realization)
       = inline_svg 'graphics/circle.svg'
@@ -26,7 +26,7 @@
       span.prescreen__skip__text = translate "#{translations}.skip.text"
       a.prescreen__skip__link href=skip_url
         span = translate "#{translations}.skip.action"
-        i.breadcrumb.icon
+        i.icon.icon--breadcrumb
 
   .prescreen__image
     = static_image_tag 'meditations/prescreen-background', '100vw', class: 'prescreen__image__background'

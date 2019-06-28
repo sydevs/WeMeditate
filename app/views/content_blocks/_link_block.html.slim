@@ -22,7 +22,7 @@
           .preview__meta
             a.preview__meta__link href=article_path(article)
               = t('articles.read_more')
-              i.breadcrumb.icon
+              i.icon.icon--breadcrumb
 
     - if articles.count > 3
       .content__link__loadmore.js-loadmore
@@ -36,7 +36,7 @@
               .preview__meta
                 a.preview__meta__link href=article_path(article)
                   = t('articles.read_more')
-                  i.breadcrumb.icon
+                  i.icon.icon--breadcrumb
 
   - elsif block[:format] == 'treatments'
     h2.content__link__title = block[:decorations] && block[:decorations][:sidetext]
@@ -53,7 +53,7 @@
             //a.excerpt__button.button.button--box href=treatment_path(treatment) = t('treatments.read_more')
             a.excerpt__link href=treatment_path(treatment)
               = t('treatments.read_more')
-              i.breadcrumb.icon
+              i.icon.icon--breadcrumb
 
     - if treatments.count > 2
       .content__link__loadmore.js-loadmore
@@ -70,4 +70,4 @@
                 //a.excerpt__button.button.button--box href=treatment_path(treatment) = t('treatments.read_more')
                 a.excerpt__link href=treatment_path(treatment)
                   = t('treatments.read_more')
-                  i.breadcrumb.icon
+                  i.icon.icon--breadcrumb

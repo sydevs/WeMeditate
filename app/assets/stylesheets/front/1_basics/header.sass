@@ -8,6 +8,7 @@
   position: relative
   z-index: $z-header
   font-weight: $font-medium
+  background: white
 
 .header *
   transition: all 0.2s ease
@@ -20,7 +21,6 @@
 
 .header__container
   height: auto
-  background: white
   z-index: $z-header
 
 
@@ -353,6 +353,7 @@
   &__progress
     height: $scrollspy-width
     background-color: $color-scrollspy
+    width: 0
     transition: width 0.1s linear
 
 // ===== COOKIE NOTICE ===== //
@@ -570,9 +571,6 @@
   &__navigation a:not(.header__dropdown__item)
     color: $color-text-inverse
 
-  &__container
-    background: transparent
-
   &__navigation__link:before
     background: transparentize(white, 0.6)
 
@@ -593,7 +591,7 @@
     color: $color-text-lighter
 
     &:not([href])
-      color: $color-text-normal
+      color: $color-text-inverse
 
 .header--invert .header__cookie-notice
   background: none
@@ -605,14 +603,16 @@
 
   &__close
     margin-left: 4px
-    margin-bottom: 100%
+    margin-bottom: 4px
 
     &:after, &:before
       background-color: $color-text-dark
 
-// ===== HOME PAGE TWEAKS ===== //
-.header--home
+// ===== OVERLAY TWEAKS ===== //
+// This causes the header to hover over the page.
+.header--overlay
   position: absolute
+  background: none
   width: 100%
 
   .header__banner

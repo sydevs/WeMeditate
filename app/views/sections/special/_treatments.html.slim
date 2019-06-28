@@ -16,7 +16,7 @@
           p.treatments-item-text = treatment.excerpt
           a.treatments-item-link href=url_for(treatment)
             = translate 'treatments.read_more'
-            i.breadcrumb.icon
+            i.icon.icon--breadcrumb
 
   - if treatments.length >= 2
     nav.filter-group.outline data-group='amount'

@@ -1,18 +1,20 @@
 
+- minimal = false unless defined? local_assigns[:minimal]
 - classes = []
+- classes << 'header--overlay' if action_name == 'home' || @static_page&.role&.to_sym == :classes
 - classes << 'header--invert' if action_name == 'home'
-- classes << 'header--home' if action_name == 'home'
 
 header#header.header class=classes
   .header__container
     .header__wrapper.header__wrapper--desktop
-      .header__banner
-        a.header__logo href=root_path
-          = inline_svg 'header/logo-mini.svg'
-          span = translate('we_meditate').capitalize
-        .header__illustration
-          = inline_svg 'header/illustration.svg'
-        a.header__action href=static_page_path_for(:classes) = translate('header.classes_near_me').html_safe
+      - unless minimal
+        .header__banner
+          a.header__logo href=root_path
+            = inline_svg 'header/logo-mini.svg'
+            span = translate('we_meditate').capitalize
+          .header__illustration
+            = inline_svg 'header/illustration.svg'
+          a.header__action href=static_page_path_for(:classes) = translate('header.classes_near_me').html_safe
 
       nav.header__navigation
         a.header__navigation__logo href=root_path = inline_svg 'header/logo-small.svg'
@@ -33,8 +35,9 @@ header#header.header class=classes
         a.header__navigation__logo href=root_path = inline_svg 'header/logo-small.svg'
         a.header__navigation__burger = inline_svg 'header/burger.svg'
 
-    .header__scrollspy
-      #scrollspy-progress.header__scrollspy__progress
+    - unless minimal
+      .header__scrollspy
+        #scrollspy-progress.header__scrollspy__progress
 
     - unless cookies[:notice] == 'dismissed'
       .header__cookie-notice

@@ -22,7 +22,7 @@ module Admin
     end
 
     def write
-      @splash_style = @record.role.to_sym if @record.home? or @record.treatments?
+      @splash_style = @record.role.to_sym if @record.home?
     end
 
     protected

@@ -1,0 +1,28 @@
+doctype html
+html lang=locale
+  head
+    = render_metatags @metadata_record if @metadata_record.present?
+    = csrf_meta_tags
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon"
+    link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png"
+    link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-touch-icon-72x72.png"
+    link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-touch-icon-114x114.png"
+
+    / Chrome, Firefox OS and Opera
+    meta name="theme-color" content="#000"
+    / Windows Phone
+    meta name="msapplication-navbutton-color" content="#000"
+    / iOS Safari
+    meta name="apple-mobile-web-app-status-bar-style" content="#000"
+
+    = google_tag_manager
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = render_structured_data @metadata_record if @metadata_record.present?
+
+body
+  = render 'layouts/partials/header', minimal: true, cached: true
+  = yield

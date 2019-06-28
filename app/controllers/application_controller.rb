@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
 
   # The page where we embed a map from the program database
   def map
+    render layout: 'minimal'
   end
 
   # A POST endpoint to submit a contact message to the site admins
@@ -72,7 +73,7 @@ class ApplicationController < ActionController::Base
 
   # The page that users are redirected to if the site is in maintenance mode and they aren't logged in.
   def maintenance
-    render layout: 'basic'
+    render layout: :basic
   end
 
   def robots

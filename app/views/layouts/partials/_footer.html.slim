@@ -48,6 +48,6 @@ footer.footer
         .footer__header.footer__header--social = translate 'footer.follow_us'
         - I18n.translate('social_media').each do |type, url|
           a.footer__social__link href=url
-            i.icon class=type
+            i.icon class="icon--#{type}"
 
   .footer__copyright &copy; WeMeditate, 2019

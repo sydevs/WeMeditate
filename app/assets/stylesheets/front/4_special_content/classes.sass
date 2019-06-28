@@ -1,0 +1,40 @@
+@import "../../mixins/*"
+
+.classes__splash
+  height: 360px
+  padding-top: 160px
+  background: image-url('content/classes-near-me.jpg')
+  margin-bottom: 100px
+
+  @include laptop-or-larger
+    height: 600px
+    padding-top: 400px
+
+.classes__form
+  @extend %wide-content-width
+
+.classes__field
+  font-size: 1.6rem
+  line-height: 1.5625
+  letter-spacing: 0.2px
+  padding: 20px
+
+  position: relative
+  background: white
+  max-width: 600px
+  margin: auto
+
+.classes__field__input input
+  color: $color-text-normal
+  border: none
+  width: 100%
+
+  &:focus
+    outline: none
+
+.classes__field__icon
+  appearance: none
+  border: none
+  position: absolute
+  right: 20px
+  color: $color-text-normal

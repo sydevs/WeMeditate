@@ -1,6 +1,15 @@
 
 main.scrollspy-target
-  - unless @static_page.contact?
+  - if @static_page.classes?
+    .classes__splash.js-splash data-invert='true'
+      form.classes__form method='GET' action=map_path
+        .classes__field
+          button.classes__field__icon
+            i.icon.icon--search
+          .classes__field__input
+            input type='text' name='q' placeholder=t('classes.prompt')
+
+  - elsif !@static_page.contact?
     h1.banner.banner--left = @static_page.name
 
   .content = render_content @static_page
