@@ -154,6 +154,9 @@
   @include widescreen
     bottom: -8%
 
+.gradient--short:before
+  height: 120vh
+
 .gradient--wide:before
   @include laptop-or-larger
     width: 40%
@@ -169,9 +172,7 @@
     right: -104px
 
 @each $side in left right
-  $opposite: right !default
-  @if $side == right
-    $opposite: left
+  $opposite: if($side == right, left, right)
 
   .gradient--#{$side}:before
     #{$side}: 0
@@ -180,5 +181,12 @@
     .gradient--#{$side}.gradient--#{$color}:before
       @include gradient(to #{$opposite}, $color)
 
-  .gradient--#{$side}.gradient--gray:before
-    @include gradient(to #{$side}, 'gray')
+  .gradient--#{$side}.gradient--wisdom:before
+    @include gradient(to #{$opposite}, 'wisdom')
+
+.gradient--wisdom:before
+  top: 0
+  bottom: 0
+  width: 40%
+  left: -9%
+  opacity: 0.4

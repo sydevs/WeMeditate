@@ -20,6 +20,7 @@ class Grid {
       mobileFirst: true,
       columns: 1,
       breakAt: breakAt,
+      margin: 5,
     })
 
     this.container.addEventListener('contentchange', () => {

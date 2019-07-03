@@ -9,10 +9,13 @@
 
 .content__textbox class=classes
   .content__textbox__wrapper
-    .content__textbox__decoration.content__textbox__decoration--gradient
-      .content__textbox__gradient
-        - gradient_size = block[:alignment] == 'center' ? %i[wide] : %i[wide long]
-        = render_decoration :gradient, block, size: gradient_size
+    - if isWisdom
+      .gradient.gradient--wisdom class="gradient--#{block[:alignment] == 'right' ? 'left' : 'right'}"
+
+    - unless block[:alignment] == 'center' || isWisdom
+      .content__textbox__decoration.content__textbox__decoration--gradient
+        .content__textbox__gradient
+          = render_decoration :gradient, block, size: %i[wide long]
         
     .content__textbox__decoration.content__textbox__decoration--sidetext
       .content__textbox__sidetext

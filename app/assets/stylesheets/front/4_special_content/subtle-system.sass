@@ -134,33 +134,27 @@
 
 // ===== HOT SPOTS ===== //
 #hot_spots_core
-  opacity: 0
+  display: none
 
+#hover_channels > *,
 #hover_chakras > *
   opacity: 0
   transition: opacity 0.5s
   cursor: pointer
 
-  &.active
-    opacity: 1
+#hover_channels > .active
+  opacity: 0.8
 
-.subtle-system--no-animation
-  /*#hot_spots_glow
-    transition: opacity 1s
-    opacity: 0*/
-
-  #hot_spots_glow circle
-    animation: none
-
-  /*#hot_spots_core
-    transition: opacity 3s
-    opacity: 1*/
+#hover_chakras > .active
+  opacity: 1
 
 .subtle-system--chakras
+  #chart_channels,
   #hover_channels
     display: none
 
 .subtle-system--channels
+  #chart_chakras,
   #hover_chakras,
   #hot_spots_glow
     display: none
@@ -181,8 +175,12 @@ $chakra-position-y: map-merge($chakra-position-y, ('chakra_7': 37.41042px))
 @mixin chakra-pulse-animation($key, $i)
   $x: $chakra-position-x
   $y: map-get($chakra-position-y, $key)
-  transform: translate($x, $y) scale(0.2) translate(-$x, -$y)
-  animation: #{$key}-pulse 6s infinite
+
+  ##{$key}_glow circle
+    transform: translate($x, $y) scale(0.2) translate(-$x, -$y)
+
+  .subtle-system--animated ##{$key}_glow circle
+    animation: #{$key}-pulse 6s infinite
 
   @keyframes #{$key}-pulse
     from
@@ -196,9 +194,34 @@ $chakra-position-y: map-merge($chakra-position-y, ('chakra_7': 37.41042px))
     100%
       transform: translate($x, $y) scale(0.2) translate(-$x, -$y)
 
-$glows: kundalini chakra_1 chakra_2 chakra_3 chakra_4 chakra_5 chakra_6 chakra_7
-@for $i from 1 through length($glows)
-  $key: nth($glows, $i)
-  ##{$key}_glow circle
-    @include chakra-pulse-animation($key, $i)
-    //animation-delay: #{$i * 0.5}s
+
+@mixin channel-pulse-animation($key, $i)
+  .subtle-system--animated #channel_#{$key}
+    animation: #{$key}-pulse 10s infinite
+
+  $offset: 10
+  $duration: 20 / 2
+  $opacity: if($key == center, 0.5, 0.3)
+  @keyframes #{$key}-pulse
+    from
+      opacity: 0
+    #{$i * $offset - $duration}%
+      opacity: 0
+    #{$i * $offset}%
+      opacity: $opacity + 0.4
+    #{$i * $offset + $duration}%
+      opacity: $opacity
+    70%
+      opacity: $opacity
+    100%
+      opacity: 0
+
+$chakras: kundalini chakra_1 chakra_2 chakra_3 chakra_4 chakra_5 chakra_6 chakra_7
+@for $i from 1 through length($chakras)
+  $key: nth($chakras, $i)
+  @include chakra-pulse-animation($key, $i)
+
+$channels: left right center
+@for $i from 1 through length($channels)
+  $key: nth($channels, $i)
+  @include channel-pulse-animation($key, $i)

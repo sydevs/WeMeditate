@@ -16,9 +16,10 @@ class StaticPagesController < ApplicationController
     when 'classes'
       # Do nothing
     else
+      about_page = StaticPageHelper.preview_for(:home)
       @breadcrumbs = [
         { name: StaticPageHelper.preview_for(:home).name, url: root_path },
-        { name: I18n.t('header.learn_more'), url: static_page_url_for(:about) },
+        { name: I18n.t('header.learn_more'), url: static_page_path(about_page) },
         { name: @static_page.name },
       ]
     end

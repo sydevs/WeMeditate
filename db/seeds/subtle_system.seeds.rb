@@ -146,7 +146,10 @@ end
       type: :video,
       data: {
         items: [vimeo_attachment],
-        decorations: { sidetext: 'Shri Mataji\'s Words' },
+        decorations: {
+          sidetext: 'Shri Mataji\'s Words',
+          gradient: { alignment: :left, color: :orange },
+        },
       },
     },
     {

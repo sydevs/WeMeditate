@@ -23,6 +23,7 @@
     font-size: 3.2rem
 
   @include laptop
+    margin-top: 150px
     font-size: 3.6rem
 
   @include desktop
@@ -34,9 +35,9 @@
   margin-bottom: 64px
 
   @include tablet-or-larger
-    font-size: 2.8rem
     line-height: 1.5
     letter-spacing: 0.49px
+    padding: 0 60px
 
   @include laptop
     font-size: 2.6rem
@@ -116,24 +117,31 @@
   @include laptop-or-larger
     top: 16%
 
-.actions-footer__content
-  @extend %wide-content-width
+  > .sidetext
+    color: $color-text-normal
+
+.actions-footer__wrapper
   @include responsive-background('footer/together', 'jpg')
   background-position: center
   background-size: cover
   position: relative
 
+.actions-footer__content
+  @extend %wide-content-width
+  position: relative
   max-height: 1300px
   height: 82.75vh
   padding-left: 35%
   padding-right: 17%
-  padding-top: 60px
+  padding-top: 25px
 
   @include tablet-or-larger
     height: 100vh
-    max-width: none
     padding: 0
     padding-top: 320px
+
+  @include laptop
+    padding-top: 360px
 
   @include desktop
     padding-top: 400px
@@ -142,7 +150,7 @@
     padding-top: 500px
 
 // Add a gradient to the left side of the view
-.actions-footer__content:before
+.actions-footer__gradient:before
   content: ''
   display: block
 
@@ -157,4 +165,4 @@
   @include gradient(to right, 'blue')
 
   @include tablet-or-larger
-    width: 37.5%
+    width: 31%

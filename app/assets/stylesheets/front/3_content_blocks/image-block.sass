@@ -78,10 +78,7 @@
     transform: none
 
   @each $side in left right
-    $opposite: right !default
-
-    @if $side == right
-      $opposite: left
+    $opposite: if($side == right, left, right)
 
     &-#{$side} .content__image__item
       @include tablet-or-larger

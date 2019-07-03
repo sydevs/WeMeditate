@@ -3,12 +3,17 @@
 $top-padding: 120px
 
 .content__textbox--wisdom
+  margin-bottom: 90px
+
+  @include tablet
+    margin-top: 150px
+
   @include laptop-or-larger
     background-image: image-url('content/ancient-wisdom.jpg')
     background-size: cover
     background-position: center
-    padding-top: $top-padding
-    padding-bottom: 50px
+    margin-top: 135px
+    margin-bottom: 0
     z-index: 0 // This is necessary to make the content__textbox__graphic visible
 
 // ===== CONTENT ===== //
@@ -18,25 +23,42 @@ $top-padding: 120px
       max-width: $narrow-content-width
       margin: auto
 
+    @include laptop-or-larger
+      padding-top: $top-padding
+      padding-bottom: 50px
+
+  &__box
+    @include tablet
+      padding: 25px 100px
+
+  &__wisdom-gradient
+    opacity: 0.75
+
+  &__sidetext
+    @include laptop-or-larger
+      top: $top-padding
+
   &__graphic
     display: none
 
     @include laptop-or-larger
       display: block
       position: absolute
-      top: -$top-padding
-      right: 0
-      transform: translate(42%, -15.75%)
-      height: 85%
-      width: 85%
+      top: 0
+      height: 100%
+      width: 100%
       max-width: 1000px
       z-index: -1
+      opacity: 0.8
+
+      $minimum-fade: rgba(0,0,0,0.4)
+      mask-image: linear-gradient(to top right, $minimum-fade, $minimum-fade 50%, white)
 
   &__image
     margin-bottom: 36px
 
     @include laptop-or-larger
-      margin-top: 154px
+      margin-top: $top-padding + 154px
       margin-bottom: 54px
 
   &__img
@@ -61,11 +83,14 @@ $top-padding: 120px
 // ===== ALIGNED ===== //
 .content__textbox--wisdom.content__textbox
   @each $side in left right
-    $opposite: right !default
-    @if $side == right
-      $opposite: left
+    $opposite: if($side == right, left, right)
 
     &--#{$side}
+      .content__textbox__graphic
+        $translate_y: if($side == right, -15.75%, 15.75%)
+        #{$side}: 0
+        transform: translate(42%, $translate_y)
+
       .content__textbox__title
         @include laptop-or-larger
           float: $opposite
@@ -75,13 +100,13 @@ $top-padding: 120px
           margin-#{$side}: 36px
 
         @include laptop-or-larger
-          padding-#{$side}: 60px
-          padding-#{$opposite}: 30%
+          padding-#{$side}: 100px
+          padding-#{$opposite}: 35%
 
       .content__textbox__image
         margin-#{$opposite}: -$gutter-width
 
-        @include tablet-or-larger
+        @include laptop-or-larger
           float: $opposite
           margin-#{$side}: 54px
           margin-#{$opposite}: 0

@@ -4,7 +4,7 @@
 .treatment__media
   @extend %wide-content-width
   max-width: $desktop-content-width
-  margin: auto
+  margin-right: -$gutter-width
 
   @include laptop-or-larger
     padding-right: 100px
@@ -30,13 +30,16 @@
 .treatments
   &__content-wrapper
     @extend %wide-content-width
-    margin-top: 70px
+    margin-top: 50px
     margin-bottom: 70px
     padding: 0
 
     @include tablet-or-larger
-      margin-top: 250px
-      margin-bottom: 300px
+      margin-bottom: 220px
+
+    &--prescreen
+      @include tablet-or-larger
+        margin-bottom: 300px
 
   &__content
     max-width: 640px

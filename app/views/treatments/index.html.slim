@@ -1,19 +1,26 @@
 
+- showPrescreen = cookies[:prescreen] != 'dismissed'
 - first_track = @tracks.first
 
 main id=dom_id(@static_page)
-  - if cookies[:prescreen] != 'dismissed'
+  - if showPrescreen
     = render 'meditations/prescreen', translations: 'treatments.prescreen', type: :treatments, skip_url: '#techniques'
+  - else
+    h1.banner.banner--left = @static_page.name
 
-  .treatments__content-wrapper
+  .treatments__content-wrapper class=("treatments__content-wrapper--prescreen" if showPrescreen)
+    - unless showPrescreen
+      .treatments__triangle.triangle.triangle--large.triangle--right
+
     .treatments__content.content
       = render_content @static_page
 
-    .treatments__triangle.triangle.triangle--large.triangle--right
+    - if showPrescreen
+      .treatments__triangle.triangle.triangle--large.triangle--right
 
   .treatments__list id='techniques'
     .excerpt_list
-      .excerpt.excerpt--left
+      .excerpt.excerpt--left.excerpt--music
         .excerpt__index 01
         // TODO: Translate this next line
         = static_image_tag 'music/treatment', '(min-width: 450px) 500px, 85vw', alt: 'Music', class: 'excerpt__image'

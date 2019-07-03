@@ -40,11 +40,8 @@ $item-padding: 15px
   margin-top: 0.5em
   margin-bottom: 0.5em
 
-  @include tablet-or-larger
+  @include laptop
     font-size: 1.5rem
-
-  @include desktop
-    font-size: 1.6rem
 
 .content__structured__loadmore
   text-align: center
@@ -66,12 +63,23 @@ $item-padding: 15px
   text-align: center
 
   .content__structured__item
-    max-width: 400px + ($item-padding * 2)
     text-align: left
 
-    @include tablet-or-larger
+    @include tablet
+      padding-left: 100px
+      padding-right: 100px
+
+    @include laptop-or-larger
+      max-width: 400px + ($item-padding * 2)
       padding-left: $item-padding * 2
       padding-right: $item-padding * 2
+
+  .content__structured__title
+    text-align: center
+    margin-bottom: 30px
+
+    @include tablet
+      margin-top: 70px
 
   .content__structured__image
     height: $image-height

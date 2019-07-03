@@ -114,9 +114,7 @@ $gradient-padding: 150px
 // ===== ALIGNED ===== //
 .content__textbox--video.content__textbox
   @each $side in left right
-    $opposite: right !default
-    @if $side == right
-      $opposite: left
+    $opposite: if($side == right, left, right)
 
     &--#{$side}
       .content__textbox__action:before

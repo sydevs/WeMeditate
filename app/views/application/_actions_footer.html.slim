@@ -8,10 +8,12 @@
     .actions-footer__sidetext
       .sidetext.sidetext--overlay.sidetext--left = t('actions_footer.sidetext')
 
-  .actions-footer__content
-    a.actions-footer__item href=meditations_url
-      i.icon.icon--meditation
-      .actions-footer__item__title = t('actions_footer.actions.online')
-    a.actions-footer__item href='#'
-      i.icon.icon--location
-      .actions-footer__item__title = t('actions_footer.actions.local')
+  .actions-footer__wrapper
+    .actions-footer__content
+      .actions-footer__gradient
+      a.actions-footer__item href=meditations_url
+        i.icon.icon--meditation
+        .actions-footer__item__title = t('actions_footer.actions.online')
+      a.actions-footer__item href='#'
+        i.icon.icon--location
+        .actions-footer__item__title = t('actions_footer.actions.local')

@@ -58,10 +58,11 @@
     width: 100%
 
     img
+      object-position: right
       width: 100%
 
-    @include laptop-or-larger
-      object-position: left
+      @include laptop-or-larger
+        object-position: center
 
   .content__textbox__box_wrapper
     @include laptop-or-larger
@@ -80,6 +81,10 @@
   .content__textbox__sidetext
     top: 60px
 
+    > .sidetext
+      @include mobile
+        font-weight: $font-medium
+
   + .content__textbox__decoration--triangle
     display: none
 
@@ -94,9 +99,7 @@
 // ==== LEFT + RIGHT ALIGNED ===== //
 .content__textbox--overlay.content__textbox
   @each $side in left right
-    $opposite: right !default
-    @if $side == right
-      $opposite: left
+    $opposite: if($side == right, left, right)
 
     &--#{$side}
       .content__textbox__box

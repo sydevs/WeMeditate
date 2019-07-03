@@ -59,9 +59,7 @@ $blue: #c5e0dc
   height: 100%
 
 @each $side in left right
-  $opposite: right !default
-  @if $side == right
-    $opposite: left
+  $opposite: if($side == right, left, right)
 
   .cdx-decoration--#{$side}
     .cdx-decoration-fields

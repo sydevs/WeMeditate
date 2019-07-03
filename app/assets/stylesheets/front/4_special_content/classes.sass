@@ -13,6 +13,11 @@
     height: 600px
     padding-top: 400px
 
+.classes__splash:before
+  @include overlay
+  content: ''
+  background: linear-gradient(transparentize(black, 0.7), transparent)
+
 .classes__form
   @extend %wide-content-width
 

@@ -2,9 +2,17 @@
 class SubtleSystem {
 
   constructor(element) {
-    const nodesContainer = element.querySelector('#hover_chakras')
     this.activeNode = null
     this.container = element
+    this.loadNodes('#hover_chakras')
+    this.loadNodes('#hover_channels')
+
+    this.activeTab = element.querySelector('.subtle-system__toggle__item--active')
+    element.querySelector('.subtle-system__toggle').addEventListener('click', event => this.onSelectTab(event.target))
+  }
+
+  loadNodes(containerSelector) {
+    const nodesContainer = this.container.querySelector(containerSelector)
 
     for (let index = 0; index < nodesContainer.childElementCount; index++) {
       const node = nodesContainer.children[index]
@@ -12,13 +20,10 @@ class SubtleSystem {
       node.addEventListener('mouseout', event => this.onNodeMouseout(event.currentTarget))
       node.addEventListener('click', event => this.onNodeClick(event.currentTarget))
     }
-
-    this.activeTab = element.querySelector('.subtle-system__toggle__item--active')
-    element.querySelector('.subtle-system__toggle').addEventListener('click', event => this.onSelectTab(event.target))
   }
 
   unload() {
-    this.container.classList.remove('subtle-system--no-animation')
+    this.container.classList.add('subtle-system--animated')
     this.setNodeSelected(this.activeNode, false)
     this.activeNode = null
   }
@@ -31,7 +36,7 @@ class SubtleSystem {
       this.container.classList.add(`subtle-system--${element.dataset.tab}`)
       this.activeTab.classList.add('subtle-system__toggle__item--active')
 
-      this.container.classList.remove('subtle-system--no-animation')
+      this.container.classList.add('subtle-system--animated')
       this.setNodeSelected(this.activeNode, false)
       this.activeNode = null
     }
@@ -53,7 +58,7 @@ class SubtleSystem {
 
       this.timeout = setTimeout(() => {
         // Select the new node, and deselect the old one.
-        this.container.classList.add('subtle-system--no-animation')
+        this.container.classList.remove('subtle-system--animated')
 
         this.setNodeSelected(this.activeNode, false)
         this.setNodeSelected(targetActiveNode, true)

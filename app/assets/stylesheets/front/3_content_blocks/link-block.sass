@@ -11,6 +11,7 @@
     max-width: $desktop-content-width
 
 .content__link__title
+  font-weight: $font-bold
   font-size: 2.4rem
   line-height: 1.25
   letter-spacing: 0.25px
@@ -31,6 +32,12 @@
 .content__link__loadmore
   text-align: center
   margin-top: 80px
+
+  @include tablet
+    margin-bottom: 120px
+
+  @include laptop-or-larger
+    margin-bottom: 200px
 
 .content__link--leaves
   &:before, &:after
@@ -78,8 +85,14 @@
 .content__link--treatments
   margin-bottom: 100px
 
-.content__link__treatment_list
-  margin-top: 80px
+  @include laptop-or-larger
+    margin-top: 200px
 
-  @include tablet-or-larger
+.content__link__treatment_list
+  margin-top: 35px
+
+  @include tablet
+    margin-top: 80px
+
+  @include laptop-or-larger
     margin-top: 150px

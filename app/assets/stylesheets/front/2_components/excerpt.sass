@@ -12,7 +12,11 @@
 
 .excerpt
   position: relative
-  margin-bottom: 150px
+  margin-bottom: 200px
+
+  display: flex
+  flex-direction: column
+  align-items: center
 
   @include tablet
     margin-bottom: 250px
@@ -24,7 +28,16 @@
     margin-bottom: 0
 
     @include tablet-or-larger
-      margin-bottom: 200px
+      margin-bottom: 130px
+
+.excerpt--simple
+  margin-bottom: 80px
+
+  @include tablet
+    margin-bottom: 150px
+
+  @include laptop-or-larger
+    margin-bottom: 200px
 
 .excerpt__index
   position: absolute
@@ -37,12 +50,21 @@
 // ===== EXCERPT CONTENT ===== //
 .excerpt__image
   margin-bottom: 65px
-  width: 100%
-  max-width: 400px
+  width: 400px
+
+  @include mobile
+    margin-bottom: 35px
+    max-width: 100%
+
+  @include tablet
+    max-width: 40vw
 
 .excerpt__content
+  width: 100%
+
   @include laptop-or-larger
-    padding: 0 40px
+    padding-right: 40px
+    padding-left: 50px
 
 .excerpt__title
   font-weight: $font-semibold
@@ -51,6 +73,7 @@
   letter-spacing: 0.41px
   color: $color-text-dark
   margin-bottom: 16px
+  margin-top: 0
 
   @include laptop-or-larger
     font-size: 2.4rem
@@ -59,8 +82,11 @@
   font-size: 1.8rem
   line-height: 1.6667
 
+  @include tablet
+    font-size: 1.6rem
+
   @include tablet-or-larger
-    min-height: 172px
+    min-height: 156px
 
 .excerpt__link
   color: $color-text-dark
@@ -68,26 +94,30 @@
   font-size: 1.8rem
   line-height: 1.6667
 
+  @include tablet
+    font-size: 1.6rem
+
   > .icon
     margin-left: 0.75em
     font-size: 0.6em
 
-/*.excerpt__button
+.excerpt__button
+  margin-top: 16px
+  
+  @include tablet-or-larger
     margin-top: 32px
-    padding: 22px 32px*/
 
 // ===== LEFT / RIGHT VARIATIONS ===== //
 // Basic template for the gradient used on each time of treatment item.
-.excerpt:after
-  @include tablet-or-larger
-    display: block
-    content: ''
+.excerpt:not(.excerpt--simple):after
+  display: block
+  content: ''
 
-    position: absolute
-    top: -112px
-    width: 106px + ($gutter-width * 3)
-    height: 242px
-    z-index: -1
+  position: absolute
+  top: -112px
+  width: 106px + ($gutter-width * 3)
+  height: 242px
+  z-index: -1
 
   @include laptop-or-larger
     top: -108px
@@ -95,11 +125,15 @@
 
 .excerpt
   @each $side in left right
-    $opposite: right !default
-    @if $side == right
-      $opposite: left
+    $opposite: if($side == right, left, right)
 
     &--#{$side}
+      @include mobile
+        align-items: if($side == right, flex-end, flex-start)
+
+      @include tablet-or-larger
+        flex-direction: if($side == right, row-reverse, row)
+
       &:after
         #{$side}: -($gutter-width * 4)
         @include gradient(to #{$opposite}, 'blue')
@@ -108,17 +142,21 @@
           #{$side}: -131px
 
       .excerpt__image
-        float: $opposite
-        margin-#{$side}: 100%
-
         @include tablet-or-larger
-          float: $side
           margin: 0
           margin-#{$opposite}: 64px
 
       .excerpt__content
         @include tablet-or-larger
-          margin-#{$side}: 464px
+          margin-#{$opposite}: 15px
 
       .excerpt__index
         #{$side}: 0
+
+// ===== TWEAKS FOR THE MUSIC EXCERPT ===== //
+.excerpt--music
+  align-items: flex-end
+
+  .excerpt__content
+    @include tablet-or-larger
+      margin-top: -80px
