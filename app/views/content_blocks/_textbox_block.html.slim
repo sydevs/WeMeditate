@@ -4,8 +4,9 @@
 - classes = ["content__textbox--#{block[:alignment]}"]
 - classes << 'content__textbox--invert' if isWisdom || block[:invert] == true
 - classes << "content__textbox--#{block[:stretch] == true ? 'stretch' : 'overlay'}" unless isWisdom
-- classes << "content__textbox--wisdom" if isWisdom
-- classes << "content__textbox--video" if isVideo
+- classes << 'content__textbox--wisdom' if isWisdom
+- classes << 'content__textbox--video' if isVideo
+
 
 .content__textbox class=classes
   .content__textbox__wrapper
@@ -40,7 +41,7 @@
 
     - unless isVideo
       .content__textbox__box_wrapper
-        .content__textbox__box
+        .content__textbox__box class=('js-animate' if block[:invert] == true && block[:alignment] == 'center')
           h2.content__textbox__title = block[:title]
           .content__textbox__text = block[:text].html_safe
 

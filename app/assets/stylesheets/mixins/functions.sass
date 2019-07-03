@@ -16,6 +16,48 @@
   left: $left
   right: $right
 
+// Animate the border
+@mixin animate-border-box($color, $width, $delay: 1)
+  position: relative
+  box-shadow: inset 0 0 0 $width transparent
+  transition: color 0.5s 0.5s
+
+  &:before, &:after
+    border: 0 solid transparent
+    box-sizing: border-box
+    content: ''
+    pointer-events: none
+    position: absolute
+    width: 0
+    height: 0
+
+  &:before
+    top: 0
+    right: 0
+    border-bottom-width: $width
+    border-right-width: $width
+
+  &:after
+    left: 0
+    bottom: 0
+    border-top-width: $width
+    border-left-width: $width
+
+  &.animate
+    color: $color
+
+    &:before, &:after
+      border-color: $color
+      transition: border-color 0s, height 0.5s, width 0.5s
+      width: 100%
+      height: 100%
+
+    &:before
+      transition-delay: $delay + 1s, $delay + 1s, $delay + 1.5s
+
+    &:after
+      transition-delay: $delay + 0s, $delay + 0s, $delay + 0.5s
+
 // A shorthand to scale the triangle decoration which is used in various parts of the site
 // TODO: Deprecated
 @mixin triangle-size($size, $offset: null)

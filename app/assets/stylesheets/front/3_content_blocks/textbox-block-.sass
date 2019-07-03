@@ -113,5 +113,11 @@
 .content__textbox--invert.content__textbox--overlay.content__textbox--center
   .content__textbox__box
     @include laptop-or-larger
-      border: 1px solid white
       margin-left: 80px
+
+    // Draw outline
+    @include laptop-or-larger
+      @include animate-border-box(white, 2px)
+        
+
+  

@@ -10,6 +10,7 @@ const Application = {
 
   load() {
     Application.loadImages()
+    Application.loadAnimations()
     Application.videoPlayer = Video.loadPlayer('video-player')
 
     Application.elements = {}
@@ -68,6 +69,29 @@ const Application = {
     console.log('Init', id, 'on', document.getElementById(id))
     var element = document.getElementById(id)
     if (element) Application.element[id] = new Klass(element)
+  },
+
+  loadAnimations() {
+    console.log('Load animations')
+    this.animations = document.querySelectorAll('.js-animate')
+    window.addEventListener('scroll', () => this.activateAnimations())
+    window.addEventListener('resize', () => this.activateAnimations())
+  },
+
+  activateAnimations() {
+    const pageYOffset = window.pageYOffset
+    const viewportHeight = window.innerHeight;     
+
+    for (let i = 0; i < this.animations.length; i++) {
+      let element = this.animations[i]
+      if (element == null) continue
+
+      let offsetTop = zenscroll.getTopOf(element) + (element.offsetHeight * 0.5)
+      if (offsetTop > pageYOffset && offsetTop < pageYOffset + viewportHeight) {
+        element.classList.add('animate')
+        this.animations[i] = null
+      }
+    }
   },
 
   loadImages() {
