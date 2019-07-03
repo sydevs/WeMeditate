@@ -121,7 +121,6 @@
         position: absolute
         width: 100%
         top: 100%
-        padding-right: 300px
 
     &__time--current
       float: left
@@ -163,17 +162,15 @@
       display: none
 
     &:before
-      content: ''
+      font-family: $font-icons
+      font-size: 2rem
+      content: $icon-volume
       display: inline-block
-      width: 17px
-      height: 20px
-      background: image-url('music/volume.svg') no-repeat
-      background-size: 17px 20px
       position: relative
-      top: -2px
+      top: -10px
 
-    &[aria-pressed="true"]:before
-      width: 12px
+    &.plyr__control--pressed:before
+      content: $icon-volume-muted
 
     svg
       display: none
@@ -183,6 +180,7 @@
 
     @include tablet-or-larger
       margin-right: 0
+      margin-left: 20px
       padding: 6px
 
   .plyr__control[data-plyr="skip-forward"]

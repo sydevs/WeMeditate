@@ -171,18 +171,34 @@
 
 // ===== MINI AUDIO PLYR TWEAKS ===== //
 .player--mini
-  margin-top: 20px
-  margin-bottom: 20px
+  margin-top: 30px
+  margin-bottom: 40px
   padding-bottom: 16px
 
-.player--mini .plyr.plyr--audio
   @include laptop-or-larger
-    .plyr__skip
-      position: absolute
-      top: -48px
+    margin-bottom: 20px
 
-    .plyr__time
+.player--mini .plyr.plyr--audio
+  .plyr__skip
+    @include overlay(100%)
+    margin-top: 30px
+
+    @include laptop-or-larger
+      top: -48px
+      left: auto
+
+    .plyr__control
+      margin: 0 26px
+
+      @include laptop-or-larger
+        margin: 0
+
+  .plyr__time
+    @include laptop-or-larger
       padding-right: 230px
 
-    .plyr__control[data-plyr="mute"]
+  .plyr__control[data-plyr="mute"]
+    margin-left: 15px
+
+    @include laptop-or-larger
       margin-left: 48px
