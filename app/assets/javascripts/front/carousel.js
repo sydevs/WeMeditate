@@ -6,11 +6,6 @@ class Carousel {
     this.container = element
     this.style = element.dataset.style || 'default'
 
-    $element.on('init', (_event, slick) => {
-      this.prevArrow = element.querySelector('.slick-prev')
-      this.nextArrow = element.querySelector('.slick-next')
-    })
-  
     if (this.style == 'columns') {
       $element.on('beforeChange', (_event, slick, _currentSlide, nextSlide) => this.onSelectSlide(slick, nextSlide))
       $element.on('init', (_event, slick) => this.updateArrowText(slick, slick.currentSlide))
@@ -25,11 +20,18 @@ class Carousel {
   }
   
   updateArrowText(slick, currentSlide) {
-    const prevSlide = this.getSlide(slick, currentSlide - 1)
-    this.prevArrow.innerText = prevSlide.querySelector('.content__structured__title').innerText
+    const prevArrow = this.container.querySelector('.slick-prev')
+    const nextArrow = this.container.querySelector('.slick-next')
 
-    const nextSlide = this.getSlide(slick, currentSlide + 1)
-    this.nextArrow.innerText = nextSlide.querySelector('.content__structured__title').innerText    
+    if (prevArrow) {
+      const prevSlide = this.getSlide(slick, currentSlide - 1)
+      prevArrow.innerText = prevSlide.querySelector('.content__structured__title').innerText
+    }
+
+    if (nextArrow) {
+      const nextSlide = this.getSlide(slick, currentSlide + 1)
+      nextArrow.innerText = nextSlide.querySelector('.content__structured__title').innerText
+    }
   }
 
   getSlide(slick, index) {
