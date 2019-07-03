@@ -25,6 +25,10 @@ class MusicPlayer {
     if (!this.mini) this.initFullPlayer()
   }
 
+  unload() {
+    this.player.destroy()
+  }
+
   initFullPlayer() {
     this.coverImage = this.container.querySelector('.player__cover__img')
     this.playlistContainer = document.getElementById('music-player-playlist')
