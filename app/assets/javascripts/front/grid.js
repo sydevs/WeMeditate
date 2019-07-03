@@ -16,7 +16,6 @@ class Grid {
     this.macy = new Macy({
       container: this.container,
       trueOrder: true,
-      waitForImages: true,
       mobileFirst: true,
       columns: 1,
       breakAt: breakAt,
