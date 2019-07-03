@@ -10,6 +10,7 @@ class Header {
     this.navigationHeight = $('.header__navigation', element).outerHeight(true)
 
     this.desktopWrapper = element.querySelector('.header__wrapper--desktop')
+    this.mobileWrapper = element.querySelector('.header__wrapper--mobile')
 
     element.querySelector('.header__navigation__burger').addEventListener('click', _event => this.toggleMenu())
     $(element).on('click', '.header__menu__item--submenu > a', event => {
@@ -22,8 +23,6 @@ class Header {
 
     window.addEventListener('resize', _event => this._onResize())
     window.addEventListener('scroll', _event => this._onScroll())
-    this._onResize()
-    this._onScroll()
 
     this.container.classList.toggle('header--overlay', this.splash)
     this.container.classList.toggle('header--invert', this.splash && this.splash.dataset.invert)
@@ -50,6 +49,11 @@ class Header {
     }
   }
 
+  init() {
+    this._onResize()
+    this._onScroll()
+  }
+
   toggleMenu() {
     let show = !this.container.classList.contains('header--show-menu')
     this.container.classList.toggle('header--show-menu', show)
@@ -62,9 +66,9 @@ class Header {
 
   _onResize() {
     const isDesktop = $(this.desktopWrapper).is(':visible')
-    this.headerHeight = $(this.desktopWrapper).outerHeight(true)
+    this.headerHeight = $(isDesktop ? this.desktopWrapper : this.mobileWrapper).outerHeight(true)
     this.stickyPoint = isDesktop ? this.headerHeight - this.navigationHeight : 0
-    if (typeof zenscroll !== 'undefined') zenscroll.setup(null, this.headerHeight)
+    zenscroll.setup(null, this.headerHeight)
 
     if (this.splash && this.splash.dataset.invert) {
       this.inversionPoint = $(this.splash).outerHeight() - this.navigationHeight
@@ -99,7 +103,6 @@ class Header {
         percentage = Math.min(1, (scrollTop - this.scrollspyTop) / (this.scrollspyHeight - window.innerHeight)) * 100
       }
 
-      console.log(percentage, 'from', scrollTop, '-', this.scrollspyTop, '/', this.scrollspyHeight, '-', window.innerHeight)
       this.scrollspy.style.width = `${percentage}%`
     }
   }

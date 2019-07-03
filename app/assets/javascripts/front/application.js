@@ -6,6 +6,8 @@ const Application = {
       zenscroll.toY(0)
       event.preventDefault()
     })
+
+    Application.element.header.init()
   },
 
   load() {
