@@ -23,3 +23,17 @@
   li.slick-active button:before
     font-size: 8px
     color: $color-text-blue
+
+@each $side in left right
+  $key: if($side == left, prev, next)
+
+  .slick-#{$key}
+    #{$side}: 0
+    text-align: $side
+
+    &:before
+      content: map-get($icon-arrow, #{$side})
+      font-family: $font-icons
+      font-size: 2.4rem
+      color: $color-graphic-dark
+      opacity: 1

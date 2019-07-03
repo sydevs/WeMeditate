@@ -64,28 +64,6 @@
 // We use the Slick library to implement our carousel,
 // some adjustments to the default styling are needed.
 .content__video--gallery .slick
-  &-arrow
-    transition: all 0.5s ease
-    z-index: 10
-
-    &:before
-      color: $color-text-normal
-      font-family: $font-icons
-      font-size: 24px
-      opacity: 1
-
-  &-prev
-    left: 0
-
-    &:before
-      content: $icon-arrow-left
-
-  &-next
-    right: 0
-
-    &:before
-      content: $icon-arrow-right
-
   &-list
     overflow: hidden
 
@@ -119,25 +97,28 @@
     width: 64px
     height: 64px
     margin-top: -60px
+    text-align: center
+    transition: all 0.5s ease
+    z-index: 10
 
     @include laptop-or-larger
       width: 60px
       height: 60px
 
-    &.slick-prev
-      margin-left: 6px
-
-      @include laptop-or-larger
-        margin-left: -10px
-
-    &.slick-next
-      margin-right: 6px
-
-      @include laptop-or-larger
-        margin-right: -10px
-
-    &::before
+    &:before
       color: white
 
-      &:hover
-        background: gray
+    &:hover
+      background: gray
+
+  &-prev // arrow
+    margin-left: 6px
+
+    @include laptop-or-larger
+      margin-left: -10px
+
+  &-next // arrow
+    margin-right: 6px
+
+    @include laptop-or-larger
+      margin-right: -10px
