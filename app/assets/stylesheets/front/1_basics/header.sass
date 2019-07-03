@@ -359,9 +359,15 @@
 // ===== COOKIE NOTICE ===== //
 .header__cookie-notice
   @extend %wide-content-width
+  position: fixed
+  left: 0
+  right: 0
+  bottom: -40px
 
 .header__cookie-notice__text
-  padding: 8px
+  background: transparentize(white, 0.05)
+  box-shadow: 0px 3px 15px transparentize(black, 0.8)
+  padding: 8px 12px
   border-bottom: 1px solid $color-graphic-normal
   font-size: 1.4rem
   line-height: 20px
@@ -596,7 +602,8 @@
     &:not([href])
       color: $color-text-inverse
 
-.header--invert .header__cookie-notice
+// TODO: Remove this old code
+/*.header--invert .header__cookie-notice
   &__text
     margin-top: 2px
     border-color: transparent
@@ -607,7 +614,7 @@
     margin-bottom: 4px
 
     &:after, &:before
-      background-color: $color-text-dark
+      background-color: $color-text-dark*/
 
 // ===== OVERLAY TWEAKS ===== //
 // This causes the header to hover over the page.

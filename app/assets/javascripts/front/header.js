@@ -39,12 +39,14 @@ class Header {
       }
     }
 
-    const cookieNoticeClose = document.querySelector('.header__cookie-notice__close')
-    if (cookieNoticeClose) {
+    if (this.cookieNotice) {
+      const cookieNoticeClose = this.cookieNotice.querySelector('.header__cookie-notice__close')
       cookieNoticeClose.addEventListener('click', () => {
         this.cookieNotice.remove()
         document.cookie = 'notice=dismissed'
       })
+
+      setTimeout(() => { if (this.cookieNotice) this.cookieNotice.style.bottom = '0' }, 5000)
     }
   }
 
@@ -79,6 +81,7 @@ class Header {
       if (!this.container.classList.contains('header--sticky')) {
         this.container.style.height = `${$(this.container).outerHeight()}px`
         this.container.classList.add('header--sticky')
+        if (this.cookieNotice) this.cookieNotice.style.bottom = '0'
       }
     } else {
       this.container.style.height = 'auto'
