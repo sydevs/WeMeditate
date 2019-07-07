@@ -29,7 +29,8 @@ p.details.excerpt = record.excerpt
       i.calendar.icon
       .content = record.date
 
-  - if vimeo_id.present?
+  - if record.vimeo_id.present?
     .item
       i.play.circle.icon
-      a.content href="https://vimeo.com/#{vimeo_id}" target='_blank' = video.name
+      // TODO: Translate this next line
+      a.content href="https://vimeo.com/#{record.vimeo_id}" target='_blank' Vimeo Video #{record.vimeo_id}

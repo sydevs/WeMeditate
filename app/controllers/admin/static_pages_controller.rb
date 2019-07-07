@@ -3,16 +3,6 @@ module Admin
 
     prepend_before_action { @model = StaticPage }
 
-    def new
-      @record = StaticPage.new role: params[:role]
-      @record.generate_required_sections!
-    end
-
-    def edit
-      @record.generate_required_sections!
-      super
-    end
-
     def create
       super static_page_params
     end

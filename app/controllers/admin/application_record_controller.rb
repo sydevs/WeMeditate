@@ -74,8 +74,7 @@ module Admin
         if @record.translated_locales.count == 1
           @record.destroy
         else
-          @record.translations.find_by(locale: I18n.locale).delete
-          @record.sections.where(language: I18n.locale).delete_all
+          @record.translations.find_by(locale: I18n.locale).destroy_all
         end
       else
         @record.destroy

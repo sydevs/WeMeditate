@@ -1,10 +1,6 @@
 ## TRACK
 # A musical track, which in the context of this website means music to meditate to.
 
-# TYPE: RESOURCE
-# A meditation is considered to be a "Resource".
-# This means it is a standalone model, but it's content is specialized, and not defined using a collection of page sections
-
 class Track < ApplicationRecord
 
   # Extensions

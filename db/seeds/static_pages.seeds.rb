@@ -143,7 +143,7 @@ static_pages[:home].update!(content: content([
   },
 ]))
 
-# ===== CREATE ABOUT PAGE SECTIONS ===== #
+# ===== CREATE ABOUT PAGE CONTENT ===== #
 static_pages[:about].update!(content: content([
   {
     type: :header,
@@ -158,7 +158,7 @@ static_pages[:about].update!(content: content([
   },
 ]))
 
-# ===== CREATE CONTACT PAGE SECTIONS ===== #
+# ===== CREATE CONTACT PAGE CONTENT ===== #
 static_pages[:contact].update!(content: content([
   {
     type: :form,
@@ -170,7 +170,7 @@ static_pages[:contact].update!(content: content([
   },
 ]))
 
-# ===== CREATE SHRI MATAJI PAGE SECTIONS ===== #
+# ===== CREATE SHRI MATAJI PAGE CONTENT ===== #
 static_pages[:shri_mataji].update!(content: content([
   {
     type: :textbox,
@@ -347,7 +347,7 @@ static_pages[:shri_mataji].update!(content: content([
   },
 ]))
 
-# ===== CREATE SAHAJA YOGA PAGE SECTIONS ===== #
+# ===== CREATE SAHAJA YOGA PAGE CONTENT ===== #
 static_pages[:sahaja_yoga].update!(content: content([
   {
     type: :header,
@@ -362,7 +362,7 @@ static_pages[:sahaja_yoga].update!(content: content([
   },
 ]))
 
-# ===== CREATE TRACKS PAGE SECTIONS ===== #
+# ===== CREATE TRACKS PAGE CONTENT ===== #
 static_pages[:tracks].update!(content: content([
   {
     type: :header,
@@ -407,7 +407,7 @@ static_pages[:tracks].update!(content: content([
   },
 ]))
 
-# ===== CREATE TREATMENTS PAGE SECTIONS ===== #
+# ===== CREATE TREATMENTS PAGE CONTENT ===== #
 static_pages[:treatments].update!(content: content([
   {
     type: :header,
@@ -422,7 +422,7 @@ static_pages[:treatments].update!(content: content([
   },
 ]))
 
-# ===== CREATE CLASSES SECTIONS ===== #
+# ===== CREATE CLASSES CONTENT ===== #
 static_pages[:classes].update!(content: content([
   {
     type: :textbox,
@@ -466,7 +466,7 @@ static_pages[:classes].update!(content: content([
   },
 ]))
 
-# ===== CREATE SELF REALIZATION SECTIONS ===== #
+# ===== CREATE SELF REALIZATION CONTENT ===== #
 static_pages[:self_realization].update!(content: content([
   {
     type: :video,
@@ -476,7 +476,7 @@ static_pages[:self_realization].update!(content: content([
   },
 ]))
 
-# ===== CREATE SELF REALIZATION SECTIONS ===== #
+# ===== CREATE SELF REALIZATION CONTENT ===== #
 static_pages[:privacy].update!(content: content([
   {
     type: :header,

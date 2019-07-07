@@ -1,10 +1,6 @@
 ## TREATMENT
 # A treatment or technique is a video, and some description that describe a meditation technique.
 
-# TYPE: RESOURCE
-# A meditation is considered to be a "Resource".
-# This means it is a standalone model, but it's content is specialized, and not defined using a collection of page sections
-
 class Treatment < ApplicationRecord
 
   extend FriendlyId

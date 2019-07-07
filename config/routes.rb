@@ -18,30 +18,20 @@ Rails.application.routes.draw do
         root to: 'application#dashboard'
         get :vimeo_data, to: 'application#vimeo_data', constraints: { format: :json }
 
-        resources :treatments, :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters, :sections, only: [] do
+        resources :treatments, :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters, only: [] do
           put :sort, on: :collection
         end
 
         resources :articles, :static_pages, :subtle_system_nodes, except: %i[destroy] do
           get :write, on: :member
           resources :media_files, only: %i[index create]
-          resources :sections, only: %i[new create]
         end
 
         resources :articles, :subtle_system_nodes, only: %i[destroy]
 
-        resources :users, :artists, :treatments, :meditations, :tracks, :sections,
+        resources :users, :artists, :treatments, :meditations, :tracks,
                   :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters,
                   only: %i[index new edit create update destroy]
-
-        resources :sections, only: %i[edit update destroy]
-
-=begin
-        resources :media_files, only: [:index, :create] do
-          get :clean, to: 'media_files#trash', on: :collection
-          delete :clean, on: :collection
-        end
-=end
       end
 
       post :contact, to: 'application#contact'

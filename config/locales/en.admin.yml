@@ -98,17 +98,10 @@ en:
       date: :date.formats.default
   misc:
     dashboard: Dashboard
+    content_outline: Content Outline
     menu:
       pages: Pages
       resources: Resources
     locale:
       worldwide: Worldwide
       all_languages: All Languages
-    default_sections:
-      what_to_expect: What to Expect
-      testimonials: Testimonial
-      chakra_overview: Chakra Overview
-      in_daily_life: In Daily Life
-      shri_mataji_video: Shri Mataji's Video
-      ancient_wisdom: Ancient Knowledge
-

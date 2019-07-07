@@ -1,10 +1,6 @@
 ## MEDITATION
 # A meditation is a video, and some associated data which will take a user through a guided meditation experience.
 
-# TYPE: RESOURCE
-# A meditation is considered to be a "Resource".
-# This means it is a standalone model, but it's content is specialized, and not defined using a collection of page sections
-
 class Meditation < ApplicationRecord
 
   extend FriendlyId

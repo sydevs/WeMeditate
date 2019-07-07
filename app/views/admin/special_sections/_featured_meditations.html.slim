@@ -1,8 +1,0 @@
-
-= f.fields_for :extra, f.object do |ff|
-  = draftable_field ff, :daily_meditation_title, value: section_extra_value(section, :daily_meditation_title), draft: section_extra_draft_value(section, :daily_meditation_title)
-  = draftable_field ff, :trending_meditation_title, value: section_extra_value(section, :trending_meditation_title), draft: section_extra_draft_value(section, :trending_meditation_title)
-  = draftable_field ff, :random_meditation_title, value: section_extra_value(section, :random_meditation_title), draft: section_extra_draft_value(section, :random_meditation_title)
-  = draftable_media_field ff, :random_meditation_image_id, preview: true, value: section_extra_value(section, :random_meditation_image_id), draft: section_extra_draft_value(section, :random_meditation_image_id)
-  = draftable_field ff, :random_meditation_subtitle, value: section_extra_value(section, :random_meditation_subtitle), draft: section_extra_draft_value(section, :random_meditation_subtitle)
-  = draftable_field ff, :random_meditation_text, value: section_extra_value(section, :random_meditation_text), draft: section_extra_draft_value(section, :random_meditation_text)

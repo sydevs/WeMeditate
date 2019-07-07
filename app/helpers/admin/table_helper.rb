@@ -33,12 +33,6 @@ module Admin::TableHelper
       record.artist.name
     when Meditation
       "~#{record.duration_filter.name}"
-    when Section
-      if record.format_name
-        "#{record.content_type_name} - #{record.format_name}"
-      else
-        record.content_type_name
-      end
     when Artist
       URI(record.url).host
     when Category, MoodFilter, DurationFilter, GoalFilter, InstrumentFilter, Treatment

@@ -1,8 +1,0 @@
-
-= draftable_field f, :action
-= draftable_field f, :title
-= draftable_field f, :url
-
-= f.fields_for :extra, f.object do |ff|
-  = draftable_media_field ff, :image_id, preview: true, value: section_extra_value(section, :image_id), draft: section_extra_draft_value(section, :image_id)
-  = draftable_media_field ff, :video_id, type: :video, value: section_extra_value(section, :video_id), draft: section_extra_draft_value(section, :video_id)

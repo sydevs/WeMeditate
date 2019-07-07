@@ -8,6 +8,7 @@ require 'sitemap_generator'
 
 # TODO: Rewrite this for the new content system
 
+=begin
 HOSTS = {
   en: 'https://wemeditate.co',
   ru: 'https://wemeditate.ru',
@@ -179,3 +180,4 @@ HOSTS.each do |locale, host|
   end
 
 end
+=end

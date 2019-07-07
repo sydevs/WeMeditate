@@ -1,8 +1,0 @@
-
-= draftable_field f, :title
-= draftable_field f, :action
-
-= f.fields_for :extra, f.object do |ff|
-  = draftable_field ff, :goal_title, value: section_extra_value(section, :goal_title), draft: section_extra_draft_value(section, :goal_title)
-  = draftable_field ff, :goal_action, value: section_extra_value(section, :goal_action), draft: section_extra_draft_value(section, :goal_action)
-  = draftable_field ff, :duration_title, value: section_extra_value(section, :duration_title), draft: section_extra_draft_value(section, :duration_title)

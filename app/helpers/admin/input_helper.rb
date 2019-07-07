@@ -97,7 +97,7 @@ module Admin::InputHelper
   end
 
   def draftable_media_field form, attribute, multiple: false, type: :image, preview: nil, **args
-    if not form.object.is_a? Section and form.object.new_record?
+    if form.object.new_record?
       return form.input(attribute, disabled: true, input_html: { value: t('messages.cant_add_media_to_new_record', target: form.object.model_name.human.downcase) })
     end
 

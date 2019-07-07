@@ -15,11 +15,7 @@ module Draftable
   end
 
   def has_draft?
-    if respond_to? :sections
-      sections.where.not(draft: nil).present?
-    else
-      draft.present?
-    end
+    draft.present?
   end
 
   def record_draft!

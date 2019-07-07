@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_22_160531) do
+ActiveRecord::Schema.define(version: 2019_07_07_144421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -207,37 +207,6 @@ ActiveRecord::Schema.define(version: 2019_06_22_160531) do
     t.bigint "mood_filter_id"
     t.index ["mood_filter_id"], name: "index_mood_filters_tracks_on_mood_filter_id"
     t.index ["track_id"], name: "index_mood_filters_tracks_on_track_id"
-  end
-
-  create_table "section_translations", force: :cascade do |t|
-    t.integer "section_id", null: false
-    t.string "locale", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "label"
-    t.string "title"
-    t.string "subtitle"
-    t.text "text"
-    t.text "quote"
-    t.string "credit"
-    t.string "url"
-    t.string "action"
-    t.jsonb "extra"
-    t.json "draft"
-    t.index ["locale"], name: "index_section_translations_on_locale"
-    t.index ["section_id"], name: "index_section_translations_on_section_id"
-  end
-
-  create_table "sections", force: :cascade do |t|
-    t.integer "content_type", default: 0
-    t.integer "order", default: 0, null: false
-    t.integer "visibility_type", default: 0, null: false
-    t.string "visibility_countries"
-    t.string "page_type"
-    t.bigint "page_id"
-    t.string "format"
-    t.index ["content_type", "format"], name: "index_sections_on_content_type_and_format"
-    t.index ["page_type", "page_id"], name: "index_sections_on_page_type_and_page_id"
   end
 
   create_table "static_page_translations", force: :cascade do |t|

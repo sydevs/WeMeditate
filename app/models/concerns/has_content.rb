@@ -6,7 +6,6 @@ module HasContent
   extend ActiveSupport::Concern
 
   included do |base|
-    base.has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all, autosave: true
     base.has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
     # base.validates :content, presence: true
   end

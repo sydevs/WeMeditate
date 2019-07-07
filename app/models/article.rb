@@ -3,10 +3,6 @@
 # Articles might be announcements, lifestyle posts, upcoming events, inspiring imagery or any other topic.
 # Contrast this with StaticPage, or SubtleSystemNode which all have more specfic defined purposes.
 
-## TYPE: PAGE
-# An article is considered to be a "Page"
-# This means it's content is defined by a collection of sections
-
 class Article < ApplicationRecord
 
   extend FriendlyId
@@ -19,7 +15,6 @@ class Article < ApplicationRecord
 
   # Associations
   belongs_to :category
-  has_many :sections, -> { order(:order) }, as: :page, inverse_of: :page, dependent: :delete_all, autosave: true
   has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
   enum priority: { high: 1, normal: 0, low: -1 }
 
@@ -41,7 +36,7 @@ class Article < ApplicationRecord
     when :preview
       includes(:translations, category: :translations)
     when :content
-      includes(:media_files, :translations, category: :translations, sections: :translations).order('sections.order')
+      includes(:media_files, :translations, category: :translations)
     when :admin
       includes(:media_files, :translations, category: :translations)
     end

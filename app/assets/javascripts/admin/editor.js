@@ -49,7 +49,7 @@ const Editor = {
   },
 
   upload(file, callback) {
-    Editor.adjust_pending_uploads(+1)
+    Editor.adjustPendingUploads(+1)
 
     console.log('uploading', file.name, 'to', Editor.upload_endpoint)
     const data = new FormData()
@@ -63,27 +63,27 @@ const Editor = {
       dataType: 'json',
       data: data,
       success: function(result) {
-        Editor.adjust_pending_uploads(-1)
+        Editor.adjustPendingUploads(-1)
         callback(result)
       },
     })
   },
 
   retrieveVimeoVideo(vimeo_id, callback) {
-    Editor.adjust_pending_uploads(+1)
+    Editor.adjustPendingUploads(+1)
 
     $.ajax({
       url: `/en/admin/vimeo_data?vimeo_id=${vimeo_id}`,
       type: 'GET',
       dataType: 'json',
       success: function(result) {
-        Editor.adjust_pending_uploads(-1)
+        Editor.adjustPendingUploads(-1)
         callback(result)
       },
     })
-  }
+  },
 
-  adjust_pending_uploads(adjustment) {
+  adjustPendingUploads(adjustment) {
     Editor.pending_uploads += adjustment
     if (Editor.pending_uploads > 0) {
       // TODO: Translate this

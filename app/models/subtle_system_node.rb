@@ -5,10 +5,6 @@
 # There are a set number of subtle system nodes which are defined by the "role" enum,
 # there should only ever be one subtle system node for each role.
 
-## TYPE: PAGE
-# An article is considered to be a "Page"
-# This means it's content is defined by a collection of sections
-
 class SubtleSystemNode < ApplicationRecord
 
   extend FriendlyId
@@ -41,7 +37,7 @@ class SubtleSystemNode < ApplicationRecord
     when :preview
       joins(:translations)
     when :content
-      includes(:media_files, :translations, sections: :translations).order('sections.order')
+      includes(:media_files, :translations)
     when :admin
       includes(:media_files, :translations)
     end
@@ -50,26 +46,6 @@ class SubtleSystemNode < ApplicationRecord
   # Returns a list of which roles don't yet have a database representation.
   def self.available_roles
     SubtleSystemNode.roles.keys - SubtleSystemNode.pluck(:role)
-  end
-
-  # Generates sections which should be included on every subtle system page.
-  def generate_default_sections!
-    sections.new label: I18n.t('misc.default_sections.chakra_overview'), content_type: :text, format: :columns
-    sections.new label: I18n.t('misc.default_sections.in_daily_life'), content_type: :textbox, format: :overtop
-    sections.new content_type: :special, format: :treatments
-    sections.new label: I18n.t('misc.default_sections.shri_mataji_video'), content_type: :video
-    sections.new label: I18n.t('misc.default_sections.ancient_wisdom'), content_type: :text, format: :ancient_wisdom
-  end
-
-  # Generates sections which MUST be included on every subtle system node page.
-  def generate_required_sections!
-    ensure_special_section_exists! :treatments
-  end
-
-  # Checks to see if a special section exists for this page, and creates it if it doesn't.
-  def ensure_special_section_exists! format
-    return if sections.exists?(content_type: :special, format: format)
-    sections.new(content_type: :special, format: format)
   end
 
 end

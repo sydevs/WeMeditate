@@ -10,7 +10,7 @@
     - if block[:items].count > 3
       .content__structured__loadmore.js-loadmore
         button.button.button--box
-          = translate 'sections.show_more'
+          = translate 'content.show_more'
         template
           - block[:items].drop(3).each do |item|
             article.content__structured__item
