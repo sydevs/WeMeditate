@@ -49,6 +49,10 @@ module Admin::InputHelper
     when :decorations
       original_name = original_value ? original_value['enabled'].reject(&:blank?).join(', ') : nil
       draft_name = draft_value ? draft_value['enabled'].reject(&:blank?).join(', ') : nil
+    when :content
+      # TODO: Translate
+      original_name = "Original content with #{pluralize(original_value['blocks'].count, 'block')}"
+      draft_name = "New content with #{pluralize(draft_value['blocks'].count, 'block')}"
     else
       original_name = original_value
       draft_name = draft_value

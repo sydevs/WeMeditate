@@ -22,13 +22,9 @@ module Draftable
     draft = {}
 
     changes.each do |key, (old_value, new_value)|
-      if key == 'extra'
-        self[key] = old_value
-        draft[key] = new_value.map { |child_key, new_val| [child_key, new_val] if new_val != old_value[child_key] }.compact.to_h
-      elsif key != 'label'
-        self[key] = old_value
-        draft[key] = new_value
-      end
+      next if key == 'content' && JSON.parse(old_value)['blocks'] == JSON.parse(new_value)['blocks']
+      self[key] = old_value
+      draft[key] = new_value
     end
 
     self[:draft] = draft
@@ -38,11 +34,7 @@ module Draftable
     return unless draft.present?
 
     draft.each do |key, value|
-      if key == 'extra'
-        self[key].merge!(value)
-      else
-        self[key] = value
-      end
+      self[key] = value
     end
   end
 

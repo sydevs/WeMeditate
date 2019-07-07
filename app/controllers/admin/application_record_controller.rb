@@ -48,13 +48,12 @@ module Admin
     def update page_params, redirect = nil
       @record.attributes = update_params(page_params)
       allow = policy(@record)
-      will_publish = allow.publish? and params[:draft] != 'true'
+      will_publish = allow.publish? && params[:draft] != 'true'
       # redirect = (allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
       redirect = [(page_params[:content].present? ? :write : :edit), :admin, @record] if redirect.nil?
 
       if will_publish
         @record.published_at = Time.now.to_date if @record.respond_to? :published_at
-        @record.consolidate_media_files! if @record.has_content?
         @record.discard_draft!
       else
         @record.record_draft!

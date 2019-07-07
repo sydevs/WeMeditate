@@ -10,11 +10,6 @@ module HasContent
     # base.validates :content, presence: true
   end
 
-  def consolidate_media_files!
-    media_file_ids = JSON.parse(content)['media_files']
-    media_files.where.not(id: media_file_ids).destroy_all
-  end
-
   def media_file media_file_id
     media_files.find_by(id: media_file_id)&.file
   end

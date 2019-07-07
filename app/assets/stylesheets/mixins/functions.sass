@@ -58,21 +58,6 @@
     &:after
       transition-delay: $delay + 0s, $delay + 0s, $delay + 0.5s
 
-// A shorthand to scale the triangle decoration which is used in various parts of the site
-// TODO: Deprecated
-@mixin triangle-size($size, $offset: null)
-  &:after
-    bottom: -108px * $size
-    width: 284px * $size
-    height: 250px * $size
-
-  @if $offset != null
-    &.triangle--right:after
-      right: $offset
-
-    &.triangle--left:after
-      left: $offset
-
 // Complete definition for a font
 @mixin font-face($font-family, $file-path, $weight: normal, $style: normal)
   @font-face

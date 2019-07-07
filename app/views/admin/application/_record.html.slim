@@ -26,7 +26,7 @@ tr id=dom_id(record)
 
     - if record.reviewable?
       - if not record.published?
-        = table_icon 'dot circle', t('tags.unpublished_draft')
+        = table_icon 'disabled dot circle', t('tags.unpublished_draft')
       - elsif record.has_draft?
         = table_icon "#{'orange' if allow.publish?} exclamation circle", t('tags.unpublished_changes')
       - else

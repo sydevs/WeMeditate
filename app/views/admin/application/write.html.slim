@@ -1,25 +1,34 @@
 
 - content_for :title, t('action.target.write', target: @record.model_name.human)
 - allow = policy(@record)
-- data = { content: @record.content || {}, upload: url_for([:admin, @record, :media_files]), triangle: image_path('graphics/triangle.svg') }
+- has_draft = @record.has_draft? && @record.draft&.has_key?('content')
+- content = has_draft ? @record.draft['content'] : (@record.content || {})
+- data = { content: content || {}, upload: url_for([:admin, @record, :media_files]), triangle: image_path('graphics/triangle.svg') }
 
 = simple_form_for [:admin, @record], html: { id: "editor-form" } do |f|
   = f.hidden_field :content, as: :hidden, id: 'content-input'
 
-  - if @splash_style
-    #splash-editor.ce-block data-style=@splash_style
-      .cdx-splash.cdx-block class="cdx-splash--#{@splash_style}"
-        #splash-background
-          #splash-background-image
-          #splash-title.cdx-input.cdx-input--title contenteditable=true data-placeholder="Enter some leading text"
-          #splash-text.cdx-input.cdx-input--text contenteditable=true data-placeholder="Enter a subtitle"
-          #splash-action.cdx-input.cdx-input--button contenteditable=true data-placeholder="Button Text"
-          #splash-url.cdx-input.cdx-input--url contenteditable=true data-placeholder="Enter url link"
+  .field class=('draft' if has_draft) data-draft='content'
+    - if @record.reviewable? && has_draft
+      .ui.yellow.message You are viewing a draft version of this #{@record.model_name.human}. This version not be visible to the public until it has been reviewed by an administrator.
 
-        #splash-uploader
+      = draft_reset_buttons(:content, JSON.parse(@record.content), JSON.parse(content))
+      .clearfix
+
+    - if @splash_style
+      #splash-editor.ce-block data-style=@splash_style
+        .cdx-splash.cdx-block class="cdx-splash--#{@splash_style}"
+          #splash-background
+            #splash-background-image
+            #splash-title.cdx-input.cdx-input--title contenteditable=true data-placeholder="Enter some leading text"
+            #splash-text.cdx-input.cdx-input--text contenteditable=true data-placeholder="Enter a subtitle"
+            #splash-action.cdx-input.cdx-input--button contenteditable=true data-placeholder="Button Text"
+            #splash-url.cdx-input.cdx-input--url contenteditable=true data-placeholder="Enter url link"
+
+          #splash-uploader
 
 
-  #content-editor data=data
+    #content-editor data=data
 
   p
     - if allow.show?
@@ -50,5 +59,6 @@
       span
 
 hr
-code = @record.content.inspect
-//code = JSON.parse(@record.content).inspect
+code = has_draft ? 'Draft' : 'Published'
+br
+code = content

@@ -36,6 +36,9 @@ const Draft = {
       case 'repeatable':
         RepeatableFields.reset($field, value)
         break
+      case 'content':
+        Editor.instance.render(value)
+        break
       default:
         console.error('TODO: Draft reset is not yet implemented for', $field.data('draft'))
     }
