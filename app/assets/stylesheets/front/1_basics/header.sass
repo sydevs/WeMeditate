@@ -271,9 +271,9 @@
   &__item
     display: block
     margin-bottom: 10px
-    line-height: 21px
-    font-size: 1.125em
     font-weight: $font-medium
+    font-size: 1.8rem
+    line-height: 1.4
     color: $color-text-normal
 
     &:hover
@@ -362,7 +362,15 @@
   position: fixed
   left: 0
   right: 0
-  bottom: -40px
+  bottom: -100px
+
+  @include mobile
+    max-width: none
+    padding: 0
+
+  @include tablet
+    max-width: none
+    padding: 0
 
 .header__cookie-notice__text
   background: transparentize(white, 0.05)

@@ -5,11 +5,21 @@
   margin-top: 30px
   margin-bottom: 50px
 
+  @include mobile
+    position: relative
+    padding-top: 50px
+
   @include tablet-or-larger
     margin-top: 64px
     margin-bottom: 64px
 
 .inspiration__filters
+  @include mobile
+    @include overlay($bottom: auto)
+    white-space: nowrap
+    padding-left: $gutter-width
+    padding-right: $gutter-width
+
   @include tablet-or-larger
     margin-bottom: 38px
 

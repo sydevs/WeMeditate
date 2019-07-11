@@ -2,7 +2,6 @@
 
 // ===== BUTTON GROUP ===== //
 .button_group
-  white-space: nowrap
   -ms-overflow-style: none // Disable scrollbars for microsoft
   scrollbar-width: none // Disable scrollbars for mozilla
   overflow: -moz-scrollbars-none // Disable scrollbars for mozilla
@@ -11,6 +10,9 @@
   // Disable scrollbars for webkit
   &::-webkit-scrollbar
     width: 0 !important
+
+  > .button
+    margin-bottom: 28px
 
   > .button:not(.button--icon)
     margin-right: 8px
@@ -193,7 +195,7 @@
   margin: 20px auto
   width: 200px
   height: 200px
-  padding: 54px
+  padding: 36px
   transition: all 0.5s ease
   background: none
 
@@ -203,13 +205,13 @@
   line-height: 1.1667
 
   @include tablet
-    width: 220px
-    height: 220px
-    font-size: 2.6rem
+    width: 224px
+    height: 224px
 
   @include laptop-or-larger
     width: 280px
     height: 280px
+    padding: 54px
     font-size: 3rem
 
   .button__text

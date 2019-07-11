@@ -132,10 +132,8 @@
   @include tablet
     width: 18.5%
 
-  @include laptop
-    width: 31%
-
   @include laptop-or-larger
+    width: 31%
     bottom: -11.5%
 
 .gradient--tall:before
@@ -148,14 +146,8 @@
   @include laptop-or-larger
     bottom: -32%
 
-  @include desktop
-    bottom: -10%
-
-  @include widescreen
-    bottom: -8%
-
 .gradient--short:before
-  height: 120vh
+  height: 964px
 
 .gradient--wide:before
   @include laptop-or-larger
@@ -183,10 +175,10 @@
 
   .gradient--#{$side}.gradient--wisdom:before
     @include gradient(to #{$opposite}, 'wisdom')
+    #{$side}: -9%
 
 .gradient--wisdom:before
   top: 0
   bottom: 0
   width: 40%
-  left: -9%
   opacity: 0.4

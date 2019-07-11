@@ -44,10 +44,10 @@
       .content__textbox__box_wrapper
         .content__textbox__box class=('js-animate' if block[:invert] == true && block[:alignment] == 'center')
           h2.content__textbox__title = block[:title]
-          .content__textbox__text = block[:text].html_safe
-
-          - if block[:action].present? and block[:url].present?
-            a.content__textbox__button.button.button--box.button--large href=block[:url] = block[:action]
+          .content__textbox__text
+            = block[:text].html_safe
+            - if block[:action].present? and block[:url].present?
+              a.content__textbox__button.button.button--box.button--large href=block[:url] = block[:action]
 
 .content__textbox__decoration.content__textbox__decoration--triangle
   .content__textbox__triangle

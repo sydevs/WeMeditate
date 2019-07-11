@@ -29,7 +29,7 @@ class SubtleSystem {
   }
 
   onSelectTab(element) {
-    if (element.dataset.tab != this.activeTab.dataset.tab) {
+    if (element.dataset.tab != this.activeTab.dataset.tab && element.classList.contains('subtle-system__toggle__item')) {
       this.activeTab.classList.remove('subtle-system__toggle__item--active')
       this.container.classList.remove(`subtle-system--${this.activeTab.dataset.tab}`)
       this.activeTab = element

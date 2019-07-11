@@ -50,7 +50,7 @@ $item-padding: 15px
   @include tablet-or-larger
     margin-top: 50px
 
-// ===== COLUMNS ===== //
+// ===== GRID ===== //
 .content__structured--grid
   margin-top: 20px
 
@@ -61,6 +61,13 @@ $item-padding: 15px
 .content__structured--columns
   $image-height: 200px
   text-align: center
+  margin-bottom: 120px
+
+  @include tablet
+    padding: 0 (100px - $item-padding + $gutter-width) !important
+
+  @include laptop-or-larger
+    margin-bottom: 50px
 
   .content__structured__item
     text-align: left
@@ -104,9 +111,9 @@ $item-padding: 15px
     $key: if($side == left, prev, next)
 
     .slick-#{$key}:before
-      margin-#{$opposite}: 10px
+      margin-#{$opposite}: 15px
       float: $side
-      vertical-align: text-top
+      line-height: 44px
 
 // ===== ACCORDION ===== //
 .content__structured--accordion

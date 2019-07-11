@@ -19,7 +19,7 @@ module NavigationHelper
       url: '#', # static_page_path_for(:about),
       active: %w[static_pages subtle_system_nodes].include?(controller_name),
       content: {
-        items: %i[about contact sahaja_yoga shri_mataji subtle_system treatments].map { |role|
+        items: %i[sahaja_yoga shri_mataji subtle_system treatments classes].map { |role|
           static_page = static_page_preview_for(role)
           {
             title: static_page.name,
@@ -66,7 +66,7 @@ module NavigationHelper
     tag.div class: 'sharing_links' do
       concat tag.div I18n.translate('share'), class: 'sharing_links__title'
       I18n.translate('sharing').collect do |type, link|
-        concat tag.a (tag.i class: "#{type} icon"), class: 'sharing_links__item', href: link.gsub('%{url}', url)
+        concat tag.a (tag.i class: "icon icon--#{type} icon"), class: 'sharing_links__item', href: link.gsub('%{url}', url)
       end
     end
   end

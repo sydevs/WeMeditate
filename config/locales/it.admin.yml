@@ -1,0 +1,107 @@
+
+it:
+  action:
+    view_site: View Site
+    view_admin: Go To Admin Dashboard
+    search: Search...
+    sign_in: Log In
+    sign_out: Log Out
+    show: View
+    preview: Preview
+    update: Save
+    publish: Publish
+    cancel: Cancel
+    create: New
+    edit: Edit
+    write: Write
+    destroy: Delete
+    back: Back
+    clean_up: Clean Up
+    draft:
+      reset: Discard Draft Value
+      redo: Use Draft Value
+      reset_tooltip: Reset to "%{value}"
+      redo_tooltip: Set to "%{value}"
+    target:
+      upload: Upload %{target}
+      edit: Edit %{target}
+      write: Write %{target}
+      reset: Reset %{target}
+      add: Add %{target}
+      create: New %{target}
+      remove: Remove %{target}
+      destroy: Delete %{target}
+      back: Back to %{target}
+      reorder: Change %{target} Order
+      search_for: Search for %{target}
+    choose_file:
+      image:
+        single: Choose an image
+        multiple: Choose images
+      video:
+        single: Choose a video file
+        multiple: Choose video files
+      audio:
+        single: Choose a audio file
+        multiple: Choose audio files
+  tags:
+    published: Published
+    unpublished_changes: Has Unpublished Changes
+    unpublished_draft: Unpublished Draft
+    no_translation: No Translation
+    updated_ago: Modified %{time_ago} ago
+    published_ago: Published %{time_ago} ago
+    views:
+      one: 1 View
+      other: '%{count} Views'
+  messages:
+    maintenance_mode: The website is under construction, come back soon.
+    loading: Loading
+    upload_limitations: Images, video, and audio only, up to 10 MB each
+    updated_on_by: Updated on %{date} by %{author}
+    errors: Errors
+    confirm_destroy: Are you sure you want to delete that? This cannot be undone!
+    no_models: No %{models}
+    not_set: Not Set
+    untranslated_pages: Untranslated Pages
+    untranslated_resources: Untranslated Resources
+    pending_users: Pending Invitations
+    empty_model_table: None
+    latlong_not_found: Coordinates Not Found
+    missing_pages: Missing Pages
+    has_draft: Has Pending Changes
+    drop_files_here: Drop files here
+    cant_add_media_to_new_record: You must save this %{target} before you can add media to it.
+    result:
+      created: Created successfully.
+      updated: Saved successfully.
+      deleted: Deleted successfully.
+      saved_but_needs_review: Saved successfully, changes will be published after they are reviewed.
+      cannot_delete_attached_record: You cannot delete a %{model} which has %{association} attached to it. Reassign the %{association} and try again.
+      published: Published successfully.
+      discarded_drafts: Drafts successfully deleted.
+  metadata:
+    key: name
+    value: value
+    default_metatags: Default Meta Tags
+    generated_jsonld: Generated Structured Data
+  preview:
+    header: '%{time} by %{user}'
+  time:
+    formats:
+      default: '%k:%M'
+      time: :time.formats.default
+      date: :date.formats.default
+  date:
+    formats:
+      default: '%d %b %Y'
+      date: :date.formats.default
+  misc:
+    dashboard: Dashboard
+    content_outline: Content Outline
+    menu:
+      pages: Pages
+      resources: Resources
+    locale:
+      worldwide: Worldwide
+      all_languages: All Languages

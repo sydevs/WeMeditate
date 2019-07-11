@@ -446,12 +446,18 @@ static_pages[:classes].update!(content: content([
   },{
     type: :header,
     data: {
-      text: 'What to expect at a class?',
+      text: 'What to expect at a class',
     },
   }, {
     type: :paragraph,
     data: {
       text: 'The benefits of meditation go far beyond what you experience during the sessions. It has the power to improve every aspect of your life, from your personal growth, to your work and family life, and can even spark immense creativity...',
+    },
+  }, {
+    type: :header,
+    data: {
+      text: 'FAQ',
+      centered: true,
     },
   }, {
     type: :structured,

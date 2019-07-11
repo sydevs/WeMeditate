@@ -100,7 +100,7 @@ class MusicPlayer {
       $(element).toggle(this.isTrackAvailable(data))
     }
 
-    if (!this.isTrackAvailable(this.playlist[this.currentTrackIndex])) {
+    if (!(this.player.playing && this.isTrackAvailable(this.playlist[this.currentTrackIndex]))) {
       this.selectNextTrack(true)
     }
 
@@ -130,6 +130,7 @@ class MusicPlayer {
       ]
     }
 
+    console.log('play', data.src)
     this.player.play()
 
     if (!this.mini) {

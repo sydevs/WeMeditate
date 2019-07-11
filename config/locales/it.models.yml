@@ -1,0 +1,191 @@
+it:
+  activerecord:
+    models:
+      article:
+        one: Article
+        other: Articles
+      static_page:
+        one: Static Page
+        other: Static Pages
+      subtle_system_node:
+        one: Subtle System Node
+        other: Subtle System Nodes
+      category:
+        one: Category
+        other: Categories
+      meditation:
+        one: Meditation
+        other: Meditations
+      treatment:
+        one: Technique
+        other: Techniques
+      track:
+        one: Track
+        other: Tracks
+      artist:
+        one: Artist
+        other: Artists
+      user:
+        one: Editor
+        other: Editors
+      instrument_filter:
+        one: Instrument
+        other: Instruments
+      mood_filter:
+        one: Mood
+        other: Moods
+      duration_filter:
+        one: Duration
+        other: Durations
+      goal_filter:
+        one: Goal
+        other: Goals
+      media_file:
+        one: Media File
+        other: Media Files
+
+    attributes:
+      article:
+        title: Title
+        slug: URL
+        category: :activerecord.models.category
+        priority: Visibility
+        priorities:
+          low: Low Visibility
+          normal: Normal Visibility
+          high: High Visibility
+        excerpt: Preview Content
+        banner: Banner Image
+        thumbnail: Thumbnail
+        vimeo_id: Featured Video (Vimeo ID)s
+        date: Date
+        content: Content
+        metatags: Meta Tags
+
+      static_page:
+        title: Title
+        slug: URL
+        role: Role
+        roles:
+          home: Home Page
+          articles: Articles Index Page
+          meditations: Meditations Index Page
+          treatments: Techniques Index Page
+          tracks: Music Page
+          contact: Contact Page
+          shri_mataji: About Shri Mataji
+          subtle_system: About Subtle System
+          sahaja_yoga: About Sahaja Yoga
+          about: About Page
+          classes: Classes Page
+          self_realization: Self-Realization
+          privacy: Privacy Policy
+        content: Content
+        metatags: Meta Tags
+
+      subtle_system_node:
+        name: Name
+        slug: URL
+        excerpt: Excerpt
+        roles:
+          chakra_1: Mooladhara Chakra
+          chakra_2: Swadhisthan Chakra
+          chakra_3: Nabhi Chakra
+          chakra_3b: Void
+          chakra_4: Anahat Chakra
+          chakra_5: Vishuddhi Chakra
+          chakra_6: Agnya Chakra
+          chakra_7: Sahasrara Chakra
+          channel_left: Ida (Left) Channel
+          channel_right: Pingala (Right) Channel
+          channel_center: Sushumna (Center) Channel
+          kundalini: Kundalini
+        content: Content
+        metatags: Meta Tags
+
+      category:
+        name: Name
+        slug: URL
+        articles:
+          one: 1 Article
+          other: '%{count} Articles'
+
+      treatment:
+        name: Name
+        slug: URL
+        excerpt: Excerpt
+        content: Content
+        thumbnail: Thumbnail (png)
+        horizontal_vimeo_id: Horizontal Video (Vimeo ID)
+        vertical_vimeo_id: Vertical Video (Vimeo ID)
+        metatags: Meta Tags
+
+      instrument_filter:
+        name: Name
+        icon: Icon
+        tracks:
+          one: 1 Track
+          other: '%{count} Tracks'
+
+      mood_filter:
+        name: Name
+        tracks:
+          one: 1 Track
+          other: '%{count} Tracks'
+
+      duration_filter:
+        minutes: Minutes
+        meditations:
+          one: 1 Meditation
+          other: '%{count} Meditations'
+
+      goal_filter:
+        name: Name
+        meditations:
+          one: 1 Meditation
+          other: '%{count} Meditations'
+
+      track:
+        title: Title
+        artist: Artist
+        audio: File (mp3)
+        instrument_filters: :activerecord.models.instrument_filter.other
+        mood_filters: :activerecord.models.mood_filter.other
+
+      meditation:
+        title: Name
+        slug: URL
+        horizontal_vimeo_id: Horizontal Video (Vimeo ID)
+        vertical_vimeo_id: Vertical Video (Vimeo ID)
+        duration_filter: :activerecord.models.duration_filter.one
+        goal_filters: :activerecord.models.goal_filter.other
+        metatags: Meta Tags
+
+      artist:
+        name: Name
+        image: Album Art
+        url: Website
+        tracks:
+          one: 1 Track
+          other: '%{count} Tracks'
+
+      user:
+        email: Email Address
+        encrypted_password: Encrypted password  #g
+        invitation_accepted_at: Invitation accepted at  #g
+        invitation_created_at: Invitation created at  #g
+        invitation_limit: Invitation limit  #g
+        invitation_sent_at: Invitation sent at  #g
+        invitation_token: Invitation token  #g
+        invited_by: :activerecord.models.invited_by  #g
+        invited_by_type: Invited by type  #g
+        remember_created_at: Remember created at  #g
+        reset_password_sent_at: Reset password sent at  #g
+        reset_password_token: Reset password token  #g
+        role: Role  #g
+        languages: Languages
+        roles:
+          translator: Translator
+          editor: Editor
+          regional_admin: Regional Admin
+          super_admin: Super Admin

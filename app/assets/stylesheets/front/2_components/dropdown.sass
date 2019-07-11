@@ -34,7 +34,10 @@
     letter-spacing: 0.08em
 
   @include widescreen
-    padding: 0 158px
+    height: 122px
+    padding-top: 12px
+    padding-left: 158px
+    padding-right: 158px
 
 // This :after element is the dropdown arrow
 .dropdown__selection:after
@@ -154,6 +157,9 @@
     @include laptop-or-larger
       padding-top: 12px
 
+    @include widescreen
+      padding-top: 28px
+
     &:hover
       color: $color-text-dark
 
@@ -218,6 +224,7 @@
     text-align: center
     font-weight: $font-normal
     font-size: 2.8rem
+    margin-bottom: 40px
 
     @include laptop-or-larger
       display: none

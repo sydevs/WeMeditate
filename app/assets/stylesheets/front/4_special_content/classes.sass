@@ -4,10 +4,15 @@
   height: 360px
   padding-top: 160px
   margin-bottom: 100px
+  position: relative
   background: image-url('content/classes-near-me.jpg')
   background-position: center
   background-size: cover
   background-repeat: no-repeat
+
+  @include tablet
+    height: 520px
+    padding-top: 260px
 
   @include laptop-or-larger
     height: 600px
@@ -33,7 +38,7 @@
   margin: auto
 
 .classes__field__input input
-  color: $color-text-normal
+  color: black
   border: none
   width: 100%
 

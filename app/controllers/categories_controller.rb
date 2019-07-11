@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
         format.html do
           @static_page = StaticPage.preload_for(:content).find_by(role: :articles)
           @record = @static_page
-          @categories = Category.includes(:translations).all # TODO: Use '.joins(:articles).uniq' to only get categories that have articles in them
+          @categories = Category.includes(:translations).joins(:articles).uniq
 
           @breadcrumbs = [
             { name: StaticPageHelper.preview_for(:home).name, url: root_path },

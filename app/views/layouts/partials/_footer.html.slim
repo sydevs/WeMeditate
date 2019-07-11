@@ -1,5 +1,4 @@
 
-- about_page = static_page_preview_for(:about)
 - subtle_system_page = static_page_preview_for(:subtle_system)
 - shri_mataji_page = static_page_preview_for(:shri_mataji)
 - sahaja_yoga_page = static_page_preview_for(:sahaja_yoga)
@@ -45,7 +44,6 @@ footer.footer
 
     .footer__column.footer__social
       .footer__navigation
-        .footer__header.footer__header--social = translate 'footer.follow_us'
         - I18n.translate('social_media').each do |type, url|
           a.footer__social__link href=url
             i.icon class="icon--#{type}"

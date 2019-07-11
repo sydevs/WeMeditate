@@ -19,6 +19,8 @@ $top-padding: 120px
 // ===== CONTENT ===== //
 .content__textbox--wisdom .content__textbox
   &__box_wrapper
+    position: relative
+
     @include tablet
       max-width: $narrow-content-width
       margin: auto
@@ -93,15 +95,18 @@ $top-padding: 120px
 
       .content__textbox__title
         @include laptop-or-larger
-          float: $opposite
+          #{$opposite}: 0
 
       .content__textbox__text
         @include tablet
           margin-#{$side}: 36px
 
         @include laptop-or-larger
-          padding-#{$side}: 100px
-          padding-#{$opposite}: 35%
+          @if $side == right
+            padding-#{$side}: 100px
+            padding-#{$opposite}: 35%
+          @else
+            padding-#{$opposite}: 40%
 
       .content__textbox__image
         margin-#{$opposite}: -$gutter-width

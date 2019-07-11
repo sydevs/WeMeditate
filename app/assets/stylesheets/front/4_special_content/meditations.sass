@@ -28,12 +28,17 @@
   margin-top: -28%
   position: relative
 
+  @include desktop
+    margin-top: -40%
+
   &__foreground
     @include overlay
     top: auto
     z-index: 1
 
   img
+    max-width: 100%
+
     @include mobile
       min-height: 350px
 
@@ -64,7 +69,7 @@
   padding: $gutter-width
 
   @include tablet
-    padding: 8px
+    padding: 12px
 
   @include laptop-or-larger
     padding: 16px
@@ -72,7 +77,9 @@
 .meditations__index-action
   text-align: center
   margin-top: 60px
-  margin-bottom: 60px
+
+  @include tablet-or-larger
+    margin-bottom: 60px
 
 .meditations__index-action__link
   font-weight: $font-semibold
@@ -125,7 +132,6 @@
       text-align: left
 
     @include widescreen
-      text-align: right
       padding-right: 15px
 
   &__form
@@ -136,7 +142,7 @@
 .meditations__custom
   &__title
     text-align: center
-    font-weight: $font-medium
+    font-weight: $font-semibold
     font-size: 2.8rem
     line-height: 1.5
     margin-top: 0
@@ -176,6 +182,9 @@
       display: inline-block
       font-size: 2.8rem
 
+    @include widescreen
+      line-height: 122px
+
   &__duration__input
     display: inline-block
 
@@ -190,7 +199,7 @@
       min-width: 620px
 
   &__submit
-    margin-top: 48px
+    margin-top: 72px
     z-index: 2
 
     @include tablet

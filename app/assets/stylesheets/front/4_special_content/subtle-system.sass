@@ -197,10 +197,10 @@ $chakra-position-y: map-merge($chakra-position-y, ('chakra_7': 37.41042px))
 
 @mixin channel-pulse-animation($key, $i)
   .subtle-system--animated #channel_#{$key}
-    animation: #{$key}-pulse 10s infinite
+    animation: #{$key}-pulse 8s infinite
 
-  $offset: 10
-  $duration: 20 / 2
+  $offset: 12
+  $duration: 12
   $opacity: if($key == center, 0.5, 0.3)
   @keyframes #{$key}-pulse
     from

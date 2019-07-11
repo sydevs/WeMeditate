@@ -79,7 +79,7 @@
 
   @include tablet-or-larger
     @include gradient(to left, 'blue')
-    min-height: 500px
+    min-height: 600px
 
   @include laptop-or-larger
     width: 56%
@@ -87,6 +87,7 @@
     padding: 52px 0
     padding-left: 162px
     padding-right: 0
+    min-height: 700px
 
   @include desktop
     min-height: 720px
@@ -172,8 +173,11 @@
 // ===== MINI AUDIO PLYR TWEAKS ===== //
 .player--mini
   margin-top: 30px
-  margin-bottom: 40px
+  margin-bottom: 80px
   padding-bottom: 16px
+
+  @include tablet
+    margin-bottom: 40px
 
   @include laptop-or-larger
     margin-bottom: 20px

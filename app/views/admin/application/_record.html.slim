@@ -2,20 +2,9 @@
 - allow = policy(record)
 
 tr id=dom_id(record)
-  td
-    = record.name
-    - if allow.show?
-      a.action href=url_for([:admin, record])
-        = translate 'action.edit'
-    - elsif allow.edit?
-      a.action href=url_for([:edit, :admin, record])
-        = translate 'action.edit'
-    - if allow.destroy?
-      a.action href=url_for([:admin, record]) data={method: 'delete', remote: true, confirm: t('messages.confirm_destroy', default: 'Confirm Destroy')}
-        = translate 'action.destroy'
-    - if record.viewable?
-      a.action href=url_for(record) target='_blank'
-        = translate 'action.show'
+  td.selector
+    a href=(allow.show? ? url_for([:admin, record]) : url_for([:edit, :admin, record]))
+      = record.name || 'No Translated Title'
 
   td.collapsing.right.aligned.disabled
     = table_detail(record)

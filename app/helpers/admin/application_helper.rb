@@ -6,6 +6,7 @@ module Admin
     LANGUAGE_TO_FLAG_MAP = {
       ru: 'ru',
       en: 'gb',
+      it: 'it',
     }.freeze
 
     def country_flag country_code
@@ -57,7 +58,7 @@ module Admin
           when 'video', 'link', 'structured' # Items list
             type = block['type'] == 'video' ? block['type'] : block['data']['format']
             field = block['type'] == 'link' ? 'name' : 'title'
-            items = block['data']['items'].map { |item| item[field] }.join(', ')
+            items = block['data']['items']&.map { |item| item[field] }&.join(', ')
             concat content_tag :li, "#{type.titleize}: #{items}"
           when 'paragraph', 'quote' # Word count
             concat content_tag :li, tag.i("#{block['type'].titleize}: #{pluralize block['data']['text'].split.size, 'word'}")

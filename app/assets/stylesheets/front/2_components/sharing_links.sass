@@ -7,19 +7,21 @@
 .sharing_links
   @extend %narrow-content-width
   margin-top: 40px
+  font-size: 1.8rem
+  line-height: 36px
 
   &__title
     display: inline-block
-    font-size: 1.8rem
-    line-height: 38px
     margin-right: 20px
 
   &__item
     display: inline-block
     vertical-align: bottom
-    font-size: 38px
-    line-height: 38px
     margin-right: 20px
+    font-size: 2.4rem
+
+    @include laptop-or-larger
+      font-size: inherit
 
     .icon
       display: block
