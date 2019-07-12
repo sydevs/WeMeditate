@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_12_122409) do
+ActiveRecord::Schema.define(version: 2019_07_11_191927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_122409) do
     t.string "slug", null: false
     t.text "excerpt"
     t.jsonb "metatags"
+    t.integer "banner_id"
     t.integer "thumbnail_id"
     t.json "draft"
     t.jsonb "content", default: {}

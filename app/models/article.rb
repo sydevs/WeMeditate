@@ -10,7 +10,7 @@ class Article < ApplicationRecord
   include Draftable
 
   # Extensions
-  translates :name, :slug, :excerpt, :thumbnail_id, :vimeo_id, :metatags, :content, :draft, :published_at, :published
+  translates :name, :slug, :excerpt, :banner_id, :thumbnail_id, :vimeo_id, :metatags, :content, :draft, :published_at, :published
   friendly_id :name, use: :globalize
 
   # Associations
