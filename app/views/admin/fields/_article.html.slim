@@ -7,7 +7,8 @@
 = draftable_field f, :priority, type: :collection do |value|
   - f.input_field :priority, collection: Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}, selected: value, disabled: !allow.update_structure?
 
-= draftable_media_field f, :thumbnail_id, preview: true, wrapper: { required: true }
+= draftable_media_field f, :thumbnail, preview: true, wrapper: { required: true }
+
 = draftable_field f, :excerpt, type: :text do |value|
   - f.input_field :excerpt, as: :text, rows: 3, value: value
 

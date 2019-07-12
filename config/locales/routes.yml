@@ -3,6 +3,7 @@ en:
   routes:
     admin: admin
     inspiration: inspiration
+    articles: articles
     countries: countries
     meditations: meditations
     techniques: techniques
@@ -13,6 +14,7 @@ ru:
   routes:
     admin: admin_ru
     inspiration: inspiration_ru
+    articles: articles_ru
     countries: countries_ru
     meditations: meditations_ru
     techniques: techniques_ru
@@ -23,6 +25,7 @@ de:
   routes:
     admin: admin_de
     inspiration: inspiration_de
+    articles: articles_de
     countries: countries_de
     meditations: meditations_de
     techniques: techniques_de

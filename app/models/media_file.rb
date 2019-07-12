@@ -21,4 +21,8 @@ class MediaFile < ActiveRecord::Base
   # Scopes
   default_scope { order(updated_at: :desc) }
 
+  def name
+    File.basename(URI.parse(file.url).path)
+  end
+
 end

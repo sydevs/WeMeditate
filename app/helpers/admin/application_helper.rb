@@ -47,8 +47,8 @@ module Admin
             concat content_tag :li, "#{type.titleize}: #{items}"
           when 'paragraph', 'quote' # Word count
             concat content_tag :li, tag.i("#{block['type'].titleize}: #{pluralize block['data']['text'].split.size, 'word'}")
-          when 'image' # Image count
-            concat content_tag :li, "#{block['type'].titleize}: #{pluralize block['data']['items'].length, 'image'}"
+          when 'list', 'image' # Items count
+            concat content_tag :li, "#{block['type'].titleize}: #{pluralize block['data']['items'].length, 'item'}"
           else
             concat block.inspect
           end

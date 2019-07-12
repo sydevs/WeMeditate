@@ -26,7 +26,8 @@
   - if record.viewable?
     - if record.reviewable?
       = draftable_field f, :name
-      = draftable_slug_field f, url_for(record)
+      - url = record.is_a?(Article) && record.new_record? ? "/#{translate 'routes.articles'}/*" : url_for(record)
+      = draftable_slug_field f, url
     - else
       = f.input :name
       = f.input :slug do

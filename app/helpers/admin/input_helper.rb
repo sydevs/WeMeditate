@@ -22,20 +22,13 @@ module Admin::InputHelper
   def draft_reset_buttons type, original_value, draft_value, input = nil
     case type
     when :media
-      multiple = original_value.is_a?(Array) || draft_value.is_a?(Array)
-      files = MediaFile.where(id: original_value)
-      original_name = files.map(&:name).join(', ')
-      original_value = files.map { |media| { name: media&.name, value: media&.id, url: media&.file_url } }
+      media_file = MediaFile.find(original_value)
+      original_name = media_file.name
+      original_value = { id: original_value, src: media_file.file.url(:medium) }
 
-      files = MediaFile.where(id: draft_value)
-      draft_name = files.map(&:name).join(', ')
-      draft_value = files.map { |media| { name: media&.name, value: media&.id, url: media&.file_url } }
-
-      # If there was only a single ID, then we only want a single value
-      unless multiple
-        original_value = original_value[0]
-        draft_value = draft_value[0]
-      end
+      media_file = MediaFile.find(draft_value)
+      draft_name = media_file.name
+      draft_value = { id: draft_value, src: media_file.file.url(:medium) }
     when :collection
       original_name = input[:collection].find { |i| i[1].to_s == original_value.to_s }.first
       draft_name = input[:collection].find { |i| i[1].to_s == draft_value.to_s }.first
@@ -100,18 +93,20 @@ module Admin::InputHelper
     end
   end
 
-  def draftable_media_field form, attribute, multiple: false, type: :image, preview: nil, **args
-    if form.object.new_record?
-      return form.input(attribute, disabled: true, input_html: { value: t('messages.cant_add_media_to_new_record', target: form.object.model_name.human.downcase) })
-    end
+  def draftable_media_field form, attribute, type: :image, preview: true, **args
+    key = "#{attribute}_id"
+    value = args[:value] ? args[:value] : form.object.send(key)
+    draft_value = args[:draft] ? args[:draft] : (form.object.draft.send(key) if form.object.draft&.key?(key))
 
-    value = args.key?(:value) ? args[:value] : form.object.send(attribute)
-    draft_value = args.key?(:draft) ? args[:draft] : (form.object.draft if form.object.draft&.key?(attribute))
+    draftable_field form, key, type: :media, value: value, draft: draft_value, wrapper: (args[:wrapper] || {}) do |val|
+      capture do
+        concat form.hidden_field(key, value: val)
+        concat form.input_field(attribute, as: :file, wrapper: :ui_file_input, icon: file_type_icon(type), file: val, input_html: { accept: file_type_accepts(type) })
 
-    draftable_field form, attribute, type: :media, value: value, draft: draft_value, wrapper: (args[:wrapper] || {}) do |val|
-      args[:input] ||= {}
-      args[:input][:value] = val
-      media_input form, attribute, multiple: multiple, type: type, preview: preview, input: args[:input]
+        if preview && type == :image && val
+          concat tag.div(tag.img(src: MediaFile.find(val).file.url(:medium)), class: 'ui rounded image') 
+        end
+      end
     end
   end
 
@@ -130,37 +125,6 @@ module Admin::InputHelper
     draftable_field form, attribute do |value|
       content_tag :div, class: 'ui date picker' do
         form.input_field attribute, as: :string, value: value
-      end
-    end
-  end
-
-  def media_input form, attribute, multiple: false, type: :image, preview: nil, input: {}
-    value = input.key?(:value) ? input[:value] : form.object.send(attribute)
-    media = MediaFile.find_by(id: value) unless multiple
-    input[:name] ||= "#{form.object_name}[#{attribute}]"
-    input[:name] += '[]' if multiple
-    input.except! :value
-
-    content_tag :div, class: 'ui media input', data: { multiple: multiple, type: type, key: attribute } do
-      # TODO: Translate the following line - or change it to the name attributes
-      label = (multiple ? pluralize(value&.size || 0, 'file') : media&.name)
-      input_tag = tag.input(nil, type: :text, placeholder: input[:placeholder] || t("action.choose_file.#{type}.#{multiple ? 'multiple' : 'single'}"), value: label)
-      concat tag.div input_tag, class: 'handle'
-
-      if multiple and value.present?
-        value.each do |val|
-          concat form.input_field attribute, as: :hidden, value: val, **input
-        end
-      else
-        concat form.input_field attribute, as: :hidden, value: value, **input
-      end
-
-      if not multiple and preview != false
-        if preview && type == :image
-          concat tag.a tag.img(src: media&.file_url), class: 'ui rounded image', href: media&.file_url, target: '_blank'
-        else
-          concat tag.a t('action.show'), class: 'ui basic small compact button', href: media&.file_url, target: '_blank', style: ('display: none' unless media&.file_url).to_s
-        end
       end
     end
   end

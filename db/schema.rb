@@ -24,13 +24,13 @@ ActiveRecord::Schema.define(version: 2019_07_11_191927) do
     t.string "slug", null: false
     t.text "excerpt"
     t.jsonb "metatags"
-    t.integer "banner_id"
     t.integer "thumbnail_id"
     t.json "draft"
     t.jsonb "content", default: {}
     t.integer "vimeo_id"
     t.datetime "published_at"
     t.boolean "published", default: false
+    t.integer "banner_id"
     t.index ["article_id"], name: "index_article_translations_on_article_id"
     t.index ["locale"], name: "index_article_translations_on_locale"
   end

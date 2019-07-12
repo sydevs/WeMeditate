@@ -45,12 +45,13 @@ module Admin
       end
     end
 
-    def update page_params, redirect = nil
+    def update record_params, redirect = nil
       allow = policy(@record)
-      @record.attributes = update_params(page_params)
+      record_params = update_params(record_params)
+      @record.attributes = record_params
 
       notice = translate 'messages.result.updated'
-      redirect = [(page_params[:content].present? ? :write : :edit), :admin, @record] if redirect.nil?
+      redirect = [(record_params[:content].present? ? :write : :edit), :admin, @record] if redirect.nil?
       # redirect = (allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
 
       @record.published_at ||= Time.now.to_date if @record.published? && @record.respond_to?(:published_at)
@@ -65,6 +66,7 @@ module Admin
       end
 
       if @record.save
+        after_save
         redirect_to redirect, flash: { notice: notice }
       else
         render :edit
@@ -107,6 +109,8 @@ module Admin
 
         record_params
       end
+
+      def after_save; end
 
     private
 

@@ -30,8 +30,8 @@ const Draft = {
         $field.find('.ui.selection').dropdown('set selected', value)
         break
       case 'media':
-        Media.set_input($field.find('.ui.media.input'))
-        Media.set_value(value)
+        $field.find('img').attr('src', value.src)
+        $field.find('input[type=hidden]').attr('value', value.id)
         break
       case 'repeatable':
         RepeatableFields.reset($field, value)
