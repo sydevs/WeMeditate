@@ -4,7 +4,7 @@ module Admin::TableHelper
 
   def table_icon icon, tooltip, value = nil
     tag.span data: { tooltip: tooltip, position: 'top right' } do
-      concat tag.i class: "#{icon} icon"
+      concat tag.i class: "#{icon}#{' fitted' unless value} icon"
       concat value
     end
   end

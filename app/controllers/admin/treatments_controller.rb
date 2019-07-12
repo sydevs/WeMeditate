@@ -16,7 +16,7 @@ module Admin
       def treatment_params
         if policy(@treatment || Treatment).publish?
           params.fetch(:treatment, {}).permit(
-            :name, :slug, :published
+            :name, :slug, :published,
             :excerpt, :content, :thumbnail, :video,
             metatags: {}
           )

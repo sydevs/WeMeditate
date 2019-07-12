@@ -42,6 +42,9 @@ module Admin::InputHelper
     when :decorations
       original_name = original_value ? original_value['enabled'].reject(&:blank?).join(', ') : nil
       draft_name = draft_value ? draft_value['enabled'].reject(&:blank?).join(', ') : nil
+    when :toggle
+      original_name = ActiveModel::Type::Boolean.new.cast(original_value) ? 'True' : 'False' 
+      draft_name = ActiveModel::Type::Boolean.new.cast(draft_value) ? 'True' : 'False' 
     when :content
       # TODO: Translate
       original_name = "Original content with #{pluralize(original_value['blocks'].count, 'block')}"

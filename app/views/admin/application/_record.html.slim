@@ -9,7 +9,7 @@ tr id=dom_id(record)
   td.collapsing.right.aligned.disabled
     = table_detail(record)
 
-  td.collapsing
+  td.collapsing.right.aligned
     - unless not defined? record.translated_locales or record.translated_locales.include? I18n.locale
       = table_icon 'orange warning sign', t('tags.no_translation')
 
@@ -23,4 +23,30 @@ tr id=dom_id(record)
     - elsif record.has_attribute?(:published) && !record.published
       = table_icon 'disabled hide', t('tags.unpublished_draft')
 
-    = table_icons(record)
+    - case record
+      - when Category
+        - article_count = record.articles.count
+        = table_icon 'file text', Category.human_attribute_name(:articles, count: article_count), article_count
+      - when MoodFilter, InstrumentFilter, Artist
+        - track_count = record.tracks.count
+        = table_icon 'music', record.class.human_attribute_name(:tracks, count: track_count), track_count
+      - when GoalFilter, DurationFilter
+        - meditation_count = record.meditations.count
+        = table_icon 'leaf', record.class.human_attribute_name(:meditations, count: meditation_count), meditation_count
+
+
+  - case record
+    - when Track
+      td.collapsing
+        - record.instrument_filters.includes(:translations).each do |instrument_filter|
+          .instrument data={ tooltip: instrument_filter.name, position: 'top right' }
+            img src=instrument_filter.icon.url
+
+    - when Meditation
+      td.collapsing
+        - record.goal_filters.includes(:translations).each do |goal_filter|
+          .goal data={ tooltip: goal_filter.name, position: 'top right' }
+            img src=goal_filter.icon.url
+
+      td.collapsing
+        = table_icon 'eye', t('tags.views', count: record.views), record.views

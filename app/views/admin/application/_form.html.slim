@@ -14,18 +14,29 @@
 
   - if record.respond_to? :published
     - classes = ('disabled' unless record.reviewable? || allow.publish?)
-    /= draftable_field f, :published, type: :toggle do |value|
-    = f.input :published, wrapper_html: { class: classes } do
-      .ui.toggle.checkbox class=classes
-        = f.check_box :published, checked: record.published?
-        label = translate 'messages.make_public', target: record.model_name.human(count: 1).downcase
+    - if record.reviewable?
+      = draftable_field f, :published, type: :toggle do |value|
+        .ui.toggle.checkbox class=classes
+          = f.check_box :published, checked: value, uncheck_value: 'false'
+          label = translate 'messages.make_public', target: record.model_name.human(count: 1).downcase
 
-      - if record.try(:published_at)
-        .hint First published at #{record.published_at.to_s(:long)}
+        - if record.try(:published_at)
+          / TODO: Translate
+          .hint First published at #{record.published_at.to_s(:long)}
+    - else
+      = f.input :published, wrapper_html: { class: classes } do
+        .ui.toggle.checkbox class=classes
+          = f.check_box :published, checked: record.published?, unchecked_value: 'false'
+          label = translate 'messages.make_public', target: record.model_name.human(count: 1).downcase
+
+        - if record.try(:published_at)
+          / TODO: Translate
+          .hint First published at #{record.published_at.to_s(:long)}
 
   - if record.viewable?
     - if record.reviewable?
       = draftable_field f, :name
+      / TODO: Try and improve this
       - url = record.is_a?(Article) && record.new_record? ? "/#{translate 'routes.articles'}/*" : url_for(record)
       = draftable_slug_field f, url
     - else

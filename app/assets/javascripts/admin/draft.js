@@ -25,6 +25,9 @@ const Draft = {
         quill.setText('')
         quill.clipboard.dangerouslyPasteHTML(value)
         break
+      case 'toggle':
+        $field.find('.ui.checkbox').checkbox(value ? 'check' : 'uncheck')
+        break
       case 'collection':
       case 'association':
         $field.find('.ui.selection').dropdown('set selected', value)

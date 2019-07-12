@@ -16,12 +16,20 @@
   td:not(:hover) .action
     display: none
 
-  /*.action:before
-    content: ' - '*/
+  td.collapsing
+    padding-left: 0.4em
+    padding-right: 0.4em
+
+    > span:not(:last-child)
+      margin-right: 5px
+
+    [data-tooltip]:before
+      right: 3px
+    [data-tooltip]:after
+      right: -10px
 
   .instrument
     display: inline-block
-    margin-right: 5px
 
     img
       height: 20px
@@ -29,7 +37,6 @@
 
   .goal
     display: inline-block
-    margin-right: 5px
 
     img
       height: 30px
