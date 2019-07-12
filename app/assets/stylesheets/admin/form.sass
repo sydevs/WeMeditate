@@ -1,5 +1,9 @@
 
 .ui.form
+  .field .hint
+    margin-top: 8px
+    font-size: 90%
+
   .sub.field
     > label
       text-transform: uppercase
@@ -64,8 +68,12 @@
   .sub.field .file.labels > .label:first-child
     border-top-left-radius: 0
 
-  .file.field .ui.icon.input i.icon
-    font-size: 1.21428571em
+  .file.field
+    .ui.icon.input i.icon
+      font-size: 1.21428571em
+
+    ~ .item
+      margin-bottom: 20px
 
   .field-metatags
     input:first-child
@@ -140,3 +148,12 @@
       border-left: none
       border-right: none
       border-radius: 0
+
+  .ui.toggle.checkbox
+    label
+      opacity: 1
+      transition: opacity 0.2s
+
+    input:not(:checked) + label
+      opacity: 0.6
+    

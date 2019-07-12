@@ -23,7 +23,11 @@ module Admin
     private
 
       def goal_filter_params
-        params.fetch(:goal_filter, {}).permit(:name, :icon)
+        if policy(@goal_filter || GoalFilter).publish?
+          params.fetch(:goal_filter, {}).permit(:name, :icon, :published)
+        else
+          params.fetch(:goal_filter, {}).permit(:name, :icon)
+        end
       end
 
   end

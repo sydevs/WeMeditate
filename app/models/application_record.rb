@@ -6,6 +6,14 @@ class ApplicationRecord < ActiveRecord::Base
     self # Subclasses override this to provide real preloading behaviour
   end
 
+  def publishable?
+    respond_to?(:published)
+  end
+
+  def published?
+    has_attribute?(:published) ? published : true
+  end
+
   def reviewable?
     respond_to?(:draft)
   end
@@ -21,5 +29,9 @@ class ApplicationRecord < ActiveRecord::Base
   def translatable?
     respond_to?(:translated_locales)
   end
+  
+  def cache_key
+    super + '-' + Globalize.locale.to_s
+  end  
 
 end

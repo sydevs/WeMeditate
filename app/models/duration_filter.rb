@@ -8,6 +8,7 @@
 class DurationFilter < ApplicationRecord
 
   # Associations
+  translates :published
   has_many :meditations
 
   # Validations
@@ -15,7 +16,15 @@ class DurationFilter < ApplicationRecord
 
   # Scopes
   default_scope { order(:minutes) }
+  scope :published, -> { joins(:translations).where(published: true, duration_filter_translations: { locale: I18n.locale }) }
   scope :q, -> (q) { where(minutes: q) if q.present? }
+
+  def self.has_content
+    joins(meditations: [:translations, goal_filters: :translations]).where({
+      meditation_translations: { published: true, locale: I18n.locale },
+      goal_filter_translations: { published: true, locale: I18n.locale },
+    }).uniq
+  end
 
   # Returns a localized name for the duration filter, eg. "5 minutes"
   def name

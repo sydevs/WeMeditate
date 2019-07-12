@@ -1,7 +1,7 @@
 
 - allow = policy(record)
 
-- if record.reviewable? and record.has_draft?
+- if record.reviewable? && record.published? && record.has_draft?
   .ui.yellow.message This #{record.model_name.human} has unpublished changes. These will not be visible to the public until they have been reviewed by an administrator.
 
 = simple_form_for [:admin, record], html: { id: "#{record.model_name.i18n_key}-form", class: "#{'error' if record.errors.present?}", novalidate: true } do |f|
@@ -11,6 +11,17 @@
       ul.list
         - record.errors.full_messages.each do |message|
           li = message
+
+  - if record.respond_to? :published
+    - classes = ('disabled' unless record.reviewable? || allow.publish?)
+    /= draftable_field f, :published, type: :toggle do |value|
+    = f.input :published, wrapper_html: { class: classes } do
+      .ui.toggle.checkbox class=classes
+        = f.check_box :published, checked: record.published?
+        label = translate 'messages.make_public', target: record.model_name.human(count: 1).downcase
+
+      - if record.try(:published_at)
+        .hint First published at #{record.published_at.to_s(:long)}
 
   - if record.viewable?
     - if record.reviewable?
@@ -31,26 +42,27 @@
       = ff.text_field :value, value: item[1], placeholder: t('metadata.value'), name: "#{ff.object_name}[values][]", data: { key: 'value' }
 
     - unless record.new_record?
-      .ui.accordion#metatags
-        .title
-          i.dropdown.icon
-          = translate 'metadata.default_metatags'
-        .content
-          .ui.list
-            - default_metatags(record).each do |key, value|
-              .item
-                strong = key
-                - if value.is_a? Array
-                  span = value
-                - else
-                  span "#{value}"
+      .field
+        .ui.accordion#metatags
+          .title
+            i.dropdown.icon
+            = translate 'metadata.default_metatags'
+          .content
+            .ui.list
+              - default_metatags(record).each do |key, value|
+                .item
+                  strong = key
+                  - if value.is_a? Array
+                    span = value
+                  - else
+                    span "#{value}"
 
-      .ui.accordion#jsonld
-        .title
-          i.dropdown.icon
-          = translate 'metadata.generated_jsonld'
-        .content
-          code = JSON.pretty_generate(structured_data(record))
+        .ui.accordion#jsonld
+          .title
+            i.dropdown.icon
+            = translate 'metadata.generated_jsonld'
+          .content
+            code = JSON.pretty_generate(structured_data(record))
 
   .ui.hidden.divider
 
@@ -64,9 +76,9 @@
         i.left.arrow.icon
         = translate 'action.target.back', target: record.model_name.human(count: -1)
 
-    - if allow.publish?
+    - if record.reviewable? && allow.publish?
       button.ui.basic.positive.button type='submit' name='draft' value='true'
-        = translate 'action.update'
+        = translate 'action.save_draft'
 
       - unless record.is_a? Article and record.new_record?
         button.ui.basic.primary.button type='submit'

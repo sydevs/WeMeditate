@@ -29,7 +29,11 @@ module Admin
     private
 
       def category_params
-        params.fetch(:category, {}).permit(:name, :slug)
+        if policy(@category || Category).publish?
+          params.fetch(:category, {}).permit(:name, :slug, :published)
+        else
+          params.fetch(:category, {}).permit(:name, :slug)
+        end
       end
 
   end

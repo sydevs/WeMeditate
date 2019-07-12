@@ -2,7 +2,7 @@
 let Admin = {
   load: function() {
     console.log('loading Admin.js')
-    Admin.initialize($(document))
+    Admin.initialize($(document.body))
 
     $('form').on('submit', function() {
       $(this).addClass('loading')

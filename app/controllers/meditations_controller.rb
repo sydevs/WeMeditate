@@ -16,8 +16,8 @@ class MeditationsController < ApplicationController
 
     if true || cookies[:prescreen] == 'dismissed'
       @meditations = Meditation.preload_for(:preview).all
-      @goal_filters = GoalFilter.includes(:translations).all
-      @duration_filters = DurationFilter.all
+      @goal_filters = GoalFilter.published.has_content
+      @duration_filters = DurationFilter.published.has_content
     else
       render :prescreen
     end

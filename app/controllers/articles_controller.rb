@@ -8,7 +8,8 @@ class ArticlesController < ApplicationController
         @static_page = StaticPage.preload_for(:content).find_by(role: :articles)
         @metadata_record = @static_page
         @categories = Category.includes(:translations).all
-        @articles = Article.preload_for(:preview).limit(ARTICLES_PER_PAGE)
+        #@articles = Article.published.preload_for(:preview).limit(ARTICLES_PER_PAGE)
+        @article = Article.joins(:translations).where(slug: 'article-13', published: 'true')
 
         @breadcrumbs = [
           { name: StaticPageHelper.preview_for(:home).name, url: root_path },
@@ -17,14 +18,14 @@ class ArticlesController < ApplicationController
       end
 
       format.js do
-        @articles = Article.preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
+        @articles = Article.published.preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
         @next_offset = params[:offset].to_i + ARTICLES_PER_PAGE
       end
     end
   end
 
   def show
-    @record = Article.preload_for(:content).friendly.find(params[:id])
+    @record = Article.published.preload_for(:content).friendly.find(params[:id])
 
     # TODO: Deprecated
     @article = @record

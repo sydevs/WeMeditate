@@ -50,8 +50,8 @@ module MetadataHelper
         'title' => record.name,
       }
 
-      if record.reviewable?
-        tags['og:article:modified_time'] = (record.published_at || record.updated_at).to_s(:db)
+      if record.has_content?
+        tags['og:article:modified_time'] = record.updated_at.to_s(:db)
       end
 
       # rubocop:disable Performance/RedundantMerge
@@ -88,7 +88,7 @@ module MetadataHelper
         tags.merge!({
           'og:url' => static_page_url_for(record),
           'og:type' => is_article ? 'article' : 'website',
-          'og:article:modified_time' => (record.published_at || record.updated_at).to_s(:db),
+          'og:article:modified_time' => (record.try(:published_at) || record.updated_at).to_s(:db),
           'twitter:card' => 'summary',
         })
       when Meditation, Treatment

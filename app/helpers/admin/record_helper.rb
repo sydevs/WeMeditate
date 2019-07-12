@@ -19,7 +19,7 @@ module Admin::RecordHelper
   end
 
   def record_modified_at_status
-    date = @record.has_draft? ? @record.updated_at : (@record.published_at || @record.updated_at)
+    date = @record.has_draft? ? @record.updated_at : (@record.try(:published_at) || @record.updated_at)
     translate 'tags.updated_ago', time_ago: time_ago_in_words(date)
   end
 
@@ -44,7 +44,7 @@ module Admin::RecordHelper
     end
   end
 
-  def record_detail icon, label, value, url = nil
+  def record_detail icon, value, label = nil, url: nil
     content_tag :div, class: 'item' do
       concat tag.i class: "#{icon} icon"
       concat record_detail_content(label, value, url)

@@ -14,10 +14,18 @@ module Admin
     private
 
       def treatment_params
-        params.fetch(:treatment, {}).permit(
-          :name, :slug, :excerpt, :content, :thumbnail, :video,
-          metatags: {}
-        )
+        if policy(@treatment || Treatment).publish?
+          params.fetch(:treatment, {}).permit(
+            :name, :slug, :published
+            :excerpt, :content, :thumbnail, :video,
+            metatags: {}
+          )
+        else
+          params.fetch(:treatment, {}).permit(
+            :name, :slug, :excerpt, :content, :thumbnail, :video,
+            metatags: {}
+          )
+        end
       end
 
   end

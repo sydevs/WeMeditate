@@ -37,6 +37,7 @@ instrument_filters = {}
     name: name,
     order: index,
     icon: file_root.join("instrument_filters/#{name.dasherize.downcase}.svg").open,
+    published: true,
   })
 
   puts "Created Instrument Filter - #{name}"
@@ -52,6 +53,7 @@ mood_filters = {}
     name: name,
     order: index,
     icon: file_root.join("mood_filters/#{name.dasherize.downcase}.svg").open,
+    published: true,
   })
 
   puts "Created Mood Filter - #{name}"
@@ -79,9 +81,12 @@ end
   mood_filters: %i[joyful innocent],
   instrument_filters: %i[sitar flute],
 }].each do |atts| # rubocop:disable Style/TrailingCommaInArrayLiteral
-  atts[:audio] = file_root.join('general/music.mp3').open
-  atts[:mood_filters].map! { |k| mood_filters[k] }
-  atts[:instrument_filters].map! { |k| instrument_filters[k] }
+  atts.merge!({
+    audio: file_root.join('general/music.mp3').open,
+    mood_filters: atts[:mood_filters].map! { |k| mood_filters[k] },
+    instrument_filters: atts[:instrument_filters].map! { |k| instrument_filters[k] },
+    published: true,
+  })
   Track.find_or_initialize_by(name: atts[:name]).update!(atts)
   puts "Created Track - #{atts[:name]}"
 end

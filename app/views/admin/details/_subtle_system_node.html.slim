@@ -3,6 +3,15 @@ p.details.excerpt = record.excerpt
 
 .ui.details.list
   - if record.translated_locales.include? I18n.locale
+    = record_detail 'linkify', url_for(record), url: url_for(record)
+  - else
+    = record_detail 'orange warning sign', t('tags.no_translation')
+  = record_detail 'pin', human_enum_name(record, :role), 'Role on website'
+  - translated_locales = record.translated_locales.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
+  = record_detail 'globe', translated_locales, 'Translated Langauges'
+
+/.ui.details.list
+  - if record.translated_locales.include? I18n.locale
     .item
       i.linkify.icon
       a.content href=url_for(record) target='_blank' = url_for(record)

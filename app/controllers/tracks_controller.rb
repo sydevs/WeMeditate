@@ -1,9 +1,9 @@
 class TracksController < ApplicationController
 
   def index
-    @tracks = Track.preload_for(:content).all
-    @mood_filters = MoodFilter.includes(:translations).all
-    @instrument_filters = InstrumentFilter.includes(:translations).all
+    @tracks = Track.published.preload_for(:content).all
+    # @mood_filters = MoodFilter.published.has_content
+    @instrument_filters = InstrumentFilter.published.has_content
     @static_page = StaticPage.preload_for(:content).find_by(role: :tracks)
     @metadata_record = @static_page
     @breadcrumbs = [

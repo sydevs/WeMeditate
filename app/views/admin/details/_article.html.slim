@@ -7,6 +7,18 @@ p.details.excerpt = record.excerpt
 
 .ui.details.list
   - if record.translated_locales.include? I18n.locale
+    = record_detail 'linkify', url_for(record), url: url_for(record)
+  - else
+    = record_detail 'orange warning sign', t('tags.no_translation')
+  - translated_locales = record.translated_locales.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
+  = record_detail 'globe', translated_locales, 'Translated Langauges'
+  = record_detail 'hashtag', record.category.name, 'Category'
+  = record_detail 'eye', human_enum_name(record, :priority), 'Order on Inspiration page'
+  = record_detail 'calendar', record.date, 'Featured Date' if record.date.present?
+  = record_detail 'play circle', "Video ##{record.vimeo_id}", 'Featured Video', url: "https://vimeo.com/#{record.vimeo_id}" if record.vimeo_id.present?
+
+/.ui.details.list
+  - if record.translated_locales.include? I18n.locale
     .item
       i.linkify.icon
       a.content href=url_for(record) target='_blank' = url_for(record)
@@ -28,7 +40,6 @@ p.details.excerpt = record.excerpt
     .item
       i.calendar.icon
       .content = record.date
-
   - if record.vimeo_id.present?
     .item
       i.play.circle.icon

@@ -9,7 +9,7 @@ class Category < ApplicationRecord
   extend FriendlyId
 
   # Extensions
-  translates :name, :slug
+  translates :name, :slug, :published
   friendly_id :name, use: :globalize
 
   # Associations
@@ -21,7 +21,14 @@ class Category < ApplicationRecord
   # Scopes
   default_scope { order(:order) }
   scope :untranslated, -> { joins(:translations).where.not(category_translations: { locale: I18n.locale }) }
+  scope :published, -> { joins(:translations).where(published: true, category_translations: { locale: I18n.locale }) }
   scope :q, -> (q) { joins(:translations).where('category_translations.name ILIKE ?', "%#{q}%") if q.present? }
+
+  def self.has_content
+    joins(articles: :translations).where({
+      article_translations: { published: true, locale: I18n.locale },
+    }).uniq
+  end
 
   def preload_for mode
     case mode

@@ -29,9 +29,5 @@ module Admin
       super and record.translated_locales.include? I18n.locale
     end
 
-    def publish?
-      regional_admin? and locale_allowed?
-    end
-
   end
 end

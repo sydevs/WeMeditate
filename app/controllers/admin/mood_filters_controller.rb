@@ -23,7 +23,11 @@ module Admin
     private
 
       def mood_filter_params
-        params.fetch(:mood_filter, {}).permit(:name, :icon)
+        if policy(@mood_filter || MoodFilter).publish?
+          params.fetch(:mood_filter, {}).permit(:name, :icon, :published)
+        else
+          params.fetch(:mood_filter, {}).permit(:name, :icon)
+        end
       end
 
   end

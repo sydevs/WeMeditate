@@ -51,6 +51,7 @@ treatments = []
       { type: :paragraph, data: { text: 'A lot of nerves end in our feet and soaking them in salt water can help soothe those nerves, relax our muscles and improve circulation.' } },
       { type: :paragraph, data: { text: 'Apart from the rewarding physical benefits, the salt water foot-soak quickly and efficiently clears out energetic blockages in our subtle system, especially those linked to the first three Chakras. How so? Water is the element of the Nabhi Chakra, based at the solar plexus. While perhaps a seemingly simple fact, water has a powerful capacity to cleanse and soothe us. Salt represents the earth element, which is related to the first center, the Mooladhara, located at the base of our spine or the pelvic plexus. The earth element also has the power to absorb and restore us, which is often why we might suddenly feel more at ease and relaxed when sitting in nature. The combination of salt and water thus has an immense power to absorb and revitalize us no matter what state we are in.' } },
     ]),
+    published: true
   }))
 
   treatments.push(treatment)

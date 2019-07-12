@@ -15,6 +15,7 @@ goal_filters = {}
     name: name,
     order: index,
     icon: file_root.join("goal_filters/#{name.dasherize.downcase}.svg").open,
+    published: true,
   })
 
   puts "Created Goal Filter - #{name}"
@@ -25,7 +26,7 @@ duration_filters = {}
 
 [20, 10, 5].each do |minutes|
   duration_filters[minutes] = DurationFilter.find_or_initialize_by(minutes: minutes)
-  duration_filters[minutes].update!(minutes: minutes)
+  duration_filters[minutes].update!(minutes: minutes, published: true)
   puts "Created Duration Filter - #{minutes}"
 end
 
@@ -51,12 +52,16 @@ end
   goal_filters: %i[balanced],
   duration_filter: 5,
 }].each_with_index do |atts, index| # rubocop:disable Style/TrailingCommaInArrayLiteral
-  atts[:image] = file_root.join("meditations/background-#{(index % 2) + 1}.jpg").open
-  atts[:vertical_vimeo_id] = 152153054
-  atts[:horizontal_vimeo_id] = 208643382
-  atts[:goal_filters].map! { |k| goal_filters[k] }
-  atts[:duration_filter] = duration_filters[atts[:duration_filter]]
-  atts[:excerpt] = 'Feel like you’re in need of a pick me up? Banish those negative thoughts which are putting you down and boost your confidence.'
+  atts.merge!({
+    image: file_root.join("meditations/background-#{(index % 2) + 1}.jpg").open,
+    vertical_vimeo_id: 152153054,
+    horizontal_vimeo_id: 208643382,
+    goal_filters: atts[:goal_filters].map! { |k| goal_filters[k] },
+    duration_filter: duration_filters[atts[:duration_filter]],
+    excerpt: 'Feel like you’re in need of a pick me up? Banish those negative thoughts which are putting you down and boost your confidence.',
+    published: true,
+  })
+
   Meditation.find_or_initialize_by(name: atts[:name]).update!(atts)
   puts "Created Meditation - #{atts[:name]}"
 end

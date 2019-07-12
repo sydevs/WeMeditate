@@ -186,6 +186,6 @@ it:
         languages: Languages
         roles:
           translator: Translator
-          editor: Editor
+          editor: Writer
           regional_admin: Regional Admin
           super_admin: Super Admin

@@ -46,23 +46,26 @@ module Admin
     end
 
     def update page_params, redirect = nil
-      @record.attributes = update_params(page_params)
       allow = policy(@record)
-      will_publish = allow.publish? && params[:draft] != 'true'
-      # redirect = (allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
-      redirect = [(page_params[:content].present? ? :write : :edit), :admin, @record] if redirect.nil?
+      @record.attributes = update_params(page_params)
 
-      if will_publish
-        @record.published_at = Time.now.to_date if @record.respond_to? :published_at
-        @record.discard_draft!
-      else
-        @record.record_draft!
+      notice = translate 'messages.result.updated'
+      redirect = [(page_params[:content].present? ? :write : :edit), :admin, @record] if redirect.nil?
+      # redirect = (allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
+
+      @record.published_at ||= Time.now.to_date if @record.published? && @record.respond_to?(:published_at)
+
+      if @record.reviewable?
+        if allow.publish? && params[:draft] != 'true'
+          @record.discard_draft!
+          notice = translate 'messages.result.saved_but_needs_review'
+        else
+          @record.record_draft!
+        end
       end
 
       if @record.save
-        redirect_to redirect, flash: {
-          notice: will_publish ? t('messages.result.updated') : t('messages.result.saved_but_needs_review'),
-        }
+        redirect_to redirect, flash: { notice: notice }
       else
         render :edit
       end
@@ -79,7 +82,10 @@ module Admin
         @record.destroy
       end
 
-      render 'admin/application/destroy'
+      respond_to do |format|
+        format.html { redirect_to [:admin, @model], flash: { notice: t('messages.result.deleted') } }
+        format.js { render 'admin/application/destroy' }
+      end
     end
 
     def sort

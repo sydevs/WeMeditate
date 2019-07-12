@@ -10,10 +10,6 @@ module Draftable
     # Do nothing for now
   end
 
-  def published?
-    published_at != nil
-  end
-
   def has_draft?
     draft.present?
   end

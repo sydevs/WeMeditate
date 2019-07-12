@@ -10,7 +10,7 @@ class Article < ApplicationRecord
   include Draftable
 
   # Extensions
-  translates :name, :slug, :excerpt, :banner_id, :thumbnail_id, :vimeo_id, :metatags, :content, :draft
+  translates :name, :slug, :excerpt, :banner_id, :thumbnail_id, :vimeo_id, :metatags, :content, :draft, :published_at, :published
   friendly_id :name, use: :globalize
 
   # Associations
@@ -25,9 +25,9 @@ class Article < ApplicationRecord
   validates :thumbnail_id, presence: true, unless: :new_record?
 
   # Scopes
-  default_scope { order(priority: :desc, updated_at: :desc) }
+  default_scope { order(priority: :desc, updated_at: :desc) } # TODO: This should be ordered by published_at instead?
   scope :untranslated, -> { joins(:translations).where.not(article_translations: { locale: I18n.locale }) }
-  scope :published, -> { where.not(published_at: nil) }
+  scope :published, -> { joins(:translations).where(published: true, article_translations: { locale: I18n.locale }) }
   scope :q, -> (q) { joins(:translations, category: :translations).where('article_translations.name ILIKE ? OR category_translations.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model

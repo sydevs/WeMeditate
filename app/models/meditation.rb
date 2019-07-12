@@ -7,7 +7,7 @@ class Meditation < ApplicationRecord
   extend CarrierwaveGlobalize
 
   # Extensions
-  translates :name, :slug, :excerpt, :horizontal_vimeo_id, :vertical_vimeo_id, :metatags, :views
+  translates :name, :slug, :excerpt, :horizontal_vimeo_id, :vertical_vimeo_id, :metatags, :views, :published
   friendly_id :name, use: :globalize
 
   # Associations
@@ -25,6 +25,7 @@ class Meditation < ApplicationRecord
 
   # Scopes
   # default_scope { order( id: :desc ) }
+  scope :published, -> { joins(:translations).where(published: true, meditation_translations: { locale: I18n.locale }) }
   scope :q, -> (q) { joins(:translations).where('meditation_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   alias thumbnail image
@@ -46,13 +47,13 @@ class Meditation < ApplicationRecord
       # A different random meditation every day
       seed = Date.today.to_time.to_i / (60 * 60 * 24) / 999999.0
       Meditation.connection.execute "SELECT setseed(#{seed})"
-      Meditation.order('RANDOM()').first
+      Meditation.published.order('RANDOM()').first
     when :trending
       # The meditation with the most views
-      Meditation.with_translations(I18n.locale).order('meditation_translations.views DESC').first
+      Meditation.published.order('meditation_translations.views DESC').first
     else
       # A purely random meditation
-      Meditation.order('RANDOM()').first
+      Meditation.published.order('RANDOM()').first
     end
   end
 

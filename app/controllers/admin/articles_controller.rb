@@ -16,12 +16,14 @@ module Admin
       def article_params
         if policy(@article || Article).update_structure?
           params.fetch(:article, {}).permit(
-            :name, :slug, :category_id, :priority, :excerpt, :banner_id, :thumbnail_id, :vimeo_id, :date, :content,
+            :name, :slug, :category_id, :priority, :published,
+            :excerpt, :banner_id, :thumbnail_id, :vimeo_id, :date, :content,
             metatags: {}
           )
         else
           params.fetch(:article, {}).permit(
-            :name, :slug, :excerpt, :banner_id, :thumbnail_id, :vimeo_id, :content
+            :name, :slug, :excerpt, :published,
+            :banner_id, :thumbnail_id, :vimeo_id, :content
           )
         end
       end

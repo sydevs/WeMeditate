@@ -1,39 +1,52 @@
 
 en:
+  # ===== ACTIONS ===== #
   action:
     view_site: View Site
     view_admin: Go To Admin Dashboard
     search: Search...
     sign_in: Log In
     sign_out: Log Out
-    show: View
-    preview: Preview
+
+    show: View on website
+    preview: Preview draft on website
+
+    edit: Edit
+    write: Write Content
+    review: Review Changes
+    destroy: Delete
     update: Save
-    publish: Publish
+    save_draft: Save Draft
+    publish: Approve Changes
+
     cancel: Cancel
     create: New
-    edit: Edit
-    write: Write
-    destroy: Delete
     back: Back
-    clean_up: Clean Up
+    clean_up: Clean Up # TODO: Remove
+
     draft:
       reset: Discard Draft Value
       redo: Use Draft Value
       reset_tooltip: Reset to "%{value}"
       redo_tooltip: Set to "%{value}"
+
     target:
       upload: Upload %{target}
       edit: Edit %{target}
-      write: Write %{target}
+      edit_details: Edit %{target} details
+      review: Review %{target}
+      write: Write %{target} content
       reset: Reset %{target}
+      publish: Publish %{target}
+      unpublish: Unpublish %{target}
       add: Add %{target}
       create: New %{target}
       remove: Remove %{target}
-      destroy: Delete %{target}
+      destroy: Delete this %{target}
       back: Back to %{target}
       reorder: Change %{target} Order
       search_for: Search for %{target}
+
     choose_file:
       image:
         single: Choose an image
@@ -44,6 +57,13 @@ en:
       audio:
         single: Choose a audio file
         multiple: Choose audio files
+  
+  # ===== MESSAGES ===== #
+  status:
+    published: This %{target} is live
+    pending_changes: This %{target} is live, but has pending changes
+    draft: This %{target} is an unpublished draft
+
   tags:
     published: Published
     unpublished_changes: Has Unpublished Changes
@@ -54,7 +74,9 @@ en:
     views:
       one: 1 View
       other: '%{count} Views'
+
   messages:
+    make_public: Make this %{target} visible to the public
     maintenance_mode: The website is under construction, come back soon.
     loading: Loading
     upload_limitations: Images, video, and audio only, up to 10 MB each
@@ -80,22 +102,25 @@ en:
       cannot_delete_attached_record: You cannot delete a %{model} which has %{association} attached to it. Reassign the %{association} and try again.
       published: Published successfully.
       discarded_drafts: Drafts successfully deleted.
+  
+  # ===== MISCELLENEOUS ===== #
   metadata:
     key: name
     value: value
     default_metatags: Default Meta Tags
     generated_jsonld: Generated Structured Data
-  preview:
-    header: '%{time} by %{user}'
+
   time:
     formats:
       default: '%k:%M'
       time: :time.formats.default
       date: :date.formats.default
+
   date:
     formats:
       default: '%d %b %Y'
       date: :date.formats.default
+      
   misc:
     dashboard: Dashboard
     content_outline: Content Outline

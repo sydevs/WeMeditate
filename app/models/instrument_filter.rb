@@ -9,7 +9,7 @@
 class InstrumentFilter < ApplicationRecord
 
   # Extentions
-  translates :name
+  translates :name, :published
 
   # Associations
   has_and_belongs_to_many :tracks
@@ -22,7 +22,15 @@ class InstrumentFilter < ApplicationRecord
   # Scopes
   default_scope { order(:order) }
   scope :untranslated, -> { joins(:translations).where.not(instrument_filter_translations: { locale: I18n.locale }) }
+  scope :published, -> { joins(:translations).where(published: true, instrument_filter_translations: { locale: I18n.locale }) }
   scope :q, -> (q) { joins(:translations).where('instrument_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
+
+  def self.has_content
+    joins(tracks: [:translations, mood_filters: :translations]).where({
+      track_translations: { published: true, locale: I18n.locale },
+      mood_filter_translations: { published: true, locale: I18n.locale },
+    }).uniq
+  end
 
   def preload_for mode
     case mode

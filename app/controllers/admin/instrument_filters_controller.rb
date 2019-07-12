@@ -23,7 +23,11 @@ module Admin
     private
 
       def instrument_filter_params
-        params.fetch(:instrument_filter, {}).permit(:name, :icon)
+        if policy(@instrument_filter || InstrumentFilter).publish?
+          params.fetch(:instrument_filter, {}).permit(:name, :icon, :published)
+        else
+          params.fetch(:instrument_filter, {}).permit(:name, :icon)
+        end
       end
 
   end

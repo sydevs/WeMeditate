@@ -23,7 +23,11 @@ module Admin
     private
 
       def duration_filter_params
-        params.fetch(:duration_filter, {}).permit(:minutes)
+        if policy(@duration_filter || DurationFilter).publish?
+          params.fetch(:duration_filter, {}).permit(:minutes, :published)
+        else
+          params.fetch(:duration_filter, {}).permit(:minutes)
+        end
       end
 
   end

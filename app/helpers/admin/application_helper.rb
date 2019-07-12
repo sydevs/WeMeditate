@@ -29,21 +29,6 @@ module Admin
       "https://www.google.com/maps/search/?api=1&query=#{latitude}%2C#{longitude}"
     end
 
-    def published_at_detail_message record
-      if not record.published_at
-        translate 'tags.unpublished_draft'
-      elsif record.has_draft?
-        translate 'tags.published_ago', time_ago: time_ago_in_words(record.published_at)
-      else
-        translate 'tags.published'
-      end
-    end
-
-    def updated_at_detail_message record
-      date = record.has_draft? ? record.updated_at : (record.published_at || record.updated_at)
-      translate 'tags.updated_ago', time_ago: time_ago_in_words(date)
-    end
-
     def content_outline blocks
       # TODO: Translate
       content_tag :ul do

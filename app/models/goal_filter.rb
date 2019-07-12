@@ -7,7 +7,7 @@
 class GoalFilter < ApplicationRecord
 
   # Extentions
-  translates :name
+  translates :name, :published
 
   # Associations
   has_and_belongs_to_many :meditations
@@ -20,7 +20,15 @@ class GoalFilter < ApplicationRecord
   # Scopes
   default_scope { order(:order) }
   scope :untranslated, -> { joins(:translations).where.not(goal_filter_translations: { locale: I18n.locale }) }
+  scope :published, -> { joins(:translations).where(published: true, goal_filter_translations: { locale: I18n.locale }) }
   scope :q, -> (q) { joins(:translations).where('goal_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
+
+  def self.has_content
+    joins(meditations: [:translations, duration_filter: :translations]).where({
+      meditation_translations: { published: true, locale: I18n.locale },
+      duration_filter_translations: { published: true, locale: I18n.locale },
+    }).uniq
+  end
 
   def preload_for mode
     case mode

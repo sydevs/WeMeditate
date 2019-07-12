@@ -8,7 +8,7 @@ categories = {}
 
 %w[Stories Wisdom Creativity Events Articles].each_with_index do |name, index|
   categories[name] = Category.find_or_initialize_by(order: index)
-  categories[name].update!({ name: name, order: index })
+  categories[name].update!({ name: name, order: index, published: true })
   puts "Created Category - #{name}"
 end
 
@@ -23,9 +23,26 @@ end
     category: categories.values.sample,
     date: '',
     vimeo_id: '',
+    published: true,
   })
 
   puts "Created Generic Article #{index}"
+end
+
+3.times.each do |index|
+  index += 1
+  article = Article.find_or_initialize_by(name: "Article #{index}")
+  article.update!({
+    name: "Article #{index}",
+    excerpt: sentences(2),
+    thumbnail_id: attachment("articles/thumbnails/#{index}.png", 'Thumbnail.png', :image, article),
+    category: categories.values.sample,
+    date: '',
+    vimeo_id: '',
+    published: false,
+  })
+
+  puts "Created Unpublished Article #{index}"
 end
 
 # ===== ADD RANDOM SPECIAL ARTICLES ===== #
@@ -56,6 +73,7 @@ faq.update!({
   excerpt: 'The benefits of meditation cover all areas of wellbeing, be it mental, physical or emotional, and touch all spheres of day to day life. What’s more the benefits can be felt by literally anyone.',
   category: categories['Articles'],
   thumbnail_id: attachment('articles/thumbnails/1.png', 'Thumbnail.png', :image, faq),
+  published: true,
 })
 
 faq = Article.find_or_initialize_by(name: 'Is it right for me?')
@@ -64,6 +82,7 @@ faq.update!({
   excerpt: 'There are many myths about meditation which can put one off trying it out, such as the length of time needed or the right environment. We debunk these myths and prove that meditation is truly for everyone.',
   category: categories['Articles'],
   thumbnail_id: attachment('articles/thumbnails/2.png', 'Thumbnail.png', :image, faq),
+  published: true,
 })
 
 faq = Article.find_or_initialize_by(name: 'Who else is doing it?')
@@ -72,6 +91,7 @@ faq.update!({
   excerpt: 'There are many myths about meditation which can put one off trying it out, such as the length of time needed or the right environment. We debunk these myths and prove that meditation is truly for everyone.',
   category: categories['Articles'],
   thumbnail_id: attachment('articles/thumbnails/3.png', 'Thumbnail.png', :image, faq),
+  published: true,
 })
 
 # ===== DEMO ARTICLE ===== #
@@ -81,6 +101,7 @@ article.update!({
   excerpt: sentences(2),
   category: categories.values.sample,
   thumbnail_id: attachment('articles/thumbnails/1.png', 'Thumbnail.png', :image, article),
+  published: true,
 })
 
 article.update!(content: content([
@@ -279,6 +300,7 @@ article.update!({
   excerpt: sentences(2),
   category: categories.values.sample,
   thumbnail_id: attachment('articles/thumbnails/1.png', 'Thumbnail.png', :image, article),
+  published: true,
 })
 
 article.update!(content: content([

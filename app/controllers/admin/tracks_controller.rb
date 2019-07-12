@@ -14,10 +14,17 @@ module Admin
     private
 
       def track_params
-        params.fetch(:track, {}).permit(
-          :name, :audio, :artist_id,
-          mood_filter_ids: [], instrument_filter_ids: []
-        )
+        if policy(@track || Track).publish?
+          params.fetch(:track, {}).permit(
+            :name, :audio, :artist_id, :published,
+            mood_filter_ids: [], instrument_filter_ids: []
+          )
+        else
+          params.fetch(:track, {}).permit(
+            :name, :audio, :artist_id,
+            mood_filter_ids: [], instrument_filter_ids: []
+          )
+        end
       end
 
   end

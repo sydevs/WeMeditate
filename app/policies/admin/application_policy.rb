@@ -22,7 +22,7 @@ module Admin
     end
 
     def publish?
-      false
+      regional_admin? && locale_allowed?
     end
 
     def sort?

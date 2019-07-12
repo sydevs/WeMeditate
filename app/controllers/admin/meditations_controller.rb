@@ -21,11 +21,20 @@ module Admin
     private
 
       def meditation_params
-        result = params.fetch(:meditation, {}).permit(
-          :name, :slug, :image, :video, :duration_filter_id,
-          goal_filter_ids: [],
-          metatags: {}
-        )
+        if policy(@meditation || Meditation).publish?
+          result = params.fetch(:meditation, {}).permit(
+            :name, :slug, :published,
+            :image, :video, :duration_filter_id,
+            goal_filter_ids: [],
+            metatags: {}
+          )
+        else
+          result = params.fetch(:meditation, {}).permit(
+            :name, :slug, :image, :video, :duration_filter_id,
+            goal_filter_ids: [],
+            metatags: {}
+          )
+        end
 
         result
       end

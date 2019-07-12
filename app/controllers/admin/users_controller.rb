@@ -1,7 +1,7 @@
 module Admin
   class UsersController < Admin::ApplicationRecordController
 
-    before_action :set_assignable_roles, only: %i[index create update]
+    before_action :set_assignable_roles, only: %i[index new edit]
     prepend_before_action { @model = User }
 
     def create
