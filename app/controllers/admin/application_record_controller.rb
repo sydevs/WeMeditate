@@ -1,7 +1,7 @@
 module Admin
   class ApplicationRecordController < Admin::ApplicationController
 
-    before_action :set_record, only: %i[show edit write update destroy]
+    before_action :set_record, only: %i[show edit write update destroy review]
     before_action :authorize!, except: %i[create]
 
     def index
@@ -96,6 +96,10 @@ module Admin
       end
 
       redirect_to [:admin, @model]
+    end
+
+    def review
+      render 'admin/application/review'
     end
 
     protected

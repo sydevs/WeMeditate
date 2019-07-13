@@ -19,6 +19,7 @@ module Draftable
 
     changes.each do |key, (old_value, new_value)|
       next if key == 'content' && JSON.parse(old_value)['blocks'] == JSON.parse(new_value)['blocks']
+      next if key == 'published_at'
       self[key] = old_value
       draft[key] = new_value
     end

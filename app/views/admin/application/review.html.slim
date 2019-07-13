@@ -1,0 +1,66 @@
+
+- allow = policy(@record)
+- content_for :title, t('action.target.review', target: @record.model_name.human)
+
+.ui.message Changes were contibuted by X, Y, Z
+
+form
+  table.ui.compact.celled.definition.table
+    thead
+      tr
+        th Reject?
+        th Field
+        th Old Value
+        th New Value
+    tbody
+      - @record.draft.each do |key, value|
+        - field_name = translate key, scope: [:activerecord, :attributes, @model.model_name.singular]
+        - old_value = @record[key]
+        tr
+          td.collapsing
+            .ui.fitted.slider.checkbox
+              input type='checkbox' name="reject[#{key}]"
+              label
+          - case key
+            - when 'vimeo_id'
+              td.collapsing = field_name
+              td
+                a href="https://vimeo.com/#{old_value}" target='_blank'
+                  i.external.alternate.icon
+                  = old_value
+              td
+                a href="https://vimeo.com/#{value}" target='_blank'
+                  i.external.alternate.icon
+                  = value
+            - when 'thumbnail_id', 'image_id'
+              td.collapsing = translate key.delete_suffix('_id'), scope: [:activerecord, :attributes, @model.model_name.singular]
+              td
+                .ui.image
+                  img src=MediaFile.find(old_value).file.url(:tiny)
+                  .ui.floating.label = "##{old_value}"
+              td
+                .ui.image
+                  img src=MediaFile.find(value).file.url(:tiny)
+                  .ui.floating.label = "##{value}"
+            - else
+              td.collapsing = field_name
+              td = old_value
+              td = value
+
+  | TODO: Add a comparison for content changes
+
+  .ui.hidden.divider
+
+  p
+    - if allow.show?
+      a.ui.basic.button href=url_for([:admin, @record])
+        i.left.arrow.icon
+        = translate 'action.back'
+    - else
+      a.ui.basic.button href=url_for([:admin, defined?(@record.page) ? @record.page : @record.class])
+        i.left.arrow.icon
+        = translate 'action.target.back', target: @record.model_name.human(count: -1)
+
+    button.ui.basic.primary.button type='submit'
+      = translate 'action.publish'
+

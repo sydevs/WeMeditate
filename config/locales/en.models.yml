@@ -46,7 +46,8 @@ en:
 
     attributes:
       article:
-        title: Title
+        published: Published
+        name: Title
         slug: URL
         category: :activerecord.models.category
         priority: Visibility
@@ -57,7 +58,7 @@ en:
         excerpt: Preview Content
         banner: Banner Image
         thumbnail: Thumbnail
-        vimeo_id: Featured Video (Vimeo ID)s
+        vimeo_id: Featured Video (Vimeo ID)
         date: Date
         content: Content
         metatags: Meta Tags
@@ -104,6 +105,7 @@ en:
         metatags: Meta Tags
 
       category:
+        published: Published
         name: Name
         slug: URL
         articles:
@@ -111,6 +113,7 @@ en:
           other: '%{count} Articles'
 
       treatment:
+        published: Published
         name: Name
         slug: URL
         excerpt: Excerpt
@@ -121,6 +124,7 @@ en:
         metatags: Meta Tags
 
       instrument_filter:
+        published: Published
         name: Name
         icon: Icon
         tracks:
@@ -128,24 +132,28 @@ en:
           other: '%{count} Tracks'
 
       mood_filter:
+        published: Published
         name: Name
         tracks:
           one: 1 Track
           other: '%{count} Tracks'
 
       duration_filter:
+        published: Published
         minutes: Minutes
         meditations:
           one: 1 Meditation
           other: '%{count} Meditations'
 
       goal_filter:
+        published: Published
         name: Name
         meditations:
           one: 1 Meditation
           other: '%{count} Meditations'
 
       track:
+        published: Published
         title: Title
         artist: Artist
         audio: File (mp3)
@@ -153,6 +161,7 @@ en:
         mood_filters: :activerecord.models.mood_filter.other
 
       meditation:
+        published: Published
         title: Name
         slug: URL
         horizontal_vimeo_id: Horizontal Video (Vimeo ID)
@@ -162,6 +171,7 @@ en:
         metatags: Meta Tags
 
       artist:
+        published: Published
         name: Name
         image: Album Art
         url: Website

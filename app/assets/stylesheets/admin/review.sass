@@ -1,0 +1,23 @@
+
+body.review
+  .ui.floating.label
+    top: 0
+    right: 0
+    left: auto
+    border-radius: 0
+    border-bottom-left-radius: 0.28571429rem
+
+  a[href]
+    color: black
+    opacity: 0.8
+
+  a[href]:hover
+    opacity: 1
+    text-decoration: underline
+
+  .ui.checkbox
+    input, input:focus
+      &:not(:checked)
+
+      &:checked ~ label:before
+        background-color: red !important
