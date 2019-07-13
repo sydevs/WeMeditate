@@ -45,7 +45,7 @@ module Admin
       meditation: {
         translator: [],
         editor: [],
-        regional_admin: %i[update create],
+        regional_admin: %i[update publish create],
         super_admin: %i[update publish create destroy],
       },
       treatment: {

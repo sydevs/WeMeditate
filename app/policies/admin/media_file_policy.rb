@@ -2,19 +2,19 @@ module Admin
   class MediaFilePolicy < Admin::ApplicationPolicy
 
     def index?
-      translator?
+      false
     end
 
     def create?
-      translator?
+      true
     end
 
-    def trash?
-      clean?
+    def update?
+      create?
     end
 
-    def clean?
-      super_admin?
+    def destroy?
+      false
     end
 
   end

@@ -1,22 +1,23 @@
 module Admin
-  class UserPolicy < Admin::ApplicationResourcePolicy
+  class UserPolicy < Admin::ApplicationPolicy
 
-    def index?
-      editor? and locale_allowed?
+    def manage?
+      return false unless can_access_locale?
+      return true if super_admin?
+      return true if regional_admin? && user_record_is_subordinate?
+      return false
     end
 
     def update?
-      if super_admin?
-        true
-      elsif regional_admin? and locale_allowed?
-        not (record.regional_admin? or record.super_admin?)
-      else
-        false
-      end
+      manage?
     end
 
     def create?
-      regional_admin? and locale_allowed?
+      manage?
+    end
+
+    def user_record_is_subordinate?
+      %i[translator editor].include?(record.role) && record.languages.include?(I18n.locale)
     end
 
   end

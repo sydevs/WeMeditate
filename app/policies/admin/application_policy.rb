@@ -6,48 +6,52 @@ module Admin
     end
 
     def show?
-      false
-    end
-
-    def update?
-      super_admin?
-    end
-
-    def create?
-      super_admin?
+      record.has_content? && index?
     end
 
     def destroy?
-      super_admin?
-    end
-
-    def publish?
-      regional_admin? && locale_allowed?
+      super_admin? && can_access_locale? && record.translated_locales&.include?(I18n.locale)
     end
 
     def sort?
       false
     end
 
+    def review?
+      publish?
+    end
+
+    def preview?
+      publish?
+    end
+
     # HELPER METHODS
+    def admin?
+      regional_admin? || super_admin?
+    end
+
     def super_admin?
       user.super_admin?
     end
 
     def regional_admin?
-      user.regional_admin? or super_admin?
+      user.regional_admin?
     end
 
     def editor?
-      user.editor? or regional_admin?
+      user.editor?
     end
 
     def translator?
-      user.translator? or editor?
+      user.translator?
     end
 
-    def locale_allowed?
+    def can_access_locale?
       user.available_languages.include? I18n.locale
+    end
+
+    def owns_record?
+      true
     end
 
   end

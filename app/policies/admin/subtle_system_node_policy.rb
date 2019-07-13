@@ -1,13 +1,7 @@
 module Admin
   class SubtleSystemNodePolicy < Admin::StaticPagePolicy
 
-    def create?
-      super_admin? and SubtleSystemNode.available_roles.present?
-    end
-
-    def destroy?
-      false
-    end
+    # This policy has the same behaviour as the static page policy.
 
   end
 end

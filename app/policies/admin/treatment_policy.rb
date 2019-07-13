@@ -1,8 +1,22 @@
 module Admin
-  class TreatmentPolicy < Admin::ApplicationResourcePolicy
+  class TreatmentPolicy < Admin::ApplicationPolicy
 
-    def sort?
-      super_admin?
+    def manage?
+      return false unless can_access_locale?
+      return true if admin?
+      return false
+    end
+
+    def update?
+      manage?
+    end
+
+    def create?
+      manage?
+    end
+
+    def publish?
+      update?
     end
 
   end

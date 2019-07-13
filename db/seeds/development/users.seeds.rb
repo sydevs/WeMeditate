@@ -5,7 +5,7 @@ User.roles.each do |role, _index|
 
   User.find_or_create_by(email: email).update!({
     email: email,
-    role: :super_admin,
+    role: role,
     password: 'password',
   })
 
