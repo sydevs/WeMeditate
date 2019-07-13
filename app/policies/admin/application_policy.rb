@@ -25,6 +25,14 @@ module Admin
       publish?
     end
 
+    def update_translation?
+      update?
+    end
+
+    def update_structure?
+      update?
+    end
+
     # HELPER METHODS
     def admin?
       regional_admin? || super_admin?
