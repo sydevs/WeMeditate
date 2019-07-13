@@ -9,12 +9,22 @@ module Admin
       it: 'it',
     }.freeze
 
+    URGENCY_ICON = {
+      critical: 'red warning sign',
+      important: 'orange warning sign',
+      normal: 'warning sign',
+    }.freeze
+
     def country_flag country_code
       content_tag :i, nil, class: "#{country_code} flag"
     end
 
     def language_flag language = locale
       country_flag LANGUAGE_TO_FLAG_MAP[language]
+    end
+
+    def urgency_icon_key urgency
+      URGENCY_ICON[urgency]
     end
 
     def human_enum_name model, attr, value = nil

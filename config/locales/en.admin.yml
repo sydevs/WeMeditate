@@ -71,6 +71,10 @@ en:
     no_translation: No Translation
     updated_ago: Modified %{time_ago} ago
     published_ago: Published %{time_ago} ago
+    urgency:
+      critical: Critical Issue
+      important: Important Issue
+      normal: Low Priority
     views:
       one: 1 View
       other: '%{count} Views'

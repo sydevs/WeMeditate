@@ -1,24 +1,22 @@
 
 - content_for :title, t('misc.dashboard')
 
-//.ui.two.column.grid
-  .column
-    //= render 'admin/partials/dashboard_table', title: t('messages.drafts'), color: 'blue', action: nil, sets: [ \
-      { model: Draftsman::Draft, icon: 'file outline', elements: @drafts, name: :id }, \
-    //]
-    = render 'admin/partials/dashboard_table', title: t('messages.pending_users'), color: 'olive', sets: [ \
-      { model: User, icon: 'user', elements: User.pending, name: :email }, \
-    ]
-    = render 'admin/partials/dashboard_table', title: t('messages.untranslated_pages'), color: 'orange', action: :edit, sets: [ \
-      { model: StaticPage, icon: 'orange warning sign', elements: StaticPage.untranslated, name: :title }, \
-      { model: Article, icon: 'file text', elements: Article.untranslated, name: :title }, \
-    ]
-  .column
-    = render 'admin/partials/missing_pages_table'
-    = render 'admin/partials/dashboard_table', title: t('messages.untranslated_resources'), color: 'red', action: :index, prefix: true, sets: [ \
-      { model: Category, icon: 'hashtag', elements: Category.untranslated, name: :name }, \
-      { model: Treatment, icon: 'first aid', elements: Treatment.untranslated, name: :name }, \
-      { model: InstrumentFilter, icon: 'filter', elements: InstrumentFilter.untranslated, name: :name }, \
-      { model: MoodFilter, icon: 'filter', elements: MoodFilter.untranslated, name: :name }, \
-      { model: GoalFilter, icon: 'filter', elements: GoalFilter.untranslated, name: :name }, \
-    ]
+/ TODO: Figure out this title
+h3 Actions
+
+table.ui.very.basic.compact.unstackable.models.table
+  tbody
+    - if @issues.present?
+      - @issues.each do |issue|
+        tr
+          td.selector
+            a href=issue[:url] = issue[:name] || 'No Translated Title'
+
+          td.collapsing.right.aligned.disabled
+            = issue[:message]
+
+          td.collapsing.right.aligned
+            = table_icon urgency_icon_key(issue[:urgency]), t(issue[:urgency], scope: %i[tags urgency])
+    - else
+      / TODO: Translate
+      tr: td No issues right now, good job!
