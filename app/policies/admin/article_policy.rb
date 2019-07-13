@@ -14,9 +14,7 @@ module Admin
     end
 
     def update_structure?
-      return false unless can_access_locale?
-      return true if admin?
-      return false
+      update_translation? && !translator?
     end
 
     def create?

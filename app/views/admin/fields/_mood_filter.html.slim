@@ -1,6 +1,10 @@
 
+- allow = policy(record)
+
 = f.input :name
-= f.input :icon, wrapper: :ui_file_input, icon: :image, file: record.icon
+
+- if allow.update_structure?
+  = f.input :icon, wrapper: :ui_file_input, icon: :image, file: record.icon
 
 - if record.icon.present?
-  .item = image_tag record.icon.url, class: 'ui tiny image'
+  .preview-item = image_tag record.icon.url, class: 'ui tiny image'

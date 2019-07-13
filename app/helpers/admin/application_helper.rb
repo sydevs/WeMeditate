@@ -28,11 +28,12 @@ module Admin
     end
 
     def human_enum_name model, attr, value = nil
-      if value
-        I18n.translate "activerecord.attributes.#{model.model_name.i18n_key}.#{attr.to_s.pluralize}.#{value}"
-      else
-        I18n.translate "activerecord.attributes.#{model.model_name.i18n_key}.#{attr.to_s.pluralize}.#{model.send(attr)}"
-      end
+      value ||= model.send(attr)
+      I18n.translate value, scope: [:activerecord, :attributes, model.model_name.i18n_key, attr.to_s.pluralize]
+    end
+
+    def human_attribute_name model, attr
+      I18n.translate attr, scope: [:activerecord, :attributes, model.model_name.i18n_key]
     end
 
     def coordinates_url latitude, longitude

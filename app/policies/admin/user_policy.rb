@@ -8,6 +8,12 @@ module Admin
       return false
     end
 
+    def index?
+      return false unless can_access_locale?
+      return true if admin?
+      return false
+    end
+
     def update?
       manage?
     end

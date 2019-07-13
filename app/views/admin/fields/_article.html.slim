@@ -1,20 +1,43 @@
 
 - allow = policy(record)
 
-= draftable_field f, :category, type: :association do |value|
-  - f.association :category, label: false, disabled: !allow.update_structure?, selected: value
-
-= draftable_field f, :priority, type: :collection do |value|
-  - f.input_field :priority, collection: Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}, selected: value, disabled: !allow.update_structure?
+- if allow.update_structure?
+  = draftable_field f, :category, type: :association do |value|
+    - f.association :category, label: false, disabled: !allow.update_structure?, selected: value
+  = draftable_field f, :priority, type: :collection do |value|
+    - f.input_field :priority, collection: Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}, selected: value, disabled: !allow.update_structure?
+- else
+  = f.input :category do
+    = f.hidden_field :category
+    .ui.icon.label
+      i.hashtag.icon
+      = record.category.name
+  = f.input :priority do
+    = f.hidden_field :priority
+    .ui.icon.label
+      i.eye.icon
+      = human_enum_name(record, :priority)
 
 = draftable_media_field f, :thumbnail, preview: true, wrapper: { required: true }
 
 = draftable_field f, :excerpt, type: :text do |value|
   - f.input_field :excerpt, as: :text, rows: 3, value: value
 
-// TODO: Does this vimeo_id render properly?
 = draftable_field f, :vimeo_id, type: :integer
-= draftable_date_field f
+- if record.vimeo_id.present?
+  .preview-item
+    a.ui.label.link href="https://vimeo.com/#{record.vimeo_id}" target='_blank'
+      | vimeo.com/#{record.vimeo_id}
+      i.external.alternate.icon
+
+- if allow.update_structure?
+  = draftable_date_field f
+- else
+  = f.input :date do
+    = f.hidden_field :date
+    .ui.icon.label
+      i.calendar.icon
+      = record.date
 
 // TODO: Remove this page banner which is no longer used.
 // = draftable_media_field f, :banner_id, preview: true

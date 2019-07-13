@@ -12,7 +12,8 @@
       .ui.active.button
         - status = @record.published? ? (@record.has_draft? ? :pending_changes : :published) : :draft
         = translate(status, scope: :status, target: model_name)
-      - action = (@record.published? && @record.has_draft? ? :review : :edit)
+
+      - action = (allow.review? && @record.published? && @record.has_draft? ? :review : :edit)
       a.ui.button href=url_for([action, :admin, @record])
         i.edit.icon
         - if !@record.published?
@@ -21,6 +22,7 @@
           = translate 'action.review'
         - else
           = translate('action.target.edit', target: model_name)
+
       .ui.floating.dropdown.icon.button
         i.dropdown.icon
         .menu

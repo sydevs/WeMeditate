@@ -14,7 +14,7 @@ form
         th New Value
     tbody
       - @record.draft.each do |key, value|
-        - field_name = translate key, scope: [:activerecord, :attributes, @model.model_name.singular]
+        - field_name = human_attribute_name(@model, key)
         - old_value = @record[key]
         tr
           td.collapsing
@@ -33,7 +33,7 @@ form
                   i.external.alternate.icon
                   = value
             - when 'thumbnail_id', 'image_id'
-              td.collapsing = translate key.delete_suffix('_id'), scope: [:activerecord, :attributes, @model.model_name.singular]
+              td.collapsing = human_attribute_name(@model, key.delete_suffix('_id'))
               td
                 .ui.image
                   img src=MediaFile.find(old_value).file.url(:tiny)
@@ -45,7 +45,7 @@ form
             - else
               td.collapsing = field_name
               td = old_value
-              td = value
+              td = value.is_a?(String) ? Differ.diff_by_char(value, old_value.to_s).format_as(:html).html_safe : value
 
   | TODO: Add a comparison for content changes
 

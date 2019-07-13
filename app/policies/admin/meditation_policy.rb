@@ -8,7 +8,15 @@ module Admin
     end
 
     def update?
+      update_translation? || update_structure?
+    end
+
+    def update_translation?
       manage?
+    end
+
+    def update_structure?
+      manage? && super_admin?
     end
 
     def publish?

@@ -7,19 +7,3 @@
   = record_detail 'pin', human_enum_name(record, :role), 'Role on website'
   - translated_locales = record.translated_locales.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
   = record_detail 'globe', translated_locales, 'Translated Langauges'
-
-/.ui.details.list
-  - if record.translated_locales.include? I18n.locale
-    .item
-      i.linkify.icon
-      a.content href=url_for(record) target='_blank' = url_for(record)
-  - else
-    .item
-      i.orange.warning.sign.icon
-      .content = translate 'tags.no_translation'
-  .item
-    i.pin.icon
-    .content = human_enum_name(record, :role)
-  .item
-    i.globe.icon
-    .content = record.translated_locales.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')

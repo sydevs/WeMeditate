@@ -1,6 +1,22 @@
 
 = f.input :thumbnail, wrapper: :ui_file_input, icon: :image, file: record.thumbnail
+
+- if record.thumbnail.present?
+  .preview-item = image_tag record.thumbnail.url(:small), class: 'ui rounded image'
+
 = f.input :excerpt, as: :text, input_html: { rows: 2 }
 = f.input :horizontal_vimeo_id, wrapper: :ui_input, icon: :video
+- if record.horizontal_vimeo_id.present?
+  .preview-item
+    a.ui.label.link href="https://vimeo.com/#{record.horizontal_vimeo_id}" target='_blank'
+      | vimeo.com/#{record.horizontal_vimeo_id}
+      i.external.alternate.icon
+
 = f.input :vertical_vimeo_id, wrapper: :ui_input, icon: :video
+- if record.vertical_vimeo_id.present?
+  .preview-item
+    a.ui.label.link href="https://vimeo.com/#{record.vertical_vimeo_id}" target='_blank'
+      | vimeo.com/#{record.vertical_vimeo_id}
+      i.external.alternate.icon
+
 = f.input :content, as: :rich_text, input_html: { rows: 3 }
