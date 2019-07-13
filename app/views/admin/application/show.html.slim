@@ -16,9 +16,9 @@
       - action = (allow.review? && @record.published? && @record.has_draft? ? :review : :edit)
       a.ui.button href=url_for([action, :admin, @record])
         i.edit.icon
-        - if !@record.published?
+        - if !@record.published? && allow.review?
           = translate('action.target.review', target: model_name)
-        - elsif @record.has_draft?
+        - elsif @record.has_draft? && allow.review?
           = translate 'action.review'
         - else
           = translate('action.target.edit', target: model_name)
@@ -56,14 +56,20 @@
     .ui.small.details.list
       = record_detail 'bullhorn', record_published_at_status if @record.respond_to? :published_at
       = record_detail 'edit', record_modified_at_status
+      - if owner = @record.try(:owner)
+        - if policy(owner).edit?
+          = record_detail 'user', "Written by #{owner.name}", 'View user', url: url_for([:edit, :admin, owner])
+        - else
+          = record_detail 'user', "Written by #{owner.name}"
 
 .clearfix
 
 .ui.divider
 
-.table-actions
-  = table_action t('action.target.write', target: model_name), 'pencil alternate', url_for([:write, :admin, @record])
-  /= table_action t('action.write'), 'pencil alternate', url_for([:write, :admin, @record])
+- if allow.write?
+  .table-actions
+    = table_action t('action.target.write', target: model_name), 'pencil alternate', url_for([:write, :admin, @record])
+
 
 h4 = translate 'misc.content_outline'
 

@@ -62,6 +62,7 @@ en:
         date: Date
         content: Content
         metatags: Meta Tags
+        owner: Writer
 
       static_page:
         title: Title

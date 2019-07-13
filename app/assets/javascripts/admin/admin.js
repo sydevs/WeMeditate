@@ -37,7 +37,12 @@ let Admin = {
 
     $('.ui.dropdown').each(function() {
       var element = $(this)
-      element.dropdown()
+      var options = {}
+      if (element.hasClass('clearable')) {
+        options['clearable'] = true
+      }
+
+      element.dropdown(options)
 
       // This is a workaround to fix default values for a multiple select
       // TODO: Is this workaround still necessary?

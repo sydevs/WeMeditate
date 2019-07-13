@@ -14,9 +14,10 @@ module Admin
     protected
 
       def article_params
-        if policy(@article || Article).update_structure?
+        allow = policy(@record || Article)
+        if (allow.create? && action_name == 'create') || allow.update_structure?
           params.fetch(:article, {}).permit(
-            :name, :slug, :category_id, :priority, :published,
+            :name, :slug, :category_id, :priority, :published, :owner_id,
             :excerpt, :banner_id, :thumbnail_id, :vimeo_id, :date, :content,
             metatags: {}
           )
@@ -29,7 +30,7 @@ module Admin
       end
 
       def update_params record_params
-        return super(record_params) if @record.new_record? || !params[:article][:thumbnail]
+        return super(record_params) if action_name == 'create' || !params[:article][:thumbnail]
 
         record_params[:thumbnail_id] = @record.media_files.create!(file: params[:article][:thumbnail]).id
         super(record_params)

@@ -5,14 +5,16 @@ module Admin
     before_action :authorize!, except: %i[create]
 
     def index
+      @records = policy_scope(@model).q(params[:q])
+
       respond_to do |format|
         format.html do
-          @records = @model.q(params[:q]).page(params[:page]).all
+          @records = @records.page(params[:page])
           render 'admin/application/index'
         end
 
         format.json do
-          render json: @model.select(:id, :name).q(params[:q]).to_json(only: %i[id name])
+          render json: @records.to_json(only: %i[id name])
         end
       end
     end

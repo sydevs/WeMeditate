@@ -1,6 +1,16 @@
 module Admin
   class ApplicationPolicy < ::ApplicationPolicy
 
+    class Scope < Scope
+      def resolve
+        if user.translator?
+          scope.untranslated
+        else
+          scope
+        end
+      end
+    end
+
     def index?
       update? || create? || destroy?
     end
@@ -22,7 +32,7 @@ module Admin
     end
 
     def preview?
-      review?
+      update?
     end
 
     def update_translation?
@@ -30,6 +40,10 @@ module Admin
     end
 
     def update_structure?
+      update?
+    end
+
+    def write?
       update?
     end
 
@@ -59,7 +73,7 @@ module Admin
     end
 
     def owns_record?
-      true
+      record.owner == user
     end
 
   end

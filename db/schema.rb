@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_11_191927) do
+ActiveRecord::Schema.define(version: 2019_07_13_191855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,9 @@ ActiveRecord::Schema.define(version: 2019_07_11_191927) do
     t.bigint "category_id"
     t.integer "priority", default: 0, null: false
     t.date "date"
+    t.bigint "owner_id"
     t.index ["category_id"], name: "index_articles_on_category_id"
+    t.index ["owner_id"], name: "index_articles_on_owner_id"
   end
 
   create_table "artists", force: :cascade do |t|
@@ -330,6 +332,7 @@ ActiveRecord::Schema.define(version: 2019_07_11_191927) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"

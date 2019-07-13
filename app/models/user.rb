@@ -7,9 +7,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable, :validatable, :invitable, :lockable
 
   # Associations
+  has_many :articles, inverse_of: :owner
   enum role: %i[translator editor regional_admin super_admin]
 
   # Validations
+  validates :name, presence: true
   validates :email, presence: true
   validates :role, presence: true
 
@@ -17,10 +19,6 @@ class User < ApplicationRecord
   default_scope { order(:email) }
   scope :pending, -> { where.not(invitation_created_at: nil).where(invitation_accepted_at: nil) }
   scope :q, -> (q) { where('email ILIKE ?', "%#{q}%") if q.present? }
-
-  def name
-    email
-  end
 
   # Override this setter so that a user cannot have languages which the website doesn't support.
   def languages= list

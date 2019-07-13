@@ -17,8 +17,14 @@
     .label:before
       content: '- '
 
-  a.content:hover .text
-    text-decoration: underline
+  a.content
+    opacity: 1
+
+  a.content:hover
+    text-decoration: none
+
+    .text
+      text-decoration: underline
 
   .item:not(:hover) .content
     .label, .icon

@@ -44,9 +44,6 @@
       button.ui.basic.positive.button type='submit' name='draft' value='true'
         = translate 'action.update'
 
-      button.ui.basic.positive.button type='submit' name='preview' value='true'
-        = translate 'action.preview'
-
       - unless @record.is_a? Article and @record.new_record?
         button.ui.basic.primary.button type='submit'
           = translate 'action.publish'
