@@ -11,6 +11,10 @@ module Admin
       false # Content is handled differently for treatments.
     end
 
+    def review?
+      false # Content is handled differently for treatments.
+    end
+
     def update?
       manage?
     end

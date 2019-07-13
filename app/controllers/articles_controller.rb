@@ -25,7 +25,12 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @record = Article.published.preload_for(:content).friendly.find(params[:id])
+    if authorized_preview?(Article)
+      @record = Article.preload_for(:content).friendly.find(params[:id])
+      @record.reify_draft!
+    else
+      @record = Article.published.preload_for(:content).friendly.find(params[:id])
+    end
 
     # TODO: Deprecated
     @article = @record

@@ -356,13 +356,13 @@
     width: 0
     transition: width 0.1s linear
 
-// ===== COOKIE NOTICE ===== //
-.header__cookie-notice
+// ===== NOTICES ===== //
+.header__notice
   @extend %wide-content-width
   position: fixed
   left: 0
   right: 0
-  bottom: -100px
+  bottom: 0
 
   @include mobile
     max-width: none
@@ -372,22 +372,33 @@
     max-width: none
     padding: 0
 
-.header__cookie-notice__text
-  background: transparentize(white, 0.05)
-  box-shadow: 0px 3px 15px transparentize(black, 0.8)
-  padding: 8px 12px
-  border-bottom: 1px solid $color-graphic-normal
-  font-size: 1.4rem
-  line-height: 20px
+  &__text
+    background: transparentize(white, 0.05)
+    box-shadow: 0px 3px 15px transparentize(black, 0.8)
+    padding: 8px 12px
+    border-bottom: 1px solid $color-graphic-normal
+    font-size: 1.4rem
+    line-height: 20px
 
-  a
-    margin-left: 4px
+    a
+      margin-left: 4px
 
-.header__cookie-notice__close
-  @extend %close-icon
-  float: right
-  width: 20px
-  height: 20px
+  &__close
+    @extend %close-icon
+    float: right
+    width: 20px
+    height: 20px
+
+.header__notice--cookie
+  bottom: -100px
+
+.header__notice--preview
+  bottom: -2px
+
+  .header__notice__text
+    font-weight: $font-bold
+    text-align: center
+    border: 2px solid $color-box-orange
 
 
 // ===== BREADCRUMBS ===== //
@@ -609,20 +620,6 @@
 
     &:not([href])
       color: $color-text-inverse
-
-// TODO: Remove this old code
-/*.header--invert .header__cookie-notice
-  &__text
-    margin-top: 2px
-    border-color: transparent
-    background: transparentize($color-text-inverse, 0.25)
-
-  &__close
-    margin-left: 4px
-    margin-bottom: 4px
-
-    &:after, &:before
-      background-color: $color-text-dark*/
 
 // ===== OVERLAY TWEAKS ===== //
 // This causes the header to hover over the page.

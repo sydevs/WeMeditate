@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
         resources :articles, :static_pages, :subtle_system_nodes, except: %i[destroy] do
           get :write, on: :member
+          get :preview, on: :member
           resources :media_files, only: %i[index create]
         end
 

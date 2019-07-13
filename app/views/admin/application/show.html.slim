@@ -32,10 +32,14 @@
             .item
               i.bullhorn.icon
               = @record.published? ? t('action.target.unpublish', target: model_name) : 'Publish article'
-          - if @record.published? # TODO: Implement previews
+          - if @record.published?
             a.item href=url_for(@record) target='_blank'
               i.eye.icon
-              = @record.published? ? t('action.show') : t('action.preview')
+              = translate 'action.show'
+          - if allow.preview? && (@record.has_draft? || !@record.published?)
+            a.item href=url_for([@record, preview: true]) target='_blank'
+              i.eye.icon
+              = translate 'action.preview'
           - if allow.destroy?
             a.item href=url_for([:admin, @record]) data={ method: 'delete', confirm: t('messages.confirm_destroy') }
               i.warning.sign.icon
@@ -49,12 +53,6 @@
     .ui.small.details.list
       = record_detail 'bullhorn', record_published_at_status if @record.respond_to? :published_at
       = record_detail 'edit', record_modified_at_status
-      /.item
-        i.bullhorn.icon
-        .content = published_at_detail_message(@record)
-      /.item
-        i.edit.icon class="#{'orange' if allow.publish? and @record.has_draft?}"
-        .content = updated_at_detail_message(@record)
 
 .clearfix
 

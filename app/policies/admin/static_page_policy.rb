@@ -28,6 +28,10 @@ module Admin
       return false
     end
 
+    def review?
+      publish?
+    end
+
     def destroy?
       false
     end

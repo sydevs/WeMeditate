@@ -39,10 +39,14 @@ header#header.header class=classes
       .header__scrollspy
         #scrollspy-progress.header__scrollspy__progress
 
-    - unless cookies[:notice] == 'dismissed'
-      .header__cookie-notice
-        .header__cookie-notice__text
-          .header__cookie-notice__close
+    - if @preview
+      .header__notice.header__notice--preview
+        .header__notice__text
+          = translate 'header.preview_notice'
+    - elsif cookies[:notice] != 'dismissed'
+      .header__notice.header__notice--cookie
+        .header__notice__text
+          .header__notice__close
           = translate 'header.cookie_notice'
           a href=static_page_url_for(:privacy) = translate 'header.learn_more'
 

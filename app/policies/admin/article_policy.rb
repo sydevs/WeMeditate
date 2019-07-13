@@ -33,5 +33,9 @@ module Admin
       return false
     end
 
+    def review?
+      publish?
+    end
+
   end
 end

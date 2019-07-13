@@ -4,7 +4,7 @@ class Header {
   constructor(element) {
     this.container = element
     this.scrollspy = document.getElementById('scrollspy-progress')
-    this.cookieNotice = document.querySelector('.header__cookie-notice')
+    this.cookieNotice = document.querySelector('.header__notice--cookie')
     this.splash = document.querySelector('.js-splash')
     this.container.style.height = 'auto'
     this.navigationHeight = $('.header__navigation', element).outerHeight(true)
@@ -39,7 +39,7 @@ class Header {
     }
 
     if (this.cookieNotice) {
-      const cookieNoticeClose = this.cookieNotice.querySelector('.header__cookie-notice__close')
+      const cookieNoticeClose = this.cookieNotice.querySelector('.header__notice__close')
       cookieNoticeClose.addEventListener('click', () => {
         this.cookieNotice.remove()
         document.cookie = 'notice=dismissed'

@@ -18,11 +18,11 @@ module Admin
     end
 
     def review?
-      publish?
+      false
     end
 
     def preview?
-      publish?
+      review?
     end
 
     def update_translation?

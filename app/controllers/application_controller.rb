@@ -99,6 +99,12 @@ class ApplicationController < ActionController::Base
       redirect_to '/maintenance'
     end
 
+    def authorized_preview? model
+      return false unless params[:preview] && current_user
+      policy = Regulator.policy(current_user, model, "Admin::#{model.model_name.plural.camelize}Controller".constantize)
+      @preview = policy.preview?
+    end
+
 end
 
 # A workaround that allows you to access a hash using a string, even when the hash is indexed by symbols

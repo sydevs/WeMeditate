@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
 
   def show
     @record = StaticPage.preload_for(:content).friendly.find(params[:id])
+    @record.reify_draft! if authorized_preview?(StaticPage)
 
     # TODO: Deprecated
     @static_page = @record

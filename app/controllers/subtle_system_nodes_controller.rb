@@ -12,6 +12,7 @@ class SubtleSystemNodesController < ApplicationController
 
   def show
     @record = SubtleSystemNode.preload_for(:content).friendly.find(params[:id])
+    @record.reify_draft! if authorized_preview?(SubtleSystemNode)
 
     # TODO: Deprecated
     @subtle_system_node = @record

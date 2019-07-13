@@ -1,3 +1,4 @@
+- allow = policy(@record)
 
 - if record.banner.present? or record.thumbnail.present?
   .ui.right.floated.rounded.image
@@ -7,7 +8,11 @@ p.details.excerpt = record.excerpt
 
 .ui.details.list
   - if record.translated_locales.include? I18n.locale
-    = record_detail 'linkify', url_for(record), url: url_for(record)
+    - url = url_for(record)
+    - if record.published?
+      = record_detail 'linkify', url, url: url
+    - elsif allow.preview?
+      = record_detail 'linkify', url, t('action.preview'), url: "#{url}?preview=true"
   - else
     = record_detail 'orange warning sign', t('tags.no_translation')
   - translated_locales = record.translated_locales.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
@@ -16,32 +21,3 @@ p.details.excerpt = record.excerpt
   = record_detail 'eye', human_enum_name(record, :priority), 'Order on Inspiration page'
   = record_detail 'calendar', record.date, 'Featured Date' if record.date.present?
   = record_detail 'play circle', "Video ##{record.vimeo_id}", 'Featured Video', url: "https://vimeo.com/#{record.vimeo_id}" if record.vimeo_id.present?
-
-/.ui.details.list
-  - if record.translated_locales.include? I18n.locale
-    .item
-      i.linkify.icon
-      a.content href=url_for(record) target='_blank' = url_for(record)
-  - else
-    .item
-      i.orange.warning.sign.icon
-      .content = translate 'messages.no_translation'
-  .item
-    i.globe.icon
-    .content
-      = record.translated_locales.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
-  .item
-    i.hashtag.icon
-    .content = record.category.name
-  .item
-    i.unhide.icon
-    .content = human_enum_name(record, :priority)
-  - if record.date.present?
-    .item
-      i.calendar.icon
-      .content = record.date
-  - if record.vimeo_id.present?
-    .item
-      i.play.circle.icon
-      // TODO: Translate this next line
-      a.content href="https://vimeo.com/#{record.vimeo_id}" target='_blank' Vimeo Video #{record.vimeo_id}
