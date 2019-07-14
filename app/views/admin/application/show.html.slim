@@ -73,7 +73,7 @@
 
 h4 = translate 'misc.content_outline'
 
-= content_outline JSON.parse(@record.content)['blocks'] unless @record.content.empty?
+= content_outline @record.content['blocks'] if @record.content.present?
 
 .ui.hidden.divider
 = table_link t('action.target.back', target: @model.model_name.human(count: -1)), 'left arrow', url_for([:admin, @model])

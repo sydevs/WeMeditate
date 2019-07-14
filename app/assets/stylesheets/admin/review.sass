@@ -7,17 +7,19 @@ body.review
     border-radius: 0
     border-bottom-left-radius: 0.28571429rem
 
-  .ui.checkbox
-    input, input:focus
-      &:not(:checked)
+  td.diff
+    vertical-align: top
 
-      &:checked ~ label:before
-        background-color: red !important
-
-  ins
+  ins, del
     text-decoration: none
+
+  tr.modified
+    background: lighten(#fff1cd, 5%)
+    
+  tr.modified ins,
+  tr.added
     background: #cdffd8
 
-  del
-    text-decoration: none
+  tr.modified del,
+  tr.removed
     background: #ffdce0

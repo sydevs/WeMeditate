@@ -25,6 +25,7 @@ Rails.application.routes.draw do
         resources :articles, :static_pages, :subtle_system_nodes, except: %i[destroy] do
           get :write, on: :member
           get :review, on: :member
+          patch :approve, on: :member, path: 'review'
           get :preview, on: :member
           resources :media_files, only: %i[index create]
         end

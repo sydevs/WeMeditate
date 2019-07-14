@@ -51,6 +51,105 @@ module Admin::RecordHelper
     end
   end
 
+  def draft_diff record, &block
+    original_blocks = record.content ? JSON.parse(record.content)['blocks'] : []
+    draft_blocks = JSON.parse(record.draft['content'])['blocks']
+
+    original_types = original_blocks.map { |b| b['type'] }
+    draft_types = draft_blocks.map { |b| b['type'] }
+    diff = JsonDiff.diff(original_types, draft_types, moves: false, original_indices: true)
+
+    #concat tag.p original_types
+    #concat tag.p draft_types
+    #concat tag.p diff
+
+    loop_counter = 0
+    diff_index = 0
+    original_index = 0
+    draft_index = 0
+
+    while original_index < original_types.count || draft_index < draft_types.count
+      change = diff_index << diff.count ? diff[diff_index] : nil
+      target_index = change['path'].delete_prefix('/').to_i if change
+
+      original_block = original_blocks[original_index]
+      draft_block = draft_blocks[draft_index]
+      mode = 'modified'
+
+      if change
+        if change['op'] == 'add'
+          if target_index == draft_index
+            mode = 'added'
+            original_block = nil
+          else
+            change = nil
+          end
+        elsif change['op'] == 'remove'
+          if target_index == draft_index
+            mode = 'removed'
+            draft_block = nil
+          else
+            change = nil
+          end
+        end
+      end
+
+      mode = 'nochange' if mode == 'modified' && original_block == draft_block
+      yield(loop_counter, mode, original_block, draft_block, (original_index if original_block), (draft_index if draft_block))
+      diff_index += 1 if change
+      original_index += 1 if original_block
+      draft_index += 1 if draft_block
+      loop_counter += 1
+
+=begin
+      if !change
+        mode = (original_blocks[original_index] == draft_blocks[draft_index] ? 'nochange' : 'modified')
+        yield mode, original_blocks[original_index], draft_blocks[draft_index]
+        original_index += 1
+        draft_index += 1
+      elsif change['op'] == 'remove'
+        if target_index == original_index
+          draft_block = nil
+        else
+          mode = 'modified' if original_block != draft_block
+          change = nil
+        end
+
+        if target_index == original_index
+          yield 'removed', original_blocks[original_index], nil
+          original_index += 1
+          diff_index += 1
+        else
+          mode = (original_blocks[original_index] == draft_blocks[draft_index] ? 'nochange' : 'modified')
+          yield mode, original_blocks[original_index], draft_blocks[draft_index]
+          original_index += 1
+          draft_index += 1
+        end
+      elsif change['op'] == 'add'
+        if target_index == draft_index
+          yield 'added', nil, draft_blocks[draft_index]
+          draft_index += 1
+          diff_index += 1
+        else
+          mode = (original_blocks[original_index] == draft_blocks[draft_index] ? 'nochange' : 'modified')
+          yield mode, original_blocks[original_index], draft_blocks[draft_index]
+          draft_index += 1
+          original_index += 1
+        end
+      end
+=end
+    end
+  end
+
+  def display_block_data block
+    return '' unless block
+
+    result = block['data'].map do |key, value|
+      "#{tag.strong key}: #{value}"
+    end
+    result.join("<br>").to_s
+  end
+
   private
 
     def record_actions_dropdown actions

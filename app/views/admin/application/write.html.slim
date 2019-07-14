@@ -12,7 +12,7 @@
     - if @record.reviewable? && has_draft
       .ui.yellow.message You are viewing a draft version of this #{@record.model_name.human}. This version not be visible to the public until it has been reviewed by an administrator.
 
-      = draft_reset_buttons(:content, JSON.parse(@record.content), JSON.parse(content))
+      = draft_reset_buttons(:content, @record.content && JSON.parse(@record.content), JSON.parse(content))
       .clearfix
 
     - if @splash_style

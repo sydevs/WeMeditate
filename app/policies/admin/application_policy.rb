@@ -31,6 +31,10 @@ module Admin
       false
     end
 
+    def approve?
+      review?
+    end
+
     def preview?
       update?
     end

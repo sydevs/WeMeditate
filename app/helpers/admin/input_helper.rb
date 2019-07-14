@@ -47,7 +47,8 @@ module Admin::InputHelper
       draft_name = ActiveModel::Type::Boolean.new.cast(draft_value) ? 'True' : 'False' 
     when :content
       # TODO: Translate
-      original_name = "Original content with #{pluralize(original_value['blocks'].count, 'block')}"
+      original_count = original_value ? original_value['blocks'].count : 0
+      original_name = "Original content with #{pluralize(original_count, 'block')}"
       draft_name = "New content with #{pluralize(draft_value['blocks'].count, 'block')}"
     else
       original_name = original_value

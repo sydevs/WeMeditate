@@ -1,7 +1,7 @@
 module Admin
   class ApplicationRecordController < Admin::ApplicationController
 
-    before_action :set_record, only: %i[show edit write update destroy review]
+    before_action :set_record, only: %i[show edit write update destroy review approve]
     before_action :authorize!, except: %i[create]
 
     def index
@@ -75,6 +75,23 @@ module Admin
       end
     end
 
+    def review
+      puts "REVIEW"
+      render 'admin/application/review'
+    end
+
+    def approve
+      redirect = [:admin, (@record.has_content? ? @record : @model)]
+      @record.reify_approved_changes! params[:approve]
+
+      if @record.save
+        after_save
+        redirect_to redirect, flash: { notice: notice }
+      else
+        render :review
+      end
+    end
+
     def destroy
       if @record.translatable? and @record.translated_locales.include? I18n.locale
         if @record.translated_locales.count == 1
@@ -98,10 +115,6 @@ module Admin
       end
 
       redirect_to [:admin, @model]
-    end
-
-    def review
-      render 'admin/application/review'
     end
 
     protected
