@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
 
   # The page that users are redirected to if the site is in maintenance mode and they aren't logged in.
   def maintenance
-    render layout: :basic
+    render layout: 'basic'
   end
 
   def robots
