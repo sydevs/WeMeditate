@@ -1,12 +1,14 @@
 
 en:
   we_meditate: We Meditate
+
   header:
     learn_more: Learn More
     classes_near_me: Classes Near Me
     inspiration_from_within: Inspiration comes from within
     cookie_notice: By continuing to use wemeditate.co you will be agreeing to our use of cookies.
     preview_notice: You are viewing a preview
+
   footer:
     scroll_to_top: Back to Top
     meditate_now: Meditate Now
@@ -15,6 +17,7 @@ en:
     come_meditate: Come meditate
     classes_near_me: Classes near me
     online_meditations: Guided Meditations Online
+
   actions_footer:
     title: Discover it for yourself!
     subtitle: Don’t just take our word for it. Try meditating and see how you feel!
@@ -22,6 +25,7 @@ en:
     actions:
       online: Meditate online
       local: Classes near me
+
   form:
     input:
       email: Your email
@@ -39,6 +43,7 @@ en:
       subscribe: You have been subscribed.
       contact: Your message has been received.
       register: You have been registered.
+
   player:
     pause: Pause
     play: Play
@@ -58,11 +63,13 @@ en:
     current_time: Current time
     seek: Seek
     play_title: Play, %{title}
+
   articles:
     read_more: Read more
     load_more: Load more
     filter: Filter
     show_all: All
+
   meditations:
     prescreen:
       title: Unlock guided meditations by awakening your %{kundalini} first
@@ -74,31 +81,33 @@ en:
       skip:
         text: Meditated with us before?
         action: Continue to your guided meditation
-    custom_meditation: Set Up your own Meditation
-    daily_meditation: Meditation of the day
-    trending_meditation: Trending now
-    random_meditation: Let fate decide
-    random_meditation_title: Try a random meditation
-    random_meditation_description: Feel like you’re in need of a pick me up? Banish those negative thoughts which are putting you down and boost your confidence.
-    choose_goal: I wish to feel ...
-    choose_duration: I have
-    goal_action: Select mood
-    submit: Start meditation
-    minutes: min
+    featured:
+      daily_meditation: Meditation of the day
+      trending_meditation: Trending now
+      random_meditation: Let fate decide
+      random_meditation_title: Try a random meditation
+      random_meditation_description: Feel like you’re in need of a pick me up? Banish those negative thoughts which are putting you down and boost your confidence.
+    custom_meditation:
+      title: Set Up your own Meditation
+      choose_goal: I wish to feel ...
+      choose_duration: I have
+      goal_prompt: Select mood
+      submit: Start meditation
+      minutes: min
     archive:
       see_all_meditations: See all meditations
       title: Guided Meditations
       view_meditation: View meditation
       load_more: Load more
+
   tracks:
     subtitle: Subtitle for music
     text: Enjoy a curated collection of meditation music we produced to help you disconnect from your surroundings and achieve a true state of inner peace.
     choose_mood: Choose the mood
     choose_instruments: Choose your sound
     playlist: Playlist
+
   treatments:
-    title_prefix: 'Cleansing Technique:'
-    read_more: Learn more
     prescreen:
       title: Before using methods to improve meditation, you need to awaken your %{kundalini}
       kundalini: inner energy
@@ -113,10 +122,14 @@ en:
       title: Music
       description: Music can be both relaxing and gently stimulating, bringing us into balance and allowing our minds to go thoughtless, Explore our curated collection of specially composed tracks, created to enable a deeper state of meditation.
       read_more: Choose from our collection
+    title_prefix: 'Cleansing Technique:'
+    read_more: Learn more
     show_more: Show More Techniques
+
   content:
     credit: Credit
     show_more: Show More
+
   subtle_system:
     title:
       desktop: Hover to learn more
@@ -124,12 +137,15 @@ en:
     chakras: Chakras
     channels: Channels
     read_more: Learn More
+
   classes:
     prompt: Enter your city or post code
+
   errors:
     title: Oops...
-    choices: 'Try one of these instead:'
+    alternatives_title: 'Try one of these instead:'
     '404': The page you were looking for doesn't exist.
     '422': The change you wanted was rejected.
     '500': We're sorry, but something went wrong.
 
+  javascript:

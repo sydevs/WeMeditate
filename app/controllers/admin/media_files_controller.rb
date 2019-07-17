@@ -19,7 +19,7 @@ module Admin
 
     def clean
       MediaFile.where(usage_count: 0).destroy_all
-      redirect_to admin_media_files_path, flash: { notice: translate('messages.result.deleted') }
+      redirect_to admin_media_files_path, flash: { notice: translate('admin.result.deleted') }
     end
 
     protected

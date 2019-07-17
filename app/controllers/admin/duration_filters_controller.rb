@@ -12,12 +12,7 @@ module Admin
     end
 
     def destroy
-      if @duration_filter.meditations.present?
-        message = t('messages.result.cannot_delete_attached_record', model: DurationFilter.model_name.human.downcase, association: Meditation.model_name.human(count: -1).downcase)
-        redirect_to [:admin, DurationFilter], alert: message
-      else
-        super
-      end
+      super associations: %i[meditations]
     end
 
     private

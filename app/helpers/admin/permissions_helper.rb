@@ -10,20 +10,12 @@ module Admin
       destroy: 'warning sign',
     }.freeze
 
-    DEFAULT_TEXT = {
-      create: 'Can Create',
-      update: 'Can Modify',
-      publish: 'Can Approve Changes',
-      destroy: 'Can Delete',
-    }
-
     MATRIX = {
       article: {
         translator: %i[update],
         editor: {
-          # TODO: Translation
-          update: 'Can Modify Own Items',
-          publish: 'Can Approve Changes to Own Items',
+          update: 'update_own',
+          publish: 'publish_own',
           create: true,
         },
         regional_admin: %i[update publish create],
@@ -102,9 +94,8 @@ module Admin
         translator: [],
         editor: [],
         regional_admin: {
-          # TODO: Translation
-          update: 'Can Modify Writers and Translators',
-          create: 'Can Create Writers and Translators',
+          update: 'update_subordinate',
+          create: 'create_subordinate',
         },
         super_admin: %i[update create destroy],
       },
@@ -124,23 +115,24 @@ module Admin
         content_tag :tr do
           concat tag.td(translate model, scope: %i[activerecord models], count: -1)
           permission_set.values.each do |permissions|
-            concat tag.td(permission_icons(permissions))
+            concat tag.td(permission_icons(model, permissions))
           end
         end
       end
 
-      def permission_icons permissions
+      def permission_icons model, permissions
         capture do
           if permissions.is_a? Array
             permissions.each do |permission|
-              concat permission_icon(permission, DEFAULT_TEXT[permission])
+              concat permission_icon(permission, translate(permission, scope: %i[admin permissions]))
             end
           else
             permissions.each do |permission, value|
               if value == true
-                concat permission_icon(permission, DEFAULT_TEXT[permission])
+                concat permission_icon(permission, translate(permission, scope: %i[admin permissions]))
               else
-                concat permission_icon(permission, value, partial: true)
+                model_name = translate(model, scope: %i[activerecord models], count: -1)
+                concat permission_icon(permission, translate(value, scope: %i[admin permissions special], model: model_name), partial: true)
               end
             end
           end

@@ -1,23 +1,24 @@
 
 - allow = policy(@record)
-- content_for :title, t('action.target.review', target: @record.model_name.human)
+- content_for :title, translate('admin.action.target.review', target: @record.model_name.human)
 
-.ui.message Changes were contibuted by X, Y, Z
+- if @record.try(:owner)
+  / TODO: Instead we should show everyone who has contributed to this draft.
+  .ui.message = translate 'admin.details.written_by', author: @record.owner.name
 
 = simple_form_for @record, url: url_for([:approve, :admin, @record]), method: :patch
-  / TODO: Translate
-  h3 #{@model.model_name.human} Detail Changes
+  h3 = translate 'admin.review.attribute_changes', model: @model.model_name.human
 
   - if @record.draft.except('content').empty?
-    | None
+    = translate 'admin.review.no_changes'
   - else
     table.ui.compact.celled.definition.review.table
       thead
         tr
-          th Approve?
-          th Field
-          th Old Value
-          th New Value
+          th = translate 'admin.review.approve?'
+          th = translate 'admin.review.field'
+          th = translate 'admin.review.old_value'
+          th = translate 'admin.review.new_value'
       tbody
         - @record.draft.each do |key, value|
           - next if key == 'content'
@@ -55,25 +56,23 @@
                 td = value.is_a?(String) ? Differ.diff_by_char(value, old_value.to_s).format_as(:html).html_safe : value
       tfoot.full-width
         tr
-          / TODO: Translate
           th colspan=4
             .ui.compact.basic.negative.tiny.button
-              | Reject All
+              = translate 'admin.review.reject_all'
             .ui.compact.basic.positive.tiny.button
-              | Approve All
+              = translate 'admin.review.approve_all'
 
-  / TODO: Translate
-  h3 #{@model.model_name.human} Content Changes
+  h3 = translate 'admin.review.content_changes', model: @model.model_name.human
 
   - if !@record.draft['content'].present?
-    | None
+    = translate 'admin.review.no_changes'
   - else
     table.ui.compact.celled.definition.review.table
       thead
         tr
-          th Approve?
-          th Block
-          th Data
+          th = translate 'admin.review.approve?'
+          th = translate 'admin.review.block'
+          th = translate 'admin.review.data'
       tbody
         = draft_diff(@record) do |i, mode, original, draft, original_index, draft_index|
           - type = original ? original['type'] : draft['type']
@@ -94,12 +93,11 @@
             td.diff = Differ.diff_by_word(display_block_data(draft), display_block_data(original)).format_as(:html).html_safe
       tfoot.full-width
         tr
-          / TODO: Translate
           th colspan=3
             .ui.compact.basic.negative.tiny.button
-              | Reject All
+              = translate 'admin.review.reject_all'
             .ui.compact.basic.positive.tiny.button
-              | Approve All
+              = translate 'admin.review.approve_all'
 
   .ui.hidden.divider
 
@@ -107,12 +105,12 @@
     - if allow.show?
       a.ui.basic.button href=url_for([:admin, @record])
         i.left.arrow.icon
-        = translate 'action.back'
+        = translate 'admin.action.simple.back'
     - else
       a.ui.basic.button href=url_for([:admin, defined?(@record.page) ? @record.page : @record.class])
         i.left.arrow.icon
-        = translate 'action.target.back', target: @record.model_name.human(count: -1)
+        = translate 'admin.action.target.back', target: @record.model_name.human(count: -1)
 
     button.ui.basic.primary.button type='submit'
-      = translate 'action.publish'
+      = translate 'admin.action.simple.approve'
 

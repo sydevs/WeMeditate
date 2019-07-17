@@ -3,7 +3,7 @@ class VideoTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="play icon"></i>',
-      title: 'Video',
+      title: translate['content']['blocks']['video'],
     }
   }
 
@@ -24,7 +24,6 @@ class VideoTool extends EditorTool {
       tunes: [
         {
           name: 'asGallery',
-          label: 'Gallery',
           icon: 'clone',
         },
       ],
@@ -82,7 +81,7 @@ class VideoTool extends EditorTool {
       innerHTML: item.title || `Video #${item.vimeo_id}`,
     }, container)
 
-    title.dataset.placeholder = 'Enter a title'
+    title.dataset.placeholder = translate['content']['placeholders']['title']
 
     let remove = make('i', [this.CSS.item.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, container)
     remove.addEventListener('click', (event) => this.removeItem(event.target.parentNode))

@@ -1,5 +1,5 @@
 
-- content_for :title, t('action.target.write', target: @record.model_name.human)
+- content_for :title, translate('admin.action.target.write', target: @record.model_name.human)
 - allow = policy(@record)
 - has_draft = @record.has_draft? && @record.draft&.has_key?('content')
 - content = has_draft ? @record.draft['content'] : (@record.content || {})
@@ -10,7 +10,7 @@
 
   .field class=('draft' if has_draft) data-draft='content'
     - if @record.reviewable? && has_draft
-      .ui.yellow.message You are viewing a draft version of this #{@record.model_name.human}. This version not be visible to the public until it has been reviewed by an administrator.
+      .ui.yellow.message = translate 'admin.messages.draft_mnotice', target: @record.model_name.human
 
       = draft_reset_buttons(:content, @record.content && JSON.parse(@record.content), JSON.parse(content))
       .clearfix
@@ -34,28 +34,23 @@
     - if allow.show?
       a.ui.basic.button href=url_for([:admin, @record])
         i.left.arrow.icon
-        = translate 'action.back'
+        = translate 'admin.action.simple.back'
     - else
       a.ui.basic.button href=url_for([:admin, defined?(@record.page) ? @record.page : @record.class])
         i.left.arrow.icon
-        = translate 'action.target.back', target: @record.model_name.human(count: -1)
+        = translate 'admin.action.target.back', target: @record.model_name.human(count: -1)
 
     - if allow.publish?
       button.ui.basic.positive.button type='submit' name='draft' value='true'
-        = translate 'action.update'
+        = translate 'admin.action.simple.update'
 
       - unless @record.is_a? Article and @record.new_record?
         button.ui.basic.primary.button type='submit'
-          = translate 'action.publish'
+          = translate 'admin.action.simple.approve'
     - else
       button.ui.basic.positive.button type='submit'
-        = translate 'action.update'
+        = translate 'admin.action.simple.update'
 
     div#upload-loader style='display: none'
       i.notched.circle.loading.icon
       span
-
-hr
-code = has_draft ? 'Draft' : 'Published'
-br
-code = content

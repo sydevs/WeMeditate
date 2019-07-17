@@ -6,9 +6,9 @@
   = form_tag url_for([:sort, :admin, model]), method: :put
     .actions
       a.ui.tiny.compact.basic.button href=url_for([:admin, model])
-        = translate 'action.cancel'
+        = translate 'admin.action.simple.cancel'
       button.ui.tiny.compact.basic.positive.right.labeled.icon.button
-        = translate 'action.update'
+        = translate 'admin.action.simple.update'
         i.checkmark.icon
 
     .clearfix
@@ -29,7 +29,7 @@
     form method='GET' data-remote=true
       span.ui.mini.left.icon.input#search
         i.search.icon
-        input name='q' type='text' placeholder=t('action.search') value=params[:q]
+        input name='q' type='text' placeholder=translate('admin.action.search') value=params[:q]
 
   table.ui.very.basic.compact.unstackable.models.table
     tbody#records = render partial: 'record', collection: records

@@ -45,18 +45,22 @@ en:
         other: Media Files
 
     attributes:
-      article:
+      generic:
         published: Published
-        name: Title
+        name: Name
         slug: URL
+
+      article:
+        published: :activerecord.attributes.generic.published
+        name: Title
+        slug: :activerecord.attributes.generic.slug
         category: :activerecord.models.category
         priority: Visibility
         priorities:
           low: Low Visibility
           normal: Normal Visibility
           high: High Visibility
-        excerpt: Preview Content
-        banner: Banner Image
+        excerpt: Excerpt
         thumbnail: Thumbnail
         vimeo_id: Featured Video (Vimeo ID)
         date: Date
@@ -66,7 +70,7 @@ en:
 
       static_page:
         title: Title
-        slug: URL
+        slug: :activerecord.attributes.generic.slug
         role: Role
         roles:
           home: Home Page
@@ -86,8 +90,8 @@ en:
         metatags: Meta Tags
 
       subtle_system_node:
-        name: Name
-        slug: URL
+        name: :activerecord.attributes.generic.name
+        slug: :activerecord.attributes.generic.slug
         excerpt: Excerpt
         roles:
           chakra_1: Mooladhara Chakra
@@ -106,17 +110,17 @@ en:
         metatags: Meta Tags
 
       category:
-        published: Published
-        name: Name
-        slug: URL
+        published: :activerecord.attributes.article.published
+        name: :activerecord.attributes.generic.name
+        slug: :activerecord.attributes.generic.slug
         articles:
           one: 1 Article
           other: '%{count} Articles'
 
       treatment:
-        published: Published
-        name: Name
-        slug: URL
+        published: :activerecord.attributes.article.published
+        name: :activerecord.attributes.generic.name
+        slug: :activerecord.attributes.generic.slug
         excerpt: Excerpt
         content: Content
         thumbnail: Thumbnail (png)
@@ -125,36 +129,36 @@ en:
         metatags: Meta Tags
 
       instrument_filter:
-        published: Published
-        name: Name
+        published: :activerecord.attributes.article.published
+        name: :activerecord.attributes.generic.name
         icon: Icon
         tracks:
           one: 1 Track
           other: '%{count} Tracks'
 
       mood_filter:
-        published: Published
-        name: Name
+        published: :activerecord.attributes.article.published
+        name: :activerecord.attributes.generic.name
         tracks:
           one: 1 Track
           other: '%{count} Tracks'
 
       duration_filter:
-        published: Published
+        published: :activerecord.attributes.article.published
         minutes: Minutes
         meditations:
           one: 1 Meditation
           other: '%{count} Meditations'
 
       goal_filter:
-        published: Published
-        name: Name
+        published: :activerecord.attributes.article.published
+        name: :activerecord.attributes.generic.name
         meditations:
           one: 1 Meditation
           other: '%{count} Meditations'
 
       track:
-        published: Published
+        published: :activerecord.attributes.article.published
         title: Title
         artist: Artist
         audio: File (mp3)
@@ -162,9 +166,9 @@ en:
         mood_filters: :activerecord.models.mood_filter.other
 
       meditation:
-        published: Published
-        title: Name
-        slug: URL
+        published: :activerecord.attributes.article.published
+        name: :activerecord.attributes.generic.name
+        slug: :activerecord.attributes.generic.slug
         horizontal_vimeo_id: Horizontal Video (Vimeo ID)
         vertical_vimeo_id: Vertical Video (Vimeo ID)
         duration_filter: :activerecord.models.duration_filter.one
@@ -172,8 +176,8 @@ en:
         metatags: Meta Tags
 
       artist:
-        published: Published
-        name: Name
+        published: :activerecord.attributes.article.published
+        name: :activerecord.attributes.generic.name
         image: Album Art
         url: Website
         tracks:
@@ -182,19 +186,19 @@ en:
 
       user:
         email: Email Address
-        encrypted_password: Encrypted password  #g
-        invitation_accepted_at: Invitation accepted at  #g
-        invitation_created_at: Invitation created at  #g
-        invitation_limit: Invitation limit  #g
-        invitation_sent_at: Invitation sent at  #g
-        invitation_token: Invitation token  #g
-        invited_by: :activerecord.models.invited_by  #g
-        invited_by_type: Invited by type  #g
-        remember_created_at: Remember created at  #g
-        reset_password_sent_at: Reset password sent at  #g
-        reset_password_token: Reset password token  #g
-        role: Role  #g
+        encrypted_password: Encrypted password
+        invitation_accepted_at: Invitation accepted at
+        invitation_created_at: Invitation created at
+        invitation_limit: Invitation limit
+        invitation_sent_at: Invitation sent at
+        invitation_token: Invitation token
+        invited_by: :activerecord.models.invited_by
+        invited_by_type: Invited by type
+        remember_created_at: Remember created at
+        reset_password_sent_at: Reset password sent at
+        reset_password_token: Reset password token
         languages: Languages
+        role: Role
         roles:
           translator: Translator
           editor: Writer

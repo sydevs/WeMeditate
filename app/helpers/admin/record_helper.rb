@@ -10,36 +10,24 @@ module Admin::RecordHelper
   # ===== MESSAGES ===== #
   def record_published_at_status
     if not @record.published_at
-      translate 'tags.unpublished_draft'
+      translate 'admin.tags.unpublished_draft'
     elsif @record.has_draft?
-      translate 'tags.published_ago', time_ago: time_ago_in_words(@record.published_at)
+      translate 'admin.tags.published_ago', time_ago: time_ago_in_words(@record.published_at)
     else
-      translate 'tags.published'
+      translate 'admin.tags.published'
     end
   end
 
   def record_modified_at_status
     date = @record.has_draft? ? @record.updated_at : (@record.try(:published_at) || @record.updated_at)
-    translate 'tags.updated_ago', time_ago: time_ago_in_words(date)
+    translate 'admin.tags.updated_ago', time_ago: time_ago_in_words(date)
   end
 
   # ===== INTERFACE ====== #
 
-  def record_status
-    if !@record.published_at
-      message = 'Not Published'
-    elsif @record.has_draft?
-      message = 'Has Unpublished Changes'
-    else
-      message = 'Published'
-    end
-
-    tag.div message, class: 'ui label'
-  end
-
   def record_actions actions
     tag.div class: 'ui tiny compact basic buttons' do
-      concat tag.div t(actions.first, scope: :action), class: 'ui button'
+      concat tag.div translate(actions.first, scope: %i[admin action]), class: 'ui button'
       concat record_actions_dropdown(actions.drop(1))
     end
   end
@@ -58,10 +46,6 @@ module Admin::RecordHelper
     original_types = original_blocks.map { |b| b['type'] }
     draft_types = draft_blocks.map { |b| b['type'] }
     diff = JsonDiff.diff(original_types, draft_types, moves: false, original_indices: true)
-
-    #concat tag.p original_types
-    #concat tag.p draft_types
-    #concat tag.p diff
 
     loop_counter = 0
     diff_index = 0
@@ -100,44 +84,6 @@ module Admin::RecordHelper
       original_index += 1 if original_block
       draft_index += 1 if draft_block
       loop_counter += 1
-
-=begin
-      if !change
-        mode = (original_blocks[original_index] == draft_blocks[draft_index] ? 'nochange' : 'modified')
-        yield mode, original_blocks[original_index], draft_blocks[draft_index]
-        original_index += 1
-        draft_index += 1
-      elsif change['op'] == 'remove'
-        if target_index == original_index
-          draft_block = nil
-        else
-          mode = 'modified' if original_block != draft_block
-          change = nil
-        end
-
-        if target_index == original_index
-          yield 'removed', original_blocks[original_index], nil
-          original_index += 1
-          diff_index += 1
-        else
-          mode = (original_blocks[original_index] == draft_blocks[draft_index] ? 'nochange' : 'modified')
-          yield mode, original_blocks[original_index], draft_blocks[draft_index]
-          original_index += 1
-          draft_index += 1
-        end
-      elsif change['op'] == 'add'
-        if target_index == draft_index
-          yield 'added', nil, draft_blocks[draft_index]
-          draft_index += 1
-          diff_index += 1
-        else
-          mode = (original_blocks[original_index] == draft_blocks[draft_index] ? 'nochange' : 'modified')
-          yield mode, original_blocks[original_index], draft_blocks[draft_index]
-          draft_index += 1
-          original_index += 1
-        end
-      end
-=end
     end
   end
 
@@ -176,7 +122,7 @@ module Admin::RecordHelper
 
       content_tag :a, **args do
         concat tag.i class: "#{ACTION_ICONS[action]} icon"
-        concat translate(action, scope: :action)
+        concat translate(action, scope: %i[admin action])
       end
     end
 

@@ -12,11 +12,7 @@ module Admin
     end
 
     def destroy
-      if @category.articles.present?
-        redirect_to [:admin, Category], alert: t('messages.result.cannot_delete_attached_record', model: Category.model_name.human.downcase, association: Article.model_name.human(count: -1).downcase)
-      else
-        super
-      end
+      super associations: %i[articles]
     end
 
     protected

@@ -82,7 +82,7 @@ class EditorTool {
       contentEditable: true,
     }, container)
 
-    result.dataset.placeholder = field.label
+    result.dataset.placeholder = field.label || translate['content']['placeholders'][key]
 
     return result
   }
@@ -132,8 +132,14 @@ class EditorTool {
     this.settingsContainer = make('div', this.CSS.settingsWrapper)
 
     this.tunes.map(tune => {
+      if (tune.group) {
+        let label = translate['content']['tunes'][tune.group][tune.name]
+      } else {
+        let label = translate['content']['tunes'][tune.name]
+      }
+
       const button = make('div', [this.CSS.settingsButton, this.CSS.settingsButtons[tune.name]], {
-        title: tune.label,
+        title: label,
       }, this.settingsContainer)
 
       button.innerHTML = '<i class="'+tune.icon+' icon"></i>'

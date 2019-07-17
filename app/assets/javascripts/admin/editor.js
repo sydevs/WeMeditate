@@ -86,8 +86,7 @@ const Editor = {
   adjustPendingUploads(adjustment) {
     Editor.pending_uploads += adjustment
     if (Editor.pending_uploads > 0) {
-      // TODO: Translate this
-      Editor.upload_loader.querySelector('span').innerText = `Waiting for ${Editor.pending_uploads} file(s) to finish uploading...`
+      Editor.upload_loader.querySelector('span').innerText = translate['waiting_for_upload'].replace('%{count}', Editor.pending_uploads)
       Editor.form.classList.add('disabled')
       Editor.form.setAttribute('disabled', true)
       $(Editor.form).find('button[type=submit]').attr('disabled', true)
@@ -140,18 +139,6 @@ const Editor = {
     }).catch((error) => {
       console.error('Editor saving failed: ', error)
       event.preventDefault()
-    })
-
-    // TODO: Remove this testing code
-    //event.preventDefault()
-  },
-
-  // TODO: Remove this test code
-  previewData() {
-    Editor.instance.save().then((outputData) => {
-      console.log('Article data: ', outputData)
-    }).catch((error) => {
-      console.error('Editor saving failed: ', error)
     })
   },
 

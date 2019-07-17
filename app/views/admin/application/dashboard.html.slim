@@ -1,8 +1,7 @@
 
-- content_for :title, t('misc.dashboard')
+- content_for :title, translate('admin.dashboard.title')
 
-/ TODO: Figure out this title
-h3 Actions
+h3 = translate 'admin.dashboard.actions'
 
 table.ui.very.basic.compact.unstackable.models.table
   tbody
@@ -10,13 +9,14 @@ table.ui.very.basic.compact.unstackable.models.table
       - @issues.each do |issue|
         tr
           td.selector
+            / TODO: Translate
             a href=issue[:url] = issue[:name] || 'No Translated Title'
 
           td.collapsing.right.aligned.disabled
             = issue[:message]
 
           td.collapsing.right.aligned
-            = table_icon urgency_icon_key(issue[:urgency]), t(issue[:urgency], scope: %i[tags urgency])
+            = table_icon urgency_icon_key(issue[:urgency]), translate(issue[:urgency], scope: %i[admin tags urgency])
     - else
-      / TODO: Translate
-      tr: td No issues right now, good job!
+      tr
+        td = translate 'admin.dashboard.no_issues'

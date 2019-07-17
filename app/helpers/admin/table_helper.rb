@@ -62,7 +62,7 @@ module Admin::TableHelper
           concat detail
         end
 
-        concat table_icon 'eye', t('tags.views', count: record.views), record.views
+        concat table_icon 'eye', translate('admin.tags.views', count: record.views), record.views
       when Category
         article_count = record.articles.count
         concat table_icon 'file text', Category.human_attribute_name(:articles, count: article_count), article_count
@@ -90,7 +90,7 @@ module Admin::TableHelper
       end
 
       if policy(model).sort? and records.count > 1
-        concat table_action t('action.target.reorder', target: model.model_name.human), 'bars', url_for([:admin, model, reorder: true])
+        concat table_action translate('admin.action.target.reorder', target: model.model_name.human), 'bars', url_for([:admin, model, reorder: true])
       end
     end
   end
@@ -108,11 +108,11 @@ module Admin::TableHelper
 
     capture do
       if parent
-        concat table_link t('action.target.back', target: parent.model_name.human(count: -1)), 'left arrow', url_for([:admin, parent])
+        concat table_link translate('admin.action.target.back', target: parent.model_name.human(count: -1)), 'left arrow', url_for([:admin, parent])
       end
 
       if policy(model).new?
-        concat table_link t("action.create_model.target.#{model.model_name.i18n_key}", target: model.model_name.human, default: :'action.target.create'), 'plus', url_for([:new, :admin, model.model_name.singular_route_key.to_sym])
+        concat table_link translate(model.model_name.i18n_key, scope: %i[admin action create_model target], target: model.model_name.human, default: :'admin.action.target.create'), 'plus', url_for([:new, :admin, model.model_name.singular_route_key.to_sym])
       end
     end
   end

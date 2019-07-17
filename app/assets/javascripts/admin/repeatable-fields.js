@@ -36,8 +36,7 @@ let RepeatableFields = {
           this.value = data[key]
         } else if (this.className = 'ui media input') {
           Media.set_input($(this))
-          // TODO: Translate this next line.
-          let name = Media.allow_multiple_selection ? 'Files' : 'File'
+          let name = Media.allow_multiple_selection ? translate['files'] : translate['file']
           Media.set_value({ name: name, value: data[this.dataset.key], url: undefined })
         } else {
           console.error('Resetting', this.tagName, 'fields is currently not supported for repeatable fields.')

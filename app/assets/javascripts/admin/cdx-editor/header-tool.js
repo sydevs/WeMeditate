@@ -3,7 +3,7 @@ class HeaderTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="heading icon"></i>',
-      title: 'Header',
+      title: translate['content']['blocks']['header'],
     }
   }
 
@@ -27,7 +27,6 @@ class HeaderTool extends EditorTool {
       tunes: [
         {
           name: 'centered',
-          label: 'Centered',
           icon: 'align center',
         }
       ],

@@ -25,16 +25,19 @@ html lang=locale
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = render_structured_data @metadata_record if @metadata_record.present?
 
-- classes = [controller_name, "#{controller_name}-#{action_name}"]
-- classes << "static-page static-page-#{@static_page.role.to_s.dasherize}" if @static_page.present?
+  - classes = [controller_name, "#{controller_name}-#{action_name}"]
+  - classes << "static-page static-page-#{@static_page.role.to_s.dasherize}" if @static_page.present?
 
-body id='top' class=classes
-  //.preloader
-    image width="200" height="100" src=image_path('svg/preloader.svg') alt="preloader"
+  body id='top' class=classes
+    //.preloader
+      image width="200" height="100" src=image_path('svg/preloader.svg') alt="preloader"
 
-  = render 'layouts/partials/header', cached: true
-  = yield
-  = render 'layouts/partials/footer', cached: true
+    = render 'layouts/partials/header', cached: true
+    = yield
+    = render 'layouts/partials/footer', cached: true
 
-  #video-popup.mfp-hide
-    video#video-player controls=true
+    #video-popup.mfp-hide
+      video#video-player controls=true
+
+  javascript:
+    window.I18n = #{translate('javascript').to_json}

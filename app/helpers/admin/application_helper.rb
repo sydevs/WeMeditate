@@ -40,26 +40,47 @@ module Admin
       "https://www.google.com/maps/search/?api=1&query=#{latitude}%2C#{longitude}"
     end
 
-    def content_outline blocks
-      # TODO: Translate
+    def content_outline record
+      blocks = JSON.parse(record.content.to_json)['blocks'] if record.content.present?
+      return unless blocks
+
       content_tag :ul do
         for block in blocks
           case block['type']
           when 'splash', 'header', 'textbox' # Bold title
             field = block['type'] == 'header' ? 'text' : 'title'
-            concat content_tag :li, tag.strong(block['data'][field])
-            concat content_tag :li, tag.i("#{block['type'].titleize}: #{pluralize block['data']['text'].split.size, 'word'}") if block['type'] == 'textbox' && !block['data']['asVideo']
+            title = block['data'][field]
+            type = translate(block['type'], scope: %i[admin content blocks])
+            word_count = translate('admin.content.words', count: block['data']['text'].split.size)
+
+            concat content_tag :li, tag.strong(title)
+            concat content_tag :li, tag.i("#{type}: #{word_count}") if block['type'] == 'textbox' && !block['data']['asVideo']
+
           when 'form' # Content
             concat content_tag :li, "#{block['type'].titleize}: #{block['data']['title']}"
+
           when 'video', 'link', 'structured' # Items list
-            type = block['type'] == 'video' ? block['type'] : block['data']['format']
             field = block['type'] == 'link' ? 'name' : 'title'
             items = block['data']['items']&.map { |item| item[field] }&.join(', ')
+
+            if block['type'] == 'video'
+              type = translate(block['type'], scope: %i[admin content blocks])
+            else
+              type = translate(block['data']['format'], scope: %i[admin content tunes])
+            end
+
             concat content_tag :li, "#{type.titleize}: #{items}"
+
           when 'paragraph', 'quote' # Word count
-            concat content_tag :li, tag.i("#{block['type'].titleize}: #{pluralize block['data']['text'].split.size, 'word'}")
+            type = translate(block['type'], scope: %i[admin content blocks])
+            word_count = translate('admin.content.words', count: block['data']['text'].split.size)
+            concat content_tag :li, tag.i("#{type}: #{word_count}")
+
           when 'list', 'image' # Items count
-            concat content_tag :li, "#{block['type'].titleize}: #{pluralize block['data']['items'].length, 'item'}"
+            type = translate(block['type'], scope: %i[admin content blocks])
+            item_count = translate('admin.content.items', count: block['data']['text'].split.size)
+            concat content_tag :li, tag.i("#{type}: #{item_count}")
+
           else
             concat block.inspect
           end

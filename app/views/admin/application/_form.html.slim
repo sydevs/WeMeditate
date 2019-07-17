@@ -2,12 +2,12 @@
 - allow = policy(record)
 
 - if record.reviewable? && record.published? && record.has_draft?
-  .ui.yellow.message This #{record.model_name.human} has unpublished changes. These will not be visible to the public until they have been reviewed by an administrator.
+  .ui.yellow.message = translate 'admin.messages.unpublished_changes_notice', target: record.model_name.human
 
 = simple_form_for [:admin, record], html: { id: "#{record.model_name.i18n_key}-form", class: "#{'error' if record.errors.present?}", novalidate: true } do |f|
   - if record.errors.present?
     .ui.error.message
-      .header Issues
+      .header = translate 'admin.misc.errors'
       ul.list
         - record.errors.full_messages.each do |message|
           li = message
@@ -18,25 +18,23 @@
       = draftable_field f, :published, type: :toggle do |value|
         .ui.toggle.checkbox class=classes
           = f.check_box :published, checked: value, uncheck_value: 'false'
-          label = translate 'messages.make_public', target: record.model_name.human(count: 1).downcase
+          label = translate 'admin.messages.make_public', target: record.model_name.human(count: 1).downcase
 
         - if record.try(:published_at)
-          / TODO: Translate
-          .hint First published at #{record.published_at.to_s(:long)}
+          .hint = translate 'admin.details.first_published_at', time: record.published_at.to_s(:long)
     - else
       = f.input :published, wrapper_html: { class: classes } do
         .ui.toggle.checkbox class=classes
           = f.check_box :published, checked: record.published?, unchecked_value: 'false'
-          label = translate 'messages.make_public', target: record.model_name.human(count: 1).downcase
+          label = translate 'admin.messages.make_public', target: record.model_name.human(count: 1).downcase
 
         - if record.try(:published_at)
-          / TODO: Translate
-          .hint First published at #{record.published_at.to_s(:long)}
+          .hint = translate 'admin.details.first_published_at', time: record.published_at.to_s(:long)
 
   - if record.viewable?
     - if record.reviewable?
       = draftable_field f, :name
-      / TODO: Try and improve this
+      / TODO: Try and improve this janky way of getting the url. It's because articles don't have an index route
       - url = record.is_a?(Article) && record.new_record? ? "/#{translate 'routes.articles'}/*" : url_for(record)
       = draftable_slug_field f, url
     - else
@@ -50,15 +48,15 @@
 
   - if record.viewable? && allow.update_structure?
     = render 'admin/partials/repeatable_fields', f: f, attribute: :metatags, horizontal: true do |ff, item|
-      = ff.text_field :name, value: item[0], placeholder: t('metadata.key'), name: "#{ff.object_name}[keys][]", data: { key: 'key' }
-      = ff.text_field :value, value: item[1], placeholder: t('metadata.value'), name: "#{ff.object_name}[values][]", data: { key: 'value' }
+      = ff.text_field :name, value: item[0], placeholder: translate('admin.metadata.key'), name: "#{ff.object_name}[keys][]", data: { key: 'key' }
+      = ff.text_field :value, value: item[1], placeholder: translate('admin.metadata.value'), name: "#{ff.object_name}[values][]", data: { key: 'value' }
 
     - unless record.new_record?
       .field
         .ui.accordion#metatags
           .title
             i.dropdown.icon
-            = translate 'metadata.default_metatags'
+            = translate 'admin.metadata.default_metatags'
           .content
             .ui.list
               - default_metatags(record).each do |key, value|
@@ -72,7 +70,7 @@
         .ui.accordion#jsonld
           .title
             i.dropdown.icon
-            = translate 'metadata.generated_jsonld'
+            = translate 'admin.metadata.generated_jsonld'
           .content
             code = JSON.pretty_generate(structured_data(record))
 
@@ -82,20 +80,20 @@
     - if allow.show?
       a.ui.basic.button href=url_for([:admin, record])
         i.left.arrow.icon
-        = translate 'action.back'
+        = translate 'admin.action.simple.back'
     - else
       a.ui.basic.button href=url_for([:admin, defined?(record.page) ? record.page : record.class])
         i.left.arrow.icon
-        = translate 'action.target.back', target: record.model_name.human(count: -1)
+        = translate 'admin.action.target.back', target: record.model_name.human(count: -1)
 
     - if record.reviewable? && allow.publish?
       button.ui.basic.positive.button type='submit' name='draft' value='true'
-        = translate 'action.save_draft'
+        = translate 'admin.action.simple.save_draft'
 
       - unless record.is_a? Article and record.new_record?
         button.ui.basic.primary.button type='submit'
-          = translate 'action.publish'
+          = translate 'admin.action.simple.approve'
     - else
       button.ui.basic.positive.button type='submit'
-        = translate 'action.update'
+        = translate 'admin.action.simple.update'
 

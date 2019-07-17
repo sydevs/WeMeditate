@@ -12,11 +12,7 @@ module Admin
     end
 
     def destroy
-      if @artist.tracks.present?
-        redirect_to [:admin, Artist], alert: t('messages.result.cannot_delete_attached_record', model: Artist.model_name.human.downcase, association: Track.model_name.human(count: -1).downcase)
-      else
-        super
-      end
+      super associations: %i[tracks]
     end
 
     private

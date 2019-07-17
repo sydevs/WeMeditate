@@ -61,9 +61,8 @@ class FormTool extends EditorTool {
     const button = container.querySelector(`.${this.CSS.fields.action}`)
     const fields = make('div', this.CSS.fields_placeholder)
 
-    // TODO: Translate this
-    make('div', [this.CSS.placeholder, this.CSS.placeholders.email], { innerText: 'Email' }, fields)
-    make('div', [this.CSS.placeholder, this.CSS.placeholders.message], { innerText: 'Message' }, fields)
+    make('div', [this.CSS.placeholder, this.CSS.placeholders.email], { innerText: translate['email'] }, fields)
+    make('div', [this.CSS.placeholder, this.CSS.placeholders.message], { innerText: translate['message'] }, fields)
 
     container.insertBefore(fields, button)
     return container

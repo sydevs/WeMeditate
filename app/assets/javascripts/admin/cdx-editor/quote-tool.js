@@ -3,7 +3,7 @@ class QuoteTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="quote left icon"></i>',
-      title: 'Quote',
+      title: translate['content']['blocks']['quote'],
     }
   }
 
@@ -25,20 +25,18 @@ class QuoteTool extends EditorTool {
     }, { // Config
       id: 'quote',
       fields: {
-        text: { label: 'Enter a quote', input: 'textarea' },
-        credit: { label: 'Enter a credit', input: 'caption' },
-        caption: { label: 'Enter a caption', input: 'caption' },
+        text: { label: translate['content']['placeholders']['quote'], input: 'textarea' },
+        credit: { input: 'caption' },
+        caption: { input: 'caption' },
       },
       tunes: [
         {
           name: 'left',
-          label: 'As Left Callout',
           icon: 'indent',
           group: 'callout',
         },
         {
           name: 'right',
-          label: 'As Right Callout',
           icon: 'horizontally flipped indent',
           group: 'callout',
         },

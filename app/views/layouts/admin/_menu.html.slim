@@ -6,11 +6,11 @@
 
 .ui.fluid.secondary.vertical.menu
   = link_to [:admin, :root], class: "#{'active' if action_name == 'dashboard'} item"
-    = translate 'misc.dashboard'
+    = translate 'admin.misc.menu.dashboard'
 
   - if policy(Article).index? or policy(StaticPage).index? or policy(SubtleSystemNode).index?
     .item
-      .title = translate 'misc.menu.pages'
+      .title = translate 'admin.misc.menu.pages'
       .menu
         - if policy(Article).index?
           = link_to [:admin, Article], class: "#{'active' if ['articles', 'categories'].include? controller_name} item"
@@ -29,7 +29,7 @@
 
   - if policy(Track).index? or policy(Meditation).index? or policy(Treatment).index?
     .item
-      .title = translate 'misc.menu.resources'
+      .title = translate 'admin.misc.menu.resources'
       .menu
         - if policy(Meditation).index?
           = link_to [:admin, Meditation], class: "#{'active' if ['meditations', 'goal_filters', 'duration_filters'].include? controller_name} item"
@@ -60,7 +60,7 @@
 .ui.vertical.text.menu
   = link_to root_path, class: 'item' do
     i.browser.icon
-    = t('action.view_site')
+    = translate('admin.action.view_site')
   = link_to destroy_user_session_path, class: 'item', method: :delete do
     i.sign.out.icon
-    = t('action.sign_out')
+    = translate('admin.action.sign_out')

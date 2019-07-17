@@ -41,7 +41,7 @@ module Admin
       authorize @record
 
       if @record.save
-        redirect_to (redirect || [:edit, :admin, @record]), flash: { notice: t('messages.result.created') }
+        redirect_to (redirect || [:edit, :admin, @record]), flash: { notice: translate('admin.result.created') }
       else
         render :new
       end
@@ -52,7 +52,7 @@ module Admin
       record_params = update_params(record_params)
       @record.attributes = record_params
 
-      notice = translate 'messages.result.updated'
+      notice = translate 'result.updated'
       redirect = [(record_params[:content].present? ? :write : :edit), :admin, @record] if redirect.nil?
       # redirect = (allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
 
@@ -61,7 +61,7 @@ module Admin
       if @record.reviewable?
         if allow.publish? && params[:draft] != 'true'
           @record.discard_draft!
-          notice = translate 'messages.result.saved_but_needs_review'
+          notice = translate 'admin.result.saved_but_needs_review'
         else
           @record.record_draft!
         end
@@ -76,7 +76,6 @@ module Admin
     end
 
     def review
-      puts "REVIEW"
       render 'admin/application/review'
     end
 
@@ -92,7 +91,15 @@ module Admin
       end
     end
 
-    def destroy
+    def destroy associations: []
+      associations.each do |key|
+        if @record.send(key).present?
+          associated_model = @model.reflect_on_association(key).class
+          message = translate('admin.result.cannot_delete_attached_record', model: @model.model_name.human.downcase, association: associated_model.model_name.human(count: -1).downcase)
+          redirect_to [:admin, @model], alert: message
+        end  
+      end
+
       if @record.translatable? and @record.translated_locales.include? I18n.locale
         if @record.translated_locales.count == 1
           @record.destroy
@@ -104,7 +111,7 @@ module Admin
       end
 
       respond_to do |format|
-        format.html { redirect_to [:admin, @model], flash: { notice: t('messages.result.deleted') } }
+        format.html { redirect_to [:admin, @model], flash: { notice: translate('admin.result.deleted') } }
         format.js { render 'admin/application/destroy' }
       end
     end

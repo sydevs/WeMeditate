@@ -12,8 +12,7 @@ class ImageUploader {
     this.accepts = ['image/png', 'image/jpg', 'image/jpeg']
     this.fileQueue = []
 
-    // TODO: Translate
-    this.wrapper = make('div', this.CSS.dropzone, { innerHTML: 'Drag images here to upload' }, container)
+    this.wrapper = make('div', this.CSS.dropzone, { innerHTML: translate['drag_images_to_upload'] }, container)
     this.input = make('input', '', { type: 'file', accept: this.accepts.join(',') }, this.wrapper)
 
     this.wrapper.addEventListener('dragenter', event => {

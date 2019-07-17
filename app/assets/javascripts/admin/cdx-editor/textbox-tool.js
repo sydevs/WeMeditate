@@ -3,7 +3,7 @@ class TextboxTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="list alternate outline icon"></i>',
-      title: 'Textbox',
+      title: translate['content']['blocks']['textbox'],
     }
   }
 
@@ -33,43 +33,37 @@ class TextboxTool extends EditorTool {
       id: 'textbox',
       decorations: ['triangle', 'gradient', 'sidetext', 'circle'],
       fields: {
-        image: { label: 'Image', input: false },
-        title: { label: 'Title', input: 'title' },
-        text: { label: 'Text', input: 'content' },
-        action: { label: 'Action', input: 'button' },
-        url: { label: 'Link', input: 'url' },
+        image: { input: false },
+        title: { input: 'title' },
+        text: { input: 'content' },
+        action: { input: 'button' },
+        url: { input: 'url' },
       },
       tunes: [
         {
           name: 'asWisdom',
-          label: 'Ancient Knowledge Style',
           icon: 'university',
         },
         {
           name: 'asVideo',
-          label: 'Video',
           icon: 'play',
         },
         {
           name: 'invert',
-          label: 'Invert Colours',
           icon: 'adjust',
         },
         {
           name: 'left',
-          label: 'Left Aligned',
           icon: 'align left',
           group: 'alignment',
         },
         {
           name: 'center',
-          label: 'Center Aligned',
           icon: 'align center',
           group: 'alignment',
         },
         {
           name: 'right',
-          label: 'Right Aligned',
           icon: 'align right',
           group: 'alignment',
         },

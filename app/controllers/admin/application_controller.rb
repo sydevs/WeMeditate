@@ -12,7 +12,7 @@ module Admin
         @issues << {
           name: helpers.human_enum_name(static_page, :role),
           url: url_for([:edit, :admin, static_page]),
-          message: t('tags.no_translation'),
+          message: translate('admin.tags.no_translation'),
           urgency: :critical,
         }
       end
@@ -21,7 +21,7 @@ module Admin
         @issues << {
           name: helpers.human_enum_name(subtle_system_node, :role),
           url: url_for([:edit, :admin, subtle_system_node]),
-          message: t('tags.no_translation'),
+          message: translate('admin.tags.no_translation'),
           urgency: :critical,
         }
       end
@@ -30,7 +30,7 @@ module Admin
         @issues << {
           name: article.name,
           url: url_for([:edit, :admin, article]),
-          message: t('tags.unpublished_changes'),
+          message: translate('admin.tags.unpublished_changes'),
           urgency: :important,
         }
       end
@@ -39,7 +39,7 @@ module Admin
         @issues << {
           name: article.name,
           url: url_for([:edit, :admin, article]),
-          message: t('tags.no_translation'),
+          message: translate('admin.tags.no_translation'),
           urgency: :normal,
         }
       end

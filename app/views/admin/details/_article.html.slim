@@ -12,12 +12,12 @@ p.details.excerpt = record.excerpt
     - if record.published?
       = record_detail 'linkify', url, url: url
     - elsif allow.preview?
-      = record_detail 'linkify', url, t('action.preview'), url: "#{url}?preview=true"
+      = record_detail 'linkify', url, translate('admin.action.descriptive.preview'), url: "#{url}?preview=true"
   - else
-    = record_detail 'orange warning sign', t('tags.no_translation')
+    = record_detail 'orange warning sign', translate('admin.tags.no_translation')
   - translated_locales = record.translated_locales.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
-  = record_detail 'globe', translated_locales, 'Translated Langauges'
-  = record_detail 'hashtag', record.category.name, 'Category'
-  = record_detail 'eye', human_enum_name(record, :priority), 'Order on Inspiration page'
-  = record_detail 'calendar', record.date, 'Featured Date' if record.date.present?
-  = record_detail 'play circle', "Video ##{record.vimeo_id}", 'Featured Video', url: "https://vimeo.com/#{record.vimeo_id}" if record.vimeo_id.present?
+  = record_detail 'globe', translated_locales, translate('admin.details.translated_languages')
+  = record_detail 'hashtag', record.category.name, Category.model_name.human
+  = record_detail 'eye', human_enum_name(record, :priority), translate('admin.details.priority')
+  = record_detail 'calendar', record.date, translate('admin.details.featured_date') if record.date.present?
+  = record_detail 'play circle', "Video ##{record.vimeo_id}", translate('admin.details.featured_video'), url: "https://vimeo.com/#{record.vimeo_id}" if record.vimeo_id.present?

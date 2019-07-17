@@ -3,7 +3,7 @@ class LinkTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="linkify icon"></i>',
-      title: 'Links',
+      title: translate['content']['blocks']['link'],
     }
   }
 
@@ -26,26 +26,23 @@ class LinkTool extends EditorTool {
       id: 'link',
       decorations: ['sidetext', 'leaves'],
       fields: {
-        items: { label: 'Items', input: false },
-        action: { label: 'Button Text', input: 'button' },
-        url: { label: 'Paste a link here', input: 'url' },
+        items: { input: false },
+        action: { input: 'button' },
+        url: { input: 'url' },
       },
       tunes: [
         {
           name: 'button',
-          label: 'Button',
           icon: 'hand point up outline',
           group: 'format',
         },
         {
           name: 'articles',
-          label: 'Articles',
           icon: 'file text',
           group: 'format',
         },
         {
           name: 'treatments',
-          label: 'Techniques',
           icon: 'sun',
           group: 'format',
         },
@@ -150,8 +147,7 @@ class LinkTool extends EditorTool {
             }
           })
         } else {
-          // TODO: Translate this
-          this.searchContainer.innerText = 'No results found...'
+          this.searchContainer.innerText = translate['no_results']
         }
 
         this.searchInput.parentNode.classList.remove('loading')

@@ -30,7 +30,7 @@ html
           = content_for :title
         span#loader
           i.notched.circle.loading.icon
-          = translate 'messages.loading'
+          = translate 'admin.messages.loading'
 
       .ui.divider
 
@@ -42,3 +42,7 @@ html
 
       #content
         = yield
+
+  javascript:
+    window.translate = #{translate('admin.javascript').to_json.html_safe}
+    window.translate['content'] = #{translate('admin.javascript.content').to_json.html_safe}

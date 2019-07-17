@@ -12,12 +12,7 @@ module Admin
     end
 
     def destroy
-      if @instrument_filter.tracks.present?
-        message = t('messages.result.cannot_delete_attached_record', model: InstrumentFilter.model_name.human.downcase, association: Track.model_name.human(count: -1).downcase)
-        redirect_to [:admin, InstrumentFilter], alert: message
-      else
-        super
-      end
+      super associations: %i[tracks]
     end
 
     private

@@ -3,7 +3,7 @@ class ImageTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="image icon"></i>',
-      title: 'Image',
+      title: translate['content']['blocks']['image'],
     }
   }
 
@@ -26,23 +26,19 @@ class ImageTool extends EditorTool {
       tunes: [
         {
           name: 'asGallery',
-          label: 'Gallery',
           icon: 'clone',
         },
         {
           name: 'stretch',
-          label: 'Fill screen width',
           icon: 'arrows alternate horizontal',
         },
         {
           name: 'left',
-          label: 'As Left Callout',
           icon: 'indent',
           group: 'callout',
         },
         {
           name: 'right',
-          label: 'As Right Callout',
           icon: 'horizontally flipped indent',
           group: 'callout',
         },
@@ -95,14 +91,14 @@ class ImageTool extends EditorTool {
       innerHTML: item.caption || '',
     }, container)
 
-    caption.dataset.placeholder = 'Enter a caption'
+    caption.dataset.placeholder = translate['content']['placeholders']['caption']
 
     let credit = make('div', [this.CSS.input, this.CSS.inputs.caption, this.CSS.item.credit], {
       contentEditable: true,
       innerHTML: item.credit || '',
     }, container)
 
-    credit.dataset.placeholder = 'Enter a credit'
+    credit.dataset.placeholder = translate['content']['placeholders']['credit']
 
     let remove = make('i', [this.CSS.item.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, container)
     remove.addEventListener('click', (event) => this.removeImageItem(event.target.parentNode))

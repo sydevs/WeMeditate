@@ -3,7 +3,7 @@ class StructuredTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="th icon"></i>',
-      title: 'Structured Text',
+      title: translate['content']['blocks']['structured'],
     }
   }
 
@@ -24,19 +24,16 @@ class StructuredTool extends EditorTool {
       tunes: [
         {
           name: 'grid',
-          label: 'Grid',
           icon: 'th',
           group: 'format',
         },
         {
           name: 'accordion',
-          label: 'Accordion',
           icon: 'th list',
           group: 'format',
         },
         {
           name: 'columns',
-          label: 'Columns',
           icon: 'columns',
           group: 'format',
         },
@@ -103,7 +100,7 @@ class StructuredTool extends EditorTool {
       innerHTML: data.title || '',
     }, container)
 
-    title.dataset.placeholder = 'Title'
+    title.dataset.placeholder = translate['content']['placeholders']['title']
 
     // Add text input
     const text = make('div', [this.CSS.input, this.CSS.inputs.text, this.CSS.item.text], {
@@ -111,7 +108,7 @@ class StructuredTool extends EditorTool {
       innerHTML: data.text || '',
     }, container)
 
-    text.dataset.placeholder = 'Text'
+    text.dataset.placeholder = translate['content']['placeholders']['text']
 
     return container
   }

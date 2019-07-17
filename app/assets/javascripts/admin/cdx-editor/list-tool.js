@@ -3,7 +3,7 @@ class ListTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="list icon"></i>',
-      title: 'List',
+      title: translate['content']['blocks']['list'],
     }
   }
 
@@ -26,19 +26,16 @@ class ListTool extends EditorTool {
       tunes: [
         {
           name: 'unordered',
-          label: 'Unordered',
           icon: 'list ul',
           group: 'style',
         },
         {
           name: 'ordered',
-          label: 'Ordered',
           icon: 'list ol',
           group: 'style',
         },
         {
           name: 'leaf',
-          label: 'Leaf Icon',
           icon: 'leaf',
           group: 'style',
         },

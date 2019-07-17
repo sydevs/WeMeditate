@@ -36,9 +36,8 @@ module Admin::InputHelper
       original_name = strip_tags(original_value)
       draft_name = strip_tags(draft_value)
     when :repeatable
-      # TODO: Translate these next lines.
-      original_name = pluralize(original_value.count, 'item')
-      draft_name = pluralize(draft_value.count, 'item')
+      original_name = translate('admin.draft.items', count: original_value.count)
+      draft_name = translate('admin.draft.items', count: draft_value.count)
     when :decorations
       original_name = original_value ? original_value['enabled'].reject(&:blank?).join(', ') : nil
       draft_name = draft_value ? draft_value['enabled'].reject(&:blank?).join(', ') : nil
@@ -46,10 +45,9 @@ module Admin::InputHelper
       original_name = ActiveModel::Type::Boolean.new.cast(original_value) ? 'True' : 'False' 
       draft_name = ActiveModel::Type::Boolean.new.cast(draft_value) ? 'True' : 'False' 
     when :content
-      # TODO: Translate
       original_count = original_value ? original_value['blocks'].count : 0
-      original_name = "Original content with #{pluralize(original_count, 'block')}"
-      draft_name = "New content with #{pluralize(draft_value['blocks'].count, 'block')}"
+      original_name = translate('admin.draft.content.original', count: original_value.count)
+      draft_name = translate('admin.draft.content.draft', count: draft_value['blocks'].count)
     else
       original_name = original_value
       draft_name = draft_value
@@ -62,9 +60,8 @@ module Admin::InputHelper
   end
 
   def draft_reset_button name, value, type
-    # TODO: Translate this
-    data = { tooltip: translate("action.draft.#{type}_tooltip", value: name), value: value, position: 'top right', inverted: true }
-    content = "<i class=\"sync icon\"></i> #{translate "action.draft.#{type}"}".html_safe
+    data = { tooltip: translate("#{type}_tooltip", scope: %i[admin action draft], value: name), value: value, position: 'top right', inverted: true }
+    content = "<i class=\"sync icon\"></i> #{translate type, scope: %i[admin action draft]}".html_safe
     tag.div content, class: "ui tiny compact right floated basic #{type} button", data: data
   end
 

@@ -12,12 +12,7 @@ module Admin
     end
 
     def destroy
-      if @goal_filter.meditations.present?
-        message = t('messages.result.cannot_delete_attached_record', model: GoalFilter.model_name.human.downcase, association: Track.model_name.human(count: -1).downcase)
-        redirect_to [:admin, GoalFilter], alert: message
-      else
-        super
-      end
+      super associations: %i[meditations]
     end
 
     private

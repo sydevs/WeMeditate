@@ -6,22 +6,20 @@
 
 - unless reorder
   .table-actions
-    /= table_action t('action.edit'), "#{'orange' if allow.publish? and @record.draft.present?} edit", url_for([:edit, :admin, @record])
-    /= table_action t('action.show'), 'dashboard', url_for(@record), nil, true
     .ui.tiny.compact.basic.buttons
       .ui.active.button
         - status = @record.published? ? (@record.has_draft? ? :pending_changes : :published) : :draft
-        = translate(status, scope: :status, target: model_name)
+        = translate(status, scope: %i[admin status], target: model_name)
 
       - action = (allow.review? && @record.published? && @record.has_draft? ? :review : :edit)
       a.ui.button href=url_for([action, :admin, @record])
         i.edit.icon
         - if !@record.published? && allow.review?
-          = translate('action.target.review', target: model_name)
+          = translate('admin.action.target.review', target: model_name)
         - elsif @record.has_draft? && allow.review?
-          = translate 'action.review'
+          = translate 'admin.action.simple.review'
         - else
-          = translate('action.target.edit', target: model_name)
+          = translate('admin.action.target.edit', target: model_name)
 
       .ui.floating.dropdown.icon.button
         i.dropdown.icon
@@ -29,24 +27,24 @@
           - if @record.has_draft?
             a.item href=url_for([:edit, :admin, @record])
               i.edit.icon
-              = translate 'action.target.edit_details', target: model_name
+              = translate 'admin.action.target.edit_details', target: model_name
           - if false && @record.publishable? && allow.publish?
             / TODO: Implement click to (un)publish
             .item
               i.bullhorn.icon
-              = @record.published? ? t('action.target.unpublish', target: model_name) : 'Publish article'
+              = translate (@record.published? ? 'unpublish' : 'publish'), scope: %i[admin action target], target: model_name
           - if @record.published?
             a.item href=url_for(@record) target='_blank'
               i.eye.icon
-              = translate 'action.show'
+              = translate 'admin.action.simple.show'
           - if allow.preview? && (@record.has_draft? || !@record.published?)
             a.item href=url_for([@record, preview: true]) target='_blank'
               i.eye.icon
-              = translate 'action.preview'
+              = translate 'admin.action.simple.preview'
           - if allow.destroy?
-            a.item href=url_for([:admin, @record]) data={ method: 'delete', confirm: t('messages.confirm_destroy') }
+            a.item href=url_for([:admin, @record]) data={ method: 'delete', confirm: translate('admin.messages.confirm_destroy') }
               i.warning.sign.icon
-              = translate 'action.target.destroy', target: model_name
+              = translate 'admin.action.target.destroy', target: model_name
 
 .details
   h3 = @record.name
@@ -57,10 +55,12 @@
       = record_detail 'bullhorn', record_published_at_status if @record.respond_to? :published_at
       = record_detail 'edit', record_modified_at_status
       - if owner = @record.try(:owner)
+        - written_by = translate('admin.details.written_by', author: owner.name)
         - if policy(owner).edit?
-          = record_detail 'user', "Written by #{owner.name}", 'View user', url: url_for([:edit, :admin, owner])
+          - view_user = translate('admin.action.target.show', target: User.model_name.human)
+          = record_detail 'user', written_by, view_user, url: url_for([:edit, :admin, owner])
         - else
-          = record_detail 'user', "Written by #{owner.name}"
+          = record_detail 'user', written_by
 
 .clearfix
 
@@ -68,12 +68,12 @@
 
 - if allow.write?
   .table-actions
-    = table_action t('action.target.write', target: model_name), 'pencil alternate', url_for([:write, :admin, @record])
+    = table_action translate('admin.action.target.write', target: model_name), 'pencil alternate', url_for([:write, :admin, @record])
 
 
-h4 = translate 'misc.content_outline'
+h4 = translate 'admin.content.outline'
 
-= content_outline @record.content['blocks'] if @record.content.present?
+= content_outline @record
 
 .ui.hidden.divider
-= table_link t('action.target.back', target: @model.model_name.human(count: -1)), 'left arrow', url_for([:admin, @model])
+= table_link translate('admin.action.target.back', target: @model.model_name.human(count: -1)), 'left arrow', url_for([:admin, @model])
