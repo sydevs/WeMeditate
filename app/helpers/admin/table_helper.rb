@@ -112,7 +112,8 @@ module Admin::TableHelper
       end
 
       if policy(model).new?
-        concat table_link translate(model.model_name.i18n_key, scope: %i[admin action create_model target], target: model.model_name.human, default: :'admin.action.target.create'), 'plus', url_for([:new, :admin, model.model_name.singular_route_key.to_sym])
+        label = translate('create', scope: %i[admin action target], target: model.model_name.human)
+        concat table_link label, 'plus', url_for([:new, :admin, model.model_name.singular_route_key.to_sym])
       end
     end
   end

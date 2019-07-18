@@ -13,7 +13,10 @@ en:
 it:
   share: 'Share: '
   sharing:
-    facebook: '#'
+    facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
+    twitter: https://twitter.com/intent/tweet?url=%{url}
+    pinterest: http://pinterest.com/pin/create/button/?url=%{url}
+    whatsapp: whatsapp://send?text=%{url}
   social_media:
     instagram: https://instagram.com/we-meditate
     facebook: '#'

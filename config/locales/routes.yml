@@ -21,14 +21,14 @@ ru:
     subtle_system: subtle-system_ru
     page: page_ru
     music: music_ru
-de:
+it:
   routes:
-    admin: admin_de
-    inspiration: inspiration_de
-    articles: articles_de
-    countries: countries_de
-    meditations: meditations_de
-    techniques: techniques_de
-    subtle_system: subtle-system_de
-    page: page_de
-    music: music_de
+    admin: admin_it
+    inspiration: inspiration_it
+    articles: articles_it
+    countries: countries_it
+    meditations: meditations_it
+    techniques: techniques_it
+    subtle_system: subtle-system_it
+    page: page_it
+    music: music_it

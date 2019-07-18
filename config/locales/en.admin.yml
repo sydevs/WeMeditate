@@ -52,17 +52,6 @@ en:
         show: View on website
         preview: Preview draft on website
 
-      choose_file:
-        image:
-          single: Choose an image
-          multiple: Choose images
-        video:
-          single: Choose a video file
-          multiple: Choose video files
-        audio:
-          single: Choose a audio file
-          multiple: Choose audio files
-    
     # ===== MESSAGES ===== #
     status:
       published: This %{target} is live

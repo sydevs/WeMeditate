@@ -1,81 +1,109 @@
 
 it:
-  action:
-    view_site: View Site
-    view_admin: Go To Admin Dashboard
-    search: Search...
-    sign_in: Log In
-    sign_out: Log Out
-    show: View
-    preview: Preview
-    update: Save
-    publish: Publish
-    cancel: Cancel
-    create: New
-    edit: Edit
-    write: Write
-    destroy: Delete
-    back: Back
-    clean_up: Clean Up
-    draft:
-      reset: Discard Draft Value
-      redo: Use Draft Value
-      reset_tooltip: Reset to "%{value}"
-      redo_tooltip: Set to "%{value}"
-    target:
-      upload: Upload %{target}
-      edit: Edit %{target}
-      write: Write %{target}
-      reset: Reset %{target}
-      add: Add %{target}
-      create: New %{target}
-      remove: Remove %{target}
-      destroy: Delete %{target}
-      back: Back to %{target}
-      reorder: Change %{target} Order
-      search_for: Search for %{target}
-    choose_file:
-      image:
-        single: Choose an image
-        multiple: Choose images
-      video:
-        single: Choose a video file
-        multiple: Choose video files
-      audio:
-        single: Choose a audio file
-        multiple: Choose audio files
-  tags:
-    published: Published
-    unpublished_changes: Has Unpublished Changes
-    unpublished_draft: Unpublished Draft
-    no_translation: No Translation
-    updated_ago: Modified %{time_ago} ago
-    published_ago: Published %{time_ago} ago
-    urgency:
-      critical: Critical Issue
-      important: Important Issue
-      normal: Low Priority
-    views:
-      one: 1 View
-      other: '%{count} Views'
-  messages:
-    maintenance_mode: The website is under construction, come back soon.
-    loading: Loading
-    upload_limitations: Images, video, and audio only, up to 10 MB each
-    updated_on_by: Updated on %{date} by %{author}
-    errors: Errors
-    confirm_destroy: Are you sure you want to delete that? This cannot be undone!
-    no_models: No %{models}
-    not_set: Not Set
-    untranslated_pages: Untranslated Pages
-    untranslated_resources: Untranslated Resources
-    pending_users: Pending Invitations
-    empty_model_table: None
-    latlong_not_found: Coordinates Not Found
-    missing_pages: Missing Pages
-    has_draft: Has Pending Changes
-    drop_files_here: Drop files here
-    cant_add_media_to_new_record: You must save this %{target} before you can add media to it.
+  admin:
+    # ===== ACTIONS ===== #
+    action:
+      view_site: View Site
+      view_admin: Go To Admin Dashboard
+      search: Search...
+      sign_in: Log In
+      sign_out: Log Out
+
+      draft:
+        reset: Discard Draft Value
+        redo: Use Draft Value
+        reset_tooltip: Reset to "%{value}"
+        redo_tooltip: Set to "%{value}"
+
+      simple:
+        show: View
+        create: New
+        edit: Edit
+        write: Write
+        update: Save
+        destroy: Delete
+        preview: Preview
+        review: Review
+        preview: Preview
+        save_draft: Save Draft
+        approve: Approve
+        cancel: Cancel
+        back: Back
+
+      target:
+        show: View %{target}
+        upload: Upload %{target}
+        edit: Edit %{target}
+        edit_details: Edit %{target} details
+        review: Review %{target}
+        write: Write %{target} content
+        reset: Reset %{target}
+        publish: Publish %{target}
+        unpublish: Unpublish %{target}
+        add: Add %{target}
+        create: New %{target}
+        remove: Remove %{target}
+        destroy: Delete this %{target}
+        back: Back to %{target}
+        reorder: Change %{target} Order
+        search_for: Search for %{target}
+
+      descriptive:
+        show: View on website
+        preview: Preview draft on website
+
+    # ===== MESSAGES ===== #
+    status:
+      published: This %{target} is live
+      pending_changes: This %{target} is live, but has pending changes
+      draft: This %{target} is an unpublished draft
+
+    details:
+      translated_languages: Translates Languages
+      priority: Order on Inspiration Page
+      written_by: Written by %{author}
+      first_published_at: First published at %{time}
+      featured_video: Featured Video
+      featured_date: Featured Date
+      role: Role On Website
+      
+    tags:
+      published: Published
+      unpublished_changes: Has Unpublished Changes
+      unpublished_draft: Unpublished Draft
+      no_translation: No Translation
+      updated_ago: Modified %{time_ago} ago
+      published_ago: Published %{time_ago} ago
+      urgency:
+        critical: Critical Issue
+        important: Important Issue
+        normal: Low Priority
+      views:
+        one: 1 View
+        other: '%{count} Views'
+
+    messages:
+      make_public: Make this %{target} visible to the public
+      maintenance_mode: The website is under construction, come back soon.
+      loading: Loading
+      upload_limitations: Images, video, and audio only, up to 10 MB each
+      updated_on_by: Updated on %{date} by %{author}
+      errors: Errors
+      confirm_destroy: Are you sure you want to delete that? This cannot be undone!
+      no_models: No %{models}
+      not_set: Not Set
+      untranslated_pages: Untranslated Pages
+      untranslated_resources: Untranslated Resources
+      pending_users: Pending Invitations
+      empty_model_table: None
+      latlong_not_found: Coordinates Not Found
+      missing_pages: Missing Pages
+      has_draft: Has Pending Changes
+      drop_files_here: Drop files here
+      cant_add_media_to_new_record: You must save this %{target} before you can add media to it.
+      unpublished_changes_notice: This %{target} has unpublished changes. These will not be visible to the public until they have been reviewed by an administrator.
+      draft_notice: You are viewing a draft version of this %{target}. This version not be visible to the public until it has been reviewed by an administrator.
+
     result:
       created: Created successfully.
       updated: Saved successfully.
@@ -84,28 +112,130 @@ it:
       cannot_delete_attached_record: You cannot delete a %{model} which has %{association} attached to it. Reassign the %{association} and try again.
       published: Published successfully.
       discarded_drafts: Drafts successfully deleted.
-  metadata:
-    key: name
-    value: value
-    default_metatags: Default Meta Tags
-    generated_jsonld: Generated Structured Data
-  preview:
-    header: '%{time} by %{user}'
-  time:
-    formats:
-      default: '%k:%M'
-      time: :time.formats.default
-      date: :date.formats.default
-  date:
-    formats:
-      default: '%d %b %Y'
-      date: :date.formats.default
-  misc:
-    dashboard: Dashboard
-    content_outline: Content Outline
-    menu:
-      pages: Pages
-      resources: Resources
-    locale:
-      worldwide: Worldwide
-      all_languages: All Languages
+    
+    # ===== CONTENT ===== #
+    content:
+      outline: Content Outline
+      blocks:
+        header: Header
+        paragraph: Paragraph
+        image: Image
+        link: Links
+        list: List
+        quote: Quote
+        structured: Structured Text
+        textbox: Textbox
+        video: Video
+      tunes:
+        centered: Centered
+        stretch: Fill screen width
+        asGallery: Gallery
+        asWisdom: Ancient Knowledge Style
+        asVideo: Video
+        invert: Invert Colours
+        style:
+          unordered: Unordered
+          ordered: Ordered
+          leaf: Leaf Icon
+        alignment:
+          left: Left Aligned
+          center: Center Aligned
+          right: Right Aligned
+        callout:
+          left: As Left Callout
+          right: As Right Callout
+        format:
+          button: Button
+          articles: Articles
+          treatments: Techniques
+          grid: Grid
+          accordion: Accordion
+          columns: Columns
+      placeholders:
+        title: Title
+        text: Text
+        items: Items
+        action: Button Text
+        url: Paste a link here
+        quote: Enter a quote
+        caption: Enter a caption
+        credit: Enter a credit
+      decorations:
+        triangle: Add Triangle Decoration
+        gradient: Add Gradient
+        sidetext: Add Vertical Text
+        circle: Add Circle Decoration
+        leaves: Add Leaf Decorations
+      words:
+        one: word
+        other: words
+      items:
+        one: item
+        other: items
+
+
+    # ===== MISCELLENEOUS ===== #
+    permissions:
+      create: Can Create
+      update: Can Modify
+      publish: Can Approve Changes
+      destroy: Can Delete
+      special:
+        update_own: Can Modify Own %{model}
+        publish_own: Can Approve Changes to Own %{model}
+        update_subordinate: Can Modify Writers and Translators
+        create_subordinate: Can Create Writers and Translators
+
+    review:
+      attribute_changes: '%{model} Attribute Changes'
+      content_changes: '%{model} Content Changes'
+      no_changes: No Changes
+      approve?: Approve?
+      field: Field
+      old_value: Old Value
+      new_value: New Value
+      block: Block
+      data: Data
+      reject_all: Reject All
+      approve_all: Approve All
+
+    metadata:
+      key: name
+      value: value
+      default_metatags: Default Meta Tags
+      generated_jsonld: Generated Structured Data
+
+    draft:
+      items:
+        one: item
+        other: items
+      content:
+        original:
+          one: Original content with 1 block
+          other: Original content with %{count} blocks
+        draft:
+          one: Draft content with 1 block
+          other: Draft content with %{count} blocks
+
+    dashboard:
+      title: Dashboard
+      actions: Actions
+      no_issues: No issues right now, good job!
+
+    misc:
+      errors: Errors
+      menu:
+        pages: Pages
+        resources: Resources
+      locale:
+        worldwide: Worldwide
+        all_languages: All Languages
+
+    javascript:      
+      email: Email
+      message: Message
+      drag_images_to_upload: Drag images here to upload
+      no_results: No results found...
+      waiting_for_upload: Waiting for %{count} file(s) to finish uploading...
+      file: File
+      files: Files

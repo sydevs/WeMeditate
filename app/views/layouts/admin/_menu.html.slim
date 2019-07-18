@@ -6,7 +6,7 @@
 
 .ui.fluid.secondary.vertical.menu
   = link_to [:admin, :root], class: "#{'active' if action_name == 'dashboard'} item"
-    = translate 'admin.misc.menu.dashboard'
+    = translate 'admin.dashboard.title'
 
   - if policy(Article).index? or policy(StaticPage).index? or policy(SubtleSystemNode).index?
     .item
