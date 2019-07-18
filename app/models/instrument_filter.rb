@@ -21,7 +21,7 @@ class InstrumentFilter < ApplicationRecord
 
   # Scopes
   default_scope { order(:order) }
-  scope :untranslated, -> { joins(:translations).where.not(instrument_filter_translations: { locale: I18n.locale }) }
+  scope :untranslated, -> { where.not(id: with_translations(I18n.locale).pluck(:id)) }
   scope :published, -> { joins(:translations).where(published: true, instrument_filter_translations: { locale: I18n.locale }) }
   scope :q, -> (q) { joins(:translations).where('instrument_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
 

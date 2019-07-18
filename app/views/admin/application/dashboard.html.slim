@@ -5,17 +5,22 @@ h3 = translate 'admin.dashboard.alerts'
 
 table.ui.very.basic.compact.unstackable.models.table
   tbody
-    - if @issues.present?
-      - @issues.each do |issue|
-        tr
-          td.selector
-            a href=issue[:url] = issue[:name] || translate('admin.misc.no_translated_title')
+    - has_issues = false
+    - dashboard_issues do |issue|
+      - has_issues = true
+      tr
+        td.collapsing
+          = table_icon model_icon_key(issue[:model]), issue[:model].model_name.human
 
-          td.collapsing.right.aligned.disabled
-            = issue[:message]
+        td.selector
+          a href=issue[:url] = issue[:name] || translate('admin.misc.no_translated_title')
 
-          td.collapsing.right.aligned
-            = table_icon urgency_icon_key(issue[:urgency]), translate(issue[:urgency], scope: %i[admin tags urgency])
-    - else
+        td.collapsing.right.aligned.disabled
+          = issue[:message]
+
+        td.collapsing.right.aligned
+          = table_icon urgency_icon_key(issue[:urgency]), translate(issue[:urgency], scope: %i[admin tags urgency])
+    
+    - unless has_issues
       tr
         td = translate 'admin.dashboard.no_issues'

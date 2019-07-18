@@ -28,7 +28,7 @@ class SubtleSystemNode < ApplicationRecord
 
   # Scopes
   default_scope { order(:role) }
-  scope :untranslated, -> { joins(:translations).where.not(subtle_system_node_translations: { locale: I18n.locale }) }
+  scope :untranslated, -> { where.not(id: with_translations(I18n.locale).pluck(:id)) }
   scope :q, -> (q) { joins(:translations).where('subtle_system_node_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model

@@ -65,13 +65,13 @@ module Admin::TableHelper
         concat table_icon 'eye', translate('admin.tags.views', count: record.views), record.views
       when Category
         article_count = record.articles.count
-        concat table_icon 'file text', Category.human_attribute_name(:articles, count: article_count), article_count
+        concat table_icon model_icon_key(Article), Category.human_attribute_name(:articles, count: article_count), article_count
       when MoodFilter, InstrumentFilter, Artist
         track_count = record.tracks.count
-        concat table_icon 'music', record.class.human_attribute_name(:tracks, count: track_count), track_count
+        concat table_icon model_icon_key(Track), record.class.human_attribute_name(:tracks, count: track_count), track_count
       when GoalFilter, DurationFilter
         meditation_count = record.meditations.count
-        concat table_icon 'leaf', record.class.human_attribute_name(:meditations, count: meditation_count), meditation_count
+        concat table_icon model_icon_key(Meditation), record.class.human_attribute_name(:meditations, count: meditation_count), meditation_count
       end
     end
   end
@@ -79,14 +79,14 @@ module Admin::TableHelper
   def table_actions model, records
     capture do
       if model == Article
-        concat table_action Category.model_name.human(count: -1), 'hashtag', admin_categories_path if policy(Category).index?
+        concat table_action Category.model_name.human(count: -1), model_icon_key(Category), admin_categories_path if policy(Category).index?
       elsif model == Track
-        concat table_action InstrumentFilter.model_name.human(count: -1), 'filter', admin_instrument_filters_path if policy(InstrumentFilter).index?
-        concat table_action MoodFilter.model_name.human(count: -1), 'filter', admin_mood_filters_path if policy(MoodFilter).index?
-        concat table_action Artist.model_name.human(count: -1), 'user', admin_artists_path if policy(Artist).index?
+        concat table_action InstrumentFilter.model_name.human(count: -1), model_icon_key(InstrumentFilter), admin_instrument_filters_path if policy(InstrumentFilter).index?
+        concat table_action MoodFilter.model_name.human(count: -1), model_icon_key(MoodFilter), admin_mood_filters_path if policy(MoodFilter).index?
+        concat table_action Artist.model_name.human(count: -1), model_icon_key(Artist), admin_artists_path if policy(Artist).index?
       elsif model == Meditation
-        concat table_action GoalFilter.model_name.human(count: -1), 'filter', admin_goal_filters_path if policy(GoalFilter).index?
-        concat table_action DurationFilter.model_name.human(count: -1), 'clock', admin_duration_filters_path if policy(DurationFilter).index?
+        concat table_action GoalFilter.model_name.human(count: -1), model_icon_key(GoalFilter), admin_goal_filters_path if policy(GoalFilter).index?
+        concat table_action DurationFilter.model_name.human(count: -1), model_icon_key(DurationFilter), admin_duration_filters_path if policy(DurationFilter).index?
       end
 
       if policy(model).sort? and records.count > 1

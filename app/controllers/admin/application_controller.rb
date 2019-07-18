@@ -6,45 +6,8 @@ module Admin
     after_action :verify_authorized, except: %i[dashboard vimeo_data]
 
     def dashboard
-      @issues = []
-
-      StaticPage.untranslated.each do |static_page|
-        @issues << {
-          name: helpers.human_enum_name(static_page, :role),
-          url: url_for([:edit, :admin, static_page]),
-          message: translate('admin.tags.no_translation', language: helpers.language_name),
-          urgency: :critical,
-        }
       end
 
-      SubtleSystemNode.untranslated.each do |subtle_system_node|
-        @issues << {
-          name: helpers.human_enum_name(subtle_system_node, :role),
-          url: url_for([:edit, :admin, subtle_system_node]),
-          message: translate('admin.tags.no_translation', language: helpers.language_name),
-          urgency: :critical,
-        }
-      end
-
-      Article.where.not(draft: nil).each do |article|
-        @issues << {
-          name: article.name,
-          url: url_for([:edit, :admin, article]),
-          message: translate('admin.tags.unpublished_changes'),
-          urgency: :important,
-        }
-      end
-
-      Article.untranslated.each do |article|
-        @issues << {
-          name: article.name,
-          url: url_for([:edit, :admin, article]),
-          message: translate('admin.tags.no_translation', language: helpers.language_name),
-          urgency: :normal,
-        }
-      end
-    end
-    
     def vimeo_data
       render json: retrieve_vimeo_data(params[:vimeo_id])
     end

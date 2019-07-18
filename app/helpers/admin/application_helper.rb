@@ -15,6 +15,22 @@ module Admin
       normal: 'warning sign',
     }.freeze
 
+    MODEL_ICON = {
+      Article => 'file text',
+      StaticPage => 'file',
+      SubtleSystemNode => 'sun',
+      Meditation => 'fire',
+      Treatment => 'first aid',
+      Track => 'music',
+      Category => 'hashtag',
+      MoodFilter => 'filter',
+      InstrumentFilter => 'filter',
+      GoalFilter => 'filter',
+      DurationFilter => 'clock',
+      Artist => 'user',
+      User => 'user',
+    }.freeze
+
     def country_flag country_code
       content_tag :i, nil, class: "#{country_code} flag"
     end
@@ -29,6 +45,10 @@ module Admin
 
     def urgency_icon_key urgency
       URGENCY_ICON[urgency]
+    end
+
+    def model_icon_key model
+      MODEL_ICON[model]
     end
 
     def human_enum_name model, attr, value = nil

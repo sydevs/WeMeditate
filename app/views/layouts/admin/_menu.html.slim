@@ -14,17 +14,17 @@
       .menu
         - if policy(Article).index?
           = link_to [:admin, Article], class: "#{'active' if ['articles', 'categories'].include? controller_name} item"
-            i.file.text.icon
+            i.icon class=model_icon_key(Article)
             = Article.model_name.human(count: -1)
 
         - if policy(StaticPage).index?
           = link_to [:admin, StaticPage], class: "#{'active' if controller_name == 'static_pages'} item"
-            i.file.icon
+            i.icon class=model_icon_key(StaticPage)
             = StaticPage.model_name.human(count: -1)
 
         - if policy(SubtleSystemNode).index?
           = link_to [:admin, SubtleSystemNode], class: "#{'active' if controller_name == 'subtle_system_nodes'} item"
-            i.sun.icon
+            i.icon class=model_icon_key(SubtleSystemNode)
             = SubtleSystemNode.model_name.human(count: -1)
 
   - if policy(Track).index? or policy(Meditation).index? or policy(Treatment).index?
@@ -33,17 +33,17 @@
       .menu
         - if policy(Meditation).index?
           = link_to [:admin, Meditation], class: "#{'active' if ['meditations', 'goal_filters', 'duration_filters'].include? controller_name} item"
-            i.fire.icon
+            i.icon class=model_icon_key(Meditation)
             = Meditation.model_name.human(count: -1)
 
         - if policy(Treatment).index?
           = link_to [:admin, Treatment], class: "#{'active' if controller_name == 'treatments'} item"
-            i.first.aid.icon
+            i.icon class=model_icon_key(Treatment)
             = Treatment.model_name.human(count: -1)
 
         - if policy(Track).index?
           = link_to [:admin, Track], class: "#{'active' if ['tracks', 'mood_filters', 'instrument_filters', 'artists'].include? controller_name} item"
-            i.music.icon
+            i.icon class=model_icon_key(Track)
             = Track.model_name.human(count: -1)
 
   - if policy(User).index?

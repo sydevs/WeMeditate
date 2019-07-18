@@ -19,7 +19,7 @@ class MoodFilter < ApplicationRecord
 
   # Scopes
   default_scope { order(:order) }
-  scope :untranslated, -> { joins(:translations).where.not(mood_filter_translations: { locale: I18n.locale }) }
+  scope :untranslated, -> { where.not(id: with_translations(I18n.locale).pluck(:id)) }
   scope :published, -> { joins(:translations).where(published: true, mood_filter_translations: { locale: I18n.locale }) }
   scope :q, -> (q) { joins(:translations).where('mood_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
