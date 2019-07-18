@@ -71,7 +71,7 @@ it:
       published: Published
       unpublished_changes: Has Unpublished Changes
       unpublished_draft: Unpublished Draft
-      no_translation: No Translation
+      no_translation: No %{language} Translation
       updated_ago: Modified %{time_ago} ago
       published_ago: Published %{time_ago} ago
       urgency:
@@ -167,11 +167,11 @@ it:
         circle: Add Circle Decoration
         leaves: Add Leaf Decorations
       words:
-        one: word
-        other: words
+        one: 1 word
+        other: '%{count} words'
       items:
-        one: item
-        other: items
+        one: 1 item
+        other: '%{count} items'
 
 
     # ===== MISCELLENEOUS ===== #
@@ -207,8 +207,8 @@ it:
 
     draft:
       items:
-        one: item
-        other: items
+        one: 1 item
+        other: '%{count} items'
       content:
         original:
           one: Original content with 1 block
@@ -219,7 +219,7 @@ it:
 
     dashboard:
       title: Dashboard
-      actions: Actions
+      alerts: Alerts
       no_issues: No issues right now, good job!
 
     misc:

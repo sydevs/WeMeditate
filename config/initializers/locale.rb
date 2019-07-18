@@ -3,3 +3,9 @@
 I18n.available_locales = %i[en ru it]
 I18n.enforce_available_locales = true
 I18n.default_locale = :en
+
+I18n.fallbacks = {
+  en: %i[en],
+  ru: %i[ru en],
+  it: %i[it en],
+}

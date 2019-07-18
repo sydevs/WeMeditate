@@ -3,7 +3,7 @@
   - if record.translated_locales.include? I18n.locale
     = record_detail 'linkify', url_for(record), url: url_for(record)
   - else
-    = record_detail 'orange warning sign', translate('admin.tags.no_translation')
+    = record_detail 'orange warning sign', translate('admin.tags.no_translation', language: language_name)
   = record_detail 'pin', human_enum_name(record, :role), translate('admin.details.role')
-  - translated_locales = record.translated_locales.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
+  - translated_locales = record.translated_locales.map { |lang| language_name(lang) }.join(', ')
   = record_detail 'globe', translated_locales, translate('admin.details.translated_languages')

@@ -23,6 +23,10 @@ module Admin
       country_flag LANGUAGE_TO_FLAG_MAP[language]
     end
 
+    def language_name language = locale
+      I18nData.languages(locale)[language.to_s.upcase]
+    end
+
     def urgency_icon_key urgency
       URGENCY_ICON[urgency]
     end
@@ -41,7 +45,8 @@ module Admin
     end
 
     def content_outline record
-      blocks = JSON.parse(record.content.to_json)['blocks'] if record.content.present?
+      record.content = JSON.parse(record.content) unless record.content.nil? || record.content.is_a?(Hash)
+      blocks = record.content['blocks'] if record.content.present?
       return unless blocks
 
       content_tag :ul do
@@ -66,7 +71,7 @@ module Admin
             if block['type'] == 'video'
               type = translate(block['type'], scope: %i[admin content blocks])
             else
-              type = translate(block['data']['format'], scope: %i[admin content tunes])
+              type = translate(block['data']['format'], scope: %i[admin content tunes format])
             end
 
             concat content_tag :li, "#{type.titleize}: #{items}"

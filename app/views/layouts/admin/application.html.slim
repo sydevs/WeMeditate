@@ -18,7 +18,7 @@ html
       .ui.floating.dropdown.right.floated.basic.button
         .text
           = language_flag
-          = I18nData.languages(locale)[locale.to_s.upcase]
+          = language_name
         .menu
           - I18n.available_locales.each do |language|
             a.item href=url_for(locale: language)

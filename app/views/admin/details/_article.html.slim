@@ -14,8 +14,8 @@ p.details.excerpt = record.excerpt
     - elsif allow.preview?
       = record_detail 'linkify', url, translate('admin.action.descriptive.preview'), url: "#{url}?preview=true"
   - else
-    = record_detail 'orange warning sign', translate('admin.tags.no_translation')
-  - translated_locales = record.translated_locales.map{|l| I18nData.languages(locale)[l.to_s.upcase]}.join(', ')
+    = record_detail 'orange warning sign', translate('admin.tags.no_translation', language: language_name)
+  - translated_locales = record.translated_locales.map { |lang| language_name(lang) }.join(', ')
   = record_detail 'globe', translated_locales, translate('admin.details.translated_languages')
   = record_detail 'hashtag', record.category.name, Category.model_name.human
   = record_detail 'eye', human_enum_name(record, :priority), translate('admin.details.priority')

@@ -29,9 +29,9 @@ class ApplicationRecord < ActiveRecord::Base
   def translatable?
     respond_to?(:translated_locales)
   end
-  
+
   def cache_key
     super + '-' + Globalize.locale.to_s
-  end  
+  end
 
 end

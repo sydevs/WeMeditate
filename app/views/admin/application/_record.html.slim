@@ -12,7 +12,7 @@ tr id=dom_id(record)
 
   td.collapsing.right.aligned
     - unless not defined? record.translated_locales or record.translated_locales.include? I18n.locale
-      = table_icon 'orange warning sign', translate('admin.tags.no_translation')
+      = table_icon 'orange warning sign', translate('admin.tags.no_translation', language: language_name)
 
     - if record.reviewable?
       - if !(record.has_attribute?(:published) ? record.published : true)

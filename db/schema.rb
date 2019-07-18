@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_13_201239) do
+ActiveRecord::Schema.define(version: 2019_07_18_135535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_07_13_201239) do
     t.text "excerpt"
     t.jsonb "metatags"
     t.integer "thumbnail_id"
-    t.json "draft"
+    t.jsonb "draft"
     t.jsonb "content"
     t.integer "vimeo_id"
     t.datetime "published_at"
@@ -235,7 +235,7 @@ ActiveRecord::Schema.define(version: 2019_07_13_201239) do
     t.string "name", null: false
     t.string "slug", null: false
     t.jsonb "metatags"
-    t.json "draft"
+    t.jsonb "draft"
     t.jsonb "content"
     t.index ["locale"], name: "index_static_page_translations_on_locale"
     t.index ["static_page_id"], name: "index_static_page_translations_on_static_page_id"
@@ -257,7 +257,7 @@ ActiveRecord::Schema.define(version: 2019_07_13_201239) do
     t.string "slug", null: false
     t.text "excerpt", null: false
     t.jsonb "metatags"
-    t.json "draft"
+    t.jsonb "draft"
     t.jsonb "content"
     t.index ["locale"], name: "index_subtle_system_node_translations_on_locale"
     t.index ["subtle_system_node_id"], name: "index_subtle_system_node_translations_on_subtle_system_node_id"
