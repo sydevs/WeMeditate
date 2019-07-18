@@ -5,7 +5,7 @@
 .ui.section.divider
 
 .ui.fluid.secondary.vertical.menu
-  = link_to [:admin, :root], class: "#{'active' if action_name == 'dashboard'} item"
+  = link_to admin_root_path, class: "#{'active' if action_name == 'dashboard'} item"
     = translate 'admin.dashboard.title'
 
   - if policy(Article).index? or policy(StaticPage).index? or policy(SubtleSystemNode).index?
@@ -58,7 +58,7 @@
   = switch_user_select
 
 .ui.vertical.text.menu
-  = link_to root_path, class: 'item' do
+  = link_to admin_root_path, class: 'item' do
     i.browser.icon
     = translate('admin.action.view_site')
   = link_to destroy_user_session_path, class: 'item', method: :delete do

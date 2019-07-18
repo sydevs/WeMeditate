@@ -49,6 +49,12 @@ module Admin
       render json: retrieve_vimeo_data(params[:vimeo_id])
     end
 
+    protected
+
+      def default_url_options
+        { locale: I18n.locale }
+      end
+
     private
 
       def retrieve_vimeo_data vimeo_id
