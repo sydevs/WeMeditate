@@ -94,6 +94,20 @@ module Admin::InputHelper
     end
   end
 
+  def draftable_publish_field form, enabled: true **args
+    hint = translate 'admin.details.first_published_at', time: form.object.published_at.to_s(:long) if form.object.try(:published_at)
+
+    draftable_field form, :published, type: :toggle do |val|
+      capture do
+        field = form.input_field(:published, as: :boolean, checked: val)
+        field += tag.label translate 'admin.messages.make_public', target: form.object.model_name.human(count: 1).downcase
+
+        concat content_tag :div, field.html_safe, class: "ui#{' disabled' unless enabled} toggle checkbox"
+        concat form.hint(translate 'admin.details.first_published_at', time: form.object.published_at.to_s(:long)) if form.object.try(:published_at)
+      end
+    end
+  end
+
   def draftable_media_field form, attribute, type: :image, preview: true, **args
     key = "#{attribute}_id"
     value = args[:value] ? args[:value] : form.object.send(key)

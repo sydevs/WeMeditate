@@ -13,23 +13,7 @@
           li = message
 
   - if record.respond_to? :published
-    - classes = ('disabled' unless record.reviewable? || allow.publish?)
-    - if record.reviewable?
-      = draftable_field f, :published, type: :toggle do |value|
-        .ui.toggle.checkbox class=classes
-          = f.check_box :published, checked: value, uncheck_value: 'false'
-          label = translate 'admin.messages.make_public', target: record.model_name.human(count: 1).downcase
-
-        - if record.try(:published_at)
-          .hint = translate 'admin.details.first_published_at', time: record.published_at.to_s(:long)
-    - else
-      = f.input :published, wrapper_html: { class: classes } do
-        .ui.toggle.checkbox class=classes
-          = f.check_box :published, checked: record.published?, unchecked_value: 'false'
-          label = translate 'admin.messages.make_public', target: record.model_name.human(count: 1).downcase
-
-        - if record.try(:published_at)
-          .hint = translate 'admin.details.first_published_at', time: record.published_at.to_s(:long)
+    = draftable_publish_field f, enabled: record.reviewable? || allow.publish?
 
   - if record.viewable?
     - if record.reviewable?

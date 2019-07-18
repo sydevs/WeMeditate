@@ -36,11 +36,11 @@
           - if @record.published?
             a.item href=url_for(@record) target='_blank'
               i.eye.icon
-              = translate 'admin.action.simple.show'
+              = translate 'admin.action.descriptive.show'
           - if allow.preview? && (@record.has_draft? || !@record.published?)
             a.item href=url_for([@record, preview: true]) target='_blank'
               i.eye.icon
-              = translate 'admin.action.simple.preview'
+              = translate 'admin.action.descriptive.preview'
           - if allow.destroy?
             a.item href=url_for([:admin, @record]) data={ method: 'delete', confirm: translate('admin.messages.confirm_destroy') }
               i.warning.sign.icon

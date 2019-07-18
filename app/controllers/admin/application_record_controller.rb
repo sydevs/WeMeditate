@@ -133,6 +133,7 @@ module Admin
           record_params[:metatags] = []
         end
 
+        record_params[:published] = record_params[:published].to_i.positive? if record_params[:published].present?
         record_params
       end
 
