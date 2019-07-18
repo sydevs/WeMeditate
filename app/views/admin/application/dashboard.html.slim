@@ -9,8 +9,7 @@ table.ui.very.basic.compact.unstackable.models.table
       - @issues.each do |issue|
         tr
           td.selector
-            / TODO: Translate
-            a href=issue[:url] = issue[:name] || 'No Translated Title'
+            a href=issue[:url] = issue[:name] || translate('admin.misc.no_translated_title')
 
           td.collapsing.right.aligned.disabled
             = issue[:message]

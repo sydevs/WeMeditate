@@ -224,6 +224,7 @@ en:
 
     misc:
       errors: Errors
+      no_translated_title: No Translated Title
       menu:
         pages: Pages
         resources: Resources

@@ -4,8 +4,7 @@
 tr id=dom_id(record)
   td.selector
     a href=url_for([(:edit unless allow.show?), :admin, record])
-      / TODO: Translate
-      = record.name || 'No Translated Title'
+      = record.name || translate('admin.misc.no_translated_title')
 
   td.collapsing.right.aligned.disabled
     = table_detail(record)
