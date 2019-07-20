@@ -1,6 +1,12 @@
 module Admin
   class UserPolicy < Admin::ApplicationPolicy
 
+    class Scope < Scope
+      def resolve
+        scope.for_locale
+      end
+    end
+
     def manage?
       return false unless can_access_locale?
       return true if super_admin?

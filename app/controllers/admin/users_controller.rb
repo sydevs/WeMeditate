@@ -13,20 +13,15 @@ module Admin
 
     def update
       record_params = user_params
-
-      puts "BEFORE #{record_params}"
-
       record_params[:languages].reject!(&:empty?)
 
       if record_params[:languages].present?
         # Ensure that any languages which are available to the edited user, and unavailable to the current editor, remain.
-        record_params[:languages] += (@record.available_languages - current_user.available_languages).map(&:to_s)
+        record_params[:languages] += (@record.available_languages - current_user.available_languages)
       elsif I18n.available_locales != current_user.available_languages
         # Ensure that if a user is set to have all languages (aka no specified languages), then it only assigns languages available to the current editor.
-        record_params[:languages] = current_user.available_languages.map(&:to_s)
+        record_params[:languages] = current_user.available_languages
       end
-
-      puts "AFTER #{record_params}"
 
       super record_params
     end

@@ -178,6 +178,8 @@ it:
 
     # ===== MISCELLENEOUS ===== #
     permissions:
+      title: Permissions Table
+      own_languages_notice: All editors are restricted to making modifications on in their own languages.
       create: Can Create
       update: Can Modify
       publish: Can Approve Changes
@@ -230,8 +232,8 @@ it:
         pages: Pages
         resources: Resources
       locale:
-        worldwide: Worldwide
         all_languages: All Languages
+        other_languages: Other Languages
 
     javascript:      
       email: Email

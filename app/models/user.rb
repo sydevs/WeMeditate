@@ -18,37 +18,29 @@ class User < ApplicationRecord
   # Scopes
   default_scope { order(:role, :name) }
   scope :pending, -> { where.not(invitation_created_at: nil).where(invitation_accepted_at: nil) }
-  scope :for_locale, -> { where('languages IS null OR languages LIKE ?', "%#{I18n.locale}%") }
+  scope :for_locale, -> { where('languages = \'{}\' OR ? = ANY (languages)', I18n.locale) }
   scope :q, -> (q) { where('email ILIKE ?', "%#{q}%") if q.present? }
-
-  # Override this setter so that a user cannot have languages which the website doesn't support.
+  
   def languages= list
-    list &= I18n.available_locales.map(&:to_s) # only allow locales from the list of available locales
-    super list.join(',')
+    super (list.map(&:to_sym) & I18n.available_locales).map(&:to_s)
   end
 
-  # Split the database string into an actual list of locales
   def languages
-    langs = super
-    if langs
-      langs.split(',')
-    else
-      []
-    end
+    super.map(&:to_sym)
+  end
+
+  def languages
+    super.map(&:to_sym)
   end
 
   # Returns a list of languages which this user doesn't already have associated with them.
   def available_languages
-    if all_languages?
-      I18n.available_locales
-    else
-      languages.map(&:to_sym)
-    end
+    all_languages? ? I18n.available_locales : languages
   end
 
   # Returns true if the user is able to manage all languages.
   def all_languages?
-    not self[:languages].present?
+    !self[:languages].present?
   end
 
 end
