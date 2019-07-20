@@ -3,15 +3,20 @@
 
 class Treatment < ApplicationRecord
 
-  extend FriendlyId
   extend CarrierwaveGlobalize
+  extend FriendlyId
+  include HasContent
+  include Draftable
 
   # Extensions
   translates *%i[
-    name slug metatags published_at published
-    excerpt content thumbnail horizontal_vimeo_id vertical_vimeo_id
+    name slug metatags published_at published draft
+    excerpt content thumbnail_id horizontal_vimeo_id vertical_vimeo_id
   ]
   friendly_id :name, use: :globalize
+
+  # Associations
+  has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
 
   # Validations
   validates :name, presence: true
@@ -20,8 +25,6 @@ class Treatment < ApplicationRecord
   validates :thumbnail, presence: true
   validates :horizontal_vimeo_id, presence: true
   validates :vertical_vimeo_id, presence: true
-
-  mount_translated_uploader :thumbnail, TreatmentImageUploader
 
   # Scopes
   default_scope { order(:order) }
@@ -32,6 +35,11 @@ class Treatment < ApplicationRecord
   # Include everything necessary to render this model
   def self.preload_for _mode
     includes(:translations)
+  end
+
+  # Shorthand for the article thumbnail image file
+  def thumbnail
+    media_files.find_by(id: thumbnail_id)&.file
   end
 
 end

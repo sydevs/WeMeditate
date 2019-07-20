@@ -63,6 +63,8 @@ en:
       priority: Order on Inspiration Page
       owned_by: Owned by %{owner}
       first_published_at: First published at %{time}
+      vertical_video: Vertical Video
+      horizontal_video: Horizontal Video
       featured_video: Featured Video
       featured_date: Featured Date
       role: Role On Website

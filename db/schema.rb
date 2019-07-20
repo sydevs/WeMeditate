@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_20_123446) do
+ActiveRecord::Schema.define(version: 2019_07_20_165555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -311,13 +311,14 @@ ActiveRecord::Schema.define(version: 2019_07_20_123446) do
     t.string "name", null: false
     t.string "slug", null: false
     t.text "excerpt", null: false
-    t.jsonb "thumbnail"
     t.jsonb "metatags"
     t.jsonb "content", default: {}
     t.integer "horizontal_vimeo_id"
     t.integer "vertical_vimeo_id"
     t.boolean "published", default: false
     t.datetime "published_at"
+    t.jsonb "draft"
+    t.integer "thumbnail_id"
     t.index ["locale"], name: "index_treatment_translations_on_locale"
     t.index ["treatment_id"], name: "index_treatment_translations_on_treatment_id"
   end

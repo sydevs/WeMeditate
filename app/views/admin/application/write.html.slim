@@ -12,8 +12,8 @@
     - if @record.reviewable? && has_draft
       .ui.yellow.message = translate 'admin.messages.draft_notice', target: @record.model_name.human
 
-      = draft_reset_buttons(:content, @record.content && JSON.parse(@record.content), JSON.parse(content))
-      .clearfix
+      /= draft_reset_buttons(:content, @record.content && JSON.parse(@record.content), JSON.parse(content))
+      /.clearfix
 
     - if @splash_style
       #splash-editor.ce-block data-style=@splash_style

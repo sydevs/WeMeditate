@@ -62,22 +62,4 @@ class Article < ApplicationRecord
     media_files.find_by(id: vimeo_id)&.file
   end
 
-  def essential_media_files locale = nil
-    result = super(locale)
-
-    unless locale.nil?
-      preserve_draft = (I18n.locale != locale)
-
-      Globalize.with_locale(locale) do
-        result += [thumbnail_id]
-        result += [draft['thumbnail_id']] if preserve_draft && has_draft? && draft['thumbnail_id']
-      end
-
-      # TODO: Remove test code
-      puts "BONUS ESSENTIAL FILES #{locale}: #{result} (#{preserve_draft} && #{has_draft?})"
-    end
-
-    result
-  end
-
 end

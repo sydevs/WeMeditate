@@ -48,7 +48,6 @@ gem 'autosize' # To automatically grow text areas
 gem 'kaminari' # For pagination
 gem 'simple_form' # Takes care of grunt work when creating forms
 gem 'sortable-rails' # Allows us to sort models with a drag and drop interface
-gem 'quilljs-rails' # A wysiwyg text editor
 
 # Globalize (translatable models)
 gem 'carrierwave_globalize' # for carrierwave support

@@ -101,7 +101,7 @@ class ImageTool extends EditorTool {
     credit.dataset.placeholder = translate['content']['placeholders']['credit']
 
     let remove = make('i', [this.CSS.item.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, container)
-    remove.addEventListener('click', (event) => this.removeImageItem(event.target.parentNode))
+    remove.addEventListener('click', (event) => this.removeItem(event.target.parentNode))
 
     return container
   }

@@ -55,24 +55,6 @@ let Admin = {
     })
 
     RepeatableFields.initialize(scope)
-
-    scope.find('.rich-text-editor').each(function() {
-      let input = $(this).prev('input')
-      let quill = new Quill(this, {
-        formats: [ 'link', 'bold', 'italic', 'underline' ],
-        modules: {
-          toolbar: [
-            ['link'],
-            ['bold', 'italic', 'underline'],
-          ],
-        },
-        theme: 'snow',
-      })
-
-      quill.on('text-change', function() {
-        input.val(quill.root.innerHTML)
-      })
-    })
   },
 
 }

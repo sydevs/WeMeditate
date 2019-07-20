@@ -37,14 +37,20 @@ module HasContent
       Globalize.with_locale(locale) do
         if content_blocks.present?
           content_blocks.each do |block|
-            result += block['data']['media_files']
+            result += block['data']['media_files'] if block['data']['media_files']
           end
+
+          result += [thumbnail_id] if try(:thumbnail_id)
         end
 
-        if preserve_draft && has_draft? && draft['content'].present?
-          JSON.parse(draft['content'])['blocks'].each do |block|
-            result += block['data']['media_files']
+        if preserve_draft && has_draft?
+          if draft['content'].present?
+            JSON.parse(draft['content'])['blocks'].each do |block|
+              result += block['data']['media_files']
+            end
           end
+
+          result += [draft['thumbnail_id']] if draft['thumbnail_id']
         end
       end
     end

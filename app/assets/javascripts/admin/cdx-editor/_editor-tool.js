@@ -132,10 +132,12 @@ class EditorTool {
     this.settingsContainer = make('div', this.CSS.settingsWrapper)
 
     this.tunes.map(tune => {
+      let label
+
       if (tune.group) {
-        let label = translate['content']['tunes'][tune.group][tune.name]
+        label = translate['content']['tunes'][tune.group][tune.name]
       } else {
-        let label = translate['content']['tunes'][tune.name]
+        label = translate['content']['tunes'][tune.name]
       }
 
       const button = make('div', [this.CSS.settingsButton, this.CSS.settingsButtons[tune.name]], {

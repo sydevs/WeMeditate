@@ -7,14 +7,6 @@ module Admin
       return false
     end
 
-    def show?
-      false # Content is handled differently for treatments.
-    end
-
-    def review?
-      false # Content is handled differently for treatments.
-    end
-
     def update?
       manage?
     end

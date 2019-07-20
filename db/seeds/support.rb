@@ -6,9 +6,8 @@ def file_root
   Rails.root.join('db/seeds/files')
 end
 
-def attachment path, name, type, parent
-  media_file = parent.media_files.find_or_initialize_by(name: name)
-  media_file.update!({ name: name, category: type, file: Rails.root.join('db/seeds/files').join(path).open })
+def attachment path, parent
+  media_file = parent.media_files.create!(file: Rails.root.join('db/seeds/files').join(path).open)
   media_file.id
 end
 

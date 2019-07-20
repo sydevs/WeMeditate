@@ -20,11 +20,6 @@ const Draft = {
       case 'text':
         $field.find('textarea').val(value)
         break
-      case 'rich_text':
-        let quill = Quill.find($field.find('.rich-text-editor')[0])
-        quill.setText('')
-        quill.clipboard.dangerouslyPasteHTML(value)
-        break
       case 'toggle':
         $field.find('.ui.checkbox').checkbox(value ? 'check' : 'uncheck')
         break

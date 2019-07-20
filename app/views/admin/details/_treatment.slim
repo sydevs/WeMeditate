@@ -1,8 +1,8 @@
 - allow = policy(@record)
 
-- if record.banner.present? || record.thumbnail.present?
+- if record.thumbnail.present?
   .ui.right.floated.rounded.image
-    img src=(record.banner || record.thumbnail).url
+    img src=record.thumbnail.url
 
 p.details.excerpt = record.excerpt
 
@@ -17,7 +17,7 @@ p.details.excerpt = record.excerpt
     = record_detail 'orange warning sign', translate('admin.tags.no_translation', language: language_name)
   - translated_locales = record.translated_locales.map { |lang| language_name(lang) }.join(', ')
   = record_detail 'globe', translated_locales, translate('admin.details.translated_languages')
-  = record_detail model_icon_key(Category), record.category.name, Category.model_name.human
-  = record_detail 'eye', human_enum_name(record, :priority), translate('admin.details.priority')
-  = record_detail 'calendar', record.date, translate('admin.details.featured_date') if record.date.present?
-  = record_detail 'play circle', "Video ##{record.vimeo_id}", translate('admin.details.featured_video'), url: "https://vimeo.com/#{record.vimeo_id}" if record.vimeo_id.present?
+
+  // TODO: Translate
+  = record_detail 'play circle', "Horizontal Video ##{record.horizontal_vimeo_id}", translate('admin.details.horizontal_video'), url: "https://vimeo.com/#{record.horizontal_vimeo_id}"
+  = record_detail 'play circle', "Vertical Video ##{record.vertical_vimeo_id}", translate('admin.details.vertical_video'), url: "https://vimeo.com/#{record.vertical_vimeo_id}"

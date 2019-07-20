@@ -1,15 +1,21 @@
 
 - content_for :title, translate('admin.action.target.edit', target: @record.model_name.human)
+
+.table-actions
+  = table_action translate('admin.action.descriptive.show'), 'eye', polymorphic_url(@record), nil, true
+
+.clearfix
 = render 'admin/application/form', record: @record
 
 / TODO: Remove this test code
 hr
-p: code
-  div Media Files:
-  = @record.media_files.pluck(:id)
-p: code
-  div Essential Media Files:
-  = @record.essential_media_files
-p: code = @record.inspect
+- if @record.respond_to?(:media_files)
+  p: code
+    div Media Files:
+    = @record.media_files.pluck(:id)
+  p: code
+    div Essential Media Files:
+    = @record.essential_media_files
+p: pre = @record.pretty_inspect
 - @record.respond_to?(:translations) && @record.translations.each do |translation|
-  p: code = translation.inspect
+  p: pre = translation.pretty_inspect

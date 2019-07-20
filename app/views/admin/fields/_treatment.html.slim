@@ -1,22 +1,19 @@
 
-= f.input :thumbnail, wrapper: :ui_file_input, icon: :image, file: record.thumbnail
+= draftable_media_field f, :thumbnail, preview: true, wrapper: { required: true }
 
-- if record.thumbnail.present?
-  .preview-item = image_tag record.thumbnail.url(:small), class: 'ui rounded image'
+= draftable_field f, :excerpt, type: :text do |value|
+  - f.input_field :excerpt, as: :text, rows: 3, value: value
 
-= f.input :excerpt, as: :text, input_html: { rows: 2 }
-= f.input :horizontal_vimeo_id, wrapper: :ui_input, icon: :video
+= draftable_field f, :horizontal_vimeo_id, type: :integer
 - if record.horizontal_vimeo_id.present?
   .preview-item
     a.ui.label.link href="https://vimeo.com/#{record.horizontal_vimeo_id}" target='_blank'
       | vimeo.com/#{record.horizontal_vimeo_id}
       i.external.alternate.icon
 
-= f.input :vertical_vimeo_id, wrapper: :ui_input, icon: :video
+= draftable_field f, :vertical_vimeo_id, type: :integer
 - if record.vertical_vimeo_id.present?
   .preview-item
     a.ui.label.link href="https://vimeo.com/#{record.vertical_vimeo_id}" target='_blank'
       | vimeo.com/#{record.vertical_vimeo_id}
       i.external.alternate.icon
-
-= f.input :content, as: :rich_text, input_html: { rows: 3 }

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  devise_for :users
   get '404', to: 'application#error'
   get '422', to: 'application#error'
   get '500', to: 'application#error'
@@ -10,7 +11,6 @@ Rails.application.routes.draw do
   # ===== ADMIN ROUTES ===== #
   constraints DomainConstraint.new(%w[admin.localhost admin.omicron.local admin.wemeditate.co]) do
     get '/', to: redirect('/en')
-    devise_for :users
     get 'switch_user' => 'switch_user#set_current_user'
 
     scope ':locale' do
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
           put :sort, on: :collection
         end
 
-        resources :articles, :static_pages, :subtle_system_nodes, except: %i[destroy] do
+        resources :articles, :static_pages, :subtle_system_nodes, :treatments, except: %i[destroy] do
           get :write, on: :member
           get :review, on: :member
           patch :approve, on: :member, path: 'review'
@@ -30,9 +30,9 @@ Rails.application.routes.draw do
           resources :media_files, only: %i[create]
         end
 
-        resources :articles, :subtle_system_nodes, only: %i[destroy]
+        resources :articles, :treatments, only: %i[destroy]
 
-        resources :users, :artists, :treatments, :meditations, :tracks,
+        resources :users, :artists, :meditations, :tracks,
                   :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters,
                   only: %i[index new edit create update destroy]
       end

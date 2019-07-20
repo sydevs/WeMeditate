@@ -55,7 +55,7 @@ module Admin
       @record.attributes = record_params
 
       notice = translate 'admin.result.updated'
-      action = (record_params[:content].present? ? :write : :edit)
+      action = (@record.has_content? && record_params[:content].present? ? :write : :edit)
       redirect = helpers.polymorphic_admin_path([action, :admin, @record]) if redirect.nil?
       # redirect = (allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
 

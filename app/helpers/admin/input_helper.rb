@@ -32,9 +32,6 @@ module Admin::InputHelper
     when :collection
       original_name = input[:collection].find { |i| i[1].to_s == original_value.to_s }.first
       draft_name = input[:collection].find { |i| i[1].to_s == draft_value.to_s }.first
-    when :rich_text
-      original_name = strip_tags(original_value)
-      draft_name = strip_tags(draft_value)
     when :repeatable
       original_name = translate('admin.draft.items', count: original_value.count)
       draft_name = translate('admin.draft.items', count: draft_value.count)
