@@ -10,8 +10,52 @@ module HasContent
     # base.validates :content, presence: true
   end
 
+  def content_blocks
+    if self[:content].nil?
+      []
+    elsif self[:content].is_a?(Hash)
+      self[:content]['blocks']
+    else
+      JSON.parse(self[:content])['blocks']
+    end
+  end
+
   def media_file media_file_id
     media_files.find_by(id: media_file_id)&.file
+  end
+
+  def essential_media_files locale = nil
+    result = []
+
+    if locale.nil?
+      translated_locales.each do |locale|
+        result += essential_media_files(locale)
+      end
+    else
+      preserve_draft = (I18n.locale != locale)
+
+      Globalize.with_locale(locale) do
+        if content_blocks.present?
+          content_blocks.each do |block|
+            result += block['data']['media_files']
+          end
+        end
+
+        if preserve_draft && has_draft? && draft['content'].present?
+          JSON.parse(draft['content'])['blocks'].each do |block|
+            result += block['data']['media_files']
+          end
+        end
+      end
+    end
+
+    # TODO: Remove test code
+    puts "ESSENTIAL FILES #{locale}: #{result}"
+    result
+  end
+
+  def cleanup_media_files!
+    media_files.where.not(id: essential_media_files).destroy_all
   end
 
 end

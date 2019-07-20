@@ -5,12 +5,12 @@
 - content = has_draft ? @record.draft['content'] : (@record.content || {})
 - data = { content: content || {}, upload: polymorphic_admin_path([:admin, @record, MediaFile]), triangle: image_path('graphics/triangle.svg') }
 
-= simple_form_for [:admin, @record], html: { id: "editor-form" } do |f|
+= simple_form_for @record, url: polymorphic_admin_path([:admin, @record]), html: { id: "editor-form" } do |f|
   = f.hidden_field :content, as: :hidden, id: 'content-input'
 
   .field class=('draft' if has_draft) data-draft='content'
     - if @record.reviewable? && has_draft
-      .ui.yellow.message = translate 'admin.messages.draft_mnotice', target: @record.model_name.human
+      .ui.yellow.message = translate 'admin.messages.draft_notice', target: @record.model_name.human
 
       = draft_reset_buttons(:content, @record.content && JSON.parse(@record.content), JSON.parse(content))
       .clearfix
@@ -44,7 +44,7 @@
       button.ui.basic.positive.button type='submit' name='draft' value='true'
         = translate 'admin.action.simple.update'
 
-      - unless @record.is_a? Article and @record.new_record?
+      - unless @record.is_a?(Article) && @record.new_record?
         button.ui.basic.primary.button type='submit'
           = translate 'admin.action.simple.approve'
     - else
@@ -54,3 +54,8 @@
     div#upload-loader style='display: none'
       i.notched.circle.loading.icon
       span
+
+/ TODO: Remove this test code
+hr
+p: code = @record.media_files.pluck(:id)
+p: pre = @record.content_blocks.pretty_inspect

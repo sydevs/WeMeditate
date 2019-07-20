@@ -4,6 +4,12 @@
 
 / TODO: Remove this test code
 hr
+p: code
+  div Media Files:
+  = @record.media_files.pluck(:id)
+p: code
+  div Essential Media Files:
+  = @record.essential_media_files
 p: code = @record.inspect
 - @record.respond_to?(:translations) && @record.translations.each do |translation|
   p: code = translation.inspect

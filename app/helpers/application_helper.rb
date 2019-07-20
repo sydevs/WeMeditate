@@ -35,15 +35,14 @@ module ApplicationHelper
     return unless record.content.present?
 
     cache record.content do
-      record.content = JSON.parse(record.content) unless record.content.is_a?(Hash)
-      record.content['blocks'].each do |block|
+      record.content_blocks.each do |block|
         concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys
       end
     end
   end
 
   def render_decoration type, block, **args
-    return unless block[:decorations].present? and block[:decorations][type].present?
+    return unless block[:decorations].present? && block[:decorations][type].present?
 
     data = block[:decorations][type]
     classes = [type]

@@ -10,7 +10,7 @@ const Editor = {
   input: null,
 
   options: {
-    holderId: 'content-editor',
+    holder: 'content-editor',
     tools: {
       header: HeaderTool,
       list: ListTool,

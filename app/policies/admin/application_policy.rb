@@ -51,6 +51,10 @@ module Admin
       update?
     end
 
+    def upload?
+      update? || write?
+    end
+
     # HELPER METHODS
     def admin?
       regional_admin? || super_admin?

@@ -42,7 +42,7 @@ module Admin
       @record.original_locale = I18n.locale.to_s
       authorize @record
 
-      if @record.save && after_create && @record.valid?
+      if @record.save && after_create
         redirect_to helpers.polymorphic_admin_path(redirect || [:edit, :admin, @record]), flash: { notice: translate('admin.result.created') }
       else
         render :new
@@ -55,7 +55,7 @@ module Admin
       @record.attributes = record_params
 
       notice = translate 'admin.result.updated'
-      action = (record_params[:content].present? && record_params[:content].is_a?(Hash) ? :write : :edit)
+      action = (record_params[:content].present? ? :write : :edit)
       redirect = helpers.polymorphic_admin_path([action, :admin, @record]) if redirect.nil?
       # redirect = (allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
 
@@ -64,9 +64,10 @@ module Admin
       if @record.reviewable?
         if allow.publish? && params[:draft] != 'true'
           @record.discard_draft!
-          notice = translate 'admin.result.saved_but_needs_review'
+          @record.try(:cleanup_media_files!)
         else
           @record.record_draft!(current_user)
+          notice = translate 'admin.result.saved_but_needs_review'
         end
       end
 
@@ -86,7 +87,7 @@ module Admin
       @record.reify_approved_changes! params[:approve]
 
       if @record.save
-        after_save
+        @record.try(:cleanup_media_files!)
         redirect_to redirect, flash: { notice: notice }
       else
         render :review
@@ -102,11 +103,11 @@ module Admin
         end  
       end
 
-      if @record.translatable? and @record.translated_locales.include? I18n.locale
+      if @record.translatable? && @record.translated_locales.include?(I18n.locale)
         if @record.translated_locales.count == 1
           @record.destroy
         else
-          @record.translations.find_by(locale: I18n.locale).destroy_all
+          @record.translations.where(locale: I18n.locale).destroy_all
         end
       else
         @record.destroy

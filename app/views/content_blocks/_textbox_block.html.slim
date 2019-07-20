@@ -46,7 +46,7 @@
           h2.content__textbox__title = block[:title]
           .content__textbox__text
             = block[:text].html_safe
-            - if block[:action].present? and block[:url].present?
+            - if block[:action].present? && block[:url].present?
               a.content__textbox__button.button.button--box.button--large href=block[:url] = block[:action]
 
 .content__textbox__decoration.content__textbox__decoration--triangle

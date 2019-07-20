@@ -99,7 +99,7 @@ module Admin::TableHelper
         concat table_action DurationFilter.model_name.human(count: -1), model_icon_key(DurationFilter), admin_duration_filters_path if policy(DurationFilter).index?
       end
 
-      if policy(model).sort? and records.count > 1
+      if policy(model).sort? && records.count > 1
         concat table_action translate('admin.action.target.reorder', target: model.model_name.human), 'bars', polymorphic_admin_path([:admin, model], reorder: true)
       end
     end

@@ -75,8 +75,7 @@ module Admin
     end
 
     def content_outline record
-      record.content = JSON.parse(record.content) unless record.content.nil? || record.content.is_a?(Hash)
-      blocks = record.content['blocks'] if record.content.present?
+      blocks = record.content_blocks if record.content.present?
       return unless blocks
 
       content_tag :ul do

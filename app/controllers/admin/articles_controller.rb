@@ -38,9 +38,8 @@ module Admin
       end
 
       def after_create
-        return true unless params[:article][:thumbnail]
-
-        @record.update thumbnail_id: @record.media_files.create!(file: params[:article][:thumbnail]).id
+        @record.update thumbnail_id: @record.media_files.create!(file: params[:article][:thumbnail]).id if params[:article][:thumbnail]
+        @record.valid?
       end
 
   end
