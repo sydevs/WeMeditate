@@ -111,7 +111,7 @@ module Admin::InputHelper
     draftable_field form, key, type: :media, value: value, draft: draft_value, wrapper: (args[:wrapper] || {}) do |val|
       capture do
         concat form.hidden_field(key, value: val)
-        concat form.input_field(attribute, as: :file, wrapper: :ui_file_input, icon: file_type_icon(type), file: val, input_html: { accept: file_type_accepts(type) })
+        concat form.input_field(attribute, as: :file, file: val, accept: file_type_accepts(type))
 
         if preview && type == :image && val.present?
           concat tag.div(tag.img(src: MediaFile.find(val).file.url(:medium)), class: 'ui rounded image') 

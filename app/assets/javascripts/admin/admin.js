@@ -55,6 +55,22 @@ let Admin = {
     })
 
     RepeatableFields.initialize(scope)
+
+    $('input[type=file]').on('change', (event) => {
+      console.log('on change', event.target)
+      const input = event.target
+      const $img = $(input).next('.image').children('img')
+
+      console.log('change', $img.length, input.files.length)
+      if ($img.length > 0 && input.files && input.files[0]) {
+        const reader = new FileReader()
+        reader.onload = function(event) {
+          $img.attr('src', event.target.result);
+        }
+        
+        reader.readAsDataURL(input.files[0]);
+      }
+    })
   },
 
 }
