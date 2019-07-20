@@ -13,7 +13,6 @@ categories = {}
     order: index,
     published: true,
     published_at: DateTime.now,
-    original_locale: :en,
   })
   puts "Created Category - #{name}"
 end
@@ -31,7 +30,6 @@ end
     vimeo_id: '',
     published: true,
     published_at: DateTime.now,
-    original_locale: :en,
   })
 
   puts "Created Generic Article #{index}"
@@ -49,7 +47,6 @@ end
     vimeo_id: '',
     published: false,
     published_at: DateTime.now,
-    original_locale: :en,
   })
 
   puts "Created Unpublished Article #{index}"

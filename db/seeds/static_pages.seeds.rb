@@ -25,7 +25,6 @@ static_pages = {}
   static_pages[role].update!({
     name: name,
     published_at: DateTime.now,
-    original_locale: :en,
   })
   puts "Created Static Page - #{role}"
 end

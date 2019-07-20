@@ -17,7 +17,6 @@ goal_filters = {}
     icon: file_root.join("goal_filters/#{name.dasherize.downcase}.svg").open,
     published: true,
     published_at: DateTime.now,
-    original_locale: :en,
   })
 
   puts "Created Goal Filter - #{name}"
@@ -32,7 +31,6 @@ duration_filters = {}
     minutes: minutes,
     published: true,
     published_at: DateTime.now,
-    original_locale: :en,
   })
   puts "Created Duration Filter - #{minutes}"
 end
@@ -68,7 +66,6 @@ end
     excerpt: 'Feel like you’re in need of a pick me up? Banish those negative thoughts which are putting you down and boost your confidence.',
     published: true,
     published_at: DateTime.now,
-    original_locale: :en,
   })
 
   Meditation.find_or_initialize_by(name: atts[:name]).update!(atts)

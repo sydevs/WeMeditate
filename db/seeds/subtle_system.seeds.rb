@@ -53,7 +53,6 @@ treatments = []
     ]),
     published: true,
     published_at: DateTime.now,
-    original_locale: :en,
   }))
 
   treatments.push(treatment)
@@ -78,7 +77,6 @@ end
     name: "#{name} Chakra",
     excerpt: sentences(1),
     published_at: DateTime.now,
-    original_locale: :en,
   })
 
   if %i[chakra_3b chakra_6 chakra_7].include? role
@@ -183,7 +181,6 @@ end
     name: name,
     excerpt: sentences(2),
     published_at: DateTime.now,
-    original_locale: :en,
   })
 
   subtle_system_node.update!(content: content([

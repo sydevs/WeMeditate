@@ -39,7 +39,6 @@ module Admin
     def create record_params, redirect = nil
       @record = @model.new update_params(record_params)
       @record.published_at ||= Time.now.to_date if @record.published? && @record.respond_to?(:published_at)
-      @record.original_locale = I18n.locale.to_s
       authorize @record
 
       if @record.save && after_create

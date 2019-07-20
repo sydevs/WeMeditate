@@ -1,5 +1,7 @@
 class ApplicationRecord < ActiveRecord::Base
 
+  before_save :set_original_locale
+
   self.abstract_class = true
 
   def self.preload_for _mode
@@ -44,5 +46,11 @@ class ApplicationRecord < ActiveRecord::Base
   def cache_key
     super + '-' + Globalize.locale.to_s
   end
+
+  private
+
+    def set_original_locale
+      original_locale = I18n.locale.to_s if has_attribute?(:original_locale)
+    end
 
 end
