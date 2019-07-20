@@ -65,7 +65,7 @@ class ImageTool extends EditorTool {
     this.itemsContainer = make('div', this.CSS.items, {}, this.container)
 
     if (this.data.items.length) {
-      //if (!this.allowMultiple) $(this.uploader.wrapper).hide()
+      if (!this.allowMultiple) $(this.uploader.wrapper).hide()
 
       this.data.items.forEach(item => {
         this.itemsContainer.appendChild(this.renderItem(item))
