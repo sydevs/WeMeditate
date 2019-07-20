@@ -30,14 +30,15 @@ module Admin
       end
 
       def update_params record_params
-        return super(record_params) if action_name == 'create' || !params[:article][:thumbnail]
+        if defined?(@record) && params[:article][:thumbnail].present?
+          record_params[:thumbnail_id] = @record.media_files.create!(file: params[:article][:thumbnail]).id
+        end
 
-        record_params[:thumbnail_id] = @record.media_files.create!(file: params[:article][:thumbnail]).id
-        super(record_params)
+        super record_params
       end
 
-      def after_save
-        return unless @record.new_record? && params[:article][:thumbnail]
+      def after_create
+        return true unless params[:article][:thumbnail]
 
         @record.update thumbnail_id: @record.media_files.create!(file: params[:article][:thumbnail]).id
       end

@@ -42,7 +42,7 @@ module Admin
       @record.original_locale = I18n.locale.to_s
       authorize @record
 
-      if @record.save
+      if @record.save && after_create && @record.valid?
         redirect_to helpers.polymorphic_admin_path(redirect || [:edit, :admin, @record]), flash: { notice: translate('admin.result.created') }
       else
         render :new
@@ -71,7 +71,6 @@ module Admin
       end
 
       if @record.save
-        after_save
         redirect_to redirect, flash: { notice: notice }
       else
         render :edit
@@ -140,7 +139,7 @@ module Admin
         record_params
       end
 
-      def after_save; end
+      def after_create; end
 
     private
 

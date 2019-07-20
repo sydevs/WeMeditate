@@ -27,7 +27,7 @@ class Article < ApplicationRecord
   validates :name, presence: true
   validates :excerpt, presence: true
   validates :priority, presence: true
-  validates :thumbnail_id, presence: true, unless: :new_record?
+  validates :thumbnail_id, presence: true, if: :persisted?
 
   # Scopes
   default_scope { order(priority: :desc, updated_at: :desc) } # TODO: This should be ordered by published_at instead?
