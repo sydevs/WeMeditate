@@ -1,7 +1,7 @@
 
 - horizontal = false unless local_assigns[:horizontal] == true
 
-- draft_items = local_assigns.key?(:draft) ? local_assigns[:draft] : f.object.draft[attribute.to_s] if f.object.reviewable? && f.object.has_draft?
+- draft_items = local_assigns.key?(:draft) ? local_assigns[:draft] : f.object.local_draft[attribute.to_s] if f.object.reviewable? && f.object.has_draft?
 - original_items = (local_assigns.key?(:items) ? local_assigns[:items] : f.object.send(attribute)&.to_a) || []
 - items = draft_items || original_items
 

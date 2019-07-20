@@ -1,8 +1,8 @@
 
 - content_for :title, translate('admin.action.target.write', target: @record.model_name.human)
 - allow = policy(@record)
-- has_draft = @record.has_draft? && @record.draft&.has_key?('content')
-- content = has_draft ? @record.draft['content'] : (@record.content || {})
+- has_draft = @record.has_draft?(:content)
+- content = has_draft ? @record.local_draft['content'] : (@record.content || {})
 - data = { content: content || {}, upload: polymorphic_admin_path([:admin, @record, MediaFile]), triangle: image_path('graphics/triangle.svg') }
 
 = simple_form_for @record, url: polymorphic_admin_path([:admin, @record]), html: { id: "editor-form" } do |f|
@@ -26,7 +26,6 @@
             #splash-url.cdx-input.cdx-input--url contenteditable=true data-placeholder="Enter url link"
 
           #splash-uploader
-
 
     #content-editor data=data
 
@@ -57,5 +56,16 @@
 
 / TODO: Remove this test code
 hr
-p: code = @record.media_files.pluck(:id)
-p: pre = @record.content_blocks.pretty_inspect
+- if @record.respond_to?(:media_files)
+  p: code
+    div Media Files:
+    = @record.media_files.pluck(:id)
+  p: code
+    div Essential Media Files:
+    = @record.essential_media_files
+p: pre = @record.pretty_inspect
+- @record.respond_to?(:translations) && @record.translations.each do |translation|
+  p: pre = translation.pretty_inspect
+p: code
+  div Draft
+  pre = @record.local_draft.pretty_inspect

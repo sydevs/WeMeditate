@@ -53,6 +53,7 @@ module Admin
       record_params = update_params(record_params)
       @record.attributes = record_params
 
+      will_publish = @record.reviewable? && allow.publish? && params[:draft] != 'true'
       notice = translate 'admin.result.updated'
       action = (@record.has_content? && record_params[:content].present? ? :write : :edit)
       redirect = helpers.polymorphic_admin_path([action, :admin, @record]) if redirect.nil?
@@ -60,10 +61,11 @@ module Admin
 
       @record.published_at ||= Time.now.to_date if @record.published? && @record.respond_to?(:published_at)
 
+      puts "UPDATED PARAMS #{record_params}"
+      
       if @record.reviewable?
-        if allow.publish? && params[:draft] != 'true'
+        if will_publish
           @record.discard_draft!
-          @record.try(:cleanup_media_files!)
         else
           @record.record_draft!(current_user)
           notice = translate 'admin.result.saved_but_needs_review'
@@ -71,6 +73,7 @@ module Admin
       end
 
       if @record.save
+        @record.try(:cleanup_media_files!) if will_publish
         redirect_to redirect, flash: { notice: notice }
       else
         render :edit

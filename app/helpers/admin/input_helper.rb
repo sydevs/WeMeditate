@@ -64,7 +64,7 @@ module Admin::InputHelper
 
   def draftable_field form, attribute, type: :string, label: true, disabled: false, input: {}, wrapper: {}, **args
     key = (type == :association ? "#{attribute}_id" : attribute.to_s)
-    has_draft = args[:draft].present? || form.object.draft&.has_key?(key)
+    has_draft = args[:draft].present? || form.object.local_draft&.has_key?(key)
     value = args.key?(:value) ? args[:value] : form.object.send(key)
 
     wrapper[:class] = "#{wrapper[:class] || ''} #{'draft' if has_draft}"
@@ -72,7 +72,7 @@ module Admin::InputHelper
 
     form.input attribute, label: false, disabled: disabled, required: wrapper[:required], wrapper_html: wrapper.except!(:required) do
       if has_draft
-        draft = args[:draft] || form.object.draft[key]
+        draft = args[:draft] || form.object.local_draft[key]
         concat draft_reset_buttons(type, value, draft, input)
         value = draft
       end

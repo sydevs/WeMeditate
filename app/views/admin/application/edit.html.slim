@@ -19,3 +19,6 @@ hr
 p: pre = @record.pretty_inspect
 - @record.respond_to?(:translations) && @record.translations.each do |translation|
   p: pre = translation.pretty_inspect
+p: code
+  div Draft
+  pre = @record.local_draft.pretty_inspect

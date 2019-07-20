@@ -95,7 +95,7 @@ module MetadataHelper
       when Meditation, Treatment
         tags.merge!({
           'og:type' => 'video.other',
-          'og:image' => record.thumbnail.url,
+          'og:image' => record.thumbnail&.url,
           # 'og:video' => record.video&.url, # TODO: Make this work with the new Vimeo integration
           # 'og:video:duration' => '', # TODO: Define this
           # 'og:video:release_date' => record.created_at.to_s(:db),
@@ -170,7 +170,7 @@ module MetadataHelper
             'publisher' => ORGANIZATION,
             'name' => tags['og:title'],
             'description' => tags['og:description'],
-            'thumbnail_url' => record.thumbnail.url,
+            'thumbnail_url' => record.thumbnail&.url,
             'uploadDate' => tags['og:article:published_time'],
             'image' => tags['og:image'],
             'contentUrl' => tags['og:video'],
@@ -233,7 +233,7 @@ module MetadataHelper
         page.merge!({
           '@type' => 'VideoObject',
           'publisher' => ORGANIZATION,
-          'thumbnail_url' => record.thumbnail.url,
+          'thumbnail_url' => record.thumbnail&.url,
           'uploadDate' => tags['og:article:published_time'],
           'contentUrl' => tags['og:video'],
           'embedUrl' => tags['twitter:player:url'],

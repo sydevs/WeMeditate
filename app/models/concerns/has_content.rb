@@ -35,22 +35,25 @@ module HasContent
       preserve_draft = (I18n.locale != locale)
 
       Globalize.with_locale(locale) do
+        puts "CHECKING #{translation.pretty_inspect}"
+
         if content_blocks.present?
           content_blocks.each do |block|
             result += block['data']['media_files'] if block['data']['media_files']
           end
 
-          result += [thumbnail_id] if try(:thumbnail_id)
+          puts "HAS THUMBNAIL? #{thumbnail_id} - #{locale}"
+          result += [thumbnail_id] if self.has_attribute?(:thumbnail_id)
         end
 
         if preserve_draft && has_draft?
-          if draft['content'].present?
-            JSON.parse(draft['content'])['blocks'].each do |block|
+          if local_draft['content'].present?
+            JSON.parse(local_draft['content'])['blocks'].each do |block|
               result += block['data']['media_files']
             end
           end
 
-          result += [draft['thumbnail_id']] if draft['thumbnail_id']
+          result += [local_draft['thumbnail_id']] if local_draft['thumbnail_id']
         end
       end
     end

@@ -312,7 +312,7 @@ ActiveRecord::Schema.define(version: 2019_07_20_165555) do
     t.string "slug", null: false
     t.text "excerpt", null: false
     t.jsonb "metatags"
-    t.jsonb "content", default: {}
+    t.jsonb "content"
     t.integer "horizontal_vimeo_id"
     t.integer "vertical_vimeo_id"
     t.boolean "published", default: false

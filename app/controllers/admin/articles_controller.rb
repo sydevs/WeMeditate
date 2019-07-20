@@ -38,7 +38,11 @@ module Admin
       end
 
       def after_create
-        @record.update thumbnail_id: @record.media_files.create!(file: params[:article][:thumbnail]).id if params[:article][:thumbnail]
+        if params[:article][:thumbnail]
+          media_file = @record.media_files.create!(file: params[:article][:thumbnail])
+          @record.update!(thumbnail_id: media_file.id)
+        end
+
         @record.valid?
       end
 
