@@ -8,7 +8,7 @@
 class DurationFilter < ApplicationRecord
 
   # Associations
-  translates :published
+  translates :published_at, :published
   has_many :meditations
 
   # Validations
@@ -16,7 +16,7 @@ class DurationFilter < ApplicationRecord
 
   # Scopes
   default_scope { order(:minutes) }
-  scope :published, -> { joins(:translations).where(published: true, duration_filter_translations: { locale: I18n.locale }) }
+  scope :published, -> { with_translations(I18n.locale).where(published: true) }
   scope :q, -> (q) { where(minutes: q) if q.present? }
 
   def self.has_content

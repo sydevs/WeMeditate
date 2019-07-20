@@ -4,20 +4,24 @@ RouteTranslator.config do |config|
   #config.generate_unnamed_unlocalized_routes = true
   config.verify_host_path_consistency = true
 
-  config.host_locales = {
-    'www.wemeditate.ru' => :ru,
-    'it.wemeditate.co' => :it,
-    'www.wemeditate.co' => :en,
-  }
+  if Rails.env.production?
+    config.host_locales = {
+      'www.wemeditate.ru' => :ru,
+      'it.wemeditate.co' => :it,
+      'www.wemeditate.co' => :en,
+    }
+  else
+    config.host_locales = {}
+    host = 'localhost'
+    # host = 'omicron.local'
 
-  if Rails.env.development?
     I18n.available_locales.each do |locale|
-      config.host_locales["#{locale}.localhost"] = locale
-      config.host_locales["#{locale}.omicron.local"] = locale
+      hostname = (locale == :en ? host : "#{locale}.#{host}")
+      config.host_locales[hostname] = locale
     end
-
-    config.host_locales['localhost'] = :en
   end
+
+  Rails.configuration.locale_hosts = config.host_locales.invert
 
   # TODO: See this comment for a workaround, https://github.com/enriclluelles/route_translator/issues/171#issuecomment-324083093
 end

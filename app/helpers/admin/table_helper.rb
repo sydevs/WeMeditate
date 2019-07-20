@@ -44,34 +44,44 @@ module Admin::TableHelper
 
   def table_icons record
     capture do
+      if record.respond_to?(:translated_locales)
+        if record.translated_locales.include?(I18n.locale)
+          if record.respond_to?(:published_at) && record.get_localized_attribute(:published_at).nil?
+            status = table_icon 'warning sign', translate('admin.tags.pending_translation', language: language_name)
+          end
+        else
+          status = table_icon 'orange warning sign', translate('admin.tags.no_translation', language: language_name)
+        end
+      end
+
+      unless status
+        if record.reviewable?
+          if !(record.has_attribute?(:published) ? record.published : true)
+            status = table_icon 'disabled dot circle', translate('admin.tags.unpublished_draft')
+          elsif record.has_draft?
+            status = table_icon "#{'orange' if allow.publish?} exclamation circle", translate('admin.tags.unpublished_changes')
+          else
+            status = table_icon 'check circle', translate('admin.tags.published')
+          end
+        elsif record.has_attribute?(:published) && !record.published
+          status = table_icon 'disabled hide', translate('admin.tags.unpublished_draft')
+        end
+      end
+
+      concat status
+  
       case record
-      when Track
-        record.instrument_filters.includes(:translations).each do |instrument_filter|
-          detail = tag.div class: 'instrument', data: { tooltip: instrument_filter.name } do
-            tag.img src: instrument_filter.icon.url
-          end
-
-          concat detail
-        end
-      when Meditation
-        record.goal_filters.includes(:translations).each do |goal_filter|
-          detail = tag.div class: 'goal', data: { tooltip: goal_filter.name } do
-            tag.img src: goal_filter.icon.url
-          end
-
-          concat detail
-        end
-
-        concat table_icon 'eye', translate('admin.tags.views', count: record.views), record.views
       when Category
         article_count = record.articles.count
-        concat table_icon model_icon_key(Article), Category.human_attribute_name(:articles, count: article_count), article_count
+        concat table_icon 'file text', Category.human_attribute_name(:articles, count: article_count), article_count
       when MoodFilter, InstrumentFilter, Artist
         track_count = record.tracks.count
-        concat table_icon model_icon_key(Track), record.class.human_attribute_name(:tracks, count: track_count), track_count
+        concat table_icon 'music', record.class.human_attribute_name(:tracks, count: track_count), track_count
       when GoalFilter, DurationFilter
         meditation_count = record.meditations.count
-        concat table_icon model_icon_key(Meditation), record.class.human_attribute_name(:meditations, count: meditation_count), meditation_count
+        concat table_icon 'leaf', record.class.human_attribute_name(:meditations, count: meditation_count), meditation_count
+      when User
+        concat table_icon 'globe', record.available_languages.map { |lang| language_name(lang) }.join(', ')
       end
     end
   end
@@ -90,7 +100,7 @@ module Admin::TableHelper
       end
 
       if policy(model).sort? and records.count > 1
-        concat table_action translate('admin.action.target.reorder', target: model.model_name.human), 'bars', url_for([:admin, model, reorder: true])
+        concat table_action translate('admin.action.target.reorder', target: model.model_name.human), 'bars', polymorphic_admin_path([:admin, model], reorder: true)
       end
     end
   end
@@ -108,12 +118,12 @@ module Admin::TableHelper
 
     capture do
       if parent
-        concat table_link translate('admin.action.target.back', target: parent.model_name.human(count: -1)), 'left arrow', url_for([:admin, parent])
+        concat table_link translate('admin.action.target.back', target: parent.model_name.human(count: -1)), 'left arrow', polymorphic_admin_path([:admin, parent])
       end
 
       if policy(model).new?
         label = translate('create', scope: %i[admin action target], target: model.model_name.human)
-        concat table_link label, 'plus', url_for([:new, :admin, model.model_name.singular_route_key.to_sym])
+        concat table_link label, 'plus', polymorphic_path([:new, :admin, model.model_name.singular_route_key.to_sym])
       end
     end
   end

@@ -95,15 +95,13 @@ module Admin::InputHelper
   end
 
   def draftable_publish_field form, enabled: true **args
-    hint = translate 'admin.details.first_published_at', time: form.object.published_at.to_s(:long) if form.object.try(:published_at)
+    published_at = form.object.get_localized_attribute(:published_at) if form.object.respond_to?(:published_at)
+    hint = published_at ? translate('admin.details.first_published_at', time: published_at.to_s(:long)) : nil
 
     draftable_field form, :published, type: :toggle do |val|
       capture do
-        field = form.input_field(:published, as: :boolean, checked: val)
-        field += tag.label translate 'admin.messages.make_public', target: form.object.model_name.human(count: 1).downcase
-
-        concat content_tag :div, field.html_safe, class: "ui#{' disabled' unless enabled} toggle checkbox"
-        concat form.hint(translate 'admin.details.first_published_at', time: form.object.published_at.to_s(:long)) if form.object.try(:published_at)
+        concat toggle_input form, :published, val, enabled: enabled
+        concat form.hint(hint) if hint
       end
     end
   end
@@ -141,6 +139,14 @@ module Admin::InputHelper
       content_tag :div, class: 'ui date picker' do
         form.input_field attribute, as: :string, value: value
       end
+    end
+  end
+
+  def toggle_input form, attribute, checked = nil, enabled: true
+    checked ||= form.object.send(attribute)
+    content_tag :div, class: "ui#{' disabled' unless enabled} toggle checkbox" do
+      concat form.input_field(attribute, as: :boolean, checked: checked)
+      concat tag.label translate 'admin.messages.make_public', target: form.object.model_name.human(count: 1).downcase
     end
   end
 

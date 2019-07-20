@@ -1,8 +1,11 @@
 
 = f.input :name
 = f.input :email, as: :email
-= f.input :languages, collection: I18n.available_locales.collect { |l| [I18nData.languages[l.to_s.upcase], l] }, prompt: translate('admin.misc.locale.all_languages'), input_html: { multiple: true }
-= f.input :role, collection: @assignable_roles.map {|k, v| [human_enum_name(User, :role, k), k]}
+- available_languages = current_user.available_languages.collect { |l| [language_name(l), l] }
+- selected = (@record.languages unless @record.languages == current_user.available_languages.map(&:to_s))
+- hint = (@record.available_languages.map { |lang| language_name(lang) }.join(', ') unless selected.present?)
+= f.input :languages, selected: selected, collection: available_languages, hint: hint, prompt: translate('admin.misc.locale.all_languages'), input_html: { multiple: true }
+= f.input :role, collection: @assignable_roles.map { |k, v| [human_enum_name(User, :role, k), k] }
 
 table.ui.definition.table
   thead

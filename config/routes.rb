@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  devise_for :users
 
   get '404', to: 'application#error'
   get '422', to: 'application#error'
   get '500', to: 'application#error'
-  get 'switch_user' => 'switch_user#set_current_user'
   get :maintenance, to: 'application#maintenance'
   get 'robots.txt', to: 'application#robots', defaults: { format: :txt }
 
   # ===== ADMIN ROUTES ===== #
   constraints DomainConstraint.new(%w[admin.localhost admin.omicron.local admin.wemeditate.co]) do
     get '/', to: redirect('/en')
+    devise_for :users
+    get 'switch_user' => 'switch_user#set_current_user'
 
     scope ':locale' do
       namespace :admin, path: nil do

@@ -12,7 +12,7 @@ class SubtleSystemNode < ApplicationRecord
   include Draftable
 
   # Extensions
-  translates :name, :slug, :excerpt, :metatags, :content, :draft
+  translates :name, :slug, :excerpt, :metatags, :content, :draft, :published_at
   friendly_id :name, use: :globalize
 
   # Associations

@@ -4,7 +4,7 @@
 class Track < ApplicationRecord
 
   # Extensions
-  translates :name, :published
+  translates :name, :published_at, :published
 
   # Associations
   has_and_belongs_to_many :mood_filters
@@ -20,7 +20,7 @@ class Track < ApplicationRecord
   validates :instrument_filters, presence: true
 
   # Scopes
-  scope :published, -> { joins(:translations).where(published: true, track_translations: { locale: I18n.locale }) }
+  scope :published, -> { with_translations(I18n.locale).where(published: true) }
   scope :q, -> (q) { joins(:translations, :artist).where('track_translations.name ILIKE ? OR artists.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Include everything necessary to render the full content of this model

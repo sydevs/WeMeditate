@@ -5,9 +5,9 @@ module Admin
 
     def dashboard_issues &block
       untranslated Category, :critical, &block
-      untranslated MoodFilter, :critical, &block
+      untranslated GoalFilter, :critical, &block
       untranslated InstrumentFilter, :critical, &block
-      # untranslated GoalFilter, :critical, &block
+      # untranslated MoodFilter, :critical, &block
       untranslated StaticPage, :critical, &block
       untranslated SubtleSystemNode, :critical, &block
       needs_review StaticPage, :important, &block
@@ -34,11 +34,13 @@ module Admin
 
       def untranslated model, urgency, &block
         if policy(model).update_translation?
-          policy_scope(model).untranslated.each do |record|
+          scope = policy_scope(model).untranslated
+          scope.where(draft: nil) if model.has_attribute? :draft
+          scope.each do |record|
             block.call({
               model: model,
               name: record_name(record),
-              url: url_for([:edit, :admin, record]),
+              url: polymorphic_admin_path([:edit, :admin, record]),
               message: translate('admin.tags.no_translation', language: language_name),
               urgency: urgency,
             })
@@ -48,11 +50,11 @@ module Admin
 
       def unpublished model, urgency, &block
         if policy(model).review?
-          policy_scope(model).where.not(published: false).each do |record|
+          policy_scope(model).where(published: false).each do |record|
             block.call({
               model: model,
               name: record_name(record),
-              url: url_for([:review, :admin, record]),
+              url: polymorphic_admin_path([:edit, :admin, record]),
               message: translate('admin.tags.unpublished_draft'),
               urgency: urgency,
             })
@@ -66,7 +68,7 @@ module Admin
             block.call({
               model: model,
               name: record_name(record),
-              url: url_for([:review, :admin, record]),
+              url: polymorphic_admin_path([:review, :admin, record]),
               message: translate('admin.tags.unpublished_changes'),
               urgency: urgency,
             })

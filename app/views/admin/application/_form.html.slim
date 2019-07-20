@@ -1,10 +1,10 @@
 
 - allow = policy(record)
 
-- if record.reviewable? && record.published? && record.has_draft?
+- if record.reviewable? && record.has_draft?
   .ui.yellow.message = translate 'admin.messages.unpublished_changes_notice', target: record.model_name.human
 
-= simple_form_for [:admin, record], html: { id: "#{record.model_name.i18n_key}-form", class: "#{'error' if record.errors.present?}", novalidate: true } do |f|
+= simple_form_for record, url: polymorphic_admin_path([:admin, record]), html: { id: "#{record.model_name.i18n_key}-form", class: "#{'error' if record.errors.present?}", novalidate: true } do |f|
   - if record.errors.present?
     .ui.error.message
       .header = translate 'admin.misc.errors'
@@ -13,19 +13,30 @@
           li = message
 
   - if record.respond_to? :published
-    = draftable_publish_field f, enabled: record.reviewable? || allow.publish?
+    - if record.reviewable?
+      = draftable_publish_field f, enabled: allow.publish?
+    - else
+      = f.input :published, wrapper_html: { class: ('disabled' unless allow.publish?) } do
+        = toggle_input f, :published, enabled: allow.publish?
 
   - if record.viewable?
     - if record.reviewable?
       = draftable_field f, :name
+    - else
+      = f.input :name
+
+    - if record.is_a?(StaticPage) && static_page_path_for(record) != static_page_path(record)
+      = f.input :slug do
+        = record_detail 'linkify', static_page_url_for(record), url: static_page_url_for(record)
+    - elsif record.reviewable?
       / TODO: Try and improve this janky way of getting the url. It's because articles don't have an index route
       - url = record.is_a?(Article) && record.new_record? ? "/#{translate 'routes.articles'}/*" : url_for(record)
       = draftable_slug_field f, url
     - else
-      = f.input :name
+      - url = record.new_record? ? "/#{polymorphic_path(record.class)}/*" : polymorphic_path(record)
       = f.input :slug do
         = content_tag :div, class: 'ui labeled slug input' do
-          = tag.div "#{Pathname(url_for(record)).dirname}/", class: 'ui basic label'
+          = tag.div "#{Pathname(url).dirname}/", class: 'ui basic label'
           = f.input_field :slug
 
   = render "admin/fields/#{record.model_name.param_key}", f: f, record: record
@@ -62,11 +73,11 @@
 
   p
     - if allow.show?
-      a.ui.basic.button href=url_for([:admin, record])
+      a.ui.basic.button href=polymorphic_admin_path([:admin, record])
         i.left.arrow.icon
         = translate 'admin.action.simple.back'
     - else
-      a.ui.basic.button href=url_for([:admin, defined?(record.page) ? record.page : record.class])
+      a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(record.page) ? record.page : record.class])
         i.left.arrow.icon
         = translate 'admin.action.target.back', target: record.model_name.human(count: -1)
 

@@ -4,9 +4,9 @@
 
 - if @record.try(:owner)
   / TODO: Instead we should show everyone who has contributed to this draft.
-  .ui.message = translate 'admin.details.written_by', author: @record.owner.name
+  .ui.message = translate 'admin.details.owned_by', owner: @record.owner.name
 
-= simple_form_for @record, url: url_for([:approve, :admin, @record]), method: :patch
+= simple_form_for @record, url: polymorphic_admin_path([:approve, :admin, @record]), method: :patch
   h3 = translate 'admin.review.attribute_changes', model: @model.model_name.human
 
   - if @record.draft.except('content').empty?
@@ -103,14 +103,17 @@
 
   p
     - if allow.show?
-      a.ui.basic.button href=url_for([:admin, @record])
+      a.ui.basic.button href=polymorphic_admin_path([:admin, @record])
         i.left.arrow.icon
         = translate 'admin.action.simple.back'
     - else
-      a.ui.basic.button href=url_for([:admin, defined?(@record.page) ? @record.page : @record.class])
+      a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(@record.page) ? @record.page : @record.class])
         i.left.arrow.icon
         = translate 'admin.action.target.back', target: @record.model_name.human(count: -1)
 
     button.ui.basic.primary.button type='submit'
       = translate 'admin.action.simple.approve'
 
+/ TODO: Remove this testing code
+hr
+p: code = @record.draft.inspect

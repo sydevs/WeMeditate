@@ -3,7 +3,7 @@
 - allow = policy(@record)
 - has_draft = @record.has_draft? && @record.draft&.has_key?('content')
 - content = has_draft ? @record.draft['content'] : (@record.content || {})
-- data = { content: content || {}, upload: url_for([:admin, @record, :media_files]), triangle: image_path('graphics/triangle.svg') }
+- data = { content: content || {}, upload: polymorphic_admin_path([:admin, @record, MediaFile]), triangle: image_path('graphics/triangle.svg') }
 
 = simple_form_for [:admin, @record], html: { id: "editor-form" } do |f|
   = f.hidden_field :content, as: :hidden, id: 'content-input'
@@ -32,11 +32,11 @@
 
   p
     - if allow.show?
-      a.ui.basic.button href=url_for([:admin, @record])
+      a.ui.basic.button href=polymorphic_admin_path([:admin, @record])
         i.left.arrow.icon
         = translate 'admin.action.simple.back'
     - else
-      a.ui.basic.button href=url_for([:admin, defined?(@record.page) ? @record.page : @record.class])
+      a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(@record.page) ? @record.page : @record.class])
         i.left.arrow.icon
         = translate 'admin.action.target.back', target: @record.model_name.human(count: -1)
 

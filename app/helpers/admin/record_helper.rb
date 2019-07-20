@@ -9,7 +9,7 @@ module Admin::RecordHelper
 
   # ===== MESSAGES ===== #
   def record_published_at_status
-    if not @record.published_at
+    if !@record.published_at
       translate 'admin.tags.unpublished_draft'
     elsif @record.has_draft?
       translate 'admin.tags.published_ago', time_ago: time_ago_in_words(@record.published_at)
@@ -117,7 +117,7 @@ module Admin::RecordHelper
 
     def record_actions_item action
       args = { class: 'item' }
-      args[:href] = action == 'edit' ? url_for([action, :admin, @record]) : url_for([:admin, @record])
+      args[:href] = polymorphic_admin_path(action == 'edit' ? [action, :admin, @record] : [:admin, @record])
       args[:method] = 'delete' if action == 'destroy'
 
       content_tag :a, **args do

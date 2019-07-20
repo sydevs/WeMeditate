@@ -7,7 +7,10 @@ class Meditation < ApplicationRecord
   extend CarrierwaveGlobalize
 
   # Extensions
-  translates :name, :slug, :excerpt, :horizontal_vimeo_id, :vertical_vimeo_id, :metatags, :views, :published
+  translates *%i[
+    name slug metatags views published_at published
+    excerpt horizontal_vimeo_id vertical_vimeo_id
+  ]
   friendly_id :name, use: :globalize
 
   # Associations
@@ -25,8 +28,8 @@ class Meditation < ApplicationRecord
 
   # Scopes
   # default_scope { order( id: :desc ) }
-  scope :untranslated, -> { where.not(id: with_translations(I18n.locale).pluck(:id)) }
-  scope :published, -> { joins(:translations).where(published: true, meditation_translations: { locale: I18n.locale }) }
+  scope :published, -> { with_translations(I18n.locale).where(published: true) }
+  scope :untranslated, -> { where.not(original_locale: I18n.locale, id: published.pluck(:id)) }
   scope :q, -> (q) { joins(:translations).where('meditation_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   alias thumbnail image

@@ -96,7 +96,7 @@ class ApplicationController < ActionController::Base
       return if %w[sessions switch_user].include? controller_name
       return if current_user.present?
 
-      redirect_to '/maintenance'
+      redirect_to maintenance_path
     end
 
     def authorized_preview? model

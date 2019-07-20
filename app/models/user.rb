@@ -16,8 +16,9 @@ class User < ApplicationRecord
   validates :role, presence: true
 
   # Scopes
-  default_scope { order(:email) }
+  default_scope { order(:role, :name) }
   scope :pending, -> { where.not(invitation_created_at: nil).where(invitation_accepted_at: nil) }
+  scope :for_locale, -> { where('languages IS null OR languages LIKE ?', "%#{I18n.locale}%") }
   scope :q, -> (q) { where('email ILIKE ?', "%#{q}%") if q.present? }
 
   # Override this setter so that a user cannot have languages which the website doesn't support.
@@ -47,7 +48,7 @@ class User < ApplicationRecord
 
   # Returns true if the user is able to manage all languages.
   def all_languages?
-    not self[:languages].present? # or current_user&.super_admin?
+    not self[:languages].present?
   end
 
 end

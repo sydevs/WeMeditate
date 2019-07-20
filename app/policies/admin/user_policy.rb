@@ -23,7 +23,10 @@ module Admin
     end
 
     def user_record_is_subordinate?
-      %i[translator editor].include?(record.role) && record.languages.include?(I18n.locale)
+      return true if record.is_a?(Class)
+      return false unless %w[translator editor].include?(record.role)
+      return false unless (record.available_languages & user.available_languages).present?
+      return true
     end
 
   end

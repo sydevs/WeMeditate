@@ -6,8 +6,8 @@ module Admin
     after_action :verify_authorized, except: %i[dashboard vimeo_data]
 
     def dashboard
-      end
-
+    end
+    
     def vimeo_data
       render json: retrieve_vimeo_data(params[:vimeo_id])
     end
@@ -15,7 +15,7 @@ module Admin
     protected
 
       def default_url_options
-        { locale: I18n.locale }
+        { locale: I18n.locale, host: locale_host }
       end
 
     private

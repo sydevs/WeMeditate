@@ -66,7 +66,7 @@ it:
         date: Date
         content: Content
         metatags: Meta Tags
-        owner: Writer
+        owner: Article Owner
 
       static_page:
         title: Title

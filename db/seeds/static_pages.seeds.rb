@@ -22,7 +22,11 @@ static_pages = {}
   privacy: 'Privacy Notice',
 }.each do |role, name|
   static_pages[role] = StaticPage.find_or_initialize_by(role: role)
-  static_pages[role].update!(name: name)
+  static_pages[role].update!({
+    name: name,
+    published_at: DateTime.now,
+    original_locale: :en,
+  })
   puts "Created Static Page - #{role}"
 end
 

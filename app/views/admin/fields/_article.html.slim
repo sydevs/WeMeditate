@@ -2,7 +2,8 @@
 - allow = policy(record)
 
 = draftable_field f, :category, type: :association do |value|
-  - f.association :category, label: false, disabled: !allow.update_structure?, selected: value
+  - f.association :category, wrapper: false, label: false, disabled: !allow.update_structure?, selected: value
+  
 = draftable_field f, :priority, type: :collection do |value|
   - f.input_field :priority, collection: Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}, selected: value, disabled: !allow.update_structure?
 
@@ -20,9 +21,8 @@
 
 - if allow.update_structure?
   = draftable_date_field f
-- else
+- elsif record.date
   = f.input :date do
-    = f.hidden_field :date
     .ui.icon.label
       i.calendar.icon
       = record.date

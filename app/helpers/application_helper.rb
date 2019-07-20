@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def locale_host
+    Rails.configuration.locale_hosts[I18n.locale]
+  end
+
   def playlist_data tracks
     tracks.each_with_index.map do |track, index|
       jpg_srcset = []

@@ -9,7 +9,7 @@
 class InstrumentFilter < ApplicationRecord
 
   # Extentions
-  translates :name, :published
+  translates :name, :published_at, :published
 
   # Associations
   has_and_belongs_to_many :tracks
@@ -21,8 +21,8 @@ class InstrumentFilter < ApplicationRecord
 
   # Scopes
   default_scope { order(:order) }
-  scope :untranslated, -> { where.not(id: with_translations(I18n.locale).pluck(:id)) }
-  scope :published, -> { joins(:translations).where(published: true, instrument_filter_translations: { locale: I18n.locale }) }
+  scope :published, -> { with_translations(I18n.locale).where(published: true) }
+  scope :untranslated, -> { where.not(original_locale: I18n.locale, id: published.pluck(:id)) }
   scope :q, -> (q) { joins(:translations).where('instrument_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   def self.has_content

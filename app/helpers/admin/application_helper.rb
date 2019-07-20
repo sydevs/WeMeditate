@@ -31,6 +31,16 @@ module Admin
       User => 'user',
     }.freeze
 
+    def polymorphic_admin_path args, options = {}
+      if args.last.is_a?(Class)
+        polymorphic_path(args, **options)
+      else
+        options[:id] = args.last.id
+        options[:format] ||= nil
+        polymorphic_path(args, **options)
+      end
+    end
+
     def country_flag country_code
       content_tag :i, nil, class: "#{country_code} flag"
     end
@@ -76,7 +86,8 @@ module Admin
             field = block['type'] == 'header' ? 'text' : 'title'
             title = block['data'][field]
             type = translate(block['type'], scope: %i[admin content blocks])
-            word_count = translate('admin.content.words', count: block['data']['text'].split.size)
+            word_count = block['data']['text'] ? block['data']['text'].split.size : 0
+            word_count = translate('admin.content.words', count: word_count)
 
             concat content_tag :li, tag.strong(title)
             concat content_tag :li, tag.i("#{type}: #{word_count}") if block['type'] == 'textbox' && !block['data']['asVideo']
@@ -103,7 +114,7 @@ module Admin
 
           when 'list', 'image' # Items count
             type = translate(block['type'], scope: %i[admin content blocks])
-            item_count = translate('admin.content.items', count: block['data']['text'].split.size)
+            item_count = translate('admin.content.items', count: block['data']['items'].split.size)
             concat content_tag :li, tag.i("#{type}: #{item_count}")
 
           else

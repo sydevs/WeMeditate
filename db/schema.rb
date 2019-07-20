@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_18_135535) do
+ActiveRecord::Schema.define(version: 2019_07_19_085604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.integer "priority", default: 0, null: false
     t.date "date"
     t.bigint "owner_id"
+    t.string "original_locale", limit: 2, null: false
     t.index ["category_id"], name: "index_articles_on_category_id"
     t.index ["owner_id"], name: "index_articles_on_owner_id"
   end
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "original_locale", limit: 2, null: false
   end
 
   create_table "category_translations", force: :cascade do |t|
@@ -80,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.string "name", null: false
     t.string "slug", null: false
     t.boolean "published", default: false
+    t.datetime "published_at"
     t.index ["category_id"], name: "index_category_translations_on_category_id"
     t.index ["locale"], name: "index_category_translations_on_locale"
   end
@@ -90,12 +93,14 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "published"
+    t.datetime "published_at"
     t.index ["duration_filter_id"], name: "index_duration_filter_translations_on_duration_filter_id"
     t.index ["locale"], name: "index_duration_filter_translations_on_locale"
   end
 
   create_table "duration_filters", force: :cascade do |t|
     t.integer "minutes"
+    t.string "original_locale", limit: 2, null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -119,6 +124,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.datetime "updated_at", null: false
     t.string "name", null: false
     t.boolean "published", default: false
+    t.datetime "published_at"
     t.index ["goal_filter_id"], name: "index_goal_filter_translations_on_goal_filter_id"
     t.index ["locale"], name: "index_goal_filter_translations_on_locale"
   end
@@ -126,6 +132,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
   create_table "goal_filters", force: :cascade do |t|
     t.integer "order"
     t.string "icon", default: "", null: false
+    t.string "original_locale", limit: 2, null: false
   end
 
   create_table "goal_filters_meditations", id: false, force: :cascade do |t|
@@ -142,6 +149,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.datetime "updated_at", null: false
     t.string "name", null: false
     t.boolean "published", default: false
+    t.datetime "published_at"
     t.index ["instrument_filter_id"], name: "index_instrument_filter_translations_on_instrument_filter_id"
     t.index ["locale"], name: "index_instrument_filter_translations_on_locale"
   end
@@ -149,6 +157,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
   create_table "instrument_filters", force: :cascade do |t|
     t.string "icon", null: false
     t.integer "order"
+    t.string "original_locale", limit: 2, null: false
   end
 
   create_table "instrument_filters_tracks", id: false, force: :cascade do |t|
@@ -191,6 +200,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.integer "horizontal_vimeo_id"
     t.integer "vertical_vimeo_id"
     t.boolean "published", default: false
+    t.datetime "published_at"
     t.index ["locale"], name: "index_meditation_translations_on_locale"
     t.index ["meditation_id"], name: "index_meditation_translations_on_meditation_id"
   end
@@ -200,6 +210,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.jsonb "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "original_locale", limit: 2, null: false
     t.index ["duration_filter_id"], name: "index_meditations_on_duration_filter_id"
   end
 
@@ -210,6 +221,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.datetime "updated_at", null: false
     t.string "name", null: false
     t.boolean "published", default: false
+    t.datetime "published_at"
     t.index ["locale"], name: "index_mood_filter_translations_on_locale"
     t.index ["mood_filter_id"], name: "index_mood_filter_translations_on_mood_filter_id"
   end
@@ -218,6 +230,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.integer "order"
     t.jsonb "image"
     t.string "icon"
+    t.string "original_locale", limit: 2, null: false
   end
 
   create_table "mood_filters_tracks", id: false, force: :cascade do |t|
@@ -237,6 +250,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.jsonb "metatags"
     t.jsonb "draft"
     t.jsonb "content"
+    t.datetime "published_at"
     t.index ["locale"], name: "index_static_page_translations_on_locale"
     t.index ["static_page_id"], name: "index_static_page_translations_on_static_page_id"
   end
@@ -245,6 +259,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.integer "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "original_locale", limit: 2, null: false
     t.index ["role"], name: "index_static_pages_on_role", unique: true
   end
 
@@ -259,6 +274,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.jsonb "metatags"
     t.jsonb "draft"
     t.jsonb "content"
+    t.datetime "published_at"
     t.index ["locale"], name: "index_subtle_system_node_translations_on_locale"
     t.index ["subtle_system_node_id"], name: "index_subtle_system_node_translations_on_subtle_system_node_id"
   end
@@ -267,6 +283,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.integer "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "original_locale", limit: 2, null: false
     t.index ["role"], name: "index_subtle_system_nodes_on_role", unique: true
   end
 
@@ -277,6 +294,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.datetime "updated_at", null: false
     t.string "name", null: false
     t.boolean "published", default: false
+    t.datetime "published_at"
     t.index ["locale"], name: "index_track_translations_on_locale"
     t.index ["track_id"], name: "index_track_translations_on_track_id"
   end
@@ -284,6 +302,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
   create_table "tracks", force: :cascade do |t|
     t.string "audio", null: false
     t.bigint "artist_id"
+    t.string "original_locale", limit: 2, null: false
     t.index ["artist_id"], name: "index_tracks_on_artist_id"
   end
 
@@ -301,6 +320,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.integer "horizontal_vimeo_id"
     t.integer "vertical_vimeo_id"
     t.boolean "published", default: false
+    t.datetime "published_at"
     t.index ["locale"], name: "index_treatment_translations_on_locale"
     t.index ["treatment_id"], name: "index_treatment_translations_on_treatment_id"
   end
@@ -309,6 +329,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_135535) do
     t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "original_locale", limit: 2, null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -3,37 +3,17 @@
 
 tr id=dom_id(record)
   td.selector
-    a href=url_for([(:edit unless allow.show?), :admin, record])
+    - if allow.show? || allow.edit?
+      a href=polymorphic_admin_path([(:edit unless allow.show?), :admin, record])
+        = record.name || translate('admin.misc.no_translated_title')
+    - else
       = record.name || translate('admin.misc.no_translated_title')
 
   td.collapsing.right.aligned.disabled
     = table_detail(record)
 
   td.collapsing.right.aligned
-    - unless not defined? record.translated_locales or record.translated_locales.include? I18n.locale
-      = table_icon 'orange warning sign', translate('admin.tags.no_translation', language: language_name)
-
-    - if record.reviewable?
-      - if !(record.has_attribute?(:published) ? record.published : true)
-        = table_icon 'disabled dot circle', translate('admin.tags.unpublished_draft')
-      - elsif record.has_draft?
-        = table_icon "#{'orange' if allow.publish?} exclamation circle", translate('admin.tags.unpublished_changes')
-      - else
-        = table_icon 'check circle', translate('admin.tags.published')
-    - elsif record.has_attribute?(:published) && !record.published
-      = table_icon 'disabled hide', translate('admin.tags.unpublished_draft')
-
-    - case record
-      - when Category
-        - article_count = record.articles.count
-        = table_icon 'file text', Category.human_attribute_name(:articles, count: article_count), article_count
-      - when MoodFilter, InstrumentFilter, Artist
-        - track_count = record.tracks.count
-        = table_icon 'music', record.class.human_attribute_name(:tracks, count: track_count), track_count
-      - when GoalFilter, DurationFilter
-        - meditation_count = record.meditations.count
-        = table_icon 'leaf', record.class.human_attribute_name(:meditations, count: meditation_count), meditation_count
-
+    = table_icons(record)
 
   - case record
     - when Track

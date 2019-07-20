@@ -23,11 +23,22 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def viewable?
-    respond_to?(:slug) and respond_to?(:metatags)
+    respond_to?(:slug) && respond_to?(:metatags)
   end
 
   def translatable?
     respond_to?(:translated_locales)
+  end
+
+  # Retrieves the localized attribute without any fallback
+  def get_localized_attribute attribute
+    return self.send(attribute) unless translatable?
+
+    if globalize.stash.contains?(Globalize.locale, attribute)
+      globalize.stash.read(Globalize.locale, attribute)
+    else
+      translation_for(Globalize.locale).send(attribute)
+    end
   end
 
   def cache_key

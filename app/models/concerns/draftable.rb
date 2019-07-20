@@ -19,7 +19,7 @@ module Draftable
 
     changes.each do |key, (old_value, new_value)|
       next if key == 'content' && (JSON.parse(old_value)['blocks'] == JSON.parse(new_value)['blocks'])
-      next if key == 'published_at'
+      next if key == 'published_at' # We should not include timestamps in drafts
 
       if old_value.to_s != new_value.to_s
         self[key] = old_value
@@ -41,11 +41,13 @@ module Draftable
   end
 
   def reify_approved_changes! attributes
-    attributes.each do |key, data|
-      if key == 'content'
-        approve_content!(data)
-      else
-        self[key] = draft[key]
+    if attributes.present?
+      attributes.each do |key, data|
+        if key == 'content'
+          approve_content!(data)
+        else
+          self[key] = draft[key]
+        end
       end
     end
 

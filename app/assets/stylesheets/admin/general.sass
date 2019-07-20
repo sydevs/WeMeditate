@@ -31,14 +31,27 @@ input + .ui.rounded.image
 #switch_user_identifier
   max-width: 100%
 
-a[href]
+a[href]:not(.button)
   color: black
   opacity: 0.8
 
-a[href]:hover
+a[href]:not(.button):hover
   opacity: 1
   text-decoration: underline
 
 a > .icon:not(.fitted):last-child
   margin-left: 4px
   margin-right: 0
+
+// CONTENT EDITABLE
+[contenteditable]
+  cursor: text
+
+// PLACEHOLDER HACK
+[contenteditable]:empty:before
+  content: attr(data-placeholder)
+  color: gray
+  display: block // For Firefox
+
+[contenteditable]:focus:before
+  color: darkgray

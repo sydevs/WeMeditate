@@ -10,6 +10,8 @@
   .content
     .label, .icon
       font-weight: lighter
+      white-space: nowrap
+      display: inline-block
       opacity: 0.6
       transition: opacity 0.1s
       margin-left: 4px
@@ -28,7 +30,8 @@
 
   .item:not(:hover) .content
     .label, .icon
-      opacity: 0
+      display: none
+      //opacity: 0
 
   &.small
     .text, .icon

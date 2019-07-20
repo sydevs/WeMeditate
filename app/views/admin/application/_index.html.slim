@@ -3,9 +3,9 @@
 - allow = policy(model)
 
 - if reorder
-  = form_tag url_for([:sort, :admin, model]), method: :put
+  = form_tag polymorphic_admin_path([:sort, :admin, model]), method: :put
     .actions
-      a.ui.tiny.compact.basic.button href=url_for([:admin, model])
+      a.ui.tiny.compact.basic.button href=polymorphic_admin_path([:admin, model])
         = translate 'admin.action.simple.cancel'
       button.ui.tiny.compact.basic.positive.right.labeled.icon.button
         = translate 'admin.action.simple.update'

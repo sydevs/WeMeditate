@@ -12,23 +12,23 @@ en:
     music: music
 ru:
   routes:
-    admin: admin_ru
-    inspiration: inspiration_ru
-    articles: articles_ru
-    countries: countries_ru
-    meditations: meditations_ru
-    techniques: techniques_ru
-    subtle_system: subtle-system_ru
-    page: page_ru
-    music: music_ru
+    admin: admin-ru
+    inspiration: inspiration-ru
+    articles: articles-ru
+    countries: countries-ru
+    meditations: meditations-ru
+    techniques: techniques-ru
+    subtle_system: subtle-system-ru
+    page: page-ru
+    music: music-ru
 it:
   routes:
-    admin: admin_it
-    inspiration: inspiration_it
-    articles: articles_it
-    countries: countries_it
-    meditations: meditations_it
-    techniques: techniques_it
-    subtle_system: subtle-system_it
-    page: page_it
-    music: music_it
+    admin: admin-it
+    inspiration: inspiration-it
+    articles: articles-it
+    countries: countries-it
+    meditations: meditations-it
+    techniques: techniques-it
+    subtle_system: subtle-system-it
+    page: page-it
+    music: music-it

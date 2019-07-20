@@ -7,7 +7,10 @@ class Treatment < ApplicationRecord
   extend CarrierwaveGlobalize
 
   # Extensions
-  translates :name, :slug, :excerpt, :content, :thumbnail, :horizontal_vimeo_id, :vertical_vimeo_id, :metatags, :published
+  translates *%i[
+    name slug metatags published_at published
+    excerpt content thumbnail horizontal_vimeo_id vertical_vimeo_id
+  ]
   friendly_id :name, use: :globalize
 
   # Validations
@@ -22,8 +25,8 @@ class Treatment < ApplicationRecord
 
   # Scopes
   default_scope { order(:order) }
-  scope :untranslated, -> { where.not(id: with_translations(I18n.locale).pluck(:id)) }
-  scope :published, -> { joins(:translations).where(published: true, treatment_translations: { locale: I18n.locale }) }
+  scope :published, -> { with_translations(I18n.locale).where(published: true) }
+  scope :untranslated, -> { where.not(original_locale: I18n.locale, id: published.pluck(:id)) }
   scope :q, -> (q) { joins(:translations).where('treatment_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model

@@ -12,12 +12,10 @@
         = translate(status, scope: %i[admin status], target: model_name)
 
       - action = (allow.review? && @record.published? && @record.has_draft? ? :review : :edit)
-      a.ui.button href=url_for([action, :admin, @record])
+      a.ui.button href=polymorphic_admin_path([action, :admin, @record])
         i.edit.icon
-        - if !@record.published? && allow.review?
+        - if allow.review? && @record.published? && @record.has_draft?
           = translate('admin.action.target.review', target: model_name)
-        - elsif @record.has_draft? && allow.review?
-          = translate 'admin.action.simple.review'
         - else
           = translate('admin.action.target.edit', target: model_name)
 
@@ -25,7 +23,7 @@
         i.dropdown.icon
         .menu
           - if @record.has_draft?
-            a.item href=url_for([:edit, :admin, @record])
+            a.item href=polymorphic_admin_path([:edit, :admin, @record])
               i.edit.icon
               = translate 'admin.action.target.edit_details', target: model_name
           - if false && @record.publishable? && allow.publish?
@@ -34,15 +32,15 @@
               i.bullhorn.icon
               = translate (@record.published? ? 'unpublish' : 'publish'), scope: %i[admin action target], target: model_name
           - if @record.published?
-            a.item href=url_for(@record) target='_blank'
+            a.item href=polymorphic_url(@record) target='_blank'
               i.eye.icon
               = translate 'admin.action.descriptive.show'
           - if allow.preview? && (@record.has_draft? || !@record.published?)
-            a.item href=url_for([@record, preview: true]) target='_blank'
+            a.item href=polymorphic_url(@record, preview: true) target='_blank'
               i.eye.icon
               = translate 'admin.action.descriptive.preview'
           - if allow.destroy?
-            a.item href=url_for([:admin, @record]) data={ method: 'delete', confirm: translate('admin.messages.confirm_destroy') }
+            a.item href=polymorphic_admin_path([:admin, @record]) data={ method: 'delete', confirm: translate('admin.messages.confirm_destroy') }
               i.warning.sign.icon
               = translate 'admin.action.target.destroy', target: model_name
 
@@ -55,12 +53,12 @@
       = record_detail 'bullhorn', record_published_at_status if @record.respond_to? :published_at
       = record_detail 'edit', record_modified_at_status
       - if owner = @record.try(:owner)
-        - written_by = translate('admin.details.written_by', author: owner.name)
+        - owned_by = translate('admin.details.owned_by', owner: owner.name)
         - if policy(owner).edit?
           - view_user = translate('admin.action.target.show', target: User.model_name.human)
-          = record_detail 'user', written_by, view_user, url: url_for([:edit, :admin, owner])
+          = record_detail 'user', owned_by, view_user, url: polymorphic_admin_path([:edit, :admin, owner])
         - else
-          = record_detail 'user', written_by
+          = record_detail 'user', owned_by
 
 .clearfix
 
@@ -68,7 +66,7 @@
 
 - if allow.write?
   .table-actions
-    = table_action translate('admin.action.target.write', target: model_name), 'pencil alternate', url_for([:write, :admin, @record])
+    = table_action translate('admin.action.target.write', target: model_name), 'pencil alternate', polymorphic_admin_path([:write, :admin, @record])
 
 
 h4 = translate 'admin.content.outline'
@@ -76,4 +74,4 @@ h4 = translate 'admin.content.outline'
 = content_outline @record
 
 .ui.hidden.divider
-= table_link translate('admin.action.target.back', target: @model.model_name.human(count: -1)), 'left arrow', url_for([:admin, @model])
+= table_link translate('admin.action.target.back', target: @model.model_name.human(count: -1)), 'left arrow', polymorphic_admin_path([:admin, @model])

@@ -38,10 +38,12 @@ module Admin
 
     def create record_params, redirect = nil
       @record = @model.new update_params(record_params)
+      @record.published_at ||= Time.now.to_date if @record.published? && @record.respond_to?(:published_at)
+      @record.original_locale = I18n.locale.to_s
       authorize @record
 
       if @record.save
-        redirect_to (redirect || [:edit, :admin, @record]), flash: { notice: translate('admin.result.created') }
+        redirect_to helpers.polymorphic_admin_path(redirect || [:edit, :admin, @record]), flash: { notice: translate('admin.result.created') }
       else
         render :new
       end
@@ -52,8 +54,9 @@ module Admin
       record_params = update_params(record_params)
       @record.attributes = record_params
 
-      notice = translate 'result.updated'
-      redirect = [(record_params[:content].present? ? :write : :edit), :admin, @record] if redirect.nil?
+      notice = translate 'admin.result.updated'
+      action = (record_params[:content].present? && record_params[:content].is_a?(Hash) ? :write : :edit)
+      redirect = helpers.polymorphic_admin_path([action, :admin, @record]) if redirect.nil?
       # redirect = (allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
 
       @record.published_at ||= Time.now.to_date if @record.published? && @record.respond_to?(:published_at)
@@ -80,7 +83,7 @@ module Admin
     end
 
     def approve
-      redirect = [:admin, (@record.has_content? ? @record : @model)]
+      redirect = helpers.polymorphic_admin_path([:admin, (@record.has_content? ? @record : @model)])
       @record.reify_approved_changes! params[:approve]
 
       if @record.save
@@ -96,7 +99,7 @@ module Admin
         if @record.send(key).present?
           associated_model = @model.reflect_on_association(key).class
           message = translate('admin.result.cannot_delete_attached_record', model: @model.model_name.human.downcase, association: associated_model.model_name.human(count: -1).downcase)
-          redirect_to [:admin, @model], alert: message
+          redirect_to helpers.polymorphic_admin_path([:admin, @model]), alert: message
         end  
       end
 
@@ -111,7 +114,7 @@ module Admin
       end
 
       respond_to do |format|
-        format.html { redirect_to [:admin, @model], flash: { notice: translate('admin.result.deleted') } }
+        format.html { redirect_to helpers.polymorphic_admin_path([:admin, @model]), flash: { notice: translate('admin.result.deleted') } }
         format.js { render 'admin/application/destroy' }
       end
     end
@@ -121,7 +124,7 @@ module Admin
         @model.find(id).update_attribute(:order, index)
       end
 
-      redirect_to [:admin, @model]
+      redirect_to helpers.polymorphic_admin_path([:admin, @model])
     end
 
     protected
@@ -142,13 +145,7 @@ module Admin
     private
 
       def set_record
-        @record = begin
-          if defined? @model.friendly
-            @model.preload_for(:admin).friendly.find(params[:id])
-          else
-            @model.preload_for(:admin).find(params[:id])
-          end
-        end
+        @record = @model.preload_for(:admin).find(params[:id])
       end
 
       def authorize!

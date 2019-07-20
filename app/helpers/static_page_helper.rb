@@ -44,7 +44,7 @@ module StaticPageHelper
     when :subtle_system
       subtle_system_nodes_url
     when :articles
-      articles_url
+      categories_url
     when :treatments
       treatments_url
     when :tracks

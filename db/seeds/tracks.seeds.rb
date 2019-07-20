@@ -38,6 +38,8 @@ instrument_filters = {}
     order: index,
     icon: file_root.join("instrument_filters/#{name.dasherize.downcase}.svg").open,
     published: true,
+    published_at: DateTime.now,
+    original_locale: :en,
   })
 
   puts "Created Instrument Filter - #{name}"
@@ -54,6 +56,8 @@ mood_filters = {}
     order: index,
     icon: file_root.join("mood_filters/#{name.dasherize.downcase}.svg").open,
     published: true,
+    published_at: DateTime.now,
+    original_locale: :en,
   })
 
   puts "Created Mood Filter - #{name}"
@@ -86,6 +90,8 @@ end
     mood_filters: atts[:mood_filters].map! { |k| mood_filters[k] },
     instrument_filters: atts[:instrument_filters].map! { |k| instrument_filters[k] },
     published: true,
+    published_at: DateTime.now,
+    original_locale: :en,
   })
   Track.find_or_initialize_by(name: atts[:name]).update!(atts)
   puts "Created Track - #{atts[:name]}"

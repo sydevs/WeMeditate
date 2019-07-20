@@ -15,15 +15,16 @@ html
   body class="admin #{controller_name} #{controller.action_name}"
     nav#sidebar = render 'layouts/admin/menu'
     main#main
-      .ui.floating.dropdown.right.floated.basic.button
-        .text
-          = language_flag
-          = language_name
-        .menu
-          - I18n.available_locales.each do |language|
-            a.item href=url_for(locale: language)
-              = language_flag language
-              = I18nData.languages(language)[language.to_s.upcase]
+      - if current_user.available_languages.length > 1 || I18n.locale != current_user.available_languages.first
+        .ui.floating.dropdown.right.floated.basic.button
+          .text
+            = language_flag
+            = language_name
+          .menu
+            - current_user.available_languages.each do |language|
+              a.item href=url_for(locale: language)
+                = language_flag language
+                = I18nData.languages(language)[language.to_s.upcase]
 
       #header
         h1.ui.header

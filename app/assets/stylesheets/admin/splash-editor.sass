@@ -7,18 +7,6 @@
   .cdx-input--button
     border-color: #777777
 
-  [contenteditable]
-    cursor: text
-
-  // PLACEHOLDER HACK
-  [contenteditable]:empty:before
-    content: attr(data-placeholder)
-    color: gray
-    display: block // For Firefox
-
-  [contenteditable]:focus:before
-    color: darkgray
-
 #splash-background
   position: relative
   padding: 100px 0

@@ -61,6 +61,7 @@ gem 'i18n_data' # Adds some utility functions for localizing countries
 gem 'rails-i18n' # Localization of rails features
 gem 'devise-i18n' # Localization for devise
 gem 'route_translator' # Adds support for translating URLs
+gem 'kaminari-i18n' # Localization for kaminari
 
 # Tools
 gem 'seedbank' # Used to populate the database with the pages and data used in the designs, for quick deployment and recovery.

@@ -77,7 +77,7 @@ module Admin
     end
 
     def owns_record?
-      record.owner == user
+      record.respond_to?(:owner) ? record.owner == user : true
     end
 
   end

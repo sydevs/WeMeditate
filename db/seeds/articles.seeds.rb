@@ -8,7 +8,13 @@ categories = {}
 
 %w[Stories Wisdom Creativity Events Articles].each_with_index do |name, index|
   categories[name] = Category.find_or_initialize_by(order: index)
-  categories[name].update!({ name: name, order: index, published: true })
+  categories[name].update!({
+    name: name,
+    order: index,
+    published: true,
+    published_at: DateTime.now,
+    original_locale: :en,
+  })
   puts "Created Category - #{name}"
 end
 
@@ -24,6 +30,8 @@ end
     date: '',
     vimeo_id: '',
     published: true,
+    published_at: DateTime.now,
+    original_locale: :en,
   })
 
   puts "Created Generic Article #{index}"
@@ -40,6 +48,8 @@ end
     date: '',
     vimeo_id: '',
     published: false,
+    published_at: DateTime.now,
+    original_locale: :en,
   })
 
   puts "Created Unpublished Article #{index}"
@@ -74,6 +84,8 @@ faq.update!({
   category: categories['Articles'],
   thumbnail_id: attachment('articles/thumbnails/1.png', 'Thumbnail.png', :image, faq),
   published: true,
+  published_at: DateTime.now,
+  original_locale: :en,
 })
 
 faq = Article.find_or_initialize_by(name: 'Is it right for me?')
@@ -83,6 +95,8 @@ faq.update!({
   category: categories['Articles'],
   thumbnail_id: attachment('articles/thumbnails/2.png', 'Thumbnail.png', :image, faq),
   published: true,
+  published_at: DateTime.now,
+  original_locale: :en,
 })
 
 faq = Article.find_or_initialize_by(name: 'Who else is doing it?')
@@ -92,6 +106,8 @@ faq.update!({
   category: categories['Articles'],
   thumbnail_id: attachment('articles/thumbnails/3.png', 'Thumbnail.png', :image, faq),
   published: true,
+  published_at: DateTime.now,
+  original_locale: :en,
 })
 
 # ===== DEMO ARTICLE ===== #
@@ -102,6 +118,8 @@ article.update!({
   category: categories.values.sample,
   thumbnail_id: attachment('articles/thumbnails/1.png', 'Thumbnail.png', :image, article),
   published: true,
+  published_at: DateTime.now,
+  original_locale: :en,
 })
 
 article.update!(content: content([
@@ -301,6 +319,8 @@ article.update!({
   category: categories.values.sample,
   thumbnail_id: attachment('articles/thumbnails/1.png', 'Thumbnail.png', :image, article),
   published: true,
+  published_at: DateTime.now,
+  original_locale: :en,
 })
 
 article.update!(content: content([

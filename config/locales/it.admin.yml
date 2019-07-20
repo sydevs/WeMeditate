@@ -59,9 +59,9 @@ it:
       draft: This %{target} is an unpublished draft
 
     details:
-      translated_languages: Translates Languages
+      translated_languages: Translated Languages
       priority: Order on Inspiration Page
-      written_by: Written by %{author}
+      owned_by: Owned by %{owner}
       first_published_at: First published at %{time}
       featured_video: Featured Video
       featured_date: Featured Date
@@ -69,15 +69,17 @@ it:
       
     tags:
       published: Published
+      unpublished: Not Published
       unpublished_changes: Has Unpublished Changes
       unpublished_draft: Unpublished Draft
       no_translation: No %{language} Translation
+      pending_translation: Has %{language} Translation, Pending Approval
       updated_ago: Modified %{time_ago} ago
       published_ago: Published %{time_ago} ago
       urgency:
         critical: Critical Issue
         important: Important Issue
-        normal: Low Priority
+        normal: Normal Priority
       views:
         one: 1 View
         other: '%{count} Views'

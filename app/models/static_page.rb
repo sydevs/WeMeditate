@@ -12,7 +12,7 @@ class StaticPage < ApplicationRecord
   include Draftable
 
   # Extensions
-  translates :name, :slug, :metatags, :content, :draft
+  translates :name, :slug, :metatags, :content, :draft, :published_at
   friendly_id :name, use: :globalize
 
   # Associations
