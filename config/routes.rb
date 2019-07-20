@@ -27,7 +27,7 @@ Rails.application.routes.draw do
           get :review, on: :member
           patch :approve, on: :member, path: 'review'
           get :preview, on: :member
-          resources :media_files, only: %i[index create]
+          resources :media_files, only: %i[create]
         end
 
         resources :articles, :subtle_system_nodes, only: %i[destroy]
@@ -43,30 +43,6 @@ Rails.application.routes.draw do
   constraints DomainConstraint.new(RouteTranslator.config.host_locales.keys) do
     localized do
       root to: 'application#home'
-
-      namespace :admin do
-        root to: 'application#dashboard'
-        get :vimeo_data, to: 'application#vimeo_data', constraints: { format: :json }
-
-        resources :treatments, :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters, only: [] do
-          put :sort, on: :collection
-        end
-
-        resources :articles, :static_pages, :subtle_system_nodes, except: %i[destroy] do
-          get :write, on: :member
-          get :review, on: :member
-          patch :approve, on: :member, path: 'review'
-          get :preview, on: :member
-          resources :media_files, only: %i[index create]
-        end
-
-        resources :articles, :subtle_system_nodes, only: %i[destroy]
-
-        resources :users, :artists, :treatments, :meditations, :tracks,
-                  :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters,
-                  only: %i[index new edit create update destroy]
-      end
-
       post :contact, to: 'application#contact'
       post :subscribe, to: 'application#subscribe'
       get :map, to: 'application#map'

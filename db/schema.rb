@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_20_090523) do
+ActiveRecord::Schema.define(version: 2019_07_20_123446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,9 +168,6 @@ ActiveRecord::Schema.define(version: 2019_07_20_090523) do
   end
 
   create_table "media_files", force: :cascade do |t|
-    t.string "name"
-    t.integer "category", default: 0
-    t.integer "usage_count", default: 0
     t.jsonb "file"
     t.string "page_type"
     t.bigint "page_id"
