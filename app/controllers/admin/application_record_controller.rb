@@ -66,7 +66,7 @@ module Admin
           @record.discard_draft!
           notice = translate 'admin.result.saved_but_needs_review'
         else
-          @record.record_draft!
+          @record.record_draft!(current_user)
         end
       end
 

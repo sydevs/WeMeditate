@@ -54,7 +54,7 @@ en:
         published: :activerecord.attributes.generic.published
         name: Title
         slug: :activerecord.attributes.generic.slug
-        category: :activerecord.models.category
+        category: :activerecord.models.category.one
         priority: Visibility
         priorities:
           low: Low Visibility

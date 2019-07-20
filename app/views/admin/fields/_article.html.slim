@@ -4,8 +4,9 @@
 = draftable_field f, :category, type: :association do |value|
   - f.association :category, wrapper: false, label: false, disabled: !allow.update_structure?, selected: value
   
-= draftable_field f, :priority, type: :collection do |value|
-  - f.input_field :priority, collection: Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}, selected: value, disabled: !allow.update_structure?
+- priorities = Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}
+= draftable_field f, :priority, type: :collection, input: { collection: priorities } do |value|
+  - f.input_field :priority, collection: priorities, selected: value, disabled: !allow.update_structure?
 
 = draftable_media_field f, :thumbnail, preview: true, wrapper: { required: true }
 

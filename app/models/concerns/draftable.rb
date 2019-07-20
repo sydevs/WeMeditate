@@ -14,8 +14,10 @@ module Draftable
     draft.present?
   end
 
-  def record_draft!
-    draft ||= {}
+  def record_draft! user
+    draft = {}
+    draft['contributors'] = self[:draft] ? self[:draft]['contributors'] : []
+    draft['contributors'] = draft['contributors'].to_set.add(user.id).to_a
 
     changes.each do |key, (old_value, new_value)|
       next if key == 'content' && (JSON.parse(old_value)['blocks'] == JSON.parse(new_value)['blocks'])

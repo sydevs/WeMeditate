@@ -98,7 +98,7 @@ end
 module FriendlyId
   module Globalize
     def should_generate_new_friendly_id?
-      translation_for(::Globalize.locale).send(friendly_id_config.slug_column).blank?
+      !translation_for(::Globalize.locale).send(friendly_id_config.slug_column).present?
     end
   end
 end

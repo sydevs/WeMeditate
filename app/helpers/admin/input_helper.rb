@@ -116,7 +116,7 @@ module Admin::InputHelper
         concat form.hidden_field(key, value: val)
         concat form.input_field(attribute, as: :file, wrapper: :ui_file_input, icon: file_type_icon(type), file: val, input_html: { accept: file_type_accepts(type) })
 
-        if preview && type == :image && val
+        if preview && type == :image && val.present?
           concat tag.div(tag.img(src: MediaFile.find(val).file.url(:medium)), class: 'ui rounded image') 
         end
       end

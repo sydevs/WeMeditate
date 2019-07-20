@@ -2,14 +2,15 @@
 - allow = policy(@record)
 - content_for :title, translate('admin.action.target.review', target: @record.model_name.human)
 
-- if @record.try(:owner)
-  / TODO: Instead we should show everyone who has contributed to this draft.
-  .ui.message = translate 'admin.details.owned_by', owner: @record.owner.name
+- details_draft = @record.draft.except('content', 'contributors')
+- contributors = User.where(id: @record.draft['contributors']).map(&:name)
+
+.ui.message = translate 'admin.messages.draft_contributed_by', users: contributors.to_sentence
 
 = simple_form_for @record, url: polymorphic_admin_path([:approve, :admin, @record]), method: :patch
   h3 = translate 'admin.review.attribute_changes', model: @model.model_name.human
 
-  - if @record.draft.except('content').empty?
+  - if details_draft.empty?
     = translate 'admin.review.no_changes'
   - else
     table.ui.compact.celled.definition.review.table
@@ -20,7 +21,7 @@
           th = translate 'admin.review.old_value'
           th = translate 'admin.review.new_value'
       tbody
-        - @record.draft.each do |key, value|
+        - details_draft.each do |key, value|
           - next if key == 'content'
           - field_name = human_attribute_name(@model, key)
           - old_value = @record[key]
@@ -50,6 +51,14 @@
                   .ui.image
                     img src=MediaFile.find(value).file.url(:tiny)
                     .ui.floating.label = "##{value}"
+              - when 'category_id'
+                td.collapsing = human_attribute_name(@model, key.delete_suffix('_id'))
+                td = Category.find(old_value).name
+                td = Category.find(value).name
+              - when 'priority'
+                td.collapsing = human_attribute_name(@model, key)
+                td = human_enum_name(@record, key, old_value)
+                td = human_enum_name(@record, key, value)
               - else
                 td.collapsing = field_name
                 td = old_value
