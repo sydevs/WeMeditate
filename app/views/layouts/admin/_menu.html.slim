@@ -8,7 +8,7 @@
   = link_to admin_root_path, class: "#{'active' if action_name == 'dashboard'} item"
     = translate 'admin.dashboard.title'
 
-  - if policy(Article).index? or policy(StaticPage).index? or policy(SubtleSystemNode).index?
+  - if policy(Article).index? || policy(StaticPage).index? || policy(SubtleSystemNode).index?
     .item
       .title = translate 'admin.misc.menu.pages'
       .menu
@@ -27,7 +27,7 @@
             i.icon class=model_icon_key(SubtleSystemNode)
             = SubtleSystemNode.model_name.human(count: -1)
 
-  - if policy(Track).index? or policy(Meditation).index? or policy(Treatment).index?
+  - if policy(Track).index? || policy(Meditation).index? || policy(Treatment).index?
     .item
       .title = translate 'admin.misc.menu.resources'
       .menu
@@ -46,10 +46,26 @@
             i.icon class=model_icon_key(Track)
             = Track.model_name.human(count: -1)
 
-  - if policy(User).index?
-    = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"
-      i.users.icon
-      = User.model_name.human(count: -1)
+  - if policy(User).index? || policy(Author).index? || policy(Author).create?
+    - is_author_bio = @record&.is_a?(Author) && @record.user == current_user
+    .item
+      .title = translate 'admin.misc.menu.people'
+      .menu
+        - if policy(Author).create?
+          - action = current_user.author.present? && !current_user.author.new_record? ? edit_admin_author_path(current_user.author) : new_admin_author_path(self: true)
+          = link_to action, class: "#{'active' if controller_name == 'authors' && is_author_bio} item"
+            i.user.icon
+            = translate('admin.misc.menu.my_author')
+
+        - if policy(Author).index?
+          = link_to [:admin, Author], class: "#{'active' if controller_name == 'authors' && !is_author_bio} item"
+            i.icon class=model_icon_key(Author)
+            = Author.model_name.human(count: -1)
+
+        - if policy(User).index?
+          = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"
+            i.users.icon
+            = User.model_name.human(count: -1)
 
 
 .ui.hidden.divider

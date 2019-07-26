@@ -4,6 +4,7 @@ module Admin
 
     before_action :authenticate_user!
     after_action :verify_authorized, except: %i[dashboard vimeo_data]
+    after_action :verify_policy_scoped, only: :index
 
     def dashboard
     end

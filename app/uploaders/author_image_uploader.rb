@@ -1,13 +1,11 @@
-class ImageUploader < ApplicationUploader
+class AuthorImageUploader < ApplicationUploader
 
   include CarrierWave::MiniMagick
+  process convert: :jpg
 
   VERSIONS = {
-    huge: 2880,
-    large: 1440,
-    medium: 720,
-    small: 360,
-    tiny: 180,
+    medium: 256,
+    small: 128,
   }.freeze
 
   VERSIONS.each do |name, version_width|

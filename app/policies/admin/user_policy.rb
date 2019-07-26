@@ -30,7 +30,7 @@ module Admin
 
     def user_record_is_subordinate?
       return true if record.is_a?(Class)
-      return false unless %w[translator editor].include?(record.role)
+      return false unless %w[translator writer].include?(record.role)
       return false unless (record.available_languages & user.available_languages).present?
       return true
     end

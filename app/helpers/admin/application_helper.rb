@@ -29,6 +29,7 @@ module Admin
       GoalFilter => 'filter',
       DurationFilter => 'clock',
       Artist => 'user',
+      Author => 'id badge',
       User => 'user',
     }.freeze
 

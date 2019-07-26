@@ -101,7 +101,7 @@ en:
       draft_notice: You are viewing a draft version of this %{target}. This version not be visible to the public until it has been reviewed by an administrator.
       draft_contributed_by: This draft includes changed made by %{users}.
       text_too_short: must have at least %{count} letters
-      article_owner_hint: This determines which writer is able to edit this article after it has been published.
+      article_owner_hint: This determines which writer is able to edit this article after it has been published. Administrators may always edit an article.
 
     result:
       created: Created successfully.

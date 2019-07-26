@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_20_165555) do
+ActiveRecord::Schema.define(version: 2019_07_26_114700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2019_07_20_165555) do
     t.date "date"
     t.bigint "owner_id"
     t.string "original_locale", limit: 2, null: false
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_articles_on_author_id"
     t.index ["category_id"], name: "index_articles_on_category_id"
     t.index ["owner_id"], name: "index_articles_on_owner_id"
   end
@@ -65,6 +67,26 @@ ActiveRecord::Schema.define(version: 2019_07_20_165555) do
     t.datetime "updated_at", null: false
     t.index ["page_type", "page_id"], name: "index_attachments_on_page_type_and_page_id"
     t.index ["uuid"], name: "index_attachments_on_uuid"
+  end
+
+  create_table "author_translations", force: :cascade do |t|
+    t.bigint "author_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.string "description"
+    t.index ["author_id"], name: "index_author_translations_on_author_id"
+    t.index ["locale"], name: "index_author_translations_on_locale"
+  end
+
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.integer "years_meditating"
+    t.jsonb "image"
+    t.bigint "user_id"
+    t.string "original_locale", limit: 2, null: false
+    t.index ["user_id"], name: "index_authors_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|

@@ -21,6 +21,7 @@ class Article < ApplicationRecord
   belongs_to :category
   has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
   belongs_to :owner, class_name: 'User', optional: true
+  belongs_to :author, optional: true
   enum priority: { high: 1, normal: 0, low: -1 }
 
   # Validations

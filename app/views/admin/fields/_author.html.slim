@@ -1,0 +1,25 @@
+
+- allow = policy(record)
+
+- if record.user
+  = f.input :user do
+    - if policy(record.user).edit?
+      a.ui.icon.label.link href=edit_admin_user_path(record.user) target='_blank'
+        i.icon class=model_icon_key(User)
+        span = record.user.name
+    - else
+      .ui.icon.label
+        i.icon class=model_icon_key(User)
+        = record.user.name
+
+    - if record.new_record?
+      = f.input_field :user_id, as: :hidden
+
+= f.input :name, input_html: { value: (record.name || record.user&.name) }
+= f.input :title
+= f.input :description, as: :text
+= f.input :image, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:image), file: record.image, input_html: { accept: file_type_accepts(:image) }
+= f.input :years_meditating
+
+- if allow.update_structure? && record.user.nil?
+  = f.association :user, collection: User.includes(:author).where(authors: { id: nil })

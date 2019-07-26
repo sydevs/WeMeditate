@@ -5,6 +5,7 @@ module Admin
 
     ICONS = {
       create: 'plus',
+      translate: 'wrench',
       update: 'wrench',
       publish: 'checkmark',
       destroy: 'warning sign',
@@ -12,7 +13,7 @@ module Admin
 
     MATRIX = {
       article: {
-        translator: %i[update],
+        translator: %i[translate],
         editor: {
           update: 'update_own',
           publish: 'publish_own',
@@ -22,13 +23,13 @@ module Admin
         super_admin: %i[update publish create destroy],
       },
       static_page: {
-        translator: %i[update],
+        translator: %i[translate],
         editor: [],
         regional_admin: %i[update publish],
         super_admin: %i[update publish],
       },
       subtle_system_node: {
-        translator: %i[update],
+        translator: %i[translate],
         editor: [],
         regional_admin: %i[update publish],
         super_admin: %i[update publish],
@@ -41,7 +42,7 @@ module Admin
         super_admin: %i[update publish create destroy],
       },
       treatment: {
-        translator: %i[update],
+        translator: %i[translate],
         editor: [],
         regional_admin: %i[update publish create],
         super_admin: %i[update publish create destroy],
@@ -89,6 +90,15 @@ module Admin
         regional_admin: [],
         super_admin: %i[update publish create destroy],
       },
+      author: {
+        translator: %i[translate],
+        editor: {
+          update: 'update_own_bio',
+          create: true,
+        },
+        regional_admin: %i[update create],
+        super_admin: %i[update create destroy],
+      },
 
       user: {
         translator: [],
@@ -121,17 +131,18 @@ module Admin
       end
 
       def permission_icons model, permissions
+        model_name = translate(model, scope: %i[activerecord models], count: -1)
+        
         capture do
           if permissions.is_a? Array
             permissions.each do |permission|
-              concat permission_icon(permission, translate(permission, scope: %i[admin permissions]))
+              concat permission_icon(permission, translate(permission, scope: %i[admin permissions], model: model_name))
             end
           else
             permissions.each do |permission, value|
               if value == true
-                concat permission_icon(permission, translate(permission, scope: %i[admin permissions]))
+                concat permission_icon(permission, translate(permission, scope: %i[admin permissions], model: model_name))
               else
-                model_name = translate(model, scope: %i[activerecord models], count: -1)
                 concat permission_icon(permission, translate(value, scope: %i[admin permissions special], model: model_name), partial: true)
               end
             end

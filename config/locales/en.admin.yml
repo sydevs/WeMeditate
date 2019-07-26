@@ -102,7 +102,7 @@ en:
       draft_notice: You are viewing a draft version of this %{target}. This version not be visible to the public until it has been reviewed by an administrator.
       draft_contributed_by: This draft includes changed made by %{users}.
       text_too_short: must have at least %{count} letters
-      article_owner_hint: This determines which writer is able to edit this article after it has been published.
+      article_owner_hint: This determines which writer is able to edit this article after it has been published. Administrators may always edit an article.
 
     result:
       created: Created successfully.
@@ -180,11 +180,14 @@ en:
       own_languages_notice: All editors are restricted to making modifications on in their own languages.
       create: Can Create
       update: Can Modify
+      translate: Can Modify Untranslated %{model}
       publish: Can Approve Changes
       destroy: Can Delete
       special:
         update_own: Can Modify Own %{model}
         publish_own: Can Approve Changes to Own %{model}
+        update_own_bio: Can Modify Own Biography
+        create_own_bio: Can Create Own Biography
         update_subordinate: Can Modify Writers and Translators
         create_subordinate: Can Create Writers and Translators
       role_description:
@@ -238,9 +241,12 @@ en:
     misc:
       errors: Errors
       no_translated_title: No Translated Title
+      any_administrator: Any Administrator
       menu:
+        my_author: My Author Bio
         pages: Pages
         resources: Resources
+        people: People
       locale:
         all_languages: All Languages
         other_languages: Other Languages

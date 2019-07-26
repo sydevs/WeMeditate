@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get 'robots.txt', to: 'application#robots', defaults: { format: :txt }
 
   # ===== ADMIN ROUTES ===== #
-  constraints DomainConstraint.new(%w[admin.localhost admin.omicron.local admin.wemeditate.co]) do
+  admin_domains = Rails.env.development? ? %w[admin.localhost admin.omicron.local admin.wemeditate.co] : %w[admin.localhost]
+  constraints DomainConstraint.new(admin_domains) do
     get '/', to: redirect('/en')
     get 'switch_user' => 'switch_user#set_current_user'
 
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
 
         resources :articles, :treatments, only: %i[destroy]
 
-        resources :users, :artists, :meditations, :tracks,
+        resources :users, :artists, :meditations, :tracks, :authors,
                   :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters,
                   only: %i[index new edit create update destroy]
       end

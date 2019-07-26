@@ -25,6 +25,9 @@ en:
       artist:
         one: Artist
         other: Artists
+      author:
+        one: Author
+        other: Authors
       user:
         one: Editor
         other: Editors
@@ -66,6 +69,7 @@ en:
         date: Date
         content: Content
         metatags: Meta Tags
+        author: :activerecord.models.author.one
         owner: Article Owner
 
       static_page:
@@ -183,6 +187,14 @@ en:
         tracks:
           one: 1 Track
           other: '%{count} Tracks'
+
+      author:
+        name: :activerecord.attributes.generic.name
+        title: Title
+        image: Avatar
+        description: Biography
+        years_meditating: Years of Meditation Experience
+        user: Associated User
 
       user:
         email: Email Address

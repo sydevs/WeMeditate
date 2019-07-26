@@ -35,6 +35,8 @@ module Admin::TableHelper
       "~#{record.duration_filter.name}"
     when Artist
       URI(record.url).host
+    when Author
+      record.user&.name
     when Category, MoodFilter, DurationFilter, GoalFilter, InstrumentFilter, Treatment
       ''
     else
@@ -73,7 +75,7 @@ module Admin::TableHelper
       concat status
   
       case record
-      when Category
+      when Category, Author
         article_count = record.articles.count
         concat table_icon 'file text', Category.human_attribute_name(:articles, count: article_count), article_count
       when MoodFilter, InstrumentFilter, Artist
