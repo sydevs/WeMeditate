@@ -3,7 +3,7 @@ module Admin
 
     class Scope < Scope
       def resolve
-        if user.editor?
+        if user.writer?
           scope.where(owner: user)
         else
           super
@@ -35,7 +35,7 @@ module Admin
     def update_translation?
       return false unless can_access_locale?
       return true if translator?
-      return true if editor? && owns_record?
+      return true if writer? && owns_record?
       return true if admin?
       return false
     end
@@ -46,14 +46,14 @@ module Admin
 
     def create?
       return false unless can_access_locale?
-      return true if editor?
+      return true if writer?
       return true if admin?
       return false
     end
 
     def publish?
       return false unless can_access_locale?
-      return true if editor? && owns_record?
+      return true if writer? && owns_record?
       return true if admin?
       return false
     end

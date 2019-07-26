@@ -32,6 +32,6 @@
 // = draftable_media_field f, :banner_id, preview: true
 
 - if %w[regional_admin super_admin].include?(current_user.role)
-  = f.association :owner, collection: User.editor, input_html: { class: 'clearable' }
-- elsif current_user.editor? && record.new_record?
+  = f.association :owner, collection: User.editor, hint: translate('admin.messages.article_owner_hint'), input_html: { class: 'clearable' }
+- elsif current_user.writer? && record.new_record?
   = f.hidden_field :owner_id, value: current_user.id

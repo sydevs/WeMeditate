@@ -8,11 +8,11 @@ class User < ApplicationRecord
 
   # Associations
   has_many :articles, inverse_of: :owner
-  enum role: %i[translator editor regional_admin super_admin]
+  enum role: %i[translator writer regional_admin super_admin]
 
   # Validations
   validates :name, presence: true
-  validates :email, presence: true
+  validates :email, format: { with: Devise::email_regexp }, presence: true, uniqueness: true
   validates :role, presence: true
 
   # Scopes
@@ -41,6 +41,10 @@ class User < ApplicationRecord
   # Returns true if the user is able to manage all languages.
   def all_languages?
     !self[:languages].present?
+  end
+
+  def pending_invitation?
+    !new_record? && invitation_accepted_at.nil?
   end
 
 end

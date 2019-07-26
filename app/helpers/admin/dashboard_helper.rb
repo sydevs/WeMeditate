@@ -17,6 +17,7 @@ module Admin
       untranslated Treatment, :normal, &block
       untranslated Article, :normal, &block
       untranslated Meditation, :normal, &block
+      pending_invite User, :pending, &block
     end
 
     private
@@ -70,6 +71,20 @@ module Admin
               name: record_name(record),
               url: polymorphic_admin_path([:review, :admin, record]),
               message: translate('admin.tags.unpublished_changes'),
+              urgency: urgency,
+            })
+          end
+        end
+      end
+
+      def pending_invite model, urgency, &block
+        if policy(model).create?
+          policy_scope(model).invitation_not_accepted.each do |record|
+            block.call({
+              model: model,
+              name: record_name(record),
+              url: polymorphic_admin_path([:edit, :admin, record]),
+              message: translate('admin.tags.pending_invitation'),
               urgency: urgency,
             })
           end

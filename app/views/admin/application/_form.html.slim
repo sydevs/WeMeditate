@@ -4,6 +4,9 @@
 - if record.reviewable? && record.has_draft?
   .ui.yellow.message = translate 'admin.messages.unpublished_changes_notice', target: record.model_name.human
 
+- if record.is_a?(User) && record.pending_invitation?
+  .ui.yellow.message = translate 'admin.messages.pending_invitation_notice', target: record.model_name.human
+
 = simple_form_for record, url: polymorphic_admin_path([:admin, record]), html: { id: "#{record.model_name.i18n_key}-form", class: "#{'error' if record.errors.present?}", novalidate: true } do |f|
   - if record.errors.present?
     .ui.error.message
@@ -81,7 +84,10 @@
         i.left.arrow.icon
         = translate 'admin.action.target.back', target: record.model_name.human(count: -1)
 
-    - if record.reviewable? && allow.publish?
+    - if record.is_a?(User) && record.new_record?
+      button.ui.basic.primary.button type='submit'
+        = translate 'admin.action.simple.invite'
+    - elsif record.reviewable? && allow.publish?
       button.ui.basic.positive.button type='submit' name='draft' value='true'
         = translate 'admin.action.simple.save_draft'
 

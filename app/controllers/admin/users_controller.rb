@@ -7,7 +7,7 @@ module Admin
     def create
       @record = User.new user_params
       authorize @record
-      @record.invite!
+      @record.invite!(current_user)
       redirect_to helpers.polymorphic_admin_path([:admin, User])
     end
 

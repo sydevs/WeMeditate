@@ -43,14 +43,16 @@ module Admin::TableHelper
   end
 
   def table_icons record
+    allow = policy(record)
+
     capture do
       if record.respond_to?(:translated_locales)
         if record.translated_locales.include?(I18n.locale)
           if record.respond_to?(:published_at) && record.get_localized_attribute(:published_at).nil?
-            status = table_icon 'warning sign', translate('admin.tags.pending_translation', language: language_name)
+            status = table_icon "#{'orange' if allow.publish?} warning sign", translate('admin.tags.pending_translation', language: language_name)
           end
         else
-          status = table_icon 'orange warning sign', translate('admin.tags.no_translation', language: language_name)
+          status = table_icon "orange warning sign", translate('admin.tags.no_translation', language: language_name)
         end
       end
 
@@ -81,6 +83,7 @@ module Admin::TableHelper
         meditation_count = record.meditations.count
         concat table_icon 'leaf', record.class.human_attribute_name(:meditations, count: meditation_count), meditation_count
       when User
+        concat table_icon 'question', translate('admin.tags.pending_invitation') if record.pending_invitation?
         concat table_icon 'globe', record.available_languages.map { |lang| language_name(lang) }.join(', ')
       end
     end

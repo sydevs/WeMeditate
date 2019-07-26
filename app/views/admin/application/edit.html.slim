@@ -1,8 +1,9 @@
 
 - content_for :title, translate('admin.action.target.edit', target: @record.model_name.human)
 
-.table-actions
-  = table_action translate('admin.action.descriptive.show'), 'eye', polymorphic_url(@record), nil, true
+- if policy(@record).show?
+  .table-actions
+    = table_action translate('admin.action.descriptive.show'), 'eye', polymorphic_url(@record), nil, true
 
 .clearfix
 = render 'admin/application/form', record: @record
@@ -17,8 +18,10 @@ hr
     div Essential Media Files:
     = @record.essential_media_files
 p: pre = @record.pretty_inspect
-- @record.respond_to?(:translations) && @record.translations.each do |translation|
-  p: pre = translation.pretty_inspect
-p: code
-  div Draft
-  pre = @record.local_draft.pretty_inspect
+- if @record.respond_to?(:translations)
+  - @record.translations.each do |translation|
+    p: pre = translation.pretty_inspect
+- if @record.respond_to?(:draft)
+  p: code
+    div Draft
+    pre = @record.local_draft.pretty_inspect

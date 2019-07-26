@@ -1,4 +1,19 @@
 
+- if record.invited_by
+  = f.input :invited_by do
+    i.icon class=model_icon_key(User)
+    - if policy(record.invited_by).edit?
+      a href=edit_admin_user_path(record.invited_by) target='_blank' = record.invited_by.name
+    - else
+      = record.invited_by.name
+
+    ul.hint
+      li #{User.human_attribute_name(:invitation_created_at)} #{record.invitation_created_at.to_s(:long)}
+      - if record.invitation_created_at != record.invitation_sent_at
+        li #{User.human_attribute_name(:invitation_sent_at)} #{record.invitation_sent_at.to_s(:long)}
+      - if record.invitation_accepted_at.present?
+        li #{User.human_attribute_name(:invitation_accepted_at)} #{record.invitation_accepted_at.to_s(:long)}
+
 = f.input :name
 = f.input :email, as: :email
 
@@ -13,6 +28,13 @@
 = f.input :languages, selected: selected, collection: available_languages, hint: hint, prompt: translate('admin.misc.locale.all_languages'), input_html: { multiple: true }
 
 = f.input :role, collection: @assignable_roles.map { |k, v| [human_enum_name(User, :role, k), k] }
+
+ul.hint
+  - User.roles.keys.each do |role|
+    li
+      strong = human_enum_name(User, :role, role)
+      '  -
+      = translate(role, scope: %i[admin permissions role_description])
 
 table.ui.definition.table
   thead

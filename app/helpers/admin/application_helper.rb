@@ -13,6 +13,7 @@ module Admin
       critical: 'red warning sign',
       important: 'orange warning sign',
       normal: 'warning sign',
+      pending: 'grey warning sign',
     }.freeze
 
     MODEL_ICON = {

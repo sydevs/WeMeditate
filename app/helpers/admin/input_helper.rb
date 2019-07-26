@@ -22,13 +22,23 @@ module Admin::InputHelper
   def draft_reset_buttons type, original_value, draft_value, input = nil
     case type
     when :media
-      media_file = MediaFile.find(original_value)
-      original_name = media_file.name
-      original_value = { id: original_value, src: media_file.file.url(:medium) }
+      if original_value
+        media_file = MediaFile.find(original_value)
+        original_name = media_file.name
+        original_value = { id: original_value, src: media_file.file.url(:medium) }
+      else
+        original_name = 'No Image' # TODO: Translate
+        original_value = { id: nil, src: nil }
+      end
 
-      media_file = MediaFile.find(draft_value)
-      draft_name = media_file.name
-      draft_value = { id: draft_value, src: media_file.file.url(:medium) }
+      if draft_value
+        media_file = MediaFile.find(draft_value)
+        draft_name = media_file.name
+        draft_value = { id: draft_value, src: media_file.file.url(:medium) }
+      else
+        draft_name = 'No Image' # TODO: Translate
+        draft_value = { id: nil, src: nil }
+      end
     when :collection
       original_name = input[:collection].find { |i| i[1].to_s == original_value.to_s }.first
       draft_name = input[:collection].find { |i| i[1].to_s == draft_value.to_s }.first

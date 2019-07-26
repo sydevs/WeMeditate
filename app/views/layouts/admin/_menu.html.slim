@@ -61,6 +61,13 @@
   = link_to root_url, class: 'item' do
     i.browser.icon
     = translate('admin.action.view_site')
+
+  - report_link = "mailto:\"#{translate 'admin.report_issue.name'}\"<#{translate 'admin.report_issue.email'}>"
+  - report_link += "?subject=#{URI.encode translate('admin.report_issue.subject')}"
+  - report_link += "&body=#{URI.encode translate('admin.report_issue.body')}"
+  = link_to report_link, class: 'item' do
+    i.exclamation.circle.icon
+    = translate('admin.action.report_issue')
   = link_to destroy_user_session_path, class: 'item', method: :delete do
     i.sign.out.icon
     = translate('admin.action.sign_out')

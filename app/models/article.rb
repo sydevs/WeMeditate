@@ -25,6 +25,7 @@ class Article < ApplicationRecord
 
   # Validations
   validates :name, presence: true
+  validates :slug, length: { minimum: 3, message: I18n.translate('admin.messages.text_too_short', count: 3) }
   validates :excerpt, presence: true
   validates :priority, presence: true
   validates :thumbnail_id, presence: true, if: :persisted?

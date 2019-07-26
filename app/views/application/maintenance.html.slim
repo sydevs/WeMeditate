@@ -1,12 +1,12 @@
 
 = inline_svg 'header/logo.svg'
 
-p = ENV['MAINTENANCE_MODE'] || translate('messages.maintenance_mode')
+p = ENV['MAINTENANCE_MODE'] || translate('admin.messages.maintenance_mode')
 
 - if current_user.present?
-  a href=admin_root_path = translate 'action.view_admin'
+  a href=admin_root_path = translate 'admin.action.view_admin'
 - else
-  a.sign-in href=new_user_session_path = translate 'action.sign_in'
+  a.sign-in href=new_user_session_path = translate 'admin.action.sign_in'
 
 sass:
   body

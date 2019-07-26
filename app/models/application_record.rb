@@ -1,6 +1,6 @@
 class ApplicationRecord < ActiveRecord::Base
 
-  before_save :set_original_locale
+  before_validation :set_original_locale
 
   self.abstract_class = true
 
@@ -50,7 +50,7 @@ class ApplicationRecord < ActiveRecord::Base
   private
 
     def set_original_locale
-      original_locale = I18n.locale.to_s if has_attribute?(:original_locale)
+      self.original_locale = I18n.locale.to_s if has_attribute?(:original_locale)
     end
 
 end

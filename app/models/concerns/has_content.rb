@@ -41,10 +41,10 @@ module HasContent
           content_blocks.each do |block|
             result += block['data']['media_files'] if block['data']['media_files']
           end
-
-          puts "HAS THUMBNAIL? #{thumbnail_id} - #{locale}"
-          result += [thumbnail_id] if self.has_attribute?(:thumbnail_id)
         end
+
+        puts "HAS THUMBNAIL? #{thumbnail_id} - #{locale}"
+        result += [thumbnail_id] if self.has_attribute?(:thumbnail_id)
 
         if preserve_draft && has_draft?
           if local_draft['content'].present?

@@ -201,6 +201,6 @@ it:
         role: Role
         roles:
           translator: Translator
-          editor: Writer
+          writer: Writer
           regional_admin: Regional Admin
           super_admin: Super Admin

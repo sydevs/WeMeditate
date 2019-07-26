@@ -68,8 +68,8 @@ module Admin
       user.regional_admin?
     end
 
-    def editor?
-      user.editor?
+    def writer?
+      user.writer?
     end
 
     def translator?

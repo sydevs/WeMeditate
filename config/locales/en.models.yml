@@ -187,12 +187,12 @@ en:
       user:
         email: Email Address
         encrypted_password: Encrypted password
-        invitation_accepted_at: Invitation accepted at
-        invitation_created_at: Invitation created at
+        invitation_accepted_at: Invitation accepted on
+        invitation_created_at: Invitation first sent on
         invitation_limit: Invitation limit
-        invitation_sent_at: Invitation sent at
+        invitation_sent_at: Invitation last sent on
         invitation_token: Invitation token
-        invited_by: :activerecord.models.invited_by
+        invited_by: :activerecord.models.invited_by # Does not need to be translated
         invited_by_type: Invited by type
         remember_created_at: Remember created at
         reset_password_sent_at: Reset password sent at
@@ -201,6 +201,6 @@ en:
         role: Role
         roles:
           translator: Translator
-          editor: Writer
+          writer: Writer
           regional_admin: Regional Admin
           super_admin: Super Admin
