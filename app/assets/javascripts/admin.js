@@ -15,7 +15,5 @@
 //= require turbolinks
 //= require semantic-ui
 //= require sortable-rails
-//= require quill.min
-//= require quill.global
 //= require autosize
 //= require_tree ./admin
