@@ -20,7 +20,7 @@ module Admin
 
       def author_params
         if policy(@author || Author).update_structure?
-          params.fetch(:author, {}).permit(:name, :title, :description, :image, :years_meditating, :user_id)
+          params.fetch(:author, {}).permit(:name, :country_code, :title, :description, :image, :years_meditating, :user_id)
         else
           params.fetch(:author, {}).permit(:title, :description)
         end

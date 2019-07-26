@@ -16,6 +16,7 @@ class Author < ApplicationRecord
   
   # Validations
   validates :name, presence: true, uniqueness: true
+  validates :country_code, presence: true
   validates :years_meditating, numericality: { only_integer: true }, allow_nil: true
   validates :description, presence: true
   validates :image, presence: true

@@ -43,9 +43,9 @@ class Article < ApplicationRecord
     when :preview
       includes(:translations, category: :translations)
     when :content
-      includes(:media_files, :translations, category: :translations)
+      includes(:media_files, :translations, category: :translations, author: :translations)
     when :admin
-      includes(:media_files, :translations, category: :translations)
+      includes(:media_files, :translations, category: :translations, author: :translations)
     end
   end
 

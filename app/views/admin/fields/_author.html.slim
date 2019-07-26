@@ -15,11 +15,21 @@
     - if record.new_record?
       = f.input_field :user_id, as: :hidden
 
-= f.input :name, input_html: { value: (record.name || record.user&.name) }
+= f.input :name, disabled: !allow.update_structure?, input_html: { value: (record.name || record.user&.name) }
+
+- if allow.update_structure?
+  = f.input :country_code, collection: I18nData.countries(I18n.locale).invert.to_a, input_html: { class: 'search' }
+
 = f.input :title
 = f.input :description, as: :text
-= f.input :image, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:image), file: record.image, input_html: { accept: file_type_accepts(:image) }
-= f.input :years_meditating
+
+- if allow.update_structure?
+  = f.input :image, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:image), file: record.image, input_html: { accept: file_type_accepts(:image) }
+- if record.image.present?
+  .preview-item = image_tag record.image.url(:medium), class: 'ui circular image'
+
+- if allow.update_structure?
+  = f.input :years_meditating
 
 - if allow.update_structure? && record.user.nil?
   = f.association :user, collection: User.includes(:author).where(authors: { id: nil })

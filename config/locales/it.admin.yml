@@ -1,5 +1,5 @@
 
-en:
+it:
   admin:
     # ===== ACTIONS ===== #
     action:
@@ -85,6 +85,7 @@ en:
         critical: Critical Issue
         important: Important Issue
         normal: Normal Priority
+        pending: Pending
       views:
         one: 1 View
         other: '%{count} Views'
@@ -179,11 +180,14 @@ en:
       own_languages_notice: All editors are restricted to making modifications on in their own languages.
       create: Can Create
       update: Can Modify
+      translate: Can Modify Untranslated %{model}
       publish: Can Approve Changes
       destroy: Can Delete
       special:
         update_own: Can Modify Own %{model}
         publish_own: Can Approve Changes to Own %{model}
+        update_own_bio: Can Modify Own Biography
+        create_own_bio: Can Create Own Biography
         update_subordinate: Can Modify Writers and Translators
         create_subordinate: Can Create Writers and Translators
       role_description:
@@ -237,9 +241,12 @@ en:
     misc:
       errors: Errors
       no_translated_title: No Translated Title
+      any_administrator: Any Administrator
       menu:
+        my_author: My Author Bio
         pages: Pages
         resources: Resources
+        people: People
       locale:
         all_languages: All Languages
         other_languages: Other Languages

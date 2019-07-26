@@ -26,6 +26,13 @@ en:
       online: Meditate online
       local: Classes near me
 
+  author:
+    about_the_author: About the author
+    written_by: Written by
+    meditating_for:
+      one: Meditating for 1 year
+      other: Meditating for %{count} years
+
   form:
     input:
       email: Your email

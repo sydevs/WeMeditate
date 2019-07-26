@@ -1,0 +1,77 @@
+@import "../../mixins/*"
+
+/* AUTHOR
+  This is used to render the article author
+  */
+.author
+  @extend %narrow-content-width
+
+  font-size: 1.6rem
+  line-height: 1.3125
+  letter-spacing: 0.18px
+  text-align: center
+
+.author--mini
+  text-align: right
+  margin-bottom: 48px
+
+// ===== ELEMENTS ===== //
+.author
+  &__header
+    font-weight: $font-bold
+    font-size: 2.2rem
+    letter-spacing: 0.41px
+    text-align: left
+    margin-top: 68px
+    margin-bottom: 46px
+
+    @include tablet-or-larger
+      margin-top: 0
+      margin-bottom: 18px
+
+  &__image
+    margin: 30px auto
+    max-width: 128px
+
+    @include tablet-or-larger
+      margin: 0
+      margin-bottom: 30px
+      max-width: 148px
+
+  &__image img
+    max-width: 100%
+    border: 1px solid $color-graphic-normal
+    border-radius: 100%
+
+  &__description
+    line-height: 1.875
+    text-align: left
+    margin-top: 40px
+
+// ===== FLOATED META INFO ===== //
+.author--full
+  @include tablet-or-larger
+    position: relative
+    padding-top: 60px
+    padding-bottom: 60px
+    padding-left: 280px + ($gutter-width * 4)
+    margin-top: 48px
+
+  @include tablet
+    padding-right: 0
+
+  @include laptop-or-larger
+    padding-left: 280px + $gutter-width
+
+.author__meta
+  @include tablet-or-larger
+    position: absolute
+    top: 60px
+    left: $gutter-width * 4
+    max-width: 200px
+    text-align: left
+
+  @include laptop-or-larger
+    left: $gutter-width
+
+

@@ -25,6 +25,9 @@ it:
       artist:
         one: Artist
         other: Artists
+      author:
+        one: Author
+        other: Authors
       user:
         one: Editor
         other: Editors
@@ -54,7 +57,7 @@ it:
         published: :activerecord.attributes.generic.published
         name: Title
         slug: :activerecord.attributes.generic.slug
-        category: :activerecord.models.category
+        category: :activerecord.models.category.one
         priority: Visibility
         priorities:
           low: Low Visibility
@@ -66,6 +69,7 @@ it:
         date: Date
         content: Content
         metatags: Meta Tags
+        author: :activerecord.models.author.one
         owner: Article Owner
 
       static_page:
@@ -184,15 +188,24 @@ it:
           one: 1 Track
           other: '%{count} Tracks'
 
+      author:
+        name: :activerecord.attributes.generic.name
+        country_code: Country
+        title: Title
+        image: Avatar
+        description: Biography
+        years_meditating: Years of Meditation Experience
+        user: Associated User
+
       user:
         email: Email Address
         encrypted_password: Encrypted password
-        invitation_accepted_at: Invitation accepted at
-        invitation_created_at: Invitation created at
+        invitation_accepted_at: Invitation accepted on
+        invitation_created_at: Invitation first sent on
         invitation_limit: Invitation limit
-        invitation_sent_at: Invitation sent at
+        invitation_sent_at: Invitation last sent on
         invitation_token: Invitation token
-        invited_by: :activerecord.models.invited_by
+        invited_by: :activerecord.models.invited_by # Does not need to be translated
         invited_by_type: Invited by type
         remember_created_at: Remember created at
         reset_password_sent_at: Reset password sent at

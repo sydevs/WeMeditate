@@ -190,6 +190,7 @@ en:
 
       author:
         name: :activerecord.attributes.generic.name
+        country_code: Country
         title: Title
         image: Avatar
         description: Biography

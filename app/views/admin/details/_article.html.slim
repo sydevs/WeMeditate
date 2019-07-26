@@ -17,6 +17,7 @@ p.details.excerpt = record.excerpt
     = record_detail 'orange warning sign', translate('admin.tags.no_translation', language: language_name)
   - translated_locales = record.translated_locales.map { |lang| language_name(lang) }.join(', ')
   = record_detail 'globe', translated_locales, translate('admin.details.translated_languages')
+  = record_detail model_icon_key(Author), record.author.name, Author.model_name.human
   = record_detail model_icon_key(Category), record.category.name, Category.model_name.human
   = record_detail 'eye', human_enum_name(record, :priority), translate('admin.details.priority')
   = record_detail 'calendar', record.date, translate('admin.details.featured_date') if record.date.present?

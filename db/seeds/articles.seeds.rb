@@ -3,6 +3,19 @@ require_relative 'support'
 
 puts ' -- Start Article Seeds -- '
 
+# ===== CREATE AUTHOR ===== #
+author = Author.find_or_initialize_by(name: 'John Smith')
+author.update!({
+  name: 'John Smith',
+  title: 'WeMeditate Writer',
+  description: sentences(4),
+  years_meditating: 12,
+  image: file_root.join('articles/author.jpg').open,
+  country_code: 'GB',
+})
+
+puts "Created Author - #{author.name}"
+
 # ===== CREATE CATEGORIES ===== #
 categories = {}
 
@@ -24,13 +37,13 @@ end
   article.update!({
     name: "Article #{index}",
     excerpt: sentences(2),
-    thumbnail_id: attachment("articles/thumbnails/#{index}.png", article),
     category: categories.values.sample,
     date: '',
     vimeo_id: '',
     published: true,
     published_at: DateTime.now,
   })
+  article.update! thumbnail_id: attachment("articles/thumbnails/#{index}.png", article)
 
   puts "Created Generic Article #{index}"
 end
@@ -79,33 +92,33 @@ faq.update!({
   name: 'Why Meditate?',
   excerpt: 'The benefits of meditation cover all areas of wellbeing, be it mental, physical or emotional, and touch all spheres of day to day life. What’s more the benefits can be felt by literally anyone.',
   category: categories['Articles'],
-  thumbnail_id: attachment('articles/thumbnails/1.png', faq),
   published: true,
   published_at: DateTime.now,
   original_locale: :en,
 })
+faq.update! thumbnail_id: attachment('articles/thumbnails/1.png', faq)
 
 faq = Article.find_or_initialize_by(name: 'Is it right for me?')
 faq.update!({
   name: 'Is it right for me?',
   excerpt: 'There are many myths about meditation which can put one off trying it out, such as the length of time needed or the right environment. We debunk these myths and prove that meditation is truly for everyone.',
   category: categories['Articles'],
-  thumbnail_id: attachment('articles/thumbnails/2.png', faq),
   published: true,
   published_at: DateTime.now,
   original_locale: :en,
 })
+faq.update! thumbnail_id: attachment('articles/thumbnails/2.png', faq)
 
 faq = Article.find_or_initialize_by(name: 'Who else is doing it?')
 faq.update!({
   name: 'Who else is doing it?',
   excerpt: 'There are many myths about meditation which can put one off trying it out, such as the length of time needed or the right environment. We debunk these myths and prove that meditation is truly for everyone.',
   category: categories['Articles'],
-  thumbnail_id: attachment('articles/thumbnails/3.png', faq),
   published: true,
   published_at: DateTime.now,
   original_locale: :en,
 })
+faq.update! thumbnail_id: attachment('articles/thumbnails/3.png', faq)
 
 # ===== DEMO ARTICLE ===== #
 article = Article.find_or_initialize_by(name: 'Demo Article')
@@ -113,11 +126,12 @@ article.update!({
   name: 'Demo Article',
   excerpt: sentences(2),
   category: categories.values.sample,
-  thumbnail_id: attachment('articles/thumbnails/1.png', article),
   published: true,
   published_at: DateTime.now,
+  author: author,
   original_locale: :en,
 })
+article.update! thumbnail_id: attachment('articles/thumbnails/1.png', article)
 
 article.update!(content: content([
   {
@@ -314,11 +328,11 @@ article.update!({
   name: 'Test Article',
   excerpt: sentences(2),
   category: categories.values.sample,
-  thumbnail_id: attachment('articles/thumbnails/1.png', article),
   published: true,
   published_at: DateTime.now,
   original_locale: :en,
 })
+article.update! thumbnail_id: attachment('articles/thumbnails/1.png', article)
 
 article.update!(content: content([
   {
