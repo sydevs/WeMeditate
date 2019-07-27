@@ -44,6 +44,45 @@
     width: 100%
     margin: auto
 
+// ===== BACKGROUND ===== //
+.preloader,
+.content__splash
+  height: 100vh
+  max-height: 1024px
+  padding-top: 70px
+
+  text-align: center
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+
+  @include mobile
+    background-position-x: -85vh
+    min-height: 450px
+
+  @include tablet
+    background-position-x: -74vh
+    min-height: 540px
+
+  @include laptop-or-larger
+    min-height: 700px
+    padding-top: 234px
+
+// ===== PLACEHOLDER ===== //
+.preloader
+  @include overlay
+  z-index: 10000
+  line-height: 100vh
+  text-align: center
+  background-color: #5f2f18
+  background-blend-mode: multiply
+
+.preloader__graphic
+  display: inline
+  max-height: 100px
+  object-fit: fill
+
+
 // ===== HOME PAGE ===== //
 .content__splash--home
   .content__splash__wrapper

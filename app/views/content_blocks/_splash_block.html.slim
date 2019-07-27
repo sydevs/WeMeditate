@@ -3,6 +3,9 @@
 - invert = block[:style] == 'home' ? 'true' : false # TODO: This needs to be configurable.
 - style = image_url ? "background-image: url(#{image_url})" : nil
 
+.preloader.js-preloader style=style
+  = image_tag 'graphics/preloader.svg', class: 'preloader__graphic'
+
 .content__splash.js-splash class="content__splash--#{block[:style]}" style=style data-invert=invert
   .content__splash__wrapper
     h1.content__splash__title = block[:title]

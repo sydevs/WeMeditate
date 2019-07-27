@@ -29,9 +29,6 @@ html lang=locale
   - classes << "static-page static-page-#{@static_page.role.to_s.dasherize}" if @static_page.present?
 
   body id='top' class=classes
-    //.preloader
-      image width="200" height="100" src=image_path('svg/preloader.svg') alt="preloader"
-
     = render 'layouts/partials/header', cached: true
     = yield
     = render 'layouts/partials/footer', cached: true

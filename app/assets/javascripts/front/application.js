@@ -148,3 +148,6 @@ const Application = {
 document.addEventListener('ready', ()  => Application.init())
 document.addEventListener('turbolinks:load', ()  => Application.load())
 document.addEventListener('turbolinks:before-cache', ()  => Application.unload())
+window.addEventListener('load', function() {
+  $('.preloader').delay(1000).fadeOut('slow', event => event.target.remove())
+})
