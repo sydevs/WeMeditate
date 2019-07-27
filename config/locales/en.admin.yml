@@ -1,7 +1,11 @@
 
+# ADMINISTRATOR TRANSLATIONS
+# All translations in this file are seen by administrators of the website when managing the site content.
+
 en:
   admin:
     # ===== ACTIONS ===== #
+    # This section deals with actions that an administrator can take.
     action:
       view_site: View Site
       view_admin: Go To Admin Dashboard
@@ -11,7 +15,7 @@ en:
       sign_out: Log Out
 
       draft:
-        reset: Discard Draft Value
+        reset: Discard Draft Value # "Value" refers to a piece of information which is stored in the site's database. It could be a number, text, file, etc.
         redo: Use Draft Value
         reset_tooltip: Reset to "%{value}"
         redo_tooltip: Set to "%{value}"
@@ -28,47 +32,47 @@ en:
         preview: Preview
         save_draft: Save Draft
         approve: Approve
-        invite: Invite
+        invite: Invite # To invite a new editor to the website
         cancel: Cancel
         back: Back
 
-      target:
-        show: View %{target}
-        upload: Upload %{target}
-        edit: Edit %{target}
-        edit_details: Edit %{target} details
-        review: Review %{target}
-        write: Write %{target} content
-        reset: Reset %{target}
-        publish: Publish %{target}
-        unpublish: Unpublish %{target}
-        add: Add %{target}
-        create: New %{target}
-        remove: Remove %{target}
-        destroy: Delete this %{target}
-        back: Back to %{target}
-        reorder: Change %{target} Order
-        search_for: Search for %{target}
+      target: # A 'record' refers to some part of the website, such as an Article, WebPage, Guided Meditation, etc.
+        show: View %{record}
+        upload: Upload %{record}
+        edit: Edit %{record}
+        edit_details: Edit %{record} details # These are the details of the 'record'
+        review: Review %{record}
+        write: Write %{record} content
+        reset: Reset %{record}
+        publish: Publish %{record}
+        unpublish: Unpublish %{record} # This means hiding the record from the public, the opposite of publishing
+        add: Add %{record}
+        create: New %{record}
+        remove: Remove %{record}
+        destroy: Delete this %{record}
+        back: Back to %{records}
+        reorder: Change %{record} Order
 
       descriptive:
         show: View on website
         preview: Preview draft on website
 
     # ===== MESSAGES ===== #
+    # This section includes messages which will be displayed to the administrator.
     status:
-      published: This %{target} is live
-      pending_changes: This %{target} is live, but has pending changes
-      draft: This %{target} is an unpublished draft
+      published: This %{page} is live
+      pending_changes: This %{page} is live, but has pending changes
+      draft: This %{page} is an unpublished draft
 
     details:
       translated_languages: Translated Languages
       priority: Order on Inspiration Page
       owned_by: Owned by %{owner}
-      first_published_at: First published at %{time}
+      first_published_at: First published at %{datetime}
       vertical_video: Vertical Video
       horizontal_video: Horizontal Video
-      featured_video: Featured Video
-      featured_date: Featured Date
+      featured_video: Featured Video # The video which will be shown on an article preview
+      featured_date: Featured Date # The date which will be shown on an article preview
       role: Role On Website
       
     tags:
@@ -76,31 +80,31 @@ en:
       unpublished: Not Published
       unpublished_changes: Has Unpublished Changes
       unpublished_draft: Unpublished Draft
-      no_translation: No %{language} Translation
-      pending_translation: Has %{language} Translation, Pending Approval
+      no_translation: No %{language} Translation # "language" will be replaced with the language that this file is written in.
+      pending_translation: Has %{language} Translation, Pending Approval # "language" will be replaced with the language that this file is written in.
       pending_invitation: Has Not Yet Accepted Invitation
       updated_ago: Modified %{time_ago} ago
       published_ago: Published %{time_ago} ago
-      urgency:
+      urgency: # These are in order, with 'critical' as the most important, and 'pending' as the least important.
         critical: Critical Issue
         important: Important Issue
         normal: Normal Priority
         pending: Pending
-      views:
+      views: # This is the number of viewers or visits. Used to indicate the number of video views
         one: 1 View
         other: '%{count} Views'
 
     messages:
       loading: Loading
       errors: Errors
-      make_public: Make this %{target} visible to the public
+      make_public: Make this %{page} visible to the public
       maintenance_mode: The website is under construction, come back soon.
       confirm_destroy: Are you sure you want to delete that? This cannot be undone!
       drop_files_here: Drop files here
-      unpublished_changes_notice: This %{target} has unpublished changes. These will not be visible to the public until they have been reviewed by an administrator.
-      pending_invitation_notice: This %{target} has been sent an invitation to join WeMeditate, but has not yet responded.
-      draft_notice: You are viewing a draft version of this %{target}. This version not be visible to the public until it has been reviewed by an administrator.
-      draft_contributed_by: This draft includes changed made by %{users}.
+      unpublished_changes_notice: This %{page} has unpublished changes. These will not be visible to the public until they have been reviewed by an administrator.
+      pending_invitation_notice: This %{person} has been sent an invitation to become an editor on the website, but has not yet responded.
+      draft_notice: You are viewing a draft version of this %{page}. This version not be visible to the public until it has been reviewed by an administrator.
+      draft_contributed_by: This draft includes changed made by %{people}.
       text_too_short: must have at least %{count} letters
       article_owner_hint: This determines which writer is able to edit this article after it has been published. Administrators may always edit an article.
 
@@ -109,15 +113,17 @@ en:
       updated: Saved successfully.
       deleted: Deleted successfully.
       saved_but_needs_review: Saved successfully, changes will be published after they are reviewed.
-      cannot_delete_attached_record: You cannot delete a %{model} which has %{association} attached to it. Reassign the %{association} and try again.
+      # 'cannot_delete_attached_record' example: "You cannot delete a Category which has Articles attached to it. Reassign the Articles and try again."
+      cannot_delete_attached_record: You cannot delete a %{category} which has %{pages} attached to it. Reassign the %{pages} and try again.
       published: Published successfully.
       discarded_drafts: Drafts successfully deleted.
     
     # ===== CONTENT ===== #
+    # This section defines text that will be shown in the content editor.
     content:
-      outline: Content Outline
-      blocks:
-        header: Header
+      outline_title: Structure of the Content # The title for a section which outlines the structure of a page.
+      blocks: # These blocks are the types of elements that can be used on a page
+        header: Header # Also called a "Title" or "Heading"
         paragraph: Paragraph
         image: Image
         link: Links
@@ -126,28 +132,28 @@ en:
         structured: Structured Text
         textbox: Textbox
         video: Video
-      tunes:
+      tunes: # These are formatting styles for content blocks
         centered: Centered
         stretch: Fill screen width
         asGallery: Gallery
         asWisdom: Ancient Knowledge Style
         asVideo: Video
         invert: Invert Colours
-        style:
-          unordered: Unordered
-          ordered: Ordered
-          leaf: Leaf Icon
-        alignment:
+        style: # These are list styles
+          unordered: Unordered # Also called a "Bulleted" list
+          ordered: Ordered # Also called a "Numbered" list
+          leaf: Leaf Icon # As in a list with a leaf icon instead of the bullet
+        alignment: # These are text alignments
           left: Left Aligned
           center: Center Aligned
           right: Right Aligned
-        callout:
+        callout: # A 'callout' is an image or quotation which is inserted at the side of the text
           left: As Left Callout
           right: As Right Callout
         format:
           button: Button
-          articles: Articles
-          treatments: Techniques
+          articles: :activerecord.models.articles.other # Do not translate
+          treatments: :activerecord.models.treatments.other # Do not translate
           grid: Grid
           accordion: Accordion
           columns: Columns
@@ -157,48 +163,48 @@ en:
         items: Items
         action: Button Text
         url: Paste a link here
-        quote: Enter a quote
-        caption: Enter a caption
-        credit: Enter a credit
+        quote: Enter a quote # "Quote" as in a quotation from some other text or person
+        caption: Enter a caption # "Caption" as in a piece of text describing an image
+        credit: Enter a credit # "Credit" as in the credit for an image or quotation
       decorations:
         triangle: Add Triangle Decoration
-        gradient: Add Gradient
+        gradient: Add Gradient Decoration
         sidetext: Add Vertical Text
         circle: Add Circle Decoration
         leaves: Add Leaf Decorations
       words:
-        one: 1 word
+        one: '%{count} word'
         other: '%{count} words'
       items:
-        one: 1 item
+        one: '%{count} item'
         other: '%{count} items'
 
 
     # ===== MISCELLENEOUS ===== #
-    permissions:
+    permissions: # These are messages relating to editor permissions
       title: Permissions Table
-      own_languages_notice: All editors are restricted to making modifications on in their own languages.
+      own_languages_notice: All editors are restricted to making modifications only in their own languages.
       create: Can Create
       update: Can Modify
-      translate: Can Modify Untranslated %{model}
+      translate: Can Modify Untranslated %{pages}
       publish: Can Approve Changes
       destroy: Can Delete
       special:
-        update_own: Can Modify Own %{model}
-        publish_own: Can Approve Changes to Own %{model}
+        update_own: Can Modify Own %{pages}
+        publish_own: Can Approve Changes to Own %{pages}
         update_own_bio: Can Modify Own Biography
         create_own_bio: Can Create Own Biography
-        update_subordinate: Can Modify Writers and Translators
-        create_subordinate: Can Create Writers and Translators
-      role_description:
+        update_subordinate: Can Modify %{subordinates}
+        create_subordinate: Can Create %{subordinates}
+      role_description: # This describes the responsibilities of a given type of administrator
         translator: translates existing content which has been published in other languages, to their assigned language.
         writer: can write and publish new articles, or edit old articles which they themselves created.
         regional_admin: is responsible for approving translations, translating core parts of the site, and overseeing the publishing of new content in their language.
         super_admin: manages the fundamental elements of the site, and the creation of new editors.
 
-    review:
-      attribute_changes: '%{model} Attribute Changes'
-      content_changes: '%{model} Content Changes'
+    review: # Text related to reviewing unapproved changes
+      attribute_changes: Changes to %{page} Attributes # This is a title and should be in titlecase
+      content_changes: Changes to %{page} Content # This is a title and should be in titlecase
       no_changes: No Changes
       approve?: Approve?
       field: Field
@@ -212,19 +218,19 @@ en:
     metadata:
       key: name
       value: value
-      default_metatags: Default Meta Tags
+      default_metadata: Default Metadata
       generated_jsonld: Generated Structured Data
 
-    draft:
+    draft: # This section deals with the ability to create draft versions of new pages
       items:
         one: 1 item
         other: '%{count} items'
       content:
-        original:
-          one: Original content with 1 block
+        original: # This is for a button that lets you revert to the previous content
+          one: Original content with %{count} block
           other: Original content with %{count} blocks
-        draft:
-          one: Draft content with 1 block
+        draft: # This is for a button that lets you revert to the new content
+          one: Draft content with %{count} block
           other: Draft content with %{count} blocks
 
     dashboard:
@@ -240,10 +246,11 @@ en:
 
     misc:
       errors: Errors
-      no_translated_title: No Translated Title
+      no_translated_title: No Translated Title # This should be written in titlecase
       any_administrator: Any Administrator
       menu:
         my_author: My Author Bio
+        # The website's editable content is broken into three sections Pages, Resources, and People
         pages: Pages
         resources: Resources
         people: People

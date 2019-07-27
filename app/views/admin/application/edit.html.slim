@@ -1,5 +1,5 @@
 
-- content_for :title, translate('admin.action.target.edit', target: @record.model_name.human)
+- content_for :title, translate('admin.action.target.edit', record: @record.model_name.human)
 
 - if policy(@record).show?
   .table-actions

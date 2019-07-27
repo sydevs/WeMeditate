@@ -1,14 +1,14 @@
 
 - allow = policy(@record)
-- content_for :title, translate('admin.action.target.review', target: @record.model_name.human)
+- content_for :title, translate('admin.action.target.review', record: @record.model_name.human)
 
 - details_draft = @record.local_draft.except('content', 'contributors')
 - contributors = User.where(id: @record.local_draft['contributors']).map(&:name)
 
-.ui.message = translate 'admin.messages.draft_contributed_by', users: contributors.to_sentence
+.ui.message = translate 'admin.messages.draft_contributed_by', people: contributors.to_sentence
 
 = simple_form_for @record, url: polymorphic_admin_path([:approve, :admin, @record]), method: :patch
-  h3 = translate 'admin.review.attribute_changes', model: @model.model_name.human
+  h3 = translate 'admin.review.attribute_changes', page: @model.model_name.human
 
   - if details_draft.empty?
     = translate 'admin.review.no_changes'
@@ -71,7 +71,7 @@
             .ui.compact.basic.positive.tiny.button
               = translate 'admin.review.approve_all'
 
-  h3 = translate 'admin.review.content_changes', model: @model.model_name.human
+  h3 = translate 'admin.review.content_changes', page: @model.model_name.human
 
   - if !@record.local_draft['content'].present?
     = translate 'admin.review.no_changes'
@@ -118,7 +118,7 @@
     - else
       a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(@record.page) ? @record.page : @record.class])
         i.left.arrow.icon
-        = translate 'admin.action.target.back', target: @record.model_name.human(count: -1)
+        = translate 'admin.action.target.back', records: @record.model_name.human(count: -1)
 
     button.ui.basic.primary.button type='submit'
       = translate 'admin.action.simple.approve'

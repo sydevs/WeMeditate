@@ -103,7 +103,7 @@ module Admin::InputHelper
 
   def draftable_publish_field form, enabled: true **args
     published_at = form.object.get_localized_attribute(:published_at) if form.object.respond_to?(:published_at)
-    hint = published_at ? translate('admin.details.first_published_at', time: published_at.to_s(:long)) : nil
+    hint = published_at ? translate('admin.details.first_published_at', datetime: published_at.to_s(:long)) : nil
 
     draftable_field form, :published, type: :toggle do |val|
       capture do
@@ -153,7 +153,7 @@ module Admin::InputHelper
     checked ||= form.object.send(attribute)
     content_tag :div, class: "ui#{' disabled' unless enabled} toggle checkbox" do
       concat form.input_field(attribute, as: :boolean, checked: checked)
-      concat tag.label translate 'admin.messages.make_public', target: form.object.model_name.human(count: 1).downcase
+      concat tag.label translate 'admin.messages.make_public', page: form.object.model_name.human(count: 1).downcase
     end
   end
 

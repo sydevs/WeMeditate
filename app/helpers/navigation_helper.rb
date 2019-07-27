@@ -64,7 +64,7 @@ module NavigationHelper
     url = ERB::Util.url_encode request.original_url.split('/', 3)[2]
 
     tag.div class: 'sharing_links' do
-      concat tag.div I18n.translate('share'), class: 'sharing_links__title'
+      concat tag.div I18n.translate('articles.share'), class: 'sharing_links__title'
       I18n.translate('sharing').collect do |type, link|
         concat tag.a (tag.i class: "icon icon--#{type} icon"), class: 'sharing_links__item', href: link.gsub('%{url}', url)
       end

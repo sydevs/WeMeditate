@@ -1,4 +1,7 @@
 
+# ROUTE TRANSLATIONS
+# This file contains translations for the website URLs
+
 en:
   routes:
     admin: admin

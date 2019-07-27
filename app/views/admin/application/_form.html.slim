@@ -2,10 +2,10 @@
 - allow = policy(record)
 
 - if record.reviewable? && record.has_draft?
-  .ui.yellow.message = translate 'admin.messages.unpublished_changes_notice', target: record.model_name.human
+  .ui.yellow.message = translate 'admin.messages.unpublished_changes_notice', page: record.model_name.human
 
 - if record.is_a?(User) && record.pending_invitation?
-  .ui.yellow.message = translate 'admin.messages.pending_invitation_notice', target: record.model_name.human
+  .ui.yellow.message = translate 'admin.messages.pending_invitation_notice', person: record.model_name.human
 
 = simple_form_for record, url: polymorphic_admin_path([:admin, record]), html: { id: "#{record.model_name.i18n_key}-form", class: "#{'error' if record.errors.present?}", novalidate: true } do |f|
   - if record.errors.present?
@@ -54,7 +54,7 @@
         .ui.accordion#metatags
           .title
             i.dropdown.icon
-            = translate 'admin.metadata.default_metatags'
+            = translate 'admin.metadata.default_metadata'
           .content
             .ui.list
               - default_metatags(record).each do |key, value|
@@ -82,7 +82,7 @@
     - else
       a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(record.page) ? record.page : record.class])
         i.left.arrow.icon
-        = translate 'admin.action.target.back', target: record.model_name.human(count: -1)
+        = translate 'admin.action.target.back', records: record.model_name.human(count: -1)
 
     - if record.is_a?(User) && record.new_record?
       button.ui.basic.primary.button type='submit'

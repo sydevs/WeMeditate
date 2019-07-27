@@ -1,4 +1,8 @@
-en:
+
+# FRONT END TRANSLATIONS
+# This file contains translations for the resources which make up the website.
+
+it:
   activerecord:
     models:
       article:
@@ -54,10 +58,10 @@ en:
         slug: URL
 
       article:
-        published: :activerecord.attributes.generic.published
+        published: :activerecord.attributes.generic.published # Do not translate
         name: Title
-        slug: :activerecord.attributes.generic.slug
-        category: :activerecord.models.category.one
+        slug: :activerecord.attributes.generic.slug # Do not translate
+        category: :activerecord.models.category.one # Do not translate
         priority: Visibility
         priorities:
           low: Low Visibility
@@ -69,12 +73,12 @@ en:
         date: Date
         content: Content
         metatags: Meta Tags
-        author: :activerecord.models.author.one
+        author: :activerecord.models.author.one # Do not translate
         owner: Article Owner
 
       static_page:
         title: Title
-        slug: :activerecord.attributes.generic.slug
+        slug: :activerecord.attributes.generic.slug # Do not translate
         role: Role
         roles:
           home: Home Page
@@ -94,8 +98,8 @@ en:
         metatags: Meta Tags
 
       subtle_system_node:
-        name: :activerecord.attributes.generic.name
-        slug: :activerecord.attributes.generic.slug
+        name: :activerecord.attributes.generic.name # Do not translate
+        slug: :activerecord.attributes.generic.slug # Do not translate
         excerpt: Excerpt
         roles:
           chakra_1: Mooladhara Chakra
@@ -114,17 +118,17 @@ en:
         metatags: Meta Tags
 
       category:
-        published: :activerecord.attributes.article.published
-        name: :activerecord.attributes.generic.name
-        slug: :activerecord.attributes.generic.slug
+        published: :activerecord.attributes.article.published # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
+        slug: :activerecord.attributes.generic.slug # Do not translate
         articles:
           one: 1 Article
           other: '%{count} Articles'
 
       treatment:
-        published: :activerecord.attributes.article.published
-        name: :activerecord.attributes.generic.name
-        slug: :activerecord.attributes.generic.slug
+        published: :activerecord.attributes.article.published # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
+        slug: :activerecord.attributes.generic.slug # Do not translate
         excerpt: Excerpt
         content: Content
         thumbnail: Thumbnail (png)
@@ -133,55 +137,55 @@ en:
         metatags: Meta Tags
 
       instrument_filter:
-        published: :activerecord.attributes.article.published
-        name: :activerecord.attributes.generic.name
+        published: :activerecord.attributes.article.published # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
         icon: Icon
         tracks:
           one: 1 Track
           other: '%{count} Tracks'
 
       mood_filter:
-        published: :activerecord.attributes.article.published
-        name: :activerecord.attributes.generic.name
+        published: :activerecord.attributes.article.published # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
         tracks:
           one: 1 Track
           other: '%{count} Tracks'
 
       duration_filter:
-        published: :activerecord.attributes.article.published
+        published: :activerecord.attributes.article.published # Do not translate
         minutes: Minutes
         meditations:
           one: 1 Meditation
           other: '%{count} Meditations'
 
       goal_filter:
-        published: :activerecord.attributes.article.published
-        name: :activerecord.attributes.generic.name
+        published: :activerecord.attributes.article.published # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
         meditations:
           one: 1 Meditation
           other: '%{count} Meditations'
 
       track:
-        published: :activerecord.attributes.article.published
+        published: :activerecord.attributes.article.published # Do not translate
         title: Title
         artist: Artist
         audio: File (mp3)
-        instrument_filters: :activerecord.models.instrument_filter.other
-        mood_filters: :activerecord.models.mood_filter.other
+        instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
+        mood_filters: :activerecord.models.mood_filter.other # Do not translate
 
       meditation:
-        published: :activerecord.attributes.article.published
-        name: :activerecord.attributes.generic.name
-        slug: :activerecord.attributes.generic.slug
+        published: :activerecord.attributes.article.published # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
+        slug: :activerecord.attributes.generic.slug # Do not translate
         horizontal_vimeo_id: Horizontal Video (Vimeo ID)
         vertical_vimeo_id: Vertical Video (Vimeo ID)
-        duration_filter: :activerecord.models.duration_filter.one
-        goal_filters: :activerecord.models.goal_filter.other
-        metatags: Meta Tags
+        duration_filter: :activerecord.models.duration_filter.one # Do not translate
+        goal_filters: :activerecord.models.goal_filter.other # Do not translate
+        metatags: Metadata
 
       artist:
-        published: :activerecord.attributes.article.published
-        name: :activerecord.attributes.generic.name
+        published: :activerecord.attributes.article.published # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
         image: Album Art
         url: Website
         tracks:
@@ -189,7 +193,7 @@ en:
           other: '%{count} Tracks'
 
       author:
-        name: :activerecord.attributes.generic.name
+        name: :activerecord.attributes.generic.name # Do not translate
         country_code: Country
         title: Title
         image: Avatar
@@ -205,7 +209,7 @@ en:
         invitation_limit: Invitation limit
         invitation_sent_at: Invitation last sent on
         invitation_token: Invitation token
-        invited_by: :activerecord.models.invited_by # Does not need to be translated
+        invited_by: :activerecord.models.invited_by # Do not translate
         invited_by_type: Invited by type
         remember_created_at: Remember created at
         reset_password_sent_at: Reset password sent at

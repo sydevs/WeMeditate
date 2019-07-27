@@ -9,15 +9,15 @@
     .ui.tiny.compact.basic.buttons
       .ui.active.button
         - status = @record.published? ? (@record.has_draft? ? :pending_changes : :published) : :draft
-        = translate(status, scope: %i[admin status], target: model_name)
+        = translate(status, scope: %i[admin status], page: model_name)
 
       - action = (allow.review? && @record.published? && @record.has_draft? ? :review : :edit)
       a.ui.button href=polymorphic_admin_path([action, :admin, @record])
         i.edit.icon
         - if allow.review? && @record.published? && @record.has_draft?
-          = translate('admin.action.target.review', target: model_name)
+          = translate('admin.action.target.review', record: model_name)
         - else
-          = translate('admin.action.target.edit', target: model_name)
+          = translate('admin.action.target.edit', record: model_name)
 
       .ui.floating.dropdown.icon.button
         i.dropdown.icon
@@ -25,12 +25,12 @@
           - if @record.has_draft?
             a.item href=polymorphic_admin_path([:edit, :admin, @record])
               i.edit.icon
-              = translate 'admin.action.target.edit_details', target: model_name
+              = translate 'admin.action.target.edit_details', record: model_name
           - if false && @record.publishable? && allow.publish?
             / TODO: Implement click to (un)publish
             .item
               i.bullhorn.icon
-              = translate (@record.published? ? 'unpublish' : 'publish'), scope: %i[admin action target], target: model_name
+              = translate (@record.published? ? 'unpublish' : 'publish'), scope: %i[admin action target], record: model_name
           - if @record.published?
             a.item href=polymorphic_url(@record) target='_blank'
               i.eye.icon
@@ -42,7 +42,7 @@
           - if allow.destroy?
             a.item href=polymorphic_admin_path([:admin, @record]) data={ method: 'delete', confirm: translate('admin.messages.confirm_destroy') }
               i.warning.sign.icon
-              = translate 'admin.action.target.destroy', target: model_name
+              = translate 'admin.action.target.destroy', record: model_name
 
 .details
   h3 = @record.name
@@ -55,7 +55,7 @@
       - if owner = @record.try(:owner)
         - owned_by = translate('admin.details.owned_by', owner: owner.name)
         - if policy(owner).edit?
-          - view_user = translate('admin.action.target.show', target: User.model_name.human)
+          - view_user = translate('admin.action.target.show', record: User.model_name.human)
           = record_detail 'user', owned_by, view_user, url: polymorphic_admin_path([:edit, :admin, owner])
         - else
           = record_detail 'user', owned_by
@@ -66,12 +66,12 @@
 
 - if allow.write?
   .table-actions
-    = table_action translate('admin.action.target.write', target: model_name), 'pencil alternate', polymorphic_admin_path([:write, :admin, @record])
+    = table_action translate('admin.action.target.write', record: model_name), 'pencil alternate', polymorphic_admin_path([:write, :admin, @record])
 
 
-h4 = translate 'admin.content.outline'
+h4 = translate 'admin.content.outline_title'
 
 = content_outline @record
 
 .ui.hidden.divider
-= table_link translate('admin.action.target.back', target: @model.model_name.human(count: -1)), 'left arrow', polymorphic_admin_path([:admin, @model])
+= table_link translate('admin.action.target.back', records: @model.model_name.human(count: -1)), 'left arrow', polymorphic_admin_path([:admin, @model])

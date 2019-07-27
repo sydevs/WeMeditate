@@ -1,6 +1,9 @@
 
+# FRONT END TRANSLATIONS
+# This file contains translations which will be seen by the public.
+
 it:
-  we_meditate: We Meditate
+  we_meditate: We Meditate # This is the title of the website
 
   header:
     learn_more: Learn More
@@ -69,13 +72,14 @@ it:
     duration: Duration
     current_time: Current time
     seek: Seek
-    play_title: Play, %{title}
+    play_title: Play, %{title} # %{title} is the title of a video or music track
 
   articles:
     read_more: Read more
     load_more: Load more
     filter: Filter
     show_all: All
+    share: 'Share: '
 
   meditations:
     prescreen:
@@ -96,7 +100,7 @@ it:
       random_meditation_description: Feel like you’re in need of a pick me up? Banish those negative thoughts which are putting you down and boost your confidence.
     custom_meditation:
       title: Set Up your own Meditation
-      choose_goal: I wish to feel ...
+      choose_goal: I wish to feel ... # Please keep ' ...' (with a space) at the end of your translation.
       choose_duration: I have
       goal_prompt: Select mood
       submit: Start meditation

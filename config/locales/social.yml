@@ -1,6 +1,8 @@
 
+# SOCIAL MEDIA TRANSLATIONS
+# This file lets us customize the social media URLs for different languages
+
 en:
-  share: 'Share: '
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
     twitter: https://twitter.com/intent/tweet?url=%{url}
@@ -11,7 +13,6 @@ en:
     facebook: '#'
 
 it:
-  share: 'Share: '
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
     twitter: https://twitter.com/intent/tweet?url=%{url}
@@ -22,7 +23,6 @@ it:
     facebook: '#'
 
 ru:
-  share: 'Share: '
   sharing:
     vk: http://vk.com/share.php?url=%{url}
   social_media:

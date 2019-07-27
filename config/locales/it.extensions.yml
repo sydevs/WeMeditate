@@ -1,3 +1,6 @@
+
+# EXTENSION TRANSLATIONS
+# This file contains translations for addons which are used by the website.
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
 it:
@@ -66,22 +69,22 @@ it:
         other: "%{count} errors prohibited this %{resource} from being saved:"
   time:
     formats:
-      default: '%k:%M'
-      time: :time.formats.default
-      date: :date.formats.default
+      default: '%k:%M' # Do not translate, unless you know what you are doing
+      time: :time.formats.default # Do not translate
+      date: :date.formats.default # Do not translate
       devise:
         mailer:
           invitation_instructions:
-            accept_until_format: "%B %d, %Y %I:%M %p"
+            accept_until_format: "%B %d, %Y %I:%M %p" # Do not translate, unless you know what you are doing
   date:
     formats:
-      default: '%d %b %Y'
-      date: :date.formats.default
+      default: '%d %b %Y' # Do not translate, unless you know what you are doing
+      date: :date.formats.default # Do not translate
   simple_form:
     "yes": 'Yes'
     "no": 'No'
     required:
       text: 'required'
-      mark: '*'
+      mark: '*' # Do not translate
     error_notification:
       default_message: "Please review the problems below:"

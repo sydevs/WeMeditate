@@ -105,7 +105,7 @@ module Admin::TableHelper
       end
 
       if policy(model).sort? && records.count > 1
-        concat table_action translate('admin.action.target.reorder', target: model.model_name.human), 'bars', polymorphic_admin_path([:admin, model], reorder: true)
+        concat table_action translate('admin.action.target.reorder', record: model.model_name.human), 'bars', polymorphic_admin_path([:admin, model], reorder: true)
       end
     end
   end
@@ -123,11 +123,11 @@ module Admin::TableHelper
 
     capture do
       if parent
-        concat table_link translate('admin.action.target.back', target: parent.model_name.human(count: -1)), 'left arrow', polymorphic_admin_path([:admin, parent])
+        concat table_link translate('admin.action.target.back', records: parent.model_name.human(count: -1)), 'left arrow', polymorphic_admin_path([:admin, parent])
       end
 
       if policy(model).new?
-        label = translate('create', scope: %i[admin action target], target: model.model_name.human)
+        label = translate('admin.action.target.create', record: model.model_name.human)
         concat table_link label, 'plus', polymorphic_path([:new, :admin, model.model_name.singular_route_key.to_sym])
       end
     end

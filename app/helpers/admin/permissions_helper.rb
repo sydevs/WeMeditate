@@ -131,19 +131,22 @@ module Admin
       end
 
       def permission_icons model, permissions
-        model_name = translate(model, scope: %i[activerecord models], count: -1)
+        variables = {
+          pages: translate(model, scope: %i[activerecord models], count: -1),
+          subordinates: %i[writer translator].map { |role| human_enum_name(User, :role, role) }.to_sentence,
+        }
         
         capture do
           if permissions.is_a? Array
             permissions.each do |permission|
-              concat permission_icon(permission, translate(permission, scope: %i[admin permissions], model: model_name))
+              concat permission_icon(permission, translate(permission, scope: %i[admin permissions], **variables))
             end
           else
             permissions.each do |permission, value|
               if value == true
-                concat permission_icon(permission, translate(permission, scope: %i[admin permissions], model: model_name))
+                concat permission_icon(permission, translate(permission, scope: %i[admin permissions], **variables))
               else
-                concat permission_icon(permission, translate(value, scope: %i[admin permissions special], model: model_name), partial: true)
+                concat permission_icon(permission, translate(value, scope: %i[admin permissions special], **variables), partial: true)
               end
             end
           end
