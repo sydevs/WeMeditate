@@ -12,8 +12,8 @@ RouteTranslator.config do |config|
     }
   else
     config.host_locales = {}
-    host = 'localhost'
-    # host = 'omicron.local'
+    # host = 'localhost'
+    host = 'omicron.local'
 
     I18n.available_locales.each do |locale|
       hostname = (locale == :en ? host : "#{locale}.#{host}")

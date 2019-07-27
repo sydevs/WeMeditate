@@ -73,7 +73,7 @@ const Editor = {
     Editor.adjustPendingUploads(+1)
 
     $.ajax({
-      url: `/en/admin/vimeo_data?vimeo_id=${vimeo_id}`,
+      url: `/en/vimeo_data?vimeo_id=${vimeo_id}`,
       type: 'GET',
       dataType: 'json',
       success: function(result) {

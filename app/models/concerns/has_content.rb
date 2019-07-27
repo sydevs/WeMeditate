@@ -43,7 +43,6 @@ module HasContent
           end
         end
 
-        puts "HAS THUMBNAIL? #{thumbnail_id} - #{locale}"
         result += [thumbnail_id] if self.has_attribute?(:thumbnail_id)
 
         if preserve_draft && has_draft?

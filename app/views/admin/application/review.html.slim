@@ -5,7 +5,8 @@
 - details_draft = @record.local_draft.except('content', 'contributors')
 - contributors = User.where(id: @record.local_draft['contributors']).map(&:name)
 
-.ui.message = translate 'admin.messages.draft_contributed_by', people: contributors.to_sentence
+- if contributors.present?
+  .ui.message = translate 'admin.messages.draft_contributed_by', people: contributors.to_sentence
 
 = simple_form_for @record, url: polymorphic_admin_path([:approve, :admin, @record]), method: :patch
   h3 = translate 'admin.review.attribute_changes', page: @model.model_name.human
@@ -62,7 +63,9 @@
               - else
                 td.collapsing = field_name
                 td = old_value
-                td = value.is_a?(String) ? Differ.diff_by_char(value, old_value.to_s).format_as(:html).html_safe : value
+                td = value
+                / TODO: Remove this old code?
+                /td = value.is_a?(String) ? Differ.diff_by_char(value, old_value.to_s).format_as(:html).html_safe : value
       tfoot.full-width
         tr
           th colspan=4
@@ -70,8 +73,19 @@
               = translate 'admin.review.reject_all'
             .ui.compact.basic.positive.tiny.button
               = translate 'admin.review.approve_all'
+            a.ui.compact.basic.tiny.button href=polymorphic_admin_path([:edit, :admin, @record])
+              = translate 'admin.action.target.edit', record: @model.model_name
 
   h3 = translate 'admin.review.content_changes', page: @model.model_name.human
+  / TODO: Translate
+  .message
+    p The colour of each row indicated the status of that block of content.
+    ul.ui.small.list
+      li <b>Grey</b> means no change
+      li <b>Yellow</b> means the block has been modified
+      li <b>Red</b> means it has been remove
+      li <b>Green</b> means it has been newly created
+    p Text which is <ins>highlighted in green</ins> has been added, text <del>highlighted in red</del> has been remove. All other text has remained unchanged.
 
   - if !@record.local_draft['content'].present?
     = translate 'admin.review.no_changes'
@@ -99,7 +113,13 @@
             td.collapsing
               strong = type
               div = mode
-            td.diff = Differ.diff_by_word(display_block_data(draft), display_block_data(original)).format_as(:html).html_safe
+            td.diff
+              - (draft['data'] || original['data']).map do |key, value|
+                - draft_value = draft && draft['data'] ? (draft['data'][key].to_s || '') : ''
+                - original_value = original && original['data'] ? (original['data'][key].to_s || '') : ''
+                div
+                  strong #{key}: 
+                  span = Differ.diff_by_word(draft_value, original_value).format_as(:html).html_safe
       tfoot.full-width
         tr
           th colspan=3
@@ -107,6 +127,10 @@
               = translate 'admin.review.reject_all'
             .ui.compact.basic.positive.tiny.button
               = translate 'admin.review.approve_all'
+            a.ui.compact.basic.tiny.button href=polymorphic_url(@record, preview: true) target='_blank'
+              = translate 'admin.action.descriptive.preview'
+            a.ui.compact.basic.tiny.button href=polymorphic_admin_path([:write, :admin, @record])
+              = translate 'admin.action.target.write', record: @model.model_name
 
   .ui.hidden.divider
 

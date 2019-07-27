@@ -91,7 +91,7 @@ module Admin::RecordHelper
     return '' unless block
 
     result = block['data'].map do |key, value|
-      "#{tag.strong key}: #{value}"
+      "#{key}: #{value}"
     end
     result.join("<br>").to_s
   end

@@ -69,7 +69,7 @@
     = table_action translate('admin.action.target.write', record: model_name), 'pencil alternate', polymorphic_admin_path([:write, :admin, @record])
 
 
-h4 = translate 'admin.content.outline_title'
+h4 = translate 'admin.content.outline_title', page: @model.model_name.human
 
 = content_outline @record
 

@@ -118,7 +118,7 @@ it:
     
     # ===== CONTENT ===== #
     content:
-      outline_title: Struttura della pagina
+      outline_title: Struttura della %{page}
       blocks:
         header: Titolo
         paragraph: Paragrafo
@@ -149,8 +149,8 @@ it:
           right: Inserto a destra
         format:
           button: Bottone
-          articles: :activerecord.models.articles.other
-          treatments: :activerecord.models.treatments.other
+          articles: Articles # TODO: Translate
+          treatments: Techniques # TODO: Translate
           grid: Griglia
           accordion: Fisarmonica
           columns: Colonne

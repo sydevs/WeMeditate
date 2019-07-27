@@ -199,7 +199,7 @@ it:
         image: Avatar
         description: Biography
         years_meditating: Years of Meditation Experience
-        user: Associated User
+        user: Associated Editor
 
       user:
         email: Email Address

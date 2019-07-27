@@ -14,7 +14,7 @@ module Admin
         end
 
         format.json do
-          render json: @records.to_json(only: %i[id name])
+          render json: @records.limit(5).to_json(only: %i[id name])
         end
       end
     end

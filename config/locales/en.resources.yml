@@ -77,7 +77,7 @@ en:
         owner: Article Owner
 
       static_page:
-        title: Title
+        name: Title
         slug: :activerecord.attributes.generic.slug # Do not translate
         role: Role
         roles:
@@ -199,7 +199,7 @@ en:
         image: Avatar
         description: Biography
         years_meditating: Years of Meditation Experience
-        user: Associated User
+        user: Associated Editor
 
       user:
         email: Email Address

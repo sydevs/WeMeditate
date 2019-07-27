@@ -24,8 +24,13 @@ module Draftable
     new_draft['contributors'] = new_draft['contributors'].to_set.add(user.id).to_a
 
     changes.each do |key, (old_value, new_value)|
-      next if key == 'content' && (JSON.parse(old_value)['blocks'] == JSON.parse(new_value)['blocks'])
       next if key == 'published_at' # We should not include timestamps in drafts
+
+      if key == 'content'
+        old_val = JSON.parse(old_value)['blocks'] if old_value
+        new_val = JSON.parse(new_value)['blocks'] if new_value
+        next if old_val == new_val
+      end
 
       if old_value.to_s != new_value.to_s
         self[key] = old_value
@@ -35,7 +40,7 @@ module Draftable
       end
     end
 
-    self[:draft] = new_draft
+    self[:draft] = (local_draft || {}).merge(new_draft)
   end
 
   def reify_draft!

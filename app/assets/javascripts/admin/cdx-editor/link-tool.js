@@ -134,7 +134,7 @@ class LinkTool extends EditorTool {
     this.searchInput.parentNode.classList.add('loading')
     this.timer = setTimeout(() => {
       // TODO: Localize this
-      jQuery.get(`/en/admin/${this.data.format}.json`, {
+      jQuery.get(`/en/${this.data.format}.json`, {
         q: event.target.value,
       }, data => {
         this.searchContainer.innerHTML = ''
@@ -200,7 +200,8 @@ class LinkTool extends EditorTool {
   updateFormatLabel(tune) {
     if (tune.name != 'button') {
       this.formatLabel.querySelector('.icon').className = `${tune.icon} icon`
-      this.formatLabel.querySelector('span').innerText = `${tune.label} List`
+      // TODO: Translate
+      this.formatLabel.querySelector('span').innerText = `${translate['content']['tunes'][tune.group][tune.name]} List`
     }
 
     $(this.formatLabel).toggle(tune.name != 'button')
