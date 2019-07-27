@@ -14,8 +14,9 @@ module Draftable
     get_localized_attribute(:draft)
   end
 
-  def local_draft_content
-    local_draft['content'].present? ? JSON.parse(local_draft['content']) : nil
+  def parsed_draft_content local: true
+    result = local ? draft : local_draft
+    result['content'].present? ? JSON.parse(result['content']) : nil
   end
 
   def has_draft? attribute = nil
@@ -77,7 +78,7 @@ module Draftable
 
     def approve_content! data
       original_blocks = content_blocks
-      draft_content = local_draft_content
+      draft_content = parsed_draft_content
       blocks = []
 
       data.each do |index, dat|

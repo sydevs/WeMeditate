@@ -1,31 +1,32 @@
 
 - isGallery = block[:asGallery] == true
 
-.content__video class="content__video--#{isGallery ? 'gallery' : 'single'}"
-  = render_decoration :gradient, block, size: %i[tall long]
+- if block[:items].length > 0
+  .content__video class="content__video--#{isGallery ? 'gallery' : 'single'}"
+    = render_decoration :gradient, block, size: %i[tall long]
 
-  - if isGallery
-    .content__video__sidetext = render_decoration :sidetext, block, static: true, alignment: :right
+    - if isGallery
+      .content__video__sidetext = render_decoration :sidetext, block, static: true, alignment: :right
 
-    .content__video__gallery.js-carousel data-style='video'
-      - block[:items].each do |item|
-        figure.content__video__item
-          .content__video__media.video
-            // TODO: Re-evaluate image_sizes
-            // TODO: Maybe try to find a way to re-enable lazyloading
-            = vimeo_image_tag item, '100vw', class: 'video__thumbnail', lazy: false
-            a.video__button.js-video href="https://vimeo.com/#{item[:vimeo_id]}" data-id=item[:vimeo_id] data-mfp-src='#video-popup'
+      .content__video__gallery.js-carousel data-style='video'
+        - block[:items].each do |item|
+          figure.content__video__item
+            .content__video__media.video
+              // TODO: Re-evaluate image_sizes
+              // TODO: Maybe try to find a way to re-enable lazyloading
+              = vimeo_image_tag item, '100vw', class: 'video__thumbnail', lazy: false
+              a.video__button.js-video href="https://vimeo.com/#{item[:vimeo_id]}" data-id=item[:vimeo_id] data-mfp-src='#video-popup'
 
-          figcaption.content__video__name = item[:title]
-  - else
-    h2.content__video__title = block[:decorations] && block[:decorations][:sidetext]
-    .content__video__sidetext = render_decoration :sidetext, block, alignment: :left
+            figcaption.content__video__name = item[:title]
+    - else
+      h2.content__video__title = block[:decorations] && block[:decorations][:sidetext]
+      .content__video__sidetext = render_decoration :sidetext, block, alignment: :left
 
-    - item = block[:items].first
-    figure.content__video__item
-      .content__video__media.video
-        // TODO: Re-evaluate image_sizes
-        = vimeo_image_tag item, '100vw', class: 'video__thumbnail'
-        a.video__button.js-video href="https://api.vimeo.com/#{item[:vimeo_id]}" data-id=item[:vimeo_id] data-mfp-src='#video-popup'
+      - item = block[:items].first
+      figure.content__video__item
+        .content__video__media.video
+          // TODO: Re-evaluate image_sizes
+          = vimeo_image_tag item, '100vw', class: 'video__thumbnail'
+          a.video__button.js-video href="https://api.vimeo.com/#{item[:vimeo_id]}" data-id=item[:vimeo_id] data-mfp-src='#video-popup'
 
-      figcaption.content__video__name = item[:title]
+        figcaption.content__video__name = item[:title]

@@ -77,7 +77,7 @@ module Admin
     end
 
     def content_outline record
-      blocks = record.content_blocks if record.content.present?
+      blocks = record.content_blocks if record.parsed_content.present?
       return unless blocks
 
       content_tag :ul do

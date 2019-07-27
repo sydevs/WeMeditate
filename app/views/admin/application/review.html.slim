@@ -87,7 +87,7 @@
       li <b>Green</b> means it has been newly created
     p Text which is <ins>highlighted in green</ins> has been added, text <del>highlighted in red</del> has been remove. All other text has remained unchanged.
 
-  - if !@record.local_draft_content.present?
+  - if !@record.parsed_draft_content.present?
     = translate 'admin.review.no_changes'
   - else
     table.ui.compact.celled.definition.review.table

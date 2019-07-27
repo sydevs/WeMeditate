@@ -21,7 +21,7 @@ class QuoteTool extends EditorTool {
       text: data.text || '',
       credit: data.credit || '',
       caption: data.caption || '',
-      callout: ['left', 'right'].includes(data.callout) ? data.callout : '',
+      callout: ['left', 'right'].includes(data.callout) ? data.callout : 'none',
     }, { // Config
       id: 'quote',
       fields: {
@@ -33,6 +33,11 @@ class QuoteTool extends EditorTool {
         {
           name: 'left',
           icon: 'indent',
+          group: 'callout',
+        },
+        {
+          name: 'none',
+          icon: 'align center',
           group: 'callout',
         },
         {

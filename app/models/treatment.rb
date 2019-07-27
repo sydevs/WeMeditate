@@ -29,7 +29,7 @@ class Treatment < ApplicationRecord
   # Scopes
   default_scope { order(:order) }
   scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :untranslated, -> { where.not(original_locale: I18n.locale, id: published.pluck(:id)) }
+  scope :needs_translation, -> (user) { where.not(original_locale: I18n.locale, id: published.pluck(:id)).where(original_locale: user.available_languages) }
   scope :q, -> (q) { joins(:translations).where('treatment_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model

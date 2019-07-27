@@ -119,7 +119,7 @@ const Editor = {
   processDataForLoad(data) {
     data = JSON.parse(data)
 
-    if (data.blocks[0].type === 'splash') {
+    if (data.blocks && data.blocks[0].type === 'splash') {
       const splashData = data.blocks.shift() // Remove the splash data before sending it to editorjs
       SplashEditor.setData(splashData)
     }

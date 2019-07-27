@@ -32,9 +32,9 @@ module ApplicationHelper
   end
 
   def render_content record
-    return unless record.content.present?
+    return unless record.parsed_content.present?
 
-    cache record.content do
+    cache record.parsed_content do
       record.content_blocks.each do |block|
         concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys
       end

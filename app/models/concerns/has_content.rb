@@ -10,21 +10,15 @@ module HasContent
     # base.validates :content, presence: true
   end
 
-  def content
-    self[:content].is_a?(Hash) ? self[:content] : JSON.parse(self[:content])
-  end
-
-  def content= value
-    super (value.is_a?(String) ? JSON.parse(value) : value).to_json
+  def parsed_content
+    self[:content].is_a?(Hash) || self[:content].nil? ? self[:content] : JSON.parse(self[:content])
   end
 
   def content_blocks
     if self[:content].nil?
       []
-    elsif self[:content].is_a?(Hash)
-      self[:content]['blocks']
     else
-      JSON.parse(self[:content])['blocks']
+      parsed_content['blocks']
     end
   end
 
@@ -54,8 +48,8 @@ module HasContent
         result += [thumbnail_id] if self.has_attribute?(:thumbnail_id)
 
         if preserve_draft && has_draft?
-          if local_draft_content.present?
-            local_draft_content['blocks'].each do |block|
+          if parsed_draft_content.present?
+            parsed_draft_content['blocks'].each do |block|
               result += block['data']['media_files']
             end
           end
@@ -71,7 +65,9 @@ module HasContent
   end
 
   def cleanup_media_files!
-    media_files.where.not(id: essential_media_files).destroy_all
+    # TODO: Fix this
+    # When you edit a page content, and then press Save & Approve it will destroy any media files which are new and haven't been persisted yet.
+    # media_files.where.not(id: essential_media_files).destroy_all
   end
 
 end

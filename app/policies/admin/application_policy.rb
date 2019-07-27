@@ -4,7 +4,7 @@ module Admin
     class Scope < Scope
       def resolve
         if user.translator?
-          scope.untranslated
+          scope.needs_translation(user)
         else
           scope
         end

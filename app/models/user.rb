@@ -19,7 +19,7 @@ class User < ApplicationRecord
   # Scopes
   default_scope { order(:role, :name) }
   scope :pending, -> { where.not(invitation_created_at: nil).where(invitation_accepted_at: nil) }
-  scope :for_locale, -> { where('languages = \'{}\' OR ? = ANY (languages)', I18n.locale) }
+  scope :for_locale, -> { where('languages = \'{}\' OR ? = ANY(languages)', I18n.locale) }
   scope :q, -> (q) { where('email ILIKE ?', "%#{q}%") if q.present? }
   
   def languages= list

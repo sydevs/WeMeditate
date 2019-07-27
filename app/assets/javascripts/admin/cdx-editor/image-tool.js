@@ -15,7 +15,7 @@ class ImageTool extends EditorTool {
   constructor({data, _config, api}) {
     super({ // Data
       items: data.items || [],
-      callout: ['left', 'right'].includes(data.callout) ? data.callout : '',
+      callout: ['left', 'right'].includes(data.callout) ? data.callout : 'none',
       asGallery: data.asGallery || false,
       stretch: data.stretch || false,
       decorations: data.decorations || {}
@@ -35,6 +35,11 @@ class ImageTool extends EditorTool {
         {
           name: 'left',
           icon: 'indent',
+          group: 'callout',
+        },
+        {
+          name: 'none',
+          icon: 'align center',
           group: 'callout',
         },
         {
@@ -178,7 +183,7 @@ class ImageTool extends EditorTool {
       this.setTuneEnabled('left', !active)
       this.setTuneEnabled('right', !active)
       this.setTuneBoolean('stretch', false)
-      this.setTuneValue('callout', '')
+      this.setTuneValue('callout', 'none')
     }
 
     const allowMultiple = tune.name == 'asGallery' ? active : this.allowMultiple

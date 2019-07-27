@@ -145,6 +145,7 @@ it:
           center: Centrato
           right: Sbandierato a destra
         callout:
+          none: Center Aligned # TODO: Translate
           left: Inserto a sinistra
           right: Inserto a destra
         format:

@@ -27,7 +27,7 @@ class StaticPage < ApplicationRecord
 
   # Scopes
   default_scope { order(:role) }
-  scope :untranslated, -> { where.not(id: with_translations(I18n.locale).pluck(:id)) }
+  scope :needs_translation, -> (user) { where.not(id: with_translations(I18n.locale).pluck(:id)).where(original_locale: user.available_languages) }
   scope :q, -> (q) { joins(:translations).where('static_page_translations.name ILIKE ? OR role ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model

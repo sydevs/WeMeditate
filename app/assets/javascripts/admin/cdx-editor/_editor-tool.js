@@ -27,11 +27,12 @@ class EditorTool {
     }
 
     this.decorationsAttributes = {
-      triangle: { title: 'Triangle', icon: 'counterclockwise rotated play' },
-      gradient: { title: 'Gradient', icon: 'counterclockwise rotated bookmark' },
+      // TODO: Translate
+      triangle: { title: 'Triangle Decoration', icon: 'counterclockwise rotated play' },
+      gradient: { title: 'Gradient Decoration', icon: 'counterclockwise rotated bookmark' },
       sidetext: { title: 'Vertical Text', icon: 'clockwise rotated heading' },
-      circle: { title: 'Circle', icon: 'circle outline' },
-      leaves: { title: 'Leaves', icon: 'leaf' },
+      circle: { title: 'Circle Decoration', icon: 'circle outline' },
+      leaves: { title: 'Leaves Decoration', icon: 'leaf' },
     }
 
     for (let key in this.fields) {
@@ -81,6 +82,13 @@ class EditorTool {
       innerHTML: this.data[key],
       contentEditable: true,
     }, container)
+
+    if (type == 'url') {
+      result.addEventListener('blur', event => {
+        const url = event.target.innerText
+        if (url) event.target.innerText = (url.indexOf('://') === -1) ? 'http://' + url : url
+      })
+    }
 
     result.dataset.placeholder = field.label || translate['content']['placeholders'][key]
 
@@ -140,10 +148,9 @@ class EditorTool {
         label = translate['content']['tunes'][tune.name]
       }
 
-      const button = make('div', [this.CSS.settingsButton, this.CSS.settingsButtons[tune.name]], {
-        title: label,
-      }, this.settingsContainer)
-
+      const button = make('div', [this.CSS.settingsButton, this.CSS.settingsButtons[tune.name]], null, this.settingsContainer)
+      button.dataset.tooltip = label
+      button.dataset.position = 'bottom right'
       button.innerHTML = '<i class="'+tune.icon+' icon"></i>'
 
       if (this.isTuneActive(tune)) {
@@ -229,6 +236,7 @@ class EditorTool {
     if (this.allowedDecorations.indexOf('triangle') >= 0) {
       value = (this.data.decorations && this.data.decorations.triangle && this.data.decorations.triangle.alignment) || 'left'
 
+      // TODO: Translate
       this.triangleAlignment = this.renderDecorationsSelect({
         left: 'Left Triangle',
         right: 'Right Triangle',
@@ -237,12 +245,14 @@ class EditorTool {
 
     if (this.allowedDecorations.indexOf('gradient') >= 0) {
       value = (this.data.decorations && this.data.decorations.gradient && this.data.decorations.gradient.alignment) || 'left'
+      // TODO: Translate
       this.gradientAlignment = this.renderDecorationsSelect({
         left: 'Left Gradient',
         right: 'Right Gradient',
       }, value, inputWrapper)
 
       value = (this.data.decorations && this.data.decorations.gradient && this.data.decorations.gradient.color) || 'orange'
+      // TODO: Translate
       this.gradientColor = this.renderDecorationsSelect({
         orange: 'Orange Gradient',
         blue: 'Blue Gradient',
@@ -251,6 +261,7 @@ class EditorTool {
     }
 
     if (this.allowedDecorations.indexOf('sidetext') >= 0) {
+      // TODO: Translate
       this.sidetextInput = make('input', this.CSS.settingsInput, {
         type: 'unstyled',
         placeholder: 'Enter vertical text',
@@ -267,9 +278,10 @@ class EditorTool {
   renderDecorationsButton(key, container = null) {
     const button = make('div', [this.CSS.settingsButton, `${this.CSS.settingsButton}--${key}`], {
       innerHTML: `<i class="${this.decorationsAttributes[key].icon} icon"></i>`,
-      title: this.decorationsAttributes[key].title,
     }, container)
 
+    button.dataset.tooltip = this.decorationsAttributes[key].title
+    button.dataset.position = 'bottom right'
     button.addEventListener('click', () => this.setDecorationSelection(key, !this.isDecorationSelected(key)))
     return button
   }
@@ -294,7 +306,7 @@ class EditorTool {
 
   toggleDecorationsDropdown(open = null) {
     if (open === null) open = !this.decorationsDropdown.classList.contains('ce-settings--opened')
-    const dismissDecorations = () => { this.toggleDropdown(false) }
+    const dismissDecorations = () => { this.toggleDecorationsDropdown(false) }
 
     if (open) {
       document.addEventListener('click', dismissDecorations)

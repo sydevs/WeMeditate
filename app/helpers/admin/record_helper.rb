@@ -40,8 +40,8 @@ module Admin::RecordHelper
   end
 
   def draft_diff record, &block
-    original_blocks = record.content ? JSON.parse(record.content)['blocks'] : []
-    draft_blocks = JSON.parse(record.local_draft['content'])['blocks']
+    original_blocks = record.content_blocks
+    draft_blocks = record.parsed_draft_content['blocks']
 
     original_types = original_blocks.map { |b| b['type'] }
     draft_types = draft_blocks.map { |b| b['type'] }

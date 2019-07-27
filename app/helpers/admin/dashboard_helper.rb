@@ -35,7 +35,7 @@ module Admin
 
       def untranslated model, urgency, &block
         if policy(model).update_translation?
-          scope = policy_scope(model).untranslated
+          scope = policy_scope(model).needs_translation(current_user)
           scope.where(draft: nil) if model.has_attribute? :draft
           scope.each do |record|
             block.call({
