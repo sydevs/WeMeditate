@@ -63,9 +63,9 @@ module Admin
 
       puts "UPDATED PARAMS #{record_params}"
       
-      if @record.reviewable?
+      if @record.reviewable? 
         if will_publish
-          @record.discard_draft!
+          @record.cleanup_draft!
         else
           @record.record_draft!(current_user)
           notice = translate 'admin.result.saved_but_needs_review'

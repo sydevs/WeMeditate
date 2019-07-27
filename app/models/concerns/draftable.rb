@@ -11,12 +11,11 @@ module Draftable
   end
 
   def local_draft
-    get_localized_attribute(:draft)
+    @local_draft = get_localized_attribute(:draft)
   end
 
-  def parsed_draft_content local: true
-    result = local ? draft : local_draft
-    result['content'].present? ? JSON.parse(result['content']) : nil
+  def parsed_draft_content
+    @parsed_draft_content = local_draft['content'].present? ? JSON.parse(local_draft['content']) : nil
   end
 
   def has_draft? attribute = nil
@@ -68,6 +67,27 @@ module Draftable
     end
 
     discard_draft!
+  end
+
+  def cleanup_draft!
+    draft = local_draft
+
+    changes.each do |key, (old_value, new_value)|
+      next unless draft.has_key?(key)
+
+      if key == 'content'
+        # Compare content using the blocks only.
+        new_value = JSON.parse(new_value)['blocks'] if new_value
+        draft_value = parsed_draft_content['blocks'] if parsed_draft_content
+      else
+        draft_value = draft[key]
+      end
+
+      draft.except!(key) if new_value == draft_value
+    end
+
+    draft = nil unless draft.except('contributors').present?
+    write_attribute :draft, draft
   end
 
   def discard_draft!

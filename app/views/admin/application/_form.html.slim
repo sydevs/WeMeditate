@@ -1,7 +1,7 @@
 
 - allow = policy(record)
 
-- if record.reviewable? && record.has_draft?
+- if record.reviewable? && record.has_draft? && record.local_draft.except('content', 'contributors').present?
   .ui.yellow.message = translate 'admin.messages.unpublished_changes_notice', page: record.model_name.human
 
 - if record.is_a?(User) && record.pending_invitation?
@@ -93,6 +93,8 @@
 
       - unless record.is_a?(Article) && record.new_record?
         button.ui.basic.primary.button type='submit'
+          = translate 'admin.action.simple.update'
+          '  &
           = translate 'admin.action.simple.approve'
     - else
       button.ui.basic.positive.button type='submit'
