@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'robots.txt', to: 'application#robots', defaults: { format: :txt }
 
   # ===== ADMIN ROUTES ===== #
-  admin_domains = Rails.env.development? ? %w[admin.localhost admin.omicron.local admin.wemeditate.co] : %w[admin.localhost]
+  admin_domains = Rails.env.development? ? %w[admin.localhost admin.omicron.local admin.wemeditate.co] : %w[admin.wemeditate.co]
   constraints DomainConstraint.new(admin_domains) do
     get '/', to: redirect('/en')
     get 'switch_user' => 'switch_user#set_current_user'
