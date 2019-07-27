@@ -10,6 +10,10 @@ class Video {
     })
   }
 
+  static unloadPlayer() {
+    Application.videoPlayer.destroy()
+  }
+
   static loadPlayer(id) {
     const videoPlayerContainer = document.getElementById(id)
     const videoPlayer = new Plyr(videoPlayerContainer, videoPlayerContainer.dataset.controls)
@@ -20,8 +24,15 @@ class Video {
   static openPlayer(element) {
     Application.videoPlayer.source = {
       type: 'video',
+      autoplay: true,
       sources: [{ src: element.dataset.id, provider: 'vimeo' }]
     }
+
+    if (Video.useAutoFullscreen()) Application.videoPlayer.fullscreen.enter()
+  }
+
+  static useAutoFullscreen() {
+    return Application.isMobileDevice() || screen.width < 1024
   }
 
 }

@@ -14,6 +14,10 @@ module Draftable
     get_localized_attribute(:draft)
   end
 
+  def local_draft_content
+    local_draft['content'].present? ? JSON.parse(local_draft['content']) : nil
+  end
+
   def has_draft? attribute = nil
     local_draft.present? && (attribute.nil? || local_draft.has_key?(attribute.to_s))
   end
@@ -72,8 +76,8 @@ module Draftable
   private
 
     def approve_content! data
-      original_content = JSON.parse(content)
-      draft_content = JSON.parse(local_draft['content'])
+      original_blocks = content_blocks
+      draft_content = local_draft_content
       blocks = []
 
       data.each do |index, dat|
@@ -82,7 +86,7 @@ module Draftable
         index = dat1[1].to_i
 
         if mode == 'keep'
-          blocks << original_content['blocks'][index]
+          blocks << original_blocks[index]
         elsif mode == 'use'
           blocks << draft_content['blocks'][index]
         else

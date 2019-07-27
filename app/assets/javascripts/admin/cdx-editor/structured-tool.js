@@ -207,8 +207,11 @@ class StructuredTool extends EditorTool {
       }
     }
 
-    newData.decorations = JSON.parse(this.container.dataset.decorations)
-    return Object.assign(this.data, { items: item_data, media_files: media_files })
+    return Object.assign(this.data, {
+      items: item_data,
+      media_files: media_files,
+      decorations: this.getDecorationsData()
+    })
   }
 
   // Returns current item by the caret position

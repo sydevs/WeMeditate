@@ -14,6 +14,10 @@ class Carousel {
     $element.slick(CarouselStyles[this.style])
   }
 
+  unload() {
+    $(this.container).slick('unslick')
+  }
+
   onSelectSlide(slick, currentSlide) {
     this.updateArrowText(slick, currentSlide)
     zenscroll.to(this.container)

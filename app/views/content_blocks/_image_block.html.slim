@@ -27,10 +27,10 @@
         .content__image__triangle = render_decoration :triangle, block
 
       .content__image__item__content
-        - if item[:credit]
+        - if item[:credit].present?
           .content__image__credit #{translate 'content.credit'} • #{item[:credit]}
 
-        - if item[:caption]
+        - if item[:caption].present?
           figcaption.content__image__caption = item[:caption]
 
   - unless isSingle

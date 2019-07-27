@@ -232,7 +232,7 @@ article.update!(content: content([
     type: :link,
     data: {
       action: 'Try Meditation',
-      url: '/en/page/self-realization',
+      url: '/page/self-realization',
       format: :button,
       decorations: { leaves: true },
     },
@@ -277,7 +277,7 @@ article.update!(content: content([
     type: :link,
     data: {
       action: 'Meditation with Shri Mataji',
-      url: '/en/page/self-realization',
+      url: '/page/self-realization',
       format: :button,
     },
   }, {

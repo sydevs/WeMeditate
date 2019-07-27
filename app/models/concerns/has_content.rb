@@ -10,6 +10,14 @@ module HasContent
     # base.validates :content, presence: true
   end
 
+  def content
+    self[:content].is_a?(Hash) ? self[:content] : JSON.parse(self[:content])
+  end
+
+  def content= value
+    super (value.is_a?(String) ? JSON.parse(value) : value).to_json
+  end
+
   def content_blocks
     if self[:content].nil?
       []
@@ -46,8 +54,8 @@ module HasContent
         result += [thumbnail_id] if self.has_attribute?(:thumbnail_id)
 
         if preserve_draft && has_draft?
-          if local_draft['content'].present?
-            JSON.parse(local_draft['content'])['blocks'].each do |block|
+          if local_draft_content.present?
+            local_draft_content['blocks'].each do |block|
               result += block['data']['media_files']
             end
           end

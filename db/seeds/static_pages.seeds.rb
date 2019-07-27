@@ -38,7 +38,7 @@ static_pages[:home].update!(content: content([
       title: 'Meditation is a state of inner peace.',
       text: 'No special skills are required, you just have to',
       action: 'Feel it',
-      url: '/en/page/self-realization',
+      url: '/page/self-realization',
       style: :home,
     },
   },
@@ -49,7 +49,7 @@ static_pages[:home].update!(content: content([
       title: 'Choose your meditation',
       text: '<p>Whether you’re looking to de-stress, boost your self-esteem or simply seeking a moment to pause, follow our easy yet effective guided meditations to elevate your state and establish peace within.</p>',
       action: 'Meditate Now',
-      url: '/en/meditations',
+      url: '/meditations',
       alignment: :left,
       decorations: {
         sidetext: 'Guided Meditations',
@@ -75,7 +75,7 @@ static_pages[:home].update!(content: content([
       title: 'Making History',
       text: '<p>Shri Mataji Nirmala Devi maintained that there is a powerful, yet loving energy lying within each human being, and through her immense compassion for humanity developed the meditation technique for awakening it, described as Self-Realization.</p>',
       action: 'Learn More',
-      url: '/en/page/shri-mataji',
+      url: '/page/shri-mataji',
       alignment: :center,
       decorations: {
         triangle: { alignment: :left },

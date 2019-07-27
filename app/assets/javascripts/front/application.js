@@ -13,7 +13,9 @@ const Application = {
   load() {
     Application.loadImages()
     Application.loadAnimations()
-    Application.videoPlayer = Video.loadPlayer('video-player')
+    if (!Application.videoPlayer) {
+      Application.videoPlayer = Video.loadPlayer('video-player')
+    }
 
     Application.elements = {}
     Application.loadAll('accordion', Accordion)
@@ -35,18 +37,18 @@ const Application = {
 
   unload() {
     for (let id in Application.element) {
-      console.log('unloading', id)
       let element = Application.element[id]
       if (typeof element.unload === 'function') {
+        console.log('unloading', id)
         element.unload()
       }
     }
 
     for (let selector in Application.elements) {
-      console.log('unloading', selector)
       for (let key in Application.elements[selector]) {
         let element = Application.elements[selector][key]
         if (typeof element.unload === 'function') {
+          console.log('unloading', selector)
           element.unload()
         }
       }
@@ -126,6 +128,20 @@ const Application = {
 
       target.replaceWith(svg)
     })
+  },
+
+  isMobileDevice() {
+    return navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)
+  },
+
+  isTouchDevice() {
+    return ('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)
   },
 }
 

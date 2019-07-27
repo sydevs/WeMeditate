@@ -2,8 +2,8 @@
 - content_for :title, translate('admin.action.target.write', record: @record.model_name.human)
 - allow = policy(@record)
 - has_draft = @record.has_draft?(:content)
-- content = has_draft ? @record.local_draft['content'] : (@record.content || {})
-- data = { content: content || {}, upload: polymorphic_admin_path([:admin, @record, MediaFile]), triangle: image_path('graphics/triangle.svg') }
+- content = has_draft ? @record.local_draft_content : (@record.content || {})
+- data = { content: (content || {}), upload: polymorphic_admin_path([:admin, @record, MediaFile]), triangle: image_path('graphics/triangle.svg') }
 
 = simple_form_for @record, url: polymorphic_admin_path([:admin, @record]), html: { id: "editor-form" } do |f|
   = f.hidden_field :content, as: :hidden, id: 'content-input'
@@ -45,6 +45,8 @@
 
       - unless @record.is_a?(Article) && @record.new_record?
         button.ui.basic.primary.button type='submit'
+          = translate 'admin.action.simple.update'
+          '  &
           = translate 'admin.action.simple.approve'
     - else
       button.ui.basic.positive.button type='submit'

@@ -36,8 +36,5 @@ html lang=locale
     = yield
     = render 'layouts/partials/footer', cached: true
 
-    #video-popup.mfp-hide
+    #video-popup.mfp-hide data-turbolinks-permanent=true
       video#video-player controls=true
-
-  javascript:
-    window.I18n = #{translate('javascript').to_json}

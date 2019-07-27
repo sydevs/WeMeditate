@@ -46,6 +46,7 @@ class ListTool extends EditorTool {
   }
 
   save(toolElement) {
+    const newData = {}
     const itemsData = []
     const items = toolElement.querySelectorAll(`.${this.CSS.item}`)
 
@@ -54,8 +55,10 @@ class ListTool extends EditorTool {
       if (value) itemsData.push(items[i].innerHTML)
     }
 
-    newData.decorations = JSON.parse(this.container.dataset.decorations)
-    return Object.assign(this.data, { items: itemsData })
+    return Object.assign(this.data, {
+      items: itemsData,
+      decorations: this.getDecorationsData(),
+    })
   }
 
   render() {
