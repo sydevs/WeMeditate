@@ -5,7 +5,7 @@
   .ui.yellow.message = translate 'admin.messages.unpublished_changes_notice', page: record.model_name.human
 
 - if record.is_a?(User) && record.pending_invitation?
-  .ui.yellow.message = translate 'admin.messages.pending_invitation_notice', person: record.model_name.human
+  .ui.yellow.message = translate 'admin.messages.pending_invitation_notice', person: human_enum_name(record, :role).downcase
 
 = simple_form_for record, url: polymorphic_admin_path([:admin, record]), html: { id: "#{record.model_name.i18n_key}-form", class: "#{'error' if record.errors.present?}", novalidate: true } do |f|
   - if record.errors.present?
@@ -97,3 +97,7 @@
     - else
       button.ui.basic.positive.button type='submit'
         = translate 'admin.action.simple.update'
+
+    - if record.is_a?(User) && allow.create? && record.pending_invitation?
+      button.ui.basic.primary.button type='submit' name='reinvite' value='true'
+        = translate 'admin.action.simple.reinvite'

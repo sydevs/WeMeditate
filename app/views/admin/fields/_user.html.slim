@@ -8,8 +8,7 @@
       = record.invited_by.name
 
     ul.hint
-      li #{User.human_attribute_name(:invitation_created_at)} #{record.invitation_created_at.to_s(:long)}
-      - if record.invitation_created_at != record.invitation_sent_at
+      - if record.invitation_sent_at.present?
         li #{User.human_attribute_name(:invitation_sent_at)} #{record.invitation_sent_at.to_s(:long)}
       - if record.invitation_accepted_at.present?
         li #{User.human_attribute_name(:invitation_accepted_at)} #{record.invitation_accepted_at.to_s(:long)}

@@ -1,4 +1,7 @@
 
+# ADMINISTRATOR TRANSLATIONS
+# All translations in this file are seen by administrators of the website when managing the site content.
+
 it:
   admin:
     # ===== ACTIONS ===== #
@@ -29,6 +32,7 @@ it:
         save_draft: Salva bozza
         approve: Approva
         invite: Invita
+        reinvite: Resend Invitation # TODO: Translate this
         cancel: Cancella
         back: Indietro
 

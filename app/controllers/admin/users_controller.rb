@@ -24,6 +24,7 @@ module Admin
       end
 
       super record_params
+      @record.invite! if params[:reinvite] == 'true'
     end
 
     private
