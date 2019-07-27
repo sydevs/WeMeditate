@@ -2,6 +2,7 @@
 class Accordion {
 
   constructor(element) {
+    this.container = element
     this.activeItem = null
 
     const textElements = element.querySelectorAll('.content__structured__text')
@@ -14,6 +15,16 @@ class Accordion {
       titleElements[index].addEventListener('click', event => this.selectItem(event.currentTarget.parentNode))
       titleElements[index].parentNode.classList.add('content__structured__item--closed')
     }
+  }
+
+  unload() {
+    const textElements = this.container.querySelectorAll('.content__structured__text')
+    for (let index = 0; index < textElements.length; index++) {
+      textElements[index].parentNode.classList.remove('content__structured__item--closed')
+      textElements[index].style.maxHeight = null
+    }
+
+    this.activeItem = null
   }
 
   selectItem(item) {
