@@ -14,7 +14,7 @@ main.scrollspy-target
 
   .content = render_content @static_page
 
-- if @static_page.classes?
+- if @static_page.classes? || @static_page.self_realization?
   = sharing_links
 - else
   = render 'application/actions_footer'

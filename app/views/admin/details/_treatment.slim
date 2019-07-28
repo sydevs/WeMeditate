@@ -8,11 +8,10 @@ p.details.excerpt = record.excerpt
 
 .ui.details.list
   - if record.translated_locales.include? I18n.locale
-    - url = url_for(record)
     - if record.published?
-      = record_detail 'linkify', url, url: url
+      = record_detail 'linkify', url_for(record), url: polymorphic_url(record)
     - elsif allow.preview?
-      = record_detail 'linkify', url, translate('admin.action.descriptive.preview'), url: "#{url}?preview=true"
+      = record_detail 'linkify', url_for(record), translate('admin.action.descriptive.preview'), url: "#{polymorphic_url(record)}?preview=true"
   - else
     = record_detail 'orange warning sign', translate('admin.tags.no_translation', language: language_name)
   - translated_locales = record.translated_locales.map { |lang| language_name(lang) }.join(', ')

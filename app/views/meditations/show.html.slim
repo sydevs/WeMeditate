@@ -11,3 +11,6 @@ main id=dom_id(@meditation)
         //a.video__button href="https://player.vimeo.com/play/979921004?s=265111898_1562846896_0c7a2c7cfadfc762f62096b4c3bcd608&loc=external&context=Vimeo%5CController%5CClipController.main&download=1"
         a.video__button.video__button--horizontal.js-video href="https://vimeo.com/#{@meditation.horizontal_vimeo_id}" data-id=@meditation.horizontal_vimeo_id data-mfp-src='#video-popup'
         a.video__button.video__button--vertical.js-video href="https://vimeo.com/#{@meditation.vertical_vimeo_id}" data-id=@meditation.vertical_vimeo_id data-mfp-src='#video-popup'
+
+  .meditation__text
+    = @meditation.description

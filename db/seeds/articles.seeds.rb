@@ -6,7 +6,7 @@ puts ' -- Start Article Seeds -- '
 # ===== CREATE AUTHOR ===== #
 author = Author.find_or_initialize_by(name: 'John Smith')
 author.update!({
-  name: 'John Smith',
+  name: 'Jane Smith',
   title: 'WeMeditate Writer',
   description: sentences(4),
   years_meditating: 12,
@@ -232,7 +232,7 @@ article.update!(content: content([
     type: :link,
     data: {
       action: 'Try Meditation',
-      url: '/page/self-realization',
+      url: '/page/the-first-experience',
       format: :button,
       decorations: { leaves: true },
     },
@@ -277,7 +277,7 @@ article.update!(content: content([
     type: :link,
     data: {
       action: 'Meditation with Shri Mataji',
-      url: '/page/self-realization',
+      url: '/page/the-first-experience',
       format: :button,
     },
   }, {

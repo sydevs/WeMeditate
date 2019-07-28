@@ -9,7 +9,7 @@ class User < ApplicationRecord
   # Associations
   has_many :articles, inverse_of: :owner
   has_one :author, required: false
-  enum role: %i[translator writer regional_admin super_admin]
+  enum role: %i[translator writer editor regional_admin super_admin]
 
   # Validations
   validates :name, presence: true

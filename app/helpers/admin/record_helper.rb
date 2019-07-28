@@ -19,8 +19,7 @@ module Admin::RecordHelper
   end
 
   def record_modified_at_status
-    date = @record.has_draft? ? @record.updated_at : (@record.try(:published_at) || @record.updated_at)
-    translate 'admin.tags.updated_ago', time_ago: time_ago_in_words(date)
+    translate 'admin.tags.updated_ago', time_ago: time_ago_in_words(@record.updated_at)
   end
 
   # ===== INTERFACE ====== #

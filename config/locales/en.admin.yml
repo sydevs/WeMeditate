@@ -107,6 +107,7 @@ en:
       draft_notice: You are viewing a draft version of this %{page}. This version not be visible to the public until it has been reviewed by an administrator.
       draft_contributed_by: This draft includes changed made by %{people}.
       text_too_short: must have at least %{count} letters
+      invalid_vimeo_id: must be a valid Vimeo ID
       article_owner_hint: This determines which writer is able to edit this article after it has been published. Administrators may always edit an article.
 
     result:
@@ -200,7 +201,8 @@ en:
         create_subordinate: Can Create %{subordinates}
       role_description: # This describes the responsibilities of a given type of administrator
         translator: translates existing content which has been published in other languages, to their assigned language.
-        writer: can write and publish new articles, or edit old articles which they themselves created.
+        writer: can write new articles, or edit old articles which they themselves created.
+        editor: should review and publish articles written by writers. They can also created their own articles.
         regional_admin: is responsible for approving translations, translating core parts of the site, and overseeing the publishing of new content in their language.
         super_admin: manages the fundamental elements of the site, and the creation of new editors.
 
@@ -251,7 +253,7 @@ en:
       no_translated_title: No Translated Title # This should be written in titlecase
       any_administrator: Any Administrator
       menu:
-        my_author: My Author Bio
+        my_author: My Author Profile
         # The website's editable content is broken into three sections Pages, Resources, and People
         pages: Pages
         resources: Resources

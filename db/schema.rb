@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_26_181947) do
+ActiveRecord::Schema.define(version: 2019_07_28_094725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -221,6 +221,7 @@ ActiveRecord::Schema.define(version: 2019_07_26_181947) do
     t.integer "vertical_vimeo_id"
     t.boolean "published", default: false
     t.datetime "published_at"
+    t.text "description"
     t.index ["locale"], name: "index_meditation_translations_on_locale"
     t.index ["meditation_id"], name: "index_meditation_translations_on_meditation_id"
   end

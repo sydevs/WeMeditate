@@ -24,13 +24,16 @@ module Admin
         if policy(@meditation || Meditation).publish?
           result = params.fetch(:meditation, {}).permit(
             :name, :slug, :published,
-            :image, :video, :duration_filter_id,
+            :image, :excerpt, :description,
+            :horizontal_vimeo_id, :vertical_vimeo_id, :duration_filter_id,
             goal_filter_ids: [],
             metatags: {}
           )
         else
           result = params.fetch(:meditation, {}).permit(
-            :name, :slug, :image, :video, :duration_filter_id,
+            :name, :slug,
+            :image, :excerpt, :description,
+            :horizontal_vimeo_id, :vertical_vimeo_id, :duration_filter_id,
             goal_filter_ids: [],
             metatags: {}
           )

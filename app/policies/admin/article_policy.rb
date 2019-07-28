@@ -34,9 +34,10 @@ module Admin
 
     def update_translation?
       return false unless can_access_locale?
-      return true if translator?
-      return true if writer? && owns_record?
       return true if admin?
+      return true if editor?
+      return true if writer? && owns_record?
+      return true if translator? && needs_translation? # This call is a bit more costly
       return false
     end
 
@@ -47,13 +48,14 @@ module Admin
     def create?
       return false unless can_access_locale?
       return true if writer?
+      return true if editor?
       return true if admin?
       return false
     end
 
     def publish?
       return false unless can_access_locale?
-      return true if writer? && owns_record?
+      return true if editor?
       return true if admin?
       return false
     end

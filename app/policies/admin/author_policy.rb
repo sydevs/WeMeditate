@@ -4,7 +4,15 @@ module Admin
     def manage?
       return false unless can_access_locale?
       return true if admin?
+      return true if editor?
       return true if writer? && owns_record?
+      return false
+    end
+
+    def index?
+      return false unless can_access_locale?
+      return true if admin?
+      return true if editor?
       return false
     end
 
@@ -17,7 +25,7 @@ module Admin
     end
 
     def update_translation?
-      return true if translator? && !record.translated_locales.include?(I18n.locale)
+      return true if translator? && needs_translation? # This call is a bit more costly
       return manage?
     end
 

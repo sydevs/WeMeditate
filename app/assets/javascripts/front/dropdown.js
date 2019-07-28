@@ -37,7 +37,9 @@ class Dropdown {
   selectItem(item) {
     const svg = item.querySelector('svg')
     const text = item.querySelector('.dropdown__item__text').innerText
-    const color = svg.firstChild.getAttribute('stroke') || svg.firstChild.getAttribute('fill')
+    const firstGroupElement = svg.querySelector('g, path, ellipse, rect')
+    console.log('select', svg, firstGroupElement)
+    const color = firstGroupElement.getAttribute('stroke') || firstGroupElement.getAttribute('fill')
 
     const activeItem = item.parentNode.querySelector('.dropdown__item--active')
     if (activeItem) activeItem.classList.remove('dropdown__item--active')
@@ -48,7 +50,7 @@ class Dropdown {
 
     const dropdownText = this.selectionContainer.querySelector('.dropdown__selection__text')
     dropdownText.innerText = text
-    dropdownText.style.color = color
+    dropdownText.style.color = color ? color : 'gray'
     this.selectionContainer.querySelector('svg').replaceWith(svg.cloneNode(true))
     this.selectionContainer.classList.remove('dropdown__selection--inactive')
 

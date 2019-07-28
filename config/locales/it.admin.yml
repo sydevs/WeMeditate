@@ -105,6 +105,7 @@ it:
       draft_notice: Sati vedendo un'anteprima di %{page}. Questa versione non sar� visibile fino a quando un amministratore non l'avr� revista.
       draft_contributed_by: Quest'anteprima include dei cambiamenti effettuati da %{people}.
       text_too_short: Il testo � troppo corto, deve essere di %{count} lettere.
+      invalid_vimeo_id: must be a valid Vimeo ID # Translate this
       article_owner_hint: Questo determina quale autore � capace di effettuare cambiamenti dopo la pubblicazione. Gli amministratori possono sempre effettuare cambiamenti.
 
     result:

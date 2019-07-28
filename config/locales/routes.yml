@@ -13,6 +13,7 @@ en:
     subtle_system: subtle-system
     page: page
     music: music
+    archive: all
 ru:
   routes:
     admin: admin-ru
@@ -24,6 +25,7 @@ ru:
     subtle_system: subtle-system-ru
     page: page-ru
     music: music-ru
+    archive: all-ru
 it:
   routes:
     admin: admin-it
@@ -35,3 +37,4 @@ it:
     subtle_system: subtle-system-it
     page: page-it
     music: music-it
+    archive: all-it

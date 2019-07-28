@@ -1,6 +1,20 @@
 
 - allow = policy(record)
 
+- if allow.update_structure?
+  = f.association :duration_filter
+  = f.association :goal_filters
+- else
+  .preview-item
+    div
+      i.filter.icon
+      | #{human_attribute_name(record.class, :goal_filters)}: 
+      = record.goal_filters.map { |goal_filter| goal_filter.name }.join(', ')
+    div
+      i.clock.icon
+      | #{human_attribute_name(record.class, :duration_filter)}: 
+      = record.duration_filter.name
+
 = f.input :image, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:image), file: record.image, input_html: { accept: file_type_accepts(:image) }
 
 - if record.image.present?
@@ -20,16 +34,5 @@
       | vimeo.com/#{record.horizontal_vimeo_id}
       i.external.alternate.icon
 
-- if allow.update_structure?
-  = f.association :duration_filter
-  = f.association :goal_filters
-- else
-  .preview-item
-    div
-      i.filter.icon
-      | #{human_attribute_name(record.class, :goal_filters)}: 
-      = record.goal_filters.map { |goal_filter| goal_filter.name }.join(', ')
-    div
-      i.clock.icon
-      | #{human_attribute_name(record.class, :duration_filter)}: 
-      = record.duration_filter.name
+= f.input :excerpt, as: :text
+= f.input :description, as: :text

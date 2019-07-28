@@ -53,10 +53,10 @@ main
               = hidden_field_tag :goal_filter, nil, class: 'js-dropdown-input'
               a.dropdown__selection.dropdown__selection--inactive
                 .dropdown__selection__title = translate 'meditations.custom_meditation.choose_goal'
-                .dropdown__selection__text = translate 'meditations.custom_meditation.goal_action'
+                .dropdown__selection__text = translate 'meditations.custom_meditation.goal_prompt'
                 .dropdown__selection__icon
                   = inline_svg 'header/logo-small.svg'
-                  span = translate 'meditations.custom_meditation.goal_action'
+                  span = translate 'meditations.custom_meditation.goal_prompt'
 
               .dropdown__popup
                 .dropdown__close

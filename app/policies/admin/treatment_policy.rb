@@ -8,6 +8,15 @@ module Admin
     end
 
     def update?
+      update_structure? || update_translation?
+    end
+
+    def update_translation?
+      return false unless can_access_locale?
+      manage? || (translator? && needs_translation?)
+    end
+
+    def update_structure?
       manage?
     end
 
@@ -16,7 +25,11 @@ module Admin
     end
 
     def publish?
-      update?
+      manage?
+    end
+
+    def review?
+      publish?
     end
 
   end

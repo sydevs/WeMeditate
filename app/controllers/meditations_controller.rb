@@ -26,7 +26,7 @@ class MeditationsController < ApplicationController
   def archive
     # TODO: There is no title defined for this view because there is no @records variable
     next_offset = params[:offset].to_i + MEDITATIONS_PER_PAGE
-    @meditations = Meditation.preload_for(:preview).offset(params[:offset]).limit(MEDITATIONS_PER_PAGE)
+    @meditations = Meditation.published.preload_for(:preview).offset(params[:offset]).limit(MEDITATIONS_PER_PAGE)
 
     if @meditations.count < next_offset
       @loadmore_url = nil
@@ -39,6 +39,7 @@ class MeditationsController < ApplicationController
         @breadcrumbs = [
           { name: StaticPageHelper.preview_for(:home).name, url: root_path },
           { name: StaticPageHelper.preview_for(:meditations).name, url: meditations_path },
+          { name: Meditation.model_name.human(count: -1), url: archive_meditations_path },
           { name: translate('meditations.archive.title') },
         ]
         render :archive
@@ -51,7 +52,7 @@ class MeditationsController < ApplicationController
   end
 
   def show
-    @record = Meditation.friendly.find(params[:id])
+    @record = Meditation.published.friendly.find(params[:id])
 
     # TODO: Deprecated
     @meditation = @record

@@ -9,7 +9,7 @@ class Meditation < ApplicationRecord
   # Extensions
   translates *%i[
     name slug metatags views published_at published
-    excerpt horizontal_vimeo_id vertical_vimeo_id
+    excerpt description horizontal_vimeo_id vertical_vimeo_id
   ]
   friendly_id :name, use: :globalize
 
@@ -21,10 +21,11 @@ class Meditation < ApplicationRecord
   # Validations
   validates :name, presence: true
   validates :image, presence: true
+  validates :excerpt, presence: true
   validates :duration_filter, presence: true
   validates :goal_filters, presence: true
-  validates :horizontal_vimeo_id, presence: true
-  validates :vertical_vimeo_id, presence: true
+  validates :horizontal_vimeo_id, presence: true, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_nil: true
+  validates :vertical_vimeo_id, presence: true, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_nil: true
 
   # Scopes
   # default_scope { order( id: :desc ) }

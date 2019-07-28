@@ -1,5 +1,7 @@
 class ApplicationRecord < ActiveRecord::Base
 
+  MAX_INT = 2147483647
+
   before_validation :set_original_locale
 
   self.abstract_class = true
@@ -53,4 +55,12 @@ class ApplicationRecord < ActiveRecord::Base
       self.original_locale = I18n.locale.to_s if has_attribute?(:original_locale)
     end
 
+end
+
+class VimeoValidator < ActiveModel::EachValidator
+  def validate_each(record, attribute, value)
+    unless value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+      record.errors[attribute] << (options[:message] || "is not a vimeo id")
+    end
+  end
 end

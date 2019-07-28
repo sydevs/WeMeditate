@@ -73,7 +73,7 @@ module Draftable
     draft = local_draft
 
     changes.each do |key, (old_value, new_value)|
-      next unless draft.has_key?(key)
+      next unless draft&.has_key?(key)
 
       if key == 'content'
         # Compare content using the blocks only.
@@ -86,7 +86,7 @@ module Draftable
       draft.except!(key) if new_value == draft_value
     end
 
-    draft = nil unless draft.except('contributors').present?
+    draft = nil unless draft&.except('contributors').present?
     write_attribute :draft, draft
   end
 

@@ -1,6 +1,8 @@
 
 const Application = {
 
+  preloaded: false,
+
   init() {
     document.querySelector('.footer__scrollback').addEventListener('click', event => {
       zenscroll.toY(0)
@@ -15,6 +17,10 @@ const Application = {
     Application.loadAnimations()
     if (!Application.videoPlayer) {
       Application.videoPlayer = Video.loadPlayer('video-player')
+    }
+
+    if (Application.preloaded) {
+      document.querySelector('.preloader').remove()
     }
 
     Application.elements = {}
@@ -120,10 +126,11 @@ const Application = {
         svg = svg.replace('<style>', '<style>.' + namespace + ' ')
       }
 
-      svg = $(svg)[0] // Convert our string to an element
+      svg = $(svg).filter('svg')[0] // Convert our string to an element
 
       if (background) {
-        svg.style.background = svg.firstChild.getAttribute('stroke') || svg.firstChild.getAttribute('fill')
+        const firstGroupElement = svg.querySelector('g, path, ellipse, rect')
+        svg.style.background = firstGroupElement.getAttribute('stroke') || firstGroupElement.getAttribute('fill')
       }
 
       target.replaceWith(svg)
@@ -149,5 +156,6 @@ document.addEventListener('ready', ()  => Application.init())
 document.addEventListener('turbolinks:load', ()  => Application.load())
 document.addEventListener('turbolinks:before-cache', ()  => Application.unload())
 window.addEventListener('load', function() {
-  $('.preloader').delay(1000).fadeOut('slow', event => event.target.remove())
+  $('.preloader').delay(1000).fadeOut('slow')
+  Application.preloaded = true
 })

@@ -30,11 +30,11 @@ en:
         one: Artist
         other: Artists
       author:
-        one: Author
-        other: Authors
+        one: Author Profile
+        other: Author Profiles
       user:
-        one: Editor
-        other: Editors
+        one: Admin
+        other: Admins
       instrument_filter:
         one: Instrument
         other: Instruments
@@ -181,6 +181,8 @@ en:
         vertical_vimeo_id: Vertical Video (Vimeo ID)
         duration_filter: :activerecord.models.duration_filter.one # Do not translate
         goal_filters: :activerecord.models.goal_filter.other # Do not translate
+        excerpt: Excerpt
+        description: Text on Page
         metatags: Metadata
 
       artist:
@@ -199,7 +201,7 @@ en:
         image: Avatar
         description: Biography
         years_meditating: Years of Meditation Experience
-        user: Associated Editor
+        user: Associated Admin Account
 
       user:
         email: Email Address
@@ -210,5 +212,6 @@ en:
         roles:
           translator: Translator
           writer: Writer
+          editor: Editor
           regional_admin: Regional Admin
           super_admin: Super Admin

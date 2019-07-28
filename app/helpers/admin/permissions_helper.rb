@@ -14,22 +14,24 @@ module Admin
     MATRIX = {
       article: {
         translator: %i[translate],
-        editor: {
+        writer: {
           update: 'update_own',
-          publish: 'publish_own',
           create: true,
         },
+        editor: %i[update publish create],
         regional_admin: %i[update publish create],
         super_admin: %i[update publish create destroy],
       },
       static_page: {
         translator: %i[translate],
+        writer: [],
         editor: [],
         regional_admin: %i[update publish],
         super_admin: %i[update publish],
       },
       subtle_system_node: {
         translator: %i[translate],
+        writer: [],
         editor: [],
         regional_admin: %i[update publish],
         super_admin: %i[update publish],
@@ -37,18 +39,21 @@ module Admin
 
       meditation: {
         translator: [],
+        writer: [],
         editor: [],
         regional_admin: %i[update publish create],
         super_admin: %i[update publish create destroy],
       },
       treatment: {
         translator: %i[translate],
+        writer: [],
         editor: [],
         regional_admin: %i[update publish create],
         super_admin: %i[update publish create destroy],
       },
       track: {
         translator: [],
+        writer: [],
         editor: [],
         regional_admin: [],
         super_admin: %i[update publish create destroy],
@@ -56,52 +61,60 @@ module Admin
 
       category: {
         translator: [],
+        writer: [],
         editor: [],
         regional_admin: %i[update publish],
         super_admin: %i[update publish create destroy],
       },
       goal_filter: {
         translator: [],
+        writer: [],
         editor: [],
         regional_admin: %i[update publish],
         super_admin: %i[update publish create destroy],
       },
       duration_filter: {
         translator: [],
+        writer: [],
         editor: [],
         regional_admin: [],
         super_admin: %i[update publish create destroy],
       },
       mood_filter: {
         translator: [],
+        writer: [],
         editor: [],
         regional_admin: [],
         super_admin: %i[update publish create destroy],
       },
       instrument_filter: {
         translator: [],
+        writer: [],
         editor: [],
         regional_admin: [],
         super_admin: %i[update publish create destroy],
       },
       artist: {
         translator: [],
+        writer: [],
         editor: [],
         regional_admin: [],
         super_admin: %i[update publish create destroy],
       },
       author: {
         translator: %i[translate],
-        editor: {
+        writer: {
           update: 'update_own_bio',
-          create: true,
+          create: 'create_own_bio',
         },
+        editor: %i[update create],
         regional_admin: %i[update create],
         super_admin: %i[update create destroy],
       },
 
       user: {
         translator: [],
+        writer: [],
         editor: [],
         regional_admin: {
           update: 'update_subordinate',
@@ -133,7 +146,7 @@ module Admin
       def permission_icons model, permissions
         variables = {
           pages: translate(model, scope: %i[activerecord models], count: -1),
-          subordinates: %i[writer translator].map { |role| human_enum_name(User, :role, role) }.to_sentence,
+          subordinates: %i[editor writer translator].map { |role| human_enum_name(User, :role, role) }.to_sentence,
         }
         
         capture do

@@ -17,7 +17,7 @@ module Admin
         allow = policy(@record || Article)
         if (allow.create? && action_name == 'create') || allow.update_structure?
           params.fetch(:article, {}).permit(
-            :name, :slug, :category_id, :priority, :published, :owner_id,
+            :name, :slug, :category_id, :priority, :published, :owner_id, :author_id,
             :excerpt, :banner_id, :thumbnail_id, :vimeo_id, :date, :content,
             metatags: {}
           )

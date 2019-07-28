@@ -21,10 +21,9 @@ class Treatment < ApplicationRecord
   # Validations
   validates :name, presence: true
   validates :excerpt, presence: true
-  validates :content, presence: true
-  validates :thumbnail, presence: true
-  validates :horizontal_vimeo_id, presence: true
-  validates :vertical_vimeo_id, presence: true
+  validates :thumbnail_id, presence: true, if: :persisted?
+  validates :horizontal_vimeo_id, presence: true, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_nil: true
+  validates :vertical_vimeo_id, presence: true, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_nil: true
 
   # Scopes
   default_scope { order(:order) }

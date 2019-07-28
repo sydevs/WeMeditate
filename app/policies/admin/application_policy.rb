@@ -20,7 +20,9 @@ module Admin
     end
 
     def destroy?
-      super_admin? && can_access_locale? && record.translated_locales&.include?(I18n.locale)
+      return false unless super_admin? && can_access_locale?
+      return false unless !record.respond_to?(:translated_locales) || record.translated_locales&.include?(I18n.locale)
+      return true
     end
 
     def sort?
@@ -68,6 +70,10 @@ module Admin
       user.regional_admin?
     end
 
+    def editor?
+      user.editor?
+    end
+
     def writer?
       user.writer?
     end
@@ -84,6 +90,11 @@ module Admin
       return record.owner == user if record.respond_to?(:owner)
       return record.user == user if record.respond_to?(:user)
       return true
+    end
+
+    def needs_translation?
+      return true if record.is_a?(Class)
+      record.class.needs_translation(user).exists?(record.id)
     end
 
   end

@@ -12,6 +12,7 @@ module Admin
       untranslated SubtleSystemNode, :critical, &block
       needs_review StaticPage, :important, &block
       needs_review SubtleSystemNode, :important, &block
+      needs_review Treatment, :important, &block
       needs_review Article, :important, &block
       unpublished Article, :normal, &block
       untranslated Treatment, :normal, &block
