@@ -25,9 +25,9 @@ class QuoteTool extends EditorTool {
     }, { // Config
       id: 'quote',
       fields: {
-        text: { label: translate['content']['placeholders']['quote'], input: 'textarea' },
-        credit: { input: 'caption' },
-        caption: { input: 'caption' },
+        text: { label: translate['content']['placeholders']['quote'], input: 'textarea', contained: true },
+        credit: { input: 'caption', contained: true },
+        caption: { input: 'caption', contained: true },
       },
       tunes: [
         {
@@ -55,6 +55,10 @@ class QuoteTool extends EditorTool {
     } else {
       super.selectTune(tune)
     }
+  }
+
+  static get enableLineBreaks() {
+    return true
   }
 
   // Empty tool is not empty Block

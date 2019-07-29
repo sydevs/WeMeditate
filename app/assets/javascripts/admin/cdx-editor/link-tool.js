@@ -27,8 +27,8 @@ class LinkTool extends EditorTool {
       decorations: ['sidetext', 'leaves'],
       fields: {
         items: { input: false },
-        action: { input: 'button' },
-        url: { input: 'url' },
+        action: { input: 'button', contained: true },
+        url: { input: 'url', contained: true },
       },
       tunes: [
         {
@@ -207,8 +207,12 @@ class LinkTool extends EditorTool {
     $(this.formatLabel).toggle(tune.name != 'button')
   }
 
+  static get enableLineBreaks() {
+    return true
+  }
+
   // Empty Structured is not empty Block
   static get contentless() {
-    return false;
+    return false
   }
 }

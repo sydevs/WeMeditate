@@ -34,10 +34,10 @@ class TextboxTool extends EditorTool {
       decorations: ['triangle', 'gradient', 'sidetext', 'circle'],
       fields: {
         image: { input: false },
-        title: { input: 'title' },
+        title: { input: 'title', contained: true },
         text: { input: 'content' },
-        action: { input: 'button' },
-        url: { input: 'url' },
+        action: { input: 'button', contained: true },
+        url: { input: 'url', contained: true },
       },
       tunes: [
         {
@@ -157,8 +157,11 @@ class TextboxTool extends EditorTool {
     }
   }
 
-  // Empty Video is not empty Block
+  static get enableLineBreaks() {
+    return true
+  }
+
   static get contentless() {
-    return false;
+    return false
   }
 }

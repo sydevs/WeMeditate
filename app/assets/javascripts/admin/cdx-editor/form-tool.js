@@ -27,10 +27,10 @@ class FormTool extends EditorTool {
     }, { // Config
       id: 'form',
       fields: {
-        title: { label: 'Title', input: 'title' },
-        subtitle: { label: 'Subtitle' },
-        text: { label: 'Text' },
-        action: { label: 'Button Text', input: 'button' },
+        title: { label: 'Title', input: 'title', contained: true },
+        subtitle: { label: 'Subtitle', contained: true },
+        text: { label: 'Text', contained: true },
+        action: { label: 'Button Text', input: 'button', contained: true },
       },
       tunes: [
         {
@@ -66,6 +66,10 @@ class FormTool extends EditorTool {
 
     container.insertBefore(fields, button)
     return container
+  }
+
+  static get enableLineBreaks() {
+    return false;
   }
 
   // Empty Structured is not empty Block

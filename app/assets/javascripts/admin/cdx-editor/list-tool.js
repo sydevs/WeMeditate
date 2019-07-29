@@ -87,7 +87,7 @@ class ListTool extends EditorTool {
       const items = item.parentNode.children
       if (items.length >= 2 && item.nextSibling == null && !item.textContent.trim().length) {
         item.remove()
-        this.api.blocks.insertNewBlock()
+        this.api.blocks.insert()
         event.preventDefault()
         event.stopPropagation()
         return false

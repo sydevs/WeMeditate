@@ -148,7 +148,7 @@ class StructuredTool extends EditorTool {
     if (input.classList.contains(this.CSS.item.text)) {
       if (item === item.parentNode.lastChild && !item.textContent.trim().length) {
         item.parentElement.removeChild(item)
-        this.api.blocks.insertNewBlock()
+        this.api.blocks.insert()
       } else {
         const newItem = this.renderItem()
         item.parentNode.insertBefore(newItem, item.nextSibling)

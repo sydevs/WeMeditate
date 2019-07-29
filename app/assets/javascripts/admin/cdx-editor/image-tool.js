@@ -97,6 +97,7 @@ class ImageTool extends EditorTool {
     }, container)
 
     caption.dataset.placeholder = translate['content']['placeholders']['caption']
+    caption.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
 
     let credit = make('div', [this.CSS.input, this.CSS.inputs.caption, this.CSS.item.credit], {
       contentEditable: true,
@@ -104,6 +105,7 @@ class ImageTool extends EditorTool {
     }, container)
 
     credit.dataset.placeholder = translate['content']['placeholders']['credit']
+    credit.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
 
     let remove = make('i', [this.CSS.item.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, container)
     remove.addEventListener('click', (event) => this.removeItem(event.target.parentNode))
@@ -194,6 +196,10 @@ class ImageTool extends EditorTool {
   // A simple shorthand function
   get allowMultiple() {
     this.isTuneActive('asGallery')
+  }
+
+  static get enableLineBreaks() {
+    return true
   }
 
   // Empty image block is not empty Block

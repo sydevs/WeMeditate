@@ -60,7 +60,7 @@ class EditorTool {
     for (let key in this.fields) {
       const field = this.fields[key]
       if (field.input === false) continue
-      this.renderInput(key, container)
+      this.renderInput(key, container, field.contained)
     }
 
     this.tunes.forEach(tune => {
@@ -72,7 +72,7 @@ class EditorTool {
     return container
   }
 
-  renderInput(key, container = null) {
+  renderInput(key, container = null, contained = false) {
     let result
     let field = this.fields[key]
     let type = field.input || 'text'
@@ -90,9 +90,26 @@ class EditorTool {
       })
     }
 
+    if (contained) {
+      result.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event, false))
+    }
     result.dataset.placeholder = field.label || translate['content']['placeholders'][key]
 
     return result
+  }
+
+  inhibitEnterAndBackspace(event, insertNewBlock = false) {
+    if (event.key == 'Enter' || event.keyCode == 13) { // ENTER
+      if (insertNewBlock) this.api.blocks.insert()
+      event.stopPropagation()
+      event.preventDefault()
+      return false
+    } else if (event.key == 'Backspace' || event.keyCode == 8) { // BACKSPACE
+      event.stopPropagation()
+      return false
+    } else {
+      return true
+    }
   }
 
 

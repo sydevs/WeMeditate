@@ -155,7 +155,7 @@ class VideoTool extends EditorTool {
 
   // Allow native enter behaviour
   static get enableLineBreaks() {
-    return true;
+    return true
   }
 
   // Empty video block is not empty Block
