@@ -130,6 +130,9 @@ it:
         structured: Structured Text
         textbox: Textbox
         video: Video
+      settings: # TODO: Translate
+        tunes: Options
+        decorations: Decorations
       tunes:
         centered: Centrato
         stretch: A tutta larghezza
@@ -156,6 +159,23 @@ it:
           grid: Griglia
           accordion: Fisarmonica
           columns: Colonne
+      decorations: # TODO: Translate
+        triangle: Triangle Decoration
+        circle: Circle Decoration
+        gradient: Gradient Decoration
+        leaves: Leaf Decorations
+        sidetext: Vertical Text
+        triangle_alignment:
+          left: Left Triangle
+          right: Right Triangle
+        gradient_alignment:
+          left: Left Gradient
+          right: Right Gradient
+        gradient_color:
+          orange: Orange Gradient
+          blue: Blue Gradient
+          gray: Gray Gradient
+        sidetext_text: Enter vertical text...
       placeholders:
         title: Titolo
         text: Testo
@@ -165,12 +185,6 @@ it:
         quote: Inserire la citazione qui
         caption: Inserire la didascalia qui
         credit: Attribuzione diritti d'autore
-      decorations:
-        triangle: Aggiungi decorazione - trinagolo
-        gradient: Aggiungi decorazione - sfumatura
-        sidetext: Aggiungi testo in verticale 
-        circle: Aggiungi decorazione - cerchio
-        leaves: Aggiungi decorazione - foglia
       words:
         one: 1 parola
         other: '%{count} parole'

@@ -134,6 +134,9 @@ en:
         structured: Structured Text
         textbox: Textbox
         video: Video
+      settings:
+        tunes: Options
+        decorations: Decorations
       tunes: # These are formatting styles for content blocks
         centered: Centered
         stretch: Fill screen width
@@ -160,6 +163,23 @@ en:
           grid: Grid
           accordion: Accordion
           columns: Columns
+      decorations:
+        triangle: Triangle Decoration
+        circle: Circle Decoration
+        gradient: Gradient Decoration
+        leaves: Leaf Decorations
+        sidetext: Vertical Text
+        triangle_alignment:
+          left: Left Triangle
+          right: Right Triangle
+        gradient_alignment:
+          left: Left Gradient
+          right: Right Gradient
+        gradient_color:
+          orange: Orange Gradient
+          blue: Blue Gradient
+          gray: Gray Gradient
+        sidetext_text: Enter vertical text...
       placeholders:
         title: Title
         text: Text
@@ -169,12 +189,6 @@ en:
         quote: Enter a quote # "Quote" as in a quotation from some other text or person
         caption: Enter a caption # "Caption" as in a piece of text describing an image
         credit: Enter a credit # "Credit" as in the credit for an image or quotation
-      decorations:
-        triangle: Add Triangle Decoration
-        gradient: Add Gradient Decoration
-        sidetext: Add Vertical Text
-        circle: Add Circle Decoration
-        leaves: Add Leaf Decorations
       words:
         one: '%{count} word'
         other: '%{count} words'

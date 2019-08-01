@@ -31,7 +31,7 @@ class TextboxTool extends EditorTool {
       decorations: data.decorations || {},
     }, { // Config
       id: 'textbox',
-      decorations: ['triangle', 'gradient', 'sidetext', 'circle'],
+      decorations: ['sidetext', 'triangle', 'gradient', 'circle'],
       fields: {
         image: { input: false },
         title: { input: 'title', contained: true },

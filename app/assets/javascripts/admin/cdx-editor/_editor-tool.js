@@ -17,22 +17,42 @@ class EditorTool {
       settingsButton: this.api.styles.settingsButton,
       settingsButtonActive: this.api.styles.settingsButtonActive,
       settingsButtonDisabled: `${this.api.styles.settingsButton}--disabled`,
+      settingsInputWrapper: `cdx-settings-input-zone`,
       settingsSelect: 'ce-settings-select',
       settingsInput: 'ce-settings-input',
-      settingsButtons: {},
+      tunesWrapper: `ce-settings__tunes`,
+      decorationsWrapper: `ce-settings__decorations`,
+      decorationInputsWrapper: `ce-settings__inputs`,
+      tuneButtons: {},
+      decorationButtons: {},
       settings: {},
       fields: {},
       input: this.api.styles.input,
       inputs: {},
     }
 
-    this.decorationsAttributes = {
-      // TODO: Translate
-      triangle: { title: 'Triangle Decoration', icon: 'counterclockwise rotated play' },
-      gradient: { title: 'Gradient Decoration', icon: 'counterclockwise rotated bookmark' },
-      sidetext: { title: 'Vertical Text', icon: 'clockwise rotated heading' },
-      circle: { title: 'Circle Decoration', icon: 'circle outline' },
-      leaves: { title: 'Leaves Decoration', icon: 'leaf' },
+    this.decorationsConfig = {
+      triangle: {
+        icon: 'counterclockwise rotated play',
+        inputs: [
+          { name: 'alignment', type: 'select', default: 'left', values: ['left', 'right'] },
+        ],
+      },
+      gradient: {
+        icon: 'counterclockwise rotated bookmark',
+        inputs: [
+          { name: 'alignment', type: 'select', default: 'left', values: ['left', 'right'] },
+          { name: 'color', type: 'select', default: 'orange', values: ['orange', 'blue', 'gray'] },
+        ],
+      },
+      sidetext: {
+        icon: 'clockwise rotated heading',
+        inputs: [
+          { name: 'text', type: 'text', default: '' },
+        ],
+      },
+      circle: { icon: 'circle outline' },
+      leaves: { icon: 'leaf' },
     }
 
     for (let key in this.fields) {
@@ -45,7 +65,12 @@ class EditorTool {
 
     this.tunes.forEach(tune => {
       this.CSS.settings[tune.name] = `${this.CSS.container}--${tune.name}`
-      this.CSS.settingsButtons[tune.name] = `${this.CSS.settingsButton}__${tune.name}`
+      this.CSS.tuneButtons[tune.name] = `${this.CSS.settingsButton}__${tune.name}`
+      this.CSS.decorationButtons[tune.name] = `${this.CSS.settingsButton}__${tune.name}`
+    })
+
+    this.allowedDecorations.forEach(decoration => {
+      this.CSS.decorationButtons[decoration] = `${this.CSS.settingsButton}__${decoration}`
     })
   }
 
@@ -55,7 +80,6 @@ class EditorTool {
   // Create tool container with inputs
   render() {
     const container = make('div', [this.CSS.baseClass, this.CSS.container])
-    this.renderDecorations(container)
 
     for (let key in this.fields) {
       const field = this.fields[key]
@@ -123,30 +147,7 @@ class EditorTool {
       newData[key] = toolElement.querySelector(`.${this.CSS.fields[key]}`).innerHTML
     }
 
-    if (this.allowDecoration) newData.decorations = this.getDecorationsData()
     return Object.assign(this.data, newData)
-  }
-
-  getDecorationsData() {
-    const result = {}
-    
-    for (let index = 0; index < this.allowedDecorations.length; index++) {
-      const key = this.allowedDecorations[index]
-
-      if (this.isDecorationSelected(key) && this.allowedDecorations.indexOf(key) != -1) {
-        if (key == 'triangle') {
-          result[key] = { alignment: this.triangleAlignment.value }
-        } else if (key == 'gradient') {
-          result[key] = { alignment: this.gradientAlignment.value, color: this.gradientColor.value }
-        } else if (key == 'sidetext') {
-          result[key] = this.sidetextInput.value
-        } else {
-          result[key] = true
-        }
-      }
-    }
-
-    return result
   }
 
 
@@ -154,40 +155,83 @@ class EditorTool {
 
   // Create wrapper for Tool`s settings buttons.
   renderSettings() {
-    this.settingsContainer = make('div', this.CSS.settingsWrapper)
+    const settingsContainer = make('div')
 
-    this.tunes.map(tune => {
-      let label
+    make('label', '', { innerText: translate['content']['settings']['tunes'] }, settingsContainer)
+    this.tunesWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.tunesWrapper], {}, settingsContainer)
+    this.renderTunes(this.tunesWrapper)
 
-      if (tune.group) {
-        label = translate['content']['tunes'][tune.group][tune.name]
-      } else {
-        label = translate['content']['tunes'][tune.name]
+    make('label', '', { innerText: translate['content']['settings']['decorations'] }, settingsContainer)
+    this.decorationsWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.decorationsWrapper], {}, settingsContainer)
+    this.renderDecorations(this.decorationsWrapper)
+
+    this.inputsWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.decorationInputsWrapper], {}, settingsContainer)
+    this.renderDecorationInputs(this.inputsWrapper)
+
+    this.updateSettingsButtons()
+    return settingsContainer
+  }
+
+  updateSettingsButtons() {
+    for (let i = 0; i < this.tunesWrapper.childElementCount; i++) {
+      const element = this.tunesWrapper.children[i]
+      const tune = this.tunes[i]
+      element.classList.toggle(this.CSS.settingsButtonActive, this.isTuneActive(tune))
+    }
+
+    for (let i = 0; i < this.decorationsWrapper.childElementCount; i++) {
+      const element = this.decorationsWrapper.children[i]
+      const decorationKey = this.allowedDecorations[i]
+      const selected = this.isDecorationSelected(decorationKey)
+      element.classList.toggle(this.CSS.settingsButtonActive, selected)
+
+      if (decorationKey == 'sidetext') {
+        $(this.decorationInputs.sidetext.text).toggle(selected)
+      } else if (decorationKey == 'triangle') {
+        $(this.decorationInputs.triangle.alignment).toggle(selected)
+      } else if (decorationKey == 'gradient') {
+        $(this.decorationInputs.gradient.alignment).toggle(selected)
+        $(this.decorationInputs.gradient.color).toggle(selected)
       }
+    }
+  }
 
-      const button = make('div', [this.CSS.settingsButton, this.CSS.settingsButtons[tune.name]], null, this.settingsContainer)
-      button.dataset.tooltip = label
-      button.dataset.position = 'bottom right'
-      button.innerHTML = '<i class="'+tune.icon+' icon"></i>'
+  // ------ TUNES ------ //
 
-      if (this.isTuneActive(tune)) {
-        button.classList.add(this.CSS.settingsButtonActive)
-      }
+  renderTunes(container) {
+    this.tunes.map(tune => this.renderTuneButton(tune, container))
 
-      return button
-    })
-
-    for (let i = 0; i < this.settingsContainer.childElementCount; i++) {
-      const element = this.settingsContainer.children[i]
+    for (let i = 0; i < container.childElementCount; i++) {
+      const element = container.children[i]
       element.addEventListener('click', () => {
         if (!element.classList.contains(this.CSS.settingsButtonDisabled)) {
           this.selectTune(this.tunes[i])
-          this.updateTuneButtons()
+          this.updateSettingsButtons()
         }
       })
     }
+  }
 
-    return this.settingsContainer
+  renderTuneButton(tune, container) {
+    const button = make('div', [this.CSS.settingsButton, this.CSS.tuneButtons[tune.name]], null, container)
+    button.dataset.position = 'top right'
+    button.innerHTML = '<i class="'+tune.icon+' icon"></i>'
+
+    if (tune.group) {
+      button.dataset.tooltip = translate['content']['tunes'][tune.group][tune.name]
+    } else {
+      button.dataset.tooltip = translate['content']['tunes'][tune.name]
+    }
+
+    button.addEventListener('click', () => {
+      if (!event.target.classList.contains(this.CSS.settingsButtonDisabled)) {
+        this.selectTune(this.tune)
+        this.updateSettingsButtons()
+      }
+    })
+
+    if (this.isTuneActive(tune)) button.classList.add(this.CSS.settingsButtonActive)
+    return button
   }
 
   isTuneActive(tune) {
@@ -201,6 +245,7 @@ class EditorTool {
       this.setTuneBoolean(tune.name, !this.data[tune.name])
     }
 
+    this.tunes
     return this.isTuneActive(tune)
   }
 
@@ -216,151 +261,101 @@ class EditorTool {
   }
 
   setTuneEnabled(key, enabled) {
-    this.settingsContainer.querySelector(`.${this.CSS.settingsButtons[key]}`).classList.toggle(this.CSS.settingsButtonDisabled, !enabled)
+    this.tunesWrapper.querySelector(`.${this.CSS.settingsButtons[key]}`).classList.toggle(this.CSS.settingsButtonDisabled, !enabled)
   }
 
-  updateTuneButtons() {
-    for (let i = 0; i < this.settingsContainer.childElementCount; i++) {
-      const element = this.settingsContainer.children[i]
-      const tune = this.tunes[i]
-      element.classList.toggle(this.CSS.settingsButtonActive, this.isTuneActive(tune))
-    }
-  }
-
-  // =============== DECORATIONS =============== //
+  // ------ DECORATIONS ------ //
 
   renderDecorations(container) {
-    if (!this.allowDecoration) return
-
-    this.decorationsButton = make('div', ['ce-toolbar__settings-btn', 'ce-toolbar__settings-btn--decorations'], {
-      innerHTML: '<i class="leaf icon link"></i>'
-    }, container)
-
-    this.decorationsButton.addEventListener('click', () => { this.toggleDecorationsDropdown() })
-
-    this.decorationsDropdown = make('div', ['ce-settings', 'ce-settings--decorations'], {}, container)
-    const buttonWrapper = make('div', 'ce-settings__default-zone', {}, this.decorationsDropdown)
-
-    this.decorationButtons = {}
-    for (let index = 0; index < this.allowedDecorations.length; index++) {
-      const key = this.allowedDecorations[index]
-      this.decorationButtons[key] = this.renderDecorationsButton(key, buttonWrapper)
-    }
-
-    const inputWrapper = make('div', 'ce-settings__input-zone', {}, this.decorationsDropdown)
-    let value
-
-    if (this.allowedDecorations.indexOf('triangle') >= 0) {
-      value = (this.data.decorations && this.data.decorations.triangle && this.data.decorations.triangle.alignment) || 'left'
-
-      // TODO: Translate
-      this.triangleAlignment = this.renderDecorationsSelect({
-        left: 'Left Triangle',
-        right: 'Right Triangle',
-      }, value, inputWrapper)
-    }
-
-    if (this.allowedDecorations.indexOf('gradient') >= 0) {
-      value = (this.data.decorations && this.data.decorations.gradient && this.data.decorations.gradient.alignment) || 'left'
-      // TODO: Translate
-      this.gradientAlignment = this.renderDecorationsSelect({
-        left: 'Left Gradient',
-        right: 'Right Gradient',
-      }, value, inputWrapper)
-
-      value = (this.data.decorations && this.data.decorations.gradient && this.data.decorations.gradient.color) || 'orange'
-      // TODO: Translate
-      this.gradientColor = this.renderDecorationsSelect({
-        orange: 'Orange Gradient',
-        blue: 'Blue Gradient',
-        gray: 'Gray Gradient',
-      }, value, inputWrapper)
-    }
-
-    if (this.allowedDecorations.indexOf('sidetext') >= 0) {
-      // TODO: Translate
-      this.sidetextInput = make('input', this.CSS.settingsInput, {
-        type: 'unstyled',
-        placeholder: 'Enter vertical text',
-        value: (this.data.decorations && this.data.decorations.sidetext) || '',
-      }, inputWrapper)
-      this.sidetextInput.style.display = 'none'
-    }
-
-    for (let key in this.data.decorations) {
-      this.setDecorationSelection(key, Boolean(this.data.decorations[key]))
-    }
+    this.allowedDecorations.map(key => {
+      const decoration = this.decorationsConfig[key]
+      decoration.name = key
+      this.renderDecorationButton(decoration, this.decorationsWrapper)
+    })
   }
 
-  renderDecorationsButton(key, container = null) {
-    const button = make('div', [this.CSS.settingsButton, `${this.CSS.settingsButton}--${key}`], {
-      innerHTML: `<i class="${this.decorationsAttributes[key].icon} icon"></i>`,
-    }, container)
+  renderDecorationButton(decoration, container) {
+    const button = make('div', [this.CSS.settingsButton, this.CSS.decorationButtons[decoration.name]], null, container)
+    button.dataset.position = 'top right'
+    button.innerHTML = '<i class="'+decoration.icon+' icon"></i>'
+    button.dataset.tooltip = translate['content']['decorations'][decoration.name]
 
-    button.dataset.tooltip = this.decorationsAttributes[key].title
-    button.dataset.position = 'bottom right'
-    button.addEventListener('click', () => this.setDecorationSelection(key, !this.isDecorationSelected(key)))
+    button.addEventListener('click', () => {
+      if (!event.target.classList.contains(this.CSS.settingsButtonDisabled)) {
+        this.setDecorationSelected(decoration.name, !this.isDecorationSelected(decoration.name))
+        this.updateSettingsButtons()
+      }
+    })
+
     return button
   }
 
-  renderDecorationsSelect(options, selected = null, container = null) {
-    const optionsHTML = []
-    for (let key in options) {
-      if (key == selected) {
-        optionsHTML.push(`<option selected="selected" value="${key}">${options[key]}</option>`)
-      } else {
-        optionsHTML.push(`<option value="${key}">${options[key]}</option>`)
+  renderDecorationInputs(container) {
+    this.decorationInputs = {}
+
+    this.allowedDecorations.map(key => {
+      const decoration = this.decorationsConfig[key]
+
+      if (decoration.inputs) {
+        this.decorationInputs[key] = {}
+        decoration.inputs.map(input => {
+          this.decorationInputs[key][input.name] = this.renderDecorationInput(key, input, container)
+        })
       }
-    }
-
-    const select = make('select', this.CSS.settingsSelect, {
-      innerHTML: optionsHTML.join(''),
-    }, container)
-
-    select.style.display = 'none'
-    return select
+    })
   }
 
-  toggleDecorationsDropdown(open = null) {
-    if (open === null) open = !this.decorationsDropdown.classList.contains('ce-settings--opened')
-    const dismissDecorations = () => { this.toggleDecorationsDropdown(false) }
+  renderDecorationInput(key, input, container) {
+    console.log('render', key, 'from', this.data.decorations)
+    const value = (this.data.decorations && this.data.decorations[key] && this.data.decorations[key][input.name]) || input.default
+    let result, inputElement
 
-    if (open) {
-      document.addEventListener('click', dismissDecorations)
+    if (input.type == 'select') {
+      result = make('div', [this.CSS.settingsSelect, 'ui', 'inline', 'dropdown'], {}, container)
+      inputElement = make('input', 'text', { type: 'hidden' }, result)
+      make('div', 'text', { innerText: translate['content']['decorations'][`${key}_${input.name}`][value] }, result)
+      make('i', ['dropdown', 'icon'], {}, result)
+      const menu = make('div', 'menu', {}, result)
+      input.values.map(val => {
+        const label = translate['content']['decorations'][`${key}_${input.name}`][val]
+        const item = make('div', 'item', { innerText: label }, menu)
+        item.dataset.value = val
+      })
+
+      $(result).dropdown()
     } else {
-      document.removeEventListener('click', dismissDecorations)
+      result = make('div', ['ui', 'transparent', 'input'], {}, container)
+      inputElement = make('input', this.CSS.settingsInput, {
+        type: input.type,
+        placeholder: translate['content']['decorations'][`${key}_${input.name}`],
+        value: value,
+      }, result)
     }
 
-    this.decorationsDropdown.classList.toggle('ce-settings--opened', open)
+    inputElement.addEventListener('change', event => this.setDecorationOption(key, input.name, event.target.value))
+
+    result.style.display = 'none'
+    return result
   }
 
-  isDecorationSelected(slug) {
-    return this.decorationButtons[slug].classList.contains(this.CSS.settingsButtonActive)
+  setDecorationSelected(key, selected) {
+    if (!this.data.decorations) this.data.decorations = {}
+    this.data.decorations[key] = selected
+    console.trace('set', key, selected, this.data.decorations)
   }
 
-  isAnyDecorationSelected() {
-    for (let index = 0; index < this.allowedDecorations.length; index++) {
-      const key = this.allowedDecorations[index]
-      if (this.isDecorationSelected(key)) return true
+  setDecorationOption(key, option, value) {
+    console.log('setting', this.data.decorations.constructor, typeof this.data.decorations)
+    if (this.data.decorations[key].constructor != Object) {
+      this.data.decorations[key] = {}
     }
-
-    return false
+    
+    this.data.decorations[key][option] = value
+    console.log('set', key, option, '=', value, this.data.decorations[key])
   }
 
-  setDecorationSelection(slug, selected) {
-    if (this.allowedDecorations.indexOf(slug) == -1) return
-    this.decorationButtons[slug].classList.toggle(this.CSS.settingsButtonActive, selected)
-
-    if (slug == 'sidetext') {
-      $(this.sidetextInput).toggle(selected)
-    } else if (slug == 'triangle') {
-      $(this.triangleAlignment).toggle(selected)
-    } else if (slug == 'gradient') {
-      $(this.gradientAlignment).toggle(selected)
-      $(this.gradientColor).toggle(selected)
-    }
-
-    this.decorationsButton.classList.toggle(this.CSS.settingsButtonActive, this.isAnyDecorationSelected())
+  isDecorationSelected(key) {
+    return this.data.decorations && Boolean(this.data.decorations[key])
   }
 }
 

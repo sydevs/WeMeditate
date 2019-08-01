@@ -19,7 +19,7 @@ class VideoTool extends EditorTool {
       decorations: data.decorations || {},
     }, { // Config
       id: 'video',
-      decorations: ['gradient', 'sidetext'],
+      decorations: ['sidetext', 'gradient'],
       fields: {},
       tunes: [
         {
