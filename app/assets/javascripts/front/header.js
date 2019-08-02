@@ -47,6 +47,11 @@ class Header {
 
       setTimeout(() => { if (this.cookieNotice) this.cookieNotice.style.bottom = '0' }, 5000)
     }
+
+    if (typeof zenscroll !== 'undefined') {
+      this._onResize()
+      this._onScroll()
+    }
   }
 
   init() {

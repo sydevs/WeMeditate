@@ -4,24 +4,33 @@ $image-height: 80vh
 $gradient-padding: 150px
 
 // ===== CONTENT ===== //
-.content__textbox--video
-  min-height: calc(#{$image-height} + #{$gradient-padding})
-
 .content__textbox--video .content__textbox
   &__image
+    position: static
+    padding-left: 0 !important
     padding-bottom: $gradient-padding
 
-  &__img picture
+  &__img
+    position: relative
+    padding-top: 90%
     height: auto
+    width: 60%
+
+    @include tablet-or-larger
+      padding-top: 60%
+      width: 40%
 
   &__img img
-    height: $image-height
+    @include overlay
+    width: 100%
+    height: 100%
 
   &__title
     @include tablet-or-larger
       position: absolute
-      left: 65%
+      left: 70%
       top: 8%
+      transform: translateX(-50%)
 
       width: 30%
       max-width: 380px
@@ -40,30 +49,6 @@ $gradient-padding: 150px
 
       &:after
         transform: rotate(180deg)
-
-    @include laptop-or-larger
-      left: 50%
-
-  /*&__title
-    @include tablet-or-larger
-      background: image-url('graphics/circle.svg')
-      background-size: contain
-      width: 300px
-      height: 300px
-      padding: 45px
-
-      display: flex
-      align-items: center
-      text-align: center
-
-      position: absolute
-      left: 50%
-
-    @include laptop-or-larger
-      width: 400px
-      height: 400px
-      padding: 60px
-      margin-left: 5%*/
 
 // ===== VIDEO ACTION ===== //
 .content__textbox--video .content__textbox__action
@@ -84,12 +69,11 @@ $gradient-padding: 150px
     position: absolute
     top: -100px
     bottom: -100px
-    left: -75vw
-    right: -75vw
+    left: 50%
+    width: 100vw
+    transform: translateX(-50%)
+    margin-left: -$gutter-width
     z-index: -1
-
-    @include tablet-or-larger
-      left: -40vw
 
   &__button
     @extend %video-button
@@ -107,10 +91,9 @@ $gradient-padding: 150px
     @include mobile
       text-align: center
       width: 100px
-      font-size: 1.3rem
+      font-size: 1.8rem
 
     @include tablet-or-larger
-      font-size: 1.8rem
       line-height: 170px
       white-space: nowrap
 
