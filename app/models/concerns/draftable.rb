@@ -51,6 +51,7 @@ module Draftable
     return unless local_draft.present?
 
     local_draft.each do |key, value|
+      next if key == 'contributors'
       self[key] = value
     end
   end

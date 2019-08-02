@@ -100,9 +100,18 @@ class ApplicationController < ActionController::Base
     end
 
     def authorized_preview? model
-      return false unless params[:preview] && current_user
-      policy = Regulator.policy(current_user, model, "Admin::#{model.model_name.plural.camelize}Controller".constantize)
-      @preview = policy.preview?
+      return false unless params[:preview] == 'true'
+      return true if request.referrer.nil?
+
+      referrer_host = URI.parse(request.referrer).host
+      return %w[admin.localhost admin.omicron.local admin.wemeditate.co].include?(referrer_host)
+      # Note: Since the admin and front end use different domains, we cannot authenticate across both domains.
+      # So we are just using a crude trick to avoid people posting links to the draft.
+      # There is no security concern with people viewing a draft.
+
+      # return false unless params[:preview] && current_user
+      # policy = Regulator.policy(current_user, model, "Admin::#{model.model_name.plural.camelize}Controller".constantize)
+      # @preview = policy.preview?
     end
 
 end
