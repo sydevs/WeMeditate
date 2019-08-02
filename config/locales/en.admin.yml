@@ -125,7 +125,7 @@ en:
     content:
       outline_title: Structure of the %{page} Content # The title for a section which outlines the structure of a page.
       blocks: # These blocks are the types of elements that can be used on a page
-        header: Header # Also called a "Title" or "Heading"
+        header: Title
         paragraph: Paragraph
         image: Image
         link: Button

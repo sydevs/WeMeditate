@@ -21,15 +21,16 @@
 .content__image class=classes
   - items.each do |item|
     figure.content__image__item
-      = smart_image_tag @record.media_file(item[:image][:id]), image_sizes, lazy: false, class: 'content__image__img'
+      .content__image__item__media
+        = smart_image_tag @record.media_file(item[:image][:id]), image_sizes, lazy: false, class: 'content__image__img'
+
+        - if item[:credit].present?
+          .content__image__credit #{translate 'content.credit'} • #{item[:credit]}
 
       - if isSingle
         .content__image__triangle = render_decoration :triangle, block
 
       .content__image__item__content
-        - if item[:credit].present?
-          .content__image__credit #{translate 'content.credit'} • #{item[:credit]}
-
         - if item[:caption].present?
           figcaption.content__image__caption = item[:caption]
 

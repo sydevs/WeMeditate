@@ -15,6 +15,8 @@ const Application = {
   load() {
     Application.loadImages()
     Application.loadAnimations()
+    Carousel.loadTranslations()
+
     if (!Application.videoPlayer) {
       Application.videoPlayer = Video.loadPlayer('video-player')
     }

@@ -1,7 +1,7 @@
 @import "../../mixins/*"
 
 .content__image,
-.content__image__item
+.content__image__item__media
   position: relative
 
 .content__image__img
@@ -10,7 +10,7 @@
 .content__image--callout-none
   margin: 40px auto
 
-.content__image--single:not(.content__image--stretch)
+.content__image--callout-none:not(.content__image--stretch)
   @extend %narrow-content-width
 
 .content__image--gallery,
@@ -34,7 +34,7 @@
 
   @include tablet-or-larger
     position: absolute
-    bottom: 50px
+    bottom: 0
     right: 100%
     margin-right: 10px
 
@@ -98,7 +98,8 @@
       margin-right: -70px
       margin-bottom: 20px
 
-  .content__image__item__content,
+  .content__image__item__content
+    @extend %narrow-content-width
+
   .content__image__triangle
     @extend %wide-content-width
-    position: relative
