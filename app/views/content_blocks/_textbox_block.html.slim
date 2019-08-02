@@ -7,6 +7,7 @@
 - classes << 'content__textbox--wisdom' if isWisdom
 - classes << 'content__textbox--video' if isVideo
 
+- return unless block[:image].is_a?(Hash)
 
 .content__textbox class=classes
   .content__textbox__wrapper

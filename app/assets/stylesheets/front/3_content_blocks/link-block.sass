@@ -2,42 +2,9 @@
 
 .content__link
   @extend %wide-content-width
-  position: relative
-
-  @include desktop
-    margin-top: 200px
-
-  @include widescreen
-    max-width: $desktop-content-width
-
-.content__link__title
-  font-weight: $font-bold
-  font-size: 2.4rem
-  line-height: 1.25
-  letter-spacing: 0.25px
-
-  @include tablet-or-larger
-    font-size: 3rem
-
-  @include laptop-or-larger
-    display: none
-
-.content__link__sidetext
-  display: none
-
-  @include laptop-or-larger
-    position: relative
-    display: block
-
-.content__link__loadmore
   text-align: center
-  margin-top: 80px
-
-  @include tablet
-    margin-bottom: 120px
-
-  @include laptop-or-larger
-    margin-bottom: 200px
+  margin-top: 60px
+  margin-bottom: 80px
 
 .content__link--leaves
   &:before, &:after
@@ -52,47 +19,3 @@
 
   &:after
     transform: rotate(180deg)
-
-// ===== SIMPLE BUTTON LINK ===== //
-.content__link--button
-  text-align: center
-  margin-top: 60px
-  margin-bottom: 80px
-
-// ===== ARTICLES LINK GRID ===== //
-.content__link--articles
-  margin-top: 45px
-  margin-bottom: 67px
-
-  @include widescreen
-    margin-top: 80px
-    margin-bottom: 150px
-
-.content__link__article
-  padding: 0
-  padding-bottom: 75px
-
-  @include tablet-or-larger
-    padding-left: $gutter-width / 2
-    padding-right: $gutter-width / 2
-
-  @include laptop-or-larger
-    min-height: 100px
-    padding-right: 40px
-    padding-bottom: 40px
-
-// ===== TREATMENTS LINK LIST ===== //
-.content__link--treatments
-  margin-bottom: 100px
-
-  @include laptop-or-larger
-    margin-top: 200px
-
-.content__link__treatment_list
-  margin-top: 35px
-
-  @include tablet
-    margin-top: 80px
-
-  @include laptop-or-larger
-    margin-top: 150px

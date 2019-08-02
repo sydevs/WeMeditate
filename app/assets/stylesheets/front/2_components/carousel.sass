@@ -7,33 +7,122 @@
   Most of the basic styling for these carousels is defined by the Slick library that we are using.
   */
 
-// ===== SLICK ADJUSTMENTS ===== //
-.slick-dots
-  left: 0
-  right: 0
+// ===== BASE SLICK ADJUSTMENTS ===== //
+.carousel
+  .slick-dots
+    left: 0
+    right: 0
 
-  li
-    margin: 0 1px
+    li
+      margin: 0 1px
 
-  li button:before
-    font-size: 6px
+    li button:before
+      font-size: 6px
+      opacity: 1
+      color: $color-graphic-darker
+
+    li.slick-active button:before
+      font-size: 8px
+      color: $color-text-blue
+
+  @each $side in left right
+    $key: if($side == left, prev, next)
+
+    .slick-#{$key}
+      #{$side}: 0
+      text-align: $side
+
+      &:before
+        content: map-get($icon-arrow, #{$side})
+        font-family: $font-icons
+        font-size: 2.4rem
+        color: $color-graphic-dark
+        opacity: 1
+
+// ===== VIDEO SLICK ADJUSTMENTS ===== //
+.carousel[data-style=video] .carousel
+  &__item
+    padding: 25px 0
+
+    @include tablet-or-larger
+      padding: 25px
+
+  &__video
+    height: 0
+    padding-top: 56.25%
+
+  &__video img
+    @include overlay
+
+  &__name
+    font-weight: $font-bold
+    font-size: 2.4rem
+    line-height: 1.3
+    letter-spacing: 0.25px
+
+    text-align: left
+    margin-top: 24px
+    margin-bottom: 0
+
+    @include tablet-or-larger
+      margin-top: 36px
+
+.carousel[data-style=video] .slick
+  &-list
+    overflow: hidden
+
+  &-slide
+    opacity: 0.5
+
+    &:not(.slick-active)
+      .video__button
+        opacity: 0
+        visibility: hidden
+
+  &-dots
+    position: static
+    margin: 1px
+
+    li
+      margin: 0 1px
+
+    li button:before
+      font-size: 8px
+
+    li.slick-active button:before
+      font-size: 10px
+      color: $color-text-blue
+
+  &-active
     opacity: 1
-    color: $color-graphic-darker
 
-  li.slick-active button:before
-    font-size: 8px
-    color: $color-text-blue
+  &-arrow
+    background: #999
+    width: 64px
+    height: 64px
+    margin-top: -60px
+    text-align: center
+    transition: all 0.5s ease
+    z-index: 10
 
-@each $side in left right
-  $key: if($side == left, prev, next)
-
-  .slick-#{$key}
-    #{$side}: 0
-    text-align: $side
+    @include laptop-or-larger
+      width: 60px
+      height: 60px
 
     &:before
-      content: map-get($icon-arrow, #{$side})
-      font-family: $font-icons
-      font-size: 2.4rem
-      color: $color-graphic-dark
-      opacity: 1
+      color: white
+
+    &:hover
+      background: gray
+
+  &-prev // arrow
+    margin-left: 6px
+
+    @include laptop-or-larger
+      margin-left: -10px
+
+  &-next // arrow
+    margin-right: 6px
+
+    @include laptop-or-larger
+      margin-right: -10px

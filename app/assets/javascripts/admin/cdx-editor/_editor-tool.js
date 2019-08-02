@@ -157,13 +157,17 @@ class EditorTool {
   renderSettings() {
     const settingsContainer = make('div')
 
-    make('label', '', { innerText: translate['content']['settings']['tunes'] }, settingsContainer)
-    this.tunesWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.tunesWrapper], {}, settingsContainer)
-    this.renderTunes(this.tunesWrapper)
+    if (this.tunes.length > 0) {
+      make('label', '', { innerText: translate['content']['settings']['tunes'] }, settingsContainer)
+      this.tunesWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.tunesWrapper], {}, settingsContainer)
+      this.renderTunes(this.tunesWrapper)
+    }
 
-    make('label', '', { innerText: translate['content']['settings']['decorations'] }, settingsContainer)
-    this.decorationsWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.decorationsWrapper], {}, settingsContainer)
-    this.renderDecorations(this.decorationsWrapper)
+    if (this.allowedDecorations.length > 0) {
+      make('label', '', { innerText: translate['content']['settings']['decorations'] }, settingsContainer)
+      this.decorationsWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.decorationsWrapper], {}, settingsContainer)
+      this.renderDecorations(this.decorationsWrapper)
+    }
 
     this.inputsWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.decorationInputsWrapper], {}, settingsContainer)
     this.renderDecorationInputs(this.inputsWrapper)
@@ -173,25 +177,29 @@ class EditorTool {
   }
 
   updateSettingsButtons() {
-    for (let i = 0; i < this.tunesWrapper.childElementCount; i++) {
-      const element = this.tunesWrapper.children[i]
-      const tune = this.tunes[i]
-      element.classList.toggle(this.CSS.settingsButtonActive, this.isTuneActive(tune))
+    if (this.tunesWrapper) {
+      for (let i = 0; i < this.tunesWrapper.childElementCount; i++) {
+        const element = this.tunesWrapper.children[i]
+        const tune = this.tunes[i]
+        element.classList.toggle(this.CSS.settingsButtonActive, this.isTuneActive(tune))
+      }
     }
 
-    for (let i = 0; i < this.decorationsWrapper.childElementCount; i++) {
-      const element = this.decorationsWrapper.children[i]
-      const decorationKey = this.allowedDecorations[i]
-      const selected = this.isDecorationSelected(decorationKey)
-      element.classList.toggle(this.CSS.settingsButtonActive, selected)
+    if (this.decorationsWrapper) {
+      for (let i = 0; i < this.decorationsWrapper.childElementCount; i++) {
+        const element = this.decorationsWrapper.children[i]
+        const decorationKey = this.allowedDecorations[i]
+        const selected = this.isDecorationSelected(decorationKey)
+        element.classList.toggle(this.CSS.settingsButtonActive, selected)
 
-      if (decorationKey == 'sidetext') {
-        $(this.decorationInputs.sidetext.text).toggle(selected)
-      } else if (decorationKey == 'triangle') {
-        $(this.decorationInputs.triangle.alignment).toggle(selected)
-      } else if (decorationKey == 'gradient') {
-        $(this.decorationInputs.gradient.alignment).toggle(selected)
-        $(this.decorationInputs.gradient.color).toggle(selected)
+        if (decorationKey == 'sidetext') {
+          $(this.decorationInputs.sidetext.text).toggle(selected)
+        } else if (decorationKey == 'triangle') {
+          $(this.decorationInputs.triangle.alignment).toggle(selected)
+        } else if (decorationKey == 'gradient') {
+          $(this.decorationInputs.gradient.alignment).toggle(selected)
+          $(this.decorationInputs.gradient.color).toggle(selected)
+        }
       }
     }
   }
@@ -225,7 +233,7 @@ class EditorTool {
 
     button.addEventListener('click', () => {
       if (!event.target.classList.contains(this.CSS.settingsButtonDisabled)) {
-        this.selectTune(this.tune)
+        this.selectTune(tune)
         this.updateSettingsButtons()
       }
     })

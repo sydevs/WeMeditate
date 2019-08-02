@@ -19,8 +19,9 @@ const Application = {
       Application.videoPlayer = Video.loadPlayer('video-player')
     }
 
-    if (Application.preloaded) {
-      document.querySelector('.preloader').remove()
+    const preloader = document.querySelector('.preloader')
+    if (Application.preloaded && preloader) {
+      preloader.remove()
     }
 
     Application.elements = {}

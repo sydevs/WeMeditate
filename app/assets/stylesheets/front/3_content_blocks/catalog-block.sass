@@ -1,0 +1,78 @@
+@import "../../mixins/*"
+
+.content__catalog
+  @extend %wide-content-width
+  position: relative
+
+  @include desktop
+    margin-top: 200px
+
+  @include widescreen
+    max-width: $desktop-content-width
+
+.content__catalog__title
+  font-weight: $font-bold
+  font-size: 2.4rem
+  line-height: 1.25
+  letter-spacing: 0.25px
+
+  @include tablet-or-larger
+    font-size: 3rem
+
+  @include laptop-or-larger
+    display: none
+
+.content__catalog__sidetext
+  display: none
+
+  @include laptop-or-larger
+    position: relative
+    display: block
+
+.content__catalog__loadmore
+  text-align: center
+  margin-top: 80px
+
+  @include tablet
+    margin-bottom: 120px
+
+  @include laptop-or-larger
+    margin-bottom: 200px
+
+// ===== ARTICLES LINK GRID ===== //
+.content__catalog--articles
+  margin-top: 45px
+  margin-bottom: 67px
+
+  @include widescreen
+    margin-top: 80px
+    margin-bottom: 150px
+
+.content__catalog__article
+  padding: 0
+  padding-bottom: 75px
+
+  @include tablet-or-larger
+    padding-left: $gutter-width / 2
+    padding-right: $gutter-width / 2
+
+  @include laptop-or-larger
+    min-height: 100px
+    padding-right: 40px
+    padding-bottom: 40px
+
+// ===== TREATMENTS LINK LIST ===== //
+.content__catalog--treatments
+  margin-bottom: 100px
+
+  @include laptop-or-larger
+    margin-top: 200px
+
+.content__catalog__treatment_list
+  margin-top: 35px
+
+  @include tablet
+    margin-top: 80px
+
+  @include laptop-or-larger
+    margin-top: 150px

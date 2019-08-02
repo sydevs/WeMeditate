@@ -17,31 +17,11 @@
     letter-spacing: 0.25px
     margin-bottom: 60px
 
-.content__video__name
-  font-weight: $font-bold
-  font-size: 2.4rem
-  line-height: 1.3
-  letter-spacing: 0.25px
-
-  text-align: left
-  margin-top: 24px
-  margin-bottom: 0
-
-  @include tablet-or-larger
-    margin-top: 36px
-
-.content__video__item
-  padding: 25px 0
-
-  @include tablet-or-larger
-    padding: 25px
-
 // ===== SINGLE VIDEO ===== //
 .content__video--single
   .content__video__item
     max-width: 660px
     margin: 0 auto
-    padding: 0
 
   .content__video__title
     @include laptop-or-larger
@@ -59,66 +39,3 @@
 .content__video--gallery .gradient
   @include tablet-or-smaller
     display: block
-
-// ===== SLICK ADJUSTMENTS ===== //
-// We use the Slick library to implement our carousel,
-// some adjustments to the default styling are needed.
-.content__video--gallery .slick
-  &-list
-    overflow: hidden
-
-  &-slide
-    opacity: 0.5
-
-    &:not(.slick-active)
-      .video__button
-        opacity: 0
-        visibility: hidden
-
-  &-dots
-    position: static
-    margin: 1px
-
-    li
-      margin: 0 1px
-
-    li button:before
-      font-size: 8px
-
-    li.slick-active button:before
-      font-size: 10px
-      color: $color-text-blue
-
-  &-active
-    opacity: 1
-
-  &-arrow
-    background: #999
-    width: 64px
-    height: 64px
-    margin-top: -60px
-    text-align: center
-    transition: all 0.5s ease
-    z-index: 10
-
-    @include laptop-or-larger
-      width: 60px
-      height: 60px
-
-    &:before
-      color: white
-
-    &:hover
-      background: gray
-
-  &-prev // arrow
-    margin-left: 6px
-
-    @include laptop-or-larger
-      margin-left: -10px
-
-  &-next // arrow
-    margin-right: 6px
-
-    @include laptop-or-larger
-      margin-right: -10px

@@ -124,7 +124,8 @@ it:
         header: Titolo
         paragraph: Paragrafo
         image: Immagine
-        link: Link
+        link: Button # TODO: Translate
+        catalog: WeMeditate Content # TODO: Translate
         list: Lista
         quote: Citazione
         structured: Structured Text
@@ -152,10 +153,12 @@ it:
           none: Center Aligned # TODO: Translate
           left: Inserto a sinistra
           right: Inserto a destra
+        type: # TODO: Translate
+          articles: Articles
+          treatments: Techniques
+          meditations: Meditations
         format:
           button: Bottone
-          articles: Articles # TODO: Translate
-          treatments: Techniques # TODO: Translate
           grid: Griglia
           accordion: Fisarmonica
           columns: Colonne

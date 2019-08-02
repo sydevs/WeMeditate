@@ -136,9 +136,9 @@ static_pages[:home].update!(content: content([
       centered: true,
     },
   }, {
-    type: :link,
+    type: :catalog,
     data: {
-      format: :articles,
+      type: :articles,
       items: Article.where(name: ['Why Meditate?', 'Is it right for me?', 'Who else is doing it?']).map { |article|
         { id: article.id, name: article.name }
       },

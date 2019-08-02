@@ -136,9 +136,9 @@ end
       },
     },
     {
-      type: :link,
+      type: :catalog,
       data: {
-        format: :treatments,
+        type: :treatments,
         items: treatments.sample(4).map { |treatment|
           { id: treatment.id, name: treatment.name }
         },

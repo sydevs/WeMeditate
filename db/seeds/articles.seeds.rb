@@ -4,10 +4,10 @@ require_relative 'support'
 puts ' -- Start Article Seeds -- '
 
 # ===== CREATE AUTHOR ===== #
-author = Author.find_or_initialize_by(name: 'John Smith')
+author = Author.find_or_initialize_by(name: 'Jane Smith')
 author.update!({
   name: 'Jane Smith',
-  title: 'WeMeditate Writer',
+  title: 'Meditation Practitioner',
   description: sentences(4),
   years_meditating: 12,
   image: file_root.join('articles/author.jpg').open,
@@ -38,8 +38,8 @@ end
     name: "Article #{index}",
     excerpt: sentences(2),
     category: categories.values.sample,
-    date: '',
-    vimeo_id: '',
+    date: nil,
+    vimeo_id: nil,
     published: true,
     published_at: DateTime.now,
   })
@@ -56,8 +56,8 @@ end
     excerpt: sentences(2),
     thumbnail_id: attachment("articles/thumbnails/#{index}.png", article),
     category: categories.values.sample,
-    date: '',
-    vimeo_id: '',
+    date: nil,
+    vimeo_id: nil,
     published: false,
     published_at: DateTime.now,
   })
@@ -229,7 +229,7 @@ article.update!(content: content([
       text: sentences(5),
     },
   }, {
-    type: :link,
+    type: :button,
     data: {
       action: 'Try Meditation',
       url: '/page/the-first-experience',
@@ -274,7 +274,7 @@ article.update!(content: content([
       caption: 'Founder of the meditation method "Sahaja Yoga"',
     },
   }, {
-    type: :link,
+    type: :button,
     data: {
       action: 'Meditation with Shri Mataji',
       url: '/page/the-first-experience',
@@ -407,10 +407,10 @@ article.update!(content: content([
       caption: 'University professor',
     },
   }, {
-    type: :link,
+    type: :button,
     data: {
       action: 'Button Text',
-      url: '/en/inspiration',
+      url: '/inspiration',
       format: :button,
     },
   }, {
@@ -640,9 +640,9 @@ article.update!(content: content([
       asWisdom: true,
     },
   }, {
-    type: :link,
+    type: :catalog,
     data: {
-      format: :articles,
+      type: :articles,
       items: Article.all.sample(6).map { |article_item|
         { id: article_item.id, name: article_item.name }
       },

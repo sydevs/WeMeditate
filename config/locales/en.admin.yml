@@ -128,7 +128,8 @@ en:
         header: Header # Also called a "Title" or "Heading"
         paragraph: Paragraph
         image: Image
-        link: Links
+        link: Button
+        catalog: WeMeditate Content
         list: List
         quote: Quote
         structured: Structured Text
@@ -156,10 +157,12 @@ en:
           none: Center Aligned # When no callout is enabled, it is aligned to the center
           left: As Left Callout
           right: As Right Callout
+        type: # Note to Developer: These must be translated manually because they are accessed in JavaScript
+          articles: Articles
+          treatments: Techniques
+          meditations: Meditations
         format:
           button: Button
-          articles: Articles # Note to Developer: This must be translated manually because it is accessed in JavaScript
-          treatments: Techniques # Note to Developer: This must be translated manually because it is accessed in JavaScript
           grid: Grid
           accordion: Accordion
           columns: Columns

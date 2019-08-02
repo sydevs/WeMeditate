@@ -96,14 +96,15 @@ module Admin
           when 'form' # Content
             concat content_tag :li, "#{block['type'].titleize}: #{block['data']['title']}"
 
-          when 'video', 'link', 'structured' # Items list
+          when 'video', 'structured' # Items list
             field = block['type'] == 'link' ? 'name' : 'title'
             items = block['data']['items']&.map { |item| item[field] }&.join(', ')
 
-            if block['type'] == 'video'
-              type = translate(block['type'], scope: %i[admin content blocks])
-            else
+            case block['type']
+            when 'structured'
               type = translate(block['data']['format'], scope: %i[admin content tunes format])
+            else
+              type = translate(block['type'], scope: %i[admin content blocks])
             end
 
             concat content_tag :li, "#{type.titleize}: #{items}"
@@ -113,9 +114,16 @@ module Admin
             word_count = translate('admin.content.words', count: block['data']['text'].split.size)
             concat content_tag :li, tag.i("#{type}: #{word_count}")
 
-          when 'list', 'image' # Items count
-            type = translate(block['type'], scope: %i[admin content blocks])
+          when 'list', 'catalog', 'image' # Items count
             item_count = translate('admin.content.items', count: block['data']['items'].split.size)
+
+            case block['type']
+            when 'catalog'
+              type = translate(block['data']['type'], scope: %i[admin content tunes type])
+            else
+              type = translate(block['type'], scope: %i[admin content blocks])
+            end
+
             concat content_tag :li, tag.i("#{type}: #{item_count}")
 
           else

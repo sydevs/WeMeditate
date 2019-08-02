@@ -1,0 +1,88 @@
+
+- item_ids = block[:items].map { |item| item[:id] }
+- records = block[:type].classify.constantize.where(id: item_ids).all
+- return unless records.present?
+
+.content__catalog class="content__catalog--#{block[:type]}"
+  - if block[:type] == 'articles'
+    .content__catalog__sidetext = render_decoration :sidetext, block, alignment: :left
+
+    .content__catalog__article_grid.js-grid data-max-columns=3
+      - records.first(3).each do |article|
+        article.preview.content__catalog__article
+          h3.preview__title = article.name
+          p.preview__text = article.excerpt
+          .preview__meta
+            a.preview__meta__link href=article_path(article)
+              = t('articles.read_more')
+              i.icon.icon--breadcrumb
+
+    - if records.count > 3
+      .content__catalog__loadmore.js-loadmore
+        button.button.button--box
+          = translate 'content.show_more'
+        template
+          - records.drop(3).each do |article|
+            article.preview.content__catalog__article
+              h3.preview__title = article.name
+              p.preview__text = article.excerpt
+              .preview__meta
+                a.preview__meta__link href=article_path(article)
+                  = t('articles.read_more')
+                  i.icon.icon--breadcrumb
+
+  - elsif block[:type] == 'treatments'
+    .content__catalog__gradient
+      .gradient.gradient--right.gradient--tall.gradient--short.gradient--orange
+
+    h2.content__catalog__title = block[:decorations] && block[:decorations][:sidetext]
+    .content__catalog__sidetext = render_decoration :sidetext, block, alignment: :left
+
+    .content__catalog__treatment_list.excerpt_list
+      - records.first(2).each_with_index do |treatment, index|
+        article.content__catalog__treatment.excerpt.excerpt--simple class="excerpt--#{index.even? ? 'right' : 'left'}"
+          // TODO: Set the image size
+          = smart_image_tag treatment.thumbnail, '100vw', class: 'excerpt__image', alt: treatment.name
+          .excerpt__content
+            h3.excerpt__title = treatment.name
+            p.excerpt__text = treatment.excerpt
+            a.excerpt__link href=treatment_path(treatment)
+              = t('treatments.read_more')
+              i.icon.icon--breadcrumb
+          .clearfix
+
+    - if records.count > 2
+      .content__catalog__loadmore.js-loadmore
+        button.button.button--box
+          = translate block[:type] == 'treatments' ? 'treatments.show_more' : 'content.show_more'
+        template
+          - records.drop(2).each_with_index do |treatment, index|
+            article.content__catalog__treatment.excerpt.excerpt--simple class="excerpt--#{index.even? ? 'right' : 'left'}"
+              // TODO: Set the image size
+              = smart_image_tag treatment.thumbnail, '100vw', class: 'excerpt__image', alt: treatment.name
+              .excerpt__content
+                h3.excerpt__title = treatment.name
+                p.excerpt__text = treatment.excerpt
+                a.excerpt__link href=treatment_path(treatment)
+                  = t('treatments.read_more')
+                  i.icon.icon--breadcrumb
+                  
+              .clearfix
+
+  - elsif block[:type] == 'meditations'
+    .content__catalog__gradient
+      .gradient.gradient--right.gradient--tall.gradient--long.gradient--blue
+    .content__catalog__sidetext
+      = render_decoration :sidetext, block, static: true, alignment: :right
+
+    .carousel.js-carousel data-style='video'
+      - records.each do |meditation|
+        figure.carousel__item
+          .carousel__video.video
+            // TODO: Re-evaluate image_sizes
+            // TODO: Maybe try to find a way to re-enable lazyloading
+            = smart_image_tag meditation.image, '100vw', class: 'video__thumbnail', lazy: false
+            a.video__button.video__button--horizontal.js-video href="https://vimeo.com/#{meditation.horizontal_vimeo_id}" data-id=meditation.horizontal_vimeo_id data-mfp-src='#video-popup'
+            a.video__button.video__button--vertical.js-video href="https://vimeo.com/#{meditation.vertical_vimeo_id}" data-id=meditation.vertical_vimeo_id data-mfp-src='#video-popup'
+
+          figcaption.carousel__name = meditation.name
