@@ -207,11 +207,7 @@ class StructuredTool extends EditorTool {
       }
     }
 
-    return Object.assign(this.data, {
-      items: item_data,
-      media_files: media_files,
-      decorations: this.getDecorationsData()
-    })
+    return Object.assign(this.data, { items: item_data, media_files: media_files })
   }
 
   // Returns current item by the caret position

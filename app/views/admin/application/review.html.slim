@@ -111,10 +111,14 @@
                   input type='checkbox' name="approve[content][#{i}]" value="use:#{draft_index}" checked=true
                   label
             td.collapsing
-              strong = type
+              / TODO: Translate
+              strong #{type.titleize}
+              / TODO: Translate
               div = mode
             td.diff
-              - (draft['data'] || original['data']).map do |key, value|
+              - puts draft.inspect
+              - puts original.inspect
+              - (draft || original)['data'].map do |key, value|
                 - draft_value = draft && draft['data'] ? (draft['data'][key].to_s || '') : ''
                 - original_value = original && original['data'] ? (original['data'][key].to_s || '') : ''
                 div

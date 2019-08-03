@@ -46,6 +46,13 @@ module Admin::RecordHelper
     draft_types = draft_blocks.map { |b| b['type'] }
     diff = JsonDiff.diff(original_types, draft_types, moves: false, original_indices: true)
 
+    # TODO: Remove test code
+    puts "DRAFT DIFF"
+    puts original_types.pretty_inspect
+    puts draft_types.pretty_inspect
+    puts diff.pretty_inspect
+    puts "----"
+
     loop_counter = 0
     diff_index = 0
     original_index = 0

@@ -34,8 +34,6 @@ module HasContent
         result += essential_media_files(locale)
       end
     else
-      preserve_draft = (I18n.locale != locale)
-
       Globalize.with_locale(locale) do
         puts "CHECKING #{translation.pretty_inspect}"
 
@@ -47,10 +45,10 @@ module HasContent
 
         result += [thumbnail_id] if self.has_attribute?(:thumbnail_id)
 
-        if preserve_draft && has_draft?
+        if has_draft?
           if parsed_draft_content.present?
             parsed_draft_content['blocks'].each do |block|
-              result += block['data']['media_files']
+              result += block['data']['media_files'] if block['data']['media_files']
             end
           end
 
@@ -61,13 +59,11 @@ module HasContent
 
     # TODO: Remove test code
     puts "ESSENTIAL FILES #{locale}: #{result}"
-    result
+    result.uniq
   end
 
   def cleanup_media_files!
-    # TODO: Fix this
-    # When you edit a page content, and then press Save & Approve it will destroy any media files which are new and haven't been persisted yet.
-    # media_files.where.not(id: essential_media_files).destroy_all
+    media_files.where.not(id: essential_media_files).destroy_all
   end
 
 end

@@ -31,8 +31,8 @@ module Draftable
       next if key == 'published_at' # We should not include timestamps in drafts
 
       if key == 'content'
-        old_val = JSON.parse(old_value)['blocks'] if old_value
-        new_val = JSON.parse(new_value)['blocks'] if new_value
+        old_val = old_value && !old_value.is_a?(Hash) ? JSON.parse(old_value)['blocks'] : nil
+        new_val = new_value && !new_value.is_a?(Hash) ? JSON.parse(new_value)['blocks'] : nil
         next if old_val == new_val
       end
 
@@ -84,7 +84,7 @@ module Draftable
         draft_value = draft[key]
       end
 
-      draft.except!(key) if new_value == draft_value
+      draft.except!(key) if new_value.to_s == draft_value.to_s
     end
 
     draft = nil unless draft&.except('contributors').present?

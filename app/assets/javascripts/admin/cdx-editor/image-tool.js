@@ -173,7 +173,6 @@ class ImageTool extends EditorTool {
       //if (!this.allowMultiple) break // TODO: Only save one image, if we are in single mode.
     }
 
-    newData.decorations = this.getDecorationsData()
     return Object.assign(this.data, newData)
   }
 

@@ -55,10 +55,7 @@ class ListTool extends EditorTool {
       if (value) itemsData.push(items[i].innerHTML)
     }
 
-    return Object.assign(this.data, {
-      items: itemsData,
-      decorations: this.getDecorationsData(),
-    })
+    return Object.assign(this.data, { items: itemsData })
   }
 
   render() {
