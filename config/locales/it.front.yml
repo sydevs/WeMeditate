@@ -6,164 +6,164 @@ it:
   we_meditate: "We Meditate" # This is the title of the website
 
   header:
-    learn_more: "Learn More"
-    classes_near_me: "Classes Near Me"
-    inspiration_from_within: "Inspiration comes from within"
-    cookie_notice: "By continuing to use wemeditate.co you will be agreeing to our use of cookies."
-    preview_notice: "You are viewing a preview"
+    learn_more: "Per Saperne di Più"
+    classes_near_me: "Corsi vicino a Me"
+    inspiration_from_within: "L’ispirazione viene da dentro"
+    cookie_notice: "Se decidi di accedere wemeditate.co ci dai il permesso di utilizzare cookies."
+    preview_notice: "Stai visualizzando un’anteprima"
 
   footer:
-    scroll_to_top: "Back to Top"
-    meditate_now: "Meditate Now"
-    music_for_meditation: "Music for meditation"
-    learn_more: "Learn more"
+    scroll_to_top: "Torna su"
+    meditate_now: "Medita Ora"
+    music_for_meditation: "Musica per la meditazione"
+    learn_more: "Per Saperne di Più"
     come_meditate: "Come meditate"
-    classes_near_me: "Classes near me"
-    online_meditations: "Guided Meditations Online"
+    classes_near_me: "Corsi vicino a Me"
+    online_meditations: "Meditazioni guidate Online"
 
   actions_footer:
-    title: "Discover it for yourself!"
-    subtitle: "Don’t just take our word for it. Try meditating and see how you feel!"
-    sidetext: "Try Meditation"
+    title: "Sperimenta Tu Stesso!"
+    subtitle: "Non crederci sulla parola. Prova a meditare e vedi come ti senti!"
+    sidetext: "Prova a meditare"
     actions:
-      online: "Meditate online"
-      local: "Classes near me"
+      online: "Medita online"
+      local: "Corsi vicino a Me"
 
   author:
     about_the_author: "About the author"
-    written_by: "Written by"
+    written_by: "Scritto da"
     meditating_for:
-      one: "Meditating for 1 year"
-      other: "Meditating for %{count} years"
+      one: "Medita da 1 anno"
+      other: "Medita da %{count} anni"
 
   form:
     input:
-      email: "Your email"
-      message: "Message"
+      email: "La Tua Email"
+      message: "Messaggio"
       privacy:
-        text: "By submitting this form, you agree to the processing of my personal data to receive guided meditations and other emails from WeMeditate."
-        learn_more: "Learn more."
-      name: "Your name"
-      class: "Select class"
+        text: "Inviando questo modulo, accetti il ​​trattamento dei tuoi dati personali per ricevere da WeMeditate meditazioni guidate e altre e-mail."
+        learn_more: "Per Saperne di Più."
+      name: "Il Tue Nome"
+      class: "Seleziona il Corso"
     missing:
-      email: "You must provide an email address."
-      message: "You forgot to fill out a message."
-      name: "You must provide your name."
+      email: "Devi indicare un indirizzo Email."
+      message: "Hai dimenticato di inserire un messaggio."
+      name: "Hai dimenticato di inserire il tuo nome."
     success:
-      subscribe: "You have been subscribed."
-      contact: "Your message has been received."
-      register: "You have been registered."
+      subscribe: "Ti sei cancellato con successo."
+      contact: "Il tuo messaggio stato ricevuto."
+      register: "Ti sei registrato con successo."
 
   player:
-    pause: "Pause"
-    play: "Play"
+    pause: "Pausa"
+    play: "Suona"
     '%_buffered': "% buffered"
-    skip_back: "Previous Track"
-    skip_forward: "Next Track"
-    rewind_10_secs: "Rewind 10 secs"
-    forward_10_secs: "Forward 10 secs"
-    unmute: "Unmute"
-    mute: "Mute"
+    skip_back: "Salta traccia"
+    skip_forward: "Prossima traccia"
+    rewind_10_secs: "Riascolta 10 secondi"
+    forward_10_secs: "Vai avanti 10 secondi"
+    unmute: "Riattiva audio"
+    mute: "Disattiva audio"
     volume: "Volume"
-    disable_captions: "Disable captions"
-    enable_captions: "Enable captions"
-    exit_fullscreen: "Exit fullscreen"
-    enter_fullscreen: "Enter fullscreen"
-    duration: "Duration"
-    current_time: "Current time"
-    seek: "Seek"
-    play_title: "Play, %{title}" # %{title} is the title of a video or music track
+    disable_captions: "Nascondi i sottotitoli"
+    enable_captions: "Mostra i sottotitoli"
+    exit_fullscreen: "Esci dalla modalità a schermo intero"
+    enter_fullscreen: "Entra in modalità a schermo intro"
+    duration: "Durata"
+    current_time: "Tempo"
+    seek: "Ricerca"
+    play_title: "Suona, %{title}" # %{title} is the title of a video or music track
 
   articles:
-    read_more: "Read more"
-    load_more: "Load more"
-    filter: "Filter"
-    show_all: "All"
-    share: "Share: "
+    read_more: "Altri Articoli"
+    load_more: "Carica Altri"
+    filter: "Filtra"
+    show_all: "Tutto"
+    share: "Condividi: "
 
   meditations:
     prescreen:
-      title: "Unlock guided meditations by awakening your %{kundalini} first"
-      kundalini: "inner energy"
-      action: "Awaken Your Inner Energy"
+      title: "Per accedere alle meditazioni guidate, risveglia ora la tua %{kundalini}"
+      kundalini: "Energia Interiore"
+      action: "Risveglia la Tua Energia Interiore"
       explanation:
-        text: "Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation."
-        learn_more: "Learn more"
+        text: "Ognuno di noi ha un’energia interiore, che deve essere risvegliata prima di poter accedere allo stato di meditazione."
+        learn_more: "Per Saperne di Più"
       skip:
-        text: "Meditated with us before?"
-        action: "Continue to your guided meditation"
+        text: "Hai già meditato con noi?"
+        action: "Continua verso una meditazione guidata"
     featured:
-      daily_meditation: "Meditation of the day"
-      trending_meditation: "Trending now"
-      random_meditation: "Let fate decide"
-      random_meditation_title: "Try a random meditation"
-      random_meditation_description: "Feel like you’re in need of a pick me up? Banish those negative thoughts which are putting you down and boost your confidence."
+      daily_meditation: "Meditazione del giorno"
+      trending_meditation: "In voga"
+      random_meditation: "Lascia decidere il fato"
+      random_meditation_title: "Prova una meditazione a caso"
+      random_meditation_description: "Ti sembra di essere giù? Liberati di quei pensieri negativi e riprenditi la fiducia in te stesso."
     custom_meditation:
-      title: "Set Up your own Meditation"
-      choose_goal: "I wish to feel ..." # Please keep ' ...' (with a space) at the end of your translation.
-      choose_duration: "I have"
-      goal_prompt: "Select mood"
-      submit: "Start meditation"
+      title: "Scegli la tua Meditazione"
+      choose_goal: "Vorrei sentirmi ..." # Please keep ' ...' (with a space) at the end of your translation.
+      choose_duration: "Quanto tempo ho"
+      goal_prompt: "Di che umore sei"
+      submit: "Inizia la Meditazione"
       minutes: "min"
     archive:
-      see_all_meditations: "See all meditations"
-      title: "Guided Meditations"
-      view_meditation: "View meditation"
-      load_more: "Load more"
+      see_all_meditations: "Vedi tutte le Meditazioni"
+      title: "Meditazioni guidate"
+      view_meditation: "Vedi Meditazione"
+      load_more: "Carica Altri"
 
   tracks:
-    subtitle: "Subtitle for music"
-    text: "Enjoy a curated collection of meditation music we produced to help you disconnect from your surroundings and achieve a true state of inner peace."
-    choose_mood: "Choose the mood"
-    choose_instruments: "Choose your sound"
+    subtitle: "Sottotitolo per la Musica"
+    text: "Goditi una collezione speciale di brani di musica da meditazione che abbiamo messo insieme, ottima per aiutarti a lasciare andare dei pensieri del mondo e raggiungere lo stato della pace interiore."
+    choose_mood: "Scegli l’umore"
+    choose_instruments: "Scegli il timbro"
     playlist: "Playlist"
 
   treatments:
     prescreen:
       title: "Before using methods to improve meditation, you need to awaken your %{kundalini}"
-      kundalini: "inner energy"
-      action: "Awaken Your Inner Energy"
+      kundalini: "Energia Interiore"
+      action: "Risveglia la tua Energia Interiore"
       explanation:
-        text: "Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation."
-        learn_more: "Learn more"
+        text: "Ognuno di noi ha un’energia interiore, che deve essere risvegliata prima di poter accedere allo stato di meditazione."
+        learn_more: "Per Saperne di Più"
       skip:
         text: "Meditated with us before?"
-        action: "Improve your meditation!"
+        action: "Migliora le tue meditazioni!"
     music:
-      title: "Music"
-      description: "Music can be both relaxing and gently stimulating, bringing us into balance and allowing our minds to go thoughtless, Explore our curated collection of specially composed tracks, created to enable a deeper state of meditation."
-      read_more: "Choose from our collection"
-    read_more: "Learn more"
-    show_more: "Show More Techniques"
+      title: "Musica"
+      description: "La Musica può essere rilassante o stimolante, e ci può portare verso uno stato di equilibrio interiore e permetterci di divenire senza pensieri. Esplora la nostra collezione di brani composti specificatamente per la meditazione, studiati per permetterci di raggiungere uno stato di meditazione più profondo."
+      read_more: "Scegli dalla nostra collezione"
+    read_more: "Per Saperne di Più"
+    show_more: "Mostra più tecniche"
 
   content:
-    credit: "Credit"
-    show_more: "Show More"
+    credit: "Crediti"
+    show_more: "Mostra altri"
 
   subtle_system:
     title:
-      desktop: "Hover to learn more"
-      mobile: "Tap to learn more"
+      desktop: "Passa il cursore sopra per scoprire altro"
+      mobile: "Tocca per scoprire altro"
     chakras: "Chakras"
-    channels: "Channels"
-    read_more: "Learn More"
+    channels: "Canali"
+    read_more: "Per Saperne di Più"
 
   classes:
-    prompt: "Enter your city or post code"
+    prompt: "Inserisci la tua città o CAP"
 
   errors:
     title: "Oops..."
-    alternatives_title: "Try one of these instead:"
-    '404': "The page you were looking for doesn't exist."
-    '422': "The change you wanted was rejected."
-    '500': "We're sorry, but something went wrong."
+    alternatives_title: "Prova uno di questi invece:"
+    '404': "La pagina che stavi cercando non esiste."
+    '422': "Il cambiamento che stavi cercando di fare non esiste."
+    '500': "Ci dispiace, qualcosa è andato storto."
 
   javascript:
     popup:
-      close: "Close (Esc)"
-      loading: "Loading..."
-      prev: "Previous (Left arrow key)"
-      next: "Next (Right arrow key)"
-      counter: "%curr% of %total%"
-      image_error: "<a href=\"%url%\">The image</a> could not be loaded."
-      ajax_error: "<a href=\"%url%\">The content</a> could not be loaded."
+      close: "Chiudi (Esc)"
+      loading: "Caricamento …"
+      prev: "Precedente (Freccia SX)"
+      next: "Successivo (Freccia DX)"
+      counter: "%curr% di %total%"
+      image_error: "<a href=\"%url%\">L’immagine </a> non si carica."
+      ajax_error: "<a href=\"%url%\">Il contenuto </a> non si carica."

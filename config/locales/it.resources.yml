@@ -6,101 +6,103 @@ it:
   activerecord:
     models:
       article:
-        one: "Article"
-        other: "Articles"
+        one: "Articolo"
+        other: "Articoli"
       static_page:
-        one: "Static Page"
-        other: "Static Pages"
+        one: "Pagina Statica"
+        other: "Pagine Statiche"
       subtle_system_node:
-        one: "Subtle System Node"
-        other: "Subtle System Nodes"
+        one: "Nodo Sistema Sottile"
+        other: "Nodi Sistema Sottile"
       category:
-        one: "Category"
-        other: "Categories"
+        one: "Categoria"
+        other: "Categorie"
       meditation:
-        one: "Meditation"
-        other: "Meditations"
+        one: "Meditazione"
+        other: "Meditazioni"
       treatment:
-        one: "Technique"
-        other: "Techniques"
+        one: "Tecnica"
+        other: "Tecniche"
       track:
-        one: "Track"
-        other: "Tracks"
+        one: "Traccia"
+        other: "Traccie"
       artist:
-        one: "Artist"
-        other: "Artists"
+        one: "Artista"
+        other: "Artisti"
       author:
-        one: "Author Profile"
-        other: "Author Profiles"
+        one: "Profilo Autore"
+        other: "Profili Autori"
       user:
-        one: "Admin"
-        other: "Admins"
+        one: "Amministratore"
+        other: "Amministratori"
       instrument_filter:
-        one: "Instrument"
-        other: "Instruments"
+        one: "Strumento"
+        other: "Strumenti"
       mood_filter:
-        one: "Mood"
-        other: "Moods"
+        one: "Umore"
+        other: "Umori"
       duration_filter:
-        one: "Duration"
-        other: "Durations"
+        one: "Durata"
+        other: "Durate"
       goal_filter:
-        one: "Goal"
-        other: "Goals"
+        one: "Obiettivo"
+        other: "Obiettivi"
       media_file:
         one: "Media File"
         other: "Media Files"
 
     attributes:
       generic:
-        published: "Published"
-        name: "Name"
+        published: "Pubblicato"
+        name: "Nome"
         slug: "URL"
 
       article:
         published: :activerecord.attributes.generic.published # Do not translate
-        name: "Title"
+        name: "Titolo"
         slug: :activerecord.attributes.generic.slug # Do not translate
         category: :activerecord.models.category.one # Do not translate
-        priority: "Visibility"
+        priority: "Visibilità"
         priorities:
-          low: "Low Visibility"
-          normal: "Normal Visibility"
-          high: "High Visibility"
-        excerpt: "Excerpt"
-        thumbnail: "Thumbnail"
-        vimeo_id: "Featured Video (Vimeo ID)"
-        date: "Date"
-        content: "Content"
+          low: "Visibilità Bassa"
+          normal: "Visibilità Normale"
+          high: "Visibilità Alta"
+        excerpt: "Citazione"
+        thumbnail: "Miniatura"
+        thumbnail_id: "Miniatura (png)"
+        vimeo_id: "Video principale (Vimeo ID)"
+        date: "Data"
+        content: "Contenuto"
         metatags: "Metadata"
         author: :activerecord.models.author.one # Do not translate
-        owner: "Allow this writer to modify this article" # TODO: Translate
+        owner: "Permetti a quest'autore di modificare questo articolo" # TODO: Translate
 
       static_page:
-        name: "Title"
+        name: "Titolo"
         slug: :activerecord.attributes.generic.slug # Do not translate
-        role: "Role"
+        role: "Ruolo"
         roles:
-          home: "Home Page"
-          articles: "Articles Index Page"
-          meditations: "Meditations Index Page"
-          treatments: "Techniques Index Page"
-          tracks: "Music Page"
-          contact: "Contact Page"
-          shri_mataji: "About Shri Mataji"
-          subtle_system: "About Subtle System"
-          sahaja_yoga: "About Sahaja Yoga"
-          about: "About Page"
-          classes: "Classes Page"
-          self_realization: "Self-Realization"
+          home: "Pagina Principale"
+          articles: "Pagina Indice Articoli"
+          meditations: "Pagina Indice Meditazioni"
+          treatments: "Pagina Indica Tecniche"
+          tracks: "Pagina Musica"
+          contact: "Pagina Contatti"
+          shri_mataji: "Riguardo Shri Mataji"
+          subtle_system: "Riguardo il Sistema Sottile"
+          sahaja_yoga: "Riguardo Sahaja Yoga"
+          about: "Pagina Ulteriori Informazioni"
+          classes: "Pagina Corsi"
+          self_realization: "Realizzazione del Sé"
           privacy: "Privacy Policy"
-        content: "Content"
+        content: "Contenuto"
         metatags: "Metadata"
 
       subtle_system_node:
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
-        excerpt: "Excerpt"
+        excerpt: "Citazione"
+        role: "Ruolo"
         roles:
           chakra_1: "Mooladhara Chakra"
           chakra_2: "Swadhisthan Chakra"
@@ -110,11 +112,11 @@ it:
           chakra_5: "Vishuddhi Chakra"
           chakra_6: "Agnya Chakra"
           chakra_7: "Sahasrara Chakra"
-          channel_left: "Ida (Left) Channel"
-          channel_right: "Pingala (Right) Channel"
-          channel_center: "Sushumna (Center) Channel"
+          channel_left: "Canale Sinistro (Ida)"
+          channel_right: "Canale Destro (Pingala)"
+          channel_center: "Canale Centrale (Sushumna)"
           kundalini: "Kundalini"
-        content: "Content"
+        content: "Contenuto"
         metatags: "Metadata"
 
       category:
@@ -122,96 +124,98 @@ it:
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
         articles:
-          one: "1 Article"
-          other: "%{count} Articles'"
+          one: "1 Articolo"
+          other: "%{count} Articoli’"
 
       treatment:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
-        excerpt: "Excerpt"
-        content: "Content"
-        thumbnail: "Thumbnail (png)"
-        horizontal_vimeo_id: "Horizontal Video (Vimeo ID)"
-        vertical_vimeo_id: "Vertical Video (Vimeo ID)"
+        excerpt: "Citazione"
+        content: "Contenuto"
+        thumbnail: "Miniatura"
+        thumbnail_id: "Miniatura (png)"
+        horizontal_vimeo_id: "Video Orizzontale (Vimeo ID)"
+        vertical_vimeo_id: "Video Verticale (Vimeo ID)"
         metatags: "Metadata"
 
       instrument_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
-        icon: "Icon"
+        icon: "Icona"
         tracks:
-          one: "1 Track"
-          other: "%{count} Tracks'"
+          one: "1 Traccia"
+          other: "%{count} Tracce’"
 
       mood_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         tracks:
-          one: "1 Track"
-          other: "%{count} Tracks'"
+          one: "1 Traccia"
+          other: "%{count} Tracce’"
 
       duration_filter:
         published: :activerecord.attributes.article.published # Do not translate
         minutes: "Minutes"
         meditations:
-          one: "1 Meditation"
-          other: "%{count} Meditations'"
+          one: "1 Meditazione"
+          other: "%{count} Meditazioni’"
 
       goal_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         meditations:
-          one: "1 Meditation"
-          other: "%{count} Meditations'"
+          one: "1 Meditazione"
+          other: "%{count} Meditazioni’"
 
       track:
         published: :activerecord.attributes.article.published # Do not translate
-        title: "Title"
-        artist: "Artist"
+        title: "Titolo"
+        artist: "Artista"
         audio: "File (mp3)"
-        instrument_filters: ":activerecord.models.instrument_filter.other" # Do not translate
-        mood_filters: ":activerecord.models.mood_filter.other" # Do not translate
+        instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
+        mood_filters: :activerecord.models.mood_filter.other # Do not translate
 
       meditation:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
-        horizontal_vimeo_id: "Horizontal Video (Vimeo ID)"
-        vertical_vimeo_id: "Vertical Video (Vimeo ID)"
-        duration_filter: ":activerecord.models.duration_filter.one" # Do not translate
-        goal_filters: ":activerecord.models.goal_filter.other" # Do not translate
-        excerpt: "Excerpt"
-        description: "Text on Page"
+        image: "Immagine"
+        horizontal_vimeo_id: "Video orizzontale (Vimeo ID)"
+        vertical_vimeo_id: "Video verticale (Vimeo ID)"
+        duration_filter: :activerecord.models.duration_filter.one # Do not translate
+        goal_filters: :activerecord.models.goal_filter.other # Do not translate
+        excerpt: "Citazione"
+        description: "Testo sulla Pagina"
         metatags: "Metadata"
 
       artist:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
-        image: "Album Art"
+        image: "Copertina dell’Album"
         url: "Website"
         tracks:
-          one: "1 Track"
-          other: "%{count} Tracks'"
+          one: "1 Traccia"
+          other: "%{count} Tracce’"
 
       author:
         name: :activerecord.attributes.generic.name # Do not translate
-        country_code: "Country"
-        title: "Title"
+        country_code: "Paese"
+        title: "Titolo"
         image: "Avatar"
-        description: "Biography"
-        years_meditating: "Years of Meditation Experience"
-        user: "Associated Admin Account"
+        description: "Biografia"
+        years_meditating: "Anni di Esperienza di Meditazione"
+        user: "Account Amministratore"
 
       user:
-        email: "Email Address"
-        invitation_accepted_at: "Invitation accepted on"
+        email: "Indirizzo Email"
+        invitation_accepted_at: "Invito accettato il"
         invited_by: :activerecord.models.invited_by # Do not translate
-        languages: "Languages"
-        role: "Role"
+        languages: "Lingue"
+        role: "Ruolo"
         roles:
-          translator: "Translator"
-          writer: "Writer"
-          editor: "Editor"
-          regional_admin: "Regional Admin"
-          super_admin: "Super Admin"
+          translator: "Traduttore"
+          writer: "Scrittore"
+          editor: "Editore"
+          regional_admin: "Amministratore Regionale"
+          super_admin: "Super Amministratore"

@@ -5,47 +5,48 @@
 main
   h1.banner.banner--left = @static_page.name
 
-  .music
-    .music__triangle
-      .triangle.triangle--right.triangle--large
+  - if @tracks.present?
+    .music
+      .music__triangle
+        .triangle.triangle--right.triangle--large
 
-    p.music__description = translate 'tracks.text'
+      p.music__description = translate 'tracks.text'
 
-    //h3.music__title = translate 'tracks.choose_mood'
-    //.music__filter__group.button_group id="music-player-mood-filters"
-      - @mood_filters.each do |mood_filter|
-        a.button.button--box.button--small data-filter=mood_filter.id
-          img.button__icon src=mood_filter.icon_url
-          span.button__text = mood_filter.name
+      //h3.music__title = translate 'tracks.choose_mood'
+      //.music__filter__group.button_group id="music-player-mood-filters"
+        - @mood_filters.each do |mood_filter|
+          a.button.button--box.button--small data-filter=mood_filter.id
+            img.button__icon src=mood_filter.icon_url
+            span.button__text = mood_filter.name
 
-    h3.music__title = translate 'tracks.choose_instruments'
-    .music__filter__group.button_group id="music-player-instrument-filters"
-      - @instrument_filters.each do |instrument_filter|
-        a.button.button--icon data-filter=instrument_filter.id
-          span.button__icon
-            .js-inline-svg data-url="#{instrument_filter.icon_url}" data-namespace="#{instrument_filter.name.parameterize.downcase}"
-          span.button__text = instrument_filter.name
+      h3.music__title = translate 'tracks.choose_instruments'
+      .music__filter__group.button_group id="music-player-instrument-filters"
+        - @instrument_filters.each do |instrument_filter|
+          a.button.button--icon data-filter=instrument_filter.id
+            span.button__icon
+              .js-inline-svg data-url="#{instrument_filter.icon_url}" data-namespace="#{instrument_filter.name.parameterize.downcase}"
+            span.button__text = instrument_filter.name
 
-    .player id='music-player' data-playlist=playlist.to_json
-      .player__selection
-        .player__selection__title = first_track.name
-        a.player__selection__artist href=first_track.artist.url target='_blank' = first_track.artist.name
+      .player id='music-player' data-playlist=playlist.to_json
+        .player__selection
+          .player__selection__title = first_track.name
+          a.player__selection__artist href=first_track.artist.url target='_blank' = first_track.artist.name
 
-      audio.player__controls controls=true
-        data-controls="#{render('shared/audio_controls').html_safe}"
-        source src=first_track.audio_url type='audio/mp3'
+        audio.player__controls controls=true
+          data-controls="#{render('shared/audio_controls').html_safe}"
+          source src=first_track.audio_url type='audio/mp3'
 
-      .player__cover
-        .player__cover__image
-          .player__sidetext.sidetext.sidetext--overlay.sidetext--left
-          = static_image_tag 'music/album', '(max-width: 1024px) 42vw, 500px', class: 'player__cover__img'
+        .player__cover
+          .player__cover__image
+            .player__sidetext.sidetext.sidetext--overlay.sidetext--left
+            = static_image_tag 'music/album', '(max-width: 1024px) 42vw, 500px', class: 'player__cover__img'
 
-      .player__playlist
-        .player__playlist__title
-          = t('tracks.playlist')
-          span.player__icons
-        .player__sidetext
-        .player__playlist__list id='music-player-playlist'
-          = render @tracks, cached: true
+        .player__playlist
+          .player__playlist__title
+            = t('tracks.playlist')
+            span.player__icons
+          .player__sidetext
+          .player__playlist__list id='music-player-playlist'
+            = render @tracks, cached: true
 
   .content = render_content @static_page

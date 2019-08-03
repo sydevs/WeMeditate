@@ -29,14 +29,15 @@ main id=dom_id(@static_page)
           h3.excerpt__title = translate 'treatments.music.title'
           p.excerpt__text = translate 'treatments.music.description'
 
-          .player.player--mini id='music-player' data-playlist=playlist_data(@tracks).to_json
-            .player__selection
-              .player__selection__title = first_track.name
-              a.player__selection__artist href=first_track.artist.url target='_blank' = first_track.artist.name
+          - if @tracks.present?
+            .player.player--mini id='music-player' data-playlist=playlist_data(@tracks).to_json
+              .player__selection
+                .player__selection__title = first_track.name
+                a.player__selection__artist href=first_track.artist.url target='_blank' = first_track.artist.name
 
-            audio.player__controls controls=true
-              data-controls="#{render('shared/audio_controls').html_safe}"
-              source src=first_track.audio_url type='audio/mp3'
+              audio.player__controls controls=true
+                data-controls="#{render('shared/audio_controls').html_safe}"
+                source src=first_track.audio_url type='audio/mp3'
 
           a.excerpt__button.button.button--box href=tracks_path
             = translate 'treatments.music.read_more'

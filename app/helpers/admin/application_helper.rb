@@ -97,8 +97,7 @@ module Admin
             concat content_tag :li, "#{block['type'].titleize}: #{block['data']['title']}"
 
           when 'video', 'structured' # Items list
-            field = block['type'] == 'link' ? 'name' : 'title'
-            items = block['data']['items']&.map { |item| item[field] }&.join(', ')
+            items = block['data']['items']&.map { |item| item['title'] }&.join(', ')
 
             case block['type']
             when 'structured'
@@ -126,10 +125,9 @@ module Admin
 
             concat content_tag :li, tag.i("#{type}: #{item_count}")
 
-          when 'link' # Short text link
+          when 'action' # Short text link
             type = translate(block['type'], scope: %i[admin content blocks])
-            #concat content_tag :li, tag.i("#{type}: #{block['data']['action']} [#{block['data']['url']})"]
-            concat content_tag :li, tag.em(type) + tag.span(": [#{block['data']['action']}] → ") + tag.small(block['data']['url'])
+            concat content_tag :li, tag.em(type) + tag.span(": [#{block['data']['text']}] → ") + tag.small(block['data']['url'])
 
           else
             concat block.inspect

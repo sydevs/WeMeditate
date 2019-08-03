@@ -102,6 +102,7 @@ en:
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
         excerpt: "Excerpt"
+        role: "Role"
         roles:
           chakra_1: "Mooladhara Chakra"
           chakra_2: "Swadhisthan Chakra"
@@ -171,8 +172,8 @@ en:
         title: "Title"
         artist: "Artist"
         audio: "File (mp3)"
-        instrument_filters: ":activerecord.models.instrument_filter.other" # Do not translate
-        mood_filters: ":activerecord.models.mood_filter.other" # Do not translate
+        instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
+        mood_filters: :activerecord.models.mood_filter.other # Do not translate
 
       meditation:
         published: :activerecord.attributes.article.published # Do not translate
@@ -180,8 +181,8 @@ en:
         slug: :activerecord.attributes.generic.slug # Do not translate
         horizontal_vimeo_id: "Horizontal Video (Vimeo ID)"
         vertical_vimeo_id: "Vertical Video (Vimeo ID)"
-        duration_filter: ":activerecord.models.duration_filter.one" # Do not translate
-        goal_filters: ":activerecord.models.goal_filter.other" # Do not translate
+        duration_filter: :activerecord.models.duration_filter.one # Do not translate
+        goal_filters: :activerecord.models.goal_filter.other # Do not translate
         excerpt: "Excerpt"
         description: "Text on Page"
         metatags: "Metadata"
