@@ -42,7 +42,7 @@ module Admin
             block.call({
               model: model,
               name: record_name(record),
-              url: polymorphic_admin_path([:edit, :admin, record]),
+              url: polymorphic_admin_path([:admin, record]),
               message: translate('admin.tags.no_translation', language: language_name),
               urgency: urgency,
             })
@@ -66,7 +66,7 @@ module Admin
 
       def needs_review model, urgency, &block
         if policy(model).review?
-          policy_scope(model).where.not(draft: nil).each do |record|
+          policy_scope(model).includes(:translations).where.not("#{model.table_name.singularize}_translations" => { draft: nil }).each do |record|
             block.call({
               model: model,
               name: record_name(record),

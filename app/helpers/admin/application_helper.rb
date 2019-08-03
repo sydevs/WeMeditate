@@ -126,6 +126,11 @@ module Admin
 
             concat content_tag :li, tag.i("#{type}: #{item_count}")
 
+          when 'link' # Short text link
+            type = translate(block['type'], scope: %i[admin content blocks])
+            #concat content_tag :li, tag.i("#{type}: #{block['data']['action']} [#{block['data']['url']})"]
+            concat content_tag :li, tag.em(type) + tag.span(": [#{block['data']['action']}] → ") + tag.small(block['data']['url'])
+
           else
             concat block.inspect
           end

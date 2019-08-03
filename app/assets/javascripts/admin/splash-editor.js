@@ -20,12 +20,10 @@ const SplashEditor = {
   },
 
   _onStartUpload() {
-    console.log('starting', SplashEditor.backgroundImage)
     SplashEditor.backgroundImage.innerHTML = '<div class="ui fluid placeholder"></div>'
   },
 
   _onCompleteUpload(data) {
-    console.log('completing', SplashEditor.backgroundImage, data.preview)
     SplashEditor.backgroundImage.dataset.attributes = JSON.stringify(data)
     SplashEditor.backgroundImage.innerHTML = ''
     SplashEditor.backgroundImage.style['background-image'] = `url(${data.preview})`
@@ -57,12 +55,9 @@ const SplashEditor = {
       }
     }
 
-    if (this.style !== 'treatments') {
-      const image_data = JSON.parse(this.backgroundImage.dataset.attributes)
-      result.data.media_files = [image_data.id]
-      result.data.image = image_data
-    }
-
+    const image_data = JSON.parse(this.backgroundImage.dataset.attributes)
+    result.data.media_files = [image_data.id]
+    result.data.image = image_data
     return result
   },
 

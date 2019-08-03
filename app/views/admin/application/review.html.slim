@@ -2,7 +2,7 @@
 - allow = policy(@record)
 - content_for :title, translate('admin.action.target.review', record: @record.model_name.human)
 
-- details_draft = @record.local_draft.except('content', 'contributors')
+- details_draft = @record.local_draft&.except('content', 'contributors')
 - contributors = User.where(id: @record.local_draft['contributors']).map(&:name)
 
 - if contributors.present?
@@ -12,7 +12,7 @@
   h3 = translate 'admin.review.attribute_changes', page: @model.model_name.human
 
   - if details_draft.empty?
-    = translate 'admin.review.no_changes'
+    p: em = translate 'admin.review.no_changes'
   - else
     table.ui.compact.celled.definition.review.table
       thead
@@ -52,6 +52,10 @@
                   .ui.image
                     img src=MediaFile.find(value).file.url(:tiny)
                     .ui.floating.label = "##{value}"
+              - when 'author_id'
+                td.collapsing = human_attribute_name(@model, key.delete_suffix('_id'))
+                td = Author.find(old_value).name
+                td = Author.find(value).name
               - when 'category_id'
                 td.collapsing = human_attribute_name(@model, key.delete_suffix('_id'))
                 td = Category.find(old_value).name
@@ -78,17 +82,16 @@
 
   h3 = translate 'admin.review.content_changes', page: @model.model_name.human
   / TODO: Translate
-  .message
-    p The colour of each row indicated the status of that block of content.
-    ul.ui.small.list
-      li <b>Grey</b> means no change
-      li <b>Yellow</b> means the block has been modified
-      li <b>Red</b> means it has been remove
-      li <b>Green</b> means it has been newly created
-    p Text which is <ins>highlighted in green</ins> has been added, text <del>highlighted in red</del> has been remove. All other text has remained unchanged.
+  p The colour of each row indicated the status of that block of content.
+  ul.ui.small.list
+    li <b>Grey</b> means no change
+    li <b>Yellow</b> means the block has been modified
+    li <b>Red</b> means it has been remove
+    li <b>Green</b> means it has been newly created
+  p Text which is <ins>highlighted in green</ins> has been added, text <del>highlighted in red</del> has been remove. All other text has remained unchanged.
 
   - if !@record.parsed_draft_content.present?
-    = translate 'admin.review.no_changes'
+    p: em = translate 'admin.review.no_changes'
   - else
     table.ui.compact.celled.definition.review.table
       thead

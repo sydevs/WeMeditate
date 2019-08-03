@@ -229,7 +229,7 @@ article.update!(content: content([
       text: sentences(5),
     },
   }, {
-    type: :link,
+    type: :action,
     data: {
       action: 'Try Meditation',
       url: '/page/the-first-experience',
@@ -273,7 +273,7 @@ article.update!(content: content([
       caption: 'Founder of the meditation method "Sahaja Yoga"',
     },
   }, {
-    type: :link,
+    type: :action,
     data: {
       action: 'Meditation with Shri Mataji',
       url: '/page/the-first-experience',
@@ -405,7 +405,7 @@ article.update!(content: content([
       caption: 'University professor',
     },
   }, {
-    type: :link,
+    type: :action,
     data: {
       action: 'Button Text',
       url: '/inspiration',

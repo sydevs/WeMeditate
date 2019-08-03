@@ -26,8 +26,8 @@ class QuoteTool extends EditorTool {
       id: 'quote',
       fields: {
         text: { label: translate['content']['placeholders']['quote'], input: 'textarea', contained: true },
-        credit: { input: 'caption', contained: true },
-        caption: { input: 'caption', contained: true },
+        credit: { input: 'caption', contained: true, optional: true },
+        caption: { input: 'caption', contained: true, optional: true },
       },
       tunes: [
         {

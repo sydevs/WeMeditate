@@ -75,16 +75,16 @@ en:
       devise:
         mailer:
           invitation_instructions:
-            accept_until_format: "%B %d, %Y %I:%M %p" # Do not translate, unless you know what you are doing
+            accept_until_format: '%B %d, %Y %I:%M %p' # Do not translate, unless you know what you are doing
   date:
     formats:
       default: '%d %b %Y' # Do not translate, unless you know what you are doing
       date: :date.formats.default # Do not translate
   simple_form:
-    "yes": 'Yes'
-    "no": 'No'
+    'yes': "Yes"
+    'no': "No"
     required:
-      text: 'required'
+      text: "required"
       mark: '*' # Do not translate
     error_notification:
       default_message: "Please review the problems below:"

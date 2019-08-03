@@ -72,7 +72,7 @@ class ListTool extends EditorTool {
 
     // TODO: Extract this into a function in the super class
     this.tunes.forEach(tune => {
-      this.container.classList.toggle(this.CSS.settings[tune.name], this.isTuneActive(tune))
+      this.container.classList.toggle(this.CSS.tunes[tune.name], this.isTuneActive(tune))
     })
 
     return this.container
@@ -82,6 +82,7 @@ class ListTool extends EditorTool {
     if (event.key == 'Enter' || event.keyCode == 13) { // ENTER
       const item = this.currentItem
       const items = item.parentNode.children
+      console.log('on Enter', items.length, item.nextSibling, item.textContent.trim().length)
       if (items.length >= 2 && item.nextSibling == null && !item.textContent.trim().length) {
         item.remove()
         this.api.blocks.insert()
@@ -152,6 +153,6 @@ class ListTool extends EditorTool {
 
   // Allow native enter behaviour
   static get enableLineBreaks() {
-    return true;
+    return true
   }
 }

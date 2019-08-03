@@ -34,5 +34,5 @@
         - if item[:caption].present?
           figcaption.content__image__caption = item[:caption]
 
-  - unless isSingle
+  - if isGallery
     .content__image__triangle = render_decoration :triangle, block

@@ -71,3 +71,6 @@ p: pre = @record.pretty_inspect
 p: code
   div Draft
   pre = @record.local_draft.pretty_inspect
+p: code
+  div Content
+  pre = @record.parsed_content.pretty_inspect

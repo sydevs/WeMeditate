@@ -6,56 +6,56 @@ it:
   admin:
     # ===== ACTIONS ===== #
     action:
-      view_site: Vedi Sito
-      view_admin: Vai alla pagina amministrazione
-      report_issue: Segnala un problema
-      search: Cerca...
-      sign_in: Log In
-      sign_out: Log Out
+      view_site: "Vedi Sito"
+      view_admin: "Vai alla pagina amministrazione"
+      report_issue: "Segnala un problema"
+      search: "Cerca..."
+      sign_in: "Log In"
+      sign_out: "Log Out"
 
       draft:
-        reset: Cambia valore
-        redo: Usa valore
-        reset_tooltip: Cambia in "%{value}"
-        redo_tooltip: Fissa "%{value}"
+        reset: "Cambia valore"
+        redo: "Usa valore"
+        reset_tooltip: "Cambia in \"%{value}\""
+        redo_tooltip: "Fissa \"%{value}\""
 
       simple:
-        show: Vedi
-        create: Crea nuovo
-        edit: Cambia
-        write: Scrivi
-        update: Salva
-        destroy: Cancella
-        preview: Anteprima
-        review: Rivedi
-        preview: Anteprima
-        save_draft: Salva bozza
-        approve: Approva
-        invite: Invita
-        reinvite: Resend Invitation # TODO: Translate this
-        cancel: Cancella
-        back: Indietro
+        show: "Vedi"
+        create: "Crea nuovo"
+        edit: "Cambia"
+        write: "Scrivi"
+        update: "Salva"
+        destroy: "Cancella"
+        preview: "Anteprima"
+        review: "Rivedi"
+        preview: "Anteprima"
+        save_draft: "Salva bozza"
+        approve: "Approva"
+        invite: "Invita"
+        reinvite: "Resend Invitation" # TODO: Translate this
+        cancel: "Cancella"
+        back: "Indietro"
 
       target:
-        show: Vedi %{record}
-        upload: Carica %{record}
-        edit: Modifica %{record}
-        edit_details: Modifica dettagli di %{record}
-        review: Rivedi %{record}
-        write: Scrivi il contenuto di %{record}
-        reset: Azzera %{record}
-        publish: Pubblica %{record}
-        unpublish: Ritira %{record}
-        add: Aggiungi %{record}
-        create: Nuovo %{record}
-        remove: Rimuovi %{record}
-        destroy: Cancella %{record}
-        back: Ritorna a %{records}
-        reorder: Cambia l'ordine di %{record}
+        show: "Vedi %{record}"
+        upload: "Carica %{record}"
+        edit: "Modifica %{record}"
+        edit_details: "Modifica dettagli di %{record}"
+        review: "Rivedi %{record}"
+        write: "Scrivi il contenuto di %{record}"
+        reset: "Azzera %{record}"
+        publish: "Pubblica %{record}"
+        unpublish: "Ritira %{record}"
+        add: "Aggiungi %{record}"
+        create: "Nuovo %{record}"
+        remove: "Rimuovi %{record}"
+        destroy: "Cancella %{record}"
+        back: "Ritorna a %{records}"
+        reorder: "Cambia l'ordine di %{record}"
 
       descriptive:
-        show: Mostra il sito
-        preview: Mostra anteprima del sito
+        show: "Mostra il sito"
+        preview: "Mostra anteprima del sito"
 
     # ===== MESSAGES ===== #
     status:
@@ -64,220 +64,223 @@ it:
       draft: "%{page} � un'anteprima non pubblicata."
 
     details:
-      translated_languages: Lingue tradotte
-      priority: Ordina sulla pagina Ispirazione
-      owned_by: Di %{owner}
-      first_published_at: Pubblicato per la prima volta il %{datetime}
-      vertical_video: Video verticale
-      horizontal_video: Video orizzontale
-      featured_video: Video principale
-      featured_date: Data di riferimento
-      role: Ruolo nel sito
+      translated_languages: "Lingue tradotte"
+      priority: "Ordina sulla pagina Ispirazione"
+      owned_by: "Di %{owner}"
+      first_published_at: "Pubblicato per la prima volta il %{datetime}"
+      vertical_video: "Video verticale"
+      horizontal_video: "Video orizzontale"
+      featured_video: "Video principale"
+      featured_date: "Data di riferimento"
+      role: "Ruolo nel sito"
       
     tags:
-      published: Pubblicato
-      unpublished: Non ancora pubblicato
-      unpublished_changes: Ci sono cambiamenti non pubblicati
-      unpublished_draft: Anteprima non pubblicata
-      no_translation: Traduzione %{language} mancante
-      pending_translation: Traduzione %{language} presente, da approvare.
-      pending_invitation: Non ha ancora accettato l'invito.
-      updated_ago: Modificato %{time_ago} fa.
-      published_ago: Pubblicato %{time_ago} fa.
+      published: "Pubblicato"
+      unpublished: "Non ancora pubblicato"
+      unpublished_changes: "Ci sono cambiamenti non pubblicati"
+      unpublished_draft: "Anteprima non pubblicata"
+      no_translation: "Traduzione %{language} mancante"
+      pending_translation: "Traduzione %{language} presente, da approvare."
+      pending_invitation: "Non ha ancora accettato l'invito."
+      updated_ago: "Modificato %{time_ago} fa."
+      published_ago: "Pubblicato %{time_ago} fa."
       urgency:
-        critical: Problema critico
-        important: Problema importante
-        normal: Priorit� normale
-        pending: In attesa
+        critical: "Problema critico"
+        important: "Problema importante"
+        normal: "Priorit� normale"
+        pending: "In attesa"
       views:
-        one: 1 visita
-        other: '%{count} visite'
+        one: "1 visita"
+        other: "%{count} visite"
 
     messages:
-      loading: Caricamento
-      errors: Errori
-      make_public: Rendi %{page} visibile al pubblico
-      maintenance_mode: Sito in contruzione, torna a trovarci presto.
-      confirm_destroy: Sei sicuro di voler cambiare questo? Questo non puc essere annullato!
-      drop_files_here: Trascina i documenti qui.
-      unpublished_changes_notice: '%{page} ha delle modifiche non pubblicate. Questi cambiamenti non saranno visibili fino a quando un amministratore non li avr� rivisti.'
-      pending_invitation_notice: '%{person} � stato invitato/a ad essere editore di WeMeditate, ma non ha ancora risposto.'
-      draft_notice: Sati vedendo un'anteprima di %{page}. Questa versione non sar� visibile fino a quando un amministratore non l'avr� revista.
-      draft_contributed_by: Quest'anteprima include dei cambiamenti effettuati da %{people}.
-      text_too_short: Il testo � troppo corto, deve essere di %{count} lettere.
-      invalid_vimeo_id: must be a valid Vimeo ID # Translate this
-      article_owner_hint: Questo determina quale autore � capace di effettuare cambiamenti dopo la pubblicazione. Gli amministratori possono sempre effettuare cambiamenti.
+      loading: "Caricamento"
+      errors: "Errori"
+      make_public: "Rendi %{page} visibile al pubblico"
+      maintenance_mode: "Sito in contruzione, torna a trovarci presto."
+      confirm_destroy: "Sei sicuro di voler cambiare questo? Questo non puc essere annullato!"
+      drop_files_here: "Trascina i documenti qui."
+      unpublished_changes_notice: "%{page} ha delle modifiche non pubblicate. Questi cambiamenti non saranno visibili fino a quando un amministratore non li avr� rivisti."
+      pending_invitation_notice: "%{person} � stato invitato/a ad essere editore di WeMeditate, ma non ha ancora risposto."
+      draft_notice: "Sati vedendo un'anteprima di %{page}. Questa versione non sar� visibile fino a quando un amministratore non l'avr� revista."
+      draft_contributed_by: "Quest'anteprima include dei cambiamenti effettuati da %{people}."
+      text_too_short: "Il testo � troppo corto, deve essere di %{count} lettere."
+      invalid_vimeo_id: "must be a valid Vimeo ID" # Translate this
+      article_author_hint: "The profile which will be shown under the article on the website." # Translate this
+      article_owner_hint: "Administrators and Editors can always edit all articles. This field gives a writer special permission to modify an article after it is published. Usually this is the person who wrote the article in the first place." # Translate this
+      new_author_notice: "You have not set up your author profile yet, fill out the fields below and press save." # Translate this
 
     result:
-      created: Creato con successo.
-      updated: Registrato con successo.
-      deleted: Rimosso con successo.
-      saved_but_needs_review: Salvato con successo, i cambiamenti saranno visibili quando saranno rivisti.
-      cannot_delete_attached_record: Non � possibile cancellare un %{category} con  %{pages}. Trasferisci %{pages} e prova ancora.
-      published: Pubblicato con successo.
-      discarded_drafts: Bozze rimosse con successo.
+      created: "Creato con successo."
+      updated: "Registrato con successo."
+      deleted: "Rimosso con successo."
+      saved_but_needs_review: "Salvato con successo, i cambiamenti saranno visibili quando saranno rivisti."
+      cannot_delete_attached_record: "Non � possibile cancellare un %{category} con  %{pages}. Trasferisci %{pages} e prova ancora."
+      published: "Pubblicato con successo."
+      discarded_drafts: "Bozze rimosse con successo."
     
     # ===== CONTENT ===== #
     content:
-      outline_title: Struttura della %{page}
+      outline_title: "Struttura della %{page}"
       blocks:
-        header: Titolo
-        paragraph: Paragrafo
-        image: Immagine
-        link: Button # TODO: Translate
-        catalog: WeMeditate Content # TODO: Translate
-        list: Lista
-        quote: Citazione
-        structured: Structured Text
-        textbox: Textbox
-        video: Video
+        header: "Titolo"
+        paragraph: "Paragrafo"
+        image: "Immagine"
+        action: "Button" # TODO: Translate
+        catalog: "WeMeditate Content" # TODO: Translate
+        list: "Lista"
+        quote: "Citazione"
+        structured: "Structured Text"
+        textbox: "Text With Image" # TODO: Translate
+        video: "Video"
       settings: # TODO: Translate
-        tunes: Options
-        decorations: Decorations
+        tunes: "Options"
+        decorations: "Decorations"
       tunes:
-        centered: Centrato
-        stretch: A tutta larghezza
-        asGallery: Galleria
-        asWisdom: Stile antica saggezza
-        asVideo: Video
-        invert: Colori invertiti
+        centered: "Centrato"
+        stretch: "A tutta larghezza"
+        asGallery: "Galleria"
+        asWisdom: "Stile antica saggezza"
+        asVideo: "Video"
+        invert: "Colori invertiti"
         style:
-          unordered: Non in ordine
-          ordered: In ordine
-          leaf: Icona foglia
+          unordered: "Non in ordine"
+          ordered: "In ordine"
+          leaf: "Icona foglia"
         alignment:
-          left: Sbandierato a sinistra
-          center: Centrato
-          right: Sbandierato a destra
+          left: "Sbandierato a sinistra"
+          center: "Centrato"
+          right: "Sbandierato a destra"
         callout:
-          none: Center Aligned # TODO: Translate
-          left: Inserto a sinistra
-          right: Inserto a destra
+          none: "Center Aligned" # TODO: Translate
+          left: "Inserto a sinistra"
+          right: "Inserto a destra"
         type: # TODO: Translate
-          articles: Articles
-          treatments: Techniques
-          meditations: Meditations
+          articles: "Articles"
+          treatments: "Techniques"
+          meditations: "Meditations"
         format:
-          button: Bottone
-          grid: Griglia
-          accordion: Fisarmonica
-          columns: Colonne
-      decorations: # TODO: Translate
-        triangle: Triangle Decoration
-        circle: Circle Decoration
-        gradient: Gradient Decoration
-        leaves: Leaf Decorations
-        sidetext: Vertical Text
+          button: "Bottone"
+          grid: "Griglia"
+          accordion: "Fisarmonica"
+          columns: "Colonne"
+      decorations: # TODO: "Translate"
+        triangle: "Triangle Decoration"
+        circle: "Circle Decoration"
+        gradient: "Gradient Decoration"
+        leaves: "Leaf Decorations"
+        sidetext: "Vertical Text"
         triangle_alignment:
-          left: Left Triangle
-          right: Right Triangle
+          left: "Left Triangle"
+          right: "Right Triangle"
         gradient_alignment:
-          left: Left Gradient
-          right: Right Gradient
+          left: "Left Gradient"
+          right: "Right Gradient"
         gradient_color:
-          orange: Orange Gradient
-          blue: Blue Gradient
-          gray: Gray Gradient
-        sidetext_text: Enter vertical text...
+          orange: "Orange Gradient"
+          blue: "Blue Gradient"
+          gray: "Gray Gradient"
+        sidetext_text: "Enter vertical text..."
       placeholders:
-        title: Titolo
-        text: Testo
-        items: Oggetto
-        action: Bottone testo
-        url: Inserire il link qui
-        quote: Inserire la citazione qui
-        caption: Inserire la didascalia qui
-        credit: Attribuzione diritti d'autore
+        title: "Titolo"
+        text: "Testo"
+        items: "Oggetto"
+        action: "Bottone testo"
+        url: "Inserire il link qui"
+        quote: "Inserire la citazione qui"
+        caption: "Inserire la didascalia qui"
+        credit: "Attribuzione diritti d'autore"
+        optional: "optional" # TODO: Translate this
       words:
-        one: 1 parola
-        other: '%{count} parole'
+        one: "1 parola"
+        other: "%{count} parole"
       items:
-        one: 1 oggetto
-        other: '%{count} oggetti'
+        one: "1 oggetto"
+        other: "%{count} oggetti"
 
 
     # ===== MISCELLENEOUS ===== #
     permissions:
-      title: Tavola dei permessi
-      own_languages_notice: Gli editori possono effettuare cambiamenti solo nella propria lingua.
-      create: Puó creare
-      update: Puó effettuare modifiche
-      translate: Puó modificare %{pages} non tradotti
-      publish: Puó approvare delle modifiche
-      destroy: Puó cancellare
+      title: "Tavola dei permessi"
+      own_languages_notice: "Gli editori possono effettuare cambiamenti solo nella propria lingua."
+      create: "Puó creare"
+      update: "Puó effettuare modifiche"
+      translate: "Puó modificare %{pages} non tradotti"
+      publish: "Puó approvare delle modifiche"
+      destroy: "Puó cancellare"
       special:
-        update_own: Puó modificare i propri %{pages}
-        publish_own: Puó pubblicare i propri %{pages}
-        update_own_bio: Puó modificare la propria scheda biografica
-        create_own_bio: Puó creare la propria scheda biografica
-        update_subordinate: Puó modificare %{subordinates}
-        create_subordinate: Puó creare %{subordinates}
+        update_own: "Puó modificare i propri %{pages}"
+        publish_own: "Puó pubblicare i propri %{pages}"
+        update_own_bio: "Puó modificare la propria scheda biografica"
+        create_own_bio: "Puó creare la propria scheda biografica"
+        update_subordinate: "Puó modificare %{subordinates}"
+        create_subordinate: "Puó creare %{subordinates}"
       role_description:
-        translator: Traduce dei testi esistenti, che sono gi� stati pubblicati in un'altra lingua.
-        writer: Puó scrivere e pubblicare nuovi articoli, o modificare propri articoli esistenti.
-        regional_admin: Approva le traduzioni, traduce parti essenziali del sito, e supervisiona la pubblicazione di nuovi contenuti nella propria lingua.
-        super_admin: Dirige gli elementi fondamentali del sito, e crea nuovi editori.
+        translator: "Traduce dei testi esistenti, che sono gi� stati pubblicati in un'altra lingua."
+        writer: "Puó scrivere e pubblicare nuovi articoli, o modificare propri articoli esistenti."
+        regional_admin: "Approva le traduzioni, traduce parti essenziali del sito, e supervisiona la pubblicazione di nuovi contenuti nella propria lingua."
+        super_admin: "Dirige gli elementi fondamentali del sito, e crea nuovi editori."
 
     review:
-      attribute_changes: Cambiamenti di Attributi di %{page}
-      content_changes: Cambiamenti di Contenuto di %{page}
-      no_changes: Nessun cambiamento
-      approve?: Approva?
-      field: Campo
-      old_value: Vecchio valore
-      new_value: Nuovo valore
-      block: Blocco
-      data: Data
-      reject_all: Rifiuta tutti
-      approve_all: Approva tutti
+      attribute_changes: "Cambiamenti di Attributi di %{page}"
+      content_changes: "Cambiamenti di Contenuto di %{page}"
+      no_changes: "Nessun cambiamento"
+      approve?: "Approva?"
+      field: "Campo"
+      old_value: "Vecchio valore"
+      new_value: "Nuovo valore"
+      block: "Blocco"
+      data: "Data"
+      reject_all: "Set All to Reject" # TODO: Translate
+      approve_all: "Set All to Approve" # TODO: Translate
 
     metadata:
-      key: nome
-      value: valore
-      default_metadata: Default Metadata
-      generated_jsonld: Dati strutturati
+      key: "nome"
+      value: "valore"
+      default_metadata: "Default Metadata"
+      generated_jsonld: "Dati strutturati"
 
     draft:
       items:
-        one: 1 oggetto
-        other: '%{count} oggetti'
+        one: "1 oggetto"
+        other: "%{count} oggetti"
       content:
         original:
-          one: Contenute originale con 1 blocco
-          other: Contenuto originale con %{count} blocchi
+          one: "Contenute originale con 1 blocco"
+          other: "Contenuto originale con %{count} blocchi"
         draft:
-          one: Bozza con 1 blocco
-          other: Bozza con %{count} blocchi
+          one: "Bozza con 1 blocco"
+          other: "Bozza con %{count} blocchi"
 
     dashboard:
-      title: Pagina amministrazione
-      alerts: Avvisi
-      no_issues: Non ci sono problemi, ben fatto!
+      title: "Pagina amministrazione"
+      alerts: "Avvisi"
+      no_issues: "Non ci sono problemi, ben fatto!"
 
     report_issue:
-      name: Devindra
-      email: arden.ived@gmail.com
-      subject: WeMeditate Issue Report
-      body: Per favore descrivi la problematica in inglese...
+      name: "Devindra"
+      email: "arden.ived@gmail.com"
+      subject: "WeMeditate Issue Report"
+      body: "Per favore descrivi la problematica in inglese..."
 
     misc:
-      errors: Errori
-      no_translated_title: Nessun Titolo Tradotto
-      any_administrator: Qualunque amministratore
+      errors: "Errori"
+      no_translated_title: "Nessun Titolo Tradotto"
       menu:
-        my_author: Scheda biografica dell'autore
-        pages: Pagine
-        resources: Risorse
-        people: Persone
+        my_author: "Scheda biografica dell'autore"
+        all_authors: "All Author Profiles" # TODO: Translate
+        pages: "Pagine"
+        resources: "Risorse"
+        people: "Persone"
       locale:
-        all_languages: Tutte le lingue
-        other_languages: Altre lingue
+        all_languages: "Tutte le lingue"
+        other_languages: "Altre lingue"
 
     javascript:      
-      email: Email
-      message: Messaggio
-      drag_images_to_upload: Trascina le immagini qui per caricarle
-      no_results: Nessun risultato...
-      waiting_for_upload: Aspettando per il caricamento di %{count} file(s)...
-      file: File
-      files: Files
+      email: "Email"
+      message: "Messaggio"
+      drag_images_to_upload: "Trascina le immagini qui per caricarle"
+      no_results: "Nessun risultato..."
+      waiting_for_upload: "Aspettando per il caricamento di %{count} file(s)..."
+      file: "File"
+      files: "Files"

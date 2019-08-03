@@ -1,30 +1,30 @@
 
-class LinkTool extends EditorTool {
+class ActionTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="hand point up icon"></i>',
-      title: translate['content']['blocks']['link'],
+      title: translate['content']['blocks']['action'],
     }
   }
 
   // Sanitizer data before saving
   static get sanitize() {
     return {
-      action: false,
+      text: false,
       url: false,
     }
   }
 
   constructor({data, _config, api}) {
     super({ // Data
-      action: data.action || '',
+      text: data.text || '',
       url: data.url || '',
       decorations: data.decorations || {},
     }, { // Config
-      id: 'link',
+      id: 'action',
       decorations: ['leaves'],
       fields: {
-        action: { input: 'button', contained: true },
+        text: { input: 'button', contained: true },
         url: { input: 'url', contained: true },
       },
       tunes: [],

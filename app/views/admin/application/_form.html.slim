@@ -85,7 +85,7 @@
       a.ui.basic.button href=polymorphic_admin_path([:admin, record])
         i.left.arrow.icon
         = translate 'admin.action.simple.back'
-    - else
+    - elsif policy(@model).index?
       a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(record.page) ? record.page : record.class])
         i.left.arrow.icon
         = translate 'admin.action.target.back', records: record.model_name.human(count: -1)

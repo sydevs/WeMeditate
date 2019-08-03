@@ -1,7 +1,0 @@
-
-- classes = ["content__link"]
-- classes << 'content__link--leaves' if block[:decorations] && block[:decorations][:leaves]
-
-.content__link class=classes
-  a.button.button--box href=block[:url] class="#{'scroll' if block[:url][0,1] == '#'}"
-    = block[:action]

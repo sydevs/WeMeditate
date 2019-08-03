@@ -60,7 +60,7 @@
         - if policy(Author).index?
           = link_to [:admin, Author], class: "#{'active' if controller_name == 'authors' && !is_author_bio} item"
             i.icon class=model_icon_key(Author)
-            = Author.model_name.human(count: -1)
+            = translate('admin.misc.menu.all_authors')
 
         - if policy(User).index?
           = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"
@@ -74,7 +74,7 @@
   = switch_user_select
 
 .ui.vertical.text.menu
-  = link_to root_url, class: 'item' do
+  = link_to root_url, class: 'item', target: '_blank' do
     i.browser.icon
     = translate('admin.action.view_site')
 

@@ -33,6 +33,7 @@ module MetadataHelper
   end
 
   def metatags record
+    puts record.metatags.inspect
     @metatags ||= (record.metatags || {}).reverse_merge(default_metatags(record))
   end
 

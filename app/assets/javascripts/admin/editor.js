@@ -15,7 +15,7 @@ const Editor = {
       header: HeaderTool,
       list: ListTool,
       quote: QuoteTool,
-      link: LinkTool,
+      action: ActionTool,
       image: ImageTool,
       video: VideoTool,
       form: FormTool,

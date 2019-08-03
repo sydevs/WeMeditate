@@ -4,37 +4,37 @@
 
 en:
   routes:
-    admin: admin
-    inspiration: inspiration
-    articles: articles
-    countries: countries
-    meditations: meditations
-    techniques: techniques
-    subtle_system: subtle-system
-    page: page
-    music: music
-    archive: all
+    admin: "admin"
+    inspiration: "inspiration"
+    articles: "articles"
+    countries: "countries"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
 ru:
   routes:
-    admin: admin-ru
-    inspiration: inspiration-ru
-    articles: articles-ru
-    countries: countries-ru
-    meditations: meditations-ru
-    techniques: techniques-ru
-    subtle_system: subtle-system-ru
-    page: page-ru
-    music: music-ru
-    archive: all-ru
+    admin: "admin-ru"
+    inspiration: "inspiration-ru"
+    articles: "articles-ru"
+    countries: "countries-ru"
+    meditations: "meditations-ru"
+    techniques: "techniques-ru"
+    subtle_system: "subtle-system-ru"
+    page: "page-ru"
+    music: "music-ru"
+    archive: "all-ru"
 it:
   routes:
-    admin: admin-it
-    inspiration: inspiration-it
-    articles: articles-it
-    countries: countries-it
-    meditations: meditations-it
-    techniques: techniques-it
-    subtle_system: subtle-system-it
-    page: page-it
-    music: music-it
-    archive: all-it
+    admin: "admin-it"
+    inspiration: "inspiration-it"
+    articles: "articles-it"
+    countries: "countries-it"
+    meditations: "meditations-it"
+    techniques: "techniques-it"
+    subtle_system: "subtle-system-it"
+    page: "page-it"
+    music: "music-it"
+    archive: "all-it"

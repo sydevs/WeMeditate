@@ -32,9 +32,9 @@
 // = draftable_media_field f, :banner_id, preview: true
 
 - if allow.update_structure?
-  = f.association :author, input_html: { class: 'clearable' }
+  = f.association :author, hint: translate('admin.messages.article_author_hint'), input_html: { class: 'clearable' }
 
 - if %w[regional_admin super_admin].include?(current_user.role)
-  = f.association :owner, collection: User.writer, hint: translate('admin.messages.article_owner_hint'), prompt: translate('admin.misc.any_administrator'), input_html: { class: 'clearable' }
+  = f.association :owner, collection: User.writer, hint: translate('admin.messages.article_owner_hint'), input_html: { class: 'clearable' }
 - elsif current_user.writer? && record.new_record?
   = f.hidden_field :owner_id, value: current_user.id

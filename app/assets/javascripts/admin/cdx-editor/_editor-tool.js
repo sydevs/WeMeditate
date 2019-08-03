@@ -25,7 +25,7 @@ class EditorTool {
       decorationInputsWrapper: `ce-settings__inputs`,
       tuneButtons: {},
       decorationButtons: {},
-      settings: {},
+      tunes: {},
       fields: {},
       input: this.api.styles.input,
       inputs: {},
@@ -64,9 +64,8 @@ class EditorTool {
     })
 
     this.tunes.forEach(tune => {
-      this.CSS.settings[tune.name] = `${this.CSS.container}--${tune.name}`
+      this.CSS.tunes[tune.name] = `${this.CSS.container}--${tune.name}`
       this.CSS.tuneButtons[tune.name] = `${this.CSS.settingsButton}__${tune.name}`
-      this.CSS.decorationButtons[tune.name] = `${this.CSS.settingsButton}__${tune.name}`
     })
 
     this.allowedDecorations.forEach(decoration => {
@@ -84,19 +83,18 @@ class EditorTool {
     for (let key in this.fields) {
       const field = this.fields[key]
       if (field.input === false) continue
-      this.renderInput(key, container, field.contained)
+      this.renderInput(key, container, field.contained, field.optional)
     }
 
     this.tunes.forEach(tune => {
-      container.classList.toggle(this.CSS.settings[tune.name], this.isTuneActive(tune))
+      container.classList.toggle(this.CSS.tunes[tune.name], this.isTuneActive(tune))
     })
 
-    if (this.allowDecoration) container.dataset.decorations = JSON.stringify(this.data.decorations)
     this.container = container
     return container
   }
 
-  renderInput(key, container = null, contained = false) {
+  renderInput(key, container = null, contained = false, optional = false) {
     let result
     let field = this.fields[key]
     let type = field.input || 'text'
@@ -117,13 +115,20 @@ class EditorTool {
     if (contained) {
       result.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event, false))
     }
+
     result.dataset.placeholder = field.label || translate['content']['placeholders'][key]
+
+    if (optional) {
+      result.dataset.placeholder += ` (${translate['content']['placeholders']['optional']})`
+    }
 
     return result
   }
 
   inhibitEnterAndBackspace(event, insertNewBlock = false) {
+    console.log('inhibit enter?')
     if (event.key == 'Enter' || event.keyCode == 13) { // ENTER
+      console.log('inhibit enter')
       if (insertNewBlock) this.api.blocks.insert()
       event.stopPropagation()
       event.preventDefault()
@@ -208,16 +213,6 @@ class EditorTool {
 
   renderTunes(container) {
     this.tunes.map(tune => this.renderTuneButton(tune, container))
-
-    for (let i = 0; i < container.childElementCount; i++) {
-      const element = container.children[i]
-      element.addEventListener('click', () => {
-        if (!element.classList.contains(this.CSS.settingsButtonDisabled)) {
-          this.selectTune(this.tunes[i])
-          this.updateSettingsButtons()
-        }
-      })
-    }
   }
 
   renderTuneButton(tune, container) {
@@ -232,7 +227,7 @@ class EditorTool {
     }
 
     button.addEventListener('click', () => {
-      if (!event.target.classList.contains(this.CSS.settingsButtonDisabled)) {
+      if (!event.currentTarget.classList.contains(this.CSS.settingsButtonDisabled)) {
         this.selectTune(tune)
         this.updateSettingsButtons()
       }
@@ -258,18 +253,18 @@ class EditorTool {
   }
 
   setTuneValue(key, value) {
-    this.container.classList.remove(this.CSS.settings[this.data[key]])
+    this.container.classList.remove(this.CSS.tunes[this.data[key]])
     this.data[key] = value
-    this.container.classList.add(this.CSS.settings[value])
+    this.container.classList.add(this.CSS.tunes[value])
   }
 
   setTuneBoolean(key, value) {
     this.data[key] = value
-    this.container.classList.toggle(this.CSS.settings[key], value)
+    this.container.classList.toggle(this.CSS.tunes[key], value)
   }
 
   setTuneEnabled(key, enabled) {
-    this.tunesWrapper.querySelector(`.${this.CSS.settingsButtons[key]}`).classList.toggle(this.CSS.settingsButtonDisabled, !enabled)
+    this.tunesWrapper.querySelector(`.${this.CSS.tuneButtons[key]}`).classList.toggle(this.CSS.settingsButtonDisabled, !enabled)
   }
 
   // ------ DECORATIONS ------ //
@@ -290,7 +285,7 @@ class EditorTool {
 
     button.addEventListener('click', () => {
       if (!event.target.classList.contains(this.CSS.settingsButtonDisabled)) {
-        this.setDecorationSelected(decoration.name, !this.isDecorationSelected(decoration.name))
+        this.setDecorationSelected(decoration, !this.isDecorationSelected(decoration.name))
         this.updateSettingsButtons()
       }
     })
@@ -346,14 +341,21 @@ class EditorTool {
     return result
   }
 
-  setDecorationSelected(key, selected) {
+  setDecorationSelected(decoration, selected) {
     if (!this.data.decorations) this.data.decorations = {}
-    this.data.decorations[key] = selected
-    console.trace('set', key, selected, this.data.decorations)
+
+    if (decoration.inputs && selected) {
+      if (this.data.decorations[decoration.name].constructor != Object) {
+        const data = {}
+        decoration.inputs.map(input => { data[input.name] = input.default })
+        this.data.decorations[decoration.name] = data
+      }
+    } else {
+      this.data.decorations[decoration.name] = selected
+    }
   }
 
   setDecorationOption(key, option, value) {
-    console.log('setting', this.data.decorations.constructor, typeof this.data.decorations)
     if (this.data.decorations[key].constructor != Object) {
       this.data.decorations[key] = {}
     }

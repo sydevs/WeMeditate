@@ -1,6 +1,8 @@
 
 = f.input :name
+
+- url = record.new_record? ? "/#{polymorphic_path(record.class)}/*" : polymorphic_path(record)
 = f.input :slug do
-  = content_tag :div, class: 'ui labeled slug input' do
-    = tag.div "#{categories_path}/", class: 'ui basic label'
-    = f.input_field :slug, value: record.new_record? ? '[id]' : record.id, disabled: true
+= content_tag :div, class: 'ui labeled slug input' do
+  = tag.div "#{Pathname(url).dirname}/", class: 'ui basic label'
+  = f.input_field :slug

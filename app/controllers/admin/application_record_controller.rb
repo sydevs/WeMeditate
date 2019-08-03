@@ -53,13 +53,13 @@ module Admin
       record_params = update_params(record_params)
       @record.attributes = record_params
 
-      will_publish = @record.reviewable? && allow.publish? && params[:draft] != 'true'
+      will_publish = allow.publish? && (!@record.reviewable? || params[:draft] != 'true')
       notice = translate 'admin.result.updated'
       action = (@record.has_content? && record_params[:content].present? ? :write : :edit)
       redirect = helpers.polymorphic_admin_path([action, :admin, @record]) if redirect.nil?
       # redirect = (allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
 
-      @record.published_at ||= Time.now.to_date if @record.published? && @record.respond_to?(:published_at)
+      @record.published_at = Time.now.to_date if will_publish && @record.respond_to?(:published_at) && @record.get_localized_attribute(:published_at).nil?
 
       puts "UPDATED PARAMS #{record_params}"
       
@@ -68,7 +68,7 @@ module Admin
           @record.cleanup_draft!
         else
           @record.record_draft!(current_user)
-          notice = translate 'admin.result.saved_but_needs_review'
+          notice = translate('admin.result.saved_but_needs_review')
         end
       end
 
@@ -90,7 +90,7 @@ module Admin
 
       if @record.save
         @record.try(:cleanup_media_files!)
-        redirect_to redirect, flash: { notice: notice }
+        redirect_to redirect, flash: { notice: translate('admin.result.updated') }
       else
         render :review
       end
@@ -134,8 +134,8 @@ module Admin
       def update_params record_params
         if record_params[:metatags].present?
           record_params[:metatags] = record_params[:metatags][:keys].zip(record_params[:metatags][:values]).to_h
-        elsif @model.column_names.include? 'metatags'
-          record_params[:metatags] = []
+        elsif @record.respond_to?(:metatags)
+          record_params[:metatags] = nil
         end
 
         record_params[:published] = record_params[:published].to_i.positive? if record_params[:published].present?

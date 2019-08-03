@@ -26,9 +26,9 @@ Each file will have a structure which will looks something like this
 en:
   admin:
     actions:
-      show: View
-      cancel: Cancel
-      save_for_later: Save for later
+      show: "View"
+      cancel: "Cancel"
+      save_for_later: "Save for later"
 ```
 
 In the above case, we want to translate the phrases "View", "Cancel", "Save for later", the other parts of the file are used to group the translations together.
@@ -38,7 +38,7 @@ In the above case, we want to translate the phrases "View", "Cancel", "Save for 
  - `show` is the actual action we need a translation for
  - `View` is the actual translation. This is the only part that you need to translate.
 
-So when you go through these files, what we want is for you to translate any text which appears after the first ':' symbol on each line.
+Generally speaking you should translate whatever text appears between the quotation marks.
 
 #### Other Special Symbols (Do Not Translate)
 
@@ -54,3 +54,7 @@ In general, follow the comments throughout the translation files and you should 
 
  - It is typically a good idea to use the same style of capitalization as has been used in the English translation. Especially in the _en.admin.yml_ file you will find a lot of capitalized words because most of the translations are for titles and buttons.
  - When translating a phrase which includes a number, such as "1", it is usually best to keep the number ("1") instead of replacing it with a word ("One"). Especially in the _en.admin.yml_ file.
+
+### Ignore this
+`: '?([^#]*[^ #])'?`
+`: "$1"`
