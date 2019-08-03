@@ -161,7 +161,7 @@ module Admin::InputHelper
     form.input decoration, {
       label: decoration_type_label(decoration),
       as: :boolean,
-      wrapper: :ui_checkbox,
+      wrapper: :semantic_checkbox,
       checked_value: decoration.to_s,
       unchecked_value: '',
       required: false,
@@ -190,7 +190,7 @@ module Admin::InputHelper
   def decoration_config_sidetext form
     form.input_field :sidetext, {
       as: :string,
-      wrapper: :ui_input,
+      wrapper: :semantic_input,
       required: false,
       name: "#{form.object_name}[decorations][sidetext]",
       value: form.object.decoration_sidetext(draft: true),

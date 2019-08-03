@@ -84,7 +84,7 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
   end
 
-  config.wrappers :ui_input, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
+  config.wrappers :semantic_input, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
     b.use :html5
     b.use :label
     b.wrapper tag: 'div', class: 'ui icon input' do |ba|
@@ -94,7 +94,7 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
   end
 
-  config.wrappers :ui_file_input, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
+  config.wrappers :semantic_file, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
     b.use :html5
     b.use :label
     b.use :file_labels
@@ -105,14 +105,7 @@ SimpleForm.setup do |config|
     b.use :hint, wrap_with: { tag: 'div', class: 'hint' }
   end
 
-  config.wrappers :ui_date, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
-    b.use :html5
-    b.use :label
-    b.use :input, class: 'ui dropdown'
-    b.use :hint, wrap_with: { tag: 'div', class: 'hint' }
-  end
-
-  config.wrappers :ui_checkbox, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
+  config.wrappers :semantic_checkbox, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
     b.use :html5
     b.wrapper tag: 'div', class: 'ui checkbox' do |input|
       input.use :label_input
@@ -120,7 +113,7 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :ui_slider_checkbox, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
+  config.wrappers :semantic_checkbox_slider, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
     b.use :html5
     b.wrapper tag: 'div', class: 'ui slider checkbox' do |input|
       input.use :label_input
@@ -128,7 +121,7 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :ui_toggle_checkbox, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
+  config.wrappers :semantic_checkbox_toggle, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
     b.use :html5
     b.wrapper tag: 'div', class: 'ui toggle checkbox' do |input|
       input.use :label_input
@@ -136,12 +129,19 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :ui_media_input, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
+  config.wrappers :semantic_checkbox_toggle, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
     b.use :html5
-    b.wrapper tag: 'div', class: 'ui media input' do |input|
+    b.wrapper tag: 'div', class: 'ui toggle checkbox' do |input|
       input.use :label_input
       input.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
     end
+  end
+
+  config.wrappers :semantic_select, tag: 'div', class: 'field', error_class: 'error', hint_class: 'with_hint' do |b|
+    b.use :html5
+    b.use :label
+    b.use :input, class: 'ui fluid search selection dropdown'
+    b.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
   end
 
   # The default wrapper to be used by the FormBuilder.
@@ -225,8 +225,11 @@ SimpleForm.setup do |config|
 
   # Custom wrappers for input types. This should be a hash containing an input
   # type as key and the wrapper that will be used for all inputs with specified type.
-  # config.wrapper_mappings = { string: :prepend }
-
+  config.wrapper_mappings = {
+    boolean: :semantic_checkbox,
+    select: :semantic_select,
+  }
+  
   # Namespaces where SimpleForm should look for custom input classes that
   # override default inputs.
   # config.custom_inputs_namespaces << "CustomInputs"

@@ -4,7 +4,7 @@
 = f.input :name
 
 - if allow.update_structure?
-  = f.input :icon, wrapper: :ui_file_input, icon: :image, file: record.icon
+  = f.input :icon, wrapper: :semantic_file, icon: :image, file: record.icon
 
 - if record.icon.present?
   .preview-item = image_tag record.icon.url, class: 'ui tiny image'

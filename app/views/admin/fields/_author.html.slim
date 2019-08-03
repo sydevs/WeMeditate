@@ -26,7 +26,7 @@
 = f.input :description, as: :text
 
 - if allow.update_structure?
-  = f.input :image, as: :file, wrapper: :ui_file_input, icon: file_type_icon(:image), file: record.image, input_html: { accept: file_type_accepts(:image) }
+  = f.input :image, as: :file, wrapper: :semantic_file, icon: file_type_icon(:image), file: record.image, input_html: { accept: file_type_accepts(:image) }
 - if record.image.present?
   .preview-item = image_tag record.image.url(:medium), class: 'ui circular image'
 
