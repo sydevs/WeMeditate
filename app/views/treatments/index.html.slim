@@ -22,8 +22,8 @@ main id=dom_id(@static_page)
     .excerpt_list
       .excerpt.excerpt--left.excerpt--music
         .excerpt__index 01
-        // TODO: Translate this next line
-        = static_image_tag 'music/treatment', '(min-width: 450px) 500px, 85vw', alt: 'Music', class: 'excerpt__image'
+        a href=static_page_path_for(:tracks)
+          = static_image_tag 'music/treatment', '(min-width: 450px) 500px, 85vw', alt: static_page_preview_for(:tracks).name, class: 'excerpt__image'
 
         .excerpt__content
           h3.excerpt__title = translate 'treatments.music.title'

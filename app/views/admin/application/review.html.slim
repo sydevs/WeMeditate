@@ -81,14 +81,13 @@
               = translate 'admin.action.target.edit', record: @model.model_name
 
   h3 = translate 'admin.review.content_changes', page: @model.model_name.human
-  / TODO: Translate
-  p The colour of each row indicated the status of that block of content.
+  p = translate 'admin.explanation.preline'
   ul.ui.small.list
-    li <b>Grey</b> means no change
-    li <b>Yellow</b> means the block has been modified
-    li <b>Red</b> means it has been remove
-    li <b>Green</b> means it has been newly created
-  p Text which is <ins>highlighted in green</ins> has been added, text <del>highlighted in red</del> has been remove. All other text has remained unchanged.
+    - %i[nochange modified removed added].each do |mode|
+      li
+        strong #{translate "admin.review.#{mode}.color"}
+        |  #{translate "admin.review.#{mode}.description"}
+  p = translate 'admin.explanation.postline'
 
   - if !@record.parsed_draft_content.present?
     p: em = translate 'admin.review.no_changes'
@@ -114,10 +113,8 @@
                   input type='checkbox' name="approve[content][#{i}]" value="use:#{draft_index}" checked=true
                   label
             td.collapsing
-              / TODO: Translate
-              strong #{type.titleize}
-              / TODO: Translate
-              div = mode
+              strong = translate type, scope: %i[admin content blocks]
+              div = translate mode, scope: %i[admin review mode]
             td.diff
               - puts draft.inspect
               - puts original.inspect

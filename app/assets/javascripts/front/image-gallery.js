@@ -2,12 +2,9 @@
 class ImageGallery {
 
   constructor(element) {
-    // TODO: Translate magnific popup, see: https://dimsemenov.com/plugins/magnific-popup/documentation.html#translating
-
     $(element).magnificPopup({
       delegate: 'img',
       type: 'image',
-      tLoading: 'Loading image #%curr%...',
       mainClass: 'mfp-img-mobile',
       gallery: {
         enabled: true,
@@ -15,7 +12,6 @@ class ImageGallery {
         preload: [0, 1], // Will preload 0 - before current, and 1 after the current image
       },
       image: {
-        tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
         titleSrc: 'title',
       },
       callbacks: {

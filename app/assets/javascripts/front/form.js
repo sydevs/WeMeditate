@@ -3,10 +3,20 @@ class Form {
 
   constructor(element) {
     this.container = element
+    this.message = element.querySelector('.content__form__message')
+    this.type = element.classList.contains('content__form--signup') ? 'signup' : 'contact'
 
     if (this.container.dataset.remote) {
       this.container.addEventListener('ajax:beforeSend', _event => this.setLoadingState(true))
     }
+  }
+
+  setMessage(message, type = 'positive') {
+    const oppositeType = (type == 'positive' ? 'negative' : 'positive')
+    this.message.classList.remove(`content__form__message--${oppositeType}`)
+    this.message.classList.add(`content__form__message--${type}`)
+    this.message.innerText = message
+    $(this.message).show()
   }
 
   setLoadingState(isLoading) {
@@ -25,11 +35,7 @@ class Form {
         buttons[index].setAttribute('disabled', 'disabled')
       }
 
-      const message = this.container.querySelector('.content__form__message')
-      message.classList.remove('content__form__message--negative')
-      message.classList.add('content__form__message--positive')
-      message.innerText = 'Loading...'
-      $(message).show()
+      this.setMessage('Loading...')
     } else {
       for (let index = 0; index < inputs.length; index++) {
         inputs[index].removeAttribute('disabled')

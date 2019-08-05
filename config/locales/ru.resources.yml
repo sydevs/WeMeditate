@@ -2,7 +2,7 @@
 # FRONT END TRANSLATIONS
 # This file contains translations for the resources which make up the website.
 
-en:
+ru:
   activerecord:
     models:
       article:

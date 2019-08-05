@@ -1,10 +1,7 @@
-var contact_message_elements = $('.form.for-contact .form-message')
 
-<% if @success %>
-  contact_message_elements.removeClass('negative').addClass('positive')
-<% else %>
-  contact_message_elements.removeClass('positive').addClass('negative')
-<% end %>
-
-contact_message_elements.text('<%= @message %>').show()
-Forms.set_form_loading($('.form.for-contact'), false)
+Application.elements.form.map(function(form) {
+  if (form.type == 'contact') {
+    form.setMessage('<%= @message %>', '<%= @success ? "positive" : "negative" %>')
+    form.setLoadingState(false)
+  }
+})

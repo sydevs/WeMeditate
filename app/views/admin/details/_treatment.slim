@@ -17,6 +17,5 @@ p.details.excerpt = record.excerpt
   - translated_locales = record.translated_locales.map { |lang| language_name(lang) }.join(', ')
   = record_detail 'globe', translated_locales, translate('admin.details.translated_languages')
 
-  // TODO: Translate
-  = record_detail 'play circle', "Horizontal Video ##{record.horizontal_vimeo_id}", translate('admin.details.horizontal_video'), url: "https://vimeo.com/#{record.horizontal_vimeo_id}"
-  = record_detail 'play circle', "Vertical Video ##{record.vertical_vimeo_id}", translate('admin.details.vertical_video'), url: "https://vimeo.com/#{record.vertical_vimeo_id}"
+  = record_detail 'play circle', "#{translate('admin.details.horizontal_video')} ##{record.horizontal_vimeo_id}", nil, url: "https://vimeo.com/#{record.horizontal_vimeo_id}"
+  = record_detail 'play circle', "#{translate('admin.details.vertical_video')} ##{record.vertical_vimeo_id}", nil, url: "https://vimeo.com/#{record.vertical_vimeo_id}"

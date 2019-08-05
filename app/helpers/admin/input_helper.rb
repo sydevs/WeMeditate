@@ -27,7 +27,7 @@ module Admin::InputHelper
         original_name = media_file.name
         original_value = { id: original_value, src: media_file.file.url(:medium) }
       else
-        original_name = 'No Image' # TODO: Translate
+        original_name = translate('admin.draft.no_image')
         original_value = { id: nil, src: nil }
       end
 
@@ -36,7 +36,7 @@ module Admin::InputHelper
         draft_name = media_file.name
         draft_value = { id: draft_value, src: media_file.file.url(:medium) }
       else
-        draft_name = 'No Image' # TODO: Translate
+        draft_name = translate('admin.draft.no_image')
         draft_value = { id: nil, src: nil }
       end
     when :collection

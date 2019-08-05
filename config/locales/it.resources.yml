@@ -75,7 +75,7 @@ it:
         content: "Contenuto"
         metatags: "Metadata"
         author: :activerecord.models.author.one # Do not translate
-        owner: "Permetti a quest'autore di modificare questo articolo" # TODO: Translate
+        owner: "Permetti a quest'autore di modificare questo articolo"
 
       static_page:
         name: "Titolo"

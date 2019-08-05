@@ -1,9 +1,7 @@
-var subscribe_message_elements = $('.form.for-subscription .form-message')
 
-<% if @success %>
-  subscribe_message_elements.removeClass('negative').addClass('positive')
-<% else %>
-  subscribe_message_elements.removeClass('positive').addClass('negative')
-<% end %>
-
-subscribe_message_elements.text('<%= @message %>').show()
+Application.elements.form.map(function(form) {
+  if (form == 'signup') {
+    form.setMessage('<%= @message %>', '<%= @success ? "positive" : "negative" %>')
+    form.setLoadingState(false)
+  }
+})

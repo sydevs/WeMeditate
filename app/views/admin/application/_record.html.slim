@@ -1,13 +1,13 @@
 
 - allow = policy(record)
 
-tr id=dom_id(record)
+tr.record id=dom_id(record)
   td.selector
     - if allow.show? || allow.edit?
       a href=polymorphic_admin_path([(:edit unless allow.show?), :admin, record])
         = record.name || translate('admin.misc.no_translated_title')
     - else
-      = record.name || translate('admin.misc.no_translated_title')
+      .disabled = record.name || translate('admin.misc.no_translated_title')
 
   td.collapsing.right.aligned.disabled
     = table_detail(record)

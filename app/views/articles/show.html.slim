@@ -19,7 +19,7 @@ main.scrollspy-target id=dom_id(@article)
     .author__header = translate 'author.about_the_author'
     .author__meta
       .author__image = smart_image_tag @article.author.image, '128vw'
-      .author__name #{translate 'author.written_by'} <em>#{@article.author.name}</em>, <em>#{@article.author.country_code}</em>
+      .author__name #{@article.author.name}, #{@article.author.country_code}
       - if @article.author.title
         .author__title = @article.author.title
       - if @article.author.years_meditating

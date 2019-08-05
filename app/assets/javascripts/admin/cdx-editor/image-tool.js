@@ -70,14 +70,29 @@ class ImageTool extends EditorTool {
     this.itemsContainer = make('div', this.CSS.items, {}, this.container)
 
     if (this.data.items.length) {
-      //if (!this.allowMultiple) $(this.uploader.wrapper).hide()
+      if (!this.allowMultiple) $(this.uploader.wrapper).hide()
 
       this.data.items.forEach(item => {
         this.itemsContainer.appendChild(this.renderItem(item))
       })
     }
 
+    this.uploader.setAllowMultiple(this.allowMultiple)
     return this.container
+  }
+
+  renderSettings() {
+    const result = super.renderSettings()
+
+    if (this.isTuneActive({ name: 'asGallery' })) {
+      this.setTuneEnabled('stretch', false)
+      this.setTuneEnabled('left', false)
+      this.setTuneEnabled('right', false)
+      this.setTuneBoolean('stretch', false)
+      this.setTuneValue('callout', 'none')
+    }
+
+    return result
   }
 
   renderItem(item = {}) {
@@ -126,9 +141,9 @@ class ImageTool extends EditorTool {
     }
 
     // Show the uploader if there are no images currently shown.
-    /*if (this.itemsContainer.childElementCount === 0) {
+    if (this.itemsContainer.childElementCount === 0) {
       $(this.uploader.wrapper).show()
-    }*/
+    }
   }
 
   addFile(index, file) {
@@ -145,9 +160,9 @@ class ImageTool extends EditorTool {
     }
 
     // Hide the uploader if we are using the single uploader and there is already an uploaded image.
-    /*if (!this.allowMultiple && this.itemsContainer.childElementCount > 0) {
+    if (!this.allowMultiple && this.itemsContainer.childElementCount > 0) {
       $(this.uploader.wrapper).hide()
-    }*/
+    }
   }
 
   save(_toolElement) {
@@ -189,12 +204,12 @@ class ImageTool extends EditorTool {
 
     const allowMultiple = tune.name == 'asGallery' ? active : this.allowMultiple
     this.uploader.setAllowMultiple(allowMultiple)
-    //$(this.uploader.wrapper).toggle(allowMultiple || this.itemsContainer.childElementCount === 0)
+    $(this.uploader.wrapper).toggle(allowMultiple || this.itemsContainer.childElementCount === 0)
   }
 
   // A simple shorthand function
   get allowMultiple() {
-    this.isTuneActive('asGallery')
+    return this.isTuneActive({ name: 'asGallery' })
   }
 
   static get enableLineBreaks() {

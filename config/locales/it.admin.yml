@@ -191,6 +191,7 @@ it:
         caption: "Inserire la didascalia qui"
         credit: "Attribuzione diritti d'autore"
         optional: "Opzionale"
+        search: "Cerca" 
       words:
         one: "1 parola"
         other: "%{count} parole"
@@ -234,6 +235,26 @@ it:
       data: "Data"
       reject_all: "Rifiuta tutto"
       approve_all: "Approva tutto"
+      mode: # TODO: Translate
+        added: "Added"
+        removed: "Removed"
+        modified: "Modified"
+        nochange: "No Change"
+      explanation: # TODO: Translate
+        preline: "The colour of each row indicated the status of that block of content."
+        postline: "Text which is <ins>highlighted in green</ins> has been added, text <del>highlighted in red</del> has been remove. All other text has remained unchanged."
+        nochange:
+          color: "Grey"
+          description: "%{color} means no change"
+        modified:
+          color: "Yellow"
+          description: "%{color} means the block has been modified"
+        removed:
+          color: "Red"
+          description: "%{color} means the block has been removed"
+        added:
+          color: "Green"
+          description: "%{color} means the block has been newly created"
 
     metadata:
       key: "nome"
@@ -242,6 +263,7 @@ it:
       generated_jsonld: "Dati strutturati"
 
     draft:
+      no_image: "No Image" # TODO: Translate
       items:
         one: "1 oggetto"
         other: "%{count} oggetti"

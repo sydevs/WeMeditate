@@ -45,6 +45,7 @@ Generally speaking you should translate whatever text appears between the quotat
 There are a few other special symbols that you might see in the translation files which do not need translation
  - `%{value}` - *Do not translate* any text which is wrapped in these symbols `%{}`. When the translation is used, the `%{value}` will be replaced with some other appropriate text.
    - For example "Save %{page}" will become "Save Article", or "%{count} words" might become "5 words". We have tried to make these special symbols descriptive (so that you can understand when the result will be plural or singular). Other symbols you might see include: `%{count}`, `%{page}`, `%{pages}`, `%{person}`, `%{people}`, `%{record}`, `%{records}`
+ - `<text>` - *Do not translate* any text appearing between two `<>` symbols. This is a special instruction to make the text bold or italic, etc.
  - `# Comment` - *Do not translate* any text appearing after a '#' symbol. This is a comment which we have left to help you understand the context of the translation.
  - `:activerecord.models.articles.one` - sometimes you will see a translation which begins with the ':' symbol (eg. `save: :activerecord.save`). This does not need to be translated, and there will be a comment to remind you not to translate it. This special symbol tells the website to look in another place for the correct translation.
 
@@ -54,7 +55,3 @@ In general, follow the comments throughout the translation files and you should 
 
  - It is typically a good idea to use the same style of capitalization as has been used in the English translation. Especially in the _en.admin.yml_ file you will find a lot of capitalized words because most of the translations are for titles and buttons.
  - When translating a phrase which includes a number, such as "1", it is usually best to keep the number ("1") instead of replacing it with a word ("One"). Especially in the _en.admin.yml_ file.
-
-### Ignore this
-`: '?([^#]*[^ #])'?`
-`: "$1"`

@@ -59,8 +59,7 @@ class CatalogTool extends EditorTool {
 
     const searchInputWrapper = make('div', [this.CSS.search.input_wrapper, 'ui', 'fluid', 'icon', 'input'], {}, container)
     this.searchInput = make('input', this.CSS.search.input, {
-      // TODO: Translate
-      placeholder: `Search ${translate['content']['tunes']['type'][this.data['type']].toLowerCase()}`,
+      placeholder: `${translate['content']['placeholders']['search']} ${translate['content']['tunes']['type'][this.data['type']].toLowerCase()}`,
     }, searchInputWrapper)
     make('i', ['search', 'icon'], {}, searchInputWrapper)
 
@@ -191,8 +190,7 @@ class CatalogTool extends EditorTool {
   updateTypeLabel(tune) {
     this.typeLabel.querySelector('.icon').className = `${tune.icon} icon`
     this.typeLabel.querySelector('span').innerText = translate['content']['tunes'][tune.group][tune.name]
-    // TODO: Translate
-    this.searchInput.placeholder = `Search ${translate['content']['tunes'][tune.group][tune.name].toLowerCase()}`
+    this.searchInput.placeholder = `${translate['content']['placeholders']['search']} ${translate['content']['tunes'][tune.group][tune.name].toLowerCase()}`
   }
 
   static get enableLineBreaks() {

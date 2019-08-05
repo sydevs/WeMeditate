@@ -2,9 +2,8 @@
 # ROUTE TRANSLATIONS
 # This file contains translations for the website URLs
 
-en:
+en: # English translations
   routes:
-    admin: "admin"
     inspiration: "inspiration"
     articles: "articles"
     countries: "countries"
@@ -14,21 +13,19 @@ en:
     page: "page"
     music: "music"
     archive: "all"
-ru:
+ru: # Russian translations
   routes:
-    admin: "admin-ru"
-    inspiration: "inspiration-ru"
-    articles: "articles-ru"
-    countries: "countries-ru"
-    meditations: "meditations-ru"
-    techniques: "techniques-ru"
-    subtle_system: "subtle-system-ru"
-    page: "page-ru"
-    music: "music-ru"
-    archive: "all-ru"
-it:
+    inspiration: "inspiration"
+    articles: "articles"
+    countries: "countries"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
+it: # Italian translations
   routes:
-    admin: "amministratore"
     inspiration: "ispirazione"
     articles: "articoli"
     countries: "paesi del Mondo"

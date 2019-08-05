@@ -1,24 +1,8 @@
 
 - allow = policy(record)
 
-- if record.user.present?
-  - if record.new_record?
-    .ui.info.message = translate('admin.messages.new_author_notice')
-
-  = f.input :user do
-    - if policy(record.user).edit?
-      a.ui.icon.label.link href=edit_admin_user_path(record.user) target='_blank'
-        i.icon class=model_icon_key(User)
-        span = record.user.name
-    - else
-      .ui.icon.label
-        i.icon class=model_icon_key(User)
-        = record.user.name
-
-    - if record.new_record?
-      = f.input_field :user_id, as: :hidden
-- elsif allow.update_structure?
-  = f.association :user, collection: User.includes(:author).where(authors: { id: nil })
+- if record.user.present? && record.new_record?
+  .ui.info.message = translate('admin.messages.new_author_notice')
 
 = f.input :name, disabled: !allow.update_structure?, input_html: { value: (record.name || record.user&.name) }
 
@@ -35,3 +19,19 @@
 
 - if allow.update_structure?
   = f.input :years_meditating
+
+- if record.user.present?
+  = f.input :user do
+    - if policy(record.user).edit?
+      a.ui.icon.label.link href=edit_admin_user_path(record.user) target='_blank'
+        i.icon class=model_icon_key(User)
+        span = record.user.name
+    - else
+      .ui.icon.label
+        i.icon class=model_icon_key(User)
+        = record.user.name
+
+    - if record.new_record?
+      = f.input_field :user_id, as: :hidden
+- elsif allow.update_structure?
+  = f.association :user, collection: User.includes(:author).where(authors: { id: nil }), input_html: { class: 'clearable' }

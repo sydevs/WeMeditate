@@ -3,7 +3,7 @@
 - isGallery = block[:asGallery] == true
 - isSingle = !isGallery && callout_mode == 'none'
 - classes = []
-- classes << "content__image--#{isGallery ? 'gallery' : 'single'}" unless block[:callout] != 'none'
+- classes << "content__image--#{isGallery ? 'gallery' : 'single'}" unless callout_mode != 'none'
 - classes << "content__image--stretch" if block[:stretch] == true
 - classes << 'content__image--callout' unless callout_mode == 'none'
 - classes << "content__image--callout-#{callout_mode}"

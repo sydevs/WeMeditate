@@ -4,7 +4,8 @@
 article.excerpt id=dom_id(treatment) class="excerpt--#{treatment_counter.odd? ? 'left' : 'right'}"
   .excerpt__index = index
 
-  = smart_image_tag treatment.thumbnail, '100vw', class: 'excerpt__image', alt: treatment.name
+  a href=treatment_path(treatment)
+    = smart_image_tag treatment.thumbnail, '100vw', class: 'excerpt__image', alt: treatment.name
 
   .excerpt__content
     h3.excerpt__title = treatment.name

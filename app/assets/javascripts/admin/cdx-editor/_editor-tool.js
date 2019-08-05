@@ -345,7 +345,7 @@ class EditorTool {
     if (!this.data.decorations) this.data.decorations = {}
 
     if (decoration.inputs && selected) {
-      if (this.data.decorations[decoration.name].constructor != Object) {
+      if (!this.data.decorations[decoration.name] || this.data.decorations[decoration.name].constructor != Object) {
         const data = {}
         decoration.inputs.map(input => { data[input.name] = input.default })
         this.data.decorations[decoration.name] = data

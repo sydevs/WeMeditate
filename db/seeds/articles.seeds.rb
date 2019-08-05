@@ -231,7 +231,7 @@ article.update!(content: content([
   }, {
     type: :action,
     data: {
-      action: 'Try Meditation',
+      text: 'Try Meditation',
       url: '/page/the-first-experience',
       decorations: { leaves: true },
     },
@@ -275,7 +275,7 @@ article.update!(content: content([
   }, {
     type: :action,
     data: {
-      action: 'Meditation with Shri Mataji',
+      text: 'Meditation with Shri Mataji',
       url: '/page/the-first-experience',
     },
   }, {
@@ -407,7 +407,7 @@ article.update!(content: content([
   }, {
     type: :action,
     data: {
-      action: 'Button Text',
+      text: 'Button Text',
       url: '/inspiration',
     },
   }, {
