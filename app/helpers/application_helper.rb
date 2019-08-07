@@ -59,7 +59,7 @@ module ApplicationHelper
       inline_svg 'graphics/circle.svg', class: classes
     elsif type == :sidetext
       classes << 'sidetext--overlay' unless args[:static]
-      content_tag :div, data, class: classes
+      content_tag :div, data[:text], class: classes
     else
       tag.div class: classes
     end

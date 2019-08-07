@@ -42,6 +42,7 @@ en:
         upload: "Upload %{record}"
         edit: "Edit %{record}"
         edit_details: "Edit %{record} details" # These are the details of the 'record'
+        edit_content: "Edit %{record} content"
         review: "Review %{record}"
         write: "Write %{record} content"
         reset: "Reset %{record}"
@@ -98,8 +99,10 @@ en:
     messages:
       loading: "Loading"
       errors: "Errors"
+      no_translations_found: "No %{pages} to translate"
       make_public: "Make this %{page} visible to the public"
       maintenance_mode: "The website is under construction, come back soon."
+      confirm_unsaved_changes: "Unsaved changes will be lost. Are you sure you want to leave the page?"
       confirm_destroy: "Are you sure you want to delete that? This cannot be undone!"
       drop_files_here: "Drop files here"
       unpublished_changes_notice: "This %{page} has unpublished changes. These will not be visible to the public until they have been reviewed by an administrator."
@@ -108,9 +111,15 @@ en:
       draft_contributed_by: "This draft includes changed made by %{people}."
       text_too_short: "must have at least %{count} letters"
       invalid_vimeo_id: "must be a valid Vimeo ID"
-      article_author_hint: "The profile which will be shown under the article on the website."
-      article_owner_hint: "Administrators and Editors can always edit all articles. This field gives a writer special permission to modify an article after it is published. Usually this is the person who wrote the article in the first place."
       new_author_notice: "You have not set up your author profile yet, fill out the fields below and press save."
+
+    hints:
+      excerpt: "This is a short preview of the %{page} content that will be shown in %{page} listings."
+      article_visibility: "Articles with higher visibility will be shown closed to the top of the Inspiration page"
+      article_author: "The profile which will be shown under the article on the website."
+      article_owner: "Administrators and Editors can always edit all articles. This field gives a writer special permission to modify an article after it is published. Usually this is the person who wrote the article in the first place."
+      article_video: "If you enter a featured video, it will appear on the article preview."
+      article_date: "If this article is about an event, then you can set the start date of the event here. This date will appear on the article preview."
 
     result:
       created: "Created successfully."
@@ -134,6 +143,7 @@ en:
         catalog: "WeMeditate Content"
         list: "List"
         quote: "Quote"
+        form: "Form"
         structured: "Structured Text"
         textbox: "Text With Image"
         video: "Video"

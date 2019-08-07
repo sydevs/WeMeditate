@@ -82,11 +82,11 @@
 
   p
     - if allow.show?
-      a.ui.basic.button href=polymorphic_admin_path([:admin, record])
+      a.ui.basic.button href=polymorphic_admin_path([:admin, record]) data-confirm=translate('admin.messages.confirm_unsaved_changes')
         i.left.arrow.icon
         = translate 'admin.action.simple.back'
     - elsif policy(@model).index?
-      a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(record.page) ? record.page : record.class])
+      a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(record.page) ? record.page : record.class]) data-confirm=translate('admin.messages.confirm_unsaved_changes')
         i.left.arrow.icon
         = translate 'admin.action.target.back', records: record.model_name.human(count: -1)
 

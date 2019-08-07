@@ -5,15 +5,15 @@
   - f.association :category, wrapper: false, label: false, disabled: !allow.update_structure?, selected: value
   
 - priorities = Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}
-= draftable_field f, :priority, type: :collection, input: { collection: priorities } do |value|
+= draftable_field f, :priority, type: :collection, input: { collection: priorities },  hint: translate('admin.hints.article_visibility') do |value|
   - f.input_field :priority, collection: priorities, selected: value, disabled: !allow.update_structure?
 
 = draftable_media_field f, :thumbnail, preview: true, wrapper: { required: true }
 
-= draftable_field f, :excerpt, type: :text do |value|
+= draftable_field f, :excerpt, type: :text, hint: translate('admin.hints.excerpt', page: record.class.model_name.human.downcase) do |value|
   - f.input_field :excerpt, as: :text, rows: 3, value: value
 
-= draftable_field f, :vimeo_id, type: :integer
+= draftable_field f, :vimeo_id, type: :integer, hint: translate('admin.hints.article_video')
 - if record.vimeo_id.present?
   .preview-item
     a.ui.label.link href="https://vimeo.com/#{record.vimeo_id}" target='_blank'
@@ -21,7 +21,7 @@
       i.external.alternate.icon
 
 - if allow.update_structure?
-  = draftable_date_field f
+  = draftable_date_field f, hint: translate('admin.hints.article_date')
 - elsif record.date
   = f.input :date do
     .ui.icon.label
@@ -32,9 +32,9 @@
 // = draftable_media_field f, :banner_id, preview: true
 
 - if allow.update_structure?
-  = f.association :author, hint: translate('admin.messages.article_author_hint'), input_html: { class: 'clearable' }
+  = f.association :author, hint: translate('admin.hints.article_author'), input_html: { class: 'clearable' }
 
 - if %w[regional_admin super_admin].include?(current_user.role)
-  = f.association :owner, collection: User.writer, hint: translate('admin.messages.article_owner_hint'), input_html: { class: 'clearable' }
+  = f.association :owner, collection: User.writer, hint: translate('admin.hints.article_owner'), input_html: { class: 'clearable' }
 - elsif current_user.writer? && record.new_record?
   = f.hidden_field :owner_id, value: current_user.id

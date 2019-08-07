@@ -70,7 +70,7 @@ en:
         excerpt: "Excerpt"
         thumbnail: "Thumbnail"
         vimeo_id: "Featured Video (Vimeo ID)"
-        date: "Date"
+        date: "Featured Date"
         content: "Content"
         metatags: "Metadata"
         author: :activerecord.models.author.one # Do not translate

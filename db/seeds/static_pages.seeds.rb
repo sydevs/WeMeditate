@@ -52,7 +52,7 @@ static_pages[:home].update!(content: content([
       url: '/meditations',
       alignment: :left,
       decorations: {
-        sidetext: 'Guided Meditations',
+        sidetext: { text: 'Guided Meditations' },
         circle: true,
       },
     },
@@ -64,7 +64,7 @@ static_pages[:home].update!(content: content([
       asGallery: true,
       decorations: {
         gradient: { alignment: :right, color: :blue },
-        sidetext: 'Stories',
+        sidetext: { text: 'Stories' },
       },
     },
   },
@@ -79,7 +79,7 @@ static_pages[:home].update!(content: content([
       alignment: :center,
       decorations: {
         triangle: { alignment: :left },
-        sidetext: 'Shri Mataji',
+        sidetext: { text: 'Shri Mataji' },
       },
     },
   },
@@ -92,7 +92,7 @@ static_pages[:home].update!(content: content([
       action: 'Discover my sound',
       url: '/en/music',
       alignment: :right,
-      decorations: { sidetext: 'Music' },
+      decorations: { sidetext: { text: 'Music' } },
     },
   },
   {
@@ -108,7 +108,7 @@ static_pages[:home].update!(content: content([
       decorations: {
         gradient: { alignment: :left, color: :orange },
         triangle: { alignment: :right },
-        sidetext: 'Results?',
+        sidetext: { text: 'Results?' },
       },
     },
   },
@@ -122,7 +122,7 @@ static_pages[:home].update!(content: content([
       url: '/en/cities/local',
       alignment: :left,
       decorations: {
-        sidetext: 'Meditation Classes',
+        sidetext: { text: 'Meditation Classes' },
         gradient: {
           color: :gray,
           alignment: :right,
@@ -183,7 +183,7 @@ static_pages[:shri_mataji].update!(content: content([
       text: '<p>Shri Mataji Nirmala Devi discovered a unique method of meditation "Sahaja Yoga", which allows one to achieve inner enlightenment, and reveals the true potential of mankind. Shri Mataji devoted her entire life to the development and dissemination of this method, and today hundreds of thousands of people around the world practice Sahaja Yoga.</p>',
       alignment: :left,
       decorations: {
-        sidetext: 'The Founder',
+        sidetext: { text: 'The Founder' },
         circle: true,
       },
     },
@@ -215,7 +215,7 @@ static_pages[:shri_mataji].update!(content: content([
       alignment: :left,
       stretch: true,
       decorations: {
-        sidetext: 'Social Work',
+        sidetext: { text: 'Social Work' },
         gradient: { alignment: :right, color: :blue },
       },
     },
@@ -227,7 +227,7 @@ static_pages[:shri_mataji].update!(content: content([
       text: '<p>Right from the beginning, Shri Mataji was always surrounded by outstanding people. Her parents were scholars and political activists who played an important role in the liberation movement of India, seeking independence of their country together with Mahatma Gandhi, who noticed the extraordinary potential of the young Shri Mataji and consulted her on spiritual issues.</p><p>Throughout her life, Shri Mataji was often in the circle of prominent political and public figures. Her husband, Sir Chandrika Prasad Srivastava, started out as a young officer in the Indian Civil Service but soon rose through the ranks to become Private Secretary to the Prime Minister of India, Lal Bahadur Shastri. Later, he was appointed Secretary General of the United Nations International Maritime Organisation in London, and served in this post for four successive terms. For his relentless dedication to public service and exceptional achievements, he was awarded a knighthood by Queen Elizabeth II, the first Indian to receive such honour after India gained independence. </p>',
       alignment: :right,
       stretch: true,
-      decorations: { sidetext: 'Family' },
+      decorations: { sidetext: { text: 'Family' } },
     },
   }, {
     type: :header,
@@ -304,7 +304,7 @@ static_pages[:shri_mataji].update!(content: content([
       alignment: :left,
       stretch: true,
       decorations: {
-        sidetext: 'Spreading the Word',
+        sidetext: { text: 'Spreading the Word' },
         gradient: { alignment: :right, color: :blue },
       },
     },
@@ -317,7 +317,7 @@ static_pages[:shri_mataji].update!(content: content([
       text: '<p>Right from the beginning, Shri Mataji was always surrounded by outstanding people. Her parents were scholars and political activists who played an important role in the liberation movement of India, seeking independence of their country together with Mahatma Gandhi, who noticed the extraordinary potential of the young Shri Mataji and consulted her on spiritual issues.</p><p>Throughout her life, Shri Mataji was often in the circle of prominent political and public figures. Her husband, Sir Chandrika Prasad Srivastava, started out as a young officer in the Indian Civil Service but soon rose through the ranks to become Private Secretary to the Prime Minister of India, Lal Bahadur Shastri. Later, he was appointed Secretary General of the United Nations International Maritime Organisation in London, and served in this post for four successive terms. For his relentless dedication to public service and exceptional achievements, he was awarded a knighthood by Queen Elizabeth II, the first Indian to receive such honour after India gained independence.</p>',
       alignment: :right,
       stretch: true,
-      decorations: { sidetext: 'Vision' },
+      decorations: { sidetext: { text: 'Vision' } },
     },
   }, {
     type: :header,

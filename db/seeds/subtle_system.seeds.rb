@@ -131,7 +131,7 @@ end
         invert: true,
         decorations: {
           gradient: { alignment: :right, color: :orange },
-          sidetext: 'In Life',
+          sidetext: { text: 'In Life' },
         },
       },
     },
@@ -142,7 +142,7 @@ end
         items: treatments.sample(4).map { |treatment|
           { id: treatment.id, name: treatment.name }
         },
-        decorations: { sidetext: 'Cleansing Techniques' },
+        decorations: { sidetext: { text: 'Cleansing Techniques' } },
       },
     },
     {
@@ -150,7 +150,7 @@ end
       data: {
         items: [vimeo_attachment],
         decorations: {
-          sidetext: 'Shri Mataji\'s Words',
+          sidetext: { text: 'Shri Mataji\'s Words' },
           gradient: { alignment: :left, color: :orange },
         },
       },
@@ -163,7 +163,7 @@ end
         text: '<p>When seeking to express the qualities of the Mooladhara chakra, one can study the archetype of the Hindu deity, Shri Ganesha. He is said to be the primordial child, completely pure and innocent, formed from the earth by the Goddess Parvati. His elephant head represents the innate wisdom that he imbibes, and the story of how he gained it demonstrates his complete dedication to his mother.</p><p>One day, the Goddess Parvati was taking a bath and asked Shri Ganesha to guard the door, and to let no one enter under any circumstance. Anyone who tried to approach the door to call on Goddess Parvati, Shri Ganesha swiftly sent away. However after some time, her husband Shri Shiva arrived and asked to enter. Shri Ganesha, in total innocence and devotion to his mother’s instructions, repeatedly refused and would not step aside. In a furious rage, Shri Shiva cut off the head of the child, not knowing that it was his own son.</p><p>When Shri Parvati came out and saw her dead son, she was struck by grief. Upon learning his mistake, Shri Shiva asked his soldiers to bring him the head of the first beast they find, which happened to be an elephant. Shri Shiva attached the elephant head to the body of the boy and gave him life again. From that point onward, Shri Ganesha became revered for his unwavering devotion and grounded inner strength.<p><p>In Hinduism, Shri Ganesha is venerated as the remover of obstacles, a symbol of pure innocence, intelligence and wisdom, and is worshipped at the start of any endeavor or ceremony. Although this story may seem abstract, we can take some value from the moral. Our inner awakening takes place when we are devoted to our innate motherly energy, the Kundalini. This is why the Mooladhara chakra is the first center on our central nervous system, placed below the sacrum bone where the Kundalini lies dormant. When we invoke our own sense of innocence and show our complete faith in our Kundalini, the same way a child does to their mother, she rises in us and nourishes us within.</p>',
         alignment: :right,
         asWisdom: true,
-        decorations: { sidetext: 'Ancient Knowledge' },
+        decorations: { sidetext: { text: 'Ancient Knowledge' } },
       },
     },
   ]))

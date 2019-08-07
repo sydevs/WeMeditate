@@ -153,6 +153,7 @@ en:
 
   errors:
     title: "Oops..."
+    error: "Error"
     alternatives_title: "Try one of these instead:"
     '404': "This page doesn’t exist"
     '422': "The change you wanted was rejected"

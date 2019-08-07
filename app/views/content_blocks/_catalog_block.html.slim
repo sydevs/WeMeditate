@@ -35,7 +35,7 @@
     .content__catalog__gradient
       .gradient.gradient--right.gradient--tall.gradient--short.gradient--orange
 
-    h2.content__catalog__title = block[:decorations] && block[:decorations][:sidetext]
+    h2.content__catalog__title = block[:decorations] && block[:decorations][:sidetext] && block[:decorations][:sidetext][:text]
     .content__catalog__sidetext = render_decoration :sidetext, block, alignment: :left
 
     .content__catalog__treatment_list.excerpt_list
@@ -78,11 +78,10 @@
     .carousel.js-carousel data-style='video'
       - records.each do |meditation|
         figure.carousel__item
-          .carousel__video.video
+          a.carousel__video.video href=meditation_path(meditation)
             // TODO: Re-evaluate image_sizes
             // TODO: Maybe try to find a way to re-enable lazyloading
             = smart_image_tag meditation.image, '100vw', class: 'video__thumbnail', lazy: false
-            a.video__button.video__button--horizontal.js-video href="https://vimeo.com/#{meditation.horizontal_vimeo_id}" data-id=meditation.horizontal_vimeo_id data-mfp-src='#video-popup'
-            a.video__button.video__button--vertical.js-video href="https://vimeo.com/#{meditation.vertical_vimeo_id}" data-id=meditation.vertical_vimeo_id data-mfp-src='#video-popup'
+            .video__button.video__button
 
           figcaption.carousel__name = meditation.name

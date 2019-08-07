@@ -126,9 +126,7 @@ class EditorTool {
   }
 
   inhibitEnterAndBackspace(event, insertNewBlock = false) {
-    console.log('inhibit enter?')
     if (event.key == 'Enter' || event.keyCode == 13) { // ENTER
-      console.log('inhibit enter')
       if (insertNewBlock) this.api.blocks.insert()
       event.stopPropagation()
       event.preventDefault()
@@ -150,6 +148,7 @@ class EditorTool {
 
     for (let key in this.fields) {
       newData[key] = toolElement.querySelector(`.${this.CSS.fields[key]}`).innerHTML
+      newData[key] = newData[key].replace('&nbsp;', ' ').trim()
     }
 
     return Object.assign(this.data, newData)

@@ -153,6 +153,7 @@ it:
 
   errors:
     title: "Oops..."
+    error: "Error" # TODO: Translate
     alternatives_title: "Prova uno di questi invece:"
     '404': "La pagina che stavi cercando non esiste."
     '422': "Il cambiamento che stavi cercando di fare non esiste."

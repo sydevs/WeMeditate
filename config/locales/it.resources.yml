@@ -71,7 +71,7 @@ it:
         thumbnail: "Miniatura"
         thumbnail_id: "Miniatura (png)"
         vimeo_id: "Video principale (Vimeo ID)"
-        date: "Data"
+        date: "Data di riferimento"
         content: "Contenuto"
         metatags: "Metadata"
         author: :activerecord.models.author.one # Do not translate

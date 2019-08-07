@@ -45,9 +45,6 @@ module Admin::InputHelper
     when :repeatable
       original_name = translate('admin.draft.items', count: original_value.count)
       draft_name = translate('admin.draft.items', count: draft_value.count)
-    when :decorations
-      original_name = original_value ? original_value['enabled'].reject(&:blank?).join(', ') : nil
-      draft_name = draft_value ? draft_value['enabled'].reject(&:blank?).join(', ') : nil
     when :toggle
       original_name = ActiveModel::Type::Boolean.new.cast(original_value) ? 'True' : 'False' 
       draft_name = ActiveModel::Type::Boolean.new.cast(draft_value) ? 'True' : 'False' 
@@ -98,6 +95,8 @@ module Admin::InputHelper
       else
         concat form.input_field attribute, **input.merge(disabled: disabled, value: value, selected: value)
       end
+
+      concat form.hint args[:hint] if args[:hint].present?
     end
   end
 
@@ -141,10 +140,11 @@ module Admin::InputHelper
     end
   end
 
-  def draftable_date_field form, attribute = :date
+  def draftable_date_field form, attribute = :date, hint: nil
     draftable_field form, attribute do |value|
       content_tag :div, class: 'ui date picker' do
-        form.input_field attribute, as: :string, value: value
+        concat form.input_field attribute, as: :string, value: value
+        concat form.hint hint if hint
       end
     end
   end
@@ -155,46 +155,6 @@ module Admin::InputHelper
       concat form.input_field(attribute, as: :boolean, checked: checked)
       concat tag.label translate 'admin.messages.make_public', page: form.object.model_name.human(count: 1).downcase
     end
-  end
-
-  def decoration_type_input form, decoration
-    form.input decoration, {
-      label: decoration_type_label(decoration),
-      as: :boolean,
-      wrapper: :semantic_checkbox,
-      checked_value: decoration.to_s,
-      unchecked_value: '',
-      required: false,
-      input_html: {
-        name: "#{form.object_name}[decorations][enabled][]",
-        checked: form.object.has_decoration?(decoration, draft: true),
-      },
-    }
-  end
-
-  def decoration_config_dropdown form, decoration, attribute, options
-    content_tag :div, class: 'ui inline dropdown' do
-      result = hidden_field_tag "#{form.object_name}[decorations][options][#{decoration}][]", (options & form.object.decoration_options(decoration, draft: true))[0]
-      result.concat content_tag(:i, nil, class: 'dropdown icon')
-      result.concat content_tag(:div, decoration_option_label(attribute), class: 'default text')
-      menu = content_tag(:div, class: 'menu') do
-        options.collect do |value|
-          concat content_tag(:div, decoration_option_label(attribute, value), class: 'item', data: { value: value })
-        end
-      end
-
-      result.concat(menu)
-    end
-  end
-
-  def decoration_config_sidetext form
-    form.input_field :sidetext, {
-      as: :string,
-      wrapper: :semantic_input,
-      required: false,
-      name: "#{form.object_name}[decorations][sidetext]",
-      value: form.object.decoration_sidetext(draft: true),
-    }
   end
 
   # This function is taken from https://www.pluralsight.com/guides/ruby-ruby-on-rails/ruby-on-rails-nested-attributes

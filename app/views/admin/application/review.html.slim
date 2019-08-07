@@ -81,13 +81,12 @@
               = translate 'admin.action.target.edit', record: @model.model_name
 
   h3 = translate 'admin.review.content_changes', page: @model.model_name.human
-  p = translate 'admin.explanation.preline'
+  p = translate 'admin.review.explanation.preline'
   ul.ui.small.list
     - %i[nochange modified removed added].each do |mode|
-      li
-        strong #{translate "admin.review.#{mode}.color"}
-        |  #{translate "admin.review.#{mode}.description"}
-  p = translate 'admin.explanation.postline'
+      - color = tag.strong translate("admin.review.explanation.#{mode}.color")
+      li = translate("admin.review.explanation.#{mode}.description", color: color).html_safe
+  p = translate('admin.review.explanation.postline').html_safe
 
   - if !@record.parsed_draft_content.present?
     p: em = translate 'admin.review.no_changes'
@@ -114,7 +113,7 @@
                   label
             td.collapsing
               strong = translate type, scope: %i[admin content blocks]
-              div = translate mode, scope: %i[admin review mode]
+              div = translate(mode, scope: %i[admin review mode]).downcase
             td.diff
               - puts draft.inspect
               - puts original.inspect

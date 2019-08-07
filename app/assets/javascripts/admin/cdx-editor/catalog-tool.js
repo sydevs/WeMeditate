@@ -130,7 +130,7 @@ class CatalogTool extends EditorTool {
         this.searchContainer.innerHTML = ''
         if (data.length) {
           data.forEach(item => {
-            if (document.getElementById(`${this.data.type}_${item.id}`) == null) {
+            if (this.container.querySelector(`#${this.data.type}_${item.id}`) == null) {
               const el = this.renderItem(item, false)
               el.dataset.id = item.id
               this.searchContainer.appendChild(el)

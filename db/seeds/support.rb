@@ -86,18 +86,3 @@ def content blocks
     version: '2.12.4', # EditorJS at the last time when the structure of seed JSONs were checked.
   }.to_json
 end
-
-def decoration format, alignment: :left, size: :medium, text: :text, color: :orange
-  block = {
-    type: :decoration,
-    data: {
-      format: format,
-      alignment: alignment,
-    },
-  }
-
-  block[:data][:text] = text if format == :sidetext
-  block[:data][:size] = size unless format == :sidetext
-  block[:data][:color] = color if format == :gradient
-  block
-end

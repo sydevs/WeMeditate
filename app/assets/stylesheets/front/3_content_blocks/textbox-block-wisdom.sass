@@ -79,10 +79,9 @@ $top-padding: 120px
 
   &__title
     font-size: 2.4rem
+    margin-top: 0
     
     @include laptop-or-larger
-      position: absolute
-      margin: 0
       font-weight: $font-normal
       font-size: 3.5rem
 
@@ -90,19 +89,30 @@ $top-padding: 120px
     margin-top: 0
 
 // ===== ALIGNED ===== //
+.content__textbox--wisdom.content__textbox--right
+  .content__textbox__title
+    @include laptop-or-larger
+      position: absolute
+      left: 0
+      margin: 0
+
+.content__textbox--wisdom.content__textbox--left
+  .content__textbox__box
+    padding-left: 80px
+
+  .content__textbox__image
+    @include laptop-or-larger
+      margin-top: 120px
+
 .content__textbox--wisdom.content__textbox
   @each $side in left right
     $opposite: if($side == right, left, right)
 
     &--#{$side}
       .content__textbox__graphic
-        $translate_y: if($side == right, -15.75%, 15.75%)
+        $translate_x: if($side == right, 42%, -56%)
         #{$side}: 0
-        transform: translate(42%, $translate_y)
-
-      .content__textbox__title
-        @include laptop-or-larger
-          #{$opposite}: 0
+        transform: translate($translate_x, -15.75%)
 
       .content__textbox__text
         @include tablet

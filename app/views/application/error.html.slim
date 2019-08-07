@@ -2,10 +2,10 @@
 // TODO: Set title
 
 .error
-  .sidetext.sidetext--overlay.sidetext--left = response.status
+  h1.error__banner.banner
+    = translate 'errors.title'
 
-  h1.error__banner.banner = translate 'errors.title'
-
+  /.error__status #{response.status} #{translate 'errors.error'}
   h2.error__title
     = translate "errors.#{response.status}", default: :'errors.500'
 

@@ -41,6 +41,7 @@ it:
         upload: "Carica %{record}"
         edit: "Modifica %{record}"
         edit_details: "Modifica dettagli di %{record}"
+        edit_content: "Modifica il contenuto di %{record}"
         review: "Rivedi %{record}"
         write: "Scrivi il contenuto di %{record}"
         reset: "Azzera %{record}"
@@ -96,9 +97,11 @@ it:
     messages:
       loading: "Caricamento"
       errors: "Errori"
+      no_translations_found: "No %{pages} to translate" # TODO: Translate
       make_public: "Rendi %{page} visibile al pubblico"
       maintenance_mode: "Sito in costruzione, torna a trovarci presto."
       confirm_destroy: "Sei sicuro di voler cambiare questo? Questo non può essere annullato!"
+      confirm_unsaved_changes: "Unsaved changes will be lost. Are you sure you want to leave the page?" # TODO: Translate
       drop_files_here: "Trascina i documenti qui."
       unpublished_changes_notice: "%{page} ha delle modifiche non pubblicate. Questi cambiamenti non saranno visibili fino a quando un amministratore non li avrà rivisti."
       pending_invitation_notice: "%{person} è stato invitato/a ad essere editore di WeMeditate, ma non ha ancora risposto."
@@ -106,9 +109,15 @@ it:
       draft_contributed_by: "Quest'anteprima include dei cambiamenti effettuati da %{people}."
       text_too_short: "Il testo è troppo corto, deve essere di %{count} lettere."
       invalid_vimeo_id: "deve essere un Vimeo ID valido"
-      article_author_hint: "Questo profilo viene mostrato sotto l'articolo quando questo viene pubblicato."
-      article_owner_hint: "Gli amministratori e gli editori possono sempre modificare tutti gli articoli. Questo campo da il permesso ad un autore per modificare un articolo dopo averlo pubblicato. Solitamente si tratta della persona che ha scritto l'articolo."
       new_author_notice: "Non hai ancora creato il tuo Profilo Autore, riempi tutti i campi sotto e pressa Salva."
+
+    hints:
+      excerpt: "This is a short preview of the %{page} content that will be shown in %{page} listings." # TODO: Translate
+      article_visibility: "Articles with higher visibility will be shown closed to the top of the Inspiration page" # TODO: Translate
+      article_author: "Questo profilo viene mostrato sotto l'articolo quando questo viene pubblicato."
+      article_owner: "Gli amministratori e gli editori possono sempre modificare tutti gli articoli. Questo campo da il permesso ad un autore per modificare un articolo dopo averlo pubblicato. Solitamente si tratta della persona che ha scritto l'articolo."
+      article_video: "If you enter a featured video, it will appear on the article preview." # TODO: Translate
+      article_date: "If this article is about an event, then you can set the start date of the event here. This date will appear on the article preview." # TODO: Translate
 
     result:
       created: "Creato con successo."
@@ -130,6 +139,7 @@ it:
         catalog: "Contenuto WeMeditate"
         list: "Lista"
         quote: "Citazione"
+        form: "Form" # TODO: Translate
         structured: "Structured Text"
         textbox: "Testo con Immagine"
         video: "Video"

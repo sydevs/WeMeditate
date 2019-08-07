@@ -1,3 +1,48 @@
 
+- reorder = (params[:reorder] == 'true')
+- allow = policy(@model)
+
 - content_for :title, @model.model_name.human(count: -1)
-= render 'admin/application/index', model: @model, records: @records
+
+- if reorder
+  = form_tag polymorphic_admin_path([:sort, :admin, @model]), method: :put
+    .actions
+      a.ui.tiny.compact.basic.button href=polymorphic_admin_path([:admin, @model])
+        = translate 'admin.action.simple.cancel'
+      button.ui.tiny.compact.basic.positive.right.labeled.icon.button
+        = translate 'admin.action.simple.update'
+        i.checkmark.icon
+
+    .clearfix
+
+    .ui.sort-list.items
+      - @records.each do |record|
+        .sortable.item
+          .header.handle
+            i.bars.icon
+            = record.name
+          = hidden_field_tag 'order[]', record[:id], { id: "order_for_#{record.id}" }
+
+  .ui.hidden.divider
+- else
+  .table-actions = table_actions(@model, @records)
+
+  form method='GET' data-remote=true
+    span.ui.mini.left.icon.input#search
+      i.search.icon
+      input name='q' type='text' placeholder=translate('admin.action.search') value=params[:q]
+
+  table.ui.very.basic.compact.unstackable.models.table
+    tbody#records = render partial: 'record', collection: @records
+
+  - if @records.empty? && current_user.translator?
+    #pagination
+      = translate 'admin.messages.no_translations_found', pages: @model.model_name.human(count: -1).downcase
+  - else
+    #pagination
+      = page_entries_info @records
+      = paginate @records, remote: true
+
+  .ui.hidden.divider
+
+  = table_navigation(@model)
