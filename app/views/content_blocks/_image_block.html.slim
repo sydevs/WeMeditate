@@ -22,7 +22,7 @@
   - items.each do |item|
     figure.content__image__item
       .content__image__item__media
-        = smart_image_tag @record.media_file(item[:image][:id]), image_sizes, lazy: false, class: 'content__image__img'
+        = smart_image_tag @record.media_file(item[:image][:id]), image_sizes, lazy: false, class: 'content__image__img', alt: (item[:alt] || item[:caption])
 
         - if item[:credit].present?
           .content__image__credit #{translate 'content.credit'} • #{item[:credit]}

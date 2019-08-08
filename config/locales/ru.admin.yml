@@ -202,6 +202,7 @@ ru:
         action: "Текст Кнопки"
         url: "Вставьте Ссылку"
         quote: "Введите цитату" # "Quote" as in a quotation from some other text or person
+        alt: "Describe the image for the visually impaired" # TODO: Translate
         caption: "Введите подпись к изображению" # "Caption" as in a piece of text describing an image
         credit: "Введите автора изображения/цитаты" # "Credit" as in the credit for an image or quotation
         optional: "необзязательно"

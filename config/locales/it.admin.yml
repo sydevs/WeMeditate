@@ -198,6 +198,7 @@ it:
         action: "Bottone testo"
         url: "Inserire il link qui"
         quote: "Inserire la citazione qui"
+        alt: "Describe the image for the visually impaired" # TODO: Translate
         caption: "Inserire la didascalia qui"
         credit: "Attribuzione diritti d'autore"
         optional: "Opzionale"

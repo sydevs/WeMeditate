@@ -45,7 +45,7 @@ class VideoTool extends EditorTool {
     const searchInputWrapper = make('div', [this.CSS.search, 'ui', 'fluid', 'icon', 'input'], {}, this.container)
     this.searchInput = make('input', null, { placeholder: 'Enter Vimeo ID' }, searchInputWrapper)
     make('i', ['search', 'icon'], {}, searchInputWrapper)
-    this.searchInput.addEventListener('keypress', event => {
+    this.searchInput.addEventListener('keydown', event => {
       if (event.key == 'Enter' || event.keyCode == 13 || event.which == 13) { // ENTER
         if (!isNaN(event.target.value)) this.retrieveVimeoVideo(event.target.value)
         event.preventDefault()

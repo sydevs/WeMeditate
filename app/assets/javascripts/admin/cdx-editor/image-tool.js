@@ -54,6 +54,7 @@ class ImageTool extends EditorTool {
     this.CSS.item = {
       container: `${this.CSS.container}__item`,
       image: `${this.CSS.items}__image`,
+      alt: `${this.CSS.items}__alt`,
       caption: `${this.CSS.items}__caption`,
       credit: `${this.CSS.items}__credit`,
       remove: `${this.CSS.items}__remove`,
@@ -106,7 +107,15 @@ class ImageTool extends EditorTool {
       make('div', [this.CSS.item.image, 'ui', 'fluid', 'placeholder'], {}, container)
     }
 
-    let caption = make('div', [this.CSS.input, this.CSS.inputs.caption, this.CSS.item.caption], {
+    let alt = make('div', [this.CSS.input, this.CSS.inputs.text, this.CSS.item.alt], {
+      contentEditable: true,
+      innerHTML: item.alt || '',
+    }, container)
+
+    alt.dataset.placeholder = translate['content']['placeholders']['alt']
+    alt.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
+
+    let caption = make('div', [this.CSS.input, this.CSS.inputs.alt, this.CSS.item.caption], {
       contentEditable: true,
       innerHTML: item.caption || '',
     }, container)
@@ -175,7 +184,9 @@ class ImageTool extends EditorTool {
       const image = JSON.parse(item.querySelector(`.${this.CSS.item.image}`).dataset.attributes)
       const itemData = {
         image: image,
+        alt: item.querySelector(`.${this.CSS.item.alt}`).innerText,
         caption: item.querySelector(`.${this.CSS.item.caption}`).innerText,
+        credit: item.querySelector(`.${this.CSS.item.credit}`).innerText,
       }
 
       if (!this.allowMultiple) {
