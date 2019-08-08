@@ -11,6 +11,7 @@ class CatalogTool extends EditorTool {
     super({ // Data
       title: data.title || '',
       items: data.items || [],
+      withImages: data.withImages || true,
       type: ['articles', 'treatments', 'meditations'].includes(data.type) ? data.type : 'articles',
       decorations: data.decorations || {},
     }, { // Config
@@ -35,6 +36,10 @@ class CatalogTool extends EditorTool {
           name: 'meditations',
           icon: 'fire',
           group: 'type',
+        },
+        {
+          name: 'withImages',
+          icon: 'image',
         },
       ],
     }, api)
@@ -175,11 +180,11 @@ class CatalogTool extends EditorTool {
   }
 
   selectTune(tune) {
-    let currentType = this.data.type
-    let active = super.selectTune(tune)
+    const currentType = this.data.type
+    const active = super.selectTune(tune)
 
     // If the type changes we clear the items data
-    if (active && currentType != tune.name) {
+    if (active && tune.group == 'type' && currentType != tune.name) {
       this.searchInput.value = ''
       this.itemsInput.value = ''
       this.searchContainer.innerHTML = ''

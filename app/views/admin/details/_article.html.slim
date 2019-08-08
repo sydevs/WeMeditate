@@ -9,11 +9,10 @@ p.details.excerpt = record.excerpt
 .ui.details.list
   = record_detail 'language', language_name(record.original_locale), translate('admin.details.original_language') unless record.original_locale == I18n.locale.to_s
   - if record.translated_locales.include? I18n.locale
-    - url = url_for(record)
     - if record.published?
-      = record_detail 'linkify', url, url: url
+      = record_detail 'linkify', polymorphic_path(record), url: polymorphic_url(record)
     - elsif allow.preview?
-      = record_detail 'linkify', url, translate('admin.action.descriptive.preview'), url: "#{url}?preview=true"
+      = record_detail 'linkify', polymorphic_path(record), translate('admin.action.descriptive.preview'), url: "#{polymorphic_url(record)}?preview=true"
   - else
     = record_detail 'orange warning sign', translate('admin.tags.no_translation', language: language_name)
   - translated_locales = record.translated_locales - [record.original_locale]

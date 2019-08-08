@@ -157,6 +157,7 @@ en:
         asGallery: "Gallery"
         asWisdom: "Ancient Knowledge Style"
         asVideo: "Video"
+        withImages: "Show Images"
         invert: "Invert Colours"
         style: # These are list styles
           unordered: "Unordered" # Also called a "Bulleted" list

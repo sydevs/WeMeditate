@@ -153,6 +153,7 @@ it:
         asGallery: "Galleria"
         asWisdom: "Stile antica saggezza"
         asVideo: "Video"
+        withImages: "Show Images" # TODO: Translate
         invert: "Colori invertiti"
         style:
           unordered: "Non in ordine"

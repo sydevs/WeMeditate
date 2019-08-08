@@ -157,6 +157,7 @@ ru:
         asGallery: "Галерея"
         asWisdom: "Стиль Древних Знаний"
         asVideo: "Видео"
+        withImages: "Show Images" # TODO: Translate
         invert: "Инвертировать Цвета"
         style: # These are list styles
           unordered: "Неупорядоченный Список" # Also called a "Bulleted" list
