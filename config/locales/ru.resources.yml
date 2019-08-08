@@ -6,172 +6,172 @@ ru:
   activerecord:
     models:
       article:
-        one: "Article"
-        other: "Articles"
+        one: "Статья"
+        other: "Статьи"
       static_page:
-        one: "Static Page"
-        other: "Static Pages"
+        one: "Статическая Страница"
+        other: "Статические Страницы"
       subtle_system_node: # This is a page for a Chakra, Channel, or the Kundalini. ie. Some part of the subtle system
-        one: "Subtle System Node"
-        other: "Subtle System Nodes"
+        one: "Элемент Токной Системы"
+        other: "Элементы Тонкой Системы"
       category:
-        one: "Category"
-        other: "Categories"
+        one: "Категория"
+        other: "Категории"
       meditation:
-        one: "Meditation"
-        other: "Meditations"
+        one: "Медитация"
+        other: "Медитации"
       treatment:
-        one: "Technique"
-        other: "Techniques"
+        one: "Метод"
+        other: "Методы"
       track:
-        one: "Track"
-        other: "Tracks"
+        one: "Трек"
+        other: "Треки"
       artist:
-        one: "Artist"
-        other: "Artists"
+        one: "Исполнитель"
+        other: "Исполнители"
       author:
-        one: "Author Profile"
-        other: "Author Profiles"
+        one: "Профиль Автора"
+        other: "Профили Автора"
       user:
-        one: "Admin"
-        other: "Admins"
+        one: "Админ"
+        other: "Админы"
       instrument_filter:
-        one: "Instrument"
-        other: "Instruments"
+        one: "Инструмент"
+        other: "Инструменты"
       mood_filter:
-        one: "Mood"
-        other: "Moods"
+        one: "Настроение"
+        other: "Настроения"
       duration_filter:
-        one: "Duration"
-        other: "Durations"
+        one: "Продолжительность"
+        other: "Продолжительности"
       goal_filter:
-        one: "Goal"
-        other: "Goals"
+        one: "Цель"
+        other: "Цели"
       media_file:
-        one: "Media File"
-        other: "Media Files"
+        one: "Медиа Файл"
+        other: "Медиа Файлы"
 
     attributes:
       generic:
-        published: "Published"
-        name: "Name"
-        slug: "URL"
+        published: "Опубликовано"
+        name: "Имя"
+        slug: "URL-адрес"
 
       article:
         published: :activerecord.attributes.generic.published # Do not translate
-        name: "Title"
+        name: "Название"
         slug: :activerecord.attributes.generic.slug # Do not translate
         category: :activerecord.models.category.one # Do not translate
-        priority: "Visibility"
+        priority: "Видимость"
         priorities:
-          low: "Low Visibility"
-          normal: "Normal Visibility"
-          high: "High Visibility"
-        excerpt: "Excerpt"
-        thumbnail: "Thumbnail"
-        vimeo_id: "Featured Video (Vimeo ID)"
-        date: "Featured Date" # TODO: Translate
-        content: "Content"
-        metatags: "Metadata"
+          low: "Низкая Видимость"
+          normal: "Нормальная Видимость"
+          high: "Высокая Видимость"
+        excerpt: "Выдержка"
+        thumbnail: "Превью"
+        vimeo_id: "Представленное Видео (Vimeo ID)"
+        date: "Дата"
+        content: "Контент"
+        metatags: "Метаданные"
         author: :activerecord.models.author.one # Do not translate
         author_id: :activerecord.models.author.one # Do not translate
-        owner: "Allow a writer to update this article"
+        owner: "Позволить автору обновлять статью"
 
       static_page:
-        name: "Title"
+        name: "Название"
         slug: :activerecord.attributes.generic.slug # Do not translate
-        role: "Role"
+        role: "Роль"
         roles:
-          home: "Home Page"
-          articles: "Articles Index Page"
-          meditations: "Meditations Index Page"
-          treatments: "Techniques Index Page"
-          tracks: "Music Page"
-          contact: "Contact Page"
-          shri_mataji: "About Shri Mataji"
-          subtle_system: "About Subtle System"
-          sahaja_yoga: "About Sahaja Yoga"
-          about: "About Page"
-          classes: "Classes Page"
-          self_realization: "Self-Realization"
-          privacy: "Privacy Policy"
-        content: "Content"
-        metatags: "Metadata"
+          home: "Главная"
+          articles: "Все Статьи"
+          meditations: "Все Медитации"
+          treatments: "Все Методы"
+          tracks: "Музыка"
+          contact: "Контакты"
+          shri_mataji: "О Шри Матаджи"
+          subtle_system: "О Тонкой Системе"
+          sahaja_yoga: "О Сахаджа Йоге"
+          about: "О Проекте"
+          classes: "Занятия По Медитации"
+          self_realization: "Самореализация"
+          privacy: "Политика Конфиденциальности"
+        content: "Контент"
+        metatags: "Метаданные"
 
       subtle_system_node:
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
-        excerpt: "Excerpt"
-        role: "Role"
+        excerpt: "Выдержка"
+        role: "Роль"
         roles:
-          chakra_1: "Mooladhara Chakra"
-          chakra_2: "Swadhisthan Chakra"
-          chakra_3: "Nabhi Chakra"
-          chakra_3b: "Void"
-          chakra_4: "Anahat Chakra"
-          chakra_5: "Vishuddhi Chakra"
-          chakra_6: "Agnya Chakra"
-          chakra_7: "Sahasrara Chakra"
-          channel_left: "Ida (Left) Channel"
-          channel_right: "Pingala (Right) Channel"
-          channel_center: "Sushumna (Center) Channel"
-          kundalini: "Kundalini"
-        content: "Content"
-        metatags: "Metadata"
+          chakra_1: "Муладхара Чакра"
+          chakra_2: "Свадистхан Чакра"
+          chakra_3: "Набхи Чакра"
+          chakra_3b: "Войд"
+          chakra_4: "Анахата Чакра"
+          chakra_5: "Вишудхи Чакра"
+          chakra_6: "Агия Чакра"
+          chakra_7: "Сахасрара Чакра"
+          channel_left: "Ида (Левый) Канал"
+          channel_right: "Пингала (Правый) Канал"
+          channel_center: "Сушумна (Центральный) Канал"
+          kundalini: "Кундалини"
+        content: "Контент"
+        metatags: "Метаданные"
 
       category:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
         articles:
-          one: "1 Article"
-          other: "%{count} Articles'"
+          one: "1 Статья"
+          other: "%{count} Статьи" # it is not possible to translate articles here as translation differs depending on the count value
 
       treatment:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
-        excerpt: "Excerpt"
-        content: "Content"
-        thumbnail: "Thumbnail (png)"
-        horizontal_vimeo_id: "Horizontal Video (Vimeo ID)"
-        vertical_vimeo_id: "Vertical Video (Vimeo ID)"
-        metatags: "Metadata"
+        excerpt: "Выдержка"
+        content: "Контент"
+        thumbnail: "Превью (png)"
+        horizontal_vimeo_id: "Горизонтальное Видео (Vimeo ID)"
+        vertical_vimeo_id: "Вертикальное Видео (Vimeo ID)"
+        metatags: "Метаданные"
 
       instrument_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
-        icon: "Icon"
+        icon: "Изображение"
         tracks:
-          one: "1 Track"
-          other: "%{count} Tracks'"
+          one: "1 Трек"
+          other: "%{count} Треков" # it is not possible to translate tracks here as translation differs depending on the count value
 
       mood_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         tracks:
-          one: "1 Track"
-          other: "%{count} Tracks'"
+          one: "1 Трек"
+          other: "%{count} Треков" # it is not possible to translate tracks here as translation differs depending on the count value
 
       duration_filter:
         published: :activerecord.attributes.article.published # Do not translate
-        minutes: "Minutes"
+        minutes: "Минуты"
         meditations:
-          one: "1 Meditation"
-          other: "%{count} Meditations'"
+          one: "1 Медитация"
+          other: "%{count} Медитации" # it is not possible to translate meditations here as translation differs depending on the count value
 
       goal_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         meditations:
-          one: "1 Meditation"
-          other: "%{count} Meditations'"
+          one: "1 Медитация"
+          other: "%{count} Медитации" # it is not possible to translate meditations here as translation differs depending on the count value
 
       track:
         published: :activerecord.attributes.article.published # Do not translate
-        title: "Title"
-        artist: "Artist"
-        audio: "File (mp3)"
+        title: "Название"
+        artist: "Исполнитель"
+        audio: "Файл (mp3)"
         instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
         mood_filters: :activerecord.models.mood_filter.other # Do not translate
 
@@ -179,41 +179,42 @@ ru:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
-        horizontal_vimeo_id: "Horizontal Video (Vimeo ID)"
-        vertical_vimeo_id: "Vertical Video (Vimeo ID)"
+        horizontal_vimeo_id: "Горизонтальное Видео (Vimeo ID)"
+        vertical_vimeo_id: "Вертикальное Видео (Vimeo ID)"
         duration_filter: :activerecord.models.duration_filter.one # Do not translate
         goal_filters: :activerecord.models.goal_filter.other # Do not translate
-        excerpt: "Excerpt"
-        description: "Text on Page"
-        metatags: "Metadata"
+        excerpt: "Выдержка"
+        description: "Текст на Странице"
+        metatags: "Метаданные"
 
       artist:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
-        image: "Album Art"
-        url: "Website"
+        image: "Обложка Альбома"
+        url: "Сайт"
         tracks:
-          one: "1 Track"
-          other: "%{count} Tracks'"
+          one: "1 Трек"
+          other: "%{count} Треков" # it is not possible to translate tracks here as translation differs depending on the count value
 
       author:
         name: :activerecord.attributes.generic.name # Do not translate
-        country_code: "Country"
-        title: "Title"
-        image: "Avatar"
-        description: "Biography"
-        years_meditating: "Years of Meditation Experience"
-        user: "Associated Admin Account"
+        country_code: "Страна"
+        title: "Обращение"
+        image: "Фото"
+        description: "Биография"
+        years_meditating: "Опыт Медитации"
+        user: "Cвязанный с Автором Аккаунт Админа"
 
       user:
-        email: "Email Address"
-        invitation_accepted_at: "Invitation accepted on"
+        email: "E-mail"
+        invitation_accepted_at: "Приглашение принято"
         invited_by: :activerecord.models.invited_by # Do not translate
-        languages: "Languages"
-        role: "Role"
+        languages: "Языки"
+        role: "Роль"
         roles:
-          translator: "Translator"
-          writer: "Writer"
-          editor: "Editor"
-          regional_admin: "Regional Admin"
-          super_admin: "Super Admin"
+          translator: "Переводчик"
+          writer: "Автор"
+          editor: "Редактор"
+          regional_admin: "Местный админ"
+          super_admin: "Главный админ"
+          

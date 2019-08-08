@@ -6,165 +6,165 @@ ru:
   we_meditate: "We Meditate" # This is the title of the website
 
   header:
-    learn_more: "Learn More"
-    classes_near_me: "Classes Near Me"
-    inspiration_from_within: "Inspiration comes from within"
-    cookie_notice: "By continuing to use wemeditate.co you will be agreeing to our use of cookies."
-    preview_notice: "You are viewing a preview"
+    learn_more: "Подробнее"
+    classes_near_me: "Ближайшие Центры"
+    inspiration_from_within: "Источник вдохновения внутри"
+    cookie_notice: "Продолжая использовать wemeditate.ru, вы даёте согласие на использование файлов cookie." # I changed wemeditate.co to wemeditate.ru
+    preview_notice: "Вы просматриваете предварительый вариант"
 
   footer:
-    scroll_to_top: "Back to Top"
-    meditate_now: "Meditate Now"
-    music_for_meditation: "Music for meditation"
-    learn_more: "Learn more"
-    come_meditate: "Come meditate"
-    classes_near_me: "Classes near me"
-    online_meditations: "Guided Meditations Online"
+    scroll_to_top: "Наверх"
+    meditate_now: "Начать медитацию"
+    music_for_meditation: "Музыка для медитации"
+    learn_more: "Побробнее"
+    come_meditate: "Приходите на занятия"
+    classes_near_me: "Ближайшие центры"
+    online_meditations: "Медитация онлайн"
 
   actions_footer:
-    title: "Discover it for yourself!"
-    subtitle: "Don’t just take our word for it. Try meditating and see how you feel!"
-    sidetext: "Try Meditation"
+    title: "Откройте медитацию для себя!"
+    subtitle: "Не верьте нам на слово. Попробуйте помедитировать и посмотрите, как вы себя чувствуете!"
+    sidetext: "Попробовать"
     actions:
-      online: "Meditate online"
-      local: "Classes near me"
+      online: "Медитация онлайн"
+      local: "Ближайшие центры"
 
   author:
-    about_the_author: "About the author"
-    written_by: "Written by"
+    about_the_author: "Об авторе"
+    written_by: "Написано"
     meditating_for:
-      one: "Meditating for 1 year"
-      other: "Meditating for %{count} years"
+      one: "Медитирую 1 год"
+      other: "Медитирую %{count} лет" # it is not possible to translate years here as translation differs depending on the number of years 
 
   form:
     input:
-      email: "Your email"
-      message: "Message"
+      email: "Ваш E-mail"
+      message: "Сообщение"
       privacy:
-        text: "By submitting this form, you agree to the processing of your personal data to receive guided meditations and other emails from WeMeditate."
-        learn_more: "Learn more."
-      name: "Your name"
-      class: "Select class"
+        text: "Отправляя эту форму, вы даёте согласие на обработку персональных данных для получения инструкций по медитации и других E-mail сообщений от WeMeditate."
+        learn_more: "Подробнее"
+      name: "Ваше имя"
+      class: "Выберите центр"
     missing:
-      email: "You must provide an email address."
-      message: "You forgot to fill out a message."
-      name: "You must provide your name."
+      email: "Пожалуйста, укажите ваш E-mail."
+      message: "Вы забыли ввести сообщение."
+      name: "Пожалуйста, укажите ваше имя."
     success:
-      subscribe: "You have been subscribed."
-      contact: "Your message has been received."
-      register: "You have been registered."
+      subscribe: "Теперь вы подписаны на рассылку."
+      contact: "Ваше сообщение получено."
+      register: "Вы зарегистрированы."
 
   player: # For the music or video player
-    pause: "Pause"
-    play: "Play"
-    '%_buffered': "% buffered"
-    skip_back: "Previous Track"
-    skip_forward: "Next Track"
-    rewind_10_secs: "Rewind 10 secs"
-    forward_10_secs: "Forward 10 secs"
-    unmute: "Unmute"
-    mute: "Mute"
-    volume: "Volume"
-    disable_captions: "Disable captions"
-    enable_captions: "Enable captions"
-    exit_fullscreen: "Exit fullscreen"
-    enter_fullscreen: "Enter fullscreen"
-    duration: "Duration"
-    current_time: "Current time" # The current time that the player is at
-    seek: "Seek"
-    play_title: "Play, %{title}" # %{title} is the title of a video or music track
+    pause: "Пауза"
+    play: "Воспроизвести"
+    '%_buffered': "% загружено"
+    skip_back: "Предыдущий Трек"
+    skip_forward: "Следующий Трек"
+    rewind_10_secs: "Перемотать назад 10 секунд"
+    forward_10_secs: "Перемотать вперёд 10 секунд"
+    unmute: "Включить звук"
+    mute: "Отключить звук"
+    volume: "Громкость"
+    disable_captions: "Убрать подписи"
+    enable_captions: "Подписи"
+    exit_fullscreen: "Выйти из полноэкранного режима"
+    enter_fullscreen: "Полноэкранный режим"
+    duration: "Продолжительность"
+    current_time: "Текущее время" # The current time that the player is at
+    seek: "Найти"
+    play_title: "Воспроизвести %{title}" # %{title} is the title of a video or music track
 
   articles:
-    read_more: "Read more" # Takes you to the article page
-    load_more: "Load more" # Loads more articles
-    filter: "Filter"
-    show_all: "All"
-    share: "Share: "
+    read_more: "Читать дальше" # Takes you to the article page
+    load_more: "Загрузить ещё" # Loads more articles
+    filter: "Фильтровать"
+    show_all: "Показать всё"
+    share: "Поделиться: "
 
   meditations:
     prescreen:
-      title: "Unlock guided meditations by awakening your %{kundalini} first"
-      kundalini: "inner energy"
-      action: "Awaken Your Inner Energy"
+      title: "Хотите научиться медитировать? Cначала пробудите свою %{kundalini}"
+      kundalini: "внутреннюю энергию"
+      action: "Пробудите Свою Внутреннюю Энергию"
       explanation:
-        text: "Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation."
-        learn_more: "Learn more"
+        text: "В каждом из нас есть внутренняя энергия, которая, пробуждаясь, позволяет нам быть в состоянии медитации."
+        learn_more: "Подробнее"
       skip:
-        text: "Meditated with us before?"
-        action: "Continue to your guided meditation"
+        text: "Уже медитировали с нами?"
+        action: "Перейти к медитациям"
     featured:
-      daily_meditation: "Meditation of the day"
-      trending_meditation: "Trending now"
-      random_meditation: "Let fate decide"
-      random_meditation_title: "Try a random meditation"
-      random_meditation_description: "Feel like you’re in need of a pick me up? Banish those negative thoughts which are putting you down and boost your confidence."
+      daily_meditation: "Медитация дня"
+      trending_meditation: "Популярная медитация"
+      random_meditation: "Доверюсь воле судьбы"
+      random_meditation_title: "Попробовать случайную медитацию"
+      random_meditation_description: "Настроение на нуле и нет желания что-либо делать? Избавьтесь от негативных мыслей и почувствуйте в себе уверенность."
     custom_meditation:
-      title: "Set Up your own Meditation"
-      choose_goal: "I wish to feel ..." # Please keep ' ...' (with a space) at the end of your translation.
-      choose_duration: "I have"
-      goal_prompt: "Select mood"
-      submit: "Start meditation"
-      minutes: "min"
+      title: "Выберите подходяющую для вас медитацию"
+      choose_goal: "Я хочу почувствовать ..." # Please keep ' ...' (with a space) at the end of your translation.
+      choose_duration: "У меня есть"
+      goal_prompt: "Выберите настроение"
+      submit: "Начать медитацию"
+      minutes: "мин"
     archive:
-      see_all_meditations: "See all meditations"
-      title: "Guided Meditations"
-      view_meditation: "View meditation"
-      load_more: "Load more"
+      see_all_meditations: "Все медитации"
+      title: "Медитации"
+      view_meditation: "Перейти к медитации"
+      load_more: "Загрузить ещё"
 
   tracks:
-    subtitle: "Subtitle for music"
-    text: "Enjoy a curated collection of meditation music we produced to help you disconnect from your surroundings and achieve a true state of inner peace."
-    choose_mood: "Choose the mood"
-    choose_instruments: "Choose your sound"
-    playlist: "Playlist"
+    subtitle: "Подзаголовок к музыке"
+    text: "Мы подобрали коллекцию музыки для медитации, чтобы помочь вам переключить внимание с внешней суеты и достичь состояния настоящего спокойствия внутри."
+    choose_mood: "Выберите настроение"
+    choose_instruments: "Выберите инструмент"
+    playlist: "Плейлист"
 
   treatments:
     prescreen:
-      title: "Before using methods to improve meditation, you need to awaken your %{kundalini}"
-      kundalini: "inner energy"
-      action: "Awaken Your Inner Energy"
+      title: "Хотите углубить свой опыт медитации? Cначала пробудите свою %{kundalini}"
+      kundalini: "внутреннюю энергию"
+      action: "Пробудите Свою Внутреннюю Энергию"
       explanation:
-        text: "Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation."
-        learn_more: "Learn more"
+        text: "В каждом из нас есть внутренняя энергия, которая, пробуждаясь, позволяет нам быть в состоянии медитации."
+        learn_more: "Подробнее"
       skip:
-        text: "Meditated with us before?"
-        action: "Improve your meditation!"
+        text: "Уже медитировали с нами?"
+        action: "Углубите свой опыт медитации!"
     music:
-      title: "Music"
-      description: "Music can be both relaxing and gently stimulating, bringing us into balance and allowing our minds to go thoughtless, Explore our curated collection of specially composed tracks, created to enable a deeper state of meditation."
-      read_more: "Choose from our collection"
-    read_more: "Learn more"
-    show_more: "Show More Techniques"
+      title: "Музыка"
+      description: "Музыка может помочь нам расслабиться или, наоборот, придать сил, настраивая на активную работу. Она приводит нас в баланс и позволяет нашему уму оставаться в тишине и безмыслии. Наслаждайтесь нашей подборкой музыки, а вместе с ней и глубоким состоянием медитации."
+      read_more: "Выберите из коллекции"
+    read_more: "Подробнее"
+    show_more: "Показать Ещё Методы"
 
   content:
-    credit: "Credit"
-    show_more: "Show More"
+    credit: "Авторы"
+    show_more: "Показать больше"
 
   subtle_system:
     title:
-      desktop: "Hover to learn more"
-      mobile: "Tap to learn more"
-    chakras: "Chakras"
-    channels: "Channels"
-    read_more: "Learn More"
+      desktop: "Наведите курсор, чтобы узнать больше"
+      mobile: "Нажмите, чтобы узнать больше"
+    chakras: "Чакры"
+    channels: "Каналы"
+    read_more: "Подробнее"
 
   classes:
-    prompt: "Enter your city or post code"
+    prompt: "Ваш город или индекс"
 
   errors:
-    title: "Oops..."
-    error: "Error" # TODO: Translate
-    alternatives_title: "Try one of these instead:"
-    '404': "This page doesn’t exist"
-    '422': "The change you wanted was rejected"
-    '500': "We're sorry, but something went wrong"
+    title: "Ой..."
+    error: "Ошибка"
+    alternatives_title: "Попробуйте один из следующих вариантов:"
+    '404': "Такой страницы не существует."
+    '422': "Запрошенное изменение было отклонено."
+    '500': "К сожалению, что-то пошло не так."
 
   javascript:
     popup:
-      close: "Close (Esc)"
-      loading: "Loading..."
-      prev: "Previous (Left arrow key)"
-      next: "Next (Right arrow key)"
-      counter: "%curr% of %total%"
-      image_error: "<a href=\"%url%\">The image</a> could not be loaded."
-      ajax_error: "<a href=\"%url%\">The content</a> could not be loaded."
+      close: "Закрыть (Esc)"
+      loading: "Загружается..."
+      prev: "Предыдущий (Клавиша со стрелкой влево)"
+      next: "Следующий (Клавиша со стрелкой вправо)"
+      counter: "%curr% из %total%"
+      image_error: "Не удалось загрузить <a href=\"%url%\">изображение</a>."
+      ajax_error: "Не удалось загрузить <a href=\"%url%\">контект</a>."

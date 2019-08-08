@@ -15,15 +15,15 @@ en: # English translations
     archive: "all"
 ru: # Russian translations
   routes:
-    inspiration: "inspiration"
-    articles: "articles"
-    countries: "countries"
-    meditations: "meditations"
-    techniques: "techniques"
-    subtle_system: "subtle-system"
-    page: "page"
-    music: "music"
-    archive: "all"
+    inspiration: "вдохновение"
+    articles: "статьи"
+    countries: "страны"
+    meditations: "медитации"
+    techniques: "техники"
+    subtle_system: "тонкая система"
+    page: "страница"
+    music: "музыка"
+    archive: "все"
 it: # Italian translations
   routes:
     inspiration: "ispirazione"

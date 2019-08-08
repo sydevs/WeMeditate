@@ -115,7 +115,7 @@ en:
 
     hints:
       excerpt: "This is a short preview of the %{page} content that will be shown in %{page} listings."
-      article_visibility: "Articles with higher visibility will be shown closed to the top of the Inspiration page"
+      article_visibility: "Articles with higher visibility will be shown closer to the top of the Inspiration page"
       article_author: "The profile which will be shown under the article on the website."
       article_owner: "Administrators and Editors can always edit all articles. This field gives a writer special permission to modify an article after it is published. Usually this is the person who wrote the article in the first place."
       article_video: "If you enter a featured video, it will appear on the article preview."

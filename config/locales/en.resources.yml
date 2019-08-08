@@ -125,7 +125,7 @@ en:
         slug: :activerecord.attributes.generic.slug # Do not translate
         articles:
           one: "1 Article"
-          other: "%{count} Articles'"
+          other: "%{count} Articles"
 
       treatment:
         published: :activerecord.attributes.article.published # Do not translate
