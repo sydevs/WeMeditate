@@ -4,6 +4,12 @@
 - return unless records.present?
 
 .content__catalog class="content__catalog--#{block[:type]}"
+  - if block[:title] && block[:type] != 'treatments'
+    h2.content__catalog__header
+      = inline_svg 'graphics/leaves.svg', class: 'content__catalog__header__leaf'
+      .content__catalog__header__text = block[:title]
+      = inline_svg 'graphics/leaves.svg', class: 'content__catalog__header__leaf'
+
   - if block[:type] == 'articles'
     .content__catalog__sidetext = render_decoration :sidetext, block, alignment: :left
 
@@ -35,7 +41,11 @@
     .content__catalog__gradient
       .gradient.gradient--right.gradient--tall.gradient--short.gradient--orange
 
-    h2.content__catalog__title = block[:decorations] && block[:decorations][:sidetext] && block[:decorations][:sidetext][:text]
+    h2.content__catalog__title
+      - if bloack[:title]
+        = block[:title]
+      - else
+        = block[:decorations] && block[:decorations][:sidetext] && block[:decorations][:sidetext][:text]
     .content__catalog__sidetext = render_decoration :sidetext, block, alignment: :left
 
     .content__catalog__treatment_list.excerpt_list

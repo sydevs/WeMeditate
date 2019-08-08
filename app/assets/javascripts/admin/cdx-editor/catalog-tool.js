@@ -9,8 +9,7 @@ class CatalogTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
-      action: data.action || '',
-      url: data.url || '',
+      title: data.title || '',
       items: data.items || [],
       type: ['articles', 'treatments', 'meditations'].includes(data.type) ? data.type : 'articles',
       decorations: data.decorations || {},
@@ -18,6 +17,7 @@ class CatalogTool extends EditorTool {
       id: 'catalog',
       decorations: ['sidetext'],
       fields: {
+        title: { contrain: true },
         items: { input: false },
       },
       tunes: [
@@ -53,9 +53,10 @@ class CatalogTool extends EditorTool {
   render() {
     const container = super.render()
 
-    this.typeLabel = make('div', this.CSS.fields.type, {}, container)
+    this.typeLabel = make('div', this.CSS.fields.type, {})
     make('i', 'icon', {}, this.typeLabel)
     make('span', null, {}, this.typeLabel)
+    container.prepend(this.typeLabel)
 
     const searchInputWrapper = make('div', [this.CSS.search.input_wrapper, 'ui', 'fluid', 'icon', 'input'], {}, container)
     this.searchInput = make('input', this.CSS.search.input, {

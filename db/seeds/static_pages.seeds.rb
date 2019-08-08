@@ -130,14 +130,9 @@ static_pages[:home].update!(content: content([
       },
     },
   }, {
-    type: :header,
-    data: {
-      text: 'FAQ',
-      centered: true,
-    },
-  }, {
     type: :catalog,
     data: {
+      title: 'FAQ',
       type: :articles,
       items: Article.where(name: ['Why Meditate?', 'Is it right for me?', 'Who else is doing it?']).map { |article|
         { id: article.id, name: article.name }

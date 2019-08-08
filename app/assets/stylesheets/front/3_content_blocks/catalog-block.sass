@@ -14,18 +14,6 @@
     margin-top: 80px
     margin-bottom: 150px
 
-.content__catalog__title
-  font-weight: $font-bold
-  font-size: 2.4rem
-  line-height: 1.25
-  letter-spacing: 0.25px
-
-  @include tablet-or-larger
-    font-size: 3rem
-
-  @include laptop-or-larger
-    display: none
-
 .content__catalog__sidetext
   display: none
 
@@ -43,13 +31,56 @@
   @include laptop-or-larger
     margin-bottom: 200px
 
+// ===== TITLE ===== //
+.content__catalog__title
+  font-weight: $font-bold
+  font-size: 2.4rem
+  line-height: 1.25
+  letter-spacing: 0.25px
+
+  @include tablet-or-larger
+    font-size: 3rem
+
+  @include laptop-or-larger
+    display: none
+
+.content__catalog__header
+  text-align: center
+  margin-top: 85px
+  margin-bottom: 52px
+
+  font-weight: $font-bold
+  font-size: 2.8rem
+  line-height: 65px
+  letter-spacing: 1px
+
+  &__text
+    display: inline-block
+    vertical-align: text-bottom
+    padding: 0 15px
+    font-size: 3.5rem
+
+  &__leaf
+    width: 1.7217em
+
+    &:first-child
+      transform: rotate(90deg) scaleX(-1) scaleY(-1)
+
+    &:last-child
+      transform: rotate(-90deg) scaleY(-1)
+
+    path
+      fill: $color-graphic-dark
+
 // ===== ARTICLES LINK GRID ===== //
 .content__catalog--articles
   margin-top: 45px
   margin-bottom: 67px
 
+  @include laptop-or-larger
+    margin-top: 320px
+
   @include widescreen
-    margin-top: 80px
     margin-bottom: 150px
 
 .content__catalog__article

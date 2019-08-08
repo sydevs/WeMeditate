@@ -1,8 +1,3 @@
 
-- if block[:centered]
-  h2.content__header.content__header--centered
-    = inline_svg 'graphics/leaves.svg', class: 'content__header__leaf'
-    .content__header__text = block[:text]
-    = inline_svg 'graphics/leaves.svg', class: 'content__header__leaf'
-- else
-  h2.content__header = block[:text]
+h2.content__header class=('content__header--centered' if block[:centered])
+  = block[:text]
