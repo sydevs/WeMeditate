@@ -50,7 +50,7 @@ module Admin::TableHelper
     capture do
       if record.respond_to?(:translated_locales)
         if record.translated_locales.include?(I18n.locale)
-          if record.respond_to?(:published_at) && record.get_localized_attribute(:published_at).nil?
+          if record.respond_to?(:published_at) && record.published_at.nil?
             status = table_icon "#{'orange' if allow.publish?} warning sign", translate('admin.tags.pending_translation', language: language_name)
           end
         else

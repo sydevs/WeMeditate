@@ -6,7 +6,10 @@
     = table_action translate('admin.action.descriptive.show'), 'eye', polymorphic_url(@record), nil, true
 
 .clearfix
-= render 'admin/application/form', record: @record
+
+- locale = @record.translated_locales.include?(I18n.locale) ? I18n.locale : @record.original_locale
+- Globalize.with_locale(locale) do
+  = render 'admin/application/form', record: @record
 
 / TODO: Remove this test code
 hr
@@ -24,4 +27,4 @@ p: pre = @record.pretty_inspect
 - if @record.respond_to?(:draft)
   p: code
     div Draft
-    pre = @record.local_draft.pretty_inspect
+    pre = @record.parsed_draft.pretty_inspect

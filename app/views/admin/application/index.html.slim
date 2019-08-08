@@ -20,7 +20,7 @@
         .sortable.item
           .header.handle
             i.bars.icon
-            = record.name
+            = record.preview_name
           = hidden_field_tag 'order[]', record[:id], { id: "order_for_#{record.id}" }
 
   .ui.hidden.divider

@@ -59,7 +59,7 @@ module Admin
       redirect = helpers.polymorphic_admin_path([action, :admin, @record]) if redirect.nil?
       # redirect = (allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
 
-      @record.published_at = Time.now.to_date if will_publish && @record.respond_to?(:published_at) && @record.get_localized_attribute(:published_at).nil?
+      @record.published_at ||= Time.now.to_date if will_publish && @record.respond_to?(:published_at)
 
       puts "UPDATED PARAMS #{record_params}"
       

@@ -13,7 +13,7 @@ table.ui.very.basic.compact.unstackable.models.table
           = table_icon model_icon_key(issue[:model]), issue[:model].model_name.human
 
         td.selector
-          a href=issue[:url] = issue[:name] || translate('admin.misc.no_translated_title')
+          a href=issue[:url] = issue[:name]
 
         td.collapsing.right.aligned.disabled
           = issue[:message]

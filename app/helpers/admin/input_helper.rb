@@ -71,7 +71,7 @@ module Admin::InputHelper
 
   def draftable_field form, attribute, type: :string, label: true, disabled: false, input: {}, wrapper: {}, **args
     key = (type == :association ? "#{attribute}_id" : attribute.to_s)
-    has_draft = args[:draft].present? || form.object.local_draft&.has_key?(key)
+    has_draft = args[:draft].present? || form.object.parsed_draft&.has_key?(key)
     value = args.key?(:value) ? args[:value] : form.object.send(key)
 
     wrapper[:class] = "#{wrapper[:class] || ''} #{'draft' if has_draft}"
@@ -79,7 +79,7 @@ module Admin::InputHelper
 
     form.input attribute, label: false, disabled: disabled, required: wrapper[:required], wrapper_html: wrapper.except!(:required) do
       if has_draft
-        draft = args[:draft] || form.object.local_draft[key]
+        draft = args[:draft] || form.object.parsed_draft[key]
         concat draft_reset_buttons(type, value, draft, input)
         value = draft
       end
@@ -101,7 +101,7 @@ module Admin::InputHelper
   end
 
   def draftable_publish_field form, enabled: true **args
-    published_at = form.object.get_localized_attribute(:published_at) if form.object.respond_to?(:published_at)
+    published_at = form.object.published_at if form.object.respond_to?(:published_at)
     hint = published_at ? translate('admin.details.first_published_at', datetime: published_at.to_s(:long)) : nil
 
     draftable_field form, :published, type: :toggle do |val|

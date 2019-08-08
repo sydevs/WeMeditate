@@ -5,9 +5,9 @@ tr.record id=dom_id(record)
   td.selector
     - if allow.show? || allow.edit?
       a href=polymorphic_admin_path([(:edit unless allow.show?), :admin, record])
-        = record.name || translate('admin.misc.no_translated_title')
+        = record.preview_name
     - else
-      .disabled = record.name || translate('admin.misc.no_translated_title')
+      .disabled = record.preview_name
 
   td.collapsing.right.aligned.disabled
     = table_detail(record)
@@ -19,13 +19,13 @@ tr.record id=dom_id(record)
     - when Track
       td.collapsing
         - record.instrument_filters.includes(:translations).each do |instrument_filter|
-          .instrument data={ tooltip: instrument_filter.name, position: 'top right' }
+          .instrument data={ tooltip: instrument_filter.preview_name, position: 'top right' }
             img src=instrument_filter.icon.url
 
     - when Meditation
       td.collapsing
         - record.goal_filters.includes(:translations).each do |goal_filter|
-          .goal data={ tooltip: goal_filter.name, position: 'top right' }
+          .goal data={ tooltip: goal_filter.preview_name, position: 'top right' }
             img src=goal_filter.icon.url
 
       td.collapsing

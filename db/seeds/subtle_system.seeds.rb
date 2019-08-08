@@ -36,7 +36,6 @@ treatments = []
   treatment = Treatment.find_or_initialize_by(order: index)
   treatment.update!(atts.merge({
     order: index,
-    thumbnail_id: attachment("treatments/#{index + 2}.jpg", treatment),
     vertical_vimeo_id: 152153054,
     horizontal_vimeo_id: 208643382,
     content: content([
@@ -54,6 +53,7 @@ treatments = []
     published: true,
     published_at: DateTime.now,
   }))
+  treatment.update!(thumbnail_id: attachment("treatments/#{index + 2}.jpg", treatment))
 
   treatments.push(treatment)
 

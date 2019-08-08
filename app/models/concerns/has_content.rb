@@ -52,7 +52,7 @@ module HasContent
             end
           end
 
-          result += [local_draft['thumbnail_id']] if local_draft['thumbnail_id']
+          result += [parsed_draft['thumbnail_id']] if parsed_draft['thumbnail_id']
         end
       end
     end

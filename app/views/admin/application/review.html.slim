@@ -2,8 +2,8 @@
 - allow = policy(@record)
 - content_for :title, translate('admin.action.target.review', record: @record.model_name.human)
 
-- details_draft = @record.local_draft&.except('content', 'contributors')
-- contributors = User.where(id: @record.local_draft['contributors']).map(&:name)
+- details_draft = @record.parsed_draft&.except('content', 'contributors')
+- contributors = User.where(id: @record.parsed_draft['contributors']).map(&:name)
 
 - if contributors.present?
   .ui.message = translate 'admin.messages.draft_contributed_by', people: contributors.to_sentence
@@ -152,4 +152,4 @@
 
 / TODO: Remove this testing code
 hr
-p: code = @record.local_draft.inspect
+p: code = @record.parsed_draft.inspect

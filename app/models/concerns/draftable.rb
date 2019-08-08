@@ -10,21 +10,21 @@ module Draftable
     # Do nothing for now
   end
 
-  def local_draft
-    @local_draft = get_localized_attribute(:draft)
+  def parsed_draft
+    @parsed_draft = draft
   end
 
   def parsed_draft_content
-    @parsed_draft_content = local_draft['content'].present? ? JSON.parse(local_draft['content']) : nil
+    @parsed_draft_content = parsed_draft['content'].present? ? JSON.parse(parsed_draft['content']) : nil
   end
 
   def has_draft? attribute = nil
-    local_draft.present? && (attribute.nil? || local_draft.has_key?(attribute.to_s))
+    parsed_draft.present? && (attribute.nil? || parsed_draft.has_key?(attribute.to_s))
   end
 
   def record_draft! user
     new_draft = {}
-    new_draft['contributors'] = has_draft? ? local_draft['contributors'] : []
+    new_draft['contributors'] = has_draft? ? parsed_draft['contributors'] : []
     new_draft['contributors'] = new_draft['contributors'].to_set.add(user.id).to_a
 
     changes.each do |key, (old_value, new_value)|
@@ -44,13 +44,13 @@ module Draftable
       end
     end
 
-    self[:draft] = (local_draft || {}).merge(new_draft)
+    self[:draft] = (parsed_draft || {}).merge(new_draft)
   end
 
   def reify_draft!
-    return unless local_draft.present?
+    return unless parsed_draft.present?
 
-    local_draft.each do |key, value|
+    parsed_draft.each do |key, value|
       next if key == 'contributors'
       self[key] = value
     end
@@ -62,7 +62,7 @@ module Draftable
         if key == 'content'
           approve_content!(data)
         else
-          self[key] = local_draft[key]
+          self[key] = parsed_draft[key]
         end
       end
     end
@@ -71,7 +71,7 @@ module Draftable
   end
 
   def cleanup_draft!
-    draft = local_draft
+    draft = parsed_draft
 
     changes.each do |key, (old_value, new_value)|
       next unless draft&.has_key?(key)

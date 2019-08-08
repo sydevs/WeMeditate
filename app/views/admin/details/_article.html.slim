@@ -7,6 +7,7 @@
 p.details.excerpt = record.excerpt
 
 .ui.details.list
+  = record_detail 'language', language_name(record.original_locale), translate('admin.details.original_language') unless record.original_locale == I18n.locale.to_s
   - if record.translated_locales.include? I18n.locale
     - url = url_for(record)
     - if record.published?
@@ -15,12 +16,13 @@ p.details.excerpt = record.excerpt
       = record_detail 'linkify', url, translate('admin.action.descriptive.preview'), url: "#{url}?preview=true"
   - else
     = record_detail 'orange warning sign', translate('admin.tags.no_translation', language: language_name)
-  - translated_locales = record.translated_locales.map { |lang| language_name(lang) }.join(', ')
+  - translated_locales = record.translated_locales - [record.original_locale]
+  - translated_locales = translated_locales.map { |lang| language_name(lang) }.join(', ')
   = record_detail 'globe', translated_locales, translate('admin.details.translated_languages')
   - if record.author_id.present?
     - url = policy(record.author).edit? ? edit_admin_author_path(record.author) : nil
-    = record_detail model_icon_key(Author), record.author.name, Author.model_name.human, url: url
-  = record_detail model_icon_key(Category), record.category.name, Category.model_name.human
+    = record_detail model_icon_key(Author), record.author.preview_name, Author.model_name.human, url: url
+  = record_detail model_icon_key(Category), record.category.preview_name, Category.model_name.human
   = record_detail 'eye', human_enum_name(record, :priority), translate('admin.details.priority')
   = record_detail 'calendar', record.date, translate('admin.details.featured_date') if record.date.present?
   = record_detail 'play circle', "Video ##{record.vimeo_id}", translate('admin.details.featured_video'), url: "https://vimeo.com/#{record.vimeo_id}" if record.vimeo_id.present?

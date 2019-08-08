@@ -2,59 +2,61 @@
 - content_for :title, translate('admin.action.target.write', record: @record.model_name.human)
 - allow = policy(@record)
 - has_draft = @record.has_draft?(:content)
-- content = has_draft ? @record.parsed_draft_content : (@record.parsed_content || {})
 - data = { upload: polymorphic_admin_path([:admin, @record, MediaFile]), triangle: image_path('graphics/triangle.svg') }
 
-= simple_form_for @record, url: polymorphic_admin_path([:admin, @record]), html: { id: "editor-form" } do |f|
-  = f.hidden_field :content, as: :hidden, id: 'content-input'
+- locale = @record.translated_locales.include?(I18n.locale) ? I18n.locale : @record.original_locale
+- Globalize.with_locale(locale) do
+  - content = has_draft ? @record.parsed_draft_content : (@record.parsed_content || {})
+  = simple_form_for @record, url: polymorphic_admin_path([:admin, @record]), html: { id: "editor-form" } do |f|
+    = f.hidden_field :content, as: :hidden, id: 'content-input'
 
-  .field class=('draft' if has_draft) data-draft='content'
-    - if @record.reviewable? && has_draft && @record.parsed_draft_content.present?
-      .ui.yellow.message = translate 'admin.messages.draft_notice', page: @record.model_name.human
+    .field class=('draft' if has_draft) data-draft='content'
+      - if @record.reviewable? && has_draft && @record.parsed_draft_content.present?
+        .ui.yellow.message = translate 'admin.messages.draft_notice', page: @record.model_name.human
 
-      /= draft_reset_buttons(:content, @record.parsed_content, JSON.parse(content))
-      /.clearfix
+        /= draft_reset_buttons(:content, @record.parsed_content, JSON.parse(content))
+        /.clearfix
 
-    - if @splash_style
-      #splash-editor.ce-block data-style=@splash_style
-        .cdx-splash.cdx-block class="cdx-splash--#{@splash_style}"
-          #splash-background
-            #splash-background-image
-            #splash-title.cdx-input.cdx-input--title contenteditable=true data-placeholder="Enter some leading text"
-            #splash-text.cdx-input.cdx-input--text contenteditable=true data-placeholder="Enter a subtitle"
-            #splash-action.cdx-input.cdx-input--button contenteditable=true data-placeholder="Button Text"
-            #splash-url.cdx-input.cdx-input--url contenteditable=true data-placeholder="Enter url link"
+      - if @splash_style
+        #splash-editor.ce-block data-style=@splash_style
+          .cdx-splash.cdx-block class="cdx-splash--#{@splash_style}"
+            #splash-background
+              #splash-background-image
+              #splash-title.cdx-input.cdx-input--title contenteditable=true data-placeholder="Enter some leading text"
+              #splash-text.cdx-input.cdx-input--text contenteditable=true data-placeholder="Enter a subtitle"
+              #splash-action.cdx-input.cdx-input--button contenteditable=true data-placeholder="Button Text"
+              #splash-url.cdx-input.cdx-input--url contenteditable=true data-placeholder="Enter url link"
 
-          #splash-uploader
+            #splash-uploader
 
-    #content-editor data=data data-content=content.to_json
+      #content-editor data=data data-content=content.to_json
 
-  p
-    - if allow.show?
-      a.ui.basic.button href=polymorphic_admin_path([:admin, @record])
-        i.left.arrow.icon
-        = translate 'admin.action.simple.back'
-    - else
-      a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(@record.page) ? @record.page : @record.class])
-        i.left.arrow.icon
-        = translate 'admin.action.target.back', records: @record.model_name.human(count: -1)
+    p
+      - if allow.show?
+        a.ui.basic.button href=polymorphic_admin_path([:admin, @record])
+          i.left.arrow.icon
+          = translate 'admin.action.simple.back'
+      - else
+        a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(@record.page) ? @record.page : @record.class])
+          i.left.arrow.icon
+          = translate 'admin.action.target.back', records: @record.model_name.human(count: -1)
 
-    - if allow.publish?
-      button.ui.basic.positive.button type='submit' name='draft' value='true'
-        = translate 'admin.action.simple.save_draft'
+      - if allow.publish?
+        button.ui.basic.positive.button type='submit' name='draft' value='true'
+          = translate 'admin.action.simple.save_draft'
 
-      - unless @record.is_a?(Article) && @record.new_record?
-        button.ui.basic.primary.button type='submit'
+        - unless @record.is_a?(Article) && @record.new_record?
+          button.ui.basic.primary.button type='submit'
+            = translate 'admin.action.simple.update'
+            '  &
+            = translate 'admin.action.simple.approve'
+      - else
+        button.ui.basic.positive.button type='submit'
           = translate 'admin.action.simple.update'
-          '  &
-          = translate 'admin.action.simple.approve'
-    - else
-      button.ui.basic.positive.button type='submit'
-        = translate 'admin.action.simple.update'
 
-    div#upload-loader style='display: none'
-      i.notched.circle.loading.icon
-      span
+      div#upload-loader style='display: none'
+        i.notched.circle.loading.icon
+        span
 
 / TODO: Remove this test code
 hr
@@ -70,7 +72,7 @@ p: pre = @record.pretty_inspect
   p: pre = translation.pretty_inspect
 p: code
   div Draft
-  pre = @record.local_draft.pretty_inspect
+  pre = @record.parsed_draft.pretty_inspect
 p: code
   div Content
   pre = @record.parsed_content.pretty_inspect

@@ -67,6 +67,7 @@ en:
       draft: "This %{page} is an unpublished draft"
 
     details:
+      original_language: "Original Language"
       translated_languages: "Translated Languages"
       priority: "Order on Inspiration Page"
       owned_by: "Owned by %{owner}"

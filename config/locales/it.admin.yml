@@ -65,6 +65,7 @@ it:
       draft: "%{page} è un'anteprima non pubblicata."
 
     details:
+      original_language: "Original Language" # TODO: Translate
       translated_languages: "Lingue tradotte"
       priority: "Ordina sulla pagina Ispirazione"
       owned_by: "Di %{owner}"

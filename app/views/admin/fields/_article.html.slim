@@ -28,9 +28,6 @@
       i.calendar.icon
       = record.date
 
-// TODO: Remove this page banner which is no longer used.
-// = draftable_media_field f, :banner_id, preview: true
-
 - if allow.update_structure?
   = f.association :author, hint: translate('admin.hints.article_author'), input_html: { class: 'clearable' }
 

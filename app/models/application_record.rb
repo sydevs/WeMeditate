@@ -33,15 +33,25 @@ class ApplicationRecord < ActiveRecord::Base
   def translatable?
     respond_to?(:translated_locales)
   end
+  
+  def preview_name
+    name = self[:name]
+    name ||= get_localized_attribute(:name, original_locale)
+    name ||= I18n.translate('admin.misc.no_translated_title')
+  end
+
+  def original_localization
+    @original_localization ||= translation_for(original_locale)
+  end
 
   # Retrieves the localized attribute without any fallback
-  def get_localized_attribute attribute
+  def get_localized_attribute attribute, locale = Globalize.locale
     return self.send(attribute) unless translatable?
 
-    if globalize.stash.contains?(Globalize.locale, attribute)
-      globalize.stash.read(Globalize.locale, attribute)
+    if globalize.stash.contains?(locale, attribute)
+      globalize.stash.read(locale, attribute)
     else
-      translation_for(Globalize.locale).send(attribute)
+      translation_for(locale).send(attribute)
     end
   end
 
