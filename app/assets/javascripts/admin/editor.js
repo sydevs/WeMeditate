@@ -45,14 +45,6 @@ const Editor = {
         Editor.options.data = Editor.processDataForLoad(editor.dataset.content)
       }
 
-      // Prevent the enter key from submitting the form
-      form.addEventListener('keydown', function(event) {
-        if (event.key == 'Enter' || event.keyCode == 13) { // Enter
-          event.preventDefault()
-          return false
-        }
-      })
-
       Editor.instance = new EditorJS(Editor.options)
     }
   },

@@ -82,10 +82,10 @@ class ListTool extends EditorTool {
     if (event.key == 'Enter' || event.keyCode == 13) { // ENTER
       const item = this.currentItem
       const items = item.parentNode.children
-      console.log('on Enter', items.length, item.nextSibling, item.textContent.trim().length)
       if (items.length >= 2 && item.nextSibling == null && !item.textContent.trim().length) {
-        item.remove()
         this.api.blocks.insert()
+        this.api.caret.setToNextBlock('start', 0)
+        item.remove()
         event.preventDefault()
         event.stopPropagation()
         return false

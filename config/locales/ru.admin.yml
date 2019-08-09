@@ -100,7 +100,7 @@ ru:
     messages:
       loading: "Загружается"
       errors: "Ошибки"
-      no_translations_found: "No %{pages} to translate" # TODO: Translate
+      no_translations_found: "Все статьи типа %{pages} уже переведены"
       make_public: "Сделать %{page} видимой для пользователей"
       maintenance_mode: "Сайт в разработке, возвращайтесь через некоторое время."
       confirm_unsaved_changes: "Подождите! Несохраненные данные будут потеряны. Вы уверены, что хотите покинуть страницу?"

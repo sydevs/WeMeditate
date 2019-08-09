@@ -14,7 +14,7 @@
   - if block[:type] == 'articles' || !showImages
     .content__catalog__sidetext = render_decoration :sidetext, block, alignment: :left
 
-    .content__catalog__article_grid.js-grid data-max-columns=3
+    .content__catalog__article_grid data-max-columns=3 class=(records.length < 3 ? 'content__catalog__article_grid--centered' : 'js-grid')
       - records.first(3).each do |record|
         article.preview.content__catalog__article
           - if showImages
