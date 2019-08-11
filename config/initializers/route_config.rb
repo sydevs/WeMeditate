@@ -1,7 +1,7 @@
 
 RouteTranslator.config do |config|
   config.locale_param_key = :locale
-  #config.generate_unnamed_unlocalized_routes = true
+  config.hide_locale = true
   config.verify_host_path_consistency = true
 
   if Rails.env.production?
@@ -22,8 +22,6 @@ RouteTranslator.config do |config|
   end
 
   Rails.configuration.locale_hosts = config.host_locales.invert
-
-  # TODO: See this comment for a workaround, https://github.com/enriclluelles/route_translator/issues/171#issuecomment-324083093
 end
 
 class DomainConstraint
@@ -32,7 +30,6 @@ class DomainConstraint
   end
 
   def matches?(request)
-    puts "#{@domains.inspect} has? #{request.host} -> #{@domains.include? request.host}"
     @domains.include? request.host
   end
 end
