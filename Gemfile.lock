@@ -279,7 +279,7 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     retriable (3.1.2)
-    route_translator (7.0.0)
+    route_translator (6.0.0)
       actionpack (>= 5.0.0.1, < 6.1)
       activesupport (>= 5.0.0.1, < 6.1)
     ruby_dep (1.5.0)
@@ -409,7 +409,7 @@ DEPENDENCIES
   rails-i18n
   rails_serve_static_assets
   regulator
-  route_translator
+  route_translator (~> 6.0.0)
   sassc-rails
   seedbank
   selenium-webdriver

@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   include Regulator
   protect_from_forgery # with: :exception
   before_action :enfore_maintenance_mode, except: %i[maintenance]
-  around_action :set_locale_from_url
   
   # The root page of the website
   def home
