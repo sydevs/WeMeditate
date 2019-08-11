@@ -103,7 +103,6 @@ GEM
     devise_invitable (2.0.1)
       actionmailer (>= 5.0)
       devise (>= 4.6)
-    differ (0.1.2)
     digest-crc (0.4.1)
     dotenv (2.7.5)
     erubi (1.8.0)
@@ -382,7 +381,6 @@ DEPENDENCIES
   devise
   devise-i18n
   devise_invitable
-  differ
   dotenv
   friendly_id
   friendly_id-globalize

@@ -45,9 +45,6 @@
   cursor: pointer
   border: none
 
-  &:focus
-    outline: 4px solid $color-button-blue-dark
-
   // Creates a background behind the button which can be animated on hover.
   &:before
     background: $color-button-blue
@@ -81,6 +78,9 @@
 .button--box
   min-width: 174px
   border: 1px solid $color-text-normal
+
+  &:focus
+    outline: 4px solid $color-button-blue-dark
 
 .button--filled
   min-width: 120px
