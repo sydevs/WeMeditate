@@ -15,7 +15,11 @@ module Draftable
   end
 
   def parsed_draft_content
-    @parsed_draft_content = parsed_draft['content'].present? ? JSON.parse(parsed_draft['content']) : nil
+    @parsed_draft_content ||= parsed_draft['content'].present? ? JSON.parse(parsed_draft['content']) : nil
+  end
+
+  def draft_content_blocks
+    parsed_draft_content['blocks']
   end
 
   def has_draft? attribute = nil
@@ -56,18 +60,21 @@ module Draftable
     end
   end
 
-  def reify_approved_changes! attributes
-    if attributes.present?
-      attributes.each do |key, data|
-        if key == 'content'
-          approve_content!(data)
-        else
-          self[key] = parsed_draft[key]
-        end
+  def approve_changes! changes
+    draft = parsed_draft
+
+    changes.each do |key, data|
+      if key == 'content'
+        approve_content_changes!(data)
+      elsif data == 'approve'
+        self[key] = draft[key]
+        draft[key] = nil
+      elsif data == 'discard'
+        draft[key] = nil
       end
     end
 
-    discard_draft!
+    write_attribute :draft, draft
   end
 
   def cleanup_draft!
@@ -97,27 +104,50 @@ module Draftable
 
   private
 
-    def approve_content! data
-      original_blocks = content_blocks
-      draft_content = parsed_draft_content
-      blocks = []
+    def approve_content_changes! data
+      live_blocks = content_blocks
+      draft_blocks = parsed_draft_content['blocks']
+      new_draft_content = parsed_draft_content.merge('blocks' => [], 'media_files' => [])
+      new_live_content = new_draft_content.except('contributors')
 
-      data.each do |index, dat|
-        dat1 = dat.split(':')
-        mode = dat1[0]
-        index = dat1[1].to_i
+      data['index'].each do |i|
+        action = data['action'][i]
+        effect = data['effect'][i]
+        live_index = data['original_index'][i]
+        draft_index = data['draft_index'][i]
 
-        if mode == 'keep'
-          blocks << original_blocks[index]
-        elsif mode == 'use'
-          blocks << draft_content['blocks'][index]
-        else
-          throw ArgumentError, dat
-        end
+        if (action == 'discard' && effect != 'added') || effect == 'nochange'
+          # Live index will not be present in the effect is an addition
+          new_live_content['blocks'] << live_blocks[live_index]
+          new_live_content['media_files'] << live_blocks[live_index]['media_files']
+          new_draft_content['blocks'] << live_blocks[live_index]
+          new_draft_content['media_files'] << live_blocks[live_index]['media_files']
+        elsif action == 'approve' && effect != 'removed'
+          # Draft index will not be present in the effect is a removal
+          new_live_content['blocks'] << draft_blocks[draft_index]
+          new_live_content['media_files'] << draft_blocks[draft_index]['media_files']
+          new_draft_content['blocks'] << draft_blocks[draft_index]
+          new_draft_content['media_files'] << draft_blocks[draft_index]['media_files']
+        elsif action == 'keep'
+          if live_index.present?
+            new_live_content['blocks'] << live_blocks[live_index]
+            new_live_content['media_files'] << live_blocks[live_index]['media_files']
+          end
+
+          if draft_index.present?
+            new_draft_content['blocks'] << draft_blocks[draft_index]
+            new_draft_content['media_files'] << draft_blocks[draft_index]['media_files']
+          end
+        end # else do nothing
       end
 
-      draft_content['blocks'] = blocks
-      self.content = draft_content
+      if new_draft_content['blocks'].present?
+        write_attribute :draft, parsed_draft.merge(content: new_draft_content)
+      else
+        discard_draft!
+      end
+      
+      write_attribute :content, new_live_content
     end
 
 end

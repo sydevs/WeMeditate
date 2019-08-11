@@ -1,155 +1,35 @@
 
-- allow = policy(@record)
-- content_for :title, translate('admin.action.target.review', record: @record.model_name.human)
+- content_for :title, 'Review'
 
-- details_draft = @record.parsed_draft&.except('content', 'contributors')
-- contributors = User.where(id: @record.parsed_draft['contributors']).map(&:name)
+- content_for :head do
+  = stylesheet_link_tag 'review', media: 'all', 'data-turbolinks-track': 'reload'
+  = javascript_include_tag 'review', 'data-turbolinks-track': 'reload'
 
-- if contributors.present?
-  .ui.message = translate 'admin.messages.draft_contributed_by', people: contributors.to_sentence
+#review-menu
+  .ui.visible.left.vertical.inverted.sidebar.labeled.icon.menu
+    - block_comparison(@record) do |original_block, draft_block, effect|
+      - block = effect == 'added' ? draft_block : original_block
+      a.item.review-button data-id=block['data']['id'] class=(effect != 'nochange' ? 'approved' : 'disabled')
+        i.icon class={'nochange' => 'minus', 'added' => 'plus', 'removed' => 'close', 'modified' => 'edit'}[effect]
+        .effect = translate(effect, scope: %i[admin review mode])
+        .type = translate(block['type'], scope: %i[admin content blocks])
 
-= simple_form_for @record, url: polymorphic_admin_path([:approve, :admin, @record]), method: :patch
-  h3 = translate 'admin.review.attribute_changes', page: @model.model_name.human
+  .review-actions
+    .ui.circular.negative.huge.button
+      | Discard All Changes
+    .ui.circular.positive.huge.button
+      | Approve Changes
 
-  - if details_draft.empty?
-    p: em = translate 'admin.review.no_changes'
-  - else
-    table.ui.compact.celled.definition.review.table
-      thead
-        tr
-          th = translate 'admin.review.approve?'
-          th = translate 'admin.review.field'
-          th = translate 'admin.review.old_value'
-          th = translate 'admin.review.new_value'
-      tbody
-        - details_draft.each do |key, value|
-          - next if key == 'content'
-          - field_name = human_attribute_name(@model, key)
-          - old_value = @record[key]
-          tr.modified
-            td.collapsing
-              .ui.fitted.slider.checked.checkbox
-                input type='checkbox' name="approve[]" value=key checked=true
-                label
-            - case key
-              - when 'vimeo_id'
-                td.collapsing = field_name
-                td
-                  a href="https://vimeo.com/#{old_value}" target='_blank'
-                    i.external.alternate.icon
-                    = old_value
-                td
-                  a href="https://vimeo.com/#{value}" target='_blank'
-                    i.external.alternate.icon
-                    = value
-              - when 'thumbnail_id', 'image_id'
-                td.collapsing = human_attribute_name(@model, key.delete_suffix('_id'))
-                td
-                  .ui.image
-                    img src=MediaFile.find(old_value).file.url(:tiny)
-                    .ui.floating.label = "##{old_value}"
-                td
-                  .ui.image
-                    img src=MediaFile.find(value).file.url(:tiny)
-                    .ui.floating.label = "##{value}"
-              - when 'author_id'
-                td.collapsing = human_attribute_name(@model, key.delete_suffix('_id'))
-                td = Author.find(old_value).name
-                td = Author.find(value).name
-              - when 'category_id'
-                td.collapsing = human_attribute_name(@model, key.delete_suffix('_id'))
-                td = Category.find(old_value).name
-                td = Category.find(value).name
-              - when 'priority'
-                td.collapsing = human_attribute_name(@model, key)
-                td = human_enum_name(@record, key, old_value)
-                td = human_enum_name(@record, key, value)
-              - else
-                td.collapsing = field_name
-                td = old_value
-                td = value
-                / TODO: Remove this old code?
-                /td = value.is_a?(String) ? Differ.diff_by_char(value, old_value.to_s).format_as(:html).html_safe : value
-      tfoot.full-width
-        tr
-          th colspan=4
-            .ui.compact.basic.negative.tiny.button
-              = translate 'admin.review.reject_all'
-            .ui.compact.basic.positive.tiny.button
-              = translate 'admin.review.approve_all'
-            a.ui.compact.basic.tiny.button href=polymorphic_admin_path([:edit, :admin, @record])
-              = translate 'admin.action.target.edit', record: @model.model_name
+- content_for :content do
+  - block_comparison(@record) do |original_block, draft_block, effect|
+    - block = effect == 'added' ? draft_block : original_block
+    pre = original_block.pretty_inspect
+    pre = draft_block.pretty_inspect
+    .review-block data-id=block['data']['id'] class=('approved' unless effect == 'nochange')
+      .review-block-handle data-id=block['data']['id'] class=('disabled' if effect == 'nochange')
+      .review-block-original
+        = render "content_blocks/#{block['type']}_block", block: original_block['data'].deep_symbolize_keys unless original_block.nil?
+      .review-block-draft
+        = render "content_blocks/#{block['type']}_block", block: draft_block['data'].deep_symbolize_keys unless draft_block.nil?
 
-  h3 = translate 'admin.review.content_changes', page: @model.model_name.human
-  p = translate 'admin.review.explanation.preline'
-  ul.ui.small.list
-    - %i[nochange modified removed added].each do |mode|
-      - color = tag.strong translate("admin.review.explanation.#{mode}.color")
-      li = translate("admin.review.explanation.#{mode}.description", color: color).html_safe
-  p = translate('admin.review.explanation.postline').html_safe
-
-  - if !@record.parsed_draft_content.present?
-    p: em = translate 'admin.review.no_changes'
-  - else
-    table.ui.compact.celled.definition.review.table
-      thead
-        tr
-          th = translate 'admin.review.approve?'
-          th = translate 'admin.review.block'
-          th = translate 'admin.review.data'
-      tbody
-        = draft_diff(@record) do |i, mode, original, draft, original_index, draft_index|
-          - type = original ? original['type'] : draft['type']
-          - value = { use: '' }
-          tr class=mode
-            td.collapsing
-              - if mode == 'nochange'
-                  input type='hidden' name="approve[content][#{i}]" value="keep:#{original_index}"
-              - else
-                .ui.fitted.slider.checked.checkbox
-                  - if original
-                    input type='hidden' name="approve[content][#{i}]" value="keep:#{original_index}"
-                  input type='checkbox' name="approve[content][#{i}]" value="use:#{draft_index}" checked=true
-                  label
-            td.collapsing
-              strong = translate type, scope: %i[admin content blocks]
-              div = translate(mode, scope: %i[admin review mode]).downcase
-            td.diff
-              - puts draft.inspect
-              - puts original.inspect
-              - (draft || original)['data'].map do |key, value|
-                - draft_value = draft && draft['data'] ? (draft['data'][key].to_s || '') : ''
-                - original_value = original && original['data'] ? (original['data'][key].to_s || '') : ''
-                div
-                  strong #{key}: 
-                  span = Differ.diff_by_word(draft_value, original_value).format_as(:html).html_safe
-      tfoot.full-width
-        tr
-          th colspan=3
-            .ui.compact.basic.negative.tiny.button
-              = translate 'admin.review.reject_all'
-            .ui.compact.basic.positive.tiny.button
-              = translate 'admin.review.approve_all'
-            a.ui.compact.basic.tiny.button href=polymorphic_url(@record, preview: true) target='_blank'
-              = translate 'admin.action.descriptive.preview'
-            a.ui.compact.basic.tiny.button href=polymorphic_admin_path([:write, :admin, @record])
-              = translate 'admin.action.target.write', record: @model.model_name
-
-  .ui.hidden.divider
-
-  p
-    - if allow.show?
-      a.ui.basic.button href=polymorphic_admin_path([:admin, @record])
-        i.left.arrow.icon
-        = translate 'admin.action.simple.back'
-    - else
-      a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(@record.page) ? @record.page : @record.class])
-        i.left.arrow.icon
-        = translate 'admin.action.target.back', records: @record.model_name.human(count: -1)
-
-    button.ui.basic.primary.button type='submit'
-      = translate 'admin.action.simple.approve'
-
-/ TODO: Remove this testing code
-hr
-p: code = @record.parsed_draft.inspect
+= render file: "#{@record.model_name.route_key}/show"

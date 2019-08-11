@@ -53,6 +53,7 @@ it:
 
     attributes:
       generic:
+        ready_to_publish: "Ready to publish" # TODO: Translate
         published: "Pubblicato"
         name: "Nome"
         slug: "URL"

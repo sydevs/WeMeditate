@@ -34,7 +34,6 @@ gem 'semantic-ui-sass' # CSS framework for the admin/CMS pages
 
 # Models
 gem 'friendly_id' # Model routes use a slug instead of an ID number
-gem 'geocoder' # Integrates with Google Maps or other providers to geocode addresses
 gem 'jsonb_accessor' # Makes it simpler to access attributes of a jsonb database column
 
 # Uploads
@@ -72,7 +71,6 @@ gem 'mail_form' # For the contact form
 gem 'sidekiq' # To power active jobs
 gem 'sitemap_generator' # For SEO purposes
 gem 'differ' # Simple string diffs
-gem 'json-diff' # JSON diffs
 
 # Maybe needed later(?)
 # gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes

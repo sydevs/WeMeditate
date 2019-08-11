@@ -8,6 +8,11 @@ module Admin::RecordHelper
   }.freeze
 
   # ===== MESSAGES ===== #
+  def record_published_status
+    published = @record.get_localized_attribute(:published)
+    translate (published ? :is_published : :is_unpublished), scope: %i[admin details], page: @record.model_name.human.downcase
+  end
+
   def record_published_at_status
     if !@record.published_at
       translate 'admin.tags.unpublished_draft'
@@ -38,13 +43,45 @@ module Admin::RecordHelper
     end
   end
 
+  def block_comparison record, &block
+    original_blocks = record.content_blocks
+    draft_blocks = record.draft_content_blocks
+    original_block_ids = original_blocks.map { |block| block['id'] }
+    draft_block_ids = draft_blocks.map { |block| block['id'] }
+    original_index = 0
+    draft_index = 0
+
+    while original_index < original_block_ids.count || draft_index < draft_block_ids.count
+      original_id = draft_block_ids[original_index]
+      draft_id = original_block_ids[original_index]
+      original_block = original_blocks[original_index]
+      draft_block = draft_blocks[draft_index]
+
+      if original_id == draft_id
+        if original_block == draft_block
+          yield original_block, nil, 'nochange'
+        else
+          yield original_block, draft_block, 'modified'
+        end
+
+        original_index += 1
+        draft_index += 1
+      else
+        yield original_block, nil, 'removed'
+        yield nil, draft_block, 'added'
+        original_index += 1
+        draft_index += 1
+      end
+    end
+  end
+
   def draft_diff record, &block
     original_blocks = record.content_blocks
     draft_blocks = record.parsed_draft_content['blocks']
 
     original_types = original_blocks.map { |b| b['type'] }
     draft_types = draft_blocks.map { |b| b['type'] }
-    diff = JsonDiff.diff(original_types, draft_types, moves: false, original_indices: true)
+    diff = Hashdiff.diff(original_types, draft_types, array_path: true)
 
     # TODO: Remove test code
     puts "DRAFT DIFF"
@@ -60,21 +97,21 @@ module Admin::RecordHelper
 
     while original_index < original_types.count || draft_index < draft_types.count
       change = diff_index << diff.count ? diff[diff_index] : nil
-      target_index = change['path'].delete_prefix('/').to_i if change
+      target_index = change[1][0] if change
 
       original_block = original_blocks[original_index]
       draft_block = draft_blocks[draft_index]
       mode = 'modified'
 
       if change
-        if change['op'] == 'add'
+        if change[0] == '+'
           if target_index == draft_index
             mode = 'added'
             original_block = nil
           else
             change = nil
           end
-        elsif change['op'] == 'remove'
+        elsif change[0] == '-'
           if target_index == draft_index
             mode = 'removed'
             draft_block = nil

@@ -14,6 +14,7 @@ class StructuredTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
+      id: data.id || generateId(),
       items: data.items || [],
       format: ['grid', 'accordion', 'columns'].includes(data.format) ? data.format : 'grid',
       decorations: data.decorations || {},

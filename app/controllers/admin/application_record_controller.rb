@@ -1,7 +1,7 @@
 module Admin
   class ApplicationRecordController < Admin::ApplicationController
 
-    before_action :set_record, only: %i[show edit write update destroy review approve]
+    before_action :set_record, only: %i[show edit write update destroy preview review approve]
     before_action :authorize!, except: %i[create]
 
     def index
@@ -56,13 +56,11 @@ module Admin
       will_publish = allow.publish? && (!@record.reviewable? || params[:draft] != 'true')
       notice = translate 'admin.result.updated'
       action = (@record.has_content? && record_params[:content].present? ? :write : :edit)
-      redirect = helpers.polymorphic_admin_path([action, :admin, @record]) if redirect.nil?
-      # redirect = (allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
+      # redirect = helpers.polymorphic_admin_path([action, :admin, @record]) if redirect.nil?
+      redirect = helpers.polymorphic_admin_path(allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
 
       @record.published_at ||= Time.now.to_date if will_publish && @record.respond_to?(:published_at)
 
-      puts "UPDATED PARAMS #{record_params}"
-      
       if @record.reviewable? 
         if will_publish
           @record.cleanup_draft!
@@ -81,12 +79,20 @@ module Admin
     end
 
     def review
-      render 'admin/application/review'
+      render 'admin/application/review', layout: 'application'
+    end
+
+    def preview
+      @record.reify_draft!
+      render 'admin/application/preview', layout: 'application'
     end
 
     def approve
       redirect = helpers.polymorphic_admin_path([:admin, (@record.has_content? ? @record : @model)])
-      @record.reify_approved_changes! params[:approve]
+      redirect_to redirect, flash: { notice: 'Review is temporarily disabled' }
+      return
+
+      @record.approve_changes! params[:review]
 
       if @record.save
         @record.try(:cleanup_media_files!)
@@ -148,6 +154,7 @@ module Admin
 
       def set_record
         @record = @model.preload_for(:admin).find(params[:id])
+        instance_variable_set("@#{@record.model_name.param_key}", @record)
       end
 
       def authorize!

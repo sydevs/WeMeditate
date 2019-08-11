@@ -32,6 +32,7 @@ module ApplicationHelper
   end
 
   def render_content record
+    return content_for(:content) if content_for?(:content)
     return unless record.parsed_content.present?
 
     cache record.parsed_content do

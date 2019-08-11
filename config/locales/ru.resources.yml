@@ -53,6 +53,7 @@ ru:
 
     attributes:
       generic:
+        ready_to_publish: "Ready to publish" # TODO: Translate
         published: "Опубликовано"
         name: "Имя"
         slug: "URL-адрес"

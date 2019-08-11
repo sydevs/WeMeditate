@@ -34,16 +34,12 @@ module Admin
           record_params[:thumbnail_id] = @record.media_files.create!(file: params[:treatment][:thumbnail]).id
         end
 
-        puts "UPDATED PARAMS #{record_params}"
-
         super record_params
       end
 
       def after_create
-        puts "AFTER CREATE TREATMENT"
         if params[:treatment][:thumbnail]
           media_file = @record.media_files.create!(file: params[:treatment][:thumbnail])
-          puts "CREATED MEDIA FILE #{media_file.id}"
           @record.update!(thumbnail_id: media_file.id)
         end
 

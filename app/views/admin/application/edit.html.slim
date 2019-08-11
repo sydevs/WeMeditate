@@ -1,9 +1,20 @@
 
 - content_for :title, translate('admin.action.target.edit', record: @record.model_name.human)
 
-- if policy(@record).show?
+- unless @record.new_record?
   .table-actions
-    = table_action translate('admin.action.descriptive.show'), 'eye', polymorphic_url(@record), nil, true
+    .ui.tiny.compact.basic.buttons
+      .ui.active.button
+        - status = @record.published? ? (@record.has_draft? ? :pending_changes : :published) : :draft
+        = translate(status, scope: %i[admin status], page: @record.model_name.human.downcase)
+      - if @record.published
+        a.ui.button href=polymorphic_url(@record) target='_blank'
+          i.eye.icon
+          = translate('admin.action.descriptive.show')
+      - else
+        a.ui.button href=polymorphic_admin_path([:preview, :admin, @record]) target='_blank'
+          i.eye.icon
+          = translate('admin.action.descriptive.preview')
 
 .clearfix
 

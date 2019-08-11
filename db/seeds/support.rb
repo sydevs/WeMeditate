@@ -1,3 +1,4 @@
+require 'securerandom'
 require 'net/http'
 require 'net/https'
 require 'uri'
@@ -82,7 +83,7 @@ def content blocks
   puts "Preparing #{blocks.length} content blocks"
   {
     time: Time.now.to_i,
-    blocks: blocks,
-    version: '2.12.4', # EditorJS at the last time when the structure of seed JSONs were checked.
+    blocks: blocks.map { |block| block[:data].merge!(id: SecureRandom.hex(8)) && block },
+    version: '2.15', # EditorJS at the last time when the structure of seed JSONs were checked.
   }.to_json
 end

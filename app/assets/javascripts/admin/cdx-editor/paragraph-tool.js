@@ -1,11 +1,5 @@
 
-class HeaderTool extends EditorTool {
-  static get toolbox() {
-    return {
-      icon: '<i class="heading icon"></i>',
-      title: translate['content']['blocks']['header'],
-    }
-  }
+class ParagraphTool extends EditorTool {
 
   // Sanitizer data before saving
   static get sanitize() {
@@ -18,20 +12,26 @@ class HeaderTool extends EditorTool {
     super({ // Data
       id: data.id || generateId(),
       text: data.text || '',
-      centered: data.centered || false,
     }, { // Config
-      id: 'header',
-      decorations: false,
+      id: 'paragraph',
       fields: {
-        text: { label: '', input: 'title' },
+        text: { label: '' },
       },
-      tunes: [
-        {
-          name: 'centered',
-          icon: 'align center',
-        }
-      ],
     }, api)
+
+    this.onKeyUp = this.onKeyUp.bind(this)
+  }
+
+  // Check if text content is empty and set empty string to inner html.
+  // We need this because some browsers (e.g. Safari) insert <br> into empty contenteditanle elements
+  onKeyUp(event) {
+    if (event.code !== 'Backspace' && event.code !== 'Delete') {
+      return
+    }
+
+    if (this.container.textContent === '') {
+      this.container.innerHTML = ''
+    }
   }
 
   // How to merge with another text element.
@@ -50,6 +50,6 @@ class HeaderTool extends EditorTool {
 
   // Define the types of paste that should be handled by this tool.
   static get pasteConfig() {
-    return { tags: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'] }
+    return { tags: ['P'] }
   }
 }

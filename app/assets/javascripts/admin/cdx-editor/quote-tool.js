@@ -18,6 +18,7 @@ class QuoteTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
+      id: data.id || generateId(),
       text: data.text || '',
       credit: data.credit || '',
       caption: data.caption || '',

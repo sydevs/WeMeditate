@@ -14,6 +14,7 @@ class ImageTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
+      id: data.id || generateId(),
       items: data.items || [],
       callout: ['left', 'right'].includes(data.callout) ? data.callout : 'none',
       asGallery: data.asGallery || false,

@@ -19,6 +19,7 @@ class TextboxTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
+      id: data.id || generateId(),
       image: data.image || null,
       title: data.title || '',
       text: data.text || '',

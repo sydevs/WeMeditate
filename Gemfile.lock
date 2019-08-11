@@ -115,7 +115,6 @@ GEM
       activerecord (>= 4.0.0)
     friendly_id-globalize (1.0.0.alpha3)
       friendly_id (>= 5.2.0, < 6.0)
-    geocoder (1.5.1)
     gibbon (3.2.0)
       faraday (>= 0.9.1)
       multi_json (>= 1.11.0)
@@ -169,7 +168,6 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-slick-rails (1.9.0)
       railties (>= 3.1)
-    json-diff (0.4.1)
     jsonb_accessor (1.0.0)
       activerecord (>= 5.0)
       activesupport (>= 5.0)
@@ -388,7 +386,6 @@ DEPENDENCIES
   dotenv
   friendly_id
   friendly_id-globalize
-  geocoder
   gibbon
   globalize
   google-tag-manager-rails
@@ -397,7 +394,6 @@ DEPENDENCIES
   inline_svg
   jquery-rails
   jquery-slick-rails
-  json-diff
   jsonb_accessor
   kaminari
   kaminari-i18n

@@ -19,6 +19,7 @@ class FormTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
+      id: data.id || generateId(),
       title: data.title || '',
       subtitle: data.subtitle || '',
       text: data.text || '',

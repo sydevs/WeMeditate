@@ -77,7 +77,9 @@ en:
       featured_video: "Featured Video" # The video which will be shown on an article preview
       featured_date: "Featured Date" # The date which will be shown on an article preview
       role: "Role On Website"
-      
+      is_published: "This %{page} is currently visible to the public."
+      is_unpublished: "This %{page} is currently not visible to the public."
+
     tags:
       published: "Published"
       unpublished: "Not Published"
@@ -127,10 +129,9 @@ en:
       updated: "Saved successfully."
       deleted: "Deleted successfully."
       saved_but_needs_review: "Saved successfully, changes will be published after they are reviewed."
-      # 'cannot_delete_attached_record' example: ""You cannot delete a Category which has Articles attached to it. Reassign the Articles and try again.""
       cannot_delete_attached_record: "You cannot delete a %{category} which has %{pages} attached to it. Reassign the %{pages} and try again."
+      # Example: "You cannot delete a Category which has Articles attached to it. Reassign the Articles and try again."
       published: "Published successfully."
-      discarded_drafts: "Drafts successfully deleted."
     
     # ===== CONTENT ===== #
     # This section defines text that will be shown in the content editor.

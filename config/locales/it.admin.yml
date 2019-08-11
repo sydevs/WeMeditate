@@ -75,6 +75,8 @@ it:
       featured_video: "Video principale"
       featured_date: "Data di riferimento"
       role: "Ruolo nel sito"
+      is_published: "This %{page} is currently visible to the public." # TODO: Translate
+      is_unpublished: "This %{page} is currently not visible to the public." # TODO: Translate
       
     tags:
       published: "Pubblicato"
@@ -127,7 +129,6 @@ it:
       saved_but_needs_review: "Salvato con successo, i cambiamenti saranno visibili quando saranno rivisti."
       cannot_delete_attached_record: "Non è possibile cancellare un %{category} con  %{pages}. Trasferisci %{pages} e prova ancora."
       published: "Pubblicato con successo."
-      discarded_drafts: "Bozze rimosse con successo."
     
     # ===== CONTENT ===== #
     content:

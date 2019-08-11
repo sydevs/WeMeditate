@@ -77,7 +77,9 @@ ru:
       featured_video: "Видео Статьи" # The video which will be shown on an article preview
       featured_date: "Дата Статьи" # The date which will be shown on an article preview
       role: "Роль На Сайте"
-      
+      is_published: "This %{page} is currently visible to the public." # TODO: Translate
+      is_unpublished: "This %{page} is currently not visible to the public." # TODO: Translate
+
     tags:
       published: "Опубликовано"
       unpublished: "Не Опубликовано"
@@ -130,7 +132,6 @@ ru:
       # 'cannot_delete_attached_record' example: ""You cannot delete a Category which has Articles attached to it. Reassign the Articles and try again.""
       cannot_delete_attached_record: "Вы не можете удалить %{category}, прикреплённый к %{pages}. Выберите другую %{pages} и попробуйте снова."
       published: "Успешно опубликован."
-      discarded_drafts: "Черновики успешно удалены."
     
     # ===== CONTENT ===== #
     # This section defines text that will be shown in the content editor.

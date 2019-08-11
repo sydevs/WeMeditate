@@ -16,6 +16,7 @@ class ListTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
+      id: data.id || generateId(),
       items: data.items || [],
       style: ['unordered', 'ordered', 'leaf'].includes(data.style) ? data.style : 'unordered',
     }, { // Config

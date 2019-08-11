@@ -99,21 +99,6 @@ class ApplicationController < ActionController::Base
       redirect_to maintenance_path
     end
 
-    def authorized_preview? model
-      return false unless params[:preview] == 'true'
-      return true if request.referrer.nil?
-
-      referrer_host = URI.parse(request.referrer).host
-      return %w[admin.localhost admin.omicron.local admin.wemeditate.co].include?(referrer_host)
-      # Note: Since the admin and front end use different domains, we cannot authenticate across both domains.
-      # So we are just using a crude trick to avoid people posting links to the draft.
-      # There is no security concern with people viewing a draft.
-
-      # return false unless params[:preview] && current_user
-      # policy = Regulator.policy(current_user, model, "Admin::#{model.model_name.plural.camelize}Controller".constantize)
-      # @preview = policy.preview?
-    end
-
 end
 
 # A workaround that allows you to access a hash using a string, even when the hash is indexed by symbols

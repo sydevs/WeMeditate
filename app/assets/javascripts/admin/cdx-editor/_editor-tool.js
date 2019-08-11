@@ -9,7 +9,7 @@ class EditorTool {
     this.allowDecoration = Boolean(config.decorations)
     this.allowedDecorations = config.decorations || []
     this.fields = config.fields || {}
-    this.tunes = config.tunes || {}
+    this.tunes = config.tunes || []
     this.CSS = {
       baseClass: this.api.styles.block,
       container: `cdx-${this.id}`,
@@ -83,7 +83,7 @@ class EditorTool {
     for (let key in this.fields) {
       const field = this.fields[key]
       if (field.input === false) continue
-      this.renderInput(key, container, field.contained, field.optional)
+      this.renderInput(key, container)
     }
 
     this.tunes.forEach(tune => {
@@ -94,7 +94,7 @@ class EditorTool {
     return container
   }
 
-  renderInput(key, container = null, contained = false, optional = false) {
+  renderInput(key, container = null) {
     let result
     let field = this.fields[key]
     let type = field.input || 'text'
@@ -112,13 +112,19 @@ class EditorTool {
       })
     }
 
-    if (contained) {
+    if (field.contained) {
       result.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event, false))
     }
 
+    /*if (typeof field.label === 'undefined') {
+      result.dataset.placeholder = translate['content']['placeholders'][key]
+    } else {
+      result.dataset.placeholder = field.label
+    }*/
+
     result.dataset.placeholder = field.label || translate['content']['placeholders'][key]
 
-    if (optional) {
+    if (field.optional) {
       result.dataset.placeholder += ` (${translate['content']['placeholders']['optional']})`
     }
 

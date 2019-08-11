@@ -45,7 +45,7 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   # Retrieves the localized attribute without any fallback
-  def get_localized_attribute attribute, locale = Globalize.locale
+  def get_localized_attribute attribute, locale = I18n.locale
     return self.send(attribute) unless translatable?
 
     if globalize.stash.contains?(locale, attribute)

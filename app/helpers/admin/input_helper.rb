@@ -100,14 +100,13 @@ module Admin::InputHelper
     end
   end
 
-  def draftable_publish_field form, enabled: true **args
-    published_at = form.object.published_at if form.object.respond_to?(:published_at)
-    hint = published_at ? translate('admin.details.first_published_at', datetime: published_at.to_s(:long)) : nil
+  def draftable_publish_field form, **args
+    args[:label] = translate('activerecord.attributes.generic.ready_to_publish')
+    args[:value] = form.object.get_localized_attribute(:published)
 
-    draftable_field form, :published, type: :toggle do |val|
-      capture do
-        concat toggle_input form, :published, val, enabled: enabled
-        concat form.hint(hint) if hint
+    draftable_field form, :published, type: :toggle, **args do |val|
+      capture do 
+        concat publish_input form, :published, val
       end
     end
   end
@@ -149,11 +148,11 @@ module Admin::InputHelper
     end
   end
 
-  def toggle_input form, attribute, checked = nil, enabled: true
-    checked ||= form.object.send(attribute)
+  def publish_input form, attribute, checked = nil, enabled: true
+    checked = form.object.send(attribute) if checked.nil?
     content_tag :div, class: "ui#{' disabled' unless enabled} toggle checkbox" do
       concat form.input_field(attribute, as: :boolean, checked: checked)
-      concat tag.label translate 'admin.messages.make_public', page: form.object.model_name.human(count: 1).downcase
+      concat tag.label translate 'admin.messages.make_public', page: form.object.model_name.human(count: 1).downcase unless form.object.reviewable?
     end
   end
 

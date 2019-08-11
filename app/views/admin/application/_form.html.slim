@@ -17,10 +17,10 @@
 
   - if record.respond_to? :published
     - if record.reviewable?
-      = draftable_publish_field f, enabled: allow.publish?
-    - else
-      = f.input :published, wrapper_html: { class: ('disabled' unless allow.publish?) } do
-        = toggle_input f, :published, enabled: allow.publish?
+      = draftable_publish_field f
+    - elsif allow.publish?
+      = f.input :published do
+        = publish_input f, :published, enabled: allow.publish?
 
   - if record.viewable?
     - if record.reviewable?

@@ -12,6 +12,7 @@ const Editor = {
   options: {
     holder: 'content-editor',
     tools: {
+      paragraph: ParagraphTool,
       header: HeaderTool,
       list: ListTool,
       quote: QuoteTool,
@@ -23,6 +24,7 @@ const Editor = {
       catalog: CatalogTool,
       structured: StructuredTool,
     },
+    initialBlock: 'paragraph',
     autofocus: true,
   },
 

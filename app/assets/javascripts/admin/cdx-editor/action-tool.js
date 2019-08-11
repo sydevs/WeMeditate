@@ -17,6 +17,7 @@ class ActionTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
+      id: data.id || generateId(),
       text: data.text || '',
       url: data.url || '',
       decorations: data.decorations || {},

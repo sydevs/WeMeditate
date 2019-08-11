@@ -53,6 +53,7 @@ en:
 
     attributes:
       generic:
+        ready_to_publish: "Ready to publish"
         published: "Published"
         name: "Name"
         slug: "URL"
