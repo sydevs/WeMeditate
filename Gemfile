@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
 end
 
 # Core gems
-gem 'pg', '~> 0.18' # Use postgresql as the database for Active Record
+gem 'pg', '~> 1.1.4' # Use postgresql as the database for Active Record
 gem 'puma', '~> 3.7' # Use Puma as the app server
 gem 'rails', '~> 5.2.2'
 gem 'sassc-rails' # Use SASS for stylesheets
