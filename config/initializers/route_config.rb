@@ -32,6 +32,7 @@ class DomainConstraint
   end
 
   def matches?(request)
+    puts "#{request.host} vs #{@domains.inspect}"
     @domains.include? request.host
   end
 end
