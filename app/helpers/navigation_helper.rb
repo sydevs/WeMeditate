@@ -26,7 +26,7 @@ module NavigationHelper
             url: static_page_path_for(static_page),
           }
         },
-        featured: Treatment.preload_for(:preview).first(2).map { |treatment|
+        featured: Treatment.published.preload_for(:preview).first(2).map { |treatment|
           {
             title: "#{Treatment.model_name.human}: #{treatment.name}",
             url: treatment_path(treatment),
@@ -66,7 +66,7 @@ module NavigationHelper
     tag.div class: 'sharing_links' do
       concat tag.div I18n.translate('articles.share'), class: 'sharing_links__title'
       I18n.translate('sharing').collect do |type, link|
-        concat tag.a (tag.i class: "icon icon--#{type} icon"), class: 'sharing_links__item', href: link.gsub('%{url}', url)
+        concat tag.a (tag.span class: "icon icon--#{type} icon"), class: 'sharing_links__item', href: link.gsub('%{url}', url)
       end
     end
   end
