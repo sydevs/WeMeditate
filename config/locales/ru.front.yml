@@ -34,7 +34,7 @@ ru:
     written_by: "Написано"
     meditating_for:
       one: "Медитирую 1 год"
-      other: "Медитирую %{count} лет" # it is not possible to translate years here as translation differs depending on the number of years 
+      many: "Медитирую %{count} лет" # it is not possible to translate years here as translation differs depending on the number of years 
 
   form:
     input:

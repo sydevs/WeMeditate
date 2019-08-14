@@ -65,7 +65,7 @@ ru:
       not_locked: "не был заблокирован"
       not_saved:
         one: "1 ошибка не позволяет сохранить %{resource}:"
-        other: "%{count} ошибки не позволяют сохранить %{resource}:"
+        many: "%{count} ошибки не позволяют сохранить %{resource}:"
   time:
     formats:
       default: '%k:%M' # Do not translate, unless you know what you are doing

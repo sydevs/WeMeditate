@@ -7,49 +7,49 @@ ru:
     models:
       article:
         one: "Статья"
-        other: "Статьи"
+        many: "Статьи"
       static_page:
         one: "Статическая Страница"
-        other: "Статические Страницы"
+        many: "Статические Страницы"
       subtle_system_node: # This is a page for a Chakra, Channel, or the Kundalini. ie. Some part of the subtle system
         one: "Элемент Токной Системы"
-        other: "Элементы Тонкой Системы"
+        many: "Элементы Тонкой Системы"
       category:
         one: "Категория"
-        other: "Категории"
+        many: "Категории"
       meditation:
         one: "Медитация"
-        other: "Медитации"
+        many: "Медитации"
       treatment:
         one: "Метод"
-        other: "Методы"
+        many: "Методы"
       track:
         one: "Трек"
-        other: "Треки"
+        many: "Треки"
       artist:
         one: "Исполнитель"
-        other: "Исполнители"
+        many: "Исполнители"
       author:
         one: "Профиль Автора"
-        other: "Профили Автора"
+        many: "Профили Автора"
       user:
         one: "Админ"
-        other: "Админы"
+        many: "Админы"
       instrument_filter:
         one: "Инструмент"
-        other: "Инструменты"
+        many: "Инструменты"
       mood_filter:
         one: "Настроение"
-        other: "Настроения"
+        many: "Настроения"
       duration_filter:
         one: "Продолжительность"
-        other: "Продолжительности"
+        many: "Продолжительности"
       goal_filter:
         one: "Цель"
-        other: "Цели"
+        many: "Цели"
       media_file:
         one: "Медиа Файл"
-        other: "Медиа Файлы"
+        many: "Медиа Файлы"
 
     attributes:
       generic:
@@ -126,7 +126,7 @@ ru:
         slug: :activerecord.attributes.generic.slug # Do not translate
         articles:
           one: "1 Статья"
-          other: "%{count} Статьи" # it is not possible to translate articles here as translation differs depending on the count value
+          many: "%{count} Статьи" # it is not possible to translate articles here as translation differs depending on the count value
 
       treatment:
         published: :activerecord.attributes.article.published # Do not translate
@@ -145,28 +145,28 @@ ru:
         icon: "Изображение"
         tracks:
           one: "1 Трек"
-          other: "%{count} Треков" # it is not possible to translate tracks here as translation differs depending on the count value
+          many: "%{count} Треков" # it is not possible to translate tracks here as translation differs depending on the count value
 
       mood_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         tracks:
           one: "1 Трек"
-          other: "%{count} Треков" # it is not possible to translate tracks here as translation differs depending on the count value
+          many: "%{count} Треков" # it is not possible to translate tracks here as translation differs depending on the count value
 
       duration_filter:
         published: :activerecord.attributes.article.published # Do not translate
         minutes: "Минуты"
         meditations:
           one: "1 Медитация"
-          other: "%{count} Медитации" # it is not possible to translate meditations here as translation differs depending on the count value
+          many: "%{count} Медитации" # it is not possible to translate meditations here as translation differs depending on the count value
 
       goal_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         meditations:
           one: "1 Медитация"
-          other: "%{count} Медитации" # it is not possible to translate meditations here as translation differs depending on the count value
+          many: "%{count} Медитации" # it is not possible to translate meditations here as translation differs depending on the count value
 
       track:
         published: :activerecord.attributes.article.published # Do not translate
@@ -195,7 +195,7 @@ ru:
         url: "Сайт"
         tracks:
           one: "1 Трек"
-          other: "%{count} Треков" # it is not possible to translate tracks here as translation differs depending on the count value
+          many: "%{count} Треков" # it is not possible to translate tracks here as translation differs depending on the count value
 
       author:
         name: :activerecord.attributes.generic.name # Do not translate

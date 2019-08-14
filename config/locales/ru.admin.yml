@@ -97,7 +97,7 @@ ru:
         pending: "Нерешенный Вопрос"
       views: # This is the number of viewers or visits. Used to indicate the number of video views
         one: "1 Просмотр"
-        other: "%{count} Просмотров"
+        many: "%{count} Просмотров"
 
     messages:
       loading: "Загружается"
@@ -105,8 +105,9 @@ ru:
       no_translations_found: "Все статьи типа %{pages} уже переведены"
       make_public: "Сделать %{page} видимой для пользователей"
       maintenance_mode: "Сайт в разработке, возвращайтесь через некоторое время."
-      confirm_unsaved_changes: "Подождите! Несохраненные данные будут потеряны. Вы уверены, что хотите покинуть страницу?"
       confirm_destroy: "Вы уверены, что хотите удалить это? Действие невозможно будет отменить!"
+      confirm_discard_draft: "Are you sure you want to discard all changes shown on this page? This cannot be undone!" # TODO: Translate
+      confirm_unsaved_changes: "Подождите! Несохраненные данные будут потеряны. Вы уверены, что хотите покинуть страницу?"
       drop_files_here: "Переместите файлы сюда"
       unpublished_changes_notice: "%{page} имеет несохраненные изменения. Изменения не видны пользователям, пока они не утверждены администратором."
       pending_invitation_notice: "%{person} получил приглашение стать редактором сайта, но ещё не ответил."
@@ -212,10 +213,10 @@ ru:
         search: "Искать"
       words:
         one: "%{count} слово"
-        other: "%{count} слов"
+        many: "%{count} слов"
       items:
         one: "%{count} элемент"
-        other: "%{count} элементов"
+        many: "%{count} элементов"
 
 
     # ===== MISCELLENEOUS ===== #
@@ -284,14 +285,14 @@ ru:
       no_image: "Изображение Отсутствует"
       items:
         one: "1 элемент"
-        other: "%{count} элементов"
+        many: "%{count} элементов"
       content:
         original: # This is for a button that lets you revert to the previous content
           one: "Изначальный контент с %{count} блоком"
-          other: "Изначальный контент с %{count} блоками"
+          many: "Изначальный контент с %{count} блоками"
         draft: # This is for a button that lets you revert to the new content
           one: "Черновик с %{count} блоком"
-          other: "Черновик с %{count} блоками"
+          many: "Черновик с %{count} блоками"
 
     dashboard:
       title: "Панель управления"
