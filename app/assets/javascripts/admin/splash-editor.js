@@ -6,6 +6,7 @@ const SplashEditor = {
     const splashEditor = document.getElementById('splash-editor')
     if (!splashEditor) return
 
+    this.isActive = true
     this.style = splashEditor.dataset.style
 
     this.uploader = new ImageUploader(document.getElementById('splash-uploader'))

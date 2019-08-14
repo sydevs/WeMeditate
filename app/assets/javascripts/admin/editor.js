@@ -104,7 +104,7 @@ const Editor = {
 
   processDataForSave(data) {
     if (SplashEditor.isActive) {
-      data.blocks = data.blocks.unshift(SplashEditor.getData())
+      data.blocks.unshift(SplashEditor.getData())
     }
 
     // Consolidate the media file references
