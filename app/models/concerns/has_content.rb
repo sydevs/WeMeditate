@@ -45,7 +45,7 @@ module HasContent
 
         result += [thumbnail_id] if self.has_attribute?(:thumbnail_id)
 
-        if has_draft?
+        if reviewable? && has_draft?
           if parsed_draft_content.present?
             parsed_draft_content['blocks'].each do |block|
               result += block['data']['media_files'] if block['data']['media_files']

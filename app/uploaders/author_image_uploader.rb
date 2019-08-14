@@ -12,10 +12,8 @@ class AuthorImageUploader < ApplicationUploader
     version name, &create_version(version_width)
   end
 
-  # Add a white list of extensions which are allowed to be uploaded.
-  # For images you might use something like this:
   def extension_whitelist
-    %w[png jpg jpeg]
+    %w[jpg jpeg]
   end
 
 end

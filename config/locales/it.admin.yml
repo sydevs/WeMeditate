@@ -104,6 +104,7 @@ it:
       make_public: "Rendi %{page} visibile al pubblico"
       maintenance_mode: "Sito in costruzione, torna a trovarci presto."
       confirm_destroy: "Sei sicuro di voler cambiare questo? Questo non può essere annullato!"
+      confirm_discard_draft: "Are you sure you want to discard all changes shown on this page? This cannot be undone!" # TODO: Translate
       confirm_unsaved_changes: "Unsaved changes will be lost. Are you sure you want to leave the page?" # TODO: Translate
       drop_files_here: "Trascina i documenti qui."
       unpublished_changes_notice: "%{page} ha delle modifiche non pubblicate. Questi cambiamenti non saranno visibili fino a quando un amministratore non li avrà rivisti."
