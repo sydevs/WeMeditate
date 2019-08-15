@@ -7,8 +7,15 @@ module Admin
     def create
       @record = User.new user_params
       authorize @record
-      @record.invite!(current_user)
-      redirect_to helpers.polymorphic_admin_path([:admin, User])
+      @record.valid?
+      @record.errors.delete(:password)
+
+      if @record.errors.present?
+        render :edit
+      else
+        @record.invite!(current_user)
+        redirect_to helpers.polymorphic_admin_path([:admin, User])
+      end
     end
 
     def update

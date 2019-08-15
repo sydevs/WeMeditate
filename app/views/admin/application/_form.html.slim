@@ -74,7 +74,7 @@
 
   .ui.hidden.divider
 
-  - if !allow.show? && allow.destroy?
+  - if !allow.show? && !@record.new_record? && allow.destroy?
     .table-actions
       a.ui.basic.button href=polymorphic_admin_path([:admin, @record]) data={ method: 'delete', confirm: translate('admin.messages.confirm_destroy') }
         i.warning.sign.icon
