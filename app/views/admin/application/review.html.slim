@@ -26,8 +26,6 @@
 - content_for :content do
   - block_comparison(@record) do |original_block, draft_block, effect|
     - block = effect == 'added' ? draft_block : original_block
-    pre = original_block.pretty_inspect
-    pre = draft_block.pretty_inspect
     .review-block data-id=block['data']['id'] class=('approved' unless effect == 'nochange')
       .review-block-handle data-id=block['data']['id'] class=('disabled' if effect == 'nochange')
       .review-block-original
