@@ -1,6 +1,10 @@
 [
   {
-    "origin": ["http://wemeditate.co", "https://wemeditate.co"],
+    "origin": [
+      "http://www.wemeditate.co", "https://www.wemeditate.co",
+      "http://www.wemeditate.ru", "https://www.wemeditate.ru",
+      "http://it.wemeditate.co", "https://it.wemeditate.co"
+    ],
     "responseHeader": ["Content-Type"],
     "method": ["GET", "HEAD"],
     "maxAgeSeconds": 3600
