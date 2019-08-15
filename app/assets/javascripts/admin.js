@@ -14,7 +14,6 @@
 //= require rails-ujs
 //= require turbolinks
 //= require semantic-ui
-//= require data-confirm-modal-semantic-ui
 //= require sortable-rails
 //= require autosize
 //= require_tree ./admin

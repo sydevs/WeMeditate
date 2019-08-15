@@ -13,7 +13,6 @@
 
 //= require jquery
 //= require semantic-ui
-//= require data-confirm-modal-semantic-ui
 
 class Review {
 
