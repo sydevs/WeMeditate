@@ -217,6 +217,9 @@
     padding: 54px
     font-size: 3rem
 
+  &:focus
+    outline: none
+
   .button__text
     width: 100%
 
@@ -233,9 +236,10 @@
     stroke: $color-text-dark
     transition: stroke 0.5s ease
 
-  &:hover:not(.disabled)
-    transform: scale(1.1)
-    color: $color-text-orange
+  &:focus, &:hover
+    &:not(.disabled)
+      transform: scale(1.1)
+      color: $color-text-orange
 
-    path
-      stroke: $color-text-orange
+      path
+        stroke: $color-text-orange
