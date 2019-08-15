@@ -20,6 +20,7 @@ it:
     come_meditate: "Come meditate"
     classes_near_me: "Corsi vicino a Me"
     online_meditations: "Meditazioni guidate Online"
+    languages: "Languages" # TODO: Translate
 
   actions_footer:
     title: "Sperimenta Tu Stesso!"

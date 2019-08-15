@@ -20,6 +20,7 @@ ru:
     come_meditate: "Приходите на занятия"
     classes_near_me: "Ближайшие центры"
     online_meditations: "Медитация онлайн"
+    languages: "Languages" # TODO: Translate
 
   actions_footer:
     title: "Откройте медитацию для себя!"
