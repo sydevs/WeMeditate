@@ -47,6 +47,7 @@ gem 'autosize' # To automatically grow text areas
 gem 'kaminari' # For pagination
 gem 'simple_form' # Takes care of grunt work when creating forms
 gem 'sortable-rails' # Allows us to sort models with a drag and drop interface
+gem 'data-confirm-modal-semantic-ui', github: 'kntmrkm/data-confirm-modal-semantic-ui' # Confirm using semantic modals
 
 # Globalize (translatable models)
 gem 'carrierwave_globalize' # for carrierwave support
@@ -70,9 +71,6 @@ gem 'gibbon' # For MailChimp Integration
 gem 'mail_form' # For the contact form
 gem 'sidekiq' # To power active jobs
 gem 'sitemap_generator' # For SEO purposes
-
-# TODO: Remove this for production
-gem 'switch_user', github: 'tslocke/switch_user' # Quickly switch between users without having to login/logout in development
 
 # Maybe needed later(?)
 # gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes

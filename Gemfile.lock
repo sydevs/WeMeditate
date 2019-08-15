@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/kntmrkm/data-confirm-modal-semantic-ui.git
+  revision: 4b2b314939c9ed2391f1fcf88c078af3d7f7ecf3
+  specs:
+    data-confirm-modal-semantic-ui (1.0.0)
+      railties (>= 3.0)
+
+GIT
   remote: https://github.com/tslocke/switch_user.git
   revision: 8a16d0e1cc730a9a89621e65cf559a7eb2a5379d
   specs:
@@ -378,6 +385,7 @@ DEPENDENCIES
   carrierwave-google-storage
   carrierwave-i18n
   carrierwave_globalize
+  data-confirm-modal-semantic-ui!
   devise
   devise-i18n
   devise_invitable
