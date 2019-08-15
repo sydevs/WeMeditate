@@ -15,9 +15,14 @@ class ImageUploader {
     this.wrapper = make('div', this.CSS.dropzone, { innerHTML: translate['drag_images_to_upload'] }, container)
     this.input = make('input', '', { type: 'file', accept: this.accepts.join(',') }, this.wrapper)
 
+    this.wrapper.addEventListener('dragover', event => {
+      event.preventDefault()
+    })
+
     this.wrapper.addEventListener('dragenter', event => {
       event.target.classList.add(this.CSS.dropping)
       event.target.classList.remove(this.CSS.error)
+      event.preventDefault()
     })
 
     this.wrapper.addEventListener('dragleave', event => {
@@ -25,6 +30,7 @@ class ImageUploader {
     })
 
     this.wrapper.addEventListener('click', () => this.input.click())
+    console.log('add drop event', this.wrapper, this._onImageDrop)
     this.wrapper.addEventListener('drop', event => this._onImageDrop(event))
     this.input.addEventListener('change', event => this._onImageSelect(event))
   }
