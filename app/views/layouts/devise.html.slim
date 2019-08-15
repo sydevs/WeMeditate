@@ -13,6 +13,12 @@ html
 
     h2.ui.header = content_for :title
 
+    - if notice
+      .ui.small.info.message = notice
+
+    - if alert
+      .ui.small.error.message = alert
+
     .ui.segment
       = yield
 
