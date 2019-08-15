@@ -7,19 +7,23 @@
       .ui.active.button
         - status = @record.published? ? (@record.reviewable? && @record.has_draft? ? :pending_changes : :published) : :draft
         = translate(status, scope: %i[admin status], page: @record.model_name.human.downcase)
-      - if @record.published?
-        a.ui.button href=polymorphic_url(@record) target='_blank'
-          i.eye.icon
-          = translate('admin.action.descriptive.show')
-      - else
-        a.ui.button href=polymorphic_admin_path([:preview, :admin, @record]) target='_blank'
-          i.eye.icon
-          = translate('admin.action.descriptive.preview')
+      - if @record.viewable?
+        - if @record.published?
+          a.ui.button href=polymorphic_url(@record) target='_blank'
+            i.eye.icon
+            = translate('admin.action.descriptive.show')
+        - else
+          a.ui.button href=polymorphic_admin_path([:preview, :admin, @record]) target='_blank'
+            i.eye.icon
+            = translate('admin.action.descriptive.preview')
 
 .clearfix
 
-- locale = @record.translated_locales.include?(I18n.locale) ? I18n.locale : @record.original_locale
-- Globalize.with_locale(locale) do
+- if @record.respond_to?(:translated_locales)
+  - locale = @record.translated_locales.include?(I18n.locale) ? I18n.locale : @record.original_locale
+  - Globalize.with_locale(locale) do
+    = render 'admin/application/form', record: @record
+- else
   = render 'admin/application/form', record: @record
 
 / TODO: Remove this test code

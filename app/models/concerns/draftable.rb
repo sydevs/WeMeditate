@@ -11,11 +11,15 @@ module Draftable
   end
 
   def parsed_draft
-    @parsed_draft = draft
+    @parsed_draft ||= draft
   end
 
   def parsed_draft_content
-    @parsed_draft_content ||= parsed_draft['content'].present? ? JSON.parse(parsed_draft['content']) : nil
+    @parsed_draft_content ||= begin
+      return nil unless parsed_draft['content'].present?
+      return parsed_draft['content'] if parsed_draft['content'].is_a?(Hash)
+      JSON.parse(parsed_draft['content'])
+    end
   end
 
   def draft_content_blocks
@@ -34,17 +38,11 @@ module Draftable
     changes.each do |key, (old_value, new_value)|
       next if key == 'published_at' # We should not include timestamps in drafts
 
-      if key == 'content'
-        old_val = old_value && !old_value.is_a?(Hash) ? JSON.parse(old_value)['blocks'] : nil
-        new_val = new_value && !new_value.is_a?(Hash) ? JSON.parse(new_value)['blocks'] : nil
-        next if old_val == new_val
-      end
-
-      if old_value.to_s != new_value.to_s
+      if old_value.to_s == new_value.to_s || (key == 'content' && content_equal?(old_value, new_value))
+        new_draft.except!(key)
+      else
         self[key] = old_value
         new_draft[key] = new_value
-      else
-        new_draft.except!(key)
       end
     end
 
@@ -60,25 +58,21 @@ module Draftable
     end
   end
 
-  def approve_changes! changes
-    draft = parsed_draft
-
-    changes.each do |key, data|
-      if key == 'content'
-        approve_content_changes!(data)
-      elsif data == 'approve'
-        self[key] = draft[key]
-        draft[key] = nil
-      elsif data == 'discard'
-        draft[key] = nil
-      end
+  def discard_draft! discard: [], keep: []
+    if keep.present?
+      self.draft.select! { |key| keep.include?(key.to_sym) }
+    elsif discard.present?
+      self.draft.reject! { |key| discard.include?(key.to_sym) }
+    else
+      self.draft = nil
     end
 
-    write_attribute :draft, draft
+    self.draft = nil unless draft&.except('contributors').present?
   end
 
   def cleanup_draft!
     draft = parsed_draft
+    discardable_attributes = []
 
     changes.each do |key, (old_value, new_value)|
       next unless draft&.has_key?(key)
@@ -91,63 +85,56 @@ module Draftable
         draft_value = draft[key]
       end
 
-      draft.except!(key) if new_value.to_s == draft_value.to_s
+      discardable_attributes << key.to_sym if new_value.to_s == draft_value.to_s
     end
 
-    draft = nil unless draft&.except('contributors').present?
-    write_attribute :draft, draft
+    discard_draft! discard: discardable_attributes
   end
 
-  def discard_draft!
-    self.draft = nil
+  def approve_content_changes! changes
+    live_blocks = content_blocks.map { |b| [b['data']['id'], b] }.to_h
+    draft_blocks = parsed_draft_content['blocks'].map { |b| [b['data']['id'], b] }.to_h
+    new_draft_content = parsed_draft_content.merge('blocks' => [], 'media_files' => [])
+    new_live_content = new_draft_content.deep_dup
+
+    changes.each do |change|
+      id = change['id']
+
+      case change['effect']
+      when 'added', 'modified'
+        append_block! draft_blocks[id], to: new_live_content
+        append_block! draft_blocks[id], to: new_draft_content
+      when 'nochange'
+        append_block! live_blocks[id], to: new_live_content
+        append_block! draft_blocks[id], to: new_draft_content
+      when 'removed'
+        # Do nothing
+      end
+    end
+
+    if !content_equal?(new_live_content, new_draft_content)
+      write_attribute :draft, parsed_draft.merge(content: new_draft_content)
+    else
+      discard_draft! discard: %i[content]
+    end
+    
+    write_attribute :content, new_live_content
+    #binding.pry
   end
 
   private
 
-    def approve_content_changes! data
-      live_blocks = content_blocks
-      draft_blocks = parsed_draft_content['blocks']
-      new_draft_content = parsed_draft_content.merge('blocks' => [], 'media_files' => [])
-      new_live_content = new_draft_content.except('contributors')
-
-      data['index'].each do |i|
-        action = data['action'][i]
-        effect = data['effect'][i]
-        live_index = data['original_index'][i]
-        draft_index = data['draft_index'][i]
-
-        if (action == 'discard' && effect != 'added') || effect == 'nochange'
-          # Live index will not be present in the effect is an addition
-          new_live_content['blocks'] << live_blocks[live_index]
-          new_live_content['media_files'] << live_blocks[live_index]['media_files']
-          new_draft_content['blocks'] << live_blocks[live_index]
-          new_draft_content['media_files'] << live_blocks[live_index]['media_files']
-        elsif action == 'approve' && effect != 'removed'
-          # Draft index will not be present in the effect is a removal
-          new_live_content['blocks'] << draft_blocks[draft_index]
-          new_live_content['media_files'] << draft_blocks[draft_index]['media_files']
-          new_draft_content['blocks'] << draft_blocks[draft_index]
-          new_draft_content['media_files'] << draft_blocks[draft_index]['media_files']
-        elsif action == 'keep'
-          if live_index.present?
-            new_live_content['blocks'] << live_blocks[live_index]
-            new_live_content['media_files'] << live_blocks[live_index]['media_files']
-          end
-
-          if draft_index.present?
-            new_draft_content['blocks'] << draft_blocks[draft_index]
-            new_draft_content['media_files'] << draft_blocks[draft_index]['media_files']
-          end
-        end # else do nothing
+    def append_block! block, to: nil
+      if block.present? && to.present?
+        to['blocks'] << block
+        to['media_files'] << block['data']['media_files'] if block['data']['media_files'].present?
       end
+    end
 
-      if new_draft_content['blocks'].present?
-        write_attribute :draft, parsed_draft.merge(content: new_draft_content)
-      else
-        discard_draft!
-      end
-      
-      write_attribute :content, new_live_content
+    def content_equal? old_content, new_content
+      old_content = JSON.parse(old_content)['blocks'] unless old_content && old_content.is_a?(Hash)
+      new_content = JSON.parse(new_content)['blocks'] unless new_content && new_content.is_a?(Hash)
+      old_content == new_content
     end
 
 end

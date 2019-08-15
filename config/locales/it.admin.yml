@@ -238,38 +238,14 @@ it:
         regional_admin: "Approva le traduzioni, traduce parti essenziali del sito, e supervisiona la pubblicazione di nuovi contenuti nella propria lingua."
         super_admin: "Dirige gli elementi fondamentali del sito, e crea nuovi editori."
 
-    review:
-      attribute_changes: "Cambiamenti di Attributi di %{page}"
-      content_changes: "Cambiamenti di Contenuto di %{page}"
-      no_changes: "Nessun cambiamento"
-      approve?: "Approva?"
-      field: "Campo"
-      old_value: "Vecchio valore"
-      new_value: "Nuovo valore"
-      block: "Blocco"
-      data: "Data"
-      reject_all: "Rifiuta tutto"
-      approve_all: "Approva tutto"
-      mode: # TODO: Translate
+    review: # TODO: Translate
+      discard_all_changes: "Discard All Changes"
+      approve_changes: "Approve Changes"
+      effect:
         added: "Added"
         removed: "Removed"
         modified: "Modified"
         nochange: "No Change"
-      explanation: # TODO: Translate
-        preline: "The colour of each row indicated the status of that block of content."
-        postline: "Text which is <ins>highlighted in green</ins> has been added, text <del>highlighted in red</del> has been remove. All other text has remained unchanged."
-        nochange:
-          color: "Grey"
-          description: "%{color} means no change"
-        modified:
-          color: "Yellow"
-          description: "%{color} means the block has been modified"
-        removed:
-          color: "Red"
-          description: "%{color} means the block has been removed"
-        added:
-          color: "Green"
-          description: "%{color} means the block has been newly created"
 
     metadata:
       key: "nome"

@@ -89,10 +89,11 @@ module Admin
 
     def approve
       redirect = helpers.polymorphic_admin_path([:admin, (@record.has_content? ? @record : @model)])
-      redirect_to redirect, flash: { notice: 'Review is temporarily disabled' }
-      return
-
-      @record.approve_changes! params[:review]
+      if params[:review] == 'destroy'
+        @record.discard_draft! discard: %i[content]
+      else
+        @record.approve_content_changes! JSON.parse(params[:review])
+      end
 
       if @record.save
         @record.try(:cleanup_media_files!)

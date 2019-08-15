@@ -22,12 +22,23 @@ class Review {
     this.selectedId = null
     this.menuScroller = zenscroll.createScroller(document.getElementById('review-menu').firstChild, 1000, 50)
     this.approvalsCount = $('.approved.review-block').length
+    $('#review-form').on('submit', event => this.storeReviewData())
     $('.review-button').on('mouseenter', event => this.highlightBlock(event.currentTarget.dataset.id, 'menu'))
     $('.review-block-handle').on('mouseenter', event => this.highlightBlock(event.currentTarget.dataset.id, 'block'))
     $('.review-button:not(.disabled), .review-block-handle:not(.disabled)').on('click', event => this.toggleApproval(event.currentTarget.dataset.id))
     this.disableInteractions()
 
-    $('.review-actions > .positive.button').text(`Approve ${this.approvalsCount} Changes`)
+    $('.review-actions > .positive.button > span').text(` (${this.approvalsCount})`)
+  }
+
+  storeReviewData() {
+    const data = []
+    $('#review-menu .review-button').each(function(index, element) {
+      const effect = element.classList.contains('approved') ? element.dataset.effect : 'nochange'
+      data.push({ id: element.dataset.id, effect: effect })
+    })
+
+    $('#review-input').val(JSON.stringify(data))
   }
 
   disableInteractions() {
@@ -66,7 +77,7 @@ class Review {
     const approved = document.querySelector(`.review-button[data-id="${id}"]`).classList.toggle('approved')
     document.querySelector(`.review-block[data-id="${id}"]`).classList.toggle('approved', approved)
     this.approvalsCount = this.approvalsCount + (approved ? +1 : -1)
-    $('.review-actions > .positive.button').text(`Approve ${this.approvalsCount} Changes`)
+    $('.review-actions > .positive.button > span').text(` (${this.approvalsCount})`)
   }
 
 }

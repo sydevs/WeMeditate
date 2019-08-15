@@ -46,14 +46,14 @@ module Admin::RecordHelper
   def block_comparison record, &block
     original_blocks = record.content_blocks
     draft_blocks = record.draft_content_blocks
-    original_block_ids = original_blocks.map { |block| block['id'] }
-    draft_block_ids = draft_blocks.map { |block| block['id'] }
+    original_block_ids = original_blocks.map { |block| block['data']['id'] }
+    draft_block_ids = draft_blocks.map { |block| block['data']['id'] }
     original_index = 0
     draft_index = 0
 
     while original_index < original_block_ids.count || draft_index < draft_block_ids.count
-      original_id = draft_block_ids[original_index]
-      draft_id = original_block_ids[original_index]
+      original_id = original_block_ids[original_index]
+      draft_id = draft_block_ids[draft_index]
       original_block = original_blocks[original_index]
       draft_block = draft_blocks[draft_index]
 
@@ -67,8 +67,8 @@ module Admin::RecordHelper
         original_index += 1
         draft_index += 1
       else
-        yield original_block, nil, 'removed'
-        yield nil, draft_block, 'added'
+        yield original_block, nil, 'removed' unless original_block.nil?
+        yield nil, draft_block, 'added' unless draft_block.nil?
         original_index += 1
         draft_index += 1
       end

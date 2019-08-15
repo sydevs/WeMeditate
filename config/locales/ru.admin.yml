@@ -242,38 +242,14 @@ ru:
         regional_admin: "отвечает за утверждение переводов, переводит основную часть сайта, контролирует публикацию нового контента на соответстующем языке."
         super_admin: "управляет основными элементами сайта и созданием новых редакторов."
 
-    review: # Text related to reviewing unapproved changes
-      attribute_changes: "Изменения Атрибутов %{page}" # This is a title and should be in titlecase
-      content_changes: "Изменения Контента %{page}" # This is a title and should be in titlecase
-      no_changes: "Нет Изменений"
-      approve?: "Утвердить?"
-      field: "Поле"
-      old_value: "Старое Значение"
-      new_value: "Новое Значение"
-      block: "Блок"
-      data: "Данные"
-      reject_all: "Отклонить Все"
-      approve_all: "Утвердить Все"
-      mode:
+    review: # TODO: Translate
+      discard_all_changes: "Discard All Changes"
+      approve_changes: "Approve Changes"
+      effect:
         added: "Добавлено"
         removed: "Удалено"
         modified: "Изменено"
         nochange: "Без Изменений"
-      explanation:
-        preline: "Цвет каждой строки отражает статус соответствующего блока текста."
-        postline: "<ins>Выделение зелёным</ins> означает, что текст был добавлен, <del>красным</del> - что текст удалён. Остальной текст не был изменён."
-        nochange:
-          color: "Сервый"
-          description: "%{color} означает отсутствие изменений"
-        modified:
-          color: "Жёлтый"
-          description: "%{color} означает, что блок текста был изменён"
-        removed:
-          color: "Красный"
-          description: "%{color} означает, что блок текста был удалён"
-        added:
-          color: "Зелёный"
-          description: "%{color} означает, что блок текста был недавно добавлен"
 
     metadata:
       key: "Название"

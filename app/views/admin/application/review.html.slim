@@ -9,16 +9,19 @@
   .ui.visible.left.vertical.inverted.sidebar.labeled.icon.menu
     - block_comparison(@record) do |original_block, draft_block, effect|
       - block = effect == 'added' ? draft_block : original_block
-      a.item.review-button data-id=block['data']['id'] class=(effect != 'nochange' ? 'approved' : 'disabled')
+      a.item.review-button data-id=block['data']['id'] data-effect=effect class=(effect != 'nochange' ? 'approved' : 'disabled')
         i.icon class={'nochange' => 'minus', 'added' => 'plus', 'removed' => 'close', 'modified' => 'edit'}[effect]
-        .effect = translate(effect, scope: %i[admin review mode])
+        .effect = translate(effect, scope: %i[admin review effect])
         .type = translate(block['type'], scope: %i[admin content blocks])
 
-  .review-actions
-    .ui.circular.negative.huge.button
-      | Discard All Changes
-    .ui.circular.positive.huge.button
-      | Approve Changes
+  = simple_form_for @record, url: polymorphic_admin_path([:approve, :admin, @record]), html: { id: "review-form" } do |f|
+    .review-actions data-href=polymorphic_admin_path([:approve, :admin, @record])
+      input id='review-input' type='hidden' name='review'
+      button.ui.circular.negative.huge.button type='submit' name='review' value='destroy' data-confirm=translate('admin.messages.confirm_discard_draft')
+        = translate('admin.review.discard_all_changes')
+      button.ui.circular.positive.huge.button type='submit'
+        = translate('admin.review.approve_changes')
+        span
 
 - content_for :content do
   - block_comparison(@record) do |original_block, draft_block, effect|

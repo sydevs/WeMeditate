@@ -243,37 +243,13 @@ en:
         super_admin: "manages the fundamental elements of the site, and the creation of new editors."
 
     review: # Text related to reviewing unapproved changes
-      attribute_changes: "Changes to %{page} Attributes" # This is a title and should be in titlecase
-      content_changes: "Changes to %{page} Content" # This is a title and should be in titlecase
-      no_changes: "No Changes"
-      approve?: "Approve?"
-      field: "Field"
-      old_value: "Old Value"
-      new_value: "New Value"
-      block: "Block"
-      data: "Data"
-      reject_all: "Set All to Reject"
-      approve_all: "Set All to Approve"
-      mode:
+      discard_all_changes: "Discard All Changes"
+      approve_changes: "Approve Changes"
+      effect:
         added: "Added"
         removed: "Removed"
         modified: "Modified"
         nochange: "No Change"
-      explanation:
-        preline: "The colour of each row indicated the status of that block of content."
-        postline: "Text which is <ins>highlighted in green</ins> has been added, text <del>highlighted in red</del> has been remove. All other text has remained unchanged."
-        nochange:
-          color: "Grey"
-          description: "%{color} means no change"
-        modified:
-          color: "Yellow"
-          description: "%{color} means the block has been modified"
-        removed:
-          color: "Red"
-          description: "%{color} means the block has been removed"
-        added:
-          color: "Green"
-          description: "%{color} means the block has been newly created"
 
     metadata:
       key: "name"
