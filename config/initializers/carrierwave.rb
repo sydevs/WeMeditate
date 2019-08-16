@@ -6,9 +6,8 @@ CarrierWave.configure do |config|
   config.gcloud_authenticated_url_expiration = 600
 
   config.gcloud_attributes = { expires: 600 }
-
   config.gcloud_credentials = {
     gcloud_project: 'we-meditate',
-    gcloud_keyfile: "#{Rails.root}/config/initializers/carrierwave.json"
-  } # TODO: This file has been leaked, reset the keyfile
+    gcloud_keyfile: JSON.parse(ENV['GOOGLE_CLOUD_KEYFILE'])
+  }
 end
