@@ -188,8 +188,6 @@ module Admin::InputHelper
       new_object = form.object.class.reflect_on_association(association).klass.new
     end
 
-    puts new_object.inspect
-
     # Render the form fields from a file with the association name provided
     fields = form.fields_for(association, new_object, child_index: 'new_record') do |builder|
       render(partial, locals.merge!(f: builder))

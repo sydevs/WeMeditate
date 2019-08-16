@@ -49,7 +49,7 @@
       .gradient.gradient--right.gradient--tall.gradient--short.gradient--orange
 
     h2.content__catalog__title
-      - if bloack[:title]
+      - if block[:title]
         = block[:title]
       - else
         = block[:decorations] && block[:decorations][:sidetext] && block[:decorations][:sidetext][:text]

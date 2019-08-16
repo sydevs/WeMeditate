@@ -36,8 +36,10 @@ module ApplicationHelper
     return unless record.parsed_content.present?
 
     record.content_blocks.each do |block|
-      safe_concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys
+      concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys
     end
+
+    return
   end
 
   def render_decoration type, block, **args
