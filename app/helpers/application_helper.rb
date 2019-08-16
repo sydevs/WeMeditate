@@ -37,7 +37,7 @@ module ApplicationHelper
 
     cache record.parsed_content do
       record.content_blocks.each do |block|
-        concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys
+        concat render("content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys).html_safe
       end
     end
   end
