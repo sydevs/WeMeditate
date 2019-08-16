@@ -30,7 +30,6 @@ class ImageUploader {
     })
 
     this.wrapper.addEventListener('click', () => this.input.click())
-    console.log('add drop event', this.wrapper, this._onImageDrop)
     this.wrapper.addEventListener('drop', event => this._onImageDrop(event))
     this.input.addEventListener('change', event => this._onImageSelect(event))
   }

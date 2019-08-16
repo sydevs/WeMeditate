@@ -1,7 +1,7 @@
 CarrierWave.configure do |config|
   config.storage = Rails.env.production? ? :gcloud : :file
   config.asset_host = ActionController::Base.asset_host
-  config.gcloud_bucket = 'wemeditate.co'
+  config.gcloud_bucket = 'wemeditate'
   config.gcloud_bucket_is_public = true
   config.gcloud_authenticated_url_expiration = 600
 
