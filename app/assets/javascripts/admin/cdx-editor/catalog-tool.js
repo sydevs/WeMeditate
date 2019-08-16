@@ -70,7 +70,7 @@ class CatalogTool extends EditorTool {
     }, searchInputWrapper)
     make('i', ['search', 'icon'], {}, searchInputWrapper)
 
-    this.searchInput.addEventListener('keyup', (event) => this._onSearchChange(event))
+    this.searchInput.addEventListener('keyup', event => this._onSearchChange(event))
 
     this.searchContainer = make('div', [this.CSS.search.container, 'ui', 'list'], {}, container)
 

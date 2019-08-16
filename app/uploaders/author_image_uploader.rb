@@ -4,7 +4,8 @@ class AuthorImageUploader < ApplicationUploader
   process convert: :jpg
 
   VERSIONS = {
-    medium: 256,
+    large: 384, # For x3 retina
+    medium: 256, # For x2 retina
     small: 128,
   }.freeze
 

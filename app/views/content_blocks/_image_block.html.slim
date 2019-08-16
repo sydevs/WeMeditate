@@ -13,7 +13,7 @@
 
 - if block[:stretch]
   - image_sizes = '100vw'
-- elsif block[:callout].present?
+- elsif callout_mode != 'none'
   - image_sizes = '(max-width: 814px) calc(100vw - 48px), 400px'
 - else
   - image_sizes = '(max-width: 814px) calc(100vw - 48px), 766px'

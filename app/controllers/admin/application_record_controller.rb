@@ -149,7 +149,9 @@ module Admin
         record_params
       end
 
-      def after_create; end
+      def after_create
+        true # Return success, since we didn't need to do anything
+      end
 
     private
 

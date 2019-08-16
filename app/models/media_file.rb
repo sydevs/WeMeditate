@@ -7,7 +7,7 @@ class MediaFile < ActiveRecord::Base
 
   # Associations
   belongs_to :page, polymorphic: true
-  mount_uploader :file, MediaFileUploader
+  mount_uploader :file, ImageUploader
 
   # Validations
   validates :file, presence: true

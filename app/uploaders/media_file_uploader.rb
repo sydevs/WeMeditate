@@ -1,3 +1,5 @@
+# In theory this uploader could support non-image uploads in the future.
+# Such as MP3 tracks or PDF documents
 class MediaFileUploader < ApplicationUploader
 
   include CarrierWave::MiniMagick
@@ -17,11 +19,10 @@ class MediaFileUploader < ApplicationUploader
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w[png jpg mp4]
+    %w[png jpg jpeg]
   end
 
   def image? new_file
-    # `casecmp` is a case-insensitive string comparison.
     new_file.content_type.start_with? 'image'
   end
 
