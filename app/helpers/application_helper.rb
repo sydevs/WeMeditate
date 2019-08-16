@@ -35,10 +35,8 @@ module ApplicationHelper
     return content_for(:content) if content_for?(:content)
     return unless record.parsed_content.present?
 
-    cache record.parsed_content do
-      record.content_blocks.each do |block|
-        safe_concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys
-      end
+    record.content_blocks.each do |block|
+      safe_concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys
     end
   end
 
