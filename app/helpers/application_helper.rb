@@ -36,10 +36,12 @@ module ApplicationHelper
     return unless record.parsed_content.present?
 
     cache_unless action_name == 'preview', record.content_cache_key do
-      record.content_blocks.each do |block|
-        concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys
+      capture do
+        record.content_blocks.each do |block|
+          concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys
+        end
       end
-    end.html_safe
+    end
   end
 
   def render_decoration type, block, **args
