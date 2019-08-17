@@ -15,13 +15,10 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @record = Article.published.preload_for(:content).friendly.find(params[:id])
-    return unless stale?(@record)
+    @article = Article.published.preload_for(:content).friendly.find(params[:id])
+    return unless stale?(@article)
 
-    # TODO: Deprecated
-    @article = @record
-    @metadata_record = @article
-
+    set_metadata(@article)
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },
       { name: StaticPageHelper.preview_for(:articles).name, url: categories_path },

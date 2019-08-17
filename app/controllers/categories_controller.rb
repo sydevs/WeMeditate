@@ -32,8 +32,8 @@ class CategoriesController < ApplicationController
       respond_to do |format|
         format.html do
           @static_page = StaticPage.preload_for(:content).find_by(role: :articles)
-          @record = @static_page
           @categories = Category.published
+          set_metadata(@static_page)
 
           @breadcrumbs = [
             { name: StaticPageHelper.preview_for(:home).name, url: root_path },

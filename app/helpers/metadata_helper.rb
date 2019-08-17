@@ -10,9 +10,11 @@ module MetadataHelper
     'sameAs' => I18n.translate('social_media').values,
   }.freeze
 
-  def render_metatags record
+  def render_metatags
+    return unless @metatags.present?
+
     capture do
-      metatags(record).each do |key, value|
+      @metatags.each do |key, value|
         if key == 'title'
           concat tag.title "#{value} | #{translate 'we_meditate'}"
         elsif key == 'description'
@@ -28,29 +30,36 @@ module MetadataHelper
     end
   end
 
-  def render_structured_data record
-    tag.script structured_data(record).to_json.html_safe, type: 'application/ld+json'
+  def render_structured_data
+    return unless @structured_data.present?
+
+    tag.script @structured_data.to_json.html_safe, type: 'application/ld+json'
   end
 
-  def metatags record
-    @metatags ||= (record.metatags || {}).reverse_merge(default_metatags(record))
+  def metatags record = nil
+    @metatags ||= (record&.metatags || {}).reverse_merge(default_metatags(record))
   end
 
-  def default_metatags record
+  def default_metatags record = nil
     @default_metatags ||= begin
       tags = {
         'og:site_name' => translate('we_meditate'),
-        'og:url' => polymorphic_url(record),
+        'og:url' => request.original_url,
         'og:locale' => locale,
-        'og:locale:alternate' => record.translated_locales.map(&:to_s),
-        'og:article:published_time' => record.created_at.to_s(:db),
-        'og:article:modified_time' => record.updated_at.to_s(:db),
         'twitter:site' => Rails.application.config.twitter_handle,
         'twitter:creator' => Rails.application.config.twitter_handle,
-        'title' => record.name,
       }
 
-      if record.has_content?
+      if record.present?
+        tags['og:locale:alternate'] = record.translated_locales.map(&:to_s)
+        tags['og:article:published_time'] = record.created_at.to_s(:db)
+        tags['og:article:modified_time'] = record.updated_at.to_s(:db)
+        tags['title'] = record.name
+      else
+        tags['og:locale:alternate'] = I18n.available_locales.map(&:to_s)
+      end
+
+      if record&.has_content?
         tags['og:article:modified_time'] = record.updated_at.to_s(:db)
       end
 
@@ -120,7 +129,9 @@ module MetadataHelper
   end
 
   def structured_data record
-    tags = metatags(record)
+    return unless @metatags.present?
+
+    tags = @metatags
     @structured_data ||= begin
       objects = []
       page = {

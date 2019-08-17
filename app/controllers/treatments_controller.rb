@@ -2,12 +2,9 @@ class TreatmentsController < ApplicationController
 
   def index
     @treatments = Treatment.published.preload_for(:preview).all
-    @record = StaticPage.preload_for(:content).find_by(role: :treatments)
+    @static_page = StaticPage.preload_for(:content).find_by(role: :treatments)
     @tracks = Track.order('RANDOM()').limit(10)
-
-    # TODO: Deprecated
-    @static_page = @record
-    @metadata_record = @static_page
+    set_metadata(@static_page)
 
     about_page = StaticPage.preload_for(:preview).find_by(role: :about)
     @breadcrumbs = [
@@ -19,7 +16,7 @@ class TreatmentsController < ApplicationController
 
   def show
     @treatment = Treatment.published.preload_for(:content).friendly.find(params[:id])
-    @metadata_record = @treatment
+    set_metadata(@treatment)
 
     about_page = StaticPage.preload_for(:preview).find_by(role: :about)
     treatments_page = StaticPage.preload_for(:preview).find_by(role: :treatments)

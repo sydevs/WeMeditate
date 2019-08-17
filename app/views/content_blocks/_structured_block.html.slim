@@ -30,6 +30,6 @@
         article.content__structured__item
           - if item[:image]
             - image_sizes = '100vw' # TODO: Define these image sizes properly
-            = smart_image_tag @record.media_file(item[:image][:id]), image_sizes, lazy: false, class: 'content__structured__image'
+            = smart_image_tag record.media_file(item[:image][:id]), image_sizes, lazy: false, class: 'content__structured__image'
           h3.content__structured__title = item[:title]
           .content__structured__text = item[:text].html_safe

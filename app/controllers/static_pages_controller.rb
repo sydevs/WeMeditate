@@ -1,13 +1,10 @@
 class StaticPagesController < ApplicationController
 
   def show
-    @record = StaticPage.preload_for(:content).friendly.find(params[:id])
-    return unless stale?(@record)
+    @static_page = StaticPage.preload_for(:content).friendly.find(params[:id])
+    return unless stale?(@static_page)
 
-    # TODO: Deprecated
-    @static_page = @record
-    @metadata_record = @static_page
-
+    set_metadata(@static_page)
     case @static_page.role
     when 'about'
       @breadcrumbs = [

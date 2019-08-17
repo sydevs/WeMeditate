@@ -1,5 +1,5 @@
 
-- image_url = @record.media_file(block[:image][:id]).large.url if block[:image]
+- image_url = record.media_file(block[:image][:id]).large.url if block[:image]
 - invert = block[:style] == 'home' ? 'true' : false # TODO: This needs to be configurable.
 - style = image_url ? "background-image: url(#{image_url})" : nil
 

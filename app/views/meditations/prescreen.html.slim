@@ -1,3 +1,3 @@
 
-- url = @record.is_a?(Meditation) ? meditation_path(@record) : meditations_path
+- url = defined?(@meditation) ? meditation_path(@meditation) : meditations_path
 = render 'prescreen', translations: 'meditations.prescreen', type: :meditations, skip_url: url

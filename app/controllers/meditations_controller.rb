@@ -3,16 +3,13 @@ class MeditationsController < ApplicationController
   MEDITATIONS_PER_PAGE = 10
 
   def index
-    @record = StaticPage.preload_for(:content).find_by(role: :meditations)
+    @static_page = StaticPage.preload_for(:content).find_by(role: :meditations)
     expires_in 12.hours, public: true
 
-    # TODO: Deprecated
-    @static_page = @record
-    @metadata_record = @static_page
-
+    set_metadata(@static_page)
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },
-      { name: @record.name },
+      { name: @static_page.name },
     ]
 
     if true || cookies[:prescreen] == 'dismissed'
@@ -25,10 +22,11 @@ class MeditationsController < ApplicationController
   end
 
   def archive
-    # TODO: There is no title defined for this view because there is no @records variable
     next_offset = params[:offset].to_i + MEDITATIONS_PER_PAGE
     @meditations = Meditation.published.preload_for(:preview).offset(params[:offset]).limit(MEDITATIONS_PER_PAGE)
     return unless stale?(@meditations)
+
+    set_metadata({ 'title' => Meditation.model_name.human(count: -1) })
 
     if @meditations.count < next_offset
       @loadmore_url = nil
@@ -54,12 +52,9 @@ class MeditationsController < ApplicationController
   end
 
   def show
-    @record = Meditation.published.friendly.find(params[:id])
+    @meditation = Meditation.published.friendly.find(params[:id])
 
-    # TODO: Deprecated
-    @meditation = @record
-    @metadata_record = @meditation
-
+    set_metadata(@meditation)
     meditations_page = StaticPage.preload_for(:content).find_by(role: :meditations)
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },

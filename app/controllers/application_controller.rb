@@ -7,12 +7,10 @@ class ApplicationController < ActionController::Base
   
   # The root page of the website
   def home
-    @record = StaticPage.preload_for(:content).find_by(role: :home)
-    return unless stale?(@record)
+    @static_page = StaticPage.preload_for(:content).find_by(role: :home)
+    return unless stale?(@static_page)
 
-    # TODO: Deprecated
-    @static_page = @record
-    @metadata_record = @static_page
+    set_metadata(@static_page)
   end
 
   # The page where we embed a map from the program database
@@ -100,6 +98,18 @@ class ApplicationController < ActionController::Base
       return if current_user.present?
 
       redirect_to maintenance_path
+    end
+
+    def set_metadata record_or_hash
+      if record_or_hash.is_a?(Hash)
+        hash = record_or_hash
+      else
+        record = record_or_hash
+      end
+
+      @metatags = helpers.metatags(record)
+      @metatags = hash.reverse_merge(@metatags) unless hash.nil?
+      @structured_data = helpers.structured_data(record)
     end
 
 end

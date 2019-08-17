@@ -1,7 +1,7 @@
 doctype html
 html lang=locale
   head
-    = render_metatags @metadata_record if @metadata_record.present?
+    = render_metatags
     = csrf_meta_tags
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
@@ -21,7 +21,7 @@ html lang=locale
     = google_tag_manager
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    = render_structured_data @metadata_record if @metadata_record.present?
+    = render_structured_data
 
 body
   = render 'layouts/partials/header', minimal: true, cached: true
