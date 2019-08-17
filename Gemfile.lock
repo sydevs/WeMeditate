@@ -229,8 +229,6 @@ GEM
     rack (2.0.7)
     rack-protection (2.0.5)
       rack
-    rack-raw-upload (1.1.1)
-      multi_json
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -402,7 +400,6 @@ DEPENDENCIES
   normalize-rails
   pg (~> 0.18)
   puma (~> 3.7)
-  rack-raw-upload
   rails (~> 5.2.2)
   rails-i18n
   rails_serve_static_assets
