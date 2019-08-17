@@ -3,7 +3,7 @@
 - selected_category_id = nil unless @categories.any? {|c| c.id == selected_category_id}
 
 main
-  = cache @static_page.content_cache_key do
+  - cache @static_page.content_cache_key do
     .content = render_content @static_page
 
   .inspiration

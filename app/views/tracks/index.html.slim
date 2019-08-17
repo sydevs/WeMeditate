@@ -49,5 +49,5 @@ main
           .player__playlist__list id='music-player-playlist'
             = render @tracks, cached: true
 
-  = cache @static_page.content_cache_key do
+  - cache @static_page.content_cache_key do
     .content = render_content @static_page
