@@ -70,7 +70,7 @@ module Admin
         end
       end
 
-      if @record.save
+      if @record.save(validate: will_publish)
         @record.try(:cleanup_media_files!) if will_publish
         redirect_to redirect, flash: { notice: notice }
       else

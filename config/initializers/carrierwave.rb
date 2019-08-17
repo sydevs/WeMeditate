@@ -8,6 +8,6 @@ CarrierWave.configure do |config|
   config.gcloud_attributes = { expires: 600 }
   config.gcloud_credentials = {
     gcloud_project: 'we-meditate',
-    gcloud_keyfile: JSON.parse(ENV['GOOGLE_CLOUD_KEYFILE'])
+    gcloud_keyfile: ENV['GOOGLE_CLOUD_KEYFILE'].present? ? JSON.parse(ENV['GOOGLE_CLOUD_KEYFILE']) : nil
   }
 end

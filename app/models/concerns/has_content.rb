@@ -35,8 +35,6 @@ module HasContent
       end
     else
       Globalize.with_locale(locale) do
-        puts "CHECKING #{translation.pretty_inspect}"
-
         if content_blocks.present?
           content_blocks.each do |block|
             result += block['data']['media_files'] if block['data']['media_files']

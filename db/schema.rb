@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_28_094725) do
+ActiveRecord::Schema.define(version: 2019_08_17_083918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2019_07_28_094725) do
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", null: false
-    t.string "slug", null: false
+    t.string "name"
+    t.string "slug"
     t.text "excerpt"
     t.jsonb "metatags"
     t.integer "thumbnail_id"
@@ -53,20 +53,6 @@ ActiveRecord::Schema.define(version: 2019_07_28_094725) do
     t.string "name"
     t.string "url"
     t.jsonb "image"
-  end
-
-  create_table "attachments", force: :cascade do |t|
-    t.string "uuid", null: false
-    t.string "name"
-    t.integer "size"
-    t.integer "usage_count", default: 0
-    t.jsonb "file"
-    t.string "page_type"
-    t.bigint "page_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["page_type", "page_id"], name: "index_attachments_on_page_type_and_page_id"
-    t.index ["uuid"], name: "index_attachments_on_uuid"
   end
 
   create_table "author_translations", force: :cascade do |t|
@@ -145,7 +131,7 @@ ActiveRecord::Schema.define(version: 2019_07_28_094725) do
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", null: false
+    t.string "name"
     t.boolean "published", default: false
     t.datetime "published_at"
     t.index ["goal_filter_id"], name: "index_goal_filter_translations_on_goal_filter_id"
@@ -170,7 +156,7 @@ ActiveRecord::Schema.define(version: 2019_07_28_094725) do
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", null: false
+    t.string "name"
     t.boolean "published", default: false
     t.datetime "published_at"
     t.index ["instrument_filter_id"], name: "index_instrument_filter_translations_on_instrument_filter_id"
@@ -212,8 +198,8 @@ ActiveRecord::Schema.define(version: 2019_07_28_094725) do
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", null: false
-    t.string "slug", null: false
+    t.string "name"
+    t.string "slug"
     t.text "excerpt"
     t.jsonb "metatags"
     t.integer "views", default: 0, null: false
@@ -240,7 +226,7 @@ ActiveRecord::Schema.define(version: 2019_07_28_094725) do
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", null: false
+    t.string "name"
     t.boolean "published", default: false
     t.datetime "published_at"
     t.index ["locale"], name: "index_mood_filter_translations_on_locale"
@@ -266,8 +252,8 @@ ActiveRecord::Schema.define(version: 2019_07_28_094725) do
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", null: false
-    t.string "slug", null: false
+    t.string "name"
+    t.string "slug"
     t.jsonb "metatags"
     t.jsonb "draft"
     t.jsonb "content"
@@ -289,9 +275,9 @@ ActiveRecord::Schema.define(version: 2019_07_28_094725) do
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", null: false
-    t.string "slug", null: false
-    t.text "excerpt", null: false
+    t.string "name"
+    t.string "slug"
+    t.text "excerpt"
     t.jsonb "metatags"
     t.jsonb "draft"
     t.jsonb "content"
@@ -313,7 +299,7 @@ ActiveRecord::Schema.define(version: 2019_07_28_094725) do
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", null: false
+    t.string "name"
     t.boolean "published", default: false
     t.datetime "published_at"
     t.index ["locale"], name: "index_track_translations_on_locale"
@@ -332,9 +318,9 @@ ActiveRecord::Schema.define(version: 2019_07_28_094725) do
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", null: false
-    t.string "slug", null: false
-    t.text "excerpt", null: false
+    t.string "name"
+    t.string "slug"
+    t.text "excerpt"
     t.jsonb "metatags"
     t.jsonb "content"
     t.integer "horizontal_vimeo_id"
