@@ -38,6 +38,8 @@ module ApplicationHelper
     record.content_blocks.each do |block|
       concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys
     end
+
+    return nil
   end
 
   def render_decoration type, block, **args
