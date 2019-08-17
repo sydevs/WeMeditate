@@ -1,8 +1,10 @@
 class StaticPagesController < ApplicationController
 
   def show
-    @record = StaticPage.preload_for(:content).friendly.find(params[:id])
+    @record = StaticPage.friendly.find(params[:id])
     return unless stale?(@record)
+
+    @record = StaticPage.preload_for(:content).friendly.find(params[:id])
 
     # TODO: Deprecated
     @static_page = @record

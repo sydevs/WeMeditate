@@ -1,9 +1,11 @@
 class TracksController < ApplicationController
 
   def index
-    @tracks = Track.published.preload_for(:content).all
+    @tracks = Track.published.all
     return unless stale?(@tracks)
 
+    @tracks = Track.published.preload_for(:content).all
+    
     # @mood_filters = MoodFilter.published.has_content
     @instrument_filters = InstrumentFilter.published.has_content
     @static_page = StaticPage.preload_for(:content).find_by(role: :tracks)

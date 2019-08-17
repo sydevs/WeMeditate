@@ -16,6 +16,8 @@ class SubtleSystemNodesController < ApplicationController
     @record = SubtleSystemNode.preload_for(:content).friendly.find(params[:id])
     return unless stale?(@record)
 
+    @record = SubtleSystemNode.friendly.find(params[:id])
+
     # TODO: Deprecated
     @subtle_system_node = @record
     @metadata_record = @subtle_system_node
