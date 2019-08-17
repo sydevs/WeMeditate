@@ -16,7 +16,7 @@ gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 
 gem 'rails_serve_static_assets' # Allow the heroku app to serve static files
 gem 'turbolinks', '~> 5' # Makes navigating your web application faster.
-# gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'redis', '~> 4.0' # Use Redis for caching
 
 # Users
 gem 'devise' # Adds all the core features for users - user sessions, login, password recovery, etc
@@ -73,9 +73,9 @@ gem 'sitemap_generator' # For SEO purposes
 # Maybe needed later(?)
 # gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'coffee-rails', '~> 4.2' # Use CoffeeScript for .coffee assets and views
-# gem 'redis', '~> 3.0' # Use Redis adapter to run Action Cable in production
 # gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
 # gem 'capistrano-rails', group: :development # Use Capistrano for deployment
+# gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

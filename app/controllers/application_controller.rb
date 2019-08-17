@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   # The root page of the website
   def home
     @record = StaticPage.preload_for(:content).find_by(role: :home)
+    super if stale?(@record)
 
     # TODO: Deprecated
     @static_page = @record
@@ -16,6 +17,7 @@ class ApplicationController < ActionController::Base
 
   # The page where we embed a map from the program database
   def map
+    expires_in 1.year, public: true
     render layout: 'minimal'
   end
 
@@ -44,10 +46,7 @@ class ApplicationController < ActionController::Base
 
   # A POST endpoint to subscribe to the site's mailing list.
   def subscribe
-    if not params[:email_address].present?
-      @message = I18n.translate('form.missing.email')
-      @success = false
-    else
+    if params[:email_address].present?
       email = params[:email_address].gsub(/\s/, '').downcase
       email_hash = Digest::MD5.hexdigest(email)
 
@@ -68,6 +67,9 @@ class ApplicationController < ActionController::Base
         @message = error.detail.to_s
         @success = false
       end
+    else
+      @message = I18n.translate('form.missing.email')
+      @success = false
     end
   end
 
@@ -81,6 +83,7 @@ class ApplicationController < ActionController::Base
   end
 
   def error
+    expires_in 1.month, public: true
     render status: request.env['PATH_INFO'][1, 3].to_i
   end
 

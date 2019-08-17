@@ -4,6 +4,7 @@ class MeditationsController < ApplicationController
 
   def index
     @record = StaticPage.preload_for(:content).find_by(role: :meditations)
+    expires_in 12.hours, public: true
 
     # TODO: Deprecated
     @static_page = @record
@@ -27,6 +28,7 @@ class MeditationsController < ApplicationController
     # TODO: There is no title defined for this view because there is no @records variable
     next_offset = params[:offset].to_i + MEDITATIONS_PER_PAGE
     @meditations = Meditation.published.preload_for(:preview).offset(params[:offset]).limit(MEDITATIONS_PER_PAGE)
+    return unless stale?(@meditations)
 
     if @meditations.count < next_offset
       @loadmore_url = nil
