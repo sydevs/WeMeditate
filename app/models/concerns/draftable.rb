@@ -132,8 +132,8 @@ module Draftable
     end
 
     def content_equal? old_content, new_content
-      old_content = JSON.parse(old_content)['blocks'] unless old_content && old_content.is_a?(Hash)
-      new_content = JSON.parse(new_content)['blocks'] unless new_content && new_content.is_a?(Hash)
+      old_content = JSON.parse(old_content)['blocks'] unless old_content.nil? || old_content.is_a?(Hash)
+      new_content = JSON.parse(new_content)['blocks'] unless new_content.nil? || new_content.is_a?(Hash)
       old_content == new_content
     end
 
