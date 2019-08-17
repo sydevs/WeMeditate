@@ -16,7 +16,7 @@ module Admin::RecordHelper
   def record_published_at_status
     if !@record.published?
       translate 'admin.tags.unpublished_draft'
-    elsif @record.reviewable? && @record.has_draft?
+    elsif @record.reviewable? && @record.has_draft? && @record.published_at.present?
       translate 'admin.tags.published_ago', time_ago: time_ago_in_words(@record.published_at)
     else
       translate 'admin.tags.published'
