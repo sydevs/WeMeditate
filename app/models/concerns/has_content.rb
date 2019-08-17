@@ -64,4 +64,8 @@ module HasContent
     media_files.where.not(id: essential_media_files).destroy_all
   end
 
+  def content_cache_key
+    content_blocks.map { |b| b['data']['id'] }.join('-')
+  end
+
 end
