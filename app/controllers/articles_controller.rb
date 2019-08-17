@@ -15,10 +15,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @record = Article.published.friendly.find(params[:id])
-    return unless stale?(@record)
-
     @record = Article.published.preload_for(:content).friendly.find(params[:id])
+    return unless stale?(@record)
 
     # TODO: Deprecated
     @article = @record

@@ -7,10 +7,8 @@ class ApplicationController < ActionController::Base
   
   # The root page of the website
   def home
-    @record = StaticPage.find_by(role: :home)
-    return unless stale?(@record)
-
     @record = StaticPage.preload_for(:content).find_by(role: :home)
+    return unless stale?(@record)
 
     # TODO: Deprecated
     @static_page = @record
