@@ -4,7 +4,7 @@ p.details.excerpt = record.excerpt
 .ui.details.list
   = record_detail 'language', language_name(record.original_locale), translate('admin.details.original_language') unless record.original_locale == I18n.locale.to_s
   - if record.translated_locales.include? I18n.locale
-    = record_detail 'linkify', url_for(record), url: url_for(record)
+    = record_detail 'linkify', CGI.unescape(polymorphic_path(record)), url: polymorphic_url(record)
   - else
     = record_detail 'orange warning sign', translate('admin.tags.no_translation', language: language_name)
   = record_detail 'pin', human_enum_name(record, :role), translate('admin.details.role')
