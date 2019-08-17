@@ -35,10 +35,16 @@ module ApplicationHelper
     return content_for(:content) if content_for?(:content)
     return unless record.parsed_content.present?
 
-    cache_unless action_name == 'preview', record.content_cache_key do
-      capture do
-        record.content_blocks.each do |block|
-          concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys
+    if action_name == 'preview'
+      record.content_blocks.each do |block|
+        concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys
+      end
+    else
+      cache.fetch(record.content_cache_key) do
+        capture do
+          record.content_blocks.each do |block|
+            concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys
+          end
         end
       end
     end
