@@ -26,13 +26,9 @@
             a.item href=polymorphic_admin_path([:edit, :admin, @record])
               i.edit.icon
               = translate 'admin.action.target.edit_details', record: model_name
-          - if false && @record.publishable? && allow.publish?
-            / TODO: Implement click to (un)publish
-            .item
-              i.bullhorn.icon
-              = translate (@record.published? ? 'unpublish' : 'publish'), scope: %i[admin action target], record: model_name
           - if @record.published?
-            a.item href=polymorphic_url(@record) target='_blank'
+            - url = @record.is_a?(StaticPage) ? static_page_url_for(@record) : polymorphic_url(@record)
+            a.item href=url target='_blank'
               i.eye.icon
               = translate 'admin.action.descriptive.show'
           - if allow.preview? && ((@record.reviewable? && @record.has_draft?) || !@record.published?)

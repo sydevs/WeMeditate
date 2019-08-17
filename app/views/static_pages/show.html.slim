@@ -1,20 +1,36 @@
 
-main.scrollspy-target
-  - if @static_page.classes?
-    .classes__splash.js-splash data-invert='true'
-      form.classes__form method='GET' action=map_path
-        .classes__field
-          button.classes__field__icon
-            .icon.icon--search
-          .classes__field__input
-            input type='text' name='q' placeholder=t('classes.prompt')
-
-  - elsif !@static_page.contact?
-    h1.banner.banner--left = @static_page.name
-
-  .content = render_content @static_page
-
-- if @static_page.classes? || @static_page.self_realization?
-  = sharing_links
+/ We are using this switch statement to redirect the rendering,
+/ for when we preview a static page on the admin side
+- case @static_page.role.to_sym
+- when :home
+  = render file: 'application/home'
+- when :subtle_system
+  = render file: 'subtle_system_nodes/index'
+- when :articles
+  = render file: 'categories/index'
+- when :treatments
+  = render file: 'treatments/index'
+- when :tracks
+  = render file: 'tracks/index'
+- when :meditations
+  = render file: 'meditations/index'
 - else
-  = render 'application/actions_footer'
+  main.scrollspy-target
+    - if @static_page.classes?
+      .classes__splash.js-splash data-invert='true'
+        form.classes__form method='GET' action=map_path
+          .classes__field
+            button.classes__field__icon
+              .icon.icon--search
+            .classes__field__input
+              input type='text' name='q' placeholder=t('classes.prompt')
+
+    - elsif !@static_page.contact?
+      h1.banner.banner--left = @static_page.name
+
+    .content = render_content @static_page
+
+  - if @static_page.classes? || @static_page.self_realization?
+    = sharing_links
+  - else
+    = render 'application/actions_footer'

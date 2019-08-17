@@ -129,7 +129,8 @@ module Admin::InputHelper
   end
 
   def draftable_slug_field form, url
-    url = "#{Pathname(url).dirname}/"
+    url = url.gsub(%r{\/[^\/]*\/?$}, '/') # Strip the last element from the url
+    url = CGI.unescape(url)
 
     draftable_field form, :slug do |value|
       content_tag :div, class: 'ui labeled slug input' do
