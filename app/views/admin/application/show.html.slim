@@ -11,7 +11,7 @@
         - status = @record.published? ? (@record.reviewable? && @record.has_draft? ? :pending_changes : :published) : :draft
         = translate(status, scope: %i[admin status], page: model_name)
 
-      - action = (allow.review? && @record.published? && @record.has_draft? ? :review : :edit)
+      - action = (allow.review? && @record.published? && @record.has_draft? && @record.parsed_draft.has_key?('content') ? :review : :edit)
       a.ui.button href=polymorphic_admin_path([action, :admin, @record])
         i.edit.icon
         - if allow.review? && @record.published? && @record.has_draft?
