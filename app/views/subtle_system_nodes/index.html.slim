@@ -16,4 +16,5 @@ main
     .subtle-system__list
       = render (@subtle_system_nodes || SubtleSystemNode.all), cached: true
 
-  .content = render_content @static_page
+  = cache @static_page.content_cache_key do
+    .content = render_content @static_page

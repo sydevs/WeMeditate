@@ -1,3 +1,4 @@
 
 main id=dom_id(@record)
-  .content = render_content @record
+  = cache @static_page.content_cache_key do
+    .content = render_content @record

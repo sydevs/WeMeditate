@@ -85,4 +85,5 @@ main
         = static_image_tag 'meditations/prescreen-background', '100vw', class: 'meditations__image__background'
         = static_image_tag 'meditations/prescreen-foreground', '100vw', class: 'meditations__image__foreground'
 
-  .content = render_content @static_page
+  = cache @static_page.content_cache_key do
+    .content = render_content @static_page

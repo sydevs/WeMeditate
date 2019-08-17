@@ -28,7 +28,8 @@
     - elsif !@static_page.contact?
       h1.banner.banner--left = @static_page.name
 
-    .content = render_content @static_page
+    = cache @static_page.content_cache_key do
+      .content = render_content @static_page
 
   - if @static_page.classes? || @static_page.self_realization?
     = sharing_links

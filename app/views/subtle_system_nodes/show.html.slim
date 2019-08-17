@@ -1,6 +1,7 @@
 
 main.scrollspy-target
   h1.banner = @subtle_system_node.name
-  = render_content @subtle_system_node
+  = cache @static_page.content_cache_key do
+    = render_content @subtle_system_node
 
 .content = render 'application/actions_footer'
