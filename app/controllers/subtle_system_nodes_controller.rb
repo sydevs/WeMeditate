@@ -13,10 +13,10 @@ class SubtleSystemNodesController < ApplicationController
   end
 
   def show
-    @subtle_system_nodes = SubtleSystemNode.preload_for(:content).friendly.find(params[:id])
-    return unless stale?(@subtle_system_nodes)
+    @subtle_system_node = SubtleSystemNode.preload_for(:content).friendly.find(params[:id])
+    return unless stale?(@subtle_system_node)
 
-    set_metadata(@subtle_system_nodes)
+    set_metadata(@subtle_system_node)
     subtle_system_page = StaticPage.preload_for(:preview).find_by(role: :subtle_system)
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },

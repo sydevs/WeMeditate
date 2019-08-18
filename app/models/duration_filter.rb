@@ -31,4 +31,8 @@ class DurationFilter < ApplicationRecord
     ActionController::Base.helpers.time_ago_in_words(minutes.minutes.from_now).titleize
   end
 
+  def preview_name
+    name
+  end
+
 end
