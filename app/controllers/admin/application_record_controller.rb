@@ -95,11 +95,11 @@ module Admin
         @record.approve_content_changes! JSON.parse(params[:review])
       end
 
-      if @record.save
+      if @record.save!
         @record.try(:cleanup_media_files!)
         redirect_to redirect, flash: { notice: translate('admin.result.updated') }
       else
-        render :review
+        render 'admin/application/review', layout: 'application'
       end
     end
 
