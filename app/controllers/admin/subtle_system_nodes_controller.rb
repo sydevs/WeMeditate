@@ -18,7 +18,7 @@ module Admin
         if (allow.create? && action_name == 'create') || allow.update_structure?
           params.fetch(:subtle_system_node, {}).permit(:name, :slug, :excerpt, :role, :content, metatags: {})
         else
-          params.fetch(:subtle_system_node, {}).permit(:name, :excerpt)
+          params.fetch(:subtle_system_node, {}).permit(:name, :excerpt, :content)
         end
       end
 

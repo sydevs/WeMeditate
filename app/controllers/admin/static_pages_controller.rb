@@ -22,7 +22,7 @@ module Admin
         if (allow.create? && action_name == 'create') || allow.update_structure?
           params.fetch(:static_page, {}).permit(:name, :slug, :role, :content, metatags: {})
         else
-          params.fetch(:static_page, {}).permit(:name)
+          params.fetch(:static_page, {}).permit(:name, :content)
         end
       end
 
