@@ -96,8 +96,10 @@ ru:
         normal: "Обычный Приоритет"
         pending: "Нерешенный Вопрос"
       views: # This is the number of viewers or visits. Used to indicate the number of video views
-        one: "1 Просмотр"
-        many: "%{count} Просмотров"
+        one: "%{count} Просмотр" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "%{count} Views" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+        many: "%{count} Просмотров" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "%{count} Views" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
 
     messages:
       loading: "Загружается"
@@ -212,11 +214,15 @@ ru:
         optional: "необзязательно"
         search: "Искать"
       words:
-        one: "%{count} слово"
-        many: "%{count} слов"
+        one: "%{count} слово" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "%{count} Views" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+        many: "%{count} слов" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "%{count} Views" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
       items:
-        one: "%{count} элемент"
-        many: "%{count} элементов"
+        one: "%{count} элемент" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "%{count} Views" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+        many: "%{count} элементов" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "%{count} Views" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
 
 
     # ===== MISCELLENEOUS ===== #
@@ -260,15 +266,21 @@ ru:
     draft: # This section deals with the ability to create draft versions of new pages
       no_image: "Изображение Отсутствует"
       items:
-        one: "1 элемент"
-        many: "%{count} элементов"
+        one: "%{count} элемент" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "%{count} Views" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+        many: "%{count} элементов" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "%{count} Views" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
       content:
         original: # This is for a button that lets you revert to the previous content
-          one: "Изначальный контент с %{count} блоком"
-          many: "Изначальный контент с %{count} блоками"
+          one: "Изначальный контент с %{count} блоком" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "Original content with %{count} blocks" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+          many: "Изначальный контент с %{count} блоками" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+          other: "Original content with %{count} blocks" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
         draft: # This is for a button that lets you revert to the new content
-          one: "Черновик с %{count} блоком"
-          many: "Черновик с %{count} блоками"
+          one: "Черновик с %{count} блоком" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "Draft content with %{count} blocks" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+          many: "Черновик с %{count} блоками" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+          other: "Draft content with %{count} blocks" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
 
     dashboard:
       title: "Панель управления"

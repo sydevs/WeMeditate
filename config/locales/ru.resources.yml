@@ -125,8 +125,10 @@ ru:
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
         articles:
-          one: "1 Статья"
-          many: "%{count} Статьи" # it is not possible to translate articles here as translation differs depending on the count value
+          one: "%{count} Статья" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "%{count} Articles" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+          many: "%{count} Статьи" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+          other: "%{count} Articles" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
 
       treatment:
         published: :activerecord.attributes.article.published # Do not translate
@@ -144,29 +146,37 @@ ru:
         name: :activerecord.attributes.generic.name # Do not translate
         icon: "Изображение"
         tracks:
-          one: "1 Трек"
-          many: "%{count} Треков" # it is not possible to translate tracks here as translation differs depending on the count value
+          one: "%{count} Трек" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "%{count} Tracks" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+          many: "%{count} Треков" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+          other: "%{count} Tracks" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
 
       mood_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         tracks:
-          one: "1 Трек"
-          many: "%{count} Треков" # it is not possible to translate tracks here as translation differs depending on the count value
+          one: "%{count} Трек" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "%{count} Tracks" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+          many: "%{count} Треков" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+          other: "%{count} Tracks" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
 
       duration_filter:
         published: :activerecord.attributes.article.published # Do not translate
         minutes: "Минуты"
         meditations:
-          one: "1 Медитация"
-          many: "%{count} Медитации" # it is not possible to translate meditations here as translation differs depending on the count value
+          one: "%{count} Медитация" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "%{count} Meditations" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+          many: "%{count} Медитации" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+          other: "%{count} Meditations" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
 
       goal_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         meditations:
-          one: "1 Медитация"
-          many: "%{count} Медитации" # it is not possible to translate meditations here as translation differs depending on the count value
+          one: "%{count} Медитация" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "%{count} Meditations" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+          many: "%{count} Медитации" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+          other: "%{count} Meditations" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
 
       track:
         published: :activerecord.attributes.article.published # Do not translate
@@ -194,8 +204,10 @@ ru:
         image: "Обложка Альбома"
         url: "Сайт"
         tracks:
-          one: "1 Трек"
-          many: "%{count} Треков" # it is not possible to translate tracks here as translation differs depending on the count value
+          one: "%{count} Трек" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "%{count} Tracks" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+          many: "%{count} Треков" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+          other: "%{count} Tracks" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
 
       author:
         name: :activerecord.attributes.generic.name # Do not translate

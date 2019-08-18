@@ -34,8 +34,10 @@ ru:
     about_the_author: "Об авторе"
     written_by: "Написано"
     meditating_for:
-      one: "Медитирую 1 год"
-      many: "Медитирую %{count} лет" # it is not possible to translate years here as translation differs depending on the number of years 
+      one: "Медитирую %{count} год" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+      few: "Meditating for %{count} years" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+      many: "Медитирую %{count} лет" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+      other: "Meditating for %{count} years" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
 
   form:
     input:
