@@ -29,8 +29,8 @@
     .review-block data-id=block['data']['id'] class=('approved' unless effect == 'nochange')
       .review-block-handle data-id=block['data']['id'] class=('disabled' if effect == 'nochange')
       .review-block-original
-        = render "content_blocks/#{block['type']}_block", block: original_block['data'].deep_symbolize_keys unless original_block.nil?
+        = render "content_blocks/#{block['type']}_block", record: @record, block: original_block['data'].deep_symbolize_keys unless original_block.nil?
       .review-block-draft
-        = render "content_blocks/#{block['type']}_block", block: draft_block['data'].deep_symbolize_keys unless draft_block.nil?
+        = render "content_blocks/#{block['type']}_block", record: @record, block: draft_block['data'].deep_symbolize_keys unless draft_block.nil?
 
 = render file: "#{@record.model_name.route_key}/show"

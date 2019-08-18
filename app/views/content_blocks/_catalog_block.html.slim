@@ -1,7 +1,7 @@
 
 - item_ids = block[:items].map { |item| item[:id] }
 - showImages = block[:withImages] != false
-- records = block[:type].classify.constantize.where(id: item_ids).all
+- records = block[:type].classify.constantize.published.where(id: item_ids).all
 - return unless records.present?
 
 .content__catalog class="content__catalog--#{block[:type]}"

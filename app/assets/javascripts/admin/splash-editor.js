@@ -38,6 +38,7 @@ const SplashEditor = {
       this.backgroundImage.style['background-image'] = `url(${data.image.preview})`
     }
 
+    this.id = data.id || generateId()
     this.splashTitle.innerText = data.title || ''
     this.splashText.innerText = data.text || ''
     this.splashAction.innerText = data.action || ''
@@ -48,6 +49,7 @@ const SplashEditor = {
     const result = {
       type: 'splash',
       data: {
+        id: this.id,
         title: this.splashTitle.innerText,
         text: this.splashText.innerText,
         action: this.splashAction.innerText,
