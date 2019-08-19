@@ -138,7 +138,7 @@ module Admin
         content_tag :tr do
           concat tag.td(translate model, scope: %i[activerecord models], count: -1)
           permission_set.values.each do |permissions|
-            concat tag.td(permission_icons(model, permissions))
+            concat tag.td(permission_icons(model, permissions), class: 'collapsing')
           end
         end
       end
