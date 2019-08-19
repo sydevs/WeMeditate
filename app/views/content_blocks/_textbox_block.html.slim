@@ -45,7 +45,7 @@
         .content__textbox__box class=('js-animate' if block[:invert] == true && block[:alignment] == 'center')
           h2.content__textbox__title = block[:title]
           .content__textbox__text
-            = simple_format block[:text].html_safe
+            = simple_format(block[:text].gsub('<br>', "\n").html_safe).gsub("\n", '').html_safe
             - if block[:action].present? && block[:url].present?
               a.content__textbox__button.button.button--box.button--large href=block[:url] = block[:action]
 

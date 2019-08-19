@@ -11,7 +11,12 @@ class TextboxTool extends EditorTool {
   static get sanitize() {
     return {
       title: false,
-      text: {},
+      text: {
+        br: true,
+        a: { href: true },
+        b: true,
+        i: true,
+      },
       action: false,
       link: false,
     }
@@ -102,6 +107,15 @@ class TextboxTool extends EditorTool {
     } else {
       $(this.imageRemoveIcon).hide()
     }
+
+    fieldsContainer.querySelector(`.${this.CSS.fields.text}`).addEventListener('keydown', event => {
+      if (event.key == 'Enter' || event.keyCode == 13) {
+        document.execCommand('insertHTML', false, '<br><br>');
+
+        event.preventDefault()
+        return false
+      }
+    })
 
     return container
   }
