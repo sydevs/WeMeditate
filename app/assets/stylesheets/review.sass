@@ -39,10 +39,12 @@ body
       line-height: 1.2
       color: gray !important
 
-    .approved.item,
-    .approved.item:hover,
-    .active.approved.item
-      color: #21ba45 !important
+    .item, .item:hover, .active.item
+      &.approved
+        color: #21ba45 !important
+
+      &:not(.approved):not(.disabled)
+        color: #db2828 !important
 
   .button:before
     // Hide the graphic from the core website
