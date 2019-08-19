@@ -184,6 +184,8 @@ ru:
           grid: "Модульная Сетка"
           accordion: "Аккордеон"
           columns: "Колонки"
+          signup: "Signup Form" # TODO: Translate
+          contact: "Contact Form" # TODO: Translate
       decorations:
         triangle: "Оформление Треугольник"
         circle: "Оформление Круг"

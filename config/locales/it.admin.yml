@@ -178,6 +178,8 @@ it:
           grid: "Griglia"
           accordion: "Fisarmonica"
           columns: "Colonne"
+          signup: "Signup Form" # TODO: Translate
+          contact: "Contact Form" # TODO: Translate
       decorations:
         triangle: "Decorazione a triangolo"
         circle: "Decorazione a cerchio"

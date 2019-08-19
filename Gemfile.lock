@@ -110,6 +110,7 @@ GEM
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
+    flamegraph (0.9.5)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
     friendly_id-globalize (1.0.0.alpha3)
@@ -206,6 +207,7 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     memoist (0.16.0)
+    memory_profiler (0.9.14)
     method_source (0.9.2)
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
@@ -227,6 +229,8 @@ GEM
     public_suffix (3.1.1)
     puma (3.12.1)
     rack (2.0.7)
+    rack-mini-profiler (1.0.2)
+      rack (>= 1.2.0)
     rack-protection (2.0.5)
       rack
     rack-test (1.1.0)
@@ -337,6 +341,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stackprof (0.2.12)
     temple (0.8.1)
     thor (0.20.3)
     thread_safe (0.3.6)
@@ -380,6 +385,7 @@ DEPENDENCIES
   devise-i18n
   devise_invitable
   dotenv
+  flamegraph
   friendly_id
   friendly_id-globalize
   gibbon
@@ -396,10 +402,12 @@ DEPENDENCIES
   letter_opener
   listen (>= 3.0.5, < 3.2)
   mail_form
+  memory_profiler
   mini_magick
   normalize-rails
   pg (~> 0.18)
   puma (~> 3.7)
+  rack-mini-profiler
   rails (~> 5.2.2)
   rails-i18n
   rails_serve_static_assets
@@ -418,6 +426,7 @@ DEPENDENCIES
   sprig
   spring
   spring-watcher-listen (~> 2.0.0)
+  stackprof
   switch_user!
   turbolinks (~> 5)
   tzinfo-data

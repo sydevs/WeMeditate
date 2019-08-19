@@ -3,7 +3,7 @@ class FormTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="tasks icon"></i>',
-      title: 'Form',
+      title: translate['content']['blocks']['form'],
     }
   }
 

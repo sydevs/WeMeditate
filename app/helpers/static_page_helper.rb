@@ -13,7 +13,7 @@ module StaticPageHelper
   end
 
   def static_page_preview_for role
-    StaticPageHelper.preview_for role
+    StaticPageHelper.preview_for(role)
   end
 
   def static_page_path_for page_or_role
