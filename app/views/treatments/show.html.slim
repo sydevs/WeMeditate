@@ -11,7 +11,8 @@ main.scrollspy-target id=dom_id(@treatment)
         a.video__button.video__button--horizontal.js-video href="https://vimeo.com/#{@treatment.horizontal_vimeo_id}" data-id=@treatment.horizontal_vimeo_id data-mfp-src='#video-popup'
         a.video__button.video__button--vertical.js-video href="https://vimeo.com/#{@treatment.vertical_vimeo_id}" data-id=@treatment.vertical_vimeo_id data-mfp-src='#video-popup'
     - else
-      = smart_image_tag @treatment.thumbnail, image_sizes
+      .treatment__media__image
+        = smart_image_tag @treatment.thumbnail, image_sizes
 
   - cache @treatment.content_cache_key do
     .content = render_content @treatment
