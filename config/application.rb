@@ -19,6 +19,7 @@ module Wemeditate
 
     config.twitter_handle = '@wemeditate'
     config.exceptions_app = self.routes
+    config.i18n.load_path += Dir["#{Rails.root.to_s}/config/locales/**/*.{rb,yml}"]
 
   end
 end

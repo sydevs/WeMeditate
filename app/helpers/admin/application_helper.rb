@@ -7,6 +7,7 @@ module Admin
       ru: 'ru',
       en: 'gb',
       it: 'it',
+      de: 'de',
     }.freeze
 
     URGENCY_ICON = {
