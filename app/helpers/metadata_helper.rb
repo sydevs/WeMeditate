@@ -16,7 +16,11 @@ module MetadataHelper
     capture do
       @metatags.each do |key, value|
         if key == 'title'
-          concat tag.title "#{value} | #{translate 'we_meditate'}"
+          if action_name == 'home'
+            concat tag.title translate('we_meditate')
+          else
+            concat tag.title "#{value} | #{translate 'we_meditate'}"
+          end
         elsif key == 'description'
           concat tag.meta name: 'description', content: value
         elsif value.is_a? Array
