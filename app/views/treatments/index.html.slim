@@ -43,6 +43,7 @@ main id=dom_id(@static_page)
           a.excerpt__button.button.button--box href=tracks_path
             = translate 'treatments.music.read_more'
 
-      = render @treatments, cached: true
+      - if @treatments.present?
+        = render @treatments, cached: true
 
 = render 'application/actions_footer'

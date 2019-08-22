@@ -13,6 +13,7 @@ module Admin
       return false unless can_access_locale?
       return true if admin?
       return true if editor?
+      return true if translator?
       return false
     end
 
