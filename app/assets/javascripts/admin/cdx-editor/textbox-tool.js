@@ -108,14 +108,7 @@ class TextboxTool extends EditorTool {
       $(this.imageRemoveIcon).hide()
     }
 
-    fieldsContainer.querySelector(`.${this.CSS.fields.text}`).addEventListener('keydown', event => {
-      if (event.key == 'Enter' || event.keyCode == 13) {
-        document.execCommand('insertHTML', false, '<br><br>');
-
-        event.preventDefault()
-        return false
-      }
-    })
+      fieldsContainer.querySelector(`.${this.CSS.fields.text}`).addEventListener('keydown', event => this.insertParagraphBreak(event))
 
     return container
   }

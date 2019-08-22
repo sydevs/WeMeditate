@@ -1,6 +1,5 @@
 
 - showPrescreen = cookies[:prescreen] != 'dismissed'
-- first_track = @tracks.first
 
 main id=dom_id(@static_page)
   - if showPrescreen
@@ -31,6 +30,7 @@ main id=dom_id(@static_page)
           p.excerpt__text = translate 'treatments.music.description'
 
           - if @tracks.present?
+            - first_track = @tracks.first
             .player.player--mini id='music-player' data-playlist=playlist_data(@tracks).to_json
               .player__selection
                 .player__selection__title = first_track.name

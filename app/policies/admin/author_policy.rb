@@ -33,5 +33,9 @@ module Admin
       manage?
     end
 
+    def publish?
+      manage?
+    end
+
   end
 end

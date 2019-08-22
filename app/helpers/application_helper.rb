@@ -66,4 +66,8 @@ module ApplicationHelper
     end
   end
 
+  def simple_format_content text
+    simple_format(text.gsub('<br>', "\n").html_safe).gsub("\n", '').html_safe
+  end
+
 end

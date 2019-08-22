@@ -110,6 +110,7 @@ class StructuredTool extends EditorTool {
     }, container)
 
     text.dataset.placeholder = translate['content']['placeholders']['text']
+    text.addEventListener('keydown', event => this.insertParagraphBreak(event))
 
     return container
   }

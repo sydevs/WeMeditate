@@ -47,7 +47,7 @@ static_pages[:home].update!(content: content([
     data: {
       image: content_attachment('static_pages/front/sahaja-yoga.jpg', static_pages[:home]),
       title: 'Choose your meditation',
-      text: '<p>Whether you’re looking to de-stress, boost your self-esteem or simply seeking a moment to pause, follow our easy yet effective guided meditations to elevate your state and establish peace within.</p>',
+      text: 'Whether you’re looking to de-stress, boost your self-esteem or simply seeking a moment to pause, follow our easy yet effective guided meditations to elevate your state and establish peace within.',
       action: 'Meditate Now',
       url: '/meditations',
       alignment: :left,
@@ -73,7 +73,7 @@ static_pages[:home].update!(content: content([
     data: {
       image: content_attachment('static_pages/front/shri-mataji.jpg', static_pages[:home]),
       title: 'Making History',
-      text: '<p>Shri Mataji Nirmala Devi maintained that there is a powerful, yet loving energy lying within each human being, and through her immense compassion for humanity developed the meditation technique for awakening it, described as Self-Realization.</p>',
+      text: 'Shri Mataji Nirmala Devi maintained that there is a powerful, yet loving energy lying within each human being, and through her immense compassion for humanity developed the meditation technique for awakening it, described as Self-Realization.',
       action: 'Learn More',
       url: '/page/shri-mataji',
       alignment: :center,
@@ -88,7 +88,7 @@ static_pages[:home].update!(content: content([
     data: {
       image: content_attachment('static_pages/front/music.jpg', static_pages[:home]),
       title: 'Enhance the Experience',
-      text: '<p>Music is a great aid to a deep meditation experience. Personalize the soundtrack to your session with our custom music player, featuring exclusive recordings from world class musicians.</p>',
+      text: 'Music is a great aid to a deep meditation experience. Personalize the soundtrack to your session with our custom music player, featuring exclusive recordings from world class musicians.',
       action: 'Discover my sound',
       url: '/en/music',
       alignment: :right,
@@ -100,7 +100,7 @@ static_pages[:home].update!(content: content([
     data: {
       image: content_attachment('static_pages/front/meditation.jpg', static_pages[:home]),
       title: 'Beyond the Practice',
-      text: '<p>The benefits of meditation go far beyond what you experience during the sessions.</p><p>It has the power to improve every aspect of your life, from your personal growth, to your work and family life, and can even spark immense creativity...</p>',
+      text: 'The benefits of meditation go far beyond what you experience during the sessions.<br><br>It has the power to improve every aspect of your life, from your personal growth, to your work and family life, and can even spark immense creativity...',
       action: 'Get Inspired',
       url: '/en/inspiration',
       alignment: :center,
@@ -117,7 +117,7 @@ static_pages[:home].update!(content: content([
     data: {
       image: content_attachment('static_pages/front/classes.jpg', static_pages[:home]),
       title: 'Get Connected',
-      text: '<p>The experience of meditation is even stronger when it is shared! Discover the beauty of collective meditations, lead by experienced practitioners in hundreds of cities aroudn the world - always completely free.</p>',
+      text: 'The experience of meditation is even stronger when it is shared! Discover the beauty of collective meditations, lead by experienced practitioners in hundreds of cities aroudn the world - always completely free.',
       action: 'Classes near me',
       url: '/en/cities/local',
       alignment: :left,
@@ -175,7 +175,7 @@ static_pages[:shri_mataji].update!(content: content([
     data: {
       image: content_attachment('static_pages/shri-mataji/founder.jpg', static_pages[:shri_mataji]),
       title: 'The founder of Sahaja Yoga',
-      text: '<p>Shri Mataji Nirmala Devi discovered a unique method of meditation "Sahaja Yoga", which allows one to achieve inner enlightenment, and reveals the true potential of mankind. Shri Mataji devoted her entire life to the development and dissemination of this method, and today hundreds of thousands of people around the world practice Sahaja Yoga.</p>',
+      text: 'Shri Mataji Nirmala Devi discovered a unique method of meditation "Sahaja Yoga", which allows one to achieve inner enlightenment, and reveals the true potential of mankind. Shri Mataji devoted her entire life to the development and dissemination of this method, and today hundreds of thousands of people around the world practice Sahaja Yoga.',
       alignment: :left,
       decorations: {
         sidetext: { text: 'The Founder' },
@@ -187,7 +187,7 @@ static_pages[:shri_mataji].update!(content: content([
     data: {
       image: content_attachment('static_pages/shri-mataji/master-of-yoga.jpg', static_pages[:shri_mataji]),
       title: 'The great master of yoga',
-      text: '<p>Shri Mataji showed that within each person there is a motherly spiritual energy called "Kundalini", the awakening of which leads a person to a state of spontaneous meditation. Unlike many ancient teachers who were only able to share this experience with a few individuals, Shri Mataji could raise the Kundalini in thousands of people, which was previously considered impossible.</p><p>It is the opportunity to awaken this inner spiritual energy that distinguishes Sahaja Yoga from other methods of meditation. It is an extraordinary living experience which allows us to touch the very essence of ourselves, to uncover our very best qualities and to achieve a state of complete peace and satisfaction.</p>',
+      text: 'Shri Mataji showed that within each person there is a motherly spiritual energy called "Kundalini", the awakening of which leads a person to a state of spontaneous meditation. Unlike many ancient teachers who were only able to share this experience with a few individuals, Shri Mataji could raise the Kundalini in thousands of people, which was previously considered impossible.<br><br>It is the opportunity to awaken this inner spiritual energy that distinguishes Sahaja Yoga from other methods of meditation. It is an extraordinary living experience which allows us to touch the very essence of ourselves, to uncover our very best qualities and to achieve a state of complete peace and satisfaction.',
       alignment: :center,
       decorations: { triangle: { alignment: :left } },
     },
@@ -206,7 +206,7 @@ static_pages[:shri_mataji].update!(content: content([
     data: {
       image: content_attachment('static_pages/shri-mataji/social-work.jpg', static_pages[:shri_mataji]),
       title: 'A life dedicated to humanity',
-      text: '<p>Shri Mataji not only founded and spread the method of Sahaja Yoga far across the world, but also created many non-profit organizations in various fields of public life.</p><p>From a centre for destitute women and orphans and international schools with comprehensive and balanced education, to health centres using the methods of Sahaja Yoga and academies teaching classical arts - the list of Shri Mataji’s achievements is striking in its diversity.</p>',
+      text: 'Shri Mataji not only founded and spread the method of Sahaja Yoga far across the world, but also created many non-profit organizations in various fields of public life.<br><br>From a centre for destitute women and orphans and international schools with comprehensive and balanced education, to health centres using the methods of Sahaja Yoga and academies teaching classical arts - the list of Shri Mataji’s achievements is striking in its diversity.',
       alignment: :left,
       stretch: true,
       decorations: {
@@ -219,7 +219,7 @@ static_pages[:shri_mataji].update!(content: content([
     data: {
       image: content_attachment('static_pages/shri-mataji/family.jpg', static_pages[:shri_mataji]),
       title: 'Life among great people',
-      text: '<p>Right from the beginning, Shri Mataji was always surrounded by outstanding people. Her parents were scholars and political activists who played an important role in the liberation movement of India, seeking independence of their country together with Mahatma Gandhi, who noticed the extraordinary potential of the young Shri Mataji and consulted her on spiritual issues.</p><p>Throughout her life, Shri Mataji was often in the circle of prominent political and public figures. Her husband, Sir Chandrika Prasad Srivastava, started out as a young officer in the Indian Civil Service but soon rose through the ranks to become Private Secretary to the Prime Minister of India, Lal Bahadur Shastri. Later, he was appointed Secretary General of the United Nations International Maritime Organisation in London, and served in this post for four successive terms. For his relentless dedication to public service and exceptional achievements, he was awarded a knighthood by Queen Elizabeth II, the first Indian to receive such honour after India gained independence. </p>',
+      text: 'Right from the beginning, Shri Mataji was always surrounded by outstanding people. Her parents were scholars and political activists who played an important role in the liberation movement of India, seeking independence of their country together with Mahatma Gandhi, who noticed the extraordinary potential of the young Shri Mataji and consulted her on spiritual issues.<br><br>Throughout her life, Shri Mataji was often in the circle of prominent political and public figures. Her husband, Sir Chandrika Prasad Srivastava, started out as a young officer in the Indian Civil Service but soon rose through the ranks to become Private Secretary to the Prime Minister of India, Lal Bahadur Shastri. Later, he was appointed Secretary General of the United Nations International Maritime Organisation in London, and served in this post for four successive terms. For his relentless dedication to public service and exceptional achievements, he was awarded a knighthood by Queen Elizabeth II, the first Indian to receive such honour after India gained independence. ',
       alignment: :right,
       stretch: true,
       decorations: { sidetext: { text: 'Family' } },
@@ -295,7 +295,7 @@ static_pages[:shri_mataji].update!(content: content([
     data: {
       image: content_attachment('static_pages/shri-mataji/sharing-the-experience.jpg', static_pages[:shri_mataji]),
       title: 'Sharing the experience',
-      text: '<p>Метод медитации, открытый Шри Матаджи, начал распространяться по всему миру после того, как она с семьей переехала Лондон: ее муж Сэр Си Пи был назначен главой морской организации ООН и был переведен на службу в этот город.</p><p>От первых учеников, которых Шри Матаджи буквально приютила в своем доме в Лондоне, обучая их основам медитации и постепенно восстанавливая их разрушенные тонкие тела, до выступлений на международных конференциях в многотысячных залах в столицах стран Европы и Америми, - учение Шри Матаджи находило отклик у самых разных частей общества по всему миру.</p>',
+      text: 'Метод медитации, открытый Шри Матаджи, начал распространяться по всему миру после того, как она с семьей переехала Лондон: ее муж Сэр Си Пи был назначен главой морской организации ООН и был переведен на службу в этот город.<br><br>От первых учеников, которых Шри Матаджи буквально приютила в своем доме в Лондоне, обучая их основам медитации и постепенно восстанавливая их разрушенные тонкие тела, до выступлений на международных конференциях в многотысячных залах в столицах стран Европы и Америми, - учение Шри Матаджи находило отклик у самых разных частей общества по всему миру.',
       alignment: :left,
       stretch: true,
       decorations: {
@@ -309,7 +309,7 @@ static_pages[:shri_mataji].update!(content: content([
     data: {
       image: content_attachment('static_pages/shri-mataji/vision.jpg', static_pages[:shri_mataji]),
       title: 'The global vision',
-      text: '<p>Right from the beginning, Shri Mataji was always surrounded by outstanding people. Her parents were scholars and political activists who played an important role in the liberation movement of India, seeking independence of their country together with Mahatma Gandhi, who noticed the extraordinary potential of the young Shri Mataji and consulted her on spiritual issues.</p><p>Throughout her life, Shri Mataji was often in the circle of prominent political and public figures. Her husband, Sir Chandrika Prasad Srivastava, started out as a young officer in the Indian Civil Service but soon rose through the ranks to become Private Secretary to the Prime Minister of India, Lal Bahadur Shastri. Later, he was appointed Secretary General of the United Nations International Maritime Organisation in London, and served in this post for four successive terms. For his relentless dedication to public service and exceptional achievements, he was awarded a knighthood by Queen Elizabeth II, the first Indian to receive such honour after India gained independence.</p>',
+      text: 'Right from the beginning, Shri Mataji was always surrounded by outstanding people. Her parents were scholars and political activists who played an important role in the liberation movement of India, seeking independence of their country together with Mahatma Gandhi, who noticed the extraordinary potential of the young Shri Mataji and consulted her on spiritual issues.<br><br>Throughout her life, Shri Mataji was often in the circle of prominent political and public figures. Her husband, Sir Chandrika Prasad Srivastava, started out as a young officer in the Indian Civil Service but soon rose through the ranks to become Private Secretary to the Prime Minister of India, Lal Bahadur Shastri. Later, he was appointed Secretary General of the United Nations International Maritime Organisation in London, and served in this post for four successive terms. For his relentless dedication to public service and exceptional achievements, he was awarded a knighthood by Queen Elizabeth II, the first Indian to receive such honour after India gained independence.',
       alignment: :right,
       stretch: true,
       decorations: { sidetext: { text: 'Vision' } },
@@ -427,7 +427,7 @@ static_pages[:classes].update!(content: content([
     data: {
       image: content_attachment('static_pages/classes/class.jpg', static_pages[:classes]),
       title: 'Group meditation works better',
-      text: '<p>Whether you’re looking to de-stress, boost your self-esteem or simply seeking a moment to pause, follow our easy yet effective guided meditations to elevate your state and establish peace within.</p>',
+      text: 'Whether you’re looking to de-stress, boost your self-esteem or simply seeking a moment to pause, follow our easy yet effective guided meditations to elevate your state and establish peace within.',
       alignment: :left,
       decorations: { circle: true },
     },

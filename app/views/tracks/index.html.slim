@@ -1,11 +1,11 @@
 
-- first_track = @tracks.first
-- playlist = playlist_data(@tracks)
-
 main
   h1.banner.banner--left = @static_page.name
 
   - if @tracks.present?
+    - first_track = @tracks.first
+    - playlist = playlist_data(@tracks)
+
     .music
       .music__triangle
         .triangle.triangle--right.triangle--large
