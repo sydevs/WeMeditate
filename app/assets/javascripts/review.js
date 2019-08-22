@@ -23,11 +23,31 @@ class Review {
     this.approvalsCount = $('.approved.review-block').length
     $('#review-form').on('submit', event => this.storeReviewData())
     $('.review-button').on('mouseenter', event => this.highlightBlock(event.currentTarget.dataset.id, 'menu'))
-    $('.review-block-handle').on('mouseenter', event => this.highlightBlock(event.currentTarget.dataset.id, 'block'))
     $('.review-button:not(.disabled), .review-block-handle:not(.disabled)').on('click', event => this.toggleApproval(event.currentTarget.dataset.id))
     this.disableInteractions()
 
     $('.review-actions > .positive.button > span').text(` (${this.approvalsCount})`)
+
+    this.observeScroll()
+  }
+
+  observeScroll() {
+    this.observer = new IntersectionObserver(entries => this.onObserverChange(entries), {
+      rootMargin: '-49% 0px -49% 0px',
+    })
+
+    $('.review-block').each((index, element) => {
+      this.observer.observe(element)
+    })
+  }
+
+  onObserverChange(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        this.highlightBlock(entry.target.dataset.id, 'block')
+        return
+      }
+    })
   }
 
   storeReviewData() {

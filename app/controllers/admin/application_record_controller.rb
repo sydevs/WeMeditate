@@ -79,7 +79,11 @@ module Admin
     end
 
     def review
-      render 'admin/application/review', layout: 'application'
+      if @record.ready_for_review?(:content)
+        render 'admin/application/review', layout: 'application'
+      else
+        redirect_to helpers.polymorphic_admin_path([:edit, :admin, @record])
+      end
     end
 
     def preview

@@ -36,6 +36,7 @@ class ApplicationRecord < ActiveRecord::Base
   
   def preview_name
     name = self[:name]
+    name ||= parsed_draft['name'] if try(:parsed_draft).present?
     name ||= get_localized_attribute(:name, original_locale)
     name ||= I18n.translate('admin.misc.no_translated_title')
   end

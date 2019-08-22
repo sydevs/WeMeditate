@@ -85,6 +85,7 @@ it:
       unpublished_draft: "Anteprima non pubblicata"
       no_translation: "Traduzione %{language} mancante"
       pending_translation: "Traduzione %{language} presente, da approvare."
+      in_progress_translation: "Has Incomplete %{language} Translation" # "language" will be replaced with the language that this file is written in. # TODO: Translate
       pending_invitation: "Non ha ancora accettato l'invito."
       updated_ago: "Modificato %{time_ago} fa."
       published_ago: "Pubblicato %{time_ago} fa."

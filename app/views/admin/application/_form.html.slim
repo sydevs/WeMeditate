@@ -15,7 +15,7 @@
         - record.errors.full_messages.each do |message|
           li = message
 
-  - if record.respond_to? :published
+  - if record.respond_to?(:published) && allow.review?
     - if record.reviewable?
       = draftable_publish_field f
     - elsif allow.publish?
@@ -72,6 +72,13 @@
             = translate 'admin.metadata.generated_jsonld'
           .content
             code = JSON.pretty_generate(structured_data(record))
+
+  - if record.respond_to?(:published) && !allow.review?
+    - if record.reviewable?
+      = draftable_publish_field f
+    - elsif allow.publish?
+      = f.input :published do
+        = publish_input f, :published, enabled: allow.publish?
 
   .ui.hidden.divider
 

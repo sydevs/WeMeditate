@@ -26,8 +26,14 @@ module Draftable
     parsed_draft_content['blocks']
   end
 
-  def has_draft? attribute = nil
-    parsed_draft.present? && (attribute.nil? || parsed_draft.has_key?(attribute.to_s))
+  def has_draft? attribute = nil, except: nil
+    parsed_draft&.except(except).present? && (attribute.nil? || parsed_draft.has_key?(attribute.to_s))
+  end
+
+  def ready_for_review? section = nil
+    return false unless has_draft? && parsed_draft['published'] == true
+    return !parsed_draft&.except('content').present? if section == :content
+    return true
   end
 
   def record_draft! user

@@ -51,7 +51,9 @@ module Admin::TableHelper
       if record.respond_to?(:translated_locales)
         if record.translated_locales.include?(I18n.locale)
           if record.respond_to?(:published_at) && record.published_at.nil?
-            status = table_icon "#{'orange' if allow.publish?} warning sign", translate('admin.tags.pending_translation', language: language_name)
+            orange = 'orange' if allow.publish? ^ !record.ready_for_review?
+            message = record.ready_for_review? ? :pending_translation : :in_progress_translation
+            status = table_icon "#{orange} warning sign", translate(message, scope: %i[admin tags], language: language_name)
           end
         else
           status = table_icon "orange warning sign", translate('admin.tags.no_translation', language: language_name)

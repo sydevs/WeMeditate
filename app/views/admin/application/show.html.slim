@@ -11,13 +11,16 @@
         - status = @record.published? ? (@record.reviewable? && @record.has_draft? ? :pending_changes : :published) : :draft
         = translate(status, scope: %i[admin status], page: model_name)
 
-      - action = (allow.review? && @record.published? && @record.has_draft? && @record.parsed_draft.has_key?('content') ? :review : :edit)
-      a.ui.button href=polymorphic_admin_path([action, :admin, @record])
+      - if allow.review? && @record.ready_for_review?
+        - action_text = :review
+        - action_key = @record.ready_for_review?(:content) ? :review : :edit
+      - else
+        - action_text = :edit
+        - action_key = :edit
+
+      a.ui.button href=polymorphic_admin_path([action_key, :admin, @record])
         i.edit.icon
-        - if allow.review? && @record.published? && @record.has_draft?
-          = translate('admin.action.target.review', record: model_name)
-        - else
-          = translate('admin.action.target.edit', record: model_name)
+        = translate(action_text, scope: %i[admin action target], record: model_name)
 
       .ui.floating.dropdown.icon.button
         i.dropdown.icon

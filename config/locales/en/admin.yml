@@ -87,6 +87,7 @@ en:
       unpublished_draft: "Unpublished Draft"
       no_translation: "No %{language} Translation" # "language" will be replaced with the language that this file is written in.
       pending_translation: "Has %{language} Translation, Pending Approval" # "language" will be replaced with the language that this file is written in.
+      in_progress_translation: "Has Incomplete %{language} Translation" # "language" will be replaced with the language that this file is written in.
       pending_invitation: "Has Not Yet Accepted Invitation"
       updated_ago: "Modified %{time_ago} ago"
       published_ago: "Published %{time_ago} ago"

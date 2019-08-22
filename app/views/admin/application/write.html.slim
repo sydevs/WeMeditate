@@ -31,13 +31,20 @@
 
       #content-editor data=data data-content=content.to_json
 
+    - if @record.respond_to?(:published) && !allow.review?
+      - if @record.reviewable?
+        = draftable_publish_field f
+      - elsif allow.publish?
+        = f.input :published do
+          = publish_input f, :published, enabled: allow.publish?
+
     p
       - if allow.show?
-        a.ui.basic.button href=polymorphic_admin_path([:admin, @record])
+        a.ui.basic.button href=polymorphic_admin_path([:admin, @record]) data-confirm=translate('admin.messages.confirm_unsaved_changes')
           i.left.arrow.icon
           = translate 'admin.action.simple.back'
-      - else
-        a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(@record.page) ? @record.page : @record.class])
+      - elsif policy(@model).index?
+        a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(@record.page) ? @record.page : @record.class]) data-confirm=translate('admin.messages.confirm_unsaved_changes')
           i.left.arrow.icon
           = translate 'admin.action.target.back', records: @record.model_name.human(count: -1)
 

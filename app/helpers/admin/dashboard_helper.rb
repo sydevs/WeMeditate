@@ -67,10 +67,13 @@ module Admin
       def needs_review model, urgency, &block
         if policy(model).review?
           policy_scope(model).includes(:translations).where.not("#{model.table_name.singularize}_translations" => { draft: nil }).each do |record|
+            next unless record.ready_for_review?
+            action = record.ready_for_review?(:content) ? :review : :edit
+
             block.call({
               model: model,
               name: record_name(record),
-              url: polymorphic_admin_path([:review, :admin, record]),
+              url: polymorphic_admin_path([action, :admin, record]),
               message: translate('admin.tags.unpublished_changes'),
               urgency: urgency,
             })
