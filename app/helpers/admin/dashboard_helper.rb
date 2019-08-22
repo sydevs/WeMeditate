@@ -39,6 +39,8 @@ module Admin
           scope = policy_scope(model).needs_translation(current_user)
           scope.where(draft: nil) if model.has_attribute? :draft
           scope.each do |record|
+            next if record.try(:ready_for_review?)
+
             block.call({
               model: model,
               name: record_name(record),

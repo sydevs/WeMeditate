@@ -50,7 +50,7 @@ module Admin::TableHelper
     capture do
       if record.respond_to?(:translated_locales)
         if record.translated_locales.include?(I18n.locale)
-          if record.respond_to?(:published_at) && record.published_at.nil?
+          if record.respond_to?(:published_at) && record.published_at.nil? && record.original_locale.to_sym != I18n.locale
             orange = 'orange' if allow.publish? ^ !record.ready_for_review?
             message = record.ready_for_review? ? :pending_translation : :in_progress_translation
             status = table_icon "#{orange} warning sign", translate(message, scope: %i[admin tags], language: language_name)
