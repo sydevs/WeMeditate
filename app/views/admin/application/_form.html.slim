@@ -28,8 +28,7 @@
     - else
       = f.input :name
 
-    - folder = static_page_path_for(record).split('/').reject(&:empty?)[0]
-    - if record.is_a?(StaticPage) && folder != translate('routes.page')
+    - if record.is_a?(StaticPage) && static_page_path_for(record).split('/').reject(&:empty?)[0] != translate('routes.page')
       = f.input :slug do
         = record_detail 'linkify', CGI.unescape(static_page_url_for(record)), url: static_page_url_for(record)
     - elsif record.reviewable?
