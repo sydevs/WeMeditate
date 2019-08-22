@@ -22,7 +22,7 @@ module Admin
           )
         else
           params.fetch(:treatment, {}).permit(
-            :name, :slug, :excerpt, :content,
+            :name, :slug, :published, :excerpt, :content,
             :thumbnail_id, :horizontal_vimeo_id, :vertical_vimeo_id,
             metatags: {}
           )
