@@ -9,6 +9,7 @@ RouteTranslator.config do |config|
       'www.wemeditate.ru' => :ru,
       'it.wemeditate.co' => :it,
       'www.wemeditate.co' => :en,
+      'de.wemeditate.co' => :de,
     }
   else
     config.host_locales = {}
