@@ -72,6 +72,7 @@ module Admin
 
       if @record.save(validate: will_publish)
         @record.try(:cleanup_media_files!) if will_publish
+        redirect = helpers.polymorphic_admin_path([:review, :admin, @record]) if @record.ready_for_review?(:content)
         redirect_to redirect, flash: { notice: notice }
       else
         render :edit

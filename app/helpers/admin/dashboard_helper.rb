@@ -44,7 +44,7 @@ module Admin
             block.call({
               model: model,
               name: record_name(record),
-              url: polymorphic_admin_path([:admin, record]),
+              url: polymorphic_admin_path([:edit, :admin, record]),
               message: translate('admin.tags.no_translation', language: language_name),
               urgency: urgency,
             })
