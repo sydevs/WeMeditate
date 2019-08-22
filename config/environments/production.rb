@@ -101,7 +101,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Devise config
-  config.action_mailer.default_url_options = { host: 'wemeditate.co', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'admin.wemeditate.co' }
 
   # Google Tag Manager
   GoogleTagManager.gtm_id = ENV['GOOGLE_TAG_MANAGER_ID']
