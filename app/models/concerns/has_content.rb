@@ -59,8 +59,6 @@ module HasContent
       end
     end
 
-    # TODO: Remove test code
-    puts "ESSENTIAL FILES #{locale}: #{result}"
     result.uniq
   end
 

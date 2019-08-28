@@ -81,9 +81,19 @@ end
 
 def content blocks
   puts "Preparing #{blocks.length} content blocks"
+  blocks.map! do |block|
+    media_files = []
+    media_files << block.dig(:data, :image, :id)
+    media_files += block[:data][:items].map { |item| item.dig(:image, :id) } if block.dig(:data, :items).present?
+    block[:media_files] = media_files.compact
+    block[:data].merge!(id: SecureRandom.hex(8))
+    block
+  end
+
   {
     time: Time.now.to_i,
-    blocks: blocks.map { |block| block[:data].merge!(id: SecureRandom.hex(8)) && block },
+    blocks: blocks,
+    media_files: blocks.map { |block| block[:media_files] }.flatten,
     version: '2.15', # EditorJS at the last time when the structure of seed JSONs were checked.
   }.to_json
 end

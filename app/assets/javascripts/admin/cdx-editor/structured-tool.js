@@ -202,7 +202,7 @@ class StructuredTool extends EditorTool {
           if (imageData) {
             imageData = JSON.parse(imageData)
             data.image = imageData
-            if (data.image) media_files.push(imageData.id)
+            if (imageData) media_files.push(imageData.id)
           }
         }
 
