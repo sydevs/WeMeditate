@@ -144,7 +144,6 @@ module Admin
         end
 
         if @record.save(validate: will_validate) && block.call != false
-          redirect = helpers.polymorphic_admin_path([:review, :admin, @record]) if @record.try(:ready_for_review?, :content)
           redirect_to redirect
         else
           render action == :create ? :new : :edit

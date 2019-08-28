@@ -7,7 +7,6 @@ class Loadmore {
     this.button = element.querySelector('button, a')
     this.template = element.querySelector('template')
     this.index = index
-    console.log(this.button, 'loading more for', this.target)
 
     if (this.button.href) {
       this.button.href = `${this.button.href}&loadmore=${index}`
