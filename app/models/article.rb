@@ -36,7 +36,6 @@ class Article < ApplicationRecord
   # Scopes
   default_scope { order(priority: :desc, updated_at: :desc) } # TODO: This should be ordered by published_at instead?
   scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :needs_translation, -> (user) { where.not(original_locale: I18n.locale, id: published.pluck(:id)).where(original_locale: user.available_languages) }
   scope :q, -> (q) { joins(:translations, category: :translations).where('article_translations.name ILIKE ? OR category_translations.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model

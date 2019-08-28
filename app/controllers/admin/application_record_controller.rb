@@ -94,7 +94,7 @@ module Admin
         end  
       end
 
-      if @record.translatable? && @record.translated_locales.include?(I18n.locale)
+      if @record.translatable? && @record.has_translation?
         if @record.translated_locales.count == 1
           @record.destroy
         else

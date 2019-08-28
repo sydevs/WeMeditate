@@ -22,7 +22,6 @@ class GoalFilter < ApplicationRecord
   # Scopes
   default_scope { order(:order) }
   scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :needs_translation, -> (user) { where.not(original_locale: I18n.locale, id: published.pluck(:id)).where(original_locale: user.available_languages) }
   scope :q, -> (q) { joins(:translations).where('goal_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   def self.has_content

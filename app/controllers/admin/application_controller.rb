@@ -7,6 +7,7 @@ module Admin
     after_action :verify_policy_scoped, only: :index
 
     def dashboard
+      redirect_to "/#{current_user.available_languages.first}" unless current_user.available_languages.include?(I18n.locale)
     end
     
     def vimeo_data

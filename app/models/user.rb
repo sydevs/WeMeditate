@@ -30,10 +30,6 @@ class User < ApplicationRecord
     super.map(&:to_sym)
   end
 
-  def languages
-    super.map(&:to_sym)
-  end
-
   # Returns a list of languages which this user doesn't already have associated with them.
   def available_languages
     all_languages? ? I18n.available_locales : languages

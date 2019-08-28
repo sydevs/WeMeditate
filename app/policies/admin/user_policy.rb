@@ -3,7 +3,7 @@ module Admin
 
     class Scope < Scope
       def resolve
-        scope.for_locale
+        scope.for_locale.or(User.where(invited_by_id: user.id))
       end
     end
 

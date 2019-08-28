@@ -2,8 +2,6 @@ class ApplicationRecord < ActiveRecord::Base
 
   MAX_INT = 2147483647
 
-  before_validation :set_original_locale
-
   self.abstract_class = true
 
   def self.preload_for _mode
@@ -30,8 +28,16 @@ class ApplicationRecord < ActiveRecord::Base
     false
   end
 
+  def has_draft?
+    false
+  end
+
   def translatable?
     false
+  end
+
+  def has_translation?
+    true
   end
   
   def preview_name

@@ -24,7 +24,7 @@ class Author < ApplicationRecord
   validates :image, presence: true
 
   # Scope
-  scope :needs_translation, -> (user) { where.not(id: with_translations(I18n.locale).pluck(:id)).where(original_locale: user.available_languages) }
+  scope :published, -> { with_translations(I18n.locale) }
   scope :q, -> (q) { where('name ILIKE ?', "%#{q}%") if q.present? }
 
 end
