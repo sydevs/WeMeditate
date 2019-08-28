@@ -5,6 +5,7 @@ class Meditation < ApplicationRecord
 
   extend FriendlyId
   extend CarrierwaveGlobalize
+  include Translatable
 
   # Extensions
   translates *%i[

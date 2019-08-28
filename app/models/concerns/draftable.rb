@@ -9,6 +9,10 @@ module Draftable
   included do |base|
     # Do nothing for now
   end
+  
+  def draftable?
+    true
+  end
 
   def parsed_draft
     @parsed_draft ||= draft

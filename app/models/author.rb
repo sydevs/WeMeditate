@@ -6,6 +6,8 @@
 
 class Author < ApplicationRecord
 
+  include Translatable
+  
   # Extensions
   translates :title, :description
 

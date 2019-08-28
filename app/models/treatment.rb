@@ -7,6 +7,7 @@ class Treatment < ApplicationRecord
   extend FriendlyId
   include HasContent
   include Draftable
+  include Translatable
 
   # Extensions
   translates *%i[

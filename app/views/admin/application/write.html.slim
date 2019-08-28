@@ -11,7 +11,7 @@
     = f.hidden_field :content, as: :hidden, id: 'content-input'
 
     .field class=('draft' if has_draft) data-draft='content'
-      - if @record.reviewable? && has_draft && @record.parsed_draft_content.present?
+      - if @record.draftable? && has_draft && @record.parsed_draft_content.present?
         .ui.yellow.message = translate 'admin.messages.draft_notice', page: @record.model_name.human
 
         /= draft_reset_buttons(:content, @record.parsed_content, JSON.parse(content))
@@ -32,7 +32,7 @@
       #content-editor data=data data-content=content.to_json
 
     - if @record.respond_to?(:published) && !allow.review?
-      - if @record.reviewable?
+      - if @record.draftable?
         = draftable_publish_field f
       - elsif allow.publish?
         = f.input :published do

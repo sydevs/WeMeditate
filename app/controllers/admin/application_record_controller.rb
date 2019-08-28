@@ -124,14 +124,14 @@ module Admin
         allow = policy(@record)
         @record.attributes = record_params if record_params.present?
   
-        will_publish = allow.publish? && (!@record.reviewable? || params[:draft] != 'true')
+        will_publish = allow.publish? && (!@record.draftable? || params[:draft] != 'true')
         will_validate = (will_publish || action == :create)
         flash.notice = translate (action == :create ? 'created' : 'updated'), scope: %i[admin result]
         redirect = helpers.polymorphic_admin_path(allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
   
         @record.published_at ||= Time.now.to_date if will_publish && @record.respond_to?(:published_at)
   
-        if @record.reviewable?
+        if @record.draftable?
           if will_publish
             @record.cleanup_draft!
           elsif action == :create

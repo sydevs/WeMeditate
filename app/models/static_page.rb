@@ -10,6 +10,7 @@ class StaticPage < ApplicationRecord
   extend FriendlyId
   include HasContent
   include Draftable
+  include Translatable
 
   # Extensions
   translates :name, :slug, :metatags, :content, :draft, :published_at

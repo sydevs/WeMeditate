@@ -8,6 +8,8 @@
 
 class InstrumentFilter < ApplicationRecord
 
+  include Translatable
+
   # Extentions
   translates :name, :published_at, :published
 

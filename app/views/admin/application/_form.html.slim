@@ -1,7 +1,7 @@
 
 - allow = policy(record)
 
-- if record.reviewable? && record.has_draft? && record.parsed_draft.except('content', 'contributors').present?
+- if record.draftable? && record.has_draft? && record.parsed_draft.except('content', 'contributors').present?
   .ui.yellow.message = translate 'admin.messages.unpublished_changes_notice', page: record.model_name.human
 
 - if record.is_a?(User) && record.pending_invitation?
@@ -16,14 +16,14 @@
           li = message
 
   - if record.respond_to?(:published) && allow.review?
-    - if record.reviewable?
+    - if record.draftable?
       = draftable_publish_field f
     - elsif allow.publish?
       = f.input :published do
         = publish_input f, :published, enabled: allow.publish?
 
   - if record.viewable?
-    - if record.reviewable?
+    - if record.draftable?
       = draftable_field f, :name
     - else
       = f.input :name
@@ -31,7 +31,7 @@
     - if record.is_a?(StaticPage) && static_page_path_for(record).split('/').reject(&:empty?)[0] != translate('routes.page')
       = f.input :slug do
         = record_detail 'linkify', CGI.unescape(static_page_url_for(record)), url: static_page_url_for(record)
-    - elsif record.reviewable?
+    - elsif record.draftable?
       / TODO: Try and improve this janky way of getting the url. It's because articles don't have an index route
       - url = record.is_a?(Article) && record.new_record? ? "/#{translate 'routes.articles'}/*" : url_for(record)
       = draftable_slug_field f, url
@@ -74,7 +74,7 @@
             code = JSON.pretty_generate(structured_data(record))
 
   - if record.respond_to?(:published) && !allow.review?
-    - if record.reviewable?
+    - if record.draftable?
       = draftable_publish_field f
     - elsif allow.publish?
       = f.input :published do
@@ -101,7 +101,7 @@
     - if record.is_a?(User) && record.new_record?
       button.ui.basic.primary.button type='submit'
         = translate 'admin.action.simple.invite'
-    - elsif record.reviewable? && allow.publish?
+    - elsif record.draftable? && allow.publish?
       button.ui.basic.positive.button type='submit' name='draft' value='true'
         = translate 'admin.action.simple.save_draft'
 

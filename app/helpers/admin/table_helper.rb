@@ -61,10 +61,10 @@ module Admin::TableHelper
       end
 
       unless status
-        if record.reviewable?
+        if record.draftable?
           if !(record.has_attribute?(:published) ? record.published : true)
             status = table_icon 'disabled dot circle', translate('admin.tags.unpublished_draft')
-          elsif record.reviewable? && record.has_draft?
+          elsif record.draftable? && record.has_draft?
             status = table_icon "#{'orange' if allow.publish?} exclamation circle", translate('admin.tags.unpublished_changes')
           else
             status = table_icon 'check circle', translate('admin.tags.published')

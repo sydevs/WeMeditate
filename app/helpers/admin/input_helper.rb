@@ -153,7 +153,7 @@ module Admin::InputHelper
     checked = form.object.send(attribute) if checked.nil?
     content_tag :div, class: "ui#{' disabled' unless enabled} toggle checkbox" do
       concat form.input_field(attribute, as: :boolean, checked: checked)
-      concat tag.label translate 'admin.messages.make_public', page: form.object.model_name.human(count: 1).downcase unless form.object.reviewable?
+      concat tag.label translate 'admin.messages.make_public', page: form.object.model_name.human(count: 1).downcase unless form.object.draftable?
     end
   end
 

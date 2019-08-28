@@ -3,6 +3,8 @@
 
 class Track < ApplicationRecord
 
+  include Translatable
+
   # Extensions
   translates :name, :published_at, :published
 

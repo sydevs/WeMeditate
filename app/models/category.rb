@@ -7,6 +7,7 @@
 class Category < ApplicationRecord
 
   extend FriendlyId
+  include Translatable
 
   # Extensions
   translates :name, :slug, :published_at, :published

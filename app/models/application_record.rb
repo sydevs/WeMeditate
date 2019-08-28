@@ -18,53 +18,32 @@ class ApplicationRecord < ActiveRecord::Base
     has_attribute?(:published) ? published : true
   end
 
-  def reviewable?
-    respond_to?(:draft)
+  def viewable?
+    respond_to?(:slug)
   end
 
   def has_content?
-    respond_to?(:content)
+    false
   end
 
-  def viewable?
-    respond_to?(:slug) && respond_to?(:metatags)
+  def draftable?
+    false
   end
 
   def translatable?
-    respond_to?(:translated_locales)
+    false
   end
   
   def preview_name
     name = self[:name]
     name ||= parsed_draft['name'] if try(:parsed_draft).present?
-    name ||= get_localized_attribute(:name, original_locale)
+    name ||= get_localized_attribute(:name, original_locale) if translatable?
     name ||= I18n.translate('admin.misc.no_translated_title')
-  end
-
-  def original_localization
-    @original_localization ||= translation_for(original_locale)
-  end
-
-  # Retrieves the localized attribute without any fallback
-  def get_localized_attribute attribute, locale = I18n.locale
-    return self.send(attribute) unless translatable?
-
-    if globalize.stash.contains?(locale, attribute)
-      globalize.stash.read(locale, attribute)
-    else
-      translation_for(locale).send(attribute)
-    end
   end
 
   def cache_key
     super + '-' + Globalize.locale.to_s
   end
-
-  private
-
-    def set_original_locale
-      self.original_locale = I18n.locale.to_s if has_attribute?(:original_locale) && original_locale.nil?
-    end
 
 end
 

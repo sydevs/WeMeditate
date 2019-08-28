@@ -7,6 +7,8 @@
 
 class DurationFilter < ApplicationRecord
 
+  include Translatable
+  
   # Associations
   translates :published_at, :published
   has_many :meditations

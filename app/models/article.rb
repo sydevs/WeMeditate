@@ -8,6 +8,7 @@ class Article < ApplicationRecord
   extend FriendlyId
   include HasContent
   include Draftable
+  include Translatable
 
   # Extensions
   translates *%i[

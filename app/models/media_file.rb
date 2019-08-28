@@ -5,6 +5,8 @@
 
 class MediaFile < ActiveRecord::Base
 
+  include Translatable
+
   # Associations
   belongs_to :page, polymorphic: true
   mount_uploader :file, ImageUploader
