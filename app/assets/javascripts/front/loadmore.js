@@ -6,6 +6,7 @@ class Loadmore {
     this.target = element.previousSibling
     this.button = element.querySelector('button, a')
     this.template = element.querySelector('template')
+    this.index = index
     console.log(this.button, 'loading more for', this.target)
 
     if (this.button.href) {
@@ -22,7 +23,6 @@ class Loadmore {
     event.detail = content
 
     $(this.target).append(content)
-    console.log('add content', content, 'to', this.target)
     this.target.dispatchEvent(event)
     Application.lazyloader.update()
   }
@@ -34,7 +34,7 @@ class Loadmore {
 
   setLoadMoreUrl(url = null) {
     if (url) {
-      this.button.href = url
+      this.button.href = `${url}&loadmore=${this.index}`
     } else {
       this.container.style.display = 'none'
     }

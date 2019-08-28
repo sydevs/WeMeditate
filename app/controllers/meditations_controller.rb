@@ -28,7 +28,7 @@ class MeditationsController < ApplicationController
 
     set_metadata({ 'title' => Meditation.model_name.human(count: -1) })
 
-    if @meditations.count < next_offset
+    if Meditation.published.count <= next_offset
       @loadmore_url = nil
     else
       @loadmore_url = archive_meditations_path(format: 'js', offset: next_offset)

@@ -110,7 +110,6 @@ class StructuredTool extends EditorTool {
     }, container)
 
     text.dataset.placeholder = translate['content']['placeholders']['text']
-    text.addEventListener('keydown', event => this.insertParagraphBreak(event))
 
     return container
   }
@@ -151,6 +150,8 @@ class StructuredTool extends EditorTool {
       if (item === item.parentNode.lastChild && !item.textContent.trim().length) {
         item.parentElement.removeChild(item)
         this.api.blocks.insert()
+      } else if (!getSelectionTextInfo(input).atEnd) {
+        this.insertParagraphBreak(event)
       } else {
         const newItem = this.renderItem()
         item.parentNode.insertBefore(newItem, item.nextSibling)
