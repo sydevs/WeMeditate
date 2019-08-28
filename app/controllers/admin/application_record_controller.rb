@@ -43,44 +43,16 @@ module Admin
 
     def create record_params, redirect = nil
       @record = @model.new update_params(record_params)
-      @record.published_at ||= Time.now.to_date if @record.published? && @record.respond_to?(:published_at)
       authorize @record
 
-      if @record.save && after_create
-        redirect_to helpers.polymorphic_admin_path(redirect || [:edit, :admin, @record]), flash: { notice: translate('admin.result.created') }
-      else
-        render :new
+      save!(:create, nil, redirect) do
+        after_create
       end
     end
 
     def update record_params, redirect = nil
-      allow = policy(@record)
-      record_params = update_params(record_params)
-      @record.attributes = record_params
-
-      will_publish = allow.publish? && (!@record.reviewable? || params[:draft] != 'true')
-      notice = translate 'admin.result.updated'
-      action = (@record.has_content? && record_params[:content].present? ? :write : :edit)
-      # redirect = helpers.polymorphic_admin_path([action, :admin, @record]) if redirect.nil?
-      redirect = helpers.polymorphic_admin_path(allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
-
-      @record.published_at ||= Time.now.to_date if will_publish && @record.respond_to?(:published_at)
-
-      if @record.reviewable? 
-        if will_publish
-          @record.cleanup_draft!
-        else
-          @record.record_draft!(current_user)
-          notice = translate('admin.result.saved_but_needs_review')
-        end
-      end
-
-      if @record.save(validate: will_publish)
-        @record.try(:cleanup_media_files!) if will_publish
-        redirect = helpers.polymorphic_admin_path([:review, :admin, @record]) if @record.try(:ready_for_review?, :content)
-        redirect_to redirect, flash: { notice: notice }
-      else
-        render :edit
+      save!(:update, update_params(record_params), redirect) do
+        @record.try(:cleanup_media_files!)
       end
     end
 
@@ -147,6 +119,37 @@ module Admin
     end
 
     protected
+
+      def save! action, record_params, redirect = nil, &block
+        allow = policy(@record)
+        @record.attributes = record_params if record_params.present?
+  
+        will_publish = allow.publish? && (!@record.reviewable? || params[:draft] != 'true')
+        will_validate = (will_publish || action == :create)
+        flash.notice = translate (action == :create ? 'created' : 'updated'), scope: %i[admin result]
+        redirect = helpers.polymorphic_admin_path(allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
+  
+        @record.published_at ||= Time.now.to_date if will_publish && @record.respond_to?(:published_at)
+  
+        if @record.reviewable?
+          if will_publish
+            @record.cleanup_draft!
+          elsif action == :create
+            @record.record_draft!(current_user, only: %i[published])
+            flash.notice = translate('admin.result.saved_but_needs_review')
+          else
+            @record.record_draft!(current_user)
+            flash.notice = translate('admin.result.saved_but_needs_review')
+          end
+        end
+
+        if @record.save(validate: will_validate) && block.call != false
+          redirect = helpers.polymorphic_admin_path([:review, :admin, @record]) if @record.try(:ready_for_review?, :content)
+          redirect_to redirect
+        else
+          render action == :create ? :new : :edit
+        end
+      end
 
       def update_params record_params
         if record_params[:metatags].present?

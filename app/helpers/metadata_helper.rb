@@ -88,7 +88,7 @@ module MetadataHelper
             'description' => record.excerpt,
             'og:type' => 'article',
             'og:image' => record.banner&.url || record.thumbnail&.url,
-            'og:article:section' => record.category.name,
+            'og:article:section' => record.category&.name,
             'og:article:modified_time' => record.updated_at.to_s(:db),
             'twitter:card' => record.banner.present? ? 'summary_large_image' : 'summary',
             # 'og:video' => record.video&.url, # TODO: Make this work with the new Vimeo integration

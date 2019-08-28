@@ -26,7 +26,7 @@ module Admin::TableHelper
   def table_detail record
     case record
     when Article
-      record.category.name
+      record.category&.name
     when StaticPage, SubtleSystemNode, User
       human_enum_name(record, :role)
     when Track

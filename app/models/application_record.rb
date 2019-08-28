@@ -63,7 +63,7 @@ class ApplicationRecord < ActiveRecord::Base
   private
 
     def set_original_locale
-      self.original_locale = I18n.locale.to_s if has_attribute?(:original_locale)
+      self.original_locale = I18n.locale.to_s if has_attribute?(:original_locale) && original_locale.nil?
     end
 
 end

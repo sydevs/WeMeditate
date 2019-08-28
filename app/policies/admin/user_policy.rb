@@ -27,6 +27,10 @@ module Admin
     def create?
       manage?
     end
+    
+    def publish?
+      manage?
+    end
 
     def user_record_is_subordinate?
       return true if record.is_a?(Class)
