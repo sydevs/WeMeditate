@@ -28,7 +28,7 @@ class ApplicationRecord < ActiveRecord::Base
     false
   end
 
-  def has_draft?
+  def has_draft? _section = nil
     false
   end
 
@@ -36,7 +36,7 @@ class ApplicationRecord < ActiveRecord::Base
     false
   end
 
-  def has_translation?
+  def has_translation? _section = nil
     true
   end
   

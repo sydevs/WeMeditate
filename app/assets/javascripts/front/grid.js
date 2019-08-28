@@ -23,7 +23,9 @@ class Grid {
     })
 
     this.container.addEventListener('contentchange', () => {
+      console.log('on contentchange', this)
       this.macy.runOnImageLoad(() => {
+        console.log('on runOnImageLoad', this)
         this.macy.recalculate(true, true)
       })
     })

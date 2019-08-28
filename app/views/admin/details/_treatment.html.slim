@@ -2,7 +2,7 @@
 
 - if record.thumbnail.present?
   .ui.right.floated.rounded.image
-    img src=record.thumbnail.url
+    img src=record.thumbnail.url(:medium)
 
 p.details.excerpt = record.excerpt
 

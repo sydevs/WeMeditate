@@ -50,7 +50,7 @@ module Admin
     end
 
     def write?
-      update?
+      update? && record.has_translation?(:details)
     end
 
     def upload?
