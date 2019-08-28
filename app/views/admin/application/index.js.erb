@@ -1,3 +1,3 @@
-$('#pagination').html('<%=j page_entries_info @media_files %><%=j paginate @media_files, remote: true %>')
-$('#media-files').html('<%=j render @media_files %>')
+$('#pagination').html('<%=j page_entries_info @records %><%=j paginate @records, remote: true %>')
+$('#records').html(`<%=j render partial: 'record', collection: @records, cache: true %>`)
 $('#loader').removeClass('active')

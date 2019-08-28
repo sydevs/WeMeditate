@@ -6,7 +6,7 @@ main
     .meditations__grid.js-grid
       = render @meditations, cached: true
 
-      - if @loadmore_url
-        .meditations__grid__loadmore.js-loadmore
-          = link_to @loadmore_url, remote: 'true', class: 'button button--box button--large' do
-            = t('meditations.archive.load_more')
+    - if @loadmore_url
+      .meditations__grid__loadmore.js-loadmore
+        = link_to @loadmore_url, remote: 'true', class: 'button button--box button--large' do
+          = t('meditations.archive.load_more')

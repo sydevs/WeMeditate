@@ -13,6 +13,11 @@ module Admin
           render 'admin/application/index'
         end
 
+        format.js do
+          @records = @records.page(params[:page])
+          render 'admin/application/index'
+        end
+
         format.json do
           render json: @records.limit(5).to_json(only: %i[id name])
         end
@@ -72,7 +77,7 @@ module Admin
 
       if @record.save(validate: will_publish)
         @record.try(:cleanup_media_files!) if will_publish
-        redirect = helpers.polymorphic_admin_path([:review, :admin, @record]) if @record.ready_for_review?(:content)
+        redirect = helpers.polymorphic_admin_path([:review, :admin, @record]) if @record.try(:ready_for_review?, :content)
         redirect_to redirect, flash: { notice: notice }
       else
         render :edit
@@ -88,7 +93,7 @@ module Admin
     end
 
     def preview
-      @record.reify_draft!
+      @record.try(:reify_draft!)
       render 'admin/application/preview', layout: 'application'
     end
 

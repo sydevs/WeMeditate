@@ -31,6 +31,10 @@ Rails.application.routes.draw do
           resources :media_files, only: %i[create]
         end
 
+        resources :meditations, only: [] do
+          get :preview, on: :member
+        end
+
         resources :articles, :treatments, only: %i[destroy]
 
         resources :users, :artists, :meditations, :tracks, :authors,
