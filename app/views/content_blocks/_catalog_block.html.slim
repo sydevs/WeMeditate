@@ -30,7 +30,7 @@
               = t('articles.read_more')
               .icon.icon--breadcrumb
 
-    - if records.count > 3
+    - if records.size > 3
       .content__catalog__loadmore.js-loadmore
         button.button.button--box
           = translate 'content.show_more'
@@ -68,7 +68,7 @@
               .icon.icon--breadcrumb
           .clearfix
 
-    - if records.count > 2
+    - if records.size > 2
       .content__catalog__loadmore.js-loadmore
         button.button.button--box
           = translate block[:type] == 'treatments' ? 'treatments.show_more' : 'content.show_more'
