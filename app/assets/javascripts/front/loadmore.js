@@ -22,8 +22,8 @@ class Loadmore {
     event.detail = content
 
     $(this.target).append(content)
-    this.target.dispatchEvent(event)
     Application.lazyloader.update()
+    this.target.dispatchEvent(event)
   }
 
   loadTemplate() {

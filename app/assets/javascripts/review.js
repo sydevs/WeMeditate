@@ -23,7 +23,7 @@ class Review {
     this.approvalsCount = $('.approved.review-block').length
     $('#review-form').on('submit', event => this.storeReviewData())
     $('.review-button').on('mouseenter', event => this.highlightBlock(event.currentTarget.dataset.id, 'menu'))
-    $('.review-button:not(.disabled), .review-block-handle:not(.disabled)').on('click', event => this.toggleApproval(event.currentTarget.dataset.id))
+    $('.review-button:not(.disabled)').on('click', event => this.toggleApproval(event.currentTarget.dataset.id))
     this.disableInteractions()
 
     $('.review-actions > .positive.button > span').text(` (${this.approvalsCount})`)
@@ -42,6 +42,8 @@ class Review {
   }
 
   onObserverChange(entries) {
+    if (this.disableObserver) return
+    
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         this.highlightBlock(entry.target.dataset.id, 'block')
@@ -86,7 +88,8 @@ class Review {
     button.classList.add('active')
 
     if (source == 'menu') {
-      zenscroll.center(block, 1000)
+      this.disableObserver = true
+      zenscroll.center(block, 1000, 0, () => { this.disableObserver = false })
     } else {
       this.menuScroller.intoView(button, 1000)
     }
