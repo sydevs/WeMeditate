@@ -171,8 +171,9 @@ de:
           left: "Left Aligned"
           center: "Center Aligned"
           right: "Right Aligned"
-        callout: # A 'callout' is an image or quotation which is inserted at the side of the text
-          none: "Center Aligned" # When no callout is enabled, it is aligned to the center
+        position: # A 'callout' is an image or quotation which is inserted at the side of the text
+          narrow: "Narrow Centered"
+          wide: "Wide Centered"
           left: "As Left Callout"
           right: "As Right Callout"
         type: # Note to Developer: These must be translated manually because they are accessed in JavaScript

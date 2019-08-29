@@ -16,9 +16,8 @@ class ImageTool extends EditorTool {
     super({ // Data
       id: data.id || generateId(),
       items: data.items || [],
-      callout: ['left', 'right'].includes(data.callout) ? data.callout : 'none',
+      position: ['left', 'right'].includes(data.callout) ? data.callout : 'narrow',
       asGallery: data.asGallery || false,
-      stretch: data.stretch || false,
       decorations: data.decorations || {}
     }, { // Config
       id: 'image',
@@ -30,23 +29,24 @@ class ImageTool extends EditorTool {
           icon: 'clone',
         },
         {
-          name: 'stretch',
+          name: 'narrow',
+          icon: 'align center',
+          group: 'position',
+        },
+        {
+          name: 'wide',
           icon: 'arrows alternate horizontal',
+          group: 'position',
         },
         {
           name: 'left',
           icon: 'indent',
-          group: 'callout',
-        },
-        {
-          name: 'none',
-          icon: 'align center',
-          group: 'callout',
+          group: 'position',
         },
         {
           name: 'right',
           icon: 'horizontally flipped indent',
-          group: 'callout',
+          group: 'position',
         },
       ],
     }, api)
@@ -87,11 +87,7 @@ class ImageTool extends EditorTool {
     const result = super.renderSettings()
 
     if (this.isTuneActive({ name: 'asGallery' })) {
-      this.setTuneEnabled('stretch', false)
-      this.setTuneEnabled('left', false)
-      this.setTuneEnabled('right', false)
-      this.setTuneBoolean('stretch', false)
-      this.setTuneValue('callout', 'none')
+      this.setTuneValue('position', null)
     }
 
     return result
@@ -207,11 +203,9 @@ class ImageTool extends EditorTool {
     let active = super.selectTune(tune)
 
     if (tune.name == 'asGallery') {
-      this.setTuneEnabled('stretch', !active)
-      this.setTuneEnabled('left', !active)
-      this.setTuneEnabled('right', !active)
-      this.setTuneBoolean('stretch', false)
-      this.setTuneValue('callout', 'none')
+      this.setTuneValue('position', active ? null : 'narrow')
+    } else {
+      this.setTuneBoolean('asGallery', false)
     }
 
     const allowMultiple = tune.name == 'asGallery' ? active : this.allowMultiple

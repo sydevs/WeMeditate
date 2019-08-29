@@ -167,8 +167,9 @@ it:
           left: "Sbandierato a sinistra"
           center: "Centrato"
           right: "Sbandierato a destra"
-        callout:
-          none: "Allineato al centro"
+        position: # TODO: Translate
+          narrow: "Narrow Centered"
+          wide: "Wide Centered"
           left: "Inserto a sinistra"
           right: "Inserto a destra"
         type:

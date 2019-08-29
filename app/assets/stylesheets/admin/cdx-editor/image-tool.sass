@@ -43,10 +43,12 @@
     color: #DB2828
 
 // SETTINGS
-.cdx-image-settings .cdx-settings-button
-  &__stretch,
-  &__asGallery
+.cdx-image-settings
+  .cdx-settings-button
     width: 51px
+
+  .cdx-settings-button__asGallery
+    width: 100%
 
 // TUNES
 .cdx-image
@@ -56,8 +58,12 @@
   &--right
     padding-left: 30%
 
-  &--stretch
-    width: 100%
+  &--wide
+    width: calc(100% + 20px)
+    margin-left: -10px
+
+    .cdx-input
+      margin-left: 10px
 
   &--asGallery
     .cdx-image__items__credit

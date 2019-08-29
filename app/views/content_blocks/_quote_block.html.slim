@@ -1,13 +1,15 @@
 
-- callout_mode = block[:callout].present? ? block[:callout] : 'none'
+- block[:position] = block[:callout] if block[:callout].present? # Fallback for old data representations
+- position = %w[left right narrow wide].include?(block[:position]) ? block[:position] : 'wide'
+- is_callout = %w[left right].include?(position)
 - classes = ['content__quote']
-- classes << "content__quote--callout" unless callout_mode == 'none'
-- classes << "content__quote--callout-#{callout_mode}"
+- classes << "content__quote--#{is_callout ? 'callout' : 'center'}" 
+- classes << "content__quote--#{position}"
 
 
 .content__quote class=classes
   blockquote.content__quote__block
-    - if callout_mode == 'none'
+    - unless is_callout
       .divider.divider--leaf.divider--leaf-up
 
     p.content__quote__text = block[:text]
@@ -18,5 +20,5 @@
     - if block[:caption].present?
       .content__quote__caption = block[:caption]
 
-    - if callout_mode == 'none'
+    - unless is_callout
       .divider.divider--leaf.divider--leaf-down

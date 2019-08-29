@@ -1,19 +1,24 @@
 
-- callout_mode = block[:callout].present? ? block[:callout] : 'none'
-- isGallery = block[:asGallery] == true
-- isSingle = !isGallery && callout_mode == 'none'
+- position = %w[left right narrow wide].include?(block[:position]) ? block[:position] : 'narrow'
+- is_callout = %w[left right].include?(position)
+- is_gallery = block[:asGallery] == true
+- position = nil if is_gallery
+- items = is_gallery ? block[:items] : [block[:items].first]
+
 - classes = []
-- classes << "content__image--#{isGallery ? 'gallery' : 'single'}" unless callout_mode != 'none'
-- classes << "content__image--stretch" if block[:stretch] == true
-- classes << 'content__image--callout' unless callout_mode == 'none'
-- classes << "content__image--callout-#{callout_mode}"
-- classes << 'js-grid js-gallery' if isGallery
+- classes << "content__image--#{position}" if position
 
-- items = isGallery ? block[:items] : [block[:items].first]
+- if is_gallery
+  - classes << 'content__image--gallery'
+  - classes << 'js-grid js-gallery'
+- elsif is_callout
+  - classes << 'content__image--callout'
+- else
+  - classes << 'content__image--center'
 
-- if block[:stretch]
+- if position == 'wide'
   - image_sizes = '100vw'
-- elsif callout_mode != 'none'
+- elsif position == 'narrow'
   - image_sizes = '(max-width: 814px) calc(100vw - 48px), 400px'
 - else
   - image_sizes = '(max-width: 814px) calc(100vw - 48px), 766px'
@@ -27,12 +32,12 @@
         - if item[:credit].present?
           .content__image__credit #{translate 'content.credit'} • #{item[:credit]}
 
-      - if isSingle
+      - unless is_gallery || is_callout
         .content__image__triangle = render_decoration :triangle, block
 
       .content__image__item__content
         - if item[:caption].present?
           figcaption.content__image__caption = item[:caption]
 
-  - if isGallery
+  - if is_gallery
     .content__image__triangle = render_decoration :triangle, block

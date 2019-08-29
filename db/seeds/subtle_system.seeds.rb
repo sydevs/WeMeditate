@@ -90,7 +90,7 @@ end
         type: :image,
         data: {
           items: [{ image: content_attachment("subtle_system_nodes/#{role.to_s.dasherize.downcase}.png", subtle_system_node) }],
-          callout: :left,
+          position: :left,
         },
       }, {
         type: :paragraph,

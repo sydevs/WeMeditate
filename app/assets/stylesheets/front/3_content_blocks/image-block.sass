@@ -7,16 +7,6 @@
 .content__image__img
   width: 100%
 
-.content__image--callout-none
-  margin: 40px auto
-
-.content__image--callout-none:not(.content__image--stretch)
-  @extend %narrow-content-width
-
-.content__image--gallery,
-.content__image--callout,
-  @extend %wide-content-width
-
 // ===== MEDIA CAPTION ===== //
 .content__image__caption
   margin: 10px 0
@@ -41,21 +31,10 @@
     writing-mode: vertical-rl
     transform: rotate(180deg)
 
-// ===== SINGLE IMAGE ===== //
-.content__image--single
-  margin-top: 40px
-  margin-bottom: 40px
-
-  @include tablet-or-larger
-    margin-top: 65px
-    margin-bottom: 65px
-
-.content__image--single img
-  width: 100%
-  min-height: 175px
-
-// ===== CALLOUT ADJUSTMENTS ===== //
+// ===== CALLOUT IMAGE ===== //
 .content__image--callout
+  @extend %wide-content-width
+
   @include desktop
     max-width: $laptop-content-width
 
@@ -86,8 +65,26 @@
         margin-#{$side}: 20px
         margin-#{$opposite}: 50px
 
-// ===== STRETCHED IMAGE ===== //
-.content__image--stretch
+// ===== CENTERED IMAGE ===== //
+.content__image--center
+  margin: auto
+  margin-top: 40px
+  margin-bottom: 40px
+
+  @include tablet-or-larger
+    margin-top: 65px
+    margin-bottom: 65px
+
+.content__image--center img
+  width: 100%
+  min-height: 175px
+
+// NARROW IMAGE
+.content__image--narrow
+  @extend %narrow-content-width
+
+// WIDE IMAGE
+.content__image--wide
   margin-top: 90px
   margin-bottom: 90px
   max-width: 2000px
@@ -106,6 +103,8 @@
 
 // ===== IMAGE GALLERY ===== //
 .content__image--gallery
+  @extend %wide-content-width
+
   img
     cursor: pointer
 

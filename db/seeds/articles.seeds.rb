@@ -148,7 +148,7 @@ article.update!(content: content([
     type: :quote,
     data: {
       text: sentences(1),
-      callout: :right,
+      position: :right,
     },
   }, {
     type: :paragraph,
@@ -182,7 +182,7 @@ article.update!(content: content([
         image: content_attachment('articles/callout.jpg', article),
         credit: 'John Smith',
       }],
-      callout: :left,
+      position: :left,
     },
   }, {
     type: :paragraph,
@@ -242,7 +242,7 @@ article.update!(content: content([
         image: content_attachment('articles/page-width.jpg', article),
         credit: 'John Smith',
       }], # rubocop:disable Style/TrailingCommaInArrayLiteral
-      stretch: :true,
+      position: :wide,
       decorations: { triangle: { alignment: :right } },
     },
   }, {
@@ -372,7 +372,7 @@ article.update!(content: content([
       text: sentences(1),
       credit: 'John Smith',
       caption: 'University professor',
-      callout: :right,
+      position: :right,
     },
   }, {
     type: :paragraph,
@@ -385,7 +385,7 @@ article.update!(content: content([
       text: sentences(1),
       credit: 'John Smith',
       caption: 'University professor',
-      callout: :left,
+      position: :left,
     },
   }, {
     type: :paragraph,
@@ -423,7 +423,7 @@ article.update!(content: content([
         credit: 'John Smith',
         caption: 'This is a text caption, for this image.',
       }], # rubocop:disable Style/TrailingCommaInArrayLiteral
-      callout: :left,
+      position: :left,
     },
   }, {
     type: :paragraph,
@@ -443,7 +443,7 @@ article.update!(content: content([
         credit: 'John Smith',
         caption: 'This is a text caption, for this image.',
       }], # rubocop:disable Style/TrailingCommaInArrayLiteral
-      callout: :right,
+      position: :right,
     },
   }, {
     type: :paragraph,
@@ -477,7 +477,7 @@ article.update!(content: content([
         credit: 'John Smith',
         caption: 'This is a text caption, for this image.',
       }], # rubocop:disable Style/TrailingCommaInArrayLiteral
-      stretch: true,
+      position: :wide,
     },
   }, {
     type: :paragraph,
