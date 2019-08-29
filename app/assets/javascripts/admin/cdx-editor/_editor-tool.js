@@ -112,6 +112,10 @@ class EditorTool {
       })
     }
 
+    if (type == 'text') {
+      result.addEventListener('paste', event => this.containPaste(event))
+    }
+
     if (field.contained) {
       result.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event, false))
     }
@@ -153,6 +157,15 @@ class EditorTool {
       event.stopPropagation()
       return false
     }
+  }
+
+  containPaste(event) {
+    const clipboardData = event.clipboardData || window.clipboardData
+    const pastedData = clipboardData.getData('Text').replace(/(?:\r\n|\r|\n)/g, '<br>')
+    document.execCommand('insertHTML', false, pastedData)
+    event.stopPropagation()
+    event.preventDefault()
+    return false
   }
 
 

@@ -108,7 +108,7 @@ class TextboxTool extends EditorTool {
       $(this.imageRemoveIcon).hide()
     }
 
-      fieldsContainer.querySelector(`.${this.CSS.fields.text}`).addEventListener('keydown', event => this.insertParagraphBreak(event))
+    fieldsContainer.querySelector(`.${this.CSS.fields.text}`).addEventListener('keydown', event => this.insertParagraphBreak(event))
 
     return container
   }

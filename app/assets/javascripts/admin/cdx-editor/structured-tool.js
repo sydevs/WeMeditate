@@ -110,6 +110,7 @@ class StructuredTool extends EditorTool {
     }, container)
 
     text.dataset.placeholder = translate['content']['placeholders']['text']
+    text.addEventListener('paste', event => this.containPaste(event))
 
     return container
   }
