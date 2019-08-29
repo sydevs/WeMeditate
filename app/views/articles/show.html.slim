@@ -2,7 +2,7 @@
 main.scrollspy-target id=dom_id(@article)
   h1.banner = @article.name
 
-  - if @article.author
+  - if @article.author && @article.author_type == 'author'
     .author.author--mini
       .author__name #{translate 'author.written_by'} <em>#{@article.author.name}</em>, <em>#{@article.author.country_code}</em>
       - if @article.author.title
