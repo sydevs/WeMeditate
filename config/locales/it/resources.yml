@@ -68,6 +68,10 @@ it:
           low: "Visibilità Bassa"
           normal: "Visibilità Normale"
           high: "Visibilità Alta"
+        author_type: "Author Type" # TODO: Translate
+        author_types: # TODO: Translate
+          author: "Author"
+          artist: "Artist"
         excerpt: "Citazione"
         thumbnail: "Miniatura"
         thumbnail_id: "Miniatura (png)"

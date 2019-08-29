@@ -98,6 +98,10 @@ ru:
           low: "Низкая Видимость"
           normal: "Нормальная Видимость"
           high: "Высокая Видимость"
+        author_type: "Author Type" # TODO: Translate
+        author_types: # TODO: Translate
+          author: "Author"
+          artist: "Artist"
         excerpt: "Выдержка"
         thumbnail: "Превью"
         vimeo_id: "Представленное Видео (Vimeo ID)"

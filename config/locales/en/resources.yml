@@ -68,6 +68,10 @@ en:
           low: "Low Visibility"
           normal: "Normal Visibility"
           high: "High Visibility"
+        author_type: "Author Type"
+        author_types:
+          author: "Author"
+          artist: "Artist"
         excerpt: "Excerpt"
         thumbnail: "Thumbnail"
         vimeo_id: "Featured Video (Vimeo ID)"

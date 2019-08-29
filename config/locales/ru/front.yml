@@ -31,7 +31,7 @@ ru:
       local: "Ближайшие центры"
 
   author:
-    about_the_author: "Об авторе"
+    about_the_author: "Об %{author}"
     written_by: "Написано"
     meditating_for:
       one: "Медитирую %{count} год" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
