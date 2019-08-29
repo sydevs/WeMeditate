@@ -35,7 +35,7 @@ duration_filters = {}
   puts "Created Duration Filter - #{minutes}"
 end
 
-# ===== CREATE TRACKS ===== #
+# ===== CREATE MEDITATIONS ===== #
 [{
   name: 'First Meditation Experience',
   goal_filters: %i[harmony self_confident],
@@ -70,6 +70,24 @@ end
 
   Meditation.find_or_initialize_by(name: atts[:name]).update!(atts)
   puts "Created Meditation - #{atts[:name]}"
+end
+
+# ===== GENERIC MEDITATIONS ===== #
+20.times.each do |index|
+  index += 1
+  meditation = Meditation.find_or_initialize_by(name: "Meditation #{index}")
+  meditation.update!({
+    image: file_root.join("meditations/background-#{(index % 2) + 1}.jpg").open,
+    vertical_vimeo_id: 152153054,
+    horizontal_vimeo_id: 208643382,
+    goal_filters: goal_filters.values.sample([1, 2].sample),
+    duration_filter: duration_filters.values.sample,
+    excerpt: 'Feel like you’re in need of a pick me up? Banish those negative thoughts which are putting you down and boost your confidence.',
+    published: true,
+    published_at: DateTime.now,
+  })
+
+  puts "Created Generic Meditation #{index}"
 end
 
 puts ' -- Finished Meditation Seeds -- '

@@ -22,12 +22,13 @@ class Grid {
       margin: 5,
     })
 
-    this.macy.runOnImageLoad(() => {
+    this.container.addEventListener('contentchange', event => {
+      // This looks like a double call, but for whatever reason it's needed.
       this.macy.recalculate(true, true)
-    })
 
-    this.container.addEventListener('contentchange', () => {
-      this.macy.recalculate(true, true)
+      this.macy.runOnImageLoad(() => {
+        this.macy.recalculate(true, true)
+      })
     })
   }
 
