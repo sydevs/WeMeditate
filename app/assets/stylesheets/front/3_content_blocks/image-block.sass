@@ -56,14 +56,14 @@
     margin-left: 10px
     transform: none
 
-  @each $side in left right
-    $opposite: if($side == right, left, right)
+@each $side in left right
+  $opposite: if($side == right, left, right)
 
-    &-#{$side} .content__image__item
-      @include tablet-or-larger
-        float: $side
-        margin-#{$side}: 20px
-        margin-#{$opposite}: 50px
+  .content__image--#{$side} .content__image__item
+    @include tablet-or-larger
+      float: $side
+      margin-#{$side}: 20px
+      margin-#{$opposite}: 50px
 
 // ===== CENTERED IMAGE ===== //
 .content__image--center

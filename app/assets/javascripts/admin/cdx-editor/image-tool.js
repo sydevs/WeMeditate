@@ -13,11 +13,15 @@ class ImageTool extends EditorTool {
   }
 
   constructor({data, _config, api}) {
+    const asGallery = data.asGallery || false
+    let position = ['left', 'right', 'wide'].includes(data.position) ? data.position : 'narrow'
+    if (asGallery) position = null
+
     super({ // Data
       id: data.id || generateId(),
       items: data.items || [],
-      position: ['left', 'right'].includes(data.callout) ? data.callout : 'narrow',
-      asGallery: data.asGallery || false,
+      position: position,
+      asGallery: asGallery,
       decorations: data.decorations || {}
     }, { // Config
       id: 'image',
@@ -81,16 +85,6 @@ class ImageTool extends EditorTool {
 
     this.uploader.setAllowMultiple(this.allowMultiple)
     return this.container
-  }
-
-  renderSettings() {
-    const result = super.renderSettings()
-
-    if (this.isTuneActive({ name: 'asGallery' })) {
-      this.setTuneValue('position', null)
-    }
-
-    return result
   }
 
   renderItem(item = {}) {

@@ -23,7 +23,7 @@
 - else
   - image_sizes = '(max-width: 814px) calc(100vw - 48px), 766px'
 
-.content__image class=classes
+.content__image class=classes data-max-columns=items.count
   - items.each do |item|
     figure.content__image__item
       .content__image__item__media
