@@ -111,6 +111,7 @@ ru:
         author: :activerecord.models.author.one # Do not translate
         author_id: :activerecord.models.author.one # Do not translate
         owner: "Позволить автору обновлять статью"
+        published_at: "Published Date" # TODO: Translate
 
       static_page:
         name: "Название"

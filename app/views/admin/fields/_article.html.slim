@@ -37,3 +37,6 @@
   = f.association :owner, collection: User.writer, hint: translate('admin.hints.article_owner'), input_html: { class: 'clearable' }
 - elsif current_user.writer? && record.new_record?
   = f.hidden_field :owner_id, value: current_user.id
+
+- if allow.update_structure?
+  = draftable_date_field f, :published_at, hint: translate('admin.hints.article_published_at')

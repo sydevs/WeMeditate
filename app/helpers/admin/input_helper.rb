@@ -45,6 +45,13 @@ module Admin::InputHelper
     when :repeatable
       original_name = translate('admin.draft.items', count: original_value.count)
       draft_name = translate('admin.draft.items', count: draft_value.count)
+    when :date
+      original_value = Date.parse(original_value.to_s)
+      draft_value = Date.parse(draft_value.to_s)
+      original_name = localize(original_value, format: :long).to_s
+      draft_name = localize(draft_value, format: :long).to_s
+      original_value = original_value.to_s
+      draft_value = draft_value.to_s
     when :toggle
       original_name = ActiveModel::Type::Boolean.new.cast(original_value) ? 'True' : 'False' 
       draft_name = ActiveModel::Type::Boolean.new.cast(draft_value) ? 'True' : 'False' 
@@ -141,7 +148,7 @@ module Admin::InputHelper
   end
 
   def draftable_date_field form, attribute = :date, hint: nil
-    draftable_field form, attribute do |value|
+    draftable_field form, attribute, type: :date do |value|
       content_tag :div, class: 'ui date picker' do
         concat form.input_field attribute, as: :string, value: value
         concat form.hint hint if hint

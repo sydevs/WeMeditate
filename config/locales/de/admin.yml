@@ -126,6 +126,7 @@ de:
       article_owner: "Administrators and Editors can always edit all articles. This field gives a writer special permission to modify an article after it is published. Usually this is the person who wrote the article in the first place."
       article_video: "If you enter a featured video, it will appear on the article preview."
       article_date: "If this article is about an event, then you can set the start date of the event here. This date will appear on the article preview."
+      article_published_at: "The published date determines what order the articles appear in."
 
     result:
       created: "Created successfully."

@@ -32,10 +32,6 @@ module Draftable
     return true
   end
 
-  def ready_to_publish?
-
-  end
-
   def parsed_draft
     @parsed_draft ||= draft
   end
@@ -58,7 +54,6 @@ module Draftable
     new_draft['contributors'] = new_draft['contributors'].to_set.add(user.id).to_a
 
     changes.each do |key, (old_value, new_value)|
-      next if key == 'published_at' # We should not include timestamps in drafts
       next if only.present? && !only.include?(key.to_sym)
 
       if old_value.to_s == new_value.to_s || (key == 'content' && content_equal?(old_value, new_value))

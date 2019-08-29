@@ -81,6 +81,7 @@ de:
         author: :activerecord.models.author.one # Do not translate
         author_id: :activerecord.models.author.one # Do not translate
         owner: "Allow a writer to update this article"
+        published_at: "Published Date"
 
       static_page:
         name: "Title"

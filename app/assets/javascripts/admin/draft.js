@@ -20,6 +20,9 @@ const Draft = {
       case 'text':
         $field.find('textarea').val(value)
         break
+      case 'date':
+        $field.find('.ui.date.picker').calendar('set date', value)
+        break
       case 'toggle':
         $field.find('.ui.checkbox').checkbox(value ? 'check' : 'uncheck')
         break
