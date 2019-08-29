@@ -17,7 +17,7 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def viewable?
-    respond_to?(:slug)
+    respond_to?(:slug) && respond_to?(:metatags)
   end
 
   def has_content?

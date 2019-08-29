@@ -5,6 +5,6 @@
 - url = url.gsub(%r{\/[^\/]*\/?$}, '/') # Strip the last element from the url
 
 = f.input :slug do
-= content_tag :div, class: 'ui labeled slug input' do
-  = tag.div CGI.unescape(url), class: 'ui basic label'
-  = f.input_field :slug
+  = content_tag :div, class: 'ui labeled slug input' do
+    = tag.div CGI.unescape(url), class: 'ui basic label'
+    = f.input_field :slug
