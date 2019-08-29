@@ -6,12 +6,6 @@ module ApplicationHelper
 
   def playlist_data tracks
     tracks.each_with_index.map do |track, index|
-      jpg_srcset = []
-      webp_srcset = []
-      track.artist.image.versions.values.each do |version|
-        jpg_srcset << "#{version.url} #{version.width}w"
-        webp_srcset << "#{version.webp.url} #{version.width}w"
-      end
 
       {
         index: index,
@@ -19,13 +13,26 @@ module ApplicationHelper
         src: track.audio_url,
         mood_filters: track.mood_filters.map(&:id),
         instrument_filters: track.instrument_filters.map(&:id),
-        artist: {
-          name: track.artist.name,
-          url: track.artist.url,
-          image_srcset: {
-            jpg: jpg_srcset.join(', '),
-            webp: webp_srcset.join(', '),
-          },
+        artists: playlist_artist_data(track.artists),
+      }
+    end
+  end
+
+  def playlist_artist_data artists
+    artists.each.map do |artist|
+      jpg_srcset = []
+      webp_srcset = []
+      artist.image.versions.values.each do |version|
+        jpg_srcset << "#{version.url} #{version.width}w"
+        webp_srcset << "#{version.webp.url} #{version.width}w"
+      end
+
+      {
+        name: artist.name,
+        url: artist.url,
+        image_srcset: {
+          jpg: jpg_srcset.join(', '),
+          webp: webp_srcset.join(', '),
         },
       }
     end

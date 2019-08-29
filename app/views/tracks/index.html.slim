@@ -30,7 +30,10 @@ main
       .player id='music-player' data-playlist=playlist.to_json
         .player__selection
           .player__selection__title = first_track.name
-          a.player__selection__artist href=first_track.artist.url target='_blank' = first_track.artist.name
+          .player__selection__artist
+            - first_track.artists.each do |artist|
+              a href=artist.url target='_blank' = artist.name
+              = ', ' unless first_track.artists.last == artist
 
         audio.player__controls controls=true
           data-controls="#{render('shared/audio_controls').html_safe}"

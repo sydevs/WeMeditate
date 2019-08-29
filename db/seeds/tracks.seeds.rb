@@ -64,22 +64,22 @@ end
 # ===== CREATE TRACKS ===== #
 [{
   name: 'Raag Durga',
-  artist: artists[4],
+  artists: [artists[4], artists[0]],
   mood_filters: %i[dynamic joyful innocent],
   instrument_filters: %i[vocal flute],
 }, {
   name: 'Morning Meditation',
-  artist: artists[0],
+  artists: [artists[0]],
   mood_filters: %i[dynamic calm],
   instrument_filters: %i[sitar],
 }, {
   name: 'Raag Jayjayvanti',
-  artist: artists[1],
+  artists: [artists[1], artists[2], artists[0]],
   mood_filters: %i[dynamic innocent],
   instrument_filters: %i[vocal],
 }, {
   name: 'Brahma Shodile',
-  artist: artists[2],
+  artists: [artists[2]],
   mood_filters: %i[joyful innocent],
   instrument_filters: %i[sitar flute],
 }].each do |atts| # rubocop:disable Style/TrailingCommaInArrayLiteral

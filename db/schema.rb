@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_17_144615) do
+ActiveRecord::Schema.define(version: 2019_08_29_123841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(version: 2019_08_17_144615) do
     t.string "name"
     t.string "url"
     t.jsonb "image"
+  end
+
+  create_table "artists_tracks", id: false, force: :cascade do |t|
+    t.bigint "artist_id", null: false
+    t.bigint "track_id", null: false
+    t.index ["artist_id", "track_id"], name: "index_artists_tracks_on_artist_id_and_track_id"
+    t.index ["track_id", "artist_id"], name: "index_artists_tracks_on_track_id_and_artist_id"
   end
 
   create_table "author_translations", force: :cascade do |t|
@@ -308,11 +315,9 @@ ActiveRecord::Schema.define(version: 2019_08_17_144615) do
 
   create_table "tracks", force: :cascade do |t|
     t.string "audio", null: false
-    t.bigint "artist_id"
     t.string "original_locale", limit: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_tracks_on_artist_id"
   end
 
   create_table "treatment_translations", force: :cascade do |t|

@@ -30,7 +30,11 @@ module Admin::TableHelper
     when StaticPage, SubtleSystemNode, User
       human_enum_name(record, :role)
     when Track
-      record.artist.name
+      if record.artists.count > 2
+        "#{record.artists.first(2).map(&:name).join(', ')}, ..."
+      else
+        record.artists.map(&:name).join(', ')
+      end
     when Meditation
       "~#{record.duration_filter.name}"
     when Artist

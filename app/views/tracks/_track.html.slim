@@ -6,5 +6,8 @@
   a.player__item__label.js-player-selector href=track.audio.url
     .icon.icon--play
     = track.name
-  a.player__item__artist href=track.artist.url target='_blank' = track.artist.name
+  .player__item__artist
+    - track.artists.each do |artist|
+      a href=artist.url target='_blank' = artist.name
+      = ', ' unless track.artists.last == artist
   .player__item__duration 0:00

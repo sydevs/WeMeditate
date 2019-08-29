@@ -117,10 +117,18 @@ class MusicPlayer {
     return available
   }
 
+  renderArtists(artists) {
+    let html = []
+    artists.forEach(artist => {
+      html.push(`<a href="${artist.url}">${artist.name}</a>`)
+    })
+
+    return html.join(", ")
+  }
+
   selectTrack(data) {
     this.selectionTitle.innerText = data.name
-    this.selectionArtist.innerText = data.artist.name
-    this.selectionArtist.setAttribute('href', data.artist.url)
+    this.selectionArtist.innerHTML = this.renderArtists(data.artists)
 
     this.player.source = {
       type: 'audio',
@@ -130,11 +138,10 @@ class MusicPlayer {
       ]
     }
 
-    console.log('play', data.src)
     this.player.play()
 
     if (!this.mini) {
-      this.setCoverImage(data.artist.image_srcset)
+      this.setCoverImage(pickRandom(data.artists).image_srcset)
       this.playlistContainer.children[this.currentTrackIndex].classList.remove('player__item--active')
       this.currentTrackIndex = data.index
       this.playlistContainer.children[this.currentTrackIndex].classList.add('player__item--active')
