@@ -12,7 +12,7 @@ class CatalogTool extends EditorTool {
       id: data.id || generateId(),
       title: data.title || '',
       items: data.items || [],
-      withImages: data.withImages || true,
+      withImages: data.withImages == false ? false : true,
       type: ['articles', 'treatments', 'meditations'].includes(data.type) ? data.type : 'articles',
       decorations: data.decorations || {},
     }, { // Config
@@ -130,8 +130,7 @@ class CatalogTool extends EditorTool {
 
     this.searchInput.parentNode.classList.add('loading')
     this.timer = setTimeout(() => {
-      // TODO: Localize this
-      jQuery.get(`/en/${this.data.type}.json`, {
+      jQuery.get(`/${locale}/${this.data.type}.json`, {
         q: event.target.value,
       }, data => {
         this.searchContainer.innerHTML = ''
