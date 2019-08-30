@@ -134,6 +134,10 @@
 
 // ===== ICON BUTTONS ===== //
 .button--icon
+  display: inline-flex
+  flex-direction: row
+  align-items: center
+
   width: 140px
   margin: 16px auto
   padding: 0
@@ -143,15 +147,13 @@
   color: $color-text-dark
 
   @include tablet-or-larger
-    display: inline-block
     width: auto
     margin: 6px 0
     margin-right: 72px
 
   &.button--active, &:hover
     opacity: 0.95
-    color: $color-text-blue
-    vertical-align: bottom // To fix a bug with iOS Safari where alignment would get mixed up
+    color: $color-text-blue !important
 
     .button__icon > svg
       fill: $color-text-blue
@@ -183,7 +185,6 @@
 .button--icon .button__text
   width: 60%
   line-height: 60px
-  vertical-align: bottom
   text-align: right
   display: inline-block
 

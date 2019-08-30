@@ -82,7 +82,7 @@ module Admin::TableHelper
   
       case record
       when Category, Author
-        article_count = record.articles.count
+        article_count = record.articles.size # Must use size instead of count due to some conflict
         concat table_icon 'file text', Category.human_attribute_name(:articles, count: article_count), article_count
       when MoodFilter, InstrumentFilter, Artist
         track_count = record.tracks.count

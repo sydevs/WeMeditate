@@ -1,11 +1,17 @@
 
 class Video {
 
-  constructor(element) {
+    constructor(element, index) {
     this.popout = $(element).magnificPopup({
       key: 'video',
       callbacks: {
-        open: function() { Video.openPlayer(this.ev[0]) },
+        open: function() {
+          Video.loadVimeoId(this.ev[0].dataset.id)
+
+          if (Video.useAutoFullscreen()) {
+            Application.videoPlayer.fullscreen.enter()
+          }
+        }
       },
     })
   }
@@ -16,23 +22,31 @@ class Video {
 
   static loadPlayer(id) {
     const videoPlayerContainer = document.getElementById(id)
-    const videoPlayer = new Plyr(videoPlayerContainer, videoPlayerContainer.dataset.controls)
-    videoPlayerContainer.addEventListener('canplay', () => videoPlayer.play())
+    const videoPlayer = new Plyr(videoPlayerContainer, {
+      fullscreen: { iosNative: true },
+    })
+
+    if (Video.useAutoFullscreen()) {
+      videoPlayer.on('exitfullscreen', () => $.magnificPopup.close())
+    }
+
     return videoPlayer
   }
 
-  static openPlayer(element) {
+  static loadVimeoId(vimeoId) {
+    if (Application.videoPlayer.source == `https://vimeo.com/${vimeoId}`) return
+
+    console.log('load vimeo id', vimeoId)
     Application.videoPlayer.source = {
       type: 'video',
       autoplay: true,
-      sources: [{ src: element.dataset.id, provider: 'vimeo' }]
+      sources: [{ src: vimeoId, provider: 'vimeo' }],
+      vimeo: { playsinline: false },
     }
-
-    if (Video.useAutoFullscreen()) Application.videoPlayer.fullscreen.enter()
   }
 
   static useAutoFullscreen() {
-    return Application.isMobileDevice() || screen.width < 1024
+    return true || Application.isMobileDevice() || screen.width < 1024
   }
 
 }
