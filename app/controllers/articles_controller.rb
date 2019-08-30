@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   ARTICLES_PER_PAGE = 10
 
   def index
-    @articles = Article.published.offset(params[:offset]).limit(ARTICLES_PER_PAGE)
+    @articles = Article.published.ordered.offset(params[:offset]).limit(ARTICLES_PER_PAGE)
     return unless stale?(@articles)
 
     respond_to do |format|
