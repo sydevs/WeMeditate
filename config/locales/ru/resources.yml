@@ -4,7 +4,7 @@
 
 ru:
   activerecord:
-    models: # TODO: Translate
+    models: 
       article:
         one: "Статья" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
         few: "Статьи" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
