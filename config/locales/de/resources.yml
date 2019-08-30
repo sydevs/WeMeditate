@@ -176,7 +176,7 @@ de:
       track:
         published: :activerecord.attributes.article.published # Do not translate
         title: "Title"
-        artist: "Artist"
+        artists: :activerecord.models.artist.other
         audio: "File (mp3)"
         instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
         mood_filters: :activerecord.models.mood_filter.other # Do not translate

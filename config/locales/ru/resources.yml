@@ -216,10 +216,10 @@ ru:
       track:
         published: :activerecord.attributes.article.published # Do not translate
         title: "Название"
-        artist: "Исполнитель"
+        artists: :activerecord.models.artist.few # Do not translate
         audio: "Файл (mp3)"
-        instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
-        mood_filters: :activerecord.models.mood_filter.other # Do not translate
+        instrument_filters: :activerecord.models.instrument_filter.few # Do not translate
+        mood_filters: :activerecord.models.mood_filter.few # Do not translate
 
       meditation:
         published: :activerecord.attributes.article.published # Do not translate
@@ -228,7 +228,7 @@ ru:
         horizontal_vimeo_id: "Горизонтальное Видео (Vimeo ID)"
         vertical_vimeo_id: "Вертикальное Видео (Vimeo ID)"
         duration_filter: :activerecord.models.duration_filter.one # Do not translate
-        goal_filters: :activerecord.models.goal_filter.other # Do not translate
+        goal_filters: :activerecord.models.goal_filter.few # Do not translate
         excerpt: "Выдержка"
         description: "Текст на Странице"
         metatags: "Метаданные"
