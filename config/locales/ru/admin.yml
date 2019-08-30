@@ -180,8 +180,8 @@ ru:
           left: "С Левой Стороны"
           right: "С Правой Стороны"
         type: # Note to Developer: These must be translated manually because they are accessed in JavaScript
-          articles: "Статьи"
-          treatments: "Методы"
+          articles: "Статьи Вдохновение"
+          treatments: "Методы очистки"
           meditations: "Медитации"
         format:
           button: "Кнопка"
