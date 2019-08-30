@@ -67,7 +67,7 @@ ru:
       draft: "%{page} черновик"
 
     details:
-      original_language: "Original Language" # TODO: Translate
+      original_language: "Исходный язык" # TODO: Translate
       translated_languages: "Языки Перевода"
       priority: "Приоритет На Странице Вдохновение"
       owned_by: "Принадлежит %{owner}"
