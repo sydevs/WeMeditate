@@ -20,7 +20,7 @@ ru:
     come_meditate: "Приходите на занятия"
     classes_near_me: "Ближайшие центры"
     online_meditations: "Медитация онлайн"
-    languages: "Languages" # TODO: Translate
+    languages: "Языки" 
 
   actions_footer:
     title: "Откройте медитацию для себя!"
@@ -35,9 +35,9 @@ ru:
     written_by: "Написано"
     meditating_for:
       one: "Медитирую %{count} год" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-      few: "Meditating for %{count} years" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+      few: "Медитирую %{count} года" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
       many: "Медитирую %{count} лет" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
-      other: "Meditating for %{count} years" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
+      
 
   form:
     input:
@@ -88,7 +88,7 @@ ru:
     prescreen:
       title: "Хотите научиться медитировать? Cначала пробудите свою %{kundalini}"
       kundalini: "внутреннюю энергию"
-      action: "Пробудите Свою Внутреннюю Энергию"
+      action: "Пробудить Внутреннюю Энергию"
       explanation:
         text: "В каждом из нас есть внутренняя энергия, которая, пробуждаясь, позволяет нам быть в состоянии медитации."
         learn_more: "Подробнее"
@@ -102,7 +102,7 @@ ru:
       random_meditation_title: "Попробовать случайную медитацию"
       random_meditation_description: "Настроение на нуле и нет желания что-либо делать? Избавьтесь от негативных мыслей и почувствуйте в себе уверенность."
     custom_meditation:
-      title: "Выберите подходяющую для вас медитацию"
+      title: "Выбери подходящую медитацию"
       choose_goal: "Я хочу почувствовать ..." # Please keep ' ...' (with a space) at the end of your translation.
       choose_duration: "У меня есть"
       goal_prompt: "Выберите настроение"
