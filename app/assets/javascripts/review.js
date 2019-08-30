@@ -82,22 +82,20 @@ class Review {
     }
 
     this.selectedId = id
-    const block = document.querySelector(`.review-block[data-id="${id}"]`)
-    const button = document.querySelector(`.review-button[data-id="${id}"]`)
-    block.classList.add('active')
-    button.classList.add('active')
+    const $blocks = $(`.review-block[data-id="${id}"]`).addClass('active')
+    const $buttons = $(`.review-button[data-id="${id}"]`).addClass('active')
 
     if (source == 'menu') {
       this.disableObserver = true
-      zenscroll.center(block, 1000, 0, () => { this.disableObserver = false })
+      zenscroll.center($blocks[0], 1000, 0, () => { this.disableObserver = false })
     } else {
-      this.menuScroller.intoView(button, 1000)
+      this.menuScroller.intoView($buttons[0], 1000)
     }
   }
 
   toggleApproval(id) {
-    const approved = document.querySelector(`.review-button[data-id="${id}"]`).classList.toggle('approved')
-    document.querySelector(`.review-block[data-id="${id}"]`).classList.toggle('approved', approved)
+    const approved = $(`.review-button[data-id="${id}"]`).toggleClass('approved')
+    $(`.review-block[data-id="${id}"]`).toggleClass('approved', approved)
     this.approvalsCount = this.approvalsCount + (approved ? +1 : -1)
     $('.review-actions > .positive.button > span').text(` (${this.approvalsCount})`)
   }

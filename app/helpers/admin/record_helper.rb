@@ -44,99 +44,33 @@ module Admin::RecordHelper
   end
 
   def block_comparison record, &block
-    original_blocks = record.content_blocks
-    draft_blocks = record.draft_content_blocks
-    original_block_ids = original_blocks.map { |block| block['data']['id'] }
-    draft_block_ids = draft_blocks.map { |block| block['data']['id'] }
-    original_index = 0
-    draft_index = 0
+    old_blocks = record.content_blocks
+    new_blocks = record.draft_content_blocks
+    old_block_ids = old_blocks.map { |block| block['data']['id'] }
+    new_block_ids = new_blocks.map { |block| block['data']['id'] }
+    diff = Diff::LCS.sdiff(old_block_ids, new_block_ids)
 
-    while original_index < original_block_ids.count || draft_index < draft_block_ids.count
-      original_id = original_block_ids[original_index]
-      draft_id = draft_block_ids[draft_index]
-      original_block = original_blocks[original_index]
-      draft_block = draft_blocks[draft_index]
+    current_index = 0
 
-      if original_id == draft_id
-        if original_block == draft_block
-          yield original_block, nil, 'nochange'
+    diff.flatten.each do |change|
+      old_block = old_blocks[change.old_position]
+      new_block = new_blocks[change.new_position]
+
+      case change.action
+      when '+'
+        moved = old_block_ids.include?(change.new_element)
+        yield nil, new_block, 'added', (moved ? 'moved' : nil)
+      when '-'
+        moved = new_block_ids.include?(change.old_element)
+        yield old_block, nil, 'removed', (moved ? 'moved' : nil)
+      when '='
+        if old_block == new_block
+          yield old_block, nil, 'nochange'
         else
-          yield original_block, draft_block, 'modified'
-        end
-
-        original_index += 1
-        draft_index += 1
-      else
-        yield original_block, nil, 'removed' unless original_block.nil?
-        yield nil, draft_block, 'added' unless draft_block.nil?
-        original_index += 1
-        draft_index += 1
-      end
-    end
-  end
-
-  def draft_diff record, &block
-    original_blocks = record.content_blocks
-    draft_blocks = record.parsed_draft_content['blocks']
-
-    original_types = original_blocks.map { |b| b['type'] }
-    draft_types = draft_blocks.map { |b| b['type'] }
-    diff = Hashdiff.diff(original_types, draft_types, array_path: true)
-
-    # TODO: Remove test code
-    puts "DRAFT DIFF"
-    puts original_types.pretty_inspect
-    puts draft_types.pretty_inspect
-    puts diff.pretty_inspect
-    puts "----"
-
-    loop_counter = 0
-    diff_index = 0
-    original_index = 0
-    draft_index = 0
-
-    while original_index < original_types.count || draft_index < draft_types.count
-      change = diff_index << diff.count ? diff[diff_index] : nil
-      target_index = change[1][0] if change
-
-      original_block = original_blocks[original_index]
-      draft_block = draft_blocks[draft_index]
-      mode = 'modified'
-
-      if change
-        if change[0] == '+'
-          if target_index == draft_index
-            mode = 'added'
-            original_block = nil
-          else
-            change = nil
-          end
-        elsif change[0] == '-'
-          if target_index == draft_index
-            mode = 'removed'
-            draft_block = nil
-          else
-            change = nil
-          end
+          yield old_block, new_block, 'modified'
         end
       end
-
-      mode = 'nochange' if mode == 'modified' && original_block == draft_block
-      yield(loop_counter, mode, original_block, draft_block, (original_index if original_block), (draft_index if draft_block))
-      diff_index += 1 if change
-      original_index += 1 if original_block
-      draft_index += 1 if draft_block
-      loop_counter += 1
     end
-  end
-
-  def display_block_data block
-    return '' unless block
-
-    result = block['data'].map do |key, value|
-      "#{key}: #{value}"
-    end
-    result.join("<br>").to_s
   end
 
   private

@@ -258,6 +258,7 @@ ru:
       discard_all_changes: "Discard All Changes"
       approve_changes: "Approve Changes"
       effect:
+        moved: "Moved" # TODO: Translate
         added: "Добавлено"
         removed: "Удалено"
         modified: "Изменено"

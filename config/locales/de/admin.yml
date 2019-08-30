@@ -252,6 +252,7 @@ de:
       discard_all_changes: "Discard All Changes"
       approve_changes: "Approve Changes"
       effect:
+        moved: "Moved"
         added: "Added"
         removed: "Removed"
         modified: "Modified"
