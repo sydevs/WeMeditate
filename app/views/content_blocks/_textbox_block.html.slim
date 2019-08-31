@@ -37,7 +37,7 @@
         - if isVideo
           .content__textbox__action
             - vimeo_id = block[:url].match(%r{/(\d+)/?\z})[1]
-            a.content__textbox__action__button.js-video href=block[:url] data-id=vimeo_id data-mfp-src='#video-popup'
+            a.content__textbox__action__button.js-video-popup href=block[:url] data-id=vimeo_id data-mfp-src='#video-popup'
             .content__textbox__action__text = block[:action]
 
     - unless isVideo

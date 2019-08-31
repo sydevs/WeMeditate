@@ -4,13 +4,56 @@
   position: relative
   display: block
 
+  &--vertical
+    @media (orientation: landscape)
+      display: none
+
+  &--horizontal
+    @media (orientation: portrait)
+      display: none
+
+  &--mobile
+    @include tablet-or-larger
+      display: none !important
+
+  &--desktop
+    @include mobile
+      display: none !important
+
+.video--active
+  $fade-time: 0.5s
+
+  .video__thumbnail,
+  .video__button
+    transition: opacity $fade-time
+    opacity: 0
+    z-index: -1
+
+  .video__player
+    transition: z-index 0s
+    transition-delay: $fade-time
+    z-index: 0
+
+// ===== VIDEO THUMBNAIL ===== //
 .video__thumbnail
   -webkit-user-drag: none // autoprefixer doesn't appear to handle this one.
   user-drag: none
   user-select: none
+
+.video__player ~ picture > .video__thumbnail
+  @include overlay
   width: 100%
   height: 100%
 
+// ===== VIDEO PLAYER ===== //
+.video__player
+  position: relative
+  z-index: -1
+  
+  max-width: 240px
+  margin: auto
+
+// ===== VIDEO BUTTON ===== //
 .video__button
   @extend %video-button
 
@@ -18,30 +61,33 @@
   top: 50%
   left: 50%
   transform: translateX(-50%) translateY(-50%)
+  z-index: 2
   
   .video__button--disabled
     border-color: transparent !important
     cursor: inherit !important
 
-.video__button--small
-  @include tablet
-    width: 80px
-    height: 80px
-    padding: 12px
-
-.video__button--large
-  @include tablet-or-larger
-    width: 170px
-    height: 170px
-    padding: 32px
-
-.video__button--vertical
-  @media (orientation: landscape)
+  &__loader
+    position: absolute
+    font-size: 50px
+    margin: 8px
+    color: white
     display: none
 
-.video__button--horizontal
-  @media (orientation: portrait)
-    display: none
+  &--loading .video__button__loader
+    display: block
+
+  &--small
+    @include tablet
+      width: 80px
+      height: 80px
+      padding: 12px
+
+  &--large
+    @include tablet-or-larger
+      width: 170px
+      height: 170px
+      padding: 32px
 
 #video-popup
   max-width: 800px

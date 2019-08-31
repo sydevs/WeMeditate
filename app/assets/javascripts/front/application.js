@@ -18,7 +18,7 @@ const Application = {
     Carousel.loadTranslations()
 
     if (!Application.videoPlayer) {
-      Application.videoPlayer = Video.loadPlayer('video-player')
+      Application.videoPlayer = VideoPopup.loadPlayer('video-player')
     }
 
     const preloader = document.querySelector('.preloader')
@@ -34,6 +34,7 @@ const Application = {
     Application.loadAll('grid', Grid)
     Application.loadAll('loadmore', Loadmore)
     Application.loadAll('video', Video)
+    Application.loadAll('video-popup', VideoPopup)
     Application.loadAll('gallery', ImageGallery)
 
     Application.element = {}
@@ -140,7 +141,11 @@ const Application = {
     })
   },
 
-  isMobileDevice() {
+  get orientation() {
+    return window.innerWidth > window.innerHeight ? 'horizontal' : 'vertical'
+  },
+
+  get isMobileDevice() {
     return navigator.userAgent.match(/Android/i)
         || navigator.userAgent.match(/webOS/i)
         || navigator.userAgent.match(/iPhone/i)
@@ -150,7 +155,7 @@ const Application = {
         || navigator.userAgent.match(/Windows Phone/i)
   },
 
-  isTouchDevice() {
+  get isTouchDevice() {
     return ('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)
   },
 }

@@ -5,11 +5,11 @@ main.scrollspy-target id=dom_id(@treatment)
   h1.banner = @treatment.name
 
   .treatment__media
-    - if @treatment.horizontal_vimeo_id.present?
-      .video
-        = smart_image_tag @treatment.thumbnail, image_sizes, class: 'video__thumbnail', alt: @treatment.name
-        a.video__button.video__button--horizontal.js-video href="https://vimeo.com/#{@treatment.horizontal_vimeo_id}" data-id=@treatment.horizontal_vimeo_id data-mfp-src='#video-popup'
-        a.video__button.video__button--vertical.js-video href="https://vimeo.com/#{@treatment.vertical_vimeo_id}" data-id=@treatment.vertical_vimeo_id data-mfp-src='#video-popup'
+    - if @treatment.vertical_vimeo_id
+      = render 'shared/video', id: @treatment.horizontal_vimeo_id, orientation: :horizontal, thumbnail: @treatment.thumbnail
+      = render 'shared/video', id: @treatment.vertical_vimeo_id, orientation: :vertical, thumbnail: @treatment.thumbnail
+    - elsif @treatment.horizontal_vimeo_id.present?
+      = render 'shared/video', id: @treatment.horizontal_vimeo_id, thumbnail: @treatment.thumbnail
     - else
       .treatment__media__image
         = smart_image_tag @treatment.thumbnail, image_sizes

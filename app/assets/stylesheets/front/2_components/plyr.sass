@@ -66,6 +66,15 @@
   .plyr__controls--overlaid
     display: none
 
+  .plyr__control--overlaid[data-plyr=play]
+    @extend %video-button
+    border-radius: 0
+    background: none !important
+    position: absolute
+
+    svg
+      display: none
+
   .plyr__control
     &.plyr__tab-focus,
     &:hover,

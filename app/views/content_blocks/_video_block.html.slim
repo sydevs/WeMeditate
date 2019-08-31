@@ -11,11 +11,12 @@
       .carousel.js-carousel data-style='video'
         - block[:items].each do |item|
           figure.carousel__item
-            .carousel__video.video
+            = render 'shared/video', id: item[:vimeo_id], thumbnail: item, class: 'video--mobile', lazy: false
+            .carousel__video.video.video--desktop
               // TODO: Re-evaluate image_sizes
               // TODO: Maybe try to find a way to re-enable lazyloading
               = vimeo_image_tag item, '100vw', class: 'video__thumbnail', lazy: false
-              a.video__button.js-video href="https://vimeo.com/#{item[:vimeo_id]}" data-id=item[:vimeo_id] data-mfp-src='#video-popup'
+              a.video__button.js-video-popup href="https://vimeo.com/#{item[:vimeo_id]}" data-id=item[:vimeo_id] data-mfp-src='#video-popup'
 
             figcaption.carousel__name = item[:title]
     - else

@@ -23,7 +23,8 @@ class Treatment < ApplicationRecord
   validates :name, presence: true
   validates :excerpt, presence: true
   validates :thumbnail_id, presence: true, if: :persisted?
-  validates :horizontal_vimeo_id, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_blank: true
+  validates :horizontal_vimeo_id, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_blank: true, unless: :vertical_vimeo_id?
+  validates :horizontal_vimeo_id, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, presence: true, if: :vertical_vimeo_id?
   validates :vertical_vimeo_id, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_blank: true
 
   # Scopes

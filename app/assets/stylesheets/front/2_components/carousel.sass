@@ -41,8 +41,12 @@
 
 // ===== VIDEO SLICK ADJUSTMENTS ===== //
 .carousel[data-style=video] .carousel
+  @include mobile
+    margin-left: -24px
+    margin-right: -24px
+
   &__item
-    padding: 25px 0
+    padding: 25px $gutter-width / 2
 
     @include tablet-or-larger
       padding: 25px
@@ -53,6 +57,8 @@
 
   &__video img
     @include overlay
+    width: 100%
+    height: 100%
 
   &__name
     font-weight: $font-bold
@@ -72,6 +78,7 @@
     overflow: hidden
 
   &-slide
+    transition: opacity 1s
     opacity: 0.5
 
     &:not(.slick-active)

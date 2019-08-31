@@ -1,52 +1,55 @@
 
 class Video {
 
-    constructor(element, index) {
-    this.popout = $(element).magnificPopup({
-      key: 'video',
-      callbacks: {
-        open: function() {
-          Video.loadVimeoId(this.ev[0].dataset.id)
+  constructor(element) {
+    this.container = element
+    this.originalHTML = element.outerHTML
+    this.button = element.querySelector('.video__button')
+    this.orientation = element.dataset.orientation
+    const configElement = element.querySelector('.video__plyr')
 
-          if (Video.useAutoFullscreen()) {
-            Application.videoPlayer.fullscreen.enter()
-          }
-        }
-      },
-    })
-  }
-
-  static unloadPlayer() {
-    Application.videoPlayer.destroy()
-  }
-
-  static loadPlayer(id) {
-    const videoPlayerContainer = document.getElementById(id)
-    const videoPlayer = new Plyr(videoPlayerContainer, {
-      fullscreen: { iosNative: true },
-    })
-
-    if (Video.useAutoFullscreen()) {
-      videoPlayer.on('exitfullscreen', () => $.magnificPopup.close())
+    if (Application.isTouchDevice || this.orientation == 'vertical') {
+      this.player = new Plyr(configElement, {
+        fullscreen: { iosNative: true },
+      })
+    } else {
+      this.player = new Plyr(configElement)
     }
 
-    return videoPlayer
+    this.player.once('play', () => {
+      this.container.classList.add('video--active')
+    })
+
+    this.validateOrientationCallback = () => this.validateOrientation()
+    this.player.on('play', () => this.toggleOrientationCheck(true))
+    this.player.on('pause', () => this.toggleOrientationCheck(false))
+
+    this.button.addEventListener('click', () => this.loadPlayer())
   }
 
-  static loadVimeoId(vimeoId) {
-    if (Application.videoPlayer.source == `https://vimeo.com/${vimeoId}`) return
-
-    console.log('load vimeo id', vimeoId)
-    Application.videoPlayer.source = {
-      type: 'video',
-      autoplay: true,
-      sources: [{ src: vimeoId, provider: 'vimeo' }],
-      vimeo: { playsinline: false },
+  validateOrientation() {
+    if (this.player.playing && !player.fullscreen.active && Application.orientation != this.orientation) {
+      this.player.pause()
     }
   }
 
-  static useAutoFullscreen() {
-    return true || Application.isMobileDevice() || screen.width < 1024
+  toggleOrientationCheck(enable) {
+    if (enable) {
+      window.addEventListener('orientationchange', this.validateOrientationCallback)
+      window.addEventListener('resize', this.validateOrientationCallback)
+    } else {
+      window.removeEventListener('orientationchange', this.validateOrientationCallback)
+      window.removeEventListener('resize', this.validateOrientationCallback)
+    }
+  }
+
+  loadPlayer() {
+    this.button.classList.add('video__button--loading')
+    this.player.play()
+  }
+
+  unload() {
+    this.player.destroy()
   }
 
 }
