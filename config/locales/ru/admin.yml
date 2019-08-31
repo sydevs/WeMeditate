@@ -67,27 +67,27 @@ ru:
       draft: "%{page} черновик"
 
     details:
-      original_language: "Original Language" # TODO: Translate
+      original_language: "Исходный язык" 
       translated_languages: "Языки Перевода"
       priority: "Приоритет На Странице Вдохновение"
       owned_by: "Принадлежит %{owner}"
-      first_published_at: "Впервые опубликован %{datetime}"
+      first_published_at: "Впервые опубликовано %{datetime}"
       vertical_video: "Вертикальное Видео"
       horizontal_video: "Горизонтальное Видео"
       featured_video: "Видео Статьи" # The video which will be shown on an article preview
       featured_date: "Дата Статьи" # The date which will be shown on an article preview
       role: "Роль На Сайте"
-      is_published: "This %{page} is currently visible to the public." # TODO: Translate
-      is_unpublished: "This %{page} is currently not visible to the public." # TODO: Translate
+      is_published: "Эта страница видна пользователям." 
+      is_unpublished: "Эта страница не видна пользователям." 
 
     tags:
       published: "Опубликовано"
-      unpublished: "Не Опубликовано"
-      unpublished_changes: "Имеет Неопубликованные Изменения"
-      unpublished_draft: "Неопубликованный Черновик"
-      no_translation: "Отсутствует %{language} Перевод" # "language" will be replaced with the language that this file is written in.
-      pending_translation: "Есть %{language} Перевод, В Ожидании Утверждения" # "language" will be replaced with the language that this file is written in.
-      in_progress_translation: "Has Incomplete %{language} Translation" # "language" will be replaced with the language that this file is written in. # TODO: Translate
+      unpublished: "Не опубликовано"
+      unpublished_changes: "Есть неопубликованные изменения"
+      unpublished_draft: "Неопубликованный черновик"
+      no_translation: "Отсутствует перевод на %{language}" # "language" will be replaced with the language that this file is written in.
+      pending_translation: "Есть перевод на %{language}, в ожидании утверждения" # "language" will be replaced with the language that this file is written in.
+      in_progress_translation: "Перевод на %{language} не закончен" # "language" will be replaced with the language that this file is written in. 
       pending_invitation: "Приглашение ещё не принято"
       updated_ago: "Изменено %{time_ago} назад"
       published_ago: "Опубликовано %{time_ago} назад"
@@ -98,37 +98,37 @@ ru:
         pending: "Нерешенный Вопрос"
       views: # This is the number of viewers or visits. Used to indicate the number of video views
         one: "%{count} Просмотр" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-        few: "%{count} Views" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+        few: "%{count} Просмотра" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
         many: "%{count} Просмотров" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
-        other: "%{count} Views" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
+        other: "%{count} Просмотра" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 
 
     messages:
       loading: "Загружается"
       errors: "Ошибки"
-      no_translations_found: "Все статьи типа %{pages} уже переведены"
+      no_translations_found: "Все статьи типа \"%{pages}\" уже переведены"
       make_public: "Сделать %{page} видимой для пользователей"
       maintenance_mode: "Сайт в разработке, возвращайтесь через некоторое время."
       confirm_destroy: "Вы уверены, что хотите удалить это? Действие невозможно будет отменить!"
-      confirm_discard_draft: "Are you sure you want to discard all changes shown on this page? This cannot be undone!" # TODO: Translate
+      confirm_discard_draft: "Вы уверены, что хотите отменить правки, показанные на этой странице? Действие невозможно будет отменить!" 
       confirm_unsaved_changes: "Подождите! Несохраненные данные будут потеряны. Вы уверены, что хотите покинуть страницу?"
       drop_files_here: "Переместите файлы сюда"
       unpublished_changes_notice: "%{page} имеет несохраненные изменения. Изменения не видны пользователям, пока они не утверждены администратором."
       pending_invitation_notice: "%{person} получил приглашение стать редактором сайта, но ещё не ответил."
       draft_notice: "Вы просматриваете черновик %{page}. Эта версия не видна пользователям, пока они не утверждена администратором."
       draft_contributed_by: "Этот черновик содержит изменения, сделанные %{people}."
-      text_too_short: "Должно быть по крайней мере %{count} букв"
-      invalid_vimeo_id: "Должен быть действующий Vimeo ID"
+      text_too_short: "должен быть по крайней мере %{count} букв"
+      invalid_vimeo_id: "должно иметь действующее Vimeo ID"
       new_author_notice: "Вы ещё не настроили свой профиль автора, заполните поля ниже и нажмите сохранить."
 
-    hints: # TODO: Translate
-      excerpt: "This is a short preview of the %{page} content that will be shown in %{page} listings."
+    hints: 
+      excerpt: "Это короткое превью страницы, которое будет показано в списке страниц типа \"%{page}\"."
       article_visibility: "Статьи с большим значением видимости будут показаны ближе к началу страницы Вдохновение"
       article_author: "Профиль, который будет отображаться в статье на сайте."
-      article_author_type: "This determines what the author will be called on this article." # TODO: Translate
+      article_author_type: "Это определяет как будет характеризован автор на этой странице." 
       article_owner: "Администраторы и Редакторы всегда могут редактировать любые статьи. Это поле дает автору специальное разрешение на изменение статьи после её публикации. Обычно это человек, который написал первую версию статьи."
       article_video: "Если вы добавите видео, оно будет отображено на превью статьи."
       article_date: "Если данная статья посвящена событию, то вы можете добавить дату события здесь. Эта дата будет отображена на превью статьи."
-      article_published_at: "The published date determines what order the articles appear in." # TODO: Translate
+      article_published_at: "Дата публикации определяет в какой последовательности показаны статьи." 
 
     result:
       created: "Успешно создан."
@@ -164,7 +164,7 @@ ru:
         asGallery: "Галерея"
         asWisdom: "Стиль Древних Знаний"
         asVideo: "Видео"
-        withImages: "Show Images" # TODO: Translate
+        withImages: "Показать изображения" 
         invert: "Инвертировать Цвета"
         style: # These are list styles
           unordered: "Неупорядоченный Список" # Also called a "Bulleted" list
@@ -174,22 +174,22 @@ ru:
           left: "Выравнивание По Левому Краю"
           center: "Выравнивание По Центру"
           right: "Выравнивание По Правому Краю"
-        position: # TODO: Translate
-          narrow: "Narrow Centered"
-          wide: "Wide Centered"
+        position: # 
+          narrow: "Узкий, по середине"
+          wide: "Широкий, по середине"
           left: "С Левой Стороны"
           right: "С Правой Стороны"
         type: # Note to Developer: These must be translated manually because they are accessed in JavaScript
-          articles: "Статьи"
-          treatments: "Методы"
+          articles: "Статьи Вдохновение"
+          treatments: "Методы очистки"
           meditations: "Медитации"
         format:
           button: "Кнопка"
           grid: "Модульная Сетка"
           accordion: "Аккордеон"
           columns: "Колонки"
-          signup: "Signup Form" # TODO: Translate
-          contact: "Contact Form" # TODO: Translate
+          signup: "Форма подписки" 
+          contact: "Контактная форма" 
       decorations:
         triangle: "Оформление Треугольник"
         circle: "Оформление Круг"
@@ -214,21 +214,21 @@ ru:
         action: "Текст Кнопки"
         url: "Вставьте Ссылку"
         quote: "Введите цитату" # "Quote" as in a quotation from some other text or person
-        alt: "Describe the image for the visually impaired" # TODO: Translate
+        alt: "Опишите, что на изображении (нужно для сео и людей с проблемами зрения)" 
         caption: "Введите подпись к изображению" # "Caption" as in a piece of text describing an image
         credit: "Введите автора изображения/цитаты" # "Credit" as in the credit for an image or quotation
         optional: "необзязательно"
         search: "Искать"
       words:
         one: "%{count} слово" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-        few: "%{count} Views" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+        few: "%{count} слова" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
         many: "%{count} слов" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
-        other: "%{count} Views" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
+        
       items:
         one: "%{count} элемент" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-        few: "%{count} Views" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+        few: "%{count} элемента" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
         many: "%{count} элементов" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
-        other: "%{count} Views" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
+        
 
 
     # ===== MISCELLENEOUS ===== #
@@ -254,9 +254,9 @@ ru:
         regional_admin: "отвечает за утверждение переводов, переводит основную часть сайта, контролирует публикацию нового контента на соответстующем языке."
         super_admin: "управляет основными элементами сайта и созданием новых редакторов."
 
-    review: # TODO: Translate
-      discard_all_changes: "Discard All Changes"
-      approve_changes: "Approve Changes"
+    review: 
+      discard_all_changes: "Отменить все изменения"
+      approve_changes: "Утвердить все изменения"
       effect:
         moved: "Moved" # TODO: Translate
         added: "Добавлено"
@@ -267,32 +267,31 @@ ru:
     metadata:
       key: "Название"
       value: "Значение"
-      default_metadata: "Метаданные По Умолчанию"
+      default_metadata: "Метаданные по умолчанию"
       generated_jsonld: "Сгенерированные Структурированные Данные"
 
     draft: # This section deals with the ability to create draft versions of new pages
       no_image: "Изображение Отсутствует"
       items:
         one: "%{count} элемент" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-        few: "%{count} Views" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+        few: "%{count} элемента" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
         many: "%{count} элементов" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
-        other: "%{count} Views" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
+        
       content:
         original: # This is for a button that lets you revert to the previous content
           one: "Изначальный контент с %{count} блоком" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-          few: "Original content with %{count} blocks" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+          few: "Изначальный контент с %{count} блоками" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
           many: "Изначальный контент с %{count} блоками" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
-          other: "Original content with %{count} blocks" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
+          
         draft: # This is for a button that lets you revert to the new content
           one: "Черновик с %{count} блоком" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-          few: "Draft content with %{count} blocks" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … # TODO: Translate this
+          few: "Черновик %{count} блоками" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
           many: "Черновик с %{count} блоками" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
-          other: "Draft content with %{count} blocks" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 # TODO: Translate this
-
+          
     dashboard:
       title: "Панель управления"
       alerts: "Оповещения"
-      no_issues: "Сейчас нет никаких проблем, хорошая работа!"
+      no_issues: "В настоящее время проблем нет, так держать!"
 
     report_issue:
       name: "Девиндра"
@@ -304,15 +303,15 @@ ru:
       errors: "Ошибки"
       no_translated_title: "Отсутствует Перевод Заголовка" # This should be written in titlecase
       menu:
-        my_author: "Мой Профиль Автора"
-        all_authors: "Все Профили Авторов"
+        my_author: "Мой профиль"
+        all_authors: "Профили всех авторов"
         # The website's editable content is broken into three sections Pages, Resources, and People
         pages: "Страницы"
         resources: "Ресурсы"
         people: "Люди"
       locale:
-        all_languages: "Все Языки"
-        other_languages: "Другие Языки"
+        all_languages: "Все языки"
+        other_languages: "Другие языки"
 
     javascript:      
       email: "E-mail"
