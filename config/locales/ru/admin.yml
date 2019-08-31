@@ -25,6 +25,8 @@ ru:
         create: "Создать"
         edit: "Редактировать"
         write: "Писать"
+        edit_details: "Редактировать параметры" # These are the details of a page
+        edit_content: "Редактировать контент" # This is the content of a page
         update: "Сохранить"
         destroy: "Удалить"
         preview: "Предварительный Просмотр"
@@ -41,10 +43,7 @@ ru:
         show: "Посмотреть %{record}"
         upload: "Загрузить %{record}"
         edit: "Редактировать %{record}"
-        edit_details: "Редактировать %{record} детали" # These are the details of the 'record'
-        edit_content: "Редактировать %{record} контент"
         review: "Проверить %{record}"
-        write: "Написать %{record} контент"
         reset: "Изменить %{record}"
         publish: "Опубликовать %{record}"
         unpublish: "Отменить публикацию %{record}" # This means hiding the record from the public, the opposite of publishing
@@ -309,6 +308,13 @@ ru:
         pages: "Страницы"
         resources: "Ресурсы"
         people: "Люди"
+        # For specific models # TODO: Translate
+        static_pages: "Статьи Вдохновение"
+        articles: "Основные Страницы"
+        subtle_system_nodes: "Тонкая Система"
+        meditations: :activerecord.models.meditation.other
+        treatments: :activerecord.models.treatment.other
+        tracks: "Музыка"
       locale:
         all_languages: "Все языки"
         other_languages: "Другие языки"

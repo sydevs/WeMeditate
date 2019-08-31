@@ -9,8 +9,8 @@ it:
         one: "Articolo"
         other: "Articoli"
       static_page:
-        one: "Pagina Statica"
-        other: "Pagine Statiche"
+        one: "Pagina Principale"
+        other: "Pagine Principali"
       subtle_system_node:
         one: "Nodo Sistema Sottile"
         other: "Nodi Sistema Sottile"

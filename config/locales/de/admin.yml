@@ -25,6 +25,8 @@ de:
         create: "New"
         edit: "Edit"
         write: "Write"
+        edit_details: "Edit details" # These are the details of a page
+        edit_content: "Edit content" # This is the content of a page
         update: "Save"
         destroy: "Delete"
         preview: "Preview"
@@ -41,10 +43,7 @@ de:
         show: "View %{record}"
         upload: "Upload %{record}"
         edit: "Edit %{record}"
-        edit_details: "Edit %{record} details" # These are the details of the 'record'
-        edit_content: "Edit %{record} content"
         review: "Review %{record}"
-        write: "Write %{record} content"
         reset: "Reset %{record}"
         publish: "Publish %{record}"
         unpublish: "Unpublish %{record}" # This means hiding the record from the public, the opposite of publishing
@@ -298,6 +297,13 @@ de:
         pages: "Pages"
         resources: "Resources"
         people: "People"
+        # For specific models
+        static_pages: "Main Pages"
+        articles: "Inspiration Articles"
+        subtle_system_nodes: "Subtle System"
+        meditations: :activerecord.models.meditation.other
+        treatments: :activerecord.models.treatment.other
+        tracks: Music Tracks
       locale:
         all_languages: "All Languages"
         other_languages: "Other Languages"
