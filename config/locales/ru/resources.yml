@@ -248,8 +248,8 @@ ru:
         title: "Обращение"
         image: "Фото"
         description: "Биография"
-        years_meditating: "Опыт медитации"
-        user: "Cвязанный с автором аккаунт админа"
+        years_meditating: "Опыт Медитации"
+        user: "Cвязанный с Автором Аккаунт Админа"
 
       user:
         email: "E-mail"
