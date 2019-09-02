@@ -10,7 +10,7 @@ class QuoteTool extends EditorTool {
   // Sanitizer data before saving
   static get sanitize() {
     return {
-      text: false,
+      text: { br: true },
       credit: false,
       caption: false,
     }
