@@ -161,4 +161,5 @@ document.addEventListener('turbolinks:before-cache', ()  => Application.unload()
 window.addEventListener('load', function() {
   $('.preloader').delay(1000).fadeOut('slow')
   Application.preloaded = true
+  Application.init()
 })
