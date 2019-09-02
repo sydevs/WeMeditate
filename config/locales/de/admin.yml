@@ -158,6 +158,7 @@ de:
       tunes: # These are formatting styles for content blocks
         centered: "Centered"
         stretch: "Fill screen width"
+        separate: "Separate image and text"
         asGallery: "Gallery"
         asWisdom: "Ancient Knowledge Style"
         asVideo: "Video"

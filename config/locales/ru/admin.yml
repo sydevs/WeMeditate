@@ -160,6 +160,7 @@ ru:
       tunes: # These are formatting styles for content blocks
         centered: "По Центру"
         stretch: "Во Весь Экран"
+        separate: "Separate image and text" # TODO: Translate
         asGallery: "Галерея"
         asWisdom: "Стиль Древних Знаний"
         asVideo: "Видео"

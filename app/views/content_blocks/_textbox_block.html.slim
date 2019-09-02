@@ -3,7 +3,7 @@
 - isVideo = (block[:asVideo] == true)
 - classes = ["content__textbox--#{block[:alignment]}"]
 - classes << 'content__textbox--invert' if isWisdom || block[:invert] == true
-- classes << "content__textbox--#{block[:stretch] == true ? 'stretch' : 'overlay'}" unless isWisdom
+- classes << "content__textbox--#{block[:separate] == true ? 'separate' : 'overlay'}" unless isWisdom
 - classes << 'content__textbox--wisdom' if isWisdom
 - classes << 'content__textbox--video' if isVideo
 

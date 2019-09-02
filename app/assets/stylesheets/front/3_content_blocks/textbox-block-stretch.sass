@@ -1,7 +1,7 @@
 @import "../../mixins/*"
 
 // ===== CONTENT ===== //
-.content__textbox--stretch .content__textbox
+.content__textbox--separate .content__textbox
   &__image
     margin-left: -24px
     margin-right: -24px
@@ -35,7 +35,7 @@
       max-width: 680px
 
 // ===== ALIGNED ===== //
-.content__textbox--stretch.content__textbox--left
+.content__textbox--separate.content__textbox--left
   .content__textbox__box
     @include laptop-or-larger
       padding-left: 80px
@@ -47,7 +47,7 @@
     @include laptop-or-larger
       margin-left: 72px
   
-.content__textbox--stretch.content__textbox--right
+.content__textbox--separate.content__textbox--right
   .content__textbox__box
     @include laptop-or-larger
       padding-top: 160px
@@ -63,7 +63,7 @@
     @include laptop-or-larger
       right: $gutter-width
 
-.content__textbox--stretch.content__textbox
+.content__textbox--separate.content__textbox
   @each $side in left right
     $opposite: if($side == right, left, right)
 

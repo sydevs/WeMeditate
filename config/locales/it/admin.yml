@@ -154,6 +154,7 @@ it:
       tunes:
         centered: "Centrato"
         stretch: "A tutta larghezza"
+        separate: "Separate image and text" # TODO: Translate
         asGallery: "Galleria"
         asWisdom: "Stile antica saggezza"
         asVideo: "Video"
