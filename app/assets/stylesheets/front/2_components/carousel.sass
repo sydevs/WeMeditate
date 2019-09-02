@@ -40,13 +40,14 @@
         opacity: 1
 
 // ===== VIDEO SLICK ADJUSTMENTS ===== //
-.carousel[data-style=video] .carousel
+.carousel[data-style=video]
   @include mobile
-    margin-left: -24px
-    margin-right: -24px
+    margin-left: -$gutter-width
+    margin-right: -$gutter-width
 
+.carousel[data-style=video] .carousel
   &__item
-    padding: 25px $gutter-width / 2
+    padding: 25px $gutter-width
 
     @include tablet-or-larger
       padding: 25px
