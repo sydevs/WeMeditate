@@ -48,7 +48,19 @@
 
 
 // ===== VIDEO GALLERY ===== //
-// TODO: This reference to .gradient shouldn't be allowed.
-.content__video--gallery .gradient
-  @include tablet-or-smaller
-    display: block
+.content__video__circle
+  position: absolute
+  top: -64px
+  right: 40px
+  transform: translateX(50%)
+  z-index: -1
+  zoom: 0.85
+
+  @include tablet-or-larger
+    display: none
+
+.content__video
+  // TODO: This reference to .gradient and .circle shouldn't be allowed.
+  .gradient, .circle
+    @include tablet-or-smaller
+      display: block

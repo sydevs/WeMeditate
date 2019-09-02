@@ -89,8 +89,13 @@
   - elsif block[:type] == 'meditations'
     .content__catalog__gradient
       .gradient.gradient--right.gradient--tall.gradient--blue
-    .content__catalog__sidetext
-      = render_decoration :sidetext, block, static: true, alignment: :right
+
+    - if block[:decorations] && block[:decorations][:sidetext]
+      .content__catalog__circle
+        = render_decoration :circle, { decorations: { circle: true } }
+      /h2.content__catalog__title = block[:decorations][:sidetext][:text]
+      .content__catalog__sidetext
+        = render_decoration :sidetext, block, static: true, alignment: :right
 
     .carousel.js-carousel data-style='video'
       - records.each do |meditation|

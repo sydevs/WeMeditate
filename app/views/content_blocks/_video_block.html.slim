@@ -6,7 +6,11 @@
     = render_decoration :gradient, block, size: %i[tall]
 
     - if isGallery
-      .content__video__sidetext = render_decoration :sidetext, block, static: true, alignment: :right
+      - if block[:decorations] && block[:decorations][:sidetext]
+        .content__video__circle
+          = render_decoration :circle, { decorations: { circle: true } }
+        .content__video__sidetext
+          = render_decoration :sidetext, block, static: true, alignment: :right
 
       .carousel.js-carousel data-style='video'
         - block[:items].each do |item|

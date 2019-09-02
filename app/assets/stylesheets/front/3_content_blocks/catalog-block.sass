@@ -134,3 +134,25 @@
 
   @include laptop-or-larger
     margin-top: 150px
+
+
+// ===== MEDITATIONS LINK LIST ===== //
+.content__catalog--meditations
+  .content__catalog__circle
+    position: absolute
+    top: -64px
+    right: 40px
+    transform: translateX(50%)
+    z-index: -1
+    zoom: 0.85
+
+    @include tablet-or-larger
+      display: none
+
+  .content__catalog__sidetext
+    display: block !important
+
+  // TODO: This reference to .gradient and .circle shouldn't be allowed.
+  .gradient, .circle
+    @include tablet-or-smaller
+      display: block
