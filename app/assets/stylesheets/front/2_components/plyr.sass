@@ -61,28 +61,6 @@
       height: 11px*/
 
 
-// ===== VIDEO PLYR TWEAKS ===== //
-.plyr.plyr--video
-  .plyr__controls--overlaid
-    display: none
-
-  .plyr__control--overlaid[data-plyr=play]
-    @extend %video-button
-    border-radius: 0
-    background: none !important
-    position: absolute
-
-    svg
-      display: none
-
-  .plyr__control
-    &.plyr__tab-focus,
-    &:hover,
-    &[aria-expanded=true]
-      background: transparentize(black, 0.5)
-      color: $color-player-blue
-
-
 // ===== AUDIO PLYR TWEAKS ===== //
 .plyr.plyr--audio
   padding-top: 25px
