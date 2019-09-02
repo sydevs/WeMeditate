@@ -86,7 +86,7 @@ module Admin
       def pending_invite model, urgency, &block
         if policy(model).create?
           policy_scope(model).invitation_not_accepted.each do |record|
-            next unless allow(record).edit?
+            next unless policy(record).edit?
 
             block.call({
               model: model,
