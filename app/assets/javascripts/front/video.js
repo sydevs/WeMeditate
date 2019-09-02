@@ -24,6 +24,7 @@ class Video {
     }
 
     this.button.classList.add('video__button--loading')
+    this.container.classList.add('video--active')
     this.player.play().then(() => {})
   }
 
