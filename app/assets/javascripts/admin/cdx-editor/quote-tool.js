@@ -56,6 +56,12 @@ class QuoteTool extends EditorTool {
     }, api)
   }
 
+  render() {
+    const container = super.render()
+    container.querySelector(`.${this.CSS.fields.text}`).addEventListener('keydown', event => this.insertParagraphBreak(event))
+    return container
+  }
+
   selectTune(tune) {
     if (this.isTuneActive(tune)) {
       this.setTuneValue(tune.group, '')
