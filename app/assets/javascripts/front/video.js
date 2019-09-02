@@ -3,34 +3,64 @@ class Video {
 
   constructor(element) {
     this.container = element
-    this.originalHTML = element.outerHTML
-    this.button = element.querySelector('.video__button')
-    this.orientation = element.dataset.orientation
-    const configElement = element.querySelector('.video__plyr')
+    this.responsive = element.classList.contains('video--responsive')
+    this.button = element.querySelector('.video__button:not(.video__popup)')
+    this.button.innerHTML = '<div class="video__button__loader icon icon--spinner"></div>'
+    this.button.addEventListener('click', event => {
+      this.initPlayer()
+      event.preventDefault()
+      return false
+    })
+  }
 
-    if (Application.isTouchDevice || this.orientation == 'vertical') {
-      this.player = new Plyr(configElement, {
-        fullscreen: { iosNative: true },
-      })
+  initPlayer() {
+    if (this.responsive) {
+      this.validateOrientationCallback = () => this.resetOrientation()
+      this.horizontalPlayer = this.loadPlayer(this.container.querySelector('iframe.video__horizontal'))
+      this.verticalPlayer = this.loadPlayer(this.container.querySelector('iframe.video__vertical'))
+      this.currentOrientation = Application.orientation
     } else {
-      this.player = new Plyr(configElement)
+      this.horizontalPlayer = this.loadPlayer(this.container.querySelector('iframe'))
     }
 
-    this.player.once('play', () => {
+    this.button.classList.add('video__button--loading')
+    this.player.play().then(() => {})
+  }
+
+  get player() {
+    return this.responsive && this.orientation == 'vertical' ? this.verticalPlayer : this.horizontalPlayer
+  }
+
+  loadPlayer(iframe) {
+    console.log('load video',iframe)
+    iframe.src = iframe.dataset.src
+    const player = new Vimeo.Player(iframe)
+
+    player.on('pause', () => {
+      console.log('on pause video')
+      if (this.responsive) this.toggleOrientationCheck(false)
+    })
+    
+    player.on('play', () => {
+      console.log('on play video')
+      if (this.responsive) this.toggleOrientationCheck(true)
       this.container.classList.add('video--active')
     })
 
-    this.validateOrientationCallback = () => this.validateOrientation()
-    this.player.on('play', () => this.toggleOrientationCheck(true))
-    this.player.on('pause', () => this.toggleOrientationCheck(false))
-
-    this.button.addEventListener('click', () => this.loadPlayer())
+    return player
   }
 
-  validateOrientation() {
-    if (this.player.playing && !player.fullscreen.active && Application.orientation != this.orientation) {
-      this.player.pause()
-    }
+  resetOrientation() {
+    if (Application.orientation == this.orientation) return
+
+    this.orientation = Application.orientation
+    const oldPlayer = this.orientation == 'horizontal' ? this.verticalPlayer : this.horizontalPlayer
+    const newPlayer = this.orientation == 'vertical' ? this.horizontalPlayer : this.verticalPlayer
+
+    oldPlayer.getCurrentTime().then(seconds => {
+      newPlayer.setCurrentTime(seconds)
+      newPlayer.play()
+    })
   }
 
   toggleOrientationCheck(enable) {
@@ -43,13 +73,9 @@ class Video {
     }
   }
 
-  loadPlayer() {
-    this.button.classList.add('video__button--loading')
-    this.player.play()
-  }
-
   unload() {
-    this.player.destroy()
+    this.container.classList.remove('video--active')
+    this.button.classList.remove('video__button--loading')
   }
 
 }

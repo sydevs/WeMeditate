@@ -17,10 +17,6 @@ const Application = {
     Application.loadAnimations()
     Carousel.loadTranslations()
 
-    if (!Application.videoPlayer) {
-      Application.videoPlayer = VideoPopup.loadPlayer('video-player')
-    }
-
     const preloader = document.querySelector('.preloader')
     if (Application.preloaded && preloader) {
       preloader.remove()
@@ -34,7 +30,6 @@ const Application = {
     Application.loadAll('grid', Grid)
     Application.loadAll('loadmore', Loadmore)
     Application.loadAll('video', Video)
-    Application.loadAll('video-popup', VideoPopup)
     Application.loadAll('gallery', ImageGallery)
 
     Application.element = {}

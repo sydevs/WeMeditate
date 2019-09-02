@@ -6,10 +6,14 @@
 
 article.inspiration__item.preview id=dom_id(article) class=dom_id(article.category)
   - if article.vimeo_id.present?
-    = render 'shared/video', id: article.vimeo_id, thumbnail: article.thumbnail, class: 'preview__media video--mobile'
-    .preview__media.video.video--desktop
-      = smart_image_tag article.thumbnail, image_sizes, lazy: false, class: 'preview__media__thumbnail video__thumbnail', alt: article.name
-      a.video__button.js-video-popup href="https://vimeo.com/#{article.vimeo_id}" data-id=article.vimeo_id data-mfp-src='#video-popup'
+    .preview__media.video class='js-video'
+      .video__inner
+        = vimeo_tag article.vimeo_id
+        .video__thumbnail
+          // TODO: Image sizes
+          = smart_image_tag article.thumbnail, '100vw'
+          a.video__button.video__popup data-lity=true href="https://vimeo.com/#{article.vimeo_id}"
+          a.video__button
   - elsif article.thumbnail.present?
     a.preview__media href=article_path(article)
       = smart_image_tag article.thumbnail, image_sizes, lazy: false, class: 'preview__media__thumbnail', alt: article.name
