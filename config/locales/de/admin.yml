@@ -31,7 +31,6 @@ de:
         destroy: "Delete"
         preview: "Preview"
         review: "Review"
-        preview: "Preview"
         save_draft: "Save Draft"
         approve: "Approve"
         invite: "Invite" # To invite a new editor to the website
@@ -43,6 +42,7 @@ de:
         show: "View %{record}"
         upload: "Upload %{record}"
         edit: "Edit %{record}"
+        write: "Write %{record} content"
         review: "Review %{record}"
         reset: "Reset %{record}"
         publish: "Publish %{record}"

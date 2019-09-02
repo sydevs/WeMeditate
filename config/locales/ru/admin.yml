@@ -31,7 +31,6 @@ ru:
         destroy: "Удалить"
         preview: "Предварительный Просмотр"
         review: "Проверить"
-        preview: "Предварительный Просмотр"
         save_draft: "Сохранить Черновик"
         approve: "Утвердить"
         invite: "Пригласить" # To invite a new editor to the website
@@ -43,6 +42,7 @@ ru:
         show: "Посмотреть %{record}"
         upload: "Загрузить %{record}"
         edit: "Редактировать %{record}"
+        write: "Написать %{record} контент"
         review: "Проверить %{record}"
         reset: "Изменить %{record}"
         publish: "Опубликовать %{record}"
