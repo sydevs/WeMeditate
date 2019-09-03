@@ -109,14 +109,15 @@
     height: 100%
 
 .content__catalog__article_grid--centered
-  display: flex
-  flex-direction: row
-  justify-content: center
+  @include tablet-or-larger
+    display: flex
+    flex-direction: row
+    justify-content: center
 
-  .content__catalog__article
-    padding: 0 20px
-    width: 50%
-    max-width: 400px
+    .content__catalog__article
+      padding: 0 20px
+      width: 50%
+      max-width: 400px
 
 
 // ===== TREATMENTS LINK LIST ===== //
