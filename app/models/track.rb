@@ -23,7 +23,7 @@ class Track < ApplicationRecord
 
   # Scopes
   scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :q, -> (q) { joins(:translations, :artists).where('track_translations.name ILIKE ? OR artists.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
+  scope :q, -> (q) { with_translations(I18n.locale).joins(:translations, :artists).where('track_translations.name ILIKE ? OR artists.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Include everything necessary to render the full content of this model
   def self.preload_for mode

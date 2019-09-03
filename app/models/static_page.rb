@@ -29,7 +29,7 @@ class StaticPage < ApplicationRecord
   # Scopes
   default_scope { order(:role) }
   scope :published, -> { with_translations(I18n.locale).where.not(published_at: nil) }
-  scope :q, -> (q) { joins(:translations).where('static_page_translations.name ILIKE ? OR role ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
+  scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('static_page_translations.name ILIKE ? OR role ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model
   def self.preload_for mode

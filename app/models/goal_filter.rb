@@ -22,7 +22,7 @@ class GoalFilter < ApplicationRecord
   # Scopes
   default_scope { order(:order) }
   scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :q, -> (q) { joins(:translations).where('goal_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
+  scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('goal_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   def self.has_content
     joins(meditations: [:translations, duration_filter: :translations]).where({
