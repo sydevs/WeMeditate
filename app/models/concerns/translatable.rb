@@ -15,16 +15,19 @@ module Translatable
     true
   end
 
-  def has_translation? section = nil, locale: I18n.locale
+  def has_translation? section = nil, locale: I18n.locale, check_draft: true
     return false unless translated_locales.include?(locale)
 
     if section == :content
-      content.present? || has_draft?(:content)
+      return true if content.present?
     elsif section == :details
-      try(:name).present? || has_draft?(:details)
+      return true if try(:name).present?
     else
-      true
+      return true
     end
+
+    return true if check_draft && has_draft?(section)
+    false
   end
 
   def original_localization

@@ -52,7 +52,7 @@
         button.ui.basic.positive.button type='submit' name='draft' value='true'
           = translate 'admin.action.simple.save_draft'
 
-        - unless @record.is_a?(Article) && @record.new_record?
+        - if @record.has_translation?(:details)
           button.ui.basic.primary.button type='submit'
             = translate 'admin.action.simple.update'
             '  &

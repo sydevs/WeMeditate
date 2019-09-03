@@ -28,10 +28,10 @@
       i.external.alternate.icon
 
 = f.input :vertical_vimeo_id, wrapper: :semantic_input, icon: :video
-- if record.horizontal_vimeo_id.present?
+- if record.vertical_vimeo_id.present?
   .preview-item
-    a.ui.label.link href="https://vimeo.com/#{record.horizontal_vimeo_id}" target='_blank'
-      | vimeo.com/#{record.horizontal_vimeo_id}
+    a.ui.label.link href="https://vimeo.com/#{record.vertical_vimeo_id}" target='_blank'
+      | vimeo.com/#{record.vertical_vimeo_id}
       i.external.alternate.icon
 
 = f.input :excerpt, as: :text
