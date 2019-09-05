@@ -60,6 +60,8 @@
 .plyr__controls
   // ===== PLAY BUTTON ===== //
   button.plyr__control aria-label=t('player.play_title', title: '{title}') data-plyr='play' type='button'
+    .plyr__loading
+      .icon.icon--spinner
     svg.icon--pressed role='presentation' viewBox='0 0 18 18'
       use xlink:href='#plyr-pause'
     svg.icon--not-pressed role='presentation' viewBox='0 0 18 18'

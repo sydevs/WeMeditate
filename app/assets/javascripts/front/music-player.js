@@ -7,6 +7,7 @@ class MusicPlayer {
 
     this.container = element
     this.player = new Plyr(audioPlayer, { controls, invertTime: true })
+    this.playerWrapper = element.querySelector('.plyr')
     this.selectionContainer = element.querySelector('.player__selection')
     this.sidetext = element.querySelector('.player__sidetext')
     this.icons = element.querySelector('.player__icons')
@@ -17,6 +18,8 @@ class MusicPlayer {
     $(element).on('click', '[data-plyr="skip-back"]', () => this.selectPreviousTrack())
     $(element).on('click', '[data-plyr="skip-forward"]', () => this.selectNextTrack())
     this.player.on('ended', () => this.selectNextTrack())
+    this.player.on('playing', () => this.container.classList.remove('player--loading'))
+    element.querySelector('[data-plyr=play]').addEventListener('click', () => this.container.classList.add('player--loading'))
 
     this.selectionTitle = this.container.querySelector('.player__selection__title')
     this.selectionArtist = this.container.querySelector('.player__selection__artist')
@@ -138,6 +141,7 @@ class MusicPlayer {
       ]
     }
 
+    this.container.classList.add('player--loading')
     this.player.play()
 
     if (!this.mini) {

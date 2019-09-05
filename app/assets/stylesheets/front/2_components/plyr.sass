@@ -60,6 +60,20 @@
     @include tablet-or-larger
       height: 11px*/
 
+// ===== PLYR LOADING ===== //
+.plyr__loading
+  display: none
+
+.player--loading
+  .plyr--playing [data-plyr=play]
+    .plyr__loading
+      display: block
+      @include overlay
+      line-height: 34px
+
+    svg, .plyr__equalizer
+      display: none !important
+
 
 // ===== AUDIO PLYR TWEAKS ===== //
 .plyr.plyr--audio
