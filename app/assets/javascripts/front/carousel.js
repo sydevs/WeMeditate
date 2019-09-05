@@ -1,24 +1,6 @@
 
 class Carousel {
 
-  static loadTranslations() {
-    $.extend(true, $.magnificPopup.defaults, {
-      tClose: translate['popup']['close'], // Alt text on close button
-      tLoading: translate['popup']['loading'], // Text that is displayed during loading. Can contain %curr% and %total% keys
-      gallery: {
-        tPrev: translate['popup']['prev'], // Alt text on left arrow
-        tNext: translate['popup']['next'], // Alt text on right arrow
-        tCounter: translate['popup']['counter'], // Markup for "1 of 7" counter
-      },
-      image: {
-        tError: translate['popup']['image_error'], // Error message when image could not be loaded
-      },
-      ajax: {
-        tError: translate['popup']['ajax_error'], // Error message when ajax request failed
-      }
-    })
-  }
-
   constructor(element) {
     const $element = $(element)
     this.container = element

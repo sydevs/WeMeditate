@@ -15,7 +15,6 @@ const Application = {
   load() {
     Application.loadImages()
     Application.loadAnimations()
-    Carousel.loadTranslations()
 
     const preloader = document.querySelector('.preloader')
     if (Application.preloaded && preloader) {

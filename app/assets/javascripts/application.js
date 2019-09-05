@@ -14,4 +14,5 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery.slick
+//= require photoswipe
 //= require_tree ./front

@@ -32,9 +32,7 @@ html lang=locale
     = render 'layouts/partials/header', cached: true
     = yield
     = render 'layouts/partials/footer', cached: true
-
-    #video-popup.mfp-hide data-turbolinks-permanent=true
-      video#video-player controls=true
+    = render 'layouts/partials/photoswipe', cached: true
 
   javascript:
     window.translate = #{translate('javascript').to_json.html_safe}

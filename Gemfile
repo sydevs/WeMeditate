@@ -31,6 +31,7 @@ gem 'jquery-rails' # Add jQuery
 gem 'jquery-slick-rails' # A slider library
 gem 'normalize-rails' # To normalize CSS
 gem 'semantic-ui-sass' # CSS framework for the admin/CMS pages
+gem 'photoswipe-rails' # For image gallery
 
 # Models
 gem 'friendly_id' # Model routes use a slug instead of an ID number
@@ -39,6 +40,7 @@ gem 'jsonb_accessor' # Makes it simpler to access attributes of a jsonb database
 # Uploads
 gem 'carrierwave' # Core support for file uploads
 gem 'carrierwave-google-storage' # Let's us store the files in Google Storage
+gem 'carrierwave-meta' # To get image meta data
 gem 'mini_magick' # Image processing during upload
 
 # Admin
