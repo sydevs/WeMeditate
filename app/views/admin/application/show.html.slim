@@ -15,12 +15,12 @@
         - action_text = :review
         - action_key = @record.ready_for_review?(:content) ? :review : :edit
       - else
-        - action_text = :edit
+        - action_text = :edit_details
         - action_key = :edit
 
       a.ui.button href=polymorphic_admin_path([action_key, :admin, @record])
         i.edit.icon
-        = translate(action_text, scope: %i[admin action target], record: model_name)
+        = translate(action_text, scope: %i[admin action simple])
 
       - if @record.has_translation?
         .ui.floating.dropdown.icon.button

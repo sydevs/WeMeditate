@@ -21,6 +21,7 @@ ru:
     classes_near_me: "Ближайшие центры"
     online_meditations: "Медитация онлайн"
     languages: "Языки" 
+    self_realization: "The First Experience" # TODO: Translate
 
   actions_footer:
     title: "Откройте медитацию для себя!"

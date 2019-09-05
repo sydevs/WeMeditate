@@ -3,6 +3,11 @@ module Admin
 
     prepend_before_action { @model = SubtleSystemNode }
 
+    def new
+      @record = @model.new role: params[:role]
+      render 'admin/application/new'
+    end
+
     def create
       super subtle_system_node_params
     end

@@ -21,6 +21,13 @@ class MeditationsController < ApplicationController
     end
   end
 
+  def self_realization
+    @meditation = Meditation.published.get(:self_realization)
+    raise ActionController::RoutingError.new('Self Realization Page Not Found') if @meditation.nil?
+    set_metadata(@meditation)
+    render :show
+  end
+
   def archive
     next_offset = params[:offset].to_i + MEDITATIONS_PER_PAGE
     @meditations = Meditation.published.preload_for(:preview).offset(params[:offset]).limit(MEDITATIONS_PER_PAGE)

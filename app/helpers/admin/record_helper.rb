@@ -7,6 +7,18 @@ module Admin::RecordHelper
     destroy: 'trash',
   }.freeze
 
+  def record_has_fixed_slug?
+    case @record
+    when StaticPage
+      first_path_segment = static_page_path_for(@record).split('/').reject(&:empty?).first
+      first_path_segment != translate('routes.page')
+    when Meditation
+      @record.slug == translate('routes.self_realization')
+    else
+      false
+    end
+  end
+
   # ===== MESSAGES ===== #
   def record_published_status
     published = @record.get_localized_attribute(:published)

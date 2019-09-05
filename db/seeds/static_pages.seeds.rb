@@ -18,7 +18,6 @@ static_pages = {}
   tracks: 'Music for Meditation',
   meditations: 'Meditate Now',
   classes: 'Classes Near Me',
-  self_realization: 'The First Experience',
   privacy: 'Privacy Notice',
 }.each do |role, name|
   static_pages[role] = StaticPage.find_or_initialize_by(role: role)
@@ -466,16 +465,6 @@ static_pages[:classes].update!(content: content([
         { title: 'Do I need to have meditated before?', text: sentences(4) },
       ],
       format: :accordion,
-    },
-  },
-]))
-
-# ===== CREATE SELF REALIZATION CONTENT ===== #
-static_pages[:self_realization].update!(content: content([
-  {
-    type: :video,
-    data: {
-      items: [vimeo_attachment],
     },
   },
 ]))

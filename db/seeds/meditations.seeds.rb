@@ -38,6 +38,7 @@ end
 # ===== CREATE MEDITATIONS ===== #
 [{
   name: 'First Meditation Experience',
+  slug: I18n.translate('routes.self_realization'),
   goal_filters: %i[harmony self_confident],
   duration_filter: 10,
 }, {

@@ -13,6 +13,7 @@ en: # English translations
     page: "page"
     music: "music"
     archive: "all"
+    self_realization: "first-experience"
 ru: # Russian translations
   routes:
     inspiration: "вдохновение"
@@ -24,17 +25,19 @@ ru: # Russian translations
     page: "страница"
     music: "музыка"
     archive: "все"
+    self_realization: "cамореализация"
 it: # Italian translations
   routes:
     inspiration: "ispirazione"
     articles: "articoli"
-    countries: "paesi del Mondo"
+    countries: "paesi-del-mondo"
     meditations: "meditazioni"
     techniques: "tecniche"
     subtle_system: "sistema-sottile"
     page: "pagina"
     music: "musica"
     archive: "tutto"
+    self_realization: "realizzazione-del-sé"
 de: # German translations
   routes:
     inspiration: "inspiration"
@@ -46,3 +49,4 @@ de: # German translations
     page: "page"
     music: "music"
     archive: "all"
+    self_realization: "first-experience"

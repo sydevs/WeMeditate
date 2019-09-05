@@ -88,6 +88,7 @@ ru:
       pending_translation: "Есть перевод на %{language}, в ожидании утверждения" # "language" will be replaced with the language that this file is written in.
       in_progress_translation: "Перевод на %{language} не закончен" # "language" will be replaced with the language that this file is written in. 
       pending_invitation: "Приглашение ещё не принято"
+      missing_record: "Missing %{model}" # TODO: Translate
       updated_ago: "Изменено %{time_ago} назад"
       published_ago: "Опубликовано %{time_ago} назад"
       urgency: # These are in order, with 'critical' as the most important, and 'pending' as the least important.
@@ -128,6 +129,7 @@ ru:
       article_video: "Если вы добавите видео, оно будет отображено на превью статьи."
       article_date: "Если данная статья посвящена событию, то вы можете добавить дату события здесь. Эта дата будет отображена на превью статьи."
       article_published_at: "Дата публикации определяет в какой последовательности показаны статьи." 
+      fixed_slug: "This is a special page, it's URL cannot be changed." # TODO: Translate
 
     result:
       created: "Успешно создан."

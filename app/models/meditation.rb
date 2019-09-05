@@ -56,10 +56,16 @@ class Meditation < ApplicationRecord
     when :trending
       # The meditation with the most views
       Meditation.published.order('meditation_translations.views DESC').first
+    when :self_realization
+      Meditation.find_by(slug: I18n.translate('routes.self_realization'))
     else
       # A purely random meditation
       Meditation.published.order('RANDOM()').first
     end
+  end
+
+  def self_realization?
+    slug == I18n.translate('routes.self_realization')
   end
 
 end

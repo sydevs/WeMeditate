@@ -86,6 +86,7 @@ it:
       pending_translation: "Traduzione %{language} presente, da approvare."
       in_progress_translation: "Has Incomplete %{language} Translation" # "language" will be replaced with the language that this file is written in. # TODO: Translate
       pending_invitation: "Non ha ancora accettato l'invito."
+      missing_record: "Missing %{model}" # TODO: Translate
       updated_ago: "Modificato %{time_ago} fa."
       published_ago: "Pubblicato %{time_ago} fa."
       urgency:
@@ -124,6 +125,7 @@ it:
       article_video: "If you enter a featured video, it will appear on the article preview." # TODO: Translate
       article_date: "If this article is about an event, then you can set the start date of the event here. This date will appear on the article preview." # TODO: Translate
       article_published_at: "The published date determines what order the articles appear in." # TODO: Translate
+      fixed_slug: "This is a special page, it's URL cannot be changed." # TODO: Translate
 
     result:
       created: "Creato con successo."

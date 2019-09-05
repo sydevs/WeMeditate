@@ -4,6 +4,7 @@ module Admin
   module DashboardHelper
 
     def dashboard_issues &block
+      missing Meditation, :critical, &block
       untranslated Category, :critical, &block
       untranslated GoalFilter, :critical, &block
       untranslated InstrumentFilter, :critical, &block
@@ -31,6 +32,32 @@ module Admin
           "#{record.model_name.human}: #{record.preview_name}"
         else
           record.preview_name
+        end
+      end
+
+      def missing model, urgency, &block
+        if policy(model).create?
+          if model == Meditation
+            return unless Meditation.get(:self_realization).nil?
+
+            block.call({
+              model: model,
+              name: translate('footer.self_realization'),
+              url: polymorphic_path(%i[new admin meditation], slug: translate('routes.self_realization')),
+              message: translate('admin.tags.missing_record', model: model),
+              urgency: urgency,
+            })
+          else
+            model.available_roles.each do |role|
+              block.call({
+                model: model,
+                name: human_enum_name(model, :role, role),
+                url: polymorphic_path([:new, :admin, model.model_name.singular_route_key.to_sym], role: role),
+                message: translate('admin.tags.missing_record', model: model),
+                urgency: urgency,
+              })
+            end
+          end
         end
       end
 

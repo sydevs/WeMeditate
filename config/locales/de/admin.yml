@@ -30,7 +30,7 @@ de:
         update: "Save"
         destroy: "Delete"
         preview: "Preview"
-        review: "Review"
+        review: "Review changes"
         save_draft: "Save Draft"
         approve: "Approve"
         invite: "Invite" # To invite a new editor to the website
@@ -88,6 +88,7 @@ de:
       pending_translation: "Has %{language} Translation, Pending Approval" # "language" will be replaced with the language that this file is written in.
       in_progress_translation: "Has Incomplete %{language} Translation" # "language" will be replaced with the language that this file is written in.
       pending_invitation: "Has Not Yet Accepted Invitation"
+      missing_record: "Missing %{model}"
       updated_ago: "Modified %{time_ago} ago"
       published_ago: "Published %{time_ago} ago"
       urgency: # These are in order, with 'critical' as the most important, and 'pending' as the least important.
@@ -126,6 +127,7 @@ de:
       article_video: "If you enter a featured video, it will appear on the article preview."
       article_date: "If this article is about an event, then you can set the start date of the event here. This date will appear on the article preview."
       article_published_at: "The published date determines what order the articles appear in."
+      fixed_slug: "This is a special page, it's URL cannot be changed."
 
     result:
       created: "Created successfully."

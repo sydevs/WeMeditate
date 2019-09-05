@@ -3,6 +3,11 @@ module Admin
 
     prepend_before_action { @model = Meditation }
 
+    def new
+      @record = @model.new slug: params[:slug]
+      render 'admin/application/new'
+    end
+
     def create
       super meditation_params
     end

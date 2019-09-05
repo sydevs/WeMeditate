@@ -18,7 +18,7 @@ class StaticPage < ApplicationRecord
 
   # Associations
   enum role: {
-    home: 0, about: 1, contact: 2, shri_mataji: 3, subtle_system: 4, sahaja_yoga: 5, self_realization: 6, privacy: 7,
+    home: 0, about: 1, contact: 2, shri_mataji: 3, subtle_system: 4, sahaja_yoga: 5, privacy: 7,
     articles: 10, treatments: 11, tracks: 12, meditations: 13, classes: 14,
   }
 
@@ -30,7 +30,7 @@ class StaticPage < ApplicationRecord
   default_scope { order(:role) }
   scope :published, -> { with_translations(I18n.locale).where.not(published_at: nil) }
   scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('static_page_translations.name ILIKE ? OR role ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
-
+  
   # Include everything necessary to render this model
   def self.preload_for mode
     case mode

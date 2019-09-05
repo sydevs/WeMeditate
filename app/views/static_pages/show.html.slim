@@ -31,7 +31,7 @@
     - cache @static_page.content_cache_key do
       .content = render_content @static_page
 
-  - if @static_page.classes? || @static_page.self_realization?
+  - if @static_page.classes?
     = sharing_links
   - else
     = render 'application/actions_footer'
