@@ -1,0 +1,68 @@
+@import "../../mixins/*"
+
+/* AMPLITUDE SLIDERS
+  We are using the amplitude library to play audio content.
+  */
+
+@mixin player-thumb
+  border: none
+  border-radius: 0
+  width: 16px
+  height: 16px
+  background: $color-player-blue
+  cursor: pointer
+
+// ===== SLIDERS ===== //
+.amplitude-song-slider
+  width: 100%
+
+.amplitude-volume-slider
+  width: 100px
+
+.amplitude-song-slider,
+.amplitude-volume-slider
+  appearance: none
+  background: none
+  height: 20px
+
+  &:focus
+    outline: none
+
+// ===== WEBKIT ===== //
+.amplitude-song-slider,
+.amplitude-volume-slider
+  &::-webkit-media-slider-thumb,
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+    margin-top: -6.5px
+    @include player-thumb
+
+  &::-webkit-slider-runnable-track
+    height: 3px
+    background: $color-player-blue
+    transition: all 0.3s ease
+    user-select: none
+
+// ===== MOZILLA ===== //
+.amplitude-song-slider,
+.amplitude-volume-slider
+  &::-moz-range-thumb
+    @include player-thumb
+
+  &::-moz-range-track
+    background: $color-player-light
+
+  &::-moz-range-progress
+    background: $color-player-blue
+
+// ===== MICROSOFT ===== //
+.amplitude-song-slider,
+.amplitude-volume-slider
+  &::-ms-thumb
+    @include player-thumb
+
+  &::-ms-fill-upper
+    background: $color-player-light
+
+  &::-ms-fill-lower
+    background: $color-player-blue

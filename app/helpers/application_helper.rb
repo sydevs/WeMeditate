@@ -4,18 +4,48 @@ module ApplicationHelper
     Rails.configuration.locale_hosts[I18n.locale]
   end
 
-  def playlist_data tracks
-    tracks.each_with_index.map do |track, index|
+  def amplitude_data tracks, playlists: true
+    playlists = {}
 
+    songs = tracks.each_with_index.map do |track, index|
+      puts "PROCESS #{index} #{track.inspect}"
+      if playlists
+        track.instrument_filters.each do |filter|
+          unless playlists.key?(filter.id)
+            playlists[filter.id] = {
+              title: filter.name,
+              cover_art_url: filter.icon_url,
+              songs: [],
+            }
+          end
+
+          playlists[filter.id][:songs] << index
+        end
+      end
+
+      puts "SET #{index}"
       {
         index: index,
         name: track.name,
-        src: track.audio_url,
-        mood_filters: track.mood_filters.map(&:id),
-        instrument_filters: track.instrument_filters.map(&:id),
-        artists: playlist_artist_data(track.artists),
+        artist: track.artists.first.name,
+        url: track.audio_url,
+        cover_art_url: track.artists.first.image_url,
       }
     end
+
+    puts "SONGS #{songs}"
+
+    if playlists
+      playlists[0] = {
+        title: '',
+        songs: songs.first(10).map { |song| song[:index] },
+      }
+    end
+
+    {
+      songs: songs,
+      playlists: playlists,
+    }
   end
 
   def playlist_artist_data artists

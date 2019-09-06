@@ -1,0 +1,12 @@
+
+.amplitude-song-container.amplitude-play data-amplitude-song-index=song_counter data-amplitude-playlist=playlist
+  .amplitude-song-icon
+    .icon.icon--player
+  .amplitude-song-title
+    = song[:name]
+  .amplitude-song-artist
+    = song[:artist]
+    /- song.artists.each do |artist|
+      a href=artist.url target='_blank' = artist.name
+      = ', ' unless song.artists.last == artist
+  /.amplitude-duration-time data-amplitude-song-index=song_counter
