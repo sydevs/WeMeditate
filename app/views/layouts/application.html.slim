@@ -1,6 +1,7 @@
 doctype html
 html lang=locale
   head
+    = google_tag_manager
     = render_metatags
     = csrf_meta_tags
     meta charset="utf-8"
@@ -20,7 +21,6 @@ html lang=locale
 
     = yield :head if content_for? :head
 
-    = google_tag_manager
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = render_structured_data
