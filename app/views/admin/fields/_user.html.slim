@@ -24,16 +24,26 @@
   - other_languages = other_languages.map { |lang| language_name(lang) }.join(', ')
   - hint = "#{translate('admin.misc.locale.other_languages')}: #{other_languages}"
 
-= f.input :languages, selected: selected, collection: available_languages, hint: hint, prompt: translate('admin.misc.locale.all_languages'), input_html: { multiple: true }
+- if current_user != f.object
+  = f.input :languages, selected: selected, collection: available_languages, hint: hint, prompt: translate('admin.misc.locale.all_languages'), input_html: { multiple: true }
+  = f.input :role, collection: @assignable_roles.map { |k, v| [human_enum_name(User, :role, k), k] }
 
-= f.input :role, collection: @assignable_roles.map { |k, v| [human_enum_name(User, :role, k), k] }
+  ul.hint
+    - User.roles.keys.each do |role|
+      li
+        strong = human_enum_name(User, :role, role)
+        '  -
+        = translate(role, scope: %i[admin permissions role_description])
+- else
+  = f.input :languages do
+    = record.available_languages.map { |lang| language_name(lang) }.join(', ')
 
-ul.hint
-  - User.roles.keys.each do |role|
-    li
-      strong = human_enum_name(User, :role, role)
-      '  -
-      = translate(role, scope: %i[admin permissions role_description])
+  = f.input :role do
+    strong = human_enum_name(record, :role)
+    '  -
+    = translate(record.role, scope: %i[admin permissions role_description])
+
+  .ui.hidden.divider
 
 table.ui.definition.table
   thead

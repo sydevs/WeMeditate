@@ -11,8 +11,8 @@ main id=dom_id(@meditation)
           = vimeo_tag @meditation.horizontal_vimeo_id, class: 'video__horizontal'
           = vimeo_tag @meditation.vertical_vimeo_id, class: 'video__vertical'
           .video__thumbnail
-            // TODO: Image sizes
-            = smart_image_tag @meditation.thumbnail, '100vw'
+            - image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 1023px) 622px, 766px'
+            = smart_image_tag @meditation.thumbnail, image_sizes
             a.video__button
 
   .meditation__text

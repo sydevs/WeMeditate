@@ -19,8 +19,8 @@
               .video__inner
                 = vimeo_tag item[:vimeo_id]
                 .video__thumbnail
-                  // TODO: Image sizes
-                  = vimeo_image_tag item, '100vw', lazy: false
+                  - image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 919px) calc(100vw - 98px), (max-width: 1198px) 50vw, 548px'
+                  = vimeo_image_tag item, image_sizes, lazy: false
                   a.video__button.video__popup data-lity=true href="https://vimeo.com/#{item[:vimeo_id]}"
                   a.video__button
 
@@ -35,8 +35,8 @@
           .video__inner
             = vimeo_tag item[:vimeo_id]
             .video__thumbnail
-              // TODO: Image sizes
-              = vimeo_image_tag item, '100vw', lazy: false
+              - image_sizes = '(max-width: 708px) calc(100vw - 48px), 660px'
+              = vimeo_image_tag item, image_sizes, lazy: false
               a.video__button.video__popup data-lity=true href="https://vimeo.com/#{item[:vimeo_id]}"
               a.video__button
 

@@ -88,6 +88,7 @@ de:
       pending_translation: "Has %{language} Translation, Pending Approval" # "language" will be replaced with the language that this file is written in.
       in_progress_translation: "Has Incomplete %{language} Translation" # "language" will be replaced with the language that this file is written in.
       pending_invitation: "Has Not Yet Accepted Invitation"
+      this_is_you: "This is you"
       missing_record: "Missing %{model}"
       updated_ago: "Modified %{time_ago} ago"
       published_ago: "Published %{time_ago} ago"
@@ -291,7 +292,6 @@ de:
       body: "Please describe the issue in English..."
 
     misc:
-      errors: "Errors"
       no_translated_title: "No Translated Title" # This should be written in titlecase
       menu:
         my_author: "My Author Profile"

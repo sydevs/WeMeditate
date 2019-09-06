@@ -10,7 +10,7 @@
 = simple_form_for record, url: polymorphic_admin_path([:admin, record]), html: { id: "#{record.model_name.i18n_key}-form", class: "#{'error' if record.errors.present?}", novalidate: true } do |f|
   - if record.errors.present?
     .ui.error.message
-      .header = translate 'admin.misc.errors'
+      .header = translate 'admin.messages.errors'
       ul.list
         - record.errors.full_messages.each do |message|
           li = message
@@ -92,12 +92,14 @@
         = translate 'admin.action.target.destroy', record: record.model_name.human
 
   p
+    - confirm = translate('admin.messages.confirm_unsaved_changes') if action_name == 'write'
+
     - if allow.show?
-      a.ui.basic.button href=polymorphic_admin_path([:admin, record]) data-confirm=translate('admin.messages.confirm_unsaved_changes')
+      a.ui.basic.button href=polymorphic_admin_path([:admin, record]) data-confirm=confirm
         i.left.arrow.icon
         = translate 'admin.action.simple.back'
     - elsif policy(@model).index?
-      a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(record.page) ? record.page : record.class]) data-confirm=translate('admin.messages.confirm_unsaved_changes')
+      a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(record.page) ? record.page : record.class]) data-confirm=confirm
         i.left.arrow.icon
         = translate 'admin.action.target.back', records: record.model_name.human(count: -1)
 

@@ -92,6 +92,7 @@ module Admin::TableHelper
         concat table_icon 'leaf', record.class.human_attribute_name(:meditations, count: meditation_count), meditation_count
       when User
         concat table_icon 'question', translate('admin.tags.pending_invitation') if record.pending_invitation?
+        concat table_icon 'user secret', translate('admin.tags.this_is_you') if record == current_user
         concat table_icon 'globe', record.available_languages.map { |lang| language_name(lang) }.join(', ')
       end
     end

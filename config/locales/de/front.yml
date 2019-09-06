@@ -151,10 +151,13 @@ de:
     read_more: "Learn More"
 
   classes:
+    map_title: "Meditation Classes Near Me"
     prompt: "Enter your city or post code"
 
   errors:
     title: "Oops..."
+    coming_soon: "Coming Soon"
+    no_programs: "Programs in your area are coming soon."
     error: "Error"
     alternatives_title: "Try one of these instead:"
     '404': "This page doesn’t exist"

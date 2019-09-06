@@ -41,7 +41,7 @@ const Draft = {
         Editor.instance.render(value)
         break
       default:
-        console.error('TODO: Draft reset is not yet implemented for', $field.data('draft'))
+        console.error('Draft reset is not yet implemented for', $field.data('draft'))
     }
   },
 }

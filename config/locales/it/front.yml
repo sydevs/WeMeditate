@@ -151,11 +151,14 @@ it:
     read_more: "Per Saperne di Più"
 
   classes:
+    map_title: "Meditation Classes Near Me" # TODO: Translate
     prompt: "Inserisci la tua città o CAP"
 
   errors:
     title: "Oops..."
     error: "Error" # TODO: Translate
+    coming_soon: "Coming Soon" # TODO: Translate
+    no_programs: "Programs in your area are coming soon." # TODO: Translate
     alternatives_title: "Prova uno di questi invece:"
     '404': "La pagina che stavi cercando non esiste."
     '422': "Il cambiamento che stavi cercando di fare non esiste."

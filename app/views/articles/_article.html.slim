@@ -10,8 +10,7 @@ article.inspiration__item.preview id=dom_id(article) class=dom_id(article.catego
       .video__inner
         = vimeo_tag article.vimeo_id
         .video__thumbnail
-          // TODO: Image sizes
-          = smart_image_tag article.thumbnail, '100vw'
+          = smart_image_tag article.thumbnail, image_sizes
           a.video__button.video__popup data-lity=true href="https://vimeo.com/#{article.vimeo_id}"
           a.video__button
   - elsif article.thumbnail.present?

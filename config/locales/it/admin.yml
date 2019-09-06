@@ -86,6 +86,7 @@ it:
       pending_translation: "Traduzione %{language} presente, da approvare."
       in_progress_translation: "Has Incomplete %{language} Translation" # "language" will be replaced with the language that this file is written in. # TODO: Translate
       pending_invitation: "Non ha ancora accettato l'invito."
+      this_is_you: "This is you" # TODO: Translate
       missing_record: "Missing %{model}" # TODO: Translate
       updated_ago: "Modificato %{time_ago} fa."
       published_ago: "Pubblicato %{time_ago} fa."
@@ -287,7 +288,6 @@ it:
       body: "Per favore descrivi la problematica in inglese..."
 
     misc:
-      errors: "Errori"
       no_translated_title: "Nessun Titolo Tradotto"
       menu:
         my_author: "Il mio Profilo Autore"

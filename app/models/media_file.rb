@@ -26,8 +26,8 @@ class MediaFile < ActiveRecord::Base
 
   # This is to be rendered as a json and used by the photoswipe gallery
   def to_h
-    if file.width.present? && file.height.present?
-      { pid: id, src: file.url, msrc: file.tiny.url, w: file.width, h: file.height }
+    if image_width.present? && image_height.present?
+      { pid: id, src: file.url, msrc: file.tiny.url, w: image_width, h: image_height }
     else
       # Choose some plausible default if the metadata is missing.
       { pid: id, src: file.large.url, msrc: file.tiny.url, w: 1440, h: 900 }

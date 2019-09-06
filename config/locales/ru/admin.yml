@@ -88,6 +88,7 @@ ru:
       pending_translation: "Есть перевод на %{language}, в ожидании утверждения" # "language" will be replaced with the language that this file is written in.
       in_progress_translation: "Перевод на %{language} не закончен" # "language" will be replaced with the language that this file is written in. 
       pending_invitation: "Приглашение ещё не принято"
+      this_is_you: "This is you" # TODO: Translate
       missing_record: "Missing %{model}" # TODO: Translate
       updated_ago: "Изменено %{time_ago} назад"
       published_ago: "Опубликовано %{time_ago} назад"
@@ -302,7 +303,6 @@ ru:
       body: "Пожалуйста, опишите проблему по-английски..."
 
     misc:
-      errors: "Ошибки"
       no_translated_title: "Отсутствует Перевод Заголовка" # This should be written in titlecase
       menu:
         my_author: "Мой профиль"

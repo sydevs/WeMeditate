@@ -8,7 +8,7 @@ main.scrollspy-target id=dom_id(@treatment)
     - if @treatment.vertical_vimeo_id.present?
       .video
         .video__thumbnail
-          // TODO: Image sizes
+          - image_sizes = '(max-width: 448px) calc(100vw - 48px), (max-width: 767px) 400px, (max-width: 1023px) 350px, 400px'
           = smart_image_tag @treatment.thumbnail, '100vw'
           a.video__button.video__button--horizontal data-lity=true href="https://vimeo.com/#{@treatment.horizontal_vimeo_id}"
           a.video__button.video__button--vertical data-lity=true href="https://vimeo.com/#{@treatment.vertical_vimeo_id}"
