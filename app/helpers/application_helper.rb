@@ -23,17 +23,15 @@ module ApplicationHelper
         end
       end
 
-      puts "SET #{index}"
       {
         index: index,
         name: track.name,
-        artist: track.artists.first&.name,
+        # artist: track.artists.first&.name,
+        artists: amplitude_artists_data(track.artists),
         url: track.audio_url,
-        cover_art_url: track.artists.first&.image_url,
+        cover_art_url: track.artists.sample&.image_url,
       }
     end
-
-    puts "SONGS #{songs}"
 
     if playlists
       playlists[0] = {
@@ -48,22 +46,24 @@ module ApplicationHelper
     }
   end
 
-  def playlist_artist_data artists
+  def amplitude_artists_data artists
     artists.each.map do |artist|
+=begin TODO: Reimplement responsive images
       jpg_srcset = []
       webp_srcset = []
       artist.image.versions.values.each do |version|
         jpg_srcset << "#{version.url} #{version.width}w"
         webp_srcset << "#{version.webp.url} #{version.width}w"
       end
+=end
 
       {
         name: artist.name,
         url: artist.url,
-        image_srcset: {
-          jpg: jpg_srcset.join(', '),
-          webp: webp_srcset.join(', '),
-        },
+        # image_srcset: {
+        #   jpg: jpg_srcset.join(', '),
+        #   webp: webp_srcset.join(', '),
+        # },
       }
     end
   end
