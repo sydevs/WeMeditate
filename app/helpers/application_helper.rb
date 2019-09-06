@@ -29,7 +29,7 @@ module ApplicationHelper
         name: track.name,
         artist: track.artists.first&.name,
         url: track.audio_url,
-        cover_art_url: track.artists.first.image_url,
+        cover_art_url: track.artists.first&.image_url,
       }
     end
 
