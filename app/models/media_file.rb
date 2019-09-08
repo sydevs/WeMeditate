@@ -31,13 +31,11 @@ class MediaFile < ActiveRecord::Base
     end
   end
 
-  private
+  def save_metadata
+    return if file.nil? || image_meta.nil?
 
-    def save_metadata
-      return if file.nil? || image_meta.nil?
-
-      width, height = `identify -format "%wx%h" #{file.path}`.split(/x/)
-      update!(image_meta: { width: width, height: height })
-    end
+    width, height = `identify -format "%wx%h" #{file.path}`.split(/x/)
+    update!(image_meta: { width: width, height: height })
+  end
 
 end
