@@ -159,7 +159,7 @@ ru:
   errors:
     title: "Ой..."
     coming_soon: "Coming Soon" # TODO: Translate
-    no_programs: "Programs in your area are coming soon." # TODO: Translate
+    no_programs: "Meditation classes in your area are coming soon." # TODO: Translate
     error: "Ошибка"
     alternatives_title: "Попробуйте один из следующих вариантов:"
     '404': "Такой страницы не существует."

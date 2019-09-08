@@ -157,7 +157,7 @@ it:
   errors:
     title: "Oops..." # TODO: Translate
     coming_soon: "Coming Soon" # TODO: Translate
-    no_programs: "Programs in your area are coming soon." # TODO: Translate
+    no_programs: "Meditation classes in your area are coming soon." # TODO: Translate
     error: "Error" # TODO: Translate
     alternatives_title: "Prova uno di questi invece:"
     '404': "La pagina che stavi cercando non esiste."
