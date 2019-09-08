@@ -32,7 +32,7 @@ class MediaFile < ActiveRecord::Base
   end
 
   def save_metadata
-    return if file.nil? || image_meta.present?
+    return if !file.present? || image_meta.present?
 
     update!(image_meta: file.get_metadata)
   end

@@ -27,7 +27,7 @@ class MediaFileUploader < ApplicationUploader
   end
 
   def get_metadata
-    return {} unless file
+    return nil unless file
     width, height = ::MiniMagick::Image.open(file.file)[:dimensions]
     { width: width, height: height }
   end
