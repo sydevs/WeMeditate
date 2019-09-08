@@ -8,14 +8,11 @@ class MediaFile < ActiveRecord::Base
   extend CarrierWave::Meta::ActiveRecord
   include Translatable
 
-  META_FIELDS = %i[width height].freeze
-  META_DATA = ([{ image: META_FIELDS }] + MediaFileUploader::VERSIONS.keys.map { |version| { "image_#{version}".to_sym => META_FIELDS } }).freeze
+  after_save :save_metadata
 
   # Associations
   belongs_to :page, polymorphic: true
   mount_uploader :file, ImageUploader
-  serialize :image_meta, OpenStruct
-  carrierwave_meta_composed :image_meta, *META_DATA # TODO: Image data is not actually being saved
 
   # Validations
   validates :file, presence: true
@@ -26,12 +23,21 @@ class MediaFile < ActiveRecord::Base
 
   # This is to be rendered as a json and used by the photoswipe gallery
   def to_h
-    if image_width.present? && image_height.present?
-      { pid: id, src: file.url, msrc: file.tiny.url, w: image_width, h: image_height }
+    if image_meta && image_meta['width'] && image_meta['height']
+      { pid: id, src: file.url, msrc: file.tiny.url, w: image_meta['width'], h: image_meta['height'] }
     else
       # Choose some plausible default if the metadata is missing.
       { pid: id, src: file.large.url, msrc: file.tiny.url, w: 1440, h: 900 }
     end
   end
+
+  private
+
+    def save_metadata
+      return if file.nil? || image_meta.nil?
+
+      width, height = `identify -format "%wx%h" #{file.path}`.split(/x/)
+      update!(image_meta: { width: width, height: height })
+    end
 
 end
