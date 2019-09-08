@@ -1,7 +1,4 @@
 
-- selected_category_id = params[:category]&.to_i
-- selected_category_id = nil unless @categories.any? {|c| c.id == selected_category_id}
-
 main
   - cache @static_page.content_cache_key do
     .content = render_content @static_page
@@ -11,16 +8,12 @@ main
       a.button.button--filled.js-filter-all class="#{'button--active' if @category.nil?}" href=categories_path
         = t('articles.show_all')
 
-      - if @category
-        a.button.button--filled.button--active href=category_path(@category)
-          = @category.name
-
       - @categories.each do |category|
-        - next if @category == category
-        a.button.button--filled href=category_path(category)
+        a.button.button--filled class="#{'button--active' if @category == category}" href=category_path(category)
           = category.name
 
-    #articles-grid.inspiration__grid.js-grid
+    #articles-grid.inspiration__grid.js-grid style='display: none'
+      / Using display: none initially on this js-grid to prevent flicker
       = render @articles
 
     - if @loadmore_url
