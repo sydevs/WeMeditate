@@ -11,7 +11,7 @@
     - unless is_callout
       .divider.divider--leaf.divider--leaf-up
 
-    p.content__quote__text = simple_format block[:text]
+    .content__quote__text = simple_format block[:text]
 
     - if block[:credit].present?
       .content__quote__credit = block[:credit]
