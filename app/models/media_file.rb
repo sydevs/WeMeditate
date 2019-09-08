@@ -32,7 +32,7 @@ class MediaFile < ActiveRecord::Base
   end
 
   def save_metadata
-    return if file.nil? || image_meta.nil?
+    return if file.nil? || image_meta.present?
 
     width, height = `identify -format "%wx%h" #{file.path}`.split(/x/)
     update!(image_meta: { width: width, height: height })
