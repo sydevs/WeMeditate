@@ -155,10 +155,10 @@ it:
     prompt: "Inserisci la tua città o CAP"
 
   errors:
-    title: "Oops..."
-    error: "Error" # TODO: Translate
+    title: "Oops..." # TODO: Translate
     coming_soon: "Coming Soon" # TODO: Translate
     no_programs: "Programs in your area are coming soon." # TODO: Translate
+    error: "Error" # TODO: Translate
     alternatives_title: "Prova uno di questi invece:"
     '404': "La pagina che stavi cercando non esiste."
     '422': "Il cambiamento che stavi cercando di fare non esiste."
