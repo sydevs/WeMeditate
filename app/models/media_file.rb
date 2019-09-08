@@ -12,7 +12,7 @@ class MediaFile < ActiveRecord::Base
 
   # Associations
   belongs_to :page, polymorphic: true
-  mount_uploader :file, ImageUploader
+  mount_uploader :file, MediaFileUploader
 
   # Validations
   validates :file, presence: true
@@ -34,8 +34,7 @@ class MediaFile < ActiveRecord::Base
   def save_metadata
     return if file.nil? || image_meta.present?
 
-    width, height = `identify -format "%wx%h" #{file.path}`.split(/x/)
-    update!(image_meta: { width: width, height: height })
+    update!(image_meta: file.get_metadata)
   end
 
 end
