@@ -35,7 +35,7 @@
               a.item href=url target='_blank'
                 i.eye.icon
                 = translate 'admin.action.descriptive.show'
-            - if allow.preview? && (@record.has_draft? || !@record.published?)
+            - if allow.preview?
               a.item href=polymorphic_admin_path([:preview, :admin, @record]) target='_blank'
                 i.eye.icon
                 = translate 'admin.action.descriptive.preview'
