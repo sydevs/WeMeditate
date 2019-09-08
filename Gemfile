@@ -68,7 +68,6 @@ gem 'seedbank' # Used to populate the database with the pages and data used in t
 gem 'sprig' # Used to populate the database with the pages and data used in the designs, for quick deployment and recovery.
 
 # Misc
-gem 'gibbon' # For MailChimp Integration
 gem 'mail_form' # For the contact form
 gem 'sidekiq' # To power active jobs
 gem 'sitemap_generator' # For SEO purposes

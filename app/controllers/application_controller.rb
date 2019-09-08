@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
 
   include ApplicationHelper
   include Regulator
-  protect_from_forgery # with: :exception
+  include Klaviyo
+  protect_from_forgery with: :exception
   before_action :enfore_maintenance_mode, except: %i[maintenance]
   
   # The root page of the website
@@ -50,19 +51,10 @@ class ApplicationController < ActionController::Base
       email_hash = Digest::MD5.hexdigest(email)
 
       begin
-        Gibbon::Request.new.lists(params[:mailchimp_list_id]).members(email_hash).upsert(
-          body: {
-            email_address: email,
-            status: 'subscribed',
-            language: I18n.locale,
-            signup: request.referer,
-            ip_signup: request.remote_ip,
-          }
-        )
-
+        subscribe(email)
         @message = I18n.translate('form.success.subscribe')
         @success = true
-      rescue Gibbon::MailChimpError => error
+      rescue Error => error
         @message = error.detail.to_s
         @success = false
       end
@@ -95,7 +87,7 @@ class ApplicationController < ActionController::Base
 
     # Enforces the maintenance mode redirect
     def enfore_maintenance_mode
-      return unless ENV['MAINTENANCE_MODE']
+      return if !ENV['MAINTENANCE_MODE'] && Rails.configuration.published_locales.include?(I18n.locale)
       return if %w[sessions switch_user].include? controller_name
       return if current_user.present?
 
