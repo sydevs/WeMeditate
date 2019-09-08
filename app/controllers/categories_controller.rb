@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
     def display
       next_offset = params[:offset].to_i + ARTICLES_PER_PAGE
 
-      if @articles.size < next_offset
+      if @articles.size <= next_offset
         @loadmore_url = nil
       elsif @category.nil?
         @loadmore_url = categories_path(format: 'js', offset: next_offset)
