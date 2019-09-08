@@ -46,12 +46,11 @@ class ApplicationController < ActionController::Base
 
   # A POST endpoint to subscribe to the site's mailing list.
   def subscribe
-    if params[:email_address].present?
-      email = params[:email_address].gsub(/\s/, '').downcase
-      email_hash = Digest::MD5.hexdigest(email)
+    if params[:signup][:email_address].present?
+      email = params[:signup][:email_address].gsub(/\s/, '').downcase
 
       begin
-        subscribe(email)
+        puts Klaviyo.subscribe(email)
         @message = I18n.translate('form.success.subscribe')
         @success = true
       rescue Error => error

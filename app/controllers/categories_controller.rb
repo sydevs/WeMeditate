@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
       respond_to do |format|
         format.html do
           @static_page = StaticPage.preload_for(:content).find_by(role: :articles)
-          @categories = Category.published.includes(:articles).where(articles: { published: true }).where.not(articles: { id: nil })
+          @categories = Category.published.includes(articles: :translations).where(article_translations: { published: true }).where.not(articles: { id: nil })
           set_metadata(@static_page)
 
           @breadcrumbs = [
