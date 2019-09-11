@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
       email = params[:signup][:email_address].gsub(/\s/, '').downcase
 
       begin
-        puts Klaviyo.subscribe(email)
+        Klaviyo.subscribe(email)
         @message = I18n.translate('form.success.subscribe')
         @success = true
       rescue Error => error
