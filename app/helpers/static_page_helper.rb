@@ -18,7 +18,7 @@ module StaticPageHelper
 
   def static_page_path_for page_or_role
     role = page_or_role.is_a?(StaticPage) ? page_or_role.role : page_or_role
-    case role.to_sym
+    case role&.to_sym
     when :home
       root_path
     when :subtle_system
@@ -38,7 +38,7 @@ module StaticPageHelper
 
   def static_page_url_for page_or_role
     role = page_or_role.is_a?(StaticPage) ? page_or_role.role : page_or_role
-    case role.to_sym
+    case role&.to_sym
     when :home
       root_url
     when :subtle_system
@@ -51,6 +51,8 @@ module StaticPageHelper
       tracks_url
     when :meditations
       meditations_path
+    when nil
+      ''
     else
       static_page_url(static_page_preview_for(role))
     end
