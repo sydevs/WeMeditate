@@ -7,10 +7,12 @@ This list iis provided for reference, to track down various parts of the site.
  - *Google Cloud Storage*, file storage
  - *Vimeo*, video storage
  - *G Suite For Business*, for an email inbox to send emails from
- - *Klaviyo*, for mailing list campaigns (not yet integrated)
+ - *Klaviyo*, for mailing list campaigns
  - *Google Analytics*, to track website traffic
  - *Google Tag Manager*, to embed analytics and klaviyo, and implement custom analytics events
  - *SY Directory*, for a map of meditation programs worldwide (not yet implemented)
  - *Namecheap*, for domain name registration
 
-G Suite and Namecheap may only be accessed with the sydevelopers.com account, but all other accounts can be 
+G Suite and Namecheap may only be accessed with the sydevelopers.com account, but all other accounts can be set up for people to use their personal accounts.
+
+All accounts are managed and billed by the sydevelopers.com account.
