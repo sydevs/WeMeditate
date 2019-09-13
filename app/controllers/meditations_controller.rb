@@ -71,7 +71,7 @@ class MeditationsController < ApplicationController
 
     if cookies[:prescreen] == 'dismissed'
       # Increment the view counter for this page.
-      @meditation.update! views: @meditation.views + 1, popularity: @meditation.popularity + 1
+      @meditation.update! views: @meditation.views + 1, popularity: @meditation.popularity + 1 unless @meditation.self_realization?
     else
       render :prescreen
     end
