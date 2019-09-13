@@ -71,8 +71,7 @@ class MeditationsController < ApplicationController
 
     if cookies[:prescreen] == 'dismissed'
       # Increment the view counter for this page.
-      # TODO: This should be changed to be less naive, and actually check when people view the video.
-      @meditation.update! views: @meditation.views + 1
+      @meditation.update! views: @meditation.views + 1, popularity: @meditation.popularity + 1
     else
       render :prescreen
     end
@@ -90,11 +89,6 @@ class MeditationsController < ApplicationController
     raise ActiveRecord::RecordNotFound, 'No meditation found for the given filters' unless meditation.present?
 
     redirect_to meditation_url(meditation), status: :see_other
-  end
-
-  def record_view
-    meditation = Meditation.friendly.find(params[:id])
-    meditation.update! views: meditation.views + 1
   end
 
 end

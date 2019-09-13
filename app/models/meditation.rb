@@ -9,7 +9,7 @@ class Meditation < ApplicationRecord
 
   # Extensions
   translates *%i[
-    name slug metatags views published_at published
+    name slug metatags views popularity published_at published
     excerpt description horizontal_vimeo_id vertical_vimeo_id
   ]
   friendly_id :name, use: :globalize
@@ -55,7 +55,7 @@ class Meditation < ApplicationRecord
       Meditation.published.order('RANDOM()').first
     when :trending
       # The meditation with the most views
-      Meditation.published.order('meditation_translations.views DESC').first
+      Meditation.published.order('meditation_translations.popularity DESC').first
     when :self_realization
       Meditation.find_by(slug: I18n.translate('routes.self_realization'))
     else

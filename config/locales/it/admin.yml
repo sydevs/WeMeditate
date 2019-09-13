@@ -98,6 +98,7 @@ it:
       views:
         one: "1 visita"
         other: "%{count} visite"
+      popularity: "Popularity: %{value}" # TODO: Translate
 
     messages:
       loading: "Caricamento"
