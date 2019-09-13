@@ -39,7 +39,7 @@ class Treatment < ApplicationRecord
 
   # Shorthand for the article thumbnail image file
   def thumbnail
-    media_files.find_by(id: thumbnail_id)&.file
+    @thumbnail ||= media_files.find_by(id: thumbnail_id)&.file
   end
 
 end
