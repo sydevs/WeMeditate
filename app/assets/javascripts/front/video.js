@@ -33,17 +33,14 @@ class Video {
   }
 
   loadPlayer(iframe) {
-    console.log('load video',iframe)
     iframe.src = iframe.dataset.src
     const player = new Vimeo.Player(iframe)
 
     player.on('pause', () => {
-      console.log('on pause video')
       if (this.responsive) this.toggleOrientationCheck(false)
     })
     
     player.on('play', () => {
-      console.log('on play video')
       if (this.responsive) this.toggleOrientationCheck(true)
       this.container.classList.add('video--active')
     })
