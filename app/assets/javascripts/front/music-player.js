@@ -29,6 +29,10 @@ class MusicPlayer {
     this.updateSongArtists()
   }
 
+  unload() {
+    Amplitude.pause()
+  }
+
   initFullPlayer() {
     const playlistButtons = element.querySelectorAll('.amplitude-playlist-button')
     for (let i = 0; i < playlistButtons.length; i++) {
