@@ -41,7 +41,7 @@ class Header {
       const cookieNoticeClose = this.cookieNotice.querySelector('.header__notice__close')
       cookieNoticeClose.addEventListener('click', () => {
         this.cookieNotice.remove()
-        document.cookie = 'notice=dismissed'
+        document.cookie = 'notice=dismissed;max-age=31536000'
       })
 
       setTimeout(() => { if (this.cookieNotice) this.cookieNotice.style.bottom = '0' }, 5000)
