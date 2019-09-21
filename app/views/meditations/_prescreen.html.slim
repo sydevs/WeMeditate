@@ -14,7 +14,7 @@
     .prescreen__explanation-wrapper
       .prescreen__explanation
         = translate "#{translations}.explanation.text"
-        a.prescreen__explanation__link href=self_realization_meditations_path
+        a.prescreen__explanation__link href=url_for(SubtleSystemNode.find_by(role: :kundalini))
           = translate "#{translations}.explanation.learn_more"
           .icon.icon--breadcrumb
 
