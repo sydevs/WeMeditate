@@ -76,6 +76,6 @@ class QuoteTool extends EditorTool {
 
   // Empty tool is not empty Block
   static get contentless() {
-    return false;
+    return false
   }
 }

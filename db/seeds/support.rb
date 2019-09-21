@@ -94,6 +94,6 @@ def content blocks
     time: Time.now.to_i,
     blocks: blocks,
     media_files: blocks.map { |block| block[:media_files] }.flatten,
-    version: '2.15', # EditorJS at the last time when the structure of seed JSONs were checked.
+    version: '2.15.1', # EditorJS at the last time when the structure of seed JSONs were checked.
   }.to_json
 end

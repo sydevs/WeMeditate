@@ -153,9 +153,8 @@ class EditorTool {
   }
 
   insertParagraphBreak(event) {
-    if (event.key == 'Enter' || event.keyCode == 13) {
+    if (event.key == 'Enter' || event.keyCode == 13) { // ENTER
       document.execCommand('insertHTML', false, '<br><br>')
-
       event.preventDefault()
       event.stopPropagation()
       return false
