@@ -7,11 +7,11 @@ module Admin
     after_action :verify_policy_scoped, only: :index
 
     def dashboard
-      authorize '', :access?
+      authorize :application, :access?
     end
 
     def tutorial
-      authorize '', :access?
+      authorize :application, :access?
     end
     
     def vimeo_data
@@ -25,10 +25,6 @@ module Admin
       end
 
     private
-
-      def self.policy_class
-        ApplicationPolicy
-      end
 
       def retrieve_vimeo_data vimeo_id
         Integer(vimeo_id) rescue raise ArgumentError, "Vimeo ID is not valid: \"#{vimeo_id}\""
