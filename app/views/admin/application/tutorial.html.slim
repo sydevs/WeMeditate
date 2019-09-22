@@ -1,0 +1,23 @@
+
+- content_for :title, translate('admin.tutorial.title')
+- panels = translate('admin.tutorial.panels')
+- role_vimeo_ids = translate('admin.tutorial.role_vimeo_ids')
+
+.ui.secondary.tabs.menu
+  - panels.each do |key, data|
+    a.item data-tab=key class=('active' if key == :overview)
+      = data[:menu]
+
+- panels.each do |key, data|
+  - if key == :overview
+    - role_name = human_enum_name(current_user, :role)
+    - role_description = translate(current_user.role, scope: %i[admin permissions role_description])
+    .ui.active.tab data-tab=key
+      h2.ui.header = translate('admin.tutorial.panels.overview.title', role: role_name)
+      p = translate('admin.tutorial.panels.overview.description', role: role_name, description: role_description)
+      iframe src="https://player.vimeo.com/video/#{role_vimeo_ids[current_user.role.to_sym]}" width='672' height='378' frameborder='0' allow='autoplay; fullscreen' allowfullscreen=true
+  - else
+    .ui.tab data-tab=key
+      h2.ui.header = data[:title]
+      p = data[:description]
+      iframe src="https://player.vimeo.com/video/#{data[:vimeo_id]}" width='672' height='378' frameborder='0' allow='autoplay; fullscreen' allowfullscreen=true

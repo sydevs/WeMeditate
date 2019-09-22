@@ -30,7 +30,7 @@ let Admin = {
 
   initialize: function(scope) {
     scope.find('.ui.checkbox').checkbox()
-    scope.find('.tabs > *').tab()
+    scope.find('.tabs.menu > .item').tab()
     scope.find('.ui.accordion').accordion()
     scope.find('.ui.date.picker').calendar({ type: 'date' })
     autosize(scope.find('textarea'))

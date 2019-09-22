@@ -81,6 +81,9 @@
   - report_link = "mailto:\"#{translate 'admin.report_issue.name'}\"<#{translate 'admin.report_issue.email'}>"
   - report_link += "?subject=#{URI.encode translate('admin.report_issue.subject')}"
   - report_link += "&body=#{URI.encode translate('admin.report_issue.body')}"
+  = link_to admin_tutorial_path, class: 'item' do
+    i.question.circle.icon
+    = translate('admin.action.tutorial')
   = link_to report_link, class: 'item' do
     i.exclamation.circle.icon
     = translate('admin.action.report_issue')

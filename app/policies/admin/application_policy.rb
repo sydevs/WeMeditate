@@ -11,6 +11,10 @@ module Admin
       end
     end
 
+    def access?
+      user.present? && can_access_locale?
+    end
+
     def index?
       update? || create? || destroy?
     end

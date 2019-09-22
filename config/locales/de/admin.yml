@@ -9,6 +9,7 @@ de:
     action:
       view_site: "View Site"
       view_admin: "Go To Admin Dashboard"
+      tutorial: "Help (How to Use)"
       report_issue: "Report Issue"
       search: "Search..."
       sign_in: "Log In"
@@ -246,11 +247,11 @@ de:
         update_subordinate: "Can Modify %{subordinates}"
         create_subordinate: "Can Create %{subordinates}"
       role_description: # This describes the responsibilities of a given type of administrator
-        translator: "translates existing content which has been published in other languages, to their assigned language."
+        translator: "translate existing content which has been published in other languages, to their assigned language."
         writer: "can write new articles, or edit old articles which they themselves created."
         editor: "should review and publish articles written by writers. They can also created their own articles."
-        regional_admin: "is responsible for approving translations, translating core parts of the site, and overseeing the publishing of new content in their language."
-        super_admin: "manages the fundamental elements of the site, and the creation of new editors."
+        regional_admin: "are responsible for approving translations, translating core parts of the site, and overseeing the publishing of new content in their language."
+        super_admin: "manage the fundamental elements of the site, and the creation of new editors."
 
     review: # Text related to reviewing unapproved changes
       discard_all_changes: "Discard All Changes"
@@ -285,6 +286,35 @@ de:
       title: "Dashboard"
       alerts: "Alerts"
       no_issues: "No issues right now, good job!"
+
+    tutorial:
+      title: "Starter Guide"
+      alert:
+        title: "How do I use this website?"
+        message: "If you are just getting started managing content on WeMeditate, we have prepared a few brief 1 - 2 minute videos, to help you if you're lost."
+        role_description: "You are a %{role}, and as such it is your role to %{description}. For a video illustrating how to do this, please click the link below."
+        action: "Watch Tutorial Videos"
+      role_vimeo_ids:
+        super_admin: 208643382
+        regional_admin: 208643382
+        editor: 208643382
+        writer: 208643382
+        translator: 208643382
+      panels:
+        overview:
+          menu: "Overview"
+          title: "How to use the CMS as a %{role}"
+          description: "As a %{role}, it is your role to %{description}"
+        editor:
+          menu: "Writing Content"
+          title: "How to use the content editor"
+          description: ""
+          vimeo_id: 208643382
+        issues:
+          menu: "Reporting Issues"
+          title: "How to report issues"
+          description: ""
+          vimeo_id: 208643382
 
     report_issue:
       name: "Devindra"

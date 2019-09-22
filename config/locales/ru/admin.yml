@@ -9,6 +9,7 @@ ru:
     action:
       view_site: "Посмотреть Сайт"
       view_admin: "Перейти В Панель Управления Админа"
+      tutorial: "Help (How to Use)" # TODO: Translate
       report_issue: "Сообщить О Проблеме"
       search: "Искать..."
       sign_in: "Вход"
@@ -296,6 +297,35 @@ ru:
       title: "Панель управления"
       alerts: "Оповещения"
       no_issues: "В настоящее время проблем нет, так держать!"
+
+    tutorial: # TODO: Translate
+      title: "Starter Guide"
+      alert:
+        title: "How do I use this website?"
+        message: "If you are just getting started managing content on WeMeditate, we have prepared a few brief 1 - 2 minute videos, to help you if you're lost."
+        role_description: "You are a %{role}, and as such it is your role to %{description}. For a video illustrating how to do this, please click the link below."
+        action: "Watch Tutorial Videos"
+      role_vimeo_ids:
+        super_admin: 208643382
+        regional_admin: 208643382
+        editor: 208643382
+        writer: 208643382
+        translator: 208643382
+      panels:
+        overview:
+          menu: "Overview"
+          title: "How to use the CMS as a %{role}"
+          description: "As a %{role}, it is your role to %{description}"
+        editor:
+          menu: "Writing Content"
+          title: "How to use the content editor"
+          description: ""
+          vimeo_id: 208643382
+        issues:
+          menu: "Reporting Issues"
+          title: "How to report issues"
+          description: ""
+          vimeo_id: 208643382
 
     report_issue:
       name: "Девиндра"

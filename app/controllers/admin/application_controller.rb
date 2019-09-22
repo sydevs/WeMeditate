@@ -7,7 +7,11 @@ module Admin
     after_action :verify_policy_scoped, only: :index
 
     def dashboard
-      redirect_to "/#{current_user.available_languages.first}" unless current_user.available_languages.include?(I18n.locale)
+      authorize '', :access?
+    end
+
+    def tutorial
+      authorize '', :access?
     end
     
     def vimeo_data
@@ -21,6 +25,10 @@ module Admin
       end
 
     private
+
+      def self.policy_class
+        ApplicationPolicy
+      end
 
       def retrieve_vimeo_data vimeo_id
         Integer(vimeo_id) rescue raise ArgumentError, "Vimeo ID is not valid: \"#{vimeo_id}\""
