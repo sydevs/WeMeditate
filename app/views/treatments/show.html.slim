@@ -21,7 +21,7 @@ main.scrollspy-target id=dom_id(@treatment)
       .treatment__media__image
         = smart_image_tag @treatment.thumbnail, image_sizes
 
-  - cache @treatment.content_cache_key do
+  - cache @treatment do
     .content = render_content @treatment
 
   .treatment__clearfix

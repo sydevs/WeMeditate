@@ -12,7 +12,7 @@ main id=dom_id(@static_page)
       .treatments__triangle.triangle.triangle--large.triangle--right
 
     .treatments__content.content
-      - cache @static_page.content_cache_key do
+      - cache @static_page do
         = render_content @static_page
 
     - if showPrescreen

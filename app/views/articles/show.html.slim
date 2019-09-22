@@ -10,7 +10,7 @@ main.scrollspy-target id=dom_id(@article)
       - if @article.author.years_meditating
         .author__experience = translate('author.meditating_for', count: @article.author.years_meditating)
 
-  - cache @article.content_cache_key do
+  - cache @article do
     .content = render_content @article
 
 = sharing_links
