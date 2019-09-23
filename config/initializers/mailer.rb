@@ -11,6 +11,6 @@ Rails.application.configure do
   }
 
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_options = { from: ENV['SMTP_EMAIL'] }
+  config.action_mailer.default_options = { from: "#{translate 'we_meditate'} <#{ENV['SMTP_EMAIL']}>" }
   config.action_mailer.raise_delivery_errors = true
 end
