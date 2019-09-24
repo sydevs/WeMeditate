@@ -9,6 +9,7 @@ class MusicPlayer {
     this.mini = element.classList.contains('amplitude--mini')
     this.sidetext = element.querySelector('.amplitude-sidetext')
     this.artistsList = element.querySelector('.amplitude-info-artists')
+    this.playButton = element.querySelector('.amplitude-play-pause')
     const data = JSON.parse(element.dataset.tracks)
     this.playlists = data.playlists
 
@@ -20,8 +21,18 @@ class MusicPlayer {
       preload: this.mini ? 'none' : 'metadata',
       debug: true,
       callbacks: {
-        play: () => this.validateActivePlaylist(),
-        song_change: () => this.updateSongArtists(),
+        loadstart: () => {
+          this.playButton.classList.add('amplitude-loading')
+        },
+        loadeddata: () => {
+          this.playButton.classList.remove('amplitude-loading')
+        },
+        song_change: () => {
+          this.updateSongArtists()
+        },
+        play: () => {
+          this.validateActivePlaylist()
+        }
       }
     })
     
@@ -34,12 +45,12 @@ class MusicPlayer {
   }
 
   initFullPlayer() {
-    const playlistButtons = element.querySelectorAll('.amplitude-playlist-button')
+    const playlistButtons = this.container.querySelectorAll('.amplitude-playlist-button')
     for (let i = 0; i < playlistButtons.length; i++) {
       playlistButtons[i].addEventListener('click', event => this.togglePlaylist(event.currentTarget))
     }
 
-    const artistLinks = element.querySelectorAll('.amplitude-song-artist > a')
+    const artistLinks = this.container.querySelectorAll('.amplitude-song-artist > a')
     for (let i = 0; i < artistLinks.length; i++) {
       artistLinks[i].addEventListener('click', event => event.stopPropagation())
     }
@@ -47,6 +58,7 @@ class MusicPlayer {
 
   togglePlaylist(playlistElement) {
     if (playlistElement.dataset.amplitudePlaylist == this.activePlaylistId) {
+      this.container.classList.remove('amplitude-loading')
       Amplitude.playPlaylistSongAtIndex(0, '0')
       Amplitude.pause()
     }
