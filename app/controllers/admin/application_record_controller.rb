@@ -154,7 +154,7 @@ module Admin
       def update_params record_params
         if record_params[:metatags].present?
           record_params[:metatags] = record_params[:metatags][:keys].zip(record_params[:metatags][:values]).to_h
-        elsif @record.respond_to?(:metatags)
+        elsif @record.respond_to?(:metatags) && !record_params[:content].present?
           record_params[:metatags] = nil
         end
 

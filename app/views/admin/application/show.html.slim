@@ -29,7 +29,7 @@
             - if @record.has_draft?
               a.item href=polymorphic_admin_path([:edit, :admin, @record])
                 i.edit.icon
-                = translate 'admin.action.target.edit_details'
+                = translate 'admin.action.simple.edit_details'
             - if @record.published?
               - url = @record.is_a?(StaticPage) ? static_page_url_for(@record) : polymorphic_url(@record)
               a.item href=url target='_blank'
