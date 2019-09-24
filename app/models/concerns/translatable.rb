@@ -7,7 +7,7 @@ module Translatable
   extend ActiveSupport::Concern
 
   included do |base|
-    base.scope :needs_translation, -> (user) { where.not(id: published.pluck(:id)).where(original_locale: user.available_languages) }
+    base.scope :needs_translation, -> (user) { where.not(id: published.pluck(:id)).where(original_locale: user.available_languages).where.not(original_locale: I18n.locale) }
     base.before_validation :set_original_locale
   end
 
