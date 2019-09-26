@@ -112,5 +112,11 @@ module ApplicationHelper
     url = "https://player.vimeo.com/video/#{vimeo_id}?byline=false&title=false&author=false&portrait=falsess"
     tag.iframe class: klass, data: { src: url }, frameborder: '0', width: '100%', height: '100%', allow: 'autoplay; fullscreen'
   end
+  
+  def error message
+    content_tag :div, class: 'alert' do
+      tag.div "Error: #{message}. Only administrators can see this error", class: 'alert__message'
+    end
+  end
 
 end

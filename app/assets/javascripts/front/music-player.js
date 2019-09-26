@@ -24,7 +24,7 @@ class MusicPlayer {
         loadstart: () => {
           this.playButton.classList.add('amplitude-loading')
         },
-        loadeddata: () => {
+        canplay: () => {
           this.playButton.classList.remove('amplitude-loading')
         },
         song_change: () => {
