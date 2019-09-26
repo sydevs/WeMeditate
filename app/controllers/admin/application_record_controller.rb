@@ -57,27 +57,29 @@ module Admin
     end
 
     def review
-      if @record.ready_for_review?(:content)
-        render 'admin/application/review', layout: 'application'
-      else
-        redirect_to helpers.polymorphic_admin_path([:edit, :admin, @record])
-      end
+      render 'admin/application/review', layout: 'admin/review'
     end
 
     def preview
-      @record.try(:reify_draft!)
-      render 'admin/application/preview', layout: 'application'
+      reify = reify == '' ? [] : params[:reify]&.split(',')
+      @record.try(:reify_draft!, only: reify) unless params[:review] && !params[:excerpt]
+      render 'admin/application/preview', layout: params[:excerpt] ? 'basic' : 'application'
     end
 
     def approve
       redirect = helpers.polymorphic_admin_path([:admin, (@record.has_content? ? @record : @model)])
       if params[:review] == 'destroy'
-        @record.discard_draft! discard: %i[content]
+        @record.discard_draft!
       else
-        @record.approve_content_changes! JSON.parse(params[:review])
+        review = JSON.parse(params[:review])
+        @record.reify_draft! only: review['details'] if @record.has_draft?(:details)
+        @record.approve_content_changes! review['content'] if @record.has_draft?(:content)
       end
 
       if @record.save!
+        puts "CLEANUP DRAFT"
+        @record.cleanup_draft!
+        @record.save!
         @record.try(:cleanup_media_files!)
         redirect_to redirect, flash: { notice: translate('admin.result.updated') }
       else

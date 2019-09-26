@@ -45,7 +45,7 @@ module Draftable
   end
 
   def draft_content_blocks
-    parsed_draft_content['blocks']
+    parsed_draft_content ? parsed_draft_content['blocks'] : []
   end
 
   def record_draft! user, only: []
@@ -67,12 +67,12 @@ module Draftable
     self[:draft] = (parsed_draft || {}).merge(new_draft)
   end
 
-  def reify_draft!
+  def reify_draft! only: nil
     return unless parsed_draft.present?
 
     parsed_draft.each do |key, value|
       next if key == 'contributors'
-      self[key] = value
+      self[key] = value if only.nil? || only.include?(key)
     end
   end
 

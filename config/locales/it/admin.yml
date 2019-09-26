@@ -250,13 +250,22 @@ it:
         super_admin: "Dirige gli elementi fondamentali del sito, e crea nuovi editori."
 
     review: # TODO: Translate
+      title: "Review Changes"
+      changes_contributed_by: "Changes contributed by:"
+      no_value: "No Value"
+      invalid_value: "Invalid Value"
+      no_changes: "No Changes"
       discard_all_changes: "Discard All Changes"
-      approve_changes: "Approve Changes"
+      approve_changes: "Save Approved Changes"
+      or: OR
+      context:
+        details: "Page Details"
+        content: "Page Content"
       effect:
         moved: "Moved"
         added: "Added"
         removed: "Removed"
-        modified: "Modified"
+        modified: "Changed"
         nochange: "No Change"
 
     metadata:

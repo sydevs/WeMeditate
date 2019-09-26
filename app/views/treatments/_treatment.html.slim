@@ -1,7 +1,9 @@
 
+- solo = !defined?(treatment_counter)
+- treatment_counter = 1 if solo
 - index = (treatment_counter + 2).to_s.rjust(2, '0')
 
-article.excerpt id=dom_id(treatment) class="excerpt--#{treatment_counter.odd? ? 'left' : 'right'}"
+article.excerpt id=dom_id(treatment) class="excerpt--#{treatment_counter.odd? ? 'left' : 'right'}" style=('margin-bottom: 0' if solo)
   .excerpt__index = index
 
   a href=treatment_path(treatment)

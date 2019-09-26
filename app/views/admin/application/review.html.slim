@@ -1,37 +1,77 @@
 
 - content_for :title, 'Review'
+- contributors = @record.parsed_draft['contributors']
+- content_changes = @record.parsed_draft['content']
+- detail_changes = @record.parsed_draft.except('contributors', 'content')
 
-- content_for :head do
-  = stylesheet_link_tag 'review', media: 'all', 'data-turbolinks-track': 'reload'
-  = javascript_include_tag 'review', 'data-turbolinks-track': 'reload'
+.ui.inverted.dividing.fixed.header
+  .content
+    i.icon class=model_icon_key(@record.class)
+    = translate('admin.review.title').upcase
+  .sub.header
+    = @record.name
+    
+.ui.visible.left.sidebar
+  .ui.basic.inverted.segment
+    .cleartop
 
-#review-menu
-  .ui.visible.left.vertical.inverted.sidebar.labeled.icon.menu
-    - block_comparison(@record) do |original_block, draft_block, effect, label = nil|
-      - block = effect == 'added' ? draft_block : original_block
-      - label ||= effect
-      a.item.review-button data-id=block['data']['id'] data-effect=effect class=(effect != 'nochange' ? 'approved' : 'disabled')
-        i.icon class={'nochange' => 'minus', 'added' => 'plus', 'removed' => 'close', 'modified' => 'edit'}[effect]
-        .effect = translate(label, scope: %i[admin review effect])
-        .type = translate(block['type'], scope: %i[admin content blocks])
+    p = translate('admin.review.changes_contributed_by')
+    ul.ui.list
+      - User.where(id: contributors).pluck(:name).each do |contributor|
+        li.item = contributor
 
-  = simple_form_for @record, url: polymorphic_admin_path([:approve, :admin, @record]), html: { id: "review-form" } do |f|
-    .review-actions data-href=polymorphic_admin_path([:approve, :admin, @record])
-      input id='review-input' type='hidden' name='review'
-      button.ui.circular.negative.huge.button type='submit' name='review' value='destroy' data-confirm=translate('admin.messages.confirm_discard_draft')
-        = translate('admin.review.discard_all_changes')
-      button.ui.circular.positive.huge.button type='submit'
-        = translate('admin.review.approve_changes')
-        span
+    .ui.inverted.dividing.small.header = translate('admin.review.context.details')
+    .ui.fluid.inverted.vertical.secondary.menu
+      - if @record.has_draft? :details
+        - detail_changes.each do |key, data|
+          = review_menu_item key, 'details', record: @record
+      - else
+        .review.item class='review-button' data-context='details'
+          = translate('admin.review.no_changes')
+          
+    .ui.inverted.dividing.small.header = translate('admin.review.context.content')
+    .ui.fluid.inverted.vertical.secondary.menu
+      - if @record.has_draft? :content
+        - block_comparison(@record) do |original_block, draft_block, effect, label = nil|
+          - block = effect == 'added' ? draft_block : original_block
+          - type = translate(block['type'], scope: %i[admin content blocks])
+          = review_menu_item block['data']['id'], 'content', effect_label: label || effect, effect: effect, label: type
+      - else
+        a.review.item class='review-button' data-context='context'
+          = translate('admin.review.no_changes')
 
-- content_for :content do
-  - block_comparison(@record) do |original_block, draft_block, effect|
-    - block = effect == 'added' ? draft_block : original_block
-    .review-block data-id=block['data']['id'] class=('approved' unless effect == 'nochange')
-      .review-block-handle data-id=block['data']['id'] class=('disabled' if effect == 'nochange')
-      .review-block-original
-        = render "content_blocks/#{block['type']}_block", record: @record, block: original_block['data'].deep_symbolize_keys unless original_block.nil?
-      .review-block-draft
-        = render "content_blocks/#{block['type']}_block", record: @record, block: draft_block['data'].deep_symbolize_keys unless draft_block.nil?
+    .ui.basic.center.aligned.segment
+      = simple_form_for @record, url: polymorphic_admin_path([:approve, :admin, @record]), html: { id: 'review-form', class: 'inverted' } do |f|
+        .ui.inverted.loader
+        input id='review-input' type='hidden' name='review'
+        button.ui.positive.basic.button type='submit'
+          = translate('admin.review.approve_changes')
+        .ui.inverted.horizontal.divider = translate('admin.review.or')
+        button.ui.negative.basic.button type='submit' name='review' value='destroy' data-confirm=translate('admin.messages.confirm_discard_draft')
+          = translate('admin.review.discard_all_changes')
 
-= render file: "#{@record.model_name.route_key}/show"
+.preview
+  .ui.basic.segment id='details-review'
+    - if lookup_context.exists?("#{@record.model_name.route_key}/_#{@record.model_name.singular_route_key}")
+      iframe id='details-iframe' class="iframe--#{@record.model_name.singular_route_key}" src=polymorphic_admin_path([:preview, :admin, @record], excerpt: true, review: true)
+
+    .ui.relaxed.list
+      = render "admin/review/#{@record.model_name.singular_route_key}", record: @record
+
+    - if current_user.super_admin?
+      .ui.clearing.divider
+      .ui.accordion
+        .title
+          i.dropdown.icon
+          | Debug Data
+        .content
+          .ui.message Ignore this information unless you know what you are doing.
+          .ui.small.header Original Attributes
+          pre = @record.translation.pretty_inspect
+          .ui.small.header Draft Attributes
+          pre = @record.parsed_draft.pretty_inspect
+          .ui.small.header Draft Content
+          pre = @record.parsed_draft_content.pretty_inspect
+
+  .ui.basic.segment id='content-review' style=('display: none' if @record.has_draft?(:details))
+    iframe id='content-iframe' src=polymorphic_admin_path([:preview, :admin, @record], review: true)

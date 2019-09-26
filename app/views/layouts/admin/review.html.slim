@@ -1,0 +1,21 @@
+doctype html
+
+html
+  head
+    title Review
+    link rel="shortcut icon" href="/favicon/admin/favicon.ico" type="image/x-icon"
+    link rel="apple-touch-icon" href="/favicon/admin/apple-touch-icon.png"
+    link rel="apple-touch-icon" sizes="72x72" href="/favicon/admin/apple-touch-icon-72x72.png"
+    link rel="apple-touch-icon" sizes="114x114" href="/favicon/admin/apple-touch-icon-114x114.png"
+
+    = csrf_meta_tags
+    = stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
+
+  body class="admin #{controller_name} #{controller.action_name}"
+    = yield
+
+  javascript:
+    window.translate = #{translate('admin.javascript').to_json.html_safe}
+    window.translate['content'] = #{translate('admin.content').to_json.html_safe}
+    window.locale = '#{I18n.locale}'

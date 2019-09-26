@@ -259,11 +259,20 @@ ru:
         regional_admin: "отвечает за утверждение переводов, переводит основную часть сайта, контролирует публикацию нового контента на соответстующем языке."
         super_admin: "управляет основными элементами сайта и созданием новых редакторов."
 
-    review: 
+    review: # TODO: Translate
+      title: "Review Changes"
+      changes_contributed_by: "Changes contributed by:"
+      no_value: "No Value"
+      invalid_value: "Invalid Value"
+      no_changes: "No Changes"
       discard_all_changes: "Отменить все изменения"
       approve_changes: "Утвердить все изменения"
+      or: OR
+      context:
+        details: "Page Details"
+        content: "Page Content"
       effect:
-        moved: "Moved" # TODO: Translate
+        moved: "Moved"
         added: "Добавлено"
         removed: "Удалено"
         modified: "Изменено"

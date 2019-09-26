@@ -13,7 +13,7 @@
 
       - if allow.review? && @record.ready_for_review?
         - action_text = :review
-        - action_key = @record.ready_for_review?(:content) ? :review : :edit
+        - action_key = :review
       - else
         - action_text = :edit_details
         - action_key = :edit

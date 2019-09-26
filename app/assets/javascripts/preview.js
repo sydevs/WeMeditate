@@ -12,23 +12,26 @@
 //
 
 //= require jquery
-//= require semantic-ui
 
-class Review {
+class Preview {
 
   constructor() {
-    console.log('Init Review.js')
+    console.log('Init Preview.js')
     this.selectedId = null
-    this.menuScroller = zenscroll.createScroller(document.getElementById('review-menu').firstChild, 1000, 50)
-    this.approvalsCount = $('.approved.review-block').length
-    $('#review-form').on('submit', event => this.storeReviewData())
-    $('.review-button').on('mouseenter', event => this.highlightBlock(event.currentTarget.dataset.id, 'menu'))
-    $('.review-button:not(.disabled)').on('click', event => this.toggleApproval(event.currentTarget.dataset.id))
+    window.addEventListener('message', event => this.onIframeMessage(event), false)
+
     this.disableInteractions()
+    //this.observeScroll()
+  }
 
-    $('.review-actions > .positive.button > span').text(` (${this.approvalsCount})`)
+  onIframeMessage(event) {
+    if (event.origin !== window.location.origin) return
 
-    this.observeScroll()
+    if (event.data.action == 'highlight') {
+      this.highlightBlock(event.data.id, 'message')
+    } else {
+      this.setApproval(event.data.id, event.data.approved)
+    }
   }
 
   observeScroll() {
@@ -52,18 +55,8 @@ class Review {
     })
   }
 
-  storeReviewData() {
-    const data = []
-    $('#review-menu .review-button').each(function(index, element) {
-      const effect = element.classList.contains('approved') ? element.dataset.effect : 'nochange'
-      data.push({ id: element.dataset.id, effect: effect })
-    })
-
-    $('#review-input').val(JSON.stringify(data))
-  }
-
   disableInteractions() {
-    $('body > *:not(#review-menu)').children('a, button, input, select').on('click', function(event) {
+    $('a[href], button, input, select').on('click', function(event) {
       event.preventDefault()
       event.stopPropagation()
       return false
@@ -85,21 +78,16 @@ class Review {
     const $blocks = $(`.review-block[data-id="${id}"]`).addClass('active')
     const $buttons = $(`.review-button[data-id="${id}"]`).addClass('active')
 
-    if (source == 'menu') {
+    if (source == 'message') {
       this.disableObserver = true
       zenscroll.center($blocks[0], 1000, 0, () => { this.disableObserver = false })
-    } else {
-      this.menuScroller.intoView($buttons[0], 1000)
     }
   }
 
-  toggleApproval(id) {
-    const approved = $(`.review-button[data-id="${id}"]`).toggleClass('approved')
+  setApproval(id, approved) {
     $(`.review-block[data-id="${id}"]`).toggleClass('approved', approved)
-    this.approvalsCount = this.approvalsCount + (approved ? +1 : -1)
-    $('.review-actions > .positive.button > span').text(` (${this.approvalsCount})`)
   }
 
 }
 
-document.addEventListener('ready', () => { new Review() })
+$(document).on('ready', () => { new Preview() })

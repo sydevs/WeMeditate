@@ -25,10 +25,7 @@ html lang=locale
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = render_structured_data
 
-  - classes = [controller_name, "#{controller_name}-#{action_name}"]
-  - classes << "static-page static-page-#{@static_page.role.to_s.dasherize}" if @static_page.present?
-
-  body id='top' class=classes
+  body id='top'
     = render 'layouts/partials/header', cached: true
     = yield
     = render 'layouts/partials/footer', cached: true

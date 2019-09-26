@@ -110,7 +110,7 @@ en:
       make_public: "Make this %{page} visible to the public"
       maintenance_mode: "The website is under construction, come back soon."
       confirm_destroy: "Are you sure you want to delete that? This cannot be undone!"
-      confirm_discard_draft: "Are you sure you want to discard all changes shown on this page? This cannot be undone!"
+      confirm_discard_draft: "Are you sure you want to discard all changes to this page? This cannot be undone!"
       confirm_unsaved_changes: "Unsaved changes will be lost. Are you sure you want to leave the page?"
       drop_files_here: "Drop files here"
       unpublished_changes_notice: "This %{page} has unpublished changes. These will not be visible to the public until they have been reviewed by an administrator."
@@ -254,13 +254,22 @@ en:
         super_admin: "manage the fundamental elements of the site, and the creation of new editors."
 
     review: # Text related to reviewing unapproved changes
+      title: "Review Changes"
+      changes_contributed_by: "Changes contributed by:"
+      no_value: "No Value"
+      invalid_value: "Invalid Value"
+      no_changes: "No Changes"
       discard_all_changes: "Discard All Changes"
-      approve_changes: "Approve Changes"
+      approve_changes: "Save Approved Changes"
+      or: OR
+      context:
+        details: "Page Details"
+        content: "Page Content"
       effect:
         moved: "Moved"
         added: "Added"
         removed: "Removed"
-        modified: "Modified"
+        modified: "Changed"
         nochange: "No Change"
 
     metadata:

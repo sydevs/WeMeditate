@@ -4,12 +4,15 @@ const Application = {
   preloaded: false,
 
   init() {
-    document.querySelector('.footer__scrollback').addEventListener('click', event => {
-      zenscroll.toY(0)
-      event.preventDefault()
-    })
+    const scrollback = document.querySelector('.footer__scrollback')
+    if (scrollback) {
+      scrollback.addEventListener('click', event => {
+        zenscroll.toY(0)
+        event.preventDefault()
+      })
+    }
 
-    Application.element.header.init()
+    if (Application.element.header) Application.element.header.init()
   },
 
   load() {
