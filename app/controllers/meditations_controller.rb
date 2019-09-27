@@ -21,6 +21,13 @@ class MeditationsController < ApplicationController
     end
   end
 
+  def self_realization
+    @meditation = Meditation.published.get(:self_realization)
+    raise ActionController::RoutingError.new('Self Realization Page Not Found') if @meditation.nil?
+    set_metadata(@meditation)
+    render :show
+  end
+
   def archive
     next_offset = params[:offset].to_i + MEDITATIONS_PER_PAGE
     @meditations = Meditation.published.preload_for(:preview).offset(params[:offset]).limit(MEDITATIONS_PER_PAGE)
@@ -64,8 +71,7 @@ class MeditationsController < ApplicationController
 
     if cookies[:prescreen] == 'dismissed'
       # Increment the view counter for this page.
-      # TODO: This should be changed to be less naive, and actually check when people view the video.
-      @meditation.update! views: @meditation.views + 1
+      @meditation.update! views: @meditation.views + 1, popularity: @meditation.popularity + 1 unless @meditation.self_realization?
     else
       render :prescreen
     end
@@ -83,11 +89,6 @@ class MeditationsController < ApplicationController
     raise ActiveRecord::RecordNotFound, 'No meditation found for the given filters' unless meditation.present?
 
     redirect_to meditation_url(meditation), status: :see_other
-  end
-
-  def record_view
-    meditation = Meditation.friendly.find(params[:id])
-    meditation.update! views: meditation.views + 1
   end
 
 end

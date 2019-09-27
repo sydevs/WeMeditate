@@ -60,6 +60,7 @@ $color-gradient: ('blue': rgba(197, 224, 220, 0.3), 'orange': rgba(241, 212, 175
 $color-player: #d7d7d6
 $color-player-light: #eeeeee
 $color-player-blue: #c5e0dc
+$color-player-orange: #ff856f
 $color-box-orange: #ff856f
 
 $color-button-blue: #ebf4f3
@@ -86,21 +87,16 @@ $z-dropdown: 90
 
 // ====== ICONS ===== //
 // The icon font was generated using Icomoon.io, and can be reimported and edited there.
-$icon-arrow-left: '\e900'
-$icon-arrow-right: '\e901'
-$icon-arrow: ('left': $icon-arrow-left, 'right': $icon-arrow-right)
-
-$icon-breadcrumb: '\e906'
-$icon-play: '\e905'
+// Player icons
+$icon-play: '\ea1c'
+$icon-pause: '\ea1d'
+$icon-backward: '\ea1f'
+$icon-forward: '\ea20'
 $icon-volume: '\e90a'
 $icon-volume-muted: '\e913'
-$icon-filters: '\e917'
-$icon-search: '\e986'
+$icon-shuffle: '\ea30'
 
-$icon-meditation: '\e909'
-$icon-location: '\e914'
-$icon-computer: '\e90f'
-
+// Social icons
 $icon-facebook: '\e902'
 $icon-instagram: '\e903'
 $icon-pinterest: '\e904'
@@ -110,8 +106,30 @@ $icon-telegram: '\ea95'
 $icon-twitter: '\e907'
 $icon-vimeo: '\e908'
 
+// UI icons
+$icon-player: '\e905'
+$icon-breadcrumb: '\e906'
+$icon-filters: '\e917'
+$icon-search: '\e986'
+$icon-language: '\e9ca'
+$icon-spinner: '\e981'
+
+$icon-arrow-left: '\e900'
+$icon-arrow-right: '\e901'
+$icon-arrow: ('left': $icon-arrow-left, 'right': $icon-arrow-right)
+
+// Image icons
+$icon-meditation: '\e909'
+$icon-location: '\e914'
+$icon-computer: '\e90f'
+
+
 
 // ===== MEDIA QUERIES ===== //
+@mixin tiny
+  @media only screen and (max-width: #{$mobile-width})
+    @content
+
 @mixin mobile
   @media only screen and (max-width: #{$tablet-width - 1px})
     @content

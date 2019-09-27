@@ -16,6 +16,7 @@
 /node_modules
 /yarn-error.log
 /public/uploads
+/public/sitemaps
 
 .DS_Store
 .byebug_history

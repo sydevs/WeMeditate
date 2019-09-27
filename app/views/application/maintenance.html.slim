@@ -4,7 +4,7 @@
 p = ENV['MAINTENANCE_MODE'] || translate('admin.messages.maintenance_mode')
 
 - if current_user.present?
-  a href=admin_root_path = translate 'admin.action.view_admin'
+  a href=Rails.configuration.admin_url = translate 'admin.action.view_admin'
 - else
   a.sign-in href=new_user_session_path = translate 'admin.action.sign_in'
 

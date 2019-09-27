@@ -1,11 +1,11 @@
 
 const Editor = {
-  pending_uploads: 0,
-  upload_endpoint: null,
+  pendingUploads: 0,
+  uploadEndpoint: null,
   triangle_path: null,
 
   instance: null,
-  upload_loader: null,
+  uploadLoader: null,
   form: null,
   input: null,
 
@@ -30,21 +30,20 @@ const Editor = {
 
   load() {
     console.log('loading Editor.js')
-    let editor = document.getElementById('content-editor')
-    let form = document.getElementById('editor-form')
+    Editor.form = document.getElementById('editor-form')
+    Editor.uploadLoader = document.getElementById('upload-loader')
+    const contentEditor = document.getElementById('content-editor')
 
-    if (form && editor) {
+    if (Editor.form && contentEditor) {
       SplashEditor.load()
 
       form.onsubmit = Editor._onSubmit
-      Editor.triangle_path = editor.dataset.triangle
-      Editor.upload_endpoint = editor.dataset.upload
-      Editor.upload_loader = document.getElementById('upload-loader')
-      Editor.form = form
+      Editor.triangle_path = contentEditor.dataset.triangle
+      Editor.uploadEndpoint = contentEditor.dataset.upload
       Editor.input = form.querySelector('#content-input')
 
-      if (editor.dataset.content) {
-        Editor.options.data = Editor.processDataForLoad(editor.dataset.content)
+      if (contentEditor.dataset.content) {
+        Editor.options.data = Editor.processDataForLoad(contentEditor.dataset.content)
       }
 
       Editor.instance = new EditorJS(Editor.options)
@@ -54,12 +53,11 @@ const Editor = {
   upload(file, callback) {
     Editor.adjustPendingUploads(+1)
 
-    console.log('uploading', file.name, 'to', Editor.upload_endpoint)
     const data = new FormData()
     data.append('file', file)
 
     $.ajax({
-      url: Editor.upload_endpoint,
+      url: Editor.uploadEndpoint,
       type: 'POST',
       processData: false,
       contentType: false,
@@ -87,9 +85,9 @@ const Editor = {
   },
 
   adjustPendingUploads(adjustment) {
-    Editor.pending_uploads += adjustment
-    if (Editor.pending_uploads > 0) {
-      Editor.upload_loader.querySelector('span').innerText = translate['waiting_for_upload'].replace('%{count}', Editor.pending_uploads)
+    Editor.pendingUploads += adjustment
+    if (Editor.pendingUploads > 0) {
+      Editor.uploadLoader.querySelector('span').innerText = translate['waiting_for_upload'].replace('%{count}', Editor.pendingUploads)
       Editor.form.classList.add('disabled')
       Editor.form.setAttribute('disabled', true)
       $(Editor.form).find('button[type=submit]').attr('disabled', true)
@@ -99,7 +97,7 @@ const Editor = {
       $(Editor.form).find('button[type=submit]').attr('disabled', false)
     }
 
-    $(Editor.upload_loader).toggle(Editor.pending_uploads > 0)
+    $(Editor.uploadLoader).toggle(Editor.pendingUploads > 0)
   },
 
   processDataForSave(data) {
@@ -131,7 +129,7 @@ const Editor = {
   },
 
   _onSubmit(event) {
-    if (Editor.pending_uploads > 0) {
+    if (Editor.pendingUploads > 0) {
       event.preventDefault()
       return false
     }

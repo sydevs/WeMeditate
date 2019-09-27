@@ -34,6 +34,7 @@ class TextboxTool extends EditorTool {
       asWisdom: data.asWisdom || false,
       asVideo: data.asVideo || false,
       invert: data.invert || false,
+      separate: data.separate || false,
       decorations: data.decorations || {},
     }, { // Config
       id: 'textbox',
@@ -57,6 +58,10 @@ class TextboxTool extends EditorTool {
         {
           name: 'invert',
           icon: 'adjust',
+        },
+        {
+          name: 'separate',
+          icon: 'arrows alternate horizontal',
         },
         {
           name: 'left',

@@ -7,7 +7,11 @@ module Admin
     after_action :verify_policy_scoped, only: :index
 
     def dashboard
-      redirect_to "/#{current_user.available_languages.first}" unless current_user.available_languages.include?(I18n.locale)
+      authorize :application, :access?
+    end
+
+    def tutorial
+      authorize :application, :access?
     end
     
     def vimeo_data
@@ -35,6 +39,7 @@ module Admin
         end
       
         response = JSON.parse(response.body)
+        puts "Retrieved Vimeo Data for #{vimeo_id}\r\n#{response.inspect}"
       
         return {
           vimeo_id: vimeo_id,

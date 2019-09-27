@@ -13,14 +13,14 @@
 
       - if allow.review? && @record.ready_for_review?
         - action_text = :review
-        - action_key = @record.ready_for_review?(:content) ? :review : :edit
+        - action_key = :review
       - else
-        - action_text = :edit
+        - action_text = :edit_details
         - action_key = :edit
 
       a.ui.button href=polymorphic_admin_path([action_key, :admin, @record])
         i.edit.icon
-        = translate(action_text, scope: %i[admin action target], record: model_name)
+        = translate(action_text, scope: %i[admin action simple])
 
       - if @record.has_translation?
         .ui.floating.dropdown.icon.button
@@ -29,13 +29,13 @@
             - if @record.has_draft?
               a.item href=polymorphic_admin_path([:edit, :admin, @record])
                 i.edit.icon
-                = translate 'admin.action.target.edit_details', record: model_name
+                = translate 'admin.action.simple.edit_details'
             - if @record.published?
               - url = @record.is_a?(StaticPage) ? static_page_url_for(@record) : polymorphic_url(@record)
               a.item href=url target='_blank'
                 i.eye.icon
                 = translate 'admin.action.descriptive.show'
-            - if allow.preview? && (@record.has_draft? || !@record.published?)
+            - if allow.preview?
               a.item href=polymorphic_admin_path([:preview, :admin, @record]) target='_blank'
                 i.eye.icon
                 = translate 'admin.action.descriptive.preview'
@@ -66,8 +66,7 @@
 
 - if allow.write?
   .table-actions
-    - action = @record.content.present? ? :edit_content : :write
-    = table_action translate(action, scope: %i[admin action target], record: model_name), 'pencil alternate', polymorphic_admin_path([:write, :admin, @record])
+    = table_action translate(:edit_content, scope: %i[admin action simple]), 'pencil alternate', polymorphic_admin_path([:write, :admin, @record])
 
 
 h4 = translate 'admin.content.outline_title', page: @model.model_name.human

@@ -9,6 +9,7 @@ de:
     action:
       view_site: "View Site"
       view_admin: "Go To Admin Dashboard"
+      tutorial: "Help (How to Use)"
       report_issue: "Report Issue"
       search: "Search..."
       sign_in: "Log In"
@@ -25,11 +26,12 @@ de:
         create: "New"
         edit: "Edit"
         write: "Write"
+        edit_details: "Edit details" # These are the details of a page
+        edit_content: "Edit content" # This is the content of a page
         update: "Save"
         destroy: "Delete"
         preview: "Preview"
-        review: "Review"
-        preview: "Preview"
+        review: "Review changes"
         save_draft: "Save Draft"
         approve: "Approve"
         invite: "Invite" # To invite a new editor to the website
@@ -41,10 +43,8 @@ de:
         show: "View %{record}"
         upload: "Upload %{record}"
         edit: "Edit %{record}"
-        edit_details: "Edit %{record} details" # These are the details of the 'record'
-        edit_content: "Edit %{record} content"
-        review: "Review %{record}"
         write: "Write %{record} content"
+        review: "Review %{record}"
         reset: "Reset %{record}"
         publish: "Publish %{record}"
         unpublish: "Unpublish %{record}" # This means hiding the record from the public, the opposite of publishing
@@ -58,6 +58,7 @@ de:
       descriptive:
         show: "View on website"
         preview: "Preview draft on website"
+        reload_vimeo_data: "Reload Vimeo Metadata"
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
@@ -89,6 +90,8 @@ de:
       pending_translation: "Has %{language} Translation, Pending Approval" # "language" will be replaced with the language that this file is written in.
       in_progress_translation: "Has Incomplete %{language} Translation" # "language" will be replaced with the language that this file is written in.
       pending_invitation: "Has Not Yet Accepted Invitation"
+      this_is_you: "This is you"
+      missing_record: "Missing %{model}"
       updated_ago: "Modified %{time_ago} ago"
       published_ago: "Published %{time_ago} ago"
       urgency: # These are in order, with 'critical' as the most important, and 'pending' as the least important.
@@ -99,6 +102,7 @@ de:
       views: # This is the number of viewers or visits. Used to indicate the number of video views
         one: "1 View"
         other: "%{count} Views"
+      popularity: "Popularity: %{value}"
 
     messages:
       loading: "Loading"
@@ -107,7 +111,7 @@ de:
       make_public: "Make this %{page} visible to the public"
       maintenance_mode: "The website is under construction, come back soon."
       confirm_destroy: "Are you sure you want to delete that? This cannot be undone!"
-      confirm_discard_draft: "Are you sure you want to discard all changes shown on this page? This cannot be undone!"
+      confirm_discard_draft: "Are you sure you want to discard all changes to this page? This cannot be undone!"
       confirm_unsaved_changes: "Unsaved changes will be lost. Are you sure you want to leave the page?"
       drop_files_here: "Drop files here"
       unpublished_changes_notice: "This %{page} has unpublished changes. These will not be visible to the public until they have been reviewed by an administrator."
@@ -127,6 +131,7 @@ de:
       article_video: "If you enter a featured video, it will appear on the article preview."
       article_date: "If this article is about an event, then you can set the start date of the event here. This date will appear on the article preview."
       article_published_at: "The published date determines what order the articles appear in."
+      fixed_slug: "This is a special page, it's URL cannot be changed."
 
     result:
       created: "Created successfully."
@@ -159,6 +164,7 @@ de:
       tunes: # These are formatting styles for content blocks
         centered: "Centered"
         stretch: "Fill screen width"
+        separate: "Separate image and text"
         asGallery: "Gallery"
         asWisdom: "Ancient Knowledge Style"
         asVideo: "Video"
@@ -242,19 +248,29 @@ de:
         update_subordinate: "Can Modify %{subordinates}"
         create_subordinate: "Can Create %{subordinates}"
       role_description: # This describes the responsibilities of a given type of administrator
-        translator: "translates existing content which has been published in other languages, to their assigned language."
+        translator: "translate existing content which has been published in other languages, to their assigned language."
         writer: "can write new articles, or edit old articles which they themselves created."
         editor: "should review and publish articles written by writers. They can also created their own articles."
-        regional_admin: "is responsible for approving translations, translating core parts of the site, and overseeing the publishing of new content in their language."
-        super_admin: "manages the fundamental elements of the site, and the creation of new editors."
+        regional_admin: "are responsible for approving translations, translating core parts of the site, and overseeing the publishing of new content in their language."
+        super_admin: "manage the fundamental elements of the site, and the creation of new editors."
 
     review: # Text related to reviewing unapproved changes
+      title: "Review Changes"
+      changes_contributed_by: "Changes contributed by:"
+      no_value: "No Value"
+      invalid_value: "Invalid Value"
+      no_changes: "No Changes"
       discard_all_changes: "Discard All Changes"
-      approve_changes: "Approve Changes"
+      approve_changes: "Save Approved Changes"
+      or: OR
+      context:
+        details: "Page Details"
+        content: "Page Content"
       effect:
+        moved: "Moved"
         added: "Added"
         removed: "Removed"
-        modified: "Modified"
+        modified: "Changed"
         nochange: "No Change"
 
     metadata:
@@ -281,6 +297,35 @@ de:
       alerts: "Alerts"
       no_issues: "No issues right now, good job!"
 
+    tutorial:
+      title: "Starter Guide"
+      alert:
+        title: "How do I use this website?"
+        message: "If you are just getting started managing content on WeMeditate, we have prepared a few brief 1 - 2 minute videos, to help you if you're lost."
+        role_description: "You are a %{role}, and as such it is your role to %{description}. For a video illustrating how to do this, please click the link below."
+        action: "Watch Tutorial Videos"
+      role_vimeo_ids:
+        super_admin: 208643382
+        regional_admin: 208643382
+        editor: 208643382
+        writer: 208643382
+        translator: 208643382
+      panels:
+        overview:
+          menu: "Overview"
+          title: "How to use the CMS as a %{role}"
+          description: "As a %{role}, it is your role to %{description}"
+        editor:
+          menu: "Writing Content"
+          title: "How to use the content editor"
+          description: ""
+          vimeo_id: 208643382
+        issues:
+          menu: "Reporting Issues"
+          title: "How to report issues"
+          description: ""
+          vimeo_id: 208643382
+
     report_issue:
       name: "Devindra"
       email: "arden.ived@gmail.com"
@@ -288,7 +333,6 @@ de:
       body: "Please describe the issue in English..."
 
     misc:
-      errors: "Errors"
       no_translated_title: "No Translated Title" # This should be written in titlecase
       menu:
         my_author: "My Author Profile"
@@ -297,6 +341,13 @@ de:
         pages: "Pages"
         resources: "Resources"
         people: "People"
+        # For specific models
+        static_pages: "Main Pages"
+        articles: "Inspiration Articles"
+        subtle_system_nodes: "Subtle System"
+        meditations: :activerecord.models.meditation.other
+        treatments: :activerecord.models.treatment.other
+        tracks: Music Tracks
       locale:
         all_languages: "All Languages"
         other_languages: "Other Languages"

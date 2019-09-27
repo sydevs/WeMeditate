@@ -29,7 +29,7 @@
       - block[:items].first(3).each do |item|
         article.content__structured__item
           - if item[:image]
-            - image_sizes = '100vw' # TODO: Define these image sizes properly
+            - image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 919px) calc(34vw - 248px), (max-width: 1198px) calc(34vw - 108px), 324px'
             = smart_image_tag record.media_file(item[:image][:id]), image_sizes, lazy: false, class: 'content__structured__image'
           h3.content__structured__title = item[:title]
           .content__structured__text = simple_format_content item[:text]

@@ -65,6 +65,8 @@
   .ui.dropdown > .text
     font-weight: normal !important
 
+  input
+    width: 100%
 
 // INPUTS
 .cdx-input
@@ -103,6 +105,28 @@
     width: auto
     white-space: nowrap
     overflow: hidden
+
+.cdx-semantic-input
+  outline: none
+  width: 100%
+  tap-highlight-color: rgba(255, 255, 255, 0)
+  line-height: 1.21428571em
+  min-height: 2.57142857em
+  padding: 0.67857143em 1em
+  font-size: 1em
+  background: #FFFFFF
+  border: 1px solid rgba(34, 36, 38, 0.15)
+  color: rgba(0, 0, 0, 0.87)
+  border-radius: 0.28571429rem
+  box-shadow: 0em 0em 0em 0em transparent inset
+  transition: color 0.1s ease, border-color 0.1s ease
+
+  &:focus
+    color: rgba(0, 0, 0, 0.95)
+    border-color: #85B7D9
+    border-radius: 0.28571429rem
+    background: #FFFFFF
+    box-shadow: 0px 0em 0em 0em rgba(34, 36, 38, 0.35) inset
 
 // UPLOADER INPUT
 .cdx-input__uploader

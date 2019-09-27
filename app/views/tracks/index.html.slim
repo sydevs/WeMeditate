@@ -4,7 +4,7 @@ main
 
   - if @tracks.present?
     - first_track = @tracks.first
-    - playlist = playlist_data(@tracks)
+    - amplitude_data = amplitude_data(@tracks)
 
     .music
       .music__triangle
@@ -12,45 +12,67 @@ main
 
       p.music__description = translate 'tracks.text'
 
-      //h3.music__title = translate 'tracks.choose_mood'
-      //.music__filter__group.button_group id="music-player-mood-filters"
-        - @mood_filters.each do |mood_filter|
-          a.button.button--box.button--small data-filter=mood_filter.id
-            img.button__icon src=mood_filter.icon_url
-            span.button__text = mood_filter.name
+      .amplitude id='music-player' data-tracks=amplitude_data.to_json
+        .amplitude-playlists
+          h2.amplitude-playlists-title = translate 'tracks.choose_instruments'
+          .amplitude-playlists-list
+            - @instrument_filters.each do |instrument_filter|
+              .amplitude-playlist-button.amplitude-play.amplitude-interactive data-amplitude-playlist=instrument_filter.id
+                .amplitude-playlist-button-icon
+                  .js-inline-svg data-url="#{instrument_filter.icon_url}" data-namespace="#{instrument_filter.name.parameterize.downcase}"
+                .amplitude-playlist-button-title
+                  = instrument_filter.name
 
-      h3.music__title = translate 'tracks.choose_instruments'
-      .music__filter__group.button_group id="music-player-instrument-filters"
-        - @instrument_filters.each do |instrument_filter|
-          a.button.button--icon data-filter=instrument_filter.id
-            span.button__icon
-              .js-inline-svg data-url="#{instrument_filter.icon_url}" data-namespace="#{instrument_filter.name.parameterize.downcase}"
-            span.button__text = instrument_filter.name
+        .amplitude-controls
+          .amplitude-info
+            .amplitude-play-pause.amplitude-interactive
+              .icon.icon--spinner
+              .icon.icon--play
+              /.icon.icon--pause
+              .amplitude-equalizer
+                - 7.times do
+                  span.amplitude-equalizer-bar
+            .amplitude-info-name data-amplitude-song-info='name'
+            .amplitude-info-artists
+          .amplitude-track-wrapper
+            .amplitude-track
+              input.amplitude-song-slider type='range' step=0.1
+              span.amplitude-current-time
+              span.amplitude-duration-time
+            .amplitude-skip
+              span.amplitude-prev.amplitude-interactive
+                .icon.icon--backward
+              span.amplitude-next.amplitude-interactive
+                .icon.icon--forward
+              span.amplitude-shuffle.amplitude-interactive
+                .icon.icon--shuffle
+            .amplitude-volume
+              span.amplitude-mute.amplitude-interactive
+                .icon.icon--volume
+                .icon.icon--volume-muted
+              input.amplitude-volume-slider type='range'
 
-      .player id='music-player' data-playlist=playlist.to_json
-        .player__selection
-          .player__selection__title = first_track.name
-          .player__selection__artist
-            - first_track.artists.each do |artist|
-              a href=artist.url target='_blank' = artist.name
-              = ', ' unless first_track.artists.last == artist
+        .amplitude-cover.amplitude-cover--desktop
+          .amplitude-cover-image
+            .amplitude-sidetext.sidetext.sidetext--overlay.sidetext--left
+            img data-amplitude-song-info='cover_art_url'
 
-        audio.player__controls controls=true
-          data-controls="#{render('shared/audio_controls').html_safe}"
-          source src=first_track.audio_url type='audio/mp3'
+        - amplitude_data[:playlists].each do |playlist_id, playlist|
+          - playlist_songs = amplitude_data[:songs].select { |song| playlist[:songs].include?(song[:index]) }
+          - active = 'amplitude-active-playlist-container' if playlist_id == 0
+          .amplitude-playlist-container class=active data-amplitude-playlist=playlist_id
+            .amplitude-playlist-title
+              = t('tracks.playlist')
+              - if playlist[:cover_art_url]
+                span.amplitude-playlist-icon
+                  .js-inline-svg data-url="#{playlist[:cover_art_url]}" data-namespace="#{playlist[:title].parameterize.downcase}"
+            .amplitude-playlist-list
+              = render partial: 'tracks/song', collection: playlist_songs, locals: { playlist: playlist_id }, cached: Proc.new { |song| [song, playlist_id] }
 
-        .player__cover
-          .player__cover__image
-            .player__sidetext.sidetext.sidetext--overlay.sidetext--left
-            = static_image_tag 'music/album', '(max-width: 1024px) 42vw, 500px', class: 'player__cover__img'
+        .amplitude-cover.amplitude-cover--mobile
+          .amplitude-cover-image
+            .amplitude-sidetext.sidetext.sidetext--overlay.sidetext--left
+            img data-amplitude-song-info='cover_art_url'
 
-        .player__playlist
-          .player__playlist__title
-            = t('tracks.playlist')
-            span.player__icons
-          .player__sidetext
-          .player__playlist__list id='music-player-playlist'
-            = render @tracks, cached: true
-
-  - cache @static_page.content_cache_key do
+  - cache @static_page do
     .content = render_content @static_page

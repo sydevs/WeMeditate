@@ -20,24 +20,31 @@
   - image_sizes = '100vw'
 - elsif position == 'narrow'
   - image_sizes = '(max-width: 814px) calc(100vw - 48px), 400px'
-- else
+- elsif is_gallery
+  - image_sizes = '(max-width: 549px) 100vw, (max-width: 767px) 50vw, (max-width: 1111px) 34vw, (max-width: 1198px) 25vw, 300px'
+- else # callouts
   - image_sizes = '(max-width: 814px) calc(100vw - 48px), 766px'
 
-.content__image class=classes data-max-columns=items.count
-  - items.each do |item|
-    figure.content__image__item
-      .content__image__item__media
-        = smart_image_tag record.media_file(item[:image][:id]), image_sizes, lazy: false, class: 'content__image__img', alt: (item[:alt] || item[:caption])
+.content__image class=classes data-max-columns=items.count data-id=block[:id]
+  - items.each_with_index do |item, index|
+    - media_file = record.media_files.find_by(id: item[:image][:id])
+    - if media_file.present?
+      - attributes = media_file.to_h.merge(title: item[:caption]) if is_gallery
+      figure.content__image__item data-attributes=attributes&.to_json
+        a.content__image__item__media href=(media_file.file_url if is_gallery) target='_blank'
+          = smart_image_tag media_file.file, image_sizes, lazy: false, class: 'content__image__img', alt: (item[:alt] || item[:caption])
 
-        - if item[:credit].present?
-          .content__image__credit #{translate 'content.credit'} • #{item[:credit]}
+          - if item[:credit].present?
+            .content__image__credit #{translate 'content.credit'} • #{item[:credit]}
 
-      - unless is_gallery || is_callout
-        .content__image__triangle = render_decoration :triangle, block
+        - unless is_gallery || is_callout
+          .content__image__triangle = render_decoration :triangle, block
 
-      .content__image__item__content
-        - if item[:caption].present?
-          figcaption.content__image__caption = item[:caption]
+        .content__image__item__content
+          - if item[:caption].present?
+            figcaption.content__image__caption = item[:caption]
+    - elsif current_user.present?
+      = error "Could not load media file with id #{item[:image][:id]}"
 
   - if is_gallery
     .content__image__triangle = render_decoration :triangle, block

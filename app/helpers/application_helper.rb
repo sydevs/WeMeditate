@@ -4,36 +4,66 @@ module ApplicationHelper
     Rails.configuration.locale_hosts[I18n.locale]
   end
 
-  def playlist_data tracks
-    tracks.each_with_index.map do |track, index|
+  def amplitude_data tracks, playlists: true
+    playlists = {}
+
+    songs = tracks.each_with_index.map do |track, index|
+      puts "PROCESS #{index} #{track.inspect}"
+      if playlists
+        track.instrument_filters.each do |filter|
+          unless playlists.key?(filter.id)
+            playlists[filter.id] = {
+              title: filter.name,
+              cover_art_url: filter.icon_url,
+              songs: [],
+            }
+          end
+
+          playlists[filter.id][:songs] << index
+        end
+      end
 
       {
         index: index,
         name: track.name,
-        src: track.audio_url,
-        mood_filters: track.mood_filters.map(&:id),
-        instrument_filters: track.instrument_filters.map(&:id),
-        artists: playlist_artist_data(track.artists),
+        # artist: track.artists.first&.name,
+        artists: amplitude_artists_data(track.artists),
+        url: track.audio_url,
+        cover_art_url: track.artists.sample&.image_url,
       }
     end
+
+    if playlists
+      playlists[0] = {
+        title: '',
+        songs: songs.first(10).map { |song| song[:index] },
+      }
+    end
+
+    {
+      songs: songs,
+      playlists: playlists,
+    }
   end
 
-  def playlist_artist_data artists
+  def amplitude_artists_data artists
     artists.each.map do |artist|
+=begin TODO: Reimplement responsive images
       jpg_srcset = []
       webp_srcset = []
       artist.image.versions.values.each do |version|
         jpg_srcset << "#{version.url} #{version.width}w"
         webp_srcset << "#{version.webp.url} #{version.width}w"
       end
+=end
 
       {
         name: artist.name,
         url: artist.url,
-        image_srcset: {
-          jpg: jpg_srcset.join(', '),
-          webp: webp_srcset.join(', '),
-        },
+        # image_srcset: {
+        #   jpg: jpg_srcset.join(', '),
+        #   webp: webp_srcset.join(', '),
+        # },
       }
     end
   end
@@ -75,6 +105,18 @@ module ApplicationHelper
 
   def simple_format_content text
     simple_format(text.gsub('<br>', "\n").html_safe).gsub("\n", '').html_safe
+  end
+
+  def vimeo_tag vimeo_id, **args
+    klass = args[:class].is_a?(Array) ? args[:class] : [args[:class]]
+    url = "https://player.vimeo.com/video/#{vimeo_id}?byline=false&title=false&author=false&portrait=falsess"
+    tag.iframe class: klass, data: { src: url }, frameborder: '0', width: '100%', height: '100%', allow: 'autoplay; fullscreen'
+  end
+  
+  def error message
+    content_tag :div, class: 'alert' do
+      tag.div "Error: #{message}. Only administrators can see this error", class: 'alert__message'
+    end
   end
 
 end

@@ -63,28 +63,25 @@
   text-align: left
   margin-top: 50px
 
-  @include mobile
-    position: relative
-    height: 30vw
-
 .subtle-system__item
+  display: none
   opacity: 0
   visibility: hidden
   transition: visibility 0s linear 0.6s, opacity 0.6s ease
   background: transparentize(white, 0.5)
   box-shadow: 0px 0px 10px 5px transparentize(white, 0.5)
 
+  @include tablet-or-larger
+    display: block
+
   &--active
+    display: block
     opacity: 1
     visibility: visible
     transition-delay: 0s
 
 // POSITIONING
 .subtle-system__item
-  position: absolute
-
-  @include mobile
-    top: 0
 
   @include tablet
     padding: 1em
@@ -93,6 +90,7 @@
     padding: 2em
 
   @include tablet-or-larger
+    position: absolute
     top: 4em
     width: 320px
     max-width: 45%

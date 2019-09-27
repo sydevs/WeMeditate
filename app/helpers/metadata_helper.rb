@@ -17,7 +17,11 @@ module MetadataHelper
       @metatags.each do |key, value|
         if key == 'title'
           if action_name == 'home'
-            concat tag.title translate('we_meditate')
+            if value.present?
+              concat tag.title "#{translate 'we_meditate'} | #{value}"
+            else
+              concat tag.title translate('we_meditate')
+            end
           else
             concat tag.title "#{value} | #{translate 'we_meditate'}"
           end

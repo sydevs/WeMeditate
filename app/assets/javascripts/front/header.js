@@ -27,11 +27,10 @@ class Header {
     this.container.classList.toggle('header--overlay', this.splash)
     this.container.classList.toggle('header--invert', this.splash && this.splash.dataset.invert)
 
-    let $scrollspyTarget = $('.scrollspy-target')
+    this.$scrollspyTarget = $('.scrollspy-target')
     if (this.scrollspy) {
-      if ($scrollspyTarget.length > 0) {
-        this.scrollspyTop = $scrollspyTarget.offset().top
-        this.scrollspyHeight = $scrollspyTarget.height()
+      if (this.$scrollspyTarget.length > 0) {
+        this.scrollspyTop = this.$scrollspyTarget.offset().top
         this.scrollspy.style.display = null
       } else {
         this.scrollspy.style.display = 'none'
@@ -42,7 +41,7 @@ class Header {
       const cookieNoticeClose = this.cookieNotice.querySelector('.header__notice__close')
       cookieNoticeClose.addEventListener('click', () => {
         this.cookieNotice.remove()
-        document.cookie = 'notice=dismissed'
+        document.cookie = 'notice=dismissed;max-age=31536000'
       })
 
       setTimeout(() => { if (this.cookieNotice) this.cookieNotice.style.bottom = '0' }, 5000)
@@ -104,8 +103,8 @@ class Header {
     if (this.scrollspy && this.scrollspyTop) {
       let percentage = 0
 
-      if (scrollTop >= this.scrollspyTop && this.scrollspyHeight >= window.innerHeight) {
-        percentage = Math.min(1, (scrollTop - this.scrollspyTop) / (this.scrollspyHeight - window.innerHeight)) * 100
+      if (scrollTop >= this.scrollspyTop && this.$scrollspyTarget.height() >= window.innerHeight) {
+        percentage = Math.min(1, (scrollTop - this.scrollspyTop) / (this.$scrollspyTarget.height() - window.innerHeight)) * 100
       }
 
       this.scrollspy.style.width = `${percentage}%`

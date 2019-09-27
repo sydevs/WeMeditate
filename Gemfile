@@ -31,6 +31,7 @@ gem 'jquery-rails' # Add jQuery
 gem 'jquery-slick-rails' # A slider library
 gem 'normalize-rails' # To normalize CSS
 gem 'semantic-ui-sass' # CSS framework for the admin/CMS pages
+gem 'photoswipe-rails' # For image gallery
 
 # Models
 gem 'friendly_id' # Model routes use a slug instead of an ID number
@@ -39,6 +40,7 @@ gem 'jsonb_accessor' # Makes it simpler to access attributes of a jsonb database
 # Uploads
 gem 'carrierwave' # Core support for file uploads
 gem 'carrierwave-google-storage' # Let's us store the files in Google Storage
+gem 'carrierwave-meta' # To get image meta data
 gem 'mini_magick' # Image processing during upload
 
 # Admin
@@ -46,6 +48,7 @@ gem 'autosize' # To automatically grow text areas
 gem 'kaminari' # For pagination
 gem 'simple_form' # Takes care of grunt work when creating forms
 gem 'sortable-rails' # Allows us to sort models with a drag and drop interface
+gem 'diff-lcs' # For draft comparisons
 
 # Globalize (translatable models)
 gem 'carrierwave_globalize' # for carrierwave support
@@ -65,10 +68,10 @@ gem 'seedbank' # Used to populate the database with the pages and data used in t
 gem 'sprig' # Used to populate the database with the pages and data used in the designs, for quick deployment and recovery.
 
 # Misc
-gem 'gibbon' # For MailChimp Integration
 gem 'mail_form' # For the contact form
 gem 'sidekiq' # To power active jobs
 gem 'sitemap_generator' # For SEO purposes
+gem 'httparty' # For http requests (specifically Klaviyo)
 
 # Maybe needed later(?)
 # gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes

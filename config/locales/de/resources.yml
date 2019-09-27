@@ -9,8 +9,8 @@ de:
         one: "Article"
         other: "Articles"
       static_page:
-        one: "Static Page"
-        other: "Static Pages"
+        one: "Main Page"
+        other: "Main Pages"
       subtle_system_node: # This is a page for a Chakra, Channel, or the Kundalini. ie. Some part of the subtle system
         one: "Subtle System Node"
         other: "Subtle System Nodes"
@@ -99,7 +99,6 @@ de:
           sahaja_yoga: "About Sahaja Yoga"
           about: "About Page"
           classes: "Classes Page"
-          self_realization: "Self-Realization"
           privacy: "Privacy Policy"
         content: "Content"
         metatags: "Metadata"
@@ -176,7 +175,7 @@ de:
       track:
         published: :activerecord.attributes.article.published # Do not translate
         title: "Title"
-        artist: "Artist"
+        artists: :activerecord.models.artist.other
         audio: "File (mp3)"
         instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
         mood_filters: :activerecord.models.mood_filter.other # Do not translate

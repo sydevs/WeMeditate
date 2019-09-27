@@ -5,16 +5,23 @@ main.scrollspy-target id=dom_id(@treatment)
   h1.banner = @treatment.name
 
   .treatment__media
-    - if @treatment.horizontal_vimeo_id.present?
+    - if @treatment.vertical_vimeo_id.present?
       .video
-        = smart_image_tag @treatment.thumbnail, image_sizes, class: 'video__thumbnail', alt: @treatment.name
-        a.video__button.video__button--horizontal.js-video href="https://vimeo.com/#{@treatment.horizontal_vimeo_id}" data-id=@treatment.horizontal_vimeo_id data-mfp-src='#video-popup'
-        a.video__button.video__button--vertical.js-video href="https://vimeo.com/#{@treatment.vertical_vimeo_id}" data-id=@treatment.vertical_vimeo_id data-mfp-src='#video-popup'
+        .video__thumbnail
+          - image_sizes = '(max-width: 448px) calc(100vw - 48px), (max-width: 767px) 400px, (max-width: 1023px) 350px, 400px'
+          = smart_image_tag @treatment.thumbnail, '100vw'
+          a.video__button.video__button--horizontal data-lity=true href="https://vimeo.com/#{@treatment.horizontal_vimeo_id}"
+          a.video__button.video__button--vertical data-lity=true href="https://vimeo.com/#{@treatment.vertical_vimeo_id}"
+    - elsif @treatment.horizontal_vimeo_id.present?
+      .video
+        .video__thumbnail
+          = smart_image_tag @treatment.thumbnail, image_sizes
+          a.video__button data-lity=true href="https://vimeo.com/#{@treatment.horizontal_vimeo_id}"
     - else
       .treatment__media__image
         = smart_image_tag @treatment.thumbnail, image_sizes
 
-  - cache @treatment.content_cache_key do
+  - cache @treatment do
     .content = render_content @treatment
 
   .treatment__clearfix

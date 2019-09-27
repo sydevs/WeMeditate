@@ -52,7 +52,7 @@
         button.ui.basic.positive.button type='submit' name='draft' value='true'
           = translate 'admin.action.simple.save_draft'
 
-        - unless @record.is_a?(Article) && @record.new_record?
+        - if @record.has_translation?(:details)
           button.ui.basic.primary.button type='submit'
             = translate 'admin.action.simple.update'
             '  &
@@ -64,22 +64,3 @@
       div#upload-loader style='display: none'
         i.notched.circle.loading.icon
         span
-
-/ TODO: Remove this test code
-hr
-- if @record.respond_to?(:media_files)
-  p: code
-    div Media Files:
-    = @record.media_files.pluck(:id)
-  p: code
-    div Essential Media Files:
-    = @record.essential_media_files
-p: pre = @record.pretty_inspect
-- @record.respond_to?(:translations) && @record.translations.each do |translation|
-  p: pre = translation.pretty_inspect
-p: code
-  div Draft
-  pre = @record.parsed_draft.pretty_inspect
-p: code
-  div Content
-  pre = @record.parsed_content.pretty_inspect

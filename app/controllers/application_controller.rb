@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
 
   include ApplicationHelper
   include Regulator
-  protect_from_forgery # with: :exception
+  include Klaviyo
+  protect_from_forgery with: :exception
   before_action :enfore_maintenance_mode, except: %i[maintenance]
   
   # The root page of the website
@@ -16,6 +17,7 @@ class ApplicationController < ActionController::Base
   # The page where we embed a map from the program database
   def map
     expires_in 1.year, public: true
+    set_metadata({ 'title' => translate('classes.map_title') })
     render layout: 'minimal'
   end
 
@@ -44,24 +46,14 @@ class ApplicationController < ActionController::Base
 
   # A POST endpoint to subscribe to the site's mailing list.
   def subscribe
-    if params[:email_address].present?
-      email = params[:email_address].gsub(/\s/, '').downcase
-      email_hash = Digest::MD5.hexdigest(email)
+    if params[:signup][:email_address].present?
+      email = params[:signup][:email_address].gsub(/\s/, '').downcase
 
       begin
-        Gibbon::Request.new.lists(params[:mailchimp_list_id]).members(email_hash).upsert(
-          body: {
-            email_address: email,
-            status: 'subscribed',
-            language: I18n.locale,
-            signup: request.referer,
-            ip_signup: request.remote_ip,
-          }
-        )
-
+        Klaviyo.subscribe(email)
         @message = I18n.translate('form.success.subscribe')
         @success = true
-      rescue Gibbon::MailChimpError => error
+      rescue Error => error
         @message = error.detail.to_s
         @success = false
       end
@@ -82,6 +74,7 @@ class ApplicationController < ActionController::Base
 
   def error
     expires_in 1.month, public: true
+    set_metadata({ 'title' => translate('errors.error') })
     render status: request.env['PATH_INFO'][1, 3].to_i
   end
 
@@ -93,7 +86,7 @@ class ApplicationController < ActionController::Base
 
     # Enforces the maintenance mode redirect
     def enfore_maintenance_mode
-      return unless ENV['MAINTENANCE_MODE']
+      return if !ENV['MAINTENANCE_MODE'] && Rails.configuration.published_locales.include?(I18n.locale)
       return if %w[sessions switch_user].include? controller_name
       return if current_user.present?
 

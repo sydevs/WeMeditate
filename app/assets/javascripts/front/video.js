@@ -2,37 +2,78 @@
 class Video {
 
   constructor(element) {
-    this.popout = $(element).magnificPopup({
-      key: 'video',
-      callbacks: {
-        open: function() { Video.openPlayer(this.ev[0]) },
-      },
+    this.container = element
+    this.responsive = element.classList.contains('video--responsive')
+    this.button = element.querySelector('.video__button:not(.video__popup)')
+    this.button.innerHTML = '<div class="video__button__loader icon icon--spinner"></div>'
+    this.button.addEventListener('click', event => {
+      this.initPlayer()
+      event.preventDefault()
+      return false
     })
   }
 
-  static unloadPlayer() {
-    Application.videoPlayer.destroy()
-  }
-
-  static loadPlayer(id) {
-    const videoPlayerContainer = document.getElementById(id)
-    const videoPlayer = new Plyr(videoPlayerContainer, videoPlayerContainer.dataset.controls)
-    videoPlayerContainer.addEventListener('canplay', () => videoPlayer.play())
-    return videoPlayer
-  }
-
-  static openPlayer(element) {
-    Application.videoPlayer.source = {
-      type: 'video',
-      autoplay: true,
-      sources: [{ src: element.dataset.id, provider: 'vimeo' }]
+  initPlayer() {
+    if (this.responsive) {
+      this.validateOrientationCallback = () => this.resetOrientation()
+      this.horizontalPlayer = this.loadPlayer(this.container.querySelector('.video__horizontal > iframe'))
+      this.verticalPlayer = this.loadPlayer(this.container.querySelector('.video__vertical > iframe'))
+      this.currentOrientation = Application.orientation
+    } else {
+      this.horizontalPlayer = this.loadPlayer(this.container.querySelector('iframe'))
     }
 
-    if (Video.useAutoFullscreen()) Application.videoPlayer.fullscreen.enter()
+    this.button.classList.add('video__button--loading')
+    this.container.classList.add('video--active')
+    //this.player.play().then(() => {})
   }
 
-  static useAutoFullscreen() {
-    return Application.isMobileDevice() || screen.width < 1024
+  get player() {
+    return this.responsive && this.orientation == 'vertical' ? this.verticalPlayer : this.horizontalPlayer
+  }
+
+  loadPlayer(iframe) {
+    iframe.src = iframe.dataset.src
+    const player = new Vimeo.Player(iframe)
+
+    player.on('pause', () => {
+      if (this.responsive) this.toggleOrientationCheck(false)
+    })
+    
+    player.on('play', () => {
+      if (this.responsive) this.toggleOrientationCheck(true)
+      this.container.classList.add('video--active')
+    })
+
+    return player
+  }
+
+  resetOrientation() {
+    if (Application.orientation == this.orientation) return
+
+    this.orientation = Application.orientation
+    const oldPlayer = this.orientation == 'horizontal' ? this.verticalPlayer : this.horizontalPlayer
+    const newPlayer = this.orientation == 'vertical' ? this.horizontalPlayer : this.verticalPlayer
+
+    oldPlayer.getCurrentTime().then(seconds => {
+      newPlayer.setCurrentTime(seconds)
+      newPlayer.play()
+    })
+  }
+
+  toggleOrientationCheck(enable) {
+    if (enable) {
+      window.addEventListener('orientationchange', this.validateOrientationCallback)
+      window.addEventListener('resize', this.validateOrientationCallback)
+    } else {
+      window.removeEventListener('orientationchange', this.validateOrientationCallback)
+      window.removeEventListener('resize', this.validateOrientationCallback)
+    }
+  }
+
+  unload() {
+    this.container.classList.remove('video--active')
+    this.button.classList.remove('video__button--loading')
   }
 
 }

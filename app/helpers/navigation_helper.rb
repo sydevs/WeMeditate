@@ -14,6 +14,8 @@ module NavigationHelper
       })
     end
 
+    kundalini_page = SubtleSystemNode.find_by(role: :kundalini)
+
     @navigation.push({
       title: I18n.translate('header.learn_more'),
       url: '#', # static_page_path_for(:about),
@@ -25,7 +27,12 @@ module NavigationHelper
             title: static_page.name,
             url: static_page_path_for(static_page),
           }
-        },
+        } + [
+          {
+            title: translate('meditations.prescreen.kundalini').titleize,
+            url: url_for(kundalini_page),
+          }
+        ],
         featured: Treatment.published.preload_for(:preview).first(2).map { |treatment|
           {
             title: "#{Treatment.model_name.human}: #{treatment.name}",

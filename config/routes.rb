@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     scope ':locale' do
       namespace :admin, path: nil do
         root to: 'application#dashboard'
+        get :tutorial, to: 'application#tutorial'
         get :vimeo_data, to: 'application#vimeo_data', constraints: { format: :json }
 
         resources :treatments, :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters, only: [] do
@@ -57,6 +58,7 @@ Rails.application.routes.draw do
       end
 
       resources :meditations, only: %i[index show] do
+        get :self_realization, on: :collection
         get :archive, on: :collection
         get :random, on: :collection
         post :find, on: :collection

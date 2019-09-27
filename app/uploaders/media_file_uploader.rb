@@ -13,7 +13,7 @@ class MediaFileUploader < ApplicationUploader
   }.freeze
 
   VERSIONS.each do |name, version_width|
-    version name, if: :image?, &create_version(version_width)
+    version name, &create_version(version_width)
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -24,6 +24,14 @@ class MediaFileUploader < ApplicationUploader
 
   def image? new_file
     new_file.content_type.start_with? 'image'
+  end
+
+  def get_metadata
+    return nil unless file
+    url = file.file
+    url = file.file.url unless url.is_a?(String)
+    width, height = ::MiniMagick::Image.open(url)[:dimensions]
+    { width: width, height: height }
   end
 
 end

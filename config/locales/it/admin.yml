@@ -8,6 +8,7 @@ it:
     action:
       view_site: "Vedi Sito"
       view_admin: "Vai alla pagina amministrazione"
+      tutorial: "Help (How to Use)" # TODO: Translate
       report_issue: "Segnala un problema"
       search: "Cerca..."
       sign_in: "Log In"
@@ -24,11 +25,12 @@ it:
         create: "Crea nuovo"
         edit: "Cambia"
         write: "Scrivi"
+        edit_details: "Modifica dettagli" # These are the details of a page
+        edit_content: "Modifica il contenuto" # This is the content of a page
         update: "Salva"
         destroy: "Cancella"
         preview: "Anteprima"
         review: "Rivedi"
-        preview: "Anteprima"
         save_draft: "Salva bozza"
         approve: "Approva"
         invite: "Invita"
@@ -40,10 +42,8 @@ it:
         show: "Vedi %{record}"
         upload: "Carica %{record}"
         edit: "Modifica %{record}"
-        edit_details: "Modifica dettagli di %{record}"
-        edit_content: "Modifica il contenuto di %{record}"
-        review: "Rivedi %{record}"
         write: "Scrivi il contenuto di %{record}"
+        review: "Rivedi %{record}"
         reset: "Azzera %{record}"
         publish: "Pubblica %{record}"
         unpublish: "Ritira %{record}"
@@ -57,6 +57,7 @@ it:
       descriptive:
         show: "Mostra il sito"
         preview: "Mostra anteprima del sito"
+        reload_vimeo_data: "Reload Vimeo Metadata" # TODO: Translate
 
     # ===== MESSAGES ===== #
     status:
@@ -87,6 +88,8 @@ it:
       pending_translation: "Traduzione %{language} presente, da approvare."
       in_progress_translation: "Has Incomplete %{language} Translation" # "language" will be replaced with the language that this file is written in. # TODO: Translate
       pending_invitation: "Non ha ancora accettato l'invito."
+      this_is_you: "This is you" # TODO: Translate
+      missing_record: "Missing %{model}" # TODO: Translate
       updated_ago: "Modificato %{time_ago} fa."
       published_ago: "Pubblicato %{time_ago} fa."
       urgency:
@@ -97,6 +100,7 @@ it:
       views:
         one: "1 visita"
         other: "%{count} visite"
+      popularity: "Popularity: %{value}" # TODO: Translate
 
     messages:
       loading: "Caricamento"
@@ -112,7 +116,7 @@ it:
       pending_invitation_notice: "%{person} è stato invitato/a ad essere editore di WeMeditate, ma non ha ancora risposto."
       draft_notice: "Sati vedendo un'anteprima di %{page}. Questa versione non sarà visibile fino a quando un amministratore non l'avrà rivista."
       draft_contributed_by: "Quest'anteprima include dei cambiamenti effettuati da %{people}."
-      text_too_short: "Il testo è troppo corto, deve essere di %{count} lettere."
+      text_too_short: "è troppo corto, deve essere di %{count} lettere"
       invalid_vimeo_id: "deve essere un Vimeo ID valido"
       new_author_notice: "Non hai ancora creato il tuo Profilo Autore, riempi tutti i campi sotto e pressa Salva."
 
@@ -125,6 +129,7 @@ it:
       article_video: "If you enter a featured video, it will appear on the article preview." # TODO: Translate
       article_date: "If this article is about an event, then you can set the start date of the event here. This date will appear on the article preview." # TODO: Translate
       article_published_at: "The published date determines what order the articles appear in." # TODO: Translate
+      fixed_slug: "This is a special page, it's URL cannot be changed." # TODO: Translate
 
     result:
       created: "Creato con successo."
@@ -155,6 +160,7 @@ it:
       tunes:
         centered: "Centrato"
         stretch: "A tutta larghezza"
+        separate: "Separate image and text" # TODO: Translate
         asGallery: "Galleria"
         asWisdom: "Stile antica saggezza"
         asVideo: "Video"
@@ -245,12 +251,22 @@ it:
         super_admin: "Dirige gli elementi fondamentali del sito, e crea nuovi editori."
 
     review: # TODO: Translate
+      title: "Review Changes"
+      changes_contributed_by: "Changes contributed by:"
+      no_value: "No Value"
+      invalid_value: "Invalid Value"
+      no_changes: "No Changes"
       discard_all_changes: "Discard All Changes"
-      approve_changes: "Approve Changes"
+      approve_changes: "Save Approved Changes"
+      or: OR
+      context:
+        details: "Page Details"
+        content: "Page Content"
       effect:
+        moved: "Moved"
         added: "Added"
         removed: "Removed"
-        modified: "Modified"
+        modified: "Changed"
         nochange: "No Change"
 
     metadata:
@@ -277,6 +293,35 @@ it:
       alerts: "Avvisi"
       no_issues: "Non ci sono problemi, ben fatto!"
 
+    tutorial: # TODO: Translate
+      title: "Starter Guide"
+      alert:
+        title: "How do I use this website?"
+        message: "If you are just getting started managing content on WeMeditate, we have prepared a few brief 1 - 2 minute videos, to help you if you're lost."
+        role_description: "You are a %{role}, and as such it is your role to %{description}. For a video illustrating how to do this, please click the link below."
+        action: "Watch Tutorial Videos"
+      role_vimeo_ids:
+        super_admin: 208643382
+        regional_admin: 208643382
+        editor: 208643382
+        writer: 208643382
+        translator: 208643382
+      panels:
+        overview:
+          menu: "Overview"
+          title: "How to use the CMS as a %{role}"
+          description: "As a %{role}, it is your role to %{description}"
+        editor:
+          menu: "Writing Content"
+          title: "How to use the content editor"
+          description: ""
+          vimeo_id: 208643382
+        issues:
+          menu: "Reporting Issues"
+          title: "How to report issues"
+          description: ""
+          vimeo_id: 208643382
+
     report_issue:
       name: "Devindra"
       email: "arden.ived@gmail.com"
@@ -284,7 +329,6 @@ it:
       body: "Per favore descrivi la problematica in inglese..."
 
     misc:
-      errors: "Errori"
       no_translated_title: "Nessun Titolo Tradotto"
       menu:
         my_author: "Il mio Profilo Autore"
@@ -292,6 +336,13 @@ it:
         pages: "Pagine"
         resources: "Risorse"
         people: "Persone"
+        # For specific models # TODO: Translate
+        static_pages: "Main Pages"
+        articles: "Inspiration Articles"
+        subtle_system_nodes: "Subtle System"
+        meditations: :activerecord.models.meditation.other
+        treatments: :activerecord.models.treatment.other
+        tracks: Music Tracks
       locale:
         all_languages: "Tutte le lingue"
         other_languages: "Altre lingue"

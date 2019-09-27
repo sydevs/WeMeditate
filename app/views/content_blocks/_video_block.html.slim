@@ -6,16 +6,23 @@
     = render_decoration :gradient, block, size: %i[tall]
 
     - if isGallery
-      .content__video__sidetext = render_decoration :sidetext, block, static: true, alignment: :right
+      - if block[:decorations] && block[:decorations][:sidetext]
+        .content__video__circle
+          = render_decoration :circle, { decorations: { circle: true } }
+        .content__video__sidetext
+          = render_decoration :sidetext, block, static: true, alignment: :right
 
       .carousel.js-carousel data-style='video'
         - block[:items].each do |item|
           figure.carousel__item
-            .carousel__video.video
-              // TODO: Re-evaluate image_sizes
-              // TODO: Maybe try to find a way to re-enable lazyloading
-              = vimeo_image_tag item, '100vw', class: 'video__thumbnail', lazy: false
-              a.video__button.js-video href="https://vimeo.com/#{item[:vimeo_id]}" data-id=item[:vimeo_id] data-mfp-src='#video-popup'
+            .carousel__video.video class='js-video'
+              .video__inner
+                = vimeo_tag item[:vimeo_id]
+                .video__thumbnail
+                  - image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 919px) calc(100vw - 98px), (max-width: 1198px) 50vw, 548px'
+                  = vimeo_image_tag item, image_sizes, lazy: false
+                  a.video__button.video__popup data-lity=true href="https://vimeo.com/#{item[:vimeo_id]}"
+                  a.video__button
 
             figcaption.carousel__name = item[:title]
     - else
@@ -24,9 +31,13 @@
 
       - item = block[:items].first
       figure.content__video__item
-        .content__video__media.video
-          // TODO: Re-evaluate image_sizes
-          = vimeo_image_tag item, '100vw', class: 'video__thumbnail'
-          a.video__button.js-video href="https://api.vimeo.com/#{item[:vimeo_id]}" data-id=item[:vimeo_id] data-mfp-src='#video-popup'
+        .content__video__media.video class='js-video'
+          .video__inner
+            = vimeo_tag item[:vimeo_id]
+            .video__thumbnail
+              - image_sizes = '(max-width: 708px) calc(100vw - 48px), 660px'
+              = vimeo_image_tag item, image_sizes, lazy: false
+              a.video__button.video__popup data-lity=true href="https://vimeo.com/#{item[:vimeo_id]}"
+              a.video__button
 
         figcaption.content__video__name = item[:title]

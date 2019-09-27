@@ -9,8 +9,8 @@ it:
         one: "Articolo"
         other: "Articoli"
       static_page:
-        one: "Pagina Statica"
-        other: "Pagine Statiche"
+        one: "Pagina Principale"
+        other: "Pagine Principali"
       subtle_system_node:
         one: "Nodo Sistema Sottile"
         other: "Nodi Sistema Sottile"
@@ -99,7 +99,6 @@ it:
           sahaja_yoga: "Riguardo Sahaja Yoga"
           about: "Pagina Ulteriori Informazioni"
           classes: "Pagina Corsi"
-          self_realization: "Realizzazione del Sé"
           privacy: "Privacy Policy"
         content: "Contenuto"
         metatags: "Metadata"
@@ -177,7 +176,7 @@ it:
       track:
         published: :activerecord.attributes.article.published # Do not translate
         title: "Titolo"
-        artist: "Artista"
+        artists: :activerecord.models.artist.other
         audio: "File (mp3)"
         instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
         mood_filters: :activerecord.models.mood_filter.other # Do not translate

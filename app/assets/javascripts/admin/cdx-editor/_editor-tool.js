@@ -20,6 +20,7 @@ class EditorTool {
       settingsInputWrapper: `cdx-settings-input-zone`,
       settingsSelect: 'ce-settings-select',
       settingsInput: 'ce-settings-input',
+      semanticInput: 'cdx-semantic-input',
       tunesWrapper: `ce-settings__tunes`,
       decorationsWrapper: `ce-settings__decorations`,
       decorationInputsWrapper: `ce-settings__inputs`,
@@ -136,13 +137,15 @@ class EditorTool {
   }
 
   inhibitEnterAndBackspace(event, insertNewBlock = false) {
+    console.log("inhibit?", event.key)
     if (event.key == 'Enter' || event.keyCode == 13) { // ENTER
       if (insertNewBlock) this.api.blocks.insert()
       event.stopPropagation()
       event.preventDefault()
       return false
     } else if (event.key == 'Backspace' || event.keyCode == 8) { // BACKSPACE
-      event.stopPropagation()
+      event.stopImmediatePropagation()
+      console.log('stop backspace', event)
       return false
     } else {
       return true
@@ -150,9 +153,8 @@ class EditorTool {
   }
 
   insertParagraphBreak(event) {
-    if (event.key == 'Enter' || event.keyCode == 13) {
+    if (event.key == 'Enter' || event.keyCode == 13) { // ENTER
       document.execCommand('insertHTML', false, '<br><br>')
-
       event.preventDefault()
       event.stopPropagation()
       return false

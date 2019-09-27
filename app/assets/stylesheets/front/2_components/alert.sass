@@ -1,0 +1,21 @@
+@import "../../mixins/*"
+
+.alert
+  position: absolute
+  width: calc(100% - #{$gutter-width})
+
+  &:before
+    position: absolute
+    left: $gutter-width / 2
+    right: $gutter-width / 2
+    display: block
+    content: ''
+    height: 2px
+    background: red
+
+  &__message
+    position: absolute
+    top: 2px
+    left: $gutter-width / 2
+    padding: 4px 8px
+    background: pink

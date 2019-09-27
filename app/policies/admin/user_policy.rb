@@ -32,6 +32,10 @@ module Admin
       manage?
     end
 
+    def destroy?
+      super && user != record
+    end
+
     def user_record_is_subordinate?
       return true if record.is_a?(Class)
       return false unless %w[translator writer].include?(record.role)

@@ -1,16 +1,28 @@
 
-- image_sizes = '(max-width: 767px) calc(100v - 48px), 415px'
+- image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 1023px) 622px, 766px'
 
 main id=dom_id(@meditation)
   h1.banner = @meditation.name
 
   .meditation__media
     figure.content__video__item
-      .content__video__media.video
-        = smart_image_tag @meditation.image, image_sizes, class: 'video__thumbnail'
-        //a.video__button href="https://player.vimeo.com/play/979921004?s=265111898_1562846896_0c7a2c7cfadfc762f62096b4c3bcd608&loc=external&context=Vimeo%5CController%5CClipController.main&download=1"
-        a.video__button.video__button--horizontal.js-video href="https://vimeo.com/#{@meditation.horizontal_vimeo_id}" data-id=@meditation.horizontal_vimeo_id data-mfp-src='#video-popup'
-        a.video__button.video__button--vertical.js-video href="https://vimeo.com/#{@meditation.vertical_vimeo_id}" data-id=@meditation.vertical_vimeo_id data-mfp-src='#video-popup'
+      .video.video--responsive class="js-video"
+        .video__inner
+          .video__horizontal
+            = vimeo_tag @meditation.horizontal_vimeo_id
+            .video__thumbnail
+              - if @meditation.vimeo_metadata(:horizontal).present?
+                = vimeo_image_tag @meditation.vimeo_metadata(:horizontal), image_sizes
+              - else
+                = smart_image_tag @meditation.thumbnail, image_sizes
+          .video__vertical
+            = vimeo_tag @meditation.vertical_vimeo_id
+            .video__thumbnail
+              - if @meditation.vimeo_metadata(:vertical).present?
+                = vimeo_image_tag @meditation.vimeo_metadata(:vertical), image_sizes
+              - else
+                = smart_image_tag @meditation.thumbnail, image_sizes
+          a.video__button
 
   .meditation__text
     = @meditation.description

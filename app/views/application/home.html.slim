@@ -1,4 +1,4 @@
 
 main id=dom_id(@static_page)
-  - cache @static_page.content_cache_key do
+  - cache @static_page do
     .content = render_content @static_page

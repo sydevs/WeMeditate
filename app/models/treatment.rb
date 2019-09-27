@@ -23,13 +23,14 @@ class Treatment < ApplicationRecord
   validates :name, presence: true
   validates :excerpt, presence: true
   validates :thumbnail_id, presence: true, if: :persisted?
-  validates :horizontal_vimeo_id, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_blank: true
+  validates :horizontal_vimeo_id, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_blank: true, unless: :vertical_vimeo_id?
+  validates :horizontal_vimeo_id, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, presence: true, if: :vertical_vimeo_id?
   validates :vertical_vimeo_id, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_blank: true
 
   # Scopes
   default_scope { order(:order) }
   scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :q, -> (q) { joins(:translations).where('treatment_translations.name ILIKE ?', "%#{q}%") if q.present? }
+  scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('treatment_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model
   def self.preload_for _mode
@@ -38,7 +39,7 @@ class Treatment < ApplicationRecord
 
   # Shorthand for the article thumbnail image file
   def thumbnail
-    media_files.find_by(id: thumbnail_id)&.file
+    @thumbnail ||= media_files.find_by(id: thumbnail_id)&.file
   end
 
 end

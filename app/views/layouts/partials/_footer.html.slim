@@ -23,7 +23,7 @@ footer.footer
     .footer__column.footer__column--desktop
       nav.footer__navigation
         .footer__header = translate 'footer.learn_more'
-        a.footer__link href=url_for(self_realization_page) = self_realization_page.name
+        a.footer__link href=self_realization_meditations_path = translate 'footer.self_realization'
         a.footer__link href=subtle_system_nodes_path = subtle_system_page.name
         a.footer__link href=url_for(shri_mataji_page) = shri_mataji_page.name
         a.footer__link href=url_for(sahaja_yoga_page) = sahaja_yoga_page.name
@@ -48,12 +48,15 @@ footer.footer
           a.footer__social__link href=url
             i.icon class="icon--#{type}"
         
-      .footer__language
-        .footer__header = translate('footer.languages')
-        - I18n.available_locales.each do |locale|
-          a.footer__language__link href=root_url(host: Rails.configuration.locale_hosts[locale])
-            = locale.to_s.upcase
-          - if locale != I18n.available_locales.last
-            .footer__language__separator  | 
+      - if Rails.configuration.published_locales.length > 1
+        .footer__language
+          .footer__header
+            = translate('footer.languages')
+            .icon.icon--language
+          - Rails.configuration.published_locales.each do |locale|
+            a.footer__language__link href=root_url(host: Rails.configuration.locale_hosts[locale])
+              = locale.to_s.upcase
+            - if locale != Rails.configuration.published_locales.last
+              .footer__language__separator  | 
 
   .footer__copyright &copy; WeMeditate, 2019

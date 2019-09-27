@@ -12,7 +12,7 @@ class CatalogTool extends EditorTool {
       id: data.id || generateId(),
       title: data.title || '',
       items: data.items || [],
-      withImages: data.withImages || true,
+      withImages: data.withImages == false ? false : true,
       type: ['articles', 'treatments', 'meditations'].includes(data.type) ? data.type : 'articles',
       decorations: data.decorations || {},
     }, { // Config
@@ -65,9 +65,11 @@ class CatalogTool extends EditorTool {
     container.prepend(this.typeLabel)
 
     const searchInputWrapper = make('div', [this.CSS.search.input_wrapper, 'ui', 'fluid', 'icon', 'input'], {}, container)
-    this.searchInput = make('input', this.CSS.search.input, {
+    this.searchInput = make('div', [this.CSS.search.input, this.CSS.semanticInput], {
       placeholder: `${translate['content']['placeholders']['search']} ${translate['content']['tunes']['type'][this.data['type']].toLowerCase()}`,
+      contentEditable: true,
     }, searchInputWrapper)
+    this.searchInput.dataset.placeholder = `${translate['content']['placeholders']['search']} ${translate['content']['tunes']['type'][this.data['type']].toLowerCase()}`
     make('i', ['search', 'icon'], {}, searchInputWrapper)
 
     this.searchInput.addEventListener('keyup', event => this._onSearchChange(event))
@@ -123,16 +125,15 @@ class CatalogTool extends EditorTool {
 
   _onSearchChange(event) {
     if (this.timer) clearTimeout(this.timer)
-    if (event.target.value.length < 3) {
+    if (event.target.innerText.length < 3) {
       this.searchInput.parentNode.classList.remove('loading')
       return
     }
 
     this.searchInput.parentNode.classList.add('loading')
     this.timer = setTimeout(() => {
-      // TODO: Localize this
-      jQuery.get(`/en/${this.data.type}.json`, {
-        q: event.target.value,
+      jQuery.get(`/${locale}/${this.data.type}.json`, {
+        q: event.target.innerText,
       }, data => {
         this.searchContainer.innerHTML = ''
         if (data.length) {
@@ -197,7 +198,7 @@ class CatalogTool extends EditorTool {
   updateTypeLabel(tune) {
     this.typeLabel.querySelector('.icon').className = `${tune.icon} icon`
     this.typeLabel.querySelector('span').innerText = translate['content']['tunes'][tune.group][tune.name]
-    this.searchInput.placeholder = `${translate['content']['placeholders']['search']} ${translate['content']['tunes'][tune.group][tune.name].toLowerCase()}`
+    this.searchInput.dataset.placeholder = `${translate['content']['placeholders']['search']} ${translate['content']['tunes'][tune.group][tune.name].toLowerCase()}`
   }
 
   static get enableLineBreaks() {

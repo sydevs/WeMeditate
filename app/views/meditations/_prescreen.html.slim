@@ -14,11 +14,11 @@
     .prescreen__explanation-wrapper
       .prescreen__explanation
         = translate "#{translations}.explanation.text"
-        a.prescreen__explanation__link href=static_page_path_for(:self_realization)
+        a.prescreen__explanation__link href=url_for(SubtleSystemNode.find_by(role: :kundalini))
           = translate "#{translations}.explanation.learn_more"
           .icon.icon--breadcrumb
 
-    a.prescreen__button.button.button--circle href=static_page_path_for(:self_realization)
+    a.prescreen__button.button.button--circle href=self_realization_meditations_path
       = inline_svg 'graphics/circle.svg'
       .button__text = translate "#{translations}.action"
 

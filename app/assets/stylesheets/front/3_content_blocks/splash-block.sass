@@ -92,6 +92,9 @@
     left: 0
     right: 0
     padding-bottom: 15%
+
+    @include tiny
+      padding-bottom: 6vh
     
     @include laptop-or-larger
       position: static
@@ -102,6 +105,9 @@
     margin-bottom: 10vh
     padding: 0 3vw
     font-weight: $font-normal
+
+    @include tiny
+      margin-bottom: 6vh
 
     @include tablet-or-larger
       font-size: 4.5rem
@@ -122,6 +128,9 @@
   .content__splash__text
     max-width: 225px
     margin-bottom: 12vh
+
+    @include tiny
+      margin-bottom: 6vh
 
     @include tablet-or-larger
       max-width: 360px

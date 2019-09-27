@@ -29,4 +29,4 @@ tr.record id=dom_id(record)
             img src=goal_filter.icon.url
 
       td.collapsing
-        = table_icon 'eye', translate('admin.tags.views', count: record.views), record.views
+        = table_icon 'chart line', translate('admin.tags.popularity', value: record.popularity), record.popularity.to_i

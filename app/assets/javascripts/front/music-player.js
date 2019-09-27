@@ -1,214 +1,103 @@
 
+// TODO: Implement responsive artist images
+
 class MusicPlayer {
 
   constructor(element) {
-    const audioPlayer = element.querySelector('audio')
-    const controls = audioPlayer.querySelector('data-controls').innerText
-
     this.container = element
-    this.player = new Plyr(audioPlayer, { controls, invertTime: true })
-    this.selectionContainer = element.querySelector('.player__selection')
-    this.sidetext = element.querySelector('.player__sidetext')
-    this.icons = element.querySelector('.player__icons')
-    this.playlist = JSON.parse(element.dataset.playlist)
-    this.mini = element.classList.contains('player--mini')
-    this.currentTrackIndex = 0
+    this.activePlaylistId = null
+    this.mini = element.classList.contains('amplitude--mini')
+    this.sidetext = element.querySelector('.amplitude-sidetext')
+    this.artistsList = element.querySelector('.amplitude-info-artists')
+    this.playButton = element.querySelector('.amplitude-play-pause')
+    const data = JSON.parse(element.dataset.tracks)
+    this.playlists = data.playlists
 
-    $(element).on('click', '[data-plyr="skip-back"]', () => this.selectPreviousTrack())
-    $(element).on('click', '[data-plyr="skip-forward"]', () => this.selectNextTrack())
-    this.player.on('ended', () => this.selectNextTrack())
-
-    this.selectionTitle = this.container.querySelector('.player__selection__title')
-    this.selectionArtist = this.container.querySelector('.player__selection__artist')
-    this.filters = {}
-
+    Amplitude.init({
+      volume: 80,
+      songs: data.songs,
+      playlists: data.playlists,
+      starting_playlist: 0,
+      preload: this.mini ? 'none' : 'metadata',
+      debug: true,
+      callbacks: {
+        loadstart: () => {
+          this.playButton.classList.add('amplitude-loading')
+        },
+        canplay: () => {
+          this.playButton.classList.remove('amplitude-loading')
+        },
+        song_change: () => {
+          this.updateSongArtists()
+        },
+        play: () => {
+          this.validateActivePlaylist()
+        }
+      }
+    })
+    
     if (!this.mini) this.initFullPlayer()
+    this.updateSongArtists()
   }
 
   unload() {
-    this.player.destroy()
+    Amplitude.pause()
   }
 
   initFullPlayer() {
-    this.coverImage = this.container.querySelector('.player__cover__img')
-    this.playlistContainer = document.getElementById('music-player-playlist')
-    for (let i = 0; i < this.playlistContainer.childElementCount; i++) {
-      this.initTrack(this.playlistContainer.children[i])
+    const playlistButtons = this.container.querySelectorAll('.amplitude-playlist-button')
+    for (let i = 0; i < playlistButtons.length; i++) {
+      playlistButtons[i].addEventListener('click', event => this.togglePlaylist(event.currentTarget))
     }
 
-    this.filterContainers = {}
-    //this.initFilterGroup('mood')
-    this.initFilterGroup('instrument')
-
-    this.defaultCoverJpgSrcset = this.coverImage.getAttribute('data-srcset')
-    this.defaultCoverWebpSrcset = this.coverImage.previousSibling.getAttribute('data-srcset')
-  }
-
-  initFilterGroup(type) {
-    const container = document.getElementById(`music-player-${type}-filters`)
-    for (let i = 0; i < container.childElementCount; i++) {
-      container.children[i].addEventListener('click', event => this.setFilter(type, event.currentTarget))
+    const artistLinks = this.container.querySelectorAll('.amplitude-song-artist > a')
+    for (let i = 0; i < artistLinks.length; i++) {
+      artistLinks[i].addEventListener('click', event => event.stopPropagation())
     }
-
-    this.filterContainers[type] = container
   }
 
-  initTrack(element) {
-    var audio = new Audio()
+  togglePlaylist(playlistElement) {
+    if (playlistElement.dataset.amplitudePlaylist == this.activePlaylistId) {
+      this.container.classList.remove('amplitude-loading')
+      Amplitude.playPlaylistSongAtIndex(0, '0')
+      Amplitude.pause()
+    }
+  }
 
-    $(audio).on('loadedmetadata', function() {
-      element.querySelector('.player__item__duration').innerText = MusicPlayer.formatDuration(audio.duration)
+  updateSongArtists() {
+    if (!this.artistsList) return
+    const data = Amplitude.getActiveSongMetadata()
+
+    let html = []	
+    data.artists.forEach(artist => {	
+      html.push(`<a href="${artist.url}" target="_blank">${artist.name}</a>`)
     })
-
-    element.querySelector('.player__item__label').addEventListener('click', event => {
-      const index = event.currentTarget.parentNode.dataset.index
-      this.selectTrack(this.playlist[index])
-      event.preventDefault()
-      return false
-    })
-
-    audio.src = this.playlist[element.dataset.index].src
+    
+    this.artistsList.innerHTML = html.join(", ")
   }
 
-  setFilter(type, element) {
-    const activeButton = this.filterContainers[type].querySelector('.button--active')
-    if (activeButton) activeButton.classList.remove('button--active')
+  validateActivePlaylist() {
+    if (this.mini) return
+    const playlistId = Amplitude.getActivePlaylist()
+    if (this.activePlaylistId == playlistId) return
 
-    const filter = parseInt(element.dataset.filter)
-    if (this.filters[type] == filter) {
-      this.filters[type] = null
-      return
-    } else {
-      this.filters[type] = filter
-    }
+    if (this.activePlaylistId == null) this.activePlaylistId = '0'
+    this.setElementActive(this.activePlaylistId, 'playlist-button', false)
+    this.setElementActive(this.activePlaylistId, 'playlist-container', false)
 
-    if (type == 'instrument') {
-      this.sidetext.innerText = element.innerText
-    }
+    this.activePlaylistId = playlistId
+    this.setElementActive(playlistId, 'playlist-button', true)
+    this.setElementActive(playlistId, 'playlist-container', true)
 
-    this.icons.innerHTML = ''
-    this.icons.appendChild(element.querySelector('svg').cloneNode(true))
-
-    element.classList.add('button--active')
-    this.applyFilters()
-  }
-
-  applyFilters() {
-    for (let i = 0; i < this.playlistContainer.childElementCount; i++) {
-      const element = this.playlistContainer.children[i]
-      const data = this.playlist[element.dataset.index]
-      $(element).toggle(this.isTrackAvailable(data))
-    }
-
-    if (!(this.player.playing && this.isTrackAvailable(this.playlist[this.currentTrackIndex]))) {
-      this.selectNextTrack(true)
-    }
-
-    zenscroll.to(this.container)
-  }
-
-  isTrackAvailable(data) {
-    let available = true
-
-    for (let key in this.filters) {
-      available = available && this.filters[key] == null || data[`${key}_filters`].includes(this.filters[key])
-    }
-
-    return available
-  }
-
-  renderArtists(artists) {
-    let html = []
-    artists.forEach(artist => {
-      html.push(`<a href="${artist.url}">${artist.name}</a>`)
-    })
-
-    return html.join(", ")
-  }
-
-  selectTrack(data) {
-    this.selectionTitle.innerText = data.name
-    this.selectionArtist.innerHTML = this.renderArtists(data.artists)
-
-    this.player.source = {
-      type: 'audio',
-      title: data.name,
-      sources: [
-        { src: data.src, type: 'audio/mp3' },
-      ]
-    }
-
-    this.player.play()
-
-    if (!this.mini) {
-      this.setCoverImage(pickRandom(data.artists).image_srcset)
-      this.playlistContainer.children[this.currentTrackIndex].classList.remove('player__item--active')
-      this.currentTrackIndex = data.index
-      this.playlistContainer.children[this.currentTrackIndex].classList.add('player__item--active')
-    } else {
-      this.currentTrackIndex = data.index
+    if (this.sidetext) {
+      this.sidetext.innerText = this.playlists[playlistId].title
     }
   }
 
-  selectPreviousTrack() {
-    let index = this.currentTrackIndex - 1
-
-    while (true) {
-      if (index < 0) {
-        index = this.playlist.length - 1
-      } else if (this.isTrackAvailable(this.playlist[index])) {
-        break
-      } else {
-        index -= 1
-      }
-    }
-
-    this.selectTrack(this.playlist[index])
-  }
-
-  selectNextTrack(reset = false) {
-    let index = this.currentTrackIndex + 1
-    if (reset) index = 0
-
-    while (true) {
-      if (index >= this.playlist.length) {
-        index = 0
-      } else if (this.isTrackAvailable(this.playlist[index])) {
-        break
-      } else {
-        index += 1
-      }
-    }
-
-    this.selectTrack(this.playlist[index])
-  }
-
-  setCoverImage(srcset) {
-    if (srcset) {
-      this.coverImage.setAttribute('srcset', srcset.jpg)
-      this.coverImage.previousSibling.setAttribute('srcset', srcset.webp)
-    } else {
-      this.coverImage.setAttribute('srcset', this.defaultCoverJpgSrcset)
-      this.coverImage.previousSibling.setAttribute('srcset', this.defaultCoverWebpSrcset)
-    }
-  }
-
-  static formatDuration(seconds) {
-    var secNum  = parseInt(seconds, 10) // don't forget the second param
-    var hours   = Math.floor(secNum / 3600)
-    var minutes = Math.floor((secNum - (hours * 3600)) / 60)
-    var seconds = secNum - (hours * 3600) - (minutes * 60)
-
-    if (seconds < 10) { seconds = '0'+seconds }
-
-    if (hours > 0) {
-      if (hours   < 10) { hours   = '0'+hours }
-      if (minutes < 10) { minutes = '0'+minutes }
-
-      return `${hours}:${minutes}:${seconds}`
-    } else {
-      return `${minutes}:${seconds}`
-    }
+  setElementActive(playlistId, elementClass, active) {
+    const selector = `.amplitude-${elementClass}[data-amplitude-playlist="${playlistId}"]`
+    const element = this.container.querySelector(selector)
+    if (element) element.classList.toggle(`amplitude-active-${elementClass}`, active)
   }
 
 }

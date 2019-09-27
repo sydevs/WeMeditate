@@ -63,11 +63,8 @@ module HasContent
   end
 
   def cleanup_media_files!
-    media_files.where.not(id: essential_media_files).destroy_all
-  end
-
-  def content_cache_key
-    content_blocks.map { |b| b['data']['id'] }.join('-')
+    # TODO: Reimplement the cleanup of media files.
+    #media_files.where.not(id: essential_media_files).destroy_all
   end
 
 end

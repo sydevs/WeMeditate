@@ -4,22 +4,20 @@ const Application = {
   preloaded: false,
 
   init() {
-    document.querySelector('.footer__scrollback').addEventListener('click', event => {
-      zenscroll.toY(0)
-      event.preventDefault()
-    })
+    const scrollback = document.querySelector('.footer__scrollback')
+    if (scrollback) {
+      scrollback.addEventListener('click', event => {
+        zenscroll.toY(0)
+        event.preventDefault()
+      })
+    }
 
-    Application.element.header.init()
+    if (Application.element.header) Application.element.header.init()
   },
 
   load() {
     Application.loadImages()
     Application.loadAnimations()
-    Carousel.loadTranslations()
-
-    if (!Application.videoPlayer) {
-      Application.videoPlayer = Video.loadPlayer('video-player')
-    }
 
     const preloader = document.querySelector('.preloader')
     if (Application.preloaded && preloader) {
@@ -140,7 +138,11 @@ const Application = {
     })
   },
 
-  isMobileDevice() {
+  get orientation() {
+    return window.innerWidth > window.innerHeight ? 'horizontal' : 'vertical'
+  },
+
+  get isMobileDevice() {
     return navigator.userAgent.match(/Android/i)
         || navigator.userAgent.match(/webOS/i)
         || navigator.userAgent.match(/iPhone/i)
@@ -150,7 +152,7 @@ const Application = {
         || navigator.userAgent.match(/Windows Phone/i)
   },
 
-  isTouchDevice() {
+  get isTouchDevice() {
     return ('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)
   },
 }
@@ -161,4 +163,5 @@ document.addEventListener('turbolinks:before-cache', ()  => Application.unload()
 window.addEventListener('load', function() {
   $('.preloader').delay(1000).fadeOut('slow')
   Application.preloaded = true
+  Application.init()
 })

@@ -109,14 +109,15 @@
     height: 100%
 
 .content__catalog__article_grid--centered
-  display: flex
-  flex-direction: row
-  justify-content: center
+  @include tablet-or-larger
+    display: flex
+    flex-direction: row
+    justify-content: center
 
-  .content__catalog__article
-    padding: 0 20px
-    width: 50%
-    max-width: 400px
+    .content__catalog__article
+      padding: 0 20px
+      width: 50%
+      max-width: 400px
 
 
 // ===== TREATMENTS LINK LIST ===== //
@@ -134,3 +135,25 @@
 
   @include laptop-or-larger
     margin-top: 150px
+
+
+// ===== MEDITATIONS LINK LIST ===== //
+.content__catalog--meditations
+  .content__catalog__circle
+    position: absolute
+    top: -64px
+    right: 40px
+    transform: translateX(50%)
+    z-index: -1
+    zoom: 0.85
+
+    @include tablet-or-larger
+      display: none
+
+  .content__catalog__sidetext
+    display: block !important
+
+  // TODO: This reference to .gradient and .circle shouldn't be allowed.
+  .gradient, .circle
+    @include tablet-or-smaller
+      display: block

@@ -4,7 +4,9 @@
 .treatment__media
   @extend %wide-content-width
   max-width: $desktop-content-width
-  margin-right: -$gutter-width
+
+  @include tablet-or-larger
+    margin-right: -$gutter-width
 
   @include laptop-or-larger
     padding-right: 100px

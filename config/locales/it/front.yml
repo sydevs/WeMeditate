@@ -21,6 +21,7 @@ it:
     classes_near_me: "Corsi vicino a Me"
     online_meditations: "Meditazioni guidate Online"
     languages: "Languages" # TODO: Translate
+    self_realization: "The First Experience" # TODO: Translate
 
   actions_footer:
     title: "Sperimenta Tu Stesso!"
@@ -150,10 +151,13 @@ it:
     read_more: "Per Saperne di Più"
 
   classes:
+    map_title: "Meditation Classes Near Me" # TODO: Translate
     prompt: "Inserisci la tua città o CAP"
 
   errors:
-    title: "Oops..."
+    title: "Oops..." # TODO: Translate
+    coming_soon: "Coming Soon" # TODO: Translate
+    no_programs: "Meditation classes in your area are coming soon." # TODO: Translate
     error: "Error" # TODO: Translate
     alternatives_title: "Prova uno di questi invece:"
     '404': "La pagina che stavi cercando non esiste."

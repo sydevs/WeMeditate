@@ -9,8 +9,9 @@ class Meditation < ApplicationRecord
 
   # Extensions
   translates *%i[
-    name slug metatags views published_at published
-    excerpt description horizontal_vimeo_id vertical_vimeo_id
+    name slug metatags views popularity published_at published
+    excerpt description
+    horizontal_vimeo_id vertical_vimeo_id vimeo_metadata
   ]
   friendly_id :name, use: :globalize
 
@@ -24,14 +25,14 @@ class Meditation < ApplicationRecord
   validates :image, presence: true
   validates :excerpt, presence: true
   validates :duration_filter, presence: true
-  validates :goal_filters, presence: true
+  # validates :goal_filters, presence: true
   validates :horizontal_vimeo_id, presence: true, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_nil: true
   validates :vertical_vimeo_id, presence: true, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_nil: true
 
   # Scopes
   # default_scope { order( id: :desc ) }
   scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :q, -> (q) { joins(:translations).where('meditation_translations.name ILIKE ?', "%#{q}%") if q.present? }
+  scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('meditation_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   alias thumbnail image
 
@@ -55,11 +56,24 @@ class Meditation < ApplicationRecord
       Meditation.published.order('RANDOM()').first
     when :trending
       # The meditation with the most views
-      Meditation.published.order('meditation_translations.views DESC').first
+      Meditation.published.order('meditation_translations.popularity DESC').first
+    when :self_realization
+      Meditation.find_by(slug: I18n.translate('routes.self_realization'))
     else
       # A purely random meditation
       Meditation.published.order('RANDOM()').first
     end
+  end
+
+  def self_realization?
+    slug == I18n.translate('routes.self_realization')
+  end
+
+  def vimeo_metadata type = nil
+    return {} unless self[:vimeo_metadata].present?
+    result = self[:vimeo_metadata].deep_symbolize_keys
+    result = result[type.to_sym ] || {} if type.present?
+    result
   end
 
 end

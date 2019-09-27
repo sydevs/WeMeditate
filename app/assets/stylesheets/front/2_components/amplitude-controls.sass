@@ -1,0 +1,207 @@
+@import "../../mixins/*"
+
+/* AMPLITUDE CONTROLS
+  We are using the amplitude library to play audio content.
+  */
+
+.amplitude-interactive
+  cursor: pointer
+  transition: all 0.3s
+
+  &:hover
+    color: $color-player-blue
+
+// ===== BASIC BUTTON STATES ===== //
+.amplitude-play-pause
+  > *
+    display: none !important
+  
+  &.amplitude-loading .icon--spinner,
+  &.amplitude-playing .icon--pause,
+  &.amplitude-paused .icon--play,
+  &.amplitude-playing .amplitude-equalizer
+    display: block !important
+
+  &.amplitude-loading
+    .icon--play,
+    .amplitude-equalizer
+      display: none !important
+
+.amplitude-mute
+  &.amplitude-not-muted .icon--volume-muted,
+  &.amplitude-muted .icon--volume
+    display: none !important
+
+.amplitude-shuffle-on
+  color: $color-player-orange
+
+// ===== AMPLITUDE INFO ===== //
+.amplitude-info
+  position: relative
+  margin-bottom: 31px
+  padding-left: 70px
+
+  @include tablet-or-larger
+    padding-left: 80px
+
+  &-name
+    font-weight: $font-semibold
+    font-size: 2.4rem
+    line-height: 1.25
+    letter-spacing: 1.25px
+    color: $color-text-dark
+
+  &-artist
+    margin-top: 8px
+    font-weight: $font-normal
+    font-size: 1.6rem
+    line-height: 1
+    color: $color-text-normal
+
+  .amplitude-play-pause
+    position: absolute
+    top: 0
+    left: 0
+
+    display: flex
+    border: 1px solid
+    border-radius: 0
+    width: 36px
+    height: 36px
+    font-size: 2.4rem
+    background: white
+
+    > *
+      margin: auto
+
+  .amplitude-skip
+    position: absolute
+    top: 0
+    right: 0
+  
+
+// ===== AMPLITUDE TRACK ===== //
+.amplitude-track-wrapper
+  @include tablet-or-larger
+    display: flex
+
+.amplitude-track
+  flex-grow: 1
+
+.amplitude-duration-time
+  float: right
+
+// ===== AMPLITUDE SKIP ===== //
+.amplitude-skip
+  font-size: 2.2rem
+  text-align: center
+  margin-top: 12px
+
+  @include tablet-or-larger
+    margin-left: 18px
+    margin-top: 0
+
+  .amplitude-next
+    margin-left: 16px
+    margin-top: 8px
+
+    @include tablet-or-larger
+      margin-left: 4px
+      margin-top: 0
+
+  .amplitude-shuffle
+    margin-left: 16px
+
+// ===== AMPLITUDE VOLUME ===== //
+.amplitude-volume
+  font-size: 2rem
+  text-align: center
+  margin-top: 30px
+
+  @include tablet-or-larger
+    margin-left: 80px
+    margin-top: 0
+
+  @media (hover: none)
+    // Hide for touch devices
+    display: none !important
+
+  .amplitude-mute
+    margin-right: 12px
+
+// ===== MINI PLAYER ADJUSTMENTS ===== //
+.amplitude--mini
+  margin-top: 30px
+  margin-bottom: 80px
+  padding-bottom: 16px
+
+  @include tablet
+    margin-bottom: 40px
+
+  @include laptop-or-larger
+    margin-bottom: 20px
+    
+  .amplitude-info .amplitude-skip
+    @include mobile
+      display: none
+
+  .amplitude-track-wrapper .amplitude-skip
+    @include tablet-or-larger
+      display: none
+
+  .amplitude-info-name
+    @include tablet-or-larger
+      padding-right: 56px
+
+  .amplitude-volume
+    margin-left: 18px
+
+  .amplitude-volume-slider
+    width: 70px
+
+// ===== EQUALIZER ===== //
+.amplitude-equalizer
+  position: relative
+  height: 18px
+  line-height: 18px
+  font-size: 0
+  overflow: hidden
+
+  &-bar
+    display: inline-block
+    width: 2px
+    height: 100%
+    background: $color-text-normal
+    margin-right: 1px
+    transition: all 0.3s ease
+
+    &:nth-child(1)
+      height: 70%
+      @include equalizer-animation
+
+    &:nth-child(2)
+      @include equalizer-animation-2
+
+    &:nth-child(3)
+      height: 70%
+      @include equalizer-animation
+      animation-duration: 200ms
+
+    &:nth-child(4)
+      @include equalizer-animation-2
+      animation-duration: 150ms
+
+    &:nth-child(5)
+      height: 70%
+      @include equalizer-animation
+      animation-duration: 150ms
+
+    &:nth-child(6)
+      height: 70%
+      @include equalizer-animation
+      animation-duration: 200ms
+
+    &:nth-child(7)
+      height: 70%
+      @include equalizer-animation-2
+      animation-duration: 150ms

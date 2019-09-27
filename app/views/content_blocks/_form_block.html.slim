@@ -1,5 +1,4 @@
 
-- privacy_page = static_page_preview_for(:privacy)
 - url = (block[:format] == 'contact' ? contact_path : subscribe_path)
 - classes = ['content__form', 'js-form']
 - classes << "content__form--#{block[:format]}"
@@ -13,15 +12,15 @@
     .content__form__description = block[:text]
     .content__form__fields
       .content__form__message
-      = fields_for :contact do |f|
-        = f.hidden_field :gobbledigook
+      = fields_for block[:format] do |f|
+        = f.hidden_field :gobbledigook if block[:format] == 'contact'
         = f.email_field :email_address, placeholder: t('form.input.email')
-        - if block[:format] == 'contact'
-          = f.text_area :message, placeholder: t('form.input.message'), rows: 5
+        = f.text_area :message, placeholder: t('form.input.message'), rows: 5 if block[:format] == 'contact'
           
-        .content__form__privacy
-          = translate 'form.input.privacy.text'
-          a href=url_for(privacy_page) = translate 'form.input.privacy.learn_more'
+        - unless block[:format] == 'contact'
+          .content__form__privacy
+            = translate 'form.input.privacy.text'
+            a href=static_page_path_for(:privacy) target='_blank' = translate 'form.input.privacy.learn_more'
 
     button.button.button--box = block[:action]
 

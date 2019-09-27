@@ -24,13 +24,23 @@
     -moz-osx-font-smoothing: grayscale
     display: block
 
-  &--meditation:before
-    content: $icon-meditation
-  &--location:before
-    content: $icon-location
-  &--computer:before
-    content: $icon-computer
+  // Player controls
+  &--play:before
+    content: $icon-play
+  &--pause:before
+    content: $icon-pause
+  &--forward:before
+    content: $icon-forward
+  &--backward:before
+    content: $icon-backward
+  &--volume:before
+    content: $icon-volume
+  &--volume-muted:before
+    content: $icon-volume-muted
+  &--shuffle:before
+    content: $icon-shuffle
 
+  // Social icons
   &--facebook:before
     content: $icon-facebook
   &--instagram:before
@@ -46,16 +56,31 @@
   &--vk:before
     content: $icon-vk
 
+  // UI icons
+  &--player:before
+    content: $icon-player
   &--breadcrumb:before
     content: $icon-breadcrumb
-  &--play:before
-    content: $icon-play
   &--filters:before
     content: $icon-filters
   &--search:before
     content: $icon-search
+  &--language:before
+    content: $icon-language
 
   &--left-arrow:before
     content: $icon-arrow-left
   &--right-arrow:before
     content: $icon-arrow-right
+
+  &--spinner:before
+    content: $icon-spinner
+    animation: spin 1s infinite linear
+
+  // Image icons
+  &--meditation:before
+    content: $icon-meditation
+  &--location:before
+    content: $icon-location
+  &--computer:before
+    content: $icon-computer

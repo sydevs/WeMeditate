@@ -4,7 +4,7 @@ class ParagraphTool extends EditorTool {
   // Sanitizer data before saving
   static get sanitize() {
     return {
-      text: false,
+      text: {},
     }
   }
 

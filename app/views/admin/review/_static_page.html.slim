@@ -1,0 +1,5 @@
+
+= detail_review_block @record, 'role', icon: 'pin', type: :enum
+- unless record_has_fixed_slug?
+  = detail_review_block @record, 'slug', icon: 'linkify'
+= detail_review_block @record, 'metatags', icon: 'tags', type: :json

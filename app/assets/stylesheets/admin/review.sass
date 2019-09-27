@@ -1,31 +1,123 @@
+$menu-width: 260px
 
+// ===== MENU ===== //
 body.review
-  .ui.floating.label
-    top: 0
-    right: 0
-    left: auto
-    border-radius: 0
-    border-bottom-left-radius: 0.28571429rem
+  .ui.fixed.header
+    position: fixed
+    width: $menu-width
+    z-index: 1000
+    padding: 6px 10px
+    padding-top: 12px
+    background: #1B1C1D
 
-  .review.table td
-    vertical-align: top
-    word-break: break-all
+    .sub.header
+      padding-left: 32px
 
-  td.diff
-    vertical-align: top
+  .ui.sidebar
+    background: #1B1C1D
+    padding-top: 60px
+    padding-bottom: 20vh
 
-  ins, del
-    text-decoration: none
+  .ui.menu
+    margin-left: 0
+    margin-right: 0
 
-  tr.modified
-    background: lighten(#fff1cd, 5%)
-    
-  .message ins,
-  tr.modified ins,
-  tr.added
-    background: #cdffd8
+// ===== REVIEW BUTTONS ====== //
+body.review
+  .loading.form
+    &:before
+      background: none !important
 
-  .message del,
-  tr.modified del,
-  tr.removed
-    background: #ffdce0
+    &:after
+      border-top-color: white !important
+
+    > *
+      opacity: 0.5
+
+  .review.item
+    .content
+      color: white
+      margin-bottom: 6px
+
+    .approve
+      color: #2ecc40
+
+    .disabled
+      opacity: 0.5
+
+    .reject
+      opacity: 0.8
+      color: #ff695e
+
+    &:not(.approved)
+      opacity: 0.8
+
+    .approve, .disabled, .reject
+      display: none
+
+    &.approved .approve,
+    &.disabled .disabled,
+    &:not(.approved):not(.disabled) .reject
+      display: block
+
+// ===== PREVIEW ====== //
+body.review .preview
+  margin-left: $menu-width
+
+  .ui.segment
+    margin: 0 !important
+    width: calc(100vw - #{$menu-width})
+
+    &.content
+      padding: 0 !important
+
+// DETAILS REVIEW
+#details-review
+  border-bottom: 1px solid rgba(34, 36, 38, 0.15)
+  min-height: 100vh
+
+  .ui.list > .item
+    padding: 4px
+
+    &:after
+      display: none !important
+
+#details-iframe
+  float: left
+  background: white
+  border: 1px solid lightgray
+  margin-right: 20px
+  margin-bottom: 20px
+
+  &.active
+    background: beige
+
+  &.iframe--article
+    width: 300px
+    height: 400px
+
+  &.iframe--treatment
+    width: 100%
+    max-width: 1024px
+    height: 320px
+
+// CONTENT REVIEW
+#content-review
+  padding: 0 !important
+
+#content-iframe
+  border: none
+  width: 100%
+  height: 100vh
+
+// REVIEW BLOCK
+.review-block
+  &.active
+    background: transparentize(beige, 0.2)
+
+  &.approved .review-block-original,
+  &:not(.approved) .review-block-draft
+    display: none
+
+  .description
+    white-space: pre

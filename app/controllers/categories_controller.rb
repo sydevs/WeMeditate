@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
 
-  ARTICLES_PER_PAGE = 10
+  ARTICLES_PER_PAGE = 15
 
   def index
     @category = nil
@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
     def display
       next_offset = params[:offset].to_i + ARTICLES_PER_PAGE
 
-      if @articles.count < next_offset
+      if @articles.size <= next_offset
         @loadmore_url = nil
       elsif @category.nil?
         @loadmore_url = categories_path(format: 'js', offset: next_offset)
@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
       respond_to do |format|
         format.html do
           @static_page = StaticPage.preload_for(:content).find_by(role: :articles)
-          @categories = Category.published
+          @categories = Category.published.includes(articles: :translations).where(article_translations: { published: true }).where.not(articles: { id: nil })
           set_metadata(@static_page)
 
           @breadcrumbs = [

@@ -10,7 +10,7 @@ class QuoteTool extends EditorTool {
   // Sanitizer data before saving
   static get sanitize() {
     return {
-      text: false,
+      text: { br: true },
       credit: false,
       caption: false,
     }
@@ -56,6 +56,12 @@ class QuoteTool extends EditorTool {
     }, api)
   }
 
+  render() {
+    const container = super.render()
+    container.querySelector(`.${this.CSS.fields.text}`).addEventListener('keydown', event => this.insertParagraphBreak(event))
+    return container
+  }
+
   selectTune(tune) {
     if (this.isTuneActive(tune)) {
       this.setTuneValue(tune.group, '')
@@ -70,6 +76,6 @@ class QuoteTool extends EditorTool {
 
   // Empty tool is not empty Block
   static get contentless() {
-    return false;
+    return false
   }
 }

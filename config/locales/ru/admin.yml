@@ -9,6 +9,7 @@ ru:
     action:
       view_site: "Посмотреть Сайт"
       view_admin: "Перейти В Панель Управления Админа"
+      tutorial: "Help (How to Use)" # TODO: Translate
       report_issue: "Сообщить О Проблеме"
       search: "Искать..."
       sign_in: "Вход"
@@ -25,11 +26,12 @@ ru:
         create: "Создать"
         edit: "Редактировать"
         write: "Писать"
+        edit_details: "Редактировать параметры" # These are the details of a page
+        edit_content: "Редактировать контент" # This is the content of a page
         update: "Сохранить"
         destroy: "Удалить"
         preview: "Предварительный Просмотр"
         review: "Проверить"
-        preview: "Предварительный Просмотр"
         save_draft: "Сохранить Черновик"
         approve: "Утвердить"
         invite: "Пригласить" # To invite a new editor to the website
@@ -41,10 +43,8 @@ ru:
         show: "Посмотреть %{record}"
         upload: "Загрузить %{record}"
         edit: "Редактировать %{record}"
-        edit_details: "Редактировать %{record} детали" # These are the details of the 'record'
-        edit_content: "Редактировать %{record} контент"
-        review: "Проверить %{record}"
         write: "Написать %{record} контент"
+        review: "Проверить %{record}"
         reset: "Изменить %{record}"
         publish: "Опубликовать %{record}"
         unpublish: "Отменить публикацию %{record}" # This means hiding the record from the public, the opposite of publishing
@@ -58,6 +58,7 @@ ru:
       descriptive:
         show: "Посмотреть на сайте"
         preview: "Предварительный просмотр на сайте"
+        reload_vimeo_data: "Reload Vimeo Metadata" # TODO: Translate
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
@@ -89,11 +90,8 @@ ru:
       pending_translation: "Есть перевод на %{language}, в ожидании утверждения" # "language" will be replaced with the language that this file is written in.
       in_progress_translation: "Перевод на %{language} не закончен" # "language" will be replaced with the language that this file is written in. 
       pending_invitation: "Приглашение ещё не принято"
-<<<<<<< Updated upstream
-=======
       this_is_you: "Это вы" 
       missing_record: "Отсутствует %{model}" 
->>>>>>> Stashed changes
       updated_ago: "Изменено %{time_ago} назад"
       published_ago: "Опубликовано %{time_ago} назад"
       urgency: # These are in order, with 'critical' as the most important, and 'pending' as the least important.
@@ -105,12 +103,8 @@ ru:
         one: "%{count} Просмотр" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
         few: "%{count} Просмотра" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
         many: "%{count} Просмотров" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
-<<<<<<< Updated upstream
         other: "%{count} Просмотра" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 
-=======
-        other: "%{count} Просмотра" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0
       popularity: "Популярность: %{value}" 
->>>>>>> Stashed changes
 
     messages:
       loading: "Загружается"
@@ -139,10 +133,7 @@ ru:
       article_video: "Если вы добавите видео, оно будет отображено на превью статьи."
       article_date: "Если данная статья посвящена событию, то вы можете добавить дату события здесь. Эта дата будет отображена на превью статьи."
       article_published_at: "Дата публикации определяет в какой последовательности показаны статьи." 
-<<<<<<< Updated upstream
-=======
       fixed_slug: "Это особая страница, ее адрес (URL) нельзя изменить." 
->>>>>>> Stashed changes
 
     result:
       created: "Успешно создан."
@@ -175,10 +166,7 @@ ru:
       tunes: # These are formatting styles for content blocks
         centered: "По Центру"
         stretch: "Во Весь Экран"
-<<<<<<< Updated upstream
-=======
         separate: "Отдельно изоражение и текст" 
->>>>>>> Stashed changes
         asGallery: "Галерея"
         asWisdom: "Стиль Древних Знаний"
         asVideo: "Видео"
@@ -272,14 +260,20 @@ ru:
         regional_admin: "отвечает за утверждение переводов, переводит основную часть сайта, контролирует публикацию нового контента на соответстующем языке."
         super_admin: "управляет основными элементами сайта и созданием новых редакторов."
 
-    review: 
+    review: # TODO: Translate
+      title: "Review Changes"
+      changes_contributed_by: "Changes contributed by:"
+      no_value: "No Value"
+      invalid_value: "Invalid Value"
+      no_changes: "No Changes"
       discard_all_changes: "Отменить все изменения"
       approve_changes: "Утвердить все изменения"
+      or: OR
+      context:
+        details: "Page Details"
+        content: "Page Content"
       effect:
-<<<<<<< Updated upstream
-=======
-        moved: "Перемещено" 
->>>>>>> Stashed changes
+        moved: "Перемещено"
         added: "Добавлено"
         removed: "Удалено"
         modified: "Изменено"
@@ -314,6 +308,35 @@ ru:
       alerts: "Оповещения"
       no_issues: "В настоящее время проблем нет, так держать!"
 
+    tutorial: # TODO: Translate
+      title: "Starter Guide"
+      alert:
+        title: "How do I use this website?"
+        message: "If you are just getting started managing content on WeMeditate, we have prepared a few brief 1 - 2 minute videos, to help you if you're lost."
+        role_description: "You are a %{role}, and as such it is your role to %{description}. For a video illustrating how to do this, please click the link below."
+        action: "Watch Tutorial Videos"
+      role_vimeo_ids:
+        super_admin: 208643382
+        regional_admin: 208643382
+        editor: 208643382
+        writer: 208643382
+        translator: 208643382
+      panels:
+        overview:
+          menu: "Overview"
+          title: "How to use the CMS as a %{role}"
+          description: "As a %{role}, it is your role to %{description}"
+        editor:
+          menu: "Writing Content"
+          title: "How to use the content editor"
+          description: ""
+          vimeo_id: 208643382
+        issues:
+          menu: "Reporting Issues"
+          title: "How to report issues"
+          description: ""
+          vimeo_id: 208643382
+
     report_issue:
       name: "Девиндра"
       email: "arden.ived@gmail.com"
@@ -321,7 +344,6 @@ ru:
       body: "Пожалуйста, опишите проблему по-английски..."
 
     misc:
-      errors: "Ошибки"
       no_translated_title: "Отсутствует Перевод Заголовка" # This should be written in titlecase
       menu:
         my_author: "Мой профиль"
@@ -330,16 +352,13 @@ ru:
         pages: "Страницы"
         resources: "Ресурсы"
         people: "Люди"
-<<<<<<< Updated upstream
-=======
-        # For specific models # TODO: Translate
+        # For specific models
         static_pages: "Основные Страницы"
         articles: "Статьи Вдохновение"
         subtle_system_nodes: "Тонкая Система"
         meditations: :activerecord.models.meditation.many
         treatments: :activerecord.models.treatment.many
         tracks: "Музыка"
->>>>>>> Stashed changes
       locale:
         all_languages: "Все языки"
         other_languages: "Другие языки"

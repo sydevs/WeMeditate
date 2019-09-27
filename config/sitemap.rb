@@ -1,20 +1,17 @@
 require 'rubygems'
+require 'carrierwave'
 require 'sitemap_generator'
 
-# SitemapGenerator::Sitemap.sitemaps_host = "http://s3.amazonaws.com/sitemap-generator/"
-# SitemapGenerator::Sitemap.public_path = 'tmp/'
-# SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
-# SitemapGenerator::Sitemap.adapter = SitemapGenerator::WaveAdapter.new
+# ===== CONFIGURATION ===== #
+SitemapGenerator::Sitemap.default_host = "https://www.wemeditate.co"
+SitemapGenerator::Sitemap.sitemaps_host = ApplicationUploader.asset_host
+SitemapGenerator::Sitemap.public_path = 'tmp/'
+SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
+SitemapGenerator::Sitemap.adapter = SitemapGenerator::WaveAdapter.new
 
-# TODO: Rewrite this for the new content system
-
-=begin
-HOSTS = {
-  en: 'https://wemeditate.co',
-  ru: 'https://wemeditate.ru',
-  de: 'https://wemeditate.co',
-}.freeze
-
+HOSTS = Rails.configuration.locale_hosts.slice(*Rails.configuration.published_locales)
+HOSTS.each { |key, host| HOSTS[key] = "https://#{host}" }
+puts HOSTS.pretty_inspect
 EXCLUDE_STATIC_PAGES = %i[].freeze
 SPECIAL_PAGES = {
   home: { url: :root_path, changefreq: 'weekly' },
@@ -32,7 +29,7 @@ module SitemapHelper
       lastmod: record.updated_at,
       alternates: HOSTS.keys.map { |locale|
         I18n.with_locale(locale) do
-          special_url = send(SPECIAL_PAGES[record.role.to_sym][:url]) if record.is_a?(StaticPage) and SPECIAL_PAGES.key?(record.role.to_sym)
+          special_url = send(SPECIAL_PAGES[record.role&.to_sym][:url]) if record.is_a?(StaticPage) && SPECIAL_PAGES.key?(record.role&.to_sym)
           {
             href: special_url || polymorphic_path(record),
             lang: locale,
@@ -44,11 +41,14 @@ module SitemapHelper
   end
 
   def type_data record
+    images = []
+    videos = []
+
     if record.is_a?(::Meditation)
-      return {
-        video: {
-          thumbnail_loc: record.image.url,
-          content_loc: record.video.url,
+      if record.horizontal_vimeo_id
+        videos << {
+          thumbnail_loc: record.image_url,
+          player_loc: "https://vimeo.com/#{record.horizontal_vimeo_id}",
           title: record.name,
           description: record.excerpt,
           # duration: nil, # TODO: Add this
@@ -56,90 +56,61 @@ module SitemapHelper
           publication_date: record.created_at,
           family_friendly: true,
         }
-      }
+      end
     elsif record.is_a?(::Treatment)
-      return {
-        video: {
+      if record.horizontal_vimeo_id
+        videos << {
           thumbnail_loc: record.thumbnail.url,
-          content_loc: record.video.url,
+          player_loc: "https://vimeo.com/#{record.horizontal_vimeo_id}",
           title: record.name,
           description: record.excerpt,
+          # duration: nil, # TODO: Add this
           family_friendly: true,
         }
-      }
+      else
+        images << {
+          log: record.thumbnail.url,
+          title: record.name,
+          description: record.excerpt,
+        }
+      end
     end
 
-    return unless record.is_a?(::Article) or record.is_a?(::StaticPage)
-
-    data = { videos: [], images: [] }
-    record.sections.each do |section|
-      format = section.format.to_sym
-      case section.content_type.to_sym
-      when :text
-        if format == :with_image
-          image = section.media_file(section.extra_attr('image_id'))
-          next if image.nil?
-          data[:images] << {
-            loc: image.file_url,
-            title: image.name,
-            caption: "#{I18n.t 'sections.credit'} • #{section.credit}",
+    if record.has_content?
+      record.content_blocks.each do |block|
+        case block['type']
+        when 'textbox'
+          images << {
+            loc: record.media_file(block['data']['image']['id']).url,
+            title: block['data']['title'],
           }
-        end
-      when :textbox
-        unless format == :ancient_wisdom
-          image = section.media_file(section.extra_attr('image_id'))
-          next if image.nil?
-          data[:images] << {
-            loc: image.file_url,
-            title: image.name,
-          }
-        end
-      when :image
-        if format == :image_gallery
-          data[:images] += section.extra_attr('image_ids', []).map do |image_id|
-            image = section.media_file(image_id)
-            next if image.nil?
-            {
-              loc: image.file_url,
-              title: image.name,
+        when 'image', 'structured'
+          block['data']['items'].each do |item|
+            next unless item['image'].present?
+            images << {
+              loc: record.media_file(item['image']['id']).url,
+              title: item['alt'],
+              caption: item['caption'],
             }
           end
-        else
-          image = section.media_file(section.extra_attr('image_id'))
-          next if image.nil?
-          data[:images] << {
-            loc: image.file_url,
-            title: image.name,
-            caption: "#{I18n.t 'sections.credit'} • #{section.credit}",
-          }
-        end
-      when :video
-        if format == :video_gallery
-          data[:videos] += section.extra_attr('items', []).map do |item|
-            image = section.image(item['image_id'])
-            video = section.video(item['video_id'])
-            next if image.nil? or video.nil?
-            {
-              thumbnail_loc: image.url,
-              content_loc: image.url,
+        when 'video'
+          block['data']['items'].each do |item|
+            next unless item['vimeo_id'].present? && item['thumbnail'].present?
+            videos << {
+              thumbnail_loc: item['thumbnail'],
+              player_loc: "https://vimeo.com/#{item['vimeo_id']}",
               title: item['title'],
               family_friendly: true,
             }
           end
-        else
-          image = section.image
-          video = section.video
-          next if image.nil? or video.nil?
-          data[:videos] << {
-            thumbnail_loc: section.image.url,
-            content_loc: section.video.url,
-            title: section.title,
-            family_friendly: true,
-          }
         end
       end
     end
 
+    data = {}
+    data[:images] = images
+    data[:video] = videos.first if videos.length == 1
+    data[:videos] = videos if videos.length > 1
     data
   end
 
@@ -152,8 +123,8 @@ HOSTS.each do |locale, host|
   SitemapGenerator::Sitemap.default_host = host
   SitemapGenerator::Sitemap.filename = "sitemap.#{locale}"
   SitemapGenerator::Sitemap.create do
-    StaticPage.where.not(role: EXCLUDE_STATIC_PAGES).each do |static_page|
-      role = static_page.role.to_sym
+    StaticPage.published.preload_for(:content).where.not(role: EXCLUDE_STATIC_PAGES).each do |static_page|
+      role = static_page.role&.to_sym
 
       if SPECIAL_PAGES.key? role
         add send(SPECIAL_PAGES[role][:url]), changefreq: SPECIAL_PAGES[role][:changefreq], **record_data(static_page)
@@ -162,22 +133,21 @@ HOSTS.each do |locale, host|
       end
     end
 
-    SubtleSystemNode.find_each do |subtle_system_node|
+    SubtleSystemNode.published.preload_for(:content).find_each do |subtle_system_node|
       add subtle_system_node_path(subtle_system_node), changefreq: 'yearly', **record_data(subtle_system_node)
     end
 
-    Meditation.find_each do |meditation|
+    Meditation.published.preload_for(:content).find_each do |meditation|
       add meditation_path(meditation), changefreq: 'yearly', **record_data(meditation)
     end
 
-    Treatment.find_each do |treatment|
+    Treatment.published.preload_for(:content).find_each do |treatment|
       add treatment_path(treatment), changefreq: 'yearly', **record_data(treatment)
     end
 
-    Article.find_each do |article|
+    Article.published.preload_for(:content).find_each do |article|
       add article_path(article), changefreq: 'yearly', **record_data(article)
     end
   end
 
 end
-=end

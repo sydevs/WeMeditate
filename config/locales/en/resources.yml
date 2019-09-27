@@ -9,8 +9,8 @@ en:
         one: "Article"
         other: "Articles"
       static_page:
-        one: "Static Page"
-        other: "Static Pages"
+        one: "Main Page"
+        other: "Main Pages"
       subtle_system_node: # This is a page for a Chakra, Channel, or the Kundalini. ie. Some part of the subtle system
         one: "Subtle System Node"
         other: "Subtle System Nodes"
@@ -63,6 +63,7 @@ en:
         name: "Title"
         slug: :activerecord.attributes.generic.slug # Do not translate
         category: :activerecord.models.category.one # Do not translate
+        category_id: :activerecord.attributes.article.category # Do not translate
         priority: "Visibility"
         priorities:
           low: "Low Visibility"
@@ -74,12 +75,13 @@ en:
           artist: "Artist"
         excerpt: "Excerpt"
         thumbnail: "Thumbnail"
+        thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
         vimeo_id: "Featured Video (Vimeo ID)"
         date: "Featured Date"
         content: "Content"
         metatags: "Metadata"
         author: :activerecord.models.author.one # Do not translate
-        author_id: :activerecord.models.author.one # Do not translate
+        author_id: :activerecord.attributes.article.author # Do not translate
         owner: "Allow a writer to update this article"
         published_at: "Published Date"
 
@@ -99,7 +101,6 @@ en:
           sahaja_yoga: "About Sahaja Yoga"
           about: "About Page"
           classes: "Classes Page"
-          self_realization: "Self-Realization"
           privacy: "Privacy Policy"
         content: "Content"
         metatags: "Metadata"
@@ -140,6 +141,7 @@ en:
         excerpt: "Excerpt"
         content: "Content"
         thumbnail: "Thumbnail (png)"
+        thumbnail_id: :activerecord.attributes.treatment.thumbnail # Do not translate
         horizontal_vimeo_id: "Horizontal Video (Vimeo ID)"
         vertical_vimeo_id: "Vertical Video (Vimeo ID)"
         metatags: "Metadata"
@@ -176,7 +178,7 @@ en:
       track:
         published: :activerecord.attributes.article.published # Do not translate
         title: "Title"
-        artist: "Artist"
+        artists: :activerecord.models.artist.other # Do not translate
         audio: "File (mp3)"
         instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
         mood_filters: :activerecord.models.mood_filter.other # Do not translate

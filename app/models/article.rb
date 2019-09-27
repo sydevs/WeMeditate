@@ -35,9 +35,9 @@ class Article < ApplicationRecord
   validates :vimeo_id, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_blank: true
 
   # Scopes
-  default_scope { order(priority: :desc, published_at: :desc) }
+  scope :ordered, -> { order(priority: :desc, published_at: :desc) }
   scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :q, -> (q) { joins(:translations, category: :translations).where('article_translations.name ILIKE ? OR category_translations.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
+  scope :q, -> (q) { with_translations(I18n.locale).joins(:translations, category: :translations).where('article_translations.name ILIKE ? OR category_translations.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model
   def self.preload_for mode

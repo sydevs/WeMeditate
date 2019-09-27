@@ -1,7 +1,7 @@
 
 / We are using this switch statement to redirect the rendering,
 / for when we preview a static page on the admin side
-- case @static_page.role.to_sym
+- case @static_page.role&.to_sym
 - when :home
   = render file: 'application/home'
 - when :subtle_system
@@ -28,10 +28,10 @@
     - elsif !@static_page.contact?
       h1.banner.banner--left = @static_page.name
 
-    - cache @static_page.content_cache_key do
+    - cache @static_page do
       .content = render_content @static_page
 
-  - if @static_page.classes? || @static_page.self_realization?
+  - if @static_page.classes?
     = sharing_links
   - else
     = render 'application/actions_footer'

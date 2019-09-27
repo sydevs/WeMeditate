@@ -4,7 +4,7 @@
 = simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "ui form #{'error' if resource.errors.present?}" } do |f|
   - if resource.errors.present?
     .ui.error.message
-      .header = translate 'admin.misc.errors'
+      .header = translate 'admin.messages.errors'
       ul.list
         - resource.errors.full_messages.each do |message|
           li = message

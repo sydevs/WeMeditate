@@ -1,0 +1,235 @@
+@import "../../mixins/*"
+
+/* AMPLITUDE PLAYLIST
+  We are using the amplitude library to play audio content.
+  */
+
+
+// ===== PLAYLIST BUTTONS ===== //
+.amplitude-playlists
+  margin-bottom: 42px
+  
+  &-title
+    font-weight: $font-semibold
+    font-size: 2.4rem
+    line-height: 1.25
+    color: $color-text-dark
+    margin-top: 40px
+    margin-bottom: 48px
+    text-align: center
+
+    @include tablet-or-larger
+      text-align: left
+      margin-top: 82px
+
+.amplitude-playlist-button
+  display: flex
+  flex-direction: row
+  align-items: center
+
+  width: 140px
+  margin: auto
+  margin-bottom: 44px
+  padding: 0
+
+  font-weight: $font-semibold
+  font-size: 1.8rem
+  letter-spacing: 0.2px
+  color: $color-text-dark
+
+  @include tablet-or-larger
+    display: inline-flex
+    width: auto
+    margin-top: 6px
+    margin-bottom: 28px
+    margin-left: 0
+    margin-right: 72px
+
+  &:hover svg
+    fill: $color-player-blue !important
+
+  &-icon
+    width: 40%
+    text-align: left
+    display: inline-block
+
+    @include tablet-or-larger
+      width: auto
+      margin-right: 18px
+
+    > svg
+      fill: $color-text-normal
+      height: 56px
+      width: auto
+      transition: all 0.3s
+      max-width: 60px
+
+  &-title
+    width: 60%
+    text-align: right
+    display: inline-block
+    line-height: 60px
+
+    @include tablet-or-larger
+      width: auto
+      text-align: left
+
+.amplitude-active-playlist-button
+  opacity: 0.95
+  color: $color-player-blue
+
+  svg
+    fill: $color-player-blue !important
+
+// ===== COVER IMAGE ===== //
+.amplitude-cover--desktop
+  display: none
+
+  @include tablet-or-larger
+    display: block
+    position: absolute
+    margin-top: 218px
+    left: 78px
+    width: 40.77%
+
+  @include laptop-or-larger
+    left: auto
+    right: 50%
+    width: 27.5%
+    margin-top: 178px
+
+  @include desktop
+    margin-top: 218px
+
+  &-image
+    float: right
+    position: relative
+
+  img
+    width: 100%
+    max-height: 600px
+
+.amplitude-cover--mobile
+  margin-top: 60px
+  
+  @include tablet-or-larger
+    display: none
+
+  img
+    width: 100%
+    max-width: 400px
+    margin: auto
+
+// ===== SIDETEXT ===== //
+.amplitude-sidetext
+  margin-left: -50px
+
+  @include laptop-or-larger
+    margin-left: -108px
+
+// ===== PLAYLIST CONTAINER ===== //
+.amplitude-playlist
+  &-container
+    max-width: 805px
+    width: 100%
+    margin-top: 54px
+    margin-left: auto
+
+    @include tablet
+      width: 83.5%
+      margin-top: 100px
+      padding: 50px 0
+      padding-left: 39.1%
+
+    @include tablet-or-larger
+      @include gradient(to left, 'blue')
+      min-height: 600px
+
+    @include laptop-or-larger
+      width: 56%
+      margin-top: 60px
+      padding: 52px 0
+      padding-left: 162px
+      padding-right: 0
+      min-height: 700px
+
+    @include desktop
+      min-height: 720px
+      margin-top: 100px
+
+    &:not(.amplitude-active-playlist-container)
+      display: none
+
+  &-title
+    font-weight: $font-semibold
+    font-size: 2.4rem
+    line-height: 1.25
+    letter-spacing: 0.45px
+    color: $color-text-dark
+    margin-bottom: 40px
+
+  &-icon
+    margin-left: 6px
+
+    > svg
+      height: 25px
+      fill: $color-text-dark
+
+  &-list
+    position: relative
+    list-style: none
+
+    @include tablet
+      max-width: 577px
+      margin-left: -12px
+
+    @include laptop-or-larger
+      margin-left: 12px
+
+
+// ===== SINGLE TRACK IN PLAYLIST ===== //
+.amplitude-song-container
+  position: relative
+  border: 1px solid transparent
+  width: 100%
+  margin-top: 0
+  margin-bottom: 22px
+  padding: 5px
+  padding-left: 37px
+  padding-right: 50px
+  cursor: pointer
+
+  @include tablet-or-larger
+    margin-bottom: 28px
+
+.amplitude-active-song-container
+  border-color: $background-blue
+
+.amplitude-song
+  &-icon
+    position: absolute
+    top: 12px
+    left: 12px
+    font-size: 1.2rem
+
+  &-title
+    color: $color-text-dark
+    font-weight: $font-semibold
+    font-size: 2.1rem
+    line-height: 1.25
+
+  &-artist
+    font-size: 1.4rem
+    line-height: 1.5
+    letter-spacing: 0.39px
+
+    &:hover
+      color: $color-text-orange
+
+  &-duration
+    position: absolute
+    right: 12px
+    bottom: 5px
+
+    font-family: $font-number
+    font-size: 1.3rem

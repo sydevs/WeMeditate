@@ -12,20 +12,20 @@
     .item
       .title = translate 'admin.misc.menu.pages'
       .menu
-        - if policy(Article).index?
-          = link_to [:admin, Article], class: "#{'active' if ['articles', 'categories'].include? controller_name} item"
-            i.icon class=model_icon_key(Article)
-            = Article.model_name.human(count: -1)
-
         - if policy(StaticPage).index?
           = link_to [:admin, StaticPage], class: "#{'active' if controller_name == 'static_pages'} item"
             i.icon class=model_icon_key(StaticPage)
-            = StaticPage.model_name.human(count: -1)
+            = translate('admin.misc.menu.static_pages')
+
+        - if policy(Article).index?
+          = link_to [:admin, Article], class: "#{'active' if ['articles', 'categories'].include? controller_name} item"
+            i.icon class=model_icon_key(Article)
+            = translate('admin.misc.menu.articles')
 
         - if policy(SubtleSystemNode).index?
           = link_to [:admin, SubtleSystemNode], class: "#{'active' if controller_name == 'subtle_system_nodes'} item"
             i.icon class=model_icon_key(SubtleSystemNode)
-            = SubtleSystemNode.model_name.human(count: -1)
+            = translate('admin.misc.menu.subtle_system_nodes')
 
   - if policy(Track).index? || policy(Meditation).index? || policy(Treatment).index?
     .item
@@ -34,17 +34,17 @@
         - if policy(Meditation).index?
           = link_to [:admin, Meditation], class: "#{'active' if ['meditations', 'goal_filters', 'duration_filters'].include? controller_name} item"
             i.icon class=model_icon_key(Meditation)
-            = Meditation.model_name.human(count: -1)
+            = translate('admin.misc.menu.meditations')
 
         - if policy(Treatment).index?
           = link_to [:admin, Treatment], class: "#{'active' if controller_name == 'treatments'} item"
             i.icon class=model_icon_key(Treatment)
-            = Treatment.model_name.human(count: -1)
+            = translate('admin.misc.menu.treatments')
 
         - if policy(Track).index?
           = link_to [:admin, Track], class: "#{'active' if ['tracks', 'mood_filters', 'instrument_filters', 'artists'].include? controller_name} item"
             i.icon class=model_icon_key(Track)
-            = Track.model_name.human(count: -1)
+            = translate('admin.misc.menu.tracks')
 
   - if policy(User).index? || policy(Author).index? || policy(Author).create?
     - is_author_bio = @record&.is_a?(Author) && @record.user == current_user
@@ -81,6 +81,9 @@
   - report_link = "mailto:\"#{translate 'admin.report_issue.name'}\"<#{translate 'admin.report_issue.email'}>"
   - report_link += "?subject=#{URI.encode translate('admin.report_issue.subject')}"
   - report_link += "&body=#{URI.encode translate('admin.report_issue.body')}"
+  = link_to admin_tutorial_path, class: 'item' do
+    i.question.circle.icon
+    = translate('admin.action.tutorial')
   = link_to report_link, class: 'item' do
     i.exclamation.circle.icon
     = translate('admin.action.report_issue')
