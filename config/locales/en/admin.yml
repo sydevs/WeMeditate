@@ -345,9 +345,10 @@ en:
         static_pages: "Main Pages"
         articles: "Inspiration Articles"
         subtle_system_nodes: "Subtle System"
-        meditations: :activerecord.models.meditation.other
-        treatments: :activerecord.models.treatment.other
+        meditations: :activerecord.models.meditation.other # Do not translate
+        treatments: :activerecord.models.treatment.other # Do not translate
         tracks: Music Tracks
+        users: :activerecord.models.user.other # Do not translate
       locale:
         all_languages: "All Languages"
         other_languages: "Other Languages"
