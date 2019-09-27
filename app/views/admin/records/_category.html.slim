@@ -1,0 +1,14 @@
+
+- allow = policy(category)
+- return if table_check_status_filter_failed(category)
+
+tr.record id=dom_id(category)
+  td.top.aligned
+    a href=polymorphic_admin_path([(:edit unless allow.show?), :admin, category])
+      = category.preview_name
+
+  td.collapsing.top.right.aligned
+    = category.articles.count
+
+  td.collapsing.top.aligned
+    = table_record_status_label(category)

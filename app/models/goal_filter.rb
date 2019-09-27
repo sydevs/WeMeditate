@@ -12,7 +12,7 @@ class GoalFilter < ApplicationRecord
   translates :name, :published_at, :published
 
   # Associations
-  has_and_belongs_to_many :meditations
+  has_and_belongs_to_many :meditations, counter_cache: true
   mount_uploader :icon, SvgIconUploader
 
   # Validations

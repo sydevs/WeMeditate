@@ -4,6 +4,8 @@ class ApplicationRecord < ActiveRecord::Base
 
   self.abstract_class = true
 
+  include Sortable
+
   def self.preload_for _mode
     self # Subclasses override this to provide real preloading behaviour
   end
@@ -49,6 +51,14 @@ class ApplicationRecord < ActiveRecord::Base
 
   def cache_key
     super + '-' + Globalize.locale.to_s
+  end
+
+  def sort
+
+  end
+
+  def filter
+
   end
 
 end

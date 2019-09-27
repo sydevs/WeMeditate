@@ -13,7 +13,7 @@ class Author < ApplicationRecord
 
   # Associations
   belongs_to :user, required: false
-  has_many :articles
+  has_many :articles, counter_cache: true
   mount_uploader :image, AuthorImageUploader
   
   # Validations

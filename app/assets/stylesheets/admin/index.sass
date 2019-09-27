@@ -1,8 +1,54 @@
 
+.ui.models.menu
+  box-shadow: none
+
+  .dropdown
+    .title
+      text-transform: uppercase
+      font-weight: bold
+      margin-right: 4px
+
 .ui.models.table
+  .faded
+    color: transparentize(black, 0.4)
+
+.ui.models.table td >
+  .label
+    width: 100%
+    text-align: center
+
+  .instrument
+    display: inline-block
+
+    &:before
+      right: 0
+
+    &:after
+      right: -1em
+
+  .instrument
+    margin-right: 4px
+
+    img
+      height: 20px
+      opacity: 0.7
+
+  .goal
+    display: inline-block
+
+    &:before
+      right: 0.5em
+
+    &:after
+      right: -0.5em
+
+    img
+      height: 30px
+
   .disabled
     opacity: 0.4
 
+/*
   td.selector
     padding: 0
 
@@ -44,9 +90,12 @@
     img
       height: 30px
       margin: -10px 0
+  */
 
 .table-actions
   float: right
+  margin-top: 5px
+  margin-bottom: 5px
 
   > *:last-child
     margin-right: 0

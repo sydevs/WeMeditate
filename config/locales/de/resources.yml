@@ -81,7 +81,7 @@ de:
         content: "Content"
         metatags: "Metadata"
         author: :activerecord.models.author.one # Do not translate
-        author_id: :activerecord.models.author.one # Do not translate
+        author_id: :activerecord.attributes.article.author # Do not translate
         owner: "Allow a writer to update this article"
         published_at: "Published Date"
 
@@ -178,7 +178,7 @@ de:
       track:
         published: :activerecord.attributes.article.published # Do not translate
         title: "Title"
-        artists: :activerecord.models.artist.other
+        artists: :activerecord.models.artist.other # Do not translate
         audio: "File (mp3)"
         instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
         mood_filters: :activerecord.models.mood_filter.other # Do not translate
@@ -190,10 +190,13 @@ de:
         horizontal_vimeo_id: "Horizontal Video (Vimeo ID)"
         vertical_vimeo_id: "Vertical Video (Vimeo ID)"
         duration_filter: :activerecord.models.duration_filter.one # Do not translate
+        duration_filter_id: :activerecord.models.duration_filter.one # Do not translate
         goal_filters: :activerecord.models.goal_filter.other # Do not translate
+        goal_filter_ids: :activerecord.models.goal_filter.other # Do not translate
         excerpt: "Excerpt"
         description: "Text on Page"
         metatags: "Metadata"
+        popularity: "Popularity"
 
       artist:
         published: :activerecord.attributes.article.published # Do not translate

@@ -297,13 +297,96 @@ en:
       alerts: "Alerts"
       no_issues: "No issues right now, good job!"
 
+    index:
+      columns:
+        status: "Status"
+        name: "Name"
+        role: "Role"
+        updated_at: "Updated"
+        created_at: "Created"
+        last_sign_in_at: "Last Login"
+        minutes: "Duration"
+        category_id: :activerecord.models.category.one # Do not translate
+        categories: :activerecord.models.category.other # Do not translate
+        popularity: :activerecord.attributes.meditation.popularity # Do not translate
+        node: "Node"
+        artist_id: :activerecord.models.artist.other # Do not translate
+        articles_count: :activerecord.models.article.other # Do not translate
+        instruments_count: :activerecord.models.instrument_filter.other # Do not translate
+        meditations_count: :activerecord.models.meditation.other # Do not translate
+        tracks_count: :activerecord.models.track.other # Do not translate
+        account: "Account"
+        country_code: "Country"
+      sort:
+        title: "Sort by"
+        columns:
+          default: "Default"
+          name: "Name"
+          country_code: "Country"
+          updated_at: "Recently Updated"
+          created_at: "Recently Created"
+          last_sign_in_at: "Recently Signed In"
+          popularity: "Most Popular"
+          articles_count: "Most Articles"
+          meditations_count: "Most Meditations"
+          tracks_count: "Most Tracks"
+          role: "Role"
+      filter:
+        title: "Filter by"
+        columns:
+      attribute:
+        status: "Status"
+        none: "None"
+        never: "Never"
+        default: "Default"
+      status:
+        # With content
+        needs_translation: "Needs Translation"
+        needs_review: "Needs Review"
+        published: "Published"
+        draft: "Draft"
+        # Without content
+        public: "Public"
+        private: "Hidden"
+        # Users
+        pending: "Pending"
+        active: "Active"
+        this_is_you: "This Is You"
+
     tutorial:
       title: "Starter Guide"
-      alert:
+      dashboard:
         title: "How do I use this website?"
         message: "If you are just getting started managing content on WeMeditate, we have prepared a few brief 1 - 2 minute videos, to help you if you're lost."
         role_description: "You are a %{role}, and as such it is your role to %{description} For a video illustrating how to do this, please click the link below."
         action: "Watch Tutorial Videos"
+      index:
+        title: "What are these?"
+        message:
+          # Pages
+          static_pages: "These are the primary pages of the website, such as the Home Page, Inspiration Page, Shri Mataji Page, etc. You can use this index to edit some of the content of these pages, but most of these pages have predefined conntent and urls."
+          articles: "Articles are written by Sahaja Yogis to inspire seekers. They can cover various topics, such as: meditation in daily life; writing about realized souls; artwork, music or poetry by yogis; in-depth articles on deeper topics; etc. Whatever a yogi may be inspired to write about.<br><br>All articles are shown on the site's \"Inspiration Page.\""
+          subtle_system_nodes: "These are the pages that describe different parts of the Subtle System. Each page is an in-depth explanation of the qualities of that chakra or channel, how it manifests in daily life, and the treatments that address it."
+          # Resources
+          meditations: "These are videos of guided meditations, narrated by yogis. They are available to the public on the website's \"Meditations\" page.<br><br>Each meditation is categorized by it's duration and the goals of that meditation, which allows users to generate a guided meditation that fits their needs. Each meditation also has a \"popularity\" statistic which represents the amount of views the meditation has been getting recently."
+          treatments: "These are the pages that describe different treatments that yogis use to clear themselves. Each technique will have a text description, and may have a video illustrating the treatment in action."
+          tracks: "Musical tracks are available for seekers to listen to on the website's \"Music\" page. Playlists are generated automatically for each type of instrument."
+          # Filters
+          categories: "Every article belongs to one of these categories. A seeker can use these categories to filter the Inspiration articles to find what they are interested in."
+          duration_filters: "These allow us to group meditations into approximate durations, so that seekers can watch a guided meditation that is the right length for the amount of time they have."
+          goal_filters: "These allow us to group meditations by what chakra or quality they focus on, so that seekers can watch a guided meditation for the challenges that they are facing."
+          instrument_filters: "These allow us to group music tracks, so that seekers can listen to music that fits their mood."
+          mood_filters: "These allow us to group music tracks, so that seekers can listen to music that fits their mood."
+          artists: "These provide extra information on the musical artist for each track."
+          # People
+          authors: "Author profiles appear at the bottom of Inspiration Articles. They are useful to establish credibility and a more personal connection for the seeker with the author of the article.<br><br>Some author profiles are associated with a WeMeditate account. When a user with an account writes an article, their author profile is automatically added to it. Other contributors to WeMeditate may not have an account on this site, and so their profile does not have any linked account."
+          users: "These are the people who can modify the content of WeMeditate. Each admin has a role which defines what they are allowed to edit, and almost all admins are restricted to certain languages."
+      show:
+        title: "What is this?"
+        message:
+          tutorial: "Click on the tabs below to view a few short videos explanations of how to manage content on the WeMeditate website."
+          my_author: "Whenever you write an article, this profile will be shown at the bottom of the article. This helps the seeker connect more with the writer of the article, and also establishes the credibility of the writer.<br><br>Here are some tips on writing a good bio.<br> - Use the third person.<br> - Don't dwell too much on your upbringing or how long you have been meditating.<br> - Do mention your profession or studies. Show that you are a respectable member of society.<br> - Unless you are writing an artist bio, try to be down to earth and let the reader see themselves in you."
+
       role_vimeo_ids:
         super_admin: 208643382
         regional_admin: 208643382

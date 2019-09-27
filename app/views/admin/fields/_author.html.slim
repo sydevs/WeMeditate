@@ -1,8 +1,17 @@
 
 - allow = policy(record)
 
+- if record.user.present?
+  .ui.icon.message
+    i.question.circle.icon
+    .content
+      .header = translate('admin.tutorial.show.title')
+      .message
+        = simple_format translate('admin.tutorial.show.message.my_author')
+
 - if record.user.present? && record.new_record?
   .ui.info.message = translate('admin.messages.new_author_notice')
+
 
 = f.input :name, disabled: !allow.update_structure?, input_html: { value: (record.name || record.user&.name) }
 

@@ -1,0 +1,14 @@
+
+- allow = policy(treatment)
+- return if table_check_status_filter_failed(treatment)
+
+tr.record id=dom_id(treatment)
+  td.top.aligned
+    a href=polymorphic_admin_path([(:edit unless allow.show?), :admin, treatment])
+      = treatment.preview_name
+
+  td.collapsing.top.aligned.faded
+    = localize treatment.updated_at, format: :short
+
+  td.collapsing.top.aligned
+    = table_record_status_label(treatment)

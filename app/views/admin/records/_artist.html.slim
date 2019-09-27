@@ -1,0 +1,14 @@
+
+- allow = policy(artist)
+- return if table_check_status_filter_failed(artist)
+
+tr.record id=dom_id(artist)
+  td.top.aligned
+    a href=polymorphic_admin_path([(:edit unless allow.show?), :admin, artist])
+      = artist.preview_name
+
+  td.collapsing.top.right.aligned
+    = artist.tracks.count
+
+  td.collapsing.top.aligned
+    = table_record_status_label(artist)

@@ -11,7 +11,7 @@ class DurationFilter < ApplicationRecord
   
   # Associations
   translates :published_at, :published
-  has_many :meditations
+  has_many :meditations, counter_cache: true
 
   # Validations
   validates :minutes, presence: true

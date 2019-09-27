@@ -14,7 +14,7 @@ class InstrumentFilter < ApplicationRecord
   translates :name, :published_at, :published
 
   # Associations
-  has_and_belongs_to_many :tracks
+  has_and_belongs_to_many :tracks, counter_cache: true
   mount_uploader :icon, IconUploader
 
   # Validations

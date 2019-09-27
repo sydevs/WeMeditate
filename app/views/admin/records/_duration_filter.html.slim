@@ -1,0 +1,14 @@
+
+- allow = policy(duration_filter)
+- return if table_check_status_filter_failed(duration_filter)
+
+tr.record id=dom_id(duration_filter)
+  td.top.aligned
+    a href=polymorphic_admin_path([(:edit unless allow.show?), :admin, duration_filter])
+      = duration_filter.preview_name
+
+  td.collapsing.top.right.aligned
+    = duration_filter.meditations.count
+
+  td.collapsing.top.aligned
+    = table_record_status_label(duration_filter)

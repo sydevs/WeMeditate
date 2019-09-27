@@ -3,6 +3,13 @@
 - panels = translate('admin.tutorial.panels')
 - role_vimeo_ids = translate('admin.tutorial.role_vimeo_ids')
 
+.ui.icon.message
+  i.question.circle.icon
+  .content
+    .header = translate('admin.tutorial.show.title')
+    .message
+      = simple_format translate('admin.tutorial.show.message.tutorial')
+
 .ui.secondary.tabs.menu
   - panels.each do |key, data|
     a.item data-tab=key class=('active' if key == :overview)

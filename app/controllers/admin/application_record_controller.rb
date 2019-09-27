@@ -6,6 +6,8 @@ module Admin
 
     def index
       @records = policy_scope(@model).q(params[:q])
+      @records = sort_by(@records, params[:sort])
+      @records = filter_by(@records, params[:filter])
 
       respond_to do |format|
         format.html do
@@ -177,6 +179,25 @@ module Admin
 
       def authorize!
         authorize @record || @model
+      end
+
+      def sort_by relation, param
+        return relation unless param.present?
+        
+        direction = param.ends_with?('_at') ? :desc : :asc
+        relation = relation.with_translations if relation.respond_to?(:with_translations)
+        relation.reorder(param => direction)
+      end
+  
+      def filter_by relation, param
+        return relation unless param.present?
+        return relation if param.starts_with?('status:')
+
+        param = param.split(':')
+        column = param[0]
+        value = param[1]
+
+        relation.where(column => value)
       end
 
   end

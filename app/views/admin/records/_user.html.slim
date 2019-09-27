@@ -1,0 +1,32 @@
+
+- allow = policy(user)
+- return if table_check_status_filter_failed(user)
+
+tr.record id=dom_id(user)
+  td.top.aligned
+    - if allow.edit?
+      a href=polymorphic_admin_path([(:edit unless allow.show?), :admin, user])
+        = user.preview_name
+    - else
+      = user.preview_name
+    br
+    .faded = user.email
+
+  td.collapsing.faded
+    = human_enum_name(user, :role)
+    br
+    - if user.languages.present?
+      - languages = user.languages.map { |l| language_name(l) }.join(', ')
+      - if user.languages.count > 4
+        div data-tooltip=languages
+          | #{user.languages.count} Languages
+      - else
+        = languages
+    - else
+      = translate('admin.misc.locale.all_languages')
+
+  td.collapsing.faded
+    = user.last_sign_in_at ? localize(user.last_sign_in_at, format: :short) : translate('admin.index.attribute.never')
+
+  td.collapsing
+    = table_record_status_label(user)

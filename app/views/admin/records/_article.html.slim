@@ -1,0 +1,20 @@
+
+- allow = policy(article)
+- return if table_check_status_filter_failed(article)
+
+tr.record id=dom_id(article)
+  td.top.aligned
+    a href=polymorphic_admin_path([(:edit unless allow.show?), :admin, article])
+      = article.preview_name
+
+  td.collapsing.top.aligned.faded
+    = article.category&.name
+
+  td.collapsing.top.aligned.faded
+    - if params[:sort] == 'created_at'
+      = localize article.created_at, format: :short
+    - else
+      = localize article.updated_at, format: :short
+
+  td.collapsing.top.aligned
+    = table_record_status_label(article)

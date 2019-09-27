@@ -4,6 +4,13 @@
 
 - content_for :title, @model.model_name.human(count: 'plural')
 
+.ui.icon.message
+  i.question.circle.icon
+  .content
+    .header = translate('admin.tutorial.index.title')
+    .message
+      = simple_format translate(@model.model_name.route_key, scope: 'admin.tutorial.index.message')
+
 - if reorder
   = form_tag polymorphic_admin_path([:sort, :admin, @model]), method: :put
     .actions
@@ -26,14 +33,61 @@
   .ui.hidden.divider
 - else
   .table-actions = table_actions(@model, @records)
+  .clearfix
 
-  form method='GET' data-remote=true
-    span.ui.mini.left.icon.input#search
-      i.search.icon
-      input name='q' type='text' placeholder=translate('admin.action.search') value=params[:q]
+  form.ui.form method='GET' data-remote=true
+    .ui.tiny.models.menu
+      .ui.fluid.search.item
+        .ui.transparent.left.icon.input
+          i.search.link.icon
+          input name='q' type='text' placeholder=translate('admin.action.search') value=params[:q]
 
-  table.ui.very.basic.compact.unstackable.models.table
-    tbody#records = render partial: 'record', collection: @records
+      .ui.dropdown.item
+        .title = translate('admin.index.sort.title')
+        .value = params[:sort].present? ? translate(params[:sort], scope: %i[admin index sort columns]) : translate('admin.index.attribute.default')
+        i.dropdown.icon
+        .menu
+          a.item href="?filter=#{params[:filter]}"
+            = translate('admin.index.attribute.default')
+          - table_sortable_columns(@model) do |column|
+            a.item href="?sort=#{column}&filter=#{params[:filter]}"
+              = translate(column, scope: %i[admin index sort columns])
+
+      .ui.dropdown.item
+        .title = translate('admin.index.filter.title')
+        .value = table_filterable_label(@model, params[:filter])
+        i.dropdown.icon
+        .menu
+          a.item href="?sort=#{params[:sort]}"
+            = translate('admin.index.attribute.none')
+          - table_filterable_columns(@model) do |column, values|
+            .item
+              i.dropdown.icon
+              = column != :status ? human_attribute_name(@model, column) : translate('admin.index.attribute.status')
+              .menu
+                - values&.each do |value|
+                  a.item href="?filter=#{column}:#{value[0]}&sort=#{params[:sort]}"
+                    = value[1]
+
+      - if allow.new?
+        .right.menu
+          a.item href=polymorphic_path([:new, :admin, @model.model_name.singular_route_key.to_sym])
+            i.plus.icon
+            = translate('admin.action.simple.create')
+
+  table.ui.compact.unstackable.models.table
+    thead
+      tr
+        - table_columns(@model) do |column, index|
+          th class=('collapsing' unless index == 0 || column == :artist_id)
+            - column = :created_at if params[:sort] == 'created_at' && column == :updated_at
+            = translate(column, scope: %i[admin index columns])
+            - if params[:sort] == column.to_s
+              i.dropdown.icon
+            - if params[:filter].present? && params[:filter].split(':')[0] == column.to_s
+              i.small.filter.icon
+
+    tbody#records = render partial: "admin/records/#{@model.model_name.singular_route_key}", collection: @records
 
   - if @records.empty? && current_user.translator?
     #pagination

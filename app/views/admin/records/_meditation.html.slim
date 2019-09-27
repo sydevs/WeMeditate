@@ -1,0 +1,24 @@
+
+- allow = policy(meditation)
+- return if table_check_status_filter_failed(meditation)
+
+tr.record id=dom_id(meditation)
+  td.top.aligned
+    a href=polymorphic_admin_path([(:edit unless allow.show?), :admin, meditation])
+      = meditation.preview_name
+
+  td.collapsing.top.aligned.faded
+    | ~#{meditation.duration_filter.preview_name}
+    br
+    - meditation.goal_filters.includes(:translations).each do |goal_filter|
+      .goal data={ tooltip: goal_filter.preview_name, position: 'top right' }
+        img src=goal_filter.icon.url
+
+  td.collapsing.top.aligned.faded
+    = sprintf '%.2f', meditation.popularity
+
+  td.collapsing.top.aligned.faded
+    = localize meditation.updated_at, format: :short
+
+  td.collapsing.top.aligned
+    = table_record_status_label(meditation)

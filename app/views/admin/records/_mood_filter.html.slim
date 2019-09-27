@@ -1,0 +1,14 @@
+
+- allow = policy(mood_filter)
+- return if table_check_status_filter_failed(mood_filter)
+
+tr.record id=dom_id(mood_filter)
+  td.top.aligned
+    a href=polymorphic_admin_path([(:edit unless allow.show?), :admin, mood_filter])
+      = mood_filter.preview_name
+
+  td.collapsing.top.right.aligned
+    = mood_filter.tracks.count
+
+  td.collapsing.top.aligned
+    = table_record_status_label(mood_filter)

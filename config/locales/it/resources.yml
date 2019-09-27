@@ -192,10 +192,13 @@ it:
         horizontal_vimeo_id: "Video orizzontale (Vimeo ID)"
         vertical_vimeo_id: "Video verticale (Vimeo ID)"
         duration_filter: :activerecord.models.duration_filter.one # Do not translate
+        duration_filter_id: :activerecord.models.duration_filter.one # Do not translate
         goal_filters: :activerecord.models.goal_filter.other # Do not translate
+        goal_filter_ids: :activerecord.models.goal_filter.other # Do not translate
         excerpt: "Citazione"
         description: "Testo sulla Pagina"
         metatags: "Metadata"
+        popularity: "Popularity" # TODO: Translate
 
       artist:
         published: :activerecord.attributes.article.published # Do not translate

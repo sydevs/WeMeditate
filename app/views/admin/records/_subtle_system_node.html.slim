@@ -1,0 +1,17 @@
+
+- allow = policy(subtle_system_node)
+- return if table_check_status_filter_failed(subtle_system_node)
+
+tr.record id=dom_id(subtle_system_node)
+  td.top.aligned
+    a href=polymorphic_admin_path([(:edit unless allow.show?), :admin, subtle_system_node])
+      = subtle_system_node.preview_name
+
+  td.collapsing.top.aligned.faded
+    = human_enum_name(subtle_system_node, :role)
+
+  td.collapsing.top.aligned.faded
+    = localize subtle_system_node.updated_at, format: :short
+
+  td.collapsing.top.aligned
+    = table_record_status_label(subtle_system_node)

@@ -7,7 +7,7 @@
 class Artist < ApplicationRecord
 
   # Associations
-  has_and_belongs_to_many :tracks
+  has_and_belongs_to_many :tracks, counter_cache: true
   mount_uploader :image, ImageUploader
 
   # Validations

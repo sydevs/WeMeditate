@@ -4,13 +4,13 @@
 .ui.icon.message
   i.question.circle.icon
   .content
-    .header = translate('admin.tutorial.alert.title')
+    .header = translate('admin.tutorial.dashboard.title')
     .message
       - role_name = human_enum_name(current_user, :role)
       - role_description = translate(current_user.role, scope: %i[admin permissions role_description])
-      p = translate('admin.tutorial.alert.message')
-      p = translate('admin.tutorial.alert.role_description', role: role_name, description: role_description)
-      a.ui.primary.button href=admin_tutorial_path = translate('admin.tutorial.alert.action')
+      p = translate('admin.tutorial.dashboard.message')
+      p = translate('admin.tutorial.dashboard.role_description', role: role_name, description: role_description)
+      a.ui.primary.button href=admin_tutorial_path = translate('admin.tutorial.dashboard.action')
 
 h3 = translate 'admin.dashboard.alerts'
 

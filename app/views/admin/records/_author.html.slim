@@ -1,0 +1,26 @@
+
+- allow = policy(author)
+- return if table_check_status_filter_failed(author)
+
+tr.record id=dom_id(author)
+  td.top.aligned
+    a href=polymorphic_admin_path([:edit, :admin, author])
+      = author.preview_name
+    br
+    .faded = author.title
+
+  td.collapsing.right.aligned.faded
+    = author.articles.count
+
+  td.collapsing.faded
+    = I18nData.countries(I18n.locale)[author.country_code]
+
+  td.collapsing.faded
+    - if author.user.present?
+      - if policy(author.user).edit?
+        a href=polymorphic_admin_path([:edit, :admin, author.user])
+          = author.user.preview_name
+      - else
+        = author.user.preview_name
+    - else
+      = translate('admin.index.attribute.none')

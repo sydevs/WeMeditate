@@ -14,7 +14,7 @@ class Category < ApplicationRecord
   friendly_id :name, use: :globalize
 
   # Associations
-  has_many :articles
+  has_many :articles, counter_cache: true
 
   # Validations
   validates :name, presence: true, uniqueness: true
