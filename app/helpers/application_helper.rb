@@ -109,7 +109,7 @@ module ApplicationHelper
 
   def vimeo_tag vimeo_id, **args
     klass = args[:class].is_a?(Array) ? args[:class] : [args[:class]]
-    url = "https://player.vimeo.com/video/#{vimeo_id}?byline=false&title=false&author=false&portrait=falsess"
+    url = "https://player.vimeo.com/video/#{vimeo_id}"
     tag.iframe class: klass, data: { src: url }, frameborder: '0', width: '100%', height: '100%', allow: 'autoplay; fullscreen'
   end
   
