@@ -63,6 +63,7 @@ de:
         name: "Title"
         slug: :activerecord.attributes.generic.slug # Do not translate
         category: :activerecord.models.category.one # Do not translate
+        category_id: :activerecord.attributes.article.category # Do not translate
         priority: "Visibility"
         priorities:
           low: "Low Visibility"
@@ -74,6 +75,7 @@ de:
           artist: "Artist"
         excerpt: "Excerpt"
         thumbnail: "Thumbnail"
+        thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
         vimeo_id: "Featured Video (Vimeo ID)"
         date: "Featured Date"
         content: "Content"
@@ -139,6 +141,7 @@ de:
         excerpt: "Excerpt"
         content: "Content"
         thumbnail: "Thumbnail (png)"
+        thumbnail_id: :activerecord.attributes.treatment.thumbnail # Do not translate
         horizontal_vimeo_id: "Horizontal Video (Vimeo ID)"
         vertical_vimeo_id: "Vertical Video (Vimeo ID)"
         metatags: "Metadata"

@@ -63,6 +63,7 @@ it:
         name: "Titolo"
         slug: :activerecord.attributes.generic.slug # Do not translate
         category: :activerecord.models.category.one # Do not translate
+        category_id: :activerecord.attributes.article.category # Do not translate
         priority: "Visibilità"
         priorities:
           low: "Visibilità Bassa"
@@ -74,12 +75,14 @@ it:
           artist: "Artist"
         excerpt: "Citazione"
         thumbnail: "Miniatura"
+        thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
         thumbnail_id: "Miniatura (png)"
         vimeo_id: "Video principale (Vimeo ID)"
         date: "Data di riferimento"
         content: "Contenuto"
         metatags: "Metadata"
         author: :activerecord.models.author.one # Do not translate
+        author_id: :activerecord.models.author.one # Do not translate
         owner: "Permetti a quest'autore di modificare questo articolo"
         published_at: "Published Date" # TODO: Translate
 
@@ -138,8 +141,8 @@ it:
         slug: :activerecord.attributes.generic.slug # Do not translate
         excerpt: "Citazione"
         content: "Contenuto"
-        thumbnail: "Miniatura"
-        thumbnail_id: "Miniatura (png)"
+        thumbnail: "Miniatura (png)"
+        thumbnail_id: :activerecord.attributes.treatment.thumbnail # Do not translate
         horizontal_vimeo_id: "Video Orizzontale (Vimeo ID)"
         vertical_vimeo_id: "Video Verticale (Vimeo ID)"
         metatags: "Metadata"

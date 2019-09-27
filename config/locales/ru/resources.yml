@@ -108,6 +108,7 @@ ru:
         name: "Название"
         slug: :activerecord.attributes.generic.slug # Do not translate
         category: :activerecord.models.category.one # Do not translate
+        category_id: :activerecord.attributes.article.category # Do not translate
         priority: "Видимость"
         priorities:
           low: "Низкая Видимость"
@@ -119,6 +120,7 @@ ru:
           artist: "Деятель искусства"
         excerpt: "Выдержка"
         thumbnail: "Превью"
+        thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
         vimeo_id: "Представленное Видео (Vimeo ID)"
         date: "Дата"
         content: "Контент"
@@ -186,6 +188,7 @@ ru:
         excerpt: "Выдержка"
         content: "Контент"
         thumbnail: "Превью (png)"
+        thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
         horizontal_vimeo_id: "Горизонтальное Видео (Vimeo ID)"
         vertical_vimeo_id: "Вертикальное Видео (Vimeo ID)"
         metatags: "Метаданные"
