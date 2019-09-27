@@ -7,7 +7,7 @@
 - if record.is_a?(User) && record.pending_invitation?
   .ui.yellow.message = translate 'admin.messages.pending_invitation_notice', person: human_enum_name(record, :role).downcase
 
-= simple_form_for record, url: polymorphic_admin_path([:admin, record]), html: { id: "#{record.model_name.i18n_key}-form", class: "#{'error' if record.errors.present?}", novalidate: true } do |f|
+= simple_form_for record, url: polymorphic_admin_path([:admin, record]), html: { id: "editor-form", class: "#{'error' if record.errors.present?}", novalidate: true } do |f|
   - if record.errors.present?
     .ui.error.message
       .header = translate 'admin.messages.errors'
@@ -116,9 +116,15 @@
           '  &
           = translate 'admin.action.simple.approve'
     - else
-      button.ui.basic.positive.button type='submit'
+      button.ui.basic.primary.button type='submit'
         = translate 'admin.action.simple.update'
+        '  &
+        = translate 'admin.action.simple.approve'
 
     - if record.is_a?(User) && allow.create? && record.pending_invitation?
       button.ui.basic.primary.button type='submit' name='reinvite' value='true'
         = translate 'admin.action.simple.reinvite'
+      
+    div#upload-loader style='display: none'
+      i.notched.circle.loading.icon
+      span

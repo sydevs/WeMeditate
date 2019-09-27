@@ -16,8 +16,8 @@ class Video {
   initPlayer() {
     if (this.responsive) {
       this.validateOrientationCallback = () => this.resetOrientation()
-      this.horizontalPlayer = this.loadPlayer(this.container.querySelector('iframe.video__horizontal'))
-      this.verticalPlayer = this.loadPlayer(this.container.querySelector('iframe.video__vertical'))
+      this.horizontalPlayer = this.loadPlayer(this.container.querySelector('.video__horizontal > iframe'))
+      this.verticalPlayer = this.loadPlayer(this.container.querySelector('.video__vertical > iframe'))
       this.currentOrientation = Application.orientation
     } else {
       this.horizontalPlayer = this.loadPlayer(this.container.querySelector('iframe'))

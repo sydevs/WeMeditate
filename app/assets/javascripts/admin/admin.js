@@ -56,21 +56,44 @@ let Admin = {
 
     RepeatableFields.initialize(scope)
 
-    $('input[type=file]').on('change', (event) => {
-      console.log('on change', event.target)
-      const input = event.target
-      const $img = $(input).next('.image').children('img')
+    $('input[type=file]').on('change', event => this.onChangeFileInput(event.target))
+    $('.js-vimeo-field input').on('change', event => this.onRefreshVimeoInput(event.target.parentNode))
+    $('.js-vimeo-field + .preview-item .reload').on('click', event => this.onRefreshVimeoInput(event.target.parentNode.previousSibling))
+  },
 
-      console.log('change', $img.length, input.files.length)
-      if ($img.length > 0 && input.files && input.files[0]) {
-        const reader = new FileReader()
-        reader.onload = function(event) {
-          $img.attr('src', event.target.result);
-        }
-        
-        reader.readAsDataURL(input.files[0]);
+  onChangeFileInput(input) {
+    const $img = $(input).next('.image').children('img')
+
+    if ($img.length > 0 && input.files && input.files[0]) {
+      const reader = new FileReader()
+      reader.onload = function(event) {
+        $img.attr('src', event.target.result);
       }
-    })
+      
+      reader.readAsDataURL(input.files[0]);
+    }
+  },
+
+  onRefreshVimeoInput(field) {
+    const vimeo_id = field.querySelector('input').value
+    const input = field.querySelector('.input')
+    const meta = field.nextSibling
+
+    if (!vimeo_id || isNaN(vimeo_id)) {
+      meta.querySelector('.content').style.display = 'none'
+    } else {
+      meta.querySelector('.content').style.display = null
+      input.classList.add('loading')
+      Editor.adjustPendingUploads(+1)
+      Editor.retrieveVimeoVideo(vimeo_id, response => {
+        meta.querySelector('img').src = response.thumbnail
+        meta.querySelector('.hint').innerText = response.title
+        meta.querySelector('a').href = `https://vimeo.com/${response.vimeo_id}`
+        meta.querySelector('input').value = JSON.stringify(response)
+        input.classList.remove('loading')
+        Editor.adjustPendingUploads(-1)
+      })
+    }
   },
 
 }

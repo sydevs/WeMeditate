@@ -58,6 +58,7 @@ ru:
       descriptive:
         show: "Посмотреть на сайте"
         preview: "Предварительный просмотр на сайте"
+        reload_vimeo_data: "Reload Vimeo Metadata" # TODO: Translate
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.

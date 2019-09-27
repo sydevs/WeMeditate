@@ -57,6 +57,7 @@ it:
       descriptive:
         show: "Mostra il sito"
         preview: "Mostra anteprima del sito"
+        reload_vimeo_data: "Reload Vimeo Metadata" # TODO: Translate
 
     # ===== MESSAGES ===== #
     status:

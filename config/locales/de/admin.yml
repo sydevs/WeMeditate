@@ -58,6 +58,7 @@ de:
       descriptive:
         show: "View on website"
         preview: "Preview draft on website"
+        reload_vimeo_data: "Reload Vimeo Metadata"
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.

@@ -31,6 +31,7 @@ module Admin
             :name, :slug, :published,
             :image, :excerpt, :description,
             :horizontal_vimeo_id, :vertical_vimeo_id, :duration_filter_id,
+            vimeo_metadata: {},
             goal_filter_ids: [],
             metatags: {}
           )
@@ -39,12 +40,22 @@ module Admin
             :name, :slug,
             :image, :excerpt, :description,
             :horizontal_vimeo_id, :vertical_vimeo_id, :duration_filter_id,
+            vimeo_metadata: {},
             goal_filter_ids: [],
             metatags: {}
           )
         end
 
         result
+      end
+
+      def update_params record_params
+        if defined?(@record) && params[:meditation][:vimeo_metadata].present?
+          record_params[:vimeo_metadata][:horizontal] = (JSON.parse(record_params[:vimeo_metadata][:horizontal]) rescue {})
+          record_params[:vimeo_metadata][:vertical] = (JSON.parse(record_params[:vimeo_metadata][:vertical]) rescue {})
+        end
+
+        super record_params
       end
 
   end

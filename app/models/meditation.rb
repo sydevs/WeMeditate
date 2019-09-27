@@ -10,7 +10,8 @@ class Meditation < ApplicationRecord
   # Extensions
   translates *%i[
     name slug metatags views popularity published_at published
-    excerpt description horizontal_vimeo_id vertical_vimeo_id
+    excerpt description
+    horizontal_vimeo_id vertical_vimeo_id vimeo_metadata
   ]
   friendly_id :name, use: :globalize
 
@@ -66,6 +67,13 @@ class Meditation < ApplicationRecord
 
   def self_realization?
     slug == I18n.translate('routes.self_realization')
+  end
+
+  def vimeo_metadata type = nil
+    return {} unless self[:vimeo_metadata].present?
+    result = self[:vimeo_metadata].deep_symbolize_keys
+    result = result[type.to_sym ] || {} if type.present?
+    result
   end
 
 end

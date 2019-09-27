@@ -16,23 +16,32 @@
       = record.duration_filter.name
 
 = f.input :image, as: :file, wrapper: :semantic_file, icon: file_type_icon(:image), file: record.image, input_html: { accept: file_type_accepts(:image) }
-
 - if record.image.present?
   .preview-item = image_tag record.image.url(:small), class: 'ui rounded image'
 
-= f.input :horizontal_vimeo_id, wrapper: :semantic_input, icon: :video
-- if record.horizontal_vimeo_id.present?
-  .preview-item
-    a.ui.label.link href="https://vimeo.com/#{record.horizontal_vimeo_id}" target='_blank'
-      | vimeo.com/#{record.horizontal_vimeo_id}
-      i.external.alternate.icon
+= f.input :horizontal_vimeo_id, wrapper: :semantic_input, icon: :video, wrapper_html: { class: 'js-vimeo-field' }
+- vimeo_metadata = record.vimeo_metadata(:horizontal)
+.preview-item
+  = hidden_field_tag "#{f.object_name}[vimeo_metadata][horizontal]", vimeo_metadata.to_json
+  .reload
+    i.sync.icon
+    = translate 'admin.action.descriptive.reload_vimeo_data'
+  .content style=('display: none' unless vimeo_metadata.present?)
+    .hint = vimeo_metadata[:title]
+    a.ui.image href="https://vimeo.com/#{record.horizontal_vimeo_id}" target='_blank'
+      img src=vimeo_metadata[:thumbnail]
 
-= f.input :vertical_vimeo_id, wrapper: :semantic_input, icon: :video
-- if record.vertical_vimeo_id.present?
-  .preview-item
-    a.ui.label.link href="https://vimeo.com/#{record.vertical_vimeo_id}" target='_blank'
-      | vimeo.com/#{record.vertical_vimeo_id}
-      i.external.alternate.icon
+= f.input :vertical_vimeo_id, wrapper: :semantic_input, icon: :video, wrapper_html: { class: 'js-vimeo-field' }
+- vimeo_metadata = record.vimeo_metadata(:vertical)
+.preview-item
+  = hidden_field_tag "#{f.object_name}[vimeo_metadata][vertical]", vimeo_metadata.to_json
+  .reload
+    i.sync.icon
+    = translate 'admin.action.descriptive.reload_vimeo_data'
+  .content style=('display: none' unless vimeo_metadata.present?)
+    .hint = vimeo_metadata[:title]
+    a.ui.image href="https://vimeo.com/#{record.vertical_vimeo_id}" target='_blank'
+      img src=vimeo_metadata[:thumbnail]
 
 = f.input :excerpt, as: :text
 = f.input :description, as: :text
