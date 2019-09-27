@@ -39,7 +39,7 @@ module Admin
         end
       
         response = JSON.parse(response.body)
-        puts "Retrieved Vimeo Data for #{vimeo_id}\r\n#{response.body.inspect}"
+        puts "Retrieved Vimeo Data for #{vimeo_id}\r\n#{response.inspect}"
       
         return {
           vimeo_id: vimeo_id,
