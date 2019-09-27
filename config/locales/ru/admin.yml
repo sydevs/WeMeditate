@@ -356,9 +356,10 @@ ru:
         static_pages: "Основные Страницы"
         articles: "Статьи Вдохновение"
         subtle_system_nodes: "Тонкая Система"
-        meditations: :activerecord.models.meditation.many
-        treatments: :activerecord.models.treatment.many
+        meditations: :activerecord.models.meditation.other
+        treatments: :activerecord.models.treatment.other
         tracks: "Музыка"
+        users: :activerecord.models.user.other
       locale:
         all_languages: "Все языки"
         other_languages: "Другие языки"

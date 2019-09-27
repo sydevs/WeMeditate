@@ -65,7 +65,7 @@
         - if policy(User).index?
           = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"
             i.users.icon
-            = User.model_name.human(count: -1)
+            = translate('admin.misc.menu.users')
 
 
 .ui.hidden.divider

@@ -101,14 +101,14 @@ module Admin::TableHelper
   def table_actions model, records
     capture do
       if model == Article
-        concat table_action Category.model_name.human(count: -1), model_icon_key(Category), admin_categories_path if policy(Category).index?
+        concat table_action Category.model_name.human(count: 'plural'), model_icon_key(Category), admin_categories_path if policy(Category).index?
       elsif model == Track
-        concat table_action InstrumentFilter.model_name.human(count: -1), model_icon_key(InstrumentFilter), admin_instrument_filters_path if policy(InstrumentFilter).index?
-        concat table_action MoodFilter.model_name.human(count: -1), model_icon_key(MoodFilter), admin_mood_filters_path if policy(MoodFilter).index?
-        concat table_action Artist.model_name.human(count: -1), model_icon_key(Artist), admin_artists_path if policy(Artist).index?
+        concat table_action InstrumentFilter.model_name.human(count: 'plural'), model_icon_key(InstrumentFilter), admin_instrument_filters_path if policy(InstrumentFilter).index?
+        concat table_action MoodFilter.model_name.human(count: 'plural'), model_icon_key(MoodFilter), admin_mood_filters_path if policy(MoodFilter).index?
+        concat table_action Artist.model_name.human(count: 'plural'), model_icon_key(Artist), admin_artists_path if policy(Artist).index?
       elsif model == Meditation
-        concat table_action GoalFilter.model_name.human(count: -1), model_icon_key(GoalFilter), admin_goal_filters_path if policy(GoalFilter).index?
-        concat table_action DurationFilter.model_name.human(count: -1), model_icon_key(DurationFilter), admin_duration_filters_path if policy(DurationFilter).index?
+        concat table_action GoalFilter.model_name.human(count: 'plural'), model_icon_key(GoalFilter), admin_goal_filters_path if policy(GoalFilter).index?
+        concat table_action DurationFilter.model_name.human(count: 'plural'), model_icon_key(DurationFilter), admin_duration_filters_path if policy(DurationFilter).index?
       end
 
       if policy(model).sort? && records.count > 1

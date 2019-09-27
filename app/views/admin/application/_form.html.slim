@@ -106,11 +106,11 @@
     - if record.is_a?(User) && record.new_record?
       button.ui.basic.primary.button type='submit'
         = translate 'admin.action.simple.invite'
-    - elsif record.draftable? && allow.publish?
+    - elsif record.draftable?
       button.ui.basic.positive.button type='submit' name='draft' value='true'
-        = translate 'admin.action.simple.save_draft'
+        = allow.publish? ? translate('admin.action.simple.save_draft') : translate('admin.action.simple.update')
 
-      - unless record.is_a?(Article) && record.new_record?
+      - if allow.publish? && !(record.is_a?(Article) && record.new_record?)
         button.ui.basic.primary.button type='submit'
           = translate 'admin.action.simple.update'
           '  &

@@ -37,10 +37,10 @@ const Editor = {
     if (Editor.form && contentEditor) {
       SplashEditor.load()
 
-      form.onsubmit = Editor._onSubmit
+      Editor.form.onsubmit = Editor._onSubmit
       Editor.triangle_path = contentEditor.dataset.triangle
       Editor.uploadEndpoint = contentEditor.dataset.upload
-      Editor.input = form.querySelector('#content-input')
+      Editor.input = Editor.form.querySelector('#content-input')
 
       if (contentEditor.dataset.content) {
         Editor.options.data = Editor.processDataForLoad(contentEditor.dataset.content)
