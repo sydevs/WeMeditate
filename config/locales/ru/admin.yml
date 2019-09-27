@@ -90,8 +90,8 @@ ru:
       pending_translation: "Есть перевод на %{language}, в ожидании утверждения" # "language" will be replaced with the language that this file is written in.
       in_progress_translation: "Перевод на %{language} не закончен" # "language" will be replaced with the language that this file is written in. 
       pending_invitation: "Приглашение ещё не принято"
-      this_is_you: "This is you" # TODO: Translate
-      missing_record: "Missing %{model}" # TODO: Translate
+      this_is_you: "Это вы" 
+      missing_record: "Отсутствует %{model}" 
       updated_ago: "Изменено %{time_ago} назад"
       published_ago: "Опубликовано %{time_ago} назад"
       urgency: # These are in order, with 'critical' as the most important, and 'pending' as the least important.
@@ -103,8 +103,8 @@ ru:
         one: "%{count} Просмотр" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
         few: "%{count} Просмотра" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
         many: "%{count} Просмотров" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
-        other: "%{count} Просмотра" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0
-      popularity: "Popularity: %{value}" # TODO: Translate
+        other: "%{count} Просмотра" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 
+      popularity: "Популярность: %{value}" 
 
     messages:
       loading: "Загружается"
@@ -133,7 +133,7 @@ ru:
       article_video: "Если вы добавите видео, оно будет отображено на превью статьи."
       article_date: "Если данная статья посвящена событию, то вы можете добавить дату события здесь. Эта дата будет отображена на превью статьи."
       article_published_at: "Дата публикации определяет в какой последовательности показаны статьи." 
-      fixed_slug: "This is a special page, it's URL cannot be changed." # TODO: Translate
+      fixed_slug: "Это особая страница, ее адрес (URL) нельзя изменить." 
 
     result:
       created: "Успешно создан."
@@ -166,7 +166,7 @@ ru:
       tunes: # These are formatting styles for content blocks
         centered: "По Центру"
         stretch: "Во Весь Экран"
-        separate: "Separate image and text" # TODO: Translate
+        separate: "Отдельно изоражение и текст" 
         asGallery: "Галерея"
         asWisdom: "Стиль Древних Знаний"
         asVideo: "Видео"
@@ -273,7 +273,7 @@ ru:
         details: "Page Details"
         content: "Page Content"
       effect:
-        moved: "Moved"
+        moved: "Перемещено"
         added: "Добавлено"
         removed: "Удалено"
         modified: "Изменено"
@@ -313,7 +313,7 @@ ru:
       alert:
         title: "How do I use this website?"
         message: "If you are just getting started managing content on WeMeditate, we have prepared a few brief 1 - 2 minute videos, to help you if you're lost."
-        role_description: "You are a %{role}, and as such it is your role to %{description}. For a video illustrating how to do this, please click the link below."
+        role_description: "You are a %{role}, and as such it is your role to %{description} For a video illustrating how to do this, please click the link below."
         action: "Watch Tutorial Videos"
       role_vimeo_ids:
         super_admin: 208643382
@@ -352,9 +352,9 @@ ru:
         pages: "Страницы"
         resources: "Ресурсы"
         people: "Люди"
-        # For specific models # TODO: Translate
-        static_pages: "Статьи Вдохновение"
-        articles: "Основные Страницы"
+        # For specific models
+        static_pages: "Основные Страницы"
+        articles: "Статьи Вдохновение"
         subtle_system_nodes: "Тонкая Система"
         meditations: :activerecord.models.meditation.many
         treatments: :activerecord.models.treatment.many

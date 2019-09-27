@@ -2,7 +2,7 @@
 - reorder = (params[:reorder] == 'true')
 - allow = policy(@model)
 
-- content_for :title, @model.model_name.human(count: -1)
+- content_for :title, @model.model_name.human(count: 'plural')
 
 - if reorder
   = form_tag polymorphic_admin_path([:sort, :admin, @model]), method: :put
