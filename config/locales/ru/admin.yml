@@ -351,16 +351,18 @@ ru:
         never: "Never"
         default: "Default"
       status:
+        published: "Published"
+        not_published: "Not Published"
         # With content
         needs_translation: "Needs Translation"
         needs_review: "Needs Review"
-        published: "Published"
         draft: "Draft"
         # Without content
         public: "Public"
         private: "Hidden"
         # Users
         pending: "Pending"
+        registered: "Registered"
         active: "Active"
         this_is_you: "This Is You"
 

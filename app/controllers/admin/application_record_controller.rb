@@ -191,13 +191,17 @@ module Admin
   
       def filter_by relation, param
         return relation unless param.present?
-        return relation if param.starts_with?('status:')
 
         param = param.split(':')
         column = param[0]
         value = param[1]
 
-        relation.where(column => value)
+        if column == 'status'
+          args = value == 'needs_translation' ? [current_user] : []
+          relation.respond_to?(value) ? relation.send(value, *args) : relation
+        else
+          relation.where(column => value)
+        end
       end
 
   end

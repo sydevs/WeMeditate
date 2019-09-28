@@ -95,7 +95,7 @@ module Admin
 
       def needs_review model, urgency, &block
         if policy(model).review?
-          policy_scope(model).includes(:translations).where.not("#{model.table_name.singularize}_translations" => { draft: nil }).each do |record|
+          policy_scope(model).needs_review.each do |record|
             next unless record.ready_for_review?
             
             block.call({

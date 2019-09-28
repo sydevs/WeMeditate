@@ -37,6 +37,7 @@ class Article < ApplicationRecord
   # Scopes
   scope :ordered, -> { order(priority: :desc, published_at: :desc) }
   scope :published, -> { with_translations(I18n.locale).where(published: true) }
+  scope :not_published, -> { with_translations(I18n.locale).where.not(published: true) }
   scope :q, -> (q) { with_translations(I18n.locale).joins(:translations, category: :translations).where('article_translations.name ILIKE ? OR category_translations.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model

@@ -25,6 +25,7 @@ class Author < ApplicationRecord
 
   # Scope
   scope :published, -> { with_translations(I18n.locale) }
+  scope :not_published, -> { none }
   scope :q, -> (q) { where('name ILIKE ?', "%#{q}%") if q.present? }
 
 end

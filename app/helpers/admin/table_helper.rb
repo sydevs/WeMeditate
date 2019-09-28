@@ -23,48 +23,38 @@ module Admin::TableHelper
     users: %i[name role last_sign_in_at status],
   }.freeze
 
+  # TODO: Implement the missing sortings which are shown as comments on each of the following entries.
   SORTABLE_COLUMNS = {
     # Pages
-    static_pages: %i[updated_at],
-    # static_pages: %i[name updated_at],
+    static_pages: %i[updated_at], # %i[name updated_at],
     articles: %i[name updated_at created_at],
-    subtle_system_nodes: %i[updated_at],
-    # subtle_system_nodes: %i[name updated_at],
+    subtle_system_nodes: %i[updated_at], # %i[name updated_at],
     # Resources
-    meditations: %i[updated_at created_at],
-    # meditations: %i[name popularity updated_at created_at],
+    meditations: %i[updated_at created_at], # %i[name popularity updated_at created_at],
     treatments: %i[name updated_at created_at],
     tracks: %i[name created_at],
     # Filters
-    categories: %i[name],
-    # categories: %i[name articles_count],
-    goal_filters: %i[name],
-    # goal_filters: %i[name meditations_count],
-    duration_filters: %i[],
-    # duration_filters: %i[meditations_count],
-    instrument_filters: %i[name],
-    # instrument_filters: %i[name tracks_count],
-    mood_filters: %i[name],
-    # mood_filters: %i[name tracks_count],
-    artists: %i[name],
-    # artists: %i[name tracks_count],
+    categories: %i[name], # %i[name articles_count],
+    goal_filters: %i[name], # %i[name meditations_count],
+    duration_filters: %i[], # %i[meditations_count],
+    instrument_filters: %i[name], # %i[name tracks_count],
+    mood_filters: %i[name], # %i[name tracks_count],
+    artists: %i[name], # %i[name tracks_count],
     # People
-    authors: %i[name country_code],
-    # authors: %i[name country_code articles_count],
+    authors: %i[name country_code], # %i[name country_code articles_count],
     users: %i[name last_sign_in_at role],
   }.freeze
 
+  # TODO: Implement the missing filterings which are shown as comments on each of the following entries.
   FILTERABLE_COLUMNS = {
     # Pages
     articles: %i[category_id status],
     static_pages: %i[status],
     subtle_system_nodes: %i[status],
     # Resources
-    meditations: %i[status duration_filter_id],
-    # meditations: %i[status duration_filter_id goal_filter_ids],
+    meditations: %i[status duration_filter_id], # %i[status duration_filter_id goal_filter_ids],
     treatments: %i[status],
-    tracks: %i[status],
-    # tracks: %i[status artist_ids instrument_filter_ids mood_filter_ids],
+    tracks: %i[status], # %i[status artist_ids instrument_filter_ids mood_filter_ids],
     # Filters
     categories: %i[status],
     goal_filters: %i[status],
@@ -74,8 +64,7 @@ module Admin::TableHelper
     artists: %i[status],
     # People
     authors: %i[status],
-    users: %i[role status],
-    # users: %i[role language status],
+    users: %i[role status], # %i[role language status],
   }.freeze
 
   STATUS_STYLE = {
@@ -89,7 +78,8 @@ module Admin::TableHelper
     private: %i[basic],
     # For users
     active: %i[basic],
-    pending: %i[orange basic],
+    registered: %i[basic],
+    pending: %i[basic orange],
     this_is_you: %i[],
   }.freeze
 
@@ -115,9 +105,9 @@ module Admin::TableHelper
             if model == User
               values = %i[active pending]
             elsif model.new.respond_to?(:content)
-              values = %i[published draft needs_translation needs_review]
+              values = %i[published not_published needs_translation needs_review]
             else
-              values = %i[public private]
+              values = %i[published not_published]
             end
 
             values.map { |v| [v.to_s, translate(v, scope: %i[admin index status])] }.to_h
@@ -158,10 +148,6 @@ module Admin::TableHelper
     "#{column_name}: #{value_name}"
   end
 
-  def table_check_status_filter_failed record
-    params[:filter]&.starts_with?('status:') && table_record_status(record).to_s != params[:filter].split(':')[1]
-  end
-
   def table_record_status_label record
     status = table_record_status(record)
     label = translate(status, scope: %i[admin index status])
@@ -176,12 +162,14 @@ module Admin::TableHelper
           :this_is_you
         elsif record.pending_invitation?
           :pending
-        else
+        elsif record.last_sign_in_at.present?
           :active
+        else
+          :registered
         end
-      elsif record.translatable? && !record.has_translation?
+      elsif record.translatable? && record.needs_translation?(current_user)
         :needs_translation
-      elsif record.draftable? && record.has_draft? && policy(record).review?
+      elsif record.draftable? && record.needs_review? && policy(record).review?
         :needs_review
       elsif record.has_content? && record.published?
         :published

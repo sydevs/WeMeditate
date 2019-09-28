@@ -24,6 +24,7 @@ class InstrumentFilter < ApplicationRecord
   # Scopes
   default_scope { order(:order) }
   scope :published, -> { with_translations(I18n.locale).where(published: true) }
+  scope :not_published, -> { with_translations(I18n.locale).where.not(published: true) }
   scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('instrument_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   def self.has_content

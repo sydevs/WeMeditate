@@ -35,7 +35,7 @@
   .table-actions = table_actions(@model, @records)
   .clearfix
 
-  form.ui.form method='GET' data-remote=true
+  form.ui.form method='GET' action='?sort=#{params[:sort]}&filter=#{params[:filter]}' data-remote=true
     .ui.tiny.models.menu
       .ui.fluid.search.item
         .ui.transparent.left.icon.input
@@ -44,21 +44,21 @@
 
       .ui.dropdown.item
         .title = translate('admin.index.sort.title')
-        .value = params[:sort].present? ? translate(params[:sort], scope: %i[admin index sort columns]) : translate('admin.index.attribute.default')
+        .value = params[:sort].present? ? translate(params[:sort], scope: %i[admin index sort columns]) : nil
         i.dropdown.icon
         .menu
-          a.item href="?filter=#{params[:filter]}"
+          a.item href="?filter=#{params[:filter]}&q=#{params[:q]}"
             = translate('admin.index.attribute.default')
           - table_sortable_columns(@model) do |column|
-            a.item href="?sort=#{column}&filter=#{params[:filter]}"
+            a.item href="?sort=#{column}&filter=#{params[:filter]}&q=#{params[:q]}"
               = translate(column, scope: %i[admin index sort columns])
 
       .ui.dropdown.item
         .title = translate('admin.index.filter.title')
-        .value = table_filterable_label(@model, params[:filter])
+        .value = params[:filter].present? ? table_filterable_label(@model, params[:filter]) : nil
         i.dropdown.icon
         .menu
-          a.item href="?sort=#{params[:sort]}"
+          a.item href="?sort=#{params[:sort]}&q=#{params[:q]}"
             = translate('admin.index.attribute.none')
           - table_filterable_columns(@model) do |column, values|
             .item
@@ -66,7 +66,7 @@
               = column != :status ? human_attribute_name(@model, column) : translate('admin.index.attribute.status')
               .menu
                 - values&.each do |value|
-                  a.item href="?filter=#{column}:#{value[0]}&sort=#{params[:sort]}"
+                  a.item href="?filter=#{column}:#{value[0]}&sort=#{params[:sort]}&q=#{params[:q]}"
                     = value[1]
 
       - if allow.new?

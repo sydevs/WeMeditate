@@ -7,7 +7,11 @@ module Draftable
   extend ActiveSupport::Concern
 
   included do |base|
-    # Do nothing for now
+    base.scope :needs_review, -> { with_translations.where.not("#{table_name.singularize}_translations" => { draft: nil }) }
+  end
+
+  def needs_review?
+    has_draft?
   end
   
   def draftable?

@@ -15,6 +15,11 @@ module Translatable
     true
   end
 
+  def needs_translation? user
+    #self.class.needs_translation(user).find_by(id: id).present?
+    !has_translation?
+  end
+
   def has_translation? section = nil, locale: I18n.locale, check_draft: true
     return false unless translated_locales.include?(locale)
 

@@ -32,6 +32,7 @@ class Meditation < ApplicationRecord
   # Scopes
   # default_scope { order( id: :desc ) }
   scope :published, -> { with_translations(I18n.locale).where(published: true) }
+  scope :not_published, -> { with_translations(I18n.locale).where.not(published: true) }
   scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('meditation_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   alias thumbnail image

@@ -16,5 +16,7 @@ class Artist < ApplicationRecord
 
   # Scope
   scope :q, -> (q) { where('name ILIKE ?', "%#{q}%") if q.present? }
+  scope :published, -> {  }
+  scope :not_published, -> { none }
 
 end
