@@ -10,6 +10,7 @@ class MusicPlayer {
     this.sidetext = element.querySelector('.amplitude-sidetext')
     this.artistsList = element.querySelector('.amplitude-info-artists')
     this.playButton = element.querySelector('.amplitude-play-pause')
+    this.active = false
     const data = JSON.parse(element.dataset.tracks)
     this.playlists = data.playlists
 
@@ -22,15 +23,17 @@ class MusicPlayer {
       debug: true,
       callbacks: {
         loadstart: () => {
-          this.playButton.classList.add('amplitude-loading')
+          if (this.active) this.playButton.classList.add('amplitude-loading')
         },
         canplay: () => {
           this.playButton.classList.remove('amplitude-loading')
         },
         song_change: () => {
+          this.active = true
           this.updateSongArtists()
         },
         play: () => {
+          this.active = true
           this.validateActivePlaylist()
         }
       }
