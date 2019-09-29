@@ -167,6 +167,7 @@ ru:
     '500': "К сожалению, что-то пошло не так."
 
   javascript:
+    reading_time: "%minutes% minute read" # TODO: Translate
     popup:
       close: "Закрыть (Esc)"
       loading: "Загружается..."

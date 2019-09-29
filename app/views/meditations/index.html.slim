@@ -35,11 +35,6 @@ main
         h3.preview__title = translate 'meditations.featured.random_meditation_title'
         p.preview__text = translate 'meditations.featured.random_meditation_description'
 
-    .meditations__index-action
-      a.meditations__index-action__link href=archive_meditations_path
-        span.meditations__index-action__text = translate 'meditations.archive.see_all_meditations'
-        .icon.icon--breadcrumb
-
     .meditations__custom id='custom-meditation'
       .meditations__gradient.gradient.gradient--blue.gradient--left
 
@@ -83,6 +78,11 @@ main
       .meditations__image
         = static_image_tag 'meditations/prescreen-background', '100vw', class: 'meditations__image__background'
         = static_image_tag 'meditations/prescreen-foreground', '100vw', class: 'meditations__image__foreground'
+
+    .meditations__index-action
+      a.meditations__index-action__link href=archive_meditations_path
+        span.meditations__index-action__text = translate 'meditations.archive.see_all_meditations'
+        .icon.icon--breadcrumb
 
   - cache @static_page do
     .content = render_content @static_page

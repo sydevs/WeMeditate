@@ -11,10 +11,6 @@
   letter-spacing: 0.18px
   text-align: center
 
-.author--mini
-  text-align: right
-  margin-bottom: 48px
-
 // ===== ELEMENTS ===== //
 .author
   &__header
@@ -39,7 +35,7 @@
       max-width: 148px
 
   &__image img
-    max-width: 100%
+    width: 100%
     border: 1px solid $color-graphic-normal
     border-radius: 100%
 
@@ -47,6 +43,10 @@
     line-height: 1.875
     text-align: left
     margin-top: 40px
+
+  &__reading_time
+    font-size: 90%
+    margin-top: 6px
 
 // ===== FLOATED META INFO ===== //
 .author--full
@@ -79,3 +79,21 @@
 
 .author__name
   font-size: 1.6rem
+
+// ===== MINI AUTHOR VARIATION ===== //
+.author--mini
+  text-align: right
+  margin-bottom: 48px
+
+.author--mini .author
+  &__image
+    float: right
+    width: 64px
+    margin-left: 12px
+
+  /*&__name
+    font-weight: $font-semibold*/
+
+  &__title,
+  &__experience
+    font-size: 90%

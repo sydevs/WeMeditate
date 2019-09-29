@@ -165,6 +165,7 @@ en:
     '500': "We're sorry, but something went wrong"
 
   javascript:
+    reading_time: "%minutes% minute read"
     popup:
       close: "Close (Esc)"
       loading: "Loading..."

@@ -165,6 +165,7 @@ it:
     '500': "Ci dispiace, qualcosa è andato storto."
 
   javascript:
+    reading_time: "%minutes% minute read" # TODO: Translate
     popup:
       close: "Chiudi (Esc)"
       loading: "Caricamento …"

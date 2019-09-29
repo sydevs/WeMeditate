@@ -33,6 +33,7 @@ const Application = {
     Application.loadAll('loadmore', Loadmore)
     Application.loadAll('video', Video)
     Application.loadAll('gallery', ImageGallery)
+    Application.loadAll('reading-time', ReadingTime)
 
     Application.element = {}
     Application.loadFirst('header', Header)
