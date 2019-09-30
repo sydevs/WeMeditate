@@ -390,11 +390,11 @@ en:
           my_author: "Whenever you write an article, this profile will be shown at the bottom of the article. This helps the seeker connect more with the writer of the article, and also establishes the credibility of the writer.<br><br>Here are some tips on writing a good bio.<br> - Use the third person.<br> - Don't dwell too much on your upbringing or how long you have been meditating.<br> - Do mention your profession or studies. Show that you are a respectable member of society.<br> - Unless you are writing an artist bio, try to be down to earth and let the reader see themselves in you."
 
       role_vimeo_ids:
-        super_admin: 208643382
-        regional_admin: 208643382
-        editor: 208643382
-        writer: 208643382
-        translator: 208643382
+        super_admin: 363132481
+        regional_admin: 363132481
+        editor: 363137633
+        writer: 363141876
+        translator: 363139502
       panels:
         overview:
           menu: "Overview"
@@ -404,16 +404,15 @@ en:
           menu: "Writing Content"
           title: "How to use the content editor"
           description: ""
-          vimeo_id: 208643382
+          vimeo_id: 363156142
         issues:
           menu: "Reporting Issues"
           title: "How to report issues"
-          description: ""
-          vimeo_id: 208643382
+          description: "Please click "
 
     report_issue:
-      name: "Devindra"
-      email: "arden.ived@gmail.com"
+      name: "WeMeditate Administrator"
+      email: "admin@wemeditate.co"
       subject: "WeMeditate Issue Report"
       body: "Please describe the issue in English..."
 
