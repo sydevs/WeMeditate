@@ -407,7 +407,7 @@ de:
         issues:
           menu: "Reporting Issues"
           title: "How to report issues"
-          description: "Please click "
+          description: "Please click the \"Report Issue\" button at the bottom of the left-hand side menu. This will open up your email client where you will be able to send us an email at admin@wemeditate.co"
 
     report_issue:
       name: "WeMeditate Administrator"

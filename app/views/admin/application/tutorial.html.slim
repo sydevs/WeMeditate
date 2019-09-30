@@ -27,4 +27,5 @@
     .ui.tab data-tab=key
       h2.ui.header = data[:title]
       p = data[:description]
-      iframe src="https://player.vimeo.com/video/#{data[:vimeo_id]}" width='672' height='378' frameborder='0' allow='autoplay; fullscreen' allowfullscreen=true
+      - if data[:vimeo_id].present?
+        iframe src="https://player.vimeo.com/video/#{data[:vimeo_id]}" width='672' height='378' frameborder='0' allow='autoplay; fullscreen' allowfullscreen=true
