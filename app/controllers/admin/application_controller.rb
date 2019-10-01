@@ -3,6 +3,7 @@ module Admin
   class ApplicationController < ::ApplicationController
 
     before_action :authenticate_user!
+    before_action :redirect_to_locale!
     after_action :verify_authorized, except: %i[dashboard vimeo_data]
     after_action :verify_policy_scoped, only: :index
 
@@ -47,6 +48,12 @@ module Admin
           thumbnail: response['pictures']['sizes'].last['link'],
           thumbnail_srcset: response['pictures']['sizes'].map { |pic| "#{pic['link']} #{pic['width']}w" }.join(','),
         }
+      end
+
+      def redirect_to_locale!
+        return if current_user.available_languages.include?(I18n.locale)
+
+        redirect_to root_path(locale: current_user.available_languages.first)
       end
 
   end
