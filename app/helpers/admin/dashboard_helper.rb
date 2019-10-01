@@ -29,7 +29,7 @@ module Admin
         when StaticPage, SubtleSystemNode
           human_enum_name(record, :role)
         when GoalFilter, MoodFilter, InstrumentFilter
-          "#{record.model_name.human}: #{record.preview_name}"
+          "#{human_model_name(record)}: #{record.preview_name}"
         else
           record.preview_name
         end

@@ -53,7 +53,7 @@ module Admin
     end
 
     def language_name language = locale
-      I18nData.languages(locale)[language.to_s.upcase]
+      I18nData.languages(locale)[language.to_s.upcase].titleize
     end
 
     def urgency_icon_key urgency
@@ -62,6 +62,11 @@ module Admin
 
     def model_icon_key model
       MODEL_ICON[model]
+    end
+
+    def human_model_name model, pluralization = :singular
+      key = pluralization == :plural ? 'other' : 'one'
+      translate(key, scope: [:activerecord, :models, model.model_name.i18n_key])
     end
 
     def human_enum_name model, attr, value = nil

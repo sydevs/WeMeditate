@@ -22,7 +22,7 @@ module Admin::RecordHelper
   # ===== MESSAGES ===== #
   def record_published_status
     published = @record.get_localized_attribute(:published)
-    translate (published ? :is_published : :is_unpublished), scope: %i[admin details], page: @record.model_name.human.downcase
+    translate (published ? :is_published : :is_unpublished), scope: %i[admin details], page: human_model_name(@record).downcase
   end
 
   def record_published_at_status

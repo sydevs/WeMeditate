@@ -21,7 +21,7 @@ table.ui.very.basic.compact.unstackable.models.table
       - has_issues = true
       tr
         td.collapsing
-          = table_icon model_icon_key(issue[:model]), issue[:model].model_name.human
+          = table_icon model_icon_key(issue[:model]), human_model_name(issue[:model])
 
         td.selector
           a href=issue[:url] = issue[:name]

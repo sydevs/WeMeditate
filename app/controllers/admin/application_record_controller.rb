@@ -93,7 +93,7 @@ module Admin
       associations.each do |key|
         if @record.send(key).present?
           associated_model = @model.reflect_on_association(key).class
-          message = translate('admin.result.cannot_delete_attached_record', category: @model.model_name.human.downcase, pages: associated_model.model_name.human(count: -1).downcase)
+          message = translate('admin.result.cannot_delete_attached_record', category: human_model_name(@model).downcase, pages: human_model_name(associated_model, :plural).downcase)
           redirect_to helpers.polymorphic_admin_path([:admin, @model]), alert: message
         end  
       end

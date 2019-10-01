@@ -16,7 +16,7 @@ html
     nav#sidebar = render 'layouts/admin/menu'
     main#main
       - if current_user.available_languages.length > 1 || I18n.locale != current_user.available_languages.first
-        .ui.floating.dropdown.right.floated.basic.button
+        .ui.floating.search.dropdown.right.floated.basic.button
           .text
             = language_flag
             = language_name
@@ -24,7 +24,7 @@ html
             - current_user.available_languages.each do |language|
               a.item href=url_for(locale: language)
                 = language_flag language
-                = I18nData.languages(language)[language.to_s.upcase]
+                = I18nData.languages(language)[language.to_s.upcase].titleize
 
       #header
         h1.ui.header

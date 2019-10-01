@@ -2,7 +2,7 @@
 - allow = policy(record)
 
 - if record.draftable? && record.has_draft? && record.parsed_draft.except('content', 'contributors').present?
-  .ui.yellow.message = translate 'admin.messages.unpublished_changes_notice', page: record.model_name.human
+  .ui.yellow.message = translate 'admin.messages.unpublished_changes_notice', page: human_model_name(record)
 
 - if record.is_a?(User) && record.pending_invitation?
   .ui.yellow.message = translate 'admin.messages.pending_invitation_notice', person: human_enum_name(record, :role).downcase
@@ -89,7 +89,7 @@
     .table-actions
       a.ui.basic.button href=polymorphic_admin_path([:admin, @record]) data={ method: 'delete', confirm: translate('admin.messages.confirm_destroy') }
         i.warning.sign.icon
-        = translate 'admin.action.target.destroy', record: record.model_name.human
+        = translate 'admin.action.target.destroy', record: human_model_name(record)
 
   p
     - confirm = translate('admin.messages.confirm_unsaved_changes') if action_name == 'write'
@@ -101,7 +101,7 @@
     - elsif policy(@model).index?
       a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(record.page) ? record.page : record.class]) data-confirm=confirm
         i.left.arrow.icon
-        = translate 'admin.action.target.back', records: record.model_name.human(count: -1)
+        = translate 'admin.action.target.back', records: human_model_name(record, :plural)
 
     - if record.is_a?(User) && record.new_record?
       button.ui.basic.primary.button type='submit'

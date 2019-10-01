@@ -35,7 +35,7 @@ module NavigationHelper
         ],
         featured: Treatment.published.preload_for(:preview).first(2).map { |treatment|
           {
-            title: "#{Treatment.model_name.human}: #{treatment.name}",
+            title: "#{human_model_name(Treatment)}: #{treatment.name}",
             url: treatment_path(treatment),
             thumbnail: treatment.thumbnail.url,
           }

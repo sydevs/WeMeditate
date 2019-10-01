@@ -2,7 +2,7 @@
 - reorder = (params[:reorder] == 'true')
 - allow = policy(@model)
 
-- content_for :title, @model.model_name.human(count: 'plural')
+- content_for :title, human_model_name(@model, :plural)
 
 .ui.icon.message
   i.question.circle.icon
@@ -91,7 +91,7 @@
 
   - if @records.empty? && current_user.translator?
     #pagination
-      = translate 'admin.messages.no_translations_found', pages: @model.model_name.human(count: -1).downcase
+      = translate 'admin.messages.no_translations_found', pages: human_model_name(@model, :plural).downcase
   - else
     #pagination
       = page_entries_info @records

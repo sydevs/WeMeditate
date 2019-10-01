@@ -21,8 +21,8 @@ p.details.excerpt = record.excerpt
   = record_detail 'globe', translated_locales, translate('admin.details.translated_languages')
   - if record.author_id.present?
     - url = policy(record.author).edit? ? edit_admin_author_path(record.author) : nil
-    = record_detail model_icon_key(Author), record.author.preview_name, Author.model_name.human, url: url
-  = record_detail model_icon_key(Category), record.category.preview_name, Category.model_name.human if record.category.present?
+    = record_detail model_icon_key(Author), record.author.preview_name, human_model_name(Author), url: url
+  = record_detail model_icon_key(Category), record.category.preview_name, human_model_name(Category) if record.category.present?
   = record_detail 'eye', human_enum_name(record, :priority), translate('admin.details.priority')
   = record_detail 'calendar', record.date, translate('admin.details.featured_date') if record.date.present?
   = record_detail 'play circle', "Video ##{record.vimeo_id}", translate('admin.details.featured_video'), url: "https://vimeo.com/#{record.vimeo_id}" if record.vimeo_id.present?

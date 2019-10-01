@@ -10,7 +10,7 @@
 
 = draftable_media_field f, :thumbnail, preview: true, wrapper: { required: true }
 
-= draftable_field f, :excerpt, type: :text, hint: translate('admin.hints.excerpt', page: record.class.model_name.human.downcase) do |value|
+= draftable_field f, :excerpt, type: :text, hint: translate('admin.hints.excerpt', page: human_model_name(record.class).downcase) do |value|
   - f.input_field :excerpt, as: :text, rows: 3, value: value
 
 = draftable_field f, :vimeo_id, type: :integer, hint: translate('admin.hints.article_video')

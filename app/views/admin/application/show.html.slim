@@ -1,7 +1,7 @@
 
-- content_for :title, @model.model_name.human(count: 1)
+- content_for :title, human_model_name(@model)
 - reorder = (params[:reorder] == 'true')
-- model_name = @model.model_name.human(count: 1).downcase
+- model_name = human_model_name(@model).downcase
 - allow = policy(@record)
 
 - unless reorder
@@ -55,7 +55,7 @@
       - if owner = @record.try(:owner)
         - owned_by = translate('admin.details.owned_by', owner: owner.name)
         - if policy(owner).edit?
-          - view_user = translate('admin.action.target.show', record: User.model_name.human)
+          - view_user = translate('admin.action.target.show', record: human_model_name(User))
           = record_detail 'user', owned_by, view_user, url: polymorphic_admin_path([:edit, :admin, owner])
         - else
           = record_detail 'user', owned_by
@@ -69,9 +69,9 @@
     = table_action translate(:edit_content, scope: %i[admin action simple]), 'pencil alternate', polymorphic_admin_path([:write, :admin, @record])
 
 
-h4 = translate 'admin.content.outline_title', page: @model.model_name.human
+h4 = translate 'admin.content.outline_title', page: human_model_name(@model)
 
 = content_outline @record
 
 .ui.hidden.divider
-= table_link translate('admin.action.target.back', records: @model.model_name.human(count: -1)), 'left arrow', polymorphic_admin_path([:admin, @model])
+= table_link translate('admin.action.target.back', records: human_model_name(@model, :plural), 'left arrow', polymorphic_admin_path([:admin, @model])

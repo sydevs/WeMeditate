@@ -1,5 +1,5 @@
 
-- content_for :title, translate('admin.action.target.write', record: @record.model_name.human)
+- content_for :title, translate('admin.action.target.write', record: human_model_name(@record))
 - allow = policy(@record)
 - has_draft = @record.has_draft?(:content)
 - data = { upload: polymorphic_admin_path([:admin, @record, MediaFile]), triangle: image_path('graphics/triangle.svg') }
@@ -12,7 +12,7 @@
 
     .field class=('draft' if has_draft) data-draft='content'
       - if @record.draftable? && has_draft && @record.parsed_draft_content.present?
-        .ui.yellow.message = translate 'admin.messages.draft_notice', page: @record.model_name.human
+        .ui.yellow.message = translate 'admin.messages.draft_notice', page: human_model_name(@record)
 
         /= draft_reset_buttons(:content, @record.parsed_content, JSON.parse(content))
         /.clearfix
@@ -46,7 +46,7 @@
       - elsif policy(@model).index?
         a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(@record.page) ? @record.page : @record.class]) data-confirm=translate('admin.messages.confirm_unsaved_changes')
           i.left.arrow.icon
-          = translate 'admin.action.target.back', records: @record.model_name.human(count: -1)
+          = translate 'admin.action.target.back', records: human_model_name(@record, :plural)
 
       - if allow.publish?
         button.ui.basic.positive.button type='submit' name='draft' value='true'

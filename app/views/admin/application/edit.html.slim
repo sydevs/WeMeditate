@@ -1,5 +1,5 @@
 
-- content_for :title, translate('admin.action.target.edit', record: @record.model_name.human)
+- content_for :title, translate('admin.action.target.edit', record: human_model_name(@record))
 
 - unless @record.new_record?
   .table-actions
@@ -9,7 +9,7 @@
       - elsif !@record.is_a?(User)
         .ui.active.button
           - status = @record.published? ? (@record.has_draft? ? :pending_changes : :published) : :draft
-          = translate(status, scope: %i[admin status], page: @record.model_name.human.downcase)
+          = translate(status, scope: %i[admin status], page: human_model_name(@record).downcase)
 
       - if @record.viewable?
         - if @record.published?
