@@ -359,7 +359,7 @@ fr:
       title: "Starter Guide"
       dashboard:
         title: "How do I use this website?"
-        message: "If you are just getting started managing content on WeMeditate, we have prepared a few brief 1 - 2 minute videos, to help you if you're lost."
+        message: "If you are just getting started managing content on WeMeditate, we have prepared a few short videos, to help you if you're lost."
         role_description: "You are a %{role}, and as such it is your role to %{description} For a video illustrating how to do this, please click the link below."
         action: "Watch Tutorial Videos"
       index:
