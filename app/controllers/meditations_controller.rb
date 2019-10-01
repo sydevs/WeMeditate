@@ -4,7 +4,7 @@ class MeditationsController < ApplicationController
 
   def index
     @static_page = StaticPage.preload_for(:content).find_by(role: :meditations)
-    expires_in 12.hours, public: true
+    # expires_in 12.hours, public: true
 
     set_metadata(@static_page)
     @breadcrumbs = [

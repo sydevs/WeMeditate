@@ -3,7 +3,7 @@ class SubtleSystemNodesController < ApplicationController
   def index
     @static_page = StaticPage.preload_for(:content).find_by(role: :subtle_system)
     @subtle_system_nodes = SubtleSystemNode.all
-    expires_in 1.day, public: true
+    # expires_in 1.day, public: true
 
     set_metadata(@static_page)
     @breadcrumbs = [

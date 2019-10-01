@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   # The page where we embed a map from the program database
   def map
-    expires_in 1.year, public: true
+    # expires_in 1.year, public: true
     set_metadata({ 'title' => translate('classes.map_title') })
     render layout: 'minimal'
   end
