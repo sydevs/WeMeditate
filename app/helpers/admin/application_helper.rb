@@ -8,6 +8,9 @@ module Admin
       en: 'gb',
       it: 'it',
       de: 'de',
+      fr: 'fr',
+      es: 'es',
+      pt: 'pt',
     }.freeze
 
     URGENCY_ICON = {
