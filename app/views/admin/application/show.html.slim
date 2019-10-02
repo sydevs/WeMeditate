@@ -74,4 +74,4 @@ h4 = translate 'admin.content.outline_title', page: human_model_name(@model)
 = content_outline @record
 
 .ui.hidden.divider
-= table_link translate('admin.action.target.back', records: human_model_name(@model, :plural), 'left arrow', polymorphic_admin_path([:admin, @model])
+= table_link translate('admin.action.target.back', records: human_model_name(@model, :plural)), 'left arrow', polymorphic_admin_path([:admin, @model])

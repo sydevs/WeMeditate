@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def admin?
+    controller.class.name.split("::").first == 'Admin'
+  end
+
   def locale_host
     Rails.configuration.locale_hosts[I18n.locale]
   end

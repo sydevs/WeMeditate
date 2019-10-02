@@ -31,7 +31,7 @@ module Admin
         Integer(vimeo_id) rescue raise ArgumentError, "Vimeo ID is not valid: \"#{vimeo_id}\""
         raise 'Vimeo Access Key has not been set' unless ENV['VIMEO_ACCESS_KEY'].present?
 
-        uri = URI("https://api.vimeo.com/videos/#{vimeo_id}?fields=name,pictures.sizes")
+        uri = URI("https://api.vimeo.com/videos/#{vimeo_id}?fields=name,width,height,pictures.sizes,download.link,duration,embed.uri")
         request = Net::HTTP::Get.new(uri)
         request['Authorization'] = "Bearer #{ENV['VIMEO_ACCESS_KEY']}"
       
@@ -47,6 +47,9 @@ module Admin
           title: response['name'],
           thumbnail: response['pictures']['sizes'].last['link'],
           thumbnail_srcset: response['pictures']['sizes'].map { |pic| "#{pic['link']} #{pic['width']}w" }.join(','),
+          download_url: response['download']['link'],
+          embed_url: response['embed']['uri'],
+          duration: response['duration'],
         }
       end
 
