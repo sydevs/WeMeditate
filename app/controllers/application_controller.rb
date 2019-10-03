@@ -75,7 +75,8 @@ class ApplicationController < ActionController::Base
   end
 
   def sitemap
-    redirect_to "https://storage.cloud.google.com/wemeditate/sitemaps/sitemap.#{I18n.locale}.xml.gz", statue: 301
+    data = open("https://storage.cloud.google.com/wemeditate/sitemaps/sitemap.#{I18n.locale}.xml.gz")
+    send_data data.read, type: data.content_type
   end
 
   protected
