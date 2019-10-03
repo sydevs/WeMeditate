@@ -86,6 +86,7 @@ let Admin = {
       input.classList.add('loading')
       Editor.adjustPendingUploads(+1)
       Editor.retrieveVimeoVideo(vimeo_id, response => {
+        meta.querySelector('.raw').innerText = JSON.stringify(response, null, 2)
         meta.querySelector('img').src = response.thumbnail
         meta.querySelector('.hint').innerText = response.title
         meta.querySelector('a').href = `https://vimeo.com/${response.vimeo_id}`

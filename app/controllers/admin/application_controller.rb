@@ -31,7 +31,7 @@ module Admin
         Integer(vimeo_id) rescue raise ArgumentError, "Vimeo ID is not valid: \"#{vimeo_id}\""
         raise 'Vimeo Access Key has not been set' unless ENV['VIMEO_ACCESS_KEY'].present?
 
-        uri = URI("https://api.vimeo.com/videos/#{vimeo_id}?fields=name,width,height,pictures.sizes,download.link,duration,embed.uri")
+        uri = URI("https://api.vimeo.com/videos/#{vimeo_id}?fields=name,width,height,pictures.sizes,download.link,duration,link")
         request = Net::HTTP::Get.new(uri)
         request['Authorization'] = "Bearer #{ENV['VIMEO_ACCESS_KEY']}"
       
@@ -40,16 +40,16 @@ module Admin
         end
       
         response = JSON.parse(response.body)
-        puts "Retrieved Vimeo Data for #{vimeo_id}\r\n#{response.inspect}"
+        puts "Retrieved Vimeo Data for #{vimeo_id}\r\n#{response.pretty_inspect}"
       
         return {
           vimeo_id: vimeo_id,
           title: response['name'],
           thumbnail: response['pictures']['sizes'].last['link'],
           thumbnail_srcset: response['pictures']['sizes'].map { |pic| "#{pic['link']} #{pic['width']}w" }.join(','),
-          download_url: response['download']['link'],
-          embed_url: response['embed']['uri'],
-          duration: response['duration'],
+          download_url: (response['download'][0]['link'] if response['download'].present?),
+          embed_url: response['link'],
+          duration: ActiveSupport::Duration.build(response['duration']).iso8601,
         }
       end
 

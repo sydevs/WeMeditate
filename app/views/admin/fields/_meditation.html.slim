@@ -27,6 +27,11 @@
     i.sync.icon
     = translate 'admin.action.descriptive.reload_vimeo_data'
   .content style=('display: none' unless vimeo_metadata.present?)
+    .ui.metadata.accordion
+      .title
+        i.dropdown.icon
+        = Meditation.human_attribute_name(:vimeo_metadata)
+      pre.raw.content = vimeo_metadata.pretty_inspect
     .hint = vimeo_metadata[:title]
     a.ui.image href="https://vimeo.com/#{record.horizontal_vimeo_id}" target='_blank'
       img src=vimeo_metadata[:thumbnail]
@@ -39,6 +44,11 @@
     i.sync.icon
     = translate 'admin.action.descriptive.reload_vimeo_data'
   .content style=('display: none' unless vimeo_metadata.present?)
+    .ui.metadata.accordion
+      .title
+        i.dropdown.icon
+        = Meditation.human_attribute_name(:vimeo_metadata)
+      pre.raw.content = vimeo_metadata.pretty_inspect
     .hint = vimeo_metadata[:title]
     a.ui.image href="https://vimeo.com/#{record.vertical_vimeo_id}" target='_blank'
       img src=vimeo_metadata[:thumbnail]
