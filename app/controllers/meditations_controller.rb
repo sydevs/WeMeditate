@@ -33,7 +33,7 @@ class MeditationsController < ApplicationController
     @meditations = Meditation.published.preload_for(:preview).offset(params[:offset]).limit(MEDITATIONS_PER_PAGE)
     return unless stale?(@meditations)
 
-    set_metadata({ 'title' => human_model_name(Meditation, :plural) })
+    set_metadata({ 'title' => helpers.human_model_name(Meditation, :plural) })
 
     if Meditation.published.count <= next_offset
       @loadmore_url = nil
@@ -46,7 +46,7 @@ class MeditationsController < ApplicationController
         @breadcrumbs = [
           { name: StaticPageHelper.preview_for(:home).name, url: root_path },
           { name: StaticPageHelper.preview_for(:meditations).name, url: meditations_path },
-          { name: human_model_name(Meditation, :plural), url: archive_meditations_path },
+          { name: helpers.human_model_name(Meditation, :plural), url: archive_meditations_path },
           { name: translate('meditations.archive.title') },
         ]
         render :archive
