@@ -18,11 +18,16 @@ class User < ApplicationRecord
 
   # Scopes
   default_scope { order(:role, :name) }
-  scope :active, -> { where.not(last_sign_in_at: nil) }
+  scope :active, -> { where('last_sign_in_at > ?', 30.days.ago) }
+  scope :inactive, -> { where(last_sign_in_at: nil).or(where('last_sign_in_at <= ?', 30.days.ago)) }
   scope :pending, -> { where.not(invitation_created_at: nil).where(invitation_accepted_at: nil) }
   scope :for_locale, -> { where('languages = \'{}\' OR ? = ANY(languages)', I18n.locale) }
   scope :q, -> (q) { where('email ILIKE ?', "%#{q}%") if q.present? }
   
+  def active?
+    last_sign_in_at.present? && last_sign_in_at > 30.days.ago
+  end
+
   def languages= list
     super (list.map(&:to_sym) & I18n.available_locales).map(&:to_s)
   end

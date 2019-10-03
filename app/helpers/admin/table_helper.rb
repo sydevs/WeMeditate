@@ -77,10 +77,10 @@ module Admin::TableHelper
     public: %i[basic blue],
     private: %i[basic],
     # For users
-    active: %i[basic],
-    registered: %i[basic],
+    active: %i[basic blue],
+    inactive: %i[basic],
     pending: %i[basic orange],
-    this_is_you: %i[],
+    this_is_you: %i[blue],
   }.freeze
 
   def table_columns model, &block
@@ -103,7 +103,7 @@ module Admin::TableHelper
         columns[column] = begin
           if column == :status
             if model == User
-              values = %i[active pending]
+              values = %i[active inactive pending]
             elsif model.new.respond_to?(:content)
               values = %i[published not_published needs_translation needs_review]
             else
@@ -162,10 +162,10 @@ module Admin::TableHelper
           :this_is_you
         elsif record.pending_invitation?
           :pending
-        elsif record.last_sign_in_at.present?
+        elsif record.active?
           :active
         else
-          :registered
+          :inactive
         end
       elsif record.translatable? && record.needs_translation?(current_user)
         :needs_translation

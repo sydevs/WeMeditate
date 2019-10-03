@@ -351,8 +351,8 @@ de:
         private: "Hidden"
         # Users
         pending: "Pending"
-        registered: "Registered"
         active: "Active"
+        inactive: "Inactive"
         this_is_you: "This Is You"
 
     tutorial:

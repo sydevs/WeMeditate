@@ -362,7 +362,7 @@ ru:
         private: "Hidden"
         # Users
         pending: "Pending"
-        registered: "Registered"
+        inactive: "Inactive"
         active: "Active"
         this_is_you: "This Is You"
 
