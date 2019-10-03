@@ -3,4 +3,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: /sitemap
+Sitemap: https://www.wemeditate.co/sitemap
