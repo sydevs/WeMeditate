@@ -33,12 +33,13 @@ class CategoriesController < ApplicationController
         format.html do
           @static_page = StaticPage.preload_for(:content).find_by(role: :articles)
           @categories = Category.published.includes(articles: :translations).where(article_translations: { published: true }).where.not(articles: { id: nil })
-          set_metadata(@static_page)
 
           @breadcrumbs = [
             { name: StaticPageHelper.preview_for(:home).name, url: root_path },
             { name: @static_page.name },
           ]
+
+          set_metadata(@static_page)
           render :show
         end
 

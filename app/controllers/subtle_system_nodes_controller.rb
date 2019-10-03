@@ -5,24 +5,26 @@ class SubtleSystemNodesController < ApplicationController
     @subtle_system_nodes = SubtleSystemNode.all
     # expires_in 1.day, public: true
 
-    set_metadata(@static_page)
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },
       { name: @static_page.name },
     ]
+
+    set_metadata(@static_page)
   end
 
   def show
     @subtle_system_node = SubtleSystemNode.preload_for(:content).friendly.find(params[:id])
     return unless stale?(@subtle_system_node)
 
-    set_metadata(@subtle_system_node)
     subtle_system_page = StaticPage.preload_for(:preview).find_by(role: :subtle_system)
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },
       { name: subtle_system_page.name, url: subtle_system_nodes_path },
       { name: @subtle_system_node.name },
     ]
+
+    set_metadata(@subtle_system_node)
   end
 
 end

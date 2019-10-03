@@ -4,7 +4,6 @@ class StaticPagesController < ApplicationController
     @static_page = StaticPage.preload_for(:content).friendly.find(params[:id])
     return unless stale?(@static_page)
 
-    set_metadata(@static_page)
     case @static_page.role
     when 'about'
       @breadcrumbs = [
@@ -21,6 +20,8 @@ class StaticPagesController < ApplicationController
         { name: @static_page.name },
       ]
     end
+
+    set_metadata(@static_page)
   end
 
 end

@@ -260,6 +260,8 @@ module MetadataHelper
     end
 
     def build_content_metadata record, tags
+      # TODO: Further enrich the structured data by marking up FAQ accordions, Video Carousels, Image Galleries, etc.
+      # See here: https://developers.google.com/search/docs/data-types/article
       []
     end
 

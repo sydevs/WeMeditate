@@ -6,17 +6,20 @@ class MeditationsController < ApplicationController
     @static_page = StaticPage.preload_for(:content).find_by(role: :meditations)
     # expires_in 12.hours, public: true
 
-    set_metadata(@static_page)
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },
       { name: @static_page.name },
     ]
 
     if true || cookies[:prescreen] == 'dismissed'
+      set_metadata(@static_page)
       @meditations = Meditation.preload_for(:preview).all
       @goal_filters = GoalFilter.published.has_content
       @duration_filters = DurationFilter.published.has_content
     else
+      kundalini = I18n.translate('meditations.prescreen.kundalini')
+      title = I18n.translate('meditations.prescreen.title', kundalini: kundalini)
+      set_metadata({ 'title' => title })
       render :prescreen
     end
   end
@@ -33,8 +36,6 @@ class MeditationsController < ApplicationController
     @meditations = Meditation.published.preload_for(:preview).offset(params[:offset]).limit(MEDITATIONS_PER_PAGE)
     return unless stale?(@meditations)
 
-    set_metadata({ 'title' => helpers.human_model_name(Meditation, :plural) })
-
     if Meditation.published.count <= next_offset
       @loadmore_url = nil
     else
@@ -49,6 +50,8 @@ class MeditationsController < ApplicationController
           { name: helpers.human_model_name(Meditation, :plural), url: archive_meditations_path },
           { name: translate('meditations.archive.title') },
         ]
+
+        set_metadata({ 'title' => helpers.human_model_name(Meditation, :plural) })
         render :archive
       end
 
@@ -61,7 +64,6 @@ class MeditationsController < ApplicationController
   def show
     @meditation = Meditation.published.friendly.find(params[:id])
 
-    set_metadata(@meditation)
     meditations_page = StaticPage.preload_for(:content).find_by(role: :meditations)
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },
@@ -70,9 +72,13 @@ class MeditationsController < ApplicationController
     ]
 
     if cookies[:prescreen] == 'dismissed'
+      set_metadata(@meditation)
       # Increment the view counter for this page.
       @meditation.update! views: @meditation.views + 1, popularity: @meditation.popularity + 1 unless @meditation.self_realization?
     else
+      kundalini = I18n.translate('meditations.prescreen.kundalini')
+      title = I18n.translate('meditations.prescreen.title', kundalini: kundalini)
+      set_metadata({ 'title' => title })
       render :prescreen
     end
   end
