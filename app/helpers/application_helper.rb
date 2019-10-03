@@ -7,6 +7,10 @@ module ApplicationHelper
   def locale_host
     Rails.configuration.locale_hosts[I18n.locale]
   end
+    
+  def path_to_url path
+    "https://#{locale_host}/#{path.sub(/^\//, '')}"
+  end
 
   def amplitude_data tracks, playlists: true
     playlists = {}

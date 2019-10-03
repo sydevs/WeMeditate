@@ -253,7 +253,7 @@ module MetadataHelper
             '@type' => 'ListItem',
             'position' => index,
             'name' => crumb[:name],
-            'item' => crumb[:url] || tags['og:url'],
+            'item' => path_to_url(crumb[:url] || tags['og:url']),
           }
         }
       }
