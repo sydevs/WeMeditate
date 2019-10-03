@@ -66,6 +66,7 @@ gem 'kaminari-i18n' # Localization for kaminari
 # Tools
 gem 'seedbank' # Used to populate the database with the pages and data used in the designs, for quick deployment and recovery.
 gem 'sprig' # Used to populate the database with the pages and data used in the designs, for quick deployment and recovery.
+gem 'rollbar' # Error tracking
 
 # Misc
 gem 'mail_form' # For the contact form

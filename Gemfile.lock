@@ -287,6 +287,7 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     retriable (3.1.2)
+    rollbar (2.22.1)
     route_translator (6.0.0)
       actionpack (>= 5.0.0.1, < 6.1)
       activesupport (>= 5.0.0.1, < 6.1)
@@ -423,6 +424,7 @@ DEPENDENCIES
   rails_serve_static_assets
   redis (~> 4.0)
   regulator
+  rollbar
   route_translator (~> 6.0.0)
   sassc-rails
   seedbank
