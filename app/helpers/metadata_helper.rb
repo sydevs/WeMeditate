@@ -79,7 +79,7 @@ module MetadataHelper
     metatags(record)
     return unless @metatags.present?
 
-    @structured_data ||= Rails.cache.fetch "#{record.cache_key_with_version}/metadata" do
+    @structured_data ||= Rails.cache.fetch "#{record&.cache_key_with_version}/metadata" do
       ([
         build_page_metadata(record, @metatags),
         build_event_metadata(record, @metatags),
