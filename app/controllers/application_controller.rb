@@ -76,7 +76,7 @@ class ApplicationController < ActionController::Base
 
   def sitemap
     data = open("https://storage.cloud.google.com/wemeditate/sitemaps/sitemap.#{I18n.locale}.xml.gz")
-    send_data data.read, type: data.content_type
+    send_data data.read, type: 'text/xml'
   end
 
   protected
