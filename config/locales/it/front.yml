@@ -161,6 +161,7 @@ it:
     no_programs: "Meditation classes in your area are coming soon." # TODO: Translate
     error: "Error" # TODO: Translate
     alternatives_title: "Prova uno di questi invece:"
+    report_issue: "Please try again, and report this issue if it continues to occur. When reporting the issue, please do your best to describe what specific actions you were taking before the issue occurred." # TODO: Translate
     '404': "La pagina che stavi cercando non esiste."
     '422': "Il cambiamento che stavi cercando di fare non esiste."
     '500': "Ci dispiace, qualcosa è andato storto."

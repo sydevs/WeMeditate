@@ -2,15 +2,16 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   devise_for :users, controllers: { invitations: 'users/invitations' }
-  get '404', to: 'application#error'
-  get '422', to: 'application#error'
-  get '500', to: 'application#error'
   get :maintenance, to: 'application#maintenance'
   get 'robots.txt', to: 'application#robots', defaults: { format: :txt }
 
   # ===== ADMIN ROUTES ===== #
   admin_domains = Rails.env.development? ? %w[admin.localhost admin.omicron.local admin.wemeditate.co] : %w[admin.wemeditate.co]
   constraints DomainConstraint.new(admin_domains) do
+    get '404', to: 'admin/application#error'
+    get '422', to: 'admin/application#error'
+    get '500', to: 'admin/application#error'
+  
     get '/', to: redirect('/en')
     get 'switch_user' => 'switch_user#set_current_user'
 
@@ -47,6 +48,10 @@ Rails.application.routes.draw do
 
   # ===== FRONT-END ROUTES ===== #
   constraints DomainConstraint.new(RouteTranslator.config.host_locales.keys) do
+    get '404', to: 'application#error'
+    get '422', to: 'application#error'
+    get '500', to: 'application#error'
+
     localized do
       root to: 'application#home'
       post :contact, to: 'application#contact'

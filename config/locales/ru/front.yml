@@ -163,6 +163,7 @@ ru:
     no_programs: "Meditation classes in your area are coming soon." # TODO: Translate
     error: "Ошибка"
     alternatives_title: "Попробуйте один из следующих вариантов:"
+    report_issue: "Please try again, and report this issue if it continues to occur. When reporting the issue, please do your best to describe what specific actions you were taking before the issue occurred." # TODO: Translate
     '404': "Такой страницы не существует."
     '422': "Запрошенное изменение было отклонено."
     '500': "К сожалению, что-то пошло не так."

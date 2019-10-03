@@ -4,7 +4,7 @@ module Admin
 
     before_action :authenticate_user!
     before_action :redirect_to_locale!
-    after_action :verify_authorized, except: %i[dashboard vimeo_data]
+    after_action :verify_authorized, except: %i[dashboard vimeo_data error]
     after_action :verify_policy_scoped, only: :index
 
     def dashboard
@@ -13,6 +13,10 @@ module Admin
 
     def tutorial
       authorize :application, :access?
+    end
+
+    def error
+      render status: request.env['PATH_INFO'][1, 3].to_i
     end
     
     def vimeo_data

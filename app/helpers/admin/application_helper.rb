@@ -85,6 +85,13 @@ module Admin
       "https://www.google.com/maps/search/?api=1&query=#{latitude}%2C#{longitude}"
     end
 
+    def report_url
+      report_url = "mailto:\"#{translate 'admin.report_issue.name'}\"<#{translate 'admin.report_issue.email'}>"
+      report_url += "?subject=#{URI.encode translate('admin.report_issue.subject')}"
+      report_url += "&body=#{URI.encode translate('admin.report_issue.body')}"
+      report_url
+    end
+
     def content_outline record
       blocks = record.content_blocks if record.parsed_content.present?
       return unless blocks
