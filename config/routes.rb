@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 
     localized do
       root to: 'application#home'
-      get :sitemap, to: 'application#sitemap'
+      get 'sitemap.xml.gz', to: 'application#sitemap'
       post :contact, to: 'application#contact'
       post :subscribe, to: 'application#subscribe'
       get :map, to: 'application#map'
