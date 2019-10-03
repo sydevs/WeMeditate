@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { invitations: 'users/invitations' }
   get :maintenance, to: 'application#maintenance'
-  get 'robots.txt', to: 'application#robots', defaults: { format: :txt }
 
   # ===== ADMIN ROUTES ===== #
   admin_domains = Rails.env.development? ? %w[admin.localhost admin.omicron.local admin.wemeditate.co] : %w[admin.wemeditate.co]
@@ -54,6 +53,7 @@ Rails.application.routes.draw do
 
     localized do
       root to: 'application#home'
+      get :sitemap, to: 'application#sitemap'
       post :contact, to: 'application#contact'
       post :subscribe, to: 'application#subscribe'
       get :map, to: 'application#map'

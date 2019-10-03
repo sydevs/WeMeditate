@@ -68,14 +68,14 @@ class ApplicationController < ActionController::Base
     render layout: 'basic'
   end
 
-  def robots
-    render 'application/robots.txt.erb', layout: false, content_type: Mime[:text]
-  end
-
   def error
     expires_in 1.month, public: true
     set_metadata({ 'title' => translate('errors.error') })
     render status: request.env['PATH_INFO'][1, 3].to_i
+  end
+
+  def sitemap
+    redirect_to "https://storage.cloud.google.com/wemeditate/sitemaps/sitemap.#{I18n.locale}.xml.gz"
   end
 
   protected
