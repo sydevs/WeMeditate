@@ -75,7 +75,7 @@ class ApplicationController < ActionController::Base
   end
 
   def sitemap
-    redirect_to "https://storage.cloud.google.com/wemeditate/sitemaps/sitemap.#{I18n.locale}.xml.gz"
+    redirect_to "https://storage.cloud.google.com/wemeditate/sitemaps/sitemap.#{I18n.locale}.xml.gz", statue: 301
   end
 
   protected
