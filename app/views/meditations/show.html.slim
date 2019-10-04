@@ -4,8 +4,6 @@
 main id=dom_id(@meditation)
   h1.banner = @meditation.name
 
-  = (@meditation.vimeo_metadata[:horizontal] || @meditation.horizontal_vimeo_id).inspect
-
   .meditation__media
     figure.content__video__item
       .video.video--responsive class="js-video"
