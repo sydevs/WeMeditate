@@ -1,0 +1,25 @@
+@import "../../mixins/*"
+
+/* AFTERGLOW
+  We are using the afterglow library to play video content.
+  */
+
+body .video-js.vjs-afterglow-skin
+  background: white
+
+  .vjs-poster
+    opacity: 1
+    background-color: white
+
+  .vjs-big-play-button
+    @extend %video-button
+    position: absolute
+    transition: border-color 0.5s ease
+    border-radius: 0 !important
+
+    &:before
+      content: ''
+
+  .vjs-control-bar
+    background-color: white
+

@@ -33,6 +33,7 @@ class Video {
   }
 
   loadPlayer(iframe) {
+    if (!iframe) return
     iframe.src = iframe.dataset.src
     const player = new Vimeo.Player(iframe)
 

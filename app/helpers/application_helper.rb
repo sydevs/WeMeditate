@@ -121,8 +121,13 @@ module ApplicationHelper
 
   def vimeo_tag vimeo_data, **args
     klass = args[:class].is_a?(Array) ? args[:class] : [args[:class]]
+    klass << 'afterglow'
     
-    if vimeo_data.is_a?(Hash)
+    if vimeo_data.is_a?(Hash) && vimeo_data[:download_url].present?
+      source = tag.source type: 'video/mp4', src: vimeo_data[:download_url]
+      tag.video source, class: klass, width: vimeo_data[:width], height: vimeo_data[:height], poster: vimeo_data[:thumbnail], data: { skin: 'light' }
+
+=begin
       url = vimeo_data[:embed_url]
       # url = "#{url}?playsinline=0" if args[:playsinline] == false
 
@@ -137,6 +142,7 @@ module ApplicationHelper
         mozallowfullscreen: true,
         allowfullscreen: true,
       })
+=end
     else
       url = "https://player.vimeo.com/video/#{vimeo_data}"
       tag.iframe class: klass, data: { src: url }, width: '100%', height: '100%', frameborder: '0', allow: 'autoplay; fullscreen', webkitallowfullscreen: true, mozallowfullscreen: true, allowfullscreen: true
