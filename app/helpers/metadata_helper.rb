@@ -112,8 +112,8 @@ module MetadataHelper
       if record.role == 'home'
         tags['title'] = translate('we_meditate')
         image = MediaFile.find_by(id: record.content_blocks.first['data']['image']['id']) if record.content_blocks
-      else
-        image = MediaFile.find_by(id: record.parsed_content['media_files'].first) if defined? record.parsed_content['media_files']
+      elsif record.parsed_content.present? && record.parsed_content['media_files'].present?
+        image = MediaFile.find_by(id: record.parsed_content['media_files'].first)
       end
 
       tags['og:image'] = image_url image.file_url if image.present?
