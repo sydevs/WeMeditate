@@ -124,7 +124,7 @@ module ApplicationHelper
     
     if vimeo_data.is_a?(Hash)
       url = vimeo_data[:embed_url]
-      url = "#{url}?playsinline=0" if args[:playsinline] == false
+      # url = "#{url}?playsinline=0" if args[:playsinline] == false
 
       tag.iframe({
         class: klass,
