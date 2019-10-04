@@ -4,6 +4,10 @@ module ApplicationHelper
     controller.class.name.split("::").first == 'Admin'
   end
 
+  def image_url source
+    path_to_url image_path(source)
+  end
+
   def locale_host
     Rails.configuration.locale_hosts[I18n.locale]
   end

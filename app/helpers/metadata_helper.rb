@@ -5,7 +5,7 @@ module MetadataHelper
     'name' => I18n.translate('we_meditate'),
     'logo' => {
       '@type' => 'ImageObject',
-      'url' => ApplicationController.helpers.image_path('metadata/logo.png'),
+      'url' => ApplicationController.helpers.image_url('metadata/logo.png'),
       'width' => 132,
       'height' => 60,
     },
@@ -62,7 +62,7 @@ module MetadataHelper
         'description' => translate('tagline'),
         'og:site_name' => translate('we_meditate'),
         'og:url' => request.original_url,
-        'og:image' => ApplicationController.helpers.image_path('metadata/preview.png'),
+        'og:image' => ApplicationController.helpers.image_url('metadata/preview.png'),
         'og:locale' => locale,
         'og:locale:alternate' => I18n.available_locales.map(&:to_s),
         'twitter:site' => Rails.application.config.twitter_handle,
