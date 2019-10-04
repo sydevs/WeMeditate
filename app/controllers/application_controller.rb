@@ -91,7 +91,7 @@ class ApplicationController < ActionController::Base
       return if %w[sessions switch_user].include? controller_name
       return if current_user.present?
 
-      redirect_to maintenance_path
+      redirect_to maintenance_path, status: :see_other
     end
 
     def set_metadata record_or_hash

@@ -62,7 +62,7 @@ module Admin
       def redirect_to_locale!
         return if current_user.available_languages.include?(I18n.locale)
 
-        redirect_to root_path(locale: current_user.available_languages.first)
+        redirect_to root_path(locale: current_user.available_languages.first), status: :see_other
       end
 
   end
