@@ -4,14 +4,14 @@ class CategoriesController < ApplicationController
 
   def index
     @category = nil
-    @articles = Article.published.preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
+    @articles = Article.published.where.not(priority: :hidden).preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
     return unless stale?(@articles)
     display
   end
 
   def show
     @category = Category.published.friendly.find(params[:id])
-    @articles = @category.articles.published.preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
+    @articles = @category.articles.published.where.not(priority: :hidden).preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
     return unless stale?(@articles)
     display
   end

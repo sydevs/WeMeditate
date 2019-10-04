@@ -45,7 +45,7 @@
                 = translate 'admin.action.target.destroy', record: model_name
 
 .details
-  h3 = @record.preview_name
+  h3.ui.header = @record.preview_name
   = render "admin/details/#{@record.model_name.param_key}", record: @record
 
   - if @record.draftable?

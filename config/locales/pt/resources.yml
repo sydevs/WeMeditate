@@ -64,8 +64,9 @@ pt:
         slug: :activerecord.attributes.generic.slug # Do not translate
         category: :activerecord.models.category.one # Do not translate
         category_id: :activerecord.attributes.article.category # Do not translate
-        priority: "Visibility"
+        priority: "Visibility on Inspiration Page"
         priorities:
+          hidden: "Hidden from Inspiration Page"
           low: "Low Visibility"
           normal: "Normal Visibility"
           high: "High Visibility"

@@ -23,7 +23,7 @@ class Article < ApplicationRecord
   has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
   belongs_to :owner, class_name: 'User', optional: true
   belongs_to :author, optional: true
-  enum priority: { high: 1, normal: 0, low: -1 }
+  enum priority: { high: 1, normal: 0, low: -1, hidden: -999 }
   enum author_type: { author: 0, artist: 1 }
 
   # Validations
