@@ -9,7 +9,6 @@ main id=dom_id(@meditation)
       .video.video--responsive class="js-video"
         .video__inner
           .video__horizontal
-            = (@meditation.vimeo_metadata[:horizontal] || @meditation.horizontal_vimeo_id).pretty_inspect
             = vimeo_tag @meditation.vimeo_metadata[:horizontal] || @meditation.horizontal_vimeo_id, playsinline: false
             .video__thumbnail
               - if @meditation.vimeo_metadata(:horizontal).present?
@@ -17,7 +16,6 @@ main id=dom_id(@meditation)
               - else
                 = smart_image_tag @meditation.thumbnail, image_sizes
           .video__vertical
-            = (@meditation.vimeo_metadata[:vertical] || @meditation.vertical_vimeo_id).pretty_inspect
             = vimeo_tag @meditation.vimeo_metadata[:vertical] || @meditation.vertical_vimeo_id, playsinline: false
             .video__thumbnail
               - if @meditation.vimeo_metadata(:vertical).present?
