@@ -1,6 +1,6 @@
 
 Application.elements.form.map(function(form) {
-  if (form == 'signup') {
+  if (form.type == 'signup') {
     form.setMessage('<%= @message %>', '<%= @success ? "positive" : "negative" %>')
     form.setLoadingState(false)
   }
