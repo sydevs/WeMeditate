@@ -1,17 +1,5 @@
 module MetadataHelper
 
-  ORGANIZATION = {
-    '@type' => 'Organization',
-    'name' => I18n.translate('we_meditate'),
-    'logo' => {
-      '@type' => 'ImageObject',
-      'url' => ApplicationController.helpers.image_url('metadata/logo.png'),
-      'width' => 132,
-      'height' => 60,
-    },
-    'sameAs' => I18n.translate('social_media').values.reject(&:empty?),
-  }.freeze
-
   def render_metatags
     return unless @metatags.present?
 
@@ -118,7 +106,7 @@ module MetadataHelper
 
       tags['og:image'] = image_url image.file_url if image.present?
       tags['og:url'] = static_page_url_for(record)
-      tags['og:type'] = 'website' if %w[home contact privacy articles meditations].include?(record.role)
+      tags['og:type'] = 'website' if %w[home contact privacy articles meditations subtle_system].include?(record.role)
     end
 
     def set_video_metatags! tags, record
@@ -146,7 +134,7 @@ module MetadataHelper
           '@type' => 'WebPage',
           '@id' => tags['og:url'],
         },
-        'publisher' => ORGANIZATION,
+        'publisher' => build_organization_metadata,
         'name' => tags['og:title'],
         'headline' => tags['og:title'],
         'description' => tags['og:description'],
@@ -175,7 +163,7 @@ module MetadataHelper
           data['author'] = author
           data['about'] = author if record.try(:author_type) == 'artist'
         else
-          data['author'] = ORGANIZATION
+          data['author'] = build_organization_metadata
         end
       end
 
@@ -188,7 +176,7 @@ module MetadataHelper
       {
         '@type' => 'Event',
         '@context' => 'http://schema.org',
-        'publisher' => ORGANIZATION,
+        'publisher' => build_organization_metadata,
         'name' => tags['og:title'],
         'description' => tags['og:description'],
         'startDate' => record.date.to_s(:db),
@@ -204,7 +192,7 @@ module MetadataHelper
       {
         '@context' => 'http://schema.org',
         '@type' => 'VideoObject',
-        'publisher' => ORGANIZATION,
+        'publisher' => build_organization_metadata,
         'name' => tags['og:title'],
         'description' => tags['og:description'],
         'uploadDate' => tags['og:article:published_time'],
@@ -264,6 +252,20 @@ module MetadataHelper
       # TODO: Further enrich the structured data by marking up FAQ accordions, Video Carousels, Image Galleries, etc.
       # See here: https://developers.google.com/search/docs/data-types/article
       []
+    end
+
+    def build_organization_metadata
+      @organization ||= {
+        '@type' => 'Organization',
+        'name' => I18n.translate('we_meditate'),
+        'logo' => {
+          '@type' => 'ImageObject',
+          'url' => ApplicationController.helpers.image_url('metadata/logo.png'),
+          'width' => 132,
+          'height' => 60,
+        },
+        'sameAs' => I18n.translate('social_media').values.reject(&:empty?),
+      }.freeze
     end
 
 end
