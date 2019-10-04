@@ -128,7 +128,7 @@ module ApplicationHelper
 
       tag.iframe({
         class: klass,
-        data: { src:  },
+        data: { src: url },
         width: vimeo_data[:width],
         height: vimeo_data[:height],
         frameborder: '0',
