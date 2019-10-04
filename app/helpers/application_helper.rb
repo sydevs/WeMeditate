@@ -119,10 +119,28 @@ module ApplicationHelper
     simple_format(text.gsub('<br>', "\n").html_safe).gsub("\n", '').html_safe
   end
 
-  def vimeo_tag vimeo_id, **args
+  def vimeo_tag vimeo_data, **args
     klass = args[:class].is_a?(Array) ? args[:class] : [args[:class]]
-    url = "https://player.vimeo.com/video/#{vimeo_id}"
-    tag.iframe class: klass, data: { src: url }, frameborder: '0', width: '100%', height: '100%', allow: 'autoplay; fullscreen'
+    
+    if vimeo_data.is_a?(Hash)
+      url = vimeo_data[:embed_url]
+      url = "#{url}?playsinline=0" if args[:playsinline] == false
+
+      tag.iframe({
+        class: klass,
+        data: { src:  },
+        width: vimeo_data[:width],
+        height: vimeo_data[:height],
+        frameborder: '0',
+        allow: 'autoplay; fullscreen',
+        webkitallowfullscreen: true,
+        mozallowfullscreen: true,
+        allowfullscreen: true,
+      })
+    else
+      url = "https://player.vimeo.com/video/#{vimeo_data}"
+      tag.iframe class: klass, data: { src: url }, width: '100%', height: '100%', frameborder: '0', allow: 'autoplay; fullscreen', webkitallowfullscreen: true, mozallowfullscreen: true, allowfullscreen: true
+    end
   end
   
   def error message

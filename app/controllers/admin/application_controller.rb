@@ -49,10 +49,12 @@ module Admin
         return {
           vimeo_id: vimeo_id,
           title: response['name'],
+          width: response['width'],
+          height: response['height'],
           thumbnail: response['pictures']['sizes'].last['link'],
           thumbnail_srcset: response['pictures']['sizes'].map { |pic| "#{pic['link']} #{pic['width']}w" }.join(','),
           download_url: (response['download'][0]['link'] if response['download'].present?),
-          embed_url: response['link'],
+          embed_url: "https://player.vimeo.com/video/#{vimeo_id}",
           duration: ActiveSupport::Duration.build(response['duration']).iso8601,
         }
       end

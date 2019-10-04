@@ -5,7 +5,7 @@ module Admin
     before_action :authorize!, except: %i[create]
 
     def index
-      @records = policy_scope(@model).q(params[:q])
+      @records = policy_scope(@model).order(updated_at: :desc).q(params[:q])
       @records = sort_by(@records, params[:sort])
       @records = filter_by(@records, params[:filter])
 
