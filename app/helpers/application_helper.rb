@@ -120,7 +120,7 @@ module ApplicationHelper
   end
 
   def vimeo_new_player? vimeo_data
-    vimeo_data.is_a?(Hash) && vimeo_data[:download_url].present?
+    vimeo_data.is_a?(Hash) && vimeo_data[:sources].present?
   end
 
   def vimeo_tag vimeo_data, **args
@@ -130,7 +130,21 @@ module ApplicationHelper
     if vimeo_new_player?(vimeo_data)
       skin = args[:skin] == :light ? 'light' : 'dark'
       source = tag.source type: 'video/mp4', src: vimeo_data[:download_url]
-      tag.video source, class: klass, width: vimeo_data[:width], height: vimeo_data[:height], poster: vimeo_data[:thumbnail], data: { skin: skin }
+      content_tag :video, {
+        class: klass,
+        width: vimeo_data[:width],
+        height: vimeo_data[:height],
+        poster: vimeo_data[:thumbnail],
+        data: { skin: skin }
+      } do
+        vimeo_data[:sources].each do |source|
+          concat tag.source({
+            type: source[:type], 
+            src: source[:link], 
+            data: { quality: source[:quality] == 'sd' ? 'sd' : 'hd' }
+          })
+        end
+      end
     else
       url = "https://player.vimeo.com/video/#{vimeo_data}"
       tag.iframe class: klass, data: { src: url }, width: '100%', height: '100%', frameborder: '0', allow: 'autoplay; fullscreen', webkitallowfullscreen: true, mozallowfullscreen: true, allowfullscreen: true

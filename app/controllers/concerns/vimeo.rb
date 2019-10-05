@@ -4,11 +4,18 @@
 
 module Vimeo
 
+  FIELDS = %w[
+    name width height
+    pictures.sizes
+    download.quality download.link download.type
+    duration link
+  ].join(',').freeze
+
   def self.retrieve_metadata vimeo_id
     Integer(vimeo_id) rescue raise ArgumentError, "Vimeo ID is not valid: \"#{vimeo_id}\""
     raise 'Vimeo Access Key has not been set' unless ENV['VIMEO_ACCESS_KEY'].present?
 
-    uri = URI("https://api.vimeo.com/videos/#{vimeo_id}?fields=name,width,height,pictures.sizes,download.link,duration,link")
+    uri = URI("https://api.vimeo.com/videos/#{vimeo_id}?fields=#{FIELDS}")
     request = Net::HTTP::Get.new(uri)
     request['Authorization'] = "Bearer #{ENV['VIMEO_ACCESS_KEY']}"
   
@@ -33,7 +40,7 @@ module Vimeo
       height: response['height'],
       thumbnail: response['pictures']['sizes'].last['link'],
       thumbnail_srcset: response['pictures']['sizes'].map { |pic| "#{pic['link']} #{pic['width']}w" }.join(','),
-      download_url: (response['download'][0]['link'] if response['download'].present?),
+      sources: response['download'],
       embed_url: "https://player.vimeo.com/video/#{vimeo_id}",
       duration: ActiveSupport::Duration.build(response['duration']).iso8601,
     }
