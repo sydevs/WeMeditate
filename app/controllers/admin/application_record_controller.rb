@@ -11,12 +11,12 @@ module Admin
 
       respond_to do |format|
         format.html do
-          @records = @records.page(params[:page])
+          @records = @records.page(params[:page]).per(10)
           render 'admin/application/index'
         end
 
         format.js do
-          @records = @records.page(params[:page])
+          @records = @records.page(params[:page]).per(10)
           render 'admin/application/index'
         end
 
