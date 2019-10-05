@@ -76,7 +76,9 @@ class Video {
 
   unload() {
     this.container.classList.remove('video--active')
-    this.button.classList.remove('video__button--loading')
+    if (this.button) {
+      this.button.classList.remove('video__button--loading')
+    }
   }
 
 }
