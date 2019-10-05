@@ -41,6 +41,8 @@ const Application = {
     Application.loadFirst('music-player', MusicPlayer)
     Application.loadFirst('custom-meditation', CustomMeditation)
     Application.loadFirst('prescreen', Prescreen)
+
+    window.afterglow.initVideoElements()
   },
 
   unload() {
