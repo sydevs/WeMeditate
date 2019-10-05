@@ -8,21 +8,27 @@ main id=dom_id(@meditation)
     figure.content__video__item
       .video.video--responsive class="js-video"
         .video__inner
-          .video__horizontal
-            = vimeo_tag @meditation.vimeo_metadata[:horizontal] || @meditation.horizontal_vimeo_id, playsinline: false, id: "#{dom_id(@meditation)}-horizontal-video"
-            /.video__thumbnail
-              - if @meditation.vimeo_metadata(:horizontal).present?
-                = vimeo_image_tag @meditation.vimeo_metadata(:horizontal), image_sizes
-              - else
-                = smart_image_tag @meditation.thumbnail, image_sizes
-          .video__vertical
-            = vimeo_tag @meditation.vimeo_metadata[:vertical] || @meditation.vertical_vimeo_id, playsinline: false, id: "#{dom_id(@meditation)}-vertical-video"
-            /.video__thumbnail
-              - if @meditation.vimeo_metadata(:vertical).present?
-                = vimeo_image_tag @meditation.vimeo_metadata(:vertical), image_sizes
-              - else
-                = smart_image_tag @meditation.thumbnail, image_sizes
-          /a.video__button
+          - if vimeo_new_player?(@meditation.vimeo_metadata(:horizontal)) && vimeo_new_player?(@meditation.vimeo_metadata(:vertical))
+            .video__horizontal
+              = vimeo_tag @meditation.vimeo_metadata[:horizontal], playsinline: false, skin: :light, id: "#{dom_id(@meditation)}-horizontal-video"
+            .video__vertical
+              = vimeo_tag @meditation.vimeo_metadata[:vertical], playsinline: false, skin: :light, id: "#{dom_id(@meditation)}-vertical-video"
+          - else
+            .video__horizontal
+              = vimeo_tag @meditation.horizontal_vimeo_id
+              .video__thumbnail
+                - if @meditation.vimeo_metadata(:horizontal).present?
+                  = vimeo_image_tag @meditation.vimeo_metadata(:horizontal), image_sizes
+                - else
+                  = smart_image_tag @meditation.thumbnail, image_sizes
+            .video__vertical
+              = vimeo_tag @meditation.vertical_vimeo_id
+              .video__thumbnail
+                - if @meditation.vimeo_metadata(:vertical).present?
+                  = vimeo_image_tag @meditation.vimeo_metadata(:vertical), image_sizes
+                - else
+                  = smart_image_tag @meditation.thumbnail, image_sizes
+            a.video__button
 
   .meditation__text
     = @meditation.description
