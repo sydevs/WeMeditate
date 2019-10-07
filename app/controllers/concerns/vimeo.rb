@@ -40,7 +40,7 @@ module Vimeo
       height: response['height'],
       thumbnail: response['pictures']['sizes'].last['link'],
       thumbnail_srcset: response['pictures']['sizes'].map { |pic| "#{pic['link']} #{pic['width']}w" }.join(','),
-      sources: response['files']&.sort_by { |f| f['height'] || 10000 }.reverse,
+      sources: response['files']&.sort_by { |f| f['height'] || 10000 }&.reverse,
       embed_url: "https://player.vimeo.com/video/#{vimeo_id}",
       duration: ActiveSupport::Duration.build(response['duration']).iso8601,
     }
