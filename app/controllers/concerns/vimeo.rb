@@ -7,7 +7,7 @@ module Vimeo
   FIELDS = %w[
     name width height
     pictures.sizes
-    download.quality download.link download.type
+    files.quality files.link files.type files.width files.height
     duration link
   ].join(',').freeze
 
@@ -32,7 +32,7 @@ module Vimeo
 
     response = JSON.parse(response.body)
     puts "Retrieved Vimeo Data for #{vimeo_id}\r\n#{response.pretty_inspect}"
-  
+
     return {
       vimeo_id: vimeo_id,
       title: response['name'],
@@ -40,7 +40,7 @@ module Vimeo
       height: response['height'],
       thumbnail: response['pictures']['sizes'].last['link'],
       thumbnail_srcset: response['pictures']['sizes'].map { |pic| "#{pic['link']} #{pic['width']}w" }.join(','),
-      sources: response['download'],
+      sources: response['files']&.sort_by { |f| f['height'] || 10000 }.reverse,
       embed_url: "https://player.vimeo.com/video/#{vimeo_id}",
       duration: ActiveSupport::Duration.build(response['duration']).iso8601,
     }
