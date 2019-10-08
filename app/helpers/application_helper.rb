@@ -138,6 +138,8 @@ module ApplicationHelper
         data: { skin: skin }
       } do
         vimeo_data[:sources].each do |source|
+          next if source[:quality] == 'hls'
+
           concat tag.source({
             type: source[:type], 
             src: source[:link], 
