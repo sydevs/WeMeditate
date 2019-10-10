@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
 end
 
 # Core gems
-gem 'rails', '~> 5.2.2'
+gem 'rails', '~> 5.2'
 gem 'pg', '~> 0.18' # Use postgresql as the database for Active Record
 gem 'puma', '~> 3.7' # Use Puma as the app server
 gem 'sassc-rails' # Use SASS for stylesheets
@@ -87,6 +87,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+
+  gem 'rails_real_favicon' # For generating favicons
 
   # For profiling load times
   gem 'rack-mini-profiler', require: false
