@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_27_161928) do
+ActiveRecord::Schema.define(version: 2019_10_10_105232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(version: 2019_09_27_161928) do
     t.bigint "user_id"
     t.string "original_locale", limit: 2, null: false
     t.string "country_code", limit: 2, null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["user_id"], name: "index_authors_on_user_id"
   end
 
@@ -118,6 +120,8 @@ ActiveRecord::Schema.define(version: 2019_09_27_161928) do
   create_table "duration_filters", force: :cascade do |t|
     t.integer "minutes"
     t.string "original_locale", limit: 2, null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -150,6 +154,8 @@ ActiveRecord::Schema.define(version: 2019_09_27_161928) do
     t.integer "order"
     t.string "icon", default: "", null: false
     t.string "original_locale", limit: 2, null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
   create_table "goal_filters_meditations", id: false, force: :cascade do |t|
@@ -175,6 +181,8 @@ ActiveRecord::Schema.define(version: 2019_09_27_161928) do
     t.string "icon", null: false
     t.integer "order"
     t.string "original_locale", limit: 2, null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
   create_table "instrument_filters_tracks", id: false, force: :cascade do |t|
@@ -249,6 +257,8 @@ ActiveRecord::Schema.define(version: 2019_09_27_161928) do
     t.jsonb "image"
     t.string "icon"
     t.string "original_locale", limit: 2, null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
   create_table "mood_filters_tracks", id: false, force: :cascade do |t|
