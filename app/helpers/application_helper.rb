@@ -143,7 +143,7 @@ module ApplicationHelper
           concat tag.source({
             type: source[:type], 
             src: source[:link], 
-            data: { quality: source[:quality] == 'sd' ? 'sd' : 'hd' }
+            data: { quality: ('hd' if source[:quality] != 'sd') }
           })
         end
       end
