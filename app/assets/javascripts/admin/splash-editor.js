@@ -1,4 +1,10 @@
 
+/** SPLASH EDITOR
+ * Handles the code for the home page's splash screen editor.
+ * This provides all the functions necessary to masquerade as a CodeX Editor block,
+ * so that ultimately the splash data is stored as a part of the page's content.
+ */
+
 const SplashEditor = {
   isActive: false,
 

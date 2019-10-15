@@ -1,3 +1,7 @@
+/** Content Editor
+ * We use the codex editor (https://editorjs.io) to provide a block-based content editor for our CMS.
+ * This is a fairly complex system which uses all the files in the 'cdx-editor' subfolder.
+ */
 
 const Editor = {
   pendingUploads: 0,
@@ -9,6 +13,7 @@ const Editor = {
   form: null,
   input: null,
 
+  // Configuration options for the cdx editor
   options: {
     holder: 'content-editor',
     tools: {
@@ -34,6 +39,7 @@ const Editor = {
     Editor.uploadLoader = document.getElementById('upload-loader')
     const contentEditor = document.getElementById('content-editor')
 
+    // Only intialize if the content editor actually exists on this page.
     if (Editor.form && contentEditor) {
       SplashEditor.load()
 
@@ -46,10 +52,12 @@ const Editor = {
         Editor.options.data = Editor.processDataForLoad(contentEditor.dataset.content)
       }
 
+      // Initialize the CodeX Editor (aka EditorJS)
       Editor.instance = new EditorJS(Editor.options)
     }
   },
 
+  // This sends a file to our server's upload endpoint
   upload(file, callback) {
     Editor.adjustPendingUploads(+1)
 
@@ -70,6 +78,7 @@ const Editor = {
     })
   },
 
+  // Requests vimeo metadata from our server's vimeo data endpoint
   retrieveVimeoVideo(vimeo_id, callback) {
     Editor.adjustPendingUploads(+1)
 
@@ -84,6 +93,7 @@ const Editor = {
     })
   },
 
+  // Allows us to disable saving until all uploads have finished.
   adjustPendingUploads(adjustment) {
     Editor.pendingUploads += adjustment
     if (Editor.pendingUploads > 0) {
@@ -100,12 +110,14 @@ const Editor = {
     $(Editor.uploadLoader).toggle(Editor.pendingUploads > 0)
   },
 
+  // Do any extra processing on the JSON data which is given to us by the editor
   processDataForSave(data) {
     if (SplashEditor.isActive) {
+      // If this page has a splash editor, then we need to add that data to the editor data before it gets saved.
       data.blocks.unshift(SplashEditor.getData())
     }
 
-    // Consolidate the media file references
+    // Consolidate all the media file ids for easy reference
     const media_files = []
     for (let index = 0; index < data.length; index++) {
       const block = outputData[index]
@@ -117,11 +129,13 @@ const Editor = {
     return JSON.stringify(data)
   },
 
+  // Do any extra processing on the JSON data before we load it into the editor
   processDataForLoad(data) {
     data = JSON.parse(data)
 
     if (data.blocks && data.blocks.length > 0 && data.blocks[0].type === 'splash') {
-      const splashData = data.blocks.shift() // Remove the splash data before sending it to editorjs
+      // Remove the splash data before sending it to editorjs
+      const splashData = data.blocks.shift()
       SplashEditor.setData(splashData)
     }
 
@@ -129,11 +143,13 @@ const Editor = {
   },
 
   _onSubmit(event) {
+    // Prevent the editor form from being submitted if we have pending uploads.
     if (Editor.pendingUploads > 0) {
       event.preventDefault()
       return false
     }
 
+    // Retrieve the editor data, then store it in the input before the editor form is submitted.
     Editor.instance.save().then(outputData => {
       console.log('Article data: ', outputData)
       Editor.input.value = Editor.processDataForSave(outputData)
@@ -143,6 +159,7 @@ const Editor = {
     })
   },
 
+  // Returns the block which currently has focus in the editor.
   getCurrentBlock() {
     return this.instance.blocks.getBlockByIndex(this.instance.blocks.getCurrentBlockIndex())
   }

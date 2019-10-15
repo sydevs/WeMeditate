@@ -1,7 +1,10 @@
+/** Front Application
+ * This file orchestrates and loads all the other files in this folder.
+ */
 
 const Application = {
 
-  preloaded: false,
+  preloaded: false, // Tracks whether the preloader has already been triggered.
 
   init() {
     const scrollback = document.querySelector('.footer__scrollback')

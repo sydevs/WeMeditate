@@ -1,15 +1,21 @@
+/** Editor Tool
+ * This folder contains definitions for each type of block which can be used in our content editor.
+ * This file contains the super class for all those tools, providing common functionality between them all.
+ */
 
 class EditorTool {
 
-  // Render plugin`s main Element and fill it with saved data
   constructor(data, config, api) {
-    this.api = api
-    this.data = data
-    this.id = config.id
-    this.allowDecoration = Boolean(config.decorations)
+    this.api = api // Save a reference to the EditorJS api
+    this.data = data // Save data for this tool/block
+    this.id = config.id // Save the id of this block, so that we can recognize if it changes
+    this.allowDecoration = Boolean(config.decorations) // Check the configuration as to whether decorations are defined for this tool.
+
     this.allowedDecorations = config.decorations || []
     this.fields = config.fields || {}
     this.tunes = config.tunes || []
+    
+    // A convenience to lookup the CSS classes used in the editor
     this.CSS = {
       baseClass: this.api.styles.block,
       container: `cdx-${this.id}`,
@@ -32,6 +38,7 @@ class EditorTool {
       inputs: {},
     }
 
+    // The standard configurations for different types of block decorations
     this.decorationsConfig = {
       triangle: {
         icon: 'counterclockwise rotated play',
@@ -56,19 +63,23 @@ class EditorTool {
       leaves: { icon: 'leaf' },
     }
 
+    // For every field used by this tool, save a CSS class
     for (let key in this.fields) {
       this.CSS.fields[key] = `cdx-${this.id}__${key}`
     }
 
+    // A few special types of inputs also have their own CSS class
     ['title', 'caption', 'textarea', 'text', 'content', 'button', 'url'].forEach(name => {
       this.CSS.inputs[name] = `${this.CSS.input}--${name}`
     })
 
+    // For each tune used by this tool, save CSS classes
     this.tunes.forEach(tune => {
       this.CSS.tunes[tune.name] = `${this.CSS.container}--${tune.name}`
       this.CSS.tuneButtons[tune.name] = `${this.CSS.settingsButton}__${tune.name}`
     })
 
+    // For each decoration used by this tool, save CSS classes
     this.allowedDecorations.forEach(decoration => {
       this.CSS.decorationButtons[decoration] = `${this.CSS.settingsButton}__${decoration}`
     })
@@ -77,24 +88,27 @@ class EditorTool {
 
   // =============== RENDERING =============== //
 
-  // Create tool container with inputs
+  // Creates the tool html with inputs
   render() {
     const container = make('div', [this.CSS.baseClass, this.CSS.container])
 
+    // Render the fields which are defined for this tool
     for (let key in this.fields) {
       const field = this.fields[key]
       if (field.input === false) continue
       this.renderInput(key, container)
     }
 
+    // Add the classes for any active tunes
     this.tunes.forEach(tune => {
       container.classList.toggle(this.CSS.tunes[tune.name], this.isTuneActive(tune))
     })
 
-    this.container = container
+    this.container = container // Save a reference to the container
     return container
   }
 
+  // Renders a standard type of input
   renderInput(key, container = null) {
     let result
     let field = this.fields[key]
@@ -107,6 +121,7 @@ class EditorTool {
     }, container)
 
     if (type == 'url') {
+      // URL inputs should auto-prepend an HTTP protocol if no protocol is defined.
       result.addEventListener('blur', event => {
         const url = event.target.innerText
         if (url) event.target.innerText = (url.indexOf('://') === -1) ? 'http://' + url : url
@@ -114,44 +129,42 @@ class EditorTool {
     }
 
     if (type == 'text') {
+      // Text fields should prevent EditorJS from splitting pasted content into multiple blocks
       result.addEventListener('paste', event => this.containPaste(event))
     }
 
     if (field.contained) {
+      // Any field wiith the contained attriibute set should prevent enter/backspace from creating/deleting blocks.
       result.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event, false))
     }
 
-    /*if (typeof field.label === 'undefined') {
-      result.dataset.placeholder = translate['content']['placeholders'][key]
-    } else {
-      result.dataset.placeholder = field.label
-    }*/
-
+    // Add the field's label as a placeholder, or use a default placeholder
     result.dataset.placeholder = field.label || translate['content']['placeholders'][key]
 
     if (field.optional) {
+      // If this field is optional append that to the placeholder
       result.dataset.placeholder += ` (${translate['content']['placeholders']['optional']})`
     }
 
     return result
   }
 
+  // This prevents the default EditorJS behaviour for the enter and backspace buttons
   inhibitEnterAndBackspace(event, insertNewBlock = false) {
-    console.log("inhibit?", event.key)
     if (event.key == 'Enter' || event.keyCode == 13) { // ENTER
-      if (insertNewBlock) this.api.blocks.insert()
+      if (insertNewBlock) this.api.blocks.insert() // Insert a block if allowed
       event.stopPropagation()
       event.preventDefault()
       return false
     } else if (event.key == 'Backspace' || event.keyCode == 8) { // BACKSPACE
       event.stopImmediatePropagation()
-      console.log('stop backspace', event)
       return false
     } else {
       return true
     }
   }
 
+  // This will insert a paragraph break if the enter button is pressed.
   insertParagraphBreak(event) {
     if (event.key == 'Enter' || event.keyCode == 13) { // ENTER
       document.execCommand('insertHTML', false, '<br><br>')
@@ -161,6 +174,7 @@ class EditorTool {
     }
   }
 
+  // Converts anny pasted content to use <br> tags, and pastes it directly into the tool, bypassing EditorJS's normal behaviour.
   containPaste(event) {
     const clipboardData = event.clipboardData || window.clipboardData
     const pastedData = clipboardData.getData('Text').replace(/(?:\r\n|\r|\n)/g, '<br>')
@@ -173,13 +187,14 @@ class EditorTool {
 
   // =============== SAVING =============== //
 
-  // Extract data from tool element
+  // Extract data from the tool element, so that it can be saved.
   save(toolElement) {
     let newData = {}
 
+    // Get the contents of each field for this tool.
     for (let key in this.fields) {
       newData[key] = toolElement.querySelector(`.${this.CSS.fields[key]}`).innerHTML
-      newData[key] = newData[key].replace('&nbsp;', ' ').trim()
+      newData[key] = newData[key].replace('&nbsp;', ' ').trim() // Stip non-breaking whitespace
     }
 
     return Object.assign(this.data, newData)
@@ -188,31 +203,37 @@ class EditorTool {
 
   // =============== SETTINGS =============== //
 
-  // Create wrapper for Tool`s settings buttons.
+  // Create this tool's settings menu.
   renderSettings() {
     const settingsContainer = make('div')
 
+    // Render tunes if there is at least one defined.
     if (this.tunes.length > 0) {
       make('label', '', { innerText: translate['content']['settings']['tunes'] }, settingsContainer)
       this.tunesWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.tunesWrapper], {}, settingsContainer)
       this.renderTunes(this.tunesWrapper)
     }
 
+    // Render decorations if there is at least one allowed.
     if (this.allowedDecorations.length > 0) {
       make('label', '', { innerText: translate['content']['settings']['decorations'] }, settingsContainer)
       this.decorationsWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.decorationsWrapper], {}, settingsContainer)
       this.renderDecorations(this.decorationsWrapper)
+
+      // Render decoration inputs
+      this.inputsWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.decorationInputsWrapper], {}, settingsContainer)
+      this.renderDecorationInputs(this.inputsWrapper)
     }
 
-    this.inputsWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.decorationInputsWrapper], {}, settingsContainer)
-    this.renderDecorationInputs(this.inputsWrapper)
-
+    // Lastly, update the settings buttons to reflect the current state of the block.
     this.updateSettingsButtons()
     return settingsContainer
   }
 
+  // Updates the appearance of all settings buttons and inputs to reflect the current state of the block.
   updateSettingsButtons() {
     if (this.tunesWrapper) {
+      // If tunes are defined, updated them
       for (let i = 0; i < this.tunesWrapper.childElementCount; i++) {
         const element = this.tunesWrapper.children[i]
         const tune = this.tunes[i]
@@ -221,6 +242,7 @@ class EditorTool {
     }
 
     if (this.decorationsWrapper) {
+      // If decorations are defined, updated them
       for (let i = 0; i < this.decorationsWrapper.childElementCount; i++) {
         const element = this.decorationsWrapper.children[i]
         const decorationKey = this.allowedDecorations[i]
@@ -241,10 +263,13 @@ class EditorTool {
 
   // ------ TUNES ------ //
 
+  // Render the set of tune buttons
   renderTunes(container) {
+    // Render a button for each tune
     this.tunes.map(tune => this.renderTuneButton(tune, container))
   }
 
+  // Renders one tune button
   renderTuneButton(tune, container) {
     const button = make('div', [this.CSS.settingsButton, this.CSS.tuneButtons[tune.name]], null, container)
     button.dataset.position = 'top right'
@@ -267,6 +292,7 @@ class EditorTool {
     return button
   }
 
+  // Check if a tune if currently selected.
   isTuneActive(tune) {
     return tune.group ? tune.name === this.data[tune.group] : this.data[tune.name] == true
   }

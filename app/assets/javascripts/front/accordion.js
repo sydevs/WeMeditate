@@ -1,3 +1,6 @@
+/** Accordion
+ * Allows an accordion block to be opened and closed.
+ */
 
 class Accordion {
 

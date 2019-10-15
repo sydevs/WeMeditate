@@ -1,18 +1,21 @@
+/** Draft
+ * This sets up a few simple handlers that let us toggle between draft values and live values for an input field.
+ */
 
 const Draft = {
   load() {
     console.log('loading Draft.js')
-    $('.draft.field .reset.button').on('click', Draft._on_set)
-    $('.draft.field .redo.button').on('click', Draft._on_set)
-    $('.repeatable.draft.field .reset.button').on('click', Draft._on_reset_repeatable)
+    $('.draft.field .reset.button').on('click', Draft._onSet)
+    $('.draft.field .redo.button').on('click', Draft._onSet)
   },
 
-  _on_set() {
+  _onSet() {
     let $trigger = $(this)
     let $field = $trigger.closest('.field')
     let value = $trigger.data('value')
     $field.toggleClass('draft')
 
+    // Handle the code necessary to set each different type of draftable field.
     switch ($field.data('draft')) {
       case 'string':
         $field.find('input').val(value)
