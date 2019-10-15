@@ -19,10 +19,10 @@ There are several concepts which are common throughout the codebase that it will
 - Run `rails server` to run the server.
 
 Once the server is running you should be able to can access these urls
- - [localhost](http://localhost) for the english website
- - [ru.localhost](http://ru.localhost) for the russian website
- - [it.localhost](http://it.localhost) for the italian website
- - [admin.localhost](http://admin.localhost) for the admin site
+ - [localhost:3000](http://localhost:3000) for the english website
+ - [ru.localhost:3000](http://ru.localhost:3000) for the russian website
+ - [it.localhost:3000](http://it.localhost:3000) for the italian website
+ - [admin.localhost:3000](http://admin.localhost:3000) for the admin site
 
 When accessing the admin site you will be asked to login, in the development environment you can use a simple dropdown (shown under the login window) to select which account you want to be logged in as, without having to enter a password.
 
