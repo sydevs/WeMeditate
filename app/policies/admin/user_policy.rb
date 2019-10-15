@@ -3,7 +3,7 @@ module Admin
 
     class Scope < Scope
       def resolve
-        scope.for_locale.or(User.where(invited_by_id: user.id))
+        scope.for_locale
       end
     end
 
@@ -38,7 +38,7 @@ module Admin
 
     def user_record_is_subordinate?
       return true if record.is_a?(Class)
-      return false unless %w[translator writer].include?(record.role)
+      return false if %w[regional_admin super_admin].include?(record.role)
       return false unless (record.available_languages & user.available_languages).present?
       return true
     end
