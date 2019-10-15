@@ -9,13 +9,38 @@ The WeMeditate project is comprehensive website promotig the practice of meditat
 
 Knowing the above features will also help one understand broadly what is going on in the code.
 
-# Concepts
+# Getting Started
 There are several concepts which are common throughout the codebase that it will help to be aware of.
+
+## Setup
+- Install Postgres on your computer (for Mac, I recommend [Postgress.app](https://postgresapp.com)), for windows you can try the [official installer](https://www.postgresql.org/download/windows/).
+- Clone this repository
+- Run `rails db:setup` to create and populate the database.
+- Run `rails server` to run the server.
+
+Once the server is running you should be able to can access these urls
+ - [localhost](http://localhost) for the english website
+ - [ru.localhost](http://ru.localhost) for the russian website
+ - [it.localhost](http://it.localhost) for the italian website
+ - [admin.localhost](http://admin.localhost) for the admin site
+
+When accessing the admin site you will be asked to login, in the development environment you can use a simple dropdown (shown under the login window) to select which account you want to be logged in as, without having to enter a password.
+
+## Framework & Languages
+ - **Ruby on Rails** is our core server framework. If you are not familiar with Ruby, I recommend looking through [this summary](https://learnxinyminutes.com/docs/ruby/) of how to do standard programming things in Ruby.
+ - **Postgres** is our database architecture. However, Rails takes care of almost all the details of this, so 
+ - **Vanilla JavaScript** is used for client side programming. jQuery is currently included as well, but we prefer not to use it when it can be avoided.
+ - **Sass** is used for stylesheets. Sass is basically the same as CSS, but has a more clean syntax and allows you to use variables and basic functions. Otherwise it uses all the same selectors and attributes as CSS. We also use a library called [Autoprefixer](https://github.com/ai/autoprefixer-rails), which automatically add any necessary prefixes (like `-webkit-`) to your CSS rules. So it is not necessary for you to add these yourself. [Sass Documentation](https://sass-lang.com/guide).
+ - **Slim** is used for HTML markup. As Sass does for CSS, Slim does for HTML. It creates a cleaner markup to allow us to write HTML more easily. [Slim Documentation](http://slim-lang.com).
+
+## Concepts
+There are a few pointers that it will be helpful to know when navigating the codebase.
 
  - Every page and piece of content is translatable.
  - Each page on the public site is built usinng a set of 11 interchanngeable blocks, each of which can be further customized.
  - Videos are always hosted on Vimeo.
  - Most models can have their attributes drafted and reviewed before being published.
+ - We support only the most recent versions of Chrome, Safari, Firefox, Edge, and Opera - including the mobile versions of these browsers. No other browser is officially supported. Internet Explorer is not supported.
 
 ## Models
 Each model corresponds to a table in the database, and collectively these form the core of the website's content. Here is a brief overview of the models used in this site, and how they correspond to site features.
