@@ -70,7 +70,7 @@ gem 'rollbar' # Error tracking
 
 # Misc
 gem 'mail_form' # For the contact form
-# gem 'sidekiq' # To power active jobs
+gem 'sidekiq' # To power active jobs
 gem 'sitemap_generator' # For SEO purposes
 gem 'httparty' # For http requests (specifically Klaviyo)
 gem 'browser' # Detect the user's browser / device
