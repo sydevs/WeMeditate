@@ -58,7 +58,7 @@ const Editor = {
   },
 
   // This sends a file to our server's upload endpoint
-  upload(file, callback) {
+  upload(file, success, failure) {
     Editor.adjustPendingUploads(+1)
 
     const data = new FormData()
@@ -73,7 +73,11 @@ const Editor = {
       data: data,
       success: function(result) {
         Editor.adjustPendingUploads(-1)
-        callback(result)
+        success(result)
+      },
+      error: function(result) {
+        Editor.adjustPendingUploads(-1)
+        failure(result)
       },
     })
   },

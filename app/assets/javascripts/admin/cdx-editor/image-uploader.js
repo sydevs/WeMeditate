@@ -80,6 +80,8 @@ class ImageUploader {
       console.log('uploaded', result)
       const event = new CustomEvent('uploadend', { detail: { index: index, response: result } })
       this.wrapper.dispatchEvent(event)
+    }, (result) => {
+      console.log('upload failed', result)
     })
 
     return true
