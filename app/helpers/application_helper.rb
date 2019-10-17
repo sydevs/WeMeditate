@@ -126,6 +126,7 @@ module ApplicationHelper
   def vimeo_tag vimeo_data, **args
     klass = args[:class].is_a?(Array) ? args[:class] : [args[:class]]
     klass << 'afterglow'
+    klass << 'afterglow--ios' if browser.platform.ios?
     
     if vimeo_new_player?(vimeo_data)
       skin = args[:skin] == :light ? 'light' : 'dark'

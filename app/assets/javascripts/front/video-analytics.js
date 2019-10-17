@@ -10,6 +10,8 @@
  *   var videoTitle = videoId.getAttribute('title')
  */
 
+// TODO: Actually hook up these functions to track analytics
+
 function init () {
 	videoId.addEventListener('ended', videoEnd, false)
 	videoId.addEventListener('timeupdate', videoTimeUpdate, false)

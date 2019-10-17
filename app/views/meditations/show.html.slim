@@ -6,7 +6,7 @@ main id=dom_id(@meditation)
 
   .meditation__media
     figure.content__video__item
-      .video.video--responsive class="js-video"
+      .video.video--responsive.video--meditation class="js-video"
         .video__inner
           - if vimeo_new_player?(@meditation.vimeo_metadata(:horizontal)) && vimeo_new_player?(@meditation.vimeo_metadata(:vertical))
             .video__horizontal

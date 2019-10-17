@@ -36,6 +36,10 @@ body .video-js.vjs-afterglow-skin
     &:before
       content: ''
 
+  // Restore a CSS property that is being overridden by @extend %video-button
+  &.vjs-has-started .vjs-big-play-button
+      display: none !important
+
 // ===== PLAYER CONTROLS ===== //
 body .video-js.vjs-afterglow-skin
   // Seek bar
@@ -56,6 +60,10 @@ body .video-js.vjs-afterglow-skin
   .vjs-play-control:before
     font-family: $font-icons
     content: $icon-play
+    font-size: 18px
+
+    @media (max-width: 512px) // This is an Afterglow breakpoint
+      font-size: 14px !important
 
   &.vjs-playing .vjs-play-control:before
     content: $icon-pause
@@ -90,3 +98,26 @@ body .video-js.vjs-afterglow-skin
   .vjs-volume-menu-button .vjs-menu-content
     @media (max-width: 768px)
       top: -4px
+
+// ===== ADJUSTMENTS ===== //
+// Hide fullscreen control on ios, where the native player has it's own fullscreen control.
+.afterglow--ios
+  .vjs-fullscreen-control
+    display: none
+
+// Hide the volume control for meditations.
+.video--meditation
+  .vjs-volume-menu-button
+    display: none
+
+// Override the default styling which hides the big play button,
+// so that we can still see the play button on smaller screens when paused.
+@include tablet-or-smaller
+  body .video-js.vjs-afterglow-skin
+    &.vjs-has-started .vjs-big-play-button
+      display: block !important
+      opacity: 1
+
+    &.vjs-playing .vjs-big-play-button
+      display: none !important
+      opacity: 0
