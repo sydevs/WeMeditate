@@ -12,7 +12,7 @@ tr.record id=dom_id(author)
     = author.articles.count
 
   td.collapsing.faded
-    = I18nData.countries(I18n.locale)[author.country_code]
+    = countries[author.country_code]
 
   td.collapsing.faded
     - if author.user.present?

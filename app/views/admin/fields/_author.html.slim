@@ -16,7 +16,7 @@
 = f.input :name, disabled: !allow.update_structure?, input_html: { value: (record.name || record.user&.name) }
 
 - if allow.update_structure?
-  = f.input :country_code, collection: I18nData.countries(I18n.locale).invert.to_a, input_html: { class: 'search' }
+  = f.input :country_code, collection: countries.invert.to_a, input_html: { class: 'search' }
 
 = f.input :title
 = f.input :description, as: :text

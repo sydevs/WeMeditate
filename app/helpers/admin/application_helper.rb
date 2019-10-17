@@ -11,6 +11,8 @@ module Admin
       fr: 'fr',
       es: 'es',
       pt: 'pt',
+      nl: 'nl',
+      hy: 'am',
     }.freeze
 
     URGENCY_ICON = {
@@ -53,10 +55,6 @@ module Admin
 
     def language_flag language = locale
       country_flag LANGUAGE_TO_FLAG_MAP[language]
-    end
-
-    def language_name language = locale
-      I18nData.languages(locale)[language.to_s.upcase].titleize
     end
 
     def urgency_icon_key urgency

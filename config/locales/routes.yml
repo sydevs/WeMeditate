@@ -2,7 +2,91 @@
 # ROUTE TRANSLATIONS
 # This file contains translations for the website URLs
 
+de: # German translations
+  routes:
+    inspiration: "inspiration"
+    articles: "articles"
+    countries: "countries"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
+    self_realization: "first-experience"
 en: # English translations
+  routes:
+    inspiration: "inspiration"
+    articles: "articles"
+    countries: "countries"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
+    self_realization: "first-experience"
+es: # Spanish translations
+  routes:
+    inspiration: "inspiration"
+    articles: "articles"
+    countries: "countries"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
+    self_realization: "first-experience"
+fr: # French translations
+  routes:
+    inspiration: "inspiration"
+    articles: "articles"
+    countries: "countries"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
+    self_realization: "first-experience"
+hy: # Armenian translations
+  routes:
+    inspiration: "inspiration"
+    articles: "articles"
+    countries: "countries"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
+    self_realization: "first-experience"
+it: # Italian translations
+  routes:
+    inspiration: "ispirazione"
+    articles: "articoli"
+    countries: "paesi-del-mondo"
+    meditations: "meditazioni"
+    techniques: "tecniche"
+    subtle_system: "sistema-sottile"
+    page: "pagina"
+    music: "musica"
+    archive: "tutto"
+    self_realization: "realizzazione-del-sé"
+nl: # Dutch translations
+  routes:
+    inspiration: "inspiration"
+    articles: "articles"
+    countries: "countries"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
+    self_realization: "first-experience"
+pt: # Portuguese translations
   routes:
     inspiration: "inspiration"
     articles: "articles"
@@ -26,27 +110,3 @@ ru: # Russian translations
     music: "музыка"
     archive: "все"
     self_realization: "cамореализация"
-it: # Italian translations
-  routes:
-    inspiration: "ispirazione"
-    articles: "articoli"
-    countries: "paesi-del-mondo"
-    meditations: "meditazioni"
-    techniques: "tecniche"
-    subtle_system: "sistema-sottile"
-    page: "pagina"
-    music: "musica"
-    archive: "tutto"
-    self_realization: "realizzazione-del-sé"
-de: # German translations
-  routes:
-    inspiration: "inspiration"
-    articles: "articles"
-    countries: "countries"
-    meditations: "meditations"
-    techniques: "techniques"
-    subtle_system: "subtle-system"
-    page: "page"
-    music: "music"
-    archive: "all"
-    self_realization: "first-experience"

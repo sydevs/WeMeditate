@@ -24,7 +24,7 @@ html
             - current_user.available_languages.each do |language|
               a.item href=url_for(locale: language)
                 = language_flag language
-                = I18nData.languages(language)[language.to_s.upcase].titleize
+                = language_name(language, native: true)
 
       #header
         h1.ui.header

@@ -2,6 +2,16 @@
 # SOCIAL MEDIA TRANSLATIONS
 # This file lets us customize the social media URLs for different languages
 
+de:
+  sharing:
+    facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
+    twitter: https://twitter.com/intent/tweet?url=%{url}
+    pinterest: http://pinterest.com/pin/create/button/?url=%{url}
+    whatsapp: whatsapp://send?text=%{url}
+  social_media:
+    instagram: ''
+    facebook: ''
+
 en:
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
@@ -12,24 +22,7 @@ en:
     instagram: ''
     facebook: ''
 
-it:
-  sharing:
-    facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
-    twitter: https://twitter.com/intent/tweet?url=%{url}
-    pinterest: http://pinterest.com/pin/create/button/?url=%{url}
-    whatsapp: whatsapp://send?text=%{url}
-  social_media:
-    instagram: ''
-    facebook: ''
-
-ru:
-  sharing:
-    vk: http://vk.com/share.php?url=%{url}
-  social_media:
-    instagram: ''
-    vk: ''
-
-de:
+es:
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
     twitter: https://twitter.com/intent/tweet?url=%{url}
@@ -49,7 +42,7 @@ fr:
     instagram: ''
     facebook: ''
 
-es:
+hy:
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
     twitter: https://twitter.com/intent/tweet?url=%{url}
@@ -58,6 +51,33 @@ es:
   social_media:
     instagram: ''
     facebook: ''
+
+it:
+  sharing:
+    facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
+    twitter: https://twitter.com/intent/tweet?url=%{url}
+    pinterest: http://pinterest.com/pin/create/button/?url=%{url}
+    whatsapp: whatsapp://send?text=%{url}
+  social_media:
+    instagram: ''
+    facebook: ''
+
+nl:
+  sharing:
+    facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
+    twitter: https://twitter.com/intent/tweet?url=%{url}
+    pinterest: http://pinterest.com/pin/create/button/?url=%{url}
+    whatsapp: whatsapp://send?text=%{url}
+  social_media:
+    instagram: ''
+    facebook: ''
+
+ru:
+  sharing:
+    vk: http://vk.com/share.php?url=%{url}
+  social_media:
+    instagram: ''
+    vk: ''
 
 pt:
   sharing:
