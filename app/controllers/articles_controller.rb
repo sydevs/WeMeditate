@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
   def show
-    @article = Article.published.preload_for(:content).friendly.find(params[:id])
+    @article = Article.publicly_visible.preload_for(:content).friendly.find(params[:id])
     return unless stale?(@article)
 
     @breadcrumbs = [

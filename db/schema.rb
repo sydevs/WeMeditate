@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_105232) do
+ActiveRecord::Schema.define(version: 2019_10_18_105512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2019_10_10_105232) do
     t.jsonb "content"
     t.integer "vimeo_id"
     t.datetime "published_at"
-    t.boolean "published", default: false
     t.integer "banner_id"
+    t.integer "state", default: 0
     t.index ["article_id"], name: "index_article_translations_on_article_id"
     t.index ["locale"], name: "index_article_translations_on_locale"
   end
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 2019_10_10_105232) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.string "description"
+    t.datetime "published_at"
+    t.integer "state", default: 0
     t.index ["author_id"], name: "index_author_translations_on_author_id"
     t.index ["locale"], name: "index_author_translations_on_locale"
   end
@@ -222,11 +224,11 @@ ActiveRecord::Schema.define(version: 2019_10_10_105232) do
     t.integer "views", default: 0, null: false
     t.integer "horizontal_vimeo_id"
     t.integer "vertical_vimeo_id"
-    t.boolean "published", default: false
     t.datetime "published_at"
     t.text "description"
     t.float "popularity", default: 0.0, null: false
     t.jsonb "vimeo_metadata"
+    t.integer "state", default: 0
     t.index ["locale"], name: "index_meditation_translations_on_locale"
     t.index ["meditation_id"], name: "index_meditation_translations_on_meditation_id"
   end
@@ -279,6 +281,7 @@ ActiveRecord::Schema.define(version: 2019_10_10_105232) do
     t.jsonb "draft"
     t.jsonb "content"
     t.datetime "published_at"
+    t.integer "state", default: 0
     t.index ["locale"], name: "index_static_page_translations_on_locale"
     t.index ["static_page_id"], name: "index_static_page_translations_on_static_page_id"
   end
@@ -303,6 +306,7 @@ ActiveRecord::Schema.define(version: 2019_10_10_105232) do
     t.jsonb "draft"
     t.jsonb "content"
     t.datetime "published_at"
+    t.integer "state", default: 0
     t.index ["locale"], name: "index_subtle_system_node_translations_on_locale"
     t.index ["subtle_system_node_id"], name: "index_subtle_system_node_translations_on_subtle_system_node_id"
   end
@@ -346,10 +350,10 @@ ActiveRecord::Schema.define(version: 2019_10_10_105232) do
     t.jsonb "content"
     t.integer "horizontal_vimeo_id"
     t.integer "vertical_vimeo_id"
-    t.boolean "published", default: false
     t.datetime "published_at"
     t.jsonb "draft"
     t.integer "thumbnail_id"
+    t.integer "state", default: 0
     t.index ["locale"], name: "index_treatment_translations_on_locale"
     t.index ["treatment_id"], name: "index_treatment_translations_on_treatment_id"
   end

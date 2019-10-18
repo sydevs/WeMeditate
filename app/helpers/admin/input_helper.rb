@@ -46,10 +46,10 @@ module Admin::InputHelper
       original_name = translate('admin.draft.items', count: original_value.count)
       draft_name = translate('admin.draft.items', count: draft_value.count)
     when :date
-      original_value = Date.parse(original_value.to_s)
-      draft_value = Date.parse(draft_value.to_s)
-      original_name = localize(original_value, format: :long).to_s
-      draft_name = localize(draft_value, format: :long).to_s
+      original_value = original_value ? Date.parse(original_value.to_s) : nil
+      draft_value = draft_value ? Date.parse(draft_value.to_s) : nil
+      original_name = original_value ? localize(original_value, format: :long).to_s : translate('admin.review.no_value')
+      draft_name = draft_value ? localize(draft_value, format: :long).to_s : translate('admin.review.no_value')
       original_value = original_value.to_s
       draft_value = draft_value.to_s
     when :toggle
@@ -109,7 +109,7 @@ module Admin::InputHelper
 
   def draftable_publish_field form, **args
     args[:label] = translate('activerecord.attributes.generic.ready_to_publish')
-    args[:value] = form.object.get_localized_attribute(:published)
+    args[:value] = form.object.get_native_locale_attribute(:published)
 
     draftable_field form, :published, type: :toggle, **args do |val|
       capture do 
@@ -147,8 +147,8 @@ module Admin::InputHelper
     end
   end
 
-  def draftable_date_field form, attribute = :date, hint: nil
-    draftable_field form, attribute, type: :date do |value|
+  def draftable_date_field form, attribute = :date, hint: nil, **args
+    draftable_field form, attribute, type: :date, **args do |value|
       content_tag :div, class: 'ui date picker' do
         concat form.input_field attribute, as: :string, value: value
         concat form.hint hint if hint

@@ -4,12 +4,8 @@
 - unless @record.new_record?
   .table-actions
     .ui.tiny.compact.basic.buttons
-      - if @record == current_user
-        .ui.active.button = translate 'admin.tags.this_is_you'
-      - elsif !@record.is_a?(User)
-        .ui.active.button
-          - status = @record.published? ? (@record.has_draft? ? :pending_changes : :published) : :draft
-          = translate(status, scope: %i[admin status], page: human_model_name(@record).downcase)
+      .ui.active.button
+        = translate(table_record_status(@record, review: false), scope: %i[admin index status])
 
       - if @record.viewable?
         - if @record.published?

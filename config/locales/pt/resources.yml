@@ -57,6 +57,13 @@ pt:
         published: "Published"
         name: "Name"
         slug: "URL"
+        state: "Status"
+        states:
+          no_state: "No Translation Started"
+          in_progress: "Work in Progress"
+          archived: "Archived"
+          published: "Published"
+          unpublished: "Not Published"
 
       article:
         published: :activerecord.attributes.generic.published # Do not translate
@@ -64,6 +71,13 @@ pt:
         slug: :activerecord.attributes.generic.slug # Do not translate
         category: :activerecord.models.category.one # Do not translate
         category_id: :activerecord.attributes.article.category # Do not translate
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         priority: "Visibility on Inspiration Page"
         priorities:
           hidden: "Hidden from Inspiration Page"
@@ -89,6 +103,13 @@ pt:
       static_page:
         name: "Title"
         slug: :activerecord.attributes.generic.slug # Do not translate
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         role: "Role"
         roles:
           home: "Home Page"
@@ -106,8 +127,15 @@ pt:
         content: "Content"
         metatags: "Metadata"
 
+
       subtle_system_node:
-        name: :activerecord.attributes.generic.name # Do not translate
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate        name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
         excerpt: "Excerpt"
         role: "Role"
@@ -136,6 +164,13 @@ pt:
           other: "%{count} Articles"
 
       treatment:
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
@@ -185,6 +220,13 @@ pt:
         mood_filters: :activerecord.models.mood_filter.other # Do not translate
 
       meditation:
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
@@ -209,6 +251,13 @@ pt:
           other: "%{count} Tracks'"
 
       author:
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         country_code: "Country"
         title: "Title"

@@ -1,3 +1,4 @@
 $('#pagination').html('<%=j page_entries_info @records %><%=j paginate @records, remote: true %>')
 $('#records').html(`<%= render partial: "admin/records/#{@model.model_name.singular_route_key}", collection: @records, cache: true %>`)
 $('.ui.loading.form').removeClass('loading')
+$('#loader').removeClass('active')

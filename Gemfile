@@ -51,7 +51,7 @@ gem 'sortable-rails' # Allows us to sort models with a drag and drop interface
 gem 'diff-lcs' # For draft comparisons
 
 # Globalize (translatable models)
-gem 'carrierwave_globalize' # for carrierwave support
+# gem 'carrierwave_globalize' # for carrierwave support
 gem 'globalize' # Support for translating models
 gem 'friendly_id-globalize' # for friendly_id support
 

@@ -4,14 +4,14 @@ class CategoriesController < ApplicationController
 
   def index
     @category = nil
-    @articles = Article.published.where.not(priority: :hidden).preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
+    @articles = Article.publicly_visible.where.not(priority: :hidden).preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
     return unless stale?(@articles)
     display
   end
 
   def show
-    @category = Category.published.friendly.find(params[:id])
-    @articles = @category.articles.published.where.not(priority: :hidden).preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
+    @category = Category.publicly_visible.friendly.find(params[:id])
+    @articles = @category.articles.publicly_visible.where.not(priority: :hidden).preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
     return unless stale?(@articles)
     display
   end
@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
       respond_to do |format|
         format.html do
           @static_page = StaticPage.preload_for(:content).find_by(role: :articles)
-          @categories = Category.published.includes(articles: :translations).where(article_translations: { published: true }).where.not(articles: { id: nil })
+          @categories = Category.publicly_visible.includes(articles: :translations).where(article_translations: { state: Article.states[:published] }).where('article_translations.published_at < ?', DateTime.now).where.not(articles: { id: nil })
 
           @breadcrumbs = [
             { name: StaticPageHelper.preview_for(:home).name, url: root_path },

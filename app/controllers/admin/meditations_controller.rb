@@ -28,7 +28,7 @@ module Admin
       def meditation_params
         if policy(@meditation || Meditation).publish?
           result = params.fetch(:meditation, {}).permit(
-            :name, :slug, :published,
+            :name, :slug, :state, :published_at,
             :image, :excerpt, :description,
             :horizontal_vimeo_id, :vertical_vimeo_id, :duration_filter_id,
             vimeo_metadata: {},
@@ -37,7 +37,7 @@ module Admin
           )
         else
           result = params.fetch(:meditation, {}).permit(
-            :name, :slug,
+            :name, :slug, :state, :published_at,
             :image, :excerpt, :description,
             :horizontal_vimeo_id, :vertical_vimeo_id, :duration_filter_id,
             vimeo_metadata: {},

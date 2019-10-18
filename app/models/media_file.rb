@@ -6,8 +6,6 @@
 class MediaFile < ActiveRecord::Base
 
   extend CarrierWave::Meta::ActiveRecord
-  include Translatable
-
   after_save :save_metadata
 
   # Associations

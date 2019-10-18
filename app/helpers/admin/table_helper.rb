@@ -68,12 +68,15 @@ module Admin::TableHelper
   }.freeze
 
   STATUS_STYLE = {
-    # For records with content
-    needs_translation: %i[basic red],
+    # For `reviewable?` records
     needs_review: %i[basic orange],
+    # For `stateable?` records
+    no_state: %i[basic red],
+    in_progress: %i[basic],
     published: %i[basic blue],
-    draft: %i[basic],
-    # For records without content
+    archived: %i[],
+    unpublished: %i[basic],
+    # For `publishable?` records
     public: %i[basic blue],
     private: %i[basic],
     # For users
@@ -104,11 +107,14 @@ module Admin::TableHelper
           if column == :status
             if model == User
               values = %i[active inactive pending]
-            elsif model.new.respond_to?(:content)
-              values = %i[published not_published needs_translation needs_review]
+            elsif model.stateable?
+              values = %i[published in_progress not_published archived]
             else
               values = %i[published not_published]
             end
+
+            values << :no_state if model.translatable?
+            values << :needs_review if model.draftable?
 
             values.map { |v| [v.to_s, translate(v, scope: %i[admin index status])] }.to_h
           elsif column.to_s.ends_with?('_id')
@@ -154,7 +160,7 @@ module Admin::TableHelper
     tag.div label, class: "ui fluid mini #{STATUS_STYLE[status].join(' ')} label"
   end
 
-  def table_record_status record
+  def table_record_status record, review: true
     @table_record_status ||= {}
     @table_record_status[record] ||= begin
       if record.is_a?(User)
@@ -167,18 +173,14 @@ module Admin::TableHelper
         else
           :inactive
         end
-      elsif record.translatable? && record.needs_translation?(current_user)
-        :needs_translation
-      elsif record.draftable? && record.needs_review? && policy(record).review?
+      elsif review && record.draftable? && record.needs_review? && policy(record).review?
         :needs_review
-      elsif record.has_content? && record.published?
-        :published
-      elsif record.has_content?
-        :draft
-      elsif record.published?
-        :public
-      else
-        :private
+      elsif record.stateable?
+        record.state
+      elsif record.translatable? && record.needs_translation?(current_user)
+        :no_state
+      elsif record.publishable?
+        record.published? ? :public : :private
       end
     end
   end

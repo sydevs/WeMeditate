@@ -60,25 +60,19 @@ it:
         reload_vimeo_data: "Reload Vimeo Metadata" # TODO: Translate
 
     # ===== MESSAGES ===== #
-    status:
-      published: "%{page} è in funzione."
-      pending_changes: "%{page} è in funzione, ma ci sono cambiamenti."
-      draft: "%{page} è un'anteprima non pubblicata."
-
+    
     details:
       original_language: "Original Language" # TODO: Translate
       translated_languages: "Lingue tradotte"
       priority: "Ordina sulla pagina Ispirazione"
       owned_by: "Di %{owner}"
-      first_published_at: "Pubblicato per la prima volta il %{datetime}"
       vertical_video: "Video verticale"
       horizontal_video: "Video orizzontale"
       featured_video: "Video principale"
       featured_date: "Data di riferimento"
       role: "Ruolo nel sito"
-      is_published: "This %{page} is currently visible to the public." # TODO: Translate
-      is_unpublished: "This %{page} is currently not visible to the public." # TODO: Translate
-      
+      pending_changes: "This %{page} has changes pending approval" # TODO: Translate
+
     tags:
       published: "Pubblicato"
       unpublished: "Non ancora pubblicato"
@@ -335,14 +329,17 @@ it:
         none: "None"
         never: "Never"
         default: "Default"
-      status:
-        published: "Published"
-        not_published: "Not Published"
-        # With content
-        needs_translation: "Needs Translation"
+      status: # Try to keep these translations short
+        # Draftable
         needs_review: "Needs Review"
-        draft: "Draft"
-        # Without content
+        # Stateable
+        no_state: "Needs Translation"
+        in_progress: "In Progress"
+        archived: :activerecord.attributes.generic.states.archived # Do not translate
+        published: :activerecord.attributes.generic.states.published # Do not translate
+        unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+        not_published: :activerecord.attributes.generic.states.unpublished # Do not translate
+        # Publishable
         public: "Public"
         private: "Hidden"
         # Users

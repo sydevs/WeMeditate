@@ -6,13 +6,33 @@ module Translatable
 
   extend ActiveSupport::Concern
 
-  included do |base|
-    base.scope :needs_translation, -> (user) { where.not(id: published.pluck(:id)).where(original_locale: user.available_languages).where.not(original_locale: I18n.locale) }
-    base.before_validation :set_original_locale
-  end
-
   def translatable?
     true
+  end
+
+  included do |base|
+    throw "Translations must be defined to make the `#{base.model_name}` model `Translatable`" unless base.respond_to?(:translated_attribute_names)
+
+    base.scope :foreign_locale, -> { where.not(original_locale: I18n.locale) }
+    base.scope :not_translated, -> { foreign_locale.where.not(id: base.left_outer_joins(:translations).where(base::Translation.table_name => { locale: I18n.locale }).reorder(nil)) }
+    base.scope :needs_translation, -> (user) { can_translate(user).not_translated }
+    
+    if base.stateable?
+      base.scope :can_translate, -> (user) { foreign_locale.with_translations.where.not(state: base.states[:archived]).where(original_locale: user.available_languages) }
+    else
+      base.scope :can_translate, -> (user) { foreign_locale.where(original_locale: user.available_languages) }
+    end
+
+    if base.translated_attribute_names.include? :published_at
+      base.scope :incomplete_translation, -> { with_translations.where(published_at: nil) }
+      base.scope :translatable, -> (user) { needs_translation(user).or(incomplete_translation.can_translate(use)) }
+    end
+
+    base.before_validation :set_original_locale
+
+    def self.translatable?
+      true
+    end
   end
 
   def needs_translation? user
@@ -40,7 +60,7 @@ module Translatable
   end
 
   # Retrieves the localized attribute without any fallback
-  def get_localized_attribute attribute, locale = I18n.locale
+  def get_native_locale_attribute attribute, locale = I18n.locale
     return self.send(attribute) unless translatable?
 
     if globalize.stash.contains?(locale, attribute)

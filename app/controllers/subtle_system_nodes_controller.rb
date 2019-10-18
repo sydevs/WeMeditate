@@ -2,7 +2,7 @@ class SubtleSystemNodesController < ApplicationController
 
   def index
     @static_page = StaticPage.preload_for(:content).find_by(role: :subtle_system)
-    @subtle_system_nodes = SubtleSystemNode.all
+    @subtle_system_nodes = SubtleSystemNode.publicly_visible
     # expires_in 1.day, public: true
 
     @breadcrumbs = [
@@ -14,7 +14,7 @@ class SubtleSystemNodesController < ApplicationController
   end
 
   def show
-    @subtle_system_node = SubtleSystemNode.preload_for(:content).friendly.find(params[:id])
+    @subtle_system_node = SubtleSystemNode.publicly_visible.preload_for(:content).friendly.find(params[:id])
     return unless stale?(@subtle_system_node)
 
     subtle_system_page = StaticPage.preload_for(:preview).find_by(role: :subtle_system)

@@ -5,18 +5,19 @@
 
 class Article < ApplicationRecord
 
-  extend FriendlyId
-  include HasContent
-  include Draftable
-  include Translatable
-
   # Extensions
   translates *%i[
     name slug metatags
-    draft published_at published
+    draft published_at state
     excerpt banner_id thumbnail_id vimeo_id content
   ]
-  friendly_id :name, use: :globalize
+
+  # Concerns
+  include Viewable
+  include Contentable
+  include Draftable
+  include Stateable
+  include Translatable # Should come after Publishable/Stateable
 
   # Associations
   belongs_to :category
@@ -28,7 +29,6 @@ class Article < ApplicationRecord
 
   # Validations
   validates :name, presence: true
-  validates :slug, length: { minimum: 3, message: I18n.translate('admin.messages.text_too_short', count: 3) }
   validates :excerpt, presence: true
   validates :priority, presence: true
   validates :thumbnail_id, presence: true, if: :persisted?
@@ -36,8 +36,6 @@ class Article < ApplicationRecord
 
   # Scopes
   scope :ordered, -> { order(priority: :desc, published_at: :desc) }
-  scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :not_published, -> { with_translations(I18n.locale).where.not(published: true) }
   scope :q, -> (q) { with_translations(I18n.locale).joins(:translations, category: :translations).where('article_translations.name ILIKE ? OR category_translations.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model

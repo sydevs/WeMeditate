@@ -1,21 +1,31 @@
 ## DRAFTABLE CONCERN
-# This concern should be added to models that require an admin to approve any update,
-# before it is reflected in the public-facing website.
+# This concern should be added to models that require an admin to approve any change to the record.
 
 module Draftable
 
   extend ActiveSupport::Concern
+  
+  def draftable?
+    true
+  end
 
   included do |base|
-    base.scope :needs_review, -> { with_translations.where.not("#{table_name.singularize}_translations" => { draft: nil }) }
+    %i[draft].each do |column|
+      next if base.translated_attribute_names&.include?(column) || base.column_names.include?(column.to_s)
+      throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Draftable`" 
+    end
+
+    base.scope :has_draft, -> { with_translations.where.not(base::Translation.table_name => { draft: nil }) }
+    base.scope :has_no_draft, -> { with_translations.where(base::Translation.table_name => { draft: nil }) }
+    base.scope :needs_review, -> { has_draft }
+
+    def self.draftable?
+      true
+    end
   end
 
   def needs_review?
     has_draft?
-  end
-  
-  def draftable?
-    true
   end
 
   def has_draft? section = nil

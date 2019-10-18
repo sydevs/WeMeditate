@@ -1,7 +1,7 @@
 class TreatmentsController < ApplicationController
 
   def index
-    @treatments = Treatment.published.preload_for(:preview).all
+    @treatments = Treatment.publicly_visible.preload_for(:preview).all
     @static_page = StaticPage.preload_for(:content).find_by(role: :treatments)
     @tracks = Track.order('RANDOM()').limit(10)
 
@@ -16,7 +16,7 @@ class TreatmentsController < ApplicationController
   end
 
   def show
-    @treatment = Treatment.published.preload_for(:content).friendly.find(params[:id])
+    @treatment = Treatment.publicly_visible.preload_for(:content).friendly.find(params[:id])
 
     about_page = StaticPage.preload_for(:preview).find_by(role: :about)
     treatments_page = StaticPage.preload_for(:preview).find_by(role: :treatments)

@@ -1,17 +1,26 @@
-## HAS CONTENT CONCERN
+## CONTENTABLE CONCERN
 # This concern should be added to models have arbitrary body content
 
-module HasContent
+module Contentable
 
   extend ActiveSupport::Concern
 
-  included do |base|
-    base.has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
-    # base.validates :content, presence: true
+  def contentable?
+    true
   end
 
-  def has_content?
-    true
+  included do |base|
+    %i[content].each do |column|
+      next if base.translated_attribute_names&.include?(column) || base.column_names.include?(column.to_s)
+      throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Contentable`" 
+    end
+
+    base.has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
+    # base.validates :content, presence: true
+
+    def self.contentable?
+      true
+    end
   end
 
   def parsed_content

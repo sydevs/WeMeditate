@@ -6,12 +6,14 @@
 
 class Category < ApplicationRecord
 
-  extend FriendlyId
-  include Translatable
-
   # Extensions
+  extend FriendlyId
   translates :name, :slug, :published_at, :published
   friendly_id :name, use: :globalize
+
+  # Concerns
+  include Publishable
+  include Translatable # Should come after Publishable/Stateable
 
   # Associations
   has_many :articles, counter_cache: true
@@ -21,8 +23,6 @@ class Category < ApplicationRecord
 
   # Scopes
   default_scope { order(:order) }
-  scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :not_published, -> { with_translations(I18n.locale).where.not(published: true) }
   scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('category_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   def self.has_content

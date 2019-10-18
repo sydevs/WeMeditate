@@ -7,10 +7,14 @@
 
 class DurationFilter < ApplicationRecord
 
-  include Translatable
-  
-  # Associations
+  # Extensions
   translates :published_at, :published
+
+  # Concerns
+  include Publishable
+  include Translatable # Should come after Publishable/Stateable
+
+  # Associations
   has_many :meditations, counter_cache: true
 
   # Validations
@@ -18,8 +22,6 @@ class DurationFilter < ApplicationRecord
 
   # Scopes
   default_scope { order(:minutes) }
-  scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :not_published, -> { with_translations(I18n.locale).where.not(published: true) }
   scope :q, -> (q) { where(minutes: q) if q.present? }
 
   def self.has_content

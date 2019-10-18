@@ -16,13 +16,13 @@ module Admin
       def treatment_params
         if policy(@treatment || Treatment).publish?
           params.fetch(:treatment, {}).permit(
-            :name, :slug, :published, :excerpt, :content,
+            :name, :slug, :state, :excerpt, :content,
             :thumbnail_id, :horizontal_vimeo_id, :vertical_vimeo_id,
             metatags: {}
           )
         else
           params.fetch(:treatment, {}).permit(
-            :name, :slug, :published, :excerpt, :content,
+            :name, :slug, :state, :excerpt, :content,
             :thumbnail_id, :horizontal_vimeo_id, :vertical_vimeo_id,
             metatags: {}
           )

@@ -85,9 +85,6 @@ GEM
       activesupport (>= 3.0)
       carrierwave (>= 0.5.7)
       mime-types
-    carrierwave_globalize (0.2.1)
-      carrierwave
-      globalize
     childprocess (3.0.0)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
@@ -394,7 +391,6 @@ DEPENDENCIES
   carrierwave-google-storage
   carrierwave-i18n
   carrierwave-meta
-  carrierwave_globalize
   devise
   devise-i18n
   devise_invitable

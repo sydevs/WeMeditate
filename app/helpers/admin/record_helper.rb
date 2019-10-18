@@ -19,26 +19,6 @@ module Admin::RecordHelper
     end
   end
 
-  # ===== MESSAGES ===== #
-  def record_published_status
-    published = @record.get_localized_attribute(:published)
-    translate (published ? :is_published : :is_unpublished), scope: %i[admin details], page: human_model_name(@record).downcase
-  end
-
-  def record_published_at_status
-    if !@record.published?
-      translate 'admin.tags.unpublished_draft'
-    elsif @record.draftable? && @record.has_draft? && @record.published_at.present?
-      translate 'admin.tags.published_ago', time_ago: time_ago_in_words(@record.published_at)
-    else
-      translate 'admin.tags.published'
-    end
-  end
-
-  def record_modified_at_status
-    translate 'admin.tags.updated_ago', time_ago: time_ago_in_words(@record.updated_at)
-  end
-
   # ===== INTERFACE ====== #
 
   def record_actions actions

@@ -20,7 +20,7 @@ module Admin
     end
 
     def show?
-      record.has_content? && index?
+      record.contentable? && index?
     end
 
     def destroy?

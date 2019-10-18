@@ -76,7 +76,7 @@ module SitemapHelper
       end
     end
 
-    if record.has_content?
+    if record.contentable?
       record.content_blocks.each do |block|
         case block['type']
         when 'textbox'

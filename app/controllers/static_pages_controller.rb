@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def show
-    @static_page = StaticPage.preload_for(:content).friendly.find(params[:id])
+    @static_page = StaticPage.publicly_visible.preload_for(:content).friendly.find(params[:id])
     return unless stale?(@static_page)
 
     case @static_page.role

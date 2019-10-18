@@ -7,14 +7,15 @@
 
 class SubtleSystemNode < ApplicationRecord
 
-  extend FriendlyId
-  include HasContent
-  include Draftable
-  include Translatable
-
   # Extensions
-  translates :name, :slug, :excerpt, :metatags, :content, :draft, :published_at
-  friendly_id :name, use: :globalize
+  translates :name, :slug, :excerpt, :metatags, :content, :draft, :state, :published_at
+
+  # Concerns
+  include Viewable
+  include Contentable
+  include Draftable
+  include Stateable
+  include Translatable # Should come after Publishable/Stateable
 
   # Associations
   enum role: {
@@ -29,8 +30,6 @@ class SubtleSystemNode < ApplicationRecord
 
   # Scopes
   default_scope { order(:role) }
-  scope :published, -> { with_translations(I18n.locale).where.not(published_at: nil) }
-  scope :not_published, -> { with_translations(I18n.locale).where(published_at: nil) }
   scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('subtle_system_node_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model

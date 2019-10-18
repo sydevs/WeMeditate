@@ -29,7 +29,7 @@
       = record.date
 
 - if allow.update_structure?
-  - author_types = Article.author_types.map {|k, v| [human_enum_name(Article, :author_type, k), k]}
+  - author_types = Article.author_types.map { |k, v| [human_enum_name(Article, :author_type, k), k] }
   = f.association :author, hint: translate('admin.hints.article_author'), input_html: { class: 'clearable' }
   = f.input :author_type, collection: author_types, hint: translate('admin.hints.article_author_type')
 
@@ -39,4 +39,4 @@
   = f.hidden_field :owner_id, value: current_user.id
 
 - if allow.update_structure?
-  = draftable_date_field f, :published_at, hint: translate('admin.hints.article_published_at')
+  = draftable_date_field f, :published_at, hint: translate('admin.hints.article_published_at'), value: record.get_native_locale_attribute(:published_at)

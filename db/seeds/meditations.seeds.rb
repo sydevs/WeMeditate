@@ -65,7 +65,7 @@ end
     goal_filters: atts[:goal_filters].map! { |k| goal_filters[k] },
     duration_filter: duration_filters[atts[:duration_filter]],
     excerpt: 'Feel like you’re in need of a pick me up? Banish those negative thoughts which are putting you down and boost your confidence.',
-    published: true,
+    state: Meditation.states[:published],
     published_at: DateTime.now,
   })
 
@@ -84,7 +84,7 @@ end
     goal_filters: goal_filters.values.sample([1, 2].sample),
     duration_filter: duration_filters.values.sample,
     excerpt: 'Feel like you’re in need of a pick me up? Banish those negative thoughts which are putting you down and boost your confidence.',
-    published: true,
+    state: Meditation.states[:published],
     published_at: DateTime.now,
   })
 

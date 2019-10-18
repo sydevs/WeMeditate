@@ -1,40 +1,19 @@
 class ApplicationRecord < ActiveRecord::Base
 
-  MAX_INT = 2147483647
-
   self.abstract_class = true
-
   include Sortable
+  MAX_INT = 2147483647
 
   def self.preload_for _mode
     self # Subclasses override this to provide real preloading behaviour
   end
 
-  def publishable?
-    respond_to?(:published)
-  end
-
-  def published?
-    has_attribute?(:published) ? published : true
-  end
-
-  def viewable?
-    respond_to?(:slug) && respond_to?(:metatags)
-  end
-
-  def has_content?
-    false
-  end
-
-  def draftable?
-    false
+  %i[publishable contentable draftable stateable translatable viewable].each do |attribute|
+    define_method :"#{attribute}?", -> { false }
+    define_singleton_method :"#{attribute}?", -> { false }
   end
 
   def has_draft? _section = nil
-    false
-  end
-
-  def translatable?
     false
   end
 
@@ -45,7 +24,7 @@ class ApplicationRecord < ActiveRecord::Base
   def preview_name
     name = self[:name]
     name ||= parsed_draft['name'] if try(:parsed_draft).present?
-    name ||= get_localized_attribute(:name, original_locale) if translatable?
+    name ||= get_native_locale_attribute(:name, original_locale) if translatable?
     name ||= I18n.translate('admin.misc.no_translated_title')
   end
 

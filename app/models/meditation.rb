@@ -3,17 +3,17 @@
 
 class Meditation < ApplicationRecord
 
-  extend FriendlyId
-  extend CarrierwaveGlobalize
-  include Translatable
-
   # Extensions
   translates *%i[
-    name slug metatags views popularity published_at published
+    name slug metatags views popularity published_at state
     excerpt description
     horizontal_vimeo_id vertical_vimeo_id vimeo_metadata
   ]
-  friendly_id :name, use: :globalize
+
+  # Concerns
+  include Viewable
+  include Stateable
+  include Translatable # Should come after Publishable/Stateable
 
   # Associations
   has_and_belongs_to_many :goal_filters
@@ -31,8 +31,6 @@ class Meditation < ApplicationRecord
 
   # Scopes
   # default_scope { order( id: :desc ) }
-  scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :not_published, -> { with_translations(I18n.locale).where.not(published: true) }
   scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('meditation_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   alias thumbnail image

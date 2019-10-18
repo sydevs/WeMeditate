@@ -8,10 +8,12 @@
 
 class InstrumentFilter < ApplicationRecord
 
-  include Translatable
-
   # Extentions
   translates :name, :published_at, :published
+
+  # Concerns
+  include Publishable
+  include Translatable # Should come after Publishable/Stateable
 
   # Associations
   has_and_belongs_to_many :tracks, counter_cache: true
@@ -23,8 +25,6 @@ class InstrumentFilter < ApplicationRecord
 
   # Scopes
   default_scope { order(:order) }
-  scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :not_published, -> { with_translations(I18n.locale).where.not(published: true) }
   scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('instrument_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   def self.has_content

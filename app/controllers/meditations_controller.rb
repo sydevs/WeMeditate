@@ -14,8 +14,8 @@ class MeditationsController < ApplicationController
     if true || cookies[:prescreen] == 'dismissed'
       set_metadata(@static_page)
       @meditations = Meditation.preload_for(:preview).all
-      @goal_filters = GoalFilter.published.has_content
-      @duration_filters = DurationFilter.published.has_content
+      @goal_filters = GoalFilter.publicly_visible.has_content
+      @duration_filters = DurationFilter.publicly_visible.has_content
     else
       kundalini = I18n.translate('meditations.prescreen.kundalini')
       title = I18n.translate('meditations.prescreen.title', kundalini: kundalini)
@@ -25,7 +25,7 @@ class MeditationsController < ApplicationController
   end
 
   def self_realization
-    @meditation = Meditation.published.get(:self_realization)
+    @meditation = Meditation.publicly_visible.get(:self_realization)
     raise ActionController::RoutingError.new('Self Realization Page Not Found') if @meditation.nil?
     set_metadata(@meditation)
     render :show
@@ -33,10 +33,10 @@ class MeditationsController < ApplicationController
 
   def archive
     next_offset = params[:offset].to_i + MEDITATIONS_PER_PAGE
-    @meditations = Meditation.published.preload_for(:preview).offset(params[:offset]).limit(MEDITATIONS_PER_PAGE)
+    @meditations = Meditation.publicly_visible.preload_for(:preview).offset(params[:offset]).limit(MEDITATIONS_PER_PAGE)
     return unless stale?(@meditations)
 
-    if Meditation.published.count <= next_offset
+    if Meditation.publicly_visible.count <= next_offset
       @loadmore_url = nil
     else
       @loadmore_url = archive_meditations_path(format: 'js', offset: next_offset)
@@ -62,7 +62,7 @@ class MeditationsController < ApplicationController
   end
 
   def show
-    @meditation = Meditation.published.friendly.find(params[:id])
+    @meditation = Meditation.publicly_visible.friendly.find(params[:id])
 
     meditations_page = StaticPage.preload_for(:content).find_by(role: :meditations)
     @breadcrumbs = [

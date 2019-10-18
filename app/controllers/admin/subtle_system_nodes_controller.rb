@@ -21,9 +21,9 @@ module Admin
       def subtle_system_node_params
         allow = policy(@record || SubtleSystemNode)
         if (allow.create? && action_name == 'create') || allow.update_structure?
-          params.fetch(:subtle_system_node, {}).permit(:name, :slug, :excerpt, :role, :content, metatags: {})
+          params.fetch(:subtle_system_node, {}).permit(:state, :name, :slug, :excerpt, :role, :content, metatags: {})
         else
-          params.fetch(:subtle_system_node, {}).permit(:name, :excerpt, :content)
+          params.fetch(:subtle_system_node, {}).permit(:state, :name, :excerpt, :content)
         end
       end
 

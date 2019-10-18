@@ -7,9 +7,8 @@
 - unless reorder
   .table-actions
     .ui.tiny.compact.basic.buttons
-      .ui.active.button
-        - status = @record.published? ? (@record.draftable? && @record.has_draft? ? :pending_changes : :published) : :draft
-        = translate(status, scope: %i[admin status], page: model_name)
+      - if @record.draftable? && @record.has_draft?
+        .ui.active.button = translate('admin.details.pending_changes', page: model_name)
 
       - if allow.review? && @record.ready_for_review?
         - action_text = :review
@@ -50,8 +49,9 @@
 
   - if @record.draftable?
     .ui.small.details.list
-      = record_detail 'bullhorn', record_published_at_status if @record.respond_to? :published_at
-      = record_detail 'edit', record_modified_at_status
+      = record_detail 'bullhorn', translate('admin.tags.published_ago', time_ago: time_ago_in_words(@record.published_at)) if @record.published? && @record.try(:published_at)
+      = record_detail 'edit', translate('admin.tags.updated_ago', time_ago: time_ago_in_words(@record.updated_at))
+
       - if owner = @record.try(:owner)
         - owned_by = translate('admin.details.owned_by', owner: owner.name)
         - if policy(owner).edit?

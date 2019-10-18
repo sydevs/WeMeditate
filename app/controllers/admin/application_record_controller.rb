@@ -6,6 +6,7 @@ module Admin
 
     def index
       @records = policy_scope(@model).order(updated_at: :desc).q(params[:q])
+      #@records = @records.not_archived unless params[:q].present?
       @records = sort_by(@records, params[:sort])
       @records = filter_by(@records, params[:filter])
 
@@ -69,7 +70,7 @@ module Admin
     end
 
     def approve
-      redirect = helpers.polymorphic_admin_path([:admin, (@record.has_content? ? @record : @model)])
+      redirect = helpers.polymorphic_admin_path([:admin, (@record.contentable? ? @record : @model)])
       if params[:review] == 'destroy'
         @record.discard_draft!
       else
@@ -132,8 +133,6 @@ module Admin
         will_validate = (will_publish || action == :create)
         notice = translate (action == :create ? 'created' : 'updated'), scope: %i[admin result]
         redirect = helpers.polymorphic_admin_path(allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
-  
-        @record.published_at ||= Time.now.to_date if will_publish && @record.respond_to?(:published_at)
   
         if @record.draftable?
           if will_publish

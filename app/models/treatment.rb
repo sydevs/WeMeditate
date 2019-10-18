@@ -3,18 +3,18 @@
 
 class Treatment < ApplicationRecord
 
-  extend CarrierwaveGlobalize
-  extend FriendlyId
-  include HasContent
-  include Draftable
-  include Translatable
-
   # Extensions
   translates *%i[
-    name slug metatags published_at published draft
+    name slug metatags published_at draft state
     excerpt content thumbnail_id horizontal_vimeo_id vertical_vimeo_id
   ]
-  friendly_id :name, use: :globalize
+
+  # Concerns
+  include Viewable
+  include Contentable
+  include Draftable
+  include Stateable
+  include Translatable # Should come after Publishable/Stateable
 
   # Associations
   has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
@@ -29,8 +29,6 @@ class Treatment < ApplicationRecord
 
   # Scopes
   default_scope { order(:order) }
-  scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :not_published, -> { with_translations(I18n.locale).where.not(published: true) }
   scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('treatment_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model

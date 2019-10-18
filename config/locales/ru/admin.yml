@@ -62,24 +62,18 @@ ru:
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
-    status:
-      published: "%{page} опубликована"
-      pending_changes: "%{page} опубликована, но есть изменения, ожидающие публикации"
-      draft: "%{page} черновик"
-
+    
     details:
       original_language: "Исходный язык" 
       translated_languages: "Языки Перевода"
       priority: "Приоритет На Странице Вдохновение"
       owned_by: "Принадлежит %{owner}"
-      first_published_at: "Впервые опубликовано %{datetime}"
       vertical_video: "Вертикальное Видео"
       horizontal_video: "Горизонтальное Видео"
       featured_video: "Видео Статьи" # The video which will be shown on an article preview
       featured_date: "Дата Статьи" # The date which will be shown on an article preview
       role: "Роль На Сайте"
-      is_published: "Эта страница видна пользователям." 
-      is_unpublished: "Эта страница не видна пользователям." 
+      pending_changes: "This %{page} has changes pending approval" # TODO: Translate
 
     tags:
       published: "Опубликовано"
@@ -350,14 +344,17 @@ ru:
         none: "None"
         never: "Never"
         default: "Default"
-      status:
-        published: "Published"
-        not_published: "Not Published"
-        # With content
-        needs_translation: "Needs Translation"
+      status: # Try to keep these translations short
+        # Draftable
         needs_review: "Needs Review"
-        draft: "Draft"
-        # Without content
+        # Stateable
+        no_state: "Needs Translation"
+        in_progress: "In Progress"
+        archived: :activerecord.attributes.generic.states.archived # Do not translate
+        published: :activerecord.attributes.generic.states.published # Do not translate
+        unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+        not_published: :activerecord.attributes.generic.states.unpublished # Do not translate
+        # Publishable
         public: "Public"
         private: "Hidden"
         # Users

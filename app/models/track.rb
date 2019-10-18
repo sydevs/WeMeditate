@@ -3,10 +3,12 @@
 
 class Track < ApplicationRecord
 
-  include Translatable
-
   # Extensions
   translates :name, :published_at, :published
+
+  # Concerns
+  include Publishable
+  include Translatable # Should come after Publishable/Stateable
 
   # Associations
   has_and_belongs_to_many :mood_filters
@@ -22,8 +24,6 @@ class Track < ApplicationRecord
   validates :instrument_filters, presence: true
 
   # Scopes
-  scope :published, -> { with_translations(I18n.locale).where(published: true) }
-  scope :not_published, -> { with_translations(I18n.locale).where.not(published: true) }
   scope :q, -> (q) { with_translations(I18n.locale).joins(:translations, :artists).where('track_translations.name ILIKE ? OR artists.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Include everything necessary to render the full content of this model
