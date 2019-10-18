@@ -7,15 +7,16 @@ RouteTranslator.config do |config|
   if Rails.env.production?
     Rails.configuration.admin_url = 'http://admin.wemeditate.co'
     config.host_locales = {
-      'www.wemeditate.co' => :en,
-      'www.wemeditate.ru' => :ru,
-      'www.wemeditate.it' => :it,
-      'www.wemeditate.fr' => :fr,
-      'de.wemeditate.co' => :de,
-      'es.wemeditate.co' => :es,
-      'pt.wemeditate.co' => :pt,
-      'nl.wemeditate.co' => :nl,
-      'am.wemeditate.co' => :hy,
+      'www.wemeditate.co' => :en, # English
+      'www.wemeditate.ru' => :ru, # Russian
+      'www.wemeditate.it' => :it, # Italian
+      'www.wemeditate.fr' => :fr, # French
+      'de.wemeditate.co' => :de, # German
+      'es.wemeditate.co' => :es, # Spanish
+      'pt.wemeditate.co' => :pt, # Portuguese
+      'nl.wemeditate.co' => :nl, # Dutch
+      'am.wemeditate.co' => :hy, # Armenian
+      'ua.wemeditate.co' => :uk, # Ukrainian
     }
   else
     Rails.configuration.admin_url = 'http://admin.localhost:3000'
