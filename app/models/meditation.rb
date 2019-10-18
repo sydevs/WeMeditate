@@ -52,15 +52,15 @@ class Meditation < ApplicationRecord
       # A different random meditation every day
       seed = Date.today.to_time.to_i / (60 * 60 * 24) / 999999.0
       Meditation.connection.execute "SELECT setseed(#{seed})"
-      Meditation.published.order('RANDOM()').first
+      Meditation.publicly_visible.reorder('RANDOM()').first
     when :trending
       # The meditation with the most views
-      Meditation.published.order('meditation_translations.popularity DESC').first
+      Meditation.publicly_visible.order('meditation_translations.popularity DESC').first
     when :self_realization
       Meditation.find_by(slug: I18n.translate('routes.self_realization'))
     else
       # A purely random meditation
-      Meditation.published.order('RANDOM()').first
+      Meditation.publicly_visible.reorder('RANDOM()').first
     end
   end
 

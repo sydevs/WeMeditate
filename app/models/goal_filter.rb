@@ -27,7 +27,7 @@ class GoalFilter < ApplicationRecord
 
   def self.has_content
     joins(meditations: [:translations, duration_filter: :translations]).where({
-      meditation_translations: { published: true, locale: I18n.locale },
+      meditation_translations: { state: Meditation.states[:published], locale: I18n.locale },
       duration_filter_translations: { published: true, locale: I18n.locale },
     }).uniq
   end
