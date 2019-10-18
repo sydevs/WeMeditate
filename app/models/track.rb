@@ -24,7 +24,7 @@ class Track < ApplicationRecord
   validates :instrument_filters, presence: true
 
   # Scopes
-  scope :q, -> (q) { with_translations(I18n.locale).joins(:translations, :artists).where('track_translations.name ILIKE ? OR artists.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
+  scope :q, -> (q) { with_translation.joins(:translations, :artists).where('track_translations.name ILIKE ? OR artists.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Include everything necessary to render the full content of this model
   def self.preload_for mode

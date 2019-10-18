@@ -29,7 +29,7 @@ class Treatment < ApplicationRecord
 
   # Scopes
   default_scope { order(:order) }
-  scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('treatment_translations.name ILIKE ?', "%#{q}%") if q.present? }
+  scope :q, -> (q) { with_translation.joins(:translations).where('treatment_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model
   def self.preload_for _mode

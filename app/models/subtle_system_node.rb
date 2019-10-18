@@ -30,7 +30,7 @@ class SubtleSystemNode < ApplicationRecord
 
   # Scopes
   default_scope { order(:role) }
-  scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('subtle_system_node_translations.name ILIKE ?', "%#{q}%") if q.present? }
+  scope :q, -> (q) { with_translation.joins(:translations).where('subtle_system_node_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model
   def self.preload_for mode

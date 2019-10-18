@@ -13,18 +13,19 @@ module Translatable
   included do |base|
     throw "Translations must be defined to make the `#{base.model_name}` model `Translatable`" unless base.respond_to?(:translated_attribute_names)
 
+    base.scope :with_translation, -> { with_translations(I18n.locale) }
     base.scope :foreign_locale, -> { where.not(original_locale: I18n.locale) }
     base.scope :not_translated, -> { foreign_locale.where.not(id: base.left_outer_joins(:translations).where(base::Translation.table_name => { locale: I18n.locale }).reorder(nil)) }
     base.scope :needs_translation, -> (user) { can_translate(user).not_translated }
     
     if base.stateable?
-      base.scope :can_translate, -> (user) { foreign_locale.with_translations.where.not(state: base.states[:archived]).where(original_locale: user.available_languages) }
+      base.scope :can_translate, -> (user) { foreign_locale.with_translation.where.not(state: base.states[:archived]).where(original_locale: user.available_languages) }
     else
       base.scope :can_translate, -> (user) { foreign_locale.where(original_locale: user.available_languages) }
     end
 
     if base.translated_attribute_names.include? :published_at
-      base.scope :incomplete_translation, -> { with_translations.where(published_at: nil) }
+      base.scope :incomplete_translation, -> { with_translation.where(published_at: nil) }
       base.scope :translatable, -> (user) { needs_translation(user).or(incomplete_translation.can_translate(use)) }
     end
 

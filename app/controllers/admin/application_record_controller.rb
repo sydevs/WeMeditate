@@ -184,7 +184,7 @@ module Admin
         return relation unless param.present?
         
         direction = param.ends_with?('_at') ? :desc : :asc
-        relation = relation.with_translations if relation.respond_to?(:with_translations)
+        relation = relation.with_translation if relation.translatable?
         relation.reorder(param => direction)
       end
   

@@ -31,7 +31,7 @@ class Meditation < ApplicationRecord
 
   # Scopes
   # default_scope { order( id: :desc ) }
-  scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('meditation_translations.name ILIKE ?', "%#{q}%") if q.present? }
+  scope :q, -> (q) { with_translation.joins(:translations).where('meditation_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   alias thumbnail image
 
@@ -52,15 +52,15 @@ class Meditation < ApplicationRecord
       # A different random meditation every day
       seed = Date.today.to_time.to_i / (60 * 60 * 24) / 999999.0
       Meditation.connection.execute "SELECT setseed(#{seed})"
-      Meditation.select('*').from(Meditation.publicly_visible).order('RANDOM()').first
+      Meditation.publicly_visible.order('RANDOM()').first
     when :trending
       # The meditation with the most views
-      Meditation.order('meditation_translations.popularity DESC').publicly_visible.first
+      Meditation.publicly_visible.order('meditation_translations.popularity DESC').first
     when :self_realization
       Meditation.find_by(slug: I18n.translate('routes.self_realization'))
     else
       # A purely random meditation
-      Meditation.select('*').from(Meditation.publicly_visible).order('RANDOM()').first
+      Meditation.publicly_visible.order('RANDOM()').first
     end
   end
 

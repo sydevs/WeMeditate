@@ -15,8 +15,8 @@ module Draftable
       throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Draftable`" 
     end
 
-    base.scope :has_draft, -> { with_translations.where.not(base::Translation.table_name => { draft: nil }) }
-    base.scope :has_no_draft, -> { with_translations.where(base::Translation.table_name => { draft: nil }) }
+    base.scope :has_draft, -> { with_translation.where.not(base::Translation.table_name => { draft: nil }) }
+    base.scope :has_no_draft, -> { with_translation.where(base::Translation.table_name => { draft: nil }) }
     base.scope :needs_review, -> { has_draft }
 
     def self.draftable?

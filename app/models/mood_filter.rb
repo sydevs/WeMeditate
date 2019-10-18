@@ -23,7 +23,7 @@ class MoodFilter < ApplicationRecord
 
   # Scopes
   default_scope { order(:order) }
-  scope :q, -> (q) { with_translations(I18n.locale).joins(:translations).where('mood_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
+  scope :q, -> (q) { with_translation.joins(:translations).where('mood_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
   def self.has_content
     joins(tracks: [:translations, instrument_filters: :translations]).where({

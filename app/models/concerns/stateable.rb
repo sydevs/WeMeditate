@@ -30,11 +30,11 @@ module Stateable
     base.validates_presence_of :published_at, if: :published?
     base.validates_presence_of :state
 
-    base.scope :published, -> { with_translations.where(state: base.states[:published]) }
+    base.scope :published, -> { with_translation.where(state: base.states[:published]) }
     base.scope :publicly_visible, -> { published.where("#{base::Translation.table_name}.published_at < ?", DateTime.now) }
-    base.scope :not_published, -> { with_translations.where.not(state: base.states[:published]) }
-    base.scope :not_archived, -> { with_translations.where.not(state: base.states[:archived]) }
-    base.scope :never_published, -> { with_translations.where(published_at: nil) }
+    base.scope :not_published, -> { with_translation.where.not(state: base.states[:published]) }
+    base.scope :not_archived, -> { with_translation.where.not(state: base.states[:archived]) }
+    base.scope :never_published, -> { with_translation.where(published_at: nil) }
 
     def state
       state = respond_to?(:get_native_locale_attribute) ? get_native_locale_attribute(:state) : send(:state)
