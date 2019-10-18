@@ -4,15 +4,16 @@ module Admin
   module ApplicationHelper
 
     LANGUAGE_TO_FLAG_MAP = {
-      ru: 'ru',
-      en: 'gb',
-      it: 'it',
-      de: 'de',
-      fr: 'fr',
-      es: 'es',
-      pt: 'pt',
-      nl: 'nl',
-      hy: 'am',
+      ru: 'ru', # Russian
+      en: 'gb', # English
+      it: 'it', # Italian
+      de: 'de', # German
+      fr: 'fr', # French
+      es: 'es', # Spanish
+      pt: 'pt', # Portuguese
+      nl: 'nl', # Dutch
+      hy: 'am', # Armenian
+      uk: 'ua', # Ukrainian
     }.freeze
 
     URGENCY_ICON = {

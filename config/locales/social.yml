@@ -2,7 +2,7 @@
 # SOCIAL MEDIA TRANSLATIONS
 # This file lets us customize the social media URLs for different languages
 
-de:
+de: # German
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
     twitter: https://twitter.com/intent/tweet?url=%{url}
@@ -12,7 +12,7 @@ de:
     instagram: ''
     facebook: ''
 
-en:
+en: # English
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
     twitter: https://twitter.com/intent/tweet?url=%{url}
@@ -22,7 +22,7 @@ en:
     instagram: ''
     facebook: ''
 
-es:
+es: # Spanish
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
     twitter: https://twitter.com/intent/tweet?url=%{url}
@@ -32,7 +32,7 @@ es:
     instagram: ''
     facebook: ''
 
-fr:
+fr: # French
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
     twitter: https://twitter.com/intent/tweet?url=%{url}
@@ -42,7 +42,7 @@ fr:
     instagram: ''
     facebook: ''
 
-hy:
+hy: # Armenian
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
     twitter: https://twitter.com/intent/tweet?url=%{url}
@@ -52,7 +52,7 @@ hy:
     instagram: ''
     facebook: ''
 
-it:
+it: # Italian
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
     twitter: https://twitter.com/intent/tweet?url=%{url}
@@ -62,7 +62,7 @@ it:
     instagram: ''
     facebook: ''
 
-nl:
+nl: # Dutch
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
     twitter: https://twitter.com/intent/tweet?url=%{url}
@@ -72,14 +72,24 @@ nl:
     instagram: ''
     facebook: ''
 
-ru:
+pt: # Portuguese
+  sharing:
+    facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
+    twitter: https://twitter.com/intent/tweet?url=%{url}
+    pinterest: http://pinterest.com/pin/create/button/?url=%{url}
+    whatsapp: whatsapp://send?text=%{url}
+  social_media:
+    instagram: ''
+    facebook: ''
+
+ru: # Russian
   sharing:
     vk: http://vk.com/share.php?url=%{url}
   social_media:
     instagram: ''
     vk: ''
 
-pt:
+uk: # Ukrainian
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
     twitter: https://twitter.com/intent/tweet?url=%{url}
