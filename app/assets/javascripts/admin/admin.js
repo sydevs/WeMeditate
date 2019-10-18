@@ -47,7 +47,7 @@ const Admin = {
     RepeatableFields.initialize(scope)
 
     // Initialize dropdown elements.
-    $('.ui.dropdown').each(function() {
+    scope.find('.ui.dropdown').each(function() {
       var element = $(this)
       var options = {}
       if (element.hasClass('clearable')) {
@@ -67,9 +67,9 @@ const Admin = {
     })
 
     // Add callbacks for a few input types
-    $('input[type=file]').on('change', event => this.onChangeFileInput(event.target))
-    $('.js-vimeo-field input').on('change', event => this.onRefreshVimeoInput(event.target.parentNode))
-    $('.js-vimeo-field + .preview-item .reload').on('click', event => this.onRefreshVimeoInput(event.target.parentNode.previousSibling))
+    scope.find('input[type=file]').on('change', event => this.onChangeFileInput(event.target))
+    scope.find('.js-vimeo-field input').on('change', event => this.onRefreshVimeoInput(event.target.parentNode))
+    scope.find('.js-vimeo-field + .preview-item .reload').on('click', event => this.onRefreshVimeoInput(event.target.parentNode.previousSibling))
   },
 
   // When a file input has it's file changes, we need to update the preview.
