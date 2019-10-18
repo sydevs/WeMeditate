@@ -6,7 +6,7 @@ module Stateable
   extend ActiveSupport::Concern
 
   NEVER_PUBLISHED_ALLOWED_STATES = %i[in_progress published archived].freeze
-  POST_PUBLISHED_ALLOWED_STATES = %i[published unpublished archived].freeze
+  POST_PUBLISHED_ALLOWED_STATES = %i[published unpublished in_progress archived].freeze
 
   def stateable?
     true
@@ -34,7 +34,6 @@ module Stateable
     base.scope :publicly_visible, -> { published.where("#{base::Translation.table_name}.published_at < ?", DateTime.now) }
     base.scope :not_published, -> { with_translation.where.not(state: base.states[:published]) }
     base.scope :not_archived, -> { with_translation.where.not(state: base.states[:archived]) }
-    base.scope :never_published, -> { with_translation.where(published_at: nil) }
 
     def state
       state = respond_to?(:get_native_locale_attribute) ? get_native_locale_attribute(:state) : send(:state)
