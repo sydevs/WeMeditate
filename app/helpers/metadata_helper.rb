@@ -112,6 +112,7 @@ module MetadataHelper
     def set_video_metatags! tags, record
       metadata = record.vimeo_metadata
       metadata = metadata[:horizontal] if metadata.key?(:horizontal)
+      return unless metadata.present?
 
       tags.merge!({
         'og:type' => 'video.other',
