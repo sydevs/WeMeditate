@@ -16,7 +16,7 @@ RouteTranslator.config do |config|
       'pt.wemeditate.co' => :pt, # Portuguese
       'nl.wemeditate.co' => :nl, # Dutch
       'am.wemeditate.co' => :hy, # Armenian
-      #'ua.wemeditate.co' => :uk, # Ukrainian
+      'ua.wemeditate.co' => :uk, # Ukrainian
     }
   else
     Rails.configuration.admin_url = 'http://admin.localhost:3000'

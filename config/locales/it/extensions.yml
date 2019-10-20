@@ -65,7 +65,7 @@ it:
       not_found: "Non trovato"
       not_locked: "Non è bloccato"
       not_saved:
-        one: "1 errore ha fatto si che %{resource} non si possa salvare:"
+        one: "%{count} errore ha fatto si che %{resource} non si possa salvare:"
         other: "%{count} errori hanno fatto si che %{resource} non si possa salvare:"
   time:
     formats:

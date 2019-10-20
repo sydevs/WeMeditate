@@ -36,8 +36,9 @@ uk:
     about_the_author: "About the %{author}"
     written_by: "Written by"
     meditating_for:
-      one: "Meditating for 1 year"
-      other: "Meditating for %{count} years"
+      one: "Meditating for %{count} year" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+      few: "Meditating for %{count} years" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+      many: "Meditating for %{count} years" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
 
   form:
     input:

@@ -92,7 +92,7 @@ it:
         normal: "Priorità normale"
         pending: "In attesa"
       views:
-        one: "1 visita"
+        one: "%{count} visita"
         other: "%{count} visite"
       popularity: "Popularity: %{value}" # TODO: Translate
 
@@ -214,10 +214,10 @@ it:
         optional: "Opzionale"
         search: "Cerca" 
       words:
-        one: "1 parola"
+        one: "%{count} parola"
         other: "%{count} parole"
       items:
-        one: "1 oggetto"
+        one: "%{count} oggetto"
         other: "%{count} oggetti"
 
 
@@ -272,7 +272,7 @@ it:
     draft:
       no_image: "No Image" # TODO: Translate
       items:
-        one: "1 oggetto"
+        one: "%{count} oggetto"
         other: "%{count} oggetti"
       content:
         original:

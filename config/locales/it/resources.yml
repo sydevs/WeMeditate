@@ -161,7 +161,7 @@ it:
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
         articles:
-          one: "1 Articolo"
+          one: "%{count} Articolo"
           other: "%{count} Articoli’"
 
       treatment:
@@ -188,28 +188,28 @@ it:
         name: :activerecord.attributes.generic.name # Do not translate
         icon: "Icona"
         tracks:
-          one: "1 Traccia"
+          one: "%{count} Traccia"
           other: "%{count} Tracce’"
 
       mood_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         tracks:
-          one: "1 Traccia"
+          one: "%{count} Traccia"
           other: "%{count} Tracce’"
 
       duration_filter:
         published: :activerecord.attributes.article.published # Do not translate
         minutes: "Minutes"
         meditations:
-          one: "1 Meditazione"
+          one: "%{count} Meditazione"
           other: "%{count} Meditazioni’"
 
       goal_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         meditations:
-          one: "1 Meditazione"
+          one: "%{count} Meditazione"
           other: "%{count} Meditazioni’"
 
       track:
@@ -249,7 +249,7 @@ it:
         image: "Copertina dell’Album"
         url: "Website"
         tracks:
-          one: "1 Traccia"
+          one: "%{count} Traccia"
           other: "%{count} Tracce’"
 
       author:

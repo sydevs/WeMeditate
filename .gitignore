@@ -21,7 +21,8 @@
 .DS_Store
 .byebug_history
 
+/config/locales/en-plurals-template
+
 # RubyMine JetBrains
 .idea
-
 .env

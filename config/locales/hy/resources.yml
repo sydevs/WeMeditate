@@ -160,7 +160,7 @@ hy:
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
         articles:
-          one: "1 Article"
+          one: "%{count} Article"
           other: "%{count} Articles"
 
       treatment:
@@ -187,29 +187,29 @@ hy:
         name: :activerecord.attributes.generic.name # Do not translate
         icon: "Icon"
         tracks:
-          one: "1 Track"
-          other: "%{count} Tracks'"
+          one: "%{count} Track"
+          other: "%{count} Tracks"
 
       mood_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         tracks:
-          one: "1 Track"
-          other: "%{count} Tracks'"
+          one: "%{count} Track"
+          other: "%{count} Tracks"
 
       duration_filter:
         published: :activerecord.attributes.article.published # Do not translate
         minutes: "Minutes"
         meditations:
-          one: "1 Meditation"
-          other: "%{count} Meditations'"
+          one: "%{count} Meditation"
+          other: "%{count} Meditations"
 
       goal_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         meditations:
-          one: "1 Meditation"
-          other: "%{count} Meditations'"
+          one: "%{count} Meditation"
+          other: "%{count} Meditations"
 
       track:
         published: :activerecord.attributes.article.published # Do not translate
@@ -247,8 +247,8 @@ hy:
         image: "Album Art"
         url: "Website"
         tracks:
-          one: "1 Track"
-          other: "%{count} Tracks'"
+          one: "%{count} Track"
+          other: "%{count} Tracks"
 
       author:
         state: :activerecord.attributes.generic.state # Do not translate

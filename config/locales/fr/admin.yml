@@ -94,7 +94,7 @@ fr:
         normal: "Normal Priority"
         pending: "Pending"
       views: # This is the number of viewers or visits. Used to indicate the number of video views
-        one: "1 View"
+        one: "%{count} View"
         other: "%{count} Views"
       popularity: "Popularity: %{value}"
 
@@ -276,7 +276,7 @@ fr:
     draft: # This section deals with the ability to create draft versions of new pages
       no_image: "No Image"
       items:
-        one: "1 item"
+        one: "%{count} item"
         other: "%{count} items"
       content:
         original: # This is for a button that lets you revert to the previous content
