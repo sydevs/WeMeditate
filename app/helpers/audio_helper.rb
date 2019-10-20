@@ -26,6 +26,7 @@ module AudioHelper
         artists: amplitude_artists_data(track.artists),
         url: track.audio_url,
         cover_art_url: track.artists.sample&.image_url,
+        duration: track.duration_as_string,
       }
     end
 

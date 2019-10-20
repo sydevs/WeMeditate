@@ -305,6 +305,7 @@ es:
         popularity: :activerecord.attributes.meditation.popularity # Do not translate
         node: "Node"
         artist_id: :activerecord.models.artist.other # Do not translate
+        duration: :activerecord.attributes.track.duration # Do not translate
         articles_count: :activerecord.models.article.other # Do not translate
         instruments_count: :activerecord.models.instrument_filter.other # Do not translate
         meditations_count: :activerecord.models.meditation.other # Do not translate
@@ -324,6 +325,7 @@ es:
           articles_count: "Most Articles"
           meditations_count: "Most Meditations"
           tracks_count: "Most Tracks"
+          duration: :activerecord.attributes.track.duration # Do not translate
           role: "Role"
       filter:
         title: "Filter by"

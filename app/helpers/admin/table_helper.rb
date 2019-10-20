@@ -10,7 +10,7 @@ module Admin::TableHelper
     # Resources
     meditations: %i[name categories popularity updated_at status],
     treatments: %i[name updated_at status],
-    tracks: %i[name artist_id instruments_count status],
+    tracks: %i[name artist_id duration instruments_count status],
     # Filters
     categories: %i[name articles_count status],
     goal_filters: %i[name meditations_count status],
@@ -32,7 +32,7 @@ module Admin::TableHelper
     # Resources
     meditations: %i[updated_at created_at], # %i[name popularity updated_at created_at],
     treatments: %i[name updated_at created_at],
-    tracks: %i[name created_at],
+    tracks: %i[name duration created_at],
     # Filters
     categories: %i[name], # %i[name articles_count],
     goal_filters: %i[name], # %i[name meditations_count],

@@ -251,6 +251,7 @@ uk:
         title: "Title"
         artists: :activerecord.models.artist.other # Do not translate
         audio: "File (mp3)"
+        duration: "Duration"
         instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
         mood_filters: :activerecord.models.mood_filter.other # Do not translate
 

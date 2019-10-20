@@ -9,6 +9,9 @@ tr.record id=dom_id(track)
   td.top.aligned
     = track.artists.map(&:name).join(', ')
 
+  td.collapsing.top.aligned
+    = track.duration_as_string
+
   td.collapsing.top.center.aligned
     - track.instrument_filters.includes(:translations).each do |instrument_filter|
       .instrument data={ tooltip: instrument_filter.preview_name, position: 'top right' }

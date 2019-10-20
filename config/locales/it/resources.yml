@@ -217,6 +217,7 @@ it:
         title: "Titolo"
         artists: :activerecord.models.artist.other
         audio: "File (mp3)"
+        duration: "Duration" # TODO: Translate
         instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
         mood_filters: :activerecord.models.mood_filter.other # Do not translate
 

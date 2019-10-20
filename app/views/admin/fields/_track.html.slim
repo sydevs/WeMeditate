@@ -1,6 +1,7 @@
 
 = f.input :name
 = f.association :artists
-= f.input :audio, as: :file, wrapper: :semantic_file, icon: file_type_icon(:audio), file: record.audio, input_html: { accept: file_type_accepts(:audio) }
+- duration_hint = record.duration ? "#{record.class.human_attribute_name(:duration)}: #{record.duration_as_string}" : nil
+= f.input :audio, as: :file, wrapper: :semantic_file, icon: file_type_icon(:audio), file: record.audio, hint: duration_hint, input_html: { accept: file_type_accepts(:audio) }
 /= f.association :mood_filters
 = f.association :instrument_filters
