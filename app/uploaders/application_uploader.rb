@@ -1,6 +1,6 @@
 class ApplicationUploader < CarrierWave::Uploader::Base
 
-  storage Rails.env.production? ? :gcloud : :file
+  storage ENV['GCLOUD_BUCKET'].present? ? :gcloud : :file
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

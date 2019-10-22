@@ -83,3 +83,9 @@ production:
   database: wemeditate_production
   username: wemeditate
   password: <%= ENV['WEMEDITATE_DATABASE_PASSWORD'] %>
+
+staging:
+  <<: *default
+  database: wemeditate_staging
+  username: wemeditate
+  password: <%= ENV['WEMEDITATE_DATABASE_PASSWORD'] %>

@@ -7,17 +7,26 @@ RouteTranslator.config do |config|
   if Rails.env.production?
     Rails.configuration.admin_url = 'http://admin.wemeditate.co'
     config.host_locales = {
-      'www.wemeditate.co' => :en, # English
-      'www.wemeditate.ru' => :ru, # Russian
-      'www.wemeditate.it' => :it, # Italian
-      'www.wemeditate.fr' => :fr, # French
-      'de.wemeditate.co' => :de, # German
-      'es.wemeditate.co' => :es, # Spanish
-      'pt.wemeditate.co' => :pt, # Portuguese
-      'nl.wemeditate.co' => :nl, # Dutch
-      'am.wemeditate.co' => :hy, # Armenian
       'ua.wemeditate.co' => :uk, # Ukrainian
-    }
+      'am.wemeditate.co' => :hy, # Armenian
+      'nl.wemeditate.co' => :nl, # Dutch
+      'pt.wemeditate.co' => :pt, # Portuguese
+      'es.wemeditate.co' => :es, # Spanish
+      'de.wemeditate.co' => :de, # German
+      'www.wemeditate.fr' => :fr, # French
+      'www.wemeditate.it' => :it, # Italian
+      'www.wemeditate.ru' => :ru, # Russian
+      'www.wemeditate.co.uk' => :en, # English
+      'www.wemeditate.co' => :en, # English
+    } # Domains at the bottom of the list have highest priority.
+  elsif Rails.env.staging?
+    Rails.configuration.admin_url = 'http://staging.admin.wemeditate.co'
+    config.host_locales = {}
+
+    I18n.available_locales.each do |locale|
+      hostname = (locale == :en ? host : "staging.#{locale}.wemeditate.co")
+      config.host_locales[hostname] = locale
+    end
   else
     Rails.configuration.admin_url = 'http://admin.localhost:3000'
     config.host_locales = {}

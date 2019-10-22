@@ -14,3 +14,13 @@ Rails.application.configure do
   config.action_mailer.default_options = { from: "#{I18n.translate 'we_meditate'} <#{ENV['SMTP_EMAIL']}>" }
   config.action_mailer.raise_delivery_errors = true
 end
+
+unless Rails.env.production?
+  class EmailEnvironmentLabeler
+    def self.delivering_email(mail)
+      mail.subject.prepend("#{Rails.application.class.parent_name}/#{Rails.env}")
+    end
+  end
+  
+  ActionMailer::Base.register_interceptor(EmailEnvironmentLabeler)
+end
