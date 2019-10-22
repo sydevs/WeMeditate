@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.7'
+ruby '2.6.5'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -83,6 +83,14 @@ gem 'taglib-ruby' # To parse metadata from mp3 files
 # gem 'capistrano-rails', group: :development # Use Capistrano for deployment
 # gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
+group :staging, :development do
+  # For profiling load times
+  gem 'rack-mini-profiler', require: false
+  gem 'memory_profiler'
+  gem 'flamegraph'
+  gem 'stackprof'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -91,12 +99,6 @@ group :development, :test do
   gem 'selenium-webdriver'
 
   gem 'rails_real_favicon' # For generating favicons
-
-  # For profiling load times
-  gem 'rack-mini-profiler', require: false
-  gem 'memory_profiler'
-  gem 'flamegraph'
-  gem 'stackprof'
 end
 
 group :development do
