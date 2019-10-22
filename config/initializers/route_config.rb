@@ -24,7 +24,7 @@ RouteTranslator.config do |config|
     config.host_locales = {}
 
     I18n.available_locales.each do |locale|
-      hostname = (locale == :en ? host : "staging.#{locale}.wemeditate.co")
+      hostname = "staging.#{locale}.wemeditate.co"
       config.host_locales[hostname] = locale
     end
   else
