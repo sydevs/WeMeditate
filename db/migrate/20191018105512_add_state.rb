@@ -1,9 +1,9 @@
 class AddState < ActiveRecord::Migration[5.2]
   def change
-    add_column :author_translations, :published_at, :datetime rescue nil
+    add_column :author_translations, :published_at, :datetime
 
     [Article, StaticPage, SubtleSystemNode, Treatment, Meditation, Author].each do |model|
-      add_column model::Translation.table_name, :state, :integer, default: 0 rescue nil
+      add_column model::Translation.table_name, :state, :integer, default: 0
     end
 
     reversible do |dir|
