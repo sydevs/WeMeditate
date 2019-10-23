@@ -10,7 +10,10 @@ class CreateAuthors < ActiveRecord::Migration[5.2]
 
     reversible do |dir|
       dir.up do
-        Author.create_translation_table!
+        Author.create_translation_table!({
+          title: :string,
+          description: :text,
+        })
       end
 
       dir.down do

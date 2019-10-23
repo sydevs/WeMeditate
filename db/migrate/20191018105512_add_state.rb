@@ -6,7 +6,6 @@ class AddState < ActiveRecord::Migration[5.2]
       add_column model::Translation.table_name, :state, :integer, default: 0
     end
 
-=begin
     reversible do |dir|
       dir.up do
         Author::Translation.find_each do |record|
@@ -32,7 +31,6 @@ class AddState < ActiveRecord::Migration[5.2]
         end
       end
     end
-=end
 
     [Article, Treatment, Meditation].each do |model|
       remove_column model::Translation.table_name, :published, :boolean
