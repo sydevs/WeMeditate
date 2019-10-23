@@ -12,7 +12,7 @@ author.update!({
   years_meditating: 12,
   image: file_root.join('articles/author.jpg').open,
   country_code: 'GB',
-  state: Author.states[:published],
+  state: :published,
   published_at: DateTime.now,
 })
 
@@ -42,7 +42,7 @@ end
     category: categories.values.sample,
     date: nil,
     vimeo_id: nil,
-    state: Article.states[:published],
+    state: :published,
     published_at: DateTime.now,
   })
   article.update! thumbnail_id: attachment("articles/thumbnails/#{index}.png", article)
@@ -59,7 +59,7 @@ end
     category: categories.values.sample,
     date: nil,
     vimeo_id: nil,
-    state: Article.states[:in_progress],
+    state: :in_progress,
   })
   article.update! thumbnail_id: attachment("articles/thumbnails/#{index}.png", article)
 
@@ -75,7 +75,7 @@ end
     category: categories.values.sample,
     date: nil,
     vimeo_id: nil,
-    state: Article.states[:unpublished],
+    state: :unpublished,
     published_at: DateTime.now,
   })
   article.update! thumbnail_id: attachment("articles/thumbnails/#{index}.png", article)
@@ -92,7 +92,7 @@ end
     category: categories.values.sample,
     date: nil,
     vimeo_id: nil,
-    state: Article.states[:archived],
+    state: :archived,
     published_at: DateTime.now,
   })
   article.update! thumbnail_id: attachment("articles/thumbnails/#{index}.png", article)
@@ -127,7 +127,7 @@ faq.update!({
   name: 'Why Meditate?',
   excerpt: 'The benefits of meditation cover all areas of wellbeing, be it mental, physical or emotional, and touch all spheres of day to day life. What’s more the benefits can be felt by literally anyone.',
   category: categories['Articles'],
-  state: Article.states[:published],
+  state: :published,
   published_at: DateTime.now,
   original_locale: :en,
 })
@@ -138,7 +138,7 @@ faq.update!({
   name: 'Is it right for me?',
   excerpt: 'There are many myths about meditation which can put one off trying it out, such as the length of time needed or the right environment. We debunk these myths and prove that meditation is truly for everyone.',
   category: categories['Articles'],
-  state: Article.states[:published],
+  state: :published,
   published_at: DateTime.now,
   original_locale: :en,
 })
@@ -149,7 +149,7 @@ faq.update!({
   name: 'Who else is doing it?',
   excerpt: 'There are many myths about meditation which can put one off trying it out, such as the length of time needed or the right environment. We debunk these myths and prove that meditation is truly for everyone.',
   category: categories['Articles'],
-  state: Article.states[:published],
+  state: :published,
   published_at: DateTime.now,
   original_locale: :en,
 })
@@ -161,7 +161,7 @@ article.update!({
   name: 'Demo Article',
   excerpt: sentences(2),
   category: categories.values.sample,
-  state: Article.states[:published],
+  state: :published,
   published_at: DateTime.now,
   author: author,
   original_locale: :en,
@@ -361,7 +361,7 @@ article.update!({
   name: 'Test Article',
   excerpt: sentences(2),
   category: categories.values.sample,
-  state: Article.states[:published],
+  state: :published,
   published_at: DateTime.now,
   original_locale: :en,
 })

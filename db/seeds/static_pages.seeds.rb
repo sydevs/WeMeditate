@@ -23,7 +23,7 @@ static_pages = {}
   static_pages[role] = StaticPage.find_or_initialize_by(role: role)
   static_pages[role].update!({
     name: name,
-    state: StaticPage.states[:published],
+    state: :published,
     published_at: DateTime.now,
   })
   puts "Created Static Page - #{role}"
