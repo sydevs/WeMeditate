@@ -4,7 +4,7 @@ module Admin
     class Scope < Scope
       def resolve
         if user.translator?
-          scope.needs_translation(user)
+          scope.translatable_by(user)
         else
           scope
         end
@@ -20,7 +20,7 @@ module Admin
     end
 
     def show?
-      record.contentable? && index?
+      record.contentable? && can_access_locale?
     end
 
     def destroy?
@@ -98,7 +98,7 @@ module Admin
 
     def needs_translation?
       return true if record.is_a?(Class)
-      record.class.needs_translation(user).exists?(record.id)
+      record.class.needs_translation_by(user).exists?(record.id)
     end
 
   end

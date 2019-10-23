@@ -5,20 +5,20 @@ module Admin
 
     def dashboard_issues &block
       missing Meditation, :critical, &block
-      #untranslated Category, :critical, &block
-      #untranslated GoalFilter, :critical, &block
-      #untranslated InstrumentFilter, :critical, &block
+      untranslated Category, :critical, &block
+      untranslated GoalFilter, :critical, &block
+      untranslated InstrumentFilter, :critical, &block
       # untranslated MoodFilter, :critical, &block
-      #untranslated StaticPage, :critical, &block
-      #untranslated SubtleSystemNode, :critical, &block
+      untranslated StaticPage, :critical, &block
+      untranslated SubtleSystemNode, :critical, &block
       needs_review StaticPage, :important, &block
       needs_review SubtleSystemNode, :important, &block
       needs_review Treatment, :important, &block
       needs_review Article, :important, &block
       unpublished Article, :normal, &block
-      #untranslated Treatment, :normal, &block
+      untranslated Treatment, :normal, &block
       untranslated Article, :normal, &block
-      #untranslated Meditation, :normal, &block
+      untranslated Meditation, :normal, &block
       pending_invite User, :pending, &block
     end
 
@@ -63,9 +63,8 @@ module Admin
 
       def untranslated model, urgency, &block
         if policy(model).update_translation?
-          scope = policy_scope(model).needs_translation(current_user)
-          scope = scope.not_archived if model.stateable?
-          scope = scope.has_no_draft if model.draftable?
+          scope = policy_scope(model).needs_translation_by(current_user)
+          # scope = scope.has_no_draft if model.draftable?
           scope.each do |record|
             block.call({
               model: model,

@@ -338,8 +338,11 @@ pt:
       status: # Try to keep these translations short
         # Draftable
         needs_review: "Needs Review"
+        # Translatable
+        needs_translation: "Needs Translation"
+        not_translated: "Not Translated"
         # Stateable
-        no_state: "Needs Translation"
+        no_state: "Unknown"
         in_progress: "In Progress"
         archived: :activerecord.attributes.generic.states.archived # Do not translate
         published: :activerecord.attributes.generic.states.published # Do not translate

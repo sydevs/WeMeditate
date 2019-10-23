@@ -70,6 +70,9 @@ module Admin::TableHelper
   STATUS_STYLE = {
     # For `reviewable?` records
     needs_review: %i[basic orange],
+    # For `translatable?` records
+    needs_translation: %i[basic red],
+    not_translated: %i[basic],
     # For `stateable?` records
     no_state: %i[basic red],
     in_progress: %i[basic],
@@ -175,10 +178,12 @@ module Admin::TableHelper
         end
       elsif review && record.draftable? && record.needs_review? && policy(record).review?
         :needs_review
+      elsif record.translatable? && record.needs_translation_by?(current_user)
+        :needs_translation
+      elsif record.translatable? && !record.has_translation?
+        :not_translated
       elsif record.stateable?
         record.state
-      elsif record.translatable? && record.needs_translation?(current_user)
-        :no_state
       elsif record.publishable?
         record.published? ? :public : :private
       end
