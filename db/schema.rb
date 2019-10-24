@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_20_153439) do
+ActiveRecord::Schema.define(version: 2019_10_24_141725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2019_10_20_153439) do
     t.datetime "published_at"
     t.integer "banner_id"
     t.integer "state", default: 0
+    t.integer "priority", default: 0, null: false
+    t.integer "order"
     t.index ["article_id"], name: "index_article_translations_on_article_id"
     t.index ["locale"], name: "index_article_translations_on_locale"
   end
@@ -39,7 +41,6 @@ ActiveRecord::Schema.define(version: 2019_10_20_153439) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
-    t.integer "priority", default: 0, null: false
     t.date "date"
     t.bigint "owner_id"
     t.string "original_locale", limit: 2, null: false
@@ -229,6 +230,8 @@ ActiveRecord::Schema.define(version: 2019_10_20_153439) do
     t.float "popularity", default: 0.0, null: false
     t.jsonb "vimeo_metadata"
     t.integer "state", default: 0
+    t.jsonb "draft"
+    t.integer "thumbnail_id"
     t.index ["locale"], name: "index_meditation_translations_on_locale"
     t.index ["meditation_id"], name: "index_meditation_translations_on_meditation_id"
   end

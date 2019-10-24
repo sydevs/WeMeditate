@@ -123,9 +123,10 @@ ru:
           archived: :activerecord.attributes.generic.states.archived # Do not translate
           published: :activerecord.attributes.generic.states.published # Do not translate
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
-        priority: "Visibility on Inspiration Page" # TODO: Translate
+        priority: "Priority" # TODO: Translate
         priorities:
-          hidden: "Hidden from Inspiration Page"
+          pinned: "Pinned to Inspiration Page" # TODO: Translate
+          hidden: "Hidden from Inspiration Page" # TODO: Translate
           low: "Низкая Видимость"
           normal: "Нормальная Видимость"
           high: "Высокая Видимость"

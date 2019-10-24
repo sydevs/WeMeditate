@@ -78,8 +78,9 @@ es:
           archived: :activerecord.attributes.generic.states.archived # Do not translate
           published: :activerecord.attributes.generic.states.published # Do not translate
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
-        priority: "Visibility on Inspiration Page"
+        priority: "Priority"
         priorities:
+          pinned: "Pinned to Inspiration Page"
           hidden: "Hidden from Inspiration Page"
           low: "Low Visibility"
           normal: "Normal Visibility"

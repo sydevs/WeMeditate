@@ -66,7 +66,7 @@ ru:
     details:
       original_language: "Исходный язык" 
       translated_languages: "Языки Перевода"
-      priority: "Приоритет На Странице Вдохновение"
+      priority: "Странице Вдохновение"
       owned_by: "Принадлежит %{owner}"
       vertical_video: "Вертикальное Видео"
       horizontal_video: "Горизонтальное Видео"
@@ -86,6 +86,7 @@ ru:
       pending_invitation: "Приглашение ещё не принято"
       this_is_you: "Это вы" 
       missing_record: "Отсутствует %{model}" 
+      too_many_pinned: "More than %{count} pinned %{model}" # TODO: Translate
       updated_ago: "Изменено %{time_ago} назад"
       published_ago: "Published %{time_ago} ago" # TODO: Translate
       published_from_now: "Will be published %{time_from_now} from now" # TODO: Translate
@@ -121,7 +122,7 @@ ru:
 
     hints: 
       excerpt: "Это короткое превью страницы, которое будет показано в списке страниц типа \"%{page}\"."
-      article_visibility: "Статьи с большим значением видимости будут показаны ближе к началу страницы Вдохновение"
+      article_visibility: "This determines how an article will appear on the Inspiration page." # TODO: Translate
       article_author: "Профиль, который будет отображаться в статье на сайте."
       article_author_type: "Это определяет как будет характеризован автор на этой странице." 
       article_owner: "Администраторы и Редакторы всегда могут редактировать любые статьи. Это поле дает автору специальное разрешение на изменение статьи после её публикации. Обычно это человек, который написал первую версию статьи."

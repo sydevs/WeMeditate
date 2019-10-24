@@ -64,7 +64,7 @@ it:
     details:
       original_language: "Original Language" # TODO: Translate
       translated_languages: "Lingue tradotte"
-      priority: "Ordina sulla pagina Ispirazione"
+      priority: "Pagina Ispirazione"
       owned_by: "Di %{owner}"
       vertical_video: "Video verticale"
       horizontal_video: "Video orizzontale"
@@ -83,7 +83,8 @@ it:
       in_progress_translation: "Has Incomplete %{language} Translation" # "language" will be replaced with the language that this file is written in. # TODO: Translate
       pending_invitation: "Non ha ancora accettato l'invito."
       this_is_you: "This is you" # TODO: Translate
-      missing_record: "Missing %{model}" # TODO: Translate
+      missing_record: "Missing %{model}"
+      too_many_pinned: "More than %{count} pinned %{model}" # TODO: Translate
       updated_ago: "Modificato %{time_ago} fa."
       published_ago: "Published %{time_ago} ago" # TODO: Translate
       published_from_now: "Will be published %{time_from_now} from now" # TODO: Translate
@@ -117,7 +118,7 @@ it:
 
     hints:
       excerpt: "This is a short preview of the %{page} content that will be shown in %{page} listings." # TODO: Translate
-      article_visibility: "Articles with higher visibility will be shown closed to the top of the Inspiration page" # TODO: Translate
+      article_visibility: "This determines how an article will appear on the Inspiration page." # TODO: Translate
       article_author: "Questo profilo viene mostrato sotto l'articolo quando questo viene pubblicato."
       article_author_type: "This determines what the author will be called on this article." # TODO: Translate
       article_owner: "Gli amministratori e gli editori possono sempre modificare tutti gli articoli. Questo campo da il permesso ad un autore per modificare un articolo dopo averlo pubblicato. Solitamente si tratta della persona che ha scritto l'articolo."

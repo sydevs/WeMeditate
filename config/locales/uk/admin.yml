@@ -66,7 +66,7 @@ uk:
     details:
       original_language: "Original Language"
       translated_languages: "Translated Languages"
-      priority: "Order on Inspiration Page"
+      priority: "Inspiration Page"
       owned_by: "Owned by %{owner}"
       vertical_video: "Vertical Video"
       horizontal_video: "Horizontal Video"
@@ -86,6 +86,7 @@ uk:
       pending_invitation: "Has Not Yet Accepted Invitation"
       this_is_you: "This is you"
       missing_record: "Missing %{model}"
+      too_many_pinned: "More than %{count} pinned %{model}"
       updated_ago: "Modified %{time_ago} ago"
       published_ago: "Published %{time_ago} ago"
       published_from_now: "Will be published %{time_from_now} from now"
@@ -120,7 +121,7 @@ uk:
 
     hints:
       excerpt: "This is a short preview of the %{page} content that will be shown in %{page} listings."
-      article_visibility: "Articles with higher visibility will be shown closer to the top of the Inspiration page"
+      article_visibility: "This determines how an article will appear on the Inspiration page."
       article_author: "The profile which will be shown under the article on the website."
       article_author_type: "This determines what the author will be called on this article."
       article_owner: "Administrators and Editors can always edit all articles. This field gives a writer special permission to modify an article after it is published. Usually this is the person who wrote the article in the first place."

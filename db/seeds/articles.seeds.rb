@@ -50,6 +50,28 @@ end
   puts "Created Generic Article #{index}"
 end
 
+# ===== ADD RANDOM SPECIAL ARTICLES ===== #
+Article.with_translation.order('RANDOM()').limit(5).each do |article|
+  article.update! date: (1..500).to_a.sample.days.from_now
+  puts "Added Date #{article.date} to #{article.name}"
+end
+
+Article.with_translation.order('RANDOM()').limit(5).each do |article|
+  article.update! vimeo_id: 208643382
+  puts "Added Video to #{article.name}"
+end
+
+Article.with_translation.order('RANDOM()').limit(3).each do |article|
+  article.update! priority: Article.priorities[:low]
+  puts "Set Low Priority for #{article.name}"
+end
+
+Article.with_translation.order('RANDOM()').limit(3).each do |article|
+  article.update! priority: Article.priorities[:high]
+  puts "Set High Priority for #{article.name}"
+end
+
+# ===== CREATE STATE ARTICLES ===== #
 3.times.each do |index|
   index += 1
   article = Article.find_or_initialize_by(name: "WIP Article #{index}")
@@ -93,32 +115,29 @@ end
     date: nil,
     vimeo_id: nil,
     state: :archived,
-    published_at: DateTime.now,
+    published_at: [nil, DateTime.now].sample,
   })
   article.update! thumbnail_id: attachment("articles/thumbnails/#{index}.png", article)
 
   puts "Created Archived Article #{index}"
 end
 
-# ===== ADD RANDOM SPECIAL ARTICLES ===== #
-Article.all.sample(5).each do |article|
-  article.update!(date: (1..500).to_a.sample.days.from_now)
-  puts "Added Date #{article.date} to #{article.name}"
-end
+4.times.each do |index|
+  index += 1
+  article = Article.find_or_initialize_by(name: "Pinned Article #{index}")
+  article.update!({
+    name: "Pinned Article #{index}",
+    excerpt: sentences(2),
+    category: categories.values.sample,
+    date: nil,
+    vimeo_id: nil,
+    state: :published,
+    priority: Article.priorities[:pinned],
+    published_at: DateTime.now,
+  })
+  article.update! thumbnail_id: attachment("articles/thumbnails/#{index}.png", article)
 
-Article.all.sample(5).each do |article|
-  article.update!(vimeo_id: 208643382)
-  puts "Added Video to #{article.name}"
-end
-
-Article.all.sample(3).each do |article|
-  article.update!(priority: :low)
-  puts "Set Low Priority for #{article.name}"
-end
-
-Article.all.sample(3).each do |article|
-  article.update!(priority: :high)
-  puts "Set High Priority for #{article.name}"
+  puts "Created Pinned Article #{index}"
 end
 
 # ===== FAQ ARTICLES ===== #

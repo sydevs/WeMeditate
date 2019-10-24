@@ -73,6 +73,7 @@ module Admin
 
     def human_enum_name model, attr, value = nil
       value ||= model.send(attr)
+      value = (model.is_a?(Class) ? model : model.class).send(attr.to_s.pluralize).key(value) if value.is_a?(Integer)
       I18n.translate value, scope: [:activerecord, :attributes, model.model_name.i18n_key, attr.to_s.pluralize]
     end
 

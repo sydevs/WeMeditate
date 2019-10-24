@@ -11,6 +11,7 @@ module Admin
       # untranslated MoodFilter, :critical, &block
       untranslated StaticPage, :critical, &block
       untranslated SubtleSystemNode, :critical, &block
+      pinned Article, :important, &block
       needs_review StaticPage, :important, &block
       needs_review SubtleSystemNode, :important, &block
       needs_review Treatment, :important, &block
@@ -58,6 +59,20 @@ module Admin
               })
             end
           end
+        end
+      end
+
+      def pinned model, urgency, &block
+        return unless model == Article
+
+        if policy(model).publish? && model.pinned.count > 3
+          block.call({
+            model: model,
+            name: translate('admin.tags.too_many_pinned', model: human_model_name(model, :plural).downcase, count: 3),
+            url: polymorphic_path([:admin, model], filter: "priority:#{model.priorities[:pinned]}"),
+            message: "#{model.pinned.count} #{human_model_name(model, :plural)}",
+            urgency: urgency,
+          })
         end
       end
 

@@ -143,11 +143,11 @@ module Admin::TableHelper
   end
 
   def table_filterable_label model, value
-    return translate('admin.index.attribute.none') unless value.present?
+    return nil unless value.present?
 
     value = value.split(':')
     column = value[0].to_sym
-    return translate('admin.index.attribute.none') unless FILTERABLE_COLUMNS[model.model_name.route_key.to_sym].include?(column)
+    return human_attribute_name(model, column) unless FILTERABLE_COLUMNS[model.model_name.route_key.to_sym].include?(column)
 
     value = value[1].to_s
     column_name = column != :status ? human_attribute_name(@model, column) : translate('admin.index.attribute.status')
