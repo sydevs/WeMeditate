@@ -39,7 +39,7 @@ class Track < ApplicationRecord
   end
 
   def duration_as_string
-    Time.at(duration).utc.strftime('%M:%S') if duration
+    Time.at(duration).utc.strftime('%M:%S') if try(:duration)
   end
 
   private
