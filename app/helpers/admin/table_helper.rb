@@ -186,6 +186,8 @@ module Admin::TableHelper
         record.state
       elsif record.publishable?
         record.published? ? :public : :private
+      else
+        :no_state
       end
     end
   end
