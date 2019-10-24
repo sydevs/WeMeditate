@@ -20,7 +20,7 @@ RouteTranslator.config do |config|
       'www.wemeditate.co' => :en, # English
     } # Domains at the bottom of the list have highest priority.
   elsif Rails.env.staging?
-    Rails.configuration.admin_url = 'http://staging.admin.wemeditate.co'
+    Rails.configuration.admin_url = 'http://admin.staging.wemeditate.co'
     config.host_locales = {}
 
     I18n.available_locales.each do |locale|
