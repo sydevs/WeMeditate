@@ -48,7 +48,7 @@ module Admin::TableHelper
   # TODO: Implement the missing filterings which are shown as comments on each of the following entries.
   FILTERABLE_COLUMNS = {
     # Pages
-    articles: %i[category_id status],
+    articles: %i[category_id priority status],
     static_pages: %i[status],
     subtle_system_nodes: %i[status],
     # Resources

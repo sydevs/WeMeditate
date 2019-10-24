@@ -199,6 +199,9 @@ module Admin
         if column == 'status'
           args = value == 'needs_translation' ? [current_user] : []
           relation.respond_to?(value) ? relation.send(value, *args) : relation
+        elsif column == 'priority'
+          # TODO: Remove this temporary hard coding in favour of a more generic solution.
+          relation.where(column => @model.priorities[value])
         else
           relation.where(column => value)
         end
