@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_10_24_141725) do
     t.integer "banner_id"
     t.integer "state", default: 0
     t.integer "priority", default: 0, null: false
-    t.integer "order"
+    t.bigint "order", default: 0, null: false
     t.index ["article_id"], name: "index_article_translations_on_article_id"
     t.index ["locale"], name: "index_article_translations_on_locale"
   end

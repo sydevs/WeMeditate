@@ -36,7 +36,7 @@ class Article < ApplicationRecord
   validates :vimeo_id, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_blank: true
 
   # Scopes
-  scope :ordered, -> { order(order: :desc) }
+  scope :ordered, -> { order(order: :desc, published_at: :desc) }
   scope :upcoming, -> { published.where('article_translations.published_at >= ?', DateTime.now).order(published_at: :asc) }
   scope :q, -> (q) { with_translation.joins(:translations, category: :translations).where('article_translations.name ILIKE ? OR category_translations.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
@@ -53,6 +53,14 @@ class Article < ApplicationRecord
     when :admin
       includes(:media_files, :translations, category: :translations, author: :translations)
     end
+  end
+
+  def priority
+    self.class.priorities.key(self[:priority])
+  end
+
+  def priority= value
+    self[:priority] = value.is_a?(Integer) ? value : self.class.priorities[value.to_s]
   end
 
   # Shorthand for the article banner image file
@@ -75,16 +83,20 @@ class Article < ApplicationRecord
     def compute_order
       return unless published?
       self[:published_at] ||= DateTime.now
+      published_at = self[:published_at]
+      published_at = DateTime.parse(published_at) if published_at.is_a?(String)
 
       if priority == 'pinned'
-        self[:order] = 2_147_483_647 # Set to max int
+        self[:order] = ApplicationRecord::MAX_INT # Set to max int
       elsif priority == 'hidden'
-        self[:order] = -2_147_483_647 # Set to min int
+        self[:order] = -ApplicationRecord::MAX_INT # Set to min int
       else
         self[:order] = published_at.to_i / (60 * 60 * 24) # Days since Unix epoch
-      end
 
-      self[:order] += 30 * self[:priority] if priority.present?
+        priority = self[:priority]
+        priority = Article.priorities[priority.to_s] unless priority&.is_a?(Integer)
+        self[:order] += 30 * priority if priority.present?
+      end
     end
 
 end

@@ -122,7 +122,7 @@ ru:
 
     hints: 
       excerpt: "Это короткое превью страницы, которое будет показано в списке страниц типа \"%{page}\"."
-      article_visibility: "This determines how an article will appear on the Inspiration page." # TODO: Translate
+      article_visibility: "This determines where an article will appear on the Inspiration page." # TODO: Translate
       article_author: "Профиль, который будет отображаться в статье на сайте."
       article_author_type: "Это определяет как будет характеризован автор на этой странице." 
       article_owner: "Администраторы и Редакторы всегда могут редактировать любые статьи. Это поле дает автору специальное разрешение на изменение статьи после её публикации. Обычно это человек, который написал первую версию статьи."

@@ -10,8 +10,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.publicly_visible.ordered.friendly.find(params[:id])
-    @articles = @category.articles.publicly_visible.where.not(priority: Article.priorities[:hidden]).preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
+    @category = Category.publicly_visible.friendly.find(params[:id])
+    @articles = @category.articles.publicly_visible.ordered.where.not(priority: Article.priorities[:hidden]).preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
     return unless stale?(@articles)
     display
   end
