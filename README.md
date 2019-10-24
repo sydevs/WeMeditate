@@ -1,3 +1,24 @@
+- [About WeMeditate](#about-wemeditate)
+- [Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Framework & Languages](#framework--languages)
+  - [Concepts](#concepts)
+    - [Translation / Drafting](#translation--drafting)
+    - [Content Editor](#content-editor)
+    - [Image, Audio, and Videos](#image-audio-and-videos)
+    - [CMS Code](#cms-code)
+    - [Browser Support](#browser-support)
+  - [Models](#models)
+      - [Pages](#pages)
+      - [Resources](#resources)
+      - [Filters](#filters)
+      - [People](#people)
+  - [Code Structure](#code-structure)
+- [External Libraries and Services](#external-libraries-and-services)
+  - [Libraries](#libraries)
+  - [Services](#services)
+
+# About WeMeditate
 The WeMeditate project is comprehensive website promotig the practice of meditation through the techniques of Sahaja Yoga meditation. This website is designed to be translated to almost any language world wide and provide the following features:
  - **Guided meditations**, which can be generated based on your goal and available time.
  - **Meditation music**, by various musicians with different styles and instruments.
@@ -36,11 +57,32 @@ When accessing the admin site you will be asked to login, in the development env
 ## Concepts
 There are a few pointers that it will be helpful to know when navigating the codebase.
 
- - Every page and piece of content is translatable.
- - Each page on the public site is built usinng a set of 11 interchanngeable blocks, each of which can be further customized.
- - Videos are always hosted on Vimeo.
- - Most models can have their attributes drafted and reviewed before being published.
- - We support only the most recent versions of Chrome, Safari, Firefox, Edge, and Opera - including the mobile versions of these browsers. No other browser is officially supported. Internet Explorer is not supported.
+### Translation / Drafting
+Almost every model in this project can be translated, and most of them can also save a draft version of the model, for a administrator to later approve. This allows the site to have users with multiple levels of access who can propose changes to the site which are then later approved.
+
+However this cross-section of Translaton and Drafting, and also image uploads creates some of the most difficult challenges in the code base, which you will often encounter.
+
+Generally speaking most drafting code is contained to the Draftable concern, and most translation code to the Translatable concern. However these often bleed into other parts of the code.
+
+### Content Editor
+The website's content is build using independent blocks that can be shuffled, reorganized and tweaked in the CMS. This is done using a visual block-based editor called EditorJS (formerly the CodeX Editor).
+
+This means that much of the CSS and Html is segmented along the lines of these "blocks", unaware of the context in which they are being rendered.
+
+### Image, Audio, and Videos
+Images and audio are hosted simply on Google Cloud storage and uploaded to via the Carrierwave gem.
+
+However the Video hosting is a little bit more complicated. All our videos are hosted on Vimeo. When the video is hosted on the WeMeditate Vimeo Pro account then we embed it using our custom HTML5 player (using the Afterglow js library), however other vimeo videos must fallback to the Vimeo player.
+
+Those vimeo videos that use the HTML5 player must have vimeo metadata loaded, and must have download links in the metadata (that is why we can only use HTML5 for Vimeo Pro videos)
+
+An additional complication is that some videos, such as those on the Meditation and Treatment pages also have vertical versions of those videos, which are used for mobile. JS/CSS code is set up to switch between these two orientations.
+
+### CMS Code
+The entirety of the CMS rails code is heavily abstracted, because all these models are managed in almost the same patterns. As such, you wll not see the normal rails views folder structures. Instead there is just one `index`, `show`, `edit`, and `new` view for the whole CMS, and each model is rendered using partials within these views.
+
+### Browser Support
+We support only the most recent versions of Chrome, Safari, Firefox, Edge, and Opera - including the mobile versions of these browsers. No other browser is officially supported. Internet Explorer is not supported.
 
 ## Models
 Each model corresponds to a table in the database, and collectively these form the core of the website's content. Here is a brief overview of the models used in this site, and how they correspond to site features.

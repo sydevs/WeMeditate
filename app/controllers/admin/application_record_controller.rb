@@ -6,7 +6,8 @@ module Admin
 
     def index
       @records = policy_scope(@model).order(updated_at: :desc).q(params[:q])
-      #@records = @records.not_archived unless params[:q].present?
+      # TODO: Uncomment this next line if we want to hide archived records from the index
+      # @records = @records.where.not(id: @model.archived) unless params[:q].present?
       @records = sort_by(@records, params[:sort])
       @records = filter_by(@records, params[:filter])
 
