@@ -158,6 +158,8 @@ module Admin::TableHelper
   end
 
   def table_record_status_label record
+    return unless STATUS_STYLE.key?(status)
+    
     status = table_record_status(record)
     label = translate(status, scope: %i[admin index status])
     tag.div label, class: "ui fluid mini #{STATUS_STYLE[status].join(' ')} label"
