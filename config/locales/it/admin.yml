@@ -85,7 +85,8 @@ it:
       this_is_you: "This is you" # TODO: Translate
       missing_record: "Missing %{model}" # TODO: Translate
       updated_ago: "Modificato %{time_ago} fa."
-      published_ago: "Pubblicato %{time_ago} fa."
+      published_ago: "Published %{time_ago} ago" # TODO: Translate
+      published_from_now: "Will be published %{time_from_now} from now" # TODO: Translate
       urgency:
         critical: "Problema critico"
         important: "Problema importante"
@@ -122,7 +123,7 @@ it:
       article_owner: "Gli amministratori e gli editori possono sempre modificare tutti gli articoli. Questo campo da il permesso ad un autore per modificare un articolo dopo averlo pubblicato. Solitamente si tratta della persona che ha scritto l'articolo."
       article_video: "If you enter a featured video, it will appear on the article preview." # TODO: Translate
       article_date: "If this article is about an event, then you can set the start date of the event here. This date will appear on the article preview." # TODO: Translate
-      article_published_at: "The published date determines what order the articles appear in." # TODO: Translate
+      article_published_at: "If this date is in the future, then the article will be scheduled to be published on that date. Leave this fiield blank to have the publish date set automatically. " # TODO: Translate
       fixed_slug: "This is a special page, it's URL cannot be changed." # TODO: Translate
 
     result:
@@ -282,10 +283,19 @@ it:
           one: "Bozza con 1 blocco"
           other: "Bozza con %{count} blocchi"
 
-    dashboard:
+    dashboard: # TODO: Translate
       title: "Pagina amministrazione"
-      alerts: "Avvisi"
-      no_issues: "Non ci sono problemi, ben fatto!"
+      published:
+        title: "Published Content"
+        description: "The %{language} website (%{host}) is open to the public, and has the following published content."
+      schedule:
+        title: "Publishing Schedule"
+        description: "This is a list of articles which are scheduled to be published in the near future."
+        no_schedule: "No articles are scheduled to be published."
+      alerts:
+        title: "Avvisi"
+        description: "This is a list of important issues, that should be resolved to keep the site in healthy order."
+        no_issues: "Non ci sono problemi, ben fatto!"
 
     index: # TODO: Translate
       columns:

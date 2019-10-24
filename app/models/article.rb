@@ -36,6 +36,7 @@ class Article < ApplicationRecord
 
   # Scopes
   scope :ordered, -> { order(priority: :desc, published_at: :desc) }
+  scope :upcoming, -> { published.where('article_translations.published_at >= ?', DateTime.now).order(published_at: :asc) }
   scope :q, -> (q) { with_translation.joins(:translations, category: :translations).where('article_translations.name ILIKE ? OR category_translations.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
   # Include everything necessary to render this model

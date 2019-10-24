@@ -87,7 +87,8 @@ ru:
       this_is_you: "Это вы" 
       missing_record: "Отсутствует %{model}" 
       updated_ago: "Изменено %{time_ago} назад"
-      published_ago: "Опубликовано %{time_ago} назад"
+      published_ago: "Published %{time_ago} ago" # TODO: Translate
+      published_from_now: "Will be published %{time_from_now} from now" # TODO: Translate
       urgency: # These are in order, with 'critical' as the most important, and 'pending' as the least important.
         critical: "Очень Важный Вопрос"
         important: "Важный Вопрос"
@@ -126,7 +127,7 @@ ru:
       article_owner: "Администраторы и Редакторы всегда могут редактировать любые статьи. Это поле дает автору специальное разрешение на изменение статьи после её публикации. Обычно это человек, который написал первую версию статьи."
       article_video: "Если вы добавите видео, оно будет отображено на превью статьи."
       article_date: "Если данная статья посвящена событию, то вы можете добавить дату события здесь. Эта дата будет отображена на превью статьи."
-      article_published_at: "Дата публикации определяет в какой последовательности показаны статьи." 
+      article_published_at: "If this date is in the future, then the article will be scheduled to be published on that date. Leave this fiield blank to have the publish date set automatically." # TODO: Translate
       fixed_slug: "Это особая страница, ее адрес (URL) нельзя изменить." 
 
     result:
@@ -293,10 +294,19 @@ ru:
           few: "Черновик %{count} блоками" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
           many: "Черновик с %{count} блоками" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
 
-    dashboard:
+    dashboard: # TODO: Translate
       title: "Панель управления"
-      alerts: "Оповещения"
-      no_issues: "В настоящее время проблем нет, так держать!"
+      published:
+        title: "Published Content"
+        description: "The %{language} website (%{host}) is open to the public, and has the following published content."
+      schedule:
+        title: "Publishing Schedule"
+        description: "This is a list of articles which are scheduled to be published in the near future."
+        no_schedule: "No articles are scheduled to be published."
+      alerts:
+        title: "Оповещения"
+        description: "This is a list of important issues, that should be resolved to keep the site in healthy order."
+        no_issues: "В настоящее время проблем нет, так держать!"
 
     index: # TODO: Translate
       columns:

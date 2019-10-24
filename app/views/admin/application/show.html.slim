@@ -49,7 +49,11 @@
 
   - if @record.draftable?
     .ui.small.details.list
-      = record_detail 'bullhorn', translate('admin.tags.published_ago', time_ago: time_ago_in_words(@record.published_at)) if @record.published? && @record.try(:published_at)
+      - if @record.published? && @record.try(:published_at)
+        - if @record.published_at < DateTime.now
+          = record_detail 'bullhorn', translate('admin.tags.published_ago', time_ago: time_ago_in_words(@record.published_at))
+        - else
+          = record_detail 'bullhorn', translate('admin.tags.published_from_now', time_from_now: time_ago_in_words(@record.published_at))
       = record_detail 'edit', translate('admin.tags.updated_ago', time_ago: time_ago_in_words(@record.updated_at))
 
       - if owner = @record.try(:owner)

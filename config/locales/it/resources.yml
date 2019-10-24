@@ -99,7 +99,7 @@ it:
         author: :activerecord.models.author.one # Do not translate
         author_id: :activerecord.models.author.one # Do not translate
         owner: "Permetti a quest'autore di modificare questo articolo"
-        published_at: "Published Date" # TODO: Translate
+        published_at: "Publish Date" # TODO: Translate
 
       static_page:
         name: "Titolo"

@@ -3,10 +3,13 @@
 
 = draftable_field f, :category, type: :association do |value|
   - f.association :category, wrapper: false, label: false, disabled: !allow.update_structure?, selected: value
-  
+
 - priorities = Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}
 = draftable_field f, :priority, type: :collection, input: { collection: priorities },  hint: translate('admin.hints.article_visibility') do |value|
   - f.input_field :priority, collection: priorities, selected: value, disabled: !allow.update_structure?
+
+- if allow.update_structure?
+  = draftable_date_field f, :published_at, hint: translate('admin.hints.article_published_at'), value: record.get_native_locale_attribute(:published_at)
 
 = draftable_media_field f, :thumbnail, preview: true, wrapper: { required: true }
 
@@ -37,6 +40,3 @@
   = f.association :owner, collection: User.writer, hint: translate('admin.hints.article_owner'), input_html: { class: 'clearable' }
 - elsif current_user.writer? && record.new_record?
   = f.hidden_field :owner_id, value: current_user.id
-
-- if allow.update_structure?
-  = draftable_date_field f, :published_at, hint: translate('admin.hints.article_published_at'), value: record.get_native_locale_attribute(:published_at)

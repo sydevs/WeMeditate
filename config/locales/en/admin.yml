@@ -88,6 +88,7 @@ en:
       missing_record: "Missing %{model}"
       updated_ago: "Modified %{time_ago} ago"
       published_ago: "Published %{time_ago} ago"
+      published_from_now: "Will be published %{time_from_now} from now"
       urgency: # These are in order, with 'critical' as the most important, and 'pending' as the least important.
         critical: "Critical Issue"
         important: "Important Issue"
@@ -124,7 +125,7 @@ en:
       article_owner: "Administrators and Editors can always edit all articles. This field gives a writer special permission to modify an article after it is published. Usually this is the person who wrote the article in the first place."
       article_video: "If you enter a featured video, it will appear on the article preview."
       article_date: "If this article is about an event, then you can set the start date of the event here. This date will appear on the article preview."
-      article_published_at: "The published date determines what order the articles appear in."
+      article_published_at: "If this date is in the future, then the article will be scheduled to be published on that date. Leave this fiield blank to have the publish date set automatically."
       fixed_slug: "This is a special page, it's URL cannot be changed."
 
     result:
@@ -288,8 +289,17 @@ en:
 
     dashboard:
       title: "Dashboard"
-      alerts: "Alerts"
-      no_issues: "No issues right now, good job!"
+      published:
+        title: "Published Content"
+        description: "The %{language} website (%{host}) is open to the public, and has the following published content."
+      schedule:
+        title: "Publishing Schedule"
+        description: "This is a list of articles which are scheduled to be published in the near future."
+        no_schedule: "No articles are scheduled to be published."
+      alerts:
+        title: "Alerts"
+        description: "This is a list of important issues, that should be resolved to keep the site in healthy order."
+        no_issues: "No issues right now, good job!"
 
     index:
       columns:
