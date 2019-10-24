@@ -37,7 +37,7 @@ module Stateable
 
     def state
       state = respond_to?(:get_native_locale_attribute) ? get_native_locale_attribute(:state) : send(:state)
-      self.class.states.key(state)&.to_sym
+      self.class.states.key(state)
     end
 
     def state= value
