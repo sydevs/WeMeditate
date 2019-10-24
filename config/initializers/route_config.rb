@@ -6,6 +6,7 @@ RouteTranslator.config do |config|
 
   if Rails.env.production?
     Rails.configuration.admin_domain = 'admin.wemeditate.co'
+    Rails.configuration.admin_host = Rails.configuration.admin_domain
     config.host_locales = {
       'ua.wemeditate.co' => :uk, # Ukrainian
       'am.wemeditate.co' => :hy, # Armenian
@@ -21,6 +22,7 @@ RouteTranslator.config do |config|
     } # Domains at the bottom of the list have highest priority.
   elsif Rails.env.staging?
     Rails.configuration.admin_domain = 'admin.staging.wemeditate.co'
+    Rails.configuration.admin_host = Rails.configuration.admin_domain
     config.host_locales = {}
 
     I18n.available_locales.each do |locale|
@@ -30,7 +32,8 @@ RouteTranslator.config do |config|
   else
     host = 'localhost'
     #host = 'omicron.local'
-    Rails.configuration.admin_domain = "admin.#{host}:3000"
+    Rails.configuration.admin_domain = "admin.#{host}"
+    Rails.configuration.admin_host = "#{Rails.configuration.admin_domain}:3000"
     config.host_locales = {}
 
     I18n.available_locales.each do |locale|
