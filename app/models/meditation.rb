@@ -5,35 +5,36 @@ class Meditation < ApplicationRecord
 
   # Extensions
   translates *%i[
-    name slug metatags views popularity published_at state
-    excerpt description
+    name slug metatags views popularity
+    draft published_at state
+    thumbnail_id excerpt description
     horizontal_vimeo_id vertical_vimeo_id vimeo_metadata
   ]
 
   # Concerns
   include Viewable
+  include Draftable
   include Stateable
   include Translatable # Should come after Publishable/Stateable
 
   # Associations
-  has_and_belongs_to_many :goal_filters
+  has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all
+  has_and_belongs_to_many :goal_filters, draftable: true # This special `draftable` flag is necessary for has_many associations.
   belongs_to :duration_filter
-  mount_uploader :image, ImageUploader
+  # mount_uploader :image, ImageUploader
 
   # Validations
   validates :name, presence: true
-  validates :image, presence: true
   validates :excerpt, presence: true
   validates :duration_filter, presence: true
   # validates :goal_filters, presence: true
+  validates :thumbnail_id, presence: true, if: :persisted?
   validates :horizontal_vimeo_id, presence: true, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_nil: true
   validates :vertical_vimeo_id, presence: true, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_nil: true
 
   # Scopes
   # default_scope { order( id: :desc ) }
   scope :q, -> (q) { with_translation.joins(:translations).where('meditation_translations.name ILIKE ?', "%#{q}%") if q.present? }
-
-  alias thumbnail image
 
   # Include everything necessary to render this model
   def self.preload_for mode
@@ -73,6 +74,11 @@ class Meditation < ApplicationRecord
     result = self[:vimeo_metadata].deep_symbolize_keys
     result = result[type.to_sym ] || {} if type.present?
     result
+  end
+
+  # Shorthand for the meditation image file
+  def thumbnail
+    media_files.find_by(id: thumbnail_id)&.file
   end
 
 end

@@ -77,7 +77,16 @@ module Admin::InputHelper
   end
 
   def draftable_field form, attribute, type: :string, label: true, disabled: false, input: {}, wrapper: {}, **args
-    key = (type == :association ? "#{attribute}_id" : attribute.to_s)
+    key = attribute.to_s
+
+    if type == :association
+      if key.pluralize != key && key.singularize == key # Singular
+        key = "#{key}_id"
+      else
+        key = "#{key.singularize}_ids"
+      end
+    end
+
     has_draft = args[:draft].present? || form.object.parsed_draft&.has_key?(key)
     value = args.key?(:value) ? args[:value] : form.object.send(key)
 

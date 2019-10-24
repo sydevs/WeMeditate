@@ -29,7 +29,7 @@ module Admin
         if policy(@meditation || Meditation).publish?
           result = params.fetch(:meditation, {}).permit(
             :name, :slug, :state, :published_at,
-            :image, :excerpt, :description,
+            :thumbnail_id, :excerpt, :description,
             :horizontal_vimeo_id, :vertical_vimeo_id, :duration_filter_id,
             vimeo_metadata: {},
             goal_filter_ids: [],
@@ -38,7 +38,7 @@ module Admin
         else
           result = params.fetch(:meditation, {}).permit(
             :name, :slug, :state, :published_at,
-            :image, :excerpt, :description,
+            :thumbnail_id, :excerpt, :description,
             :horizontal_vimeo_id, :vertical_vimeo_id, :duration_filter_id,
             vimeo_metadata: {},
             goal_filter_ids: [],
@@ -50,12 +50,24 @@ module Admin
       end
 
       def update_params record_params
+        if defined?(@record) && params[:meditation][:thumbnail].present?
+          record_params[:thumbnail_id] = @record.media_files.create!(file: params[:meditation][:thumbnail]).id
+        end
+
         if defined?(@record) && params[:meditation][:vimeo_metadata].present?
           record_params[:vimeo_metadata][:horizontal] = (JSON.parse(record_params[:vimeo_metadata][:horizontal]) rescue {})
           record_params[:vimeo_metadata][:vertical] = (JSON.parse(record_params[:vimeo_metadata][:vertical]) rescue {})
         end
 
         super record_params
+      end
+
+      def after_create
+        if params[:meditation][:thumbnail]
+          media_file = @record.media_files.create!(file: params[:meditation][:thumbnail])
+          @record.thumbnail_id = media_file.id
+          @record.save!(validate: @record.published?)
+        end
       end
 
   end

@@ -84,6 +84,16 @@ module Draftable
       end
     end
 
+    self.class.reflect_on_all_associations.each do |model|
+      puts "CHECK ASSOC #{model.name}"
+      next unless model.options[:draftable].present?
+
+      if send(model.name).any?(&:changed?)
+        puts "Association #{model.name} has changed"
+      end
+      binding.pry
+    end
+
     self[:draft] = (parsed_draft || {}).merge(new_draft)
   end
 

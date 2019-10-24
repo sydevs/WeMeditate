@@ -2,8 +2,12 @@
 - allow = policy(record)
 
 - if allow.update_structure?
-  = f.association :duration_filter
-  = f.association :goal_filters
+  = draftable_field f, :duration_filter, type: :association do |value|
+    - f.association :duration_filter, wrapper: false, label: false, selected: value
+  p LIVE #{f.object.goal_filter_ids}
+  p DRAFT #{f.object.parsed_draft['goal_filter_ids']}
+  = draftable_field f, :goal_filters, type: :association do |value|
+    - f.association :goal_filters, wrapper: false, label: false, selected: value
 - else
   .preview-item
     div
@@ -15,43 +19,24 @@
       | #{human_attribute_name(record.class, :duration_filter)}: 
       = record.duration_filter.name
 
-= f.input :image, as: :file, wrapper: :semantic_file, icon: file_type_icon(:image), file: record.image, input_html: { accept: file_type_accepts(:image) }
-- if record.image.present?
-  .preview-item = image_tag record.image.url(:small), class: 'ui rounded image'
+= draftable_media_field f, :thumbnail, preview: true, wrapper: { required: true }
 
-= f.input :horizontal_vimeo_id, wrapper: :semantic_input, icon: :video, wrapper_html: { class: 'js-vimeo-field' }
-- vimeo_metadata = record.vimeo_metadata(:horizontal)
-.preview-item
-  = hidden_field_tag "#{f.object_name}[vimeo_metadata][horizontal]", vimeo_metadata.to_json
-  .reload
-    i.sync.icon
-    = translate 'admin.action.descriptive.reload_vimeo_data'
-  .content style=('display: none' unless vimeo_metadata.present?)
-    .ui.metadata.accordion
-      .title
-        i.dropdown.icon
-        = Meditation.human_attribute_name(:vimeo_metadata)
-      pre.raw.content = vimeo_metadata.pretty_inspect
-    .hint = vimeo_metadata[:title]
-    a.ui.image href="https://vimeo.com/#{record.horizontal_vimeo_id}" target='_blank'
-      img src=vimeo_metadata[:thumbnail]
+= draftable_field f, :horizontal_vimeo_id, type: :integer
+- if record.horizontal_vimeo_id.present?
+  .preview-item
+    a.ui.label.link href="https://vimeo.com/#{record.horizontal_vimeo_id}" target='_blank'
+      | vimeo.com/#{record.horizontal_vimeo_id}
+      i.external.alternate.icon
 
-= f.input :vertical_vimeo_id, wrapper: :semantic_input, icon: :video, wrapper_html: { class: 'js-vimeo-field' }
-- vimeo_metadata = record.vimeo_metadata(:vertical)
-.preview-item
-  = hidden_field_tag "#{f.object_name}[vimeo_metadata][vertical]", vimeo_metadata.to_json
-  .reload
-    i.sync.icon
-    = translate 'admin.action.descriptive.reload_vimeo_data'
-  .content style=('display: none' unless vimeo_metadata.present?)
-    .ui.metadata.accordion
-      .title
-        i.dropdown.icon
-        = Meditation.human_attribute_name(:vimeo_metadata)
-      pre.raw.content = vimeo_metadata.pretty_inspect
-    .hint = vimeo_metadata[:title]
-    a.ui.image href="https://vimeo.com/#{record.vertical_vimeo_id}" target='_blank'
-      img src=vimeo_metadata[:thumbnail]
+= draftable_field f, :vertical_vimeo_id, type: :integer
+- if record.vertical_vimeo_id.present?
+  .preview-item
+    a.ui.label.link href="https://vimeo.com/#{record.vertical_vimeo_id}" target='_blank'
+      | vimeo.com/#{record.vertical_vimeo_id}
+      i.external.alternate.icon
 
-= f.input :excerpt, as: :text
-= f.input :description, as: :text
+= draftable_field f, :excerpt, type: :text do |value|
+  - f.input_field :excerpt, as: :text, rows: 3, value: value
+
+= draftable_field f, :description, type: :text do |value|
+  - f.input_field :description, as: :text, rows: 5, value: value

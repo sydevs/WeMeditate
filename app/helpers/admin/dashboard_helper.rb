@@ -13,6 +13,7 @@ module Admin
       untranslated SubtleSystemNode, :critical, &block
       needs_review StaticPage, :important, &block
       needs_review SubtleSystemNode, :important, &block
+      needs_review Meditation, :important, &block
       needs_review Treatment, :important, &block
       needs_review Article, :important, &block
       unpublished Article, :normal, &block
@@ -96,9 +97,11 @@ module Admin
           policy_scope(model).needs_review.each do |record|
             next unless record.ready_for_review?
             
+            action = record.contentable? ? :review : :edit
             block.call({
               model: model,
               name: record_name(record),
+              url: polymorphic_admin_path([action, :admin, record]),
               message: translate('admin.tags.unapproved_changes'),
               urgency: urgency,
             })

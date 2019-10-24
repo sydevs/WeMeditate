@@ -12,19 +12,24 @@ module Admin
     end
 
     def update_translation?
-      manage?
+      return false unless can_access_locale?
+      manage? || (translator? && needs_translation?)
     end
 
     def update_structure?
       (manage? && super_admin?) || (create? && record.new_record?)
     end
 
-    def publish?
-      update?
-    end
-
     def create?
       manage?
+    end
+
+    def publish?
+      manage?
+    end
+
+    def review?
+      publish?
     end
 
   end

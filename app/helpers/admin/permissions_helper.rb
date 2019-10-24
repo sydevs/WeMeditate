@@ -38,7 +38,7 @@ module Admin
       },
 
       meditation: {
-        translator: [],
+        translator: %i[translate],
         writer: [],
         editor: [],
         regional_admin: %i[update publish create],
