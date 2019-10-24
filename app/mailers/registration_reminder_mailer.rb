@@ -1,2 +1,0 @@
-class RegistrationReminderMailer < ApplicationMailer
-end

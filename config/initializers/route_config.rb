@@ -5,7 +5,7 @@ RouteTranslator.config do |config|
   config.verify_host_path_consistency = true
 
   if Rails.env.production?
-    Rails.configuration.admin_url = 'http://admin.wemeditate.co'
+    Rails.configuration.admin_domain = 'admin.wemeditate.co'
     config.host_locales = {
       'ua.wemeditate.co' => :uk, # Ukrainian
       'am.wemeditate.co' => :hy, # Armenian
@@ -20,7 +20,7 @@ RouteTranslator.config do |config|
       'www.wemeditate.co' => :en, # English
     } # Domains at the bottom of the list have highest priority.
   elsif Rails.env.staging?
-    Rails.configuration.admin_url = 'http://admin.staging.wemeditate.co'
+    Rails.configuration.admin_domain = 'admin.staging.wemeditate.co'
     config.host_locales = {}
 
     I18n.available_locales.each do |locale|
@@ -28,10 +28,10 @@ RouteTranslator.config do |config|
       config.host_locales[hostname] = locale
     end
   else
-    Rails.configuration.admin_url = 'http://admin.localhost:3000'
-    config.host_locales = {}
     host = 'localhost'
     #host = 'omicron.local'
+    Rails.configuration.admin_domain = "admin.#{host}:3000"
+    config.host_locales = {}
 
     I18n.available_locales.each do |locale|
       hostname = (locale == :en ? host : "#{locale}.#{host}")
@@ -39,6 +39,7 @@ RouteTranslator.config do |config|
     end
   end
 
+  Rails.configuration.admin_url = "http://#{Rails.configuration.admin_domain}"
   Rails.configuration.locale_hosts = config.host_locales.invert
 end
 

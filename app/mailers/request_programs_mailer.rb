@@ -1,2 +1,0 @@
-class RequestProgramsMailer < ApplicationMailer
-end

@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   get :maintenance, to: 'application#maintenance'
 
   # ===== ADMIN ROUTES ===== #
-  admin_domains = Rails.env.development? ? %w[admin.localhost admin.omicron.local admin.wemeditate.co] : %w[admin.wemeditate.co]
-  constraints DomainConstraint.new(admin_domains) do
+  constraints DomainConstraint.new(Rails.configuration.admin_domain) do
     get '404', to: 'admin/application#error'
     get '422', to: 'admin/application#error'
     get '500', to: 'admin/application#error'

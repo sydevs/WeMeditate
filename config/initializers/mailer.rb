@@ -18,7 +18,7 @@ end
 unless Rails.env.production?
   class EmailEnvironmentLabeler
     def self.delivering_email(mail)
-      mail.subject.prepend("#{Rails.application.class.parent_name}/#{Rails.env}")
+      mail.subject.prepend("[WM/#{Rails.env}] ")
     end
   end
   
