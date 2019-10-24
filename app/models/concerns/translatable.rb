@@ -19,7 +19,7 @@ module Translatable
     base.scope :without_complete_translation, -> { where.not(id: with_translation).or(base.where(id: with_incomplete_translation)) }
 
     if base.stateable?
-      base.scope :with_incomplete_translation, -> { with_translation.where(state: nil).or(base.with_translation.where(state: base.states[:in_progress])) }
+      base.scope :with_incomplete_translation, -> { with_translation.where(state: nil).or(base.with_translation.where(state: [base.states[:no_state], base.states[:in_progress]])) }
     else
       base.scope :with_incomplete_translation, -> { with_translation.where(published_at: nil) }
     end

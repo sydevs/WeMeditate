@@ -74,7 +74,7 @@ module Admin::TableHelper
     needs_translation: %i[basic red],
     not_translated: %i[basic],
     # For `stateable?` records
-    no_state: %i[basic red],
+    no_state: %i[basic],
     in_progress: %i[basic],
     published: %i[basic blue],
     archived: %i[],

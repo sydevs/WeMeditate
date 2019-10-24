@@ -338,7 +338,7 @@ it:
         needs_translation: "Needs Translation"
         not_translated: "Not Translated"
         # Stateable
-        no_state: "Unknown"
+        no_state: "In Progress"
         in_progress: "In Progress"
         archived: :activerecord.attributes.generic.states.archived # Do not translate
         published: :activerecord.attributes.generic.states.published # Do not translate
