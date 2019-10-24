@@ -4,7 +4,6 @@ module AudioHelper
     playlists = {}
 
     songs = tracks.each_with_index.map do |track, index|
-      puts "PROCESS #{index} #{track.inspect}"
       if playlists
         track.instrument_filters.each do |filter|
           unless playlists.key?(filter.id)
