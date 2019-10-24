@@ -76,7 +76,7 @@ it:
     tags:
       published: "Pubblicato"
       unpublished: "Non ancora pubblicato"
-      unpublished_changes: "Ci sono cambiamenti non pubblicati"
+      unapproved_changes: "Has Unapproved Changes" # TODO: Translate
       unpublished_draft: "Anteprima non pubblicata"
       no_translation: "Traduzione %{language} mancante"
       pending_translation: "Traduzione %{language} presente, da approvare."
@@ -106,7 +106,7 @@ it:
       confirm_discard_draft: "Are you sure you want to discard all changes shown on this page? This cannot be undone!" # TODO: Translate
       confirm_unsaved_changes: "Unsaved changes will be lost. Are you sure you want to leave the page?" # TODO: Translate
       drop_files_here: "Trascina i documenti qui."
-      unpublished_changes_notice: "%{page} ha delle modifiche non pubblicate. Questi cambiamenti non saranno visibili fino a quando un amministratore non li avrà rivisti."
+      unapproved_changes_notice: "%{page} ha delle modifiche non pubblicate. Questi cambiamenti non saranno visibili fino a quando un amministratore non li avrà rivisti."
       pending_invitation_notice: "%{person} è stato invitato/a ad essere editore di WeMeditate, ma non ha ancora risposto."
       draft_notice: "Sati vedendo un'anteprima di %{page}. Questa versione non sarà visibile fino a quando un amministratore non l'avrà rivista."
       draft_contributed_by: "Quest'anteprima include dei cambiamenti effettuati da %{people}."

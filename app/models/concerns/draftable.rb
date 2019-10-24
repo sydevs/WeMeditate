@@ -41,9 +41,15 @@ module Draftable
   end
 
   def ready_for_review? section = nil
-    return false unless has_draft? && (parsed_draft['published'] == true || !respond_to?(:published) || published)
-    return false if section == :content && parsed_draft&.except('content', 'contributors').present? 
-    return true
+    return false unless has_draft?(section)
+
+    if stateable?
+      state == :published || parsed_draft['state'] == 'published'
+    elsif publishable?
+      published
+    else
+      true
+    end
   end
 
   def parsed_draft

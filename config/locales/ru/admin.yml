@@ -78,7 +78,7 @@ ru:
     tags:
       published: "Опубликовано"
       unpublished: "Не опубликовано"
-      unpublished_changes: "Есть неопубликованные изменения"
+      unapproved_changes: "Has Unapproved Changes" # TODO: Translate
       unpublished_draft: "Неопубликованный черновик"
       no_translation: "Отсутствует перевод на %{language}" # "language" will be replaced with the language that this file is written in.
       pending_translation: "Есть перевод на %{language}, в ожидании утверждения" # "language" will be replaced with the language that this file is written in.
@@ -110,7 +110,7 @@ ru:
       confirm_discard_draft: "Вы уверены, что хотите отменить правки, показанные на этой странице? Действие невозможно будет отменить!" 
       confirm_unsaved_changes: "Подождите! Несохраненные данные будут потеряны. Вы уверены, что хотите покинуть страницу?"
       drop_files_here: "Переместите файлы сюда"
-      unpublished_changes_notice: "%{page} имеет несохраненные изменения. Изменения не видны пользователям, пока они не утверждены администратором."
+      unapproved_changes_notice: "%{page} имеет несохраненные изменения. Изменения не видны пользователям, пока они не утверждены администратором."
       pending_invitation_notice: "%{person} получил приглашение стать редактором сайта, но ещё не ответил."
       draft_notice: "Вы просматриваете черновик %{page}. Эта версия не видна пользователям, пока они не утверждена администратором."
       draft_contributed_by: "Этот черновик содержит изменения, сделанные %{people}."

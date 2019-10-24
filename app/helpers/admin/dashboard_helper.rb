@@ -99,8 +99,7 @@ module Admin
             block.call({
               model: model,
               name: record_name(record),
-              url: polymorphic_admin_path([:review, :admin, record]),
-              message: translate('admin.tags.unpublished_changes'),
+              message: translate('admin.tags.unapproved_changes'),
               urgency: urgency,
             })
           end

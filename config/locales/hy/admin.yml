@@ -78,7 +78,7 @@ hy:
     tags:
       published: "Published"
       unpublished: "Not Published"
-      unpublished_changes: "Has Unpublished Changes"
+      unapproved_changes: "Has Unapproved Changes"
       unpublished_draft: "Unpublished Draft"
       no_translation: "No %{language} Translation" # "language" will be replaced with the language that this file is written in.
       pending_translation: "Has %{language} Translation, Pending Approval" # "language" will be replaced with the language that this file is written in.
@@ -108,7 +108,7 @@ hy:
       confirm_discard_draft: "Are you sure you want to discard all changes to this page? This cannot be undone!"
       confirm_unsaved_changes: "Unsaved changes will be lost. Are you sure you want to leave the page?"
       drop_files_here: "Drop files here"
-      unpublished_changes_notice: "This %{page} has unpublished changes. These will not be visible to the public until they have been reviewed by an administrator."
+      unapproved_changes_notice: "This %{page} has unpublished changes. These will not be visible to the public until they have been reviewed by an administrator."
       pending_invitation_notice: "This %{person} has been sent an invitation to become an editor on the website, but has not yet responded."
       draft_notice: "You are viewing a draft version of this %{page}. This version not be visible to the public until it has been reviewed by an administrator."
       draft_contributed_by: "This draft includes changed made by %{people}."
