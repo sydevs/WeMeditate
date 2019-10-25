@@ -172,7 +172,7 @@ module MetadataHelper
     end
 
     def build_event_metadata record, tags
-      return unless record.try(:date).present? && record.try(:location).present?
+      return unless record.try(:type_event?) && record.try(:date).present? && record.try(:coordinates).present?
 
       {
         '@type' => 'Event',
