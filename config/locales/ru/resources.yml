@@ -130,10 +130,11 @@ ru:
           low: "Низкая Видимость"
           normal: "Нормальная Видимость"
           high: "Высокая Видимость"
-        author_type: "Тип автора" 
-        author_types: 
-          author: "Автор"
-          artist: "Деятель искусства"
+        article_type: "Article Type" # TODO: Translate
+        article_types: # TODO: Translate
+          article: "Article"
+          artwork: "Artwork"
+          event: "Event"
         excerpt: "Выдержка"
         thumbnail: "Превью"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate

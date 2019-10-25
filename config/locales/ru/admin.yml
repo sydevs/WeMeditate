@@ -124,7 +124,7 @@ ru:
       excerpt: "Это короткое превью страницы, которое будет показано в списке страниц типа \"%{page}\"."
       article_visibility: "This determines where an article will appear on the Inspiration page." # TODO: Translate
       article_author: "Профиль, который будет отображаться в статье на сайте."
-      article_author_type: "Это определяет как будет характеризован автор на этой странице." 
+      article_article_type: "Different article types will offer a few different fields and display the author differently." # TODO: Translate
       article_owner: "Администраторы и Редакторы всегда могут редактировать любые статьи. Это поле дает автору специальное разрешение на изменение статьи после её публикации. Обычно это человек, который написал первую версию статьи."
       article_video: "Если вы добавите видео, оно будет отображено на превью статьи."
       article_date: "Если данная статья посвящена событию, то вы можете добавить дату события здесь. Эта дата будет отображена на превью статьи."

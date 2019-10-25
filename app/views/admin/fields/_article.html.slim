@@ -32,9 +32,9 @@
       = record.date
 
 - if allow.update_structure?
-  - author_types = Article.author_types.map { |k, v| [human_enum_name(Article, :author_type, k), k] }
+  - article_types = Article.article_types.map { |k, v| [human_enum_name(Article, :article_type, k), k] }
   = f.association :author, hint: translate('admin.hints.article_author'), input_html: { class: 'clearable' }
-  = f.input :author_type, collection: author_types, hint: translate('admin.hints.article_author_type')
+  = f.input :article_type, collection: article_types, hint: translate('admin.hints.article_article_type')
 
 - if %w[regional_admin super_admin].include?(current_user.role)
   = f.association :owner, collection: User.writer, hint: translate('admin.hints.article_owner'), input_html: { class: 'clearable' }

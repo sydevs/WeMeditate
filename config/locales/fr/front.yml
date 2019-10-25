@@ -33,7 +33,8 @@ fr:
       local: "Classes near me"
 
   author:
-    about_the_author: "About the %{author}"
+    about_the_author: "About the author"
+    about_the_artist: "About the artist"
     written_by: "Written by"
     meditating_for:
       one: "Meditating for 1 year"

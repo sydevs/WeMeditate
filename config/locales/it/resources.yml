@@ -85,10 +85,11 @@ it:
           low: "Visibilità Bassa"
           normal: "Visibilità Normale"
           high: "Visibilità Alta"
-        author_type: "Author Type" # TODO: Translate
-        author_types: # TODO: Translate
-          author: "Author"
-          artist: "Artist"
+        article_type: "Article Type" # TODO: Translate
+        article_types: # TODO: Translate
+          article: "Article"
+          artwork: "Artwork"
+          event: "Event"
         excerpt: "Citazione"
         thumbnail: "Miniatura"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate

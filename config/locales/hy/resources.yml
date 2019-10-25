@@ -85,10 +85,11 @@ hy:
           low: "Low Visibility"
           normal: "Normal Visibility"
           high: "High Visibility"
-        author_type: "Author Type"
-        author_types:
-          author: "Author"
-          artist: "Artist"
+        article_type: "Article Type"
+        article_types:
+          article: "Article"
+          artwork: "Artwork"
+          event: "Event"
         excerpt: "Excerpt"
         thumbnail: "Thumbnail"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate

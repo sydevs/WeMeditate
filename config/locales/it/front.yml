@@ -33,7 +33,8 @@ it:
       local: "Corsi vicino a Me"
 
   author:
-    about_the_author: "About the %{author}" # TODO: Translate
+    about_the_author: "About the author"
+    about_the_artist: "About the artist" # TODO: Translate
     written_by: "Scritto da"
     meditating_for:
       one: "Medita da 1 anno"

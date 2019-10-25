@@ -25,7 +25,7 @@ class Article < ApplicationRecord
   belongs_to :owner, class_name: 'User', optional: true
   belongs_to :author, optional: true
   enum priority: { high: 1, normal: 0, low: -1, pinned: 999, hidden: -999 }
-  enum author_type: { author: 0, artist: 1 }
+  enum article_type: { article: 0, artwork: 1, event: 2 }, _prefix: 'type'
 
   # Validations
   validates :name, presence: true

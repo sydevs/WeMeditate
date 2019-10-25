@@ -5,7 +5,8 @@
 = detail_review_block @record, 'category_id', icon: model_icon_key(Category), type: :association
 = detail_review_block @record, 'priority', icon: 'eye', type: :enum
 = detail_review_block @record, 'author_id', icon: model_icon_key(Author), type: :association
-= detail_review_block @record, 'author_type', icon: 'id card', type: :enum
 = detail_review_block @record, 'vimeo_id', icon: 'play circle'
+= detail_review_block @record, 'article_type', icon: 'id card', type: :enum
 = detail_review_block @record, 'date', icon: 'calendar', type: :date
+= detail_review_block @record, 'coordinates', icon: 'marker', type: :location
 = detail_review_block @record, 'metatags', icon: 'tags', type: :json

@@ -162,7 +162,7 @@ module MetadataHelper
           }
 
           data['author'] = author
-          data['about'] = author if record.try(:author_type) == 'artist'
+          data['about'] = author if record.try(:article_type) == 'artist'
         else
           data['author'] = build_organization_metadata
         end

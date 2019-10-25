@@ -6,10 +6,10 @@ main.scrollspy-target id=dom_id(@article)
     .author.author--mini
       a.author__image href='#author'
         = smart_image_tag @article.author.image, '64px'
-      - if @article.author_type == 'author'
-        .author__name #{translate 'author.written_by'} <em>#{@article.author.name}</em>, #{@article.author.country_code}
-      - else
+      - if @article.type_artwork?
         .author__name <em>#{@article.author.name}</em>, #{@article.author.country_code}
+      - else
+        .author__name #{translate 'author.written_by'} <em>#{@article.author.name}</em>, #{@article.author.country_code}
 
       /- if @article.author.title
         .author__title
@@ -19,7 +19,7 @@ main.scrollspy-target id=dom_id(@article)
       - if @article.author.years_meditating
         .author__experience = translate('author.meditating_for', count: @article.author.years_meditating)
 
-      - if @article.author_type == 'author'
+      - if @article.type_article?
         .author__reading_time.js-reading-time
   - else
     .author.author--mini
@@ -32,7 +32,10 @@ main.scrollspy-target id=dom_id(@article)
 
 - if @article.author
   .author.author--full id='author'
-    .author__header = translate 'author.about_the_author', author: human_enum_name(@article, :author_type).downcase
+    - if @article.type_artwork?
+      .author__header = translate 'author.about_the_artist'
+    - else
+      .author__header = translate 'author.about_the_author'
     .author__meta
       .author__image= smart_image_tag @article.author.image, '128px'
       .author__name #{@article.author.name}, #{@article.author.country_code}
