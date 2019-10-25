@@ -6,6 +6,7 @@
 class Article < ApplicationRecord
 
   # Extensions
+  audited
   translates *%i[
     name slug metatags priority order
     draft published_at state

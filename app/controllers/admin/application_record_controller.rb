@@ -1,7 +1,7 @@
 module Admin
   class ApplicationRecordController < Admin::ApplicationController
 
-    before_action :set_record, only: %i[show edit write update destroy preview review approve]
+    before_action :set_record, only: %i[show edit write update destroy preview review approve audit]
     before_action :authorize!, except: %i[create]
 
     def index
@@ -114,6 +114,10 @@ module Admin
         format.html { redirect_to helpers.polymorphic_admin_path([:admin, @model]), flash: { notice: translate('admin.result.deleted') } }
         format.js { render 'admin/application/destroy' }
       end
+    end
+
+    def audit
+      @audits = @record.audits.with_associations
     end
 
     def sort

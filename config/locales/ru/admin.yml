@@ -58,7 +58,8 @@ ru:
       descriptive:
         show: "Посмотреть на сайте"
         preview: "Предварительный просмотр на сайте"
-        reload_vimeo_data: "Reload Vimeo Metadata" # TODO: Translate
+        reload_vimeo_data: "Reload Vimeo Metadata"
+        audit: "View change logs" # TODO: Translate
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
@@ -140,6 +141,11 @@ ru:
       # 'cannot_delete_attached_record' example: ""You cannot delete a Category which has Articles attached to it. Reassign the Articles and try again.""
       cannot_delete_attached_record: "Вы не можете удалить %{category}, прикреплённый к %{pages}. Выберите другую %{pages} и попробуйте снова."
       published: "Успешно опубликован."
+    
+    audit: # TODO: Translate
+      title: "History of changes to \"%{record}\" %{model}"
+      changed_by: "by %{name}"
+      changed_to: "changed to"
     
     # ===== CONTENT ===== #
     # This section defines text that will be shown in the content editor.

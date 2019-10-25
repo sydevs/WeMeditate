@@ -4,6 +4,7 @@
 class Meditation < ApplicationRecord
 
   # Extensions
+  audited
   translates *%i[
     name slug metatags views popularity published_at state
     excerpt description

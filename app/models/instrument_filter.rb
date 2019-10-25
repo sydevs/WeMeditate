@@ -9,6 +9,7 @@
 class InstrumentFilter < ApplicationRecord
 
   # Extentions
+  audited
   translates :name, :published_at, :published
 
   # Concerns

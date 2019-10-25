@@ -28,6 +28,7 @@ Rails.application.routes.draw do
           get :review, on: :member
           patch :approve, on: :member, path: 'review'
           get :preview, on: :member
+          get :audit, on: :member
           resources :media_files, only: %i[create]
         end
 

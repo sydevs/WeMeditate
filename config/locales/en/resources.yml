@@ -50,6 +50,9 @@ en:
       media_file:
         one: "Media File"
         other: "Media Files"
+      audit:
+        one: "Change Log"
+        other: "Change Logs"
 
     attributes:
       generic:
@@ -57,6 +60,7 @@ en:
         published: "Published"
         name: "Name"
         slug: "URL"
+        draft: "Draft"
         state: "Status"
         states:
           no_state: "No Translation Started"
@@ -66,6 +70,7 @@ en:
           unpublished: "Not Published"
 
       article:
+        draft: :activerecord.attributes.generic.draft # Do not translate
         name: "Title"
         slug: :activerecord.attributes.generic.slug # Do not translate
         category: :activerecord.models.category.one # Do not translate
@@ -105,6 +110,7 @@ en:
         published_at: "Publish Date"
 
       static_page:
+        draft: :activerecord.attributes.generic.draft # Do not translate
         name: "Title"
         slug: :activerecord.attributes.generic.slug # Do not translate
         state: :activerecord.attributes.generic.state # Do not translate
@@ -132,6 +138,7 @@ en:
         metatags: "Metadata"
 
       subtle_system_node:
+        draft: :activerecord.attributes.generic.draft # Do not translate
         state: :activerecord.attributes.generic.state # Do not translate
         states:
           no_state: :activerecord.attributes.generic.states.no_state # Do not translate
@@ -168,6 +175,7 @@ en:
           other: "%{count} Articles"
 
       treatment:
+        draft: :activerecord.attributes.generic.draft # Do not translate
         state: :activerecord.attributes.generic.state # Do not translate
         states:
           no_state: :activerecord.attributes.generic.states.no_state # Do not translate
@@ -283,3 +291,11 @@ en:
           editor: "Editor"
           regional_admin: "Regional Admin"
           super_admin: "Super Admin"
+
+      audit:
+        user: :activerecord.models.user.one # Do not translate
+        action: "Action"
+        actions:
+          update: "Updated"
+          create: "Created"
+          destroy: "Deleted"

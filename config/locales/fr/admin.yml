@@ -59,6 +59,7 @@ fr:
         show: "View on website"
         preview: "Preview draft on website"
         reload_vimeo_data: "Reload Vimeo Metadata"
+        audit: "View change logs"
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
@@ -138,6 +139,11 @@ fr:
       cannot_delete_attached_record: "You cannot delete a %{category} which has %{pages} attached to it. Reassign the %{pages} and try again."
       # Example: "You cannot delete a Category which has Articles attached to it. Reassign the Articles and try again."
       published: "Published successfully."
+    
+    audit:
+      title: "History of changes to \"%{record}\" %{model}"
+      changed_by: "by %{name}"
+      changed_to: "changed to"
     
     # ===== CONTENT ===== #
     # This section defines text that will be shown in the content editor.

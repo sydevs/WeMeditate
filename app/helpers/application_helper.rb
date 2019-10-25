@@ -18,4 +18,9 @@ module ApplicationHelper
     "https://#{locale_host}/#{path.sub(/^\//, '')}"
   end
 
+  # Get the web domain for the current locale
+  def locale_host
+    Rails.configuration.locale_hosts[I18n.locale]
+  end
+
 end

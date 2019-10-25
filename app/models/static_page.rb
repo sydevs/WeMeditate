@@ -8,6 +8,7 @@
 class StaticPage < ApplicationRecord
 
   # Extensions
+  audited
   translates :name, :slug, :metatags, :content, :draft, :published_at, :state
 
   # Concerns

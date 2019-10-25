@@ -8,6 +8,7 @@
 class SubtleSystemNode < ApplicationRecord
 
   # Extensions
+  audited
   translates :name, :slug, :excerpt, :metatags, :content, :draft, :state, :published_at
 
   # Concerns

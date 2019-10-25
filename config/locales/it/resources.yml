@@ -50,6 +50,9 @@ it:
       media_file:
         one: "Media File"
         other: "Media Files"
+      audit:
+        one: "Change Log"
+        other: "Change Logs"
 
     attributes:
       generic:
@@ -286,3 +289,11 @@ it:
           editor: "Editore"
           regional_admin: "Amministratore Regionale"
           super_admin: "Super Amministratore"
+
+      audit:
+        user: :activerecord.models.user.one # Do not translate
+        action: "Action"
+        actions:
+          update: "Updated"
+          create: "Created"
+          destroy: "Deleted"

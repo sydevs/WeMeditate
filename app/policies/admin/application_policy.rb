@@ -42,6 +42,10 @@ module Admin
       review?
     end
 
+    def audit?
+      review?
+    end
+
     def preview?
       update?
     end

@@ -5,6 +5,7 @@ require 'taglib'
 class Track < ApplicationRecord
 
   # Extensions
+  audited
   translates :name, :published_at, :published
 
   # Concerns

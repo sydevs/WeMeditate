@@ -4,6 +4,7 @@
 class User < ApplicationRecord
 
   # Extensions
+  audited
   devise :database_authenticatable, :recoverable, :rememberable, :validatable, :invitable, :lockable, :trackable
 
   # Associations

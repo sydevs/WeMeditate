@@ -95,6 +95,11 @@ ru:
         many: "Медиа файлов" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
         other: "Медиа файлы" # Nonspecific number of elements
         
+        audit: # TODO: Translate
+        one: "Change Log" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Change Logs" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Change Logs" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Change Logs" # Nonspecific number of elements
 
     attributes:
       generic:
@@ -338,4 +343,11 @@ ru:
           editor: "Редактор"
           regional_admin: "Местный админ"
           super_admin: "Главный админ"
-          
+
+      audit:
+        user: :activerecord.models.user.one # Do not translate
+        action: "Action"
+        actions:
+          update: "Updated"
+          create: "Created"
+          destroy: "Deleted"

@@ -1,0 +1,54 @@
+
+- content_for :title, human_model_name(Audit, :plural)
+- allow = policy(@record)
+
+.ui.small.header = translate('admin.audit.title', record: @record.preview_name, model: human_model_name(@model).downcase)
+.ui.bulleted.list
+  - @audits.each do |audit|
+    .item
+      = human_enum_name(audit, :action)
+      ' 
+      - if audit.user
+        = translate('admin.audit.changed_by', name: audit.user.preview_name)
+        '  - 
+      = audit.created_at.to_s(:short)
+
+/.ui.fluid.styled.accordion
+  - @audits.each do |audit|
+    .title
+      i.dropdown.icon
+      .floated
+        - if audit.user
+          = translate('admin.audit.changed_by', name: audit.user.preview_name)
+          '  - 
+        = audit.created_at.to_s(:short)
+        
+      | #{human_enum_name(audit, :action)} - #{audit.auditable.try(:preview_name)} (#{human_model_name(audit.auditable_type.constantize)})
+    .content
+      table.ui.very.basic.table
+        tbody
+          - if audit.action == 'update'
+            - audit.audited_changes.each do |field, change|
+              - next if change[0] == change[1]
+              tr
+                th = human_attribute_name(audit.auditable.class, field)
+                td = translate('admin.audit.changed_to')
+              tr
+                td = change[0] || 'nil'
+                td = change[1] || 'nil'
+          - else
+            - audit.audited_changes.each do |field, change|
+              tr
+                th = human_attribute_name(audit.auditable.class, field)
+              tr
+                td = change || 'nil'
+
+p
+  - if allow.show?
+    a.ui.basic.button href=polymorphic_admin_path([:admin, @record])
+      i.left.arrow.icon
+      = translate 'admin.action.simple.back'
+  - elsif policy(@model).index?
+    a.ui.basic.button href=polymorphic_admin_path([:admin, defined?(@record.page) ? @record.page : @record.class])
+      i.left.arrow.icon
+      = translate 'admin.action.target.back', records: human_model_name(@record, :plural)

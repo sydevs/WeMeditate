@@ -8,6 +8,7 @@
 class DurationFilter < ApplicationRecord
 
   # Extensions
+  audited
   translates :published_at, :published
 
   # Concerns

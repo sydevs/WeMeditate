@@ -8,6 +8,7 @@ class Category < ApplicationRecord
 
   # Extensions
   extend FriendlyId
+  audited
   translates :name, :slug, :published_at, :published
   friendly_id :name, use: :globalize
 

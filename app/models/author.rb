@@ -7,6 +7,7 @@
 class Author < ApplicationRecord
   
   # Extensions
+  audited
   translates :title, :description, :state, :published_at
 
   # Concerns

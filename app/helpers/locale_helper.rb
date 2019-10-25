@@ -3,11 +3,6 @@
 
 module LocaleHelper
 
-  # Get the web domain for the current locale
-  def locale_host
-    Rails.configuration.locale_hosts[I18n.locale]
-  end
-
   # Get the translated name for a given country_code
   def country_name country_code
     countries[country_code.to_s.upcase].titleize
