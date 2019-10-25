@@ -21,7 +21,7 @@ module Admin
     end
 
     def update?
-      manage?
+      manage? || record == user
     end
 
     def create?
@@ -39,7 +39,7 @@ module Admin
     def user_record_is_subordinate?
       return true if record.is_a?(Class)
       return false if %w[regional_admin super_admin].include?(record.role)
-      return false unless (record.available_languages & user.available_languages).present?
+      return false unless (record.accessible_locales & user.accessible_locales).present?
       return true
     end
 

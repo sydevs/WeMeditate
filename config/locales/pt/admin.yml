@@ -131,6 +131,8 @@ pt:
       article_coordinates: "Providing the latitude and longitude of an event will allow rich Google search results."
       article_published_at: "If this date is in the future, then the article will be scheduled to be published on that date. Leave this fiield blank to have the publish date set automatically."
       fixed_slug: "This is a special page, it's URL cannot be changed."
+      languages_access: "These are the locales where this user can modify the site content."
+      languages_known: "These are the languages that a user can translate content from."
 
     result:
       created: "Created successfully."
@@ -454,6 +456,7 @@ pt:
         tracks: Music Tracks
         users: :activerecord.models.user.other # Do not translate
       locale:
+        no_languages: "No Languages"
         all_languages: "All Languages"
         other_languages: "Other Languages"
 

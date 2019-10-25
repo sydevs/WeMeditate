@@ -22,7 +22,7 @@ class User < ApplicationRecord
   scope :active, -> { where('last_sign_in_at > ?', 30.days.ago) }
   scope :inactive, -> { where(last_sign_in_at: nil).or(where('last_sign_in_at <= ?', 30.days.ago)) }
   scope :pending, -> { where.not(invitation_created_at: nil).where(invitation_accepted_at: nil) }
-  scope :for_locale, -> { where('languages = \'{}\' OR ? = ANY(languages)', I18n.locale) }
+  scope :for_locale, -> { where('languages_known = \'{}\' OR ? = ANY(languages_known)', I18n.locale) }
   scope :q, -> (q) { where('email ILIKE ?', "%#{q}%") if q.present? }
   
   # A user is active if they've signed in in the last 30 days
@@ -30,24 +30,34 @@ class User < ApplicationRecord
     last_sign_in_at.present? && last_sign_in_at > 30.days.ago
   end
 
-  # Override the lannguages writer so that we can convert them from symbols
-  def languages= list
+  # Override the languages_known writer so that we can convert them from symbols
+  def languages_known= list
     super (list.map(&:to_sym) & I18n.available_locales).map(&:to_s)
   end
 
-  # Override the languages accessor so that we can convert them to symbols
-  def languages
+  # Override the languages_known accessor so that we can convert them to symbols
+  def languages_known
     super.map(&:to_sym)
   end
 
-  # Returns a list of languages which this user doesn't already have associated with them.
-  def available_languages
-    all_languages? ? I18n.available_locales : languages
+  # Override the languages_access writer so that we can convert them from symbols
+  def languages_access= list
+    super (list.map(&:to_sym) & I18n.available_locales).map(&:to_s)
   end
 
-  # Returns true if the user is able to manage all languages.
-  def all_languages?
-    !self[:languages].present?
+  # Override the languages_access accessor so that we can convert them to symbols
+  def languages_access
+    super.map(&:to_sym)
+  end
+
+  # Returns a list of languages_known which this user doesn't already have associated with them.
+  def accessible_locales
+    can_access_all_locales? ? I18n.available_locales : languages_access
+  end
+
+  # Returns true if the user is able to manage all languages_known.
+  def can_access_all_locales?
+    !self[:languages_access].present?
   end
 
   # Has this user accepted their invitation?

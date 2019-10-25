@@ -25,7 +25,7 @@ module Translatable
     end
 
     # User scopes
-    base.scope :localizeable_by, -> (user) { where(original_locale: user.available_languages) }
+    base.scope :localizeable_by, -> (user) { foreign_locale.where(original_locale: user.languages_known) }
     base.scope :translatable_by, -> (user) { without_complete_translation.localizeable_by(user) }
     base.scope :needs_translation_by, -> (user) { without_translation.localizeable_by(user) }
 
@@ -37,11 +37,11 @@ module Translatable
   end
 
   def translatable_by? user
-    !has_complete_translation? && user.available_languages.include?(original_locale.to_sym)
+    !has_complete_translation? && user.accessible_locales.include?(original_locale.to_sym)
   end
 
   def needs_translation_by? user
-    !has_translation? && user.available_languages.include?(original_locale.to_sym)
+    !has_translation? && user.accessible_locales.include?(original_locale.to_sym)
   end
 
   def has_complete_translation? locale: I18n.locale

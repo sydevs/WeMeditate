@@ -13,13 +13,13 @@ html
   body class="admin #{controller_name} #{controller.action_name}"
     nav#sidebar = render 'layouts/admin/menu'
     main#main
-      - if current_user.available_languages.length > 1 || I18n.locale != current_user.available_languages.first
+      - if current_user.accessible_locales.length > 1 || I18n.locale != current_user.accessible_locales.first
         .ui.floating.search.dropdown.right.floated.basic.button
           .text
             = language_flag
             = language_name
           .menu
-            - current_user.available_languages.each do |language|
+            - current_user.accessible_locales.each do |language|
               a.item href=url_for(locale: language)
                 = language_flag language
                 = language_name(language, native: true)

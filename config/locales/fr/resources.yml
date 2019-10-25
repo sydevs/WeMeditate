@@ -279,7 +279,8 @@ fr:
         email: "Email Address"
         invitation_accepted_at: "Invitation accepted on"
         invited_by: :activerecord.models.invited_by # Do not translate
-        languages: "Languages"
+        languages_known: "Translatable Languages"
+        languages_access: "Accessible Locales"
         role: "Role"
         roles:
           translator: "Translator"

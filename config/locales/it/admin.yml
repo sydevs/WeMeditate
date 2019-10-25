@@ -129,6 +129,8 @@ it:
       article_date: "Set the start date of the event here. This date will appear on the article preview." # TODO: Translate
       article_published_at: "If this date is in the future, then the article will be scheduled to be published on that date. Leave this fiield blank to have the publish date set automatically. " # TODO: Translate
       fixed_slug: "This is a special page, it's URL cannot be changed." # TODO: Translate
+      languages_access: "These are the locales where this user can modify the site content." # TODO: Translate
+      languages_known: "These are the languages that a user can translate content from." # TODO: Translate
 
     result:
       created: "Creato con successo."
@@ -449,6 +451,7 @@ it:
         tracks: Music Tracks
         users: :activerecord.models.user.other # Do not translate
       locale:
+        no_languages: "No Languages" # TODO: Translate
         all_languages: "Tutte le lingue"
         other_languages: "Altre lingue"
 

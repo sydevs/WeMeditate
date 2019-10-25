@@ -16,16 +16,26 @@
 = f.input :name
 = f.input :email, as: :email
 
-- available_languages = current_user.available_languages.collect { |l| [language_name(l), l] }
-- selected = (@record.languages unless @record.languages == current_user.available_languages)
-- other_languages = (@record.available_languages - current_user.available_languages)
-
-- if !selected.present? && other_languages.present?
-  - other_languages = other_languages.map { |lang| language_name(lang) }.join(', ')
-  - hint = "#{translate('admin.misc.locale.other_languages')}: #{other_languages}"
-
 - if current_user != f.object
-  = f.input :languages, selected: selected, collection: available_languages, hint: hint, prompt: translate('admin.misc.locale.all_languages'), input_html: { multiple: true }
+  - language_options = current_user.accessible_locales.collect { |l| [language_name(l), l] }
+  - selected_languages_access = (@record.languages_access unless @record.languages_access == current_user.accessible_locales)
+  = f.input :languages_access, selected: selected_languages_access,
+                               collection: language_options,
+                               hint: translate('admin.hints.languages_access'),
+                               prompt: translate('admin.misc.locale.all_languages'),
+                               input_html: { multiple: true }
+
+  // If there are languages that are known by this user, but not selectable, we need to display those
+  - other_languages = (@record.accessible_locales - current_user.accessible_locales)
+  - if other_languages.present?
+    - other_languages = other_languages.map { |lang| language_name(lang) }.join(', ')
+    .hint #{translate('admin.misc.locale.other_languages')}: #{other_languages}
+
+  = f.input :languages_known, collection: language_options,
+                              hint: translate('admin.hints.languages_known'),
+                              prompt: translate('admin.misc.locale.no_languages'),
+                              input_html: { multiple: true }
+
   = f.input :role, collection: @assignable_roles.map { |k, v| [human_enum_name(User, :role, k), k] }
 
   ul.hint
@@ -35,8 +45,17 @@
         '  -
         = translate(role, scope: %i[admin permissions role_description])
 - else
-  = f.input :languages do
-    = record.available_languages.map { |lang| language_name(lang) }.join(', ')
+  = f.input :languages_access, hint: translate('admin.hints.languages_access') do
+    - if record.can_access_all_locales?
+      = translate('admin.misc.locale.all_languages')
+    - else
+      = record.languages_access.map { |lang| language_name(lang) }.join(', ')
+
+  = f.input :languages_known, hint: translate('admin.hints.languages_known') do
+    - if record.languages_known.present?
+      = translate('admin.misc.locale.no_languages')
+    - else
+      = record.languages_known.map { |lang| language_name(lang) }.join(', ')
 
   = f.input :role do
     strong = human_enum_name(record, :role)

@@ -335,7 +335,8 @@ ru:
         email: "E-mail"
         invitation_accepted_at: "Приглашение принято"
         invited_by: :activerecord.models.invited_by # Do not translate
-        languages: "Языки"
+        languages_known: "Translatable Languages" # TODO: Translate
+        languages_access: "Accessible Locales" # TODO: Translate
         role: "Роль"
         roles:
           translator: "Переводчик"

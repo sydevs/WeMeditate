@@ -9,6 +9,7 @@ User.roles.each do |role, _index|
     email: email,
     role: role,
     password: 'password',
+    languages_known: I18n.available_locales,
     invitation_created_at: DateTime.now,
     invitation_sent_at: DateTime.now,
     invitation_accepted_at: DateTime.now,

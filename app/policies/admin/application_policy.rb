@@ -92,7 +92,7 @@ module Admin
     end
 
     def can_access_locale?
-      user.available_languages.include? I18n.locale
+      user.accessible_locales.include? I18n.locale
     end
 
     def owns_record?

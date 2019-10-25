@@ -14,13 +14,13 @@ tr.record id=dom_id(user)
   td.collapsing.faded
     = human_enum_name(user, :role)
     br
-    - if user.languages.present?
-      - languages = user.languages.map { |l| language_name(l) }.join(', ')
-      - if user.languages.count > 4
-        div data-tooltip=languages
-          | #{user.languages.count} Languages
+    - if user.languages_known.present?
+      - languages = user.languages_known.map { |l| language_name(l) }
+      - if languages.count > 4
+        div data-tooltip=languages.join(', ')
+          | #{user.languages_known.count} Languages
       - else
-        = languages
+        = languages.join(', ')
     - else
       = translate('admin.misc.locale.all_languages')
 

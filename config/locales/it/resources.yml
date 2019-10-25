@@ -281,7 +281,8 @@ it:
         email: "Indirizzo Email"
         invitation_accepted_at: "Invito accettato il"
         invited_by: :activerecord.models.invited_by # Do not translate
-        languages: "Lingue"
+        languages_known: "Translatable Languages" # TODO: Translate
+        languages_access: "Accessible Locales" # TODO: Translate
         role: "Ruolo"
         roles:
           translator: "Traduttore"
