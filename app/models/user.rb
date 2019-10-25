@@ -22,7 +22,7 @@ class User < ApplicationRecord
   scope :active, -> { where('last_sign_in_at > ?', 30.days.ago) }
   scope :inactive, -> { where(last_sign_in_at: nil).or(where('last_sign_in_at <= ?', 30.days.ago)) }
   scope :pending, -> { where.not(invitation_created_at: nil).where(invitation_accepted_at: nil) }
-  scope :for_locale, -> { where('languages_known = \'{}\' OR ? = ANY(languages_known)', I18n.locale) }
+  scope :for_locale, -> { where('languages_access = \'{}\' OR ? = ANY(languages_access)', I18n.locale) }
   scope :q, -> (q) { where('email ILIKE ?', "%#{q}%") if q.present? }
   
   # A user is active if they've signed in in the last 30 days
