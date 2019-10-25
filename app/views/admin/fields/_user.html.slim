@@ -17,10 +17,9 @@
 = f.input :email, as: :email
 
 - if current_user != f.object
-  - language_options = current_user.accessible_locales.collect { |l| [language_name(l), l] }
   - selected_languages_access = (@record.languages_access unless @record.languages_access == current_user.accessible_locales)
   = f.input :languages_access, selected: selected_languages_access,
-                               collection: language_options,
+                               collection: current_user.accessible_locales.collect { |l| [language_name(l), l] },
                                hint: translate('admin.hints.languages_access'),
                                prompt: translate('admin.misc.locale.all_languages'),
                                input_html: { multiple: true }
@@ -31,7 +30,7 @@
     - other_languages = other_languages.map { |lang| language_name(lang) }.join(', ')
     .hint #{translate('admin.misc.locale.other_languages')}: #{other_languages}
 
-  = f.input :languages_known, collection: language_options,
+  = f.input :languages_known, collection: I18n.available_locales.collect { |l| [language_name(l), l] },
                               hint: translate('admin.hints.languages_known'),
                               prompt: translate('admin.misc.locale.no_languages'),
                               input_html: { multiple: true }
