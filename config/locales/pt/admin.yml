@@ -118,6 +118,7 @@ pt:
       text_too_short: "must have at least %{count} letters"
       invalid_vimeo_id: "must be a valid Vimeo ID"
       new_author_notice: "You have not set up your author profile yet, fill out the fields below and press save."
+      start_details_before_content: "Start translating details first, then the content."
 
     hints:
       excerpt: "This is a short preview of the %{page} content that will be shown in %{page} listings."

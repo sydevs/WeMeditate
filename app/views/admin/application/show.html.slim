@@ -17,9 +17,10 @@
         - action_text = :edit_details
         - action_key = :edit
 
-      a.ui.button href=polymorphic_admin_path([action_key, :admin, @record])
-        i.edit.icon
-        = translate(action_text, scope: %i[admin action simple])
+      - if allow.edit?
+        a.ui.button href=polymorphic_admin_path([action_key, :admin, @record])
+          i.edit.icon
+          = translate(action_text, scope: %i[admin action simple])
 
       - if @record.has_translation?
         .ui.floating.dropdown.icon.button
@@ -75,7 +76,11 @@
 - if allow.write?
   .table-actions
     = table_action translate(:edit_content, scope: %i[admin action simple]), 'pencil alternate', polymorphic_admin_path([:write, :admin, @record])
-
+- elsif allow.edit? && !@record.has_translation?
+  .table-actions
+    .ui.tiny.compact.basic.buttons
+      .ui.active.button
+        = translate('admin.messages.start_details_before_content')
 
 h4 = translate 'admin.content.outline_title', page: human_model_name(@model)
 

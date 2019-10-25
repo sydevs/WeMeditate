@@ -116,6 +116,7 @@ it:
       text_too_short: "è troppo corto, deve essere di %{count} lettere"
       invalid_vimeo_id: "deve essere un Vimeo ID valido"
       new_author_notice: "Non hai ancora creato il tuo Profilo Autore, riempi tutti i campi sotto e pressa Salva."
+      start_details_before_content: "Start translating details first, then the content." # TODO: Translate
 
     hints:
       excerpt: "This is a short preview of the %{page} content that will be shown in %{page} listings." # TODO: Translate
