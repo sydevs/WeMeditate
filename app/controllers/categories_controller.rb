@@ -5,7 +5,8 @@ class CategoriesController < ApplicationController
   # Render articles for all categories
   def index
     @category = nil
-    @articles = Article.publicly_visible.ordered.where.not(priority: Article.priorities[:hidden]).preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
+    @scope = Article.publicly_visible.where.not(priority: Article.priorities[:hidden])
+    @articles = @scope.ordered.preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
     return unless stale?(@articles)
     display
   end
@@ -13,7 +14,8 @@ class CategoriesController < ApplicationController
   # Render articles for a single category
   def show
     @category = Category.publicly_visible.friendly.find(params[:id])
-    @articles = @category.articles.publicly_visible.ordered.where.not(priority: Article.priorities[:hidden]).preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
+    @scope = @category.articles.publicly_visible.where.not(priority: Article.priorities[:hidden])
+    @articles = @scope.ordered.preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
     return unless stale?(@articles)
     display
   end
@@ -23,7 +25,7 @@ class CategoriesController < ApplicationController
     def display
       next_offset = params[:offset].to_i + ARTICLES_PER_PAGE
 
-      if @articles.size <= next_offset
+      if @scope.size <= next_offset
         @loadmore_url = nil
       elsif @category.nil?
         @loadmore_url = categories_path(format: 'js', offset: next_offset)
