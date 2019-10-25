@@ -2,7 +2,7 @@
 main.scrollspy-target id=dom_id(@article)
   h1.banner = @article.name
 
-  - if @article.author
+  - if @article.author && !@artcle.type_event?
     .author.author--mini
       a.author__image href='#author'
         = smart_image_tag @article.author.image, '64px'
@@ -21,7 +21,7 @@ main.scrollspy-target id=dom_id(@article)
 
       - if @article.type_article?
         .author__reading_time.js-reading-time
-  - else
+  /- else
     .author.author--mini
       .author__reading_time.js-reading-time
 
@@ -30,7 +30,7 @@ main.scrollspy-target id=dom_id(@article)
 
 = sharing_links
 
-- if @article.author
+- if @article.author && !@artcle.type_event?
   .author.author--full id='author'
     - if @article.type_artwork?
       .author__header = translate 'author.about_the_artist'
