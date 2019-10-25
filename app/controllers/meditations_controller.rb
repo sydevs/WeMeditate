@@ -24,6 +24,7 @@ class MeditationsController < ApplicationController
     end
   end
 
+  # The self realization page has a special action so that it can be redirected to from other parts of the site.
   def self_realization
     @meditation = Meditation.publicly_visible.get(:self_realization)
     raise ActionController::RoutingError.new('Self Realization Page Not Found') if @meditation.nil?
@@ -31,6 +32,7 @@ class MeditationsController < ApplicationController
     render :show
   end
 
+  # Displays an index of all meditations.
   def archive
     next_offset = params[:offset].to_i + MEDITATIONS_PER_PAGE
     @meditations = Meditation.publicly_visible.preload_for(:preview).offset(params[:offset]).limit(MEDITATIONS_PER_PAGE)

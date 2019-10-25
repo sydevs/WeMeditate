@@ -1,5 +1,9 @@
+## METADATA HELPER
+# This class helps us build <meta> tags and structured data to mark up the page
+
 module MetadataHelper
 
+  # Render metatags, including the <title> and <description> tags
   def render_metatags
     return unless @metatags.present?
 
@@ -28,12 +32,14 @@ module MetadataHelper
     end
   end
 
+  # Render structured data for Google
   def render_structured_data
     return unless @structured_data.present?
 
     tag.script @structured_data.to_json.html_safe, type: 'application/ld+json'
   end
 
+  # Get the metatag data for a given record
   def metatags record = nil
     if record.present?
       @metatags ||= Rails.cache.fetch "#{record.cache_key_with_version}/metatags" do
@@ -44,6 +50,7 @@ module MetadataHelper
     end
   end
 
+  # Get the default metatag data
   def default_metatags record = nil
     @default_metatags ||= begin
       tags = {
@@ -64,6 +71,7 @@ module MetadataHelper
     end
   end
 
+  # Get the structured data for a given record
   def structured_data record
     metatags(record)
     return unless @metatags.present?
@@ -81,6 +89,7 @@ module MetadataHelper
 
   private
 
+    # Add the configured metatags for a record to a given `tags` hash
     def set_record_metatags! tags, record
       tags['title'] = record.name
       tags['description'] = record.excerpt if record.respond_to?(:excerpt)
@@ -96,6 +105,7 @@ module MetadataHelper
       set_video_metatags!(tags, record) if record.try(:vimeo_metadata).present?
     end
 
+    # Add the configured metatags for a static page record to a given `tags` hash
     def set_static_page_metatags! tags, record
       if record.role == 'home'
         tags['title'] = translate('we_meditate')
@@ -109,6 +119,7 @@ module MetadataHelper
       tags['og:type'] = 'website' if %w[home contact privacy articles meditations subtle_system].include?(record.role)
     end
 
+    # Add the configured metatags for a record which supports video to a given `tags` hash
     def set_video_metatags! tags, record
       metadata = record.vimeo_metadata
       metadata = metadata[:horizontal] if metadata.key?(:horizontal)
@@ -127,6 +138,7 @@ module MetadataHelper
       })
     end
 
+    # Build structured data for a record, with defaults defined by the given tags hash
     def build_page_metadata record, tags
       data = {
         '@type' => tags['og:type'] == 'article' ? 'Article' : 'WebPage',
@@ -171,6 +183,7 @@ module MetadataHelper
       data
     end
 
+    # Add "Event" structured data to a given tags hash
     def build_event_metadata record, tags
       return unless record.try(:type_event?) && record.try(:date).present? && record.try(:coordinates).present?
 
@@ -187,6 +200,7 @@ module MetadataHelper
       }
     end
 
+    # Add "Video" structured data to a given tags hash
     def build_video_metadata record, tags
       return unless record.try(:vimeo_metadata).present?
 
@@ -206,6 +220,7 @@ module MetadataHelper
       }
     end
 
+    # Add "Listing" structured data to a given tags hash
     def build_listing_metadata record, tags
       return unless record.is_a?(StaticPage) && %w[articles meditations treatments subtle_system].include?(record.role)
 
@@ -232,6 +247,7 @@ module MetadataHelper
       }
     end
 
+    # Add "Breadcrumbs" structured data to a given tags hash
     def build_breadcrumbs_metadata record, tags
       return unless @breadcrumbs.present?
 
@@ -249,6 +265,7 @@ module MetadataHelper
       }
     end
 
+    # Add extra structured data to a given tags hash, based on the record's content blocks
     def build_content_metadata record, tags
       # TODO: Further enrich the structured data by marking up FAQ accordions, Video Carousels, Image Galleries, etc.
       # Also ItemList metadata for the meditations archive
@@ -256,6 +273,7 @@ module MetadataHelper
       []
     end
 
+    # Return the structured data for the "We Meditate" organization
     def build_organization_metadata
       @organization ||= {
         '@type' => 'Organization',

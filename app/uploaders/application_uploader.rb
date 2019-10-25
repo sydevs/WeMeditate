@@ -12,14 +12,17 @@ class ApplicationUploader < CarrierWave::Uploader::Base
     "#{Rails.root}/tmp/uploads"
   end
 
+  # A helper method which is used by various uploaders to generate a standard version of the image.
   def self.create_version version_width
     proc {
       process resize_to_limit: [version_width, nil]
 
+      # We need to be able to access the version's width so that we can provide that info to browsers to let them select the best version for the screen size.
       def width
         self.class::VERSIONS[version_name]
       end
 
+      # All images on the site are converted to WEBP, as most browsers now support this more efficient image format.
       version :webp do
         process :convert_to_webp
 
@@ -30,6 +33,7 @@ class ApplicationUploader < CarrierWave::Uploader::Base
     }
   end
 
+  # Helper functiion to convert an image to WEBP
   def convert_to_webp
     manipulate! do |img|
       img.format :webp do |c|
@@ -40,12 +44,14 @@ class ApplicationUploader < CarrierWave::Uploader::Base
     end
   end
 
+  # Replace all file names with a unique random string
   def filename
     "#{secure_token(10)}.#{file.extension}" if original_filename.present?
   end
 
   protected
 
+    # This checks if a secure token already exists for this file, and otherwise generates a new one.
     def secure_token(length = 16)
       var = :"@#{mounted_as}_secure_token"
       model.instance_variable_get(var) || model.instance_variable_set(var, SecureRandom.hex(length/2))

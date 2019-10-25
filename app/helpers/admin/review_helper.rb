@@ -1,12 +1,15 @@
 
+# This class provides helpers for the review page
 module Admin::ReviewHelper
 
+  # These are the fields that will trigger a review for the "Excerpt" preview
   REFRESH_EXCERPT_FIELDS = {
     article: %w[name thumbnail_id excerpt vimeo_id date],
     subtle_system_node: %w[name excerpt],
     treatment: %w[name thumbnail_id excerpt],
   }
 
+  # Render an item for the left-hand review menu.
   def review_menu_item id, context, record: nil, label: nil, effect: 'modified', effect_label: nil
     model_key = record&.model_name&.singular_route_key&.to_sym
     refresh = REFRESH_EXCERPT_FIELDS.include?(model_key) && REFRESH_EXCERPT_FIELDS[model_key].include?(id)
@@ -36,6 +39,7 @@ module Admin::ReviewHelper
     end
   end
 
+  # Render a block representing the state of some attribute of the given record
   def detail_review_block record, attribute, icon: nil, type: :string
     content_tag :div, class: 'approved item review-block', data: { id: attribute } do
       concat tag.i class: "#{icon} icon"
@@ -45,6 +49,7 @@ module Admin::ReviewHelper
 
   private
 
+    # Inner content for a "detail" review block
     def detail_review_block_content record, attribute, type
       content_tag :div, class: 'content' do
         concat tag.div human_attribute_name(record.class, attribute), class: 'header'
@@ -52,6 +57,7 @@ module Admin::ReviewHelper
       end
     end
 
+    # Description for a "detail" review block
     def detail_review_block_description record, attribute, type
       content_tag :div, class: 'description' do
         concat tag.div review_readable_value(@record, attribute, type), class: 'review-block-original'
@@ -59,9 +65,11 @@ module Admin::ReviewHelper
       end
     end
 
+    # A human readable value of a change in the record
     def review_readable_value record, attribute, type, draft: false
       value = draft && record.parsed_draft.include?(attribute) ? record.parsed_draft[attribute] : record.send(attribute)
 
+      # Different types of attributes need to be rendered differently.
       case type
       when :association
         if value

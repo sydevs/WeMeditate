@@ -24,6 +24,7 @@ class DurationFilter < ApplicationRecord
   default_scope { order(:minutes) }
   scope :q, -> (q) { where(minutes: q) if q.present? }
 
+  # Get all meditations that have content
   def self.has_content
     joins(meditations: [:translations, goal_filters: :translations]).where({
       meditation_translations: { state: Meditation.states[:published], locale: I18n.locale },

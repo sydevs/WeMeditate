@@ -25,7 +25,7 @@ class Meditation < ApplicationRecord
   validates :image, presence: true
   validates :excerpt, presence: true
   validates :duration_filter, presence: true
-  # validates :goal_filters, presence: true
+  validates :goal_filters, presence: true, unless: :self_realization?
   validates :horizontal_vimeo_id, presence: true, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_nil: true
   validates :vertical_vimeo_id, presence: true, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_nil: true
 
@@ -64,10 +64,12 @@ class Meditation < ApplicationRecord
     end
   end
 
+  # There is one special type of meditation which is identified by having a certain slug
   def self_realization?
     slug == I18n.translate('routes.self_realization')
   end
 
+  # A helper function to access the horizontal vs vertical vimeo metadata and symbolize the keys
   def vimeo_metadata type = nil
     return {} unless self[:vimeo_metadata].present?
     result = self[:vimeo_metadata].deep_symbolize_keys

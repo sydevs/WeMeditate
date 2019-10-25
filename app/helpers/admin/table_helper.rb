@@ -1,7 +1,9 @@
 require 'uri'
 
+# This helper provides functions to render the tables that are shown in the index page for each model.
 module Admin::TableHelper
 
+  # A list of what columns are rendered for each model.
   TABLE_COLUMNS = {
     # Pages
     static_pages: %i[name role updated_at status],
@@ -23,6 +25,7 @@ module Admin::TableHelper
     users: %i[name role last_sign_in_at status],
   }.freeze
 
+  # A list of what attributes a record can be sorted by
   # TODO: Implement the missing sortings which are shown as comments on each of the following entries.
   SORTABLE_COLUMNS = {
     # Pages
@@ -45,6 +48,7 @@ module Admin::TableHelper
     users: %i[name last_sign_in_at role],
   }.freeze
 
+  # A list of what attributes a record can be filtered by
   # TODO: Implement the missing filterings which are shown as comments on each of the following entries.
   FILTERABLE_COLUMNS = {
     # Pages
@@ -67,6 +71,7 @@ module Admin::TableHelper
     users: %i[role status], # %i[role language status],
   }.freeze
 
+  # Defines styling for different record states.
   STATUS_STYLE = {
     # For `reviewable?` records
     needs_review: %i[basic orange],
@@ -89,24 +94,29 @@ module Admin::TableHelper
     this_is_you: %i[blue],
   }.freeze
 
+  # Yield all the columns for a certain model's table
   def table_columns model, &block
     TABLE_COLUMNS[model.model_name.route_key.to_sym].each_with_index do |column, index|
       yield column, index
     end
   end
 
+  # Yield all the sortable columns for a certain model's table
   def table_sortable_columns model, &block
     SORTABLE_COLUMNS[model.model_name.route_key.to_sym].each do |column|
       yield column
     end
   end
 
+  # Yield all the filterable columns for a certain model's table
   def table_filterable_columns model, &block
     @table_filterable_columns ||= {}
     @table_filterable_columns[model] ||= begin
       columns = {}
       FILTERABLE_COLUMNS[model.model_name.route_key.to_sym].each do |column|
+        # Each column must also provide the valid values that the filter can be set to
         columns[column] = begin
+          # Different types of columns require slightly different methods to determine the valid values
           if column == :status
             if model == User
               values = %i[active inactive pending]
@@ -133,15 +143,19 @@ module Admin::TableHelper
       columns
     end
 
+    # If a rendering block was provided then yield all the results to the block in turn.
     if block.present?
       @table_filterable_columns[model].each do |column, values|
         yield column, values
       end
     end
 
+    # Return the list of filterable columns at the end
     @table_filterable_columns[model]
   end
 
+  # Compose the label for a given filter value.
+  # The filter will appear in a format similar to `category:articles` or `status:archived`
   def table_filterable_label model, value
     return nil unless value.present?
 
@@ -157,6 +171,7 @@ module Admin::TableHelper
     "#{column_name}: #{value_name}"
   end
 
+  # Render the status fo a given record
   def table_record_status_label record
     status = table_record_status(record)
     return unless STATUS_STYLE.key?(status)
@@ -165,6 +180,7 @@ module Admin::TableHelper
     tag.div label, class: "ui fluid mini #{STATUS_STYLE[status].join(' ')} label"
   end
 
+  # Determine the status of a given record
   def table_record_status record, review: true
     @table_record_status ||= {}
     @table_record_status[record] ||= begin
@@ -194,6 +210,7 @@ module Admin::TableHelper
     end
   end
 
+  # Render a generic icon with a tooltip and optional value for the table.
   def table_icon icon, tooltip, value = nil
     tag.span data: { tooltip: tooltip, position: 'top right' } do
       concat tag.i class: "#{icon}#{' fitted' unless value} icon"
@@ -201,6 +218,7 @@ module Admin::TableHelper
     end
   end
 
+  # Render an action which can be performed on the table.
   def table_action label, icon, url, classes = nil, new_tab = false
     tag.a class: "ui tiny compact basic labeled icon button #{classes}", href: url, target: ('_blank' if new_tab).to_s do
       concat tag.i class: "#{icon} icon"
@@ -208,6 +226,7 @@ module Admin::TableHelper
     end
   end
 
+  # Render a link (usually a back link) for the table
   def table_link label, icon, url
     tag.a class: 'ui compact basic button', href: url do
       concat tag.i class: "#{icon} icon"
@@ -215,6 +234,7 @@ module Admin::TableHelper
     end
   end
 
+  # Render the standard set of table actions for any given model
   def table_actions model, records
     capture do
       if model == Article
@@ -228,12 +248,14 @@ module Admin::TableHelper
         concat table_action human_model_name(DurationFilter, :plural), model_icon_key(DurationFilter), admin_duration_filters_path if policy(DurationFilter).index?
       end
 
+      # If the model is sortable and has at least one record, we need to render the sorting button
       if policy(model).sort? && records.count > 1
         concat table_action translate('admin.action.target.reorder', record: human_model_name(model)), 'bars', polymorphic_admin_path([:admin, model], reorder: true)
       end
     end
   end
 
+  # Render the navigation links for a given model's table
   def table_navigation model
     parent = nil
 

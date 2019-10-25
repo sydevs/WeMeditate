@@ -9,18 +9,20 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   %i[publishable contentable draftable stateable translatable viewable].each do |attribute|
+     # Will be overrided by various concerns
     define_method :"#{attribute}?", -> { false }
     define_singleton_method :"#{attribute}?", -> { false }
   end
 
   def has_draft? _section = nil
-    false
+    false # Will be overrided by the draftable concern
   end
 
   def has_translation? _section = nil
-    true
+    true # Will be overrided by the translatable concern
   end
   
+  # Implement a default name for every type of record
   def preview_name
     name = self[:name]
     name ||= parsed_draft['name'] if try(:parsed_draft).present?
@@ -29,19 +31,13 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def cache_key
+    # We need to customize the cache key to factor in translations
     super + '-' + Globalize.locale.to_s
-  end
-
-  def sort
-
-  end
-
-  def filter
-
   end
 
 end
 
+# Validates a Vimeo ID
 class VimeoValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     unless value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i

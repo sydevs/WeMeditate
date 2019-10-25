@@ -1,10 +1,15 @@
+## NAVIGATON HELPER
+# This helper generates the elements of the header's navigation bar
+
 module NavigationHelper
 
+  # Return a list of navigation items for desktop
   def navigation_items
     return @navigation if defined? @navigation
 
     @navigation = []
 
+    # Collect the three basic navigaton links
     %i[meditations articles tracks].each do |role|
       static_page = static_page_preview_for(role)
       @navigation.push({
@@ -14,6 +19,7 @@ module NavigationHelper
       })
     end
 
+    # Define the dropdown navigation.
     kundalini_page = SubtleSystemNode.find_by(role: :kundalini)
 
     @navigation.push({
@@ -46,6 +52,7 @@ module NavigationHelper
     @navigation
   end
 
+  # Return a list of navigation items for mobile
   def mobile_navigation_items
     mobile_navigation = []
     # home_page = static_page_preview_for(:home)
@@ -56,8 +63,10 @@ module NavigationHelper
     #   active: controller_name == 'application' && action_name == 'home',
     # })
 
+    # Use the desktop navigation as a base, and then modify it
     mobile_navigation += navigation_items
 
+    # Add classes near me
     mobile_navigation.push({
       title: I18n.translate('header.classes_near_me').gsub('<br>', ' '),
       url: static_page_path_for(:classes),
@@ -67,6 +76,7 @@ module NavigationHelper
     mobile_navigation
   end
 
+  # Fetch sharing links that can appear at the bottom of any article.
   def sharing_links
     url = ERB::Util.url_encode request.original_url.split('/', 3)[2]
 

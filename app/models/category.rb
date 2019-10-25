@@ -25,12 +25,14 @@ class Category < ApplicationRecord
   default_scope { order(:order) }
   scope :q, -> (q) { with_translation.joins(:translations).where('category_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
+  # Get all categories that have content
   def self.has_content
     joins(articles: :translations).where({
-      article_translations: { published: true, locale: I18n.locale },
+      article_translations: { state: Article.states[:published], locale: I18n.locale },
     }).uniq
   end
 
+  # Preload the translations
   def preload_for mode
     case mode
     when :preview, :content, :admin

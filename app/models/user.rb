@@ -24,14 +24,17 @@ class User < ApplicationRecord
   scope :for_locale, -> { where('languages = \'{}\' OR ? = ANY(languages)', I18n.locale) }
   scope :q, -> (q) { where('email ILIKE ?', "%#{q}%") if q.present? }
   
+  # A user is active if they've signed in in the last 30 days
   def active?
     last_sign_in_at.present? && last_sign_in_at > 30.days.ago
   end
 
+  # Override the lannguages writer so that we can convert them from symbols
   def languages= list
     super (list.map(&:to_sym) & I18n.available_locales).map(&:to_s)
   end
 
+  # Override the languages accessor so that we can convert them to symbols
   def languages
     super.map(&:to_sym)
   end
@@ -46,6 +49,7 @@ class User < ApplicationRecord
     !self[:languages].present?
   end
 
+  # Has this user accepted their invitation?
   def pending_invitation?
     !new_record? && invitation_accepted_at.nil?
   end

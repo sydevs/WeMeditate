@@ -11,7 +11,7 @@ class StaticPagesController < ApplicationController
         { name: @static_page.name },
       ]
     when 'classes'
-      # Do nothing
+      # Do nothing, the classes page has no breadcrumbs
     else
       about_page = StaticPageHelper.preview_for(:home)
       @breadcrumbs = [

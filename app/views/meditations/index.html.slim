@@ -58,6 +58,7 @@ main
                 ul.dropdown__list
                   - @goal_filters.each_with_index do |goal_filter, index|
                     li.dropdown__item id=dom_id(goal_filter) data-value=goal_filter.id
+                      // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
                       .js-inline-svg data-url="#{goal_filter.icon.url}" data-namespace="#{goal_filter.name.parameterize.downcase}" data-background='true'
                       span.dropdown__item__text = goal_filter.name
 

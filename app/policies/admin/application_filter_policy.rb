@@ -1,4 +1,5 @@
 module Admin
+  # Filter-type objects have a simpler common type of access which is represented in this class.
   class ApplicationFilterPolicy < Admin::ApplicationPolicy
 
     def manage?

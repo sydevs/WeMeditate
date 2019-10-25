@@ -68,19 +68,23 @@ class ApplicationController < ActionController::Base
     render layout: 'basic'
   end
 
+  # Renders an error page
   def error
     expires_in 1.month, public: true
     set_metadata({ 'title' => translate('errors.error') })
     render status: request.env['PATH_INFO'][1, 3].to_i
   end
 
+  # An endpoint to serve up the sitemap for Google and other services.
   def sitemap
+    # The sitemap itself is hosted on Google Cloud storage, we read it from them and send it back to the accessor of this endpoint.
     data = open("https://storage.cloud.google.com/wemeditate/sitemaps/sitemap.#{I18n.locale}.xml.gz")
     send_data data.read, type: 'text/xml'
   end
 
   protected
 
+    # Allows us to use a different layout for the `devise` gem, which handles logins/user accounts
     def layout_by_resource
       devise_controller? ? 'devise' : 'application'
     end
@@ -94,6 +98,7 @@ class ApplicationController < ActionController::Base
       redirect_to maintenance_path, status: :see_other
     end
 
+    # Sets data which will be used to populate <meta> tags and structured data in the rendered page.
     def set_metadata record_or_hash
       if record_or_hash.is_a?(Hash)
         hash = record_or_hash

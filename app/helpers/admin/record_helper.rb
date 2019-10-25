@@ -1,12 +1,15 @@
 
+# This helper provides methods to render information surrounding a single record.
 module Admin::RecordHelper
 
+  # Icons for certain actions that can be taken on a record
   ACTION_ICONS = {
     view: 'eye',
     edit: 'edit',
     destroy: 'trash',
   }.freeze
 
+  # Some records cannot have their slug (aka URL) changed, this checks to see if the active record is one of those.
   def record_has_fixed_slug?
     case @record
     when StaticPage
@@ -21,6 +24,7 @@ module Admin::RecordHelper
 
   # ===== INTERFACE ====== #
 
+  # Render a set of actions, as a button with a dropdown
   def record_actions actions
     tag.div class: 'ui tiny compact basic buttons' do
       concat tag.div translate(actions.first, scope: %i[admin action]), class: 'ui button'
@@ -28,6 +32,7 @@ module Admin::RecordHelper
     end
   end
 
+  # Render a small piece fo important content about a record
   def record_detail icon, value, label = nil, url: nil
     content_tag :div, class: 'item' do
       concat tag.i class: "#{icon} icon"
@@ -35,6 +40,8 @@ module Admin::RecordHelper
     end
   end
 
+  # Generates a comparison of changes between the live content blocks and draft content blocks for a given record
+  # This is used to create the reviiew page.
   def block_comparison record, &block
     old_blocks = record.content_blocks
     new_blocks = record.draft_content_blocks
@@ -67,6 +74,7 @@ module Admin::RecordHelper
 
   private
 
+    # Render a dropdown filled with actions
     def record_actions_dropdown actions
       tag.div class: 'ui floating dropdown icon button' do
         concat tag.i class: 'dropdown icon'
@@ -74,6 +82,7 @@ module Admin::RecordHelper
       end
     end
 
+    # Render a set of actions within a dropdown
     def record_actions_items actions
       allow = policy(@record)
 
@@ -84,6 +93,7 @@ module Admin::RecordHelper
       end
     end
 
+    # Render a single action within a dropdown
     def record_actions_item action
       args = { class: 'item' }
       args[:href] = polymorphic_admin_path(action == 'edit' ? [action, :admin, @record] : [:admin, @record])
@@ -95,6 +105,7 @@ module Admin::RecordHelper
       end
     end
 
+    # Render the inner HTML of a small important detail about a given record
     def record_detail_content label, value, url = nil
       content_tag (url ? :a : :div), class: 'content', href: url, target: '_blank' do
         concat tag.span value, class: 'text'

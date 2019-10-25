@@ -56,10 +56,12 @@ class Article < ApplicationRecord
     end
   end
 
+  # Because the priority enum is stored in the translation model, we need to reimplement these accessors
   def priority
     self.class.priorities.key(self[:priority])
   end
 
+  # Because the priority enum is stored in the translation model, we need to reimplement these accessors
   def priority= value
     self[:priority] = value.is_a?(Integer) ? value : self.class.priorities[value.to_s]
   end
@@ -87,6 +89,7 @@ class Article < ApplicationRecord
 
   private
 
+    # Compute the ordering of this Article that will be used on the Inspiration page
     def compute_order
       return unless published?
       self[:published_at] ||= DateTime.now
@@ -94,12 +97,16 @@ class Article < ApplicationRecord
       published_at = DateTime.parse(published_at) if published_at.is_a?(String)
 
       if priority == 'pinned'
+        # Pinned articles should always be shown at the top
         self[:order] = ApplicationRecord::MAX_INT # Set to max int
       elsif priority == 'hidden'
+        # Hidden articles will not be shown, but just to be safe make sure it would appear at the bottom.
         self[:order] = -ApplicationRecord::MAX_INT # Set to min int
       else
+        # Rank each article by it's publishing date.
         self[:order] = published_at.to_i / (60 * 60 * 24) # Days since Unix epoch
 
+        # If the article has a non-standard priority, add/subtract 30 days from the publish date for each priority level.
         priority = self[:priority]
         priority = Article.priorities[priority.to_s] unless priority&.is_a?(Integer)
         self[:order] += 30 * priority if priority.present?

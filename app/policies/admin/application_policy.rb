@@ -4,6 +4,7 @@ module Admin
     class Scope < Scope
       def resolve
         if user.translator?
+          # Translators should only be able to see records which they can translate
           scope.translatable_by(user)
         else
           scope

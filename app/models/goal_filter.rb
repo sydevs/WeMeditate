@@ -25,6 +25,7 @@ class GoalFilter < ApplicationRecord
   default_scope { order(:order) }
   scope :q, -> (q) { with_translation.joins(:translations).where('goal_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
+  # Get all meditations that have content
   def self.has_content
     joins(meditations: [:translations, duration_filter: :translations]).where({
       meditation_translations: { state: Meditation.states[:published], locale: I18n.locale },
@@ -32,6 +33,7 @@ class GoalFilter < ApplicationRecord
     }).uniq
   end
 
+  # Preload the translations
   def preload_for mode
     case mode
     when :preview, :content, :admin

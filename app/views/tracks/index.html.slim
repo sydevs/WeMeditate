@@ -19,6 +19,7 @@ main
             - @instrument_filters.each do |instrument_filter|
               .amplitude-playlist-button.amplitude-play.amplitude-interactive data-amplitude-playlist=instrument_filter.id
                 .amplitude-playlist-button-icon
+                  // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
                   .js-inline-svg data-url="#{instrument_filter.icon_url}" data-namespace="#{instrument_filter.name.parameterize.downcase}"
                 .amplitude-playlist-button-title
                   = instrument_filter.name
@@ -65,6 +66,7 @@ main
               = t('tracks.playlist')
               - if playlist[:cover_art_url]
                 span.amplitude-playlist-icon
+                  // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
                   .js-inline-svg data-url="#{playlist[:cover_art_url]}" data-namespace="#{playlist[:title].parameterize.downcase}"
             .amplitude-playlist-list
               = render partial: 'tracks/song', collection: playlist_songs, locals: { playlist: playlist_id }, cached: Proc.new { |song| [song, playlist_id] }

@@ -27,6 +27,7 @@ class InstrumentFilter < ApplicationRecord
   default_scope { order(:order) }
   scope :q, -> (q) { with_translation.joins(:translations).where('instrument_filter_translations.name ILIKE ?', "%#{q}%") if q.present? }
 
+  # Get all meditations that have content
   def self.has_content
     joins(tracks: [:translations, mood_filters: :translations]).where({
       track_translations: { published: true, locale: I18n.locale },
@@ -34,6 +35,7 @@ class InstrumentFilter < ApplicationRecord
     }).uniq
   end
 
+  # Preload the translations
   def preload_for mode
     case mode
     when :preview, :content, :admin

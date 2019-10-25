@@ -6,6 +6,7 @@
     - [Translation / Drafting](#translation--drafting)
     - [Content Editor](#content-editor)
     - [Image, Audio, and Videos](#image-audio-and-videos)
+    - [Inline SVGs](#inline-svgs)
     - [CMS Code](#cms-code)
     - [Browser Support](#browser-support)
   - [Models](#models)
@@ -77,6 +78,11 @@ However the Video hosting is a little bit more complicated. All our videos are h
 Those vimeo videos that use the HTML5 player must have vimeo metadata loaded, and must have download links in the metadata (that is why we can only use HTML5 for Vimeo Pro videos)
 
 An additional complication is that some videos, such as those on the Meditation and Treatment pages also have vertical versions of those videos, which are used for mobile. JS/CSS code is set up to switch between these two orientations.
+
+### Inline SVGs
+In many parts of the code we render SVGs inline so that we can then manipulate them using CSS. Unfortunately we use two methods to accomplish this inlining. One is the `inline_svg` gem/method on the server side, which is the preferred method. However some SVGs must be inlined using JavaScript and the `js-inline-svg` class. This is because those SVGs are hosted externally (on Google Cloud) and the `inline_svg` method is not able to handle them.
+
+Ideally we would find a solution to remove the `js-inline-svg` method, and only using `inline_svg`, but for the moment this is how it works.
 
 ### CMS Code
 The entirety of the CMS rails code is heavily abstracted, because all these models are managed in almost the same patterns. As such, you wll not see the normal rails views folder structures. Instead there is just one `index`, `show`, `edit`, and `new` view for the whole CMS, and each model is rendered using partials within these views.
@@ -155,6 +161,9 @@ This is a list of some of the key libraries that are used to manage major featur
  - *Macy*, creates masonry-like grid layouts
  - *Lity*, lightbox (deprecated)
  - *Zenscroll*, smooth scrolling
+
+*CSS Libraries:*
+ - *Semantic UI*, css framework used for the admin/CMS pages
 
 ## Services
 This is a list of all external services used by the WeMeditate project.

@@ -8,7 +8,7 @@ main id=dom_id(@meditation)
     figure.content__video__item
       .video.video--responsive.video--meditation class="js-video"
         .video__inner
-          - if vimeo_new_player?(@meditation.vimeo_metadata(:horizontal)) && vimeo_new_player?(@meditation.vimeo_metadata(:vertical))
+          - if supports_afterglow_player?(@meditation.vimeo_metadata(:horizontal)) && supports_afterglow_player?(@meditation.vimeo_metadata(:vertical))
             .video__horizontal
               = vimeo_tag @meditation.vimeo_metadata[:horizontal], playsinline: false, skin: :light, id: "#{dom_id(@meditation)}-horizontal-video"
             .video__vertical

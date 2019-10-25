@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
 
   ARTICLES_PER_PAGE = 15
 
+  # Render articles for all categories
   def index
     @category = nil
     @articles = Article.publicly_visible.ordered.where.not(priority: Article.priorities[:hidden]).preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
@@ -9,6 +10,7 @@ class CategoriesController < ApplicationController
     display
   end
 
+  # Render articles for a single category
   def show
     @category = Category.publicly_visible.friendly.find(params[:id])
     @articles = @category.articles.publicly_visible.ordered.where.not(priority: Article.priorities[:hidden]).preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)

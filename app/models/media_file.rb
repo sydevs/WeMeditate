@@ -29,6 +29,7 @@ class MediaFile < ActiveRecord::Base
     end
   end
 
+  # Save some size metadata about the original image
   def save_metadata
     return if !file.present? || image_meta.present?
 
