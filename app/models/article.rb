@@ -31,6 +31,7 @@ class Article < ApplicationRecord
   validates :name, presence: true
   validates :excerpt, presence: true
   validates :priority, presence: true
+  validates :author, presence: true, if: :type_artwork?
   validates :order, presence: true, if: :published?
   validates :thumbnail_id, presence: true, if: :persisted?
   validates :vimeo_id, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_blank: true
@@ -61,6 +62,12 @@ class Article < ApplicationRecord
 
   def priority= value
     self[:priority] = value.is_a?(Integer) ? value : self.class.priorities[value.to_s]
+  end
+
+  def coordinates
+    return [] unless latitude.present? && longitude.present?
+
+    [latitude, longitude]
   end
 
   # Shorthand for the article banner image file

@@ -156,6 +156,24 @@ module Admin::InputHelper
     end
   end
 
+  def draftable_coordinates_field form, hint: nil, **args
+    args[:value] = form.object.coordinates unless args.key?(:value)
+    
+    unless args.key?(:draft)
+      latitude_draft = form.object.parsed_draft&.has_key?('latitude') ? form.object.parsed_draft['latitude'] : args[:value][0]
+      longitude_draft = form.object.parsed_draft&.has_key?('longitude') ? form.object.parsed_draft['longitude'] : args[:value][1]
+      args[:draft] = [latitude_draft, longitude_draft].compact
+      args[:draft] = nil if args[:value] == args[:draft]
+    end
+
+    draftable_field form, :coordinates, type: :latlng, **args do |value|
+      content_tag :div, class: 'two fields' do
+        concat form.input :latitude, label: false, input_html: { placeholder: human_attribute_name(form.object, :latitude), value: value[0], data: { draft: 'latitude' } }
+        concat form.input :longitude, label: false, input_html: { placeholder: human_attribute_name(form.object, :longitude), value: value[1], data: { draft: 'longitude' } }
+      end
+    end
+  end
+
   def publish_input form, attribute, checked = nil, enabled: true
     checked = form.object.send(attribute) if checked.nil?
     content_tag :div, class: "ui#{' disabled' unless enabled} toggle checkbox" do

@@ -37,6 +37,10 @@ const Draft = {
         $field.find('img').attr('src', value.src)
         $field.find('input[type=hidden]').attr('value', value.id)
         break
+      case 'latlng':
+        $field.find('input[data-draft=latitude]').attr('value', value.length < 1 ? null : value[0])
+        $field.find('input[data-draft=longitude]').attr('value', value.length < 2 ? null : value[1])
+        break
       case 'repeatable':
         RepeatableFields.reset($field, value)
         break

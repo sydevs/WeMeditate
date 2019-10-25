@@ -98,6 +98,9 @@ it:
         date: "Data di riferimento"
         content: "Contenuto"
         metatags: "Metadata"
+        coordinates: "Location" # TODO: Translate
+        latitude: "Latitude" # TODO: Translate
+        longitude: "Longitude" # TODO: Translate
         author: :activerecord.models.author.one # Do not translate
         author_id: :activerecord.models.author.one # Do not translate
         owner: "Permetti a quest'autore di modificare questo articolo"

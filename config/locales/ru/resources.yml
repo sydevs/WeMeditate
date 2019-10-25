@@ -142,6 +142,9 @@ ru:
         date: "Дата"
         content: "Контент"
         metatags: "Метаданные"
+        coordinates: "Location" # TODO: Translate
+        latitude: "Latitude" # TODO: Translate
+        longitude: "Longitude" # TODO: Translate
         author: :activerecord.models.author.one # Do not translate
         author_id: :activerecord.models.author.one # Do not translate
         owner: "Позволить автору обновлять статью"

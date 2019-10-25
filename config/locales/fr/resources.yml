@@ -97,6 +97,9 @@ fr:
         date: "Featured Date"
         content: "Content"
         metatags: "Metadata"
+        coordinates: "Location"
+        latitude: "Latitude"
+        longitude: "Longitude"
         author: :activerecord.models.author.one # Do not translate
         author_id: :activerecord.attributes.article.author # Do not translate
         owner: "Allow a writer to update this article"

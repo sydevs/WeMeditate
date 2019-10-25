@@ -121,9 +121,10 @@ it:
       article_visibility: "This determines where an article will appear on the Inspiration page." # TODO: Translate
       article_author: "Questo profilo viene mostrato sotto l'articolo quando questo viene pubblicato."
       article_article_type: "Different article types will offer a few different fields and display the author differently." # TODO: Translate
+      article_coordinates: "Providing the latitude and longitude of an event will allow rich Google search results." # TODO: Translate
       article_owner: "Gli amministratori e gli editori possono sempre modificare tutti gli articoli. Questo campo da il permesso ad un autore per modificare un articolo dopo averlo pubblicato. Solitamente si tratta della persona che ha scritto l'articolo."
       article_video: "If you enter a featured video, it will appear on the article preview." # TODO: Translate
-      article_date: "If this article is about an event, then you can set the start date of the event here. This date will appear on the article preview." # TODO: Translate
+      article_date: "Set the start date of the event here. This date will appear on the article preview." # TODO: Translate
       article_published_at: "If this date is in the future, then the article will be scheduled to be published on that date. Leave this fiield blank to have the publish date set automatically. " # TODO: Translate
       fixed_slug: "This is a special page, it's URL cannot be changed." # TODO: Translate
 

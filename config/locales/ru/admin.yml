@@ -125,9 +125,10 @@ ru:
       article_visibility: "This determines where an article will appear on the Inspiration page." # TODO: Translate
       article_author: "Профиль, который будет отображаться в статье на сайте."
       article_article_type: "Different article types will offer a few different fields and display the author differently." # TODO: Translate
+      article_coordinates: "Providing the latitude and longitude of an event will allow rich Google search results." # TODO: Translate
       article_owner: "Администраторы и Редакторы всегда могут редактировать любые статьи. Это поле дает автору специальное разрешение на изменение статьи после её публикации. Обычно это человек, который написал первую версию статьи."
       article_video: "Если вы добавите видео, оно будет отображено на превью статьи."
-      article_date: "Если данная статья посвящена событию, то вы можете добавить дату события здесь. Эта дата будет отображена на превью статьи."
+      article_date: "Set the start date of the event here. This date will appear on the article preview." # TODO: Translate
       article_published_at: "If this date is in the future, then the article will be scheduled to be published on that date. Leave this fiield blank to have the publish date set automatically." # TODO: Translate
       fixed_slug: "Это особая страница, ее адрес (URL) нельзя изменить." 
 
