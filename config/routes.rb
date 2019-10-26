@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { invitations: 'users/invitations' }
   get :maintenance, to: 'application#maintenance'
 
+  get '404', to: 'application#error'
+  get '422', to: 'application#error'
+  get '500', to: 'application#error'
+
   # ===== ADMIN ROUTES ===== #
   constraints DomainConstraint.new(Rails.configuration.admin_domain) do
     get '404', to: 'admin/application#error'
