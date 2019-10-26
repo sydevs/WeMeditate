@@ -15,12 +15,12 @@ HOSTS.each { |key, host| HOSTS[key] = "https://#{host}" }
 puts HOSTS.pretty_inspect
 EXCLUDE_STATIC_PAGES = %i[].freeze
 SPECIAL_PAGES = {
-  home: { url: :root_path, changefreq: 'weekly' },
-  subtle_system: { url: :subtle_system_nodes_path, changefreq: 'yearly' },
-  articles: { url: :categories_path, changefreq: 'weekly' },
-  treatments: { url: :treatments_path, changefreq: 'yearly' },
-  tracks: { url: :tracks_path, changefreq: 'monthly' },
-  meditations: { url: :meditations_path, changefreq: 'monthly' },
+  home: { url: :root_url, changefreq: 'weekly' },
+  subtle_system: { url: :subtle_system_nodes_url, changefreq: 'yearly' },
+  articles: { url: :categories_url, changefreq: 'weekly' },
+  treatments: { url: :treatments_url, changefreq: 'yearly' },
+  tracks: { url: :tracks_url, changefreq: 'monthly' },
+  meditations: { url: :meditations_url, changefreq: 'monthly' },
 }.freeze
 
 module SitemapHelper
