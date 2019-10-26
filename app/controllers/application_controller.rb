@@ -1,3 +1,5 @@
+require 'google/cloud/storage'
+
 class ApplicationController < ActionController::Base
 
   include ApplicationHelper
@@ -77,9 +79,18 @@ class ApplicationController < ActionController::Base
 
   # An endpoint to serve up the sitemap for Google and other services.
   def sitemap
+    # expires_in 1.day, public: true
+
     # The sitemap itself is hosted on Google Cloud storage, we read it from them and send it back to the accessor of this endpoint.
-    data = open("https://storage.cloud.google.com/wemeditate/sitemaps/sitemap.#{I18n.locale}.xml.gz")
-    send_data data.read, type: 'text/xml'
+    storage = Google::Cloud::Storage.new({
+      project_id: 'we-meditate',
+      credentials: ENV['GOOGLE_CLOUD_KEYFILE'].present? ? JSON.parse(ENV['GOOGLE_CLOUD_KEYFILE']) : nil
+    })
+
+    bucket = storage.bucket 'wemeditate'
+    file = bucket.file "sitemaps/sitemap.#{I18n.locale}.xml.gz"
+
+    send_data file.download.read, type: 'text/xml'
   end
 
   protected

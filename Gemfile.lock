@@ -404,6 +404,7 @@ DEPENDENCIES
   friendly_id
   friendly_id-globalize
   globalize
+  google-cloud-storage
   google-tag-manager-rails
   httparty
   i18n_data
