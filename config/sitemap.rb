@@ -3,7 +3,8 @@ require 'carrierwave'
 require 'sitemap_generator'
 
 # ===== CONFIGURATION ===== #
-SitemapGenerator::Sitemap.default_host = "https://www.wemeditate.co"
+SitemapGenerator::Sitemap.default_host = 'https://www.wemeditate.co'
+Rails.application.routes.default_url_options[:host] = 'https://www.wemeditate.co'
 SitemapGenerator::Sitemap.sitemaps_host = ApplicationUploader.asset_host
 SitemapGenerator::Sitemap.public_path = 'tmp/'
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
@@ -31,7 +32,7 @@ module SitemapHelper
         I18n.with_locale(locale) do
           special_url = send(SPECIAL_PAGES[record.role&.to_sym][:url]) if record.is_a?(StaticPage) && SPECIAL_PAGES.key?(record.role&.to_sym)
           {
-            href: special_url || polymorphic_path(record),
+            href: special_url || polymorphic_url(record),
             lang: locale,
           }
         end
@@ -129,25 +130,24 @@ HOSTS.each do |locale, host|
       if SPECIAL_PAGES.key? role
         add send(SPECIAL_PAGES[role][:url]), changefreq: SPECIAL_PAGES[role][:changefreq], **record_data(static_page)
       else
-        add static_page_path(static_page), changefreq: 'yearly', **record_data(static_page)
+        add static_page_url(static_page), changefreq: 'yearly', **record_data(static_page)
       end
     end
 
     SubtleSystemNode.published.preload_for(:content).find_each do |subtle_system_node|
-      add subtle_system_node_path(subtle_system_node), changefreq: 'yearly', **record_data(subtle_system_node)
+      add subtle_system_node_url(subtle_system_node), changefreq: 'yearly', **record_data(subtle_system_node)
     end
 
     Meditation.published.preload_for(:content).find_each do |meditation|
-      add meditation_path(meditation), changefreq: 'yearly', **record_data(meditation)
+      add meditation_url(meditation), changefreq: 'yearly', **record_data(meditation)
     end
 
     Treatment.published.preload_for(:content).find_each do |treatment|
-      add treatment_path(treatment), changefreq: 'yearly', **record_data(treatment)
+      add treatment_url(treatment), changefreq: 'yearly', **record_data(treatment)
     end
 
     Article.published.preload_for(:content).find_each do |article|
-      add article_path(article), changefreq: 'yearly', **record_data(article)
+      add article_url(article), changefreq: 'yearly', **record_data(article)
     end
   end
-
 end
