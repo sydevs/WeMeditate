@@ -47,23 +47,24 @@ const Admin = {
     RepeatableFields.initialize(scope)
 
     // Initialize dropdown elements.
-    scope.find('.ui.dropdown').each(function() {
-      var element = $(this)
+    scope.find('.ui.dropdown:not(.simple)').each(function() {
+      var $element = $(this)
       var options = {}
-      if (element.hasClass('clearable')) {
+      if ($element.hasClass('clearable')) {
         options['clearable'] = true
       }
 
-      element.dropdown(options)
+      $element.dropdown(options)
 
       // This is a workaround to fix default values for a multiple select
       // TODO: Is this workaround still necessary?
-      if (element.hasClass('multiple')) {
+      // As of Oct 27, 2019 this has been commented out. If this doesn't cause any issues in the next week or so, we can delete it.
+      /*if ($element.hasClass('multiple')) {
         var selected = []
-        selected.push(element.find('option:selected').val())
-        element.dropdown('set selected', selected)
-        element.children('input[type="hidden"]').val(null)
-      }
+        selected.push($element.find('option:selected').val())
+        $element.dropdown('set selected', selected)
+        $element.children('input[type="hidden"]').val(null)
+      }*/
     })
 
     // Add callbacks for a few input types

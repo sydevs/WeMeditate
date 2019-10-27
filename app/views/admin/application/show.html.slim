@@ -23,7 +23,7 @@
           = translate(action_text, scope: %i[admin action simple])
 
       - if @record.has_translation?
-        .ui.floating.dropdown.icon.button
+        .ui.floating.simple.dropdown.icon.button
           i.dropdown.icon
           .menu
             - if @record.has_draft?
