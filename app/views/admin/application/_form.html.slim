@@ -17,17 +17,16 @@
 
   - if record.stateable?
     - states = record.avaliable_states.map { |state| [human_enum_name(record, :state, state), state.to_s] }
-    - native_locale_state = record.get_native_locale_attribute(:state)
     - if record.published? && !record.unpublishable?
       = f.input :state do
         .ui.icon.label
           i.info.circle.icon
           = human_enum_name(record, :state)
     - elsif record.draftable?
-      = draftable_field f, :state, type: :collection, input: { collection: states }, value: native_locale_state do |value|
+      = draftable_field f, :state, type: :collection, input: { collection: states } do |value|
         - f.input_field :state, collection: states, selected: value, disabled: !allow.update_structure?
     - else
-        - f.input :state, collection: states, selected: native_locale_state, disabled: !allow.update_structure?
+        - f.input :state, collection: states, disabled: !allow.update_structure?
   - elsif record.publishable? && allow.review?
     - if record.draftable?
       = draftable_publish_field f
