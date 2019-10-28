@@ -1,4 +1,5 @@
 - [About WeMeditate](#about-wemeditate)
+    - [Browser Support](#browser-support)
 - [Getting Started](#getting-started)
   - [Setup](#setup)
   - [Framework & Languages](#framework--languages)
@@ -8,13 +9,13 @@
     - [Image, Audio, and Videos](#image-audio-and-videos)
     - [Inline SVGs](#inline-svgs)
     - [CMS Code](#cms-code)
-    - [Browser Support](#browser-support)
   - [Models](#models)
       - [Pages](#pages)
       - [Resources](#resources)
       - [Filters](#filters)
       - [People](#people)
   - [Code Structure](#code-structure)
+- [Deployment & Infrastructure](#deployment--infrastructure)
 - [External Libraries and Services](#external-libraries-and-services)
   - [Libraries](#libraries)
   - [Services](#services)
@@ -30,6 +31,9 @@ The WeMeditate project is comprehensive website promotig the practice of meditat
  - **Map of free meditation classes worldwide**, this feature is still under construction.
 
 Knowing the above features will also help one understand broadly what is going on in the code.
+
+### Browser Support
+We support only the most recent versions of Chrome, Safari, Firefox, Edge, and Opera - including the mobile versions of these browsers. No other browser is officially supported. Internet Explorer is not supported.
 
 # Getting Started
 There are several concepts which are common throughout the codebase that it will help to be aware of.
@@ -87,9 +91,6 @@ Ideally we would find a solution to remove the `js-inline-svg` method, and only 
 ### CMS Code
 The entirety of the CMS rails code is heavily abstracted, because all these models are managed in almost the same patterns. As such, you wll not see the normal rails views folder structures. Instead there is just one `index`, `show`, `edit`, and `new` view for the whole CMS, and each model is rendered using partials within these views.
 
-### Browser Support
-We support only the most recent versions of Chrome, Safari, Firefox, Edge, and Opera - including the mobile versions of these browsers. No other browser is officially supported. Internet Explorer is not supported.
-
 ## Models
 Each model corresponds to a table in the database, and collectively these form the core of the website's content. Here is a brief overview of the models used in this site, and how they correspond to site features.
 
@@ -141,6 +142,11 @@ This is mainly useful for those who are not already familiar with Ruby on Rails.
   - `/routes.rb` - defines the URLs that our server accepts
 - `/public` - contains files that can be accessed simply by adding their path to the end of the website's url.
 - `/Gemfile` - this file defines the Ruby packages which get bundle and installed with the server.
+
+# Deployment & Infrastructure
+The project's servers and hosted and deployed using Heroku. Any changes which are pushed to the `master` branch will be automatically deployed to the staging server (en.staging.wemeditate.co). If you need access to the staging server, please ask and a login will be created for you.
+
+Once a change has been verified on the staging server it can be deployed to production in the Heroku dashboard.
 
 # External Libraries and Services
 If you are implementing a new feature that touches on one of these areas, please use the existing integration or library.
