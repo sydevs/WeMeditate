@@ -1,8 +1,6 @@
 @import "../../mixins/*"
 
 .content__textbox
-  margin-top: 100px
-  margin-bottom: 50px
   position: relative
 
   @include tablet
@@ -10,8 +8,14 @@
 
   @include laptop-or-larger
     min-height: 91vh
-    margin-top: 150px
-    margin-bottom: 160px
+
+.content__textbox__box,
+.content__textbox__text
+  > *:first-child
+    margin-top: 0 !important
+
+  > *:last-child
+    margin-bottom: 0 !important
 
 .content__textbox__wrapper
   @extend %wide-content-width
@@ -87,10 +91,6 @@
 
 .content__textbox__gradient
   height: 100%
-
-.content__textbox__decoration--triangle
-  position: relative
-  top: -160px
 
 .content__textbox__circle
   position: absolute

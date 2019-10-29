@@ -49,6 +49,6 @@
             - if block[:action].present? && block[:url].present?
               a.content__textbox__button.button.button--box.button--large href=block[:url] = block[:action]
 
-.content__textbox__decoration.content__textbox__decoration--triangle
-  .content__textbox__triangle
-    = render_decoration :triangle, block
+  .content__textbox__decoration.content__textbox__decoration--triangle
+    .content__textbox__triangle
+      = render_decoration :triangle, block
