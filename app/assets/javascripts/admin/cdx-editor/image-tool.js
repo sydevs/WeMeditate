@@ -14,12 +14,13 @@ class ImageTool extends EditorTool {
 
   constructor({data, _config, api}) {
     const asGallery = data.asGallery || false
-    let position = ['left', 'right', 'wide'].includes(data.position) ? data.position : 'narrow'
+    let position = ['left', 'right', 'center'].includes(data.position) ? data.position : 'center'
     if (asGallery) position = null
 
     super({ // Data
       id: data.id || generateId(),
       items: data.items || [],
+      size: ['narrow', 'wide'].includes(data.position) ? data.position : 'narrow',
       position: position,
       asGallery: asGallery,
       decorations: data.decorations || {}
@@ -29,28 +30,33 @@ class ImageTool extends EditorTool {
       fields: {},
       tunes: [
         {
-          name: 'asGallery',
-          icon: 'clone',
-        },
-        {
-          name: 'narrow',
-          icon: 'align center',
-          group: 'position',
-        },
-        {
-          name: 'wide',
-          icon: 'arrows alternate horizontal',
-          group: 'position',
-        },
-        {
           name: 'left',
           icon: 'indent',
+          group: 'position',
+        },
+        {
+          name: 'center',
+          icon: 'align center',
           group: 'position',
         },
         {
           name: 'right',
           icon: 'horizontally flipped indent',
           group: 'position',
+        },
+        {
+          name: 'narrow',
+          icon: 'compress',
+          group: 'size',
+        },
+        {
+          name: 'wide',
+          icon: 'arrows alternate horizontal',
+          group: 'size',
+        },
+        {
+          name: 'asGallery',
+          icon: 'clone',
         },
       ],
     }, api)
@@ -197,9 +203,14 @@ class ImageTool extends EditorTool {
     let active = super.selectTune(tune)
 
     if (tune.name == 'asGallery') {
-      this.setTuneValue('position', active ? null : 'narrow')
-    } else {
+      this.setTuneValue('position', active ? null : 'center')
+      this.setTuneValue('size', this.data.size || 'narrow')
+    } else if (active && tune.group == 'position') {
       this.setTuneBoolean('asGallery', false)
+      this.setTuneValue('size', tune.name != 'center' ? null : 'narrow')
+    } else if (active && tune.group == 'size') {
+      const asGallery = this.isTuneActive({ name: 'asGallery' })
+      this.setTuneValue('position', asGallery ? null : 'center')
     }
 
     const allowMultiple = tune.name == 'asGallery' ? active : this.allowMultiple

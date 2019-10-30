@@ -195,6 +195,9 @@ ru:
           articles: "Статьи Вдохновение"
           treatments: "Методы очистки"
           meditations: "Медитации"
+        size: # TODO: Translate
+          narrow: "Narrow"
+          wide: "Wide"
         format:
           button: "Кнопка"
           grid: "Модульная Сетка"

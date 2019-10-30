@@ -189,6 +189,9 @@ it:
           articles: "Articoli"
           treatments: "Tecniche"
           meditations: "Meditazioni"
+        size: # TODO: Translate
+          narrow: "Narrow"
+          wide: "Wide"
         format:
           button: "Bottone"
           grid: "Griglia"

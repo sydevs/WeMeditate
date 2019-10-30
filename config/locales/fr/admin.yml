@@ -193,6 +193,9 @@ fr:
           articles: "Articles"
           treatments: "Techniques"
           meditations: "Meditations"
+        size:
+          narrow: "Narrow"
+          wide: "Wide"
         format:
           button: "Button"
           grid: "Grid"

@@ -99,7 +99,8 @@
 
 // ===== IMAGE GALLERY ===== //
 .content__image--gallery
-  @extend %wide-content-width
+  &.content__image--wide
+    @extend %wide-content-width
 
   img
     cursor: pointer
