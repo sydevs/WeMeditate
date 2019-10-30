@@ -175,6 +175,7 @@ uk:
         asGallery: "Gallery"
         asWisdom: "Ancient Knowledge Style"
         asVideo: "Video"
+        asPoem: "Poetry"
         withImages: "Show Images"
         invert: "Invert Colours"
         style: # These are list styles
@@ -186,8 +187,7 @@ uk:
           center: "Center Aligned"
           right: "Right Aligned"
         position: # A 'callout' is an image or quotation which is inserted at the side of the text
-          narrow: "Narrow Centered"
-          wide: "Wide Centered"
+          center: "Centered"
           left: "As Left Callout"
           right: "As Right Callout"
         type: # Note to Developer: These must be translated manually because they are accessed in JavaScript

@@ -10,6 +10,7 @@
 
 .content__quote--center .content__quote
   &__block
+    max-width: 640px
     text-align: center
     font-weight: $font-medium
     font-size: 1.6rem
@@ -44,13 +45,46 @@
     font-size: 1.4rem
     line-height: 30px
 
-.content__quote--narrow .content__quote__block
-  max-width: 400px
-  text-align: left
-  width: auto
+// ===== POEM QUOTE ===== //
+.content__quote--poem
+  @extend %narrow-content-width
 
-.content__quote--wide .content__quote__block
-  max-width: 640px
+  @each $side in left right
+    &.content__quote--#{$side}
+      .content__quote__block
+        margin-#{$side}: 20px
+        border-#{$side}: 1px solid #AAAAA9
+        text-align: $side
+
+.content__quote--poem .content__quote
+  &__block
+    padding: 0.5em 1em
+
+  &__text
+    font-size: 1.8rem
+    line-height: 1.6
+
+  &__text > p
+    &:first-child
+      margin-top: 0
+
+    &:last-child
+      margin-bottom: 0
+
+.content__quote--poem.content__quote--center .content__quote
+  &__block
+    max-width: 400px
+    text-align: left
+
+  &__text
+    line-height: 2
+
+  &__block
+    .divider--leaf-up
+      margin-bottom: 28px
+
+    .divider--leaf-down
+      margin-top: 28px
 
 // ===== CALLOUTE QUOTE ===== //
 // This is a quote which is placed as an insert into the text.

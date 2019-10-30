@@ -22,7 +22,8 @@ class QuoteTool extends EditorTool {
       text: data.text || '',
       credit: data.credit || '',
       caption: data.caption || '',
-      position: ['left', 'right', 'narrow'].includes(data.position) ? data.position : 'wide',
+      asPoem: data.asPoem || false,
+      position: ['left', 'right', 'center'].includes(data.position) ? data.position : 'center',
     }, { // Config
       id: 'quote',
       fields: {
@@ -42,16 +43,14 @@ class QuoteTool extends EditorTool {
           group: 'position',
         },
         {
-          name: 'wide',
+          name: 'center',
           icon: 'align center',
           group: 'position',
         },
         {
-          name: 'narrow',
-          icon: 'align justify',
-          group: 'position',
+          name: 'asPoem',
+          icon: 'quora',
         },
-
       ],
     }, api)
   }
@@ -62,13 +61,15 @@ class QuoteTool extends EditorTool {
     return container
   }
 
-  selectTune(tune) {
-    if (this.isTuneActive(tune)) {
-      this.setTuneValue(tune.group, '')
+  /*selectTune(tune) {
+    let active = super.selectTune(tune)
+
+    if (tune.name == 'asPoem') {
+      this.setTuneValue('position', active ? null : 'centered')
     } else {
-      super.selectTune(tune)
+      this.setTuneBoolean('asPoem', false)
     }
-  }
+  }*/
 
   static get enableLineBreaks() {
     return true

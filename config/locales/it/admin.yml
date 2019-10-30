@@ -170,6 +170,7 @@ it:
         asGallery: "Galleria"
         asWisdom: "Stile antica saggezza"
         asVideo: "Video"
+        asPoem: "Poetry" # TODO: Translate
         withImages: "Show Images" # TODO: Translate
         invert: "Colori invertiti"
         style:
@@ -180,9 +181,8 @@ it:
           left: "Sbandierato a sinistra"
           center: "Centrato"
           right: "Sbandierato a destra"
-        position: # TODO: Translate
-          narrow: "Narrow Centered"
-          wide: "Wide Centered"
+        position: # A 'callout' is an image or quotation which is inserted at the side of the text
+          center: "Centered" # TODO: Translate
           left: "Inserto a sinistra"
           right: "Inserto a destra"
         type:

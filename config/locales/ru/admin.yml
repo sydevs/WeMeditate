@@ -176,6 +176,7 @@ ru:
         asGallery: "Галерея"
         asWisdom: "Стиль Древних Знаний"
         asVideo: "Видео"
+        asPoem: "Poetry" # TODO: Translate
         withImages: "Показать изображения" 
         invert: "Инвертировать Цвета"
         style: # These are list styles
@@ -186,9 +187,8 @@ ru:
           left: "Выравнивание По Левому Краю"
           center: "Выравнивание По Центру"
           right: "Выравнивание По Правому Краю"
-        position: # 
-          narrow: "Узкий, по середине"
-          wide: "Широкий, по середине"
+        position: # A 'callout' is an image or quotation which is inserted at the side of the text
+          center: "Centered" # TODO: Translate
           left: "С Левой Стороны"
           right: "С Правой Стороны"
         type: # Note to Developer: These must be translated manually because they are accessed in JavaScript
