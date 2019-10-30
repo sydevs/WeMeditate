@@ -106,7 +106,7 @@ end
 group :development do
   gem 'better_errors' # More information about the error when you get a 500 (or other error) in the browser
   gem 'binding_of_caller' # Works with `better_errors` to let you query the code state in browser when an error occurs.
-  gem 'dotenv' # Should load .env file automatically, but doesn't seem to be working.
+  gem 'dotenv-rails'
   gem 'i18n_generators'
   gem 'letter_opener' # Let's us capture test emails to verify that they were sent, and what markup was actually sent.
   gem 'listen', '>= 3.0.5', '< 3.2' # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
