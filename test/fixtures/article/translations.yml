@@ -1,0 +1,33 @@
+one:
+  globalized_model: one
+  locale: en
+  name: Article 1
+  slug: article-1
+  excerpt: Integer vitae nunc id ligula luctus mollis ut sit amet velit.
+  metatags: null
+  thumbnail_id: 1
+  draft: null
+  content: null
+  vimeo_id: null
+  published_at: <%= Time.now %>
+  banner_id: null
+  state: 3
+  priority: 1
+  order: 0
+
+two:
+  globalized_model: two
+  locale: en
+  name: Article 2
+  slug: article-2
+  excerpt: Sed suscipit quam vel ex suscipit, sollicitudin rutrum massa cursus.
+  metatags: null
+  thumbnail_id: 1
+  draft: null
+  content: null
+  vimeo_id: null
+  published_at: <%= Time.now %>
+  banner_id: null
+  state: 3
+  priority: 1
+  order: 0

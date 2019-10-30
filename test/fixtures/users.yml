@@ -1,11 +1,12 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+<% User.roles.keys.each do |role| %>
+<%= role %>:
+  name: Mr. <%= role.titleize %>
+  email: <%= role %>@wemeditate.co
+  role: <%= role %>
+  encrypted_password: "$2a$11$aJnmlp/dIgjEJzivQMLVy.8JTvIw7JHFu6aXA8HgQnLp/.7CQHhmS" # "password"
+  languages_known:
+    - en
+  invitation_created_at: <%= Time.now %>
+  invitation_sent_at: <%= Time.now %>
+  invitation_accepted_at: <%= Time.now %>
+<% end %>

@@ -105,4 +105,6 @@ Rails.application.configure do
 
   # Google Tag Manager
   GoogleTagManager.gtm_id = ENV['GOOGLE_TAG_MANAGER_ID']
+
+  config.action_mailer.delivery_method = :smtp
 end

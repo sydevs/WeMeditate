@@ -1,7 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  category_id: one
+  original_locale: en
+  article_type: article
+  date: null
+  owner_id: null
+  author_id: null
+  latitude: null
+  longitude: null
 
 two:
-  title: MyString
+  category_id: two
+  original_locale: en
+  article_type: article
+  date: null
+  owner_id: null
+  author_id: null
+  latitude: null
+  longitude: null

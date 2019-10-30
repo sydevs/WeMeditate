@@ -1,0 +1,13 @@
+one:
+  globalized_model: one
+  name: Calm
+  locale: en
+  published: true
+  published_at: <%= Time.now %>
+
+two:
+  globalized_model: two
+  name: Dynamic
+  locale: en
+  published: true
+  published_at: <%= Time.now %>

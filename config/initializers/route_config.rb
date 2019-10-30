@@ -29,7 +29,7 @@ RouteTranslator.config do |config|
       config.host_locales[hostname] = locale
     end
   else
-    host = ENV['LOCALHOST'] || 'localhost'
+    host = ENV.fetch('LOCALHOST')
     Rails.configuration.admin_domain = "admin.#{host}"
     Rails.configuration.admin_host = "#{Rails.configuration.admin_domain}:3000"
     config.host_locales = {}
