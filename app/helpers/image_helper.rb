@@ -13,7 +13,7 @@ module ImageHelper
     'meditations/prescreen-foreground' => { large: 1920, medium: 960, small: 480 },
     'music/album' => { large: 900, medium: 500, small: 225 },
     'music/treatment' => { medium: 400, small: 200 },
-    'meditations/random' => { large: 1920 }, # TODO: Optimize this for different resolutions, and it's max width which is much lower than 1920
+    'meditations/random' => { large: 1200, medium: 800, small: 400 },
   }.freeze
 
   # Takes care of all the complicated rendering generate a picture tag that supports webp, lazyloading, and responsive images.

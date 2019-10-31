@@ -47,7 +47,7 @@ class Meditation < ApplicationRecord
   end
 
   # Calculate and return a few special types of meditaitons
-  def self.get type
+  def self.get type, exclude: nil
     case type
     when :daily
       # A different random meditation every day
@@ -56,7 +56,7 @@ class Meditation < ApplicationRecord
       Meditation.publicly_visible.order('RANDOM()').first
     when :trending
       # The meditation with the most views
-      Meditation.publicly_visible.order('meditation_translations.popularity DESC').first
+      Meditation.publicly_visible.order('meditation_translations.popularity DESC').where.not(id: exclude).first
     when :self_realization
       Meditation.find_by(slug: I18n.translate('routes.self_realization'))
     else

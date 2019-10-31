@@ -18,7 +18,7 @@ main
         h3.preview__title = meditation.name
         p.preview__text = meditation.excerpt
 
-      - meditation = Meditation.get(:trending)
+      - meditation = Meditation.get(:trending, exclude: meditation.id)
       .meditations__featured__item.preview.preview--small
         h2.preview__header = translate 'meditations.featured.trending_meditation'
         a.preview__media.preview__media--force-ratio.video href=meditation_url(meditation)
