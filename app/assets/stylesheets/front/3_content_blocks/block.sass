@@ -45,7 +45,7 @@
     @content
 
 @mixin text-spacing
-  margin-top: 1em
+  margin-top: 3em
 
 @mixin thin-spacing
   margin-top: 45px
@@ -57,7 +57,7 @@
   margin-top: 60px
 
   @include laptop-or-larger
-    margin-top: 120px
+    margin-top: 140px
 
 @mixin wide-spacing
   margin-top: 100px
@@ -131,6 +131,9 @@
 
 .content__header + *
   margin-top: 1em !important
+
+.content__splash + *
+  @include medium-spacing
 
 // BOTTOM MARGIN
 .content

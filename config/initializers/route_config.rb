@@ -30,8 +30,7 @@ RouteTranslator.config do |config|
       config.host_locales[hostname] = locale
     end
   else
-    host = 'localhost'
-    #host = 'omicron.local'
+    host = ENV['LOCALHOST'] || 'localhost'
     Rails.configuration.admin_domain = "admin.#{host}"
     Rails.configuration.admin_host = "#{Rails.configuration.admin_domain}:3000"
     config.host_locales = {}
