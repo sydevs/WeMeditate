@@ -1,5 +1,5 @@
 
-- showPrescreen = cookies[:prescreen] != 'dismissed'
+- showPrescreen = !browser.bot? && cookies[:prescreen] != 'dismissed'
 
 main id=dom_id(@static_page)
   - if showPrescreen
