@@ -75,11 +75,7 @@ class SubtleSystem {
   }
 
   onNodeClick(node) {
-    if (window.innerWidth <= 768) {
-      const selector = node.id.replace(/_/g, '-')
-      const item = this.container.querySelector(`.subtle-system__item--${selector}`)
-      zenscroll.intoView(item)
-    }
+    this.scrollToNode(id)
   }
 
   setNodeSelected(id, selected) {
@@ -88,8 +84,19 @@ class SubtleSystem {
     const selector = id.replace(/_/g, '-')
     this.container.querySelector(`#${id}`).classList.toggle('active', selected)
     const item = this.container.querySelector(`.subtle-system__item--${selector}`)
-    item.classList.toggle('subtle-system__item--active', selected)
+    
+    if (item) {
+      item.classList.toggle('subtle-system__item--active', selected)
+      if (selected) this.scrollToNode(id)
+    }
+  }
 
+  scrollToNode(id) {
+    if (window.innerWidth > 768) return
+
+    const selector = id.replace(/_/g, '-')
+    const item = this.container.querySelector(`.subtle-system__item--${selector}`)
+    zenscroll.intoView(item)
   }
 
 }

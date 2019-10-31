@@ -99,7 +99,13 @@ class MusicPlayer {
   setElementActive(playlistId, elementClass, active) {
     const selector = `.amplitude-${elementClass}[data-amplitude-playlist="${playlistId}"]`
     const element = this.container.querySelector(selector)
-    if (element) element.classList.toggle(`amplitude-active-${elementClass}`, active)
+    if (element) {
+      element.classList.toggle(`amplitude-active-${elementClass}`, active)
+
+      if (active && elementClass == 'playlist-container') {
+        zenscroll.intoView(element)
+      }
+    }
   }
 
 }
