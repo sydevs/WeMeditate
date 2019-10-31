@@ -20,7 +20,6 @@ class MusicPlayer {
       playlists: data.playlists,
       starting_playlist: 0,
       preload: this.mini ? 'none' : 'metadata',
-      debug: true,
       callbacks: {
         loadstart: () => {
           if (this.active) this.playButton.classList.add('amplitude-loading')
