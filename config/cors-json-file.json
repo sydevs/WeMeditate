@@ -1,9 +1,17 @@
 [
   {
     "origin": [
-      "http://www.wemeditate.co", "https://www.wemeditate.co",
-      "http://www.wemeditate.ru", "https://www.wemeditate.ru",
-      "http://it.wemeditate.co", "https://it.wemeditate.co"
+      "ua.wemeditate.co",
+      "am.wemeditate.co",
+      "nl.wemeditate.co",
+      "pt.wemeditate.co",
+      "es.wemeditate.co",
+      "de.wemeditate.co",
+      "www.wemeditate.fr",
+      "www.wemeditate.it",
+      "www.wemeditate.ru",
+      "www.wemeditate.co.uk",
+      "www.wemeditate.co"
     ],
     "responseHeader": ["Content-Type"],
     "method": ["GET", "HEAD"],
