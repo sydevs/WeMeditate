@@ -105,6 +105,15 @@
     #{$side}: 0
 
 // ===== GRADIENT BACKGROUND ===== //
+.gradient-wrapper
+  @extend %wide-content-width
+  position: absolute
+  left: 50%
+  top: 0
+  bottom: 0
+  transform: translateX(-50%)
+  z-index: -10
+
 .gradient
   display: none
   position: absolute
@@ -140,18 +149,14 @@
   top: -40px
 
   @include laptop-or-larger
-    top: -30%
+    top: -200px
 
 .gradient--long:before
   @include laptop-or-larger
-    bottom: -32%
+    bottom: -200px
 
-.gradient--short:before
+.gradient--fixed-height:before
   height: 964px
-
-.gradient--wide:before
-  @include laptop-or-larger
-    width: 40%
 
 .gradient--gray:before
   top: 50%
@@ -175,10 +180,8 @@
 
   .gradient--#{$side}.gradient--wisdom:before
     @include gradient(to #{$opposite}, 'wisdom')
-    #{$side}: -9%
 
 .gradient--wisdom:before
   top: 0
   bottom: 0
-  width: 40%
   opacity: 0.4

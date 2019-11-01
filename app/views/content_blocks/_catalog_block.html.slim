@@ -48,8 +48,8 @@
   - elsif block[:type] == 'treatments'
     - image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 448px) 400px, (max-width: 1023px) 40vw, 400px'
 
-    .content__catalog__gradient
-      .gradient.gradient--right.gradient--tall.gradient--short.gradient--orange
+    .gradient-wrapper
+      .gradient.gradient--right.gradient--tall.gradient--fixed-height.gradient--orange
 
     h2.content__catalog__title
       - if block[:title]
@@ -88,7 +88,7 @@
               .clearfix
 
   - elsif block[:type] == 'meditations'
-    .content__catalog__gradient
+    .gradient-wrapper
       .gradient.gradient--right.gradient--tall.gradient--blue
 
     - if block[:decorations] && block[:decorations][:sidetext]

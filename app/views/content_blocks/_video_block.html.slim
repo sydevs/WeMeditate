@@ -3,7 +3,8 @@
 
 - if block[:items].length > 0
   .content__video class="content__video--#{isGallery ? 'gallery' : 'single'}"
-    = render_decoration :gradient, block, size: %i[tall]
+    .gradient-wrapper
+      = render_decoration :gradient, block, size: %i[tall long]
 
     - if isGallery
       - if block[:decorations] && block[:decorations][:sidetext]
