@@ -1,2 +1,6 @@
-ruby:
+# This is the config file for HoundCI (https://houndci.com) providing
+# automated style guide linting on our Pull Requests.
+
+rubocop:
   config_file: .rubocop.yml
+  version: 0.75.0 # http://help.houndci.com/en/articles/2461415-supported-linters
