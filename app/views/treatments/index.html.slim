@@ -1,21 +1,19 @@
 
-- showPrescreen = !browser.bot? && cookies[:prescreen] != 'dismissed'
-
 main id=dom_id(@static_page)
-  - if showPrescreen
+  - if @prescreen
     = render 'meditations/prescreen', translations: 'treatments.prescreen', type: :treatments, skip_url: '#techniques'
   - else
     h1.banner.banner--left = @static_page.name
 
-  .treatments__content-wrapper class=("treatments__content-wrapper--prescreen" if showPrescreen)
-    - unless showPrescreen
+  .treatments__content-wrapper class=("treatments__content-wrapper--prescreen" if @prescreen)
+    - unless @prescreen
       .treatments__triangle.triangle.triangle--large.triangle--right
 
     .treatments__content.content
       - cache @static_page do
         = render_content @static_page
 
-    - if showPrescreen
+    - if @prescreen
       .treatments__triangle.triangle.triangle--large.triangle--right
 
   .treatments__list id='techniques'

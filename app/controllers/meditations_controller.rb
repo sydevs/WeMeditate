@@ -65,6 +65,7 @@ class MeditationsController < ApplicationController
 
   def show
     @meditation = Meditation.publicly_visible.friendly.find(params[:id])
+    @prescreen = !browser.bot? && cookies[:prescreen] != 'dismissed'
 
     meditations_page = StaticPage.preload_for(:content).find_by(role: :meditations)
     @breadcrumbs = [
@@ -73,15 +74,15 @@ class MeditationsController < ApplicationController
       { name: @meditation.name },
     ]
 
-    if cookies[:prescreen] == 'dismissed'
-      set_metadata(@meditation)
-      # Increment the view counter for this page.
-      @meditation.update! views: @meditation.views + 1, popularity: @meditation.popularity + 1 unless @meditation.self_realization?
-    else
+    if @prescreen
       kundalini = I18n.translate('meditations.prescreen.kundalini')
       title = I18n.translate('meditations.prescreen.title', kundalini: kundalini)
       set_metadata({ 'title' => title })
       render :prescreen
+    else
+      set_metadata(@meditation)
+      # Increment the view counter for this page.
+      @meditation.update! views: @meditation.views + 1, popularity: @meditation.popularity + 1 unless @meditation.self_realization?
     end
   end
 
