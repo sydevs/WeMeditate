@@ -1,17 +1,6 @@
 [
   {
-    "origin": [
-      "ua.staging.wemeditate.co",
-      "am.staging.wemeditate.co",
-      "nl.staging.wemeditate.co",
-      "pt.staging.wemeditate.co",
-      "es.staging.wemeditate.co",
-      "de.staging.wemeditate.co",
-      "fr.staging.wemeditate.co",
-      "it.staging.wemeditate.co",
-      "ru.staging.wemeditate.co",
-      "en.staging.wemeditate.co"
-    ],
+    "origin": ["*"],
     "responseHeader": ["Content-Type"],
     "method": ["GET", "HEAD"],
     "maxAgeSeconds": 3600

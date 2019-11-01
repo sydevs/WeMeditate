@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   include Klaviyo
   protect_from_forgery with: :exception
   before_action :enfore_maintenance_mode, except: %i[maintenance]
-  
+
   # The root page of the website
   def home
     @static_page = StaticPage.preload_for(:content).find_by(role: :home)
