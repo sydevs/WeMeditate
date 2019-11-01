@@ -53,8 +53,5 @@ Layout/EmptyLinesAroundModuleBody:
 Layout/IndentationConsistency:
   EnforcedStyle: rails
 
-Layout/IndentHash:
-  EnforcedStyle: consistent
-
 Layout/SpaceInLambdaLiteral:
   EnforcedStyle: require_space
