@@ -51,10 +51,10 @@ Layout/EmptyLinesAroundModuleBody:
   EnforcedStyle: empty_lines_except_namespace
 
 Layout/IndentationConsistency:
-  EnforcedStyle: rails
+  EnforcedStyle: indented_internal_methods
 
 Layout/SpaceInLambdaLiteral:
   EnforcedStyle: require_space
 
-Layout/IndentHash:
-  EnforcedStyle: consistent # For some reason this breaks rubocop in VSCode
+Layout/IndentFirstHashElement:
+  EnforcedStyle: consistent
