@@ -1,4 +1,3 @@
-
 RouteTranslator.config do |config|
   config.locale_param_key = :locale
   config.hide_locale = true
