@@ -1,5 +1,4 @@
 Rails.application.configure do
-  ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
@@ -21,6 +20,6 @@ unless Rails.env.production?
       mail.subject.prepend("[WM/#{Rails.env}] ")
     end
   end
-  
+
   ActionMailer::Base.register_interceptor(EmailEnvironmentLabeler)
 end

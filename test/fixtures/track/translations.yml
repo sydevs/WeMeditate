@@ -1,0 +1,13 @@
+one:
+  globalized_model: one
+  locale: en
+  name: Raag Durga
+  published: true
+  published_at: <%= Time.now %>
+
+two:
+  globalized_model: two
+  locale: en
+  name: Morning Meditation
+  published: true
+  published_at: <%= Time.now %>

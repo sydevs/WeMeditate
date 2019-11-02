@@ -1,9 +1,9 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString
-  icon: MyString
+  icon: 7cff859acb.svg
+  order: 0
+  original_locale: en
 
 two:
-  name: MyString
-  icon: MyString
+  icon: a95f6a170f.svg
+  order: 1
+  original_locale: en
