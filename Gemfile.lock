@@ -67,13 +67,14 @@ GEM
     browser (2.6.1)
     builder (3.2.3)
     byebug (11.0.1)
-    capybara (2.18.0)
+    capybara (3.29.0)
       addressable
       mini_mime (>= 0.1.3)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (>= 2.0, < 4.0)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      regexp_parser (~> 1.5)
+      xpath (~> 3.2)
     carrierwave (1.2.3)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -229,7 +230,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     nio4r (2.5.2)
-    nokogiri (1.10.4)
+    nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     normalize-rails (4.1.1)
     orm_adapter (0.5.0)
@@ -282,6 +283,7 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redis (4.1.3)
+    regexp_parser (1.6.0)
     regulator (0.1.3)
       activesupport (>= 3.0.0)
     representable (3.0.4)
@@ -376,6 +378,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webdrivers (4.1.3)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (>= 3.0, < 4.0)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
@@ -393,7 +399,7 @@ DEPENDENCIES
   binding_of_caller
   browser
   byebug
-  capybara (~> 2.13)
+  capybara
   carrierwave
   carrierwave-google-storage
   carrierwave-i18n
@@ -455,6 +461,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  webdrivers
 
 RUBY VERSION
    ruby 2.6.5p114
