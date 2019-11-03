@@ -1,0 +1,19 @@
+language: ruby
+rvm:
+  - 2.6.5
+cache: bundler
+services:
+  - postgresql
+env:
+  - RAILS_ENV=test
+addons:
+  chrome: stable # installs latest chrome for system tests running via chromedriver
+  apt:
+    update: true
+    packages:
+      - libtag1-dev # taglib-ruby dependency
+install:
+  - bundle install --deployment -j 4
+  - bundle exec rails db:create db:schema:load
+  - bundle exec rails runner "Webdrivers::Chromedriver.update" # prepares chromedriver via webdrivers gem
+script: bundle exec rails test:system
