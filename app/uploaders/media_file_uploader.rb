@@ -13,8 +13,10 @@ class MediaFileUploader < ApplicationUploader
     tiny: 180,
   }.freeze
 
+  previous_version = nil
   VERSIONS.each do |name, version_width|
-    version name, &create_version(version_width)
+    version name, source: previous_version, &create_version(version_width)
+    previous_version = name
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
