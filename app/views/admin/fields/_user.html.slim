@@ -52,9 +52,9 @@
 
   = f.input :languages_known, hint: translate('admin.hints.languages_known') do
     - if record.languages_known.present?
-      = translate('admin.misc.locale.no_languages')
-    - else
       = record.languages_known.map { |lang| language_name(lang) }.join(', ')
+    - else
+      = translate('admin.misc.locale.no_languages')
 
   = f.input :role do
     strong = human_enum_name(record, :role)
