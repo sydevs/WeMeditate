@@ -25,14 +25,19 @@ Rollbar.configure do |config|
   # via the rollbar interface.
   # Valid levels: 'critical', 'error', 'warning', 'info', 'debug', 'ignore'
   # 'ignore' will cause the exception to not be reported at all.
-  # config.exception_level_filters.merge!('MyCriticalException' => 'critical')
-  #
+
+  config.exception_level_filters.merge!(
+    'ActionController::RoutingError' => 'ignore'
+  )
+
   # You can also specify a callable, which will be called with the exception instance.
   # config.exception_level_filters.merge!('MyCriticalException' => lambda { |e| 'critical' })
 
   # Enable asynchronous reporting (uses girl_friday or Threading if girl_friday
   # is not installed)
-  # config.use_async = true
+
+  config.use_async = true
+
   # Supply your own async handler:
   # config.async_handler = Proc.new { |payload|
   #  Thread.new { Rollbar.process_from_async_handler(payload) }
