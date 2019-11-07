@@ -74,13 +74,11 @@ class MeditationsController < ApplicationController
       { name: @meditation.name },
     ]
 
+    set_metadata(@meditation)
+
     if @prescreen
-      kundalini = I18n.translate('meditations.prescreen.kundalini')
-      title = I18n.translate('meditations.prescreen.title', kundalini: kundalini)
-      set_metadata({ 'title' => title })
       render :prescreen
     else
-      set_metadata(@meditation)
       # Increment the view counter for this page.
       @meditation.update! views: @meditation.views + 1, popularity: @meditation.popularity + 1 unless @meditation.self_realization?
     end
