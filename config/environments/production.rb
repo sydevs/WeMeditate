@@ -3,7 +3,7 @@ Rails.application.configure do
 
   # Enable reduced logging
   config.lograge.enabled = true
-  
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -38,9 +38,8 @@ Rails.application.configure do
   config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false # TODO: This should be set back to false, and a suitable fix or alternative for inline_svg should be found.
-
-  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  config.assets.compile = false
+  config.assets.quiet = true # Make static asset logging quiet
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   #config.action_controller.asset_host = 'http://wemeditate.co'
