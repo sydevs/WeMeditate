@@ -77,6 +77,7 @@ gem 'sitemap_generator' # For SEO purposes
 gem 'httparty' # For http requests (specifically Klaviyo)
 gem 'browser' # Detect the user's browser / device
 gem 'taglib-ruby' # To parse metadata from mp3 files
+gem 'lograge' # Reduce verbosity of Rails logs
 
 # Maybe needed later(?)
 # gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
