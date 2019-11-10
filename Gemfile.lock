@@ -7,50 +7,63 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (5.2.3)
-      actionpack (= 5.2.3)
+    actioncable (6.0.1)
+      actionpack (= 6.0.1)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
-    actionmailer (5.2.3)
-      actionpack (= 5.2.3)
-      actionview (= 5.2.3)
-      activejob (= 5.2.3)
+    actionmailbox (6.0.1)
+      actionpack (= 6.0.1)
+      activejob (= 6.0.1)
+      activerecord (= 6.0.1)
+      activestorage (= 6.0.1)
+      activesupport (= 6.0.1)
+      mail (>= 2.7.1)
+    actionmailer (6.0.1)
+      actionpack (= 6.0.1)
+      actionview (= 6.0.1)
+      activejob (= 6.0.1)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
-    actionpack (5.2.3)
-      actionview (= 5.2.3)
-      activesupport (= 5.2.3)
+    actionpack (6.0.1)
+      actionview (= 6.0.1)
+      activesupport (= 6.0.1)
       rack (~> 2.0)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (5.2.3)
-      activesupport (= 5.2.3)
+      rails-html-sanitizer (~> 1.0, >= 1.2.0)
+    actiontext (6.0.1)
+      actionpack (= 6.0.1)
+      activerecord (= 6.0.1)
+      activestorage (= 6.0.1)
+      activesupport (= 6.0.1)
+      nokogiri (>= 1.8.5)
+    actionview (6.0.1)
+      activesupport (= 6.0.1)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    activejob (5.2.3)
-      activesupport (= 5.2.3)
+      rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    activejob (6.0.1)
+      activesupport (= 6.0.1)
       globalid (>= 0.3.6)
-    activemodel (5.2.3)
-      activesupport (= 5.2.3)
-    activerecord (5.2.3)
-      activemodel (= 5.2.3)
-      activesupport (= 5.2.3)
-      arel (>= 9.0)
-    activestorage (5.2.3)
-      actionpack (= 5.2.3)
-      activerecord (= 5.2.3)
+    activemodel (6.0.1)
+      activesupport (= 6.0.1)
+    activerecord (6.0.1)
+      activemodel (= 6.0.1)
+      activesupport (= 6.0.1)
+    activestorage (6.0.1)
+      actionpack (= 6.0.1)
+      activejob (= 6.0.1)
+      activerecord (= 6.0.1)
       marcel (~> 0.3.1)
-    activesupport (5.2.3)
+    activesupport (6.0.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+      zeitwerk (~> 2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    arel (9.0.0)
     audited (4.9.0)
       activerecord (>= 4.2, < 6.1)
     autoprefixer-rails (9.7.0)
@@ -201,10 +214,9 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.7.0)
       launchy (~> 2.2)
-    listen (3.1.5)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-      ruby_dep (~> 1.2)
+    listen (3.2.0)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     lograge (0.11.2)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -230,7 +242,7 @@ GEM
     mini_magick (4.9.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.12.2)
+    minitest (5.13.0)
     multi_json (1.14.1)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
@@ -251,38 +263,40 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rails (5.2.3)
-      actioncable (= 5.2.3)
-      actionmailer (= 5.2.3)
-      actionpack (= 5.2.3)
-      actionview (= 5.2.3)
-      activejob (= 5.2.3)
-      activemodel (= 5.2.3)
-      activerecord (= 5.2.3)
-      activestorage (= 5.2.3)
-      activesupport (= 5.2.3)
+    rails (6.0.1)
+      actioncable (= 6.0.1)
+      actionmailbox (= 6.0.1)
+      actionmailer (= 6.0.1)
+      actionpack (= 6.0.1)
+      actiontext (= 6.0.1)
+      actionview (= 6.0.1)
+      activejob (= 6.0.1)
+      activemodel (= 6.0.1)
+      activerecord (= 6.0.1)
+      activestorage (= 6.0.1)
+      activesupport (= 6.0.1)
       bundler (>= 1.3.0)
-      railties (= 5.2.3)
+      railties (= 6.0.1)
       sprockets-rails (>= 2.0.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
-    rails-i18n (5.1.3)
+    rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
-      railties (>= 5.0, < 6)
+      railties (>= 6.0.0, < 7)
     rails_real_favicon (0.0.13)
       json (>= 1.7, < 3)
       rails
       rubyzip (~> 1)
     rails_serve_static_assets (0.0.5)
-    railties (5.2.3)
-      actionpack (= 5.2.3)
-      activesupport (= 5.2.3)
+    railties (6.0.1)
+      actionpack (= 6.0.1)
+      activesupport (= 6.0.1)
       method_source
       rake (>= 0.8.7)
-      thor (>= 0.19.0, < 2.0)
+      thor (>= 0.20.3, < 2.0)
     rake (13.0.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
@@ -302,10 +316,9 @@ GEM
       railties (>= 5.0)
     retriable (3.1.2)
     rollbar (2.22.1)
-    route_translator (6.0.0)
+    route_translator (7.0.1)
       actionpack (>= 5.0.0.1, < 6.1)
       activesupport (>= 5.0.0.1, < 6.1)
-    ruby_dep (1.5.0)
     rubyzip (1.3.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -378,11 +391,11 @@ GEM
       execjs (>= 0.3.0, < 3)
     warden (1.2.8)
       rack (>= 2.0.6)
-    web-console (3.7.0)
-      actionview (>= 5.0)
-      activemodel (>= 5.0)
+    web-console (4.0.1)
+      actionview (>= 6.0.0)
+      activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
-      railties (>= 5.0)
+      railties (>= 6.0.0)
     webdrivers (4.1.3)
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
@@ -392,6 +405,7 @@ GEM
     websocket-extensions (0.1.4)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    zeitwerk (2.2.1)
 
 PLATFORMS
   ruby
@@ -430,24 +444,24 @@ DEPENDENCIES
   kaminari
   kaminari-i18n
   letter_opener
-  listen (>= 3.0.5, < 3.2)
+  listen
   lograge
   mail_form
   memory_profiler
   mini_magick
   normalize-rails
-  pg (~> 0.18)
+  pg
   photoswipe-rails
-  puma (~> 3.7)
+  puma
   rack-mini-profiler
-  rails (~> 5.2)
+  rails (~> 6.0.1)
   rails-i18n
   rails_real_favicon
   rails_serve_static_assets
-  redis (~> 4.0)
+  redis
   regulator
   rollbar
-  route_translator (~> 6.0.0)
+  route_translator
   sassc-rails
   seedbank
   selenium-webdriver
@@ -459,14 +473,14 @@ DEPENDENCIES
   sortable-rails
   sprig
   spring
-  spring-watcher-listen (~> 2.0.0)
+  spring-watcher-listen
   stackprof
   switch_user!
   taglib-ruby
-  turbolinks (~> 5)
+  turbolinks
   tzinfo-data
-  uglifier (>= 1.3.0)
-  web-console (>= 3.3.0)
+  uglifier
+  web-console
   webdrivers
 
 RUBY VERSION
