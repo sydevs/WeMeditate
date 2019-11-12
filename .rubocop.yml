@@ -5,8 +5,10 @@ AllCops:
   # Exclude automatically generated rails files for easier app:update's etc
   Exclude:
     - bin/*
-    - db/**/*
-    - config/**/*
+    - db/schema.rb
+    - config/boot.rb
+    - config/environment.rb
+    - config/environments/*
 
 Metrics:
   Enabled: False
