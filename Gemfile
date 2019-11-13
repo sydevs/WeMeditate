@@ -2,21 +2,21 @@ source 'https://rubygems.org'
 ruby '2.6.5'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
 # Core gems
-gem 'rails', '~> 6.0.1'
 gem 'pg' # Use postgresql as the database for Active Record
 gem 'puma' # Use Puma as the app server
+gem 'rails', '~> 6.0.1'
 gem 'sassc-rails' # Use SASS for stylesheets
 gem 'slim-rails' # Use Slim for views
 gem 'uglifier' # Use Uglifier as compressor for JavaScript assets
 
 gem 'rails_serve_static_assets' # Allow the heroku app to serve static files
-gem 'turbolinks' # Makes navigating your web application faster.
 gem 'redis' # Use Redis for caching
+gem 'turbolinks' # Makes navigating your web application faster.
 
 # Users
 gem 'devise' # Adds all the core features for users - user sessions, login, password recovery, etc
@@ -30,8 +30,8 @@ gem 'inline_svg' # To embed svg files
 gem 'jquery-rails' # Add jQuery
 gem 'jquery-slick-rails' # A slider library
 gem 'normalize-rails' # To normalize CSS
-gem 'semantic-ui-sass' # CSS framework for the admin/CMS pages
 gem 'photoswipe-rails' # For image gallery
+gem 'semantic-ui-sass' # CSS framework for the admin/CMS pages
 
 # Models
 gem 'friendly_id' # Model routes use a slug instead of an ID number
@@ -41,43 +41,43 @@ gem 'jsonb_accessor' # Makes it simpler to access attributes of a jsonb database
 gem 'carrierwave' # Core support for file uploads
 gem 'carrierwave-google-storage' # Let's us store the files in Google Storage
 gem 'carrierwave-meta' # To get image meta data
-gem 'mini_magick' # Image processing during upload
 gem 'google-cloud-storage' # Needed to access sitemaps
+gem 'mini_magick' # Image processing during upload
 
 # Admin
+gem 'audited' # To track changes to the files
 gem 'autosize' # To automatically grow text areas
+gem 'diff-lcs' # For draft comparisons
 gem 'kaminari' # For pagination
 gem 'simple_form' # Takes care of grunt work when creating forms
 gem 'sortable-rails' # Allows us to sort models with a drag and drop interface
-gem 'diff-lcs' # For draft comparisons
-gem 'audited' # To track changes to the files
 
 # Globalize (translatable models)
 # gem 'carrierwave_globalize' # for carrierwave support
-gem 'globalize' # Support for translating models
 gem 'friendly_id-globalize' # for friendly_id support
+gem 'globalize' # Support for translating models
 
 # Localization
 gem 'carrierwave-i18n' # Localization of carrierwave
-gem 'i18n_data' # Adds some utility functions for localizing countries
-gem 'rails-i18n' # Localization of rails features
 gem 'devise-i18n' # Localization for devise
-gem 'route_translator' # Adds support for translating URLs
+gem 'i18n_data' # Adds some utility functions for localizing countries
 gem 'kaminari-i18n' # Localization for kaminari
+gem 'rails-i18n' # Localization of rails features
+gem 'route_translator' # Adds support for translating URLs
 
 # Tools
+gem 'rollbar' # Error tracking
 gem 'seedbank' # Used to populate the database with the pages and data used in the designs, for quick deployment and recovery.
 gem 'sprig' # Used to populate the database with the pages and data used in the designs, for quick deployment and recovery.
-gem 'rollbar' # Error tracking
 
 # Misc
+gem 'browser' # Detect the user's browser / device
+gem 'httparty' # For http requests (specifically Klaviyo)
+gem 'lograge' # Reduce verbosity of Rails logs
 gem 'mail_form' # For the contact form
 gem 'sidekiq' # To power active jobs
 gem 'sitemap_generator' # For SEO purposes
-gem 'httparty' # For http requests (specifically Klaviyo)
-gem 'browser' # Detect the user's browser / device
 gem 'taglib-ruby' # To parse metadata from mp3 files
-gem 'lograge' # Reduce verbosity of Rails logs
 
 # Maybe needed later(?)
 # gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -88,9 +88,9 @@ gem 'lograge' # Reduce verbosity of Rails logs
 
 group :staging, :development do
   # For profiling load times
-  gem 'rack-mini-profiler', require: false
-  gem 'memory_profiler'
   gem 'flamegraph'
+  gem 'memory_profiler'
+  gem 'rack-mini-profiler', require: false
   gem 'stackprof'
 end
 
