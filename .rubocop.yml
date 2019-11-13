@@ -1,6 +1,15 @@
 # Enable this when the VSC rubocop extension supports rails
 #inherit_from: ./config/rails.rubocop.yml
 
+AllCops:
+  # Exclude automatically generated rails files for easier app:update's etc
+  Exclude:
+    - bin/*
+    - db/schema.rb
+    - config/boot.rb
+    - config/environment.rb
+    - config/environments/*
+
 Metrics:
   Enabled: False
 

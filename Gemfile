@@ -7,16 +7,16 @@ git_source(:github) do |repo_name|
 end
 
 # Core gems
-gem 'rails', '~> 5.2'
-gem 'pg', '~> 0.18' # Use postgresql as the database for Active Record
-gem 'puma', '~> 3.7' # Use Puma as the app server
+gem 'rails', '~> 6.0.1'
+gem 'pg' # Use postgresql as the database for Active Record
+gem 'puma' # Use Puma as the app server
 gem 'sassc-rails' # Use SASS for stylesheets
 gem 'slim-rails' # Use Slim for views
-gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
+gem 'uglifier' # Use Uglifier as compressor for JavaScript assets
 
 gem 'rails_serve_static_assets' # Allow the heroku app to serve static files
-gem 'turbolinks', '~> 5' # Makes navigating your web application faster.
-gem 'redis', '~> 4.0' # Use Redis for caching
+gem 'turbolinks' # Makes navigating your web application faster.
+gem 'redis' # Use Redis for caching
 
 # Users
 gem 'devise' # Adds all the core features for users - user sessions, login, password recovery, etc
@@ -62,7 +62,7 @@ gem 'carrierwave-i18n' # Localization of carrierwave
 gem 'i18n_data' # Adds some utility functions for localizing countries
 gem 'rails-i18n' # Localization of rails features
 gem 'devise-i18n' # Localization for devise
-gem 'route_translator', '~> 6.0.0' # Adds support for translating URLs
+gem 'route_translator' # Adds support for translating URLs
 gem 'kaminari-i18n' # Localization for kaminari
 
 # Tools
@@ -109,11 +109,11 @@ group :development do
   gem 'binding_of_caller' # Works with `better_errors` to let you query the code state in browser when an error occurs.
   gem 'i18n_generators'
   gem 'letter_opener' # Let's us capture test emails to verify that they were sent, and what markup was actually sent.
-  gem 'listen', '>= 3.0.5', '< 3.2' # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'listen' # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'spring' # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
   gem 'switch_user', github: 'tslocke/switch_user' # Quickly switch between users without having to login/logout in development
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
