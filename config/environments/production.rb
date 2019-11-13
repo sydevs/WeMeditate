@@ -28,7 +28,7 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
-  config.assets.quite = true # Avoid overloading our Papertrail account
+  config.assets.quiet = true # Avoid overloading our Papertrail account
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
