@@ -1,3 +1,5 @@
+/* global $ */
+/* exported Form */
 
 class Form {
 

@@ -1,3 +1,5 @@
+/* global Application, zenscroll */
+/* exported CustomMeditation */
 
 class CustomMeditation {
 
@@ -22,7 +24,7 @@ class CustomMeditation {
     this.form.addEventListener('submit', event => this._onSubmit(event))
   }
 
-  _onGoalChange(event) {
+  _onGoalChange(_event) {
     this.goalDropdown.classList.remove('dropdown--error')
     this.hasGoalValue = true
 
@@ -33,7 +35,7 @@ class CustomMeditation {
     }
   }
 
-  _onDurationChange(event) {
+  _onDurationChange(_event) {
     this.durationRadioGroup.classList.remove('radio_group--error')
     this.hasDurationValue = true
   }

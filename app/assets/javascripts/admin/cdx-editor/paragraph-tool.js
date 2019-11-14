@@ -1,3 +1,5 @@
+/* global EditorTool, Util */
+/* exported ParagraphTool */
 
 class ParagraphTool extends EditorTool {
 
@@ -10,7 +12,7 @@ class ParagraphTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
-      id: data.id || generateId(),
+      id: data.id || Util.generateId(),
       text: data.text || '',
     }, { // Config
       id: 'paragraph',
@@ -45,7 +47,7 @@ class ParagraphTool extends EditorTool {
 
   // Check for emptiness
   validate(blockData) {
-    return blockData.text.trim() !== '';
+    return blockData.text.trim() !== ''
   }
 
   // Define the types of paste that should be handled by this tool.

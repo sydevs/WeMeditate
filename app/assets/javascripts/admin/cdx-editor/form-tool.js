@@ -1,9 +1,11 @@
+/* global EditorTool, Util, translate */
+/* exported FormTool */
 
 class FormTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="tasks icon"></i>',
-      title: translate['content']['blocks']['form'],
+      title: translate.content.blocks.form,
     }
   }
 
@@ -19,7 +21,7 @@ class FormTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
-      id: data.id || generateId(),
+      id: data.id || Util.generateId(),
       title: data.title || '',
       subtitle: data.subtitle || '',
       text: data.text || '',
@@ -60,21 +62,21 @@ class FormTool extends EditorTool {
   render() {
     const container = super.render()
     const button = container.querySelector(`.${this.CSS.fields.action}`)
-    const fields = make('div', this.CSS.fields_placeholder)
+    const fields = Util.make('div', this.CSS.fields_placeholder)
 
-    make('div', [this.CSS.placeholder, this.CSS.placeholders.email], { innerText: translate['email'] }, fields)
-    make('div', [this.CSS.placeholder, this.CSS.placeholders.message], { innerText: translate['message'] }, fields)
+    Util.make('div', [this.CSS.placeholder, this.CSS.placeholders.email], { innerText: translate.email }, fields)
+    Util.make('div', [this.CSS.placeholder, this.CSS.placeholders.message], { innerText: translate.message }, fields)
 
     container.insertBefore(fields, button)
     return container
   }
 
   static get enableLineBreaks() {
-    return false;
+    return false
   }
 
   // Empty Structured is not empty Block
   static get contentless() {
-    return false;
+    return false
   }
 }

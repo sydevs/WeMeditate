@@ -1,10 +1,13 @@
+/* global $, Sortable, Editor, RepeatableFields, autosize */
+/* exported Admin */
+
 /** Admin
  * This file orchestrates all the code for the administrative part of the website (ie. admin.wemeditate.co)
  */
 
 const Admin = {
   load: function() {
-    console.log('loading Admin.js')
+    console.log('loading Admin.js') // eslint-disable-line no-console
 
     // Initialize javascript-reliant elements for the entire body
     Admin.initialize($(document.body))
@@ -23,8 +26,8 @@ const Admin = {
     // Initialize the Sortable library for sortable lists
     $('.sort-list').each(function() {
       Sortable.create(this, {
-        handle: ".handle",
-        draggable: ".sortable",
+        handle: '.handle',
+        draggable: '.sortable',
       })
 
       var list = $(this)
@@ -51,7 +54,7 @@ const Admin = {
       var $element = $(this)
       var options = {}
       if ($element.hasClass('clearable')) {
-        options['clearable'] = true
+        options.clearable = true
       }
 
       $element.dropdown(options)
@@ -80,10 +83,10 @@ const Admin = {
     if ($img.length > 0 && input.files && input.files[0]) {
       const reader = new FileReader()
       reader.onload = function(event) {
-        $img.attr('src', event.target.result);
+        $img.attr('src', event.target.result)
       }
       
-      reader.readAsDataURL(input.files[0]);
+      reader.readAsDataURL(input.files[0])
     }
   },
 

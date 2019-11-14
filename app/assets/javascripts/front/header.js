@@ -1,3 +1,5 @@
+/* global $, zenscroll */
+/* exported Header */
 
 class Header {
 

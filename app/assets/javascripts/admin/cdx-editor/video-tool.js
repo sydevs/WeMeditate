@@ -1,9 +1,11 @@
+/* global EditorTool, Util, Editor, translate */
+/* exported VideoTool */
 
 class VideoTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="play icon"></i>',
-      title: translate['content']['blocks']['video'],
+      title: translate.content.blocks.video,
     }
   }
 
@@ -14,7 +16,7 @@ class VideoTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
-      id: data.id || generateId(),
+      id: data.id || Util.generateId(),
       items: data.items || [],
       asGallery: data.asGallery || false,
       decorations: data.decorations || {},
@@ -43,9 +45,9 @@ class VideoTool extends EditorTool {
   render() {
     this.container = super.render()
 
-    const searchInputWrapper = make('div', [this.CSS.search, 'ui', 'fluid', 'icon', 'input'], {}, this.container)
-    this.searchInput = make('input', null, { placeholder: 'Enter Vimeo ID' }, searchInputWrapper)
-    make('i', ['search', 'icon'], {}, searchInputWrapper)
+    const searchInputWrapper = Util.make('div', [this.CSS.search, 'ui', 'fluid', 'icon', 'input'], {}, this.container)
+    this.searchInput = Util.make('input', null, { placeholder: 'Enter Vimeo ID' }, searchInputWrapper)
+    Util.make('i', ['search', 'icon'], {}, searchInputWrapper)
     this.searchInput.addEventListener('keydown', event => {
       if (event.key == 'Enter' || event.keyCode == 13 || event.which == 13) { // ENTER
         if (!isNaN(event.target.value)) this.retrieveVimeoVideo(event.target.value)
@@ -55,7 +57,7 @@ class VideoTool extends EditorTool {
       }
     })
 
-    this.itemsContainer = make('div', this.CSS.items, {}, this.container)
+    this.itemsContainer = Util.make('div', this.CSS.items, {}, this.container)
 
     if (this.data.items.length) {
       this.data.items.forEach(item => {
@@ -67,24 +69,24 @@ class VideoTool extends EditorTool {
   }
 
   renderItem(item) {
-    const container = make('div', this.CSS.item.container, {})
+    const container = Util.make('div', this.CSS.item.container, {})
     container.dataset.vimeoId = item.vimeo_id
 
     if (item.thumbnail) {
-      const img = make('div', [this.CSS.item.image, 'ui', 'fluid', 'rounded', 'image'], {}, container)
-      make('img', null, { src: item.thumbnail, srcset: item.thumbnail_srcset, sizes: '586px' }, img)
+      const img = Util.make('div', [this.CSS.item.image, 'ui', 'fluid', 'rounded', 'image'], {}, container)
+      Util.make('img', null, { src: item.thumbnail, srcset: item.thumbnail_srcset, sizes: '586px' }, img)
     } else {
-      make('div', [this.CSS.item.image, 'ui', 'fluid', 'placeholder'], {}, container)
+      Util.make('div', [this.CSS.item.image, 'ui', 'fluid', 'placeholder'], {}, container)
     }
 
-    let title = make('div', [this.CSS.input, this.CSS.inputs.title, this.CSS.item.title], {
+    let title = Util.make('div', [this.CSS.input, this.CSS.inputs.title, this.CSS.item.title], {
       contentEditable: true,
       innerHTML: item.title || `Video #${item.vimeo_id}`,
     }, container)
 
-    title.dataset.placeholder = translate['content']['placeholders']['title']
+    title.dataset.placeholder = translate.content.placeholders.title
 
-    let remove = make('i', [this.CSS.item.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, container)
+    let remove = Util.make('i', [this.CSS.item.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, container)
     remove.addEventListener('click', (event) => this.removeItem(event.target.parentNode))
 
     return container
@@ -128,7 +130,7 @@ class VideoTool extends EditorTool {
     for (let i = 0; i < this.itemsContainer.childElementCount; i++) {
       const item = this.itemsContainer.children[i]
       const imageElement = item.querySelector(`.${this.CSS.item.image} img`)
-      console.log('saving thumbnail', `.${this.CSS.item.image}`, 'in', item, '=', item.querySelector(`.${this.CSS.item.image}`))
+
       new_data.items.push({
         vimeo_id: item.dataset.vimeoId,
         thumbnail: imageElement.src,
@@ -151,7 +153,7 @@ class VideoTool extends EditorTool {
 
   // A simple shorthand function
   get allowMultiple() {
-    this.isTuneActive('asGallery')
+    return this.isTuneActive('asGallery')
   }
 
   // Allow native enter behaviour

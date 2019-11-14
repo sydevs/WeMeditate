@@ -1,3 +1,6 @@
+/* global $, translate */
+/* exported EditorTool */
+
 /** Editor Tool
  * This folder contains definitions for each type of block which can be used in our content editor.
  * This file contains the super class for all those tools, providing common functionality between them all.
@@ -23,13 +26,13 @@ class EditorTool {
       settingsButton: this.api.styles.settingsButton,
       settingsButtonActive: this.api.styles.settingsButtonActive,
       settingsButtonDisabled: `${this.api.styles.settingsButton}--disabled`,
-      settingsInputWrapper: `cdx-settings-input-zone`,
+      settingsInputWrapper: 'cdx-settings-input-zone',
       settingsSelect: 'ce-settings-select',
       settingsInput: 'ce-settings-input',
       semanticInput: 'cdx-semantic-input',
-      tunesWrapper: `ce-settings__tunes`,
-      decorationsWrapper: `ce-settings__decorations`,
-      decorationInputsWrapper: `ce-settings__inputs`,
+      tunesWrapper: 'ce-settings__tunes',
+      decorationsWrapper: 'ce-settings__decorations',
+      decorationInputsWrapper: 'ce-settings__inputs',
       tuneButtons: {},
       decorationButtons: {},
       tunes: {},
@@ -90,7 +93,7 @@ class EditorTool {
 
   // Creates the tool html with inputs
   render() {
-    const container = make('div', [this.CSS.baseClass, this.CSS.container])
+    const container = Util.make('div', [this.CSS.baseClass, this.CSS.container])
 
     // Render the fields which are defined for this tool
     for (let key in this.fields) {
@@ -114,7 +117,7 @@ class EditorTool {
     let field = this.fields[key]
     let type = field.input || 'text'
 
-    result = make('div', [this.CSS.input, this.CSS.inputs[type], this.CSS.fields[key]], {
+    result = Util.make('div', [this.CSS.input, this.CSS.inputs[type], this.CSS.fields[key]], {
       type: 'text',
       innerHTML: this.data[key],
       contentEditable: true,
@@ -139,11 +142,11 @@ class EditorTool {
     }
 
     // Add the field's label as a placeholder, or use a default placeholder
-    result.dataset.placeholder = field.label || translate['content']['placeholders'][key]
+    result.dataset.placeholder = field.label || translate.content.placeholders[key]
 
     if (field.optional) {
       // If this field is optional append that to the placeholder
-      result.dataset.placeholder += ` (${translate['content']['placeholders']['optional']})`
+      result.dataset.placeholder += ` (${translate.content.placeholders.optional})`
     }
 
     return result
@@ -205,23 +208,23 @@ class EditorTool {
 
   // Create this tool's settings menu.
   renderSettings() {
-    const settingsContainer = make('div')
+    const settingsContainer = Util.make('div')
 
     // Render tunes if there is at least one defined.
     if (this.tunes.length > 0) {
-      make('label', '', { innerText: translate['content']['settings']['tunes'] }, settingsContainer)
-      this.tunesWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.tunesWrapper], {}, settingsContainer)
+      Util.make('label', '', { innerText: translate.content.settings.tunes }, settingsContainer)
+      this.tunesWrapper = Util.make('div', [this.CSS.settingsWrapper, this.CSS.tunesWrapper], {}, settingsContainer)
       this.renderTunes(this.tunesWrapper)
     }
 
     // Render decorations if there is at least one allowed.
     if (this.allowedDecorations.length > 0) {
-      make('label', '', { innerText: translate['content']['settings']['decorations'] }, settingsContainer)
-      this.decorationsWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.decorationsWrapper], {}, settingsContainer)
+      Util.make('label', '', { innerText: translate.content.settings.decorations }, settingsContainer)
+      this.decorationsWrapper = Util.make('div', [this.CSS.settingsWrapper, this.CSS.decorationsWrapper], {}, settingsContainer)
       this.renderDecorations(this.decorationsWrapper)
 
       // Render decoration inputs
-      this.inputsWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.decorationInputsWrapper], {}, settingsContainer)
+      this.inputsWrapper = Util.make('div', [this.CSS.settingsWrapper, this.CSS.decorationInputsWrapper], {}, settingsContainer)
       this.renderDecorationInputs(this.inputsWrapper)
     }
 
@@ -271,14 +274,14 @@ class EditorTool {
 
   // Renders one tune button
   renderTuneButton(tune, container) {
-    const button = make('div', [this.CSS.settingsButton, this.CSS.tuneButtons[tune.name]], null, container)
+    const button = Util.make('div', [this.CSS.settingsButton, this.CSS.tuneButtons[tune.name]], null, container)
     button.dataset.position = 'top right'
-    button.innerHTML = '<i class="'+tune.icon+' icon"></i>'
+    button.innerHTML = '<i class="' + tune.icon + ' icon"></i>'
 
     if (tune.group) {
-      button.dataset.tooltip = translate['content']['tunes'][tune.group][tune.name]
+      button.dataset.tooltip = translate.content.tunes[tune.group][tune.name]
     } else {
-      button.dataset.tooltip = translate['content']['tunes'][tune.name]
+      button.dataset.tooltip = translate.content.tunes[tune.name]
     }
 
     button.addEventListener('click', () => {
@@ -304,7 +307,6 @@ class EditorTool {
       this.setTuneBoolean(tune.name, !this.data[tune.name])
     }
 
-    this.tunes
     return this.isTuneActive(tune)
   }
 
@@ -325,8 +327,8 @@ class EditorTool {
 
   // ------ DECORATIONS ------ //
 
-  renderDecorations(container) {
-    this.allowedDecorations.map(key => {
+  renderDecorations(_container) {
+    this.allowedDecorations.forEach(key => {
       const decoration = this.decorationsConfig[key]
       decoration.name = key
       this.renderDecorationButton(decoration, this.decorationsWrapper)
@@ -334,10 +336,10 @@ class EditorTool {
   }
 
   renderDecorationButton(decoration, container) {
-    const button = make('div', [this.CSS.settingsButton, this.CSS.decorationButtons[decoration.name]], null, container)
+    const button = Util.make('div', [this.CSS.settingsButton, this.CSS.decorationButtons[decoration.name]], null, container)
     button.dataset.position = 'top right'
-    button.innerHTML = '<i class="'+decoration.icon+' icon"></i>'
-    button.dataset.tooltip = translate['content']['decorations'][decoration.name]
+    button.innerHTML = '<i class="' + decoration.icon + ' icon"></i>'
+    button.dataset.tooltip = translate.content.decorations[decoration.name]
 
     button.addEventListener('click', () => {
       if (!event.target.classList.contains(this.CSS.settingsButtonDisabled)) {
@@ -352,12 +354,12 @@ class EditorTool {
   renderDecorationInputs(container) {
     this.decorationInputs = {}
 
-    this.allowedDecorations.map(key => {
+    this.allowedDecorations.forEach(key => {
       const decoration = this.decorationsConfig[key]
 
       if (decoration.inputs) {
         this.decorationInputs[key] = {}
-        decoration.inputs.map(input => {
+        decoration.inputs.forEach(input => {
           this.decorationInputs[key][input.name] = this.renderDecorationInput(key, input, container)
         })
       }
@@ -365,28 +367,27 @@ class EditorTool {
   }
 
   renderDecorationInput(key, input, container) {
-    console.log('render', key, 'from', this.data.decorations)
     const value = (this.data.decorations && this.data.decorations[key] && this.data.decorations[key][input.name]) || input.default
     let result, inputElement
 
     if (input.type == 'select') {
-      result = make('div', [this.CSS.settingsSelect, 'ui', 'inline', 'dropdown'], {}, container)
-      inputElement = make('input', 'text', { type: 'hidden' }, result)
-      make('div', 'text', { innerText: translate['content']['decorations'][`${key}_${input.name}`][value] }, result)
-      make('i', ['dropdown', 'icon'], {}, result)
-      const menu = make('div', 'menu', {}, result)
-      input.values.map(val => {
-        const label = translate['content']['decorations'][`${key}_${input.name}`][val]
-        const item = make('div', 'item', { innerText: label }, menu)
+      result = Util.make('div', [this.CSS.settingsSelect, 'ui', 'inline', 'dropdown'], {}, container)
+      inputElement = Util.make('input', 'text', { type: 'hidden' }, result)
+      Util.make('div', 'text', { innerText: translate.content.decorations[`${key}_${input.name}`][value] }, result)
+      Util.make('i', ['dropdown', 'icon'], {}, result)
+      const menu = Util.make('div', 'menu', {}, result)
+      input.values.forEach(val => {
+        const label = translate.content.decorations[`${key}_${input.name}`][val]
+        const item = Util.make('div', 'item', { innerText: label }, menu)
         item.dataset.value = val
       })
 
       $(result).dropdown()
     } else {
-      result = make('div', ['ui', 'transparent', 'input'], {}, container)
-      inputElement = make('input', this.CSS.settingsInput, {
+      result = Util.make('div', ['ui', 'transparent', 'input'], {}, container)
+      inputElement = Util.make('input', this.CSS.settingsInput, {
         type: input.type,
-        placeholder: translate['content']['decorations'][`${key}_${input.name}`],
+        placeholder: translate.content.decorations[`${key}_${input.name}`],
         value: value,
       }, result)
     }
@@ -403,7 +404,7 @@ class EditorTool {
     if (decoration.inputs && selected) {
       if (!this.data.decorations[decoration.name] || this.data.decorations[decoration.name].constructor != Object) {
         const data = {}
-        decoration.inputs.map(input => { data[input.name] = input.default })
+        decoration.inputs.forEach(input => { data[input.name] = input.default })
         this.data.decorations[decoration.name] = data
       }
     } else {
@@ -417,30 +418,9 @@ class EditorTool {
     }
     
     this.data.decorations[key][option] = value
-    console.log('set', key, option, '=', value, this.data.decorations[key])
   }
 
   isDecorationSelected(key) {
     return this.data.decorations && Boolean(this.data.decorations[key])
   }
-}
-
-function make(tagName, classNames = null, attributes = {}, parent = null) {
-  let el = document.createElement(tagName);
-
-  if ( Array.isArray(classNames) ) {
-    el.classList.add(...classNames);
-  } else if ( classNames ) {
-    el.classList.add(classNames);
-  }
-
-  for (let attrName in attributes) {
-    el[attrName] = attributes[attrName];
-  }
-
-  if (parent) {
-    parent.appendChild(el)
-  }
-
-  return el;
 }

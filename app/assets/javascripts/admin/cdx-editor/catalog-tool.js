@@ -1,15 +1,17 @@
+/* global $, EditorTool, Util, translate */
+/* exported CatalogTool */
 
 class CatalogTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="sitemap icon"></i>',
-      title: translate['content']['blocks']['catalog'],
+      title: translate.content.blocks.catalog,
     }
   }
 
   constructor({data, _config, api}) {
     super({ // Data
-      id: data.id || generateId(),
+      id: data.id || Util.generateId(),
       title: data.title || '',
       items: data.items || [],
       withImages: data.withImages == false ? false : true,
@@ -59,29 +61,29 @@ class CatalogTool extends EditorTool {
   render() {
     const container = super.render()
 
-    this.typeLabel = make('div', this.CSS.fields.type, {})
-    make('i', 'icon', {}, this.typeLabel)
-    make('span', null, {}, this.typeLabel)
+    this.typeLabel = Util.make('div', this.CSS.fields.type, {})
+    Util.make('i', 'icon', {}, this.typeLabel)
+    Util.make('span', null, {}, this.typeLabel)
     container.prepend(this.typeLabel)
 
-    const searchInputWrapper = make('div', [this.CSS.search.input_wrapper, 'ui', 'fluid', 'icon', 'input'], {}, container)
-    this.searchInput = make('div', [this.CSS.search.input, this.CSS.semanticInput], {
-      placeholder: `${translate['content']['placeholders']['search']} ${translate['content']['tunes']['type'][this.data['type']].toLowerCase()}`,
+    const searchInputWrapper = Util.make('div', [this.CSS.search.input_wrapper, 'ui', 'fluid', 'icon', 'input'], {}, container)
+    this.searchInput = Util.make('div', [this.CSS.search.input, this.CSS.semanticInput], {
+      placeholder: `${translate.content.placeholders.search} ${translate.content.tunes.type[this.data.type].toLowerCase()}`,
       contentEditable: true,
     }, searchInputWrapper)
-    this.searchInput.dataset.placeholder = `${translate['content']['placeholders']['search']} ${translate['content']['tunes']['type'][this.data['type']].toLowerCase()}`
-    make('i', ['search', 'icon'], {}, searchInputWrapper)
+    this.searchInput.dataset.placeholder = `${translate.content.placeholders.search} ${translate.content.tunes.type[this.data.type].toLowerCase()}`
+    Util.make('i', ['search', 'icon'], {}, searchInputWrapper)
 
     this.searchInput.addEventListener('keyup', event => this._onSearchChange(event))
 
-    this.searchContainer = make('div', [this.CSS.search.container, 'ui', 'list'], {}, container)
+    this.searchContainer = Util.make('div', [this.CSS.search.container, 'ui', 'list'], {}, container)
 
-    this.itemsInput = make('input', this.CSS.fields.items, {
+    this.itemsInput = Util.make('input', this.CSS.fields.items, {
       type: 'hidden',
       value: this.data.items.map(item => item.id).join(','),
     }, container)
 
-    this.itemsContainer = make('div', [this.CSS.items_container, 'ui', 'list'], {}, container)
+    this.itemsContainer = Util.make('div', [this.CSS.items_container, 'ui', 'list'], {}, container)
     if (this.data.items.length) {
       this.data.items.forEach(item => {
         this.itemsContainer.appendChild(this.renderItem(item))
@@ -102,7 +104,7 @@ class CatalogTool extends EditorTool {
 
     // Update the type label
     for (let i = 0; i < this.tunes.length; i++) {
-      const tune = this.tunes[i];
+      const tune = this.tunes[i]
       if (tune.group == 'type' && this.data.type == tune.name) {
         this.updateTypeLabel(tune)
         break
@@ -113,10 +115,10 @@ class CatalogTool extends EditorTool {
   }
 
   renderItem(item, selected = true) {
-    const container = make('div', 'item', { id: `${this.data.type}_${item.id}` })
+    const container = Util.make('div', 'item', { id: `${this.data.type}_${item.id}` })
     const state = selected ? 'check' : 'plus'
-    make('i', [state, 'circle', 'link', 'icon'], {}, container)
-    make('div', 'content', { innerText: item.name }, container)
+    Util.make('i', [state, 'circle', 'link', 'icon'], {}, container)
+    Util.make('div', 'content', { innerText: item.name }, container)
     container.dataset.id = item.id
     container.dataset.name = item.name
 
@@ -132,7 +134,7 @@ class CatalogTool extends EditorTool {
 
     this.searchInput.parentNode.classList.add('loading')
     this.timer = setTimeout(() => {
-      jQuery.get(`/${locale}/${this.data.type}.json`, {
+      $.get(`/${locale}/${this.data.type}.json`, {
         q: event.target.innerText,
       }, data => {
         this.searchContainer.innerHTML = ''
@@ -145,7 +147,7 @@ class CatalogTool extends EditorTool {
             }
           })
         } else {
-          this.searchContainer.innerText = translate['no_results']
+          this.searchContainer.innerText = translate.no_results
         }
 
         this.searchInput.parentNode.classList.remove('loading')
@@ -197,8 +199,8 @@ class CatalogTool extends EditorTool {
 
   updateTypeLabel(tune) {
     this.typeLabel.querySelector('.icon').className = `${tune.icon} icon`
-    this.typeLabel.querySelector('span').innerText = translate['content']['tunes'][tune.group][tune.name]
-    this.searchInput.dataset.placeholder = `${translate['content']['placeholders']['search']} ${translate['content']['tunes'][tune.group][tune.name].toLowerCase()}`
+    this.typeLabel.querySelector('span').innerText = translate.content.tunes[tune.group][tune.name]
+    this.searchInput.dataset.placeholder = `${translate.content.placeholders.search} ${translate.content.tunes[tune.group][tune.name].toLowerCase()}`
   }
 
   static get enableLineBreaks() {

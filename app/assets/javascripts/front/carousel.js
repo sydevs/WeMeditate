@@ -1,3 +1,5 @@
+/* global $, zenscroll */
+/* exported Carousel */
 
 class Carousel {
 
@@ -44,7 +46,7 @@ class Carousel {
 
 }
 
-CarouselStyles = {
+const CarouselStyles = {
   default: {},
 
   columns: {

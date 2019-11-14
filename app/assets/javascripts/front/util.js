@@ -1,4 +1,10 @@
+/* global */
+/* exported Util */
 
-function pickRandom(array) {
-  return array[Math.floor(Math.random() * array.length)]
+const Util = {
+
+  pickRandom: function(array) {
+    return array[Math.floor(Math.random() * array.length)]
+  },
+  
 }

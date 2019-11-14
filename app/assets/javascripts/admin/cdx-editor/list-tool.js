@@ -1,9 +1,11 @@
+/* global EditorTool, Util, translate */
+/* exported ListTool */
 
 class ListTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="list icon"></i>',
-      title: translate['content']['blocks']['list'],
+      title: translate.content.blocks.list,
     }
   }
 
@@ -16,7 +18,7 @@ class ListTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
-      id: data.id || generateId(),
+      id: data.id || Util.generateId(),
       items: data.items || [],
       style: ['unordered', 'ordered', 'leaf'].includes(data.style) ? data.style : 'unordered',
     }, { // Config
@@ -47,7 +49,6 @@ class ListTool extends EditorTool {
   }
 
   save(toolElement) {
-    const newData = {}
     const itemsData = []
     const items = toolElement.querySelectorAll(`.${this.CSS.item}`)
 
@@ -60,15 +61,15 @@ class ListTool extends EditorTool {
   }
 
   render() {
-    this.container = make('ul', [this.CSS.baseClass, this.CSS.container], { contentEditable: true })
+    this.container = Util.make('ul', [this.CSS.baseClass, this.CSS.container], { contentEditable: true })
     this.container.addEventListener('keydown', event => this._onItemKeydown(event))
 
     if (this.data.items.length) {
       this.data.items.forEach(item => {
-        make('li', this.CSS.item, { innerHTML: item }, this.container)
+        Util.make('li', this.CSS.item, { innerHTML: item }, this.container)
       })
     } else {
-      make('li', this.CSS.item, {}, this.container)
+      Util.make('li', this.CSS.item, {}, this.container)
     }
 
     // TODO: Extract this into a function in the super class
@@ -106,25 +107,25 @@ class ListTool extends EditorTool {
 
   // Returns current List item by the caret position
   get currentItem() {
-    let currentNode = window.getSelection().anchorNode;
+    let currentNode = window.getSelection().anchorNode
 
     if (currentNode.nodeType !== Node.ELEMENT_NODE) {
-      currentNode = currentNode.parentNode;
+      currentNode = currentNode.parentNode
     }
 
-    return currentNode.closest(`.${this.CSS.item}`);
+    return currentNode.closest(`.${this.CSS.item}`)
   }
 
   onPaste(event) {
     const list = event.detail.data
     const {tagName: tag} = element
-    const items = []
+    let items = []
 
     if (tag === 'LI') {
       items = [list.innerHTML]
     } else {
-      const listItems = Array.from(list.querySelectorAll('LI'));
-      items = listItems.map(li => li.innerHTML).filter(item => !!item.trim());
+      const listItems = Array.from(list.querySelectorAll('LI'))
+      items = listItems.map(li => li.innerHTML).filter(item => Boolean(item.trim()))
     }
 
     this.data = {

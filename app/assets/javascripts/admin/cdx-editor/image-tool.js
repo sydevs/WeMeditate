@@ -1,9 +1,11 @@
+/* global $, EditorTool, Util, ImageUploader, translate */
+/* exported ImageTool */
 
 class ImageTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="image icon"></i>',
-      title: translate['content']['blocks']['image'],
+      title: translate.content.blocks.image,
     }
   }
 
@@ -18,7 +20,7 @@ class ImageTool extends EditorTool {
     if (asGallery) position = null
 
     super({ // Data
-      id: data.id || generateId(),
+      id: data.id || Util.generateId(),
       items: data.items || [],
       size: ['narrow', 'wide'].includes(data.position) ? data.position : 'narrow',
       position: position,
@@ -79,7 +81,7 @@ class ImageTool extends EditorTool {
     this.uploader.addEventListener('uploadstart', event => this.addFile(event.detail.index, event.detail.file))
     this.uploader.addEventListener('uploadend', event => this._onUpload(event.detail.index, event.detail.response))
 
-    this.itemsContainer = make('div', this.CSS.items, {}, this.container)
+    this.itemsContainer = Util.make('div', this.CSS.items, {}, this.container)
 
     if (this.data.items.length) {
       if (!this.allowMultiple) $(this.uploader.wrapper).hide()
@@ -94,41 +96,41 @@ class ImageTool extends EditorTool {
   }
 
   renderItem(item = {}) {
-    const container = make('div', this.CSS.item.container, {})
+    const container = Util.make('div', this.CSS.item.container, {})
 
     if (item.image && item.image.preview) {
-      const img = make('div', [this.CSS.item.image, 'ui', 'fluid', 'rounded', 'image'], {}, container)
-      make('img', null, { src: item.image.preview }, img)
+      const img = Util.make('div', [this.CSS.item.image, 'ui', 'fluid', 'rounded', 'image'], {}, container)
+      Util.make('img', null, { src: item.image.preview }, img)
       img.dataset.attributes = JSON.stringify(item.image)
     } else {
-      make('div', [this.CSS.item.image, 'ui', 'fluid', 'placeholder'], {}, container)
+      Util.make('div', [this.CSS.item.image, 'ui', 'fluid', 'placeholder'], {}, container)
     }
 
-    let alt = make('div', [this.CSS.input, this.CSS.inputs.text, this.CSS.item.alt], {
+    let alt = Util.make('div', [this.CSS.input, this.CSS.inputs.text, this.CSS.item.alt], {
       contentEditable: true,
       innerHTML: item.alt || '',
     }, container)
 
-    alt.dataset.placeholder = translate['content']['placeholders']['alt']
+    alt.dataset.placeholder = translate.content.placeholders.alt
     alt.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
 
-    let caption = make('div', [this.CSS.input, this.CSS.inputs.alt, this.CSS.item.caption], {
+    let caption = Util.make('div', [this.CSS.input, this.CSS.inputs.alt, this.CSS.item.caption], {
       contentEditable: true,
       innerHTML: item.caption || '',
     }, container)
 
-    caption.dataset.placeholder = translate['content']['placeholders']['caption']
+    caption.dataset.placeholder = translate.content.placeholders.caption
     caption.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
 
-    let credit = make('div', [this.CSS.input, this.CSS.inputs.caption, this.CSS.item.credit], {
+    let credit = Util.make('div', [this.CSS.input, this.CSS.inputs.caption, this.CSS.item.credit], {
       contentEditable: true,
       innerHTML: item.credit || '',
     }, container)
 
-    credit.dataset.placeholder = translate['content']['placeholders']['credit']
+    credit.dataset.placeholder = translate.content.placeholders.credit
     credit.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
 
-    let remove = make('i', [this.CSS.item.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, container)
+    let remove = Util.make('i', [this.CSS.item.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, container)
     remove.addEventListener('click', (event) => this.removeItem(event.target.parentNode))
 
     return container
@@ -159,8 +161,8 @@ class ImageTool extends EditorTool {
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onloadend = () => {
-      const image = make('div', [this.CSS.item.image, 'ui', 'fluid', 'rounded', 'image'])
-      make('img', null, { src: reader.result }, image)
+      const image = Util.make('div', [this.CSS.item.image, 'ui', 'fluid', 'rounded', 'image'])
+      Util.make('img', null, { src: reader.result }, image)
       image.dataset.index = index
       item.querySelector(`.${this.CSS.item.image}`).replaceWith(image)
     }
@@ -187,7 +189,7 @@ class ImageTool extends EditorTool {
       }
 
       if (!this.allowMultiple) {
-        itemData['credit'] = item.querySelector(`.${this.CSS.item.credit}`).innerText
+        itemData.credit = item.querySelector(`.${this.CSS.item.credit}`).innerText
       }
 
       newData.media_files.push(image.id)

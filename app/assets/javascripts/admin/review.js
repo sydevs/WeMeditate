@@ -1,3 +1,6 @@
+/* global $ */
+/* exported Review */
+
 /** REVIEW
  * Handles behaviours for the admin review page.
  */
@@ -5,7 +8,7 @@
 const Review = {
 
   load() {
-    console.log('Load Review.js')
+    console.log('Load Review.js') // eslint-disable-line no-console
     this.selectedId = null
 
     // Store a few elemennts from the page.
@@ -20,7 +23,7 @@ const Review = {
     //this.menuScroller = zenscroll.createScroller(document.getElementById('review-menu').firstChild, 1000, 50)
 
     // Set up evetns
-    $('#review-form').on('submit', event => this.storeReviewData())
+    $('#review-form').on('submit', _event => this.storeReviewData())
     $('.review-button').on('mouseenter', event => this.highlightBlock(event.currentTarget.dataset))
     $('.review-button:not(.disabled)').on('click', event => this.toggleApproval(event.currentTarget.dataset))
 
@@ -49,7 +52,7 @@ const Review = {
 
   // Gets the changeset for all approved detail changes.
   getApprovedDetailChanges() {
-    result = []
+    let result = []
 
     $('.review-button[data-context="details"]').each(function(index, element) {
       if (element.classList.contains('approved')) {
@@ -113,14 +116,14 @@ const Review = {
       this.postMessage('approve', { id: args.id, approved: approved })
     } else if (args.context == 'details' && args.refresh == 'true') {
       // For detail changes, we instead reload the preview iframe, if refresh is set to true.
-      const url = this.detailsIframe.src.split("?")[0]
+      const url = this.detailsIframe.src.split('?')[0]
       this.detailsIframe.src = `${url}?review=true&excerpt=true&reify=${this.getApprovedDetailChanges().join(',')}`
     }
   },
 
   // Send a message to the page's content preview.
   postMessage(action, data) {
-    data['action'] = action
+    data.action = action
     data = JSON.parse(JSON.stringify(data))
     this.contentIframe.contentWindow.postMessage(data, '*')
   }

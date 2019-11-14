@@ -1,3 +1,8 @@
+/* global $, LazyLoad, zenscroll,
+  Accordion, Carousel, Dropdown, Form, Grid, Loadmore, Video, ImageGallery, ReadingTime,
+  Header, SubtleSystem, MusicPlayer, CustomMeditation, Prescreen */
+/* exported Application */
+
 /** Front Application
  * This file orchestrates and loads all the other files in this folder.
  */
@@ -52,7 +57,7 @@ const Application = {
     for (let id in Application.element) {
       let element = Application.element[id]
       if (typeof element.unload === 'function') {
-        console.log('unloading', id)
+        console.log('unloading', id) // eslint-disable-line no-console
         element.unload()
       }
     }
@@ -61,7 +66,7 @@ const Application = {
       for (let key in Application.elements[selector]) {
         let element = Application.elements[selector][key]
         if (typeof element.unload === 'function') {
-          console.log('unloading', selector)
+          console.log('unloading', selector) // eslint-disable-line no-console
           element.unload()
         }
       }
@@ -72,10 +77,10 @@ const Application = {
   },
 
   loadAll(selector, Klass) {
-    console.log('loading', selector)
+    console.log('loading', selector) // eslint-disable-line no-console
     const result = []
     document.querySelectorAll(`.js-${selector}`).forEach(element => {
-      console.log('Init', selector, 'on', element)
+      console.log('Init', selector, 'on', element) // eslint-disable-line no-console
       result.push(new Klass(element, result.length))
     })
 
@@ -83,13 +88,13 @@ const Application = {
   },
 
   loadFirst(id, Klass) {
-    console.log('Init', id, 'on', document.getElementById(id))
+    console.log('Init', id, 'on', document.getElementById(id)) // eslint-disable-line no-console
     var element = document.getElementById(id)
     if (element) Application.element[id] = new Klass(element)
   },
 
   loadAnimations() {
-    console.log('Load animations')
+    console.log('Load animations') // eslint-disable-line no-console
     this.animations = document.querySelectorAll('.js-animate')
     window.addEventListener('scroll', () => this.activateAnimations())
     window.addEventListener('resize', () => this.activateAnimations())
@@ -97,7 +102,7 @@ const Application = {
 
   activateAnimations() {
     const pageYOffset = window.pageYOffset
-    const viewportHeight = window.innerHeight;     
+    const viewportHeight = window.innerHeight     
 
     for (let i = 0; i < this.animations.length; i++) {
       let element = this.animations[i]
@@ -126,7 +131,7 @@ const Application = {
       dataType: 'text',
       type: 'GET',
       error: function (_jqXHR, status, errorThrown) {
-        console.log('SVG Error', status, errorThrown)
+        console.error('SVG Error', status, errorThrown) // eslint-disable-line no-console
       }
     }).done(function(svg) {
       if (svg.includes('<style>') && typeof namespace !== 'undefined') {
@@ -163,9 +168,9 @@ const Application = {
   },
 }
 
-document.addEventListener('ready', ()  => Application.init())
-document.addEventListener('turbolinks:load', ()  => Application.load())
-document.addEventListener('turbolinks:before-cache', ()  => Application.unload())
+document.addEventListener('ready', () => Application.init())
+document.addEventListener('turbolinks:load', () => Application.load())
+document.addEventListener('turbolinks:before-cache', () => Application.unload())
 window.addEventListener('load', function() {
   $('.preloader').delay(1000).fadeOut('slow')
   Application.preloaded = true

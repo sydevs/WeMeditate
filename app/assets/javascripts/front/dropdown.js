@@ -1,3 +1,5 @@
+/* global */
+/* exported Dropdown */
 
 class Dropdown {
 
@@ -38,7 +40,6 @@ class Dropdown {
     const svg = item.querySelector('svg')
     const text = item.querySelector('.dropdown__item__text').innerText
     const firstGroupElement = svg.querySelector('g, path, ellipse, rect')
-    console.log('select', svg, firstGroupElement)
     const color = firstGroupElement.getAttribute('stroke') || firstGroupElement.getAttribute('fill')
 
     const activeItem = item.parentNode.querySelector('.dropdown__item--active')
@@ -54,7 +55,7 @@ class Dropdown {
     this.selectionContainer.querySelector('svg').replaceWith(svg.cloneNode(true))
     this.selectionContainer.classList.remove('dropdown__selection--inactive')
 
-    const event =  new Event('change')
+    const event = new Event('change')
     event.detail = item
     this.container.dispatchEvent(event)
 

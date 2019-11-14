@@ -1,3 +1,5 @@
+/* global zenscroll */
+/* exported Prescreen */
 
 class Prescreen {
 
