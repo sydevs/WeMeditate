@@ -35,7 +35,6 @@ rules:
   no-template-curly-in-string: error
   array-callback-return: error
   dot-notation: warn
-  max-classes-per-file: error
   no-alert: error
   no-caller: error
   no-empty-function: error
