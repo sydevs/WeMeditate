@@ -26,7 +26,7 @@ class Meditation < ApplicationRecord
   validates :image, presence: true
   validates :excerpt, presence: true
   validates :duration_filter, presence: true
-  validates :goal_filters, presence: true, unless: :self_realization?
+  # validates :goal_filters, presence: true, unless: :self_realization?
   validates :horizontal_vimeo_id, presence: true, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_nil: true
   validates :vertical_vimeo_id, presence: true, numericality: { less_than: MAX_INT, only_integer: true, message: I18n.translate('admin.messages.invalid_vimeo_id') }, allow_nil: true
 
