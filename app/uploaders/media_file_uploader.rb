@@ -3,7 +3,7 @@
 # Such as MP3 tracks or PDF documents
 class MediaFileUploader < ApplicationUploader
 
-  include CarrierWave::MiniMagick
+  include CarrierWave::Vips
 
   VERSIONS = {
     huge: 2880,

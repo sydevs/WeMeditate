@@ -1,6 +1,6 @@
 class AuthorImageUploader < ApplicationUploader
 
-  include CarrierWave::MiniMagick
+  include CarrierWave::Vips
   process convert: :jpg # Author images should be photos, so JPG will do fine.
 
   VERSIONS = {

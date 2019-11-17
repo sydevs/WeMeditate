@@ -15,7 +15,7 @@ class ApplicationUploader < CarrierWave::Uploader::Base
   # A helper method which is used by various uploaders to generate a standard version of the image.
   def self.create_version version_width
     proc {
-      process resize_to_limit: [version_width, nil]
+      process resize_to_limit: [version_width, Float::INFINITY]
 
       # We need to be able to access the version's width so that we can provide that info to browsers to let them select the best version for the screen size.
       def width
@@ -24,24 +24,12 @@ class ApplicationUploader < CarrierWave::Uploader::Base
 
       # All images on the site are converted to WEBP, as most browsers now support this more efficient image format.
       version :webp do
-        process :convert_to_webp
-
-        def full_filename _for_file
-          "#{super.rpartition('.').first}.webp"
-        end
+        process convert: 'webp', quality: 90, reduction_effort: 6
+        process lossless: true, if: lambda { |_, opts|
+          opts[:file].content_type == 'image/png'
+        }
       end
     }
-  end
-
-  # Helper functiion to convert an image to WEBP
-  def convert_to_webp
-    manipulate! do |img|
-      img.format :webp do |c|
-        c.quality '90'
-        c.define 'method=6'
-        c.define 'webp:lossless=true' if file.content_type == 'image/png'
-      end
-    end
   end
 
   # Replace all file names with a unique random string

@@ -1,6 +1,6 @@
 class ImageUploader < ApplicationUploader
 
-  include CarrierWave::MiniMagick
+  include CarrierWave::Vips
 
   VERSIONS = {
     huge: 2880,

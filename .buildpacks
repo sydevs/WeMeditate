@@ -1,3 +1,6 @@
+# Note that this file isn't actually used. Use the "heroku buildpacks:xxx" commands instead.
+heroku-community/apt
+https://github.com/brandoncc/heroku-buildpack-vips
 https://github.com/MarmosetMusic/heroku-buildpack-taglib
 https://github.com/heroku/heroku-buildpack-ruby
 https://github.com/clhuang/heroku-buildpack-webp-binaries

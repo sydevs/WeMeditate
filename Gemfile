@@ -41,6 +41,7 @@ gem 'jsonb_accessor' # Makes it simpler to access attributes of a jsonb database
 gem 'carrierwave' # Core support for file uploads
 gem 'carrierwave-google-storage' # Let's us store the files in Google Storage
 gem 'carrierwave-meta' # To get image meta data
+gem 'carrierwave-vips', github: 'sydevs/carrierwave-vips', branch: 'webp-support' # Faster than imagemagick
 gem 'google-cloud-storage' # Needed to access sitemaps
 gem 'mini_magick' # Image processing during upload
 
