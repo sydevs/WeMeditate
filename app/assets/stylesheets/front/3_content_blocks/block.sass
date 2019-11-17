@@ -7,6 +7,10 @@
 .content > *:first-child
   margin-top: 0 !important
 
+.content__textbox + .actions-footer
+  @include laptop-or-larger
+    margin-top: 0 !important
+
 // ===== MIXINS ===== //
 @mixin text-block
   .content__header:not(.content__header--centered),

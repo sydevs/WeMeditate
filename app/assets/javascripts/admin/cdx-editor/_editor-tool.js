@@ -383,7 +383,7 @@ class EditorTool {
 
       $(result).dropdown()
     } else {
-      result = make('div', ['ui', 'transparent', 'input'], {}, container)
+      result = make('div', ['ui', 'transparent', 'fluid', 'input'], {}, container)
       inputElement = make('input', this.CSS.settingsInput, {
         type: input.type,
         placeholder: translate['content']['decorations'][`${key}_${input.name}`],
