@@ -132,6 +132,7 @@ de:
       fixed_slug: "This is a special page, it's URL cannot be changed."
       languages_access: "These are the locales where this user can modify the site content."
       languages_known: "These are the languages that a user can translate content from."
+      self_realization_slug: "The url for the self-realization page must be \"%{slug}\""
 
     result:
       created: "Created successfully."

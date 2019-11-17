@@ -73,6 +73,7 @@ class Meditation < ApplicationRecord
   # A helper function to access the horizontal vs vertical vimeo metadata and symbolize the keys
   def vimeo_metadata type = nil
     return {} unless self[:vimeo_metadata].present?
+
     result = self[:vimeo_metadata].deep_symbolize_keys
     result = result[type.to_sym ] || {} if type.present?
     result
