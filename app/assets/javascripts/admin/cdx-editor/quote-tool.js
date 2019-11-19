@@ -1,9 +1,11 @@
+/* global EditorTool, Util, translate */
+/* exported QuoteTool */
 
 class QuoteTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="quote left icon"></i>',
-      title: translate['content']['blocks']['quote'],
+      title: translate.content.blocks.quote,
     }
   }
 
@@ -18,7 +20,7 @@ class QuoteTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
-      id: data.id || generateId(),
+      id: data.id || Util.generateId(),
       text: data.text || '',
       credit: data.credit || '',
       caption: data.caption || '',
@@ -27,7 +29,7 @@ class QuoteTool extends EditorTool {
     }, { // Config
       id: 'quote',
       fields: {
-        text: { label: translate['content']['placeholders']['quote'], input: 'textarea', contained: true },
+        text: { label: translate.content.placeholders.quote, input: 'textarea', contained: true },
         credit: { input: 'caption', contained: true, optional: true },
         caption: { input: 'caption', contained: true, optional: true },
       },

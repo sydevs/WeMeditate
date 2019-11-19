@@ -1,3 +1,6 @@
+/* global */
+/* exported */
+
 /**
  * Capture video events to Google Analytics 
  *
@@ -12,44 +15,49 @@
 
 // TODO: Actually hook up these functions to track analytics
 
+/*
 function init () {
-	videoId.addEventListener('ended', videoEnd, false)
-	videoId.addEventListener('timeupdate', videoTimeUpdate, false)
-	videoId.addEventListener('play', videoPlay, false)
-	videoId.addEventListener('pause', videoPause, false)
+  videoId.addEventListener('ended', videoEnd, false)
+  videoId.addEventListener('timeupdate', videoTimeUpdate, false)
+  videoId.addEventListener('play', videoPlay, false)
+  videoId.addEventListener('pause', videoPause, false)
 }
 
 function setKeyFrames (duration) {
-	var quarter = (duration / 4).toFixed(1)
-	sessionStorage.setItem('one', quarter)
-	sessionStorage.setItem('two', (quarter * 2).toFixed(1))
-	sessionStorage.setItem('three', (quarter * 3).toFixed(1))
+  var quarter = (duration / 4).toFixed(1)
+  sessionStorage.setItem('one', quarter)
+  sessionStorage.setItem('two', (quarter * 2).toFixed(1))
+  sessionStorage.setItem('three', (quarter * 3).toFixed(1))
 }
 
 function videoTimeUpdate () {
-	var curTime = videoId.currentTime.toFixed(1)
-	switch (curTime) {
-		case sessionStorage.getItem('one'):
-			ga('send', 'event', 'video', '25% video played', videoTitle)
-			sessionStorage.setItem('one', null)
-		case sessionStorage.getItem('two'):
-			ga('send', 'event', 'video', '50% video played', videoTitle)
-			sessionStorage.setItem('two', null)
-		case sessionStorage.getItem('three'):
-			ga('send', 'event', 'video', '75% video played', videoTitle)
-			sessionStorage.setItem('three', null)
-	}
+  var curTime = videoId.currentTime.toFixed(1)
+  switch (curTime) {
+  case sessionStorage.getItem('one'):
+    ga('send', 'event', 'video', '25% video played', videoTitle)
+	sessionStorage.setItem('one', null)
+	break
+  case sessionStorage.getItem('two'):
+    ga('send', 'event', 'video', '50% video played', videoTitle)
+	sessionStorage.setItem('two', null)
+	break
+  case sessionStorage.getItem('three'):
+    ga('send', 'event', 'video', '75% video played', videoTitle)
+	sessionStorage.setItem('three', null)
+	breeak
+  }
 }
 
 function videoEnd () {
-	ga('send', 'event', 'video', '100% video played', videoTitle)
+  ga('send', 'event', 'video', '100% video played', videoTitle)
 }
 
 function videoPlay () {
-	ga('send', 'event', 'video', 'video played', videoTitle)
-	setKeyFrames(this.duration)
+  ga('send', 'event', 'video', 'video played', videoTitle)
+  setKeyFrames(this.duration)
 }
 
 function videoPause () {
-	ga('send', 'event', 'video', 'video paused', videoTitle)
+  ga('send', 'event', 'video', 'video paused', videoTitle)
 }
+*/

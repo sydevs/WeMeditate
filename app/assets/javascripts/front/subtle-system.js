@@ -1,3 +1,5 @@
+/* global zenscroll */
+/* exported SubtleSystem */
 
 class SubtleSystem {
 
@@ -68,13 +70,13 @@ class SubtleSystem {
   }
 
   // nodeed when the user stops hovering over a particular chakra/channel.
-  onNodeMouseout(node) {
+  onNodeMouseout(_node) {
     // Clear the timeout because we don't want to select this node after all.
     clearTimeout(this.timeout)
     this.timeout = null
   }
 
-  onNodeClick(node) {
+  onNodeClick(_node) {
     this.scrollToNode(id)
   }
 

@@ -1,3 +1,5 @@
+/* global $, Application */
+/* exported Loadmore */
 
 class Loadmore {
 
@@ -18,7 +20,7 @@ class Loadmore {
   }
 
   addContent(content) {
-    const event =  new Event('contentchange')
+    const event = new Event('contentchange')
     event.detail = content
 
     $(this.target).append(content)

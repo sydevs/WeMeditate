@@ -1,9 +1,11 @@
+/* global $, EditorTool, Util, ImageUploader, translate */
+/* exported TextboxTool */
 
 class TextboxTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="list alternate outline icon"></i>',
-      title: translate['content']['blocks']['textbox'],
+      title: translate.content.blocks.textbox,
     }
   }
 
@@ -24,7 +26,7 @@ class TextboxTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
-      id: data.id || generateId(),
+      id: data.id || Util.generateId(),
       image: data.image || null,
       title: data.title || '',
       text: data.text || '',
@@ -91,22 +93,22 @@ class TextboxTool extends EditorTool {
   render() {
     const container = super.render()
 
-    const fieldsContainer = make('div', this.CSS.fieldsContainer, { innerHTML: container.innerHTML })
+    const fieldsContainer = Util.make('div', this.CSS.fieldsContainer, { innerHTML: container.innerHTML })
     container.innerHTML = null
     container.append(fieldsContainer)
     this.renderDecorations(container)
 
-    this.imageContainer = make('div', [this.CSS.input, this.CSS.fields.image], {}, container)
+    this.imageContainer = Util.make('div', [this.CSS.input, this.CSS.fields.image], {}, container)
 
     this.imageUploader = new ImageUploader(this.imageContainer)
     this.imageUploader.addEventListener('uploadstart', event => this.setImage(event.detail.file))
     this.imageUploader.addEventListener('uploadend', event => this._onImageUploaded(event.detail.response))
 
-    this.imageRemoveIcon = make('i', [this.CSS.image.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, this.imageContainer)
+    this.imageRemoveIcon = Util.make('i', [this.CSS.image.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, this.imageContainer)
     this.imageRemoveIcon.addEventListener('click', () => this.setImage(null))
 
     if (this.data.image && this.data.image.preview) {
-      make('img', this.CSS.image.img, { src: this.data.image.preview }, this.imageContainer)
+      Util.make('img', this.CSS.image.img, { src: this.data.image.preview }, this.imageContainer)
       this.imageContainer.dataset.attributes = JSON.stringify(this.data.image)
       $(this.imageUploader.wrapper).hide()
     } else {
@@ -131,7 +133,7 @@ class TextboxTool extends EditorTool {
 
   setImage(file) {
     if (file) {
-      const placeholder = make('div', [this.CSS.image.img, 'ui', 'fluid', 'placeholder'], {})
+      const placeholder = Util.make('div', [this.CSS.image.img, 'ui', 'fluid', 'placeholder'], {})
       this.imageContainer.appendChild(placeholder)
       $(this.imageUploader.wrapper).hide()
       $(this.imageRemoveIcon).show()
@@ -139,7 +141,7 @@ class TextboxTool extends EditorTool {
       const reader = new FileReader()
       reader.readAsDataURL(file)
       reader.onloadend = () => {
-        const img = make('img', this.CSS.image.img, { src: reader.result })
+        const img = Util.make('img', this.CSS.image.img, { src: reader.result })
         placeholder.replaceWith(img)
       }
     } else {

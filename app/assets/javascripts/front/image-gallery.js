@@ -1,10 +1,12 @@
+/* global PhotoSwipe, PhotoSwipeUI_Default */
+/* exported ImageGallery */
 
 // TODO: Implement responsive images - https://photoswipe.com/documentation/responsive-images.html
 // TODO: Performance tips - https://photoswipe.com/documentation/performance-tips.html
 
 class ImageGallery {
 
-  constructor(element, index) {
+  constructor(element) {
     this.id = element.dataset.id
     this.photoswipeHtml = document.getElementById('pswp')
     this.slides = []
@@ -23,15 +25,6 @@ class ImageGallery {
     const params = new URLSearchParams(window.location.search)
     if (params.has('gid') && params.has('pid') && params.get('gid') == this.id) {
       this.selectImage(parseInt(params.get('pid')))
-    }
-  }
-
-  selectImageById() {
-    for (var i = 0, l = this.slides.length; i < l; i++) {
-      if (this.slides[i].pid == id) {
-        selectImage(i)
-        return
-      }
     }
   }
 

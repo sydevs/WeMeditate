@@ -1,3 +1,8 @@
+/* global $, EditorJS, Editor, SplashEditor, translate
+  ParagraphTool, HeaderTool, ListTool, QuoteTool, ActionTool, ImageTool,
+  VideoTool, FormTool, TextboxTool, CatalogTool, StructuredTool */
+/* exported Editor */
+
 /** Content Editor
  * We use the codex editor (https://editorjs.io) to provide a block-based content editor for our CMS.
  * This is a fairly complex system which uses all the files in the 'cdx-editor' subfolder.
@@ -34,7 +39,7 @@ const Editor = {
   },
 
   load() {
-    console.log('loading Editor.js')
+    console.log('loading Editor.js') // eslint-disable-line no-console
     Editor.form = document.getElementById('editor-form')
     Editor.uploadLoader = document.getElementById('upload-loader')
     const contentEditor = document.getElementById('content-editor')
@@ -101,7 +106,7 @@ const Editor = {
   adjustPendingUploads(adjustment) {
     Editor.pendingUploads += adjustment
     if (Editor.pendingUploads > 0) {
-      Editor.uploadLoader.querySelector('span').innerText = translate['waiting_for_upload'].replace('%{count}', Editor.pendingUploads)
+      Editor.uploadLoader.querySelector('span').innerText = translate.waiting_for_upload.replace('%{count}', Editor.pendingUploads)
       Editor.form.classList.add('disabled')
       Editor.form.setAttribute('disabled', true)
       $(Editor.form).find('button[type=submit]').attr('disabled', true)
@@ -122,7 +127,7 @@ const Editor = {
     }
 
     // Consolidate all the media file ids for easy reference
-    const media_files = []
+    let media_files = []
     for (let index = 0; index < data.length; index++) {
       const block = outputData[index]
       if (block.data.media_files) media_files = media_files.concat(block.data.media_files)

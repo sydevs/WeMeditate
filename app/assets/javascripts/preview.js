@@ -10,13 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-
 //= require jquery
+
+/* global $, zenscroll */
 
 class Preview {
 
   constructor() {
-    console.log('Init Preview.js')
+    console.log('Init Preview.js') // eslint-disable-line no-console
     this.selectedId = null
     window.addEventListener('message', event => this.onIframeMessage(event), false)
 
@@ -76,7 +77,7 @@ class Preview {
 
     this.selectedId = id
     const $blocks = $(`.review-block[data-id="${id}"]`).addClass('active')
-    const $buttons = $(`.review-button[data-id="${id}"]`).addClass('active')
+    // const $buttons = $(`.review-button[data-id="${id}"]`).addClass('active')
 
     if (source == 'message') {
       this.disableObserver = true

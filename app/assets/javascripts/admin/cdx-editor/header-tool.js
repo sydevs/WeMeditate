@@ -1,9 +1,11 @@
+/* global EditorTool, Util, translate */
+/* exported HeaderTool */
 
 class HeaderTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="heading icon"></i>',
-      title: translate['content']['blocks']['header'],
+      title: translate.content.blocks.header,
     }
   }
 
@@ -16,7 +18,7 @@ class HeaderTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
-      id: data.id || generateId(),
+      id: data.id || Util.generateId(),
       text: data.text || '',
       centered: data.centered || false,
     }, { // Config
@@ -45,7 +47,7 @@ class HeaderTool extends EditorTool {
 
   // Check for emptiness
   validate(blockData) {
-    return blockData.text.trim() !== '';
+    return blockData.text.trim() !== ''
   }
 
   // Define the types of paste that should be handled by this tool.

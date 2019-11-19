@@ -1,9 +1,11 @@
+/* global $, EditorTool, Util, ImageUploader, translate */
+/* exported StructuredTool */
 
 class StructuredTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="th icon"></i>',
-      title: translate['content']['blocks']['structured'],
+      title: translate.content.blocks.structured,
     }
   }
 
@@ -14,7 +16,7 @@ class StructuredTool extends EditorTool {
 
   constructor({data, _config, api}) {
     super({ // Data
-      id: data.id || generateId(),
+      id: data.id || Util.generateId(),
       items: data.items || [],
       format: ['grid', 'accordion', 'columns'].includes(data.format) ? data.format : 'grid',
       decorations: data.decorations || {},
@@ -54,7 +56,7 @@ class StructuredTool extends EditorTool {
 
   render() {
     const container = super.render()
-    this.itemsContainer = make('div', this.CSS.items, {}, container)
+    this.itemsContainer = Util.make('div', this.CSS.items, {}, container)
 
     if (this.data.items.length) {
       this.data.items.forEach(item => {
@@ -70,13 +72,13 @@ class StructuredTool extends EditorTool {
   }
 
   renderItem(data = {}) {
-    const container = make('div', this.CSS.item.container, {})
+    const container = Util.make('div', this.CSS.item.container, {})
     container.addEventListener('keydown', (event) => {
       return this._onItemKeydown(event, event.currentTarget)
     }, false)
 
     // Add Image uploader
-    const imageContainer = make('div', [this.CSS.input, this.CSS.item.image], {}, container)
+    const imageContainer = Util.make('div', [this.CSS.input, this.CSS.item.image], {}, container)
 
     const imageUploader = new ImageUploader(imageContainer)
     imageUploader.addEventListener('uploadstart', event => this.setItemImage(container, event.detail.file))
@@ -84,11 +86,11 @@ class StructuredTool extends EditorTool {
       imageContainer.dataset.attributes = JSON.stringify(event.detail.response)
     })
 
-    const imageRemoveIcon = make('i', [this.CSS.item.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, imageContainer)
+    const imageRemoveIcon = Util.make('i', [this.CSS.item.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, imageContainer)
     imageRemoveIcon.addEventListener('click', () => this.setItemImage(container, null))
 
     if (data.image && data.image.preview) {
-      make('img', this.CSS.item.img, { src: data.image.preview }, imageContainer)
+      Util.make('img', this.CSS.item.img, { src: data.image.preview }, imageContainer)
       imageContainer.dataset.attributes = JSON.stringify(data.image)
       $(imageUploader.wrapper).hide()
     } else {
@@ -96,20 +98,20 @@ class StructuredTool extends EditorTool {
     }
 
     // Add title input
-    const title = make('div', [this.CSS.input, this.CSS.inputs.title, this.CSS.item.title], {
+    const title = Util.make('div', [this.CSS.input, this.CSS.inputs.title, this.CSS.item.title], {
       contentEditable: true,
       innerHTML: data.title || '',
     }, container)
 
-    title.dataset.placeholder = translate['content']['placeholders']['title']
+    title.dataset.placeholder = translate.content.placeholders.title
 
     // Add text input
-    const text = make('div', [this.CSS.input, this.CSS.inputs.text, this.CSS.item.text], {
+    const text = Util.make('div', [this.CSS.input, this.CSS.inputs.text, this.CSS.item.text], {
       contentEditable: true,
       innerHTML: data.text || '',
     }, container)
 
-    text.dataset.placeholder = translate['content']['placeholders']['text']
+    text.dataset.placeholder = translate.content.placeholders.text
     text.addEventListener('paste', event => this.containPaste(event))
 
     return container
@@ -117,7 +119,7 @@ class StructuredTool extends EditorTool {
 
   setItemImage(item, file) {
     if (file) {
-      const placeholder = make('div', [this.CSS.item.img, 'ui', 'fluid', 'placeholder'], {})
+      const placeholder = Util.make('div', [this.CSS.item.img, 'ui', 'fluid', 'placeholder'], {})
       item.querySelector(`.${this.CSS.item.image}`).appendChild(placeholder)
       $(item.querySelector('.cdx-input__uploader')).hide()
       $(item.querySelector(`.${this.CSS.item.remove}`)).show()
@@ -125,7 +127,7 @@ class StructuredTool extends EditorTool {
       const reader = new FileReader()
       reader.readAsDataURL(file)
       reader.onloadend = () => {
-        const img = make('img', this.CSS.item.img, { src: reader.result })
+        const img = Util.make('img', this.CSS.item.img, { src: reader.result })
         placeholder.replaceWith(img)
       }
     } else {
@@ -151,15 +153,15 @@ class StructuredTool extends EditorTool {
       if (item === item.parentNode.lastChild && !item.textContent.trim().length) {
         item.parentElement.removeChild(item)
         this.api.blocks.insert()
-      } else if (!getSelectionTextInfo(input).atEnd) {
+      } else if (!Util.getSelectionTextInfo(input).atEnd) {
         this.insertParagraphBreak(event)
       } else {
         const newItem = this.renderItem()
         item.parentNode.insertBefore(newItem, item.nextSibling)
-        setCaretPosition(newItem.querySelector(`.${this.CSS.item.title}`))
+        Util.setCaretPosition(newItem.querySelector(`.${this.CSS.item.title}`))
       }
     } else {
-      setCaretPosition(input.nextSibling)
+      Util.setCaretPosition(input.nextSibling)
     }
 
     event.preventDefault()
@@ -175,7 +177,7 @@ class StructuredTool extends EditorTool {
 
     if (!isOnlyItem && !titleContent && !textContent) {
       const previousSiblingTextInput = item.previousSibling.querySelector(`.${this.CSS.item.text}`)
-      setCaretPosition(previousSiblingTextInput, previousSiblingTextInput.innerText.length)
+      Util.setCaretPosition(previousSiblingTextInput, previousSiblingTextInput.innerText.length)
       item.remove()
 
       event.preventDefault()
@@ -219,19 +221,19 @@ class StructuredTool extends EditorTool {
     let currentNode = window.getSelection().anchorNode
 
     if (currentNode.nodeType !== Node.ELEMENT_NODE) {
-      currentNode = currentNode.parentNode;
+      currentNode = currentNode.parentNode
     }
 
-    return currentNode.closest(`.${this.CSS.item.container}`);
+    return currentNode.closest(`.${this.CSS.item.container}`)
   }
 
   // Enable default line break handling
   static get enableLineBreaks() {
-    return true;
+    return true
   }
 
   // Empty Structured is not empty Block
   static get contentless() {
-    return false;
+    return false
   }
 }

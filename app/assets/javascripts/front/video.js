@@ -1,3 +1,5 @@
+/* global Application, Vimeo */
+/* exported Video */
 
 class Video {
 

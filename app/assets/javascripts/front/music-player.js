@@ -1,3 +1,5 @@
+/* global Amplitude, zenscroll */
+/* exported MusicPlayer */
 
 // TODO: Implement responsive artist images
 
@@ -75,7 +77,7 @@ class MusicPlayer {
       html.push(`<a href="${artist.url}" target="_blank">${artist.name}</a>`)
     })
     
-    this.artistsList.innerHTML = html.join(", ")
+    this.artistsList.innerHTML = html.join(', ')
   }
 
   validateActivePlaylist() {

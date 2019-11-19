@@ -1,3 +1,5 @@
+/* global Util, ImageUploader */
+/* exported SplashEditor */
 
 /** SPLASH EDITOR
  * Handles the code for the home page's splash screen editor.
@@ -44,7 +46,7 @@ const SplashEditor = {
       this.backgroundImage.style['background-image'] = `url(${data.image.preview})`
     }
 
-    this.id = data.id || generateId()
+    this.id = data.id || Util.generateId()
     this.splashTitle.innerText = data.title || ''
     this.splashText.innerText = data.text || ''
     this.splashAction.innerText = data.action || ''
