@@ -2,6 +2,7 @@ module Admin
   # Basic controller that all other admin controllers inherit from.
   class ApplicationController < ::ApplicationController
 
+    before_action :set_locale!
     before_action :authenticate_user!
     before_action :redirect_to_locale!
     after_action :verify_authorized, except: %i[dashboard vimeo_data error]
@@ -18,7 +19,7 @@ module Admin
     def error
       render status: request.env['PATH_INFO'][1, 3].to_i
     end
-    
+
     def vimeo_data
       render json: Vimeo.retrieve_metadata(params[:vimeo_id])
     end
@@ -30,6 +31,10 @@ module Admin
       end
 
     private
+
+      def set_locale!
+        I18n.locale = params[:locale] || :en
+      end
 
       def redirect_to_locale!
         return if current_user.accessible_locales.include?(I18n.locale)
