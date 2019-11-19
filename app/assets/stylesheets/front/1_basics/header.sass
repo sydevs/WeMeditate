@@ -123,8 +123,8 @@
     position: relative
 
     // Creates a background behind the link which can be animated on hover.
-    &:before
-      background: transparentize(#F6F6F6, 0.6)
+    &::before
+      background: transparentize(#f6f6f6, 0.6)
       content: ''
       z-index: -1
       transition: all 1s ease
@@ -136,7 +136,7 @@
   // If the link is hovered or active then the background should be full.
   .header__navigation__link--active,
   .header__navigation__item:hover .header__navigation__link
-    &:before
+    &::before
       left: 0
       right: 0
 
@@ -216,14 +216,14 @@
   background: $background-gray
   padding: 0
   z-index: 10
-  transition: max-height 0.5s cubic-bezier(.02, .01, .47, 1)
+  transition: max-height 0.5s cubic-bezier(0.02, 0.01, 0.47, 1)
   transition-delay: 0.3s
   overflow: hidden
   max-height: 500px
   text-align: left
 
   // This creates the background pattern for the dropdown
-  &:before
+  &::before
     content: ''
     position: absolute
     top: 0
@@ -317,7 +317,7 @@
   &__overlay
     @include overlay(0, 0, 0, 0)
     transition: all 0.5s ease
-    background-color: rgba(0,0,0,0.5)
+    background-color: rgba(0, 0, 0, 0.5)
     color: white
     text-align: center
 
@@ -327,7 +327,7 @@
 
     padding: 0 15%
 
-    &:after
+    &::after
       content: ''
       display: block
       position: absolute
@@ -373,7 +373,7 @@
 
   &__text
     background: transparentize(white, 0.05)
-    box-shadow: 0px 3px 15px transparentize(black, 0.8)
+    box-shadow: 0 3px 15px transparentize(black, 0.8)
     padding: 8px 12px
     border-bottom: 1px solid $color-graphic-normal
     font-size: 1.4rem
@@ -476,7 +476,7 @@
   svg
     opacity: 1
 
-  &:before, &:after
+  &::before, &::after
     opacity: 0
     transform: rotateZ(0)
 
