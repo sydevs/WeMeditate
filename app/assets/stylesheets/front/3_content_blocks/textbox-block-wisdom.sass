@@ -35,6 +35,14 @@ $top-padding: 120px
     opacity: 0.75
 
   &__sidetext
+    @include mobile
+      display: none
+
+    @include tablet
+      .sidetext--left
+        left: auto
+        right: 0
+
     @include laptop-or-larger
       top: $top-padding
 
@@ -91,7 +99,8 @@ $top-padding: 120px
 
 .content__textbox--wisdom.content__textbox--left
   .content__textbox__box
-    padding-left: 80px
+    @include tablet-or-larger
+      padding-left: 80px
 
   .content__textbox__image
     @include laptop-or-larger
@@ -108,9 +117,6 @@ $top-padding: 120px
         transform: translate($translate_x, -15.75%)
 
       .content__textbox__text
-        @include tablet
-          margin-#{$side}: 36px
-
         @include laptop-or-larger
           @if $side == right
             padding-#{$side}: 100px

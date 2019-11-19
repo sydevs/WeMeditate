@@ -128,7 +128,10 @@
       .content__quote__block
         float: $side
         text-align: $side
-        padding-#{$side}: 15px
+        padding-#{$side}: $gutter-width
+
+        @include mobile
+          padding-#{$opposite}: $gutter-width
 
         @include tablet-or-larger
           margin-#{$opposite}: 50px

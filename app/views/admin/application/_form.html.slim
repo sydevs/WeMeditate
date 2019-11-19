@@ -45,7 +45,6 @@
         - url = @record.is_a?(StaticPage) ? static_page_url_for(@record) : (@record.new_record? ? "#{polymorphic_url(@record)}/#{@record.slug}" : polymorphic_url(@record))
         = record_detail 'linkify', CGI.unescape(url), url: url
         = f.hint translate('admin.hints.fixed_slug')
-
     - elsif record.draftable?
       / TODO: Try and improve this janky way of getting the url. It's because articles don't have an index route
       - url = record.is_a?(Article) && record.new_record? ? "/#{translate 'routes.articles'}/*" : url_for(record)
@@ -57,6 +56,8 @@
         = content_tag :div, class: 'ui labeled slug input' do
           = tag.div CGI.unescape(url), class: 'ui basic label'
           = f.input_field :slug
+        - if record.is_a?(Meditation)
+          .hint = translate('admin.hints.self_realization_slug', slug: translate('routes.self_realization'))
 
   = render "admin/fields/#{record.model_name.param_key}", f: f, record: record
 

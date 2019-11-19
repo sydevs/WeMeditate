@@ -121,6 +121,7 @@ ru:
       invalid_vimeo_id: "должно иметь действующее Vimeo ID"
       new_author_notice: "Вы ещё не настроили свой профиль автора, заполните поля ниже и нажмите сохранить."
       start_details_before_content: "Start translating details first, then the content." # TODO: Translate
+      self_realization_slug: "The url for the self-realization page must be \"%{slug}\"" # TODO: Translate
 
     hints: 
       excerpt: "Это короткое превью страницы, которое будет показано в списке страниц типа \"%{page}\"."

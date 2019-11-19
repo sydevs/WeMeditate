@@ -131,6 +131,7 @@ it:
       fixed_slug: "This is a special page, it's URL cannot be changed." # TODO: Translate
       languages_access: "These are the locales where this user can modify the site content." # TODO: Translate
       languages_known: "These are the languages that a user can translate content from." # TODO: Translate
+      self_realization_slug: "The url for the self-realization page must be \"%{slug}\"" # TODO: Translate
 
     result:
       created: "Creato con successo."
