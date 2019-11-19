@@ -1,12 +1,12 @@
-
-- block[:position] = block[:callout] if block[:callout].present? # Fallback for old data representations
-- position = %w[left right center].include?(block[:position]) ? block[:position] : 'center'
-- is_poem = block[:asPoem] == true
-- is_callout = %w[left right].include?(position) && !is_poem
-- classes = ['content__quote']
-- classes << "content__quote--#{position}"
-- classes << 'content__quote--callout' if is_callout
-- classes << 'content__quote--poem' if is_poem
+ruby:
+  block[:position] = block[:callout] if block[:callout].present? # Fallback for old data representations
+  position = %w[left right center].include?(block[:position]) ? block[:position] : 'center'
+  is_poem = block[:asPoem] == true
+  is_callout = %w[left right].include?(position) && !is_poem
+  classes = ['content__quote']
+  classes << "content__quote--#{position}"
+  classes << 'content__quote--callout' if is_callout
+  classes << 'content__quote--poem' if is_poem
 
 .content__quote class=classes
   blockquote.content__quote__block

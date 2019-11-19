@@ -1,5 +1,5 @@
-
-- image_sizes = '(max-width: 759px) calc(100vw - 48px), (max-width: 1198px) calc(34vw - 80px), 352px'
+ruby:
+  image_sizes = '(max-width: 759px) calc(100vw - 48px), (max-width: 1198px) calc(34vw - 80px), 352px'
 
 - content_for :head do
   meta name='turbolinks-cache-control' content='no-cache'
@@ -56,7 +56,7 @@ main
                 .dropdown__close
                 h3.dropdown__popup__title = translate 'meditations.custom_meditation.goal_prompt'
                 ul.dropdown__list
-                  - @goal_filters.each_with_index do |goal_filter, index|
+                  - @goal_filters.each do |goal_filter|
                     li.dropdown__item id=dom_id(goal_filter) data-value=goal_filter.id
                       // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
                       .js-inline-svg data-url="#{goal_filter.icon.url}" data-namespace="#{goal_filter.name.parameterize.downcase}" data-background='true'
@@ -66,7 +66,7 @@ main
             .radio_group
               .meditations__custom__duration__title = translate 'meditations.custom_meditation.choose_duration'
               .meditations__custom__duration__input.radio_wrapper
-                - @duration_filters.first(3).each_with_index do |duration_filter, index|
+                - @duration_filters.first(3).each do |duration_filter|
                   label.radio
                     = radio_button_tag :duration_filter, duration_filter.id
                     .radio__button #{duration_filter.minutes} #{translate 'meditations.custom_meditation.minutes'}

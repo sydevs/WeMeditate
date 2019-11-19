@@ -1,4 +1,3 @@
-
 - content_for :title, t('.forgot_your_password')
 
 = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { class: "ui form #{'error' if resource.errors.present?}", method: :post } do |f|

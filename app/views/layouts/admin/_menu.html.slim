@@ -1,4 +1,3 @@
-
 #logo.ui.centered.small.image
   = render 'admin/partials/logo'
 
@@ -18,7 +17,7 @@
             = translate('admin.misc.menu.static_pages')
 
         - if policy(Article).index?
-          = link_to [:admin, Article], class: "#{'active' if ['articles', 'categories'].include? controller_name} item"
+          = link_to [:admin, Article], class: "#{'active' if %w[articles categories].include? controller_name} item"
             i.icon class=model_icon_key(Article)
             = translate('admin.misc.menu.articles')
 
@@ -32,7 +31,7 @@
       .title = translate 'admin.misc.menu.resources'
       .menu
         - if policy(Meditation).index?
-          = link_to [:admin, Meditation], class: "#{'active' if ['meditations', 'goal_filters', 'duration_filters'].include? controller_name} item"
+          = link_to [:admin, Meditation], class: "#{'active' if %w[meditations goal_filters duration_filters].include? controller_name} item"
             i.icon class=model_icon_key(Meditation)
             = translate('admin.misc.menu.meditations')
 
@@ -42,7 +41,7 @@
             = translate('admin.misc.menu.treatments')
 
         - if policy(Track).index?
-          = link_to [:admin, Track], class: "#{'active' if ['tracks', 'mood_filters', 'instrument_filters', 'artists'].include? controller_name} item"
+          = link_to [:admin, Track], class: "#{'active' if %w[tracks mood_filters instrument_filters artists].include? controller_name} item"
             i.icon class=model_icon_key(Track)
             = translate('admin.misc.menu.tracks')
 
@@ -66,7 +65,6 @@
           = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"
             i.users.icon
             = translate('admin.misc.menu.users')
-
 
 .ui.hidden.divider
 

@@ -1,7 +1,7 @@
-
-- url = (block[:format] == 'contact' ? contact_path : subscribe_path)
-- classes = ['content__form', 'js-form']
-- classes << "content__form--#{block[:format]}"
+ruby:
+  url = (block[:format] == 'contact' ? contact_path : subscribe_path)
+  classes = %w[content__form js-form]
+  classes << "content__form--#{block[:format]}"
 
 = form_tag url, class: classes, remote: true do
   .divider.divider--leaf.divider--leaf-only.divider--leaf-up
@@ -16,7 +16,7 @@
         = f.hidden_field :gobbledigook if block[:format] == 'contact'
         = f.email_field :email_address, placeholder: t('form.input.email')
         = f.text_area :message, placeholder: t('form.input.message'), rows: 5 if block[:format] == 'contact'
-          
+
         - unless block[:format] == 'contact'
           .content__form__privacy
             = translate 'form.input.privacy.text'

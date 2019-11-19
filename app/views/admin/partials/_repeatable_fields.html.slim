@@ -1,9 +1,9 @@
+ruby:
+  horizontal = false unless local_assigns[:horizontal] == true
 
-- horizontal = false unless local_assigns[:horizontal] == true
-
-- draft_items = local_assigns.key?(:draft) ? local_assigns[:draft] : f.object.parsed_draft[attribute.to_s] if f.object.draftable? && f.object.has_draft?
-- original_items = (local_assigns.key?(:items) ? local_assigns[:items] : f.object.send(attribute)&.to_a) || []
-- items = draft_items || original_items
+  draft_items = local_assigns.key?(:draft) ? local_assigns[:draft] : f.object.parsed_draft[attribute.to_s] if f.object.draftable? && f.object.has_draft?
+  original_items = (local_assigns.key?(:items) ? local_assigns[:items] : f.object.send(attribute)&.to_a) || []
+  items = draft_items || original_items
 
 .field id=local_assigns[:id] class="#{local_assigns[:class]} #{'draft' if draft_items}" data-draft='repeatable'
   = draft_reset_buttons(:repeatable, original_items, draft_items) if draft_items

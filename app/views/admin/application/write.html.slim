@@ -1,13 +1,11 @@
+ruby:
+  content_for :title, translate('admin.action.target.write', record: human_model_name(@record))
+  allow = policy(@record)
+  has_draft = @record.has_draft?(:content)
+  locale = !@record.try(:has_translation?, :content) ? @record.original_locale : I18n.locale
 
-- content_for :title, translate('admin.action.target.write', record: human_model_name(@record))
-- allow = policy(@record)
-- has_draft = @record.has_draft?(:content)
-- data = { upload: polymorphic_admin_path([:admin, @record, MediaFile]), triangle: image_path('graphics/triangle.svg') }
-
-- locale = !@record.try(:has_translation?, :content) ? @record.original_locale : I18n.locale
 - Globalize.with_locale(locale) do
-  - content = has_draft ? @record.parsed_draft_content : (@record.parsed_content || {})
-  = simple_form_for @record, url: polymorphic_admin_path([:admin, @record]), html: { id: "editor-form" } do |f|
+  = simple_form_for @record, url: polymorphic_admin_path([:admin, @record]), html: { id: 'editor-form' } do |f|
     = f.hidden_field :content, as: :hidden, id: 'content-input'
 
     .field class=('draft' if has_draft) data-draft='content'
@@ -61,6 +59,6 @@
         button.ui.basic.positive.button type='submit'
           = translate 'admin.action.simple.update'
 
-      div#upload-loader style='display: none'
+      #upload-loader style='display: none'
         i.notched.circle.loading.icon
         span

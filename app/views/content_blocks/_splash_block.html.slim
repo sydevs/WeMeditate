@@ -1,7 +1,7 @@
-
-- image_url = record.media_file(block[:image][:id]).large.url if block[:image]
-- invert = block[:style] == 'home' ? 'true' : false # TODO: This needs to be configurable.
-- style = image_url ? "background-image: url(#{image_url})" : nil
+ruby:
+  image_url = record.media_file(block[:image][:id]).large.url if block[:image]
+  invert = block[:style] == 'home' ? 'true' : false # TODO: This needs to be configurable.
+  style = image_url ? "background-image: url(#{image_url})" : nil
 
 .content__splash.js-splash class="content__splash--#{block[:style]}" style=style data-invert=invert
   .preloader.js-preloader style=style data-turbolinks-permanent=true

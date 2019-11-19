@@ -1,13 +1,11 @@
-
-- subtle_system_page = static_page_preview_for(:subtle_system)
-- shri_mataji_page = static_page_preview_for(:shri_mataji)
-- sahaja_yoga_page = static_page_preview_for(:sahaja_yoga)
-- treatments_page = static_page_preview_for(:treatments)
-- contact_page = static_page_preview_for(:contact)
-- articles_page = static_page_preview_for(:articles)
-- classes_page = static_page_preview_for(:classes)
-- self_realization_page = static_page_preview_for(:self_realization)
-- privacy_page = static_page_preview_for(:privacy)
+ruby:
+  subtle_system_page = static_page_preview_for(:subtle_system)
+  shri_mataji_page = static_page_preview_for(:shri_mataji)
+  sahaja_yoga_page = static_page_preview_for(:sahaja_yoga)
+  contact_page = static_page_preview_for(:contact)
+  articles_page = static_page_preview_for(:articles)
+  classes_page = static_page_preview_for(:classes)
+  privacy_page = static_page_preview_for(:privacy)
 
 footer.footer
   .footer__divider: img src=image_path('footer/illustration.svg')
@@ -47,7 +45,7 @@ footer.footer
         - I18n.translate('social_media').each do |type, url|
           a.footer__social__link href=url
             i.icon class="icon--#{type}"
-        
+
       - if Rails.configuration.published_locales.length > 1
         .footer__language
           .footer__header
@@ -57,6 +55,7 @@ footer.footer
             a.footer__language__link href=root_url(host: Rails.configuration.locale_hosts[locale])
               = locale.to_s.upcase
             - if locale != Rails.configuration.published_locales.last
-              .footer__language__separator  | 
+              .footer__language__separator
+                ' |
 
   .footer__copyright &copy; WeMeditate, 2019

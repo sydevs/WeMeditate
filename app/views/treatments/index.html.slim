@@ -1,11 +1,10 @@
-
 main id=dom_id(@static_page)
   - if @prescreen
     = render 'meditations/prescreen', translations: 'treatments.prescreen', type: :treatments, skip_url: '#techniques'
   - else
     h1.banner.banner--left = @static_page.name
 
-  .treatments__content-wrapper class=("treatments__content-wrapper--prescreen" if @prescreen)
+  .treatments__content-wrapper class=('treatments__content-wrapper--prescreen' if @prescreen)
     - unless @prescreen
       .treatments__triangle.triangle.triangle--large.triangle--right
 

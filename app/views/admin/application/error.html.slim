@@ -1,4 +1,3 @@
-
 - content_for :title, translate('errors.error')
 
 h2.ui.header
@@ -10,7 +9,7 @@ h2.ui.header
 - unless response.status == 404
   p
     = translate('errors.report_issue')
-    
+
   = link_to report_url, class: 'ui basic button' do
     i.envelope.icon
     = translate('admin.action.report_issue')

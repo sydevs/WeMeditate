@@ -1,5 +1,5 @@
-
-- allow = policy(record)
+ruby:
+  allow = policy(record)
 
 - if allow.update_structure?
   = f.association :duration_filter
@@ -8,11 +8,11 @@
   .preview-item
     div
       i.filter.icon
-      | #{human_attribute_name(record.class, :goal_filters)}: 
-      = record.goal_filters.map { |goal_filter| goal_filter.name }.join(', ')
+      ' #{human_attribute_name(record.class, :goal_filters)}:
+      = record.goal_filters.map(&:name).join(', ')
     div
       i.clock.icon
-      | #{human_attribute_name(record.class, :duration_filter)}: 
+      ' #{human_attribute_name(record.class, :duration_filter)}:
       = record.duration_filter.name
 
 = f.input :image, as: :file, wrapper: :semantic_file, icon: file_type_icon(:image), file: record.image, input_html: { accept: file_type_accepts(:image) }
