@@ -10,7 +10,7 @@
 .icon
   display: inline-block
 
-  &:before
+  &::before
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: $font-icons !important
     speak: none
@@ -25,62 +25,62 @@
     display: block
 
   // Player controls
-  &--play:before
+  &--play::before
     content: $icon-play
-  &--pause:before
+  &--pause::before
     content: $icon-pause
-  &--forward:before
+  &--forward::before
     content: $icon-forward
-  &--backward:before
+  &--backward::before
     content: $icon-backward
-  &--volume:before
+  &--volume::before
     content: $icon-volume
-  &--volume-muted:before
+  &--volume-muted::before
     content: $icon-volume-muted
-  &--shuffle:before
+  &--shuffle::before
     content: $icon-shuffle
 
   // Social icons
-  &--facebook:before
+  &--facebook::before
     content: $icon-facebook
-  &--instagram:before
+  &--instagram::before
     content: $icon-instagram
-  &--twitter:before
+  &--twitter::before
     content: $icon-twitter
-  &--pinterest:before
+  &--pinterest::before
     content: $icon-pinterest
-  &--whatsapp:before
+  &--whatsapp::before
     content: $icon-whatsapp
-  &--telegram:before
+  &--telegram::before
     content: $icon-whatsapp
-  &--vk:before
+  &--vk::before
     content: $icon-vk
 
   // UI icons
-  &--player:before
+  &--player::before
     content: $icon-player
-  &--breadcrumb:before
+  &--breadcrumb::before
     content: $icon-breadcrumb
-  &--filters:before
+  &--filters::before
     content: $icon-filters
-  &--search:before
+  &--search::before
     content: $icon-search
-  &--language:before
+  &--language::before
     content: $icon-language
 
-  &--left-arrow:before
+  &--left-arrow::before
     content: $icon-arrow-left
-  &--right-arrow:before
+  &--right-arrow::before
     content: $icon-arrow-right
 
-  &--spinner:before
+  &--spinner::before
     content: $icon-spinner
     animation: spin 1s infinite linear
 
   // Image icons
-  &--meditation:before
+  &--meditation::before
     content: $icon-meditation
-  &--location:before
+  &--location::before
     content: $icon-location
-  &--computer:before
+  &--computer::before
     content: $icon-computer

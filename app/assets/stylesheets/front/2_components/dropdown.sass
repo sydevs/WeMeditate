@@ -301,7 +301,7 @@
   width: 34px
   cursor: pointer
 
-  &:before, &:after
+  &::before, &::after
     content: ""
     position: absolute
     top: 15px
@@ -314,10 +314,10 @@
     background-color: $color-graphic-dark
     transition: all 0.5s ease
 
-  &:after
+  &::after
     transform: rotateZ(-0.7854rad)
 
-  &:before
+  &::before
     transform: rotateZ(0.7854rad)
 
 // This creates the "arrow" attached to the popup box
@@ -339,7 +339,7 @@
 // ===== EXPANDED DROPDOWN MENU ===== //
 // When the dropdown is opened/expanded, the popup should be shown.
 .dropdown--open
-  &:before
+  &::before
     opacity: 1
 
   .dropdown__selection:after

@@ -232,7 +232,7 @@
     min-height: 380px
     width: 1250px
     max-width: 90%
-    background: image-url("header/menu-background.png") no-repeat top right
+    background: image-url('header/menu-background.png') no-repeat top right
     background-size: 100% 100%
 
   &__title,
@@ -489,7 +489,7 @@
     padding-right: 25px
     position: relative
 
-  .header__menu__link:after
+  .header__menu__link::after
     content: ''
     position: absolute
     display: inline-block
@@ -529,7 +529,7 @@
     max-height: 300px
     margin-bottom: 1em
 
-  .header__menu__submenu_item:after
+  .header__menu__submenu_item::after
     transform: rotate(135deg)
     margin-top: -4px
 
@@ -550,13 +550,13 @@
     svg
       opacity: 0
 
-    &:before, &:after
+    &::before, &::after
       opacity: 1
 
-    &:before
+    &::before
       transform: rotateZ(0.7854rad)
 
-    &:after
+    &::after
       transform: rotateZ(-0.7854rad)
 
 
@@ -598,7 +598,7 @@
   &__navigation a:not(.header__dropdown__item)
     color: $color-text-inverse
 
-  &__navigation__link:before
+  &__navigation__link::before
     background: transparentize(white, 0.6)
 
   &__banner,

@@ -9,7 +9,7 @@
 
 // A shorthand to scale the triangle decoration which is used in various parts of the site
 @mixin triangle($size, $offset: null)
-  &:after
+  &::after
     bottom: -108px * $size
     width: 284px * $size
     height: 250px * $size
@@ -38,7 +38,7 @@
   @include widescreen
     @include triangle(1.2, 40px)
 
-  &:after
+  &::after
     content: ''
     display: block
     position: absolute

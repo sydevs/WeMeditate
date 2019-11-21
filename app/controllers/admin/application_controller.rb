@@ -18,7 +18,7 @@ module Admin
     def error
       render status: request.env['PATH_INFO'][1, 3].to_i
     end
-    
+
     def vimeo_data
       render json: Vimeo.retrieve_metadata(params[:vimeo_id])
     end

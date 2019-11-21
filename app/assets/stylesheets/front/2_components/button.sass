@@ -43,10 +43,10 @@
   padding: 16px 24px
   z-index: 1
   cursor: pointer
-  border: none
+  border: 0
 
   // Creates a background behind the button which can be animated on hover.
-  &:before
+  &::before
     background: $color-button-blue
     content: ''
     z-index: -1
@@ -55,11 +55,11 @@
 
   // If the button is hovered or active then the background should be full.
   &.button--active,
-  &.button--disabled,
+  &.button--disabled
     border-color: $color-button-blue
     color: $color-text-normal
 
-    &:before
+    &::before
       left: 0
       right: 0
 
@@ -70,7 +70,7 @@
       border-color: $color-button-blue
       color: $color-text-normal
 
-      &:before
+      &::before
         left: 0
         right: 0
 
@@ -96,7 +96,7 @@
       border-color: $color-button-blue-dark
       font-weight: $font-bold
 
-  &:before
+  &::before
     background: $color-button-blue-dark
 
   &.button--active
@@ -129,7 +129,7 @@
 // ===== RESET FOR UNIQUE BUTTON TYPES ===== //
 .button--icon,
 .button--circle
-  &:before, &:after
+  &::before, &::after
     content: none
 
 // ===== ICON BUTTONS ===== //

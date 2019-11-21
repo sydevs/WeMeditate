@@ -54,7 +54,7 @@
     cursor: pointer
     position: relative
 
-    &:before
+    &::before
       content: ''
       position: absolute
       bottom: -2px
@@ -70,7 +70,7 @@
         border-image-slice: 2
         border-image-repeat: round
 
-    &:after
+    &::after
       content: '?'
       vertical-align: super
       font-size: 50%
@@ -97,8 +97,8 @@
  
 .prescreen__explanation
   border: 1px solid $color-graphic-normal
-  border-left: none
-  border-right: none
+  border-left: 0
+  border-right: 0
 
   max-width: 500px
   margin: auto
@@ -169,7 +169,7 @@
 .prescreen__gradient
   display: block
 
-.prescreen__gradient:before
+.prescreen__gradient::before
   top: 0
   bottom: -40px
   width: 50%

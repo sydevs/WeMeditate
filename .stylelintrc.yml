@@ -60,10 +60,10 @@ rules:
   # order/properties-alphabetical-order: true
   property-no-unknown: true
   property-no-vendor-prefix: true
-  rule-empty-line-before:
-    - always-multi-line
-    - except: ['first-nested', 'after-single-line-comment']
-      ignore: ['after-comment']
+  # rule-empty-line-before:
+  #   - always-multi-line
+  #   - except: ['first-nested', 'after-single-line-comment']
+  #     ignore: ['after-comment']
   scss/at-extend-no-missing-placeholder: true
   scss/at-function-pattern: "^[a-z]+([a-z0-9-]+[a-z0-9]+)?$"
   scss/at-import-no-partial-leading-underscore: true
@@ -81,7 +81,8 @@ rules:
     - message: Selector should be written in lowercase with hyphens or dashes only (selector-class-pattern)
   selector-max-compound-selectors: 3
   selector-max-id: 0
-  selector-no-qualifying-type: true
+  selector-no-qualifying-type:
+    - ignore: ["attribute", "class"]
   selector-no-vendor-prefix: true
   selector-pseudo-element-colon-notation: double
   selector-pseudo-element-no-unknown: true
