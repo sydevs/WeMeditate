@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include Regulator
   include Klaviyo
   protect_from_forgery with: :exception
+  before_action :set_locale!
   before_action :enfore_maintenance_mode, except: %i[maintenance]
 
   # The root page of the website
@@ -55,8 +56,8 @@ class ApplicationController < ActionController::Base
         Klaviyo.subscribe(email)
         @message = I18n.translate('form.success.subscribe')
         @success = true
-      rescue Error => error
-        @message = error.detail.to_s
+      rescue Error => e
+        @message = e.detail.to_s
         @success = false
       end
     else
@@ -94,6 +95,10 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+    def set_locale!
+      I18n.locale = params[:locale]
+    end
 
     # Allows us to use a different layout for the `devise` gem, which handles logins/user accounts
     def layout_by_resource
