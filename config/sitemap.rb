@@ -12,7 +12,6 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::WaveAdapter.new
 
 HOSTS = Rails.configuration.locale_hosts.slice(*Rails.configuration.published_locales)
 HOSTS.each { |key, host| HOSTS[key] = "https://#{host}" }
-puts HOSTS.pretty_inspect
 EXCLUDE_STATIC_PAGES = %i[].freeze
 SPECIAL_PAGES = {
   home: { url: :root_url, changefreq: 'weekly' },

@@ -18,11 +18,11 @@ module Vimeo
     uri = URI("https://api.vimeo.com/videos/#{vimeo_id}?fields=#{FIELDS}")
     request = Net::HTTP::Get.new(uri)
     request['Authorization'] = "Bearer #{ENV['VIMEO_ACCESS_KEY']}"
-  
+
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
       http.request(request)
     end
-  
+
     if response.code == '404'
       puts "Vimeo API returned status code: #{response.code} for Vimeo ID: #{vimeo_id}"
       return nil
@@ -31,9 +31,9 @@ module Vimeo
     end
 
     response = JSON.parse(response.body)
-    puts "Retrieved Vimeo Data for #{vimeo_id}\r\n#{response.pretty_inspect}"
+    puts "Retrieved Vimeo Data for #{vimeo_id}\r\n#{response.inspect}"
 
-    return {
+    {
       vimeo_id: vimeo_id,
       title: response['name'],
       width: response['width'],
