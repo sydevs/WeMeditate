@@ -36,7 +36,7 @@ module MetadataHelper
   def render_structured_data
     return unless @structured_data.present?
 
-    tag.script @structured_data.to_json.html_safe, type: 'application/ld+json'
+    javascript_tag @structured_data.to_json.html_safe, type: 'application/ld+json'
   end
 
   # Get the metatag data for a given record
