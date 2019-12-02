@@ -17,6 +17,7 @@ module Admin::DashboardHelper
     needs_review SubtleSystemNode, :important, &block
     needs_review Treatment, :important, &block
     needs_review Article, :important, &block
+    untranslated Track, :normal, &block
     unpublished Article, :normal, &block
     untranslated Treatment, :normal, &block
     untranslated Article, :normal, &block
