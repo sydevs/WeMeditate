@@ -1,4 +1,4 @@
-/* global $, translate */
+/* global $, Util, translate */
 /* exported EditorTool */
 
 /** Editor Tool
@@ -384,7 +384,7 @@ class EditorTool {
 
       $(result).dropdown()
     } else {
-      result = Util.make('div', ['ui', 'transparent', 'fluid', 'input'], {}, container)
+      result = Util.make('div', ['ui', 'transparent', 'input'], {}, container)
       inputElement = Util.make('input', this.CSS.settingsInput, {
         type: input.type,
         placeholder: translate.content.decorations[`${key}_${input.name}`],
