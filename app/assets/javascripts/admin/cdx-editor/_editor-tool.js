@@ -170,17 +170,17 @@ class EditorTool {
   // This will insert a paragraph break if the enter button is pressed.
   insertParagraphBreak(event) {
     if (event.key == 'Enter' || event.keyCode == 13) { // ENTER
-      document.execCommand('insertHTML', false, '<br><br>')
+      document.execCommand('insertHTML', false, '\r\n')
       event.preventDefault()
       event.stopPropagation()
       return false
     }
   }
 
-  // Converts anny pasted content to use <br> tags, and pastes it directly into the tool, bypassing EditorJS's normal behaviour.
+  // Converts any pasted content to use <br> tags, and pastes it directly into the tool, bypassing EditorJS's normal behaviour.
   containPaste(event) {
     const clipboardData = event.clipboardData || window.clipboardData
-    const pastedData = clipboardData.getData('Text').replace(/(?:\r\n|\r|\n)/g, '<br>')
+    const pastedData = clipboardData.getData('Text')
     document.execCommand('insertHTML', false, pastedData)
     event.stopPropagation()
     event.preventDefault()
