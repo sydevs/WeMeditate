@@ -58,6 +58,9 @@ ru:
       subscribe: "Теперь вы подписаны на рассылку."
       contact: "Ваше сообщение получено."
       register: "Вы зарегистрированы."
+    button: # TODO: Translate
+      try_again: "Try Again"
+      submitted: "Submitted"
 
   player: # For the music or video player
     pause: "Пауза"
@@ -170,6 +173,7 @@ ru:
 
   javascript:
     reading_time: "%minutes% minute read" # TODO: Translate
+    loading: "Loading..." # TODO: Translate
     popup:
       close: "Закрыть (Esc)"
       loading: "Загружается..."

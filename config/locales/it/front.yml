@@ -57,6 +57,9 @@ it:
       subscribe: "Ti sei cancellato con successo."
       contact: "Il tuo messaggio stato ricevuto."
       register: "Ti sei registrato con successo."
+    button: # TODO: Translate
+      try_again: "Try Again"
+      submitted: "Submitted"
 
   player:
     pause: "Pausa"
@@ -169,6 +172,7 @@ it:
 
   javascript:
     reading_time: "%minutes% minute read" # TODO: Translate
+    loading: "Loading..." # TODO: Translate
     popup:
       close: "Chiudi (Esc)"
       loading: "Caricamento …"

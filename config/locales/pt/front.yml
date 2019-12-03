@@ -57,6 +57,9 @@ pt:
       subscribe: "You have been subscribed."
       contact: "Your message has been received."
       register: "You have been registered."
+    button:
+      try_again: "Try Again"
+      submitted: "Submitted"
 
   player: # For the music or video player
     pause: "Pause"
@@ -169,6 +172,7 @@ pt:
 
   javascript:
     reading_time: "%minutes% minute read"
+    loading: "Loading..."
     popup:
       close: "Close (Esc)"
       loading: "Loading..."
