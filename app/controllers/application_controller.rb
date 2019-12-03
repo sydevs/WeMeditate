@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   # The page where we embed a map from the program database
   def map
-    # expires_in 1.year, public: true
+    expires_in 1.year, public: true
     set_metadata({ 'title' => translate('classes.map_title') })
     render layout: 'minimal'
   end
@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
 
   # An endpoint to serve up the sitemap for Google and other services.
   def sitemap
-    # expires_in 1.day, public: true
+    expires_in 1.day, public: true
 
     # The sitemap itself is hosted on Google Cloud storage, we read it from them and send it back to the accessor of this endpoint.
     storage = Google::Cloud::Storage.new({
