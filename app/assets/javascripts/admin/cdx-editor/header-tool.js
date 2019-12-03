@@ -42,7 +42,7 @@ class HeaderTool extends EditorTool {
   }
 
   onPaste(event) {
-    this.data = { text: event.detail.data }
+    this.data = { text: event.detail.data.innerText }
   }
 
   // Check for emptiness
@@ -53,5 +53,13 @@ class HeaderTool extends EditorTool {
   // Define the types of paste that should be handled by this tool.
   static get pasteConfig() {
     return { tags: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'] }
+  }
+  
+  // Enable Conversion Toolbar. Header can be converted to/from other tools
+  static get conversionConfig() {
+    return {
+      export: 'text', // use 'text' property for other blocks
+      import: 'text', // fill 'text' property from other block's export string
+    }
   }
 }

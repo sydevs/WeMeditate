@@ -26,9 +26,15 @@ const Editor = {
         class: ParagraphTool,
         inlineToolbar: true,
       },
-      header: HeaderTool,
+      header: {
+        class: HeaderTool,
+        inlineToolbar: false, //[],
+      },
       list: ListTool,
-      quote: QuoteTool,
+      quote: {
+        class: QuoteTool,
+        inlineToolbar: false, //[],
+      },
       action: ActionTool,
       image: ImageTool,
       video: VideoTool,
