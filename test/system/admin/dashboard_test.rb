@@ -9,7 +9,7 @@ class Admin::DashboardTest < AdminSystemTestCase
   test 'dashboard' do
     visit admin_url
 
-    assert_selector 'h3', text: I18n.t('admin.dashboard.published.title')
+    assert_selector 'h3', text: I18n.t('admin.dashboard.content.title')
   end
 
 end

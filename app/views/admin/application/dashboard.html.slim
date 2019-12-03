@@ -12,24 +12,26 @@
       p = translate('admin.tutorial.dashboard.role_description', role: role_name, description: role_description)
       a.ui.primary.button href=admin_tutorial_path = translate('admin.tutorial.dashboard.action')
 
+h3 = translate 'admin.dashboard.content.title'
 - if Rails.configuration.published_locales.include?(I18n.locale.to_sym)
-  h3 = translate 'admin.dashboard.published.title'
-  p = translate 'admin.dashboard.published.description', language: language_name.downcase, host: Rails.configuration.locale_hosts[I18n.locale.to_sym]
-  .ui.four.statistics
-    .statistic
-      .value = Article.published.count
-      .label = human_model_name(Article, :plural)
-    .statistic
-      .value = Meditation.published.count
-      .label = human_model_name(Meditation, :plural)
-    .statistic
-      .value = Track.published.count
-      .label = human_model_name(Track, :plural)
-    .statistic
-      .value = Treatment.published.count
-      .label = human_model_name(Treatment, :plural)
+  p = translate 'admin.dashboard.content.public', language: language_name.downcase, host: Rails.configuration.locale_hosts[I18n.locale.to_sym]
+- else
+  p = translate 'admin.dashboard.content.private', language: language_name.downcase, host: Rails.configuration.locale_hosts[I18n.locale.to_sym]
+.ui.four.statistics
+  .statistic
+    .value = Article.published.count
+    .label = human_model_name(Article, :plural)
+  .statistic
+    .value = Meditation.published.count
+    .label = human_model_name(Meditation, :plural)
+  .statistic
+    .value = Track.published.count
+    .label = human_model_name(Track, :plural)
+  .statistic
+    .value = Treatment.published.count
+    .label = human_model_name(Treatment, :plural)
 
-  .ui.divider
+.ui.divider
 
 - if policy(Article).publish?
   h3 = translate 'admin.dashboard.schedule.title'

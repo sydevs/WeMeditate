@@ -304,9 +304,10 @@ en:
 
     dashboard:
       title: "Dashboard"
-      published:
+      content:
         title: "Published Content"
-        description: "The %{language} website (%{host}) is open to the public, and has the following published content."
+        public: "The %{language} website (%{host}) is open to the public, and has the following published content."
+        private: "The %{language} website (%{host}) is closed to the public, and has the following ready content."
       schedule:
         title: "Publishing Schedule"
         description: "This is a list of articles which are scheduled to be published in the near future."
