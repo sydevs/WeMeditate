@@ -96,7 +96,7 @@ class Article < ApplicationRecord
 
       self[:published_at] ||= DateTime.now
       published_at = self[:published_at]
-      published_at = DateTime.parse(published_at) if published_at.is_a?(String)
+      published_at = DateTime.parse(published_at) if published_at.present? && published_at.is_a?(String)
 
       if priority == 'pinned'
         # Pinned articles should always be shown at the top

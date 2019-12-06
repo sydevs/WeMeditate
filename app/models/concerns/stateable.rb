@@ -15,7 +15,8 @@ module Stateable
   included do |base|
     %i[state published_at].each do |column|
       next if base.try(:translated_attribute_names)&.include?(column) || base.column_names.include?(column.to_s)
-      throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Stateable`" 
+
+      throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Stateable`"
     end
 
     base.enum state: {
@@ -41,7 +42,7 @@ module Stateable
     end
 
     def state= value
-      self.state = self.class.states[value.to_s]
+      self[:state] = self.class.states[value.to_s]
     end
 
     def published?
@@ -71,7 +72,8 @@ module Stateable
   def unpublishable?
     return false if is_a?(StaticPage) || is_a?(SubtleSystemNode)
     return false if is_a?(Meditation) && self_realization?
-    return true
+
+    true
   end
 
   private
