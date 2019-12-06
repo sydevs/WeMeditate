@@ -41,11 +41,11 @@ module Stateable
     end
 
     def state= value
-      self[:state] = self.class.states[value.to_s]
+      self.state = self.class.states[value.to_s]
     end
 
     def published?
-      state == :published
+      state.to_sym == :published
     end
 
     def self.stateable?

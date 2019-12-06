@@ -93,6 +93,7 @@ class Article < ApplicationRecord
     # Compute the ordering of this Article that will be used on the Inspiration page
     def compute_order
       return unless published?
+
       self[:published_at] ||= DateTime.now
       published_at = self[:published_at]
       published_at = DateTime.parse(published_at) if published_at.is_a?(String)

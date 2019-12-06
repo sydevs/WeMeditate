@@ -131,7 +131,7 @@ class EditorTool {
       })
     }
 
-    if (type == 'text') {
+    if (type == 'text' && field.contained != false) {
       // Text fields should prevent EditorJS from splitting pasted content into multiple blocks
       result.addEventListener('paste', event => this.containPaste(event))
     }
@@ -177,7 +177,7 @@ class EditorTool {
     }
   }
 
-  // Converts any pasted content to use <br> tags, and pastes it directly into the tool, bypassing EditorJS's normal behaviour.
+  // Paste content directly into the tool, bypassing EditorJS's normal behaviour.
   containPaste(event) {
     const clipboardData = event.clipboardData || window.clipboardData
     const pastedData = clipboardData.getData('Text')
