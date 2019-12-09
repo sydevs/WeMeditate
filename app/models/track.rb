@@ -22,7 +22,7 @@ class Track < ApplicationRecord
   validates :name, presence: true
   validates :artists, presence: true
   validates :audio, presence: true
-  validates :mood_filters, presence: true
+  # validates :mood_filters, presence: true
   validates :instrument_filters, presence: true
 
   # Scopes
