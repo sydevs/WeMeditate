@@ -9,7 +9,7 @@
   - f.input_field :priority, collection: priorities, selected: value, disabled: !allow.update_structure?
 
 - if allow.update_structure?
-  = draftable_date_field f, :published_at, hint: translate('admin.hints.article_published_at'), value: record.get_native_locale_attribute(:published_at)
+  = draftable_date_field f, :published_at, hint: translate('admin.hints.article_published_at'), value: record.get_native_locale_attribute(:published_at), wrapper: { required: true }
 
 = draftable_media_field f, :thumbnail, preview: true, wrapper: { required: true }
 
