@@ -14,12 +14,9 @@ RouteTranslator.config do |config|
       'es.wemeditate.co' => :es, # Spanish
       'de.wemeditate.co' => :de, # German
       'www.wemeditate.fr' => :fr, # French
-      'www.wemeditate.it' => :it, # Italian
       'wemeditate.it' => :it, # Italian
-      'www.wemeditate.ru' => :ru, # Russian
-      'www.wemeditate.co.uk' => :en, # English
+      'wemeditate.ru' => :ru, # Russian
       'wemeditate.co.uk' => :en, # English
-      'www.wemeditate.co' => :en, # English
       'wemeditate.co' => :en, # English
     } # Domains at the bottom of the list have highest priority.
   elsif Rails.env.staging?
