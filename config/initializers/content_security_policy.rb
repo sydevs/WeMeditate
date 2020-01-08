@@ -7,11 +7,11 @@
 Rails.application.config.content_security_policy do |policy|
   policy.default_src :self, :https
   policy.font_src    :self, :https, :data
-  policy.img_src     :self, 'https://storage.googleapis.com/', :https, :data
+  policy.img_src     :self, 'https://assets.wemeditate.co/', :https, :data
   policy.object_src  :none
   policy.script_src  :self, :unsafe_eval, :unsafe_inline, :https
   policy.style_src   :self, :unsafe_inline, :https
-  policy.frame_src   :self, ENV['ATLAS_URL'] || ''
+  policy.frame_src   :self, 'https://player.vimeo.com/', ENV['ATLAS_URL'] || ''
 
   # Specify URI for violation reports
   # policy.report_uri "/csp-violation-report-endpoint"
