@@ -7,415 +7,416 @@ es:
     # ===== ACTIONS ===== #
     # This section deals with actions that an administrator can take.
     action:
-      view_site: "View Site"
-      view_admin: "Go To Admin Dashboard"
-      tutorial: "Help (How to Use)"
-      report_issue: "Report Issue"
-      search: "Search..."
-      sign_in: "Log In"
-      sign_out: "Log Out"
+      view_site: "Ver la web"
+      view_admin: "Ir al panel de control"
+      tutorial: "Ayuda (Como usar)"
+      report_issue: "Informar Problema"
+      search: "Búsqueda..."
+      sign_in: "Iniciar Sesión"
+      sign_out: "Cerrar Sesión"
 
       draft:
-        reset: "Discard Draft Value" # "Value" refers to a piece of information which is stored in the site's database. It could be a number, text, file, etc.
-        redo: "Use Draft Value"
-        reset_tooltip: "Reset to \"%{value}\""
-        redo_tooltip: "Set to \"%{value}\""
+        reset: "Descartar borrador de Value" # "Value" refers to a piece of information which is stored in the site's database. It could be a number, text, file, etc.
+        redo: "Usar Borrador Value"
+        reset_tooltip: "Restablecer a \"%{value}\""
+        redo_tooltip: "Establecer \"%{value}\""
 
       simple:
-        show: "View"
-        create: "New"
-        edit: "Edit"
-        write: "Write"
-        edit_details: "Edit details" # These are the details of a page
-        edit_content: "Edit content" # This is the content of a page
-        update: "Save"
-        destroy: "Delete"
-        preview: "Preview"
-        review: "Review changes"
-        save_draft: "Save Draft"
-        approve: "Approve"
-        invite: "Invite" # To invite a new editor to the website
-        reinvite: "Resend Invitation"
-        cancel: "Cancel"
-        back: "Back"
+        show: "Ver"
+        create: "Nuevo"
+        edit: "Editar"
+        write: "Escribir"
+        edit_details: "Editar detalles de la página" # These are the details of a page
+        edit_content: "Editar contenido de la página" # This is the content of a page
+        update: "Guardar"
+        destroy: "Eliminar"
+        preview: "Vista Previa"
+        review: "Revisar Cambios"
+        save_draft: "Guardar Borrador"
+        approve: "Aprobar"
+        invite: "Invitar" # To invite a new editor to the website
+        reinvite: "Reenviar Invitación"
+        cancel: "Cancelar"
+        back: "Volver"
 
       target: # A 'record' refers to some part of the website, such as an Article, WebPage, Guided Meditation, etc.
-        show: "View %{record}"
-        upload: "Upload %{record}"
-        edit: "Edit %{record}"
-        write: "Write %{record} content"
-        review: "Review %{record}"
-        reset: "Reset %{record}"
-        publish: "Publish %{record}"
-        unpublish: "Unpublish %{record}" # This means hiding the record from the public, the opposite of publishing
-        add: "Add %{record}"
-        create: "New %{record}"
-        remove: "Remove %{record}"
-        destroy: "Delete this %{record}"
-        back: "Back to %{records}"
-        reorder: "Change %{record} Order"
+        show: "Ver %{record}"
+        upload: "Subir %{record}"
+        edit: "Editar %{record}"
+        write: "Escribir %{record} contenido"
+        review: "Revisar %{record}"
+        reset: "Restablecer %{record}"
+        publish: "Publicar %{record}"
+        unpublish: "Ocultar %{record}" # This means hiding the record from the public, the opposite of publishing
+        add: "Añadir %{record}"
+        create: "Nuevo %{record}"
+        remove: "Retirar %{record}"
+        destroy: "Eliminar %{record}"
+        back: "Regresar a %{records}"
+        reorder: "Cambiar %{record} de orden"
 
       descriptive:
-        show: "View on website"
-        preview: "Preview draft on website"
-        reload_vimeo_data: "Reload Vimeo Metadata"
-        audit: "View change logs"
+        show: "Ver en la Web"
+        preview: "Previsualizar en la Web"
+        reload_vimeo_data: "Carga de nuevo Vimeo Metadata"
+        audit: "View change logs" # TODO: Translate
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
-    
+
     details:
-      original_language: "Original Language"
-      translated_languages: "Translated Languages"
-      priority: "Inspiration Page"
-      owned_by: "Owned by %{owner}"
-      vertical_video: "Vertical Video"
-      horizontal_video: "Horizontal Video"
-      featured_video: "Featured Video" # The video which will be shown on an article preview
-      featured_date: "Featured Date" # The date which will be shown on an article preview
-      role: "Role On Website"
-      pending_changes: "This %{page} has changes pending approval"
+      original_language: "Idioma Original"
+      translated_languages: "Idiomas Traducidos"
+      priority: "Orden en la Página de Inspiración"
+      owned_by: "Propiedad de %{owner}"
+      vertical_video: "Video Vertical"
+      horizontal_video: "Video Horizontal"
+      featured_video: "Video destacado" # The video which will be shown on an article preview
+      featured_date: "Fecha destacada" # The date which will be shown on an article preview
+      role: "Rol en la Web"
+      pending_changes: "This %{page} has changes pending approval" # TODO: Translate
 
     tags:
-      published: "Published"
-      unpublished: "Not Published"
-      unapproved_changes: "Has Unapproved Changes"
-      unpublished_draft: "Unpublished Draft"
-      no_translation: "No %{language} Translation" # "language" will be replaced with the language that this file is written in.
-      pending_translation: "Has %{language} Translation, Pending Approval" # "language" will be replaced with the language that this file is written in.
-      in_progress_translation: "Has Incomplete %{language} Translation" # "language" will be replaced with the language that this file is written in.
-      pending_invitation: "Has Not Yet Accepted Invitation"
-      this_is_you: "This is you"
-      missing_record: "Missing %{model}"
-      too_many_pinned: "More than %{count} pinned %{model}"
-      updated_ago: "Modified %{time_ago} ago"
-      published_ago: "Published %{time_ago} ago"
-      published_from_now: "Will be published %{time_from_now} from now"
+      published: "Publicado"
+      unpublished: "No Publicado"
+      unapproved_changes: "Has Unapproved Changes" # TODO: Translate
+      unpublished_draft: "Borrador no publicado"
+      no_translation: "%{language} sin traducción" # "language" will be replaced with the language that this file is written in.
+      pending_translation: "%{language} tiene traducción, pendiente de aprobación" # "language" will be replaced with the language that this file is written in.
+      in_progress_translation: "%{language} tiene traducción incompleta" # "language" will be replaced with the language that this file is written in.
+      pending_invitation: "Todavía no ha aceptado invitación"
+      this_is_you: "Este eres tú"
+      missing_record: "%{model} perdido"
+      too_many_pinned: "More than %{count} pinned %{model}" # TODO: Translate
+      updated_ago: "Modificado hace %{time_ago}"
+      published_ago: "Publicado hace %{time_ago}"
+      published_from_now: "Will be published %{time_from_now} from now" # TODO: Translate
       urgency: # These are in order, with 'critical' as the most important, and 'pending' as the least important.
-        critical: "Critical Issue"
-        important: "Important Issue"
-        normal: "Normal Priority"
-        pending: "Pending"
+        critical: "Problema Crítico"
+        important: "Problema Importante"
+        normal: "Prioridad Normal"
+        pending: "Pendiente"
       views: # This is the number of viewers or visits. Used to indicate the number of video views
-        one: "%{count} View"
-        other: "%{count} Views"
-      popularity: "Popularity: %{value}"
+        one: "1 Visita"
+        other: "%{count} Visitantes"
+      popularity: "Popularidad: %{value}"
 
     messages:
-      loading: "Loading"
-      errors: "Errors"
-      no_translations_found: "No %{pages} to translate"
-      make_public: "Make this %{page} visible to the public"
-      maintenance_mode: "The website is under construction, come back soon."
-      confirm_destroy: "Are you sure you want to delete that? This cannot be undone!"
-      confirm_discard_draft: "Are you sure you want to discard all changes to this page? This cannot be undone!"
-      confirm_unsaved_changes: "Unsaved changes will be lost. Are you sure you want to leave the page?"
-      drop_files_here: "Drop files here"
-      unapproved_changes_notice: "This %{page} has unpublished changes. These will not be visible to the public until they have been reviewed by an administrator."
-      pending_invitation_notice: "This %{person} has been sent an invitation to become an editor on the website, but has not yet responded."
-      draft_notice: "You are viewing a draft version of this %{page}. This version not be visible to the public until it has been reviewed by an administrator."
-      draft_contributed_by: "This draft includes changed made by %{people}."
-      text_too_short: "must have at least %{count} letters"
-      invalid_vimeo_id: "must be a valid Vimeo ID"
-      new_author_notice: "You have not set up your author profile yet, fill out the fields below and press save."
-      start_details_before_content: "Start translating details first, then the content."
+      loading: "Cargando"
+      errors: "Errores"
+      no_translations_found: "No %{pages} para traducir"
+      make_public: "Hacer esta %{page} visible al público"
+      maintenance_mode: "La web está en mantenimiento, vuelve pronto"
+      confirm_destroy: "Estás seguro de que quieres eliminar esto? No se puede deshacer!"
+      confirm_discard_draft: "Estás seguro de que quieres descartar todos los cambios en esta página? No se puede deshacer!"
+      confirm_unsaved_changes: "Los cambios sin guardar se perderán. Estas seguro de que quieres abandonar esta página?"
+      drop_files_here: "Arrastra los archivos aquí" 
+      unapproved_changes_notice: "%{page} tiene cambios sin publicar. Los cambios no serán visibles al público hasta que sean revisados por el administrador."
+      pending_invitation_notice: "Se ha enviado una invitación a %{person} para ser editor de la web, pero todavía no ha respondido."
+      draft_notice: "Estás viendo una versión borrador de %{page}. Esta versión no será visible al publico hasta que sea revisado por un administrador."
+      draft_contributed_by: "Este borrador incluye los cambios realizados por %{people}."
+      text_too_short: "Debe tener al menos %{count} letras"
+      invalid_vimeo_id: "Debe ser un ID de Vimeo válido."
+      new_author_notice: "Todavía no has establecido tu perfil de autor, rellena todos los campos y selecciona guardar."
+      start_details_before_content: "Start translating details first, then the content." # TODO: Translate
 
     hints:
-      excerpt: "This is a short preview of the %{page} content that will be shown in %{page} listings."
-      article_visibility: "This determines where an article will appear on the Inspiration page."
-      article_author: "The profile which will be shown under the article on the website."
-      article_article_type: "Different article types will offer a few different fields and display the author differently."
-      article_owner: "Administrators and Editors can always edit all articles. This field gives a writer special permission to modify an article after it is published. Usually this is the person who wrote the article in the first place."
-      article_video: "If you enter a featured video, it will appear on the article preview."
-      article_date: "Set the start date of the event here. This date will appear on the article preview."
-      article_coordinates: "Providing the latitude and longitude of an event will allow rich Google search results."
-      article_published_at: "If this date is in the future, then the article will be scheduled to be published on that date. Leave this fiield blank to have the publish date set automatically."
-      fixed_slug: "This is a special page, it's URL cannot be changed."
-      languages_access: "These are the locales where this user can modify the site content."
-      languages_known: "These are the languages that a user can translate content from."
-      self_realization_slug: "The url for the self-realization page must be \"%{slug}\""
+      excerpt: "Breve vista previa del contenido de %{page} que se vera en el listado de %{page}."
+      article_visibility: "Los articulos con mayor visitas serán los primeros en aparecer en la página de Inspiración"
+      article_author: "El perfil del autor se mostrará debajo de cada artículo."
+      article_article_type: "Esto establece cómo será llamado el autor en este artículo."
+      article_owner: "Los Administradores y Editores siempre podrán editar todos los artículos. Este campo permite especialmente al Autor modificar un artículo después de ser publicado."
+      article_video: "Si entras en un vídeo destacado, aparecerá en la vista previa del artículo."
+      article_date: "Si este artículo es sobre un evento, puedes establecer la fecha de inicio del evento aquí. Esa fecha aparecerá en la vista previa del artículo."
+      article_coordinates: "Providing the latitude and longitude of an event will allow rich Google search results." # TODO: Translate
+      article_published_at: "La fecha de publicación establece el orden  en el que aparecen los artículos."
+      fixed_slug: "Esta es una pagina especial, su URL no puede ser modificado."
+      languages_access: "These are the locales where this user can modify the site content." # TODO: Translate
+      languages_known: "These are the languages that a user can translate content from." # TODO: Translate
+      self_realization_slug: "The url for the self-realization page must be \"%{slug}\"" # TODO: Translate
 
     result:
-      created: "Created successfully."
-      updated: "Saved successfully."
-      deleted: "Deleted successfully."
-      saved_but_needs_review: "Saved successfully, changes will be published after they are reviewed."
-      cannot_delete_attached_record: "You cannot delete a %{category} which has %{pages} attached to it. Reassign the %{pages} and try again."
+      created: "Creado."
+      updated: "Guardar."
+      deleted: "Eliminado."
+      saved_but_needs_review: "Guardado, los cambios realizados se publicarán después de ser revisados."
+      cannot_delete_attached_record: "No se puede eliminar %{category} si tiene %{pages} adjunto. Reasiga la %{pages} y prueba de nuevo."
       # Example: "You cannot delete a Category which has Articles attached to it. Reassign the Articles and try again."
-      published: "Published successfully."
+      published: "Publicado."
     
-    audit:
-      title: "History of changes to \"%{record}\" %{model}"
-      changed_by: "by %{name}"
-      changed_to: "changed to"
-    
-    # ===== CONTENT ===== #
+      audit: # TODO: Translate
+        title: "History of changes to \"%{record}\" %{model}"
+        changed_by: "by %{name}"
+        changed_to: "changed to"
+      
+      # ===== CONTENT ===== #
     # This section defines text that will be shown in the content editor.
     content:
-      outline_title: "Structure of the %{page} Content" # The title for a section which outlines the structure of a page.
+      outline_title: "Estructura del contenido de %{page}" # The title for a section which outlines the structure of a page.
       blocks: # These blocks are the types of elements that can be used on a page
-        header: "Title"
-        paragraph: "Paragraph"
-        image: "Image"
-        action: "Button"
-        catalog: "WeMeditate Content"
-        list: "List"
-        quote: "Quote"
-        form: "Form"
-        structured: "Structured Text"
-        textbox: "Text With Image"
-        video: "Video"
+        header: "Título"
+        paragraph: "Párrafo"
+        image: "Imagen"
+        action: "Tecla"
+        catalog: "Contenido WeMeditate"
+        list: "Lista"
+        quote: "Cita"
+        form: "De"
+        structured: "Texto estructurado"
+        textbox: "Texto con Imagen"
+        video: "Vídeo"
       settings:
-        tunes: "Options"
-        decorations: "Decorations"
+        tunes: "Opciones"
+        decorations: "Decoraciones"
       tunes: # These are formatting styles for content blocks
-        centered: "Centered"
-        stretch: "Fill screen width"
-        separate: "Separate image and text"
-        asGallery: "Gallery"
-        asWisdom: "Ancient Knowledge Style"
-        asVideo: "Video"
-        asPoem: "Poetry"
-        withImages: "Show Images"
-        invert: "Invert Colours"
+        centered: "Centrado"
+        stretch: "Llenar el ancho de la pantalla"
+        separate: "Separar imagen y texto"
+        asGallery: "Galería"
+        asWisdom: "Estilo de conocimiento antiguo"
+        asVideo: "Vídeo"
+        asPoem: "Poetry" # TODO: Translate
+        withImages: "Mostrar Imágenes"
+        invert: "Invertir Colores"
         style: # These are list styles
-          unordered: "Unordered" # Also called a "Bulleted" list
-          ordered: "Ordered" # Also called a "Numbered" list
-          leaf: "Leaf Icon" # As in a list with a leaf icon instead of the bullet
+          unordered: "Desordenado" # Also called a "Bulleted" list
+          ordered: "Ordenado" # Also called a "Numbered" list
+          leaf: "Icono hoja" # As in a list with a leaf icon instead of the bullet
         alignment: # These are text alignments
-          left: "Left Aligned"
-          center: "Center Aligned"
-          right: "Right Aligned"
+          left: "Izquierda "
+          center: "Centrado"
+          right: "Derecho"
         position: # A 'callout' is an image or quotation which is inserted at the side of the text
-          center: "Centered"
-          left: "As Left Callout"
-          right: "As Right Callout"
+          center: "Centered" # TODO: Translate
+          left: "A la izquierda "
+          right: "A la derecha "
         type: # Note to Developer: These must be translated manually because they are accessed in JavaScript
-          articles: "Articles"
-          treatments: "Techniques"
-          meditations: "Meditations"
-        size:
+          articles: "Artículos"
+          treatments: "Técnicas"
+          meditations: "Meditaciones"
+        size: # TODO: Translate
           narrow: "Narrow"
           wide: "Wide"
         format:
-          button: "Button"
-          grid: "Grid"
-          accordion: "Accordion"
-          columns: "Columns"
-          signup: "Signup Form"
-          contact: "Contact Form"
+          button: "Botón"
+          grid: "Red"
+          accordion: "Acordeón"
+          columns: "Columnas"
+          signup: "Formulario de Registro"
+          contact: "Formulario de Contacto"
       decorations:
-        triangle: "Triangle Decoration"
-        circle: "Circle Decoration"
-        gradient: "Gradient Decoration"
-        leaves: "Leaf Decorations"
-        sidetext: "Vertical Text"
+        triangle: "Decoración en Triángulo"
+        circle: "Decoración en Círculo"
+        gradient: "Decoración en Degradado"
+        leaves: "Decoración en Hojas"
+        sidetext: "Texto Vertical"
         triangle_alignment:
-          left: "Left Triangle"
-          right: "Right Triangle"
+          left: "Triángulo a la Izquierda"
+          right: "Triángulo a la derecha"
         gradient_alignment:
-          left: "Left Gradient"
-          right: "Right Gradient"
+          left: "Degradado a la izquierda"
+          right: "Degradado a la derecha"
         gradient_color:
-          orange: "Orange Gradient"
-          blue: "Blue Gradient"
-          gray: "Gray Gradient"
-        sidetext_text: "Enter vertical text..."
+          orange: "Gradiente Naranja"
+          blue: "Gradiente Azul"
+          gray: "Gradiente Gris"
+        sidetext_text: "Introducir texto en vertical..."
       placeholders:
-        title: "Title"
-        text: "Text"
-        items: "Items"
-        action: "Button Text"
-        url: "Paste a link here"
-        quote: "Enter a quote" # "Quote" as in a quotation from some other text or person
-        alt: "Describe the image for the visually impaired"
-        caption: "Enter a caption" # "Caption" as in a piece of text describing an image
-        credit: "Enter a credit" # "Credit" as in the credit for an image or quotation
-        optional: "optional"
-        search: "Search"
+        title: "Título"
+        text: "Texto"
+        items: "Secciones"
+        action: "Boton Texto"
+        url: "Pegar aquí el link"
+        quote: "Introducir una cita" # "Quote" as in a quotation from some other text or person
+        alt: "Describir la imagen para discapacitados visuales"
+        caption: "Introducir pie de foto" # "Caption" as in a piece of text describing an image
+        credit: "Introducir Créditos de Autor" # "Credit" as in the credit for an image or quotation
+        optional: "opcional"
+        search: "Búsqueda"
       words:
-        one: "%{count} word"
-        other: "%{count} words"
+        one: "%{count} palabra"
+        other: "%{count} palabras"
       items:
-        one: "%{count} item"
-        other: "%{count} items"
+        one: "%{count} sección"
+        other: "%{count} secciones"
 
 
     # ===== MISCELLENEOUS ===== #
     permissions: # These are messages relating to editor permissions
-      title: "Permissions Table"
-      own_languages_notice: "All editors are restricted to making modifications only in their own languages."
-      create: "Can Create"
-      update: "Can Modify"
-      translate: "Can Modify Untranslated %{pages}"
-      publish: "Can Approve Changes"
-      destroy: "Can Delete"
+      title: "Tabla de permisos"
+      own_languages_notice: "Todos los editores se limitan a hacer modificaciones sólo en sus propios idiomas."
+      create: "Puede Crear"
+      update: "Puede Modificar"
+      translate: "Puede Modificar %{pages} sin Traducción"
+      publish: "Puede Aprobar Cambios"
+      destroy: "Puede Eliminar"
       special:
-        update_own: "Can Modify Own %{pages}"
-        publish_own: "Can Approve Changes to Own %{pages}"
-        update_own_bio: "Can Modify Own Biography"
-        create_own_bio: "Can Create Own Biography"
-        update_subordinate: "Can Modify %{subordinates}"
-        create_subordinate: "Can Create %{subordinates}"
+        update_own: "Puede modificar en su página %{pages}"
+        publish_own: "Puede aprobar cambios en su página %{pages}"
+        update_own_bio: "Puede Modificar Su Biografía"
+        create_own_bio: "Puede Crear Su Biografía"
+        update_subordinate: "Puede Modificar %{subordinates}"
+        create_subordinate: "Puede Crear %{subordinates}"
       role_description: # This describes the responsibilities of a given type of administrator
-        translator: "translate existing content which has been published in other languages, to their assigned language."
-        writer: "can write new articles, or edit old articles which they themselves created."
-        editor: "should review and publish articles written by writers. They can also created their own articles."
-        regional_admin: "are responsible for approving translations, translating core parts of the site, and overseeing the publishing of new content in their language."
-        super_admin: "manage the fundamental elements of the site, and the creation of new editors."
+        translator: "traducir el contenido existente que ha sido publicado de otros idiomas a su idioma asignado."
+        writer: "puede escribir nuevos artículos, o editar artículos antiguos que ellos mismos crearon." 
+        editor: "debe revisar y publicar artículos escritos por los escritores. También pueden crear sus propios artículos."
+        regional_admin: "son responsables de la aprobación de traducciones, la traducción de las partes principales del sitio, y la supervisión de la publicación de nuevo contenido en su idioma."
+        super_admin: "gestionar los elementos fundamentales del sitio, y la creación de nuevos editores."
 
     review: # Text related to reviewing unapproved changes
-      title: "Review Changes"
-      changes_contributed_by: "Changes contributed by:"
-      no_value: "No Value"
-      invalid_value: "Invalid Value"
-      no_changes: "No Changes"
-      discard_all_changes: "Discard All Changes"
-      approve_changes: "Save Approved Changes"
+      title: "Revisar Cambios"
+      changes_contributed_by: "Cambios aportados por:"
+      no_value: "Sin Valor"
+      invalid_value: "Valor No Válido"
+      no_changes: "Sin Cambios"
+      discard_all_changes: "Descartar Todos los Cambios"
+      approve_changes: "Guardar Cambios Aprobados"
       or: OR
       context:
-        details: "Page Details"
-        content: "Page Content"
+        details: "Detalles de la Página"
+        content: "Contenido de la Página"
       effect:
-        moved: "Moved"
-        added: "Added"
-        removed: "Removed"
-        modified: "Changed"
-        nochange: "No Change"
+        moved: "Movido"
+        added: "Añadido"
+        removed: "Eliminado"
+        modified: "Modificado"
+        nochange: "Ninguna modificación"
 
     metadata:
-      key: "name"
-      value: "value"
-      default_metadata: "Default Metadata"
-      generated_jsonld: "Generated Structured Data"
+      key: "nombre"
+      value: "valor"
+      default_metadata: "Metadatos Predeterminados"
+      generated_jsonld: "Datos Estructurados Creados"
 
     draft: # This section deals with the ability to create draft versions of new pages
-      no_image: "No Image"
+      no_image: "Sin Imagen"
       items:
-        one: "%{count} item"
-        other: "%{count} items"
+        one: "1 objeto"
+        other: "%{count} objetos"
       content:
         original: # This is for a button that lets you revert to the previous content
-          one: "Original content with %{count} block"
-          other: "Original content with %{count} blocks"
+          one: "Contenido original con %{count} bloqueado"
+          other: "Contenido original con %{count} bloqueados"
         draft: # This is for a button that lets you revert to the new content
-          one: "Draft content with %{count} block"
-          other: "Draft content with %{count} blocks"
+          one: "Contenido modificado con %{count} blocks"
+          other: "Contenido modificado con %{count} blocks"
 
     dashboard:
-      title: "Dashboard"
-      content:
+      title: "Cuadro de control"
+      content: # TODO: Translate
         title: "Published Content"
         public: "The %{language} website (%{host}) is open to the public, and has the following published content."
         private: "The %{language} website (%{host}) is closed to the public, and has the following ready content."
-      schedule:
+      schedule: # TODO: Translate
         title: "Publishing Schedule"
         description: "This is a list of articles which are scheduled to be published in the near future."
         no_schedule: "No articles are scheduled to be published."
-      alerts:
+      alerts: # TODO: Translate
         title: "Alerts"
         description: "This is a list of important issues, that should be resolved to keep the site in healthy order."
         no_issues: "No issues right now, good job!"
 
     index:
       columns:
-        status: "Status"
-        name: "Name"
-        role: "Role"
-        updated_at: "Updated"
-        created_at: "Created"
-        last_sign_in_at: "Last Login"
-        minutes: "Duration"
+        status: "Estado"
+        name: "Nombre"
+        role: "Rol"
+        updated_at: "Actualizado"
+        created_at: "Creado"
+        last_sign_in_at: "Último inicio de sesión"
+        minutes: "Duración"
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate
-        node: "Node"
+        node: "Nodo"
         artist_id: :activerecord.models.artist.other # Do not translate
         duration: :activerecord.attributes.track.duration # Do not translate
         articles_count: :activerecord.models.article.other # Do not translate
         instruments_count: :activerecord.models.instrument_filter.other # Do not translate
         meditations_count: :activerecord.models.meditation.other # Do not translate
         tracks_count: :activerecord.models.track.other # Do not translate
-        account: "Account"
-        country_code: "Country"
+        account: "Cuenta"
+        country_code: "País"
       sort:
-        title: "Sort by"
+        title: "Ordenar por"
         columns:
-          default: "Default"
-          name: "Name"
-          country_code: "Country"
-          updated_at: "Recently Updated"
-          created_at: "Recently Created"
-          last_sign_in_at: "Recently Signed In"
-          popularity: "Most Popular"
-          articles_count: "Most Articles"
-          meditations_count: "Most Meditations"
-          tracks_count: "Most Tracks"
+          default: "Predeterminado"
+          name: "Nombre"
+          country_code: "País"
+          updated_at: "Actualizado Recientemente"
+          created_at: "Creado Recientemente"
+          last_sign_in_at: "Inicio de sesión Reciente"
+          popularity: "El más popular"
+          articles_count: "Mayoría de Artículos"
+          meditations_count: "Mayoría de Meditaciones"
+          tracks_count: "Mayoría de Canciones"
           duration: :activerecord.attributes.track.duration # Do not translate
-          role: "Role"
+          role: "Rol"
       filter:
-        title: "Filter by"
+        title: "Filtrar por"
         columns:
       attribute:
-        status: "Status"
-        none: "None"
-        never: "Never"
-        default: "Default"
+        status: "Estado"
+        none: "Ninguno"
+        never: "Nunca"
+        default: "Predeterminado"
       status: # Try to keep these translations short
         # Draftable
-        needs_review: "Needs Review"
+        needs_review: "Necesita Revisión"
         # Translatable
-        needs_translation: "Needs Translation"
-        not_translated: "Not Translated"
+        needs_translation: "Necesita Traducción"
+        not_translated: "Not Translated" # TODO: Translate
         # Stateable
-        no_state: "In Progress"
-        in_progress: "In Progress"
+        no_state: "In Progress" # TODO: Translate
+        in_progress: "In Progress" # TODO: Translate
         archived: :activerecord.attributes.generic.states.archived # Do not translate
         published: :activerecord.attributes.generic.states.published # Do not translate
         unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         not_published: :activerecord.attributes.generic.states.unpublished # Do not translate
         # Publishable
-        public: "Public"
-        private: "Hidden"
+        public: "Público"
+        private: "Oculto"
         # Users
-        pending: "Pending"
-        inactive: "Inactive"
-        active: "Active"
-        this_is_you: "This Is You"
+        pending: "Pendiente"
+        inactive: "Inactive" # TODO: Translate
+        active: "Activo"
+        this_is_you: "Este eres tú"
 
     tutorial:
-      title: "Starter Guide"
+      title: "Guía de Inicio"
       dashboard:
-        title: "How do I use this website?"
-        message: "If you are just getting started managing content on WeMeditate, we have prepared a few short videos, to help you if you're lost."
-        role_description: "You are a %{role}, and as such it is your role to %{description} For a video illustrating how to do this, please click the link below."
-        action: "Watch Tutorial Videos"
+        title: "Cómo usar esta web?"
+        message: "Si acabas de empezar a administrar el contenido de WeMeditate, hemos preparado unos breves videos de 1 - 2 minutos, para ayudarte si te pierdes."
+        role_description: "Eres %{role}, y como tal es tu papel %{description} Para ver un video sobre cómo hacerlo, por favor haz clic en el siguiente enlace."
+        action: "Ver los vídeos del tutorial"
       index:
-        title: "What are these?"
+        title: "¿Qué es esto?"
         message:
           # Pages
-          static_pages: "These are the primary pages of the website, such as the Home Page, Inspiration Page, Shri Mataji Page, etc. You can use this index to edit some of the content of these pages, but most of these pages have predefined conntent and urls."
-          articles: "Articles are written by Sahaja Yogis to inspire seekers. They can cover various topics, such as: meditation in daily life; writing about realized souls; artwork, music or poetry by yogis; in-depth articles on deeper topics; etc. Whatever a yogi may be inspired to write about.<br><br>All articles are shown on the site's \"Inspiration Page.\""
-          subtle_system_nodes: "These are the pages that describe different parts of the Subtle System. Each page is an in-depth explanation of the qualities of that chakra or channel, how it manifests in daily life, and the treatments that address it."
+          static_pages: "Estas son las páginas principales del sitio web, como la Página Principal, la Página de Inspiración, la Página de Shri Mataji, etc. Puede usar este índice para editar parte del contenido de estas páginas, pero la mayoría de estas páginas tienen contenido y urls predefinidos."
+          articles: "Los artículos son escritos por los Sahaja Yoguis para inspirar a los buscadores. Pueden cubrir varios temas, tales como: la meditación en la vida cotidiana; escribir sobre almas realizadas; obras de arte, música o poesía de yoguis; artículos en profundidad sobre temas más profundos, etc. Cualquier cosa en que un yogui pueda sentirse inspirado a escribir.<br><br>Todos los artículos se muestran en la \"Página de Inspiración.\"" de la web""
+          subtle_system_nodes: "Estas son las páginas que describen las diferentes partes del Sistema Sutil. Cada página es una explicación en profundidad de las cualidades de ese chakra o canal, cómo se manifiesta en la vida diaria, y los tratamientos que se pueden aplicar."
           # Resources
-          meditations: "These are videos of guided meditations, narrated by yogis. They are available to the public on the website's \"Meditations\" page.<br><br>Each meditation is categorized by it's duration and the goals of that meditation, which allows users to generate a guided meditation that fits their needs. Each meditation also has a \"popularity\" statistic which represents the amount of views the meditation has been getting recently."
-          treatments: "These are the pages that describe different treatments that yogis use to clear themselves. Each technique will have a text description, and may have a video illustrating the treatment in action."
-          tracks: "Musical tracks are available for seekers to listen to on the website's \"Music\" page. Playlists are generated automatically for each type of instrument."
+          meditations: "Estos son videos de meditaciones guiadas, narradas por yoguis. Están disponibles para el público en la página de \"Meditaciones\" del sitio web.<br><br>Cada meditación se clasifica según su duración y los objetivos de la misma, lo que permite a los usuarios generar una meditación guiada que se ajuste a sus necesidades. Cada meditación también tiene una estadística de \"popularidad\" que representa la cantidad de puntos de visIta que la meditación ha estado recibiendo recientemente."
+          treatments: "Estas son las páginas que describen los diferentes tratamientos que los yoguis utilizan para equilibrarse. Cada técnica tendrá una descripción de texto y puede tener un vídeo que ilustre el tratamiento."
+          tracks: "Las pistas musicales están disponibles para que los buscadores las escuchen en la página de \"Música\"del sitio web. Las listas de reproducción se generan automáticamente para cada tipo de instrumento."
           # Filters
-          categories: "Every article belongs to one of these categories. A seeker can use these categories to filter the Inspiration articles to find what they are interested in."
-          duration_filters: "These allow us to group meditations into approximate durations, so that seekers can watch a guided meditation that is the right length for the amount of time they have."
-          goal_filters: "These allow us to group meditations by what chakra or quality they focus on, so that seekers can watch a guided meditation for the challenges that they are facing."
-          instrument_filters: "These allow us to group music tracks, so that seekers can listen to music that fits their mood."
-          mood_filters: "These allow us to group music tracks, so that seekers can listen to music that fits their mood."
-          artists: "These provide extra information on the musical artist for each track."
+          categories: "Cada artículo pertenece a una de estas categorías. Un buscador puede usar estas categorías para filtrar los artículos de Inspiración para encontrar lo que le interesa."
+          duration_filters: "Esto nos permite agrupar las meditaciones por duración aproximada, de modo que los buscadores puedan ver una meditación guiada que sea de la duración adecuada para el tiempo que dispongan."
+          goal_filters: "Esto nos permite agrupar las meditaciones según el chakra o la cualidad en la que se centran, de modo que los buscadores puedan ver una meditación guiada para las situaciones que estén atravesando."
+          instrument_filters: "Esto nos permite agrupar las pistas de música, de modo que los buscadores puedan escuchar música que se adapte a su estado de ánimo."
+          mood_filters: "Esto nos permite agrupar las pistas de música, de modo que los buscadores puedan escuchar música que se adapte a su estado de ánimo."
+          artists: "Estos proporcionan información adicional sobre el músico de cada pista"
           # People
-          authors: "Author profiles appear at the bottom of Inspiration Articles. They are useful to establish credibility and a more personal connection for the seeker with the author of the article.<br><br>Some author profiles are associated with a WeMeditate account. When a user with an account writes an article, their author profile is automatically added to it. Other contributors to WeMeditate may not have an account on this site, and so their profile does not have any linked account."
-          users: "These are the people who can modify the content of WeMeditate. Each admin has a role which defines what they are allowed to edit, and almost all admins are restricted to certain languages."
+          authors: "Los perfiles de los autores aparecen en la parte inferior de los artículos de inspiración. Son útiles para establecer una credibilidad y  conexión más personal para el buscador con el autor del artículo.<br><br>Algunos perfiles de autor están asociados a una cuenta de WeMeditate. Cuando un usuario con una cuenta escribe un artículo, su perfil de autor se agrega automáticamente al mismo. Otros colaboradores de WeMeditate pueden no tener una cuenta en este sitio, por lo que su perfil no tiene cuenta vinculada."
+          users: "Estas son las personas que pueden modificar el contenido de WeMeditate. Cada administrador tiene un rol que define lo que se le permite editar y casi todos los administradores están restringidos a ciertos idiomas."
       show:
-        title: "What is this?"
+        title: "¿Qué es esto?"
         message:
-          tutorial: "Click on the tabs below to view a few short videos explanations of how to manage content on the WeMeditate website."
-          my_author: "Whenever you write an article, this profile will be shown at the bottom of the article. This helps the seeker connect more with the writer of the article, and also establishes the credibility of the writer.<br><br>Here are some tips on writing a good bio.<br> - Use the third person.<br> - Don't dwell too much on your upbringing or how long you have been meditating.<br> - Do mention your profession or studies. Show that you are a respectable member of society.<br> - Unless you are writing an artist bio, try to be down to earth and let the reader see themselves in you."
+          tutorial: "Haga clic en las pestañas inferiores para ver algunos vídeos cortos que explican cómo administrar el contenido del sitio web de WeMeditate."
+          my_author: "Cada vez que escribas un artículo, este perfil se mostrará en la parte inferior del artículo. Esto ayuda a que el buscador se conecte más con el escritor del artículo y también asiente la credibilidad del autor.<br><br>Aquí hay algunos consejos para escribir una buena biografía.<br> - Usa la tercera persona.<br> - Menciona tu profesión o estudios.<br> - Demuestra que eres un miembro respetable de la sociedad. <br> - A menos que estés escribiendo una biografía de artista, trata de ser realista y deja que el lector se vea a sí mismo en ti."
+
       role_vimeo_ids:
         super_admin: 363132481
         regional_admin: 363132481
@@ -424,52 +425,51 @@ es:
         translator: 363139502
       panels:
         overview:
-          menu: "Overview"
-          title: "How to use the CMS as a %{role}"
-          description: "As a %{role}, it is your role to %{description}"
+          menu: "Resumen"
+          title: "Cómo usar el CMS siendo un %{role}"
+          description: "Como %{role}, es tu papel %{description}"
         editor:
-          menu: "Writing Content"
-          title: "How to use the content editor"
+          menu: "Redacción de Contenidos"
+          title: "Cómo usar el editor de contenidos"
           description: ""
           vimeo_id: 363156142
         issues:
-          menu: "Reporting Issues"
-          title: "How to report issues"
-          description: "Please click the \"Report Issue\" button at the bottom of the left-hand side menu. This will open up your email client where you will be able to send us an email at admin@wemeditate.co"
+          menu: "Información de Problemas"
+          title: "Cómo informar problemas"
+          description: "Please click the \"Report Issue\" button at the bottom of the left-hand side menu. This will open up your email client where you will be able to send us an email at admin@wemeditate.co" # TODO: Translate
 
     report_issue:
       name: "WeMeditate Administrator"
       email: "admin@wemeditate.co"
       subject: "WeMeditate Issue Report"
-      body: "Please describe the issue in English..."
+      body: "Por favor, describa el problema en inglés..."
 
     misc:
-      no_translated_title: "No Translated Title" # This should be written in titlecase
+      no_translated_title: "Título No Traducido" # This should be written in titlecase
       menu:
-        my_author: "My Author Profile"
-        all_authors: "All Author Profiles"
+        my_author: "Mi Perfil de Autor es"
+        all_authors: "Todos los Perfiles de Autores"
         # The website's editable content is broken into three sections Pages, Resources, and People
-        pages: "Pages"
-        resources: "Resources"
-        people: "People"
+        pages: "Paginas"
+        resources: "Recursos"
+        people: "Gente"
         # For specific models
-        static_pages: "Main Pages"
-        articles: "Inspiration Articles"
-        subtle_system_nodes: "Subtle System"
+        static_pages: "Páginas Principales"
+        articles: "Artículos de Inspiración"
+        subtle_system_nodes: "Sistema Sutil"
         meditations: :activerecord.models.meditation.other # Do not translate
         treatments: :activerecord.models.treatment.other # Do not translate
         tracks: Music Tracks
         users: :activerecord.models.user.other # Do not translate
       locale:
-        no_languages: "No Languages"
-        all_languages: "All Languages"
-        other_languages: "Other Languages"
+        all_languages: "Todos los Idiomas"
+        other_languages: "Otros Idiomas"
 
     javascript:      
       email: "Email"
-      message: "Message"
-      drag_images_to_upload: "Drag images here to upload"
-      no_results: "No results found..."
-      waiting_for_upload: "Waiting for %{count} file(s) to finish uploading..."
-      file: "File"
-      files: "Files"
+      message: "Mensaje"
+      drag_images_to_upload: "Arrastra las imágenes aquí para subir"
+      no_results: "No se encontraron resultados..."
+      waiting_for_upload: "Esperando a que terminen de subirse  %{count} archivo/s..."
+      file: "Archivo"
+      files: "Archivos"
