@@ -95,14 +95,14 @@ module Admin::TableHelper
   }.freeze
 
   # Yield all the columns for a certain model's table
-  def table_columns model, &block
+  def table_columns model, &_block
     TABLE_COLUMNS[model.model_name.route_key.to_sym].each_with_index do |column, index|
       yield column, index
     end
   end
 
   # Yield all the sortable columns for a certain model's table
-  def table_sortable_columns model, &block
+  def table_sortable_columns model, &_block
     SORTABLE_COLUMNS[model.model_name.route_key.to_sym].each do |column|
       yield column
     end
@@ -205,7 +205,7 @@ module Admin::TableHelper
       elsif record.publishable?
         record.published? ? :public : :private
       else
-        :no_state
+        :public
       end
     end
   end
