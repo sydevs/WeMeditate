@@ -26,7 +26,7 @@
       = draftable_field f, :state, type: :collection, input: { collection: states } do |value|
         - f.input_field :state, collection: states, selected: value, disabled: !allow.update_structure?
     - else
-        - f.input :state, collection: states, disabled: !allow.update_structure?
+      = f.input :state, collection: states, disabled: !allow.update_structure?
   - elsif record.publishable? && allow.review?
     - if record.draftable?
       = draftable_publish_field f
