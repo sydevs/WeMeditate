@@ -10,22 +10,24 @@ main
   .meditations
     .meditations__featured.js-carousel data-style='meditations'
       - meditation = Meditation.get(:daily)
-      .meditations__featured__item.preview.preview--small
-        h2.preview__header = translate 'meditations.featured.daily_meditation'
-        a.preview__media.preview__media--force-ratio.video href=meditation_url(meditation)
-          = smart_image_tag meditation.image, image_sizes, class: 'preview__media__thumbnail', alt: meditation.name
-          .video__button.video__button--small
-        h3.preview__title = meditation.name
-        p.preview__text = meditation.excerpt
+      - if meditation
+        .meditations__featured__item.preview.preview--small
+          h2.preview__header = translate 'meditations.featured.daily_meditation'
+          a.preview__media.preview__media--force-ratio.video href=meditation_url(meditation)
+            = smart_image_tag meditation.image, image_sizes, class: 'preview__media__thumbnail', alt: meditation.name
+            .video__button.video__button--small
+          h3.preview__title = meditation.name
+          p.preview__text = meditation.excerpt
 
       - meditation = Meditation.get(:trending, exclude: meditation.id)
-      .meditations__featured__item.preview.preview--small
-        h2.preview__header = translate 'meditations.featured.trending_meditation'
-        a.preview__media.preview__media--force-ratio.video href=meditation_url(meditation)
-          = smart_image_tag meditation.image, image_sizes, class: 'preview__media__thumbnail', alt: meditation.name
-          .video__button.video__button--small
-        h3.preview__title = meditation.name
-        p.preview__text = meditation.excerpt
+      - if meditation
+        .meditations__featured__item.preview.preview--small
+          h2.preview__header = translate 'meditations.featured.trending_meditation'
+          a.preview__media.preview__media--force-ratio.video href=meditation_url(meditation)
+            = smart_image_tag meditation.image, image_sizes, class: 'preview__media__thumbnail', alt: meditation.name
+            .video__button.video__button--small
+          h3.preview__title = meditation.name
+          p.preview__text = meditation.excerpt
 
       .meditations__featured__item.preview.preview--small
         h2.preview__header = translate 'meditations.featured.random_meditation'
