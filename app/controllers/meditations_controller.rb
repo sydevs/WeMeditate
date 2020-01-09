@@ -11,7 +11,7 @@ class MeditationsController < ApplicationController
       { name: @static_page.name },
     ]
 
-    if cookies[:prescreen] == 'dismissed'
+    if true || cookies[:prescreen] == 'dismissed'
       set_metadata(@static_page)
       @meditations = Meditation.preload_for(:preview).all
       @goal_filters = GoalFilter.publicly_visible.has_content
