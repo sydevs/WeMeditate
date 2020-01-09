@@ -11,7 +11,7 @@ class MeditationsController < ApplicationController
       { name: @static_page.name },
     ]
 
-    if true || cookies[:prescreen] == 'dismissed'
+    if cookies[:prescreen] == 'dismissed'
       set_metadata(@static_page)
       @meditations = Meditation.preload_for(:preview).all
       @goal_filters = GoalFilter.publicly_visible.has_content
@@ -27,7 +27,8 @@ class MeditationsController < ApplicationController
   # The self realization page has a special action so that it can be redirected to from other parts of the site.
   def self_realization
     @meditation = Meditation.publicly_visible.get(:self_realization)
-    raise ActionController::RoutingError.new('Self Realization Page Not Found') if @meditation.nil?
+    raise ActionController::RoutingError, 'Self Realization Page Not Found' if @meditation.nil?
+
     set_metadata(@meditation)
     render :show
   end

@@ -56,7 +56,7 @@ module StaticPageHelper
     when :tracks
       tracks_url
     when :meditations
-      meditations_path
+      meditations_url
     when nil
       ''
     else

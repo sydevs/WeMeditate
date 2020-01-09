@@ -42,8 +42,9 @@
 
     - if record_has_fixed_slug?
       = f.input :slug do
+        - path = @record.is_a?(StaticPage) ? static_page_path_for(@record) : (@record.new_record? ? "#{polymorphic_path(@record)}/#{@record.slug}" : polymorphic_path(@record))
         - url = @record.is_a?(StaticPage) ? static_page_url_for(@record) : (@record.new_record? ? "#{polymorphic_url(@record)}/#{@record.slug}" : polymorphic_url(@record))
-        = record_detail 'linkify', CGI.unescape(url), url: url
+        = record_detail 'linkify', CGI.unescape(path), url: url
         = f.hint translate('admin.hints.fixed_slug')
     - elsif record.draftable?
       / TODO: Try and improve this janky way of getting the url. It's because articles don't have an index route
