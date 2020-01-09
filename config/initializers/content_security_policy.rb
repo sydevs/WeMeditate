@@ -7,7 +7,7 @@
 Rails.application.config.content_security_policy do |policy|
   policy.default_src :self, :https
   policy.font_src    :self, :https, :data
-  policy.img_src     :self, ApplicationUploader.asset_host, :https, :data
+  policy.img_src     :self, ApplicationUploader.asset_host || '', :https, :data
   policy.object_src  :none
   policy.script_src  :self, :unsafe_eval, :unsafe_inline, :https
   policy.style_src   :self, :unsafe_inline, :https
