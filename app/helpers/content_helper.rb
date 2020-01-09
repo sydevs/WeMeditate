@@ -42,7 +42,7 @@ module ContentHelper
 
   # Basic formatting for a piece of text that might include line breaks
   def simple_format_content text
-    simple_format(text.gsub('<br>', "\n").html_safe).gsub("\n", '').html_safe
+    simple_format(text.gsub('<br>', "\n").html_safe).gsub("\n", '').html_safe if text
   end
 
   # Display an error message only to administrators, to help debug issues with the content blocks

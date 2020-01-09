@@ -72,6 +72,7 @@ en:
       default: '%k:%M' # Do not translate, unless you know what you are doing
       time: :time.formats.default # Do not translate
       date: :date.formats.default # Do not translate
+      short: :date.formats.default # Do not translate
       devise:
         mailer:
           invitation_instructions:
