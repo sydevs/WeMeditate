@@ -560,12 +560,23 @@
       transform: rotateZ(-0.7854rad)
 
 
+// ===== MINIMAL HEADER ===== //
+.header--minimal
+  .header__wrapper--mobile
+    padding: 0 13px
+
+    .header__navigation
+      height: 50px
+
 // ===== STICKY HEADER ===== //
 // When the user scrolls down the page, the header should collapse and attach itself to the top of the page (triggered using javascript)
 // When that happens the header is said to be "sticky", and the following CSS rules are applied
 .header--sticky
-  .header__wrapper--mobile .header__navigation
-    height: 50px + $scrollspy-width
+  .header__wrapper--mobile
+    padding: 0 13px
+
+    .header__navigation
+      height: 50px
 
   .header
     &__banner,
