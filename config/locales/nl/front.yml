@@ -109,7 +109,7 @@ nl:
       title: "Set Up your own Meditation"
       choose_goal: "I wish to feel ..." # Please keep ' ...' (with a space) at the end of your translation.
       choose_duration: "I have"
-      goal_prompt: "Select mood"
+      goal_prompt: "Select goal"
       submit: "Start meditation"
       minutes: "min"
     archive:

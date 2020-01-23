@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_locale!
   before_action :enfore_maintenance_mode, except: %i[maintenance]
+  before_action :force_no_ssl_for_staging
 
   # The root page of the website
   def home
@@ -98,6 +99,12 @@ class ApplicationController < ActionController::Base
 
     def set_locale!
       I18n.locale = params[:locale]
+    end
+
+    def force_no_ssl_for_staging
+      return unless Rails.env.staging?
+
+      redirect_to protocol: 'http://', status: :moved_permanently if request.ssl?
     end
 
     # Allows us to use a different layout for the `devise` gem, which handles logins/user accounts
