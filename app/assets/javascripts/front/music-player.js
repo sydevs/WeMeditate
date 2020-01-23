@@ -32,15 +32,15 @@ class MusicPlayer {
         song_change: () => {
           this.active = true
           this.updateSongArtists()
-          this.sendAnalyticsEvent('change')
+          this.sendAnalyticsEvent('Change')
         },
         play: () => {
           this.active = true
           this.validateActivePlaylist()
-          this.sendAnalyticsEvent('play')
+          this.sendAnalyticsEvent('Play')
         },
         pause: () => {
-          this.sendAnalyticsEvent('pause')
+          this.sendAnalyticsEvent('Pause')
         }
       }
     })
@@ -117,7 +117,7 @@ class MusicPlayer {
 
   sendAnalyticsEvent(type) {
     const data = Amplitude.getActiveSongMetadata()
-    dataLayer.push({ event: `amplitude-${type}`, song: data.name })
+    dataLayer.push({ event: `Music ${type}`, song: data.name })
   }
 
 }
