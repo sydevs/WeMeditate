@@ -4,16 +4,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { invitations: 'users/invitations' }
   get :maintenance, to: 'application#maintenance'
 
-  get '404', to: 'application#error'
-  get '422', to: 'application#error'
-  get '500', to: 'application#error'
-
   # ===== ADMIN ROUTES ===== #
   constraints DomainConstraint.new(Rails.configuration.admin_domain) do
     get '404', to: 'admin/application#error'
     get '422', to: 'admin/application#error'
     get '500', to: 'admin/application#error'
-  
+
     get '/', to: redirect('/en')
     get 'switch_user' => 'switch_user#set_current_user'
 
@@ -81,6 +77,10 @@ Rails.application.routes.draw do
       resources :subtle_system_nodes, only: %i[index show], path: 'subtle_system'
     end
   end
+
+  get '404', to: 'application#error'
+  get '422', to: 'application#error'
+  get '500', to: 'application#error'
 
   get '/', to: redirect('404')
 end

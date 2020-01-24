@@ -96,7 +96,7 @@
         = render_decoration :circle, { decorations: { circle: true } }
       /h2.content__catalog__title = block[:decorations][:sidetext][:text]
       .content__catalog__sidetext
-        = render_decoration :sidetext, block, static: true, alignment: :right
+        = render_decoration :sidetext, block, static: records.count > 1, alignment: :right
 
     .carousel.js-carousel data-style='video'
       - records.each do |meditation|

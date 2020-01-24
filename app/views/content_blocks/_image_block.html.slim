@@ -29,7 +29,7 @@
   - image_sizes = '(max-width: 814px) calc(100vw - 48px), 766px'
 
 .content__image class=classes data-max-columns=(size == 'narrow' ? 3 : items.count) data-id=block[:id]
-  - items.each_with_index do |item, index|
+  - items.compact.each_with_index do |item, index|
     - media_file = record.media_files.find_by(id: item[:image][:id])
     - if media_file.present?
       - attributes = media_file.to_h.merge(title: item[:caption]) if is_gallery
