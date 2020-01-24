@@ -124,7 +124,7 @@ module Admin::ApplicationHelper
           word_count = block['data']['text'] ? block['data']['text'].split.size : 0
           word_count = translate('admin.content.words', count: word_count)
 
-          title = "#{block['data']['level'].upcase} - #{title}" if block['type'] == 'header'
+          title = "#{block['data']['level']&.upcase || 'H2'} - #{title}" if block['type'] == 'header'
 
           concat content_tag :li, tag.strong(title)
           concat content_tag :li, tag.i("#{type}: #{word_count}") if block['type'] == 'textbox' && !block['data']['asVideo']
