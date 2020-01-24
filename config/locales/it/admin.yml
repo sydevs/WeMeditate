@@ -161,6 +161,7 @@ it:
         structured: "Structured Text"
         textbox: "Testo con Immagine"
         video: "Video"
+        whitespace: "Whitespace"
       settings:
         tunes: "Opzioni"
         decorations: "Decorazioni"
@@ -193,6 +194,9 @@ it:
         size: # TODO: Translate
           narrow: "Narrow"
           wide: "Wide"
+          small: "Small"
+          medium: "Medium"
+          large: "Large"
         format:
           button: "Bottone"
           grid: "Griglia"

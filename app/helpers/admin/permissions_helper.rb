@@ -144,7 +144,7 @@ module Admin::PermissionsHelper
     # Render one row in the permissions table
     def permission_row model, permission_set
       content_tag :tr do
-        concat tag.td(translate model, scope: %i[activerecord models], count: -1)
+        concat tag.td(translate(model, scope: %i[activerecord models], count: -1))
         permission_set.values.each do |permissions|
           concat tag.td(permission_icons(model, permissions), class: 'collapsing')
         end
@@ -157,7 +157,7 @@ module Admin::PermissionsHelper
         pages: translate(model, scope: %i[activerecord models], count: -1),
         subordinates: %i[editor writer translator].map { |role| human_enum_name(User, :role, role) }.to_sentence,
       }
-      
+
       capture do
         if permissions.is_a? Array
           permissions.each do |permission|

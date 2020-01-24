@@ -45,13 +45,12 @@ module Admin::ApplicationHelper
 
   # Admin URLs require a big of special handling, to support all the abstraction that we do in the CMS
   def polymorphic_admin_path args, options = {}
-    if args.last.is_a?(Class)
-      polymorphic_path(args, **options)
-    else
+    unless args.last.is_a?(Class)
       options[:id] = args.last.id
       options[:format] ||= nil
-      polymorphic_path(args, **options)
     end
+
+    polymorphic_path(args, **options)
   end
 
   # Render a flag for a given country code
@@ -103,8 +102,8 @@ module Admin::ApplicationHelper
   # Creates a mailto link for reporting any issues with the CMS
   def report_url
     report_url = "mailto:\"#{translate 'admin.report_issue.name'}\"<#{translate 'admin.report_issue.email'}>"
-    report_url += "?subject=#{URI.encode translate('admin.report_issue.subject')}"
-    report_url += "&body=#{URI.encode translate('admin.report_issue.body')}"
+    report_url += "?subject=#{CGI.escape translate('admin.report_issue.subject')}"
+    report_url += "&body=#{CGI.escape translate('admin.report_issue.body')}"
     report_url
   end
 
@@ -163,6 +162,15 @@ module Admin::ApplicationHelper
         when 'action' # Short text link
           type = translate(block['type'], scope: %i[admin content blocks])
           concat content_tag :li, tag.em(type) + tag.span(": [#{block['data']['text']}] → ") + tag.small(block['data']['url'])
+
+        when 'whitespace' # Whitespace
+          separators = {
+            large: '==',
+            medium: '—',
+            small: '--',
+          }
+
+          concat content_tag :li, separators[block['data']['size'].to_sym] * 3
 
         else
           concat block.inspect

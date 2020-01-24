@@ -1,6 +1,6 @@
 /* global $, EditorJS, Editor, SplashEditor, translate
   ParagraphTool, HeaderTool, ListTool, QuoteTool, ActionTool, ImageTool,
-  VideoTool, FormTool, TextboxTool, CatalogTool, StructuredTool */
+  VideoTool, FormTool, TextboxTool, CatalogTool, StructuredTool, WhitespaceTool */
 /* exported Editor */
 
 /** Content Editor
@@ -42,6 +42,7 @@ const Editor = {
       textbox: TextboxTool,
       catalog: CatalogTool,
       structured: StructuredTool,
+      whitespace: WhitespaceTool,
     },
     initialBlock: 'paragraph',
     autofocus: true,

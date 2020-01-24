@@ -165,6 +165,7 @@ es:
         structured: "Texto estructurado"
         textbox: "Texto con Imagen"
         video: "Vídeo"
+        whitespace: "Whitespace" # TODO: Translate
       settings:
         tunes: "Opciones"
         decorations: "Decoraciones"
@@ -197,6 +198,9 @@ es:
         size: # TODO: Translate
           narrow: "Narrow"
           wide: "Wide"
+          small: "Small"
+          medium: "Medium"
+          large: "Large"
         format:
           button: "Botón"
           grid: "Red"

@@ -164,6 +164,7 @@ de:
         structured: "Structured Text"
         textbox: "Text With Image"
         video: "Video"
+        whitespace: "Whitespace"
       settings:
         tunes: "Options"
         decorations: "Decorations"
@@ -196,6 +197,9 @@ de:
         size:
           narrow: "Narrow"
           wide: "Wide"
+          small: "Small"
+          medium: "Medium"
+          large: "Large"
         format:
           button: "Button"
           grid: "Grid"

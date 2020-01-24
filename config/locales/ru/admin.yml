@@ -167,6 +167,7 @@ ru:
         structured: "Структурированный Текст"
         textbox: "Текст С Изображением"
         video: "Видео"
+        whitespace: "Whitespace" # TODO: Translate
       settings:
         tunes: "Варианты"
         decorations: "Оформление"
@@ -199,6 +200,9 @@ ru:
         size: # TODO: Translate
           narrow: "Narrow"
           wide: "Wide"
+          small: "Small"
+          medium: "Medium"
+          large: "Large"
         format:
           button: "Кнопка"
           grid: "Модульная Сетка"
