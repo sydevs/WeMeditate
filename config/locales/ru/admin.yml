@@ -197,6 +197,13 @@ ru:
           articles: "Статьи Вдохновение"
           treatments: "Методы очистки"
           meditations: "Медитации"
+        level: # TODO: Translate # These are heading levels
+          h1: "Level 1"
+          h2: "Level 2"
+          h3: "Level 3"
+          h4: "Level 4"
+          h5: "Level 5"
+          h6: "Level 6"
         size: # TODO: Translate
           narrow: "Narrow"
           wide: "Wide"

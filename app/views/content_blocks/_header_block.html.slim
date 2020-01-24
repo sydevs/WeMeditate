@@ -1,4 +1,8 @@
 
-h2.content__header class=('content__header--centered' if block[:centered])
+- classes = %w[content__header]
+- classes << 'content__header--centered' if block[:centered]
+- tag = block[:level]&.to_sym || :h2
+
+= content_tag tag, class: classes do
   .content__header__anchor id=block[:text].parameterize
   = block[:text]

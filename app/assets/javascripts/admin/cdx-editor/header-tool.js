@@ -20,6 +20,7 @@ class HeaderTool extends EditorTool {
     super({ // Data
       id: data.id || Util.generateId(),
       text: data.text || '',
+      level: data.level || 'h2',
       centered: data.centered || false,
     }, { // Config
       id: 'header',
@@ -28,6 +29,21 @@ class HeaderTool extends EditorTool {
         text: { label: '', input: 'title' },
       },
       tunes: [
+        {
+          name: 'h2',
+          icon: 'heading',
+          group: 'level'
+        },
+        {
+          name: 'h3',
+          icon: 'heading',
+          group: 'level'
+        },
+        {
+          name: 'h4',
+          icon: 'heading',
+          group: 'level'
+        },
         {
           name: 'centered',
           icon: 'align center',
