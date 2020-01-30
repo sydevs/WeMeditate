@@ -23,9 +23,11 @@ header#header.header class=classes
         - navigation_items.each do |nav|
           .header__navigation__item class=('header__navigation__item--active' if nav[:active])
             - if nav[:content]
-              a.header__navigation__link onclick='void(0)' = nav[:title]
+              a.header__navigation__link onclick='void(0)' data=nav[:data]
+                = nav[:title]
             - else
-              a.header__navigation__link href=nav[:url] = nav[:title]
+              a.header__navigation__link href=nav[:url] data=nav[:data]
+                = nav[:title]
 
             = render 'layouts/partials/header_dropdown', nav: nav if nav[:content]
 
@@ -61,11 +63,15 @@ header#header.header class=classes
     - mobile_navigation_items.each do |nav|
       .header__menu__item class="#{'header__menu__item--submenu' if nav[:content]} #{'header__menu__item--active' if nav[:active]}"
         - if nav[:content]
-          a.header__menu__link onclick='void(0)' = nav[:title]
+          a.header__menu__link onclick='void(0)' data=nav[:data]
+            = nav[:title]
         - else
-          a.header__menu__link href=nav[:url] = nav[:title]
+          a.header__menu__link href=nav[:url] data=nav[:data]
+            = nav[:title]
 
         - if nav[:content]
           ul.header__menu__submenu
             - nav[:content][:items].each do |item|
-              li: a.header__menu__submenu_item href=item[:url] = item[:title]
+              li
+                a.header__menu__submenu_item href=item[:url] data=item[:data]
+                  = item[:title]

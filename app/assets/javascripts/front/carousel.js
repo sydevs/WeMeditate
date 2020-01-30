@@ -47,8 +47,9 @@ class Carousel {
 
   sendAnalyticsSelectionEvent(slick, slideIndex) {
     const slide = this.getSlide(slick, slideIndex)
-    const label = slide.querySelector('.js-carousel-item').dataset.gtmLabel
-    Util.sendAnalyticsEvent('Slide Selected', { type: this.style, title: label, index: slideIndex })
+    const global = slide.querySelector('.js-carousel-item').dataset.gtmGlobal || `Slide ${slideIndex}`
+    const local = slide.querySelector('.js-carousel-item').dataset.gtmLocal
+    Util.sendAnalyticsEvent('Slide Selected', { type: this.style, globalTitle: global, localTitle: local })
   }
 
 }

@@ -16,6 +16,7 @@ module NavigationHelper
         title: static_page.name,
         url: static_page_path_for(static_page),
         active: controller_name == role.to_s,
+        data: gtm_record(static_page),
       })
     end
 
@@ -25,6 +26,7 @@ module NavigationHelper
     @navigation.push({
       title: I18n.translate('header.learn_more'),
       url: '#', # static_page_path_for(:about),
+      data: gtm_label('header.learn_more'),
       active: %w[static_pages subtle_system_nodes].include?(controller_name),
       content: {
         items: %i[sahaja_yoga shri_mataji subtle_system treatments classes].map { |role|
@@ -32,17 +34,20 @@ module NavigationHelper
           {
             title: static_page.name,
             url: static_page_path_for(static_page),
+            data: gtm_record(static_page),
           }
         } + [
           {
             title: translate('meditations.prescreen.kundalini').titleize,
             url: url_for(kundalini_page),
-          }
+            data: gtm_record(kundalini_page),
+          },
         ],
         featured: Treatment.published.preload_for(:preview).first(2).map { |treatment|
           {
             title: "#{human_model_name(Treatment)}: #{treatment.name}",
             url: treatment_path(treatment),
+            data: gtm_record(treatment),
             thumbnail: treatment.thumbnail.url,
           }
         },
@@ -70,6 +75,7 @@ module NavigationHelper
     mobile_navigation.push({
       title: I18n.translate('header.classes_near_me').gsub('<br>', ' '),
       url: static_page_path_for(:classes),
+      data: gtm_label('header.classes_near_me'),
       active: controller_name == 'classes',
     })
 
