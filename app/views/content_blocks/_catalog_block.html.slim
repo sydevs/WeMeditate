@@ -98,9 +98,9 @@
       .content__catalog__sidetext
         = render_decoration :sidetext, block, static: records.count > 1, alignment: :right
 
-    .carousel.js-carousel data-style='video'
+    .carousel class='js-carousel' data-style='video'
       - records.each do |meditation|
-        figure.carousel__item
+        figure.carousel__item class='js-carousel-item' data-gtm-label=meditation.name
           a.carousel__video.video href=meditation_path(meditation)
             .video__inner
               .video__thumbnail

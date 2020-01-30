@@ -7,6 +7,7 @@ class Video {
     this.container = element
     this.responsive = element.classList.contains('video--responsive')
     this.button = element.querySelector('.video__button:not(.video__popup)')
+    
     if (this.button) {
       this.button.innerHTML = '<div class="video__button__loader icon icon--spinner"></div>'
       this.button.addEventListener('click', event => {

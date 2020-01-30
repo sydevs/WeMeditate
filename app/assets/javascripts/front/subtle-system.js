@@ -1,4 +1,4 @@
-/* global zenscroll */
+/* global zenscroll, Util */
 /* exported SubtleSystem */
 
 class SubtleSystem {
@@ -48,7 +48,7 @@ class SubtleSystem {
     const targetActiveNode = node.id
 
     if (targetActiveNode != this.activeNode) {
-      // Some of the nodes are contained within other notes, so for some nodes,
+      // Some of the nodes are contained within other nodes, so for some nodes,
       // we use a timer to make sure that the person really wants to select the node they are hovering on.
       let time = 0
 
@@ -76,20 +76,25 @@ class SubtleSystem {
     this.timeout = null
   }
 
-  onNodeClick(_node) {
-    this.scrollToNode(id)
+  onNodeClick(node) {
+    this.scrollToNode(node.id)
   }
 
   setNodeSelected(id, selected) {
     if (!id) return
 
     const selector = id.replace(/_/g, '-')
-    this.container.querySelector(`#${id}`).classList.toggle('active', selected)
+    const element = this.container.querySelector(`#${id}`)
+    const was_selected = element.classList.contains('active')
+    element.classList.toggle('active', selected)
     const item = this.container.querySelector(`.subtle-system__item--${selector}`)
     
     if (item) {
       item.classList.toggle('subtle-system__item--active', selected)
-      if (selected) this.scrollToNode(id)
+      if (!was_selected && selected) {
+        this.scrollToNode(id)
+        Util.sendAnalyticsEvent('Node Selected', { node: selector })
+      }
     }
   }
 

@@ -1,4 +1,4 @@
-/* global Amplitude, zenscroll, dataLayer */
+/* global Amplitude, zenscroll, Util */
 /* exported MusicPlayer */
 
 // TODO: Implement responsive artist images
@@ -43,6 +43,12 @@ class MusicPlayer {
           this.sendAnalyticsEvent('Pause')
         }
       }
+    })
+
+    this.container.querySelectorAll('.amplitude-song-container').forEach(element => {
+      element.addEventListener('click', () => {
+        this.sendAnalyticsEvent('Selected')
+      })
     })
     
     if (!this.mini) this.initFullPlayer()
@@ -117,7 +123,7 @@ class MusicPlayer {
 
   sendAnalyticsEvent(type) {
     const data = Amplitude.getActiveSongMetadata()
-    dataLayer.push({ event: `Music ${type}`, song: data.name })
+    Util.sendAnalyticsEvent(`Music ${type}`, { song: data.name })
   }
 
 }

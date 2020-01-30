@@ -13,9 +13,9 @@
         .content__video__sidetext
           = render_decoration :sidetext, block, static: true, alignment: :right
 
-      .carousel.js-carousel data-style='video'
+      .carousel class='js-carousel' data-style='video'
         - block[:items].each do |item|
-          figure.carousel__item
+          figure.carousel__item class='js-carousel-item' data-gtm-label=item[:title]
             .carousel__video.video class='js-video'
               .video__inner
                 = vimeo_tag item[:vimeo_id]
