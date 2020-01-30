@@ -23,7 +23,7 @@ html lang=locale
     = javascript_include_tag 'application', nonce: true, 'data-turbolinks-track': 'reload'
     = render_structured_data
 
-  body id='top' data-gtm-context=controller_name data-gtm-page=action_name
+  body id='top' data-gtm-context=(controller_name == 'static_pages' ? @static_page.role : controller_name) data-gtm-page=action_name
     = render 'layouts/partials/header', cached: true
     = yield
     = render 'layouts/partials/footer', cached: true
