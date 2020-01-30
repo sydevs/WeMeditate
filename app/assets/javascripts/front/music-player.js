@@ -123,7 +123,7 @@ class MusicPlayer {
 
   sendAnalyticsEvent(type) {
     const data = Amplitude.getActiveSongMetadata()
-    Util.sendAnalyticsEvent(`Music ${type}`, { song: data.name })
+    Util.sendAnalyticsEvent(`Music ${type}`, { title: data.name })
   }
 
 }
