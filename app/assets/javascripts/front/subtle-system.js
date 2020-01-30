@@ -93,7 +93,7 @@ class SubtleSystem {
       item.classList.toggle('subtle-system__item--active', selected)
       if (!was_selected && selected) {
         this.scrollToNode(id)
-        Util.sendAnalyticsEvent('Node Selected', { node: selector })
+        Util.sendAnalyticsEvent('Node Selected', { title: selector })
       }
     }
   }
