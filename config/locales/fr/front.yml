@@ -104,7 +104,7 @@ fr:
       trending_meditation: "Trending now"
       random_meditation: "Let fate decide"
       random_meditation_title: "Try a random meditation"
-      random_meditation_description: "Feel like you’re in need of a pick me up? Banish those negative thoughts which are putting you down and boost your confidence."
+      random_meditation_description: "Not sure what you need right now? Just feel like taking a chance? Click play and let the universe decide."
     custom_meditation:
       title: "Set Up your own Meditation"
       choose_goal: "I wish to feel ..." # Please keep ' ...' (with a space) at the end of your translation.

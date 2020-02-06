@@ -104,7 +104,7 @@ it:
       trending_meditation: "In voga"
       random_meditation: "Lascia decidere il fato"
       random_meditation_title: "Prova una meditazione a caso"
-      random_meditation_description: "Ti sembra di essere giù? Liberati di quei pensieri negativi e riprenditi la fiducia in te stesso."
+      random_meditation_description: "Not sure what you need right now? Just feel like taking a chance? Click play and let the universe decide." # TODO: Translate
     custom_meditation:
       title: "Scegli la tua Meditazione"
       choose_goal: "Vorrei sentirmi ..." # Please keep ' ...' (with a space) at the end of your translation.

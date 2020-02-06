@@ -105,7 +105,7 @@ ru:
       trending_meditation: "Популярная медитация"
       random_meditation: "Доверюсь воле судьбы"
       random_meditation_title: "Попробовать случайную медитацию"
-      random_meditation_description: "Настроение на нуле и нет желания что-либо делать? Избавьтесь от негативных мыслей и почувствуйте в себе уверенность."
+      random_meditation_description: "Not sure what you need right now? Just feel like taking a chance? Click play and let the universe decide." # TODO: Translate
     custom_meditation:
       title: "Выбери подходящую медитацию"
       choose_goal: "Я хочу почувствовать ..." # Please keep ' ...' (with a space) at the end of your translation.
