@@ -1,6 +1,6 @@
 /* global $, LazyLoad, zenscroll,
   Accordion, Carousel, Dropdown, Form, Grid, Loadmore, Video, ImageGallery, ReadingTime,
-  Header, SubtleSystem, MusicPlayer, CustomMeditation, Prescreen */
+  Header, SubtleSystem, MusicPlayer, CustomMeditation, Prescreen, GeoSearch */
 /* exported Application */
 
 /** Front Application
@@ -49,6 +49,7 @@ const Application = {
     Application.loadFirst('music-player', MusicPlayer)
     Application.loadFirst('custom-meditation', CustomMeditation)
     Application.loadFirst('prescreen', Prescreen)
+    Application.loadFirst('geosearch', GeoSearch)
 
     window.afterglow.initVideoElements()
   },

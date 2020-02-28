@@ -158,6 +158,7 @@ en:
   classes:
     map_title: "Meditation Classes Near Me"
     prompt: "Enter your city or post code"
+    nearby: "Nearby"
 
   errors:
     title: "Oops..."

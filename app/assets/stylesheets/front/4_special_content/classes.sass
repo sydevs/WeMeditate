@@ -25,7 +25,10 @@
 
 .classes__form
   @extend %wide-content-width
+  position: relative
+  z-index: $z-dropdown
 
+// ===== FIELDS ===== //
 .classes__field
   font-size: 1.6rem
   line-height: 1.5625
@@ -36,6 +39,8 @@
   background: white
   max-width: 600px
   margin: auto
+
+  box-shadow: 1px 1px 60px 2px rgba(0, 0, 0, 0.2)
 
 .classes__field__input input
   color: black
@@ -51,3 +56,55 @@
   position: absolute
   right: 20px
   color: $color-text-normal
+
+.classes__splash--loading
+  .icon--search::before
+    content: $icon-spinner
+    animation: spin 1s infinite linear
+
+// ===== RESULTS ===== //
+.classes__results
+  display: none
+  line-height: 33.5px
+  font-size: 17px
+  border-top: 1px solid $color-graphic-normal
+
+  position: absolute
+  top: 100%
+  left: 0
+  right: 0
+
+  box-shadow: 1px 1px 60px 2px rgba(0, 0, 0, 0.2)
+
+  .classes__splash--active &
+    display: block
+  
+.classes__results a
+  display: block
+  background: white
+  padding: 8.5px 20px
+  transition: all 0.25s ease
+  cursor: pointer
+
+  &.classes__nearby
+    line-height: 65px
+    font-weight: $font-bold
+    background: $background-gray
+
+    svg
+      height: 1.2em
+      vertical-align: middle
+
+    svg path
+      transition: all 0.25s ease
+
+    &:hover svg path
+      fill: $color-text-orange
+
+  &:last-child
+    padding-bottom: 20px
+
+  &:hover,
+  &.focus
+    background: $background-gray
+    color: $color-text-orange

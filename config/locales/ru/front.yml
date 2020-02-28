@@ -159,6 +159,7 @@ ru:
   classes:
     map_title: "Meditation Classes Near Me" # TODO: Translate
     prompt: "Ваш город или индекс"
+    nearby: "Nearby" # TODO: Translate
 
   errors:
     title: "Ой..."
