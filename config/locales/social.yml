@@ -9,8 +9,8 @@ de: # German
     pinterest: http://pinterest.com/pin/create/button/?url=%{url}
     whatsapp: whatsapp://send?text=%{url}
   social_media:
-    instagram: ''
-    facebook: ''
+    instagram: https://www.instagram.com/wemeditate.co
+    facebook: https://www.facebook.com/WeMeditateOfficial
 
 en: # English
   sharing:
@@ -19,8 +19,8 @@ en: # English
     pinterest: http://pinterest.com/pin/create/button/?url=%{url}
     whatsapp: whatsapp://send?text=%{url}
   social_media:
-    instagram: ''
-    facebook: ''
+    instagram: https://www.instagram.com/wemeditate.co
+    facebook: https://www.facebook.com/WeMeditateOfficial
 
 es: # Spanish
   sharing:
@@ -29,8 +29,8 @@ es: # Spanish
     pinterest: http://pinterest.com/pin/create/button/?url=%{url}
     whatsapp: whatsapp://send?text=%{url}
   social_media:
-    instagram: ''
-    facebook: ''
+    instagram: https://www.instagram.com/wemeditate.co
+    facebook: https://www.facebook.com/WeMeditateOfficial
 
 fr: # French
   sharing:
@@ -39,8 +39,8 @@ fr: # French
     pinterest: http://pinterest.com/pin/create/button/?url=%{url}
     whatsapp: whatsapp://send?text=%{url}
   social_media:
-    instagram: ''
-    facebook: ''
+    instagram: https://www.instagram.com/wemeditate.co
+    facebook: https://www.facebook.com/WeMeditateOfficial
 
 hy: # Armenian
   sharing:
@@ -49,8 +49,8 @@ hy: # Armenian
     pinterest: http://pinterest.com/pin/create/button/?url=%{url}
     whatsapp: whatsapp://send?text=%{url}
   social_media:
-    instagram: ''
-    facebook: ''
+    instagram: https://www.instagram.com/wemeditate.co
+    facebook: https://www.facebook.com/WeMeditateOfficial
 
 it: # Italian
   sharing:
@@ -59,8 +59,8 @@ it: # Italian
     pinterest: http://pinterest.com/pin/create/button/?url=%{url}
     whatsapp: whatsapp://send?text=%{url}
   social_media:
-    instagram: ''
-    facebook: ''
+    instagram: https://www.instagram.com/wemeditate.co
+    facebook: https://www.facebook.com/WeMeditateOfficial
 
 nl: # Dutch
   sharing:
@@ -69,8 +69,8 @@ nl: # Dutch
     pinterest: http://pinterest.com/pin/create/button/?url=%{url}
     whatsapp: whatsapp://send?text=%{url}
   social_media:
-    instagram: ''
-    facebook: ''
+    instagram: https://www.instagram.com/wemeditate.co
+    facebook: https://www.facebook.com/WeMeditateOfficial
 
 pt: # Portuguese
   sharing:
@@ -79,14 +79,14 @@ pt: # Portuguese
     pinterest: http://pinterest.com/pin/create/button/?url=%{url}
     whatsapp: whatsapp://send?text=%{url}
   social_media:
-    instagram: ''
-    facebook: ''
+    instagram: https://www.instagram.com/wemeditate.co
+    facebook: https://www.facebook.com/WeMeditateOfficial
 
 ru: # Russian
   sharing:
     vk: http://vk.com/share.php?url=%{url}
   social_media:
-    instagram: ''
+    instagram: https://www.instagram.com/wemeditate.co
     vk: ''
 
 uk: # Ukrainian
@@ -96,5 +96,5 @@ uk: # Ukrainian
     pinterest: http://pinterest.com/pin/create/button/?url=%{url}
     whatsapp: whatsapp://send?text=%{url}
   social_media:
-    instagram: ''
-    facebook: ''
+    instagram: https://www.instagram.com/wemeditate.co
+    facebook: https://www.facebook.com/WeMeditateOfficial
