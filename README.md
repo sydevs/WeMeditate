@@ -144,7 +144,7 @@ This is mainly useful for those who are not already familiar with Ruby on Rails.
 - `/Gemfile` - this file defines the Ruby packages which get bundle and installed with the server.
 
 # Deployment & Infrastructure
-The project's servers and hosted and deployed using Heroku. Any changes which are pushed to the `master` branch will be automatically deployed to the staging server (en.staging.wemeditate.co). If you need access to the staging server, please ask and a login will be created for you.
+The project's servers and hosted and deployed using Heroku. Any changes which are pushed to the `master` branch will be automatically deployed to the staging server (en.staging-wemeditate.com). If you need access to the staging server, please ask and a login will be created for you.
 
 Once a change has been verified on the staging server it can be deployed to production in the Heroku dashboard.
 

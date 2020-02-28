@@ -20,12 +20,12 @@ RouteTranslator.config do |config|
       'wemeditate.co' => :en, # English
     } # Domains at the bottom of the list have highest priority.
   elsif Rails.env.staging?
-    Rails.configuration.admin_domain = 'admin.staging.wemeditate.co'
+    Rails.configuration.admin_domain = 'admin.staging-wemeditate.com'
     Rails.configuration.admin_host = Rails.configuration.admin_domain
     config.host_locales = {}
 
     I18n.available_locales.each do |locale|
-      hostname = "#{locale}.staging.wemeditate.co"
+      hostname = "#{locale}.staging-wemeditate.com"
       config.host_locales[hostname] = locale
     end
   else
