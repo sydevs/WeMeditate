@@ -16,7 +16,7 @@ module Admin
     end
 
     def update_structure?
-      (manage? && super_admin?) || (create? && record.new_record?)
+      manage? || (create? && record.new_record?)
     end
 
     def publish?
