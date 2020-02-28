@@ -46,7 +46,7 @@ module Stateable
     end
 
     def published?
-      state.to_sym == :published
+      state&.to_sym == :published
     end
 
     def self.stateable?

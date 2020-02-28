@@ -19,7 +19,7 @@ main
           h3.preview__title = meditation.name
           p.preview__text = meditation.excerpt
 
-      - meditation = Meditation.get(:trending, exclude: meditation.id)
+      - meditation = Meditation.get(:trending, exclude: meditation&.id)
       - if meditation
         .meditations__featured__item.preview.preview--small class='js-carousel-item' data=gtm_label('meditations.featured.trending_meditation')
           h2.preview__header = translate('meditations.featured.trending_meditation')
