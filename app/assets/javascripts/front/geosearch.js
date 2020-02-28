@@ -5,6 +5,7 @@ class GeoSearch {
 
   constructor(container) {
     this.container = container
+    this.endpoint = container.action
     this.config = {
       access_token: container.dataset.key,
       format: 'json',
@@ -18,6 +19,8 @@ class GeoSearch {
     }).join('&')
 
     this.searchResults = container.querySelector('.js-geosearch-results')
+    this.searchNearby = container.querySelector('.js-geosearch-nearby')
+    this.searchNearbyText = container.querySelector('.js-geosearch-nearby-text')
     this.searchInput = container.querySelector('input')
     this.searchInput.addEventListener('input', _event => this.refreshGeoSearch())
     this.searchInput.addEventListener('keydown', event => this.handleKeyPress(event.code, event.keyCode))
@@ -25,6 +28,12 @@ class GeoSearch {
 
     if (this.searchInput.value) {
       this.refreshGeoSearch()
+    }
+
+    if (!(navigator && navigator.geolocation)) {
+      this.searchNearby.remove()
+    } else {
+      this.searchNearby.addEventListener('click', _event => this.useGeolocation())
     }
   }
 
@@ -55,7 +64,7 @@ class GeoSearch {
 
         const element = document.createElement('A')
         element.tabIndex = '0'
-        element.href = `/map?${query}`
+        element.href = `${this.endpoint}?${query}`
         element.innerText = result.q
         this.searchResults.appendChild(element)
         this.setActive(true)
@@ -64,6 +73,23 @@ class GeoSearch {
       setTimeout(() => {
         this.container.classList.remove('classes__splash--loading')
       }, 1000)
+    })
+  }
+
+  useGeolocation() {
+    if (this.searchNearby.href) return
+
+    this.searchNearby.classList.remove('classes__nearby--error')
+    this.searchNearbyText.textContent = this.searchNearbyText.dataset.loading
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position)
+      this.searchNearby.href = `${this.endpoint}?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`
+      this.searchNearbyText.textContent = `${position.coords.latitude.toFixed(6)}, ${position.coords.longitude.toFixed(6)} (${this.searchNearbyText.dataset.found})`
+    }, (error) => {
+      this.searchNearby.classList.add('classes__nearby--error')
+      this.searchNearbyText.textContent = error.message
+      console.error(error) // eslint-disable-line no-console
     })
   }
 

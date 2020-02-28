@@ -159,6 +159,8 @@ pt:
     map_title: "Meditation Classes Near Me"
     prompt: "Enter your city or post code"
     nearby: "Nearby"
+    loading: "Locating..."
+    found: "Click to confirm"
 
   errors:
     title: "Oops..."

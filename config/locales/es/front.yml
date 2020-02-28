@@ -159,6 +159,8 @@ es:
     map_title: "Clases de Meditación cerca de mí"
     prompt: "Introduzca su ciudad o código postal"
     nearby: "Nearby" # TODO: Translate
+    loading: "Locating..." # TODO: Translate
+    found: "Click to confirm" # TODO: Translate
 
   errors:
     title: "Oops..."

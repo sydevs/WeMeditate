@@ -94,12 +94,25 @@
     svg
       height: 1.2em
       vertical-align: middle
+      margin-right: 0.5em
 
     svg path
       transition: all 0.25s ease
 
     &:hover svg path
       fill: $color-text-orange
+
+    &--loading, &--error
+      .classes__nearby__placeholder
+        display: none
+
+    &--loading .classes__nearby__loading,
+    &--error .classes__nearby__error
+      display: inline-block
+
+  .classes__nearby__loading,
+  .classes__nearby__error
+      display: none
 
   &:last-child
     padding-bottom: 20px

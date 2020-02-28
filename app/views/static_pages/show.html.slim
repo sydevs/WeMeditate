@@ -25,9 +25,10 @@
             .classes__field__input
               input type='text' placeholder=translate('classes.prompt')
             .classes__results
-              a.classes__nearby href='#' class='js-geosearch-nearby'
+              a.classes__nearby class='js-geosearch-nearby'
                 = inline_svg 'graphics/marker.svg'
-                = translate('classes.nearby')
+                span class='js-geosearch-nearby-text' data-loading=translate('classes.loading') data-found=translate('classes.found')
+                  = translate('classes.nearby')
               div class='js-geosearch-results'
 
     - elsif !@static_page.contact?
