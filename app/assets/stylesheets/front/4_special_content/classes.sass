@@ -65,8 +65,6 @@
 // ===== RESULTS ===== //
 .classes__results
   display: none
-  line-height: 33.5px
-  font-size: 17px
   border-top: 1px solid $color-graphic-normal
 
   position: absolute
@@ -82,21 +80,36 @@
 .classes__results a
   display: block
   background: white
-  padding: 8.5px 20px
   transition: all 0.25s ease
   cursor: pointer
 
+  padding: 13px 20px
+  font-size: 17px
+  line-height: 26.5px
+
+  strong,
   &.classes__nearby
-    line-height: 65px
+    transition: all 0.25s ease
+    font-weight: $font-semibold
+    color: $color-text-darker
+
+  &.classes__nearby
+    line-height: 25px
+    padding: 28.5px 20px
     font-weight: $font-bold
     background: $background-gray
+
+    .classes__nearby__text
+      padding-left: 25px
 
     svg
       height: 1.2em
       vertical-align: middle
       margin-right: 0.5em
+      position: absolute
 
     svg path
+      fill: $color-text-darker
       transition: all 0.25s ease
 
     &:hover svg path
@@ -118,6 +131,8 @@
     padding-bottom: 20px
 
   &:hover,
-  &.focus
+  &:hover strong,
+  &.focus,
+  &.focus strong
     background: $background-gray
     color: $color-text-orange

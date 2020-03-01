@@ -62,10 +62,16 @@ class GeoSearch {
           return encodeURIComponent(key) + '=' + encodeURIComponent(result[key])
         }).join('&')
 
+        const text = result.q.split(',')
         const element = document.createElement('A')
         element.tabIndex = '0'
         element.href = `${this.endpoint}?${query}`
-        element.innerText = result.q
+        const city = document.createElement('STRONG')
+        city.innerText = `${text[0]}, `
+        const context = document.createElement('SPAN')
+        context.innerText = text.slice(1).join(',')
+        element.appendChild(city)
+        element.appendChild(context)
         this.searchResults.appendChild(element)
         this.setActive(true)
       })
