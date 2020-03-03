@@ -8,7 +8,7 @@ it:
     action:
       view_site: "Vedi Sito"
       view_admin: "Vai alla pagina amministrazione"
-      tutorial: "Help (How to Use)" # TODO: Translate
+      tutorial: "Aiuto (Guida)"
       report_issue: "Segnala un problema"
       search: "Cerca..."
       sign_in: "Log In"
@@ -57,13 +57,13 @@ it:
       descriptive:
         show: "Mostra il sito"
         preview: "Mostra anteprima del sito"
-        reload_vimeo_data: "Reload Vimeo Metadata"
-        audit: "View change logs" # TODO: Translate
+        reload_vimeo_data: "Ricarica Metadata Vimeo"
+        audit: "Visualizza i log"
 
     # ===== MESSAGES ===== #
     
     details:
-      original_language: "Original Language" # TODO: Translate
+      original_language: "Lingua originale"
       translated_languages: "Lingue tradotte"
       priority: "Pagina Ispirazione"
       owned_by: "Di %{owner}"
@@ -72,23 +72,23 @@ it:
       featured_video: "Video principale"
       featured_date: "Data di riferimento"
       role: "Ruolo nel sito"
-      pending_changes: "This %{page} has changes pending approval" # TODO: Translate
+      pending_changes: "Questa %{page} ha delle modifiche che devono essere approvate"
 
     tags:
       published: "Pubblicato"
       unpublished: "Non ancora pubblicato"
-      unapproved_changes: "Has Unapproved Changes" # TODO: Translate
+      unapproved_changes: "Ci sono modifiche non ancora approvate"
       unpublished_draft: "Anteprima non pubblicata"
       no_translation: "Traduzione %{language} mancante"
       pending_translation: "Traduzione %{language} presente, da approvare."
-      in_progress_translation: "Has Incomplete %{language} Translation" # "language" will be replaced with the language that this file is written in. # TODO: Translate
+      in_progress_translation: "Traduzione %{language} mancante" # "language" will be replaced with the language that this file is written in.
       pending_invitation: "Non ha ancora accettato l'invito."
-      this_is_you: "This is you" # TODO: Translate
-      missing_record: "Missing %{model}"
-      too_many_pinned: "More than %{count} pinned %{model}" # TODO: Translate
+      this_is_you: "Questo sei tu"
+      missing_record: "%{model} mancante"
+      too_many_pinned: "Più di %{count} %{model} inseriti"
       updated_ago: "Modificato %{time_ago} fa."
-      published_ago: "Published %{time_ago} ago" # TODO: Translate
-      published_from_now: "Will be published %{time_from_now} from now" # TODO: Translate
+      published_ago: "Publicato da %{time_ago}"
+      published_from_now: "Sarà pubblicato tra %{time_from_now}"
       urgency:
         critical: "Problema critico"
         important: "Problema importante"
@@ -97,7 +97,7 @@ it:
       views:
         one: "%{count} visita"
         other: "%{count} visite"
-      popularity: "Popularity: %{value}" # TODO: Translate
+      popularity: "Popolarità: %{value}"
 
     messages:
       loading: "Caricamento"
@@ -106,8 +106,8 @@ it:
       make_public: "Rendi %{page} visibile al pubblico"
       maintenance_mode: "Sito in costruzione, torna a trovarci presto."
       confirm_destroy: "Sei sicuro di voler cambiare questo? Questo non può essere annullato!"
-      confirm_discard_draft: "Are you sure you want to discard all changes shown on this page? This cannot be undone!" # TODO: Translate
-      confirm_unsaved_changes: "Unsaved changes will be lost. Are you sure you want to leave the page?" # TODO: Translate
+      confirm_discard_draft: "Sei sicuro di voler scartare tutti i cambiamenti di questa pagina? Questa operazione non è reversibile"
+      confirm_unsaved_changes: "Tutte le modifiche non salvate saranno perse. Sei sicuro di voler lasciare questa pagina?"
       drop_files_here: "Trascina i documenti qui."
       unapproved_changes_notice: "%{page} ha delle modifiche non pubblicate. Questi cambiamenti non saranno visibili fino a quando un amministratore non li avrà rivisti."
       pending_invitation_notice: "%{person} è stato invitato/a ad essere editore di WeMeditate, ma non ha ancora risposto."
@@ -116,22 +116,22 @@ it:
       text_too_short: "è troppo corto, deve essere di %{count} lettere"
       invalid_vimeo_id: "deve essere un Vimeo ID valido"
       new_author_notice: "Non hai ancora creato il tuo Profilo Autore, riempi tutti i campi sotto e pressa Salva."
-      start_details_before_content: "Start translating details first, then the content." # TODO: Translate
+      start_details_before_content: "Tradurre prima i dettagli poi il contenuto."
 
     hints:
-      excerpt: "This is a short preview of the %{page} content that will be shown in %{page} listings." # TODO: Translate
-      article_visibility: "This determines where an article will appear on the Inspiration page." # TODO: Translate
+      excerpt: "Questa è una anteprima del contenuto della %{page} che verrà mostrato nella lista %{page}."
+      article_visibility: "Questo specifica dove apparirà l'articolo nella pagina Ispirazioni."
       article_author: "Questo profilo viene mostrato sotto l'articolo quando questo viene pubblicato."
-      article_article_type: "Different article types will offer a few different fields and display the author differently." # TODO: Translate
-      article_coordinates: "Providing the latitude and longitude of an event will allow rich Google search results." # TODO: Translate
+      article_article_type: "Tipi diversi di articoli offrono diversi campi e mostreranno l'autore in modo diverso."
+      article_coordinates: "Fornire latitudine e longitudine di un evento migliererà i risultati delle ricerche di Google."
       article_owner: "Gli amministratori e gli editori possono sempre modificare tutti gli articoli. Questo campo da il permesso ad un autore per modificare un articolo dopo averlo pubblicato. Solitamente si tratta della persona che ha scritto l'articolo."
-      article_video: "If you enter a featured video, it will appear on the article preview." # TODO: Translate
-      article_date: "Set the start date of the event here. This date will appear on the article preview." # TODO: Translate
-      article_published_at: "If this date is in the future, then the article will be scheduled to be published on that date. Leave this fiield blank to have the publish date set automatically. " # TODO: Translate
-      fixed_slug: "This is a special page, it's URL cannot be changed." # TODO: Translate
-      languages_access: "These are the locales where this user can modify the site content." # TODO: Translate
-      languages_known: "These are the languages that a user can translate content from." # TODO: Translate
-      self_realization_slug: "The url for the self-realization page must be \"%{slug}\"" # TODO: Translate
+      article_video: "Se inserisci un video con dettagli, apparirà nell'anteprima dell'articolo."
+      article_date: "Imposta qua la data di inizio dell'evento. Apparirà nell'anteprima dell'articolo."
+      article_published_at: "Se la data è futura, l'articolo sarà programmato e pubblicato in quella data. Lascia vuoto questo campo per impostare la data automaticamente."
+      fixed_slug: "Questa è una pagina speciale, l'URL non può essere modificato."
+      languages_access: "These are the locales where this user can modify the site content." # TODO: Translate this
+      languages_known: "These are the languages that a user can translate content from." # TODO: Translate this
+      self_realization_slug: "L'URL per la pagina della realizzazione del sé deve essere \"%{slug}\""
 
     result:
       created: "Creato con successo."
@@ -141,10 +141,10 @@ it:
       cannot_delete_attached_record: "Non è possibile cancellare un %{category} con  %{pages}. Trasferisci %{pages} e prova ancora."
       published: "Pubblicato con successo."
     
-    audit: # TODO: Translate
-      title: "History of changes to \"%{record}\" %{model}"
-      changed_by: "by %{name}"
-      changed_to: "changed to"
+    audit:
+      title: "Cronologia dei cambiamenti di \"%{record}\" %{model}"
+      changed_by: "da %{name}"
+      changed_to: "modificato a"
     
     # ===== CONTENT ===== #
     content:
@@ -157,23 +157,23 @@ it:
         catalog: "Contenuto WeMeditate"
         list: "Lista"
         quote: "Citazione"
-        form: "Form" # TODO: Translate
-        structured: "Structured Text"
+        form: "Da"
+        structured: "Testo Strutturato"
         textbox: "Testo con Immagine"
         video: "Video"
-        whitespace: "Whitespace"
+        whitespace: "Spazio"
       settings:
         tunes: "Opzioni"
         decorations: "Decorazioni"
       tunes:
         centered: "Centrato"
         stretch: "A tutta larghezza"
-        separate: "Separate image and text" # TODO: Translate
+        separate: "Separa immagine e testo"
         asGallery: "Galleria"
         asWisdom: "Stile antica saggezza"
         asVideo: "Video"
-        asPoem: "Poetry" # TODO: Translate
-        withImages: "Show Images" # TODO: Translate
+        asPoem: "Poesia"
+        withImages: "Mostra Immagini"
         invert: "Colori invertiti"
         style:
           unordered: "Non in ordine"
@@ -184,7 +184,7 @@ it:
           center: "Centrato"
           right: "Sbandierato a destra"
         position: # A 'callout' is an image or quotation which is inserted at the side of the text
-          center: "Centered" # TODO: Translate
+          center: "Centrato"
           left: "Inserto a sinistra"
           right: "Inserto a destra"
         type:
@@ -209,8 +209,8 @@ it:
           grid: "Griglia"
           accordion: "Fisarmonica"
           columns: "Colonne"
-          signup: "Signup Form" # TODO: Translate
-          contact: "Contact Form" # TODO: Translate
+          signup: "Form Iscrizione"
+          contact: "Form Contatti"
       decorations:
         triangle: "Decorazione a triangolo"
         circle: "Decorazione a cerchio"
@@ -235,7 +235,7 @@ it:
         action: "Bottone testo"
         url: "Inserire il link qui"
         quote: "Inserire la citazione qui"
-        alt: "Describe the image for the visually impaired" # TODO: Translate
+        alt: "Descrivi l'immagine per gli ipovedenti"
         caption: "Inserire la didascalia qui"
         credit: "Attribuzione diritti d'autore"
         optional: "Opzionale"
@@ -271,24 +271,24 @@ it:
         regional_admin: "Approva le traduzioni, traduce parti essenziali del sito, e supervisiona la pubblicazione di nuovi contenuti nella propria lingua."
         super_admin: "Dirige gli elementi fondamentali del sito, e crea nuovi editori."
 
-    review: # TODO: Translate
-      title: "Review Changes"
-      changes_contributed_by: "Changes contributed by:"
-      no_value: "No Value"
-      invalid_value: "Invalid Value"
-      no_changes: "No Changes"
-      discard_all_changes: "Discard All Changes"
-      approve_changes: "Save Approved Changes"
+    review:
+      title: "Rivedi le modifiche"
+      changes_contributed_by: "Modifiche di:"
+      no_value: "Nessun Valore"
+      invalid_value: "Valore Invalido"
+      no_changes: "Nessuna Modifica"
+      discard_all_changes: "Annulla tutte le modifiche"
+      approve_changes: "Salva modifiche approvate"
       or: OR
       context:
-        details: "Page Details"
-        content: "Page Content"
+        details: "Dettagli Pagina"
+        content: "Contenuto Pagina"
       effect:
-        moved: "Moved"
-        added: "Added"
-        removed: "Removed"
-        modified: "Changed"
-        nochange: "No Change"
+        moved: "Spostato"
+        added: "Aggiunto"
+        removed: "Rimosso"
+        modified: "Modificato"
+        nochange: "Nessuna Modifica"
 
     metadata:
       key: "nome"
@@ -297,7 +297,7 @@ it:
       generated_jsonld: "Dati strutturati"
 
     draft:
-      no_image: "No Image" # TODO: Translate
+      no_image: "Nessuna Immagine"
       items:
         one: "%{count} oggetto"
         other: "%{count} oggetti"
@@ -326,13 +326,13 @@ it:
 
     index: # TODO: Translate
       columns:
-        status: "Status"
-        name: "Name"
-        role: "Role"
-        updated_at: "Updated"
-        created_at: "Created"
-        last_sign_in_at: "Last Login"
-        minutes: "Duration"
+        status: "Stato"
+        name: "Nome"
+        role: "Ruolo"
+        updated_at: "Aggiornato"
+        created_at: "Creato"
+        last_sign_in_at: "Ultimo Accesso"
+        minutes: "Durata"
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate
@@ -344,39 +344,39 @@ it:
         meditations_count: :activerecord.models.meditation.other # Do not translate
         tracks_count: :activerecord.models.track.other # Do not translate
         account: "Account"
-        country_code: "Country"
+        country_code: "Paese"
       sort:
-        title: "Sort by"
+        title: "Ordina"
         columns:
           default: "Default"
-          name: "Name"
-          country_code: "Country"
-          updated_at: "Recently Updated"
-          created_at: "Recently Created"
-          last_sign_in_at: "Recently Signed In"
+          name: "Nome"
+          country_code: "Paese"
+          updated_at: "Aggiornato di recente"
+          created_at: "Creato di recente"
+          last_sign_in_at: "Accesso di recente"
           popularity: "Most Popular"
           articles_count: "Most Articles"
           meditations_count: "Most Meditations"
           tracks_count: "Most Tracks"
           duration: :activerecord.attributes.track.duration # Do not translate
-          role: "Role"
+          role: "Ruolo"
       filter:
         title: "Filter by"
         columns:
       attribute:
-        status: "Status"
+        status: "Stato"
         none: "None"
-        never: "Never"
+        never: "Mai"
         default: "Default"
       status: # Try to keep these translations short
         # Draftable
-        needs_review: "Needs Review"
+        needs_review: "Da Revisionare"
         # Translatable
-        needs_translation: "Needs Translation"
-        not_translated: "Not Translated"
+        needs_translation: "Da Traduttre"
+        not_translated: "Non Tradotto"
         # Stateable
-        no_state: "In Progress"
-        in_progress: "In Progress"
+        no_state: "In Corso"
+        in_progress: "In Corso"
         archived: :activerecord.attributes.generic.states.archived # Do not translate
         published: :activerecord.attributes.generic.states.published # Do not translate
         unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
@@ -391,10 +391,10 @@ it:
         this_is_you: "This Is You"
 
     tutorial: # TODO: Translate
-      title: "Starter Guide"
+      title: "Guida"
       dashboard:
-        title: "How do I use this website?"
-        message: "If you are just getting started managing content on WeMeditate, we have prepared a few short videos, to help you if you're lost."
+        title: "Come uso questo sito?"
+        message: "Se hai appena cominciato a gestire contenuti su WeMeditate, abbiamo preparato dei piccoli video per aiutarti."
         role_description: "You are a %{role}, and as such it is your role to %{description} For a video illustrating how to do this, please click the link below."
         action: "Watch Tutorial Videos"
       index:

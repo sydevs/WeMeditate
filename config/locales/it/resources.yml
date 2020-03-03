@@ -25,7 +25,7 @@ it:
         other: "Tecniche"
       track:
         one: "Traccia"
-        other: "Traccie"
+        other: "Tracce"
       artist:
         one: "Artista"
         other: "Artisti"
@@ -56,17 +56,17 @@ it:
 
     attributes:
       generic:
-        ready_to_publish: "Ready to publish" # TODO: Translate
+        ready_to_publish: "Pronto per la pubblicazione"
         published: "Pubblicato"
         name: "Nome"
         slug: "URL"
-        state: "Status" # TODO: Translate
-        states: # TODO: Translate
-          no_state: "No Translation Started"
-          in_progress: "Work in Progress"
-          archived: "Archived"
-          published: "Published"
-          unpublished: "Not Published"
+        state: "Stato"
+        states:
+          no_state: "Nessuna Traduzione Cominciata"
+          in_progress: "Modifiche in Corso"
+          archived: "Archiviato"
+          published: "Pubblicato"
+          unpublished: "Non Pubblicato"
 
       article:
         published: :activerecord.attributes.generic.published # Do not translate
@@ -81,18 +81,18 @@ it:
           archived: :activerecord.attributes.generic.states.archived # Do not translate
           published: :activerecord.attributes.generic.states.published # Do not translate
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
-        priority: "Priority" # TODO: Translate
+        priority: "Priorità"
         priorities:
-          pinned: "Pinned to Inspiration Page" # TODO: Translate
-          hidden: "Hidden from Inspiration Page" # TODO: Translate
+          pinned: "Inserito nella pagina Ispirazioni"
+          hidden: "Nascosto dalla pagina Ispirazioni"
           low: "Visibilità Bassa"
           normal: "Visibilità Normale"
           high: "Visibilità Alta"
-        article_type: "Article Type" # TODO: Translate
-        article_types: # TODO: Translate
-          article: "Article"
-          artwork: "Artwork"
-          event: "Event"
+        article_type: "Tipo Articolo"
+        article_types:
+          article: "Articolo"
+          artwork: "Arte"
+          event: "Evento"
         excerpt: "Citazione"
         thumbnail: "Miniatura"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
@@ -101,13 +101,13 @@ it:
         date: "Data di riferimento"
         content: "Contenuto"
         metatags: "Metadata"
-        coordinates: "Location" # TODO: Translate
-        latitude: "Latitude" # TODO: Translate
-        longitude: "Longitude" # TODO: Translate
+        coordinates: "Luogo"
+        latitude: "Latitudine"
+        longitude: "Longitudine"
         author: :activerecord.models.author.one # Do not translate
         author_id: :activerecord.models.author.one # Do not translate
         owner: "Permetti a quest'autore di modificare questo articolo"
-        published_at: "Publish Date" # TODO: Translate
+        published_at: "Data di Pubblicazione"
 
       static_page:
         name: "Titolo"
@@ -225,7 +225,7 @@ it:
         title: "Titolo"
         artists: :activerecord.models.artist.other
         audio: "File (mp3)"
-        duration: "Duration" # TODO: Translate
+        duration: "Durata"
         instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
         mood_filters: :activerecord.models.mood_filter.other # Do not translate
 
@@ -250,7 +250,7 @@ it:
         excerpt: "Citazione"
         description: "Testo sulla Pagina"
         metatags: "Metadata"
-        popularity: "Popularity" # TODO: Translate
+        popularity: "Popolarità"
 
       artist:
         published: :activerecord.attributes.article.published # Do not translate
@@ -281,7 +281,7 @@ it:
         email: "Indirizzo Email"
         invitation_accepted_at: "Invito accettato il"
         invited_by: :activerecord.models.invited_by # Do not translate
-        languages_known: "Translatable Languages" # TODO: Translate
+        languages_known: "Traduzioni disponibili"
         languages_access: "Accessible Locales" # TODO: Translate
         role: "Ruolo"
         roles:
@@ -291,7 +291,7 @@ it:
           regional_admin: "Amministratore Regionale"
           super_admin: "Super Amministratore"
 
-      audit:
+      audit: # TODO: Translate
         user: :activerecord.models.user.one # Do not translate
         action: "Action"
         actions:

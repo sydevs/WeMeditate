@@ -4,7 +4,7 @@
 
 it:
   we_meditate: "We Meditate" # This is the title of the website
-  tagline: "Silence your mind and discover your inner potential with guided meditations. Connect with others around the world meditating for a better life." # TODO: Translate
+  tagline: "Ferma la tua mente e scopri il tuo potenziale interiore con le nostre meditazioni guidate. Connettiti con altre persone in tutto il mondo per meditare ed avere uno stile di vita migliore"
 
   header:
     learn_more: "Per Saperne di Più"
@@ -18,11 +18,11 @@ it:
     meditate_now: "Medita Ora"
     music_for_meditation: "Musica per la meditazione"
     learn_more: "Per Saperne di Più"
-    come_meditate: "Come meditate"
+    come_meditate: "Vieni a meditare"
     classes_near_me: "Corsi vicino a Me"
     online_meditations: "Meditazioni guidate Online"
-    languages: "Languages" # TODO: Translate
-    self_realization: "The First Experience" # TODO: Translate
+    languages: "Lingue"
+    self_realization: "La Prima Esperienza"
 
   actions_footer:
     title: "Sperimenta Tu Stesso!"
@@ -33,8 +33,8 @@ it:
       local: "Corsi vicino a Me"
 
   author:
-    about_the_author: "About the author"
-    about_the_artist: "About the artist" # TODO: Translate
+    about_the_author: "Riguardo l'autore"
+    about_the_artist: "Riguardo l'artista"
     written_by: "Scritto da"
     meditating_for:
       one: "Medita da 1 anno"
@@ -57,9 +57,9 @@ it:
       subscribe: "Ti sei cancellato con successo."
       contact: "Il tuo messaggio stato ricevuto."
       register: "Ti sei registrato con successo."
-    button: # TODO: Translate
-      try_again: "Try Again"
-      submitted: "Submitted"
+    button:
+      try_again: "Prova ancora"
+      submitted: "Inviato"
 
   player:
     pause: "Pausa"
@@ -104,12 +104,12 @@ it:
       trending_meditation: "In voga"
       random_meditation: "Lascia decidere il fato"
       random_meditation_title: "Prova una meditazione a caso"
-      random_meditation_description: "Not sure what you need right now? Just feel like taking a chance? Click play and let the universe decide." # TODO: Translate
+      random_meditation_description: "Non sei sicuro di cosa hai bisogno in questo momento? Ti va di fare una prova? Clicca e lascia che sia l'universo a decidere."
     custom_meditation:
       title: "Scegli la tua Meditazione"
-      choose_goal: "Vorrei sentirmi ..." # Please keep ' ...' (with a space) at the end of your translation.
+      choose_goal: "Vorrei sentire ..." # Please keep ' ...' (with a space) at the end of your translation.
       choose_duration: "Quanto tempo ho"
-      goal_prompt: "Di che umore sei"
+      goal_prompt: "Seleziona obbiettivo"
       submit: "Inizia la Meditazione"
       minutes: "min"
     archive:
@@ -127,14 +127,14 @@ it:
 
   treatments:
     prescreen:
-      title: "Before using methods to improve meditation, you need to awaken your %{kundalini}"
+      title: "Prima di usare le tecniche per migliorare la tua meditazione dovresti risvegliare la tua %{kundalini}"
       kundalini: "Energia Interiore"
       action: "Risveglia la tua Energia Interiore"
       explanation:
         text: "Ognuno di noi ha un’energia interiore, che deve essere risvegliata prima di poter accedere allo stato di meditazione."
         learn_more: "Per Saperne di Più"
       skip:
-        text: "Meditated with us before?"
+        text: "Hai già meditato con noi?"
         action: "Migliora le tue meditazioni!"
     music:
       title: "Musica"
@@ -156,26 +156,26 @@ it:
     read_more: "Per Saperne di Più"
 
   classes:
-    map_title: "Meditation Classes Near Me" # TODO: Translate
+    map_title: "Corsi di meditazione vicino a me"
     prompt: "Inserisci la tua città o CAP"
-    nearby: "Nearby" # TODO: Translate
-    loading: "Locating..." # TODO: Translate
-    found: "Click to confirm" # TODO: Translate
+    nearby: "Vicino a me"
+    loading: "Sto cercando..." 
+    found: "Clicca per confermare"
 
   errors:
-    title: "Oops..." # TODO: Translate
-    coming_soon: "Coming Soon" # TODO: Translate
-    no_programs: "Meditation classes in your area are coming soon." # TODO: Translate
-    error: "Error" # TODO: Translate
+    title: "Oops..."
+    coming_soon: "In arrivo"
+    no_programs: "I corsi di meditazione vicino a te sono in arrivo."
+    error: "Errore"
     alternatives_title: "Prova uno di questi invece:"
-    report_issue: "Please try again, and report this issue if it continues to occur. When reporting the issue, please do your best to describe what specific actions you were taking before the issue occurred." # TODO: Translate
+    report_issue: "Per favore riprova, se l'errore persiste ti chiediamo di segnalarcelo. Quando segnali un problema ti chiediamo di descrivere nel modo più dettagliato possibile quali azioni stavi eseguendo prima del problema."
     '404': "La pagina che stavi cercando non esiste."
     '422': "Il cambiamento che stavi cercando di fare non esiste."
     '500': "Ci dispiace, qualcosa è andato storto."
 
   javascript:
-    reading_time: "%minutes% minute read" # TODO: Translate
-    loading: "Loading..." # TODO: Translate
+    reading_time: "%minutes% minuti di lettura"
+    loading: "Caricamento..."
     popup:
       close: "Chiudi (Esc)"
       loading: "Caricamento …"
