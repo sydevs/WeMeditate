@@ -102,7 +102,7 @@ it:
     messages:
       loading: "Caricamento"
       errors: "Errori"
-      no_translations_found: "No %{pages} to translate" # TODO: Translate
+      no_translations_found: "Nessuna %{pages} da tradurre"
       make_public: "Rendi %{page} visibile al pubblico"
       maintenance_mode: "Sito in costruzione, torna a trovarci presto."
       confirm_destroy: "Sei sicuro di voler cambiare questo? Questo non può essere annullato!"
@@ -129,8 +129,8 @@ it:
       article_date: "Imposta qua la data di inizio dell'evento. Apparirà nell'anteprima dell'articolo."
       article_published_at: "Se la data è futura, l'articolo sarà programmato e pubblicato in quella data. Lascia vuoto questo campo per impostare la data automaticamente."
       fixed_slug: "Questa è una pagina speciale, l'URL non può essere modificato."
-      languages_access: "These are the locales where this user can modify the site content." # TODO: Translate this
-      languages_known: "These are the languages that a user can translate content from." # TODO: Translate this
+      languages_access: "Queste sono le zone dove questo utente può modificare il contenuto del sito."
+      languages_known: "Queste sono le lingue dalle quali l'utente può tradurre il contenuto."
       self_realization_slug: "L'URL per la pagina della realizzazione del sé deve essere \"%{slug}\""
 
     result:
@@ -191,19 +191,19 @@ it:
           articles: "Articoli"
           treatments: "Tecniche"
           meditations: "Meditazioni"
-        level: # TODO: Translate # These are heading levels
-          h1: "Level 1"
-          h2: "Level 2"
-          h3: "Level 3"
-          h4: "Level 4"
-          h5: "Level 5"
-          h6: "Level 6"
-        size: # TODO: Translate
-          narrow: "Narrow"
-          wide: "Wide"
-          small: "Small"
-          medium: "Medium"
-          large: "Large"
+        level:
+          h1: "Livello 1"
+          h2: "Livello 2"
+          h3: "Livello 3"
+          h4: "Livello 4"
+          h5: "Livello 5"
+          h6: "Livello 6"
+        size:
+          narrow: "Stretto"
+          wide: "Largo"
+          small: "Piccolo"
+          medium: "Medio"
+          large: "Grande"
         format:
           button: "Bottone"
           grid: "Griglia"
@@ -309,19 +309,19 @@ it:
           one: "Bozza con 1 blocco"
           other: "Bozza con %{count} blocchi"
 
-    dashboard: # TODO: Translate
+    dashboard:
       title: "Pagina amministrazione"
       content:
-        title: "Published Content"
-        public: "The %{language} website (%{host}) is open to the public, and has the following published content."
-        private: "The %{language} website (%{host}) is closed to the public, and has the following ready content."
+        title: "Contenuto Pubblicato"
+        public: "Il sito %{language} (%{host}) è aperto al pubblico, e ha i seguenti contenuti pubblicati."
+        private: "Il sito %{language} (%{host}) è chiuso al pubblico, e ha i seguenti contenuti pronti."
       schedule:
-        title: "Publishing Schedule"
-        description: "This is a list of articles which are scheduled to be published in the near future."
-        no_schedule: "No articles are scheduled to be published."
+        title: "Programma Pubblicazione"
+        description: "Questa è una lista di articoli la cui pubblicazione è programmata a breve."
+        no_schedule: "Non ci sono articoli in programmazione."
       alerts:
         title: "Avvisi"
-        description: "This is a list of important issues, that should be resolved to keep the site in healthy order."
+        description: "Questa è una lista di problemi che dovrebbero essere risolti per tenere il sito in buone condizioni."
         no_issues: "Non ci sono problemi, ben fatto!"
 
     index:
@@ -347,25 +347,26 @@ it:
       sort:
         title: "Ordina"
         columns:
-          default: "Default" # TODO: Translate
+          default: "Default"
           name: "Nome"
           country_code: "Paese"
           updated_at: "Aggiornato di recente"
           created_at: "Creato di recente"
           last_sign_in_at: "Accesso di recente"
-          popularity: "Most Popular"
-          articles_count: "Most Articles"
-          meditations_count: "Most Meditations"
-          tracks_count: "Most Tracks"
+          popularity: "Più Popolare"
+          articles_count: "Più Articoli"
+          meditations_count: "Più Meditazioni"
+          tracks_count: "Più Tracce"
           duration: :activerecord.attributes.track.duration # Do not translate
           role: "Ruolo"
       filter:
-        title: "Filter by" # TODO: Translate
+        title: "Filtra per"
+        columns:
       attribute:
         status: "Stato"
         none: "None"
         never: "Mai"
-        default: "Default" # TODO: Translate
+        default: "Default"
       status: # Try to keep these translations short
         # Draftable
         needs_review: "Da Revisionare"
@@ -380,47 +381,47 @@ it:
         unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         not_published: :activerecord.attributes.generic.states.unpublished # Do not translate
         # Publishable
-        public: "Public" # TODO: Translate
-        private: "Hidden" # TODO: Translate
+        public: "Pubblico"
+        private: "Privato"
         # Users
-        pending: "Pending" # TODO: Translate
-        inactive: "Inactive" # TODO: Translate
-        active: "Active" # TODO: Translate
-        this_is_you: "This Is You" # TODO: Translate
+        pending: "In Attesa"
+        inactive: "Inattivo"
+        active: "Attivo"
+        this_is_you: "Questo sei tu"
 
-    tutorial: # TODO: Translate
+    tutorial: 
       title: "Guida"
       dashboard:
         title: "Come uso questo sito?"
         message: "Se hai appena cominciato a gestire contenuti su WeMeditate, abbiamo preparato dei piccoli video per aiutarti."
-        role_description: "You are a %{role}, and as such it is your role to %{description} For a video illustrating how to do this, please click the link below."
-        action: "Watch Tutorial Videos"
+        role_description: "Tu sei un %{role} quindi devi %{description}. Per vedere un video tutorial su come fare, clicca il link qua sotto."
+        action: "Guarda Video Tutorial"
       index:
-        title: "What are these?"
+        title: "Cosa sono questi?"
         message:
           # Pages
-          static_pages: "These are the primary pages of the website, such as the Home Page, Inspiration Page, Shri Mataji Page, etc. You can use this index to edit some of the content of these pages, but most of these pages have predefined conntent and urls."
-          articles: "Articles are written by Sahaja Yogis to inspire seekers. They can cover various topics, such as: meditation in daily life; writing about realized souls; artwork, music or poetry by yogis; in-depth articles on deeper topics; etc. Whatever a yogi may be inspired to write about.<br><br>All articles are shown on the site's \"Inspiration Page.\""
-          subtle_system_nodes: "These are the pages that describe different parts of the Subtle System. Each page is an in-depth explanation of the qualities of that chakra or channel, how it manifests in daily life, and the treatments that address it."
+          static_pages: "Queste sono le pagine principali del sito, come ad esempio Home Page, Ispirazione, Shri Mataji, etc. Puoi usare questa lista per modificare il contenuto di queste pagine, però la maggior parte di queste ha contenuti e indirizzi predefiniti."
+          articles: "Gli articoli sono scritti da Sahaja Yogis per dare ispirazione ai ricercatori. Riguardano diversi temi come: la meditazione nella vita quotidiana, articoli sulle anime realizzate, opere d'arte, musica, poesie di yogis, articoli di approfondimento su temi più profondi, etc. Qualunque cosa uno yogi voglia scrivere.<br><br>Tutti gli articoli sono mostrati nella pagina \"Ispirazione\""
+          subtle_system_nodes: "Queste pagine descrivono le diverse parti del Sistema Sottile. Ogni pagina contiene una spiegazione dettagliata delle qualità di un chakra o canale, come si manifesta nella vita quotidiana e quali sono i trattamenti più adatti ad esso."
           # Resources
-          meditations: "These are videos of guided meditations, narrated by yogis. They are available to the public on the website's \"Meditations\" page.<br><br>Each meditation is categorized by it's duration and the goals of that meditation, which allows users to generate a guided meditation that fits their needs. Each meditation also has a \"popularity\" statistic which represents the amount of views the meditation has been getting recently."
-          treatments: "These are the pages that describe different treatments that yogis use to clear themselves. Each technique will have a text description, and may have a video illustrating the treatment in action."
-          tracks: "Musical tracks are available for seekers to listen to on the website's \"Music\" page. Playlists are generated automatically for each type of instrument."
+          meditations: "Questi sono video di meditazioni guidate da yogis. Sono disponibili al pubblico nella sezione \"Meditazioni\".<br><br>Ogni meditazione è classificata dalla sua durata e dal suo obiettivo, così da permettere agli utenti di scegliere la meditazione per soddisfare le loro esigenze. Ogni meditazione ha una \"popolarità\" che indica il numero di visualizzazioni della meditazione."
+          treatments: "Queste sono le pagine dei trattamenti che gli yogi possono usare per lavorarsi. Ogni tecnica ha una descrizione e un video illustrativo di esempio."
+          tracks: "Le tracce musicali sono disponibili ai ricercatori nella pagina \"Musica\". Le playlist sono generate automaticamente per ogni strumento."
           # Filters
-          categories: "Every article belongs to one of these categories. A seeker can use these categories to filter the Inspiration articles to find what they are interested in."
-          duration_filters: "These allow us to group meditations into approximate durations, so that seekers can watch a guided meditation that is the right length for the amount of time they have."
-          goal_filters: "These allow us to group meditations by what chakra or quality they focus on, so that seekers can watch a guided meditation for the challenges that they are facing."
-          instrument_filters: "These allow us to group music tracks, so that seekers can listen to music that fits their mood."
-          mood_filters: "These allow us to group music tracks, so that seekers can listen to music that fits their mood."
-          artists: "These provide extra information on the musical artist for each track."
+          categories: "Ogni articolo può far parte di una di queste categorie. Un ricercatore può usare queste categorie per filtrare gli articoli di ispirazione per trovare quello a cui sono interessati"
+          duration_filters: "Questi permettono di raggruppare le meditazioni per durata, così un ricercatore può guardare la meditazione guidata della lunghezza che preferiscono."
+          goal_filters: "Questi permettono di raggruppare le meditazioni il base al chakra su cui vogliono lavorare, così un ricercatore può affrontare le proprie sfide guardando la meditazione."
+          instrument_filters: "Questi permettono di raggruppare le tracce musicali, in modo da permettere al ricercatore di sentire la musica che più si addice al proprio umore."
+          mood_filters: "Questi permettono di raggruppare le tracce musicali, in modo da permettere al ricercatore di sentire la musica che più si addice al proprio umore."
+          artists: "Fornisce informazioni sull'artista di ogni traccia."
           # People
-          authors: "Author profiles appear at the bottom of Inspiration Articles. They are useful to establish credibility and a more personal connection for the seeker with the author of the article.<br><br>Some author profiles are associated with a WeMeditate account. When a user with an account writes an article, their author profile is automatically added to it. Other contributors to WeMeditate may not have an account on this site, and so their profile does not have any linked account."
-          users: "These are the people who can modify the content of WeMeditate. Each admin has a role which defines what they are allowed to edit, and almost all admins are restricted to certain languages."
+          authors: "Il profilo degli autori appare in fondo agli articoli di ispirazione. Sono utili per rendere più credibile e personale la connessione del ricercatore con l'autore.<br><br>Alcuni profili autore sono associati agli account WeMeditate. Quando un utente che possiede un account scrive un articolo, il profilo autore viene aggiunto automaticamente. Altri collaboratori potrebbero non avere un account e quindi il loro profilo non sarà collegato a nessun account."
+          users: "Questi sono gli utenti che possono modificare i contenuti di WeMeditate. Ogni amministratore ha un ruolo che definisce le parti del sito che sono abilitati a modificare, inoltre la maggior parte degli utenti sono vincolati ad alcune lingue."
       show:
-        title: "What is this?"
+        title: "Che cos'è"
         message:
-          tutorial: "Click on the tabs below to view a few short videos explanations of how to manage content on the WeMeditate website."
-          my_author: "Whenever you write an article, this profile will be shown at the bottom of the article. This helps the seeker connect more with the writer of the article, and also establishes the credibility of the writer.<br><br>Here are some tips on writing a good bio.<br> - Use the third person.<br> - Don't dwell too much on your upbringing or how long you have been meditating.<br> - Do mention your profession or studies. Show that you are a respectable member of society.<br> - Unless you are writing an artist bio, try to be down to earth and let the reader see themselves in you."
+          tutorial: "Clicca qua sotto per vedere alcuni video tutorial per imparare a gestire i contenuti del sito di WeMeditate."
+          my_author: Ogni volta che scrivi un articolo questo profilo sarà visualizzato in fondo ad esso. Questo aiuta i ricercatori a sentirsi più legato con l'autore dell'articolo, inoltre aumenta la credibilità dell'autore.<br><br>Ecco alcuni consigli per scrivere una buona biografia.<br> - usa la terza persona.<br> - Non divagare troppo su come hai cominciato a meditare o da quanto tempo lo fai.<br> - Scrivi il tuo lavoro o/e gli studi che hai fatto. Fai vedere che sei un membro rispettabile della società.<br> - A meno che tu non stia scrivendo una biografia molto artistica, cerca di rimanere coi piedi per terra in modo da far riflettere il ricercatore nella tua esperienza."
       role_vimeo_ids:
         super_admin: 363132481
         regional_admin: 363132481
@@ -429,18 +430,18 @@ it:
         translator: 363139502
       panels:
         overview:
-          menu: "Overview"
-          title: "How to use the CMS as a %{role}"
-          description: "As a %{role}, it is your role to %{description}"
+          menu: "Panoramica"
+          title: "Come usare il CMS come %{role}"
+          description: "Come %{role}, il tuo ruolo è quello di %{description}"
         editor:
-          menu: "Writing Content"
-          title: "How to use the content editor"
+          menu: "Contenuto di testo"
+          title: "Come usare l'editor"
           description: ""
           vimeo_id: 363156142
         issues:
-          menu: "Reporting Issues"
-          title: "How to report issues"
-          description: "Please click the \"Report Issue\" button at the bottom of the left-hand side menu. This will open up your email client where you will be able to send us an email at admin@wemeditate.co"
+          menu: "Segnala un problema"
+          title: "Come segnalare un problema"
+          description: "Clicca il bottone \"Segnala un problema\" in fondo al menu a sinistra. Questo aprirà il tuo client emai da cui sarai in grado di inviarci un messaggio a admin@wemeditate.co"
 
     report_issue:
       name: "We Meditate Administrator"
@@ -456,16 +457,16 @@ it:
         pages: "Pagine"
         resources: "Risorse"
         people: "Persone"
-        # For specific models # TODO: Translate
-        static_pages: "Main Pages" # These are the primary pages of the site, like the home page, music page, inspiration page, etc.
-        articles: "Inspiration Articles"
-        subtle_system_nodes: "Subtle System"
+        # For specific models
+        static_pages: "Pagine Principali"
+        articles: "Articoli di Ispirazione"
+        subtle_system_nodes: "Sistema Sottile"
         meditations: :activerecord.models.meditation.other # Do not translate
         treatments: :activerecord.models.treatment.other # Do not translate
         tracks: Music Tracks
         users: :activerecord.models.user.other # Do not translate
       locale:
-        no_languages: "No Languages" # TODO: Translate
+        no_languages: "Nessuna Lingua"
         all_languages: "Tutte le lingue"
         other_languages: "Altre lingue"
 

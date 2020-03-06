@@ -282,7 +282,7 @@ it:
         invitation_accepted_at: "Invito accettato il"
         invited_by: :activerecord.models.invited_by # Do not translate
         languages_known: "Traduzioni disponibili"
-        languages_access: "Accessible Locales" # The languages which can be accessed in the CMS by the current user. # TODO: Translate
+        languages_access: "Posizione"
         role: "Ruolo"
         roles:
           translator: "Traduttore"
@@ -291,10 +291,10 @@ it:
           regional_admin: "Amministratore Regionale"
           super_admin: "Super Amministratore"
 
-      audit: # An "audit" is a log of past actions by users of the CMS. # TODO: Translate
+      audit:
         user: :activerecord.models.user.one # Do not translate
-        action: "Action" # An action taken by a CMS users
+        action: "Azione"
         actions:
-          update: "Updated" # The CMS user has updated something
-          create: "Created" # The CMS user has created something
-          destroy: "Deleted" # The CMS user has deleted something
+          update: "Aggiornato"
+          create: "Creato"
+          destroy: "Cancellato"
