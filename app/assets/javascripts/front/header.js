@@ -20,22 +20,24 @@ class Header {
       event.preventDefault()
     })
 
-    document.body.classList.remove('noscroll')
-    this.container.classList.remove('header--show-menu')
+    if (!this.container.classList.contains('header--minimal')) {
+      document.body.classList.remove('noscroll')
+      this.container.classList.remove('header--show-menu')
 
-    window.addEventListener('resize', _event => this._onResize())
-    window.addEventListener('scroll', _event => this._onScroll())
+      window.addEventListener('resize', _event => this._onResize())
+      window.addEventListener('scroll', _event => this._onScroll())
 
-    this.container.classList.toggle('header--overlay', this.splash)
-    this.container.classList.toggle('header--invert', this.splash && this.splash.dataset.invert)
+      this.container.classList.toggle('header--overlay', this.splash)
+      this.container.classList.toggle('header--invert', this.splash && this.splash.dataset.invert)
 
-    this.$scrollspyTarget = $('.scrollspy-target')
-    if (this.scrollspy) {
-      if (this.$scrollspyTarget.length > 0) {
-        this.scrollspyTop = this.$scrollspyTarget.offset().top
-        this.scrollspy.style.display = null
-      } else {
-        this.scrollspy.style.display = 'none'
+      this.$scrollspyTarget = $('.scrollspy-target')
+      if (this.scrollspy) {
+        if (this.$scrollspyTarget.length > 0) {
+          this.scrollspyTop = this.$scrollspyTarget.offset().top
+          this.scrollspy.style.display = null
+        } else {
+          this.scrollspy.style.display = 'none'
+        }
       }
     }
 
