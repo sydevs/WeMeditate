@@ -14,6 +14,7 @@ de: # German translations
     music: "music"
     archive: "all"
     self_realization: "first-experience"
+    classes: "classes"
 en: # English translations
   routes:
     inspiration: "inspiration"
@@ -26,6 +27,7 @@ en: # English translations
     music: "music"
     archive: "all"
     self_realization: "first-experience"
+    classes: "classes"
 es: # Spanish translations
   routes:
     inspiration: "inspiration"
@@ -38,6 +40,7 @@ es: # Spanish translations
     music: "music"
     archive: "all"
     self_realization: "first-experience"
+    classes: "classes"
 fr: # French translations
   routes:
     inspiration: "inspiration"
@@ -50,6 +53,7 @@ fr: # French translations
     music: "music"
     archive: "all"
     self_realization: "first-experience"
+    classes: "classes"
 hy: # Armenian translations
   routes:
     inspiration: "inspiration"
@@ -62,6 +66,7 @@ hy: # Armenian translations
     music: "music"
     archive: "all"
     self_realization: "first-experience"
+    classes: "classes"
 it: # Italian translations
   routes:
     inspiration: "ispirazione"
@@ -74,6 +79,7 @@ it: # Italian translations
     music: "musica"
     archive: "tutto"
     self_realization: "realizzazione-del-sé"
+    classes: "classes"
 nl: # Dutch translations
   routes:
     inspiration: "inspiration"
@@ -86,6 +92,7 @@ nl: # Dutch translations
     music: "music"
     archive: "all"
     self_realization: "first-experience"
+    classes: "classes"
 pt: # Portuguese translations
   routes:
     inspiration: "inspiration"
@@ -98,6 +105,7 @@ pt: # Portuguese translations
     music: "music"
     archive: "all"
     self_realization: "first-experience"
+    classes: "classes"
 ru: # Russian translations
   routes:
     inspiration: "вдохновение"
@@ -110,6 +118,7 @@ ru: # Russian translations
     music: "музыка"
     archive: "все"
     self_realization: "cамореализация"
+    classes: "classes"
 uk: # Ukrainian translations
   routes:
     inspiration: "inspiration"
@@ -122,3 +131,4 @@ uk: # Ukrainian translations
     music: "music"
     archive: "all"
     self_realization: "first-experience"
+    classes: "classes"

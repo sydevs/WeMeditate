@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     get '404', to: 'application#error'
     get '422', to: 'application#error'
     get '500', to: 'application#error'
+    get :classes, to: 'application#classes'
 
     localized do
       root to: 'application#home'
@@ -73,8 +74,8 @@ Rails.application.routes.draw do
       resources :categories, only: %i[index show], path: 'inspiration'
       resources :treatments, only: %i[index show], path: 'techniques'
       resources :tracks, only: %i[index], path: 'music'
-      resources :static_pages, only: %i[show], path: 'page'
       resources :subtle_system_nodes, only: %i[index show], path: 'subtle_system'
+      resources :static_pages, only: %i[show], path: ''
     end
   end
 
