@@ -7,9 +7,9 @@
 .content__catalog class="content__catalog--#{block[:type]}"
   - if block[:title].present? && block[:type] != 'treatments'
     h2.content__catalog__header
-      = inline_svg 'graphics/leaves.svg', class: 'content__catalog__header__leaf'
+      = inline_svg_tag 'graphics/leaves.svg', class: 'content__catalog__header__leaf'
       .content__catalog__header__text = block[:title]
-      = inline_svg 'graphics/leaves.svg', class: 'content__catalog__header__leaf'
+      = inline_svg_tag 'graphics/leaves.svg', class: 'content__catalog__header__leaf'
 
   - if block[:type] == 'articles' || !showImages
     - image_sizes = '(max-width: 767px) calc(100vw - 48px), 360px'

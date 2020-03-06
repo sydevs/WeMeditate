@@ -31,7 +31,7 @@ module ContentHelper
     end
 
     if type == :circle
-      inline_svg 'graphics/circle.svg', class: classes
+      inline_svg_tag 'graphics/circle.svg', class: classes
     elsif type == :sidetext
       classes << 'sidetext--overlay' unless args[:static]
       content_tag :div, data[:text], class: classes

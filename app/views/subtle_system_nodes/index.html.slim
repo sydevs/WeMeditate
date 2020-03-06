@@ -12,7 +12,7 @@ main
       a.subtle-system__toggle__item data-tab='channels'
         = translate 'subtle_system.channels'
       
-    = inline_svg 'subtle-system/chart.svg', class: 'subtle-system__chart'
+    = inline_svg_tag 'subtle-system/chart.svg', class: 'subtle-system__chart'
     .subtle-system__list
       = render (@subtle_system_nodes || SubtleSystemNode.all), cached: true
 

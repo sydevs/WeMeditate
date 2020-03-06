@@ -11,14 +11,14 @@ header#header.header class=classes
       - unless minimal
         .header__banner
           a.header__logo href=root_path
-            = inline_svg 'header/logo-mini.svg'
+            = inline_svg_tag 'header/logo-mini.svg'
             span = translate('we_meditate').capitalize
           .header__illustration
-            = inline_svg 'header/illustration.svg'
+            = inline_svg_tag 'header/illustration.svg'
           a.header__action href=static_page_path_for(:classes) = translate('header.classes_near_me').html_safe
 
       nav.header__navigation
-        a.header__navigation__logo href=root_path = inline_svg 'header/logo-small.svg'
+        a.header__navigation__logo href=root_path = inline_svg_tag 'header/logo-small.svg'
 
         - navigation_items.each do |nav|
           .header__navigation__item class=('header__navigation__item--active' if nav[:active])
@@ -31,12 +31,12 @@ header#header.header class=classes
 
             = render 'layouts/partials/header_dropdown', nav: nav if nav[:content]
 
-        a.header__navigation__marker href=static_page_path_for(:classes) = inline_svg 'graphics/marker.svg'
+        a.header__navigation__marker href=static_page_path_for(:classes) = inline_svg_tag 'graphics/marker.svg'
 
     .header__wrapper.header__wrapper--mobile
       .header__navigation
-        a.header__navigation__logo href=root_path = inline_svg 'header/logo-small.svg'
-        a.header__navigation__burger = inline_svg 'header/burger.svg'
+        a.header__navigation__logo href=root_path = inline_svg_tag 'header/logo-small.svg'
+        a.header__navigation__burger = inline_svg_tag 'header/burger.svg'
 
     - unless minimal
       .header__scrollspy

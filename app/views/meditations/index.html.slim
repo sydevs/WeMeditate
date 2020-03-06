@@ -51,7 +51,7 @@ main
                 .dropdown__selection__title = translate 'meditations.custom_meditation.choose_goal'
                 .dropdown__selection__text = translate 'meditations.custom_meditation.goal_prompt'
                 .dropdown__selection__icon
-                  = inline_svg 'header/logo-small.svg'
+                  = inline_svg_tag 'header/logo-small.svg'
                   span = translate 'meditations.custom_meditation.goal_prompt'
 
               .dropdown__popup
@@ -75,7 +75,7 @@ main
 
           .clearfix
           button.meditations__custom__submit.button.button--circle type='submit'
-            = inline_svg 'graphics/circle.svg'
+            = inline_svg_tag 'graphics/circle.svg'
             .button__text = translate 'meditations.custom_meditation.submit'
 
       .meditations__image

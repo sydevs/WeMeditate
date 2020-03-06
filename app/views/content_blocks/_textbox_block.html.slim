@@ -24,7 +24,7 @@
         = render_decoration :sidetext, block, alignment: (block[:alignment] == 'right' ? :right : :left)
 
     - if isWisdom
-      = inline_svg 'content/ancient-wisdom.svg', class: 'content__textbox__graphic'
+      = inline_svg_tag 'content/ancient-wisdom.svg', class: 'content__textbox__graphic'
 
     - if isVideo
       h2.content__textbox__title = block[:title]

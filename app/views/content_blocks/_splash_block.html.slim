@@ -11,6 +11,6 @@
     h1.content__splash__title = block[:title]
     .content__splash__text = block[:text]
     .content__splash__action
-      = inline_svg 'graphics/leaves.svg', class: 'content__splash__action__leaf'
+      = inline_svg_tag 'graphics/leaves.svg', class: 'content__splash__action__leaf'
       a.content__splash__action__text href=block[:url] = block[:action]
-      = inline_svg 'graphics/leaves.svg', class: 'content__splash__action__leaf'
+      = inline_svg_tag 'graphics/leaves.svg', class: 'content__splash__action__leaf'
