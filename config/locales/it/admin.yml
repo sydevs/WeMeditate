@@ -324,7 +324,7 @@ it:
         description: "This is a list of important issues, that should be resolved to keep the site in healthy order."
         no_issues: "Non ci sono problemi, ben fatto!"
 
-    index: # TODO: Translate
+    index:
       columns:
         status: "Stato"
         name: "Nome"
@@ -336,7 +336,6 @@ it:
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate
-        node: "Node"
         artist_id: :activerecord.models.artist.other # Do not translate
         duration: :activerecord.attributes.track.duration # Do not translate
         articles_count: :activerecord.models.article.other # Do not translate
@@ -348,7 +347,7 @@ it:
       sort:
         title: "Ordina"
         columns:
-          default: "Default"
+          default: "Default" # TODO: Translate
           name: "Nome"
           country_code: "Paese"
           updated_at: "Aggiornato di recente"
@@ -361,13 +360,12 @@ it:
           duration: :activerecord.attributes.track.duration # Do not translate
           role: "Ruolo"
       filter:
-        title: "Filter by"
-        columns:
+        title: "Filter by" # TODO: Translate
       attribute:
         status: "Stato"
         none: "None"
         never: "Mai"
-        default: "Default"
+        default: "Default" # TODO: Translate
       status: # Try to keep these translations short
         # Draftable
         needs_review: "Da Revisionare"
@@ -382,13 +380,13 @@ it:
         unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         not_published: :activerecord.attributes.generic.states.unpublished # Do not translate
         # Publishable
-        public: "Public"
-        private: "Hidden"
+        public: "Public" # TODO: Translate
+        private: "Hidden" # TODO: Translate
         # Users
-        pending: "Pending"
-        inactive: "Inactive"
-        active: "Active"
-        this_is_you: "This Is You"
+        pending: "Pending" # TODO: Translate
+        inactive: "Inactive" # TODO: Translate
+        active: "Active" # TODO: Translate
+        this_is_you: "This Is You" # TODO: Translate
 
     tutorial: # TODO: Translate
       title: "Guida"
@@ -445,9 +443,9 @@ it:
           description: "Please click the \"Report Issue\" button at the bottom of the left-hand side menu. This will open up your email client where you will be able to send us an email at admin@wemeditate.co"
 
     report_issue:
-      name: "WeMeditate Administrator"
+      name: "We Meditate Administrator"
       email: "admin@wemeditate.co"
-      subject: "WeMeditate Issue Report"
+      subject: "We Meditate Issue Report"
       body: "Per favore descrivi la problematica in inglese..."
 
     misc:
@@ -459,7 +457,7 @@ it:
         resources: "Risorse"
         people: "Persone"
         # For specific models # TODO: Translate
-        static_pages: "Main Pages"
+        static_pages: "Main Pages" # These are the primary pages of the site, like the home page, music page, inspiration page, etc.
         articles: "Inspiration Articles"
         subtle_system_nodes: "Subtle System"
         meditations: :activerecord.models.meditation.other # Do not translate

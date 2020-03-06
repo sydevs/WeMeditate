@@ -340,7 +340,6 @@ hy:
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate
-        node: "Node"
         artist_id: :activerecord.models.artist.other # Do not translate
         duration: :activerecord.attributes.track.duration # Do not translate
         articles_count: :activerecord.models.article.other # Do not translate
@@ -366,7 +365,6 @@ hy:
           role: "Role"
       filter:
         title: "Filter by"
-        columns:
       attribute:
         status: "Status"
         none: "None"

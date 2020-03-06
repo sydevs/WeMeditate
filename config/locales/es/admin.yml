@@ -195,7 +195,7 @@ es:
           articles: "Artículos"
           treatments: "Técnicas"
           meditations: "Meditaciones"
-        level: # TODO: Translate # These are heading levels
+        level: # TODO: Translate # These are levels for the sizes of a title
           h1: "Level 1"
           h2: "Level 2"
           h3: "Level 3"
@@ -366,7 +366,6 @@ es:
           role: "Rol"
       filter:
         title: "Filtrar por"
-        columns:
       attribute:
         status: "Estado"
         none: "Ninguno"
