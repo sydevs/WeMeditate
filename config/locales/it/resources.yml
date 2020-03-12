@@ -132,7 +132,8 @@ it:
           sahaja_yoga: "Riguardo Sahaja Yoga"
           about: "Pagina Ulteriori Informazioni"
           classes: "Pagina Corsi"
-          privacy: "Privacy Policy"
+          privacy: "Privacy Policy" # TODO: Translate
+          custom: "Custom Page" # TODO: Translate
         content: "Contenuto"
         metatags: "Metadata"
 

@@ -1,0 +1,13 @@
+
+- background = "background-image: url(#{image_path 'custom-splash/meditate-america.jpg'})"
+
+.content__splash.js-splash class="content__splash--home content__splash--meditate-america" style=background data-invert='true'
+  .preloader.js-preloader style=background data-turbolinks-permanent=true
+    = image_tag 'graphics/preloader.svg', class: 'preloader__graphic'
+
+  h1.content__splash__title Meditate America
+  .content__splash__text Free meditation classes across the US & Canada in July 2020.
+  .content__splash__action
+    = inline_svg_tag 'graphics/leaves.svg', class: 'content__splash__action__leaf'
+    a.content__splash__action__text href='/meditate-america' Learn More
+    = inline_svg_tag 'graphics/leaves.svg', class: 'content__splash__action__leaf'

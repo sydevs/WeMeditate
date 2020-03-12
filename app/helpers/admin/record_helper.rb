@@ -13,8 +13,7 @@ module Admin::RecordHelper
   def record_has_fixed_slug?
     case @record
     when StaticPage
-      first_path_segment = static_page_path_for(@record).split('/').reject(&:empty?).first
-      first_path_segment != translate('routes.page')
+      %i[home subtle_system articles treatments tracks meditations].include?(@record.role&.to_sym)
     when Meditation
       @record.slug == translate('routes.self_realization')
     else

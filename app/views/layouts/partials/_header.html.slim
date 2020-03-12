@@ -4,6 +4,7 @@
 - classes << 'header--overlay' if action_name == 'home' || @static_page&.role&.to_sym == :classes
 - classes << 'header--invert' if action_name == 'home'
 - classes << 'header--minimal' if minimal
+- classes << "header--custom-#{@header_style}" if @header_style
 
 header#header.header class=classes
   .header__container

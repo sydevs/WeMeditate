@@ -626,10 +626,13 @@
     fill: $color-text-inverse
 
   &__breadcrumbs__item
-    color: $color-text-lighter
+    color: $color-text-inverse
 
-    &:not([href])
-      color: $color-text-inverse
+    &[href]
+      opacity: 0.7
+
+    &[href]:hover
+      opacity: 0.9
 
 // ===== OVERLAY TWEAKS ===== //
 // This causes the header to hover over the page.

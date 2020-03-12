@@ -1,26 +1,7 @@
 @import "../../mixins/*"
 
 .content__splash
-  height: 100vh
-  max-height: 1024px
-  padding-top: 70px
-
   text-align: center
-  background-repeat: no-repeat
-  background-position: center
-  background-size: cover
-
-  @include mobile
-    background-position-x: -85vh
-    min-height: 450px
-
-  @include tablet
-    background-position-x: -74vh
-    min-height: 540px
-
-  @include laptop-or-larger
-    min-height: 700px
-    padding-top: 234px
 
   &__wrapper
     @extend %narrow-content-width
@@ -57,11 +38,9 @@
   background-size: cover
 
   @include mobile
-    background-position-x: -85vh
     min-height: 450px
 
   @include tablet
-    background-position-x: -74vh
     min-height: 540px
 
   @include laptop-or-larger
@@ -86,6 +65,12 @@
 
 // ===== HOME PAGE ===== //
 .content__splash--home
+  @include mobile
+    background-position-x: -85vh
+
+  @include tablet
+    background-position-x: -74vh
+
   .content__splash__wrapper
     position: absolute
     bottom: 0
@@ -171,6 +156,77 @@
 
     path
       fill: $color-graphic-normal
+
+// ===== CUSTOM PAGE SPLASH ===== //
+.content__splash--custom
+  height: 360px
+  padding-top: 160px
+  margin-bottom: 100px
+  position: relative
+  background: image-url('content/classes-near-me.jpg')
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+
+  @include tablet
+    height: 520px
+    padding-top: 260px
+
+  @include laptop-or-larger
+    height: 600px
+    padding-top: 400px
+
+  &:before
+    @include overlay
+    content: ''
+    background: linear-gradient(transparentize(black, 0.7), transparent)
+
+  .content__splash__title
+    margin-top: 0 !important
+    margin-bottom: 4vh
+    padding: 0 3vw
+    font-weight: $font-bold
+    text-shadow: 1px 2px 4px transparentize(black, 0.25)
+
+    @include tiny
+      margin-bottom: 6vh
+
+    @include tablet-or-larger
+      font-size: 4.5rem
+      line-height: 1.2222
+      max-width: 500px
+      margin-top: 20%
+      margin-bottom: 4.5vh
+
+    @include laptop-or-larger
+      margin-top: 15%
+      margin-bottom: 5vh
+      padding: 0
+
+    @include desktop
+      margin-top: 196px
+      margin-bottom: 40px
+
+  .content__splash__text
+    max-width: 225px
+    margin-bottom: 12vh
+    font-weight: $font-medium
+    text-shadow: 1px 2px 4px transparentize(black, 0.1)
+
+    @include tiny
+      margin-bottom: 6vh
+
+    @include tablet-or-larger
+      max-width: 360px
+      font-size: 2.4rem
+      line-height: 1.5
+      margin-bottom: 14vh
+
+    @include laptop
+      margin-bottom: 10vh
+
+    @include desktop
+      margin-bottom: 80px
 
 
 // ===== INVERTED COLOURS FOR A DARK BACKGROUND IMAGE ===== //

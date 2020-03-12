@@ -164,6 +164,7 @@ uk:
           about: "About Page"
           classes: "Classes Page"
           privacy: "Privacy Policy"
+          custom: "Custom Page"
         content: "Content"
         metatags: "Metadata"
 

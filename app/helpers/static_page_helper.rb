@@ -7,7 +7,7 @@ module StaticPageHelper
   def self.preview_for role
     # Simply fetch all previews and store them, because we know that every page load will require almost every static page preview to generate the navigation
     unless defined? @@static_page_previews
-      @@static_page_previews = StaticPage.preload_for(:preview).all.index_by(&:role) # rubocop:disable Style/ClassVars
+      @@static_page_previews = StaticPage.preload_for(:preview).special.index_by(&:role) # rubocop:disable Style/ClassVars
     end
 
     @@static_page_previews[role.to_s]
@@ -35,6 +35,10 @@ module StaticPageHelper
       tracks_path
     when :meditations
       meditations_path
+    when :custom
+      page_or_role.is_a?(StaticPage) ? static_page_path(page_or_role) : nil
+    when nil
+      ''
     else
       static_page_path(static_page_preview_for(role))
     end
@@ -57,6 +61,8 @@ module StaticPageHelper
       tracks_url
     when :meditations
       meditations_url
+    when :custom
+      page_or_role.is_a?(StaticPage) ? static_page_url(page_or_role) : nil
     when nil
       ''
     else

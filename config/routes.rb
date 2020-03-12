@@ -51,6 +51,7 @@ Rails.application.routes.draw do
     get '422', to: 'application#error'
     get '500', to: 'application#error'
     get :classes, to: 'application#classes'
+    get '/usa' => redirect('/meditate-america')
 
     localized do
       root to: 'application#home'
@@ -83,5 +84,6 @@ Rails.application.routes.draw do
   get '422', to: 'application#error'
   get '500', to: 'application#error'
 
+  get 'page/:page', to: redirect('/%{page}') # Redirect for legacy route. Can be removed after July 2020.
   get '/', to: redirect('404')
 end

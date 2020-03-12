@@ -19,7 +19,9 @@ module Admin
     end
 
     def create?
-      false
+      return false unless can_access_locale?
+      return true if admin?
+      return false
     end
 
     def publish?

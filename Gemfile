@@ -78,6 +78,7 @@ gem 'mail_form' # For the contact form
 gem 'sidekiq' # To power active jobs
 gem 'sitemap_generator' # For SEO purposes
 gem 'taglib-ruby' # To parse metadata from mp3 files
+gem 'geocoder' # For identifying users from specific regions
 
 # Maybe needed later(?)
 # gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes

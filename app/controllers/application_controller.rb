@@ -13,16 +13,24 @@ class ApplicationController < ActionController::Base
   # The root page of the website
   def home
     @static_page = StaticPage.preload_for(:content).find_by(role: :home)
-    return unless stale?(@static_page)
+    # return unless stale?(@static_page)
 
+    set_custom_splash
     set_metadata(@static_page)
   end
 
   # The page where we embed a map from the program database
   def map
-    expires_in 1.year, public: true
+    # expires_in 1.year, public: true
     set_metadata({ 'title' => translate('classes.map_title') })
+    @config = params.permit(:q, :latitude, :longitude, :type, :west, :east, :south, :north)
+    @config[:theme] = 'wemeditate'
     render layout: 'minimal'
+  end
+
+  # A stable URL to reach the classes near me page.
+  def classes
+    redirect_to helpers.static_page_path_for(:classes), status: :moved_permanently
   end
 
   # A POST endpoint to submit a contact message to the site admins
@@ -132,6 +140,20 @@ class ApplicationController < ActionController::Base
       @metatags = helpers.metatags(record)
       @metatags = hash.reverse_merge(@metatags) unless hash.nil?
       @structured_data = helpers.structured_data(record)
+    end
+
+    def set_custom_splash
+      location = Geocoder.search(request.ip).first
+
+      case location.country_code
+      when 'US', 'CA'
+        @splash_style = :meditate_america
+      else
+        @splash_style = :default
+      end
+
+      puts "GEOCODE #{request.ip} #{location.country_code}, #{@splash_style}"
+      @header_style = @splash_style
     end
 
 end

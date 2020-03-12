@@ -47,8 +47,16 @@
         = record_detail 'linkify', CGI.unescape(path), url: url
         = f.hint translate('admin.hints.fixed_slug')
     - elsif record.draftable?
-      / TODO: Try and improve this janky way of getting the url. It's because articles don't have an index route
-      - url = record.is_a?(Article) && record.new_record? ? "/#{translate 'routes.articles'}/*" : url_for(record)
+      / TODO: Try and improve this janky way of getting the url. It's because articles and static pages don't have any index route
+      ruby:
+        if record.is_a?(Article) && record.new_record?
+          url = "/#{translate 'routes.articles'}/*"
+        elsif record.is_a?(StaticPage) && record.new_record?
+          url = "/*"
+        else
+          url = url_for(record)
+        end
+        
       = draftable_slug_field f, url
     - else
       - url = record.new_record? ? "/#{polymorphic_path(record.class)}/*" : polymorphic_path(record)

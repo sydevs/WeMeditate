@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_06_175801) do
+ActiveRecord::Schema.define(version: 2020_03_10_123041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -320,7 +320,7 @@ ActiveRecord::Schema.define(version: 2019_12_06_175801) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "original_locale", limit: 2, null: false
-    t.index ["role"], name: "index_static_pages_on_role", unique: true
+    t.index ["role"], name: "index_static_pages_on_role"
   end
 
   create_table "subtle_system_node_translations", force: :cascade do |t|
