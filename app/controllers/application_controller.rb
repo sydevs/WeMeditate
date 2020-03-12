@@ -146,13 +146,14 @@ class ApplicationController < ActionController::Base
       location = Geocoder.search(request.ip).first
 
       case location.country_code
-      when 'US', 'CA', 'GB'
+      when 'US', 'CA'
         @splash_style = :meditate_america
       else
         @splash_style = :default
       end
 
       puts "GEOCODE #{request.ip} #{location.country_code}, #{@splash_style}"
+      @splash_style = :default # Override for now
       @header_style = @splash_style
     end
 
