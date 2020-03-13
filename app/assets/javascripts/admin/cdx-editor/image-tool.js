@@ -22,7 +22,7 @@ class ImageTool extends EditorTool {
     super({ // Data
       id: data.id || Util.generateId(),
       items: data.items || [],
-      size: ['narrow', 'wide'].includes(data.position) ? data.position : 'narrow',
+      size: ['narrow', 'wide'].includes(data.size) ? data.size : 'narrow',
       position: position,
       asGallery: asGallery,
       decorations: data.decorations || {}

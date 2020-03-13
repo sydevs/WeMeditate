@@ -170,11 +170,11 @@
 
   @include tablet
     height: 520px
-    padding-top: 260px
+    padding-top: 200px
 
   @include laptop-or-larger
     height: 600px
-    padding-top: 400px
+    padding-top: 340px
 
   &:before
     @include overlay
@@ -209,24 +209,14 @@
 
   .content__splash__text
     max-width: 225px
-    margin-bottom: 12vh
+    margin-bottom: 40px
     font-weight: $font-medium
     text-shadow: 1px 2px 4px transparentize(black, 0.1)
-
-    @include tiny
-      margin-bottom: 6vh
 
     @include tablet-or-larger
       max-width: 360px
       font-size: 2.4rem
       line-height: 1.5
-      margin-bottom: 14vh
-
-    @include laptop
-      margin-bottom: 10vh
-
-    @include desktop
-      margin-bottom: 80px
 
 
 // ===== INVERTED COLOURS FOR A DARK BACKGROUND IMAGE ===== //
