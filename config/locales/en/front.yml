@@ -162,6 +162,21 @@ en:
     loading: "Locating..."
     found: "Click to confirm"
 
+  streams:
+    countdown:
+      title: "Watch this space"
+      description: "The next live guided meditation is in"
+      action: "Remind Me"
+    live:
+      title: "We are live now!"
+      action: "Join now"
+      description: "Press play to join our live meditation session streaming right now"
+    timing:
+      days: "Days"
+      hours: "Hours"
+      minutes: "Minutes"
+      seconds: "Seconds"
+
   errors:
     title: "Oops..."
     coming_soon: "Coming Soon"

@@ -35,7 +35,7 @@ module Admin
     end
 
     def destroy?
-      false
+      record.custom?
     end
 
   end

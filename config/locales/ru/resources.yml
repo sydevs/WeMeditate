@@ -179,6 +179,7 @@ ru:
           about: "О Проекте"
           classes: "Занятия По Медитации"
           privacy: "Политика Конфиденциальности"
+          streams: "Livestream Page" # TODO: Translate
           custom: "Custom Page" # TODO: Translate
         content: "Контент"
         metatags: "Метаданные"

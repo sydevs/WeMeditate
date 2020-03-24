@@ -132,6 +132,7 @@ de:
           about: "About Page"
           classes: "Classes Page"
           privacy: "Privacy Policy"
+          streams: "Livestream Page"
           custom: "Custom Page"
         content: "Content"
         metatags: "Metadata"

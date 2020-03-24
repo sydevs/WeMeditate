@@ -1,0 +1,162 @@
+@import "../../mixins/*"
+
+.streams__splash
+  text-align: center
+  color: $color-text-inverse
+  height: 100vh
+  padding-top: 22vh
+  margin-bottom: 100px
+  position: relative
+  background: image-url('content/streams-mobile.jpg')
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+
+  @include tablet-or-larger
+    background-image: image-url('content/streams.jpg')
+
+  @include laptop-or-larger
+    padding-top: 260px
+
+  &:before
+    @include overlay
+    content: ''
+    background: linear-gradient(transparentize(black, 0.7), transparent)
+
+  h1
+    color: inherit
+
+// ===== LIVE ===== //
+.streams__live
+  @extend %narrow-content-width
+  position: relative
+  padding-top: 178px
+  padding: 0 24px
+  max-width: 468px
+
+  &__title
+    font-weight: $font-normal
+    font-size: 3rem
+    line-height: 1.6667
+    letter-spacing: 0.8px
+    margin-bottom: 8vh
+
+    @include tablet-or-larger
+      font-size: 4.5rem
+      line-height: 1.22
+      letter-spacing: 1.2px
+
+  &__action
+    font-weight: $font-medium
+    font-size: 3rem
+    margin-bottom: 12px
+
+  &__play
+    position: static
+    transform: none
+    cursor: pointer
+    border-color: $color-button-video
+    margin-bottom: 12vh
+
+    @include tablet-or-larger
+      margin-bottom: 9vh
+
+  &__description
+    font-size: 2.2rem
+    line-height: 1.15
+    max-width: 240px
+    margin: auto
+
+    @include tablet-or-larger
+      letter-spacing: 0.69px
+      max-width: none
+
+// ===== COUNTDOWN ===== //
+.streams__countdown
+  @extend %narrow-content-width
+  position: relative
+
+  &__title
+    font-weight: $font-normal
+    font-size: 3rem
+    line-height: 1.6667
+    letter-spacing: 0.8px
+    margin-bottom: 7.36vh
+
+    @include tablet-or-larger
+      font-size: 4.5rem
+      line-height: 1.22
+      letter-spacing: 1.2px
+      margin-bottom: 4.5vh
+
+  &__description
+    font-size: 2.2rem
+    line-height: 1.15
+    margin: auto
+    margin-bottom: 9.2vh
+    max-width: 260px
+
+    @include tablet-or-larger
+      font-weight: $font-semibold
+      margin-bottom: 6.25vh
+      max-width: none
+
+  &__action
+    display: flex
+    align-items: center
+    justify-content: center
+
+    font-size: 3rem
+    line-height: 47px
+
+    > span
+      display: inline-block
+      padding: 0 21px
+
+    &__leaf
+      width: 52px
+
+      &:first-child
+        transform: rotate(90deg) scaleX(-1) scaleY(-1)
+
+      &:last-child
+        transform: rotate(-90deg) scaleY(-1)
+
+      path
+        fill: white
+
+// ===== TIMER ===== //
+.streams__countdown__timer
+  font-family: $font-number
+  font-size: 7.86rem
+  line-height: 95px
+  letter-spacing: 1px
+  margin-bottom: 10vh
+
+  > span
+    position: relative
+    text-align: center
+    padding-bottom: 20px
+
+    &::after
+      content: attr(data-label)
+      text-transform: uppercase
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+
+      font-size: 1.8rem
+      line-height: 1.6667
+      opacity: 0.6
+
+  .js-countdown-days[data-value="0"]
+    display: none
+
+    + .separator
+      display: none
+
+  .js-countdown-days:not([data-value="0"])
+    ~ .js-countdown-seconds,
+    ~ .js-countdown-minutes + .separator
+      display: none

@@ -50,8 +50,6 @@ Rails.application.routes.draw do
     get '404', to: 'application#error'
     get '422', to: 'application#error'
     get '500', to: 'application#error'
-    get :classes, to: 'application#classes'
-    get '/usa' => redirect('/meditate-america')
 
     localized do
       root to: 'application#home'
@@ -59,6 +57,8 @@ Rails.application.routes.draw do
       post :contact, to: 'application#contact'
       post :subscribe, to: 'application#subscribe'
       get :map, to: 'application#map'
+      get :classes, to: 'application#classes'
+      get :live, to: 'streams#index'
 
       resources :articles, only: %i[show] do
         get '/category/:category_id', on: :collection, action: :index

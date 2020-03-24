@@ -133,6 +133,7 @@ it:
           about: "Pagina Ulteriori Informazioni"
           classes: "Pagina Corsi"
           privacy: "Privacy Policy" # TODO: Translate
+          streams: "Livestream Page" # TODO: Translate
           custom: "Custom Page" # TODO: Translate
         content: "Contenuto"
         metatags: "Metadata"

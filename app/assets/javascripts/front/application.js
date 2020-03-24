@@ -1,5 +1,5 @@
 /* global $, LazyLoad, zenscroll,
-  Accordion, Carousel, Dropdown, Form, Grid, Loadmore, Video, ImageGallery, ReadingTime,
+  Accordion, Carousel, Dropdown, Form, Grid, Loadmore, Video, ImageGallery, ReadingTime, CountdownTimer
   Header, SubtleSystem, MusicPlayer, CustomMeditation, Prescreen, GeoSearch */
 /* exported Application */
 
@@ -42,6 +42,7 @@ const Application = {
     Application.loadAll('video', Video)
     Application.loadAll('gallery', ImageGallery)
     Application.loadAll('reading-time', ReadingTime)
+    Application.loadAll('countdown', CountdownTimer)
 
     Application.element = {}
     Application.loadFirst('header', Header)

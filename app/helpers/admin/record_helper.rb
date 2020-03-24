@@ -13,7 +13,7 @@ module Admin::RecordHelper
   def record_has_fixed_slug?
     case @record
     when StaticPage
-      %i[home subtle_system articles treatments tracks meditations].include?(@record.role&.to_sym)
+      %i[home subtle_system articles treatments tracks meditations streams].include?(@record.role&.to_sym)
     when Meditation
       @record.slug == translate('routes.self_realization')
     else

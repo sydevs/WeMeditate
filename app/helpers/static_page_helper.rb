@@ -35,6 +35,8 @@ module StaticPageHelper
       tracks_path
     when :meditations
       meditations_path
+    when :streams
+      live_path
     when :custom
       page_or_role.is_a?(StaticPage) ? static_page_path(page_or_role) : nil
     when nil
@@ -61,6 +63,8 @@ module StaticPageHelper
       tracks_url
     when :meditations
       meditations_url
+    when :streams
+      live_url
     when :custom
       page_or_role.is_a?(StaticPage) ? static_page_url(page_or_role) : nil
     when nil
