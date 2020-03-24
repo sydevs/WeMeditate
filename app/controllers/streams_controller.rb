@@ -3,7 +3,6 @@ class StreamsController < ApplicationController
   def index
     @static_page = StaticPage.preload_for(:content).find_by(role: :streams)
     @countdown_time = Time.now.monday.next_week.change(hour: 20)
-    @countdown_time = Time.now - 1.day
     seconds_diff = (@countdown_time - Time.now).to_i
     @live = seconds_diff.negative?
 
