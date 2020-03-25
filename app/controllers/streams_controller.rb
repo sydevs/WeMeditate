@@ -9,6 +9,11 @@ class StreamsController < ApplicationController
       @countdown_time = @countdown_time.monday.next_week.change(hour: 19)
     end
 
+    # First date is Friday, March 27
+    if @countdown_time < DateTime.parse('2020-03-27')
+      @countdown_time = DateTime.parse('2020-03-27').change(hour: 20)
+    end
+
     seconds_diff = (@countdown_time - Time.now).to_i
     @live = params[:live] || seconds_diff.negative?
 
