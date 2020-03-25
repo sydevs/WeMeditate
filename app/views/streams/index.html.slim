@@ -4,7 +4,7 @@
     .streams__live
       h1.streams__live__title = translate('streams.live.title')
       .streams__live__action = translate('streams.live.action')
-      a.streams__live__play.video__button title=translate('streams.live.action') target='_blank' href='https://www.youtube.com/channel/UCAUhqtIt9EXJnOOBB8xtuXw/live'
+      a.streams__live__play.video__button title=translate('streams.live.action') data-lity=true href=@stream_url
       .streams__live__description = translate('streams.live.description')
   - else
     .streams__countdown

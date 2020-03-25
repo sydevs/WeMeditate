@@ -11,7 +11,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.object_src  :none
   policy.script_src  :self, :unsafe_eval, :unsafe_inline, :https
   policy.style_src   :self, :unsafe_inline, :https
-  policy.frame_src   :self, 'player.vimeo.com', ENV['ATLAS_URL'] || ''
+  policy.frame_src   :self, 'player.vimeo.com', 'player.twitch.tv', ENV['ATLAS_URL'] || ''
 
   # Specify URI for violation reports
   # policy.report_uri "/csp-violation-report-endpoint"
