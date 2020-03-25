@@ -3,7 +3,11 @@ class StreamsController < ApplicationController
   def index
     @static_page = StaticPage.preload_for(:content).find_by(role: :streams)
 
-    @countdown_time = Time.now.tomorrow.change(hour: 19)
+    @countdown_time = Time.now.change(hour: 19)
+
+    if @countdown_time < Time.now
+      @countdown_time = Time.now.tomorrow.change(hour: 19)
+    end
 
     if @countdown_time.saturday? || @countdown_time.sunday?
       @countdown_time = @countdown_time.monday.next_week.change(hour: 19)
