@@ -10,7 +10,7 @@
     .streams__countdown
       h1.streams__countdown__title = translate('streams.countdown.title')
       .streams__countdown__description = translate('streams.countdown.description')
-      .streams__countdown__timer class='js-countdown' data-time=@countdown_time
+      .streams__countdown__timer class='js-countdown' data-time=(@countdown_time.to_f * 1000)
         span class='js-countdown-days' data-label=translate('streams.timing.days') data-value=@days = @days.to_s.rjust(2, '0')
         span.separator = ' '
         span class='js-countdown-hours' data-label=translate('streams.timing.hours') data-value=@hours = @hours.to_s.rjust(2, '0')
@@ -20,7 +20,7 @@
         span class='js-countdown-seconds' data-label=translate('streams.timing.seconds') data-value=@seconds = @seconds.to_s.rjust(2, '0')
       .streams__countdown__action
         = inline_svg_tag 'graphics/leaves.svg', class: 'streams__countdown__action__leaf'
-        span = translate('streams.countdown.action')
+        a href='#signup' = translate('streams.countdown.action')
         = inline_svg_tag 'graphics/leaves.svg', class: 'streams__countdown__action__leaf'
 
 - if @static_page

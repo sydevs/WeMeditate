@@ -3,7 +3,7 @@
 - classes = ['content__form', 'js-form']
 - classes << "content__form--#{block[:format]}"
 
-= form_tag url, class: classes, remote: true do
+= form_tag url, id: 'signup', class: classes, remote: true do
   .divider.divider--leaf.divider--leaf-only.divider--leaf-up
 
   .content__form__content

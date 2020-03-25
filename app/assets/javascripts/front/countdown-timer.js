@@ -5,7 +5,7 @@ class CountdownTimer {
 
   constructor(element) {
     this.container = element
-    this.targetDate = Date.parse(element.dataset.time)
+    this.targetDate = new Date(parseFloat(element.dataset.time)).getTime()
     this.days = element.querySelector('.js-countdown-days')
     this.hours = element.querySelector('.js-countdown-hours')
     this.minutes = element.querySelector('.js-countdown-minutes')
@@ -16,7 +16,7 @@ class CountdownTimer {
 
   update() {
     const now = new Date().getTime()
-    const t = this.targetDate.getTime() - now
+    const t = this.targetDate - now
     const days = Math.floor(t / (1000 * 60 * 60 * 24))
     const hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
     const minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60))
