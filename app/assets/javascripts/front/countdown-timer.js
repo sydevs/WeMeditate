@@ -16,7 +16,7 @@ class CountdownTimer {
 
   update() {
     const now = new Date().getTime()
-    const t = this.targetDate - now
+    const t = this.targetDate.getTime() - now
     const days = Math.floor(t / (1000 * 60 * 60 * 24))
     const hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
     const minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60))
