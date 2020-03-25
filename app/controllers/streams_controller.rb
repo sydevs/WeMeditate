@@ -15,7 +15,7 @@ class StreamsController < ApplicationController
 
     # First date is Friday, March 27
     if @countdown_time < DateTime.parse('2020-03-27')
-      @countdown_time = DateTime.parse('2020-03-27').change(hour: 20)
+      @countdown_time = DateTime.parse('2020-03-27').to_time.change(hour: 20)
     end
 
     seconds_diff = (@countdown_time - Time.now).to_i
