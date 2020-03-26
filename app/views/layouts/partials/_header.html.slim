@@ -16,7 +16,7 @@ header#header.header class=classes
             span = translate('we_meditate').capitalize
           .header__illustration
             = inline_svg_tag 'header/illustration.svg'
-          a.header__action href=static_page_path_for(:classes) = translate('header.classes_near_me').html_safe
+          a.header__action href=static_page_path_for(:streams) = translate('header.classes_near_me').html_safe
 
       nav.header__navigation
         a.header__navigation__logo href=root_path = inline_svg_tag 'header/logo-small.svg'
