@@ -15,6 +15,8 @@ class StreamsController < ApplicationController
       @live = seconds_diff < 5.minutes
     end
 
+    @live = true
+
     if @live
       @stream_url = "https://player.twitch.tv/?channel=wemeditate&parent=#{request.host}"
     else
