@@ -6,7 +6,14 @@ class StreamsController < ApplicationController
     @countdown_time = countdown_target_time
 
     seconds_diff = (@countdown_time - Time.now).to_i
-    @live = params[:live] || seconds_diff > 5.minutes
+
+    if params[:live] == 'true'
+      @live = true
+    elsif params[:live] == 'false'
+      @live = false
+    else
+      @live = seconds_diff < 5.minutes
+    end
 
     if @live
       @stream_url = "https://player.twitch.tv/?channel=wemeditate&parent=#{request.host}"
@@ -30,7 +37,7 @@ class StreamsController < ApplicationController
 
     def countdown_target_time
       countdown_time = next_stream_time(Date.today)
-      countdown_time = next_stream_time(Date.tomorrow) if Time.now > countdown_time + 30.minutes
+      countdown_time = next_stream_time(Date.tomorrow) if Time.now > countdown_time + 10.minutes
       countdown_time
     end
 
@@ -41,7 +48,7 @@ class StreamsController < ApplicationController
         date = date.monday
       end
 
-      date.to_time.change(hour: 15)
+      date.to_time.change(hour: 15, min: 30)
     end
 
 end

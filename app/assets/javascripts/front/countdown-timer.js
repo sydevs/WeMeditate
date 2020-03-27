@@ -31,9 +31,10 @@ class CountdownTimer {
       this.days.setAttribute('data-value', 0)
     }
 
-    if (t < 0) {
-      window.location.reload()
+    let params = new URLSearchParams(window.location.search)
+    if (t < 300000 && !params.has('live')) { // Less than 5 minutes
       clearInterval(this.interval)
+      window.location.reload()
     }
   }
 

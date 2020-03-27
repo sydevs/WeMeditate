@@ -23,6 +23,10 @@
         a href='#signup' = translate('streams.countdown.action')
         = inline_svg_tag 'graphics/leaves.svg', class: 'streams__countdown__action__leaf'
 
+p = @countdown_time.to_s
+p = (@countdown_time - Time.now).to_i
+p = 5.minutes
+
 - if @static_page
   - cache @static_page do
     .content = render_content @static_page
