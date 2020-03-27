@@ -48,7 +48,7 @@ class StreamsController < ApplicationController
         date = date.monday
       end
 
-      date.to_time.change(hour: 15, min: 30)
+      date.to_time.change(hour: 16)
     end
 
 end
