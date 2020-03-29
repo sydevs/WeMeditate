@@ -36,7 +36,6 @@ class StreamsController < ApplicationController
     def countdown_target_time
       countdown_time = next_stream_time(Date.today)
       if Time.now > countdown_time + 1.hour
-        puts "COUNTDOWN FROM TOMORROW"
         countdown_time = next_stream_time(Date.tomorrow)
       end
       countdown_time
