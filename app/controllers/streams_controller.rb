@@ -47,7 +47,7 @@ class StreamsController < ApplicationController
         date = date.next_week if date < Date.today
       end
 
-      date.to_time.change(hour: 19)
+      date.to_time.utc.change(hour: 19)
     end
 
 end
