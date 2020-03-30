@@ -3,7 +3,8 @@ class StreamsController < ApplicationController
   def index
     @static_page = StaticPage.preload_for(:content).find_by(role: :streams)
     @countdown_time = countdown_target_time
-    seconds_diff = (@countdown_time - Time.now).to_i
+    @current_time = current_time
+    seconds_diff = (@countdown_time - current_time).to_i
 
     if params[:live] == 'true'
       @live = true
@@ -34,20 +35,28 @@ class StreamsController < ApplicationController
   private
 
     def countdown_target_time
-      countdown_time = next_stream_time(Date.today)
-      if Time.now > countdown_time + 1.hour
-        countdown_time = next_stream_time(Date.tomorrow)
+      countdown_time = next_stream_time(current_date)
+      if current_time > countdown_time + 1.hour
+        countdown_time = next_stream_time(current_date + 1.day)
       end
       countdown_time
+    end
+
+    def current_time
+      Time.zone.now
+    end
+
+    def current_date
+      current_time.to_date
     end
 
     def next_stream_time date
       if date.saturday? || date.sunday?
         date = date.monday
-        date = date.next_week if date < Date.today
+        date = date.next_week if date < current_time.to_date
       end
 
-      date.to_time.utc.change(hour: 19)
+      date.to_time.change(hour: 19)
     end
 
 end
