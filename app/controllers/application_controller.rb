@@ -145,7 +145,7 @@ class ApplicationController < ActionController::Base
     def set_custom_splash
       location = Geocoder.search(request.ip).first
 
-      case location.country_code
+      case location&.country_code
       when 'US', 'CA'
         @splash_style = :meditate_america
       else
