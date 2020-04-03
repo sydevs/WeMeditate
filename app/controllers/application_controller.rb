@@ -60,9 +60,10 @@ class ApplicationController < ActionController::Base
   def subscribe
     if params[:signup][:email_address].present?
       email = params[:signup][:email_address].gsub(/\s/, '').downcase
+      list_id = params[:signup][:list_id]
 
       begin
-        Klaviyo.subscribe(email)
+        Klaviyo.subscribe(email, list_id, request.referer)
         @message = I18n.translate('form.success.subscribe')
         @success = true
       rescue Error => e

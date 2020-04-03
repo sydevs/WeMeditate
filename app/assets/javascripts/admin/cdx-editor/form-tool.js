@@ -26,6 +26,7 @@ class FormTool extends EditorTool {
       subtitle: data.subtitle || '',
       text: data.text || '',
       action: data.action || '',
+      list_id: data.list_id || '',
       format: ['signup', 'contact'].includes(data.format) ? data.format : 'signup',
     }, { // Config
       id: 'form',
@@ -34,6 +35,7 @@ class FormTool extends EditorTool {
         subtitle: { label: 'Subtitle', contained: true },
         text: { label: 'Text', contained: true },
         action: { label: 'Button Text', input: 'button', contained: true },
+        list_id: { label: 'Custom Klaviyo List ID', input: 'caption', contained: true },
       },
       tunes: [
         {

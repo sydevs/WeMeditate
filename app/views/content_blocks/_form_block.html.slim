@@ -14,9 +14,10 @@
       .content__form__message
       = fields_for block[:format] do |f|
         = f.hidden_field :gobbledigook if block[:format] == 'contact'
+        = f.hidden_field :list_id, value: block[:list_id] if block[:format] == 'signup'
         = f.email_field :email_address, placeholder: t('form.input.email')
         = f.text_area :message, placeholder: t('form.input.message'), rows: 5 if block[:format] == 'contact'
-          
+
         - unless block[:format] == 'contact'
           .content__form__privacy
             = translate 'form.input.privacy.text'
