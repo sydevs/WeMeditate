@@ -159,34 +159,25 @@
 
 // ===== CUSTOM PAGE SPLASH ===== //
 .content__splash--custom
-  height: 360px
-  padding-top: 160px
-  margin-bottom: 100px
-  position: relative
-  background: image-url('content/classes-near-me.jpg')
-  background-position: center
-  background-size: cover
-  background-repeat: no-repeat
+  .content__splash__wrapper
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    padding-bottom: 15%
 
-  @include tablet
-    height: 520px
-    padding-top: 200px
-
-  @include laptop-or-larger
-    height: 600px
-    padding-top: 340px
-
-  &:before
-    @include overlay
-    content: ''
-    background: linear-gradient(transparentize(black, 0.7), transparent)
+    @include tiny
+      padding-bottom: 6vh
+    
+    @include laptop-or-larger
+      position: static
+      padding-bottom: 0
 
   .content__splash__title
-    margin-top: 0 !important
-    margin-bottom: 4vh
+    margin-top: 22%
+    margin-bottom: 10vh
     padding: 0 3vw
-    font-weight: $font-bold
-    text-shadow: 1px 2px 4px transparentize(black, 0.25)
+    font-weight: $font-normal
 
     @include tiny
       margin-bottom: 6vh
@@ -209,14 +200,22 @@
 
   .content__splash__text
     max-width: 225px
-    margin-bottom: 40px
-    font-weight: $font-medium
-    text-shadow: 1px 2px 4px transparentize(black, 0.1)
+    margin-bottom: 12vh
+
+    @include tiny
+      margin-bottom: 6vh
 
     @include tablet-or-larger
       max-width: 360px
       font-size: 2.4rem
       line-height: 1.5
+      margin-bottom: 14vh
+
+    @include laptop
+      margin-bottom: 10vh
+
+    @include desktop
+      margin-bottom: 80px
 
 
 // ===== INVERTED COLOURS FOR A DARK BACKGROUND IMAGE ===== //
