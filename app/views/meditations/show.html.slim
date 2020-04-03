@@ -4,12 +4,7 @@
 main id=dom_id(@meditation)
   h1.banner = @meditation.name
 
-  - if supports_afterglow_player?(@meditation.vimeo_metadata(:horizontal)) && supports_afterglow_player?(@meditation.vimeo_metadata(:vertical))
-    = vimeo_tag @meditation.vimeo_metadata[:horizontal], playsinline: false, skin: :light, id: "#{dom_id(@meditation)}-horizontal-video"
-    = vimeo_tag @meditation.vimeo_metadata[:vertical], playsinline: false, skin: :light, id: "#{dom_id(@meditation)}-vertical-video"
-
-
-  //.meditation__media
+  .meditation__media
     figure.content__video__item
       .video.video--responsive.video--meditation class="js-video"
         .video__inner

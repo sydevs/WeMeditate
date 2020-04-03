@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_123041) do
+ActiveRecord::Schema.define(version: 2020_04_03_154637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,12 +99,12 @@ ActiveRecord::Schema.define(version: 2020_03_10_123041) do
     t.string "description"
     t.datetime "published_at"
     t.integer "state", default: 0
+    t.string "name"
     t.index ["author_id"], name: "index_author_translations_on_author_id"
     t.index ["locale"], name: "index_author_translations_on_locale"
   end
 
   create_table "authors", force: :cascade do |t|
-    t.string "name"
     t.integer "years_meditating"
     t.jsonb "image"
     t.bigint "user_id"
