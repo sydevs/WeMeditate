@@ -17,7 +17,7 @@ module Admin
     end
 
     def index?
-      update? || create? || destroy?
+      update? || create?
     end
 
     def show?

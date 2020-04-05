@@ -298,6 +298,9 @@ ru:
         modified: "Изменено"
         nochange: "Без Изменений"
 
+    preview:
+      no_custom_meditations: "The custom meditation interface cannot be previewed, and so it has been hidden for this preview."
+
     metadata:
       key: "Название"
       value: "Значение"

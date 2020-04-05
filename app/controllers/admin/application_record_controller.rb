@@ -13,12 +13,12 @@ module Admin
 
       respond_to do |format|
         format.html do
-          @records = @records.page(params[:page]).per(10)
+          @records = @records.page(params[:page]).per(15)
           render 'admin/application/index'
         end
 
         format.js do
-          @records = @records.page(params[:page]).per(10)
+          @records = @records.page(params[:page]).per(15)
           render 'admin/application/index'
         end
 

@@ -81,7 +81,7 @@ module SitemapHelper
         case block['type']
         when 'textbox'
           images << {
-            loc: record.media_file(block['data']['image']['id']).url,
+            loc: record.media_file(block['data']['image']['id'])&.url,
             title: block['data']['title'],
           }
         when 'image', 'structured'

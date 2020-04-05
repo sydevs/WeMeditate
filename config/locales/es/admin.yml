@@ -294,6 +294,9 @@ es:
         modified: "Modificado"
         nochange: "Ninguna modificación"
 
+    preview:
+      no_custom_meditations: "The custom meditation interface cannot be previewed, and so it has been hidden for this preview."
+
     metadata:
       key: "nombre"
       value: "valor"
