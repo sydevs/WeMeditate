@@ -32,7 +32,7 @@ class StaticPage < ApplicationRecord
 
   # Scopes
   default_scope { order(:role) }
-  scope :q, -> (q) { with_translation.joins(:translations).where('static_page_translations.name ILIKE ? OR role ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
+  scope :q, -> (q) { with_translation.joins(:translations).where('static_page_translations.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
   scope :special, -> { where.not(role: :custom) }
   
   # Include everything necessary to render this model

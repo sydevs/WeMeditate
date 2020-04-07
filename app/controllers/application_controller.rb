@@ -153,7 +153,6 @@ class ApplicationController < ActionController::Base
         @splash_style = :default
       end
 
-      puts "GEOCODE #{request.ip} #{location.country_code}, #{@splash_style}"
       @splash_style = :default # Override for now
       @header_style = @splash_style
     end
