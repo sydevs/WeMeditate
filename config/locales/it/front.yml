@@ -12,6 +12,7 @@ it:
     inspiration_from_within: "L’ispirazione viene da dentro"
     cookie_notice: "Se decidi di accedere wemeditate.co ci dai il permesso di utilizzare cookies."
     preview_notice: "Stai visualizzando un’anteprima"
+    kundalini: "Energia Interiore"
 
   footer:
     scroll_to_top: "Torna su"
@@ -90,7 +91,7 @@ it:
   meditations:
     prescreen:
       title: "Per accedere alle meditazioni guidate, risveglia ora la tua %{kundalini}"
-      kundalini: "Energia Interiore"
+      kundalini: "energia interiore"
       action: "Risveglia la Tua Energia Interiore"
       explanation:
         text: "Ognuno di noi ha un’energia interiore, che deve essere risvegliata prima di poter accedere allo stato di meditazione."
@@ -127,7 +128,7 @@ it:
   treatments:
     prescreen:
       title: "Prima di usare le tecniche per migliorare la tua meditazione dovresti risvegliare la tua %{kundalini}"
-      kundalini: "Energia Interiore"
+      kundalini: "energia interiore"
       action: "Risveglia la tua Energia Interiore"
       explanation:
         text: "Ognuno di noi ha un’energia interiore, che deve essere risvegliata prima di poter accedere allo stato di meditazione."

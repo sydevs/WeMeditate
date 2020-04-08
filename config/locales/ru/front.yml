@@ -12,6 +12,7 @@ ru:
     inspiration_from_within: "Источник вдохновения внутри"
     cookie_notice: "Продолжая использовать wemeditate.ru, вы даёте согласие на использование файлов cookie." # I changed wemeditate.co to wemeditate.ru
     preview_notice: "Вы просматриваете предварительый вариант"
+    kundalini: "Inner Energy" # TODO: Translate
 
   footer:
     scroll_to_top: "Наверх"
