@@ -6,7 +6,6 @@ de: # German translations
   routes:
     inspiration: "inspiration"
     articles: "articles"
-    countries: "countries"
     meditations: "meditations"
     techniques: "techniques"
     subtle_system: "subtle-system"
@@ -20,7 +19,6 @@ en: # English translations
   routes:
     inspiration: "inspiration"
     articles: "articles"
-    countries: "countries"
     meditations: "meditations"
     techniques: "techniques"
     subtle_system: "subtle-system"
@@ -34,7 +32,6 @@ es: # Spanish translations
   routes:
     inspiration: "inspiration"
     articles: "articles"
-    countries: "countries"
     meditations: "meditations"
     techniques: "techniques"
     subtle_system: "subtle-system"
@@ -48,21 +45,19 @@ fr: # French translations
   routes:
     inspiration: "inspiration"
     articles: "articles"
-    countries: "countries"
-    meditations: "meditations"
+    meditations: "méditations"
     techniques: "techniques"
-    subtle_system: "subtle-system"
+    subtle_system: "système-subtil"
     page: "page"
-    music: "music"
-    archive: "all"
-    self_realization: "first-experience"
+    music: "musique"
+    archive: "tout"
+    self_realization: "première-expérience"
     classes: "classes"
     live: "live"
 hy: # Armenian translations
   routes:
     inspiration: "inspiration"
     articles: "articles"
-    countries: "countries"
     meditations: "meditations"
     techniques: "techniques"
     subtle_system: "subtle-system"
@@ -76,7 +71,6 @@ it: # Italian translations
   routes:
     inspiration: "ispirazione"
     articles: "articoli"
-    countries: "paesi-del-mondo"
     meditations: "meditazioni"
     techniques: "tecniche"
     subtle_system: "sistema-sottile"
@@ -90,7 +84,6 @@ nl: # Dutch translations
   routes:
     inspiration: "inspiration"
     articles: "articles"
-    countries: "countries"
     meditations: "meditations"
     techniques: "techniques"
     subtle_system: "subtle-system"
@@ -104,7 +97,6 @@ pt: # Portuguese translations
   routes:
     inspiration: "inspiration"
     articles: "articles"
-    countries: "countries"
     meditations: "meditations"
     techniques: "techniques"
     subtle_system: "subtle-system"
@@ -116,23 +108,21 @@ pt: # Portuguese translations
     live: "live"
 ru: # Russian translations
   routes:
-    inspiration: "вдохновение"
-    articles: "статьи"
-    countries: "страны"
-    meditations: "медитации"
-    techniques: "техники"
-    subtle_system: "тонкая-система"
-    page: "страница"
-    music: "музыка"
-    archive: "все"
-    self_realization: "cамореализация"
+    inspiration: "inspiration"
+    articles: "articles"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
+    self_realization: "first-experience"
     classes: "classes"
     live: "live"
 uk: # Ukrainian translations
   routes:
     inspiration: "inspiration"
     articles: "articles"
-    countries: "countries"
     meditations: "meditations"
     techniques: "techniques"
     subtle_system: "subtle-system"

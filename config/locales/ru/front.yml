@@ -4,42 +4,42 @@
 
 ru:
   we_meditate: "We Meditate" # This is the title of the website
-  tagline: "Silence your mind and discover your inner potential with guided meditations. Connect with others around the world meditating for a better life." # TODO: Translate
+  tagline: "Раскройте свой внутренний потенциал и избавьтесь от ненужных мыслей с помощью медитации. Медитируйте, улучшая качество своей жизни и чувствуя связь со всем миром."
 
   header:
-    learn_more: "Подробнее"
-    classes_near_me: "Ближайшие Центры"
+    learn_more: "Ещё"
+    classes_near_me: "Медитации в прямом эфире"
     inspiration_from_within: "Источник вдохновения внутри"
-    cookie_notice: "Продолжая использовать wemeditate.ru, вы даёте согласие на использование файлов cookie." # I changed wemeditate.co to wemeditate.ru
+    cookie_notice: "Продолжая использовать wemeditate.ru, вы даёте согласие на использование файлов cookie."
     preview_notice: "Вы просматриваете предварительый вариант"
-    kundalini: "Inner Energy" # TODO: Translate
+    kundalini: "Внутренняя Энергия"
 
   footer:
     scroll_to_top: "Наверх"
-    meditate_now: "Начать медитацию"
+    meditate_now: "Медитировать сейчас"
     music_for_meditation: "Музыка для медитации"
-    learn_more: "Побробнее"
-    come_meditate: "Приходите на занятия"
-    online_meditations: "Медитация онлайн"
+    learn_more: "Узнать больше"
+    come_meditate: "Медитируйте с нами"
+    online_meditations: "Медитации онлайн"
     languages: "Языки" 
-    self_realization: "The First Experience" # TODO: Translate
+    self_realization: "Первый Опыт"
 
   actions_footer:
     title: "Откройте медитацию для себя!"
-    subtitle: "Не верьте нам на слово. Попробуйте помедитировать и посмотрите, как вы себя чувствуете!"
-    sidetext: "Попробовать"
+    subtitle: "Трудно поверить словам. Поверьте своим ощущениям"
+    sidetext: "Медитировать"
     actions:
       online: "Медитация онлайн"
-      local: "Ближайшие центры"
+      local: "Центры медитации"
 
   author:
-    about_the_author: "About the author" # TODO: Translate
-    about_the_artist: "About the artist" # TODO: Translate
-    written_by: "Написано"
+    about_the_author: "Об авторе" 
+    about_the_artist: "Об авторе"
+    written_by: "Автор"
     meditating_for:
-      one: "Медитирую %{count} год" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-      few: "Медитирую %{count} года" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
-      many: "Медитирую %{count} лет" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+      one: "Медитирует %{count} год" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+      few: "Медитирует %{count} года" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+      many: "Медитирует %{count} лет" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
 
   form:
     input:
@@ -58,20 +58,20 @@ ru:
       subscribe: "Теперь вы подписаны на рассылку."
       contact: "Ваше сообщение получено."
       register: "Вы зарегистрированы."
-    button: # TODO: Translate
-      try_again: "Try Again"
-      submitted: "Submitted"
+    button: 
+      try_again: "Попробуйте снова"
+      submitted: "Отправлено"
 
   player: # For the music or video player
     pause: "Пауза"
     play: "Воспроизвести"
     '%_buffered': "% загружено"
-    skip_back: "Предыдущий Трек"
-    skip_forward: "Следующий Трек"
-    rewind_10_secs: "Перемотать назад 10 секунд"
-    forward_10_secs: "Перемотать вперёд 10 секунд"
+    skip_back: "Предыдущий трек"
+    skip_forward: "Следующий трек"
+    rewind_10_secs: "Перемотать 10 секунд назад"
+    forward_10_secs: "Перемотать 10 секунд вперёд"
     unmute: "Включить звук"
-    mute: "Отключить звук"
+    mute: "Выключить звук"
     volume: "Громкость"
     disable_captions: "Убрать подписи"
     enable_captions: "Подписи"
@@ -93,26 +93,26 @@ ru:
     prescreen:
       title: "Хотите научиться медитировать? Cначала пробудите свою %{kundalini}"
       kundalini: "внутреннюю энергию"
-      action: "Пробудить Внутреннюю Энергию"
+      action: "Пробудить внутреннюю энергию"
       explanation:
         text: "В каждом из нас есть внутренняя энергия, которая, пробуждаясь, позволяет нам быть в состоянии медитации."
         learn_more: "Подробнее"
       skip:
         text: "Уже медитировали с нами?"
-        action: "Перейти к медитациям"
+        action: "Перейти к выбору медитации"
     featured:
       daily_meditation: "Медитация дня"
-      trending_meditation: "Популярная медитация"
-      random_meditation: "Доверюсь воле судьбы"
+      trending_meditation: "Сейчас в тренде"
+      random_meditation: "Довериться воле судьбы"
       random_meditation_title: "Попробовать случайную медитацию"
-      random_meditation_description: "Not sure what you need right now? Just feel like taking a chance? Click play and let the universe decide." # TODO: Translate
+      random_meditation_description: "Не уверены, что вам хочется прямо сейчас? Нажмите play, и пусть Вселенная решит."
     custom_meditation:
       title: "Выбери подходящую медитацию"
       choose_goal: "Я хочу почувствовать ..." # Please keep ' ...' (with a space) at the end of your translation.
       choose_duration: "У меня есть"
       goal_prompt: "Выберите настроение"
       submit: "Начать медитацию"
-      minutes: "мин"
+      minutes: "мин."
     archive:
       see_all_meditations: "Все медитации"
       title: "Медитации"
@@ -130,19 +130,19 @@ ru:
     prescreen:
       title: "Хотите углубить свой опыт медитации? Cначала пробудите свою %{kundalini}"
       kundalini: "внутреннюю энергию"
-      action: "Пробудите Свою Внутреннюю Энергию"
+      action: "Пробудить внутреннюю энергию"
       explanation:
         text: "В каждом из нас есть внутренняя энергия, которая, пробуждаясь, позволяет нам быть в состоянии медитации."
         learn_more: "Подробнее"
       skip:
         text: "Уже медитировали с нами?"
-        action: "Углубите свой опыт медитации!"
+        action: "Углубить свой опыт медитации!"
     music:
       title: "Музыка"
-      description: "Музыка может помочь нам расслабиться или, наоборот, придать сил, настраивая на активную работу. Она приводит нас в баланс и позволяет нашему уму оставаться в тишине и безмыслии. Наслаждайтесь нашей подборкой музыки, а вместе с ней и глубоким состоянием медитации."
+      description: "Музыка может помочь нам расслабиться или, наоборот, придаёт сил, настраивая на активную работу. Она приводит нас в баланс и позволяет нашему уму оставаться в тишине и безмыслии. Наслаждайтесь нашей коллекцией музыки, а вместе с ней и глубоким состоянием медитации."
       read_more: "Выберите из коллекции"
     read_more: "Подробнее"
-    show_more: "Показать Ещё Методы"
+    show_more: "Показать другие методы"
 
   content:
     credit: "Авторы"
@@ -157,41 +157,41 @@ ru:
     read_more: "Подробнее"
 
   classes:
-    map_title: "Meditation Classes Near Me" # TODO: Translate
+    map_title: "Центры Медитации"
     prompt: "Ваш город или индекс"
-    nearby: "Nearby" # TODO: Translate
-    loading: "Locating..." # TODO: Translate
-    found: "Click to confirm" # TODO: Translate
+    nearby: "Ближайшие центры"
+    loading: "Определяем ваше местоположение..."
+    found: "Нажмите, чтобы подтвердить"
 
-  streams: # TODO: Translate
+  streams: 
     countdown:
-      title: "Watch this space"
-      description: "The next live guided meditation is in"
-      action: "Remind Me"
+      title: "Медитации в прямом эфире"
+      description: "Каждый будний день в 21.00 (Московское время). Следующий эфир через"
+      action: "Напомнить Мне"
     live:
-      title: "We are live now!"
-      action: "Join now"
-      description: "Press play to join our live meditation session streaming right now"
+      title: "Мы в прямом эфире!"
+      action: "Присоединиться"
+      description: " Нажмите play, чтобы присоединиться к медитации в прямом эфире"
     timing:
-      days: "Days"
-      hours: "Hours"
-      minutes: "Minutes"
-      seconds: "Seconds"
+      days: "д."
+      hours: "ч."
+      minutes: "мин."
+      seconds: "сек."
 
   errors:
     title: "Ой..."
-    coming_soon: "Coming Soon" # TODO: Translate
-    no_programs: "Meditation classes in your area are coming soon." # TODO: Translate
+    coming_soon: "В разработке"
+    no_programs: "В вашем городе пока нет занятий по медитации"
     error: "Ошибка"
     alternatives_title: "Попробуйте один из следующих вариантов:"
-    report_issue: "Please try again, and report this issue if it continues to occur. When reporting the issue, please do your best to describe what specific actions you were taking before the issue occurred." # TODO: Translate
+    report_issue: "Пожалуйста, попробуйте снова и сообщите об ошибке, если она повторится. При отправке сообщения об ошибке, пожалуйста, постарайтесь максимально точно описать ваши действия."
     '404': "Такой страницы не существует."
     '422': "Запрошенное изменение было отклонено."
     '500': "К сожалению, что-то пошло не так."
 
   javascript:
-    reading_time: "%minutes% minute read" # TODO: Translate
-    loading: "Loading..." # TODO: Translate
+    reading_time: "%minutes% мин. чтения" 
+    loading: "Загружается..." 
     popup:
       close: "Закрыть (Esc)"
       loading: "Загружается..."
@@ -199,4 +199,5 @@ ru:
       next: "Следующий (Клавиша со стрелкой вправо)"
       counter: "%curr% из %total%"
       image_error: "Не удалось загрузить <a href=\"%url%\">изображение</a>."
-      ajax_error: "Не удалось загрузить <a href=\"%url%\">контект</a>."
+      ajax_error: "Не удалось загрузить <a href=\"%url%\">контент</a>."
+ 
