@@ -9,7 +9,7 @@ ru:
     action:
       view_site: "Посмотреть Сайт"
       view_admin: "Перейти В Панель Управления Админа"
-      tutorial: "Help (How to Use)" # TODO: Translate
+      tutorial: "Помощь (Как Использовать)" 
       report_issue: "Сообщить О Проблеме"
       search: "Искать..."
       sign_in: "Вход"
@@ -59,7 +59,7 @@ ru:
         show: "Посмотреть на сайте"
         preview: "Предварительный просмотр на сайте"
         reload_vimeo_data: "Reload Vimeo Metadata"
-        audit: "View change logs" # TODO: Translate
+        audit: "Просмотреть изменения" 
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
@@ -74,12 +74,12 @@ ru:
       featured_video: "Видео Статьи" # The video which will be shown on an article preview
       featured_date: "Дата Статьи" # The date which will be shown on an article preview
       role: "Роль На Сайте"
-      pending_changes: "This %{page} has changes pending approval" # TODO: Translate
+      pending_changes: "Эта %{page} имеет изменения, требующие утверждения" 
 
     tags:
       published: "Опубликовано"
       unpublished: "Не опубликовано"
-      unapproved_changes: "Has Unapproved Changes" # TODO: Translate
+      unapproved_changes: "Имеет неутверждённые изменения" 
       unpublished_draft: "Неопубликованный черновик"
       no_translation: "Отсутствует перевод на %{language}" # "language" will be replaced with the language that this file is written in.
       pending_translation: "Есть перевод на %{language}, в ожидании утверждения" # "language" will be replaced with the language that this file is written in.
@@ -87,10 +87,10 @@ ru:
       pending_invitation: "Приглашение ещё не принято"
       this_is_you: "Это вы" 
       missing_record: "Отсутствует %{model}" 
-      too_many_pinned: "More than %{count} pinned %{model}" # TODO: Translate
+      too_many_pinned: "Более, чем %{count} закреплено %{model}" 
       updated_ago: "Изменено %{time_ago} назад"
-      published_ago: "Published %{time_ago} ago" # TODO: Translate
-      published_from_now: "Will be published %{time_from_now} from now" # TODO: Translate
+      published_ago: "Опубликовано %{time_ago} назад" 
+      published_from_now: "Будет опубликовано через %{time_from_now}" 
       urgency: # These are in order, with 'critical' as the most important, and 'pending' as the least important.
         critical: "Очень Важный Вопрос"
         important: "Важный Вопрос"
@@ -120,22 +120,22 @@ ru:
       text_too_short: "должен быть по крайней мере %{count} букв"
       invalid_vimeo_id: "должно иметь действующее Vimeo ID"
       new_author_notice: "Вы ещё не настроили свой профиль автора, заполните поля ниже и нажмите сохранить."
-      start_details_before_content: "Start translating details first, then the content." # TODO: Translate
-      self_realization_slug: "The url for the self-realization page must be \"%{slug}\"" # TODO: Translate
+      start_details_before_content: "Сначала надо перевести параметры, потом контент." 
+      self_realization_slug: "Адрес страницы самореализации должен быть \"%{slug}\"" 
 
     hints: 
       excerpt: "Это короткое превью страницы, которое будет показано в списке страниц типа \"%{page}\"."
-      article_visibility: "This determines where an article will appear on the Inspiration page." # TODO: Translate
+      article_visibility: "Это определяет, в какой категории будет размещена статья на странице Вдохновение." 
       article_author: "Профиль, который будет отображаться в статье на сайте."
-      article_article_type: "Different article types will offer a few different fields and display the author differently." # TODO: Translate
-      article_coordinates: "Providing the latitude and longitude of an event will allow rich Google search results." # TODO: Translate
+      article_article_type: "Различные типы статей будут предлагать несколько разных полей и по-разному отображать автора." 
+      article_coordinates: "Указание широты и долготы позволит улучшить результаты поиска Google." 
       article_owner: "Администраторы и Редакторы всегда могут редактировать любые статьи. Это поле дает автору специальное разрешение на изменение статьи после её публикации. Обычно это человек, который написал первую версию статьи."
       article_video: "Если вы добавите видео, оно будет отображено на превью статьи."
-      article_date: "Set the start date of the event here. This date will appear on the article preview." # TODO: Translate
-      article_published_at: "If this date is in the future, then the article will be scheduled to be published on that date. Leave this fiield blank to have the publish date set automatically." # TODO: Translate
+      article_date: "Установите дату начала мероприятия здесь. Эта дата появится в превью статьи." 
+      article_published_at: "Статья будет опубликована в эту дату. Оставьте это поле пустым, чтобы автоматически установить дату публикации." 
       fixed_slug: "Это особая страница, ее адрес (URL) нельзя изменить." 
-      languages_access: "These are the locales where this user can modify the site content." # TODO: Translate
-      languages_known: "These are the languages that a user can translate content from." # TODO: Translate
+      languages_access: "Это языки, на которых пользователь может изменять контент." 
+      languages_known: "Это языки, с которых пользователь может переводить контент." 
 
     result:
       created: "Успешно создан."
@@ -146,10 +146,10 @@ ru:
       cannot_delete_attached_record: "Вы не можете удалить %{category}, прикреплённый к %{pages}. Выберите другую %{pages} и попробуйте снова."
       published: "Успешно опубликован."
     
-    audit: # TODO: Translate
-      title: "History of changes to \"%{record}\" %{model}"
-      changed_by: "by %{name}"
-      changed_to: "changed to"
+    audit: 
+      title: "История Изменений \"%{record}\" %{model}"
+      changed_by: "изменено %{name}"
+      changed_to: "изменено на"
     
     # ===== CONTENT ===== #
     # This section defines text that will be shown in the content editor.
@@ -167,7 +167,7 @@ ru:
         structured: "Структурированный Текст"
         textbox: "Текст С Изображением"
         video: "Видео"
-        whitespace: "Whitespace" # TODO: Translate
+        whitespace: "Пробел" 
       settings:
         tunes: "Варианты"
         decorations: "Оформление"
@@ -178,7 +178,7 @@ ru:
         asGallery: "Галерея"
         asWisdom: "Стиль Древних Знаний"
         asVideo: "Видео"
-        asPoem: "Poetry" # TODO: Translate
+        asPoem: "Поезия" 
         withImages: "Показать изображения" 
         invert: "Инвертировать Цвета"
         style: # These are list styles
@@ -190,26 +190,26 @@ ru:
           center: "Выравнивание По Центру"
           right: "Выравнивание По Правому Краю"
         position: # A 'callout' is an image or quotation which is inserted at the side of the text
-          center: "Centered" # TODO: Translate
+          center: "По Центру" 
           left: "С Левой Стороны"
           right: "С Правой Стороны"
         type: # Note to Developer: These must be translated manually because they are accessed in JavaScript
           articles: "Статьи Вдохновение"
           treatments: "Методы очистки"
           meditations: "Медитации"
-        level: # TODO: Translate # These are heading levels
-          h1: "Level 1"
-          h2: "Level 2"
-          h3: "Level 3"
-          h4: "Level 4"
-          h5: "Level 5"
-          h6: "Level 6"
-        size: # TODO: Translate
-          narrow: "Narrow"
-          wide: "Wide"
-          small: "Small"
-          medium: "Medium"
-          large: "Large"
+        level:  # These are heading levels
+          h1: "Уровень 1"
+          h2: "Уровень 2"
+          h3: "Уровень 3"
+          h4: "Уровень 4"
+          h5: "Уровень 5"
+          h6: "Уровень 6"
+        size: 
+          narrow: "Узкий"
+          wide: "Широкий"
+          small: "Маленький"
+          medium: "Средний"
+          large: "Большой"
         format:
           button: "Кнопка"
           grid: "Модульная Сетка"
@@ -279,18 +279,18 @@ ru:
         regional_admin: "отвечает за утверждение переводов, переводит основную часть сайта, контролирует публикацию нового контента на соответстующем языке."
         super_admin: "управляет основными элементами сайта и созданием новых редакторов."
 
-    review: # TODO: Translate
-      title: "Review Changes"
-      changes_contributed_by: "Changes contributed by:"
-      no_value: "No Value"
-      invalid_value: "Invalid Value"
-      no_changes: "No Changes"
+    review: 
+      title: "Просмотреть Изменения"
+      changes_contributed_by: "Изменения, внесённые:"
+      no_value: "Нет Значения"
+      invalid_value: "Недопустимое Значение"
+      no_changes: "Нет Изменений"
       discard_all_changes: "Отменить все изменения"
       approve_changes: "Утвердить все изменения"
-      or: OR
+      or: "ИЛИ"
       context:
-        details: "Page Details"
-        content: "Page Content"
+        details: "Параметры Страницы"
+        content: "Контент Страницы"
       effect:
         moved: "Перемещено"
         added: "Добавлено"
@@ -299,7 +299,7 @@ ru:
         nochange: "Без Изменений"
 
     preview:
-      no_custom_meditations: "The custom meditation interface cannot be previewed, and so it has been hidden for this preview."
+      no_custom_meditations: "Пользовательский интерфейс медитации нельзя просмотреть, поэтому он был скрыт для этого предварительного просмотра."
 
     metadata:
       key: "Название"
@@ -323,30 +323,30 @@ ru:
           few: "Черновик %{count} блоками" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
           many: "Черновик с %{count} блоками" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
 
-    dashboard: # TODO: Translate
+    dashboard: 
       title: "Панель управления"
       content:
-        title: "Published Content"
-        public: "The %{language} website (%{host}) is open to the public, and has the following published content."
-        private: "The %{language} website (%{host}) is closed to the public, and has the following ready content."
+        title: "Опубликованный Контент"
+        public: "%{language} сайт (%{host}) доступен пользователям и имеет следующий опубликованный контент."
+        private: "%{language} сайт (%{host}) не доступен пользователям, но имеет следующий контент, готовый к публикации."
       schedule:
-        title: "Publishing Schedule"
-        description: "This is a list of articles which are scheduled to be published in the near future."
-        no_schedule: "No articles are scheduled to be published."
+        title: "График публикаций"
+        description: "Это список статей, которые планируется опубликовать в ближайшее время."
+        no_schedule: "Нет статей, которые планируется опубликовать."
       alerts:
         title: "Оповещения"
-        description: "This is a list of important issues, that should be resolved to keep the site in healthy order."
+        description: "Это список важных проблем, которые необходимо решить, чтобы поддерживать сайт в рабочем состоянии."
         no_issues: "В настоящее время проблем нет, так держать!"
 
-    index: # TODO: Translate
+    index: 
       columns:
-        status: "Status"
-        name: "Name"
-        role: "Role"
-        updated_at: "Updated"
-        created_at: "Created"
-        last_sign_in_at: "Last Login"
-        minutes: "Duration"
+        status: "Статус"
+        name: "Имя"
+        role: "Роль"
+        updated_at: "Обновлено"
+        created_at: "Создано"
+        last_sign_in_at: "Последний логин"
+        minutes: "Продолжительность"
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate
@@ -356,85 +356,85 @@ ru:
         instruments_count: :activerecord.models.instrument_filter.other # Do not translate
         meditations_count: :activerecord.models.meditation.other # Do not translate
         tracks_count: :activerecord.models.track.other # Do not translate
-        account: "Account"
-        country_code: "Country"
+        account: "Аккаунт"
+        country_code: "Страна"
       sort:
-        title: "Sort by"
+        title: "Сортировать по"
         columns:
-          default: "Default"
-          name: "Name"
-          country_code: "Country"
-          updated_at: "Recently Updated"
-          created_at: "Recently Created"
-          last_sign_in_at: "Recently Signed In"
-          popularity: "Most Popular"
-          articles_count: "Most Articles"
-          meditations_count: "Most Meditations"
-          tracks_count: "Most Tracks"
+          default: "умолчанию"
+          name: "имени"
+          country_code: "стране"
+          updated_at: "недавно обновлённым"
+          created_at: "недавно созданным"
+          last_sign_in_at: "недавно залогининым"
+          popularity: "популярности"
+          articles_count: "количеству статей"
+          meditations_count: "количеству медитаций"
+          tracks_count: "количеству треков"
           duration: :activerecord.attributes.track.duration # Do not translate
-          role: "Role"
+          role: "роли"
       filter:
-        title: "Filter by"
+        title: "Фильтровать по"
       attribute:
-        status: "Status"
-        none: "None"
-        never: "Never"
-        default: "Default"
+        status: "статусу"
+        none: "ничему"
+        never: "никогда"
+        default: "умолчанию"
       status: # Try to keep these translations short
         # Draftable
-        needs_review: "Needs Review"
+        needs_review: "Требуется ревью"
         # Translatable
-        needs_translation: "Needs Translation"
-        not_translated: "Not Translated"
+        needs_translation: "Требуется перевод"
+        not_translated: "Не переведено"
         # Stateable
-        no_state: "In Progress"
-        in_progress: "In Progress"
+        no_state: "В процессе"
+        in_progress: "В процессе"
         archived: :activerecord.attributes.generic.states.archived # Do not translate
         published: :activerecord.attributes.generic.states.published # Do not translate
         unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         not_published: :activerecord.attributes.generic.states.unpublished # Do not translate
         # Publishable
-        public: "Public"
-        private: "Hidden"
+        public: "публичный"
+        private: "скрытый"
         # Users
-        pending: "Pending"
-        inactive: "Inactive"
-        active: "Active"
-        this_is_you: "This Is You"
+        pending: "в ожидании"
+        inactive: "не активен"
+        active: "активен"
+        this_is_you: "это вы"
 
-    tutorial: # TODO: Translate
-      title: "Starter Guide"
+    tutorial: 
+      title: "Руководство для начинающих"
       dashboard:
-        title: "How do I use this website?"
-        message: "If you are just getting started managing content on WeMeditate, we have prepared a few short videos, to help you if you're lost."
-        role_description: "You are a %{role}, and as such it is your role to %{description} For a video illustrating how to do this, please click the link below."
-        action: "Watch Tutorial Videos"
+        title: "Как пользоваться сайтом?"
+        message: "Если вы только начинаете управлять контентом на WeMeditate, мы подготовили несколько коротких видео, которые помогут вам сориентироваться."
+        role_description: "Вы %{role}, ваша роль %{description}. Для видео, объясняющего, как это сделать, нажмите на ссылку ниже."
+        action: "Смотреть видео тьюториал"
       index:
-        title: "What are these?"
+        title: "Что это?"
         message:
           # Pages
-          static_pages: "These are the primary pages of the website, such as the Home Page, Inspiration Page, Shri Mataji Page, etc. You can use this index to edit some of the content of these pages, but most of these pages have predefined conntent and urls."
-          articles: "Articles are written by Sahaja Yogis to inspire seekers. They can cover various topics, such as: meditation in daily life; writing about realized souls; artwork, music or poetry by yogis; in-depth articles on deeper topics; etc. Whatever a yogi may be inspired to write about.<br><br>All articles are shown on the site's \"Inspiration Page.\""
-          subtle_system_nodes: "These are the pages that describe different parts of the Subtle System. Each page is an in-depth explanation of the qualities of that chakra or channel, how it manifests in daily life, and the treatments that address it."
+          static_pages: "Это основные страницы сайта - главная, вдохновение, Шри Матаджи и др. Большинство этих страниц имеют предопределенное содержание и URL-адреса."
+          articles: "Статьи написаны йогами для вдохновения искателей. Они могут охватывать различные темы, такие как: медитация в повседневной жизни; реализованные люди; художественные произведения, музыка или поэзия йогов; подробные статьи на более глубокие темы и т.д. <br><br>Все статьи показаны на странице \"Вдохновение\"."
+          subtle_system_nodes: "Это страницы, которые о тонкой системе. Каждая страница подробно описывает чакру или канал."
           # Resources
-          meditations: "These are videos of guided meditations, narrated by yogis. They are available to the public on the website's \"Meditations\" page.<br><br>Each meditation is categorized by it's duration and the goals of that meditation, which allows users to generate a guided meditation that fits their needs. Each meditation also has a \"popularity\" statistic which represents the amount of views the meditation has been getting recently."
-          treatments: "These are the pages that describe different treatments that yogis use to clear themselves. Each technique will have a text description, and may have a video illustrating the treatment in action."
-          tracks: "Musical tracks are available for seekers to listen to on the website's \"Music\" page. Playlists are generated automatically for each type of instrument."
+          meditations: "Это видео медитаций. Они доступны на странице \"Медитации\". <br><br>Медитации разбиты по продолжительности и целям, так что пользователь может выбрать в зависимости от своих интересов. Каждая медитация имеет статистику популярности (количество просмотров в недавнее время)."
+          treatments: "Это страницы, которые описывают различные методы чисток. Каждый метод имеет описание и может иметь видео."
+          tracks: "Треки доступны для поиска на странице \"Музыка\". Плейлисты создаются автоматически для каждого инструмента."
           # Filters
-          categories: "Every article belongs to one of these categories. A seeker can use these categories to filter the Inspiration articles to find what they are interested in."
-          duration_filters: "These allow us to group meditations into approximate durations, so that seekers can watch a guided meditation that is the right length for the amount of time they have."
-          goal_filters: "These allow us to group meditations by what chakra or quality they focus on, so that seekers can watch a guided meditation for the challenges that they are facing."
-          instrument_filters: "These allow us to group music tracks, so that seekers can listen to music that fits their mood."
-          mood_filters: "These allow us to group music tracks, so that seekers can listen to music that fits their mood."
-          artists: "These provide extra information on the musical artist for each track."
+          categories: "Каждая статья относится к одной из этих категорий. Искатель может использовать эти категории для фильтрации статей Вдохновения."
+          duration_filters: "Это позволяет нам группировать медитации по их длительности, чтобы искатели могли выбрать медитацию, исходя из своего времени."
+          goal_filters: "Это позволяет нам группировать медитации по чакрам или качествам чакр, так что искатели могут найти нужную медитацию для решения проблем, с которыми они сталкиваются."
+          instrument_filters: "Это позволяет нам группировать музыкальные треки, чтобы искатели могли слушать музыку, соответствующую их настроению."
+          mood_filters: "Это позволяет нам группировать музыкальные треки, чтобы искатели могли слушать музыку, соответствующую их настроению."
+          artists: "Дополнительная информация о музыкантах для каждого трека."
           # People
-          authors: "Author profiles appear at the bottom of Inspiration Articles. They are useful to establish credibility and a more personal connection for the seeker with the author of the article.<br><br>Some author profiles are associated with a WeMeditate account. When a user with an account writes an article, their author profile is automatically added to it. Other contributors to WeMeditate may not have an account on this site, and so their profile does not have any linked account."
-          users: "These are the people who can modify the content of WeMeditate. Each admin has a role which defines what they are allowed to edit, and almost all admins are restricted to certain languages."
+          authors: "Профили авторов отображаются в нижней части статей Вдохновение. Они полезны для установления доверия и более личной связи искателей с автором статьи.<br><br> Некоторые профили авторов связаны с учетной записью WeMeditate. Когда пользователь с учетной записью пишет статью, его профиль автора автоматически добавляется к ней. Другие участники WeMeditate могут не иметь учетной записи на этом сайте, поэтому их профиль не имеет связанной учетной записи."
+          users: "Это люди, которые могут изменять содержание WeMeditate. У каждого администратора есть роль, которая определяет, что ему разрешено редактировать, и почти все администраторы ограничены определенными языками."
       show:
-        title: "What is this?"
+        title: "Что это?"
         message:
-          tutorial: "Click on the tabs below to view a few short videos explanations of how to manage content on the WeMeditate website."
-          my_author: "Whenever you write an article, this profile will be shown at the bottom of the article. This helps the seeker connect more with the writer of the article, and also establishes the credibility of the writer.<br><br>Here are some tips on writing a good bio.<br> - Use the third person.<br> - Don't dwell too much on your upbringing or how long you have been meditating.<br> - Do mention your profession or studies. Show that you are a respectable member of society.<br> - Unless you are writing an artist bio, try to be down to earth and let the reader see themselves in you."
+          tutorial: "Нажмите ниже, чтобы просмотреть несколько коротких видео, объясняющих, как управлять контентом на WeMeditate."
+          my_author: "Этот профиль будет показан внизу вашей статьи. Это помогает искателю лучше узнать автора статьи, а также устанавливает его авторитет.<br><br>Вот некоторые советы по написанию хорошей биографии.<br> - Пиши от третьего лица.<br> - Не зацикливайся на своем детстве или на том, как долго ты медитируешь.<br> - Укажи свою профессию или учебу, вы уважаемый член общества.<br> - Если ты не пишешь биографию художника, постарайся быть приземлённым и позволить читателю увидеть себя в твоей истории."
       role_vimeo_ids:
         super_admin: 363132481
         regional_admin: 363132481
@@ -443,24 +443,24 @@ ru:
         translator: 363139502
       panels:
         overview:
-          menu: "Overview"
-          title: "How to use the CMS as a %{role}"
-          description: "As a %{role}, it is your role to %{description}"
+          menu: "Обзор"
+          title: "Как использовать систему в качестве %{role}"
+          description: "Как %{role}, ваша роль %{description}"
         editor:
-          menu: "Writing Content"
-          title: "How to use the content editor"
+          menu: "Создание контента"
+          title: "Как использовать редактор текста"
           description: ""
           vimeo_id: 363156142
         issues:
-          menu: "Reporting Issues"
-          title: "How to report issues"
-          description: "Please click the \"Report Issue\" button at the bottom of the left-hand side menu. This will open up your email client where you will be able to send us an email at admin@wemeditate.co"
+          menu: "Сообщить о проблеме"
+          title: "Как сообщить о проблеме"
+          description: "Пожалуйста, нажмите \"Сообщить о проблеме\" в меню внизу слева. Так вы сможете отправить email на admin@wemeditate.co."
 
     report_issue:
       name: "WeMeditate Administrator"
       email: "admin@wemeditate.co"
       subject: "WeMeditate Issue Report"
-      body: "Пожалуйста, опишите проблему по-английски..."
+      body: "Пожалуйста, опишите проблему по-английски."
 
     misc:
       no_translated_title: "Отсутствует Перевод Заголовка" # This should be written in titlecase
@@ -480,7 +480,7 @@ ru:
         tracks: "Музыка"
         users: :activerecord.models.user.other
       locale:
-        no_languages: "No Languages" # TODO: Translate
+        no_languages: "Нет языков" 
         all_languages: "Все языки"
         other_languages: "Другие языки"
 

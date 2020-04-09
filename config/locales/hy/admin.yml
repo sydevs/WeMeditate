@@ -283,7 +283,7 @@ hy:
       no_changes: "No Changes"
       discard_all_changes: "Discard All Changes"
       approve_changes: "Save Approved Changes"
-      or: OR
+      or: "OR"
       context:
         details: "Page Details"
         content: "Page Content"

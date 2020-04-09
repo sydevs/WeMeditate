@@ -279,7 +279,7 @@ it:
       no_changes: "Nessuna Modifica"
       discard_all_changes: "Annulla tutte le modifiche"
       approve_changes: "Salva modifiche approvate"
-      or: OR
+      or: "OR"
       context:
         details: "Dettagli Pagina"
         content: "Contenuto Pagina"

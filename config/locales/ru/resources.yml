@@ -95,11 +95,11 @@ ru:
         many: "Медиа файлов" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
         other: "Медиа файлы" # Nonspecific number of elements
         
-        audit: # TODO: Translate
-        one: "Change Log" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-        few: "Change Logs" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
-        many: "Change Logs" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
-        other: "Change Logs" # Nonspecific number of elements
+        audit: 
+        one: "Журнал изменений" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Журнала изменений" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Журналов изменений" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Журналов изменений" # Nonspecific number of elements
 
     attributes:
       generic:
@@ -107,13 +107,13 @@ ru:
         published: "Опубликовано"
         name: "Имя"
         slug: "URL-адрес"
-        state: "Status" # TODO: Translate
-        states: # TODO: Translate
-          no_state: "No Translation Started"
-          in_progress: "Work in Progress"
-          archived: "Archived"
-          published: "Published"
-          unpublished: "Not Published"
+        state: "Статус" 
+        states:
+          no_state: "Нет перевода"
+          in_progress: "В работе"
+          archived: "Архив"
+          published: "Опубликовано"
+          unpublished: "Не опубликовано"
 
       article:
         published: :activerecord.attributes.generic.published # Do not translate
@@ -128,18 +128,18 @@ ru:
           archived: :activerecord.attributes.generic.states.archived # Do not translate
           published: :activerecord.attributes.generic.states.published # Do not translate
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
-        priority: "Priority" # TODO: Translate
+        priority: "Приоритет" 
         priorities:
-          pinned: "Pinned to Inspiration Page" # TODO: Translate
-          hidden: "Hidden from Inspiration Page" # TODO: Translate
+          pinned: "Закреплено на Странице Вдохновение" 
+          hidden: "Скрыто со Страницы Вдохновение" 
           low: "Низкая Видимость"
           normal: "Нормальная Видимость"
           high: "Высокая Видимость"
-        article_type: "Article Type" # TODO: Translate
-        article_types: # TODO: Translate
-          article: "Article"
-          artwork: "Artwork"
-          event: "Event"
+        article_type: "Тип Статьи" 
+        article_types: 
+          article: "Статья"
+          artwork: "Творчество"
+          event: "Событие"
         excerpt: "Выдержка"
         thumbnail: "Превью"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
@@ -147,13 +147,13 @@ ru:
         date: "Дата"
         content: "Контент"
         metatags: "Метаданные"
-        coordinates: "Location" # TODO: Translate
-        latitude: "Latitude" # TODO: Translate
-        longitude: "Longitude" # TODO: Translate
+        coordinates: "Местоположение"
+        latitude: "Широта" 
+        longitude: "Долгота" 
         author: :activerecord.models.author.one # Do not translate
         author_id: :activerecord.models.author.one # Do not translate
         owner: "Позволить автору обновлять статью"
-        published_at: "Publish Date" # TODO: Translate
+        published_at: "Дата Публикации"
 
       static_page:
         name: "Название"
@@ -179,8 +179,8 @@ ru:
           about: "О Проекте"
           classes: "Занятия По Медитации"
           privacy: "Политика Конфиденциальности"
-          streams: "Livestream Page" # TODO: Translate
-          custom: "Custom Page" # TODO: Translate
+          streams: "Страница Прямого Эфира" 
+          custom: "Пользовательская Страница"
         content: "Контент"
         metatags: "Метаданные"
 
@@ -205,9 +205,9 @@ ru:
           chakra_5: "Вишудхи Чакра"
           chakra_6: "Агия Чакра"
           chakra_7: "Сахасрара Чакра"
-          channel_left: "Ида (Левый) Канал"
-          channel_right: "Пингала (Правый) Канал"
-          channel_center: "Сушумна (Центральный) Канал"
+          channel_left: "Левый Канал"
+          channel_right: "Правый Канал"
+          channel_center: "Центральный Канал"
           kundalini: "Кундалини"
         content: "Контент"
         metatags: "Метаданные"
@@ -280,7 +280,7 @@ ru:
         title: "Название"
         artists: :activerecord.models.artist.few # Do not translate
         audio: "Файл (mp3)"
-        duration: "Duration" # TODO: Translate
+        duration: "Продолжительность"
         instrument_filters: :activerecord.models.instrument_filter.few # Do not translate
         mood_filters: :activerecord.models.mood_filter.few # Do not translate
 
@@ -304,7 +304,7 @@ ru:
         excerpt: "Выдержка"
         description: "Текст на Странице"
         metatags: "Метаданные"
-        popularity: "Popularity" # TODO: Translate
+        popularity: "Популярность"
 
       artist:
         published: :activerecord.attributes.article.published # Do not translate
@@ -337,8 +337,8 @@ ru:
         email: "E-mail"
         invitation_accepted_at: "Приглашение принято"
         invited_by: :activerecord.models.invited_by # Do not translate
-        languages_known: "Translatable Languages" # TODO: Translate
-        languages_access: "Accessible Locales" # TODO: Translate
+        languages_known: "Языки перевода" 
+        languages_access: "Доступные языки"
         role: "Роль"
         roles:
           translator: "Переводчик"
@@ -349,8 +349,8 @@ ru:
 
       audit:
         user: :activerecord.models.user.one # Do not translate
-        action: "Action"
+        action: "Действие"
         actions:
-          update: "Updated"
-          create: "Created"
-          destroy: "Deleted"
+          update: "Обновлено"
+          create: "Создано"
+          destroy: "Удалено"

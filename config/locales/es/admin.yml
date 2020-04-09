@@ -283,7 +283,7 @@ es:
       no_changes: "Sin Cambios"
       discard_all_changes: "Descartar Todos los Cambios"
       approve_changes: "Guardar Cambios Aprobados"
-      or: OR
+      or: "OR"
       context:
         details: "Detalles de la Página"
         content: "Contenido de la Página"
