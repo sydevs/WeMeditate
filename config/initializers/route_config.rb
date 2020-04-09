@@ -10,10 +10,10 @@ RouteTranslator.config do |config|
       'ua.wemeditate.co' => :uk, # Ukrainian
       'am.wemeditate.co' => :hy, # Armenian
       'nl.wemeditate.co' => :nl, # Dutch
-      'pt.wemeditate.co' => :pt, # Portuguese
       'es.wemeditate.co' => :es, # Spanish
       'de.wemeditate.co' => :de, # German
       'fr.wemeditate.co' => :fr, # French
+      'br.wemeditate.co' => :'pt-BR', # Brazilian Portuguese
       'wemeditate.it' => :it, # Italian
       'wemeditate.ru' => :ru, # Russian
       'wemeditate.co.uk' => :en, # English
@@ -35,7 +35,7 @@ RouteTranslator.config do |config|
     config.host_locales = {}
 
     I18n.available_locales.each do |locale|
-      hostname = (locale == :en ? host : "#{locale}.#{host}")
+      hostname = (locale == :en ? host : "#{locale.downcase}.#{host}")
       config.host_locales[hostname] = locale
     end
   end

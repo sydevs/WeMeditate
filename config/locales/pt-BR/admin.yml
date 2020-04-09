@@ -2,7 +2,7 @@
 # ADMINISTRATOR TRANSLATIONS
 # All translations in this file are seen by administrators of the website when managing the site content.
 
-pt:
+pt-BR:
   admin:
     # ===== ACTIONS ===== #
     # This section deals with actions that an administrator can take.
