@@ -2,7 +2,7 @@ module Admin
   # Basic controller that all other admin controllers inherit from.
   class ApplicationController < ::ApplicationController
 
-    before_action :set_locale!
+    prepend_before_action :set_locale!
     before_action :authenticate_user!
     before_action :redirect_to_locale!
     after_action :verify_authorized, except: %i[dashboard vimeo_data error]
