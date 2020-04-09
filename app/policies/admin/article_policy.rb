@@ -37,7 +37,7 @@ module Admin
       return true if admin?
       return true if editor?
       return true if writer? && owns_record?
-      return true if translator? && needs_translation? # This call is a bit more costly
+      return true if translator? && can_translate? # This call is a bit more costly
       return false
     end
 

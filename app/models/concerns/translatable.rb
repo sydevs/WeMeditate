@@ -46,14 +46,14 @@ module Translatable
 
   def has_complete_translation? locale: I18n.locale
     return false unless translated_locales.include?(locale)
-    return false if stateable? && (state == nil || state == :in_progress)
+    return false if stateable? && [nil, :no_state, :in_progress].include?(state.to_sym)
     return false if !stateable? && published_at == nil
     return true
   end
 
   def has_incomplete_translation? locale: I18n.locale
     return false unless translated_locales.include?(locale)
-    return true if stateable? && (state == nil || state == :in_progress)
+    return true if stateable? && [nil, :no_state, :in_progress].include?(state.to_sym)
     return true if !stateable? && published_at == nil
     return false
   end

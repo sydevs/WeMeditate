@@ -13,7 +13,7 @@ module Admin
 
     def update_translation?
       return false unless can_access_locale?
-      manage? || (translator? && needs_translation?)
+      manage? || (translator? && can_translate?)
     end
 
     def update_structure?

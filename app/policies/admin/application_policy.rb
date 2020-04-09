@@ -101,9 +101,9 @@ module Admin
       return true
     end
 
-    def needs_translation?
+    def can_translate?
       return true if record.is_a?(Class)
-      record.class.needs_translation_by(user).exists?(record.id)
+      record.translatable_by?(user)
     end
 
   end
