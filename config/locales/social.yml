@@ -72,7 +72,7 @@ nl: # Dutch
     instagram: https://www.instagram.com/wemeditate.co
     facebook: https://www.facebook.com/WeMeditateOfficial
 
-pt: # Portuguese
+pt-BR: # Portuguese
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
     twitter: https://twitter.com/intent/tweet?url=%{url}
