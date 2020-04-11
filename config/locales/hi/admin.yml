@@ -346,6 +346,7 @@ hi:
         created_at: "Created"
         last_sign_in_at: "Last Login"
         minutes: "Duration"
+        node: "Node"
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate

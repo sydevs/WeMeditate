@@ -342,6 +342,7 @@ es:
         created_at: "Creado"
         last_sign_in_at: "Último inicio de sesión"
         minutes: "Duración"
+        node: "Node" # TOOD: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate

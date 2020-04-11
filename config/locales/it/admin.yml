@@ -337,6 +337,7 @@ it:
         created_at: "Creato"
         last_sign_in_at: "Ultimo Accesso"
         minutes: "Durata"
+        node: "Node" # TOOD: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate
