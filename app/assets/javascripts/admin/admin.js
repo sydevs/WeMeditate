@@ -72,7 +72,7 @@ const Admin = {
 
     // Add callbacks for a few input types
     scope.find('input[type=file]').on('change', event => this.onChangeFileInput(event.target))
-    scope.find('.js-vimeo-field input').on('change', event => this.onRefreshVimeoInput(event.target.parentNode))
+    scope.find('.js-vimeo-field input').on('change', event => this.onRefreshVimeoInput(event.target.parentNode.parentNode))
     scope.find('.js-vimeo-field + .preview-item .reload').on('click', event => this.onRefreshVimeoInput(event.target.parentNode.previousSibling))
   },
 
