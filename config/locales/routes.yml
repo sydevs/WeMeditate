@@ -54,6 +54,19 @@ fr: # French translations
     self_realization: "première-expérience"
     classes: "classes"
     live: "live"
+hi: # Hindi translations
+  routes:
+    inspiration: "inspiration"
+    articles: "articles"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
+    self_realization: "first-experience"
+    classes: "classes"
+    live: "live"
 hy: # Armenian translations
   routes:
     inspiration: "inspiration"
@@ -107,6 +120,19 @@ pt-BR: # Portuguese translations
     classes: "classes"
     live: "live"
 ru: # Russian translations
+  routes:
+    inspiration: "inspiration"
+    articles: "articles"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
+    self_realization: "first-experience"
+    classes: "classes"
+    live: "live"
+tr: # Turkish translations
   routes:
     inspiration: "inspiration"
     articles: "articles"

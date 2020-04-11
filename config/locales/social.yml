@@ -42,6 +42,16 @@ fr: # French
     instagram: https://www.instagram.com/wemeditate.co
     facebook: https://www.facebook.com/WeMeditateOfficial
 
+hi: # Hindi
+  sharing:
+    facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
+    twitter: https://twitter.com/intent/tweet?url=%{url}
+    pinterest: http://pinterest.com/pin/create/button/?url=%{url}
+    whatsapp: whatsapp://send?text=%{url}
+  social_media:
+    instagram: https://www.instagram.com/wemeditate.co
+    facebook: https://www.facebook.com/WeMeditateOfficial
+
 hy: # Armenian
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
@@ -88,6 +98,16 @@ ru: # Russian
   social_media:
     instagram: https://www.instagram.com/wemeditate.co
     vk: ''
+
+tr: # Turkish
+  sharing:
+    facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
+    twitter: https://twitter.com/intent/tweet?url=%{url}
+    pinterest: http://pinterest.com/pin/create/button/?url=%{url}
+    whatsapp: whatsapp://send?text=%{url}
+  social_media:
+    instagram: https://www.instagram.com/wemeditate.co
+    facebook: https://www.facebook.com/WeMeditateOfficial
 
 uk: # Ukrainian
   sharing:
