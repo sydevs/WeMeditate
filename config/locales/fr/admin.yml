@@ -178,6 +178,7 @@ fr:
         asPoem: "Poetry" # TODO: Translate
         withImages: "Afficher les Images"
         invert: "Inverser les Couleurs"
+        compact: "No Spacing After Block" # TODO: Translate
         style: # These are list styles
           unordered: "Non Classé" # Also called a "Bulleted" list
           ordered: "Numéroté" # Also called a "Numbered" list

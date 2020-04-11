@@ -2,6 +2,7 @@
 - url = (block[:format] == 'contact' ? contact_path : subscribe_path)
 - classes = ['content__form', 'js-form']
 - classes << "content__form--#{block[:format]}"
+- classes << 'content__form--compact' if block[:compact] == true
 
 = form_tag url, id: 'signup', class: classes, remote: true do
   .divider.divider--leaf.divider--leaf-only.divider--leaf-up

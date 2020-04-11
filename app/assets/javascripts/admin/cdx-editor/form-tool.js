@@ -27,6 +27,7 @@ class FormTool extends EditorTool {
       text: data.text || '',
       action: data.action || '',
       list_id: data.list_id || '',
+      compact: data.compact || false,
       format: ['signup', 'contact'].includes(data.format) ? data.format : 'signup',
     }, { // Config
       id: 'form',
@@ -49,6 +50,10 @@ class FormTool extends EditorTool {
           label: 'Contact Form',
           icon: 'envelope',
           group: 'format',
+        },
+        {
+          name: 'compact',
+          icon: 'clockwise rotated microchip',
         },
       ],
     }, api)

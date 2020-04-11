@@ -181,6 +181,7 @@ ru:
         asPoem: "Поезия" 
         withImages: "Показать изображения" 
         invert: "Инвертировать Цвета"
+        compact: "No Spacing After Block" # TODO: Translate
         style: # These are list styles
           unordered: "Неупорядоченный Список" # Also called a "Bulleted" list
           ordered: "Пронумерованный Спсиок" # Also called a "Numbered" list

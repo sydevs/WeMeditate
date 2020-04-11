@@ -178,6 +178,7 @@ de:
         asPoem: "Poetry"
         withImages: "Show Images"
         invert: "Invert Colours"
+        compact: "No Spacing After Block"
         style: # These are list styles
           unordered: "Unordered" # Also called a "Bulleted" list
           ordered: "Ordered" # Also called a "Numbered" list

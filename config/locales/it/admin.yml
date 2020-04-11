@@ -175,6 +175,7 @@ it:
         asPoem: "Poesia"
         withImages: "Mostra Immagini"
         invert: "Colori invertiti"
+        compact: "No Spacing After Block" # TODO: Translate
         style:
           unordered: "Non in ordine"
           ordered: "In ordine"
