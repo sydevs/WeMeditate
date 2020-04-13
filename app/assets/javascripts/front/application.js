@@ -28,8 +28,12 @@ const Application = {
     Application.loadAnimations()
 
     const preloader = document.querySelector('.preloader')
-    if (Application.preloaded && preloader) {
-      preloader.remove()
+    if (preloader) {
+      if (Application.preloaded) {
+        preloader.remove()
+      } else {
+        document.body.classList.add('noscroll')
+      }
     }
 
     Application.elements = {}
@@ -173,8 +177,10 @@ const Application = {
 document.addEventListener('ready', () => Application.init())
 document.addEventListener('turbolinks:load', () => Application.load())
 document.addEventListener('turbolinks:before-cache', () => Application.unload())
+
 window.addEventListener('load', function() {
   $('.preloader').delay(1000).fadeOut('slow')
+  document.body.classList.remove('noscroll')
   Application.preloaded = true
   Application.init()
 })
