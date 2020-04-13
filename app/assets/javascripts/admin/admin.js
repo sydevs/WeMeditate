@@ -92,6 +92,7 @@ const Admin = {
 
   // When vimeo metadata is refreshed, we need to make the appropriate server requests
   onRefreshVimeoInput(field) {
+    console.log(field)
     const vimeo_id = field.querySelector('input').value
     const input = field.querySelector('.input')
     const meta = field.nextSibling
