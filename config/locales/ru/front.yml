@@ -3,7 +3,7 @@
 # This file contains translations which will be seen by the public.
 
 ru:
-  we_meditate: "We Meditate" # This is the title of the website
+  we_meditate: "We Meditate | Медитации для лучшей жизни" # This is the title of the website
   tagline: "Раскройте свой внутренний потенциал и избавьтесь от ненужных мыслей с помощью медитации. Медитируйте, улучшая качество своей жизни и чувствуя связь со всем миром."
 
   header:
@@ -16,11 +16,11 @@ ru:
 
   footer:
     scroll_to_top: "Наверх"
-    meditate_now: "Медитировать сейчас"
+    meditate_now: "Медитации онлайн"
     music_for_meditation: "Музыка для медитации"
     learn_more: "Узнать больше"
     come_meditate: "Медитируйте с нами"
-    online_meditations: "Медитации онлайн"
+    online_meditations: "Медитации Онлайн"
     languages: "Языки" 
     self_realization: "Первый Опыт"
 
@@ -29,7 +29,7 @@ ru:
     subtitle: "Трудно поверить словам. Поверьте своим ощущениям"
     sidetext: "Медитировать"
     actions:
-      online: "Медитация онлайн"
+      online: "Медитации онлайн"
       local: "Центры медитации"
 
   author:
@@ -83,8 +83,8 @@ ru:
     play_title: "Воспроизвести %{title}" # %{title} is the title of a video or music track
 
   articles:
-    read_more: "Читать дальше" # Takes you to the article page
-    load_more: "Загрузить ещё" # Loads more articles
+    read_more: "Читать дальше" 
+    load_more: "Загрузить ещё" 
     filter: "Фильтровать"
     show_all: "Показать всё"
     share: "Поделиться: "
@@ -105,9 +105,9 @@ ru:
       trending_meditation: "Сейчас в тренде"
       random_meditation: "Довериться воле судьбы"
       random_meditation_title: "Попробовать случайную медитацию"
-      random_meditation_description: "Не уверены, что вам хочется прямо сейчас? Нажмите play, и пусть Вселенная решит."
+      random_meditation_description: "Не уверены, что хочется именно сейчас? Попробуйте случайную медитацию и позвольте вселенной сделать выбор для вас."
     custom_meditation:
-      title: "Выбери подходящую медитацию"
+      title: "Выберите подходящую медитацию"
       choose_goal: "Я хочу почувствовать ..." # Please keep ' ...' (with a space) at the end of your translation.
       choose_duration: "У меня есть"
       goal_prompt: "Выберите настроение"
@@ -139,10 +139,10 @@ ru:
         action: "Углубить свой опыт медитации!"
     music:
       title: "Музыка"
-      description: "Музыка может помочь нам расслабиться или, наоборот, придаёт сил, настраивая на активную работу. Она приводит нас в баланс и позволяет нашему уму оставаться в тишине и безмыслии. Наслаждайтесь нашей коллекцией музыки, а вместе с ней и глубоким состоянием медитации."
-      read_more: "Выберите из коллекции"
+      description: "Музыка может помочь вам расслабиться или, наоборот, придаст сил, настраивая на активную работу. Она приводит в баланс и позволяет вашему уму оставаться в тишине и безмыслии. Наслаждайтесь уникальной коллекцией музыки, а вместе с ней и глубоким состоянием медитации."
+      read_more: "Выбрать из коллекции"
     read_more: "Подробнее"
-    show_more: "Показать другие методы"
+    show_more: "Показать ещё"
 
   content:
     credit: "Авторы"
@@ -150,7 +150,7 @@ ru:
 
   subtle_system:
     title:
-      desktop: "Наведите курсор, чтобы узнать больше"
+      desktop: "Наведите на изображение, чтобы узнать больше"
       mobile: "Нажмите, чтобы узнать больше"
     chakras: "Чакры"
     channels: "Каналы"
@@ -165,13 +165,13 @@ ru:
 
   streams: 
     countdown:
-      title: "Медитации в прямом эфире"
+      title: "Медитация в прямом эфире"
       description: "Каждый будний день в 21.00 (Московское время). Следующий эфир через"
       action: "Напомнить Мне"
     live:
       title: "Мы в прямом эфире!"
       action: "Присоединиться"
-      description: " Нажмите play, чтобы присоединиться к медитации в прямом эфире"
+      description: "" # Нажмите play, чтобы присоединиться к медитации в прямом эфире
     timing:
       days: "д."
       hours: "ч."
