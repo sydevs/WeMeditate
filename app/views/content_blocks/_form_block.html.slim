@@ -4,7 +4,8 @@
 - classes << "content__form--#{block[:format]}"
 - classes << 'content__form--compact' if block[:compact] == true
 
-= form_tag url, id: 'signup', class: classes, remote: true do
+= form_tag url, class: classes, remote: true do
+  .anchor id='signup'
   .divider.divider--leaf.divider--leaf-only.divider--leaf-up
 
   .content__form__content
