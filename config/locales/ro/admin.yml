@@ -7,429 +7,429 @@ ro:
     # ===== ACTIONS ===== #
     # This section deals with actions that an administrator can take.
     action:
-      view_site: "View Site"
-      view_admin: "Go To Admin Dashboard"
-      tutorial: "Help (How to Use)"
-      report_issue: "Report Issue"
-      search: "Search..."
-      sign_in: "Log In"
-      sign_out: "Log Out"
+      view_site: "Vezi Site-ul"
+      view_admin: "Accesează Panou Administrator"
+      tutorial: "Ajutor (Cum să folosești)"
+      report_issue: "Raportează Problema"
+      search: "Caută..."
+      sign_in: "Autentificare"
+      sign_out: "Deconectare"
 
       draft:
-        reset: "Discard Draft Value" # "Value" refers to a piece of information which is stored in the site's database. It could be a number, text, file, etc.
-        redo: "Use Draft Value"
-        reset_tooltip: "Reset to \"%{value}\""
-        redo_tooltip: "Set to \"%{value}\""
+        reset: "Renunță la ciornă" # "Value" refers to a piece of information which is stored in the site's database. It could be a number, text, file, etc.
+        redo: "Folosește Ciorna"
+        reset_tooltip: "Resetează la \"%{value}\""
+        redo_tooltip: "Setează la \"%{value}\""
 
       simple:
-        show: "View"
-        create: "New"
-        edit: "Edit"
-        write: "Write"
-        edit_details: "Edit details" # These are the details of a page
-        edit_content: "Edit content" # This is the content of a page
-        update: "Save"
-        destroy: "Delete"
-        preview: "Preview"
-        review: "Review changes"
-        save_draft: "Save Draft"
-        approve: "Approve"
-        invite: "Invite" # To invite a new editor to the website
-        reinvite: "Resend Invitation"
-        cancel: "Cancel"
-        back: "Back"
+        show: "Vezi"
+        create: "Nou"
+        edit: "Editează"
+        write: "Scrie"
+        edit_details: "Editează detaliile" # These are the details of a page
+        edit_content: "Editează conținutul" # This is the content of a page
+        update: "Salvează"
+        destroy: "Șterge"
+        preview: "Previzualizează"
+        review: "Revezi modificările"
+        save_draft: "Salvează ciornă"
+        approve: "Aprobă"
+        invite: "Invită" # To invite a new editor to the website
+        reinvite: "Trimite din nou invitația"
+        cancel: "Anulează"
+        back: "Înapoi"
 
       target: # A 'record' refers to some part of the website, such as an Article, WebPage, Guided Meditation, etc.
-        show: "View %{record}"
-        upload: "Upload %{record}"
-        edit: "Edit %{record}"
-        write: "Write %{record} content"
-        review: "Review %{record}"
-        reset: "Reset %{record}"
-        publish: "Publish %{record}"
-        unpublish: "Unpublish %{record}" # This means hiding the record from the public, the opposite of publishing
-        add: "Add %{record}"
-        create: "New %{record}"
-        remove: "Remove %{record}"
-        destroy: "Delete this %{record}"
-        back: "Back to %{records}"
-        reorder: "Change %{record} Order"
+        show: "Vezi %{record}"
+        upload: "Încarcă %{record}"
+        edit: "Editează %{record}"
+        write: "Compune %{record} content"
+        review: "Revezi %{record}"
+        reset: "Resetează %{record}"
+        publish: "Publică %{record}"
+        unpublish: "Anulează publicarea %{record}" # This means hiding the record from the public, the opposite of publishing  
+        add: "Adaugă %{record}"
+        create: "%{record} nouă"
+        remove: "Elimină %{record}"
+        destroy: "Șterge %{record}"
+        back: "Înapoi la %{records}"
+        reorder: "Schimbă Ordinea %{record}"
 
       descriptive:
-        show: "View on website"
-        preview: "Preview draft on website"
-        reload_vimeo_data: "Reload Vimeo Metadata"
-        audit: "View change logs"
+        show: "Vizualizează pe site"
+        preview: "Previzualizează schița pe site"
+        reload_vimeo_data: "Reîncarcă Metadatele Vimeo"
+        audit: "Vezi istoricul modificărilor"
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
     
     details:
-      original_language: "Original Language"
-      translated_languages: "Translated Languages"
-      priority: "Inspiration Page"
-      owned_by: "Owned by %{owner}"
-      vertical_video: "Vertical Video"
-      horizontal_video: "Horizontal Video"
-      featured_video: "Featured Video" # The video which will be shown on an article preview
-      featured_date: "Featured Date" # The date which will be shown on an article preview
-      role: "Role On Website"
-      pending_changes: "This %{page} has changes pending approval"
+      original_language: "Limba originală"
+      translated_languages: "Limbi traduse"
+      priority: "Pagina de Inspirație"
+      owned_by: "Deținut de %{owner}"
+      vertical_video: "Videoclip Vertical"
+      horizontal_video: "Videoclip Orizontal"
+      featured_video: "Videoclip Prezentat" # The video which will be shown on an article preview
+      featured_date: "Dată Prezentată" # The date which will be shown on an article preview
+      role: "Rol pe Website"
+      pending_changes: "Această %{page} are modificări în curs de aprobare"
 
     tags:
-      published: "Published"
-      unpublished: "Not Published"
-      unapproved_changes: "Has Unapproved Changes"
-      unpublished_draft: "Unpublished Draft"
-      no_translation: "No %{language} Translation" # "language" will be replaced with the language that this file is written in.
-      pending_translation: "Has %{language} Translation, Pending Approval" # "language" will be replaced with the language that this file is written in.
-      in_progress_translation: "Has Incomplete %{language} Translation" # "language" will be replaced with the language that this file is written in.
-      pending_invitation: "Has Not Yet Accepted Invitation"
-      this_is_you: "This is you"
-      missing_record: "Missing %{model}"
-      too_many_pinned: "More than %{count} pinned %{model}"
-      updated_ago: "Modified %{time_ago} ago"
-      published_ago: "Published %{time_ago} ago"
-      published_from_now: "Will be published %{time_from_now} from now"
+      published: "Publicat"
+      unpublished: "Nepublicat" 
+      unapproved_changes: "Modificări Neaprobate"
+      unpublished_draft: "Schiță Nepublicată"
+      no_translation: "Nicio Traducere în %{language}" # "language" will be replaced with the language that this file is written in.
+      pending_translation: "Traducere în așteptare în %{language}" # "language" will be replaced with the language that this file is written in.
+      in_progress_translation: "Traducere în curs în %{language}" # "language" will be replaced with the language that this file is written in.
+      pending_invitation: "Încă nu a acceptat invitația"
+      this_is_you: "Profilul tău" 
+      missing_record: "Lipsește %{model}"
+      too_many_pinned: "Mai mult de %{count} %{model} atasate"
+      updated_ago: "Actualizat de %{time_ago}"
+      published_ago: "Publicat de %{time_ago}"
+      published_from_now: "Va fi publicat peste %{time_from_now} de acum"
       urgency: # These are in order, with 'critical' as the most important, and 'pending' as the least important.
-        critical: "Critical Issue"
-        important: "Important Issue"
-        normal: "Normal Priority"
-        pending: "Pending"
+        critical: "Problemă de Maximă Importanță"
+        important: "Problemă Importantă"
+        normal: "Prioritate Obișnuită"
+        pending: "În așteptare"
       views: # This is the number of viewers or visits. Used to indicate the number of video views
-        one: "%{count} View"
-        other: "%{count} Views"
-      popularity: "Popularity: %{value}"
+        one: "%{count} Vizualizare"
+        other: "%{count} Vizualizări"
+      popularity: "Popularitate: %{value}"
 
     messages:
-      loading: "Loading"
-      errors: "Errors"
-      no_translations_found: "No %{pages} to translate"
-      make_public: "Make this %{page} visible to the public"
-      maintenance_mode: "The website is under construction, come back soon."
-      confirm_destroy: "Are you sure you want to delete that? This cannot be undone!"
-      confirm_discard_draft: "Are you sure you want to discard all changes to this page? This cannot be undone!"
-      confirm_unsaved_changes: "Unsaved changes will be lost. Are you sure you want to leave the page?"
-      drop_files_here: "Drop files here"
-      unapproved_changes_notice: "This %{page} has unpublished changes. These will not be visible to the public until they have been reviewed by an administrator."
-      pending_invitation_notice: "This %{person} has been sent an invitation to become an editor on the website, but has not yet responded."
-      draft_notice: "You are viewing a draft version of this %{page}. This version not be visible to the public until it has been reviewed by an administrator."
-      draft_contributed_by: "This draft includes changed made by %{people}."
-      text_too_short: "must have at least %{count} letters"
-      invalid_vimeo_id: "must be a valid Vimeo ID"
-      new_author_notice: "You have not set up your author profile yet, fill out the fields below and press save."
-      start_details_before_content: "Start translating details first, then the content."
+      loading: "Se încarcă"
+      errors: "Erori"
+      no_translations_found: "Nicio traducere pentru %{pages}"
+      make_public: "Fă %{page} să fie vizibilă publicului"
+      maintenance_mode: "Website  în construcție, te rugăm să revii în curând."
+      confirm_destroy: "Ești sigur că vrei să ștergi definitiv? Această acțiune nu este reversibilă!"
+      confirm_discard_draft: "Ești sigur că vrei să renunți la toate modificările aduse acestei pagini? Această acțiune nu poate fi anulată!"
+      confirm_unsaved_changes: "Modificările nesalvate vor fi pierdute. Ești sigur că vrei să părăsești această pagină?"
+      drop_files_here: "Mută fișierele aici"
+      unapproved_changes_notice: "%{page} are modificări nepublicate. Acestea nu vor fi vizibile publicului până când nu vor fi revizuite de un administrator"
+      pending_invitation_notice: "%{person} a primit invitația pentru a deveni editor pe site-ul web, dar încă nu a răspuns."
+      draft_notice: "Vizionezi o versiune a schiței acestei %{page}. Această versiune nu va fi vizibilă publicului până când nu va fi revizuită de un administrator."
+      draft_contributed_by: "Această schiță include modificările făcute de %{people}."
+      text_too_short: "trebuie să aibă cel puțin %{count} litere"
+      invalid_vimeo_id: "trebuie sa fie un ID Vimeo valid"
+      new_author_notice: "Încă nu ai configurat profilul tău de autorului, completează câmpurile de mai jos și apasă salvează."
+      start_details_before_content: "Începe traducerea detaliilor mai întâi, apoi a conținutul."
 
     hints:
-      excerpt: "This is a short preview of the %{page} content that will be shown in %{page} listings."
-      article_visibility: "This determines where an article will appear on the Inspiration page."
-      article_author: "The profile which will be shown under the article on the website."
-      article_article_type: "Different article types will offer a few different fields and display the author differently."
-      article_owner: "Administrators and Editors can always edit all articles. This field gives a writer special permission to modify an article after it is published. Usually this is the person who wrote the article in the first place."
-      article_video: "If you enter a featured video, it will appear on the article preview."
-      article_date: "Set the start date of the event here. This date will appear on the article preview."
-      article_coordinates: "Providing the latitude and longitude of an event will allow rich Google search results."
-      article_published_at: "If this date is in the future, then the article will be scheduled to be published on that date. Leave this fiield blank to have the publish date set automatically."
-      fixed_slug: "This is a special page, it's URL cannot be changed."
-      languages_access: "These are the locales where this user can modify the site content."
-      languages_known: "These are the languages that a user can translate content from."
-      self_realization_slug: "The url for the self-realization page must be \"%{slug}\""
+      excerpt: "Aceasta este o scurtă previzualizare a conținutului %{page} care va fi afișat în lista %{page}."
+      article_visibility: "Aceasta determină locul în care va apărea un articol pe pagina de Inspirație."
+      article_author: "Profilul care va fi afișat în conformitate cu articolul de pe site-ul web."
+      article_article_type: "Diferitele tipuri de articole vor oferi câteva câmpuri variate și vor afișa autorul diferit."
+      article_owner: "Administratorii și editorii pot edita întotdeauna toate articolele. Acest câmp oferă autorului o autorizare specială pentru a modifica un articol după ce este publicat. De obicei, aceasta este persoana care a scris articolul."
+      article_video: "Dacă introduci un videoclip prezentat, acesta va apărea în previzualizarea articolului."
+      article_date: "Setează data de început a evenimentului aici. Această dată va apărea în previzualizarea articolului."
+      article_coordinates: "Furnizarea latitudinii și longitudinii a unui eveniment va permite rezultate mai exacte de căutare Google."
+      article_published_at: "Dacă această dată este în viitor, atunci articolul va fi programat să fie publicat la acea dată. Lasă acest câmp gol pentru ca data publicării să fie setată automat."
+      fixed_slug: "Aceasta este o pagină specială, adresa URL nu poate fi modificată."
+      languages_access: "Acestea sunt locurile unde acest utilizator poate modifica conținutul site-ului."
+      languages_known: "Acestea sunt limbile din care un utilizator poate alege pentru a traduce conținutul."
+      self_realization_slug: "URL-ul pentru pagina de Realizare a Sinelui automată trebuie să fie \"%{slug}\"" 
 
     result:
-      created: "Created successfully."
-      updated: "Saved successfully."
-      deleted: "Deleted successfully."
-      saved_but_needs_review: "Saved successfully, changes will be published after they are reviewed."
-      cannot_delete_attached_record: "You cannot delete a %{category} which has %{pages} attached to it. Reassign the %{pages} and try again."
+      created: "Creat cu succes."
+      updated: "Actualizat cu succes."
+      deleted: "Șters cu succes."
+      saved_but_needs_review: "Salvare reușită, modificările vor fi publicate după ce vor fi verificate."
+      cannot_delete_attached_record: "Nu poți șterge %{category} deoarece sunt atașate %{pages}. Realocă %{pages} și încearcă din nou."
       # Example: "You cannot delete a Category which has Articles attached to it. Reassign the Articles and try again."
-      published: "Published successfully."
+      published: "Publicat cu succes."
     
     audit:
-      title: "History of changes to \"%{record}\" %{model}"
-      changed_by: "by %{name}"
-      changed_to: "changed to"
+      title: "Istoricul modificărilor \"%{record}\" %{model}"
+      changed_by: "de %{name}"
+      changed_to: "schimbat în"
 
     # ===== CONTENT ===== #
     # This section defines text that will be shown in the content editor.
     content:
-      outline_title: "Structure of the %{page} Content" # The title for a section which outlines the structure of a page.
+      outline_title: "Structura conținutului %{page} " # The title for a section which outlines the structure of a page.
       blocks: # These blocks are the types of elements that can be used on a page
-        header: "Title"
-        paragraph: "Paragraph"
-        image: "Image"
-        action: "Button"
-        catalog: "WeMeditate Content"
-        list: "List"
-        quote: "Quote"
-        form: "Form"
-        structured: "Structured Text"
-        textbox: "Text With Image"
+        header: "Titlu"
+        paragraph: "Paragraf"
+        image: "Imagine"
+        action: "Buton"
+        catalog: "Conținut WeMeditate"
+        list: "Listă"
+        quote: "Citat"
+        form: "Formular" 
+        structured: "Structura Textului"
+        textbox: "Text cu Imagine"
         video: "Video"
-        whitespace: "Whitespace"
+        whitespace: "Whitespace" # TODO: Translate
       settings:
-        tunes: "Options"
-        decorations: "Decorations"
+        tunes: "Opțiuni"
+        decorations: "Decorațiuni"
       tunes: # These are formatting styles for content blocks
-        centered: "Centered"
-        stretch: "Fill screen width"
-        separate: "Separate image and text"
-        asGallery: "Gallery"
-        asWisdom: "Ancient Knowledge Style"
-        asVideo: "Video"
-        asPoem: "Poetry"
-        withImages: "Show Images"
-        invert: "Invert Colours"
-        compact: "No Spacing After Block"
+        centered: "Centrat"
+        stretch: "Umple lățimea ecranului"
+        separate: "Separă imaginea și textul"
+        asGallery: "Galerie"
+        asWisdom: "Stil Antic" 
+        asVideo: "Videoclip"
+        asPoem: "Poezie"
+        withImages: "Arată Imagini"
+        invert: "Inversează Culorile"
         style: # These are list styles
-          unordered: "Unordered" # Also called a "Bulleted" list
-          ordered: "Ordered" # Also called a "Numbered" list
-          leaf: "Leaf Icon" # As in a list with a leaf icon instead of the bullet
+          unordered: "Neordonată" # Also called a "Bulleted" list
+          ordered: "Ordonată" # Also called a "Numbered" list
+          leaf: "Pictogramă frunză" # As in a list with a leaf icon instead of the bullet
         alignment: # These are text alignments
-          left: "Left Aligned"
-          center: "Center Aligned"
-          right: "Right Aligned"
+          left: "Aliniere Stânga"
+          center: "Aliniere Centru"
+          right: "Aliniere Dreapta"
         position: # A 'callout' is an image or quotation which is inserted at the side of the text
-          center: "Centered"
-          left: "As Left Callout"
-          right: "As Right Callout"
+          center: "Centru"
+          left: "Callout Stâng"
+          right: "Callout Drept"
         type: # Note to Developer: These must be translated manually because they are accessed in JavaScript
-          articles: "Articles"
-          treatments: "Techniques"
-          meditations: "Meditations"
-        level: # These are heading levels
+          articles: "Articole"
+          treatments: "Tehnici"
+          meditations: "Meditații"
+        level: # These are heading levels # TODO: Translate
           h1: "Level 1"
           h2: "Level 2"
           h3: "Level 3"
           h4: "Level 4"
           h5: "Level 5"
           h6: "Level 6"
-        size:
-          narrow: "Narrow"
-          wide: "Wide"
+        size: # TODO: Translate
+          narrow: "Îngust"
+          wide: "Lat"
           small: "Small"
           medium: "Medium"
           large: "Large"
         format:
-          button: "Button"
-          grid: "Grid"
-          accordion: "Accordion"
-          columns: "Columns"
-          signup: "Signup Form"
-          contact: "Contact Form"
+          button: "Buton"
+          grid: "Grilă"
+          accordion: "Acordeon"
+          columns: "Coloane"
+          signup: "Formular de Înscriere"
+          contact: "Formular pentru Contact"
       decorations:
-        triangle: "Triangle Decoration"
-        circle: "Circle Decoration"
-        gradient: "Gradient Decoration"
-        leaves: "Leaf Decorations"
-        sidetext: "Vertical Text"
+        triangle: "Decor Triunghi"
+        circle: "Decor Cerc"
+        gradient: "Decor Gradient"
+        leaves: "Decor Frunză"
+        sidetext: "Text Vertical"
         triangle_alignment:
-          left: "Left Triangle"
-          right: "Right Triangle"
+          left: "Triunghiul Stâng"
+          right: "Triunghiul Drept"
         gradient_alignment:
-          left: "Left Gradient"
-          right: "Right Gradient"
+          left: "Gradientul Stâng"
+          right: "Gradientul Drept"
         gradient_color:
-          orange: "Orange Gradient"
-          blue: "Blue Gradient"
-          gray: "Gray Gradient"
-        sidetext_text: "Enter vertical text..."
+          orange: "Gradientul Portocaliu"
+          blue: "Gradientul Albastru"
+          gray: "Gradientul Gri"
+        sidetext_text: "Introdu text vertical..."
       placeholders:
-        title: "Title"
+        title: "Titlu"
         text: "Text"
-        items: "Items"
-        action: "Button Text"
-        url: "Paste a link here"
-        quote: "Enter a quote" # "Quote" as in a quotation from some other text or person
-        alt: "Describe the image for the visually impaired"
-        caption: "Enter a caption" # "Caption" as in a piece of text describing an image
-        credit: "Enter a credit" # "Credit" as in the credit for an image or quotation
-        optional: "optional"
-        search: "Search"
+        items: "Articole"
+        action: "Buton text"
+        url: "Lipește un link aici"
+        quote: "Introdu un citat" # "Citat" as in a quotation from some other text or person
+        alt: "Descrie imaginea pentru persoanele cu deficiențe de vedere"
+        caption: "Introdu descriere" # "Caption" as in a piece of text describing an image
+        credit: "Introdu acreditare" # "Credit" as in the credit for an image or quotation
+        optional: "opțional"
+        search: "Caută"
       words:
-        one: "%{count} word"
-        other: "%{count} words"
+        one: "%{count} cuvânt"
+        other: "%{count} cuvinte"
       items:
-        one: "%{count} item"
-        other: "%{count} items"
+        one: "%{count} articol"
+        other: "%{count} articole"
 
 
     # ===== MISCELLENEOUS ===== #
     permissions: # These are messages relating to editor permissions
-      title: "Permissions Table"
-      own_languages_notice: "All editors are restricted to making modifications only in their own languages."
-      create: "Can Create"
-      update: "Can Modify"
-      translate: "Can Modify Untranslated %{pages}"
-      publish: "Can Approve Changes"
-      destroy: "Can Delete"
+      title: "Tabel de permisiuni"
+      own_languages_notice: "Toți editorii sunt limitați să efectueze modificări doar în propriile lor limbi."
+      create: "Creează"
+      update: "Modifică"
+      translate: "Modifică %{pages} Netraduse"
+      publish: "Aprobă Modificările"
+      destroy: "Șterge"
       special:
-        update_own: "Can Modify Own %{pages}"
-        publish_own: "Can Approve Changes to Own %{pages}"
-        update_own_bio: "Can Modify Own Biography"
-        create_own_bio: "Can Create Own Biography"
-        update_subordinate: "Can Modify %{subordinates}"
-        create_subordinate: "Can Create %{subordinates}"
+        update_own: "Modifică %{pages}"
+        publish_own: "Aprobă Modificări %{pages}"
+        update_own_bio: "Modifică Propria Biografie"
+        create_own_bio: "Creează Propria Biografie"
+        update_subordinate: "Modifică %{subordinates}"
+        create_subordinate: "Creează %{subordinates}"
       role_description: # This describes the responsibilities of a given type of administrator
-        translator: "translate existing content which has been published in other languages, to their assigned language."
-        writer: "can write new articles, or edit old articles which they themselves created."
-        editor: "should review and publish articles written by writers. They can also created their own articles."
-        regional_admin: "are responsible for approving translations, translating core parts of the site, and overseeing the publishing of new content in their language."
-        super_admin: "manage the fundamental elements of the site, and the creation of new editors."
+        translator: "traduci conținutul existent care a fost publicat în alte limbi, în limba atribuită ție."
+        writer: "poți scrie articole noi sau poți edita articole vechi pe care le-ai creat."
+        editor: "trebuie să examinezi și să publici articolele concepute de scriitori. De asemenea, poți crea propriile tale articole."
+        regional_admin: "fi responsabil pentru aprobarea traducerilor, pentru traducerea părților de bază ale site-ului și pentru supravegherea publicării de conținut nou în limba ta."
+        super_admin: "gestionezi elementele fundamentale ale site-ului și să creezi noi editori."
 
     review: # Text related to reviewing unapproved changes
-      title: "Review Changes"
-      changes_contributed_by: "Changes contributed by:"
-      no_value: "No Value"
-      invalid_value: "Invalid Value"
-      no_changes: "No Changes"
-      discard_all_changes: "Discard All Changes"
-      approve_changes: "Save Approved Changes"
-      or: "OR"
+      title: "Revezi modificările"
+      changes_contributed_by: "Schimbări contribuite de:"
+      no_value: "Nicio Valoare"
+      invalid_value: "Valoare Invalidă"
+      no_changes: "Nicio Schimbare"
+      discard_all_changes: "Renunță la Toate Modificările"
+      approve_changes: "Salvează Modificările Aprobate"
+      or: "SAU"
       context:
-        details: "Page Details"
-        content: "Page Content"
+        details: "Detaliile Paginii"
+        content: "Conținutul Paginii"
       effect:
-        moved: "Moved"
-        added: "Added"
-        removed: "Removed"
-        modified: "Changed"
-        nochange: "No Change"
+        moved: "Mutat"
+        added: "Adăugat"
+        removed: "Eliminat"
+        modified: "Modificat"
+        nochange: "Nicio modificare"
 
-    preview:
+    preview: # TODO: Translate
       no_custom_meditations: "The custom meditation interface cannot be previewed, and so it has been hidden for this preview."
 
     metadata:
-      key: "name"
-      value: "value"
-      default_metadata: "Default Metadata"
-      generated_jsonld: "Generated Structured Data"
+      key: "nume"
+      value: "valoare"
+      default_metadata: "Metadate Implicite"
+      generated_jsonld: "Date Generate Structurate"
 
     draft: # This section deals with the ability to create draft versions of new pages
-      no_image: "No Image"
+      no_image: "Nicio Imagine"
       items:
-        one: "%{count} item"
-        other: "%{count} items"
+        one: "%{count} articol"
+        other: "%{count} articole"
       content:
         original: # This is for a button that lets you revert to the previous content
-          one: "Original content with %{count} block"
-          other: "Original content with %{count} blocks"
+          one: "Conținut original cu %{count} tabel"
+          other: "Conținut original cu %{count} tabele"
         draft: # This is for a button that lets you revert to the new content
-          one: "Draft content with %{count} block"
-          other: "Draft content with %{count} blocks"
+          one: "Ciornă proiect cu %{count} tabel"
+          other: "Ciornă proiect cu %{count} tabele"
 
     dashboard:
-      title: "Dashboard"
+      title: "Bord"
       content:
-        title: "Published Content"
-        public: "The %{language} website (%{host}) is open to the public, and has the following published content."
-        private: "The %{language} website (%{host}) is closed to the public, and has the following ready content."
+        title: "Conținut Publicat"
+        public: "Site-ul (%{host}) în %{language} este deschis publicului și are următorul conținut." 
+        private: "Site-ul (%{host}) în %{language} este blocat publicului și are următorul conținut pregătit."
       schedule:
-        title: "Publishing Schedule"
-        description: "This is a list of articles which are scheduled to be published in the near future."
-        no_schedule: "No articles are scheduled to be published."
+        title: "Planificarea publicațiilor"
+        description: "Aceasta este o listă de articole ce sunt programate să fie publicate în viitor."
+        no_schedule: "Niciun articol nu este programat să fie publicat."
       alerts:
-        title: "Alerts"
-        description: "This is a list of important issues, that should be resolved to keep the site in healthy order."
-        no_issues: "No issues right now, good job!"
+        title: "Alerte"
+        description: "Aceasta este o listă cu probleme importante ce ar trebui rezolvate pentru a menține site-ul în ordine."
+        no_issues: "Nu mai ai nicio problemă, bună treabă!"
 
     index:
       columns:
-        status: "Status"
-        name: "Name"
-        role: "Role"
-        updated_at: "Updated"
-        created_at: "Created"
-        last_sign_in_at: "Last Login"
-        minutes: "Duration"
-        node: "Node"
+        status: "Status" 
+        name: "Nume"
+        role: "Rol"
+        updated_at: "Actualizat"
+        created_at: "Creat"
+        last_sign_in_at: "Ultima Autentificare"
+        minutes: "Interval de Timp"
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate
+        node: "Problemă"
         artist_id: :activerecord.models.artist.other # Do not translate
         duration: :activerecord.attributes.track.duration # Do not translate
         articles_count: :activerecord.models.article.other # Do not translate
         instruments_count: :activerecord.models.instrument_filter.other # Do not translate
         meditations_count: :activerecord.models.meditation.other # Do not translate
         tracks_count: :activerecord.models.track.other # Do not translate
-        account: "Account"
-        country_code: "Country"
+        account: "Cont"
+        country_code: "Țară"
       sort:
-        title: "Sort by"
+        title: "Sortează după"
         columns:
-          default: "Default"
-          name: "Name"
-          country_code: "Country"
-          updated_at: "Recently Updated"
-          created_at: "Recently Created"
-          last_sign_in_at: "Recently Signed In"
-          popularity: "Most Popular"
-          articles_count: "Most Articles"
-          meditations_count: "Most Meditations"
-          tracks_count: "Most Tracks"
+          default: "Implicit"
+          name: "Nume"
+          country_code: "Țară"
+          updated_at: "Actualizat Recent"
+          created_at: "Creat Recent"
+          last_sign_in_at: "Autentificare Recentă"
+          popularity: "Popular"
+          articles_count: "Majoritatea Articolelor"
+          meditations_count: "Majoritatea Meditațiilor"
+          tracks_count: "Majoritatea Pieselor"
           duration: :activerecord.attributes.track.duration # Do not translate
-          role: "Role"
+          role: "Rol"
       filter:
-        title: "Filter by"
+        title: "Filtrează după"
+        columns:
       attribute:
-        status: "Status"
-        none: "None"
-        never: "Never"
-        default: "Default"
+        status: "Status" # TODO: Translate
+        none: "Nimic"
+        never: "Niciodată"
+        default: "Implicit"
       status: # Try to keep these translations short
         # Draftable
-        needs_review: "Needs Review"
+        needs_review: "De Revăzut"
         # Translatable
-        needs_translation: "Needs Translation"
-        not_translated: "Not Translated"
+        needs_translation: "De Tradus"
+        not_translated: "Netradus"
         # Stateable
-        no_state: "In Progress"
-        in_progress: "In Progress"
+        no_state: "În Așteptare"
+        in_progress: "În Așteptare"
         archived: :activerecord.attributes.generic.states.archived # Do not translate
         published: :activerecord.attributes.generic.states.published # Do not translate
         unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         not_published: :activerecord.attributes.generic.states.unpublished # Do not translate
         # Publishable
         public: "Public"
-        private: "Hidden"
+        private: "Privat"
         # Users
-        pending: "Pending"
-        inactive: "Inactive"
-        active: "Active"
-        this_is_you: "This Is You"
+        pending: "În așteptare"
+        inactive: "Inactiv"
+        active: "Activ"
+        this_is_you: "Acesta ești tu"
 
     tutorial:
-      title: "Starter Guide"
+      title: "Ghidul începătorului"
       dashboard:
-        title: "How do I use this website?"
-        message: "If you are just getting started managing content on WeMeditate, we have prepared a few short videos, to help you if you're lost."
-        role_description: "You are a %{role}, and as such it is your role to %{description} For a video illustrating how to do this, please click the link below."
-        action: "Watch Tutorial Videos"
+        title: "Cum folosesc acest site?"
+        message: "Dacă tocmai începi să gestionezi conținutul pe WeMeditate, am pregătit câteva videoclipuri scurte, care să te ajute în caz că te-ai pierdut."
+        role_description: "Ești %{role}, și ca atare, este rolul tău să %{description} Pentru un videoclip care să ilustreze cum să faci acest lucru, te rog accesează linkul de mai jos."
+        action: "Urmărește tutoriale video"
       index:
-        title: "What are these?"
+        title: "Ce sunt acestea?"
         message:
           # Pages
-          static_pages: "These are the primary pages of the website, such as the Home Page, Inspiration Page, Shri Mataji Page, etc. You can use this index to edit some of the content of these pages, but most of these pages have predefined conntent and urls."
-          articles: "Articles are written by Sahaja Yogis to inspire seekers. They can cover various topics, such as: meditation in daily life; writing about realized souls; artwork, music or poetry by yogis; in-depth articles on deeper topics; etc. Whatever a yogi may be inspired to write about.<br><br>All articles are shown on the site's \"Inspiration Page.\""
-          subtle_system_nodes: "These are the pages that describe different parts of the Subtle System. Each page is an in-depth explanation of the qualities of that chakra or channel, how it manifests in daily life, and the treatments that address it."
+          static_pages: "Acestea sunt paginile principale ale site-ului, cum ar fi Pagina Principală, Pagina de Inspirație, Pagina Shri Mataji, etc. Poți utiliza acest index pentru a edita o parte din conținutul acestor pagini, dar cele mai multe dintre aceste pagini au conținut și URL-uri predefinite."
+          articles: "Articolele sunt scrise de Sahaja Yoghini pentru a-i inspira căutătorii. Ele pot acoperi diverse teme, cum ar fi: meditația în viața de zi cu zi; scrieri despre suflete realizate; opere de artă, muzică sau poezii scrise de yoghini; articole cu teme mai profunde; etc. Orice îl inspiră pe Sahaja Yogin să scrie.<br><br>Toate articolele sunt afișate pe \"Pagina de Inspirație.\""
+          subtle_system_nodes: "Acestea sunt paginile ce descriu diferite părți ale Sistemului Subtil. Fiecare pagină este o explicație în detaliu a calităților acelei chakre sau canal, a modului în care se manifestă în viața de zi cu zi și a tratamentelor specifice chakrei."
           # Resources
-          meditations: "These are videos of guided meditations, narrated by yogis. They are available to the public on the website's \"Meditations\" page.<br><br>Each meditation is categorized by it's duration and the goals of that meditation, which allows users to generate a guided meditation that fits their needs. Each meditation also has a \"popularity\" statistic which represents the amount of views the meditation has been getting recently."
-          treatments: "These are the pages that describe different treatments that yogis use to clear themselves. Each technique will have a text description, and may have a video illustrating the treatment in action."
-          tracks: "Musical tracks are available for seekers to listen to on the website's \"Music\" page. Playlists are generated automatically for each type of instrument."
+          meditations: "Acestea sunt videoclipuri cu meditații ghidate de Sahaja Yoghini. Sunt disponibile publicului pe pagina \" Meditații\" a site-ului.<br><br>Fiecare meditație este clasificată în funcție de durata ei și de obiectivele acestei meditații, ceea ce permite utilizatorilor să genereze o meditație ghidată care să se potrivească nevoilor lor. Fiecare meditație are de asemenea o statistică  de \"popularitate\" care reprezintă numărul de vizualizări pe care meditația le-a obținut recent."
+          treatments: "Acestea sunt paginile ce descriu diferite tratamente pe care Sahaja Yoghinii le folosesc pentru a se curăța în interior. Fiecare tehnică va avea o descriere a textului și poate avea un videoclip ce ilustrează tratamentul executat."
+          tracks: "Piesele muzicale sunt disponibile pentru căutători să le asculte pe pagina \"Muzică\"a site-ului. Listele de redare sunt generate automat pentru fiecare tip de instrument."
           # Filters
-          categories: "Every article belongs to one of these categories. A seeker can use these categories to filter the Inspiration articles to find what they are interested in."
-          duration_filters: "These allow us to group meditations into approximate durations, so that seekers can watch a guided meditation that is the right length for the amount of time they have."
-          goal_filters: "These allow us to group meditations by what chakra or quality they focus on, so that seekers can watch a guided meditation for the challenges that they are facing."
-          instrument_filters: "These allow us to group music tracks, so that seekers can listen to music that fits their mood."
-          mood_filters: "These allow us to group music tracks, so that seekers can listen to music that fits their mood."
-          artists: "These provide extra information on the musical artist for each track."
+          categories: "Fiecare articol aparține uneia dintre aceste categorii. Un căutător poate utiliza aceste categorii pentru a filtra articolele de Inspirație și a găsi ceea ce îl interesează."
+          duration_filters: "Acestea permit gruparea meditațiilor în durate aproximative, astfel încât solicitanții să poată urmări o meditație ghidată în funcție de perioada de timp pe care o au."
+          goal_filters: "Acestea permit gruparea meditațiilor în funcție de chakre sau calități, astfel încât solicitanții să poată urmări o meditație ghidată specifică problemei lor."
+          instrument_filters: "Acestea permit gruparea pieselor muzicale, astfel încât solicitanții să poată asculta muzica potrivită stării lor."
+          mood_filters: "Acestea permit gruparea pieselor muzicale, astfel încât solicitanții să poată asculta muzica potrivită stării lor."
+          artists: "Acestea oferă informații suplimentare despre artistul muzical pentru fiecare piesă."
           # People
-          authors: "Author profiles appear at the bottom of Inspiration Articles. They are useful to establish credibility and a more personal connection for the seeker with the author of the article.<br><br>Some author profiles are associated with a WeMeditate account. When a user with an account writes an article, their author profile is automatically added to it. Other contributors to WeMeditate may not have an account on this site, and so their profile does not have any linked account."
-          users: "These are the people who can modify the content of WeMeditate. Each admin has a role which defines what they are allowed to edit, and almost all admins are restricted to certain languages."
+          authors: "Profilurile autorilor apar în partea de jos a articolelor de Inspirație. Sunt utile pentru a stabili credibilitatea și o legătură mai personală pentru căutător cu autorul articolului.<br><br>Unele profiluri de autor sunt asociate cu un cont WeMeditate. Când un utilizator cu un cont scrie un articol, profilul său de autor este adaugat automat. Este posibil ca alți colaboratori ai WeMeditate să nu aibă un cont pe acest site, astfel încât profilul lor să nu aibă niciun cont atașat."
+          users: "Acestea sunt persoanele care pot modifica conținutul WeMeditate. Fiecare administrator are un rol ce definește ceea ce i se permite să editeze și aproape toți administratorii sunt limitați la anumite limbi."
       show:
-        title: "What is this?"
+        title: "Ce este aceasta?"
         message:
-          tutorial: "Click on the tabs below to view a few short videos explanations of how to manage content on the WeMeditate website."
-          my_author: "Whenever you write an article, this profile will be shown at the bottom of the article. This helps the seeker connect more with the writer of the article, and also establishes the credibility of the writer.<br><br>Here are some tips on writing a good bio.<br> - Use the third person.<br> - Don't dwell too much on your upbringing or how long you have been meditating.<br> - Do mention your profession or studies. Show that you are a respectable member of society.<br> - Unless you are writing an artist bio, try to be down to earth and let the reader see themselves in you."
+          tutorial: "Apăsați pe fișierele de mai jos pentru a vizualiza câteva scurte explicații video despre cum să gestionezi conținutul pe site-ul WeMeditate."
+          my_author: "Când scrii un articol, acest profil va fi afișat în partea de jos a articolului. Acest lucru ajută căutătorul să se conecteze mai mult cu scriitorul articolului și, de asemenea, stabilește credibilitatea scriitorului.<br><br>Iată câteva sfaturi despre scrierea unei biografii bune.<br> - Folosește persoana a III-a.<br> - Nu te axa prea mult pe educația ta sau de cât timp meditezi.<br> - Menționează-ți profesia sau studiile. Arată că ești un membru respectabil al societății.<br> - Dacă nu scrii biografia unui artist, încearcă să fii cu capul pe umeri și lasă cititorul să se vadă în tine."
 
       role_vimeo_ids:
         super_admin: 363132481
@@ -439,52 +439,52 @@ ro:
         translator: 363139502
       panels:
         overview:
-          menu: "Overview"
-          title: "How to use the CMS as a %{role}"
-          description: "As a %{role}, it is your role to %{description}"
+          menu: "Prezentare Generală"
+          title: "Cum să folosești CMS ca %{role}"
+          description: "Ca %{role}, este rolul tău să %{description}"
         editor:
-          menu: "Writing Content"
-          title: "How to use the content editor"
+          menu: "Creare Conținut"
+          title: "Cum să folosești meniul de editare"
           description: ""
           vimeo_id: 363156142
         issues:
-          menu: "Reporting Issues"
-          title: "How to report issues"
-          description: "Please click the \"Report Issue\" button at the bottom of the left-hand side menu. This will open up your email client where you will be able to send us an email at admin@wemeditate.co"
+          menu: "Raportează problemă"
+          title: "Cum să raportezi o problemă"
+          description: "Te rog apasă pe butonul de \"Raportează problema\" situat în partea stânga-jos a meniului. Acesta va deschide e-mail-ul clientului unde vei avea posibilitatea să trimiti un mesaj către admin@wemeditate.co"
 
     report_issue:
       name: "WeMeditate Administrator"
       email: "admin@wemeditate.co"
       subject: "WeMeditate Issue Report"
-      body: "Please describe the issue in English..."
+      body: "Te rog descrie problema întâmpinată în limba engleză..."
 
     misc:
-      no_translated_title: "No Translated Title" # This should be written in titlecase
+      no_translated_title: "Titlu Netradus" # This should be written in titlecase
       menu:
-        my_author: "My Author Profile"
-        all_authors: "All Author Profiles"
+        my_author: "Profilul Meu"
+        all_authors: "Profilurile Tuturor Autorilor"
         # The website's editable content is broken into three sections Pages, Resources, and People
-        pages: "Pages"
-        resources: "Resources"
-        people: "People"
+        pages: "Pagini"
+        resources: "Resurse"
+        people: "Persoane"
         # For specific models
-        static_pages: "Main Pages"
-        articles: "Inspiration Articles"
-        subtle_system_nodes: "Subtle System"
+        static_pages: "Pagini Principale"
+        articles: "Articole de Inspiratie"
+        subtle_system_nodes: "Sistemul Subtil"
         meditations: :activerecord.models.meditation.other # Do not translate
         treatments: :activerecord.models.treatment.other # Do not translate
         tracks: Music Tracks
         users: :activerecord.models.user.other # Do not translate
       locale:
-        no_languages: "No Languages"
-        all_languages: "All Languages"
-        other_languages: "Other Languages"
+        no_languages: "Nicio Limbă"
+        all_languages: "Toate Limbile"
+        other_languages: "Altă Limbă"
 
     javascript:      
       email: "Email"
-      message: "Message"
-      drag_images_to_upload: "Drag images here to upload"
-      no_results: "No results found..."
-      waiting_for_upload: "Waiting for %{count} file(s) to finish uploading..."
-      file: "File"
-      files: "Files"
+      message: "Mesaj"
+      drag_images_to_upload: "Selectează imaginea pentru a o încărca"
+      no_results: "Niciun rezultat găsit..."
+      waiting_for_upload: "Încă %{count} fișier(e) pâna la terminarea încărcării..."
+      file: "Fișier"
+      files: "Fișiere"
