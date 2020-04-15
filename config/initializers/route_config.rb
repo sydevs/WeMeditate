@@ -14,6 +14,10 @@ RouteTranslator.config do |config|
       'de.wemeditate.co' => :de, # German
       'fr.wemeditate.co' => :fr, # French
       'br.wemeditate.co' => :'pt-BR', # Brazilian Portuguese
+      'ro.wemeditate.co' => :ro, # Romanian
+      'hy.wemeditate.co' => :hy, # Armenian
+      'hi.wemeditate.co' => :hi, # Hindi
+      'tr.wemeditate.co' => :tr, # Turkish
       'wemeditate.it' => :it, # Italian
       'wemeditate.ru' => :ru, # Russian
       'wemeditate.co.uk' => :en, # English
