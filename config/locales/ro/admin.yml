@@ -98,6 +98,7 @@ ro:
         pending: "În așteptare"
       views: # This is the number of viewers or visits. Used to indicate the number of video views
         one: "%{count} Vizualizare"
+        few: "%{count} Vizualizări"
         other: "%{count} Vizualizări"
       popularity: "Popularitate: %{value}"
 
@@ -246,9 +247,11 @@ ro:
         search: "Caută"
       words:
         one: "%{count} cuvânt"
+        few: "%{count} cuvinte"
         other: "%{count} cuvinte"
       items:
         one: "%{count} articol"
+        few: "%{count} articole"
         other: "%{count} articole"
 
 
@@ -307,13 +310,16 @@ ro:
       no_image: "Nicio Imagine"
       items:
         one: "%{count} articol"
+        few: "%{count} articole"
         other: "%{count} articole"
       content:
         original: # This is for a button that lets you revert to the previous content
           one: "Conținut original cu %{count} tabel"
+          few: "Conținut original cu %{count} tabele"
           other: "Conținut original cu %{count} tabele"
         draft: # This is for a button that lets you revert to the new content
           one: "Ciornă proiect cu %{count} tabel"
+          few: "Ciornă proiect cu %{count} tabele"
           other: "Ciornă proiect cu %{count} tabele"
 
     dashboard:

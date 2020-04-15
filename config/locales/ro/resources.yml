@@ -7,51 +7,67 @@ ro:
     models:
       article:
         one: "Articol"
+        few: "Articole"
         other: "Articole"
       static_page:
         one: "Pagina Principală"
+        few: "Pagini Principale"
         other: "Pagini Principale"
       subtle_system_node: # This is a page for a Chakra,Channel, or the Kundalini. ie. Some part of the subtle system                        
         one: "Centrul Sistemului Subtil"
+        few: "Centre ale Sistemului Subtil"
         other: "Centre ale Sistemului Subtil"
       category:
         one: "Categorie"
+        few: "Categorii"
         other: "Categorii"
       meditation:
         one: "Meditație"
+        few: "Meditații"
         other: "Meditații"
       treatment:
         one: "Tehnică"
+        few: "Tehnici"
         other: "Tehnici"
       track:
         one: "Piesă"
+        few: "Piese"
         other: "Piese"
       artist:
         one: "Artist"
+        few: "Artiști"
         other: "Artiști"
       author:
         one: "Profil Autor"
+        few: "Profiluri Autor"
         other: "Profiluri Autor"
       user:
         one: "Admin"
+        few: "Admini"
         other: "Admini"
       instrument_filter:
         one: "Instrument"
+        few: "Instrumente"
         other: "Instrumente"
       mood_filter:
         one: "Stare"
+        few: "Stări"
         other: "Stări"
       duration_filter:
         one: "Durată"
+        few: "Durate"
         other: "Durate"
       goal_filter:
         one: "Scop"
+        few: "Scopuri"
         other: "Scopuri"
       media_file:
         one: "Fișier Media"
+        few: "Fișiere Media"
         other: "Fișiere Media"
       audit:
         one: "Schimbă Log"
+        few: "Schimbă Loguri"
         other: "Schimbă Loguri"
 
     attributes:
@@ -174,6 +190,7 @@ ro:
         slug: :activerecord.attributes.generic.slug # Do not translate
         articles:
           one: "%{count} Articol"
+          few: "%{count} Articole"
           other: "%{count} Articole"
 
       treatment:
@@ -202,6 +219,7 @@ ro:
         icon: "Pictogramă"
         tracks:
           one: "%{count} Piesă"
+          few: "%{count} Piese"
           other: "%{count} Piese"
 
       mood_filter:
@@ -209,6 +227,7 @@ ro:
         name: :activerecord.attributes.generic.name # Do not translate
         tracks:
           one: "%{count} Piesă"
+          few: "%{count} Piese"
           other: "%{count} Piese"
 
       duration_filter:
@@ -216,6 +235,7 @@ ro:
         minutes: "Minute"
         meditations:
           one: "%{count} Meditație"
+          few: "%{count} Meditații"
           other: "%{count} Meditații"
 
       goal_filter:
@@ -223,6 +243,7 @@ ro:
         name: :activerecord.attributes.generic.name # Do not translate
         meditations:
           one: "%{count} Meditație"
+          few: "%{count} Meditații"
           other: "%{count} Meditații"
 
       track:
@@ -263,6 +284,7 @@ ro:
         url: "Website"
         tracks:
           one: "%{count} Piesă"
+          few: "%{count} Piese"
           other: "%{count} Piese"
 
       author:

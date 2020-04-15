@@ -18,6 +18,7 @@ module Admin::ApplicationHelper
     :'pt-BR' => 'br', # Brazilian
     hi: 'in', # Hindi
     tr: 'tr', # Turkish
+    ro: 'ro',
   }.freeze
 
   # The icon used for different levels of urgency

@@ -38,6 +38,7 @@ ro:
     written_by: "Scris de"
     meditating_for:
       one: "Meditez de un an"
+      few: "Meditez de %{count} ani"
       other: "Meditez de %{count} ani"
 
   form:

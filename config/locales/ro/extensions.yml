@@ -66,6 +66,7 @@ ro:
       not_locked: "nu a fost blocat"
       not_saved:
         one: "%{count} eroarea nu a permis ca %{resource} să se salveze:"
+        few: "%{count} erorile nu au permis ca %{resource} să se salveze:"
         other: "%{count} erorile nu au permis ca %{resource} să se salveze:"
   time:
     formats:
