@@ -16,7 +16,7 @@
       .carousel class='js-carousel' data-style='video'
         - block[:items].each do |item|
           figure.carousel__item class='js-carousel-item' data-gtm-label=item[:title]
-            .carousel__video.video class='js-video'
+            .carousel__video.video class='js-video' data-gtm-local=item[:title] data-gtm-global="Video #{item[:id]}"
               .video__inner
                 = vimeo_tag item[:vimeo_id]
                 .video__thumbnail
@@ -32,7 +32,7 @@
 
       - item = block[:items].first
       figure.content__video__item
-        .content__video__media.video class='js-video'
+        .content__video__media.video class='js-video' data-title=item[:title]
           .video__inner
             = vimeo_tag item[:vimeo_id]
             .video__thumbnail

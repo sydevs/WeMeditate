@@ -22,5 +22,8 @@ module Wemeditate
     config.twitter_handle = '@wemeditate'
     config.exceptions_app = self.routes
     config.i18n.load_path += Dir["#{Rails.root.to_s}/config/locales/**/*.{rb,yml}"]
+
+    # Google Tag Manager
+    GoogleTagManager.gtm_id = ENV['GOOGLE_TAG_MANAGER_ID']
   end
 end

@@ -6,7 +6,7 @@
 
 article.inspiration__item.preview id=dom_id(article) class=dom_id(article.category)
   - if article.vimeo_id.present?
-    .preview__media.video class='js-video'
+    .preview__media.video class='js-video' data-gtm-local=article.name data-gtm-global=dom_id(article).titleize
       .video__inner
         = vimeo_tag article.vimeo_id
         .video__thumbnail

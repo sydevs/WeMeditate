@@ -120,8 +120,5 @@ Rails.application.configure do
   # Devise config
   config.action_mailer.default_url_options = { host: 'admin.wemeditate.co' }
 
-  # Google Tag Manager
-  GoogleTagManager.gtm_id = ENV['GOOGLE_TAG_MANAGER_ID']
-
   config.action_mailer.delivery_method = :smtp
 end

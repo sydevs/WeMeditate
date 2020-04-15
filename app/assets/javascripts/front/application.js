@@ -1,6 +1,6 @@
 /* global $, LazyLoad, zenscroll,
   Accordion, Carousel, Dropdown, Form, Grid, Loadmore, Video, ImageGallery, ReadingTime, CountdownTimer
-  Header, SubtleSystem, MusicPlayer, CustomMeditation, Prescreen, GeoSearch */
+  Header, SubtleSystem, MusicPlayer, CustomMeditation, Prescreen, GeoSearch, VideoAnalytics */
 /* exported Application */
 
 /** Front Application
@@ -36,6 +36,8 @@ const Application = {
       }
     }
 
+    window.afterglow.initVideoElements()
+
     Application.elements = {}
     Application.loadAll('accordion', Accordion)
     Application.loadAll('carousel', Carousel)
@@ -55,8 +57,6 @@ const Application = {
     Application.loadFirst('custom-meditation', CustomMeditation)
     Application.loadFirst('prescreen', Prescreen)
     Application.loadFirst('geosearch', GeoSearch)
-
-    window.afterglow.initVideoElements()
   },
 
   unload() {
