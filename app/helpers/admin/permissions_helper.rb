@@ -28,14 +28,18 @@ module Admin::PermissionsHelper
     static_page: {
       translator: %i[translate],
       writer: [],
-      editor: [],
+      editor: %i[update],
       regional_admin: %i[update publish],
-      super_admin: %i[update publish],
+      super_admin: {
+        update: true,
+        publish: true,
+        destroy: 'destroy_custom', # Some models require a special description of the permission.
+      },
     },
     subtle_system_node: {
       translator: %i[translate],
       writer: [],
-      editor: [],
+      editor: %i[update],
       regional_admin: %i[update publish],
       super_admin: %i[update publish],
     },
@@ -44,14 +48,14 @@ module Admin::PermissionsHelper
     meditation: {
       translator: [],
       writer: [],
-      editor: [],
+      editor: %i[update],
       regional_admin: %i[update publish create],
       super_admin: %i[update publish create destroy],
     },
     treatment: {
       translator: %i[translate],
       writer: [],
-      editor: [],
+      editor: %i[update],
       regional_admin: %i[update publish create],
       super_admin: %i[update publish create destroy],
     },

@@ -12,7 +12,9 @@ module Admin
     end
 
     def update_translation?
-      manage?
+      return false unless can_access_locale?
+      return true if admin? || editor?
+      return false
     end
 
     def update_structure?

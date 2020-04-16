@@ -271,6 +271,7 @@ ro:
         create_own_bio: "Creează Propria Biografie"
         update_subordinate: "Modifică %{subordinates}"
         create_subordinate: "Creează %{subordinates}"
+        destroy_custom: "Can Destroy Custom %{pages}" # TODO: Translate
       role_description: # This describes the responsibilities of a given type of administrator
         translator: "traduci conținutul existent care a fost publicat în alte limbi, în limba atribuită ție."
         writer: "poți scrie articole noi sau poți edita articole vechi pe care le-ai creat."

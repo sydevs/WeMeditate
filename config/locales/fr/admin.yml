@@ -268,6 +268,7 @@ fr:
         create_own_bio: "Peut Créer sa propre biographie"
         update_subordinate: "Peut Modifier %{subordinates}"
         create_subordinate: "Peur Créer %{subordinates}"
+        destroy_custom: "Can Destroy Custom %{pages}" # TODO: Translate
       role_description: # This describes the responsibilities of a given type of administrator
         translator: "Peut traduire le contenu publié dans d'autres langues, dans la langue qui lui a été attribuée."
         writer: "Peut écrire de nouveaux articles ou modifier ses propres anciens articles."

@@ -268,6 +268,7 @@ de:
         create_own_bio: "Can Create Own Biography"
         update_subordinate: "Can Modify %{subordinates}"
         create_subordinate: "Can Create %{subordinates}"
+        destroy_custom: "Can Destroy Custom %{pages}"
       role_description: # This describes the responsibilities of a given type of administrator
         translator: "translate existing content which has been published in other languages, to their assigned language."
         writer: "can write new articles, or edit old articles which they themselves created."
