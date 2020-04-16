@@ -10,7 +10,14 @@ h2.ui.header
 - unless response.status == 404
   p
     = translate('errors.report_issue')
-    
-  = link_to report_url, class: 'ui basic button' do
-    i.envelope.icon
-    = translate('admin.action.report_issue')
+
+  p
+    strong = translate('errors.error')
+    ' : 
+    = request.env['action_dispatch.exception']
+
+  p  
+    = link_to report_url, class: 'ui basic button' do
+      i.envelope.icon
+      = translate('admin.action.report_issue')
+

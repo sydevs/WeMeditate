@@ -99,6 +99,7 @@ const Editor = {
 
   // Requests vimeo metadata from our server's vimeo data endpoint
   retrieveVimeoVideo(vimeo_id, callback) {
+    console.log('Retrieving vimeo data', vimeo_id, `(pending: ${Editor.pendingUploads})`)
     Editor.adjustPendingUploads(+1)
 
     $.ajax({
@@ -107,6 +108,7 @@ const Editor = {
       dataType: 'json',
       success: function(result) {
         Editor.adjustPendingUploads(-1)
+        console.log('Received vimeo data', vimeo_id, `(pending: ${Editor.pendingUploads})`)
         callback(result)
       },
     })
