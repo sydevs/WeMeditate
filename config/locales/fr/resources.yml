@@ -277,6 +277,7 @@ fr:
         invitation_accepted_at: "Invitation Acceptée Le"
         invited_by: :activerecord.models.invited_by # Do not translate
         languages_known: "Translatable Languages" # TODO: Translate
+        preferred_language: "Preferred Language" # TODO: Translate
         languages_access: "Accessible Locales" # TODO: Translate
         role: "Rôle"
         roles:

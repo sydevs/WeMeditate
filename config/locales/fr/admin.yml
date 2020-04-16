@@ -130,6 +130,7 @@ fr:
       article_coordinates: "Providing the latitude and longitude of an event will allow rich Google search results." # TODO: Translate
       article_published_at: "La date de publication détermine l'ordre dans lequel les articles apparaissent."
       fixed_slug: "Ceci est une page spéciale, son adresse URL ne peut pas être modifiée."
+      preferred_language: "This is the language the user will view the admin website in." # TODO: Translate
       languages_access: "These are the locales where this user can modify the site content." # TODO: Translate
       languages_known: "These are the languages that a user can translate content from." # TODO: Translate
       self_realization_slug: "The url for the self-realization page must be \"%{slug}\"" # TODO: Translate
@@ -266,6 +267,7 @@ fr:
         publish_own: "Peut Approuver les Modifications de ses propres %{pages}"
         update_own_bio: "Peut Modifier sa propre biographie"
         create_own_bio: "Peut Créer sa propre biographie"
+        update_own_user: "Can Modify Own Account" # TODO: Translate
         update_subordinate: "Peut Modifier %{subordinates}"
         create_subordinate: "Peur Créer %{subordinates}"
         destroy_custom: "Can Destroy Custom %{pages}" # TODO: Translate
@@ -474,6 +476,7 @@ fr:
         meditations: :activerecord.models.meditation.other # Do not translate
         treatments: :activerecord.models.treatment.other # Do not translate
         tracks: "Music Tracks" # TODO: Translate
+        my_user: "My Account" # TODO: Translate
         users: :activerecord.models.user.other # Do not translate
       locale:
         all_languages: "Toutes les Langues"

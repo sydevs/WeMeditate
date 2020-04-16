@@ -338,6 +338,7 @@ ru:
         invitation_accepted_at: "Приглашение принято"
         invited_by: :activerecord.models.invited_by # Do not translate
         languages_known: "Языки перевода" 
+        preferred_language: "Preferred Language" # TODO: Translate
         languages_access: "Доступные языки"
         role: "Роль"
         roles:

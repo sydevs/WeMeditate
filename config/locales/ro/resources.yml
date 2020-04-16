@@ -308,6 +308,7 @@ ro:
         invitation_accepted_at: "Invitație acceptată în data de"
         invited_by: :activerecord.models.invited_by # Do not translate
         languages_known: "Limbi Traductibile"
+        preferred_language: "Preferred Language" # TODO: Translate
         languages_access: "Configurație accesibilă"
         role: "Rol"
         roles:

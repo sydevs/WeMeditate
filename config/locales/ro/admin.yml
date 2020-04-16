@@ -132,6 +132,7 @@ ro:
       article_coordinates: "Furnizarea latitudinii și longitudinii a unui eveniment va permite rezultate mai exacte de căutare Google."
       article_published_at: "Dacă această dată este în viitor, atunci articolul va fi programat să fie publicat la acea dată. Lasă acest câmp gol pentru ca data publicării să fie setată automat."
       fixed_slug: "Aceasta este o pagină specială, adresa URL nu poate fi modificată."
+      preferred_language: "This is the language the user will view the admin website in." # TODO: Translate
       languages_access: "Acestea sunt locurile unde acest utilizator poate modifica conținutul site-ului."
       languages_known: "Acestea sunt limbile din care un utilizator poate alege pentru a traduce conținutul."
       self_realization_slug: "URL-ul pentru pagina de Realizare a Sinelui automată trebuie să fie \"%{slug}\"" 
@@ -269,6 +270,7 @@ ro:
         publish_own: "Aprobă Modificări %{pages}"
         update_own_bio: "Modifică Propria Biografie"
         create_own_bio: "Creează Propria Biografie"
+        update_own_user: "Can Modify Own Account" # TODO: Translate
         update_subordinate: "Modifică %{subordinates}"
         create_subordinate: "Creează %{subordinates}"
         destroy_custom: "Can Destroy Custom %{pages}" # TODO: Translate
@@ -480,7 +482,8 @@ ro:
         subtle_system_nodes: "Sistemul Subtil"
         meditations: :activerecord.models.meditation.other # Do not translate
         treatments: :activerecord.models.treatment.other # Do not translate
-        tracks: Music Tracks
+        tracks: "Music Tracks"
+        my_user: "My Account"
         users: :activerecord.models.user.other # Do not translate
       locale:
         no_languages: "Nicio Limbă"

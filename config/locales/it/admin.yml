@@ -129,6 +129,7 @@ it:
       article_date: "Imposta qua la data di inizio dell'evento. Apparirà nell'anteprima dell'articolo."
       article_published_at: "Se la data è futura, l'articolo sarà programmato e pubblicato in quella data. Lascia vuoto questo campo per impostare la data automaticamente."
       fixed_slug: "Questa è una pagina speciale, l'URL non può essere modificato."
+      preferred_language: "This is the language the user will view the admin website in." # TODO: Translate
       languages_access: "Queste sono le zone dove questo utente può modificare il contenuto del sito."
       languages_known: "Queste sono le lingue dalle quali l'utente può tradurre il contenuto."
       self_realization_slug: "L'URL per la pagina della realizzazione del sé deve essere \"%{slug}\""
@@ -263,6 +264,7 @@ it:
         publish_own: "Puó pubblicare i propri %{pages}"
         update_own_bio: "Puó modificare la propria scheda biografica"
         create_own_bio: "Puó creare la propria scheda biografica"
+        update_own_user: "Can Modify Own Account" # TODO: Translate
         update_subordinate: "Puó modificare %{subordinates}"
         create_subordinate: "Puó creare %{subordinates}"
       role_description:
@@ -468,7 +470,8 @@ it:
         subtle_system_nodes: "Sistema Sottile"
         meditations: :activerecord.models.meditation.other # Do not translate
         treatments: :activerecord.models.treatment.other # Do not translate
-        tracks: Music Tracks
+        tracks: "Music Tracks" # TODO: Translate
+        my_user: "My Account" # TODO: Translate
         users: :activerecord.models.user.other # Do not translate
       locale:
         no_languages: "Nessuna Lingua"

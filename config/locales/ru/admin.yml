@@ -134,6 +134,7 @@ ru:
       article_date: "Установите дату начала мероприятия здесь. Эта дата появится в превью статьи." 
       article_published_at: "Статья будет опубликована в эту дату. Оставьте это поле пустым, чтобы автоматически установить дату публикации." 
       fixed_slug: "Это особая страница, ее адрес (URL) нельзя изменить." 
+      preferred_language: "This is the language the user will view the admin website in." # TODO: Translate
       languages_access: "Это языки, на которых пользователь может изменять контент." 
       languages_known: "Это языки, с которых пользователь может переводить контент." 
 
@@ -271,6 +272,7 @@ ru:
         publish_own: "Можно Утверждать Изменения %{pages}"
         update_own_bio: "Можно Изменять Свою Биографию"
         create_own_bio: "Можно Создать Свою Биографию"
+        update_own_user: "Can Modify Own Account" # TODO: Translate
         update_subordinate: "Можно Изменять %{subordinates}"
         create_subordinate: "Можно Создавать %{subordinates}"
         destroy_custom: "Can Destroy Custom %{pages}" # TODO: Translate

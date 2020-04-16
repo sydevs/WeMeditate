@@ -282,6 +282,7 @@ pt-BR:
         invitation_accepted_at: "Invitation accepted on"
         invited_by: :activerecord.models.invited_by # Do not translate
         languages_known: "Translatable Languages"
+        preferred_language: "Preferred Language" # TODO: Translate
         languages_access: "Accessible Locales"
         role: "Role"
         roles:

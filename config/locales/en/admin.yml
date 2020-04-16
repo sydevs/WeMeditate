@@ -477,7 +477,7 @@ en:
         subtle_system_nodes: "Subtle System"
         meditations: :activerecord.models.meditation.other # Do not translate
         treatments: :activerecord.models.treatment.other # Do not translate
-        tracks: Music Tracks
+        tracks: "Music Tracks"
         my_user: "My Account"
         users: :activerecord.models.user.other # Do not translate
       locale:

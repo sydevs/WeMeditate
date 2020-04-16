@@ -132,6 +132,7 @@ tr:
       article_coordinates: "Providing the latitude and longitude of an event will allow rich Google search results."
       article_published_at: "If this date is in the future, then the article will be scheduled to be published on that date. Leave this fiield blank to have the publish date set automatically."
       fixed_slug: "This is a special page, it's URL cannot be changed."
+      preferred_language: "This is the language the user will view the admin website in."
       languages_access: "These are the locales where this user can modify the site content."
       languages_known: "These are the languages that a user can translate content from."
       self_realization_slug: "The url for the self-realization page must be \"%{slug}\""
@@ -269,6 +270,7 @@ tr:
         publish_own: "Can Approve Changes to Own %{pages}"
         update_own_bio: "Can Modify Own Biography"
         create_own_bio: "Can Create Own Biography"
+        update_own_user: "Can Modify Own Account"
         update_subordinate: "Can Modify %{subordinates}"
         create_subordinate: "Can Create %{subordinates}"
         destroy_custom: "Can Destroy Custom %{pages}"
@@ -479,7 +481,8 @@ tr:
         subtle_system_nodes: "Subtle System"
         meditations: :activerecord.models.meditation.other # Do not translate
         treatments: :activerecord.models.treatment.other # Do not translate
-        tracks: Music Tracks
+        tracks: "Music Tracks"
+        my_user: "My Account"
         users: :activerecord.models.user.other # Do not translate
       locale:
         no_languages: "No Languages"
