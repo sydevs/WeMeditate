@@ -95,23 +95,15 @@ const Admin = {
     const vimeo_id = field.querySelector('input').value
     const input = field.querySelector('.input')
     const meta = field.nextSibling
-    console.log('Attempting to fetch vimeo data for', vimeo_id, {
-      input: input,
-      meta: meta,
-    })
 
     if (!vimeo_id || isNaN(vimeo_id)) {
-      console.log('Vimeo ID is invalid')
       // If the vimeo id isn't valid, then hide this whole section
       meta.querySelector('.content').style.display = 'none'
     } else {
-      console.log('Vimeo ID is valid')
       meta.querySelector('.content').style.display = null
       input.classList.add('loading')
 
-      console.log('Preparing vimeo request')
       Editor.retrieveVimeoVideo(vimeo_id, response => {
-        console.log('Got vimeo metadata for', vimeo_id, response)
         // Render a preview of the returned meta data, and store it to an input to be saved.
         meta.querySelector('.raw').innerText = JSON.stringify(response, null, 2)
         meta.querySelector('img').src = response.thumbnail
