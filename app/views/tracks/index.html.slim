@@ -71,7 +71,10 @@ main
                   // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
                   .js-inline-svg data-url="#{playlist[:cover_art_url]}" data-namespace="#{playlist[:title].parameterize.downcase}"
             .amplitude-playlist-list
-              = render partial: 'tracks/song', collection: playlist_songs, locals: { playlist: playlist_id }, cached: Proc.new { |song| [song, playlist_id] }
+              /= render partial: 'tracks/song', collection: playlist_songs, locals: { playlist: playlist_id }, cached: Proc.new { |song| [song, playlist_id] }
+              - playlist_songs.each_with_index do |song, index|
+                - cache [song, playlist_id, I18n.locale] do
+                  = render 'tracks/song', song: song, playlist: playlist_id, song_counter: index
 
         .amplitude-cover.amplitude-cover--mobile
           .amplitude-cover-image

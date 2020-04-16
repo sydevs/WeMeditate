@@ -29,7 +29,6 @@ module AudioHelper
       {
         index: index,
         name: track.name,
-        # artist: track.artists.first&.name,
         artists: amplitude_artists_data(track.artists),
         url: track.audio_url,
         cover_art_url: track.artists.sample&.image_url,
