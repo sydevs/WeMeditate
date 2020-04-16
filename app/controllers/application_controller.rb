@@ -108,6 +108,7 @@ class ApplicationController < ActionController::Base
 
     def set_locale!
       I18n.locale = params[:locale]
+      Globalize.locale = params[:locale]
     end
 
     def force_no_ssl_for_staging

@@ -26,7 +26,7 @@ module Admin
 
     def destroy?
       return false unless super_admin? && can_access_locale?
-      return false unless !record.respond_to?(:translated_locales) || record.translated_locales&.include?(I18n.locale)
+      return false unless !record.respond_to?(:translated_locales) || record.translated_locales&.include?(Globalize.locale)
       return true
     end
 
@@ -92,7 +92,7 @@ module Admin
     end
 
     def can_access_locale?
-      user.accessible_locales.include? I18n.locale
+      user.accessible_locales.include? Globalize.locale
     end
 
     def owns_record?

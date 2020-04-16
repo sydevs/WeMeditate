@@ -1,3 +1,4 @@
+@use "sass:list"
 
 #logo path
   fill: black
@@ -40,3 +41,14 @@ main
 #content
   display: block
   padding-top: 1rem
+
+$locale-colours: #FA8072, #53bfe0, #FFE4B5, #8FBC8F, #ADD8E6, #CD853F, #D8BFD8, #D3B0FB, #A9AbC4
+$i: 0
+
+@each $colour in $locale-colours
+  $i: $i + 1
+  $n: $i % length($locale-colours)
+
+  .locale-colour--#{$n},
+  .ui.basic.button.locale-colour--#{$n}
+    background: $colour !important

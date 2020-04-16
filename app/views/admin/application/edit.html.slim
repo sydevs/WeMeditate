@@ -20,7 +20,7 @@
 .clearfix
 
 - if @record.translatable?
-  - locale = !@record.try(:has_translation?, :details) ? @record.original_locale : I18n.locale
+  - locale = !@record.try(:has_translation?, :details) ? @record.original_locale : Globalize.locale
   - Globalize.with_locale(locale) do
     = render 'admin/application/form', record: @record
 - else

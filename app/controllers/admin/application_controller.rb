@@ -9,7 +9,10 @@ module Admin
     after_action :verify_policy_scoped, only: :index
 
     def dashboard
-      authorize :application, :access?
+      Globalize.with_locale(Globalize.locale) do
+        authorize :application, :access?
+        render 'admin/application/dashboard'
+      end
     end
 
     def tutorial
@@ -27,17 +30,18 @@ module Admin
     protected
 
       def default_url_options
-        { locale: I18n.locale, host: locale_host }
+        { locale: Globalize.locale, host: locale_host }
       end
 
     private
 
       def set_locale!
-        I18n.locale = params[:locale] || :en
+        I18n.locale = current_user.preferred_language || :en
+        Globalize.locale = params[:locale] || :en
       end
 
       def redirect_to_locale!
-        return if current_user.accessible_locales.include?(I18n.locale)
+        return if current_user.accessible_locales.include?(Globalize.locale)
 
         redirect_to root_path(locale: current_user.accessible_locales.first), status: :see_other
       end

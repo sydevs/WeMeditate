@@ -6,3 +6,5 @@ I18n.default_locale = :en
 published_locales = ENV['PUBLISHED_LOCALES'] ? ENV['PUBLISHED_LOCALES'].split(',').map(&:strip).map(&:to_sym) : []
 published_locales = %i[en ru it] if Rails.env.development? && published_locales.empty?
 Rails.configuration.published_locales = published_locales & I18n.available_locales
+
+Globalize.fallbacks = nil

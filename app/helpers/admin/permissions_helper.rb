@@ -123,9 +123,15 @@ module Admin::PermissionsHelper
 
     # Other models
     user: {
-      translator: [],
-      writer: [],
-      editor: [],
+      translator: {
+        update: 'update_own_user',
+      },
+      writer: {
+        update: 'update_own_user',
+      },
+      editor: {
+        update: 'update_own_user',
+      },
       regional_admin: {
         update: 'update_subordinate',
         create: 'create_subordinate',

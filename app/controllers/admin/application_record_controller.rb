@@ -5,127 +5,153 @@ module Admin
     before_action :authorize!, except: %i[create]
 
     def index
-      @records = policy_scope(@model).order(updated_at: :desc).q(params[:q])
-      # TODO: Uncomment this next line if we want to hide archived records from the index
-      # @records = @records.where.not(id: @model.archived) unless params[:q].present?
-      @records = sort_by(@records, params[:sort])
-      @records = filter_by(@records, params[:filter])
+      Globalize.with_locale(Globalize.locale) do
+        @records = policy_scope(@model).order(updated_at: :desc).q(params[:q])
+        @records = sort_by(@records, params[:sort])
+        @records = filter_by(@records, params[:filter])
 
-      respond_to do |format|
-        format.html do
-          @records = @records.page(params[:page]).per(15)
-          render 'admin/application/index'
-        end
+        respond_to do |format|
+          format.html do
+            @records = @records.page(params[:page]).per(15)
+            render 'admin/application/index'
+          end
 
-        format.js do
-          @records = @records.page(params[:page]).per(15)
-          render 'admin/application/index'
-        end
+          format.js do
+            @records = @records.page(params[:page]).per(15)
+            render 'admin/application/index'
+          end
 
-        format.json do
-          render json: @records.limit(5).to_json(only: %i[id name])
+          format.json do
+            render json: @records.limit(5).to_json(only: %i[id name])
+          end
         end
       end
     end
 
     def show
-      render 'admin/application/show'
+      Globalize.with_locale(Globalize.locale) do
+        render 'admin/application/show'
+      end
     end
 
     def new
-      @record = @model.new
-      render 'admin/application/new'
+      Globalize.with_locale(Globalize.locale) do
+        @record = @model.new
+        render 'admin/application/new'
+      end
     end
 
     def edit
-      render 'admin/application/edit'
+      Globalize.with_locale(Globalize.locale) do
+        render 'admin/application/edit'
+      end
     end
 
     def write
-      render 'admin/application/write'
+      Globalize.with_locale(Globalize.locale) do
+        render 'admin/application/write'
+      end
     end
 
     def create record_params, redirect = nil
-      @record = @model.new update_params(record_params)
-      authorize @record
+      Globalize.with_locale(Globalize.locale) do
+        @record = @model.new update_params(record_params)
+        authorize @record
 
-      save!(:create, nil, redirect) do
-        after_create
+        save!(:create, nil, redirect) do
+          after_create
+        end
       end
     end
 
     def update record_params, redirect = nil
-      save!(:update, update_params(record_params), redirect) do
-        @record.try(:cleanup_media_files!)
+      Globalize.with_locale(Globalize.locale) do
+        save!(:update, update_params(record_params), redirect) do
+          @record.try(:cleanup_media_files!)
+        end
       end
     end
 
     def review
-      render 'admin/application/review', layout: 'admin/review'
+      Globalize.with_locale(Globalize.locale) do
+        render 'admin/application/review', layout: 'admin/review'
+      end
     end
 
     def preview
-      reify = reify == '' ? [] : params[:reify]&.split(',')
-      @record.try(:reify_draft!, only: reify) unless params[:review] && !params[:excerpt]
-      render 'admin/application/preview', layout: params[:excerpt] ? 'basic' : 'application'
+      I18n.with_locale(Globalize.locale) do
+        Globalize.with_locale(Globalize.locale) do
+          reify = reify == '' ? [] : params[:reify]&.split(',')
+          @record.try(:reify_draft!, only: reify) unless params[:review] && !params[:excerpt]
+          render 'admin/application/preview', layout: params[:excerpt] ? 'basic' : 'application'
+        end
+      end
     end
 
     def approve
-      redirect = helpers.polymorphic_admin_path([:admin, (@record.contentable? ? @record : @model)])
-      if params[:review] == 'destroy'
-        @record.discard_draft!
-      else
-        review = JSON.parse(params[:review])
-        @record.reify_draft! only: review['details'] if @record.has_draft?(:details)
-        @record.approve_content_changes! review['content'] if @record.has_draft?(:content)
-      end
+      Globalize.with_locale(Globalize.locale) do
+        redirect = helpers.polymorphic_admin_path([:admin, (@record.contentable? ? @record : @model)])
+        if params[:review] == 'destroy'
+          @record.discard_draft!
+        else
+          review = JSON.parse(params[:review])
+          @record.reify_draft! only: review['details'] if @record.has_draft?(:details)
+          @record.approve_content_changes! review['content'] if @record.has_draft?(:content)
+        end
 
-      if @record.save!
-        puts "CLEANUP DRAFT"
-        @record.cleanup_draft!
-        @record.save!
-        @record.try(:cleanup_media_files!)
-        redirect_to redirect, flash: { notice: translate('admin.result.updated') }
-      else
-        render 'admin/application/review', layout: 'application'
+        if @record.save!
+          @record.cleanup_draft!
+          @record.save!
+          @record.try(:cleanup_media_files!)
+          redirect_to redirect, flash: { notice: translate('admin.result.updated') }
+        else
+          render 'admin/application/review', layout: 'application'
+        end
       end
     end
 
     def destroy associations: []
-      associations.each do |key|
-        if @record.send(key).present?
-          associated_model = @model.reflect_on_association(key).class
-          message = translate('admin.result.cannot_delete_attached_record', category: human_model_name(@model).downcase, pages: human_model_name(associated_model, :plural).downcase)
-          redirect_to helpers.polymorphic_admin_path([:admin, @model]), alert: message
-        end  
-      end
-
-      if @record.translatable? && @record.has_translation?
-        if @record.translated_locales.count == 1
-          @record.destroy
-        else
-          @record.translations.where(locale: I18n.locale).destroy_all
+      Globalize.with_locale(Globalize.locale) do
+        associations.each do |key|
+          if @record.send(key).present?
+            associated_model = @model.reflect_on_association(key).class
+            message = translate('admin.result.cannot_delete_attached_record', category: human_model_name(@model).downcase, pages: human_model_name(associated_model, :plural).downcase)
+            redirect_to helpers.polymorphic_admin_path([:admin, @model]), alert: message
+          end  
         end
-      else
-        @record.destroy
-      end
 
-      respond_to do |format|
-        format.html { redirect_to helpers.polymorphic_admin_path([:admin, @model]), flash: { notice: translate('admin.result.deleted') } }
-        format.js { render 'admin/application/destroy' }
+        if @record.translatable? && @record.has_translation?
+          if @record.translated_locales.count == 1
+            @record.destroy
+          else
+            @record.translations.where(locale: Globalize.locale).destroy_all
+          end
+        else
+          @record.destroy
+        end
+
+        respond_to do |format|
+          format.html { redirect_to helpers.polymorphic_admin_path([:admin, @model]), flash: { notice: translate('admin.result.deleted') } }
+          format.js { render 'admin/application/destroy' }
+        end
       end
     end
 
     def audit
-      @audits = @record.audits.with_associations
+      Globalize.with_locale(Globalize.locale) do
+        @audits = @record.audits.with_associations
+        render 'admin/application/audit'
+      end
     end
 
     def sort
-      params[:order].each_with_index do |id, index|
-        @model.find(id).update_attribute(:order, index)
-      end
+      Globalize.with_locale(Globalize.locale) do
+        params[:order].each_with_index do |id, index|
+          @model.find(id).update_attribute(:order, index)
+        end
 
-      redirect_to helpers.polymorphic_admin_path([:admin, @model])
+        redirect_to helpers.polymorphic_admin_path([:admin, @model])
+      end
     end
 
     protected
@@ -137,7 +163,16 @@ module Admin
         will_publish = allow.publish? && (!@record.draftable? || params[:draft] != 'true')
         will_validate = (will_publish || action == :create)
         notice = translate (action == :create ? 'created' : 'updated'), scope: %i[admin result]
-        redirect = helpers.polymorphic_admin_path(allow.show? ? [:admin, @record] : [:admin, @model]) if redirect.nil?
+
+        if redirect.nil?
+          if allow.show?
+            redirect = helpers.polymorphic_admin_path([:admin, @record])
+          elsif allow.index?
+            redirect = helpers.polymorphic_admin_path([:admin, @model])
+          else
+            redirect = helpers.polymorphic_admin_path([:edit, :admin, @record])
+          end
+        end
   
         if @record.draftable?
           if will_publish
@@ -177,8 +212,10 @@ module Admin
     private
 
       def set_record
-        @record = @model.preload_for(:admin).find(params[:id])
-        instance_variable_set("@#{@record.model_name.param_key}", @record)
+        Globalize.with_locale(Globalize.locale) do
+          @record = @model.preload_for(:admin).find(params[:id])
+          instance_variable_set("@#{@record.model_name.param_key}", @record)
+        end
       end
 
       def authorize!

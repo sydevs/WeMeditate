@@ -1,10 +1,14 @@
 
-#logo.ui.centered.small.image
+.ui.centered.small.image id='logo'
   = render 'admin/partials/logo'
 
-.ui.section.divider
+.ui.section.divider class=locale_colour
 
 .ui.fluid.secondary.vertical.menu
+  /p
+    .ui.fluid.label class=locale_colour
+      = locale_host
+
   = link_to admin_root_path, class: "#{'active' if action_name == 'dashboard'} item"
     = translate 'admin.dashboard.title'
 
@@ -66,6 +70,10 @@
           = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"
             i.users.icon
             = translate('admin.misc.menu.users')
+        - else
+          = link_to [:edit, :admin, current_user], class: "#{'active' if controller_name == 'users' && action_name == 'edit'} item"
+            i.user.icon
+            = translate('admin.misc.menu.my_user')
 
 
 .ui.hidden.divider

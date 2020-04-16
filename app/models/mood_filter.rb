@@ -29,8 +29,8 @@ class MoodFilter < ApplicationRecord
   # Get all meditations that have content
   def self.has_content
     joins(tracks: [:translations, instrument_filters: :translations]).where({
-      track_translations: { published: true, locale: I18n.locale },
-      instrument_filter_translations: { published: true, locale: I18n.locale },
+      track_translations: { published: true, locale: Globalize.locale },
+      instrument_filter_translations: { published: true, locale: Globalize.locale },
     }).uniq
   end
 

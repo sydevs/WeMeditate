@@ -30,10 +30,10 @@ class InstrumentFilter < ApplicationRecord
 
   # Get all meditations that have content
   def self.has_content
-    joins(tracks: :translations).where(track_translations: { published: true, locale: I18n.locale }).uniq
+    joins(tracks: :translations).where(track_translations: { published: true, locale: Globalize.locale }).uniq
     # joins(tracks: [:translations, mood_filters: :translations]).where({
-    #   track_translations: { published: true, locale: I18n.locale },
-    #   mood_filter_translations: { published: true, locale: I18n.locale },
+    #   track_translations: { published: true, locale: Globalize.locale },
+    #   mood_filter_translations: { published: true, locale: Globalize.locale },
     # }).uniq
   end
 

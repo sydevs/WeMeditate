@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_154637) do
+ActiveRecord::Schema.define(version: 2020_04_16_094713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_154637) do
     t.bigint "category_id"
     t.date "date"
     t.bigint "owner_id"
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.bigint "author_id"
     t.integer "article_type", default: 0, null: false
     t.float "latitude"
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_154637) do
     t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
   end
 
   create_table "category_translations", force: :cascade do |t|
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_154637) do
 
   create_table "duration_filters", force: :cascade do |t|
     t.integer "minutes"
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
@@ -182,7 +182,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_154637) do
   create_table "goal_filters", force: :cascade do |t|
     t.integer "order"
     t.string "icon", default: "", null: false
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
@@ -209,7 +209,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_154637) do
   create_table "instrument_filters", force: :cascade do |t|
     t.string "icon", null: false
     t.integer "order"
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
@@ -267,7 +267,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_154637) do
     t.jsonb "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.index ["duration_filter_id"], name: "index_meditations_on_duration_filter_id"
   end
 
@@ -287,7 +287,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_154637) do
     t.integer "order"
     t.jsonb "image"
     t.string "icon"
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
@@ -319,7 +319,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_154637) do
     t.integer "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.index ["role"], name: "index_static_pages_on_role"
   end
 
@@ -344,7 +344,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_154637) do
     t.integer "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.index ["role"], name: "index_subtle_system_nodes_on_role", unique: true
   end
 
@@ -362,7 +362,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_154637) do
 
   create_table "tracks", force: :cascade do |t|
     t.string "audio", null: false
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "duration"
@@ -392,7 +392,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_154637) do
     t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -423,6 +423,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_154637) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "languages_known", default: [], null: false, array: true
+    t.string "preferred_language"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"

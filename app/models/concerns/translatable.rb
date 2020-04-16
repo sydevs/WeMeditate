@@ -13,8 +13,8 @@ module Translatable
   included do |base|
     throw "Translations must be defined to make the `#{base.model_name}` model `Translatable`" unless base.respond_to?(:translated_attribute_names)
 
-    base.scope :foreign_locale, -> { where.not(original_locale: I18n.locale) }
-    base.scope :with_translation, -> { with_translations(I18n.locale) }
+    base.scope :foreign_locale, -> { where.not(original_locale: Globalize.locale) }
+    base.scope :with_translation, -> { with_translations(Globalize.locale) }
     base.scope :without_translation, -> { where.not(id: with_translation) }
     base.scope :without_complete_translation, -> { where.not(id: with_translation).or(base.where(id: with_incomplete_translation)) }
 
@@ -44,21 +44,21 @@ module Translatable
     !has_translation? && user.accessible_locales.include?(original_locale.to_sym)
   end
 
-  def has_complete_translation? locale: I18n.locale
+  def has_complete_translation? locale: Globalize.locale
     return false unless translated_locales.include?(locale)
     return false if stateable? && [nil, :no_state, :in_progress].include?(state.to_sym)
     return false if !stateable? && published_at == nil
     return true
   end
 
-  def has_incomplete_translation? locale: I18n.locale
+  def has_incomplete_translation? locale: Globalize.locale
     return false unless translated_locales.include?(locale)
     return true if stateable? && [nil, :no_state, :in_progress].include?(state.to_sym)
     return true if !stateable? && published_at == nil
     return false
   end
 
-  def has_translation? section = nil, locale: I18n.locale, check_draft: true
+  def has_translation? section = nil, locale: Globalize.locale, check_draft: true
     return false unless translated_locales.include?(locale)
 
     if section == :content
@@ -78,7 +78,7 @@ module Translatable
   end
 
   # Retrieves the localized attribute without any fallback
-  def get_native_locale_attribute attribute, locale = I18n.locale
+  def get_native_locale_attribute attribute, locale = Globalize.locale
     return self.send(attribute) unless translatable?
 
     if globalize.stash.contains?(locale, attribute)
@@ -91,7 +91,7 @@ module Translatable
   private
 
     def set_original_locale
-      self.original_locale = I18n.locale.to_s if has_attribute?(:original_locale) && original_locale.nil?
+      self.original_locale = (Globalize.locale).to_s if has_attribute?(:original_locale) && original_locale.nil?
     end
 
 end
