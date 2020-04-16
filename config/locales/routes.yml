@@ -106,7 +106,7 @@ nl: # Dutch translations
     self_realization: "first-experience"
     classes: "classes"
     live: "live"
-pt-BR: # Portuguese translations
+pt-br: # Portuguese translations
   routes:
     inspiration: "inspiration"
     articles: "articles"

@@ -15,7 +15,7 @@ module Admin::LookupHelper
     nl: 'nl', # Dutch
     hy: 'am', # Armenian
     uk: 'ua', # Ukrainian
-    :'pt-BR' => 'br', # Brazilian
+    :'pt-br' => 'br', # Brazilian
     hi: 'in', # Hindi
     tr: 'tr', # Turkish
     ro: 'ro', # Romanian
