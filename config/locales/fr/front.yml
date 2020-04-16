@@ -4,7 +4,7 @@
 
 fr:
   we_meditate: "We Meditate" # This is the title of the website
-  tagline: "Silence your mind and discover your inner potential with guided meditations. Connect with others around the world meditating for a better life." # TODO: Translate
+  tagline: "Faites le vide, découvrez votre potentiel intérieur avec des méditations guidées. Connectez-vous avec d'autres personnes dans le monde, en méditant pour une vie meilleure."
 
   header:
     learn_more: "En Savoir Plus"
@@ -12,7 +12,7 @@ fr:
     inspiration_from_within: "L'inspiration vient de l'intérieur"
     cookie_notice: "En continuant à utiliser wemeditate.co, vous acceptez notre utilisation des cookies."
     preview_notice: "Vous visualisez un aperçu"
-    kundalini: "Inner Energy" # TODO: Translate
+    kundalini: "Énergie Intérieure"
 
   footer:
     scroll_to_top: "Retour Haut de Page"
@@ -56,9 +56,9 @@ fr:
       subscribe: "Vous avez été abonné(e)."
       contact: "Votre message a été reçu."
       register: "Vous avez été enregistré(e)."
-    button: # TODO: Translate
-      try_again: "Try Again"
-      submitted: "Submitted"
+    button:
+      try_again: "Réessayer"
+      submitted: "Envoyé"
 
   player: # For the music or video player
     pause: "Pause"
@@ -81,7 +81,7 @@ fr:
     play_title: "Lire %{title}" # %{title} is the title of a video or music track
 
   articles:
-    read_more: "Lire la suite" # Takes you to the article page
+    read_more: "Lire la Suite" # Takes you to the article page
     load_more: "En Télécharger Plus" # Loads more articles
     filter: "Filtre"
     show_all: "Tous"
@@ -157,24 +157,24 @@ fr:
   classes:
     map_title: "Cours de méditation près de chez moi"
     prompt: "Entrez la ville ou le code postal"
-    nearby: "Nearby" # TODO: Translate
-    loading: "Locating..." # TODO: Translate
-    found: "Click to confirm" # TODO: Translate
+    nearby: "Près de chez Vous"
+    loading: "Localisation..."
+    found: "Cliquez pour confirmer"
 
-  streams: # TODO: Translate
+  streams:
     countdown:
-      title: "Watch this space"
-      description: "The next live guided meditation is in"
-      action: "Remind Me"
+      title: "Consultez régulièrement cet espace"
+      description: "La prochaine méditation guidée en direct est dans"
+      action: "Rapelez-moi"
     live:
-      title: "We are live now!"
-      action: "Join now"
-      description: "Press play to join our live meditation session streaming right now"
+      title: "En direct maintenant!"
+      action: "Rejoignez-nous maintenant"
+      description: "Appuyez sur play pour rejoindre notre méditation en direct maintenant"
     timing:
-      days: "Days"
-      hours: "Hours"
+      days: "Jours"
+      hours: "Heures"
       minutes: "Minutes"
-      seconds: "Seconds"
+      seconds: "Secondes"
 
   errors:
     title: "Oups..."
@@ -182,17 +182,17 @@ fr:
     no_programs: "Les cours de méditation dans votre région seront bientôt disponibles."
     error: "Erreur"
     alternatives_title: "Essayez plutôt l'un d'entre eux:"
-    report_issue: "Please try again, and report this issue if it continues to occur. When reporting the issue, please do your best to describe what specific actions you were taking before the issue occurred." # TODO: Translate
+    report_issue: "Veuillez réessayer. S'il vous plaît, signalez ce problème s'il persiste. Lorsque vous signalez le problème, essayez de décrire au mieux les actions spécifiques que vous faisiez avant d'avoir ce problème."
     '404': "Cette page n'existe pas"
     '422': "Le changement que vous vouliez a été refusé"
     '500': "Nous sommes désolés, une erreur s'est produite"
 
   javascript:
     reading_time: "%minutes% minutes de lecture"
-    loading: "Loading..." # TODO: Translate
+    loading: "Chargement en cours..."
     popup:
       close: "Fermer (Esc)"
-      loading: "Chargement..."
+      loading: "Chargement en cours..."
       prev: "Précédent (touche flèche gauche)"
       next: "Suivant (touche flèche droite)"
       counter: "%curr% de %total%"

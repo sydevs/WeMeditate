@@ -60,13 +60,13 @@ fr:
         published: "Publié"
         name: "Nom"
         slug: "URL"
-        state: "Status" # TODO: Translate
-        states: # TODO: Translate
-          no_state: "No Translation Started"
-          in_progress: "Work in Progress"
-          archived: "Archived"
-          published: "Published"
-          unpublished: "Not Published"
+        state: "Statut"
+        states:
+          no_state: "Aucune traduction n'a commencé"
+          in_progress: "En Cours"
+          archived: "Archivé"
+          published: "Publié"
+          unpublished: "Non Publié"
 
       article:
         published: :activerecord.attributes.generic.published # Do not translate
@@ -87,10 +87,10 @@ fr:
           normal: "Visibilité Normale"
           high: "Visibilité Forte"
         article_type: "Type d'Auteur"
-        article_types: # TODO: Translate
+        article_types:
           article: "Article"
-          artwork: "Artwork"
-          event: "Event"
+          artwork: "Ouvrages d'art"
+          event: "Événement"
         excerpt: "Extrait"
         thumbnail: "Image Miniature"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
@@ -221,7 +221,7 @@ fr:
         title: "Titre"
         artists: :activerecord.models.artist.other # Do not translate
         audio: "Fichier (mp3)"
-        duration: "Duration" # TODO: Translate
+        duration: "Durée"
         instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
         mood_filters: :activerecord.models.mood_filter.other # Do not translate
 
@@ -276,9 +276,9 @@ fr:
         email: "Adresse Mail"
         invitation_accepted_at: "Invitation Acceptée Le"
         invited_by: :activerecord.models.invited_by # Do not translate
-        languages_known: "Translatable Languages" # TODO: Translate
+        languages_known: "Langues Traduites"
         preferred_language: "Preferred Language" # TODO: Translate
-        languages_access: "Accessible Locales" # TODO: Translate
+        languages_access: "Accessible aux Paramètres régionaux"
         role: "Rôle"
         roles:
           translator: "Traducteur"
@@ -291,6 +291,6 @@ fr:
         user: :activerecord.models.user.one # Do not translate
         action: "Action"
         actions:
-          update: "Updated"
-          create: "Created"
-          destroy: "Deleted"
+          update: "Mis à jour"
+          create: "Créé"
+          destroy: "Détruit"

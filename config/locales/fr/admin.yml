@@ -86,10 +86,10 @@ fr:
       pending_invitation: "Invitation toujours en attente d'acceptation"
       this_is_you: "C'est vous"
       missing_record: " %{model} manquant"
-      too_many_pinned: "More than %{count} pinned %{model}" # TODO: Translate
+      too_many_pinned: "Plus de %{count} %{model} épinglés."
       updated_ago: "Modifié il y a %{time_ago} "
       published_ago: "Publié il y a %{time_ago} "
-      published_from_now: "Will be published %{time_from_now} from now" # TODO: Translate
+      published_from_now: "Sera publié dans %{time_from_now}"
       urgency: # These are in order, with 'critical' as the most important, and 'pending' as the least important.
         critical: "Problème Critique"
         important: "Question Importante"
@@ -101,9 +101,9 @@ fr:
       popularity: "Popularité: %{value}"
 
     messages:
-      loading: "Chargement"
+      loading: "Chargement en cours"
       errors: "Erreurs"
-      no_translations_found: "Aucune %{pages} à traduire"
+      no_translations_found: "Aucune %{pages} traduite"
       make_public: "Rendez cette %{page} visible au public"
       maintenance_mode: "Le site est en construction, revenez bientôt vers nous."
       confirm_destroy: "Souhaitez-vous vraiment supprimer cela définitivement?"
@@ -112,12 +112,12 @@ fr:
       drop_files_here: "Déposez les Fichiers ici"
       unapproved_changes_notice: "Cette %{page} a des modifications non publiées. Elles resteront invisibles au public tant qu'elles n'auront pas été validées par un administrateur."
       pending_invitation_notice: " %{person} a été invité(e) à devenir éditeur sur le site Web, mais n'a pas encore répondu."
-      draft_notice: "Vous consultez une version brouillon de cette %{page}. Cette version restera invisible au public tant qu'elle n'aura pas été validée par un administrateur."
+      draft_notice: "Vous consultez une version brouillon de %{page}. Cette version restera invisible au public tant qu'elle n'aura pas été validée par un administrateur."
       draft_contributed_by: "Ce brouillon comprend les modifications apportées par %{people}."
       text_too_short: "doit avoir au moins %{count} caractères"
       invalid_vimeo_id: "doit être un identifiant Vimeo valide"
       new_author_notice: "Vous n'avez pas encore configuré votre profil d'auteur, remplissez les champs ci-dessous et appuyez sur enregistrer."
-      start_details_before_content: "Start translating details first, then the content." # TODO: Translate
+      start_details_before_content: "Commencez par traduire les détails en premier, puis le contenu."
 
     hints:
       excerpt: "Voici un bref aperçu du contenu de %{page} qui sera affiché dans les listes %{page}."
@@ -127,13 +127,13 @@ fr:
       article_owner: "Les administrateurs et les éditeurs peuvent toujours modifier tous les articles. Ce champ donne au rédacteur une autorisation spéciale pour modifier un article après sa publication. C'est généralement la personne qui a écrit l'article en premier lieu."
       article_video: "Si vous entrez une vidéo associée, elle apparaîtra dans l'aperçu de l'article."
       article_date: "Si cet article concerne un événement, vous pouvez définir ici la date de début de l'événement. Cette date apparaîtra dans l'aperçu de l'article."
-      article_coordinates: "Providing the latitude and longitude of an event will allow rich Google search results." # TODO: Translate
+      article_coordinates: "Fournir la latitude et la longitude d'un événement permettra de meilleurs résultats de recherche Google."
       article_published_at: "La date de publication détermine l'ordre dans lequel les articles apparaissent."
       fixed_slug: "Ceci est une page spéciale, son adresse URL ne peut pas être modifiée."
       preferred_language: "This is the language the user will view the admin website in." # TODO: Translate
-      languages_access: "These are the locales where this user can modify the site content." # TODO: Translate
-      languages_known: "These are the languages that a user can translate content from." # TODO: Translate
-      self_realization_slug: "The url for the self-realization page must be \"%{slug}\"" # TODO: Translate
+      languages_access: "Ce sont les paramètres régionaux où cet utilisateur peut modifier le contenu du site."
+      languages_known: "Ce sont les langues à partir desquelles un utilisateur peut traduire du contenu."
+      self_realization_slug: "L'URL de la page Réalisation de soi doit être \"%{slug}\""
 
     result:
       created: "Créé avec Succès."
@@ -144,10 +144,10 @@ fr:
       # Example: "You cannot delete a Category which has Articles attached to it. Reassign the Articles and try again."
       published: "Publié avec succès."
     
-    audit: # TODO: Translate
-      title: "History of changes to \"%{record}\" %{model}"
-      changed_by: "by %{name}"
-      changed_to: "changed to"
+    audit:
+      title: "Historique des modifications apportées à \"%{record}\" %{model}"
+      changed_by: "par %{name}"
+      changed_to: "changé pour"
 
     # ===== CONTENT ===== #
     # This section defines text that will be shown in the content editor.
@@ -165,7 +165,7 @@ fr:
         structured: "Texte Structuré"
         textbox: "Texte avec Image"
         video: "Vidéo"
-        whitespace: "Whitespace" # TODO: Translate
+        whitespace: "Espace blanc"
       settings:
         tunes: "Options"
         decorations: "Décorations"
@@ -176,7 +176,7 @@ fr:
         asGallery: "Galerie"
         asWisdom: "Style Connaissance Ancestrale"
         asVideo: "Vidéo"
-        asPoem: "Poetry" # TODO: Translate
+        asPoem: "Poésie"
         withImages: "Afficher les Images"
         invert: "Inverser les Couleurs"
         compact: "No Spacing After Block" # TODO: Translate
@@ -196,19 +196,19 @@ fr:
           articles: "Articles"
           treatments: "Techniques"
           meditations: "Méditations"
-        level: # These are heading levels # TODO: Translate
-          h1: "Level 1"
-          h2: "Level 2"
-          h3: "Level 3"
-          h4: "Level 4"
-          h5: "Level 5"
-          h6: "Level 6"
-        size: # TODO: Translate
-          narrow: "Narrow"
-          wide: "Wide"
-          small: "Small"
-          medium: "Medium"
-          large: "Large"
+        level: # These are heading levels
+          h1: "Niveau 1"
+          h2: "Niveau 2"
+          h3: "Niveau 3"
+          h4: "Niveau 4"
+          h5: "Niveau 5"
+          h6: "Niveau 6"
+        size:
+          narrow: "Étroit"
+          wide: "Large"
+          small: "Petit"
+          medium: "Moyen"
+          large: "Grand"
         format:
           button: "Bouton"
           grid: "Réseau"
@@ -320,18 +320,18 @@ fr:
           other: "Brouillon avec %{count} blocs"
 
     dashboard:
-      title: "Tableau de Bord pour %{language}"
+      title: "Tableau de Bord"
       content: # TODO: Translate
         title: "Published Content"
-        public: "The %{language} website (%{host}) is open to the public, and has the following published content."
-        private: "The %{language} website (%{host}) is closed to the public, and has the following ready content."
+        public: "L'ébergeur (%{host}) du site %{language} est visible au public et a le contenu publié suivant."
+        private: "L'ébergeur (%{host}) du site %{language} est invisible au public et a le contenu publié suivant."
       schedule: # TODO: Translate
-        title: "Publishing Schedule"
-        description: "This is a list of articles which are scheduled to be published in the near future."
-        no_schedule: "No articles are scheduled to be published."
-      alerts: # TODO: Translate
+        title: "Calendrier de Publication"
+        description: "Voici une liste d'articles qui devraient être publiés dans un avenir proche."
+        no_schedule: "Aucun article n'est prévu d'être publié."
+      alerts:
         title: "Alertes"
-        description: "This is a list of important issues, that should be resolved to keep the site in healthy order."
+        description: "Voici une liste de problèmes importants qui devraient être résolus pour maintenir le site en bon état."
         no_issues: "Aucun problème jusqu'ici, bon travail, merci!"
 
     index:
@@ -379,13 +379,13 @@ fr:
         default: "Défaut"
       status: # Try to keep these translations short
         # Draftable
-        needs_review: "Needs Review" # TODO: Translate
+        needs_review: "À Réviser"
         # Translatable
-        needs_translation: "Demande à être Traduit"
-        not_translated: "Not Translated" # TODO: Translate
+        needs_translation: "À Traduire"
+        not_translated: "Non Traduit"
         # Stateable
-        no_state: "In Progress" # TODO: Translate
-        in_progress: "In Progress" # TODO: Translate
+        no_state: "En Cours"
+        in_progress: "En Cours"
         archived: :activerecord.attributes.generic.states.archived # Do not translate
         published: :activerecord.attributes.generic.states.published # Do not translate
         unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
