@@ -324,7 +324,7 @@ ro:
           other: "Ciornă proiect cu %{count} tabele"
 
     dashboard:
-      title: "Bord"
+      title: "Tablou de Bord pentru %{language}"
       content:
         title: "Conținut Publicat"
         public: "Site-ul (%{host}) în %{language} este deschis publicului și are următorul conținut." 

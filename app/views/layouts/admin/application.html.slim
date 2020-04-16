@@ -1,21 +1,21 @@
 doctype html
 
-html
+html lang=I18n.locale
   head
     title WM #{content_for :title}
-    link rel="shortcut icon" href="/favicon/admin.ico" type="image/x-icon"
+    link rel='shortcut icon' href='/favicon/admin.ico' type='image/x-icon'
 
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'admin', nonce: true, 'data-turbolinks-track': 'reload'
 
-  body class="admin #{controller_name} #{controller.action_name}"
+  body class="admin #{controller_name} #{controller.action_name} locale--#{Globalize.locale}"
     nav id='sidebar'
       = render 'layouts/admin/menu'
     main id='main'
       - if current_user.accessible_locales.length > 1 || Globalize.locale != current_user.accessible_locales.first
-        .ui.floating.search.dropdown.right.floated.basic.button class=locale_colour
+        .ui.floating.search.dropdown.right.floated.basic.button id='locale-selector'
           .text
             = language_flag(Globalize.locale)
             = language_name(Globalize.locale)
@@ -32,7 +32,7 @@ html
           i.notched.circle.loading.icon
           = translate 'admin.messages.loading'
 
-      .ui.divider class=locale_colour
+      .ui.divider class='locale-divider'
 
       - if notice
         .ui.small.info.message = notice

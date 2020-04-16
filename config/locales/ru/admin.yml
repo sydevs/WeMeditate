@@ -326,7 +326,7 @@ ru:
           many: "Черновик с %{count} блоками" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
 
     dashboard: 
-      title: "Панель управления"
+      title: "Dashboard for %{language}" # TODO: Translate
       content:
         title: "Опубликованный Контент"
         public: "%{language} сайт (%{host}) доступен пользователям и имеет следующий опубликованный контент."

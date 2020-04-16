@@ -2,15 +2,17 @@
 .ui.centered.small.image id='logo'
   = render 'admin/partials/logo'
 
-.ui.section.divider class=locale_colour
+.ui.section.divider class='locale-divider'
 
 .ui.fluid.secondary.vertical.menu
-  /p
-    .ui.fluid.label class=locale_colour
-      = locale_host
+  p
+    .ui.fluid.label id='locale-label'
+      i.globe.icon
+      a href=root_url target='_blank'
+        = locale_host
 
   = link_to admin_root_path, class: "#{'active' if action_name == 'dashboard'} item"
-    = translate 'admin.dashboard.title'
+    = translate 'admin.misc.menu.dashboard'
 
   - if policy(Article).index? || policy(StaticPage).index? || policy(SubtleSystemNode).index?
     .item

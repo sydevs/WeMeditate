@@ -1,5 +1,6 @@
 
-- content_for :title, translate('admin.dashboard.title')
+- host = Rails.configuration.published_locales.include?(Globalize.locale.to_sym) ? locale_host : language_name(Globalize.locale)
+- content_for :title, translate('admin.dashboard.title', language: host)
 
 .ui.icon.message
   i.question.circle.icon

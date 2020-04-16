@@ -42,13 +42,28 @@ main
   display: block
   padding-top: 1rem
 
-$locale-colours: #FA8072, #53bfe0, #FFE4B5, #8FBC8F, #ADD8E6, #CD853F, #D8BFD8, #D3B0FB, #A9AbC4
-$i: 0
+// ===== LOCALE COLOURS ===== //
+$red: #db2828
+$orange: #f2711c
+$yellow: #fbbd08
+$olive: #b5cc18
+$green: #21ba45
+$teal: #00b5ad
+$blue: #2185d0
+$violet: #6435c9
+$purple: #a333c8
+$pink: #e03997
+$brown: #a5673f
 
-@each $colour in $locale-colours
-  $i: $i + 1
-  $n: $i % length($locale-colours)
+$locale-colours: en darkgrey, ru $blue, it $green, de $red, fr $teal, es $yellow, pt-BR $olive, nl $violet, hy $purple, uk $brown, hi $orange, tr $red, ro $pink
 
-  .locale-colour--#{$n},
-  .ui.basic.button.locale-colour--#{$n}
-    background: $colour !important
+@each $locale, $colour in $locale-colours
+  body.locale--#{$locale}
+    #locale-label
+      background: transparentize($colour, 0.5)
+
+    .locale-divider
+      border-color: transparentize($colour, 0.5) !important
+
+    #locale-selector
+      box-shadow: 0px 0px 0px 1px transparentize($colour, 0.25) inset

@@ -320,7 +320,7 @@ es:
           other: "Contenido modificado con %{count} blocks"
 
     dashboard:
-      title: "Cuadro de control"
+      title: "Tablero de Instrumentos para %{language}" # TODO: Translate
       content: # TODO: Translate
         title: "Published Content"
         public: "The %{language} website (%{host}) is open to the public, and has the following published content."

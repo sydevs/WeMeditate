@@ -314,7 +314,7 @@ it:
           other: "Bozza con %{count} blocchi"
 
     dashboard:
-      title: "Pagina amministrazione"
+      title: "Cruscotto per %{language}"
       content:
         title: "Contenuto Pubblicato"
         public: "Il sito %{language} (%{host}) è aperto al pubblico, e ha i seguenti contenuti pubblicati."

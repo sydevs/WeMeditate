@@ -324,7 +324,7 @@ tr:
           many: "Draft content with %{count} blocks" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
 
     dashboard:
-      title: "Dashboard"
+      title: "Dashboard for %{language}"
       content:
         title: "Published Content"
         public: "The %{language} website (%{host}) is open to the public, and has the following published content."

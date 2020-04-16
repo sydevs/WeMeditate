@@ -321,7 +321,7 @@ en:
           other: "Draft content with %{count} blocks"
 
     dashboard:
-      title: "Dashboard"
+      title: "Dashboard for %{language}"
       content:
         title: "Published Content"
         public: "The %{language} website (%{host}) is open to the public, and has the following published content."
@@ -464,6 +464,7 @@ en:
     misc:
       no_translated_title: "No Translated Title" # This should be written in titlecase
       menu:
+        dashboard: "Dashboard"
         my_author: "My Author Profile"
         all_authors: "All Author Profiles"
         # The website's editable content is broken into three sections Pages, Resources, and People

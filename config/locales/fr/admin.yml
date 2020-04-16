@@ -318,7 +318,7 @@ fr:
           other: "Brouillon avec %{count} blocs"
 
     dashboard:
-      title: "Tableau de Bord"
+      title: "Tableau de Bord pour %{language}"
       content: # TODO: Translate
         title: "Published Content"
         public: "The %{language} website (%{host}) is open to the public, and has the following published content."

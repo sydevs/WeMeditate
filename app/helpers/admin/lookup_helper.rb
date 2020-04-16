@@ -67,8 +67,4 @@ module Admin::LookupHelper
     MODEL_ICON[model]
   end
 
-  def locale_colour locale = Globalize.locale
-    "locale-colour--#{I18n.available_locales.index(locale) % 9}"
-  end
-
 end

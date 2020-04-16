@@ -319,7 +319,7 @@ nl:
           other: "Draft content with %{count} blocks"
 
     dashboard:
-      title: "Dashboard"
+      title: "Dashboard for %{language}"
       content:
         title: "Published Content"
         public: "The %{language} website (%{host}) is open to the public, and has the following published content."
