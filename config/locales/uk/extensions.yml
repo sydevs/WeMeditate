@@ -6,68 +6,68 @@
 uk:
   devise:
     failure:
-      invited: "You have a pending invitation, accept it to finish creating your account."
-      already_authenticated: "You are already signed in."
-      inactive: "Your account is not activated yet."
-      invalid: "Invalid %{authentication_keys} or Password."
-      locked: "Your account is locked."
-      last_attempt: "You have one more attempt before your account is locked."
-      not_found_in_database: "Invalid %{authentication_keys} or Password."
-      timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your email address before continuing."
+      invited: "У вас є запрошення, що очікує на підтвердження. Прийміть його, щоб завершити створення акаунту."
+      already_authenticated: "Ви вже зайшли до системи."
+      inactive: "Ваш акаунт ще не активовано."
+      invalid: "Невірний %{authentication_keys} або пароль."
+      locked: "Ваш акаунт заблокований."
+      last_attempt: "У вас є остання спроба, після якої ваш акаунт буде заблокований."
+      not_found_in_database: "Невірний %{authentication_keys} або пароль."
+      timeout: "Ваш сеанс закінчився. Будь ласка, увійдіть знову, щоб продовжити."
+      unauthenticated: "Увійдіть в систему або зареєструйтеся, щоб продовжити."
+      unconfirmed: "Підтвердіть свій E-mail, щоб продовжити."
     mailer:
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Інструкція для відновлення пароля"
       unlock_instructions:
-        subject: "Unlock instructions"
+        subject: "Інструкція для розблокування"
       email_changed:
-        subject: "Email Changed"
+        subject: "E-mail Змінено"
       password_change:
-        subject: "Password Changed"
+        subject: "Пароль змінений"
       invitation_instructions:
-        subject: "Invitation instructions"
-        hello: "Hello %{email}"
-        someone_invited_you: "You have been invited to be an editor at %{url}, you can accept it through the link below."
-        accept: "Accept invitation"
-        accept_until: "This invitation will be due in %{due_date}."
-        ignore: "If you don't want to accept the invitation, please ignore this email.<br />\nYour account won't be created until you access the link above and set your password."
+        subject: "Інструкція Запрошення"
+        hello: "Привіт %{email}"
+        someone_invited_you: "Ви були запрошені стати редактором %{url}, ви можете прийняти запрошення, перейшовши за посиланням."
+        accept: "Прийняти запрошення"
+        accept_until: "Це запрошення дійсне до %{due_date}."
+        ignore: "Якщо ви не хочете приймати запрошення, будь ласка, ігноруйте цей E-mail.<br />\n Ваш акаунт не буде створено, поки ви не перейдете по посиланню вище і не створите свій пароль."
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Your password has been changed successfully. You are now signed in."
-      updated_not_active: "Your password has been changed successfully."
+      no_token: "Ви не можете отримати доступ до цієї сторінки, якшо не перейшли за посиланням в E-mail для відновлення пароля. Якщо ви перейшли по посиланню з E-mail для відновлення пароля, переконайтеся, що ви використовували URL-адресу з E-mail цілком."
+      send_instructions: "Протягом декількох хвилин ви отримаєте E-mail з інструкцією для відновлення пароля."
+      send_paranoid_instructions: "Якщо ваша E-mail адреса є в нашій базі, ви отримаєте посилання для відновлення пароля по E-mail протягом кількох хвилин."
+      updated: "Ваш пароль успішно змінено. Тепер ви увійшли в систему."
+      updated_not_active: "Ваш пароль успішно змінено."
     invitations:
-      send_instructions: "An invitation email has been sent to %{email}."
-      invitation_token_invalid: "The invitation token provided is not valid!"
-      updated: "Your password was set successfully. You are now signed in."
-      updated_not_active: "Your password was set successfully."
-      no_invitations_remaining: "No invitations remaining"
-      invitation_removed: "Your invitation was removed."
+      send_instructions: "Запрошення було направлено по E-mail на %{email}."
+      invitation_token_invalid: "Зазначений токен запрошення недійсний!"
+      updated: "Ваш пароль був успішно створений. Тепер ви увійшли в систему."
+      updated_not_active: "Ваш пароль був успішно створений."
+      no_invitations_remaining: "Немає пропущених запрошень."
+      invitation_removed: "Ваше запрошення було видалено."
       new:
-        header: "Send invitation"
-        submit_button: "Send an invitation"
+        header: "Відправити запрошення"
+        submit_button: "Відправити запрошення"
       edit:
-        header: "Set your password"
-        submit_button: "Set my password"
+        header: "Задати пароль"
+        submit_button: "Задати пароль"
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
-      already_signed_out: "Signed out successfully."
+      signed_in: "Ви успішно увійшли в систему."
+      signed_out: "Ви успішно вийшли з системи."
+      already_signed_out: "Ви успішно вийшли з системи."
     unlocks:
-      send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      send_instructions: "Протягом декількох хвилин ви отримаєте E-mail з інструкцією для розблокування вашого облікового запису."
+      send_paranoid_instructions: "Якщо ваш акаунт існує, ви отримаєте E-mail з інструкцією для його розблокування протягом декількох хвилин."
+      unlocked: "Ваш акаунт успішно розблоковано. Будь ласка, увійдіть в систему, щоб продовжити."
   errors:
     messages:
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
+      expired: "закінчився термін дії, будь ласка, запитайте новий"
+      not_found: "не знайдений"
+      not_locked: "не був заблокований"
       not_saved:
-        one: "%{count} error prohibited this %{resource} from being saved:" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-        few: "%{count} errors prohibited this %{resource} from being saved:" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
-        many: "%{count} errors prohibited this %{resource} from being saved:" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        one: "%{count} помилка не дозволяє зберегти %{resource}:" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "%{count} помилки не дозволяють зберегти %{resource}:" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+        many: "%{count} помилки не дозволяють зберегти %{resource}:" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
   time:
     formats:
       default: '%k:%M' # Do not translate, unless you know what you are doing
@@ -83,10 +83,10 @@ uk:
       default: '%d %b %Y' # Do not translate, unless you know what you are doing
       date: :date.formats.default # Do not translate
   simple_form:
-    'yes': "Yes"
-    'no': "No"
+    'yes': "Так"
+    'no': "Ні"
     required:
-      text: "required"
+      text: "обов'язково"
       mark: '*' # Do not translate
     error_notification:
-      default_message: "Please review the problems below:"
+      default_message: "Будь ласка, ознайомтеся з проблемою нижче:"
