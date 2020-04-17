@@ -36,7 +36,7 @@ module Admin
     private
 
       def set_locale!
-        I18n.locale = current_user.preferred_language || :en
+        I18n.locale = current_user&.preferred_language || :en
         Globalize.locale = params[:locale] || :en
       end
 
