@@ -29,8 +29,26 @@ module Admin
 
     protected
 
-      def default_url_options
-        { locale: Globalize.locale, host: locale_host }
+      def default_url_options options = {}
+        { locale: Globalize.locale, host: locale_host }.merge(options)
+      end
+
+      def localized mode
+        if mode == :i18n
+          with_cleared_url_options_cache do
+            I18n.with_locale(I18n.locale) do
+              Globalize.with_locale(Globalize.locale) do
+                yield
+              end
+            end
+          end
+        elsif mode == :globalize
+          with_cleared_url_options_cache do
+            Globalize.with_locale(Globalize.locale) do
+              yield
+            end
+          end
+        end
       end
 
     private
@@ -38,12 +56,24 @@ module Admin
       def set_locale!
         I18n.locale = current_user&.preferred_language || :en
         Globalize.locale = params[:locale] || :en
+        Rails.application.routes.default_url_options[:host] = locale_host
+        Rails.application.routes.default_url_options[:locale] = Globalize.locale
       end
 
       def redirect_to_locale!
         return if current_user.accessible_locales.include?(Globalize.locale)
 
         redirect_to root_path(locale: current_user.accessible_locales.first), status: :see_other
+      end
+
+      # Read more: https://github.com/rails/rails/issues/26040#issuecomment-574112746
+      def with_cleared_url_options_cache
+        # So e.g. a changed locale within the block affects default_url_options.
+        instance_variable_set("@_url_options", nil)
+        yield
+      ensure
+        # So that any changes e.g. to locale within the block don't leak outside the block.
+        instance_variable_set("@_url_options", nil)
       end
 
   end
