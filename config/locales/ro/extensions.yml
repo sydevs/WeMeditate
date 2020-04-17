@@ -10,7 +10,7 @@ ro:
       already_authenticated: "Ești deja autentificat." 
       inactive: "Contul tău nu a fost încă activat."
       invalid: "Cont %{authentication_keys} sau Parolă greșită."
-      locked: "Your account is locked." # TODO: Translate
+      locked: "Contul tău este blocat."
       last_attempt: "Mai ai o încercare până când contul tău va fi blocat."
       not_found_in_database: "Nu apare in Baza de date %{authentication_keys} sau parolă."
       timeout: "Sesiunea a expirat. Te rog, autentifică-te din nou pentru a continua."

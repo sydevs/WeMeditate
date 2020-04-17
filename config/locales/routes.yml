@@ -121,16 +121,16 @@ pt-br: # Portuguese translations
     live: "live"
 ro: # Romanian translations
   routes:
-    inspiration: "inspiration"
-    articles: "articles"
-    meditations: "meditations"
-    techniques: "techniques"
-    subtle_system: "subtle-system"
-    page: "page"
-    music: "music"
-    archive: "all"
-    self_realization: "first-experience"
-    classes: "classes"
+    inspiration: "inspirație"
+    articles: "articole"
+    meditations: "meditații"
+    techniques: "tehnici"
+    subtle_system: "sistemul-subtil"
+    page: "pagină"
+    music: "muzică"
+    archive: "toate"
+    self_realization: "prima-experiență"
+    classes: "cursuri"
     live: "live"
 ru: # Russian translations
   routes:

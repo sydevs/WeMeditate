@@ -150,8 +150,8 @@ ro:
           about: "Despre"
           classes: "Cursuri"
           privacy: "Politică de Confidențialitate"
-          streams: "Livestream Page" # TODO: Translate
-          custom: "Custom Page" # TODO: Translate
+          streams: "Pagina de livestream"
+          custom: "Pagină personalizată"
         content: "Conținut"
         metatags: "Metadata"
 

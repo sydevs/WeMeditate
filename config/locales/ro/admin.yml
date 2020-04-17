@@ -167,7 +167,7 @@ ro:
         structured: "Structura Textului"
         textbox: "Text cu Imagine"
         video: "Video"
-        whitespace: "Whitespace" # TODO: Translate
+        whitespace: "Spatiu Alb"
       settings:
         tunes: "Opțiuni"
         decorations: "Decorațiuni"
@@ -197,19 +197,19 @@ ro:
           articles: "Articole"
           treatments: "Tehnici"
           meditations: "Meditații"
-        level: # These are heading levels # TODO: Translate
-          h1: "Level 1"
-          h2: "Level 2"
-          h3: "Level 3"
-          h4: "Level 4"
-          h5: "Level 5"
-          h6: "Level 6"
-        size: # TODO: Translate
+        level: # These are heading levels
+          h1: "Nivel 1"
+          h2: "Nivel 2"
+          h3: "Nivel 3"
+          h4: "Nivel 4"
+          h5: "Nivel 5"
+          h6: "Nivel 6"
+        size:
           narrow: "Îngust"
           wide: "Lat"
-          small: "Small"
-          medium: "Medium"
-          large: "Large"
+          small: "Mic"
+          medium: "Mediu"
+          large: "Mare"
         format:
           button: "Buton"
           grid: "Grilă"
@@ -240,7 +240,7 @@ ro:
         items: "Articole"
         action: "Buton text"
         url: "Lipește un link aici"
-        quote: "Introdu un citat" # "Citat" as in a quotation from some other text or person
+        quote: "Introdu un citat" # "Quote" as in a quotation from some other text or person
         alt: "Descrie imaginea pentru persoanele cu deficiențe de vedere"
         caption: "Introdu descriere" # "Caption" as in a piece of text describing an image
         credit: "Introdu acreditare" # "Credit" as in the credit for an image or quotation
@@ -300,8 +300,8 @@ ro:
         modified: "Modificat"
         nochange: "Nicio modificare"
 
-    preview: # TODO: Translate
-      no_custom_meditations: "The custom meditation interface cannot be previewed, and so it has been hidden for this preview."
+    preview:
+      no_custom_meditations: "Interfața pentru medițatiile personalizate nu poate fi previzualizată, prin urmare a fost exclusă din această previzualizare."
 
     metadata:
       key: "nume"
@@ -482,8 +482,8 @@ ro:
         subtle_system_nodes: "Sistemul Subtil"
         meditations: :activerecord.models.meditation.other # Do not translate
         treatments: :activerecord.models.treatment.other # Do not translate
-        tracks: "Music Tracks"
-        my_user: "My Account"
+        tracks: "Music Tracks" # TODO: Translate
+        my_user: "My Account" # TODO: Translate
         users: :activerecord.models.user.other # Do not translate
       locale:
         no_languages: "Nicio Limbă"

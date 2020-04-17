@@ -12,7 +12,7 @@ ro:
     inspiration_from_within: "Inspirația vine din interior"
     cookie_notice: "Acest site folosește cookies. Continuarea navigării implică acceptarea lor."
     preview_notice: "Acesta este un preview"
-    kundalini: "Inner Energy" # TODO: Translate
+    kundalini: "Energia Interioară"
 
   footer:
     scroll_to_top: "Începutul Paginii"
@@ -159,24 +159,24 @@ ro:
   classes:
     map_title: "Cursuri de meditație în apropierea mea"
     prompt: "Completează cu orașul sau codul tău poștal"
-    nearby: "Nearby" # TODO: Translate
-    loading: "Locating..." # TODO: Translate
-    found: "Click to confirm" # TODO: Translate
+    nearby: "Lângă"
+    loading: "Localizează..."
+    found: "Apasă pentru a confirma"
 
-  streams: # TODO: Translate
+  streams:
     countdown:
-      title: "Watch this space"
-      description: "Live guided meditations. Every weekday at 7pm BST. The next session is in"
-      action: "Remind Me"
+      title: "Privește acest spațiu"
+      description: "Meditații ghidate live. De luni până vineri la ora 7pm BST. Următoarea sesiune va avea loc în "
+      action: "Reamintește-mi"
     live:
-      title: "We are live now!"
-      action: "Join now"
-      description: "Press play to join our live meditation session streaming right now"
+      title: "Suntem live acum!"
+      action: "Alătură-te"
+      description: "Apasă play pentru a intra în sesiunea de meditație live"
     timing:
-      days: "Days"
-      hours: "Hours"
-      minutes: "Minutes"
-      seconds: "Seconds"
+      days: "Zile"
+      hours: "Ore"
+      minutes: "Minute"
+      seconds: "Secunde"
 
   errors:
     title: "Oops..."
