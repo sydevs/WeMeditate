@@ -5,7 +5,7 @@ module Admin
     before_action :authorize!, except: %i[create]
 
     def index
-      localized :globalize do
+      localize :content do
         @records = policy_scope(@model).order(updated_at: :desc).q(params[:q])
         @records = sort_by(@records, params[:sort])
         @records = filter_by(@records, params[:filter])
@@ -29,32 +29,32 @@ module Admin
     end
 
     def show
-      localized :globalize do
+      localize :content do
         render 'admin/application/show'
       end
     end
 
     def new
-      localized :globalize do
+      localize :content do
         @record = @model.new
         render 'admin/application/new'
       end
     end
 
     def edit
-      localized :globalize do
+      localize :content do
         render 'admin/application/edit'
       end
     end
 
     def write
-      localized :globalize do
+      localize :content do
         render 'admin/application/write'
       end
     end
 
     def create record_params, redirect = nil
-      localized :globalize do
+      localize :content do
         @record = @model.new update_params(record_params)
         authorize @record
 
@@ -65,7 +65,7 @@ module Admin
     end
 
     def update record_params, redirect = nil
-      localized :globalize do
+      localize :content do
         save!(:update, update_params(record_params), redirect) do
           @record.try(:cleanup_media_files!)
         end
@@ -73,13 +73,13 @@ module Admin
     end
 
     def review
-      localized :globalize do
+      localize :content do
         render 'admin/application/review', layout: 'admin/review'
       end
     end
 
     def preview
-      localized :i18n do
+      localize :interface do
         reify = reify == '' ? [] : params[:reify]&.split(',')
         @record.try(:reify_draft!, only: reify) unless params[:review] && !params[:excerpt]
         render 'admin/application/preview', layout: params[:excerpt] ? 'basic' : 'application'
@@ -87,7 +87,7 @@ module Admin
     end
 
     def approve
-      localized :globalize do
+      localize :content do
         redirect = helpers.polymorphic_admin_path([:admin, (@record.contentable? ? @record : @model)])
         if params[:review] == 'destroy'
           @record.discard_draft!
@@ -109,7 +109,7 @@ module Admin
     end
 
     def destroy associations: []
-      localized :globalize do
+      localize :content do
         associations.each do |key|
           if @record.send(key).present?
             associated_model = @model.reflect_on_association(key).class
@@ -136,14 +136,14 @@ module Admin
     end
 
     def audit
-      localized :globalize do
+      localize :content do
         @audits = @record.audits.with_associations
         render 'admin/application/audit'
       end
     end
 
     def sort
-      localized :globalize do
+      localize :content do
         params[:order].each_with_index do |id, index|
           @model.find(id).update_attribute(:order, index)
         end
@@ -210,7 +210,7 @@ module Admin
     private
 
       def set_record
-        Globalize.with_locale(Globalize.locale) do
+        localize :content do
           @record = @model.preload_for(:admin).find(params[:id])
           instance_variable_set("@#{@record.model_name.param_key}", @record)
         end

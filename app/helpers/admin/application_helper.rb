@@ -1,13 +1,14 @@
 
 module Admin::ApplicationHelper
 
-  # Admin URLs require a big of special handling, to support all the abstraction that we do in the CMS
+  # Admin URLs require a bit of special handling, to support all the abstraction that we do in the CMS
   def polymorphic_admin_path args, options = {}
     unless args.last.is_a?(Class)
       options[:id] = args.last.id
       options[:format] ||= nil
     end
 
+    options[:locale] = Globalize.locale
     polymorphic_path(args, **options)
   end
 

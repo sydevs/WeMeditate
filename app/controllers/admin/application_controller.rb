@@ -9,7 +9,7 @@ module Admin
     after_action :verify_policy_scoped, only: :index
 
     def dashboard
-      Globalize.with_locale(Globalize.locale) do
+      localize :content do
         authorize :application, :access?
         render 'admin/application/dashboard'
       end
@@ -33,8 +33,8 @@ module Admin
         { locale: Globalize.locale, host: locale_host }.merge(options)
       end
 
-      def localized mode
-        if mode == :i18n
+      def localize mode
+        if mode == :interface
           with_cleared_url_options_cache do
             I18n.with_locale(I18n.locale) do
               Globalize.with_locale(Globalize.locale) do
@@ -42,7 +42,7 @@ module Admin
               end
             end
           end
-        elsif mode == :globalize
+        elsif mode == :content
           with_cleared_url_options_cache do
             Globalize.with_locale(Globalize.locale) do
               yield
