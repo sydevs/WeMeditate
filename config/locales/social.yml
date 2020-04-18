@@ -2,6 +2,16 @@
 # SOCIAL MEDIA TRANSLATIONS
 # This file lets us customize the social media URLs for different languages
 
+cs: # Czech
+  sharing:
+    facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
+    twitter: https://twitter.com/intent/tweet?url=%{url}
+    pinterest: http://pinterest.com/pin/create/button/?url=%{url}
+    whatsapp: whatsapp://send?text=%{url}
+  social_media:
+    instagram: https://www.instagram.com/wemeditate.co
+    facebook: https://www.facebook.com/WeMeditateOfficial
+
 de: # German
   sharing:
     facebook: https://www.facebook.com/sharer/sharer.php?u=%{url}
@@ -106,7 +116,7 @@ ru: # Russian
   sharing:
     vk: http://vk.com/share.php?url=%{url}
   social_media:
-    instagram: https://www.instagram.com/wemeditate.co
+    instagram: https://www.instagram.com/wemeditate.ru
     vk: ''
 
 tr: # Turkish

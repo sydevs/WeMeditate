@@ -19,6 +19,7 @@ module Admin::LookupHelper
     hi: 'in', # Hindi
     tr: 'tr', # Turkish
     ro: 'ro', # Romanian
+    cs: 'cz', # Czech
   }.freeze
 
   # The icon used for different levels of urgency

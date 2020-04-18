@@ -2,6 +2,19 @@
 # ROUTE TRANSLATIONS
 # This file contains translations for the website URLs
 
+cs: # Czech translations
+  routes:
+    inspiration: "inspiration"
+    articles: "articles"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
+    self_realization: "first-experience"
+    classes: "classes"
+    live: "live"
 de: # German translations
   routes:
     inspiration: "inspiration"
