@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get :maintenance, to: 'application#maintenance'
+  get 'switch_user' => 'switch_user#set_current_user' if Rails.env.development?
 
   # ===== ADMIN ROUTES ===== #
   constraints DomainConstraint.new(Rails.configuration.admin_domain) do
@@ -12,7 +13,6 @@ Rails.application.routes.draw do
     get '500', to: 'admin/application#error'
 
     get '/', to: redirect('/en')
-    get 'switch_user' => 'switch_user#set_current_user' if Rails.env.development?
 
     scope ':locale' do
       namespace :admin, path: nil do

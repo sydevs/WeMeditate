@@ -3,6 +3,6 @@ class Users::InvitationsController < Devise::InvitationsController
     { host: Rails.configuration.admin_host }
   end
   
-  skip_before_action :enfore_maintenance_mode
+  skip_before_action :enforce_maintenance_mode
   
 end

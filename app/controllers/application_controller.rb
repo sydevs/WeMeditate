@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   include Klaviyo
   protect_from_forgery with: :exception
   prepend_before_action :set_locale!
-  before_action :enfore_maintenance_mode, except: %i[maintenance]
+  before_action :enforce_maintenance_mode, except: %i[maintenance]
   before_action :force_no_ssl_for_staging
 
   # The root page of the website
@@ -78,7 +78,11 @@ class ApplicationController < ActionController::Base
 
   # The page that users are redirected to if the site is in maintenance mode and they aren't logged in.
   def maintenance
-    render layout: 'basic'
+    if current_user.present?
+      redirect_to root_path
+    else
+      render layout: 'basic'
+    end
   end
 
   # Renders an error page
@@ -124,7 +128,7 @@ class ApplicationController < ActionController::Base
     end
 
     # Enforces the maintenance mode redirect
-    def enfore_maintenance_mode
+    def enforce_maintenance_mode
       return if !ENV['MAINTENANCE_MODE'] && Rails.configuration.published_locales.include?(I18n.locale)
       return if %w[sessions switch_user].include? controller_name
       return if current_user.present?
