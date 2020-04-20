@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  get :maintenance, to: 'application#maintenance'
+
   # ===== ADMIN ROUTES ===== #
   constraints DomainConstraint.new(Rails.configuration.admin_domain) do
     devise_for :users, controllers: { invitations: 'users/invitations' }
@@ -46,9 +48,9 @@ Rails.application.routes.draw do
 
   # ===== FRONT-END ROUTES ===== #
   constraints DomainConstraint.new(RouteTranslator.config.host_locales.keys) do
+
     localized do
       devise_for :users, controllers: { invitations: 'users/invitations' }
-      get :maintenance, to: 'application#maintenance'
 
       root to: 'application#home'
       get 'sitemap.xml.gz', to: 'application#sitemap'
