@@ -23,6 +23,9 @@ class StaticPagesController < ApplicationController
     end
 
     set_metadata(@static_page)
+  rescue ActiveRecord::RecordNotFound => e
+    @article = Article.publicly_visible.type_event.friendly.find(params[:id])
+    redirect_to @article, status: :moved_permanently if @article.present?
   end
 
 end
