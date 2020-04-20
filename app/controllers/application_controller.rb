@@ -128,7 +128,7 @@ class ApplicationController < ActionController::Base
       return if %w[sessions switch_user].include? controller_name
       return if current_user.present?
 
-      redirect_to maintenance_path, status: :see_other
+      redirect_to maintenance_path(locale: I18n.locale), status: :see_other
     end
 
     # Sets data which will be used to populate <meta> tags and structured data in the rendered page.

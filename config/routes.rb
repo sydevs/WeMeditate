@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  devise_for :users, controllers: { invitations: 'users/invitations' }
-  get :maintenance, to: 'application#maintenance'
-
   # ===== ADMIN ROUTES ===== #
   constraints DomainConstraint.new(Rails.configuration.admin_domain) do
+    devise_for :users, controllers: { invitations: 'users/invitations' }
+
     get '404', to: 'admin/application#error'
     get '422', to: 'admin/application#error'
     get '500', to: 'admin/application#error'
 
     get '/', to: redirect('/en')
-    get 'switch_user' => 'switch_user#set_current_user'
+    get 'switch_user' => 'switch_user#set_current_user' if Rails.env.development?
 
     scope ':locale' do
       namespace :admin, path: nil do
@@ -47,13 +46,16 @@ Rails.application.routes.draw do
 
   # ===== FRONT-END ROUTES ===== #
   constraints DomainConstraint.new(RouteTranslator.config.host_locales.keys) do
-    get '404', to: 'application#error'
-    get '422', to: 'application#error'
-    get '500', to: 'application#error'
-
     localized do
+      devise_for :users, controllers: { invitations: 'users/invitations' }
+      get :maintenance, to: 'application#maintenance'
+
       root to: 'application#home'
       get 'sitemap.xml.gz', to: 'application#sitemap'
+      get '404', to: 'application#error'
+      get '422', to: 'application#error'
+      get '500', to: 'application#error'
+  
       post :contact, to: 'application#contact'
       post :subscribe, to: 'application#subscribe'
       get :map, to: 'application#map'
