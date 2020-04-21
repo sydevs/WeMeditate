@@ -320,7 +320,7 @@ fr:
           other: "Brouillon avec %{count} blocs"
 
     dashboard:
-      title: "Tableau de Bord"
+      title: "Tableau de Bord pour %{language}"
       content: # TODO: Translate
         title: "Published Content"
         public: "L'ébergeur (%{host}) du site %{language} est visible au public et a le contenu publié suivant."
@@ -463,6 +463,7 @@ fr:
     misc:
       no_translated_title: "Pas de Titre Traduit" # This should be written in titlecase
       menu:
+        dashboard: "Tableau de Bord"
         my_author: "Mon Profil d'Auteur"
         all_authors: "Tous les Profils d'Auteurs"
         # The website's editable content is broken into three sections Pages, Resources, and People

@@ -325,7 +325,7 @@ uk:
           many: "Чернетка з %{count} блоками" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
 
     dashboard:
-      title: "Панель управління"
+      title: "Панель управління for %{languag}" # TODO: Translate
       content:
         title: "Опублікований контент"
         public: "Веб-сайт %{language} (%{host}) відкритий для загального користування та має наступний опублікований контент."
@@ -467,6 +467,7 @@ uk:
     misc:
       no_translated_title: "Відсутній Переклад Заголовку" # This should be written in titlecase
       menu:
+        dashboard: "Панель управління"
         my_author: "Мій профіль"
         all_authors: "Профілі всіх авторів"
         # The website's editable content is broken into three sections Pages, Resources, and People

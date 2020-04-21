@@ -466,6 +466,7 @@ es:
     misc:
       no_translated_title: "Título No Traducido" # This should be written in titlecase
       menu:
+        dashboard: "Tablero de Instrumentos" # TODO: Translate
         my_author: "Mi Perfil de Autor es"
         all_authors: "Todos los Perfiles de Autores"
         # The website's editable content is broken into three sections Pages, Resources, and People

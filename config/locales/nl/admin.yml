@@ -464,6 +464,7 @@ nl:
     misc:
       no_translated_title: "No Translated Title" # This should be written in titlecase
       menu:
+        dashboard: "Dashboard"
         my_author: "My Author Profile"
         all_authors: "All Author Profiles"
         # The website's editable content is broken into three sections Pages, Resources, and People

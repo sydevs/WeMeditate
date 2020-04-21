@@ -470,6 +470,7 @@ ru:
     misc:
       no_translated_title: "Отсутствует Перевод Заголовка" # This should be written in titlecase
       menu:
+        dashboard: "Dashboard" # TODO: Translate
         my_author: "Мой профиль"
         all_authors: "Профили всех авторов"
         # The website's editable content is broken into three sections Pages, Resources, and People

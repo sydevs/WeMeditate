@@ -470,6 +470,7 @@ ro:
     misc:
       no_translated_title: "Titlu Netradus" # This should be written in titlecase
       menu:
+        dashboard: "Tablou de Bord"
         my_author: "Profilul Meu"
         all_authors: "Profilurile Tuturor Autorilor"
         # The website's editable content is broken into three sections Pages, Resources, and People

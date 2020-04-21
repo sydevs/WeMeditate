@@ -459,6 +459,7 @@ it:
     misc:
       no_translated_title: "Nessun Titolo Tradotto"
       menu:
+        dashboard: "Cruscotto"
         my_author: "Il mio Profilo Autore"
         all_authors: "Tutti i Profili Autori"
         pages: "Pagine"
