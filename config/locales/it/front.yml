@@ -20,6 +20,7 @@ it:
     music_for_meditation: "Musica per la meditazione"
     learn_more: "Per Saperne di Più"
     come_meditate: "Vieni a meditare"
+    classes_near_me: "Corsi vicino a Me"
     online_meditations: "Meditazioni guidate Online"
     languages: "Lingue"
     self_realization: "La Prima Esperienza"
@@ -82,7 +83,7 @@ it:
     play_title: "Suona, %{title}" # %{title} is the title of a video or music track
 
   articles:
-    read_more: "Altri Articoli"
+    read_more: "Continua a leggere"
     load_more: "Carica Altri"
     filter: "Filtra"
     show_all: "Tutto"
@@ -91,7 +92,7 @@ it:
   meditations:
     prescreen:
       title: "Per accedere alle meditazioni guidate, risveglia ora la tua %{kundalini}"
-      kundalini: "energia interiore"
+      kundalini: "Energia Interiore"
       action: "Risveglia la Tua Energia Interiore"
       explanation:
         text: "Ognuno di noi ha un’energia interiore, che deve essere risvegliata prima di poter accedere allo stato di meditazione."
@@ -128,7 +129,7 @@ it:
   treatments:
     prescreen:
       title: "Prima di usare le tecniche per migliorare la tua meditazione dovresti risvegliare la tua %{kundalini}"
-      kundalini: "energia interiore"
+      kundalini: "Energia Interiore"
       action: "Risveglia la tua Energia Interiore"
       explanation:
         text: "Ognuno di noi ha un’energia interiore, che deve essere risvegliata prima di poter accedere allo stato di meditazione."
