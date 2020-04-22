@@ -46,7 +46,8 @@ ro:
       email: "Adresa de e-mail"
       message: "Mesaj"
       privacy:
-        text: "Prin trimiterea acestui formular, ești de acord cu procesarea datelor personale pentru primirea meditațiilor ghidate și a altor email-uri de la WeMeditate."
+        signup: "Prin trimiterea acestui formular, ești de acord cu procesarea datelor personale pentru primirea meditațiilor ghidate și a altor email-uri de la WeMeditate."
+        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database." # TODO: Translate
         learn_more: "Află mai multe."
       name: "Nume"
       class: "Selectează un curs"

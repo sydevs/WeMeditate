@@ -20,9 +20,9 @@
         = f.email_field :email_address, placeholder: t('form.input.email')
         = f.text_area :message, placeholder: t('form.input.message'), rows: 5 if block[:format] == 'contact'
 
-        - unless block[:format] == 'contact'
+        - if translate(block[:format], scope: 'form.input.privacy').present?
           .content__form__privacy
-            = translate 'form.input.privacy.text'
+            = translate(block[:format], scope: 'form.input.privacy')
             a href=static_page_path_for(:privacy) target='_blank' = translate 'form.input.privacy.learn_more'
 
     button.button.button--box = block[:action]

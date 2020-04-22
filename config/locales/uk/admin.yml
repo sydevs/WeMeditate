@@ -325,7 +325,7 @@ uk:
           many: "Чернетка з %{count} блоками" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
 
     dashboard:
-      title: "Панель управління for %{languag}" # TODO: Translate
+      title: "Панель управління for %{language}" # TODO: Translate
       content:
         title: "Опублікований контент"
         public: "Веб-сайт %{language} (%{host}) відкритий для загального користування та має наступний опублікований контент."

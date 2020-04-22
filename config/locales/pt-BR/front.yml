@@ -45,7 +45,8 @@ pt-br:
       email: "Your email"
       message: "Message"
       privacy:
-        text: "By submitting this form, you agree to the processing of your personal data to receive guided meditations and other emails from WeMeditate."
+        signup: "By submitting this form, you agree to the processing of your personal data to receive guided meditations and other emails from WeMeditate."
+        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database."
         learn_more: "Learn more."
       name: "Your name"
       class: "Select class"

@@ -44,7 +44,8 @@ fr:
       email: "Votre adresse mail"
       message: "Message"
       privacy:
-        text: "En soumettant ce formulaire, vous acceptez le traitement de vos données personnelles pour recevoir des méditations guidées et autres mails de WeMeditate."
+        signup: "En soumettant ce formulaire, vous acceptez le traitement de vos données personnelles pour recevoir des méditations guidées et autres mails de WeMeditate."
+        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database." # TODO: Translate
         learn_more: "En savoir plus."
       name: "Votre nom"
       class: "Sélectionnez le cours"

@@ -45,7 +45,8 @@ uk:
       email: "Ваш email"
       message: "Повідомлення"
       privacy:
-        text: "Надіславши цю форму, ви погоджуєтесь на обробку ваших особистих даних для отримання медитацій з супроводом та інших електронних листів від WeMeditate"
+        signup: "Надіславши цю форму, ви погоджуєтесь на обробку ваших особистих даних для отримання медитацій з супроводом та інших електронних листів від WeMeditate"
+        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database." # TODO: Translate
         learn_more: "Дізнатись більше"
       name: "Ваше ім'я"
       class: "Оберіть клас"

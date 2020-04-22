@@ -46,7 +46,8 @@ it:
       email: "La Tua Email"
       message: "Messaggio"
       privacy:
-        text: "Inviando questo modulo, accetti il ​​trattamento dei tuoi dati personali per ricevere da WeMeditate meditazioni guidate e altre e-mail."
+        signup: "Inviando questo modulo, accetti il ​​trattamento dei tuoi dati personali per ricevere da WeMeditate meditazioni guidate e altre e-mail."
+        contact: "Inviando questo modulo, si accetta che i suoi dati vengano elaborati in conformità con la nostra politica sulla privacy. I dati di questo modulo verranno inoltrati al team We Meditate via e-mail e non verranno archiviati nel nostro database."
         learn_more: "Per Saperne di Più."
       name: "Il Tue Nome"
       class: "Seleziona il Corso"
