@@ -37,7 +37,8 @@ class User < ApplicationRecord
 
   # Override the languages_known accessor so that we can convert them to symbols
   def languages_known
-    super.map(&:to_sym)
+    # We also automatically include any accessible language in the list of known languages.
+    super.map(&:to_sym) | languages_access
   end
 
   # Override the languages_access writer so that we can convert them from symbols
