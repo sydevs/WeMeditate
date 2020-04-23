@@ -175,7 +175,7 @@ ru:
       description: "Присоединиться" 
     timing:
       days: "д."
-      hours: "ч."
+      hours: "час."
       minutes: "мин."
       seconds: "сек."
 
