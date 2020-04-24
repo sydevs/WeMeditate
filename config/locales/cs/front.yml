@@ -4,199 +4,199 @@
 
 cs:
   we_meditate: "We Meditate" # This is the title of the website
-  tagline: "Silence your mind and discover your inner potential with guided meditations. Connect with others around the world meditating for a better life."
+  tagline: "Utište svou mysl a objevte svůj vnitřní potenciál skrze vedené meditace. Spojte se s ostatními, kteří po celém světě meditují pro lepší život."
 
   header:
-    learn_more: "Learn More"
-    classes_near_me: "Live guided meditations"
-    inspiration_from_within: "Inspiration comes from within"
-    cookie_notice: "By continuing to use wemeditate.co you will be agreeing to our use of cookies."
-    preview_notice: "You are viewing a preview"
-    kundalini: "Inner Energy"
+    learn_more: "Dozvědět se více"
+    classes_near_me: "Vedené meditace - pravidelné kurzy"
+    inspiration_from_within: "Inspirace přichází zevnitř"
+    cookie_notice: "Tyto stránky používají k analýze návštěvnosti soubory cookies. Setrváním na stránce souhlasíte s jejich používáním."
+    preview_notice: "Prohlížíte náhled"
+    kundalini: "Vnitřní Energie"
 
   footer:
-    scroll_to_top: "Back to Top"
-    meditate_now: "Meditate Now"
-    music_for_meditation: "Music for meditation"
-    learn_more: "Learn more"
-    come_meditate: "Come meditate"
-    online_meditations: "Guided Meditations Online"
-    languages: "Languages"
-    self_realization: "The First Experience"
+    scroll_to_top: "Zpět na začátek"
+    meditate_now: "Začněte s meditací"
+    music_for_meditation: "Hudba pro meditaci"
+    learn_more: "Dozvědět se více"
+    come_meditate: "Pojďme meditovat"
+    online_meditations: "Vedené meditace Online"
+    languages: "Jazyky"
+    self_realization: "První Zkušenost"
 
   actions_footer:
-    title: "Discover it for yourself!"
-    subtitle: "Don’t just take our word for it. Try meditating and see how you feel!"
-    sidetext: "Try Meditation"
+    title: "Objevte to!"
+    subtitle: "Nedejte jen na naše slova. Vyzkoušejte si meditaci a uvidíte, jak se budete cítit!"
+    sidetext: "Vyzkoušejte si meditaci"
     actions:
-      online: "Meditate online"
-      local: "Classes near me"
+      online: "Meditace online"
+      local: "Nejbližší meditační centrum"
 
   author:
-    about_the_author: "About the author"
-    about_the_artist: "About the artist"
-    written_by: "Written by"
+    about_the_author: "O autorovi"
+    about_the_artist: "O umělci"
+    written_by: "Napsal/a"
     meditating_for:
-      one: "Meditating for 1 year"
-      other: "Meditating for %{count} years"
+      one: "Medituje 1 rok"
+      other: "Medituje po dobu %{count} let"
 
   form:
     input:
-      email: "Your email"
-      message: "Message"
+      email: "Váš email"
+      message: "Zpráva"
       privacy:
-        signup: "By submitting this form, you agree to the processing of your personal data to receive guided meditations and other emails from WeMeditate."
-        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database."
-        learn_more: "Learn more."
-      name: "Your name"
-      class: "Select class"
+        signup: "Odesláním tohoto formuláře souhlasíte se zpracováním vašich osobních údajů, které budou využity pro zaslání informací o vedených meditacích a dalších e-mailů od WeMeditate."
+        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database." # TODO: Translate
+        learn_more: "Dovědět se více."
+      name: "Vaše jméno"
+      class: "Zvolte kurz"
     missing:
-      email: "You must provide an email address."
-      message: "You forgot to fill out a message."
-      name: "You must provide your name."
+      email: "Musíte zadat e-mailovou adresu."
+      message: "Zapomněli jste vyplnit zprávu."
+      name: "Musíte vyplnit Vaše jméno."
     success:
-      subscribe: "You have been subscribed."
-      contact: "Your message has been received."
-      register: "You have been registered."
+      subscribe: "Byli jste přihlášeni k odběru."
+      contact: "Vaše zpráva byla přijata."
+      register: "Byli jste zaregistrováni."
     button:
-      try_again: "Try Again"
-      submitted: "Submitted"
+      try_again: "Zkuste to znovu"
+      submitted: "Odesláno"
 
   player: # For the music or video player
-    pause: "Pause"
-    play: "Play"
-    '%_buffered': "% buffered"
-    skip_back: "Previous Track"
-    skip_forward: "Next Track"
-    rewind_10_secs: "Rewind 10 secs"
-    forward_10_secs: "Forward 10 secs"
-    unmute: "Unmute"
-    mute: "Mute"
-    volume: "Volume"
-    disable_captions: "Disable captions"
-    enable_captions: "Enable captions"
-    exit_fullscreen: "Exit fullscreen"
-    enter_fullscreen: "Enter fullscreen"
-    duration: "Duration"
-    current_time: "Current time" # The current time that the player is at
-    seek: "Seek"
-    play_title: "Play, %{title}" # %{title} is the title of a video or music track
+    pause: "Pauza"
+    play: "Přehrát"
+    '%_buffered': "% Načteno"
+    skip_back: "Přechozí nahrávka"
+    skip_forward: "Následující nahrávka"
+    rewind_10_secs: "Zpět 10 sec"
+    forward_10_secs: "Dopředu 10 sec"
+    unmute: "Zapnout zvuk"
+    mute: "Ztlumit zvuk"
+    volume: "Hlasitost"
+    disable_captions: "Zakázat titulky"
+    enable_captions: "Povolit titulky"
+    exit_fullscreen: "Ukončit režim plné obrazovky"
+    enter_fullscreen: "Režim plné obrazovky"
+    duration: "Délka"
+    current_time: " Přehraný čas" # The current time that the player is at
+    seek: "Seek" # As in, seeking through a video # TODO: Translate
+    play_title: "Přehrát, %{title}" # %{title} is the title of a video or music track
 
   articles:
-    read_more: "Read more" # Takes you to the article page
-    load_more: "Load more" # Loads more articles
-    filter: "Filter"
-    show_all: "All"
-    share: "Share: "
+    read_more: "Přečtěte si více" # Takes you to the article page
+    load_more: "Načíst další" # Loads more articles
+    filter: "Filtrovat"
+    show_all: "Zobrazit všechny"
+    share: "Sdílet: "
 
   meditations:
     prescreen:
-      title: "Unlock guided meditations by awakening your %{kundalini} first"
-      kundalini: "inner energy"
-      action: "Awaken Your Inner Energy"
+      title: "Před otevřením dalších meditací v sobě prvně probuďte svou vniřní energii %{kundalini}."
+      kundalini: "vnitřní energie"
+      action: "Probuďte Svou Vnitřní Energii"
       explanation:
-        text: "Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation."
-        learn_more: "Learn more"
+        text: "K dosažení stavu meditace je třeba nejprve probudit vnitřní energii, která leží v každém z nás."
+        learn_more: "Dozvědět se více"
       skip:
-        text: "Meditated with us before?"
-        action: "Continue to your guided meditation"
+        text: "Už jste s námi někdy meditovali?"
+        action: "Pokračujte k vedeným meditacím s průvodcem"
     featured:
-      daily_meditation: "Meditation of the day"
-      trending_meditation: "Trending now"
-      random_meditation: "Let fate decide"
-      random_meditation_title: "Try a random meditation"
-      random_meditation_description: "Not sure what you need right now? Just feel like taking a chance? Click play and let the universe decide."
+      daily_meditation: "Meditace dnešního dne"
+      trending_meditation: "Teď populární"
+      random_meditation: "Ať rozhodne osud"
+      random_meditation_title: "Zkuste náhodný výběr"
+      random_meditation_description: "Nejste si jisti tím, co právě potřebujete? Cítíte spíš, že to raději necháte na náhodě? Klikněte na přehrát a nechte vesmír rozhodnout."
     custom_meditation:
-      title: "Set Up your own Meditation"
-      choose_goal: "I wish to feel ..." # Please keep ' ...' (with a space) at the end of your translation.
-      choose_duration: "I have"
-      goal_prompt: "Select goal"
-      submit: "Start meditation"
+      title: "Nastavte si svou meditaci"
+      choose_goal: "Přeji si vnímat ..." # Please keep ' ...' (with a space) at the end of your translation.
+      choose_duration: "Mám"
+      goal_prompt: "Vyberte si váš cíl "
+      submit: "Spustit meditaci"
       minutes: "min"
     archive:
-      see_all_meditations: "See all meditations"
-      title: "Guided Meditations"
-      view_meditation: "View meditation"
-      load_more: "Load more"
+      see_all_meditations: "Zobrazit všechny meditace"
+      title: "Vedené Meditace"
+      view_meditation: "zobrazit meditaci"
+      load_more: "Načíst další"
 
   tracks:
-    subtitle: "Subtitle for music"
-    text: "Enjoy a curated collection of meditation music we produced to help you disconnect from your surroundings and achieve a true state of inner peace."
-    choose_mood: "Choose the mood"
-    choose_instruments: "Choose your sound"
-    playlist: "Playlist"
+    subtitle: "Podtitul"
+    text: "Užijte si námi vybranou kolekci meditační hudby, kterou jsme vytvořili, abychom vám pomohli odpojit se od vašeho okolí, a vy jste mohli dosáhnout stavu skutečného vnitřního míru."
+    choose_mood: "Vyberte si podle nálady"
+    choose_instruments: "Vyberte si nástroj"
+    playlist: "Seznam skladeb"
 
   treatments:
     prescreen:
-      title: "Before using methods to improve meditation, you need to awaken your %{kundalini}"
-      kundalini: "inner energy"
-      action: "Awaken Your Inner Energy"
+      title: "Před tím, než budete zkoušet metody na zlepšení vaší meditace, nejprve probuďte svou %{kundalini}"
+      kundalini: "vnitřní energie"
+      action: "Probuďte Svou Vnitřní Energii"
       explanation:
-        text: "Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation."
-        learn_more: "Learn more"
+        text: "K dosažení stavu meditace je třeba nejprve probudit vnitřní energii, která leží v každém z nás."
+        learn_more: "Dozvědět se více"
       skip:
-        text: "Meditated with us before?"
-        action: "Improve your meditation!"
+        text: "Už jste s námi někdy meditovali?"
+        action: "Zlepšete svou meditaci!"
     music:
-      title: "Music"
-      description: "Music can be both relaxing and gently stimulating, bringing us into balance and allowing our minds to go thoughtless, Explore our curated collection of specially composed tracks, created to enable a deeper state of meditation."
-      read_more: "Choose from our collection"
-    read_more: "Learn more"
-    show_more: "Show More Techniques"
+      title: "Hudba"
+      description: "Hudba může být jak uvolňující, tak jemně stimulující. Přináší nás do rovnováhy a umožňuje naší mysli vstoupit do bezmyšlenkového vědomí.  Vyzkoušejte námi vybranou kolekci speciálně zkomponovaných skladeb, které pomáhají dostat se hlouběji do meditace."
+      read_more: "Vyberte si z naší kolekce skladeb"
+    read_more: "Dozvědět se více"
+    show_more: "Zobrazit Více Technik"
 
   content:
-    credit: "Credit"
-    show_more: "Show More"
+    credit: "Credit" # As in "Image Credit" # TODO: Translate
+    show_more: "Zobrazit více"
 
   subtle_system:
     title:
-      desktop: "Hover to learn more"
-      mobile: "Tap to learn more"
-    chakras: "Chakras"
-    channels: "Channels"
-    read_more: "Learn More"
+      desktop: "Chcete-li se dozvědět více, umístěte ukazatel myši"
+      mobile: "Poklepáním získat další informace"
+    chakras: "Čakry"
+    channels: "Kanály"
+    read_more: "Dozvědět se více"
 
   classes:
-    map_title: "Meditation Classes Near Me"
-    prompt: "Enter your city or post code"
-    nearby: "Nearby"
-    loading: "Locating..."
-    found: "Click to confirm"
+    map_title: "Nejbližší meditační centrum "
+    prompt: "Zadejte název vašeho města, nebo poštovní směrovací číslo"
+    nearby: "Poblíž"
+    loading: "Vyhledávání..."
+    found: "Kliknutím potvrďte"
 
   streams:
     countdown:
-      title: "Watch this space"
-      description: "Live guided meditations. Every weekday at 7pm BST. The next session is in"
-      action: "Remind Me"
+      title: "Sledovat"
+      description: "Živé vedené online meditace. Každý týden v ... . Příští vysílání proběhne v ...."
+      action: "Upozorni Mě"
     live:
-      title: "We are live now!"
-      action: "Join now"
-      description: "Press play to join our live meditation session streaming right now"
+      title: "Vysílání - živě!"
+      action: "Připojte se"
+      description: "Klikněte na přehrát a připojte se k naší živé on-line meditaci, kterou teď vysíláme"
     timing:
-      days: "Days"
-      hours: "Hours"
-      minutes: "Minutes"
-      seconds: "Seconds"
+      days: "Dny"
+      hours: "Hodiny"
+      minutes: "Minuty"
+      seconds: "Sekundy"
 
   errors:
-    title: "Oops..."
-    coming_soon: "Coming Soon"
-    no_programs: "Meditation classes in your area are coming soon."
+    title: "Ajajaj..."
+    coming_soon: "Již brzy"
+    no_programs: "Meditační kurzy ve vašem okolí zatím ještě neprobíhají."
     error: "Error"
-    alternatives_title: "Try one of these instead:"
-    report_issue: "Please try again, and report this issue if it continues to occur. When reporting the issue, please do your best to describe what specific actions you were taking before the issue occurred."
-    '404': "This page doesn’t exist"
-    '422': "The change you wanted was rejected"
-    '500': "We're sorry, but something went wrong"
+    alternatives_title: "Vyzkoušejte, prosím, jednu z těchto možností:"
+    report_issue: "Zkuste to prosím znovu a nahlaste tento problém, pokud k němu bude nadále docházet. Při hlášení problému se prosím snažte popsat, jaké konkrétní kroky jste podnikli před tím, než k problému došlo."
+    '404': "Tato stránka neexistuje"
+    '422': "Požadovaná změna byla zamítnuta"
+    '500': "Je nám líto, něco se pokazilo"
 
   javascript:
-    reading_time: "%minutes% minute read"
-    loading: "Loading..."
+    reading_time: "%minutes% minute read" # Eg. 5 minute read # TODO: Translate
+    loading: "Načítání..."
     popup:
-      close: "Close (Esc)"
-      loading: "Loading..."
-      prev: "Previous (Left arrow key)"
-      next: "Next (Right arrow key)"
-      counter: "%curr% of %total%"
-      image_error: "<a href=\"%url%\">The image</a> could not be loaded."
-      ajax_error: "<a href=\"%url%\">The content</a> could not be loaded."
+      close: "Zavřít (Esc)"
+      loading: "Načítání..."
+      prev: "Předchozí (Levá kurzorová šipka)"
+      next: "Následující (Pravá kurzorová šipka)"
+      counter: "%curr% ze %total%"
+      image_error: "<a href=\"%url%\">Obrázek </a> nemohl být načten."
+      ajax_error: "<a href=\"%url%\">Obsah</a> nemohl být nahrán."

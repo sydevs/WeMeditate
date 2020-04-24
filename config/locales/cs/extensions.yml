@@ -6,67 +6,67 @@
 cs:
   devise:
     failure:
-      invited: "You have a pending invitation, accept it to finish creating your account."
-      already_authenticated: "You are already signed in."
-      inactive: "Your account is not activated yet."
-      invalid: "Invalid %{authentication_keys} or Password."
-      locked: "Your account is locked."
-      last_attempt: "You have one more attempt before your account is locked."
-      not_found_in_database: "Invalid %{authentication_keys} or Password."
-      timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your email address before continuing."
+      invited: "Máte čekající pozvánku, přijměte ji a dokončete vytváření účtu."
+      already_authenticated: "Již jste přihlášeni."
+      inactive: "Váš účet zatím není aktivován."
+      invalid: "Neplatné %{authentication_keys} nebo heslo."
+      locked: "Váš účet je uzamčený."
+      last_attempt: "Zbývá vám poslední pokus před tím, než bude váš účet zablokován."
+      not_found_in_database: "Neplatné %{authentication_keys} nebo heslo."
+      timeout: "Vaše časová relace vypršela. Chcete-li pokračovat, přihlaste se znovu."
+      unauthenticated: "Než budete pokračovat, musíte se přihlásit nebo zaregistrovat."
+      unconfirmed: "Než budete pokračovat, musíte potvrdit svou e-mailovou adresu."
     mailer:
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Pokyny k obnovení hesla."
       unlock_instructions:
-        subject: "Unlock instructions"
+        subject: "Pokyny k odemčení."
       email_changed:
-        subject: "Email Changed"
+        subject: "E-mail byl změněn."
       password_change:
-        subject: "Password Changed"
+        subject: "Heslo bylo změněno."
       invitation_instructions:
-        subject: "Invitation instructions"
-        hello: "Hello %{email}"
-        someone_invited_you: "You have been invited to be an editor at %{url}, you can accept it through the link below."
-        accept: "Accept invitation"
-        accept_until: "This invitation will be due in %{due_date}."
-        ignore: "If you don't want to accept the invitation, please ignore this email.<br />\nYour account won't be created until you access the link above and set your password."
+        subject: "Uvítací instrukce."
+        hello: "Dobrý den %{email}"
+        someone_invited_you: "Byli jste pozváni, abyste se stali editory %{url}, pozvánku můžete přijnout pomocí odkazu níže."
+        accept: "Přijmout pozvánku."
+        accept_until: "Tato pozvánka bude platná do %{due_date}."
+        ignore: "Pokud si nepřejete přijmout pozvánku, ignorujte prosím tento e-mai.<br />\nVáš účet nebude vytvořen, dokud nepřejdete na výše uvedený odkaz a nenastavíte heslo."
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Your password has been changed successfully. You are now signed in."
-      updated_not_active: "Your password has been changed successfully."
+      no_token: "Na tuto stránku nemůžete přejít bez e-mailu s obnoveným heslem. Pokud máte e-mail s obnoveným heslem, ujistěte se, že jste použili úplnou adresu URL."
+      send_instructions: "Během několika minut obdržíte e-mail s pokyny, jak resetovat heslo."
+      send_paranoid_instructions: "Pokud je vaše e-mailová adresa v naší databázi, obdržíte na svou e-mailovou adresu během několika minut odkaz na obnovení hesla."
+      updated: "Vaše heslo bylo úspěšně změněno. Nyní jste přihlášeni."
+      updated_not_active: "Vaše heslo bylo úspěšně změněno."
     invitations:
-      send_instructions: "An invitation email has been sent to %{email}."
-      invitation_token_invalid: "The invitation token provided is not valid!"
-      updated: "Your password was set successfully. You are now signed in."
-      updated_not_active: "Your password was set successfully."
-      no_invitations_remaining: "No invitations remaining"
-      invitation_removed: "Your invitation was removed."
+      send_instructions: "E-mail s pozvánkou byl odeslán na %{email}."
+      invitation_token_invalid: "Elektronický klíč pozvánky není platný!"
+      updated: "Vaše heslo bylo úspěšně nastaveno. Nyní jste přihlášeni."
+      updated_not_active: "Vaše heslo bylo úspěšně nastaveno."
+      no_invitations_remaining: "Již nezbývají žádné pozvánky."
+      invitation_removed: "Vaše pozvánka byla odstraněna."
       new:
-        header: "Send invitation"
-        submit_button: "Send an invitation"
+        header: "Poslat pozvánku"
+        submit_button: "Pošlete pozvánku"
       edit:
-        header: "Set your password"
-        submit_button: "Set my password"
+        header: "Nastavte své heslo"
+        submit_button: "Nastavit heslo"
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
-      already_signed_out: "Signed out successfully."
+      signed_in: "Úspěšně přihlášeno."
+      signed_out: "Úspěšně odhlášeno."
+      already_signed_out: "Úspěšně odhlášeno."
     unlocks:
-      send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      send_instructions: "Během několika minut obdržíte e-mail s pokyny, jak odemknout účet."
+      send_paranoid_instructions: "Pokud již máte účet, během několika minut obdržíte e-mail s pokyny, jak jej odemknout."
+      unlocked: "Váš účet byl úspěšně odemčen. Chcete-li pokračovat, přihlaste se."
   errors:
     messages:
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
+      expired: "vypršel, požádejte o nový."
+      not_found: "nenalezen"
+      not_locked: "nebyl uzamčen"
       not_saved:
-        one: "%{count} error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "%{count} chyba zabránila uložení tohoto %{resource}:"
+        other: "%{count} chyba zabránila uložení tohoto %{resource}:"
   time:
     formats:
       default: '%k:%M' # Do not translate, unless you know what you are doing
@@ -82,10 +82,10 @@ cs:
       default: '%d %b %Y' # Do not translate, unless you know what you are doing
       date: :date.formats.default # Do not translate
   simple_form:
-    'yes': "Yes"
-    'no': "No"
+    'yes': "Ano"
+    'no': "Ne"
     required:
-      text: "required"
+      text: "požadováno"
       mark: '*' # Do not translate
     error_notification:
-      default_message: "Please review the problems below:"
+      default_message: "Zkontrolujte prosím níže uvedené problémy:"

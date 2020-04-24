@@ -6,72 +6,72 @@ cs:
   activerecord:
     models:
       article:
-        one: "Article"
-        other: "Articles"
+        one: "Článek"
+        other: "Články"
       static_page:
-        one: "Main Page"
-        other: "Main Pages"
+        one: "Hlavní stránka"
+        other: "Hlavní stránky"
       subtle_system_node: # This is a page for a Chakra, Channel, or the Kundalini. ie. Some part of the subtle system
-        one: "Subtle System Node"
-        other: "Subtle System Nodes"
+        one: "Subtilní Systém"
+        other: "Subtilní Systém"
       category:
-        one: "Category"
-        other: "Categories"
+        one: "Kategorie"
+        other: "Kategorie"
       meditation:
-        one: "Meditation"
-        other: "Meditations"
+        one: "Meditace"
+        other: "Meditace"
       treatment:
-        one: "Technique"
-        other: "Techniques"
+        one: "Čistící Technika"
+        other: "Čistící Techniky"
       track:
-        one: "Track"
-        other: "Tracks"
+        one: "Skladba"
+        other: "Skladby"
       artist:
-        one: "Artist"
-        other: "Artists"
+        one: "Umělec"
+        other: "Umělci"
       author:
-        one: "Author Profile"
-        other: "Author Profiles"
+        one: "Autorův Profil"
+        other: "Autorovy Profily"
       user:
-        one: "Admin"
-        other: "Admins"
+        one: "Správce"
+        other: "Správci"
       instrument_filter:
-        one: "Instrument"
-        other: "Instruments"
+        one: "Nástroj"
+        other: "Nástroje"
       mood_filter:
-        one: "Mood"
-        other: "Moods"
+        one: "Nálada"
+        other: "Nálady"
       duration_filter:
-        one: "Duration"
-        other: "Durations"
+        one: "délka"
+        other: "délka"
       goal_filter:
-        one: "Goal"
-        other: "Goals"
+        one: "Cíl"
+        other: "Cíle"
       media_file:
-        one: "Media File"
-        other: "Media Files"
+        one: "Mediální Soubor"
+        other: "Mediální Soubory"
       audit:
-        one: "Change Log"
-        other: "Change Logs"
+        one: "Log změny"
+        other: "Log změn"
 
     attributes:
       generic:
-        ready_to_publish: "Ready to publish"
-        published: "Published"
-        name: "Name"
-        slug: "URL"
-        draft: "Draft"
-        state: "Status"
+        ready_to_publish: "Připraveno k publikování"
+        published: "Publikováno"
+        name: "Název"
+        slug: "Odkaz"
+        draft: "Návrh" # TODO: Translate
+        state: "Postavení" # TODO: Translate
         states:
-          no_state: "No Translation Started"
-          in_progress: "Work in Progress"
-          archived: "Archived"
-          published: "Published"
-          unpublished: "Not Published"
+          no_state: "Nebyl zahájen žádný překlad"
+          in_progress: "Probíhá práce"
+          archived: "Archivováno"
+          published: "Publikováno"
+          unpublished: "Nebylo Publikováno"
 
       article:
         draft: :activerecord.attributes.generic.draft # Do not translate
-        name: "Title"
+        name: "Název"
         slug: :activerecord.attributes.generic.slug # Do not translate
         category: :activerecord.models.category.one # Do not translate
         category_id: :activerecord.attributes.article.category # Do not translate
@@ -82,36 +82,36 @@ cs:
           archived: :activerecord.attributes.generic.states.archived # Do not translate
           published: :activerecord.attributes.generic.states.published # Do not translate
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
-        priority: "Priority"
+        priority: "Priorita"
         priorities:
-          pinned: "Pinned to Inspiration Page"
-          hidden: "Hidden from Inspiration Page"
-          low: "Low Visibility"
-          normal: "Normal Visibility"
-          high: "High Visibility"
-        article_type: "Article Type"
+          pinned: "Připnuto na stránku Inspirace"
+          hidden: "Skryto na stránce Inspirace"
+          low: "Nízká Viditelnost"
+          normal: "Normalní Viditelnost"
+          high: "Vysoká Viditelnost"
+        article_type: "Typ článku"
         article_types:
-          article: "Article"
-          artwork: "Artwork"
-          event: "Event"
-        excerpt: "Excerpt"
-        thumbnail: "Thumbnail"
+          article: "Článek"
+          artwork: "Umělecké dílo"
+          event: "Událost"
+        excerpt: "Výňatek"
+        thumbnail: "Miniatura"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
-        vimeo_id: "Featured Video (Vimeo ID)"
-        date: "Featured Date"
-        content: "Content"
+        vimeo_id: "Doporučené video (Vimeo ID)"
+        date: "Doporučené Datum"
+        content: "Obsah"
         metatags: "Metadata"
-        coordinates: "Location"
-        latitude: "Latitude"
-        longitude: "Longitude"
+        coordinates: "Umístění"
+        latitude: "Zeměpisná šířka"
+        longitude: "Zeměpisná délka"
         author: :activerecord.models.author.one # Do not translate
         author_id: :activerecord.attributes.article.author # Do not translate
-        owner: "Allow a writer to update this article"
-        published_at: "Publish Date"
+        owner: "Povolit autorovi aktualizaci tohoto článku"
+        published_at: "Datum publikování"
 
       static_page:
         draft: :activerecord.attributes.generic.draft # Do not translate
-        name: "Title"
+        name: "Titul"
         slug: :activerecord.attributes.generic.slug # Do not translate
         state: :activerecord.attributes.generic.state # Do not translate
         states:
@@ -120,23 +120,23 @@ cs:
           archived: :activerecord.attributes.generic.states.archived # Do not translate
           published: :activerecord.attributes.generic.states.published # Do not translate
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
-        role: "Role"
+        role: "Funkce"
         roles:
-          home: "Home Page"
-          articles: "Articles Index Page"
-          meditations: "Meditations Index Page"
-          treatments: "Techniques Index Page"
-          tracks: "Music Page"
-          contact: "Contact Page"
-          shri_mataji: "About Shri Mataji"
-          subtle_system: "About Subtle System"
-          sahaja_yoga: "About Sahaja Yoga"
-          about: "About Page"
-          classes: "Classes Page"
-          privacy: "Privacy Policy"
-          streams: "Livestream Page"
-          custom: "Custom Page"
-        content: "Content"
+          home: "Domovská stránka"
+          articles: "Stránka indexů článků"
+          meditations: "Index Meditační Stránky"
+          treatments: "Index Stránky Technik"
+          tracks: "Stránka s hudbou"
+          contact: "Kontaktní stránka"
+          shri_mataji: "O Šrí Mátadží"
+          subtle_system: "O Subtilním Systému"
+          sahaja_yoga: "O Sahadža Józe"
+          about: "O stránce"
+          classes: "Stránka kurzů"
+          privacy: "Zásady ochrany osobních údajů"
+          streams: "Stránka Živého vysílání"
+          custom: "Stránka zákazníka"
+        content: "Obsah"
         metatags: "Metadata"
 
       subtle_system_node:
@@ -150,22 +150,22 @@ cs:
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
-        excerpt: "Excerpt"
+        excerpt: "Výňatek"
         role: "Role"
         roles:
-          chakra_1: "Mooladhara Chakra"
-          chakra_2: "Swadhisthan Chakra"
-          chakra_3: "Nabhi Chakra"
-          chakra_3b: "Void"
-          chakra_4: "Anahat Chakra"
-          chakra_5: "Vishuddhi Chakra"
-          chakra_6: "Agnya Chakra"
-          chakra_7: "Sahasrara Chakra"
-          channel_left: "Ida (Left) Channel"
-          channel_right: "Pingala (Right) Channel"
-          channel_center: "Sushumna (Center) Channel"
+          chakra_1: "Múladhára Čakra"
+          chakra_2: "Svadhistána Čakra"
+          chakra_3: "Nábhí Čakra"
+          chakra_3b: "Void" # TODO: Translate
+          chakra_4: "Anaháta Čakra"
+          chakra_5: "Višudhi Čakra"
+          chakra_6: "Ádžňá Čakra"
+          chakra_7: "Sahasrára Čakra"
+          channel_left: "Ida (Levý) Kanál"
+          channel_right: "Pingala (Pravý) Kanál"
+          channel_center: "Sušumna (Střední) Kanál"
           kundalini: "Kundalini"
-        content: "Content"
+        content: "Obsah"
         metatags: "Metadata"
 
       category:
@@ -173,8 +173,8 @@ cs:
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
         articles:
-          one: "%{count} Article"
-          other: "%{count} Articles"
+          one: "%{count} Článek"
+          other: "%{count} Články"
 
       treatment:
         draft: :activerecord.attributes.generic.draft # Do not translate
@@ -188,49 +188,49 @@ cs:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
-        excerpt: "Excerpt"
-        content: "Content"
-        thumbnail: "Thumbnail (png)"
+        excerpt: "Výňatek"
+        content: "Obsah"
+        thumbnail: "Miniatura (png)"
         thumbnail_id: :activerecord.attributes.treatment.thumbnail # Do not translate
-        horizontal_vimeo_id: "Horizontal Video (Vimeo ID)"
-        vertical_vimeo_id: "Vertical Video (Vimeo ID)"
+        horizontal_vimeo_id: "Horizontalní Video (Vimeo ID)"
+        vertical_vimeo_id: "Vertikální Video (Vimeo ID)"
         metatags: "Metadata"
 
       instrument_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
-        icon: "Icon"
+        icon: "Ikona"
         tracks:
-          one: "%{count} Track"
-          other: "%{count} Tracks"
+          one: "%{count} Skladba"
+          other: "%{count} Skladby"
 
       mood_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         tracks:
-          one: "%{count} Track"
-          other: "%{count} Tracks"
+          one: "%{count} Skladba"
+          other: "%{count} Skladby"
 
       duration_filter:
         published: :activerecord.attributes.article.published # Do not translate
-        minutes: "Minutes"
+        minutes: "Minuty"
         meditations:
-          one: "%{count} Meditation"
-          other: "%{count} Meditations"
+          one: "%{count} Meditace"
+          other: "%{count} Meditace"
 
       goal_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         meditations:
-          one: "%{count} Meditation"
-          other: "%{count} Meditations"
+          one: "%{count} Meditace"
+          other: "%{count} Meditace"
 
       track:
         published: :activerecord.attributes.article.published # Do not translate
-        title: "Title"
+        title: "Titul"
         artists: :activerecord.models.artist.other # Do not translate
-        audio: "File (mp3)"
-        duration: "Duration"
+        audio: "Soubor (mp3)"
+        duration: "Délka"
         instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
         mood_filters: :activerecord.models.mood_filter.other # Do not translate
 
@@ -245,25 +245,25 @@ cs:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
-        horizontal_vimeo_id: "Horizontal Video (Vimeo ID)"
-        vertical_vimeo_id: "Vertical Video (Vimeo ID)"
+        horizontal_vimeo_id: "Horizontální Video (Vimeo ID)"
+        vertical_vimeo_id: "Vertikální Video (Vimeo ID)"
         duration_filter: :activerecord.models.duration_filter.one # Do not translate
         duration_filter_id: :activerecord.models.duration_filter.one # Do not translate
         goal_filters: :activerecord.models.goal_filter.other # Do not translate
         goal_filter_ids: :activerecord.models.goal_filter.other # Do not translate
-        excerpt: "Excerpt"
-        description: "Text on Page"
+        excerpt: "Výňatek"
+        description: "Text na Stránce"
         metatags: "Metadata"
-        popularity: "Popularity"
+        popularity: "Popularita"
 
       artist:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
-        image: "Album Art"
-        url: "Website"
+        image: "Album - umění"
+        url: "Webová stránka"
         tracks:
-          one: "%{count} Track"
-          other: "%{count} Tracks"
+          one: "%{count} Nahrávka"
+          other: "%{count} Nahrávky"
 
       author:
         state: :activerecord.attributes.generic.state # Do not translate
@@ -274,32 +274,32 @@ cs:
           published: :activerecord.attributes.generic.states.published # Do not translate
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
-        country_code: "Country"
-        title: "Title"
+        country_code: "Země"
+        title: "Titul"
         image: "Avatar"
-        description: "Biography"
-        years_meditating: "Years of Meditation Experience"
-        user: "Associated Admin Account"
+        description: "Životopis"
+        years_meditating: "Počet let věnovaných meditaci"
+        user: "Přidružený účet správce"
 
       user:
-        email: "Email Address"
-        invitation_accepted_at: "Invitation accepted on"
+        email: "Emailová Adresa"
+        invitation_accepted_at: "Pozvánka byla přijata dne"
         invited_by: :activerecord.models.invited_by # Do not translate
-        languages_known: "Translatable Languages"
-        preferred_language: "Preferred Language"
-        languages_access: "Accessible Locales"
+        languages_known: "Jazyky do kterých možné přeložit"
+        preferred_language: "Preferovaný Jazyk"
+        languages_access: "Přístupné lokality"
         role: "Role"
         roles:
-          translator: "Translator"
-          writer: "Writer"
+          translator: "Překladatel"
+          writer: "Spisovatel"
           editor: "Editor"
-          regional_admin: "Regional Admin"
-          super_admin: "Super Admin"
+          regional_admin: "Národní Admin" # TODO: Translate
+          super_admin: "Super Admin" # TODO: Translate
 
       audit:
         user: :activerecord.models.user.one # Do not translate
-        action: "Action"
+        action: "Akce"
         actions:
-          update: "Updated"
-          create: "Created"
-          destroy: "Deleted"
+          update: "Aktualizováno"
+          create: "Vytvořeno"
+          destroy: "Smazáno"
