@@ -78,7 +78,7 @@ nl:
     exit_fullscreen: "Volledig scherm afsluiten"
     enter_fullscreen: "Volledig scherm inschakelen"
     duration: "Tijdsduur"
-    current_time: "Huidig tijdstip # The current time that the player is at
+    current_time: "Huidig tijdstip # The current time that the player is at"
     seek: "Zoek"
     play_title: "Speel %{title} af" # %{title} is the title of a video or music track
 
