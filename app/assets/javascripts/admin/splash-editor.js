@@ -66,9 +66,12 @@ const SplashEditor = {
       }
     }
 
-    const image_data = JSON.parse(this.backgroundImage.dataset.attributes)
-    result.data.media_files = [image_data.id]
-    result.data.image = image_data
+    if (this.backgroundImage.dataset.attributes) {
+      const image_data = JSON.parse(this.backgroundImage.dataset.attributes)
+      result.data.media_files = [image_data.id]
+      result.data.image = image_data
+    }
+
     return result
   },
 
