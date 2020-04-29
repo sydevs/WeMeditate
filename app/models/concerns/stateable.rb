@@ -13,6 +13,8 @@ module Stateable
   end
 
   included do |base|
+    translatable = base.respond_to?(:translated_attribute_names)
+
     %i[state published_at].each do |column|
       next if base.try(:translated_attribute_names)&.include?(column) || base.column_names.include?(column.to_s)
 
@@ -31,14 +33,25 @@ module Stateable
     base.validates_presence_of :published_at, if: :published?
     base.validates_presence_of :state
 
-    base.scope :published, -> { with_translation.where(state: base.states[:published]) }
-    base.scope :publicly_visible, -> { published.where("#{base::Translation.table_name}.published_at < ?", DateTime.now) }
-    base.scope :not_published, -> { with_translation.where.not(state: base.states[:published]) }
-    base.scope :not_archived, -> { with_translation.where.not(state: base.states[:archived]) }
+    if translatable
+      base.scope :published, -> { with_translation.where(state: base.states[:published]) }
+      base.scope :publicly_visible, -> { published.where("#{base::Translation.table_name}.published_at < ?", DateTime.now) }
+      base.scope :not_published, -> { with_translation.where.not(state: base.states[:published]) }
+      base.scope :not_archived, -> { with_translation.where.not(state: base.states[:archived]) }
+    else
+      base.scope :published, -> { where(state: base.states[:published]) }
+      base.scope :publicly_visible, -> { where('published_at < ?', DateTime.now) }
+      base.scope :not_published, -> { where.not(state: base.states[:published]) }
+      base.scope :not_archived, -> { where.not(state: base.states[:archived]) }
+    end
 
     def state
-      state = respond_to?(:get_native_locale_attribute) ? get_native_locale_attribute(:state) : send(:state)
-      self.class.states.key(state)
+      if respond_to?(:get_native_locale_attribute)
+        value = get_native_locale_attribute(:state)
+        self.class.states.key(value)
+      else
+        super
+      end
     end
 
     def state= value

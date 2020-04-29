@@ -43,6 +43,13 @@ module Admin::PermissionsHelper
       regional_admin: %i[update publish],
       super_admin: %i[update publish],
     },
+    stream: {
+      translator: [],
+      writer: [],
+      editor: [],
+      regional_admin: %i[create update publish],
+      super_admin: %i[create update publish destroy],
+    },
 
     # Resource-type models
     meditation: {

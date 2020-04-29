@@ -33,6 +33,11 @@
             i.icon class=model_icon_key(SubtleSystemNode)
             = translate('admin.misc.menu.subtle_system_nodes')
 
+        - if policy(Stream).index?
+          = link_to [:admin, Stream, locale: Globalize.locale], class: "#{'active' if controller_name == 'streams'} item"
+            i.icon class=model_icon_key(Stream)
+            = translate('admin.misc.menu.streams')
+
   - if policy(Track).index? || policy(Meditation).index? || policy(Treatment).index?
     .item
       .title = translate 'admin.misc.menu.resources'

@@ -3,6 +3,11 @@
   .hint
     margin-top: 8px
     font-size: 90%
+    line-height: 1.5em
+
+  label + .hint
+    margin-top: 0
+    margin-bottom: 8px
 
   ul.hint
     padding-left: 18px
@@ -173,3 +178,10 @@
 
     input:not(:checked) + label
       opacity: 0.6
+
+  .ui.toggle.button
+    &.active
+      cursor: pointer
+
+    input
+      display: none

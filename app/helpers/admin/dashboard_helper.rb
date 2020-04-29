@@ -15,6 +15,7 @@ module Admin::DashboardHelper
     pinned Article, :important, &block
     needs_review StaticPage, :important, &block
     needs_review SubtleSystemNode, :important, &block
+    needs_review Stream, :important, &block
     needs_review Treatment, :important, &block
     needs_review Article, :important, &block
     untranslated Track, :normal, &block

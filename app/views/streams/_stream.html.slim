@@ -1,0 +1,18 @@
+
+/- image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 1197px) calc(34vw - 32px), (max-width: 1599px) 270px, (max-width: 2179px) 320px, 360px'
+// This is a simplified version of the above sizes, which takes advantage of the fact that we know that the small image is 360px
+// So the last 3 rules from the above ruleset would resolve to the same image.
+- image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 1197px) calc(34vw - 32px), 360px'
+
+article.inspiration__item.preview id=dom_id(stream)
+  a.preview__media href=stream_path(stream)
+    = smart_image_tag stream.thumbnail, image_sizes, lazy: false, class: 'preview__media__thumbnail', alt: stream.name
+
+  a.preview__title href=url_for(stream) = stream.name
+  p.preview__text = stream.excerpt
+  .preview__meta
+    a.preview__meta__link href=stream_path(stream)
+      = t('streams.read_more')
+      .icon.icon--breadcrumb
+
+    //.preview__meta__stat = localize article.created_at, format: :date

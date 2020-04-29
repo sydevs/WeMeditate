@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_094713) do
+ActiveRecord::Schema.define(version: 2020_04_26_075459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -321,6 +321,30 @@ ActiveRecord::Schema.define(version: 2020_04_16_094713) do
     t.datetime "updated_at", null: false
     t.string "original_locale", null: false
     t.index ["role"], name: "index_static_pages_on_role"
+  end
+
+  create_table "streams", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.integer "thumbnail_id"
+    t.string "excerpt"
+    t.date "published_at"
+    t.string "location"
+    t.string "time_zone"
+    t.string "stream_url"
+    t.string "klaviyo_list_id"
+    t.date "start_date"
+    t.string "start_time"
+    t.string "end_time"
+    t.integer "recurrence", default: [], null: false, array: true
+    t.integer "target_time_zones", default: [], null: false, array: true
+    t.jsonb "draft"
+    t.jsonb "content"
+    t.jsonb "metatags"
+    t.integer "state", default: 0
+    t.string "locale", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "subtle_system_node_translations", force: :cascade do |t|

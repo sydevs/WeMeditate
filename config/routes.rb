@@ -24,7 +24,11 @@ Rails.application.routes.draw do
           put :sort, on: :collection
         end
 
-        resources :articles, :static_pages, :subtle_system_nodes, :treatments, except: %i[destroy] do
+        resources :meditations, only: [] do
+          get :preview, on: :member
+        end
+
+        resources :articles, :static_pages, :subtle_system_nodes, :treatments, :streams, except: %i[destroy] do
           get :write, on: :member
           get :review, on: :member
           patch :approve, on: :member, path: 'review'
@@ -33,12 +37,7 @@ Rails.application.routes.draw do
           resources :media_files, only: %i[create]
         end
 
-        resources :meditations, only: [] do
-          get :preview, on: :member
-        end
-
-        resources :articles, :treatments, only: %i[destroy]
-
+        resources :articles, :treatments, :streams, only: %i[destroy]
         resources :users, :artists, :meditations, :tracks, :authors,
                   :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters,
                   only: %i[index new edit create update destroy]
@@ -80,6 +79,7 @@ Rails.application.routes.draw do
       resources :treatments, only: %i[index show], path: 'techniques'
       resources :tracks, only: %i[index], path: 'music'
       resources :subtle_system_nodes, only: %i[index show], path: 'subtle_system'
+      resources :streams, only: %i[index show], path: 'streams'
       resources :static_pages, only: %i[show], path: ''
     end
   end

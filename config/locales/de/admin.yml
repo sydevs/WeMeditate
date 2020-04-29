@@ -74,6 +74,7 @@ de:
       featured_date: "Featured Date" # The date which will be shown on an article preview
       role: "Role On Website"
       pending_changes: "This %{page} has changes pending approval"
+      start_date: "Start Date"
 
     tags:
       published: "Published"
@@ -134,6 +135,13 @@ de:
       languages_access: "These are the locales where this user can modify the site content."
       languages_known: "These are the languages that a user can translate content from."
       self_realization_slug: "The url for the self-realization page must be \"%{slug}\""
+      stream:
+        url: "This should be an embeddable link to whichever service this meditation is being streamed with. For example: Twitch, Vimeo, etc. This should be a stable URL that will work every time."
+        location: "Where is this meditation being recorded?"
+        recurrence: "Which days of the week will you be streaming on? Click all that apply."
+        list_id: "You must have a list set up in Klaviyo (our mailing service) and supply a unique list ID here. This list will be used for those who want to subscribe for reminders of when the meditation starts."
+        target_time_zones: "Users in the selected timezones will be shown this stream on the main live meditations page. You can select multiple timezones. Selected zones are marked in green."
+        target_time_zones_conflict: "Note: If multiple streams are featured in the same timezone, the one which is physically closer to the user will be shown."
 
     result:
       created: "Created successfully."
@@ -344,6 +352,8 @@ de:
         last_sign_in_at: "Last Login"
         minutes: "Duration"
         node: "Node"
+        location: "Location"
+        local_time: "Local Time"
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate
@@ -413,6 +423,7 @@ de:
           static_pages: "These are the primary pages of the website, such as the Home Page, Inspiration Page, Shri Mataji Page, etc. You can use this index to edit some of the content of these pages, but most of these pages have predefined conntent and urls."
           articles: "Articles are written by Sahaja Yogis to inspire seekers. They can cover various topics, such as: meditation in daily life; writing about realized souls; artwork, music or poetry by yogis; in-depth articles on deeper topics; etc. Whatever a yogi may be inspired to write about.<br><br>All articles are shown on the site's \"Inspiration Page.\""
           subtle_system_nodes: "These are the pages that describe different parts of the Subtle System. Each page is an in-depth explanation of the qualities of that chakra or channel, how it manifests in daily life, and the treatments that address it."
+          streams: "These are live online meditations that are streamed on a weekly basis at a set time. The livestream of the meditation will be embedded on We Meditate, and seekers can subscribe for a reminder when the meditation starts."
           # Resources
           meditations: "These are videos of guided meditations, narrated by yogis. They are available to the public on the website's \"Meditations\" page.<br><br>Each meditation is categorized by it's duration and the goals of that meditation, which allows users to generate a guided meditation that fits their needs. Each meditation also has a \"popularity\" statistic which represents the amount of views the meditation has been getting recently."
           treatments: "These are the pages that describe different treatments that yogis use to clear themselves. Each technique will have a text description, and may have a video illustrating the treatment in action."
@@ -461,6 +472,7 @@ de:
 
     misc:
       no_translated_title: "No Translated Title" # This should be written in titlecase
+      loading_time_zone_map: "Loading timezones map..."
       menu:
         dashboard: "Dashboard"
         my_author: "My Author Profile"
@@ -473,6 +485,7 @@ de:
         static_pages: "Main Pages"
         articles: "Inspiration Articles"
         subtle_system_nodes: "Subtle System"
+        streams: :activerecord.models.stream.other # Do not translate
         meditations: :activerecord.models.meditation.other # Do not translate
         treatments: :activerecord.models.treatment.other # Do not translate
         tracks: "Music Tracks"

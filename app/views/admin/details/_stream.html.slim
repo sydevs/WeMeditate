@@ -1,0 +1,21 @@
+- allow = policy(@record)
+
+- if record.thumbnail.present?
+  .ui.right.floated.rounded.image
+    img src=record.thumbnail.url
+
+p.details.excerpt = record.excerpt
+
+.ui.details.list
+  = record_detail 'info circle', human_enum_name(record, :state), human_attribute_name(record, :state)
+  - path = CGI.unescape(polymorphic_path(record))
+  - if record.published?
+    = record_detail 'linkify', path, url: polymorphic_url(record)
+  - elsif allow.preview?
+    = record_detail 'linkify', path, translate('admin.action.descriptive.preview'), url: polymorphic_admin_path([:preview, :admin, record])
+  = record_detail 'marker', record.location
+
+.ui.details.list
+  = record_detail 'calendar', record.start_date.to_s(:long), translate('admin.details.start_date')
+  = record_detail 'sun', record.recurrence.map { |r| human_enum_name(record, :recurrence, r) }.join(', ')
+  = record_detail 'clock', "#{record.start_time} - #{record.end_time}"

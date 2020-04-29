@@ -11,7 +11,7 @@ module Contentable
 
   included do |base|
     %i[content].each do |column|
-      next if base.translated_attribute_names&.include?(column) || base.column_names.include?(column.to_s)
+      next if base.try(:translated_attribute_names)&.include?(column) || base.column_names.include?(column.to_s)
       throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Contentable`" 
     end
 

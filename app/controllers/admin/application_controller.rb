@@ -11,16 +11,18 @@ module Admin
     def dashboard
       localize :content do
         authorize :application, :access?
-        render 'admin/application/dashboard'
+        render 'admin/special/dashboard'
       end
     end
 
     def tutorial
       authorize :application, :access?
+      render 'admin/special/tutorial'
     end
 
     def error
       render status: request.env['PATH_INFO'][1, 3].to_i
+      render 'admin/special/error'
     end
 
     def vimeo_data
@@ -56,7 +58,7 @@ module Admin
       def set_locale!
         I18n.locale = current_user&.preferred_language || :en
         Globalize.locale = params[:locale] || :en
-        Rails.application.routes.default_url_options[:host] = locale_host
+        Rails.application.routes.default_url_options[:host] = Rails.configuration.locale_hosts[Globalize.locale]
         Rails.application.routes.default_url_options[:locale] = Globalize.locale
       end
 

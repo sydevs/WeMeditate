@@ -55,6 +55,7 @@ module Admin
 
     def create record_params, redirect = nil
       localize :content do
+        record_params[:locale] = Globalize.locale if @model.column_names.include?('locale')
         @record = @model.new update_params(record_params)
         authorize @record
 
@@ -138,7 +139,7 @@ module Admin
     def audit
       localize :content do
         @audits = @record.audits.with_associations
-        render 'admin/application/audit'
+        render 'admin/special/audit'
       end
     end
 

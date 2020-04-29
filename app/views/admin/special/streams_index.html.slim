@@ -1,0 +1,52 @@
+
+- content_for :title, human_model_name(@model, :plural)
+- featured_streams_map = @featured_streams.map { |k, s| [k, s.id] }.to_h
+- featured_streams = featured_streams_map.values.uniq
+
+.ui.icon.message
+  i.question.circle.icon
+  .content
+    .header = translate('admin.tutorial.index.title')
+    .message
+      = simple_format translate(@model.model_name.route_key, scope: 'admin.tutorial.index.message')
+
+.ui.small.header Featured Streams
+#timezone-map data-featured-streams=featured_streams_map.to_json
+  i.notched.circle.loading.icon
+  = translate('admin.misc.timezones.loading')
+
+.table-actions = table_action translate('admin.action.simple.create'), 'plus', new_admin_stream_path
+.clearfix
+
+table.ui.compact.unstackable.models.table
+  thead
+    tr
+      th.collapsing
+      th = translate('admin.index.columns.name')
+      th.collapsing = translate('admin.index.columns.local_time')
+      th.collapsing = translate('admin.index.columns.location')
+      th.collapsing = translate('admin.index.columns.updated_at')
+      th.collapsing = translate('admin.index.columns.status')
+  tbody#records
+    - @streams.each_with_index do |stream, i|
+      tr.record id=dom_id(stream)
+        td.collapsing.top.aligned
+          - if featured_streams.include?(stream.id)
+            - n = featured_streams.index(stream.id)
+            .timezone-colour-circle class="timezone-colour-circle--#{n}"
+
+        td.top.aligned
+          a href=polymorphic_admin_path([:admin, stream])
+            = stream.name
+
+        td.collapsing.right.aligned.faded
+          = stream.start_time
+
+        td.collapsing.top.aligned.faded
+          = stream.location
+
+        td.collapsing.top.aligned.faded
+          = localize stream.updated_at, format: :short
+
+        td.collapsing.top.aligned
+          = table_record_status_label(stream)

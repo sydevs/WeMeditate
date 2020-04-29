@@ -14,7 +14,7 @@ cs: # Czech translations
     archive: "all"
     self_realization: "first-experience"
     classes: "classes"
-    live: "live"
+    streams: "live"
 de: # German translations
   routes:
     inspiration: "inspiration"
@@ -27,7 +27,7 @@ de: # German translations
     archive: "all"
     self_realization: "first-experience"
     classes: "classes"
-    live: "live"
+    streams: "live"
 en: # English translations
   routes:
     inspiration: "inspiration"
@@ -40,7 +40,7 @@ en: # English translations
     archive: "all"
     self_realization: "first-experience"
     classes: "classes"
-    live: "live"
+    streams: "live"
 es: # Spanish translations
   routes:
     inspiration: "inspiration"
@@ -53,7 +53,7 @@ es: # Spanish translations
     archive: "all"
     self_realization: "first-experience"
     classes: "classes"
-    live: "live"
+    streams: "live"
 fr: # French translations
   routes:
     inspiration: "inspiration"
@@ -66,7 +66,7 @@ fr: # French translations
     archive: "tout"
     self_realization: "première-expérience"
     classes: "classes"
-    live: "live"
+    streams: "live"
 hi: # Hindi translations
   routes:
     inspiration: "inspiration"
@@ -79,7 +79,7 @@ hi: # Hindi translations
     archive: "all"
     self_realization: "first-experience"
     classes: "classes"
-    live: "live"
+    streams: "live"
 hy: # Armenian translations
   routes:
     inspiration: "inspiration"
@@ -92,7 +92,7 @@ hy: # Armenian translations
     archive: "all"
     self_realization: "first-experience"
     classes: "classes"
-    live: "live"
+    streams: "live"
 it: # Italian translations
   routes:
     inspiration: "ispirazione"
@@ -105,7 +105,7 @@ it: # Italian translations
     archive: "tutto"
     self_realization: "realizzazione-del-sé"
     classes: "classes" # TODO: Translate
-    live: "live" # TODO: Translate
+    streams: "live" # TODO: Translate
 nl: # Dutch translations
   routes:
     inspiration: "inspiration"
@@ -118,7 +118,7 @@ nl: # Dutch translations
     archive: "all"
     self_realization: "first-experience"
     classes: "classes"
-    live: "live"
+    streams: "live"
 pt-br: # Portuguese translations
   routes:
     inspiration: "inspiration"
@@ -131,7 +131,7 @@ pt-br: # Portuguese translations
     archive: "all"
     self_realization: "first-experience"
     classes: "classes"
-    live: "live"
+    streams: "live"
 ro: # Romanian translations
   routes:
     inspiration: "inspirație"
@@ -144,7 +144,7 @@ ro: # Romanian translations
     archive: "toate"
     self_realization: "prima-experiență"
     classes: "cursuri"
-    live: "live"
+    streams: "live"
 ru: # Russian translations
   routes:
     inspiration: "inspiration"
@@ -157,7 +157,7 @@ ru: # Russian translations
     archive: "all"
     self_realization: "first-experience"
     classes: "classes"
-    live: "live"
+    streams: "live"
 tr: # Turkish translations
   routes:
     inspiration: "inspiration"
@@ -170,7 +170,7 @@ tr: # Turkish translations
     archive: "all"
     self_realization: "first-experience"
     classes: "classes"
-    live: "live"
+    streams: "live"
 uk: # Ukrainian translations
   routes:
     inspiration: "inspiration"
@@ -183,4 +183,4 @@ uk: # Ukrainian translations
     archive: "all"
     self_realization: "first-experience"
     classes: "classes"
-    live: "live"
+    streams: "live"
