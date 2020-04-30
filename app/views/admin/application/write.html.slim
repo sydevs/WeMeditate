@@ -24,6 +24,10 @@
               #splash-background-image
               #splash-title.cdx-input.cdx-input--title contenteditable=true data-placeholder="Enter some leading text"
               #splash-text.cdx-input.cdx-input--text contenteditable=true data-placeholder="Enter a subtitle"
+
+              - if @splash_style == :stream
+                .cdx-splash-countdown 01:23:45
+              
               #splash-action.cdx-input.cdx-input--button contenteditable=true data-placeholder="Button Text"
               #splash-url.cdx-input.cdx-input--url contenteditable=true data-placeholder="Enter url link"
 

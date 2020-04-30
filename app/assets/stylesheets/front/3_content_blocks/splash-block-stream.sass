@@ -1,6 +1,6 @@
 @import "../../mixins/*"
 
-.streams__splash
+.content__splash--stream
   text-align: center
   color: $color-text-inverse
   height: 100vh
@@ -28,12 +28,13 @@
     margin-top: 12px
 
 // ===== LIVE ===== //
-.streams__live
-  @extend %narrow-content-width
-  position: relative
-  padding-top: 160px
-  padding: 0 24px
-  max-width: 468px
+.content__splash--live .content__splash
+  &__wrapper
+    @extend %narrow-content-width
+    position: relative
+    padding-top: 160px
+    padding: 0 24px
+    max-width: 468px
 
   &__title
     font-weight: $font-normal
@@ -73,9 +74,10 @@
       max-width: none
 
 // ===== COUNTDOWN ===== //
-.streams__countdown
-  @extend %narrow-content-width
-  position: relative
+.content__splash--countdown .content__splash
+  &__wrapper
+    @extend %narrow-content-width
+    position: relative
 
   &__title
     font-weight: $font-normal
@@ -132,7 +134,7 @@
         fill: white
 
 // ===== TIMER ===== //
-.streams__countdown__timer
+.content__splash--countdown .content__splash__countdown
   font-family: $font-number
   font-size: 7.86rem
   line-height: 95px
@@ -167,29 +169,3 @@
     ~ .js-countdown-seconds,
     ~ .js-countdown-minutes + .separator
       display: none
-
-// ===== GRID ===== //
-.streams__grid-wrapper
-  @extend %wide-content-width
-  margin-bottom: 64px
-
-  @include tablet-or-larger
-    padding-left: $gutter-width
-    padding-left: $gutter-width
-
-.streams__grid
-  position: relative
-  margin: 0 (-$gutter-width / 2)
-  margin-top: $gutter-width
-
-  &:not(.js-grid)
-    display: flex
-    justify-content: center
-
-    .streams__grid__item
-      padding: $gutter-width
-
-  &__item
-    box-sizing: border-box
-    padding: $gutter-width / 2
-    padding-bottom: 42px

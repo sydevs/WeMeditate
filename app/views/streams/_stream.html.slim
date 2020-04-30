@@ -4,7 +4,7 @@
 // So the last 3 rules from the above ruleset would resolve to the same image.
 - image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 1197px) calc(34vw - 32px), 360px'
 
-article.inspiration__item.preview id=dom_id(stream)
+article.streams__grid__item.preview id=dom_id(stream)
   a.preview__media href=stream_path(stream)
     = smart_image_tag stream.thumbnail, image_sizes, lazy: false, class: 'preview__media__thumbnail', alt: stream.name
 
@@ -15,4 +15,4 @@ article.inspiration__item.preview id=dom_id(stream)
       = t('streams.read_more')
       .icon.icon--breadcrumb
 
-    //.preview__meta__stat = localize article.created_at, format: :date
+    .preview__meta__detail = stream.location

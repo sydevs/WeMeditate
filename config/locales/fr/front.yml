@@ -162,11 +162,11 @@ fr:
     loading: "Localisation..."
     found: "Cliquez pour confirmer"
 
-  streams:
+  streams: # TODO: Translate
+    title: "All Live Meditations"
+    read_more: "Learn more"
     countdown:
       title: "Consultez régulièrement cet espace"
-      description: "La prochaine méditation guidée en direct est dans"
-      action: "Rapelez-moi"
     live:
       title: "En direct maintenant!"
       action: "Rejoignez-nous maintenant"

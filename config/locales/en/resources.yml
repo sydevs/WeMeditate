@@ -184,8 +184,6 @@ en:
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         excerpt: "Excerpt"
         stream_url: "Embeddable Stream URL"
-        klaviyo_list: "Klaviyo List Identifier"
-        klaviyo_list_id: :activerecord.attributes.stream.klaviyo_list # Do not translate
         thumbnail: "Thumbnail"
         thumbnail_id: :activerecord.attributes.stream.thumbnail # Do not translate
         location: "Location"
@@ -193,15 +191,16 @@ en:
         start_date: "Start Date"
         start_time: "Start Time"
         end_time: "End Time"
+        duration: "Duration"
         recurrence: "Days of the Week"
         recurrences:
-          mondays: "Mon"
-          tuesdays: "Tue"
-          wednesdays: "Wed"
-          thursdays: "Thu"
-          fridays: "Fri"
-          saturdays: "Sat"
-          sundays: "Sun"
+          monday: "Mon"
+          tuesday: "Tue"
+          wednesday: "Wed"
+          thursday: "Thu"
+          friday: "Fri"
+          saturday: "Sat"
+          sunday: "Sun"
         target_time_zones: "Featured in Time Zones"
         content: "Content"
         metatags: "Metadata"

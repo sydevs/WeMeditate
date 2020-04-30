@@ -163,11 +163,11 @@ cs:
     loading: "Vyhledávání..."
     found: "Kliknutím potvrďte"
 
-  streams:
+  streams: # TODO: Translate
+    title: "All Live Meditations"
+    read_more: "Learn more"
     countdown:
       title: "Sledovat"
-      description: "Živé vedené online meditace. Každý týden v ... . Příští vysílání proběhne v ...."
-      action: "Upozorni Mě"
     live:
       title: "Vysílání - živě!"
       action: "Připojte se"

@@ -15,6 +15,16 @@ module ContentHelper
     return nil
   end
 
+  def render_splash_block record, overrides = {}
+    return unless record.parsed_content.present?
+
+    block = record.content_blocks.first['data'].deep_symbolize_keys
+    overrides[:url] = overrides[:url] + block[:url] if block[:url].starts_with?('#')
+    block.merge!(overrides)
+
+    render 'content_blocks/splash_block', block: block, record: record
+  end
+
   # Render a decoration within a cotent block
   def render_decoration type, block, **args
     return unless block[:decorations].present? && block[:decorations][type].present?

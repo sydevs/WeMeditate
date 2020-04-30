@@ -28,7 +28,7 @@
 .two.fields
   = draftable_field f, :location, type: :string, hint: translate('admin.hints.stream.location')
   = draftable_field f, :time_zone do |value|
-    - time_zones = ActiveSupport::TimeZone.all.map { |tz| [tz, tz.tzinfo.canonical_identifier] }
+    - time_zones = ActiveSupport::TimeZone.all.map { |tz| [tz, tz.utc_offset / 1.hour] }
     - if value.present?
       - f.input :time_zone, label: false, wrapper: :semantic_select, collection: time_zones, selected: value
     - else
@@ -40,9 +40,9 @@
     = f.hidden_field :target_time_zones, value: value&.join(',')
     #timezone-map data-interactive='true'
       i.notched.circle.loading.icon
-      = translate('admin.misc.timezones.loading')
+      = translate('admin.messages.loading')
+      | ...
     = f.hint translate('admin.hints.stream.target_time_zones_conflict')
 
 .ui.grey.small.dividing.header Attributes
 = draftable_field f, :stream_url, type: :string, hint: translate('admin.hints.stream.url')
-= draftable_field f, :klaviyo_list_id, type: :string, hint: translate('admin.hints.stream.list_id')

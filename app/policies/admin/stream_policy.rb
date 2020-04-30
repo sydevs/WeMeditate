@@ -19,8 +19,8 @@ module Admin
       manage?
     end
 
-    def map?
-      index?
+    def upload?
+      update?
     end
 
   end

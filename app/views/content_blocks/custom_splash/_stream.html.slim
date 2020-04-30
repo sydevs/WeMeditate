@@ -1,0 +1,46 @@
+
+ruby:
+  invert = 'true' # TODO: This needs to be configurable.
+  image_url = record.media_file(block[:image][:id]).large.url if block[:image]
+  background = image_url ? "background-image: url(#{image_url})" : nil
+
+  classes = ['content__splash--stream', 'js-splash']
+  classes << "content__splash--#{record.live? ? 'live' : 'countdown'}"
+
+.content__splash class=classes style=background data-invert=invert
+  .content__splash__wrapper
+    - if record.live?
+      h1.content__splash__title = translate('streams.live.title')
+      .content__splash__action = translate('streams.live.action')
+      a.streams__splash__play.video__button title=translate('streams.live.action') data-lity=true href=record.stream_url
+      .content__splash__description = translate('streams.live.description')
+    - else
+      ruby:
+        seconds = record.seconds_until_next_stream_time.to_i
+        days = seconds / 86400
+        seconds -= days * 86400
+        hours = seconds / 3600
+        seconds -= hours * 3600
+        minutes = seconds / 60
+        seconds -= minutes * 60
+        
+      h1.content__splash__title = block[:title]
+      .content__splash__description = block[:text]
+
+      .content__splash__countdown class='js-countdown' data-time=(record.next_stream_time.to_f * 1000)
+        span class='js-countdown-days' data-label=translate('streams.timing.days') data-value=days
+          = days.to_s.rjust(2, '0')
+        span.separator = ' '
+        span class='js-countdown-hours' data-label=translate('streams.timing.hours') data-value=hours
+          = hours.to_s.rjust(2, '0')
+        span.separator = ':'
+        span class='js-countdown-minutes' data-label=translate('streams.timing.minutes') data-value=minutes
+          = minutes.to_s.rjust(2, '0')
+        span.separator = ':'
+        span class='js-countdown-seconds' data-label=translate('streams.timing.seconds') data-value=seconds
+          = seconds.to_s.rjust(2, '0')
+
+      .content__splash__action
+        = inline_svg_tag 'graphics/leaves.svg', class: 'content__splash__action__leaf'
+        a.content__splash__action__text href=block[:url] = block[:action]
+        = inline_svg_tag 'graphics/leaves.svg', class: 'content__splash__action__leaf'

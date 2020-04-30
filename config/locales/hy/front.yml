@@ -164,10 +164,10 @@ hy:
     found: "Click to confirm"
 
   streams:
+    title: "All Live Meditations"
+    read_more: "Learn more"
     countdown:
       title: "Watch this space"
-      description: "The next live guided meditation is in"
-      action: "Remind Me"
     live:
       title: "We are live now!"
       action: "Join now"

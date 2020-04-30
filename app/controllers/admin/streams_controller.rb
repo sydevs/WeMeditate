@@ -36,12 +36,16 @@ module Admin
       super stream_params
     end
 
+    def write
+      @splash_style = :stream
+    end
+
     protected
 
       def stream_params
         params.fetch(:stream, {}).permit(
           :name, :slug, :excerpt, :state, :thumbnail_id, :content,
-          :location, :time_zone, :target_time_zones, :stream_url, :klaviyo_list_id,
+          :location, :time_zone, :target_time_zones, :stream_url,
           :start_date, :start_time, :end_time,
           recurrence: {},
           metatags: {}

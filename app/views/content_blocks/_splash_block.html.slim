@@ -1,7 +1,8 @@
 
-- image_url = record.media_file(block[:image][:id]).large.url if block[:image]
-- invert = 'true' # TODO: This needs to be configurable.
-- background = image_url ? "background-image: url(#{image_url})" : nil
+ruby:
+  image_url = record.media_file(block[:image][:id]).large.url if block[:image]
+  invert = 'true' # TODO: This needs to be configurable.
+  background = image_url ? "background-image: url(#{image_url})" : nil
 
 - if @splash_style.nil? || @splash_style == :default
   .content__splash.js-splash class="content__splash--#{block[:style]}" style=background data-invert=invert
@@ -22,4 +23,4 @@
           a.content__splash__action.button.button--box.button--filled class=('button--invert' if invert == 'true') href=block[:url]
             = block[:action]
 - else
-  = render "content_blocks/custom_splash/#{@splash_style}"
+  = render "content_blocks/custom_splash/#{@splash_style}", record: record, block: block

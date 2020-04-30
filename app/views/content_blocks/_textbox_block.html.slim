@@ -1,14 +1,15 @@
 
-- isWisdom = (block[:asWisdom] == true)
-- isVideo = (block[:asVideo] == true)
-- classes = ["content__textbox--#{block[:alignment]}"]
-- classes << 'content__textbox--invert' if isWisdom || block[:invert] == true
-- classes << "content__textbox--#{block[:separate] == true ? 'separate' : 'overlay'}" unless isWisdom
-- classes << 'content__textbox--wisdom' if isWisdom
-- classes << 'content__textbox--video' if isVideo
-- classes << 'content__textbox--compact' if block[:compact] == true
+ruby:
+  isWisdom = (block[:asWisdom] == true)
+  isVideo = (block[:asVideo] == true)
+  classes = ["content__textbox--#{block[:alignment]}"]
+  classes << 'content__textbox--invert' if isWisdom || block[:invert] == true
+  classes << "content__textbox--#{block[:separate] == true ? 'separate' : 'overlay'}" unless isWisdom
+  classes << 'content__textbox--wisdom' if isWisdom
+  classes << 'content__textbox--video' if isVideo
+  classes << 'content__textbox--compact' if block[:compact] == true
 
-- return unless block[:image].is_a?(Hash)
+  return unless block[:image].is_a?(Hash)
 
 .content__textbox class=classes
   - if isWisdom

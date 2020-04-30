@@ -164,11 +164,11 @@ ro:
     loading: "Localizează..."
     found: "Apasă pentru a confirma"
 
-  streams:
+  streams: # TODO: Translate
+    title: "All Live Meditations"
+    read_more: "Learn more"
     countdown:
       title: "Privește acest spațiu"
-      description: "Meditații ghidate live. De luni până vineri la ora 7pm BST. Următoarea sesiune va avea loc în "
-      action: "Reamintește-mi"
     live:
       title: "Suntem live acum!"
       action: "Alătură-te"

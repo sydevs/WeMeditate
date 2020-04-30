@@ -13,7 +13,8 @@
 .ui.small.header Featured Streams
 #timezone-map data-featured-streams=featured_streams_map.to_json
   i.notched.circle.loading.icon
-  = translate('admin.misc.timezones.loading')
+  = translate('admin.messages.loading')
+  | ...
 
 .table-actions = table_action translate('admin.action.simple.create'), 'plus', new_admin_stream_path
 .clearfix

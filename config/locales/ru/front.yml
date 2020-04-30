@@ -164,11 +164,11 @@ ru:
     loading: "Определяем твоё местоположение..."
     found: "Нажми, чтобы подтвердить"
 
-  streams: 
+  streams: # TODO: Translate
+    title: "All Live Meditations"
+    read_more: "Learn more"
     countdown:
       title: "Медитация в прямом эфире"
-      description: "Каждый будний день в 21.00 (Московское время). Следующий эфир через"
-      action: "Напомнить Мне"
     live:
       title: "Мы в прямом эфире!"
       action: "" # Нажмите play, чтобы присоединиться к медитации в прямом эфире
