@@ -1,7 +1,7 @@
 
 = render_splash_block(@stream, { title: translate('streams.countdown.title'), url: stream_path(@stream) })
 
-- if @streams
+- if @streams.length > 1
   .content__header.content__header--centered
     = translate('streams.title')
 
