@@ -35,12 +35,12 @@ module Stateable
 
     if translatable
       base.scope :published, -> { with_translation.where(state: base.states[:published]) }
-      base.scope :publicly_visible, -> { published.where("#{base::Translation.table_name}.published_at < ?", DateTime.now) }
+      base.scope :publicly_visible, -> { published.where("#{base::Translation.table_name}.published_at <= ?", DateTime.now) }
       base.scope :not_published, -> { with_translation.where.not(state: base.states[:published]) }
       base.scope :not_archived, -> { with_translation.where.not(state: base.states[:archived]) }
     else
       base.scope :published, -> { where(state: base.states[:published]) }
-      base.scope :publicly_visible, -> { where('published_at < ?', DateTime.now) }
+      base.scope :publicly_visible, -> { where('published_at <= ?', DateTime.now) }
       base.scope :not_published, -> { where.not(state: base.states[:published]) }
       base.scope :not_archived, -> { where.not(state: base.states[:archived]) }
     end
