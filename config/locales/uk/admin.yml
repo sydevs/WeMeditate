@@ -138,7 +138,7 @@ uk:
       languages_known: "Це мови, з яких користувач може перекладати вміст."
       stream: # TODO: Translate
         url: "This should be an embeddable link to whichever service this meditation is being streamed with. For example: Twitch, Vimeo, etc. This should be a stable URL that will work every time."
-        location: "Where is this meditation being recorded?"
+        location: "Where is this meditation being broadcasted from?"
         recurrence: "Which days of the week will you be streaming on? Click all that apply."
         list_id: "You must have a list set up in Klaviyo (our mailing service) and supply a unique list ID here. This list will be used for those who want to subscribe for reminders of when the meditation starts."
         target_time_zones: "Users in the selected timezones will be shown this stream on the main live meditations page. You can select multiple timezones. Selected zones are marked in green."
