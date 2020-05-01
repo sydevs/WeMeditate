@@ -2,6 +2,9 @@
 ruby:
   isWisdom = (block[:asWisdom] == true)
   isVideo = (block[:asVideo] == true)
+  vimeo_id = (block[:url].match(%r{/(\d+)/?\z})[1] if isVideo) rescue nil
+  isVideo = isVideo && vimeo_id.present?
+
   classes = ["content__textbox--#{block[:alignment]}"]
   classes << 'content__textbox--invert' if isWisdom || block[:invert] == true
   classes << "content__textbox--#{block[:separate] == true ? 'separate' : 'overlay'}" unless isWisdom
@@ -39,7 +42,6 @@ ruby:
 
         - if isVideo
           .content__textbox__action
-            - vimeo_id = block[:url].match(%r{/(\d+)/?\z})[1]
             a.content__textbox__action__button href="https://vimeo.com/#{vimeo_id}" data-lity=true target='_blank'
             .content__textbox__action__text = block[:action]
 
