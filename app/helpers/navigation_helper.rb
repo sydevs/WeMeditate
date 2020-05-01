@@ -74,7 +74,7 @@ module NavigationHelper
     # Add classes near me
     mobile_navigation.push({
       title: I18n.translate('header.classes_near_me').gsub('<br>', ' '),
-      url: static_page_path_for(:streams),
+      url: %i[en ru].include?(I18n.locale) ? static_page_path_for(:streams) : static_page_path_for(:classes),
       data: gtm_label('header.classes_near_me'),
       active: controller_name == 'classes',
     })

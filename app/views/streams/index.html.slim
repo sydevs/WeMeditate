@@ -1,30 +1,35 @@
 
-.streams__splash.js-splash data-invert='true'
-  - if @live
-    .streams__live
-      h1.streams__live__title = translate('streams.live.title')
-      .streams__live__action = translate('streams.live.action')
-      a.streams__live__play.video__button title=translate('streams.live.action') data-lity=true href=@stream_url
-      .streams__live__description = translate('streams.live.description')
-  - else
-    .streams__countdown
-      h1.streams__countdown__title = translate('streams.countdown.title')
-      .streams__countdown__description = translate('streams.countdown.description')
-      .streams__countdown__timer class='js-countdown' data-time=(@countdown_time.to_f * 1000)
-        span class='js-countdown-days' data-label=translate('streams.timing.days') data-value=@days = @days.to_s.rjust(2, '0')
-        span.separator = ' '
-        span class='js-countdown-hours' data-label=translate('streams.timing.hours') data-value=@hours = @hours.to_s.rjust(2, '0')
-        span.separator = ':'
-        span class='js-countdown-minutes' data-label=translate('streams.timing.minutes') data-value=@minutes = @minutes.to_s.rjust(2, '0')
-        span.separator = ':'
-        span class='js-countdown-seconds' data-label=translate('streams.timing.seconds') data-value=@seconds = @seconds.to_s.rjust(2, '0')
-      .streams__countdown__action
-        = inline_svg_tag 'graphics/leaves.svg', class: 'streams__countdown__action__leaf'
-        a href='#signup' = translate('streams.countdown.action')
-        = inline_svg_tag 'graphics/leaves.svg', class: 'streams__countdown__action__leaf'
+- if Globalize.locale == :en
+  .streams__splash.js-splash data-invert='true'
+    - if @live
+      .streams__live
+        h1.streams__live__title = translate('streams.live.title')
+        .streams__live__action = translate('streams.live.action')
+        a.streams__live__play.video__button title=translate('streams.live.action') data-lity=true href=@stream_url
+        .streams__live__description = translate('streams.live.description')
+    - else
+      .streams__countdown
+        h1.streams__countdown__title = translate('streams.countdown.title')
+        .streams__countdown__description = translate('streams.countdown.description')
+        .streams__countdown__timer class='js-countdown' data-time=(@countdown_time.to_f * 1000)
+          span class='js-countdown-days' data-label=translate('streams.timing.days') data-value=@days = @days.to_s.rjust(2, '0')
+          span.separator = ' '
+          span class='js-countdown-hours' data-label=translate('streams.timing.hours') data-value=@hours = @hours.to_s.rjust(2, '0')
+          span.separator = ':'
+          span class='js-countdown-minutes' data-label=translate('streams.timing.minutes') data-value=@minutes = @minutes.to_s.rjust(2, '0')
+          span.separator = ':'
+          span class='js-countdown-seconds' data-label=translate('streams.timing.seconds') data-value=@seconds = @seconds.to_s.rjust(2, '0')
+        .streams__countdown__action
+          = inline_svg_tag 'graphics/leaves.svg', class: 'streams__countdown__action__leaf'
+          a href='#signup' = translate('streams.countdown.action')
+          = inline_svg_tag 'graphics/leaves.svg', class: 'streams__countdown__action__leaf'
 
-- if @static_page
-  - cache @static_page do
-    .content = render_content @static_page
+main.scrollspy-target
+  - if Globalize.locale != :en
+    h1.banner.banner--left = @static_page.name
+
+  - if @static_page
+    - cache @static_page do
+      .content = render_content @static_page
 
 = sharing_links

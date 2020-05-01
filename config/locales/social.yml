@@ -117,7 +117,7 @@ ru: # Russian
     vk: http://vk.com/share.php?url=%{url}
   social_media:
     instagram: https://www.instagram.com/wemeditate.ru
-    vk: 'https://vk.com/wemeditateru'
+    vk: 'https://vk.com/wemeditate'
 
 tr: # Turkish
   sharing:
