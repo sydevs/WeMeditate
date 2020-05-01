@@ -48,7 +48,7 @@ ruby:
           - if item[:caption].present?
             figcaption.content__image__caption = item[:caption]
     - elsif current_user.present?
-      = error "Could not load media file with id #{item[:image][:id]}"
+      = content_error "Could not load media file with id #{item[:image][:id]}"
 
   - if is_gallery
     .content__image__triangle = render_decoration :triangle, block

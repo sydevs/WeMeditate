@@ -56,7 +56,7 @@ module ContentHelper
   end
 
   # Display an error message only to administrators, to help debug issues with the content blocks
-  def error message
+  def content_error message
     return unless current_user.present?
 
     content_tag :div, class: 'alert' do
