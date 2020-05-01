@@ -79,7 +79,7 @@ cs:
     enter_fullscreen: "Režim plné obrazovky"
     duration: "Délka"
     current_time: " Přehraný čas" # The current time that the player is at
-    seek: "Seek" # As in, seeking through a video # TODO: Translate
+    seek: "Vyhledat" # As in, seeking through a video
     play_title: "Přehrát, %{title}" # %{title} is the title of a video or music track
 
   articles:
