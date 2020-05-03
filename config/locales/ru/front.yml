@@ -167,8 +167,10 @@ ru:
   streams: # TODO: Translate
     title: "All Live Meditations"
     read_more: "Learn more"
-    countdown:
-      title: "Медитация в прямом эфире"
+    skip:
+      title: "Time doesn't suit you?"
+      description: "Choose an alternative stream that works for you"
+      action: "See other times"
     live:
       title: "Мы в прямом эфире!"
       action: "" # Нажмите play, чтобы присоединиться к медитации в прямом эфире

@@ -167,8 +167,10 @@ ro:
   streams: # TODO: Translate
     title: "All Live Meditations"
     read_more: "Learn more"
-    countdown:
-      title: "Privește acest spațiu"
+    skip:
+      title: "Time doesn't suit you?"
+      description: "Choose an alternative stream that works for you"
+      action: "See other times"
     live:
       title: "Suntem live acum!"
       action: "Alătură-te"

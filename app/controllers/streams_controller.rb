@@ -1,15 +1,14 @@
 class StreamsController < ApplicationController
 
   def index
-    @static_page = StaticPage.preload_for(:content).find_by(role: :streams)
-    @streams = Stream.publicly_visible.preload_for(:content)
     @stream = Stream.for_time_zone(Time.zone)
+    @streams = Stream.publicly_visible.preload_for(:content)
 
     return raise ActionController::RoutingError.new('Not Found') unless @stream.present?    
-    return unless stale?(@streams) || stale?(@stream) || stale?(@static_page)
+    return unless stale?(@streams) || stale?(@stream)
 
     @splash_style = :stream
-    set_metadata(@static_page)
+    set_metadata(@stream)
   end
 
   def show

@@ -166,8 +166,10 @@ nl:
   streams: # TODO: Translate
     title: "All Live Meditations"
     read_more: "Learn more"
-    countdown:
-      title: "Watch this space"
+    skip:
+      title: "Time doesn't suit you?"
+      description: "Choose an alternative stream that works for you"
+      action: "See other times"
     live:
       title: "We are live now!"
       action: "Join now"
