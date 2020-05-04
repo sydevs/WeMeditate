@@ -8,7 +8,7 @@ cs:
 
   header:
     learn_more: "Dozvědět se více"
-    classes_near_me: "Vedené meditace - pravidelné kurzy"
+    classes_near_me: "Meditace živě"
     inspiration_from_within: "Inspirace přichází zevnitř"
     cookie_notice: "Tyto stránky používají k analýze návštěvnosti soubory cookies. Setrváním na stránce souhlasíte s jejich používáním."
     preview_notice: "Prohlížíte náhled"
@@ -46,7 +46,7 @@ cs:
       message: "Zpráva"
       privacy:
         signup: "Odesláním tohoto formuláře souhlasíte se zpracováním vašich osobních údajů, které budou využity pro zaslání informací o vedených meditacích a dalších e-mailů od WeMeditate."
-        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database." # TODO: Translate
+        contact: "Odesláním tohoto formuláře souhlasíte s tím, že vaše data budou zpracována v souladu s našimi zásadami ochrany osobních údajů. Data z tohoto formuláře budou zaslána týmu We Meditate e – mailem a nebudou uložena v naší databázi."
         learn_more: "Dovědět se více."
       name: "Vaše jméno"
       class: "Zvolte kurz"
@@ -79,7 +79,7 @@ cs:
     enter_fullscreen: "Režim plné obrazovky"
     duration: "Délka"
     current_time: " Přehraný čas" # The current time that the player is at
-    seek: "Seek" # As in, seeking through a video # TODO: Translate
+    seek: "Vyhledat" # As in, seeking through a video
     play_title: "Přehrát, %{title}" # %{title} is the title of a video or music track
 
   articles:
@@ -112,7 +112,7 @@ cs:
       choose_duration: "Mám"
       goal_prompt: "Vyberte si váš cíl "
       submit: "Spustit meditaci"
-      minutes: "min"
+      minutes: "mid"
     archive:
       see_all_meditations: "Zobrazit všechny meditace"
       title: "Vedené Meditace"
@@ -145,7 +145,7 @@ cs:
     show_more: "Zobrazit Více Technik"
 
   content:
-    credit: "Credit" # As in "Image Credit" # TODO: Translate
+    credit: "Kredit" # As in "Image Credit"
     show_more: "Zobrazit více"
 
   subtle_system:
@@ -190,7 +190,7 @@ cs:
     '500': "Je nám líto, něco se pokazilo"
 
   javascript:
-    reading_time: "%minutes% minute read" # Eg. 5 minute read # TODO: Translate
+    reading_time: "%minutes% minut čtení" # Eg. 5 minute read
     loading: "Načítání..."
     popup:
       close: "Zavřít (Esc)"
