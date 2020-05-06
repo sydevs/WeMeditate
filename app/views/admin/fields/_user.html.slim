@@ -16,7 +16,7 @@
 = f.input :name
 = f.input :email, as: :email
 = f.input :preferred_language, selected: current_user.preferred_language,
-                               collection: current_user.accessible_locales.collect { |l| [language_name(l), l] },
+                               collection: Rails.configuration.admin_locales.collect { |l| [language_name(l), l] },
                                hint: translate('admin.hints.preferred_language')
 
 - if current_user != f.object

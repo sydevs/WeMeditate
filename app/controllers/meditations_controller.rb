@@ -50,11 +50,11 @@ class MeditationsController < ApplicationController
         @breadcrumbs = [
           { name: StaticPageHelper.preview_for(:home).name, url: root_path },
           { name: StaticPageHelper.preview_for(:meditations).name, url: meditations_path },
-          { name: helpers.human_model_name(Meditation, :plural), url: archive_meditations_path },
+          { name: translate('meditations.title'), url: archive_meditations_path },
           { name: translate('meditations.archive.title') },
         ]
 
-        set_metadata({ 'title' => helpers.human_model_name(Meditation, :plural) })
+        set_metadata({ 'title' => translate('meditations.title') })
         render :archive
       end
 

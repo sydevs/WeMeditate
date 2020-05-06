@@ -1,0 +1,217 @@
+
+# FRONT END TRANSLATIONS
+# This file contains translations which will be seen by the public.
+
+nl:
+  we_meditate: "We Meditate" # This is the title of the website
+  tagline: "Vind de stilte in jezelf en ontdek je innerlijke potentieel met geleide meditaties. Verbind je met anderen mensen van over de hele wereld die mediteren voor een beter leven."
+
+  routes: # These are for the website URLs, they should be all lower case and use dashes instead of spaces
+    inspiration: "inspiration"
+    articles: "articles"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
+    self_realization: "first-experience"
+    classes: "classes"
+    live: "live"
+    
+  header:
+    learn_more: "Meer informatie"
+    classes_near_me: "Cursussen in mijn buurt"
+    inspiration_from_within: "Inspiratie komt van binnen"
+    cookie_notice: "Bij verder gebruik van nl.wemeditate.co geef je automatisch toestemming voor het gebruik van cookies."
+    preview_notice: "Dit is een voorbeeldweergave"
+    kundalini: "Inner Energy" # TODO: Translate
+
+  footer:
+    scroll_to_top: "Terug naar boven"
+    meditate_now: "Mediteer nu"
+    music_for_meditation: "Muziek voor meditatie"
+    learn_more: "Meer weten"
+    come_meditate: "Kom mediteren"
+    online_meditations: "Geleide Online Meditaties"
+    languages: "Talen"
+    self_realization: "De Eerste Ervaring"
+
+  actions_footer:
+    title: "Ontdek het zelf!"
+    subtitle: "Geloof ons niet zomaar op ons woord. Probeer het zelf en kijk hoe je je voelt!"
+    sidetext: "Probeer Meditatie"
+    actions:
+      online: "Mediteer online"
+      local: "Cursussen in mijn buurt"
+
+  author:
+    about_the_author: "Over de auteur"
+    about_the_artist: "Over de artiest"
+    written_by: "Geschreven door"
+    meditating_for:
+      one: "Mediteert 1 jaar"
+      other: "Mediteert %{count} jaar"
+
+  form:
+    input:
+      email: "Je email"
+      message: "Bericht"
+      privacy:
+        signup: "Door het indienen van dit formulier verklaar je akkoord te gaan met de verwerking van je persoonsgegevens om zo geleide meditaties en andere emails van WeMeditate te ontvangen."
+        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database." # TODO: Translate
+        learn_more: "Meer informatie."
+      name: "Je naam"
+      class: "Kies een les"
+    missing:
+      email: "Voor een emailadres in."
+      message: "Je bent vergeten een bericht te schrijven."
+      name: "Voer je naam in."
+    success:
+      subscribe: "Je bent nu ingeschreven."
+      contact: "Je bericht is ontvangen."
+      register: "Je bent geregistreerd."
+    button:
+      try_again: "Probeer opnieuw"
+      submitted: "Ingediend"
+
+  player: # For the music or video player
+    pause: "Pauze"
+    play: "Afspelen"
+    '%_buffered': "% geladen"
+    skip_back: "Vorige nummer"
+    skip_forward: "Volgende nummer"
+    rewind_10_secs: "10 seconden terugspoelen"
+    forward_10_secs: "10 seconden vooruitspoelen"
+    unmute: "Dempen opheffen"
+    mute: "Dempen"
+    volume: "Volume"
+    disable_captions: "Ondertiteling uitschakelen"
+    enable_captions: "Ondertiteling inschakelen"
+    exit_fullscreen: "Volledig scherm afsluiten"
+    enter_fullscreen: "Volledig scherm inschakelen"
+    duration: "Tijdsduur"
+    current_time: "Huidig tijdstip # The current time that the player is at"
+    seek: "Zoek"
+    play_title: "Speel %{title} af" # %{title} is the title of a video or music track
+
+  articles:
+    read_more: "Meer lezen" # Takes you to the article page
+    load_more: "Meer laden" # Loads more articles
+    filter: "Filter"
+    show_all: "Alle"
+    share: "Deel: "
+
+  meditations:
+    title: "Meditations" # TODO: Translate
+    prescreen:
+      title: "Ontgrendel de online meditaties door eerst je %{kundalini} te ontwaken"
+      kundalini: "Innerlijke energie"
+      action: "Ontwaak je innerlijke energie"
+      explanation:
+        text: "Iedereen heeft een innerlijke energie die eerst ontwaakt moet worden voordat je de vredige staat van meditatie kunt ervaren."
+        learn_more: "Meer leren"
+      skip:
+        text: "Heb je al vaker met ons gemediteerd?"
+        action: "Ga verder naar de geleide meditatie."
+    featured:
+      daily_meditation: "Meditatie van de dag"
+      trending_meditation: "Populaire meditaties"
+      random_meditation: "Laat het lot beslissen"
+      random_meditation_title: "Probeer een willekeurige meditatie"
+      random_meditation_description: "Heb je een opkikkertje nodig? Doorbreek de negatieve gedachtes en bouw aan je zelfvertrouwen."
+    custom_meditation:
+      title: "Zet je eigen meditatie op"
+      choose_goal: "Ik voel me graag ..." # Please keep ' ...' (with a space) at the end of your translation.
+      choose_duration: "Ik heb"
+      goal_prompt: "Selecteer stemming"
+      submit: "Start meditatie"
+      minutes: "min"
+    archive:
+      see_all_meditations: "Zie alle meditaties"
+      title: "Geleide Meditaties"
+      view_meditation: "Bekijk meditatie"
+      load_more: "Meer laden"
+
+  tracks:
+    subtitle: "Ondertiteling voor muziek"
+    text: "Geniet van deze collectie meditatieve muziek die we gemaakt hebben om afstand te creëren van je omgeving en een staat van innerlijke vrede te bereiken."
+    choose_mood: "Kies de stemming"
+    choose_instruments: "Kies een instrument"
+    playlist: "Afspeellijst"
+
+  treatments:
+    header_title: "Technique: %{title}" # TODO: Translate
+    prescreen:
+      title: "Voordat je je meditatie kunt verbeteren, moet je eerst je %{kundalini} ontwaken"
+      kundalini: "innerlijke energie"
+      action: "Ontwaak je Innerlijke Energie"
+      explanation:
+        text: "Iedereen heeft een innerlijke energie die eerst ontwaakt moet worden voordat je de vredige staat van meditatie kunt ervaren."
+        learn_more: "Meer leren"
+      skip:
+        text: "Heb je al vaker met ons gemediteerd?"
+        action: "Verbeter je meditatie!"
+    music:
+      title: "Muziek"
+      description: "Muziek kan ontspannend maar ook stimulerend zijn, waardoor we in balans kunnen komen en gedachteloos kunnen worden. Geniet van deze collectie van meditatieve muziek om dieper in meditatie te gaan."
+      read_more: "Kies uit onze collectie"
+    read_more: "Meer leren"
+    show_more: "Laat meer technieken zien"
+
+  content:
+    credit: "Tegoed"
+    show_more: "Laat meer zien"
+
+  subtle_system:
+    title:
+      desktop: "Beweeg je muis over de afbeelding om meer te leren"
+      mobile: "Klik hier om meer te leren"
+    chakras: "Chakras"
+    channels: "Kanalen"
+    read_more: "Meer leren"
+
+  classes:
+    map_title: "Meditatie cursussen in mijn buurt"
+    prompt: "Voer je woonplaats of postcode in"
+    nearby: "Nearby" # TODO: Translate
+    loading: "Locating..." # TODO: Translate
+    found: "Click to confirm" # TODO: Translate
+
+  streams: # TODO: Translate
+    countdown:
+      title: "Watch this space"
+      description: "The next live guided meditation is in"
+      action: "Remind Me"
+    live:
+      title: "We are live now!"
+      action: "Join now"
+      description: "Press play to join our live meditation session streaming right now"
+    timing:
+      days: "Days"
+      hours: "Hours"
+      minutes: "Minutes"
+      seconds: "Seconds"
+
+  errors:
+    title: "Oeps..."
+    coming_soon: "Binnenkort beschikbaar"
+    no_programs: "Meditatie cursussen in jouw buurt zijn binnenkort beschikbaar."
+    error: "Error" # TODO: Translate
+    alternatives_title: "Probeer in plaats daarvan één van deze opties:"
+    report_issue: "Probeer het opnieuw, en rapporteer dit probleem wanneer het blijft aanhouden. Wanneer je het probleem rapporteert, beschrijf dan zo goed mogelijk welke handelingen je op de website uitvoerde voordat je dit probleem tegenkwam."
+    '404': "Deze pagina bestaat niet."
+    '422': "De gekozen actie is afgewezen"
+    '500': "Het spijt ons, maar er is iets misgegaan."
+
+  javascript:
+    reading_time: "leestijd: %minutes% minu(u)t(en)"
+    loading: "Laden..."
+    popup:
+      close: "Sluiten (Esc)"
+      loading: "Laden..."
+      prev: "Vorige (Linker pijltjestoets)"
+      next: "Volgende (Rechter pijltjestoets)"
+      counter: "%curr% van %total%"
+      image_error: "<a href=\"%url%\">De afbeelding</a> kan niet geladen worden."
+      ajax_error: "<a href=\"%url%\">De inhoud</a> kan niet geladen worden."
