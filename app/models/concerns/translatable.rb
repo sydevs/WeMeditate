@@ -49,7 +49,7 @@ module Translatable
 
     if stateable?
       state = get_native_locale_attribute(:state)
-      state = self.states.key(state).to_sym
+      state = self.class.states.key(state).to_sym
       ![nil, :no_state, :in_progress].include?(state)
     else
       published_at.present?
@@ -61,7 +61,7 @@ module Translatable
 
     if stateable?
       state = get_native_locale_attribute(:state)
-      state = self.states.key(state).to_sym
+      state = self.class.states.key(state).to_sym
       [nil, :no_state, :in_progress].include?(state)
     else
       published_at.nil?
