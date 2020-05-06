@@ -128,6 +128,7 @@ it:
       article_video: "Se inserisci un video con dettagli, apparirà nell'anteprima dell'articolo."
       article_date: "Imposta qua la data di inizio dell'evento. Apparirà nell'anteprima dell'articolo."
       article_published_at: "Se la data è futura, l'articolo sarà programmato e pubblicato in quella data. Lascia vuoto questo campo per impostare la data automaticamente."
+      article_type_report: "'Report' type articles are general articles which we don't want to attribute to an individual author." # TODO: Translate
       fixed_slug: "Questa è una pagina speciale, l'URL non può essere modificato."
       preferred_language: "This is the language the user will view the admin website in." # TODO: Translate
       languages_access: "Queste sono le zone dove questo utente può modificare il contenuto del sito."

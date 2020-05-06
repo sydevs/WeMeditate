@@ -93,6 +93,7 @@ pt-br:
           article: "Article"
           artwork: "Artwork"
           event: "Event"
+          report: "Report"
         excerpt: "Excerpt"
         thumbnail: "Thumbnail"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate

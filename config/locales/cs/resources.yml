@@ -94,6 +94,7 @@ cs:
           article: "Článek"
           artwork: "Umělecké dílo"
           event: "Událost"
+          report: "Report" # TODO: Translate
         excerpt: "Výňatek"
         thumbnail: "Miniatura"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate

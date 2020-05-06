@@ -93,6 +93,7 @@ nl:
           article: "Artikel"
           artwork: "Kunst"
           event: "Evenement"
+          report: "Report" # TODO: Translate
         excerpt: "Fragment"
         thumbnail: "Miniatuurafbeelding"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate

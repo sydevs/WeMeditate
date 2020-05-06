@@ -129,6 +129,7 @@ fr:
       article_date: "Si cet article concerne un événement, vous pouvez définir ici la date de début de l'événement. Cette date apparaîtra dans l'aperçu de l'article."
       article_coordinates: "Fournir la latitude et la longitude d'un événement permettra de meilleurs résultats de recherche Google."
       article_published_at: "La date de publication détermine l'ordre dans lequel les articles apparaissent."
+      article_type_report: "'Report' type articles are general articles which we don't want to attribute to an individual author." # TODO: Translate
       fixed_slug: "Ceci est une page spéciale, son adresse URL ne peut pas être modifiée."
       preferred_language: "This is the language the user will view the admin website in." # TODO: Translate
       languages_access: "Ce sont les paramètres régionaux où cet utilisateur peut modifier le contenu du site."

@@ -125,6 +125,7 @@ uk:
           article: "Стаття"
           artwork: "Художній твір"
           event: "Подія"
+          report: "Report" # TODO: Translate
         excerpt: "Уривок"
         thumbnail: "Прев'ю"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
@@ -177,7 +178,8 @@ uk:
           in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
           archived: :activerecord.attributes.generic.states.archived # Do not translate
           published: :activerecord.attributes.generic.states.published # Do not translate
-          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate        name: :activerecord.attributes.generic.name # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+          name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
         excerpt: "Уривок"
         role: "Роль"

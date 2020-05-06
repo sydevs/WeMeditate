@@ -132,6 +132,7 @@ uk:
       article_date: "Тут встановіть дату початку події. Ця дата з’явиться у попередньому перегляді статті."
       article_coordinates: "Забезпечення широти та довготи події дозволить отримати багаті результати пошуку в Google."
       article_published_at: "Якщо ця дата буде надалі, то статтю планується опублікувати на цю дату. Залиште це поле пустим, щоб дата публікації була автоматично встановлена." # TODO: Translate
+      article_type_report: "'Report' type articles are general articles which we don't want to attribute to an individual author." # TODO: Translate
       fixed_slug: "Це спеціальна сторінка, її URL-адресу неможливо змінити." 
       languages_access: "Це місце, де цей користувач може змінювати вміст сайту."
       languages_known: "Це мови, з яких користувач може перекладати вміст."

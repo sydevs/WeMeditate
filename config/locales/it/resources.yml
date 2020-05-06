@@ -93,6 +93,7 @@ it:
           article: "Articolo"
           artwork: "Arte"
           event: "Evento"
+          report: "Report" # TODO: Translate
         excerpt: "Citazione"
         thumbnail: "Miniatura"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate

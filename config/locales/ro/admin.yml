@@ -131,6 +131,7 @@ ro:
       article_date: "Setează data de început a evenimentului aici. Această dată va apărea în previzualizarea articolului."
       article_coordinates: "Furnizarea latitudinii și longitudinii a unui eveniment va permite rezultate mai exacte de căutare Google."
       article_published_at: "Dacă această dată este în viitor, atunci articolul va fi programat să fie publicat la acea dată. Lasă acest câmp gol pentru ca data publicării să fie setată automat."
+      article_type_report: "'Report' type articles are general articles which we don't want to attribute to an individual author." # TODO: Translate
       fixed_slug: "Aceasta este o pagină specială, adresa URL nu poate fi modificată."
       preferred_language: "This is the language the user will view the admin website in." # TODO: Translate
       languages_access: "Acestea sunt locurile unde acest utilizator poate modifica conținutul site-ului."

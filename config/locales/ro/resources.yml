@@ -110,6 +110,7 @@ ro:
           article: "Articol"
           artwork: "Artă"
           event: "Eveniment"
+          report: "Report" # TODO: Translate
         excerpt: "Extras"
         thumbnail: "Miniatură"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate

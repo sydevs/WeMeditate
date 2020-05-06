@@ -140,6 +140,7 @@ ru:
           article: "Статья"
           artwork: "Творчество"
           event: "Событие"
+          report: "Report" # TODO: Translate
         excerpt: "Выдержка"
         thumbnail: "Превью"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
@@ -192,7 +193,8 @@ ru:
           in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
           archived: :activerecord.attributes.generic.states.archived # Do not translate
           published: :activerecord.attributes.generic.states.published # Do not translate
-          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate        name: :activerecord.attributes.generic.name # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+          name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
         excerpt: "Выдержка"
         role: "Роль"

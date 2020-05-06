@@ -133,6 +133,7 @@ ru:
       article_video: "Если вы добавите видео, оно будет отображено на превью статьи."
       article_date: "Установите дату начала мероприятия здесь. Эта дата появится в превью статьи." 
       article_published_at: "Статья будет опубликована в эту дату. Оставьте это поле пустым, чтобы автоматически установить дату публикации." 
+      article_type_report: "'Report' type articles are general articles which we don't want to attribute to an individual author." # TODO: Translate
       fixed_slug: "Это особая страница, ее адрес (URL) нельзя изменить." 
       preferred_language: "This is the language the user will view the admin website in." # TODO: Translate
       languages_access: "Это языки, на которых пользователь может изменять контент." 

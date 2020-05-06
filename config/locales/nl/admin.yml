@@ -130,6 +130,7 @@ nl:
       article_date: "Set the start date of the event here. This date will appear on the article preview."
       article_coordinates: "Providing the latitude and longitude of an event will allow rich Google search results."
       article_published_at: "If this date is in the future, then the article will be scheduled to be published on that date. Leave this fiield blank to have the publish date set automatically."
+      article_type_report: "'Report' type articles are general articles which we don't want to attribute to an individual author."
       fixed_slug: "This is a special page, it's URL cannot be changed."
       preferred_language: "This is the language the user will view the admin website in."
       languages_access: "These are the locales where this user can modify the site content."
