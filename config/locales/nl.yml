@@ -17,7 +17,7 @@ nl:
     archive: "all"
     self_realization: "first-experience"
     classes: "classes"
-    live: "live"
+    streams: "live"
     
   header:
     learn_more: "Meer informatie"

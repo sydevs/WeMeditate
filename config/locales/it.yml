@@ -17,7 +17,7 @@ it:
     archive: "tutto"
     self_realization: "realizzazione-del-sé"
     classes: "classes" # TODO: Translate
-    live: "live" # TODO: Translate
+    streams: "live" # TODO: Translate
 
   header:
     learn_more: "Per Saperne di Più"

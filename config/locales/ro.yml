@@ -17,7 +17,7 @@ ro:
     archive: "toate"
     self_realization: "prima-experiență"
     classes: "cursuri"
-    live: "live"
+    streams: "live"
 
   header:
     learn_more: "Află mai Multe"
