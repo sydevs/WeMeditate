@@ -22,7 +22,7 @@ class Stream < ApplicationRecord
 
   # Validations
   validates_presence_of :name, :slug, :excerpt, :stream_url
-  validates_presence_of :location, :time_zone, :target_time_zones
+  validates_presence_of :location, :time_zone_identifier, :time_zone_offset, :target_time_zones
   validates_presence_of :recurrence, :start_date, :start_time, :end_time
   validates :thumbnail_id, presence: true, if: :persisted?
   validates :duration, numericality: { greater_than: 0 }
@@ -30,7 +30,10 @@ class Stream < ApplicationRecord
   # Scopes
   scope :q, -> (q) { where('name ILIKE ?', "%#{q}%") if q.present? }
   scope :public_stream, -> { publicly_visible.where.not(content: nil).where(locale: Globalize.locale) }
-  scope :for_time_zone, -> (time_zone) { select('streams.*', "#{time_zone.utc_offset / 1.hour} = ANY(target_time_zones) AS featured", "ABS(streams.time_zone - #{time_zone.utc_offset / 1.hour}) AS distance").order(featured: :desc, distance: :asc).first }
+  scope :for_time_zone, -> (time_zone) { select('streams.*', "#{time_zone.utc_offset / 1.hour} = ANY(target_time_zones) AS featured", "ABS(streams.time_zone_offset - #{time_zone.utc_offset / 1.hour}) AS distance").order(featured: :desc, distance: :asc).first }
+
+  # Callbacks
+  before_validation :set_time_zone_offset
 
   # Include everything necessary to render this model
   def self.preload_for mode
@@ -40,16 +43,6 @@ class Stream < ApplicationRecord
   # Shorthand for the stream thumbnail image file
   def thumbnail
     media_files.find_by(id: thumbnail_id)&.file
-  end
-
-  def time_zone_data
-    ActiveSupport::TimeZone[self[:time_zone]] rescue nil
-  end
-
-  def time_zone_offset
-    return nil if time_zone_data.nil?
-
-    time_zone_data.utc_offset / 1.hour
   end
 
   def live?
@@ -82,8 +75,15 @@ class Stream < ApplicationRecord
     end
   end
 
-  def valid_end_time?
-    Time.parse(end_time) > Time.parse(start_time)
-  end
+  private
+
+    def valid_end_time?
+      Time.parse(end_time) > Time.parse(start_time)
+    end
+
+    def set_time_zone_offset
+      time_zone_data = ActiveSupport::TimeZone.new(time_zone_identifier) rescue nil
+      self[:time_zone_offset] = time_zone_data.utc_offset / 1.hour
+    end
 
 end

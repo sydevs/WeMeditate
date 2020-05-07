@@ -185,7 +185,8 @@ cs:
         thumbnail: "Thumbnail"
         thumbnail_id: :activerecord.attributes.stream.thumbnail # Do not translate
         location: "Location"
-        time_zone: "Time Zone"
+        time_zone_identifier: "Time Zone"
+        time_zone_offset: "Time Zone Offset"
         start_date: "Start Date"
         start_time: "Start Time"
         end_time: "End Time"

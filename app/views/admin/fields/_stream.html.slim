@@ -27,12 +27,12 @@
 .ui.grey.small.dividing.header Location
 .two.fields
   = draftable_field f, :location, type: :string, hint: translate('admin.hints.stream.location')
-  = draftable_field f, :time_zone do |value|
-    - time_zones = ActiveSupport::TimeZone.all.map { |tz| [tz, tz.utc_offset / 1.hour] }
+  = draftable_field f, :time_zone_identifier do |value|
+    - time_zones = ActiveSupport::TimeZone.all.map { |tz| [tz, tz.tzinfo.identifier] }
     - if value.present?
-      - f.input :time_zone, label: false, wrapper: :semantic_select, collection: time_zones, selected: value
+      - f.input :time_zone_identifier, label: false, wrapper: :semantic_select, collection: time_zones, selected: value
     - else
-      - f.input :time_zone, label: false, wrapper: :semantic_select, collection: time_zones
+      - f.input :time_zone_identifier, label: false, wrapper: :semantic_select, collection: time_zones
 
 = draftable_field f, :target_time_zones do |value|
   - capture do

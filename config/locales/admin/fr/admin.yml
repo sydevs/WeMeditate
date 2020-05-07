@@ -474,7 +474,6 @@ fr:
 
     misc:
       no_translated_title: "Pas de Titre Traduit" # This should be written in titlecase
-      loading_time_zone_map: "Loading timezones map..." # TODO: Translate
       menu:
         dashboard: "Tableau de Bord"
         my_author: "Mon Profil d'Auteur"

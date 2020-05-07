@@ -45,7 +45,7 @@ module Admin
       def stream_params
         params.fetch(:stream, {}).permit(
           :name, :slug, :excerpt, :state, :thumbnail_id, :content,
-          :location, :time_zone, :target_time_zones, :stream_url,
+          :location, :time_zone_identifier, :target_time_zones, :stream_url,
           :start_date, :start_time, :end_time,
           recurrence: {},
           metatags: {}

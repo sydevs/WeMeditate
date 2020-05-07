@@ -470,7 +470,6 @@ it:
 
     misc:
       no_translated_title: "Nessun Titolo Tradotto"
-      loading_time_zone_map: "Loading timezones map..." # TODO: Translate
       menu:
         dashboard: "Cruscotto"
         my_author: "Il mio Profilo Autore"

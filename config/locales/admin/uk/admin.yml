@@ -478,7 +478,6 @@ uk:
 
     misc:
       no_translated_title: "Відсутній Переклад Заголовку" # This should be written in titlecase
-      loading_time_zone_map: "Loading timezones map..." # TODO: Translate
       menu:
         dashboard: "Панель управління"
         my_author: "Мій профіль"
