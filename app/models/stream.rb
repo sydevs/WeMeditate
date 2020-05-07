@@ -82,7 +82,11 @@ class Stream < ApplicationRecord
     end
 
     def set_time_zone_offset
+      return unless time_zone_identifier_changed?
+
       time_zone_data = ActiveSupport::TimeZone.new(time_zone_identifier) rescue nil
+      return if time_zone_data.nil?
+
       self[:time_zone_offset] = time_zone_data.utc_offset / 1.hour
     end
 
