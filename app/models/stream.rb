@@ -29,16 +29,12 @@ class Stream < ApplicationRecord
 
   # Scopes
   scope :q, -> (q) { where('name ILIKE ?', "%#{q}%") if q.present? }
+  scope :public_stream, -> { publicly_visible.where.not(content: nil).where(locale: Globalize.locale) }
+  scope :for_time_zone, -> (time_zone) { select('streams.*', "#{time_zone.utc_offset / 1.hour} = ANY(target_time_zones) AS featured", "ABS(streams.time_zone - #{time_zone.utc_offset / 1.hour}) AS distance").order(featured: :desc, distance: :asc).first }
 
   # Include everything necessary to render this model
   def self.preload_for mode
     includes(:media_files)
-  end
-
-  def self.for_time_zone time_zone
-    offset = time_zone.utc_offset / 1.hour
-    streams = publicly_visible.select('streams.*', "#{offset} = ANY(target_time_zones) AS featured", "ABS(streams.time_zone - #{offset}) AS distance")
-    streams.order(featured: :desc, distance: :asc).first
   end
 
   # Shorthand for the stream thumbnail image file
