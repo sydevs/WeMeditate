@@ -84,6 +84,12 @@ module Draftable
     changes.each do |key, (old_value, new_value)|
       next if only.present? && !only.include?(key.to_sym)
 
+      # Work around for the fact that globalize for some reason nilifies the values in the changes hash
+      if try(:translated_attributes)&.key?(key)
+        old_value = translation[key]
+        new_value = self[key]
+      end
+
       if old_value.to_s == new_value.to_s || (key == 'content' && content_equal?(old_value, new_value))
         new_draft.except!(key)
       else

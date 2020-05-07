@@ -5,9 +5,7 @@
   - states = record.avaliable_states.map { |state| [human_enum_name(record, :state, state), state.to_s] }
   - if record.published? && !record.unpublishable?
     = f.input :state do
-      .ui.icon.label
-        i.info.circle.icon
-        = human_enum_name(record, :state)
+      = label_tag 'info circle', human_enum_name(record, :state)
   - elsif record.draftable?
     = draftable_field f, :state, type: :collection, input: { collection: states } do |value|
       - f.input_field :state, collection: states, selected: value, disabled: !allow.update_structure?
