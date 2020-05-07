@@ -25,6 +25,14 @@ module Admin::ApplicationHelper
     report_url
   end
 
+  def label_tag icon, text
+    tag.div class: 'ui icon label' do
+      concat tag.i class: "#{icon} icon"
+      concat ' '
+      concat text
+    end
+  end
+
   # This is a more complex method which generates a summary of the content blocks for a given page.
   # Just to give an overview of the page content to a user, instead of showing them the whole content.
   def content_outline record
