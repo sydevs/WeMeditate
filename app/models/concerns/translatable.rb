@@ -37,29 +37,39 @@ module Translatable
   end
 
   def translatable_by? user
-    !has_complete_translation? && user.accessible_locales.include?(original_locale.to_sym)
+    !has_complete_translation? && user.languages_known.include?(original_locale.to_sym)
   end
 
   def needs_translation_by? user
-    !has_translation? && user.accessible_locales.include?(original_locale.to_sym)
+    !has_translation? && user.languages_known.include?(original_locale.to_sym)
   end
 
   def has_complete_translation? locale: Globalize.locale
-    return false unless translated_locales.include?(locale)
-    return false if stateable? && [nil, :no_state, :in_progress].include?(state.to_sym)
-    return false if !stateable? && published_at == nil
-    return true
+    return false unless translated_locales.include?(locale.to_sym)
+
+    if stateable?
+      state = get_native_locale_attribute(:state)
+      state = self.class.states.key(state).to_sym
+      ![nil, :no_state, :in_progress].include?(state)
+    else
+      published_at.present?
+    end
   end
 
   def has_incomplete_translation? locale: Globalize.locale
-    return false unless translated_locales.include?(locale)
-    return true if stateable? && [nil, :no_state, :in_progress].include?(state.to_sym)
-    return true if !stateable? && published_at == nil
-    return false
+    return false unless translated_locales.include?(locale.to_sym)
+
+    if stateable?
+      state = get_native_locale_attribute(:state)
+      state = self.class.states.key(state).to_sym
+      [nil, :no_state, :in_progress].include?(state)
+    else
+      published_at.nil?
+    end
   end
 
   def has_translation? section = nil, locale: Globalize.locale, check_draft: true
-    return false unless translated_locales.include?(locale)
+    return false unless translated_locales.include?(locale.to_sym)
 
     if section == :content
       return true if content.present?

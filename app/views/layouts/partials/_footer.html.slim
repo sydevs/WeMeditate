@@ -44,7 +44,7 @@ footer.footer
 
     .footer__column.footer__social
       .footer__navigation
-        - I18n.translate('social_media').each do |type, url|
+        - social_media_urls.each do |type, url|
           a.footer__social__link href=url
             i.icon class="icon--#{type}"
         
@@ -59,4 +59,4 @@ footer.footer
             - if locale != Rails.configuration.published_locales.last
               .footer__language__separator  | 
 
-  .footer__copyright &copy; WeMeditate, 2019
+  .footer__copyright &copy; WeMeditate, #{Time.zone.now.year}

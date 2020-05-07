@@ -47,7 +47,7 @@ module Admin
     end
 
     def preview?
-      update?
+      show? || update?
     end
 
     def update_translation?

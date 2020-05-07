@@ -1,0 +1,374 @@
+
+# FRONT END TRANSLATIONS
+# This file contains translations for the resources which make up the website.
+
+uk:
+  activerecord:
+    models:
+      article:
+        one: "Стаття" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Статті" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Статей" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Статті" # Nonspecific number of elements
+      static_page:
+        one: "Головна сторінка" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Головні сторінки" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Головних сторінок" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Головні сторінки" # Nonspecific number of elements
+      subtle_system_node: # This is a page for a Chakra, Channel, or the Kundalini. ie. Some part of the subtle system
+        one: "Елемент Тонкої системи" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Елементи Тонкої системи" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Елементів Тонкої системи" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Елементи Тонкої cистеми" # Nonspecific number of elements
+      category:
+        one: "Категорія" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Категорії" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Категорій" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Категорії" # Nonspecific number of elements
+      meditation:
+        one: "Медитація" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Медитації" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Медитацій" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Медитації" # Nonspecific number of elements
+      treatment:
+        one: "Методика" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Методики" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Методик" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Методики" # Nonspecific number of elements
+      track:
+        one: "Трек" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Треки" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Треків" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Треки" # Nonspecific number of elements
+      artist:
+        one: "Виконавець" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Виконавці" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Виконавців" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Виконавці" # Nonspecific number of elements
+      author:
+        one: "Профіль автора" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Профілі авторів" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Профілів авторів" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Профілі aвторів" # Nonspecific number of elements
+      user:
+        one: "Адмін" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Адміни" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Адмінів" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Адміни" # Nonspecific number of elements
+      instrument_filter:
+        one: "Інструмент" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Інструменти" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Інструментів" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Інструменти" # Nonspecific number of elements
+      mood_filter:
+        one: "Настрій" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Настрої" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Настроїв" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Настрої" # Nonspecific number of elements
+      duration_filter:
+        one: "Тривалість" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Тривалості" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Тривалостей" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Тривалості" # Nonspecific number of elements
+      goal_filter:
+        one: "Ціль" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Цілі" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Цілей" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Цілі" # Nonspecific number of elements
+      media_file:
+        one: "Медіафайл" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Медиіафайли" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Медіафайлів" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Медіафайли" # Nonspecific number of elements
+      audit: # TODO: Translate
+        one: "Зміна логіну" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Зміни логінів" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Змін логінів" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Зміна логінів" # Nonspecific number of elements
+
+    attributes:
+      generic:
+        ready_to_publish: "Готово до публікації"
+        published: "Опубліковано"
+        name: "Імя"
+        slug: "URL-адреса"
+        state: "Статус"
+        states:
+          no_state: "Переклад не розпочато"
+          in_progress: "В процесі"
+          archived: "В архіві"
+          published: "Опубліковано"
+          unpublished: "Не опубліковано"
+
+      article:
+        published: :activerecord.attributes.generic.published # Do not translate
+        name: "Назва"
+        slug: :activerecord.attributes.generic.slug # Do not translate
+        category: :activerecord.models.category.one # Do not translate
+        category_id: :activerecord.attributes.article.category # Do not translate
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+        priority: "Пріорітет"
+        priorities:
+          pinned: "Прикріплено до Сторінки Натхнення"
+          hidden: "Приховано із Сторінки Натхення"
+          low: "Низькая видимість"
+          normal: "Нормальна видимість"
+          high: "Висока видимість"
+        article_type: "Вид статті"
+        article_types:
+          article: "Стаття"
+          artwork: "Художній твір"
+          event: "Подія"
+          report: "Report" # TODO: Translate
+        excerpt: "Уривок"
+        thumbnail: "Прев'ю"
+        thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
+        vimeo_id: "Рекомендоване відео (Vimeo ID)"
+        date: "Рекомендована дата"
+        content: "Контент"
+        metatags: "Метатеги"
+        coordinates: "Розташування"
+        latitude: "Широта"
+        longitude: "Довгота"
+        author: :activerecord.models.author.one # Do not translate
+        author_id: :activerecord.models.author.one # Do not translate
+        owner: "Дозволяти автору оновлювати статтю"
+        published_at: "Дата публікації"
+
+      static_page:
+        name: "Назва"
+        slug: :activerecord.attributes.generic.slug # Do not translate
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+        role: "Роль"
+        roles:
+          home: "Домашня сторінка"
+          articles: "Сторінка з каталогом Статей"
+          meditations: "Сторінка з каталогом Медитацій"
+          treatments: "Сторінка з каталогом Методик"
+          tracks: "Музика"
+          contact: "Контакти"
+          shri_mataji: "Про Шрі Матаджі"
+          subtle_system: "Про Тонку Систему"
+          sahaja_yoga: "Про Сахаджа Йогу"
+          about: "Про проект"
+          classes: "Заняття"
+          privacy: "Політика конфіденційності"
+          streams: "Livestream Page" # TODO: Translate
+          custom: "Custom Page" # TODO: Translate
+        content: "Контент"
+        metatags: "Метатеги"
+
+
+      subtle_system_node:
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+          name: :activerecord.attributes.generic.name # Do not translate
+        slug: :activerecord.attributes.generic.slug # Do not translate
+        excerpt: "Уривок"
+        role: "Роль"
+        roles:
+          chakra_1: "Муладхара Чакра"
+          chakra_2: "Свадіштхан Чакра"
+          chakra_3: "Набхі Чакра"
+          chakra_3b: "Войд"
+          chakra_4: "Анахата Чакра"
+          chakra_5: "Вішудхі Чакра"
+          chakra_6: "Агія Чакра"
+          chakra_7: "Сахасрара Чакра"
+          channel_left: "Іда (Лівий) Канал"
+          channel_right: "Пінгала (Правий) Канал"
+          channel_center: "Сушумна (Центральний) Канал"
+          kundalini: "Кундаліні"
+        content: "Контент"
+        metatags: "Метатеги"
+
+        stream: # TODO: Translate
+          draft: :activerecord.attributes.generic.draft # Do not translate
+          name: "Title"
+          slug: :activerecord.attributes.generic.slug # Do not translate
+          state: :activerecord.attributes.generic.state # Do not translate
+          states:
+            no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+            in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+            archived: :activerecord.attributes.generic.states.archived # Do not translate
+            published: :activerecord.attributes.generic.states.published # Do not translate
+            unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+          excerpt: "Excerpt"
+          stream_url: "Embeddable Stream URL"
+          thumbnail: "Thumbnail"
+          thumbnail_id: :activerecord.attributes.stream.thumbnail # Do not translate
+          location: "Location"
+          time_zone: "Time Zone"
+          start_date: "Start Date"
+          start_time: "Start Time"
+          end_time: "End Time"
+          duration: "Duration"
+          recurrence: "Days of the Week"
+          recurrences:
+            monday: "Mon"
+            tuesday: "Tue"
+            wednesday: "Wed"
+            thursday: "Thu"
+            friday: "Fri"
+            saturday: "Sat"
+            sunday: "Sun"
+          target_time_zones: "Featured in Time Zones"
+          content: "Content"
+          metatags: "Metadata"
+
+      category:
+        published: :activerecord.attributes.article.published # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
+        slug: :activerecord.attributes.generic.slug # Do not translate
+        articles:
+          one: "%{count} Стаття" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "%{count} Статті" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+          many: "%{count} Статей" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+
+      treatment:
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+        published: :activerecord.attributes.article.published # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
+        slug: :activerecord.attributes.generic.slug # Do not translate
+        excerpt: "Уривок"
+        content: "Контент"
+        thumbnail: "Прев'ю (png)"
+        thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
+        horizontal_vimeo_id: "Горизонтальне Відео (Vimeo ID)"
+        vertical_vimeo_id: "Вертикальне Відео (Vimeo ID)"
+        metatags: "Метатеги"
+
+      instrument_filter:
+        published: :activerecord.attributes.article.published # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
+        icon: "Значок"
+        tracks:
+          one: "%{count} Трек" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "%{count} Треки" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+          many: "%{count} Треків" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+
+      mood_filter:
+        published: :activerecord.attributes.article.published # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
+        tracks:
+          one: "%{count} Трек" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "%{count} Треки" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+          many: "%{count} Треків" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+
+      duration_filter:
+        published: :activerecord.attributes.article.published # Do not translate
+        minutes: "Хвилини"
+        meditations:
+          one: "%{count} Медитація" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "%{count} Медитації" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+          many: "%{count} Медитацій" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+
+      goal_filter:
+        published: :activerecord.attributes.article.published # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
+        meditations:
+          one: "%{count} Медитація" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "%{count} Медитації" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+          many: "%{count} Медитацій" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+
+      track:
+        published: :activerecord.attributes.article.published # Do not translate
+        title: "Назва"
+        artists: :activerecord.models.artist.few # Do not translate
+        audio: "Файл (mp3)"
+        duration: "Тривалість"
+        instrument_filters: :activerecord.models.instrument_filter.few # Do not translate
+        mood_filters: :activerecord.models.mood_filter.few # Do not translate
+
+      meditation:
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+        published: :activerecord.attributes.article.published # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
+        slug: :activerecord.attributes.generic.slug # Do not translate
+        horizontal_vimeo_id: "Горизонтальне Відео (Vimeo ID)"
+        vertical_vimeo_id: "Вертикальне Відео (Vimeo ID)"
+        duration_filter: :activerecord.models.duration_filter.one # Do not translate
+        duration_filter_id: :activerecord.models.duration_filter.one # Do not translate
+        goal_filters: :activerecord.models.goal_filter.few # Do not translate
+        goal_filter_ids: :activerecord.models.goal_filter.other # Do not translate
+        excerpt: "Уривок"
+        description: "Текст на сторінці"
+        metatags: "Метатеги"
+        popularity: "Популярність"
+
+      artist:
+        published: :activerecord.attributes.article.published # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
+        image: "Обкладинка альбому"
+        url: "Сайт"
+        tracks:
+          one: "%{count} Трек" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "%{count} Треки" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+          many: "%{count} Треків" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+
+      author:
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+        name: :activerecord.attributes.generic.name # Do not translate
+        country_code: "Країна"
+        title: "Назва"
+        image: "Аватар"
+        description: "Біографія"
+        years_meditating: "Досвід медитації"
+        user: "Пов'язаний обліковий запис адміністратора"
+
+      user:
+        email: "Адреса електронної пошти"
+        invitation_accepted_at: "Запрошення прийнято"
+        invited_by: :activerecord.models.invited_by # Do not translate
+        languages_known: "Мови для перекладу"
+        languages_access: "Доступні локації"
+        role: "Роль"
+        roles:
+          translator: "Перекладач"
+          writer: "Автор"
+          editor: "Редактор"
+          regional_admin: "Місцевий адмін"
+          super_admin: "Головний адмін"
+
+      audit:
+        user: :activerecord.models.user.one # Do not translate
+        action: "Дія"
+        actions:
+          update: "Оновлений"
+          create: "Створений"
+          destroy: "Видалений"

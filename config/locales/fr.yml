@@ -1,0 +1,218 @@
+
+# FRONT END TRANSLATIONS
+# This file contains translations which will be seen by the public.
+
+fr:
+  we_meditate: "We Meditate" # This is the title of the website
+  tagline: "Faites le vide, découvrez votre potentiel intérieur avec des méditations guidées. Connectez-vous avec d'autres personnes dans le monde, en méditant pour une vie meilleure."
+
+  routes: # These are for the website URLs, they should be all lower case and use dashes instead of spaces
+    inspiration: "inspiration"
+    articles: "articles"
+    meditations: "méditations"
+    techniques: "techniques"
+    subtle_system: "système-subtil"
+    page: "page"
+    music: "musique"
+    archive: "tout"
+    self_realization: "première-expérience"
+    classes: "classes"
+    live: "live"
+
+  header:
+    learn_more: "En Savoir Plus"
+    classes_near_me: "Cours Près de Chez Moi"
+    inspiration_from_within: "L'inspiration vient de l'intérieur"
+    cookie_notice: "En continuant à utiliser wemeditate.co, vous acceptez notre utilisation des cookies."
+    preview_notice: "Vous visualisez un aperçu"
+    kundalini: "Énergie Intérieure"
+
+  footer:
+    scroll_to_top: "Retour Haut de Page"
+    meditate_now: "Méditez maintenant"
+    music_for_meditation: "Musique pour méditer"
+    learn_more: "En Savoir Plus"
+    come_meditate: "Venez méditer"
+    online_meditations: "Méditations Guidées En Ligne"
+    languages: "Langues"
+    self_realization: "Première Expérience"
+
+  actions_footer:
+    title: "Découvrez-le par vous-même!"
+    subtitle: "Ne nous croyez pas sur parole. Essayez de méditer et voyez comment vous vous sentez!"
+    sidetext: "Essayez La Méditation"
+    actions:
+      online: "Méditez en ligne"
+      local: "Cours près de chez moi"
+
+  author:
+    about_the_author: "Au sujet de %{author}"
+    written_by: "Écrit par"
+    meditating_for:
+      one: "Médite depuis 1 an"
+      other: "Médite depuis %{count} ans"
+
+  form:
+    input:
+      email: "Votre adresse mail"
+      message: "Message"
+      privacy:
+        signup: "En soumettant ce formulaire, vous acceptez le traitement de vos données personnelles pour recevoir des méditations guidées et autres mails de WeMeditate."
+        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database." # TODO: Translate
+        learn_more: "En savoir plus."
+      name: "Votre nom"
+      class: "Sélectionnez le cours"
+    missing:
+      email: "Vous devez fournir une adresse mail."
+      message: "Vous avez oublié de remplir un message."
+      name: "Vous devez donner votre nom."
+    success:
+      subscribe: "Vous avez été abonné(e)."
+      contact: "Votre message a été reçu."
+      register: "Vous avez été enregistré(e)."
+    button:
+      try_again: "Réessayer"
+      submitted: "Envoyé"
+
+  player: # For the music or video player
+    pause: "Pause"
+    play: "Lecture"
+    '%_buffered': "chargé à %"
+    skip_back: "Piste Précédante"
+    skip_forward: "Piste Suivante"
+    rewind_10_secs: "Retour Arrière de 10 secondes"
+    forward_10_secs: "Avance de 10 secondes"
+    unmute: "Rétablir le son"
+    mute: "Muet"
+    volume: "Volume"
+    disable_captions: "Désactiver les sous-titres"
+    enable_captions: "Activer les sous-titres"
+    exit_fullscreen: "Quitter le mode plein écran"
+    enter_fullscreen: "Passer en mode plein écran"
+    duration: "Durée"
+    current_time: "Heure actuelle" # The current time that the player is at
+    seek: "Rechercher"
+    play_title: "Lire %{title}" # %{title} is the title of a video or music track
+
+  articles:
+    read_more: "Lire la Suite" # Takes you to the article page
+    load_more: "En Télécharger Plus" # Loads more articles
+    filter: "Filtre"
+    show_all: "Tous"
+    share: "Partager: "
+
+  meditations:
+    title: "Méditations"
+    prescreen:
+      title: "Accédez aux méditations guidées après avoir éveillé votre %{kundalini} "
+      kundalini: "énergie intérieure"
+      action: "Éveillez Votre Énergie Intérieure"
+      explanation:
+        text: "Chacun possède une énergie intérieure qui doit être éveillée avant de pouvoir expérimenter l'état de méditation."
+        learn_more: "En savoir plus"
+      skip:
+        text: "Vous avez déja médité avec nous?"
+        action: "Continuez vers votre méditation guidée"
+    featured:
+      daily_meditation: "Méditation du jour"
+      trending_meditation: "Méditation tendance"
+      random_meditation: "Laissez le hasard décider"
+      random_meditation_title: "Essayez une méditation au hasard"
+      random_meditation_description: "Vous avez envie d'un petit remontant? Bannissez ces pensées négatives qui vous rabaissent et renforcez la confiance en vous."
+    custom_meditation:
+      title: "Configurez Votre Méditation"
+      choose_goal: "Je veux me sentir ..." # Please keep ' ...' (with a space) at the end of your translation.
+      choose_duration: "Je dispose de"
+      goal_prompt: "Sélectionnez l'humeur"
+      submit: "Commencez la méditation"
+      minutes: "min"
+    archive:
+      see_all_meditations: "Voir toutes les méditations"
+      title: "Méditations Guidées"
+      view_meditation: "Voir la méditation"
+      load_more: "En Télécharger Plus"
+
+  tracks:
+    subtitle: "Sous-titre pour la musique"
+    text: "Profitez d'une sélection de musiques de méditation que nous avons produites pour vous aider à vous déconnecter de votre environnement et à atteindre un véritable état de paix intérieure."
+    choose_mood: "Choisissez l'ambiance"
+    choose_instruments: "Choisissez le son"
+    playlist: "Liste de lecture"
+
+  treatments:
+    header_title: "Technique: %{title}"
+    prescreen:
+      title: "Avant d'utiliser des méthodes pour améliorer votre méditation, vous devez éveiller votre %{kundalini}"
+      kundalini: "énergie intérieure"
+      action: "Éveillez Votre Énergie Intérieure"
+      explanation:
+        text: "Chacun a une énergie intérieure qui doit être éveillée avant de pouvoir expérimenter l'état de méditation."
+        learn_more: "En savoir plus"
+      skip:
+        text: "Vous avez déja médité avec nous?"
+        action: "Améliorez votre méditation!"
+    music:
+      title: "Musique"
+      description: "La musique peut être à la fois relaxante et doucement stimulante. Elle nous permet de touver l'équilibre en vidant notre tête du trop plein de pensées. Explorez notre sélection de morceaux originaux spécialement créés pour permettre un état de méditation plus profond."
+      read_more: "Choisissez parmi notre collection"
+    read_more: "En savoir plus"
+    show_more: "Afficher Plus de Techniques"
+
+  content:
+    credit: "Crédit"
+    show_more: "En Montrer Plus"
+
+  subtle_system:
+    title:
+      desktop: "Passez votre curseur pour en savoir plus"
+      mobile: "Appuyez pour en savoir plus"
+    chakras: "Chakras"
+    channels: "Canaux"
+    read_more: "En Savoir Plus"
+
+  classes:
+    map_title: "Cours de méditation près de chez moi"
+    prompt: "Entrez la ville ou le code postal"
+    nearby: "Près de chez Vous"
+    loading: "Localisation..."
+    found: "Cliquez pour confirmer"
+
+  streams: # TODO: Translate
+    title: "All Live Meditations"
+    read_more: "Learn more"
+    skip:
+      title: "Time doesn't suit you?"
+      description: "Choose an alternative stream that works for you"
+      action: "See other times"
+    live:
+      title: "En direct maintenant!"
+      action: "Rejoignez-nous maintenant"
+      description: "Appuyez sur play pour rejoindre notre méditation en direct maintenant"
+    timing:
+      days: "Jours"
+      hours: "Heures"
+      minutes: "Minutes"
+      seconds: "Secondes"
+
+  errors:
+    title: "Oups..."
+    coming_soon: "Bientôt disponible"
+    no_programs: "Les cours de méditation dans votre région seront bientôt disponibles."
+    error: "Erreur"
+    alternatives_title: "Essayez plutôt l'un d'entre eux:"
+    report_issue: "Veuillez réessayer. S'il vous plaît, signalez ce problème s'il persiste. Lorsque vous signalez le problème, essayez de décrire au mieux les actions spécifiques que vous faisiez avant d'avoir ce problème."
+    '404': "Cette page n'existe pas"
+    '422': "Le changement que vous vouliez a été refusé"
+    '500': "Nous sommes désolés, une erreur s'est produite"
+
+  javascript:
+    reading_time: "%minutes% minutes de lecture"
+    loading: "Chargement en cours..."
+    popup:
+      close: "Fermer (Esc)"
+      loading: "Chargement en cours..."
+      prev: "Précédent (touche flèche gauche)"
+      next: "Suivant (touche flèche droite)"
+      counter: "%curr% de %total%"
+      image_error: "<a href=\"%url%\">L'image</a> n'a pas pu être chargée."
+      ajax_error: "<a href=\"%url%\">Le contenu</a> n'a pas pu être chargé."

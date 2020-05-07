@@ -284,7 +284,7 @@ module MetadataHelper
           'width' => 132,
           'height' => 60,
         },
-        'sameAs' => I18n.translate('social_media').values.reject(&:empty?),
+        'sameAs' => social_media_urls.values.reject(&:empty?),
       }.freeze
     end
 

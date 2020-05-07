@@ -45,7 +45,7 @@ module NavigationHelper
         ],
         featured: Treatment.published.preload_for(:preview).first(2).map { |treatment|
           {
-            title: "#{human_model_name(Treatment)}: #{treatment.name}",
+            title: translate('treatments.title', title: treatment.name),
             url: treatment_path(treatment),
             data: gtm_record(treatment),
             thumbnail: treatment.thumbnail.url,
@@ -74,24 +74,12 @@ module NavigationHelper
     # Add classes near me
     mobile_navigation.push({
       title: I18n.translate('header.classes_near_me').gsub('<br>', ' '),
-      url: static_page_path_for(:streams),
+      url: %i[en ru].include?(I18n.locale) ? static_page_path_for(:streams) : static_page_path_for(:classes),
       data: gtm_label('header.classes_near_me'),
       active: controller_name == 'classes',
     })
 
     mobile_navigation
-  end
-
-  # Fetch sharing links that can appear at the bottom of any article.
-  def sharing_links
-    url = ERB::Util.url_encode request.original_url.split('/', 3)[2]
-
-    tag.div class: 'sharing_links' do
-      concat tag.div I18n.translate('articles.share'), class: 'sharing_links__title'
-      I18n.translate('sharing').collect do |type, link|
-        concat tag.a (tag.span class: "icon icon--#{type} icon"), class: 'sharing_links__item', href: link.gsub('%{url}', url)
-      end
-    end
   end
 
 end

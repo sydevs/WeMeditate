@@ -1,0 +1,220 @@
+
+# FRONT END TRANSLATIONS
+# This file contains translations which will be seen by the public.
+
+ro:
+  we_meditate: "We Meditate" # This is the title of the website
+  tagline: "Eliberează-ți mintea prin meditație și descoperă-ți adevăratul potențial! Meditează cu oameni de pretutindeni pentru o viață echilibrată."
+
+  routes: # These are for the website URLs, they should be all lower case and use dashes instead of spaces
+    inspiration: "inspirație"
+    articles: "articole"
+    meditations: "meditații"
+    techniques: "tehnici"
+    subtle_system: "sistemul-subtil"
+    page: "pagină"
+    music: "muzică"
+    archive: "toate"
+    self_realization: "prima-experiență"
+    classes: "cursuri"
+    live: "live"
+
+  header:
+    learn_more: "Află mai Multe"
+    classes_near_me: "Cursuri în Apropierea Mea"
+    inspiration_from_within: "Inspirația vine din interior"
+    cookie_notice: "Acest site folosește cookies. Continuarea navigării implică acceptarea lor."
+    preview_notice: "Acesta este un preview"
+    kundalini: "Energia Interioară"
+
+  footer:
+    scroll_to_top: "Începutul Paginii"
+    meditate_now: "Meditează Acum"
+    music_for_meditation: "Muzică pentru meditație"
+    learn_more: "Află mai multe"
+    come_meditate: "Vino să medităm"
+    online_meditations: "Meditații Ghidate Online"
+    languages: "Limbi"
+    self_realization: "Prima Experiență"
+
+  actions_footer:
+    title: "Experimentează și tu!"
+    subtitle: "Nu ne crede pe cuvânt. Încearcă meditația și vezi cum te simți!"
+    sidetext: "Încearcă meditația"
+    actions:
+      online: "Meditează online"
+      local: "Cursuri în apropierea mea"
+
+  author:
+    about_the_author: "Despre autor"
+    about_the_artist: "Despre artist"
+    written_by: "Scris de"
+    meditating_for:
+      one: "Meditez de un an"
+      few: "Meditez de %{count} ani"
+      other: "Meditez de %{count} ani"
+
+  form:
+    input:
+      email: "Adresa de e-mail"
+      message: "Mesaj"
+      privacy:
+        signup: "Prin trimiterea acestui formular, ești de acord cu procesarea datelor personale pentru primirea meditațiilor ghidate și a altor email-uri de la WeMeditate."
+        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database." # TODO: Translate
+        learn_more: "Află mai multe."
+      name: "Nume"
+      class: "Selectează un curs"
+    missing:
+      email: "Introdu adresa de email."
+      message: "Ai uitat să adaugi un mesaj."
+      name: "Completează cu numele tău."
+    success:
+      subscribe: "Te-ai abonat cu succes."
+      contact: "Mesajul a fost primit."
+      register: "Ai fost înregistrat cu succes."
+    button:
+      try_again: "Încearcă din Nou"
+      submitted: "Trimite"
+ 
+  player: # For the music or video player
+    pause: "Pauză"
+    play: "Redă"
+    '%_buffered': "% Se Încarcă"
+    skip_back: "Înapoi"
+    skip_forward: "Înainte"
+    rewind_10_secs: "Înapoi 10 sec"
+    forward_10_secs: "Înainte 10 sec"
+    unmute: "Activează sunetul"
+    mute: "Dezactivează sunetul"
+    volume: "Volum"
+    disable_captions: "Dezactivează subtitrările"
+    enable_captions: "Activează subtitrările"
+    exit_fullscreen: "Ieșire ecran complet"
+    enter_fullscreen: "Ecran complet"
+    duration: "Durată"
+    current_time: "Minutaj" # The current time that the player is at
+    seek: "Caută"
+    play_title: "Redă, %{title}" # %{title} is the title of a video or music track
+ 
+  articles:
+    read_more: "Citește mai mult" # Takes you to the article page
+    load_more: "Încarcă mai multe" # Loads more articles
+    filter: "Filtru"
+    show_all: "Arata tot"
+    share: "Distribuie: "
+ 
+  meditations:
+    title: "Meditations" # TODO: Translate
+    prescreen:
+      title: "Accesează meditații ghidate prin trezirea %{kundalini}"
+      kundalini: "energia interioară"
+      action: "Trezește-ți Energia Interioară"
+      explanation:
+        text: "Toată lumea are o energie interioară care trebuie să fie trezită înainte de a experimenta starea de meditație."
+        learn_more: "Află mai multe"
+      skip:
+        text: "Ați mai meditat cu noi înainte?"
+        action: "Continuă către meditația ghidată" 
+    featured:
+      daily_meditation: "Meditația zilei"
+      trending_meditation: "Cele mai vizionate"
+      random_meditation: "Lasă destinul să decidă"
+      random_meditation_title: "Încearcă o meditație aleatorie"
+      random_meditation_description: "Simți nevoia unui impuls? Uită de gândurile negative care te copleșesc și capătă încredere în tine."
+    custom_meditation:
+      title: "Creează-ți Propria Meditație"
+      choose_goal: "Doresc să simt ..." # Please keep ' ...' (with a space) at the end of your translation.
+      choose_duration: "Am la dispoziție"
+      goal_prompt: "Selectează o stare"
+      submit: "Începe meditația"
+      minutes: "min"
+    archive:
+      see_all_meditations: "Vezi toate meditațiile"
+      title: "Meditații Ghidate"
+      view_meditation: "Vezi meditația"
+      load_more: "Încarcă mai multe"
+ 
+  tracks:
+    subtitle: "Subtitlu pentru muzică"
+    text: "Bucură-te de o colecție de muzică pentru meditație produsă de noi, care te va ajuta să te deconectezi și să atingi adevărata pace interioară."
+    choose_mood: "Alege o stare"
+    choose_instruments: "Alege sunetul de"
+    playlist: "Playlist" # TODO: Translate
+
+  treatments:
+    header_title: "Technique: %{title}" # TODO: Translate
+    prescreen:
+      title: "Înainte de a folosi metode pentru îmbunătățirea meditației, trebuie să iți trezești energia %{kundalini}"
+      kundalini: "energia interioară"
+      action: "Trezește-ți Energia Interioară"
+      explanation:
+        text: "Toată lumea are o energie interioară, care trebuie să fie trezită înainte de a experimenta starea de meditație."
+        learn_more: "Află mai multe"
+      skip:
+        text: "Ai mai meditat cu noi înainte?"
+        action: "Îmbunătățește-ți meditația"
+    music:
+      title: "Muzică"
+      description: "Muzica poate fi ușor stimulantă și relaxantă, aducându-ne în echilibru și ajutându-ne mintea să atingă o stare fără gânduri; Explorează colecția noastră de muzică special compusă pentru a atinge o stare de meditație profundă."
+      read_more: "Alege din colecția noastră"
+    read_more: "Află mai multe"
+    show_more: "Arată mai multe tehnici"
+ 
+  content:
+    credit: "Credit"
+    show_more: "Arată mai multe"
+ 
+  subtle_system:
+    title:
+      desktop: "Parcurge pentru a afla mai multe"
+      mobile: "Apasă pentru a afla mai multe"
+    chakras: "Chakre"
+    channels: "Canale"
+    read_more: "Află mai multe"
+ 
+  classes:
+    map_title: "Cursuri de meditație în apropierea mea"
+    prompt: "Completează cu orașul sau codul tău poștal"
+    nearby: "Lângă"
+    loading: "Localizează..."
+    found: "Apasă pentru a confirma"
+
+  streams: # TODO: Translate
+    title: "All Live Meditations"
+    read_more: "Learn more"
+    skip:
+      title: "Time doesn't suit you?"
+      description: "Choose an alternative stream that works for you"
+      action: "See other times"
+    live:
+      title: "Suntem live acum!"
+      action: "Alătură-te"
+      description: "Apasă play pentru a intra în sesiunea de meditație live"
+    timing:
+      days: "Zile"
+      hours: "Ore"
+      minutes: "Minute"
+      seconds: "Secunde"
+
+  errors:
+    title: "Oops..."
+    coming_soon: "În curând"
+    no_programs: "Cursuri de meditație în regiunea ta vor veni în curând."
+    error: "Eroare"
+    alternatives_title: "Încearcă mai degrabă una dintre acestea:"
+    report_issue: "Te rog încearcă din nou, și raportează această problemă dacă se repetă. Când raportezi această problemă, descrie în detaliu acțiunile pe care le-ai realizat înainte de apariția problemei."
+    '404': "Această pagină nu există"
+    '422': "Cererea dorită a fost respinsă"
+    '500': "Ne cerem scuze, ceva nu a mers bine"
+ 
+  javascript:
+    reading_time: "%minutes% minute de citire"
+    loading: "Încarcă..."
+    popup:
+      close: "Închide (Esc)"
+      loading: "Încarcă..."
+      prev: "Înapoi (Left arrow key)"
+      next: "Înainte (Right arrow key)"
+      counter: "%curr% din %total%"
+      image_error: "<a href=\"%url%\">Imaginea</a> nu a putut fi încărcată."
+      ajax_error: "<a href=\"%url%\">Conținutul</a> nu a putut fi încărcat."

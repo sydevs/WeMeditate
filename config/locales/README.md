@@ -9,12 +9,10 @@ Below are instructions to help you understand the translation files.
 ### Overview of Files
 
 These translations are broken into a few files.
- - _en.admin.yml_ - defines translations for the administrator sections of the website, where website content can be edited.
- - _en.front.yml_ - defines translations for the public facing parts of the website
- - _en.resources.yml_ - defines translations for the various resources which are used on the website, such as Articles, Guided Meditations, Music Tracks, etc. These translations are used both for the admin interface, and the public facing parts of the website.
- - _en.extensions.yml_ - defines translations for some addons which are used by the website.
- - _routes.yml_ - defines translations for the website's URLs
- - _social.yml_ - allows us to configure different social media URLs for different languages.
+ - _en.yml_ - defines translations for the public facing parts of the website
+ - _admin/en/admin.yml_ - defines translations for the administrator sections of the website, where website content can be edited.
+ - _admin/en/resources.yml_ - defines translations for the various resources which are used on the website, such as Articles, Guided Meditations, Music Tracks, etc. These translations are used both for the admin interface, and the public facing parts of the website.
+ - _admin/en/extensions.yml_ - defines translations for some addons which are used by the website.
 
 'en' in the above file names indicates the language for the translation (in this case english). If you were translating for Italian, it would be 'it' instead ('ru' for Russian, 'de' for German, etc)
 

@@ -63,6 +63,13 @@
 
     .ui.divider
 
+  .ui.basic.segment data-type-segment='report'
+    .ui.small.dividing.header #{human_attribute_name(Article, :article_type)}: #{human_enum_name(Article, :article_type, :report)}
+
+    p.hint = translate('admin.hints.article_type_report')
+
+    .ui.divider
+
 - if %w[regional_admin super_admin].include?(current_user.role)
   = f.association :owner, collection: User.writer, hint: translate('admin.hints.article_owner'), input_html: { class: 'clearable' }
 - elsif current_user.writer? && record.new_record?

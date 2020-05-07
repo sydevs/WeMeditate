@@ -7,4 +7,6 @@ published_locales = ENV['PUBLISHED_LOCALES'] ? ENV['PUBLISHED_LOCALES'].split(',
 published_locales = %i[en ru it] if Rails.env.development? && published_locales.empty?
 Rails.configuration.published_locales = published_locales & I18n.available_locales
 
+Rails.configuration.admin_locales = %i[en cs es fr it ro ru uk]
+
 Globalize.fallbacks = nil
