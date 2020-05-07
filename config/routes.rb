@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   # ===== ADMIN ROUTES ===== #
   constraints DomainConstraint.new(Rails.configuration.admin_domain) do
-    devise_for :users, controllers: { invitations: 'users/invitations' }
+    devise_for :users, controllers: { invitations: 'users/invitations', sessions: 'users/sessions', passwords: 'users/passwords' }
 
     get '404', to: 'admin/application#error'
     get '422', to: 'admin/application#error'
