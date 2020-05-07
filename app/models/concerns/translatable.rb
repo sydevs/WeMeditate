@@ -37,11 +37,11 @@ module Translatable
   end
 
   def translatable_by? user
-    !has_complete_translation? && user.accessible_locales.include?(original_locale.to_sym)
+    !has_complete_translation? && user.languages_known.include?(original_locale.to_sym)
   end
 
   def needs_translation_by? user
-    !has_translation? && user.accessible_locales.include?(original_locale.to_sym)
+    !has_translation? && user.languages_known.include?(original_locale.to_sym)
   end
 
   def has_complete_translation? locale: Globalize.locale
