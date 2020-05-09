@@ -66,4 +66,7 @@ Rails.application.configure do
 
   # For letter opener
   config.action_mailer.delivery_method = :letter_opener
+
+  # Allow using any host for the rails server (eg. to support puma-dev)
+  config.hosts.clear
 end
