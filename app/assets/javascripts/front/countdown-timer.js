@@ -6,7 +6,7 @@ class CountdownTimer {
   constructor(element) {
     this.container = element
 
-    const offset = new Date.getTimezoneOffset() * 60000 // multiply by 60 seconds, aka 60,000 milliseconds
+    const offset = new Date().getTimezoneOffset() * 60000 // multiply by 60 seconds, aka 60,000 milliseconds
     this.targetDate = new Date(parseFloat(element.dataset.time) + offset).getTime()
     this.days = element.querySelector('.js-countdown-days')
     this.hours = element.querySelector('.js-countdown-hours')
