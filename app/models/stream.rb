@@ -49,16 +49,20 @@ class Stream < ApplicationRecord
     seconds_until_next_stream_time < 5.minutes
   end
 
+  def time_zone
+    ActiveSupport::TimeZone.new(time_zone_identifier)
+  end
+
   def duration
     Time.parse(end_time) - Time.parse(start_time)
   end
 
   def seconds_until_next_stream_time
-    next_stream_time - Time.zone.now
+    next_stream_time - time_zone.now
   end
 
   def next_stream_time
-    current_time = Time.zone.now
+    current_time = time_zone.now
     current_date = current_time.to_date
     countdown_time = next_stream_time_for(current_date)
     countdown_time = next_stream_time_for(current_date + 1.day) if current_time > countdown_time + duration
