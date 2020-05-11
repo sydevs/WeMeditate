@@ -1,9 +1,7 @@
 
 = render_splash_block(@stream)
 
-= @time_zone.pretty_inspect
-
-- if @streams.length > 1 #&& @stream&.parsed_content['blocks'].length > 1
+- if @streams.length > 1 && @stream&.parsed_content['blocks'].length > 1
   .streams__skip
     .streams__skip__title = translate('streams.skip.title')
     .streams__skip__description = translate('streams.skip.description')
