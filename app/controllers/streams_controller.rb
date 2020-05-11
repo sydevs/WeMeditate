@@ -1,7 +1,8 @@
 class StreamsController < ApplicationController
 
   def index
-    @stream = Stream.public_stream.preload_for(:content).for_time_zone(Time.zone)
+    time_zone = ActiveSupport::TimeZone.new(request.location.data['time_zone']) rescue Time.zone
+    @stream = Stream.public_stream.preload_for(:content).for_time_zone(time_zone)
     @streams = Stream.public_stream.preload_for(:preview)
 
     return raise ActionController::RoutingError.new('Not Found') unless @stream.present?    
