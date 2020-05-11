@@ -1,7 +1,7 @@
 class StreamsController < ApplicationController
 
   def index
-    time_zone = ActiveSupport::TimeZone.new(request.location.data['time_zone']) rescue Time.zone
+    @time_zone = ActiveSupport::TimeZone.new(request.location.data['time_zone']) rescue Time.zone
     @stream = Stream.public_stream.preload_for(:content).for_time_zone(time_zone)
     @streams = Stream.public_stream.preload_for(:preview)
 
