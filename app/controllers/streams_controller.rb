@@ -4,6 +4,7 @@ class StreamsController < ApplicationController
     time_zone = ActiveSupport::TimeZone.new(request.location.data['time_zone']) rescue Time.zone
     @location = request.location.data
     @time_zone = time_zone
+    @geocoded_location = Geocoder.search(request.ip)&.first
     @stream = Stream.public_stream.preload_for(:content).for_time_zone(time_zone)
     @streams = Stream.public_stream.preload_for(:preview)
 
