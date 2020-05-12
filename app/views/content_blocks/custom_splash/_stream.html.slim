@@ -46,8 +46,11 @@ ruby:
         = inline_svg_tag 'graphics/leaves.svg', class: 'content__splash__action__leaf'
 
 p
+  strong Your Detected Location: 
+  pre = @location.pretty_inspect
+p
   strong Your Time Zone: 
-  = @time_zone.tzinfo.identifier
+  = @time_zone&.tzinfo&.identifier
 p
   strong Your Current Time: 
-  = @time_zone.now
+  = @time_zone&.now
