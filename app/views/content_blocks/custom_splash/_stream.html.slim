@@ -48,6 +48,7 @@ ruby:
 p
   strong Your Detected Location: 
   pre = @location.pretty_inspect
+  div = @location['timezone']
 p
   strong Your Time Zone: 
   = @time_zone&.tzinfo&.identifier
