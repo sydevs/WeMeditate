@@ -1,7 +1,7 @@
 class StreamsController < ApplicationController
 
   def index
-    time_zone = ActiveSupport::TimeZone.new(request.location.timezone) #rescue Time.zone
+    time_zone = ActiveSupport::TimeZone.new(request.location['timezone']) #rescue Time.zone
     @location = request.location.data
     @time_zone = time_zone
     @geocoded_location = Geocoder.search(request.ip)&.first
