@@ -13,6 +13,9 @@ class CountdownTimer {
     this.seconds = element.querySelector('.js-countdown-seconds')
     
     this.interval = setInterval(() => this.update(), 1000)
+
+    this.update()
+    this.container.classList.remove('content__splash__countdown--hidden')
   }
 
   update() {
