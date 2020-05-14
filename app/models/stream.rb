@@ -63,7 +63,7 @@ class Stream < ApplicationRecord
 
   def next_stream_time
     current_time = time_zone.now
-    current_date = current_time.to_date
+    current_date = current_time.beginning_of_day
     puts "CURRENT DATE #{current_date.to_s(:short)} / TIME #{current_time.to_s(:short)} (#{time_zone.name})"
     countdown_time = next_stream_time_for(current_date)
     puts "COUNTDOWN TIME OPT 1: #{countdown_time}"

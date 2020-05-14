@@ -46,6 +46,9 @@ ruby:
         = inline_svg_tag 'graphics/leaves.svg', class: 'content__splash__action__leaf'
 
 p
+  strong Stream Time Zome: 
+  = record.time_zone.now
+p
   strong Target Time: 
   = record.next_stream_time
 p

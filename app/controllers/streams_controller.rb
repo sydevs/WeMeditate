@@ -20,7 +20,7 @@ class StreamsController < ApplicationController
     @location = request.location.data
     @time_zone = time_zone
 
-    @stream = Stream.publicly_visible.preload_for(:content).friendly.find(params[:id])
+    @stream = Stream.public_stream.preload_for(:content).friendly.find(params[:id])
     return unless stale?(@stream)
 
     @breadcrumbs = [
