@@ -27,7 +27,7 @@ ruby:
       h1.content__splash__title = block[:title]
       .content__splash__description = block[:text]
 
-      .content__splash__countdown class='js-countdown' data-time=(record.next_stream_time.to_f * 1000)
+      .content__splash__countdown class='js-countdown' data-time=record.next_stream_time
         span class='js-countdown-days' data-label=translate('streams.timing.days') data-value=days
           = days.to_s.rjust(2, '0')
         span.separator = ' '
@@ -45,6 +45,9 @@ ruby:
         a.content__splash__action__text href=block[:url] = block[:action]
         = inline_svg_tag 'graphics/leaves.svg', class: 'content__splash__action__leaf'
 
+p
+  strong Target Time: 
+  = record.next_stream_time
 p
   strong Your Detected Location: 
   pre = @location.pretty_inspect

@@ -58,7 +58,7 @@ class Stream < ApplicationRecord
   end
 
   def seconds_until_next_stream_time
-    next_stream_time - Time.now
+    next_stream_time - time_zone.now
   end
 
   def next_stream_time
