@@ -6,7 +6,7 @@ class CountdownTimer {
   constructor(element) {
     this.container = element
 
-    this.targetDate = new Date(element.dataset.time).getTime()
+    this.targetDate = new Date(parseFloat(element.dataset.time)).getTime()
     this.days = element.querySelector('.js-countdown-days')
     this.hours = element.querySelector('.js-countdown-hours')
     this.minutes = element.querySelector('.js-countdown-minutes')

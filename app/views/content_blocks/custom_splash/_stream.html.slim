@@ -15,11 +15,10 @@ ruby:
       a.streams__splash__play.video__button title=translate('streams.live.action') data-lity=true href=record.stream_url
       .content__splash__description = translate('streams.live.description')
     - else
-        
       h1.content__splash__title = block[:title]
       .content__splash__description = block[:text]
 
-      .content__splash__countdown.content__splash__countdown--hidden class='js-countdown' data-time=record.next_stream_time
+      .content__splash__countdown.content__splash__countdown--hidden class='js-countdown' data-time=(record.next_stream_time.to_f * 1000)
         span class='js-countdown-days' data-label=translate('streams.timing.days')
         span.separator = ' '
         span class='js-countdown-hours' data-label=translate('streams.timing.hours')
