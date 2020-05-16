@@ -12,7 +12,7 @@ ruby:
     - if record.live?
       h1.content__splash__title = translate('streams.live.title')
       .content__splash__action = translate('streams.live.action')
-      a.streams__splash__play.video__button title=translate('streams.live.action') data-lity=true href=record.stream_url
+      a.content__splash__play.video__button title=translate('streams.live.action') data-lity=true href=record.stream_url
       .content__splash__description = translate('streams.live.description')
     - else
       h1.content__splash__title = block[:title]
