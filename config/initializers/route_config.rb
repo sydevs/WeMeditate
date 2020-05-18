@@ -18,7 +18,7 @@ RouteTranslator.config do |config|
       'hy.wemeditate.co' => :hy, # Armenian
       'hi.wemeditate.co' => :hi, # Hindi
       'tr.wemeditate.co' => :tr, # Turkish
-      'se.wemeditate.co' => :se, # Swedish
+      'se.wemeditate.co' => :sv, # Swedish
       'wemeditate.cz' => :cs, # Czech
       'wemeditate.it' => :it, # Italian
       'wemeditate.ru' => :ru, # Russian
