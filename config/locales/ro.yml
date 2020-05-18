@@ -17,7 +17,7 @@ ro:
     archive: "toate"
     self_realization: "prima-experiență"
     classes: "cursuri"
-    live: "live"
+    streams: "live"
 
   header:
     learn_more: "Află mai Multe"
@@ -179,11 +179,13 @@ ro:
     loading: "Localizează..."
     found: "Apasă pentru a confirma"
 
-  streams:
-    countdown:
-      title: "Privește acest spațiu"
-      description: "Meditații ghidate live. De luni până vineri la ora 7pm BST. Următoarea sesiune va avea loc în "
-      action: "Reamintește-mi"
+  streams: # TODO: Translate
+    title: "All Live Meditations"
+    read_more: "Learn more"
+    skip:
+      title: "Time doesn't suit you?"
+      description: "Choose an alternative stream that works for you"
+      action: "See other times"
     live:
       title: "Suntem live acum!"
       action: "Alătură-te"

@@ -1,8 +1,8 @@
 /* global $ */
 /* exported Form */
 
-/** Draft
- * This sets up a few simple handlers that let us toggle between draft values and live values for an input field.
+/** Form
+ * Custom code for the admin forms
  */
 
 const Form = {
@@ -10,6 +10,8 @@ const Form = {
     console.log('loading Form.js') // eslint-disable-line no-console
     $('#article_article_type').on('change', Form._onSetArticleType)
     $('#article_article_type').trigger('change')
+
+    $('.ui.toggle.button').on('click', Form._toggleButton)
   },
 
   _onSetArticleType() {
@@ -26,6 +28,11 @@ const Form = {
         $segment.hide()
       }
     })
+  },
+
+  _toggleButton() {
+    const active = this.classList.toggle('active')
+    this.querySelector('input').checked = active
   },
 }
 

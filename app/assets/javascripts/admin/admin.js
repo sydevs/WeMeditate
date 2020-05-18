@@ -52,7 +52,10 @@ const Admin = {
     // Initialize dropdown elements.
     scope.find('.ui.dropdown:not(.simple)').each(function() {
       var $element = $(this)
-      var options = {}
+      var options = {
+        fullTextSearch: true,
+      }
+
       if ($element.hasClass('clearable')) {
         options.clearable = true
       }

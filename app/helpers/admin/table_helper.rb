@@ -9,6 +9,7 @@ module Admin::TableHelper
     static_pages: %i[name role updated_at status],
     articles: %i[name category_id updated_at status],
     subtle_system_nodes: %i[name node updated_at status],
+    streams: %i[name location updated_at status],
     # Resources
     meditations: %i[name categories popularity updated_at status],
     treatments: %i[name updated_at status],
@@ -32,6 +33,7 @@ module Admin::TableHelper
     static_pages: %i[updated_at], # %i[name updated_at],
     articles: %i[name updated_at created_at],
     subtle_system_nodes: %i[updated_at], # %i[name updated_at],
+    streams: %i[name updated_at created_at],
     # Resources
     meditations: %i[updated_at created_at], # %i[name popularity updated_at created_at],
     treatments: %i[name updated_at created_at],
@@ -55,6 +57,7 @@ module Admin::TableHelper
     articles: %i[category_id priority status],
     static_pages: %i[status],
     subtle_system_nodes: %i[status],
+    streams: %i[status],
     # Resources
     meditations: %i[status duration_filter_id], # %i[status duration_filter_id goal_filter_ids],
     treatments: %i[status],

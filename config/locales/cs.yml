@@ -17,7 +17,7 @@ cs:
     archive: "all"
     self_realization: "first-experience"
     classes: "classes"
-    live: "live"
+    streams: "live"
 
   header:
     learn_more: "Dozvědět se více"
@@ -126,7 +126,7 @@ cs:
       choose_duration: "Mám"
       goal_prompt: "Vyberte si váš cíl "
       submit: "Spustit meditaci"
-      minutes: "min"
+      minutes: "mid"
     archive:
       see_all_meditations: "Zobrazit všechny meditace"
       title: "Vedené Meditace"
@@ -178,11 +178,13 @@ cs:
     loading: "Vyhledávání..."
     found: "Kliknutím potvrďte"
 
-  streams:
-    countdown:
-      title: "Sledovat"
-      description: "Živé vedené online meditace. Každý týden v ... . Příští vysílání proběhne v ...."
-      action: "Upozorni Mě"
+  streams: # TODO: Translate
+    title: "All Live Meditations"
+    read_more: "Learn more"
+    skip:
+      title: "Time doesn't suit you?"
+      description: "Choose an alternative stream that works for you"
+      action: "See other times"
     live:
       title: "Vysílání - živě!"
       action: "Připojte se"

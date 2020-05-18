@@ -75,6 +75,7 @@ es:
       featured_date: "Fecha destacada" # The date which will be shown on an article preview
       role: "Rol en la Web"
       pending_changes: "This %{page} has changes pending approval" # TODO: Translate
+      start_date: "Start Date" # TODO: Translate
 
     tags:
       published: "Publicado"
@@ -136,6 +137,13 @@ es:
       languages_access: "These are the locales where this user can modify the site content." # TODO: Translate
       languages_known: "These are the languages that a user can translate content from." # TODO: Translate
       self_realization_slug: "The url for the self-realization page must be \"%{slug}\"" # TODO: Translate
+      stream: # TODO: Translate
+        url: "This should be an embeddable link to whichever service this meditation is being streamed with. For example: Twitch, Vimeo, etc. This should be a stable URL that will work every time."
+        location: "Where is this meditation being broadcasted from?"
+        recurrence: "Which days of the week will you be streaming on? Click all that apply."
+        list_id: "You must have a list set up in Klaviyo (our mailing service) and supply a unique list ID here. This list will be used for those who want to subscribe for reminders of when the meditation starts."
+        target_time_zones: "Users in the selected timezones will be shown this stream on the main live meditations page. You can select multiple timezones. Selected zones are marked in green."
+        target_time_zones_conflict: "Note: If multiple streams are featured in the same timezone, the one which is physically closer to the user will be shown."
 
     result:
       created: "Creado."
@@ -347,6 +355,8 @@ es:
         last_sign_in_at: "Último inicio de sesión"
         minutes: "Duración"
         node: "Node" # TOOD: Translate
+        location: "Location" # TODO: Translate
+        local_time: "Local Time" # TODO: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate
@@ -417,6 +427,7 @@ es:
           static_pages: "Estas son las páginas principales del sitio web, como la Página Principal, la Página de Inspiración, la Página de Shri Mataji, etc. Puede usar este índice para editar parte del contenido de estas páginas, pero la mayoría de estas páginas tienen contenido y urls predefinidos."
           articles: "Los artículos son escritos por los Sahaja Yoguis para inspirar a los buscadores. Pueden cubrir varios temas, tales como: la meditación en la vida cotidiana; escribir sobre almas realizadas; obras de arte, música o poesía de yoguis; artículos en profundidad sobre temas más profundos, etc. Cualquier cosa en que un yogui pueda sentirse inspirado a escribir.<br><br>Todos los artículos se muestran en la \"Página de Inspiración.\" de la web"
           subtle_system_nodes: "Estas son las páginas que describen las diferentes partes del Sistema Sutil. Cada página es una explicación en profundidad de las cualidades de ese chakra o canal, cómo se manifiesta en la vida diaria, y los tratamientos que se pueden aplicar."
+          streams: "These are live online meditations that are streamed on a weekly basis at a set time. The livestream of the meditation will be embedded on We Meditate, and seekers can subscribe for a reminder when the meditation starts." # TODO: Translate
           # Resources
           meditations: "Estos son videos de meditaciones guiadas, narradas por yoguis. Están disponibles para el público en la página de \"Meditaciones\" del sitio web.<br><br>Cada meditación se clasifica según su duración y los objetivos de la misma, lo que permite a los usuarios generar una meditación guiada que se ajuste a sus necesidades. Cada meditación también tiene una estadística de \"popularidad\" que representa la cantidad de puntos de visIta que la meditación ha estado recibiendo recientemente."
           treatments: "Estas son las páginas que describen los diferentes tratamientos que los yoguis utilizan para equilibrarse. Cada técnica tendrá una descripción de texto y puede tener un vídeo que ilustre el tratamiento."
@@ -478,6 +489,7 @@ es:
         static_pages: "Páginas Principales"
         articles: "Artículos de Inspiración"
         subtle_system_nodes: "Sistema Sutil"
+        streams: :activerecord.models.stream.other # Do not translate
         meditations: :activerecord.models.meditation.other # Do not translate
         treatments: :activerecord.models.treatment.other # Do not translate
         tracks: "Music Tracks"

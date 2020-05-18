@@ -5,6 +5,7 @@ class CountdownTimer {
 
   constructor(element) {
     this.container = element
+
     this.targetDate = new Date(parseFloat(element.dataset.time)).getTime()
     this.days = element.querySelector('.js-countdown-days')
     this.hours = element.querySelector('.js-countdown-hours')
@@ -12,6 +13,9 @@ class CountdownTimer {
     this.seconds = element.querySelector('.js-countdown-seconds')
     
     this.interval = setInterval(() => this.update(), 1000)
+
+    this.update()
+    this.container.classList.remove('content__splash__countdown--hidden')
   }
 
   update() {

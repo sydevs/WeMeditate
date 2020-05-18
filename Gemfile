@@ -31,11 +31,12 @@ gem 'jquery-rails' # Add jQuery
 gem 'jquery-slick-rails' # A slider library
 gem 'normalize-rails' # To normalize CSS
 gem 'photoswipe-rails' # For image gallery
-gem 'semantic-ui-sass' # CSS framework for the admin/CMS pages
+gem 'fomantic-ui-sass' # CSS framework for the admin/CMS pages
 
 # Models
 gem 'friendly_id' # Model routes use a slug instead of an ID number
 gem 'jsonb_accessor' # Makes it simpler to access attributes of a jsonb database column
+gem 'array_enum' # Allows the use of enum arrays
 
 # Uploads
 gem 'carrierwave' # Core support for file uploads

@@ -95,7 +95,7 @@ module MetadataHelper
       tags['description'] = record.excerpt if record.respond_to?(:excerpt)
       tags['og:type'] = 'article'
       tags['og:image'] = record.thumbnail.url if record.try(:thumbnail).present?
-      tags['og:locale:alternate'] = record.translated_locales.map(&:to_s)
+      tags['og:locale:alternate'] = record.translated_locales.map(&:to_s) if record.try(:translatable?)
       tags['og:article:published_time'] = record.created_at.to_s(:db)
       tags['og:article:modified_time'] = record.updated_at.to_s(:db)
       tags['og:article:section'] = record.category&.name if record.is_a?(Article)

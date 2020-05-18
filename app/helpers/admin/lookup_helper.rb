@@ -36,6 +36,7 @@ module Admin::LookupHelper
     Article => 'file text',
     StaticPage => 'file',
     SubtleSystemNode => 'sun',
+    Stream => 'film',
     Meditation => 'fire',
     Treatment => 'first aid',
     Track => 'music',

@@ -1,62 +1,36 @@
 class StreamsController < ApplicationController
 
   def index
-    @static_page = StaticPage.preload_for(:content).find_by(role: :streams)
-    @countdown_time = countdown_target_time
-    @current_time = current_time
-    seconds_diff = (@countdown_time - current_time).to_i
+    time_zone = ActiveSupport::TimeZone.new(request.location.data['timezone']) rescue Time.zone
+    @location = request.location.data
+    @time_zone = time_zone
 
-    if params[:live] == 'true'
-      @live = true
-    elsif params[:live] == 'false'
-      @live = false
-    else
-      @live = seconds_diff < 5.minutes
-    end
+    @stream = Stream.public_stream.preload_for(:content).for_time_zone(time_zone)
+    @streams = Stream.public_stream.preload_for(:preview)
 
-    if @live
-      @stream_url = "https://player.twitch.tv/?channel=wemeditate&parent=#{request.host}"
-    else
-      @days = seconds_diff / 86400
-      seconds_diff -= @days * 86400
+    return raise ActionController::RoutingError.new('Not Found') unless @stream.present?    
+    return unless stale?(@streams) || stale?(@stream)
 
-      @hours = seconds_diff / 3600
-      seconds_diff -= @hours * 3600
-
-      @minutes = seconds_diff / 60
-      seconds_diff -= @minutes * 60
-
-      @seconds = seconds_diff
-    end
-
-    set_metadata(@static_page)
+    @splash_style = :stream
+    set_metadata(@stream)
   end
 
-  private
+  def show
+    time_zone = ActiveSupport::TimeZone.new(request.location.data['timezone']) rescue Time.zone
+    @location = request.location.data
+    @time_zone = time_zone
 
-    def countdown_target_time
-      countdown_time = next_stream_time(current_date)
-      if current_time > countdown_time + 1.hour
-        countdown_time = next_stream_time(current_date + 1.day)
-      end
-      countdown_time
-    end
+    @stream = Stream.public_stream.preload_for(:content).friendly.find(params[:id])
+    return unless stale?(@stream)
 
-    def current_time
-      Time.zone.now
-    end
+    @breadcrumbs = [
+      #{ name: StaticPageHelper.preview_for(:home).name, url: root_path },
+      { name: StaticPageHelper.preview_for(:streams).name, url: streams_path },
+      { name: @stream.name },
+    ]
 
-    def current_date
-      current_time.to_date
-    end
-
-    def next_stream_time date
-      if date.saturday? || date.sunday?
-        date = date.monday
-        date = date.next_week if date < current_time.to_date
-      end
-
-      date.to_time.change(hour: 19)
-    end
+    @splash_style = :stream
+    set_metadata(@stream)
+  end
 
 end

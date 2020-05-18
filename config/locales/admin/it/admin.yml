@@ -73,6 +73,7 @@ it:
       featured_date: "Data di riferimento"
       role: "Ruolo nel sito"
       pending_changes: "Questa %{page} ha delle modifiche che devono essere approvate"
+      start_date: "Start Date" # TODO: Translate
 
     tags:
       published: "Pubblicato"
@@ -134,6 +135,13 @@ it:
       languages_access: "Queste sono le zone dove questo utente può modificare il contenuto del sito."
       languages_known: "Queste sono le lingue dalle quali l'utente può tradurre il contenuto."
       self_realization_slug: "L'URL per la pagina della realizzazione del sé deve essere \"%{slug}\""
+      stream: # TODO: Translate
+        url: "This should be an embeddable link to whichever service this meditation is being streamed with. For example: Twitch, Vimeo, etc. This should be a stable URL that will work every time."
+        location: "Where is this meditation being broadcasted from?"
+        recurrence: "Which days of the week will you be streaming on? Click all that apply."
+        list_id: "You must have a list set up in Klaviyo (our mailing service) and supply a unique list ID here. This list will be used for those who want to subscribe for reminders of when the meditation starts."
+        target_time_zones: "Users in the selected timezones will be shown this stream on the main live meditations page. You can select multiple timezones. Selected zones are marked in green."
+        target_time_zones_conflict: "Note: If multiple streams are featured in the same timezone, the one which is physically closer to the user will be shown."
 
     result:
       created: "Creato con successo."
@@ -341,6 +349,8 @@ it:
         last_sign_in_at: "Ultimo Accesso"
         minutes: "Durata"
         node: "Node" # TOOD: Translate
+        location: "Location" # TODO: Translate
+        local_time: "Local Time" # TODO: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate
@@ -411,6 +421,7 @@ it:
           static_pages: "Queste sono le pagine principali del sito, come ad esempio Home Page, Ispirazione, Shri Mataji, etc. Puoi usare questa lista per modificare il contenuto di queste pagine, però la maggior parte di queste ha contenuti e indirizzi predefiniti."
           articles: "Gli articoli sono scritti da Sahaja Yogis per dare ispirazione ai ricercatori. Riguardano diversi temi come: la meditazione nella vita quotidiana, articoli sulle anime realizzate, opere d'arte, musica, poesie di yogis, articoli di approfondimento su temi più profondi, etc. Qualunque cosa uno yogi voglia scrivere.<br><br>Tutti gli articoli sono mostrati nella pagina \"Ispirazione\""
           subtle_system_nodes: "Queste pagine descrivono le diverse parti del Sistema Sottile. Ogni pagina contiene una spiegazione dettagliata delle qualità di un chakra o canale, come si manifesta nella vita quotidiana e quali sono i trattamenti più adatti ad esso."
+          streams: "These are live online meditations that are streamed on a weekly basis at a set time. The livestream of the meditation will be embedded on We Meditate, and seekers can subscribe for a reminder when the meditation starts." # TODO: Translate
           # Resources
           meditations: "Questi sono video di meditazioni guidate da yogis. Sono disponibili al pubblico nella sezione \"Meditazioni\".<br><br>Ogni meditazione è classificata dalla sua durata e dal suo obiettivo, così da permettere agli utenti di scegliere la meditazione per soddisfare le loro esigenze. Ogni meditazione ha una \"popolarità\" che indica il numero di visualizzazioni della meditazione."
           treatments: "Queste sono le pagine dei trattamenti che gli yogi possono usare per lavorarsi. Ogni tecnica ha una descrizione e un video illustrativo di esempio."
@@ -470,6 +481,7 @@ it:
         static_pages: "Pagine Principali"
         articles: "Articoli di Ispirazione"
         subtle_system_nodes: "Sistema Sottile"
+        streams: :activerecord.models.stream.other # Do not translate
         meditations: :activerecord.models.meditation.other # Do not translate
         treatments: :activerecord.models.treatment.other # Do not translate
         tracks: "Music Tracks" # TODO: Translate

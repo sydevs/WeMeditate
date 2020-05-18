@@ -1,32 +1,33 @@
 
-- position = %w[left right center].include?(block[:position]) ? block[:position] : 'center'
-- size = %w[narrow wide].include?(block[:size]) ? block[:size] : 'narrow'
-- is_callout = %w[left right].include?(position)
-- is_gallery = block[:asGallery] == true
-- position = nil if is_gallery
-- size = nil if is_callout
-- items = is_gallery ? block[:items] : [block[:items].first]
+ruby:
+  position = %w[left right center].include?(block[:position]) ? block[:position] : 'center'
+  size = %w[narrow wide].include?(block[:size]) ? block[:size] : 'narrow'
+  is_callout = %w[left right].include?(position)
+  is_gallery = block[:asGallery] == true
+  position = nil if is_gallery
+  size = nil if is_callout
+  items = is_gallery ? block[:items] : [block[:items].first]
 
-- classes = []
-- classes << "content__image--#{position}" if position
-- classes << "content__image--#{size}" if size
+  classes = []
+  classes << "content__image--#{position}" if position
+  classes << "content__image--#{size}" if size
 
-- if is_gallery
-  - classes << 'content__image--gallery'
-  - classes << 'js-grid js-gallery'
-- elsif is_callout
-  - classes << 'content__image--callout'
-- else
-  - classes << 'content__image--center'
+  if is_gallery
+    classes << 'content__image--gallery'
+    classes << 'js-grid js-gallery'
+  elsif is_callout
+    classes << 'content__image--callout'
+  else
+    classes << 'content__image--center'
 
-- if position == 'wide'
-  - image_sizes = '100vw'
-- elsif position == 'narrow'
-  - image_sizes = '(max-width: 814px) calc(100vw - 48px), 400px'
-- elsif is_gallery
-  - image_sizes = '(max-width: 549px) 100vw, (max-width: 767px) 50vw, (max-width: 1111px) 34vw, (max-width: 1198px) 25vw, 300px'
-- else # callouts
-  - image_sizes = '(max-width: 814px) calc(100vw - 48px), 766px'
+  if position == 'wide'
+    image_sizes = '100vw'
+  elsif position == 'narrow'
+    image_sizes = '(max-width: 814px) calc(100vw - 48px), 400px'
+  elsif is_gallery
+    image_sizes = '(max-width: 549px) 100vw, (max-width: 767px) 50vw, (max-width: 1111px) 34vw, (max-width: 1198px) 25vw, 300px'
+  else # callouts
+    image_sizes = '(max-width: 814px) calc(100vw - 48px), 766px'
 
 .content__image class=classes data-max-columns=(size == 'narrow' ? 3 : items.count) data-id=block[:id]
   - items.compact.each_with_index do |item, index|
@@ -47,7 +48,7 @@
           - if item[:caption].present?
             figcaption.content__image__caption = item[:caption]
     - elsif current_user.present?
-      = error "Could not load media file with id #{item[:image][:id]}"
+      = content_error "Could not load media file with id #{item[:image][:id]}"
 
   - if is_gallery
     .content__image__triangle = render_decoration :triangle, block

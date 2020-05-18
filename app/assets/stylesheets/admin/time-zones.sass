@@ -1,0 +1,38 @@
+
+$colours: #db2828, #f2711c, #fbbd08, #b5cc18, #21ba45, #00b5ad, #6435c9, #a333c8, #e03997, #a5673f
+
+.timezone-colour-circle
+  font-size: 16px
+  width: 1em
+  height: 1em
+  border-radius: 100%
+  
+  @for $i from 1 through length($colours)
+    $colour: nth($colours, $i)
+    &--#{$i - 1}
+      background: transparentize($colour, 0.3)
+
+#timezone-map
+  g[data-zone]
+    fill: #EEE
+
+  @for $i from 1 through length($colours)
+    $colour: nth($colours, $i)
+
+    g[data-zone].colour--#{$i}
+      fill: transparentize($colour, 0.5)
+
+#timezone-map[data-interactive]
+  g[data-zone]
+    fill: transparentize(orange, 0.5)
+
+  g[data-zone]:hover
+    cursor: pointer
+    fill: transparentize(grey, 0.5)
+
+  @for $i from -12 through +14
+    &.selected--#{$i} g[data-zone="#{$i}"]
+      fill: transparentize(olive, 0.5)
+
+    &.selected--#{$i} g[data-zone="#{$i}"]:hover
+      fill: transparentize(green, 0.5)

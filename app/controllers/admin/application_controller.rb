@@ -11,16 +11,18 @@ module Admin
     def dashboard
       localize :content do
         authorize :application, :access?
-        render 'admin/application/dashboard'
+        render 'admin/special/dashboard'
       end
     end
 
     def tutorial
       authorize :application, :access?
+      render 'admin/special/tutorial'
     end
 
     def error
       render status: request.env['PATH_INFO'][1, 3].to_i
+      render 'admin/special/error'
     end
 
     def vimeo_data

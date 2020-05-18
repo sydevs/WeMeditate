@@ -6,7 +6,7 @@ ruby:
   classes << 'header--invert' if action_name == 'home'
   classes << 'header--minimal' if minimal
   classes << "header--custom-#{@header_style}" if @header_style
-  come_meditate_path = %i[en ru].include?(I18n.locale) ? static_page_path_for(:streams) : static_page_path_for(:classes)
+  come_meditate_path = Stream.any? ? static_page_path_for(:streams) : static_page_path_for(:classes)
 
 header#header.header class=classes
   .header__container

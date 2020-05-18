@@ -10,13 +10,21 @@ module Draftable
   end
 
   included do |base|
+    translatable = base.respond_to?(:translated_attribute_names)
+    
     %i[draft].each do |column|
-      next if base.translated_attribute_names&.include?(column) || base.column_names.include?(column.to_s)
+      next if base.try(:translated_attribute_names)&.include?(column) || base.column_names.include?(column.to_s)
       throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Draftable`" 
     end
 
-    base.scope :has_draft, -> { with_translation.where.not(base::Translation.table_name => { draft: nil }) }
-    base.scope :has_no_draft, -> { with_translation.where(base::Translation.table_name => { draft: nil }) }
+    if translatable
+      base.scope :has_draft, -> { with_translation.where.not(base::Translation.table_name => { draft: nil }) }
+      base.scope :has_no_draft, -> { with_translation.where(base::Translation.table_name => { draft: nil }) }
+    else
+      base.scope :has_draft, -> { where.not(draft: nil) }
+      base.scope :has_no_draft, -> { where(draft: nil) }
+    end
+
     base.scope :needs_review, -> { has_draft }
 
     def self.draftable?

@@ -14,6 +14,9 @@ en:
       subtle_system_node: # This is a page for a Chakra, Channel, or the Kundalini. ie. Some part of the subtle system
         one: "Subtle System Node"
         other: "Subtle System Nodes"
+      stream:
+        one: "Live Meditation"
+        other: "Live Meditations"
       category:
         one: "Category"
         other: "Categories"
@@ -166,6 +169,41 @@ en:
           channel_right: "Pingala (Right) Channel"
           channel_center: "Sushumna (Center) Channel"
           kundalini: "Kundalini"
+        content: "Content"
+        metatags: "Metadata"
+
+      stream:
+        draft: :activerecord.attributes.generic.draft # Do not translate
+        name: "Title"
+        slug: :activerecord.attributes.generic.slug # Do not translate
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+        excerpt: "Excerpt"
+        stream_url: "Embeddable Stream URL"
+        thumbnail: "Thumbnail"
+        thumbnail_id: :activerecord.attributes.stream.thumbnail # Do not translate
+        location: "Location"
+        time_zone_identifier: "Time Zone"
+        time_zone_offset: "Time Zone Offset"
+        start_date: "Start Date"
+        start_time: "Start Time"
+        end_time: "End Time"
+        duration: "Duration"
+        recurrence: "Days of the Week"
+        recurrences:
+          monday: "Mon"
+          tuesday: "Tue"
+          wednesday: "Wed"
+          thursday: "Thu"
+          friday: "Fri"
+          saturday: "Sat"
+          sunday: "Sun"
+        target_time_zones: "Featured in Time Zones"
         content: "Content"
         metatags: "Metadata"
 
