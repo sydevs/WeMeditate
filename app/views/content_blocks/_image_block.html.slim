@@ -19,6 +19,7 @@ ruby:
     classes << 'content__image--callout'
   else
     classes << 'content__image--center'
+  end
 
   if position == 'wide'
     image_sizes = '100vw'
@@ -28,6 +29,7 @@ ruby:
     image_sizes = '(max-width: 549px) 100vw, (max-width: 767px) 50vw, (max-width: 1111px) 34vw, (max-width: 1198px) 25vw, 300px'
   else # callouts
     image_sizes = '(max-width: 814px) calc(100vw - 48px), 766px'
+  end
 
 .content__image class=classes data-max-columns=(size == 'narrow' ? 3 : items.count) data-id=block[:id]
   - items.compact.each_with_index do |item, index|
