@@ -179,16 +179,16 @@ ru:
     loading: "Определяем твоё местоположение..."
     found: "Нажми, чтобы подтвердить"
 
-  streams: # TODO: Translate
-    title: "All Live Meditations"
-    read_more: "Learn more"
+  streams:
+    title: "Все прямые эфиры"
+    read_more: "Посмотреть"
     skip:
-      title: "Time doesn't suit you?"
-      description: "Choose an alternative stream that works for you"
-      action: "See other times"
+      title: "Не удобно время занятия?"
+      description: "Выберете другое, более подходящее вам занятие"
+      action: "Выбрать занятие"
     live:
       title: "Мы в прямом эфире!"
-      action: "" # Нажмите play, чтобы присоединиться к медитации в прямом эфире
+      action: "Нажмите кнопку play, чтобы присоединиться к медитации" 
       description: "Присоединиться" 
     timing:
       days: "д."
