@@ -6,7 +6,7 @@ class StreamsController < ApplicationController
     @streams = Stream.public_stream.preload_for(:preview)
 
     return raise ActionController::RoutingError.new('Not Found') unless @stream.present?    
-    return unless stale?(@streams) || stale?(@stream)
+    #return unless stale?(@streams) || stale?(@stream)
 
     @splash_style = :stream
     set_metadata(@stream)
