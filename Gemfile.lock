@@ -104,6 +104,9 @@ GEM
       carrierwave (>= 0.5.7)
       mime-types
     childprocess (3.0.0)
+    cloudflare-rails (0.6.0)
+      httparty
+      rails (>= 5.0, < 6.1.0)
     coderay (1.1.2)
     concurrent-ruby (1.1.6)
     connection_pool (2.2.2)
@@ -430,6 +433,7 @@ DEPENDENCIES
   carrierwave-google-storage
   carrierwave-i18n
   carrierwave-meta
+  cloudflare-rails
   devise
   devise-i18n
   devise_invitable
