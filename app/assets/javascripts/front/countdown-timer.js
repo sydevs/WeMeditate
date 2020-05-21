@@ -12,6 +12,8 @@ class CountdownTimer {
     this.minutes = element.querySelector('.js-countdown-minutes')
     this.seconds = element.querySelector('.js-countdown-seconds')
     
+    console.log('Target countdown time', this.targetDate, 'from', element.dataset.time);
+
     this.interval = setInterval(() => this.update(), 1000)
 
     this.update()
@@ -35,7 +37,10 @@ class CountdownTimer {
       this.days.setAttribute('data-value', 0)
     }
 
-    if (t < 300000 && t > 0) { // Less than 5 minutes
+    console.log('Current countdown time', days, 'd', hours, 'h', minutes, 'm', seconds, 's')
+    console.log('Raw countdown time', t)
+
+    if (t < 300000) { // Less than 5 minutes
       clearInterval(this.interval)
       window.location.reload()
     }
