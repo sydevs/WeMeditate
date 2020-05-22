@@ -12,9 +12,11 @@ class CountdownTimer {
     this.minutes = element.querySelector('.js-countdown-minutes')
     this.seconds = element.querySelector('.js-countdown-seconds')
     
-    console.log('Target countdown time', this.targetDate, 'from', element.dataset.time);
-
     this.interval = setInterval(() => this.update(), 1000)
+
+    const now = Date.now()
+    const t = this.targetDate - now
+    this.setMode(t < 300000 ? 'live' : 'countdown')
 
     this.update()
     this.container.classList.remove('content__splash__countdown--hidden')
@@ -39,8 +41,16 @@ class CountdownTimer {
 
     if (t < 300000 && t > 0) { // Less than 5 minutes
       clearInterval(this.interval)
-      window.location.reload()
+      this.setMode('live')
+      //window.location.reload()
     }
+  }
+
+  setMode(mode) {
+    const opposite = (mode == 'live' ? 'countdown' : 'live')
+    const wrapper = this.container.parentNode.parentNode.parentNode
+    wrapper.classList.remove(`content__splash--${opposite}`)
+    wrapper.classList.add(`content__splash--${mode}`)
   }
 
 }

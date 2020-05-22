@@ -4,17 +4,16 @@ ruby:
   image_url = record.media_file(block[:image][:id]).large.url if block[:image]
   background = image_url ? "background-image: url(#{image_url})" : nil
 
-  classes = ['content__splash--stream', 'js-splash']
-  classes << "content__splash--#{record.live? ? 'live' : 'countdown'}"
-
-.content__splash class=classes style=background data-invert=invert
-  .content__splash__wrapper
-    - if record.live?
+.content__splash.content__splash--stream class='js-splash' style=background data-invert=invert
+  .content__splash__wrapper-live
+    .content__splash__wrapper
       h1.content__splash__title = translate('streams.live.title')
       .content__splash__action = translate('streams.live.action')
       a.content__splash__play.video__button title=translate('streams.live.action') data-lity=true href=record.stream_url
       .content__splash__description = translate('streams.live.description')
-    - else
+
+  .content__splash__wrapper-countdown
+    .content__splash__wrapper
       h1.content__splash__title = block[:title]
       .content__splash__description = block[:text]
 
