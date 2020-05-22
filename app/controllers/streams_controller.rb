@@ -1,5 +1,7 @@
 class StreamsController < ApplicationController
 
+  before_action :set_cache_headers
+
   def index
     time_zone = ActiveSupport::TimeZone.new(request.location.data['timezone']) rescue Time.zone
     @stream = Stream.public_stream.preload_for(:content).for_time_zone(time_zone)
@@ -16,7 +18,7 @@ class StreamsController < ApplicationController
     time_zone = ActiveSupport::TimeZone.new(request.location.data['timezone']) rescue Time.zone
     @stream = Stream.public_stream.preload_for(:content).friendly.find(params[:id])
     
-    return unless stale?(@stream)
+    #return unless stale?(@stream)
 
     @breadcrumbs = [
       #{ name: StaticPageHelper.preview_for(:home).name, url: root_path },
@@ -28,4 +30,12 @@ class StreamsController < ApplicationController
     set_metadata(@stream)
   end
 
+  private
+
+    def set_cache_headers
+      response.headers["Cache-Control"] = "no-cache, no-store"
+      response.headers["Pragma"] = "no-cache"
+      response.headers["Expires"] = "Mon, 01 Jan 1990 00:00:00 GMT"
+    end
+    
 end

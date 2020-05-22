@@ -37,10 +37,7 @@ class CountdownTimer {
       this.days.setAttribute('data-value', 0)
     }
 
-    console.log('Current countdown time', days, 'd', hours, 'h', minutes, 'm', seconds, 's')
-    console.log('Raw countdown time', t)
-
-    if (t < 300000) { // Less than 5 minutes
+    if (t < 300000 && t > 0) { // Less than 5 minutes
       clearInterval(this.interval)
       window.location.reload()
     }
