@@ -31,12 +31,12 @@ ruby:
         a.content__splash__action__text href=block[:url] = block[:action]
         = inline_svg_tag 'graphics/leaves.svg', class: 'content__splash__action__leaf'
 
-- time_zone = ActiveSupport::TimeZone.new(request.location.data['timezone']) rescue Time.zone
-- location = request.location.data
+- location = request&.location&.data
+- time_zone = ActiveSupport::TimeZone.new(location['timezone']) rescue Time.zone
 
 javascript:
   console.log("Stream Time Zone", "#{record.time_zone.now}");
   console.log("Next Stream Time", "#{record.next_stream_time}");
-  console.log("Your Detected Location", "#{location['timezone']}", "#{location.to_json}");
+  console.log("Your Detected Location", "#{location&.dig('timezone')}", "#{location&.to_json}");
   console.log("Your Time Zone", "#{time_zone&.tzinfo&.identifier}");
   console.log("Your Current Time", "#{time_zone&.now}");
