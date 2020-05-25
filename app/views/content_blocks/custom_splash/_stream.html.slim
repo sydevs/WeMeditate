@@ -35,6 +35,7 @@ ruby:
 - time_zone = ActiveSupport::TimeZone.new(location['timezone']) rescue Time.zone
 
 javascript:
+  console.log("Your IP Address", "#{request.remote_ip}", "#{request.env['HTTP_X_FORWARDED_FOR']}");
   console.log("Stream Time Zone", "#{record.time_zone.now}");
   console.log("Next Stream Time", "#{record.next_stream_time}");
   console.log("Your Detected Location", "#{location&.dig('timezone')}", "#{location&.to_json}");
