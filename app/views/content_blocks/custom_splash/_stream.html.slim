@@ -40,4 +40,5 @@ javascript:
   console.log("Next Stream Time", "#{record.next_stream_time}");
   console.log("Your Detected Location", "#{location&.dig('timezone')}", "#{location&.to_json}");
   console.log("Your Time Zone", "#{time_zone&.tzinfo&.identifier}");
-  console.log("Your Current Time", "#{time_zone&.now}");
+  console.log("Your Detected Time", "#{time_zone&.now}");
+  console.log("Your Current Time", new Date(), Intl.DateTimeFormat().resolvedOptions().timeZone);
