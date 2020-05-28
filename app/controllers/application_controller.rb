@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   prepend_before_action :set_locale!
   before_action :enforce_maintenance_mode, except: %i[maintenance]
   before_action :force_no_ssl_for_staging
+  skip_forgery_protection only: %i[contact subscribe] # Because of page caching
 
   # The root page of the website
   def home
