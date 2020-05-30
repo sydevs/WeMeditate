@@ -15,8 +15,11 @@ class CountdownTimer {
     this.interval = setInterval(() => this.update(), 1000)
 
     const now = Date.now()
-    const t = this.targetDate - now
-    this.setMode(t < 300000 ? 'live' : 'countdown')
+    const duration = parseFloat(element.dataset.duration)
+    const timeUntilStart = this.targetDate - now
+    const timeUntilEnd = this.targetDate + duration - now
+    const live = timeUntilStart < 300000 && timeUntilEnd > 0
+    this.setMode(live ? 'live' : 'countdown')
 
     this.update()
     this.container.classList.remove('content__splash__countdown--hidden')
