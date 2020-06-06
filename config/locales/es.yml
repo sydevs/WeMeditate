@@ -52,6 +52,8 @@ es:
     meditating_for:
       one: "Meditando durante 1 año"
       other: "Meditando durante %{count} años"
+    countries:
+      gb: UK
 
   form:
     input:

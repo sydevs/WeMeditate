@@ -14,6 +14,13 @@ class CountdownTimer {
     
     this.interval = setInterval(() => this.update(), 1000)
 
+    const now = Date.now()
+    const duration = parseFloat(element.dataset.duration)
+    const timeUntilStart = this.targetDate - now
+    const timeUntilEnd = this.targetDate + duration - now
+    const live = timeUntilStart < 300000 && timeUntilEnd > 0
+    this.setMode(live ? 'live' : 'countdown')
+
     this.update()
     this.container.classList.remove('content__splash__countdown--hidden')
   }
@@ -35,11 +42,18 @@ class CountdownTimer {
       this.days.setAttribute('data-value', 0)
     }
 
-    let params = new URLSearchParams(window.location.search)
-    if (t < 300000 && !params.has('live')) { // Less than 5 minutes
+    if (t < 300000 && t > 0) { // Less than 5 minutes
       clearInterval(this.interval)
-      window.location.reload()
+      this.setMode('live')
+      //window.location.reload()
     }
+  }
+
+  setMode(mode) {
+    const opposite = (mode == 'live' ? 'countdown' : 'live')
+    const wrapper = this.container.parentNode.parentNode.parentNode
+    wrapper.classList.remove(`content__splash--${opposite}`)
+    wrapper.classList.add(`content__splash--${mode}`)
   }
 
 }

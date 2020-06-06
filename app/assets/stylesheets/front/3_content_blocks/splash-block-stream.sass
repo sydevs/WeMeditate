@@ -27,14 +27,29 @@
     color: inherit
     margin-top: 12px
 
+  // Mode
+  .content__splash__wrapper-live,
+  .content__splash__wrapper-countdown
+    overflow: hidden
+    max-height: 0
+    opacity: 0
+    transition: opacity 0.5s ease, max-height 1s ease
+
+  &.content__splash--live .content__splash__wrapper-live,
+  &.content__splash--countdown .content__splash__wrapper-countdown
+    max-height: 100vh
+    opacity: 1
+    transition: all 1s ease
+
 // ===== LIVE ===== //
-.content__splash--live .content__splash
+.content__splash__wrapper-live .content__splash
   &__wrapper
     @extend %narrow-content-width
     position: relative
     padding-top: 160px
     padding: 0 24px
     max-width: 468px
+    margin-bottom: 50px
 
   &__title
     font-weight: $font-normal
@@ -74,7 +89,7 @@
       max-width: none
 
 // ===== COUNTDOWN ===== //
-.content__splash--countdown .content__splash
+.content__splash__wrapper-countdown .content__splash
   &__wrapper
     @extend %narrow-content-width
     position: relative

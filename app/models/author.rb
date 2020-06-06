@@ -29,5 +29,9 @@ class Author < ApplicationRecord
   # Scope
   scope :q, -> (q) { where('name ILIKE ?', "%#{q}%") if q.present? }
 
+  def country_name
+    I18n.translate(country_code.downcase, scope: 'author.countries', default: country_code)
+  end
+
 end
   

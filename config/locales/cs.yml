@@ -52,6 +52,8 @@ cs:
     meditating_for:
       one: "Medituje 1 rok"
       other: "Medituje po dobu %{count} let"
+    countries:
+      gb: UK
 
   form:
     input:

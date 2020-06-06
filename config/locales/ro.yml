@@ -53,6 +53,8 @@ ro:
       one: "Meditez de un an"
       few: "Meditez de %{count} ani"
       other: "Meditez de %{count} ani"
+    countries:
+      gb: UK
 
   form:
     input:

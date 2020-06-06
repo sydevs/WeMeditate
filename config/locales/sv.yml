@@ -39,6 +39,8 @@ sv:
     meditating_for:
       one: "Mediterat i ett år"
       other: "Mediterat i %{count} år"
+    countries:
+      gb: UK
 
   form:
     input:
