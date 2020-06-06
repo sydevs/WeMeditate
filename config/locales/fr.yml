@@ -46,11 +46,13 @@ fr:
       local: "Cours près de chez moi"
 
   author:
-    about_the_author: "Au sujet de %{author}"
+    about_the_author: "Au sujet de author"
     written_by: "Écrit par"
     meditating_for:
       one: "Médite depuis 1 an"
       other: "Médite depuis %{count} ans"
+    countries:
+      gb: UK
 
   form:
     input:
