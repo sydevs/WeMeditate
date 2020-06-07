@@ -1,6 +1,6 @@
 
 - allow = policy(record)
-= Globalize.locale
+
 - if record.draftable? && record.has_draft? && record.parsed_draft.except('content', 'contributors').present?
   .ui.yellow.message = translate 'admin.messages.unapproved_changes_notice', page: human_model_name(record)
 
