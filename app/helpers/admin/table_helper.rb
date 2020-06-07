@@ -204,7 +204,7 @@ module Admin::TableHelper
       elsif record.translatable? && !record.has_translation?
         :not_translated
       elsif record.stateable?
-        record.state.to_sym
+        record.state&.to_sym || 'null'
       elsif record.publishable?
         record.published? ? :public : :private
       else
