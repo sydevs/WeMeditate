@@ -1,6 +1,6 @@
 
 - allow = policy(record)
-
+= Globalize.locale
 - if record.draftable? && record.has_draft? && record.parsed_draft.except('content', 'contributors').present?
   .ui.yellow.message = translate 'admin.messages.unapproved_changes_notice', page: human_model_name(record)
 
@@ -16,8 +16,9 @@
           li = message
 
   - locale = !@record.try(:has_translation?, :details) ? @record.original_locale : Globalize.locale
+  - context_locale = Globalize.locale
   - Globalize.with_locale(locale) do
-    = render 'admin/application/fields', f: f, record: record
+    = render 'admin/application/fields', f: f, record: record, context_locale: context_locale
 
   .ui.hidden.divider
 

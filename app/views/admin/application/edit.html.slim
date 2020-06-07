@@ -1,5 +1,6 @@
 
 - content_for :title, translate('admin.action.target.edit', record: human_model_name(@record))
+= Globalize.locale
 
 - unless @record.new_record?
   .table-actions
@@ -19,7 +20,4 @@
 
 .clearfix
 
-- if @record.translatable?
-  = render 'admin/application/form', record: @record
-- else
-  = render 'admin/application/form', record: @record
+= render 'admin/application/form', record: @record
