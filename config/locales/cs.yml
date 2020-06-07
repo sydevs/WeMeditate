@@ -128,7 +128,7 @@ cs:
       choose_duration: "Mám"
       goal_prompt: "Vyberte si váš cíl "
       submit: "Spustit meditaci"
-      minutes: "mid"
+      minutes: "min"
     archive:
       see_all_meditations: "Zobrazit všechny meditace"
       title: "Vedené Meditace"
