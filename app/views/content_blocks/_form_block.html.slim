@@ -16,10 +16,14 @@ ruby:
     .content__form__fields
       .content__form__message
       = fields_for block[:format] do |f|
-        = f.hidden_field :gobbledigook if block[:format] == 'contact'
-        = f.hidden_field :list_id, value: block[:list_id] if block[:format] == 'signup'
         = f.email_field :email_address, placeholder: t('form.input.email')
-        = f.text_area :message, placeholder: t('form.input.message'), rows: 5 if block[:format] == 'contact'
+
+        - if block[:format] == 'contact'
+          = f.text_area :message, placeholder: t('form.input.message'), rows: 5
+          = f.hidden_field :gobbledigook
+          = recaptcha_tags
+        - elsif block[:format] == 'signup'
+          = f.hidden_field :list_id, value: block[:list_id]
 
         - if translate(block[:format], scope: 'form.input.privacy').present?
           .content__form__privacy
