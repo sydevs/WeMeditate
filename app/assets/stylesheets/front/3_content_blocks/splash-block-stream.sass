@@ -1,5 +1,9 @@
 @import "../../mixins/*"
 
+@mixin desktop-or-smaller
+  @media only screen and (max-width: #{$desktop-width - 1px})
+    @content
+
 .content__splash--stream
   text-align: center
   color: $color-text-inverse
@@ -17,6 +21,9 @@
 
   @include laptop-or-larger
     padding-top: 35vh
+
+  @include max-stream-height
+    padding-top: 360px
 
   &:before
     @include overlay
@@ -63,6 +70,9 @@
       line-height: 1.22
       letter-spacing: 1.2px
 
+    @include max-stream-height
+      margin-bottom: 82px
+
   &__action
     font-weight: $font-medium
     font-size: 3rem
@@ -77,6 +87,9 @@
 
     @include tablet-or-larger
       margin-bottom: 9vh
+
+    @include max-stream-height
+      margin-bottom: 92px
 
   &__description
     font-size: 2.2rem
@@ -108,6 +121,9 @@
       letter-spacing: 1.2px
       margin-bottom: 4.5vh
 
+    @include max-stream-height
+      margin-bottom: 46px
+
   &__description
     font-size: 2.2rem
     line-height: 1.15
@@ -118,6 +134,9 @@
     @include tablet-or-larger
       font-weight: $font-semibold
       margin-bottom: 6.25vh
+
+    @include max-stream-height
+      margin-bottom: 64px
 
   &__action
     display: flex
@@ -162,6 +181,9 @@
 
   @include tablet-or-larger
     font-size: 7.86rem
+
+  @include max-stream-height
+    margin-bottom: 82px
 
   &.content__splash__countdown--hidden
     opacity: 0
