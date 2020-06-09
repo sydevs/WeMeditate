@@ -29,6 +29,7 @@ $narrow-content-width: 766px
 $laptop-content-width: 1150px
 $desktop-content-width: 1250px
 $widescreen-content-width: 1500px
+$max-stream-height: 1024px
 
 $gutter-width: 24px
 $scrollspy-width: 3px
@@ -169,4 +170,9 @@ $icon-computer: '\e90f'
 
 @mixin desktop-or-smaller
   @media only screen and (max-width: #{$desktop-width - 1px})
+    @content
+
+
+@mixin max-stream-height
+  @media only screen and (min-height: #{$max-stream-height})
     @content

@@ -16,8 +16,9 @@
           li = message
 
   - locale = !@record.try(:has_translation?, :details) ? @record.original_locale : Globalize.locale
+  - context_locale = Globalize.locale
   - Globalize.with_locale(locale) do
-    = render 'admin/application/fields', f: f, record: record
+    = render 'admin/application/fields', f: f, record: record, context_locale: context_locale
 
   .ui.hidden.divider
 

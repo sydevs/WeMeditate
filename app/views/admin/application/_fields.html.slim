@@ -48,7 +48,7 @@
         = tag.div CGI.unescape(url), class: 'ui basic label'
         = f.input_field :slug
       - if record.is_a?(Meditation)
-        .hint = translate('admin.hints.self_realization_slug', slug: translate('routes.self_realization'))
+        .hint = translate('admin.hints.self_realization_slug', slug: translate('routes.self_realization', locale: context_locale))
 
 = render "admin/fields/#{record.model_name.param_key}", f: f, record: record
 

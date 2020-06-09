@@ -38,16 +38,16 @@ class ApplicationController < ActionController::Base
   def contact
     contact_params = params.fetch(:contact, {}).permit(:email_address, :message, :gobbledigook)
 
-    if not contact_params[:email_address].present?
+    if !contact_params[:email_address].present?
       @message = I18n.translate('form.missing.email')
       @success = false
-    elsif not contact_params[:message].present?
+    elsif !contact_params[:message].present?
       @message = I18n.translate('form.missing.message')
       @success = false
     else
       contact = ContactForm.new(params[:contact])
 
-      if contact.deliver
+      if verify_recaptcha(model: contact) && contact.deliver
         @message = I18n.translate('form.success.contact')
         @success = true
       else

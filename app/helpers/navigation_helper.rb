@@ -45,7 +45,7 @@ module NavigationHelper
         ],
         featured: Treatment.published.preload_for(:preview).first(2).map { |treatment|
           {
-            title: translate('treatments.title', title: treatment.name),
+            title: translate('treatments.header_title', title: treatment.name),
             url: treatment_path(treatment),
             data: gtm_record(treatment),
             thumbnail: treatment.thumbnail.url,

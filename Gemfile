@@ -81,6 +81,7 @@ gem 'sitemap_generator' # For SEO purposes
 gem 'taglib-ruby', '~> 0.7.1' # To parse metadata from mp3 files
 gem 'geocoder' # For identifying users from specific regions
 gem 'cloudflare-rails' # To restore client IP addresses after proxy
+gem "recaptcha", require: "recaptcha/rails" # To protect against bots on the contact form
 
 # Maybe needed later(?)
 # gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
