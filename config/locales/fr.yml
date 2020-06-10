@@ -28,7 +28,7 @@ fr:
     kundalini: "Énergie Intérieure"
 
   footer:
-    scroll_to_top: "Retour Haut de Page"
+    scroll_to_top: "Haut de Page"
     meditate_now: "Méditez maintenant"
     music_for_meditation: "Musique pour méditer"
     learn_more: "En Savoir Plus"
@@ -136,8 +136,8 @@ fr:
       title: "Configurez Votre Méditation"
       choose_goal: "Je veux me sentir ..." # Please keep ' ...' (with a space) at the end of your translation.
       choose_duration: "Je dispose de"
-      goal_prompt: "Sélectionnez l'humeur"
-      submit: "Commencez la méditation"
+      goal_prompt: "Choisir l'humeur"
+      submit: "C’est Haut de Pageparti!"
       minutes: "min"
     archive:
       see_all_meditations: "Voir toutes les méditations"
