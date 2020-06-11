@@ -21,7 +21,8 @@ en:
 
   header:
     learn_more: "Learn More"
-    classes_near_me: "Live guided meditations"
+    live_meditations: "Live guided meditations"
+    classes_near_me: "Classes near me"
     inspiration_from_within: "Inspiration comes from within"
     cookie_notice: "By continuing to use wemeditate.co you will be agreeing to our use of cookies."
     preview_notice: "You are viewing a preview"
@@ -105,6 +106,7 @@ en:
     share: "Share: "
 
   meditations:
+    not_translated: "The meditations have not yet been translated for %{language}. Our apologies. We hope to finish their translation soon."
     title: "Meditations"
     prescreen:
       title: "Unlock guided meditations by awakening your %{kundalini} first"

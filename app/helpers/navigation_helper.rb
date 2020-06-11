@@ -38,7 +38,7 @@ module NavigationHelper
           }
         } + [
           {
-            title: translate('header.kundalini').titleize,
+            title: translate('header.kundalini'),
             url: url_for(kundalini_page),
             data: gtm_record(kundalini_page),
           },

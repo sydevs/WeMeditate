@@ -58,7 +58,7 @@ class Meditation < ApplicationRecord
       # The meditation with the most views
       Meditation.publicly_visible.order('meditation_translations.popularity DESC').where.not(id: exclude).first
     when :self_realization
-      Meditation.find_by(slug: I18n.translate('routes.self_realization'))
+      Meditation.find_by(slug: I18n.translate('routes.self_realization', locale: Globalize.locale))
     else
       # A purely random meditation
       Meditation.publicly_visible.order('RANDOM()').first

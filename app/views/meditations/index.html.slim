@@ -7,6 +7,10 @@
 main
   h1.banner = @static_page.name
 
+  - if I18n.exists?('meditations.not_translated')
+    .message__wrapper
+      .message = translate('meditations.not_translated', language: language_name.downcase)
+
   .meditations
     .meditations__featured class='js-carousel' data-style='meditations'
       - meditation = Meditation.get(:daily)
