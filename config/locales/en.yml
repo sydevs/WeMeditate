@@ -106,7 +106,6 @@ en:
     share: "Share: "
 
   meditations:
-    not_translated: "The meditations have not yet been translated for %{language}. Our apologies. We hope to finish their translation soon."
     title: "Meditations"
     prescreen:
       title: "Unlock guided meditations by awakening your %{kundalini} first"

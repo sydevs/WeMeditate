@@ -72,12 +72,23 @@ module NavigationHelper
     mobile_navigation += navigation_items
 
     # Add classes near me
+    if Stream.public_stream.any?
+      mobile_navigation.push({
+        title: I18n.translate('header.live_meditations'),
+        url: static_page_path_for(:streams),
+        data: gtm_label('header.classes_near_me'),
+        active: controller_name == 'classes',
+      })
+    end
+    
+=begin
     mobile_navigation.push({
       title: I18n.translate('header.classes_near_me').gsub('<br>', ' '),
-      url: %i[en ru].include?(I18n.locale) ? static_page_path_for(:streams) : static_page_path_for(:classes),
+      url: static_page_path_for(:classes),
       data: gtm_label('header.classes_near_me'),
       active: controller_name == 'classes',
     })
+=end
 
     mobile_navigation
   end
