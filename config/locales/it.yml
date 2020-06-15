@@ -21,6 +21,7 @@ it:
 
   header:
     learn_more: "Per Saperne di Più"
+    live_meditations: "Live guided meditations" # TODO: Translate
     classes_near_me: "Corsi vicino a Me"
     inspiration_from_within: "L’ispirazione viene da dentro"
     cookie_notice: "Se decidi di accedere wemeditate.co ci dai il permesso di utilizzare cookies."
@@ -106,6 +107,7 @@ it:
     share: "Condividi: "
 
   meditations:
+    not_translated: "Le meditazioni non sono ancora state tradotte per il francese. Le nostre scuse. Speriamo di finire presto la traduzione."
     title: "Meditazioni"
     prescreen:
       title: "Per accedere alle meditazioni guidate, risveglia ora la tua %{kundalini}"

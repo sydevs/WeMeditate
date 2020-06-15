@@ -21,6 +21,7 @@ nl:
     
   header:
     learn_more: "Meer informatie"
+    live_meditations: "Live guided meditations" # TODO: Translate
     classes_near_me: "Cursussen in mijn buurt"
     inspiration_from_within: "Inspiratie komt van binnen"
     cookie_notice: "Bij verder gebruik van nl.wemeditate.co geef je automatisch toestemming voor het gebruik van cookies."

@@ -6,8 +6,22 @@ sv:
   we_meditate: "We Meditate" # This is the title of the website
   tagline: "Stilla dina tankar och upptäck din inre potential via guidade meditationer. Kom i kontakt med andra runt om i världen för ett bättre liv."
 
+  routes: # These are for the website URLs, they should be all lower case and use dashes instead of spaces
+    inspiration: "inspiration"
+    articles: "articles"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
+    self_realization: "first-experience"
+    classes: "classes"
+    streams: "live"
+    
   header:
     learn_more: "Lär dig mer"
+    live_meditations: "Live guided meditations" # TODO: Translate
     classes_near_me: "Guidade meditationer live"
     inspiration_from_within: "Inspiration kommer innifrån"
     cookie_notice: "Genom att använda wemeditate tillåter du användning av cookies."

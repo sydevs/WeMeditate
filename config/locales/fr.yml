@@ -21,6 +21,7 @@ fr:
 
   header:
     learn_more: "En Savoir Plus"
+    live_meditations: "Live guided meditations" # TODO: Translate
     classes_near_me: "Cours Près de Chez Moi"
     inspiration_from_within: "L'inspiration vient de l'intérieur"
     cookie_notice: "En continuant à utiliser wemeditate.co, vous acceptez notre utilisation des cookies."
@@ -28,7 +29,7 @@ fr:
     kundalini: "Énergie Intérieure"
 
   footer:
-    scroll_to_top: "Retour Haut de Page"
+    scroll_to_top: "Haut de Page"
     meditate_now: "Méditez maintenant"
     music_for_meditation: "Musique pour méditer"
     learn_more: "En Savoir Plus"
@@ -115,6 +116,7 @@ fr:
     share: "Partager: "
 
   meditations:
+    not_translated: "Les méditations n'ont pas encore été enregistrées en français. Veuillez nous excuser. Nous espérons les publier bientôt."
     title: "Méditations"
     prescreen:
       title: "Accédez aux méditations guidées après avoir éveillé votre %{kundalini} "
@@ -134,10 +136,10 @@ fr:
       random_meditation_description: "Vous avez envie d'un petit remontant? Bannissez ces pensées négatives qui vous rabaissent et renforcez la confiance en vous."
     custom_meditation:
       title: "Configurez Votre Méditation"
-      choose_goal: "Je veux me sentir ..." # Please keep ' ...' (with a space) at the end of your translation.
+      choose_goal: "Je veux ressentir ..." # Please keep ' ...' (with a space) at the end of your translation.
       choose_duration: "Je dispose de"
-      goal_prompt: "Sélectionnez l'humeur"
-      submit: "Commencez la méditation"
+      goal_prompt: "Choisir l'humeur"
+      submit: "C'est parti!"
       minutes: "min"
     archive:
       see_all_meditations: "Voir toutes les méditations"

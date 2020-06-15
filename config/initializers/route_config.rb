@@ -12,13 +12,13 @@ RouteTranslator.config do |config|
       'nl.wemeditate.co' => :nl, # Dutch
       'es.wemeditate.co' => :es, # Spanish
       'de.wemeditate.co' => :de, # German
-      'fr.wemeditate.co' => :fr, # French
       'br.wemeditate.co' => :'pt-br', # Brazilian Portuguese
       'ro.wemeditate.co' => :ro, # Romanian
       'hy.wemeditate.co' => :hy, # Armenian
       'hi.wemeditate.co' => :hi, # Hindi
       'tr.wemeditate.co' => :tr, # Turkish
       'se.wemeditate.co' => :sv, # Swedish
+      'wemeditate.fr' => :fr, # French
       'wemeditate.cz' => :cs, # Czech
       'wemeditate.it' => :it, # Italian
       'wemeditate.ru' => :ru, # Russian

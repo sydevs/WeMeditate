@@ -21,7 +21,8 @@ en:
 
   header:
     learn_more: "Learn More"
-    classes_near_me: "Live guided meditations"
+    live_meditations: "Live guided meditations"
+    classes_near_me: "Classes near me"
     inspiration_from_within: "Inspiration comes from within"
     cookie_notice: "By continuing to use wemeditate.co you will be agreeing to our use of cookies."
     preview_notice: "You are viewing a preview"

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="-5 -5 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>We Meditate Logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-16.7%" y="-16.7%" width="133.3%" height="133.3%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <circle id="path-2" cx="36" cy="36" r="36"></circle>
+        <radialGradient cx="27.5377653%" cy="27.4856189%" fx="27.5377653%" fy="27.4856189%" r="65.878193%" id="radialGradient-4">
+            <stop stop-color="#FFFFFF" stop-opacity="0.1" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="circle-masked" transform="translate(-14.000000, -16.000000)">
+            <g id="group" filter="url(#filter-1)" transform="translate(18.000000, 18.000000)">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <g id="mask-circle"></g>
+                <g id="adaptive-icon" mask="url(#mask-3)">
+                    <g transform="translate(-18.000000, -18.000000)">
+                        <g>
+                            <g id="background" fill="#FF6344">
+                                <rect id="base" x="0" y="0" width="108" height="108"></rect>
+                            </g>
+                            <g id="foreground">
+                                <rect id="finish" fill="url(#radialGradient-4)" x="0" y="0" width="108" height="108"></rect>
+                                <g id="Graphics/small-logo-dark" transform="translate(30.000000, 37.000000)" fill="#FFFFFF">
+                                    <path d="M24.3748225,33.9411708 L24.0934801,33.9411708 C17.753295,33.8519484 11.6792742,31.5172748 7.07226505,27.39872 C2.60302808,22.9920789 0.112520363,17.1206767 0.123074225,11.0159976 L0.123074225,10.1649471 L1.05153775,10.1649471 C6.96162922,10.1677051 12.6845221,12.1246621 17.2287256,15.6967754 L16.9755174,18.010569 C12.9270307,14.4183155 7.64113778,12.330822 2.09250462,12.1330014 C2.35743635,17.3867899 4.60293233,22.3774227 8.42270856,26.2019302 C12.4809119,29.7799776 17.76095,31.865159 23.3057214,32.0794978" id="Path"></path>
+                                    <path d="M25.2119292,32.0797246 C30.7988217,31.8290427 36.1036874,29.6957505 40.1583722,26.0691803 C43.9741262,22.2854481 46.2286213,17.3432376 46.5155549,12.1332281 C40.9222943,12.3576517 35.6080423,14.4947184 31.5691119,18.1437724 L30.9475207,16.1225274 C35.5662308,12.3687116 41.4588527,10.2934296 47.5609583,10.2715551 L48.4652887,10.2715551 L48.4652887,11.1226056 C48.4833251,17.2235848 45.9925391,23.0944917 41.5145712,27.5053281 C36.9237239,31.5932126 30.9030368,33.8189485 24.5848553,33.9411708 L24.223481,33.9411708" id="Path"></path>
+                                    <path d="M24.2517483,2.78233899 C20.4757404,6.67627334 18.3002163,11.7144952 18.1177467,16.9878628 C18.2885463,22.2714864 20.4651975,27.3217758 24.2517483,31.2200386 C28.0112873,27.3102038 30.1665127,22.2631099 30.3292152,16.9878628 C30.1623072,11.7213815 28.0071945,6.68400237 24.2517483,2.78233899 L24.2517483,2.78233899 Z M24.2517483,33.8319361 L23.5733333,33.2455917 C19.0182398,28.9057865 16.3898373,23.091529 16.2238384,16.9878628 C16.3647583,10.8974097 18.9745197,5.08917325 23.5167988,0.756785881 L24.2517483,0.170441558 L24.9301632,0.756785881 C29.5059758,5.07493113 32.1472144,10.8856561 32.3079254,16.9878628 C32.1515282,23.0987662 29.5101848,28.9192634 24.9301632,33.2455917 L24.2517483,33.8319361 Z" id="Shape"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -102,7 +102,11 @@
     left: 0
     right: 0
     z-index: 1
-    max-width: 80%
+    max-width: 70%
+
+  @include laptop-or-larger
+    width: 70%
+    max-width: 1100px
 
 .actions-footer__sidetext_wrapper
   @extend %wide-content-width
