@@ -21,6 +21,8 @@ module Admin::LookupHelper
     ro: 'ro', # Romanian
     cs: 'cz', # Czech
     sv: 'se', # Swedish
+    pl: 'pl', # Polish
+    bg: 'bg', # Bulgarian
   }.freeze
 
   # The icon used for different levels of urgency
