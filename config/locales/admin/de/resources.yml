@@ -6,75 +6,75 @@ de:
   activerecord:
     models:
       article:
-        one: "Article"
-        other: "Articles"
+        one: "Artikel"
+        other: "Artikel"
       static_page:
-        one: "Main Page"
-        other: "Main Pages"
+        one: "Hauptseite"
+        other: "Hauptseiten"
       subtle_system_node: # This is a page for a Chakra, Channel, or the Kundalini. ie. Some part of the subtle system
-        one: "Subtle System Node"
-        other: "Subtle System Nodes"
-      stream:
+        one: "Knoten des Subtilen Systems"
+        other: "Knoten des Subtilen Systems"
+      stream: # TODO: Translate
         one: "Live Meditation"
         other: "Live Meditations"
       category:
-        one: "Category"
-        other: "Categories"
+        one: "Kategorie"
+        other: "Kategorien"
       meditation:
         one: "Meditation"
-        other: "Meditations"
+        other: "Meditationen"
       treatment:
-        one: "Technique"
-        other: "Techniques"
+        one: "Technik"
+        other: "Techniken"
       track:
-        one: "Track"
-        other: "Tracks"
+        one: "Liedtitel"
+        other: "Liedtiteln"
       artist:
-        one: "Artist"
-        other: "Artists"
+        one: "Künstler"
+        other: "Künstler"
       author:
-        one: "Author Profile"
-        other: "Author Profiles"
+        one: "Autorenprofil"
+        other: "Autorenprofile"
       user:
-        one: "Admin"
-        other: "Admins"
+        one: "Administrator"
+        other: "Administratoren"
       instrument_filter:
         one: "Instrument"
-        other: "Instruments"
+        other: "Instrumente"
       mood_filter:
-        one: "Mood"
-        other: "Moods"
+        one: "Stimmung"
+        other: "Stimmungen"
       duration_filter:
-        one: "Duration"
-        other: "Durations"
+        one: "Dauer"
+        other: "Dauer"
       goal_filter:
-        one: "Goal"
-        other: "Goals"
+        one: "Ziel"
+        other: "Ziele"
       media_file:
-        one: "Media File"
-        other: "Media Files"
+        one: "Mediendatei"
+        other: "Mediendateien"
       audit:
-        one: "Change Log"
-        other: "Change Logs"
+        one: "Änderungsprotokoll"
+        other: "Änderungsprotokolle"
 
     attributes:
       generic:
-        ready_to_publish: "Ready to publish"
-        published: "Published"
+        ready_to_publish: "Bereit zur Veröffentlichung"
+        published: "Veröffentlicht"
         name: "Name"
         slug: "URL"
-        draft: "Draft"
+        draft: "Entwurf"
         state: "Status"
         states:
-          no_state: "No Translation Started"
-          in_progress: "Work in Progress"
-          archived: "Archived"
-          published: "Published"
-          unpublished: "Not Published"
+          no_state: "Keine Übersetzung begonnen"
+          in_progress: "In Arbeit"
+          archived: "Archiviert"
+          published: "Veröffentlicht"
+          unpublished: "Nicht veröffentlicht"
 
       article:
         draft: :activerecord.attributes.generic.draft # Do not translate
-        name: "Title"
+        name: "Titel"
         slug: :activerecord.attributes.generic.slug # Do not translate
         category: :activerecord.models.category.one # Do not translate
         category_id: :activerecord.attributes.article.category # Do not translate
@@ -85,37 +85,37 @@ de:
           archived: :activerecord.attributes.generic.states.archived # Do not translate
           published: :activerecord.attributes.generic.states.published # Do not translate
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
-        priority: "Priority"
+        priority: "Priorität"
         priorities:
-          pinned: "Pinned to Inspiration Page"
-          hidden: "Hidden from Inspiration Page"
-          low: "Low Visibility"
-          normal: "Normal Visibility"
-          high: "High Visibility"
-        article_type: "Article Type"
+          pinned: "Auf Inspirationsseite gepinnt"
+          hidden: "Auf der Inspirationsseite versteckt"
+          low: "Geringe Sichtbarkeit"
+          normal: "Normale Sichtbarkeit"
+          high: "Hohe Sichtbarkeit"
+        article_type: "Artikeltyp"
         article_types:
-          article: "Article"
-          artwork: "Artwork"
-          event: "Event"
-          report: "Report"
-        excerpt: "Excerpt"
-        thumbnail: "Thumbnail"
+          article: "Artikel"
+          artwork: "Kunstwerk"
+          event: "Veranstaltung"
+          report: "Report" # TODO: Translate
+        excerpt: "Auszug"
+        thumbnail: "Thumbnail Image" # TODO: Translate
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
-        vimeo_id: "Featured Video (Vimeo ID)"
-        date: "Featured Date"
-        content: "Content"
-        metatags: "Metadata"
-        coordinates: "Location"
-        latitude: "Latitude"
-        longitude: "Longitude"
+        vimeo_id: "Ausgewähltes Video (Vimeo ID)"
+        date: "Ausgewähltes Datum"
+        content: "Inhalt"
+        metatags: "Metadaten"
+        coordinates: "Standort"
+        latitude: "Breitengrad"
+        longitude: "Längengrad"
         author: :activerecord.models.author.one # Do not translate
         author_id: :activerecord.attributes.article.author # Do not translate
-        owner: "Allow a writer to update this article"
-        published_at: "Publish Date"
+        owner: "Erlauben Sie einem Autor, diesen Artikel zu aktualisieren"
+        published_at: "Datum der Veröffentlichung"
 
       static_page:
         draft: :activerecord.attributes.generic.draft # Do not translate
-        name: "Title"
+        name: "Titel"
         slug: :activerecord.attributes.generic.slug # Do not translate
         state: :activerecord.attributes.generic.state # Do not translate
         states:
@@ -124,24 +124,24 @@ de:
           archived: :activerecord.attributes.generic.states.archived # Do not translate
           published: :activerecord.attributes.generic.states.published # Do not translate
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
-        role: "Role"
+        role: "Rolle"
         roles:
-          home: "Home Page"
-          articles: "Articles Index Page"
-          meditations: "Meditations Index Page"
-          treatments: "Techniques Index Page"
-          tracks: "Music Page"
-          contact: "Contact Page"
-          shri_mataji: "About Shri Mataji"
-          subtle_system: "About Subtle System"
-          sahaja_yoga: "About Sahaja Yoga"
-          about: "About Page"
-          classes: "Classes Page"
-          privacy: "Privacy Policy"
-          streams: "Livestream Page"
-          custom: "Custom Page"
-        content: "Content"
-        metatags: "Metadata"
+          home: "Startseite"
+          articles: "Artikel Indexseite"
+          meditations: "Meditations Indexseite"
+          treatments: "Techniken Indexseite"
+          tracks: "Liedtiteln"
+          contact: "Kontaktseite"
+          shri_mataji: "Über Shri Mataji"
+          subtle_system: "Über das Subtile System"
+          sahaja_yoga: "Über Sahaja Yoga"
+          about: "Über uns - Seite"
+          classes: "Kurs-Seite"
+          privacy: "Datenschutz-Bestimmungen"
+          streams: "Livestream Seite"
+          custom: "Kunden-Seite"
+        content: "Inhalt"
+        metatags: "Metadaten"
 
       subtle_system_node:
         draft: :activerecord.attributes.generic.draft # Do not translate
@@ -154,8 +154,8 @@ de:
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
-        excerpt: "Excerpt"
-        role: "Role"
+        excerpt: "Auszug"
+        role: "Rolle"
         roles:
           chakra_1: "Mooladhara Chakra"
           chakra_2: "Swadhisthan Chakra"
@@ -165,14 +165,14 @@ de:
           chakra_5: "Vishuddhi Chakra"
           chakra_6: "Agnya Chakra"
           chakra_7: "Sahasrara Chakra"
-          channel_left: "Ida (Left) Channel"
-          channel_right: "Pingala (Right) Channel"
-          channel_center: "Sushumna (Center) Channel"
+          channel_left: "Ida (linker) Kanal"
+          channel_right: "Pingala (rechter) Kanal"
+          channel_center: "Sushumna (mittlerer) Kanal"
           kundalini: "Kundalini"
-        content: "Content"
-        metatags: "Metadata"
+        content: "Inhalt"
+        metatags: "Metadaten"
 
-      stream:
+      stream: # TODO: Translate
         draft: :activerecord.attributes.generic.draft # Do not translate
         name: "Title"
         slug: :activerecord.attributes.generic.slug # Do not translate
@@ -212,8 +212,8 @@ de:
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
         articles:
-          one: "%{count} Article"
-          other: "%{count} Articles"
+          one: "%{count} Artikel"
+          other: "%{count} Artikel"
 
       treatment:
         draft: :activerecord.attributes.generic.draft # Do not translate
@@ -227,49 +227,49 @@ de:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
-        excerpt: "Excerpt"
-        content: "Content"
-        thumbnail: "Thumbnail (png)"
+        excerpt: "Auszug"
+        content: "Inhalt"
+        thumbnail: "Miniaturansicht (png)"
         thumbnail_id: :activerecord.attributes.treatment.thumbnail # Do not translate
-        horizontal_vimeo_id: "Horizontal Video (Vimeo ID)"
-        vertical_vimeo_id: "Vertical Video (Vimeo ID)"
-        metatags: "Metadata"
+        horizontal_vimeo_id: "Horizontales Video (Vimeo ID)"
+        vertical_vimeo_id: "Vertikales Video (Vimeo ID)"
+        metatags: "Metadaten"
 
       instrument_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
-        icon: "Icon"
+        icon: "Symbol"
         tracks:
-          one: "%{count} Track"
-          other: "%{count} Tracks"
+          one: "%{count} Liedtitel"
+          other: "%{count} Liedtiteln"
 
       mood_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         tracks:
-          one: "%{count} Track"
-          other: "%{count} Tracks"
+          one: "%{count} Liedtitel"
+          other: "%{count} Liedtiteln"
 
       duration_filter:
         published: :activerecord.attributes.article.published # Do not translate
-        minutes: "Minutes"
+        minutes: "Minuten"
         meditations:
           one: "%{count} Meditation"
-          other: "%{count} Meditations"
+          other: "%{count} Meditationen"
 
       goal_filter:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         meditations:
           one: "%{count} Meditation"
-          other: "%{count} Meditations"
+          other: "%{count} Meditationen"
 
       track:
         published: :activerecord.attributes.article.published # Do not translate
-        title: "Title"
+        title: "Titel"
         artists: :activerecord.models.artist.other # Do not translate
-        audio: "File (mp3)"
-        duration: "Duration"
+        audio: "Datei (mp3)"
+        duration: "Dauer"
         instrument_filters: :activerecord.models.instrument_filter.other # Do not translate
         mood_filters: :activerecord.models.mood_filter.other # Do not translate
 
@@ -284,25 +284,25 @@ de:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         slug: :activerecord.attributes.generic.slug # Do not translate
-        horizontal_vimeo_id: "Horizontal Video (Vimeo ID)"
-        vertical_vimeo_id: "Vertical Video (Vimeo ID)"
+        horizontal_vimeo_id: "Horizontales Video (Vimeo ID)"
+        vertical_vimeo_id: "Vertikales Video (Vimeo ID)"
         duration_filter: :activerecord.models.duration_filter.one # Do not translate
         duration_filter_id: :activerecord.models.duration_filter.one # Do not translate
         goal_filters: :activerecord.models.goal_filter.other # Do not translate
         goal_filter_ids: :activerecord.models.goal_filter.other # Do not translate
-        excerpt: "Excerpt"
-        description: "Text on Page"
-        metatags: "Metadata"
-        popularity: "Popularity"
+        excerpt: "Auszug"
+        description: "Text auf Seite"
+        metatags: "Metadaten"
+        popularity: "Popularität"
 
       artist:
         published: :activerecord.attributes.article.published # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
         image: "Album Art"
-        url: "Website"
+        url: "Webseite"
         tracks:
-          one: "%{count} Track"
-          other: "%{count} Tracks"
+          one: "%{count} Liedtitel"
+          other: "%{count} Liedtiteln"
 
       author:
         state: :activerecord.attributes.generic.state # Do not translate
@@ -313,32 +313,32 @@ de:
           published: :activerecord.attributes.generic.states.published # Do not translate
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         name: :activerecord.attributes.generic.name # Do not translate
-        country_code: "Country"
-        title: "Title"
-        image: "Avatar"
-        description: "Biography"
-        years_meditating: "Years of Meditation Experience"
-        user: "Associated Admin Account"
+        country_code: "Land"
+        title: "Titel"
+        image: "Benutzerbild"
+        description: "Biografie"
+        years_meditating: "Jahre Meditationserfahrung"
+        user: "Zugehöriges Administratorkonto"
 
       user:
-        email: "Email Address"
-        invitation_accepted_at: "Invitation accepted on"
+        email: "E-Mail Adresse"
+        invitation_accepted_at: "Einladung angenommen am"
         invited_by: :activerecord.models.invited_by # Do not translate
-        languages_known: "Translatable Languages"
-        preferred_language: "Preferred Language"
-        languages_access: "Accessible Locales"
-        role: "Role"
+        languages_known: "Übersetzbare Sprachen"
+        preferred_language: "Preferred Language" # TODO: Translate
+        languages_access: "Zugängliche Gebietsschemas"
+        role: "Rolle"
         roles:
-          translator: "Translator"
-          writer: "Writer"
+          translator: "Übersetzer"
+          writer: "Schreiber"
           editor: "Editor"
-          regional_admin: "Regional Admin"
-          super_admin: "Super Admin"
+          regional_admin: "Regionaler Administrator"
+          super_admin: "Super-Administrator"
 
       audit:
         user: :activerecord.models.user.one # Do not translate
-        action: "Action"
+        action: "Aktion"
         actions:
-          update: "Updated"
-          create: "Created"
-          destroy: "Deleted"
+          update: "Aktualisiert"
+          create: "Erstellt"
+          destroy: "Gelöscht"

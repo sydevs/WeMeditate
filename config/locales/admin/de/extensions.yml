@@ -6,67 +6,67 @@
 de:
   devise:
     failure:
-      invited: "You have a pending invitation, accept it to finish creating your account."
-      already_authenticated: "You are already signed in."
-      inactive: "Your account is not activated yet."
-      invalid: "Invalid %{authentication_keys} or Password."
-      locked: "Your account is locked."
-      last_attempt: "You have one more attempt before your account is locked."
-      not_found_in_database: "Invalid %{authentication_keys} or Password."
-      timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your email address before continuing."
+      invited: "Wenn Sie eine ausstehende Einladung haben, akzeptieren Sie diese, um die Erstellung Ihres Kontos abzuschließen."
+      already_authenticated: "Sie sind bereits angemeldet."
+      inactive: "Ihr Benutzerkonto ist noch nicht aktiviert."
+      invalid: "Ungültige %{authentication_keys} oder Passwort."
+      locked: "Ihr Konto ist gesperrt."
+      last_attempt: "Sie haben noch einen Versuch, bevor Ihr Konto gesperrt wird."
+      not_found_in_database: "Ungültige %{authentication_keys} oder Passwort."
+      timeout: "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an, um fortzufahren."
+      unauthenticated: "Sie müssen sich anmelden, bevor Sie fortfahren können."
+      unconfirmed: "Sie müssen Ihre E-Mail-Adresse bestätigen, bevor Sie fortfahren können."
     mailer:
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Anweisungen zum Zurücksetzen des Passworts"
       unlock_instructions:
-        subject: "Unlock instructions"
+        subject: "Anweisungen für das Entsperren"
       email_changed:
-        subject: "Email Changed"
+        subject: "E-Mail wurde geändert"
       password_change:
-        subject: "Password Changed"
+        subject: "Passwort wurde geändert"
       invitation_instructions:
-        subject: "Invitation instructions"
-        hello: "Hello %{email}"
-        someone_invited_you: "You have been invited to be an editor at %{url}, you can accept it through the link below."
-        accept: "Accept invitation"
-        accept_until: "This invitation will be due in %{due_date}."
-        ignore: "If you don't want to accept the invitation, please ignore this email.<br />\nYour account won't be created until you access the link above and set your password."
+        subject: "Einladungs-Anweisungen"
+        hello: "Hallo %{email}"
+        someone_invited_you: "Sie wurden eingeladen, Redakteur bei %{url} zu werden. Sie können dies über den folgenden Link akzeptieren."
+        accept: "Einladung akzeptieren"
+        accept_until: "Diese Einladung ist gültig bis %{due_date}."
+        ignore: "Wenn Sie die Einladung nicht annehmen möchten, ignorieren Sie diese E-Mail.<br />\nIhr Konto wird erst erstellt, wenn Sie auf den obigen Link zugreifen und Ihr Passwort festlegen."
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Your password has been changed successfully. You are now signed in."
-      updated_not_active: "Your password has been changed successfully."
+      no_token: "Sie können nicht auf diese Seite zugreifen, ohne von einer Passwort-Zurücksetzen-Mail zu kommen. Wenn Sie aus einer Passwort-Zurücksetzen-Mail kommen, stellen Sie bitte sicher, dass Sie die vollständige URL verwendet haben."
+      send_instructions: "Sie erhalten in wenigen Minuten eine E-Mail mit Anweisungen zum Zurücksetzen Ihres Passworts."
+      send_paranoid_instructions: "Wenn Ihre E-Mail-Adresse in unserer Datenbank vorhanden ist, erhalten Sie innerhalb weniger Minuten einen Link zur Passwortwiederherstellung an Ihre E-Mail-Adresse."
+      updated: "Ihr Passwort wurde erfolgreich geändert. Sie sind jetzt angemeldet."
+      updated_not_active: "Ihr Passwort wurde erfolgreich geändert."
     invitations:
-      send_instructions: "An invitation email has been sent to %{email}."
-      invitation_token_invalid: "The invitation token provided is not valid!"
-      updated: "Your password was set successfully. You are now signed in."
-      updated_not_active: "Your password was set successfully."
-      no_invitations_remaining: "No invitations remaining"
-      invitation_removed: "Your invitation was removed."
+      send_instructions: "Es wurde eine Einladungs-E-Mail an %{email} gesendet."
+      invitation_token_invalid: "Der bereitgestellte Einladungstoken ist ungültig!"
+      updated: "Ihr Passwort wurde erfolgreich festgelegt. Sie sind jetzt angemeldet."
+      updated_not_active: "Ihr Passwort wurde erfolgreich festgelegt."
+      no_invitations_remaining: "Keine Einladungen offen"
+      invitation_removed: "Ihre Einladung wurde entfernt."
       new:
-        header: "Send invitation"
-        submit_button: "Send an invitation"
+        header: "Einladung senden"
+        submit_button: "Sende eine Einladung"
       edit:
-        header: "Set your password"
-        submit_button: "Set my password"
+        header: "Lege ein Passwort fest"
+        submit_button: "Setze mein Passwort"
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
-      already_signed_out: "Signed out successfully."
+      signed_in: "Erfolgreich angemeldet."
+      signed_out: "Erfolgreich abgemeldet."
+      already_signed_out: "Erfolgreich abgemeldet."
     unlocks:
-      send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      send_instructions: "Sie erhalten in wenigen Minuten eine E-Mail mit Anweisungen zum Entsperren Ihres Kontos."
+      send_paranoid_instructions: "Wenn Ihr Konto vorhanden ist, erhalten Sie in wenigen Minuten eine E-Mail mit Anweisungen zum Entsperren."
+      unlocked: "Ihr Konto wurde erfolgreich entsperrt. Bitte melden Sie sich an um fortzufahren."
   errors:
     messages:
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
+      expired: "ist abgelaufen, bitte fordern Sie ein neues an"
+      not_found: "nicht gefunden"
+      not_locked: "wurde nicht gesperrt"
       not_saved:
-        one: "%{count} error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "%{count} Fehler hat verhindert, dass diese %{resource} gespeichert wird:"
+        other: "%{count} Fehler haben verhindert, dass diese %{resource} gespeichert wird:"
   time:
     formats:
       default: '%k:%M' # Do not translate, unless you know what you are doing
@@ -82,10 +82,10 @@ de:
       default: '%d %b %Y' # Do not translate, unless you know what you are doing
       date: :date.formats.default # Do not translate
   simple_form:
-    'yes': "Yes"
-    'no': "No"
+    'yes': "Ja"
+    'no': "Nein"
     required:
-      text: "required"
+      text: "erforderlich"
       mark: '*' # Do not translate
     error_notification:
-      default_message: "Please review the problems below:"
+      default_message: "Bitte überprüfen Sie die folgenden Probleme:"
