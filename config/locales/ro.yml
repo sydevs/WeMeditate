@@ -24,9 +24,12 @@ ro:
     live_meditations: "Live guided meditations" # TODO: Translate
     classes_near_me: "Cursuri în Apropierea Mea"
     inspiration_from_within: "Inspirația vine din interior"
-    cookie_notice: "Acest site folosește cookies. Continuarea navigării implică acceptarea lor."
     preview_notice: "Acesta este un preview"
     kundalini: "Energia Interioară"
+
+  cookie_notice:
+    text: "Acest site folosește cookies. Continuarea navigării implică acceptarea lor."
+    learn_more: "Află mai Multe"
 
   footer:
     scroll_to_top: "Începutul Paginii"

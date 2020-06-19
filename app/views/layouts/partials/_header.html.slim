@@ -59,8 +59,8 @@ header#header.header class=classes
       .header__notice.header__notice--cookie
         .header__notice__text
           .header__notice__close
-          = translate 'header.cookie_notice'
-          a href=static_page_url_for(:privacy) = translate 'header.learn_more'
+          = translate 'cookie_notice.text'
+          a href=static_page_url_for(:privacy) = translate 'cookie_notice.learn_more'
 
     - unless @breadcrumbs.nil?
       .header__breadcrumbs-wrapper

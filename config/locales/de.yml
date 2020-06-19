@@ -24,9 +24,12 @@ de:
     live_meditations: "Live geführte Meditationen"
     classes_near_me: "Classes Near Me" # TODO: Translate
     inspiration_from_within: "Inspiration kommt aus dem Inneren"
-    cookie_notice: "Bei weiterer Nutzung von wemeditate.co stimmst du der Verwendung von Cookies durch uns zu."
     preview_notice: "Du siehst eine Vorschau"
     kundalini: "Innere Energie"
+
+  cookie_notice:
+    text: "Bei weiterer Nutzung von wemeditate.co stimmst du der Verwendung von Cookies durch uns zu."
+    learn_more: "Lerne mehr"
 
   footer:
     scroll_to_top: "Zurück zum Anfang"
