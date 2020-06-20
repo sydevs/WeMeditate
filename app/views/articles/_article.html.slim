@@ -19,7 +19,11 @@ article.inspiration__item.preview id=dom_id(article) class=dom_id(article.catego
 
   - if article.date.present?
     .preview__date
-      .preview__date__month = I18n.localize(article.date, format: '%b').upcase_first
+      .preview__date__month
+        - if I18n.exists? 'articles.months'
+          = translate(article.date.strftime('%b').downcase, scope: 'articles.months')
+        - else
+          = localize(article.date, format: '%b').upcase_first
       .preview__date__day = article.date.strftime('%d')
 
   a.preview__title href=url_for(article) = article.name

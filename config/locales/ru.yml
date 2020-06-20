@@ -119,6 +119,19 @@ ru:
     filter: "Фильтровать"
     show_all: "Показать всё"
     share: "Поделиться: "
+    months:
+      jan: Янв
+      feb: Февр
+      mar: Март
+      apr: Апр
+      may: Май
+      jun: Июнь
+      jul: Июль
+      aug: Авг
+      sep: Сент
+      oct: Окт
+      nov: Нояб
+      dec: Дек
 
   meditations:
     title: "Meditations"
