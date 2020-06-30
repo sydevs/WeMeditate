@@ -24,9 +24,12 @@ es:
     live_meditations: "Live guided meditations" # TODO: Translate
     classes_near_me: "Clases cerda de Mí"
     inspiration_from_within: "La Inspiración viene del interior"
-    cookie_notice: "Al continuar usando wemeditate.co usted estará aceptando nuestro uso de cookies."
     preview_notice: "Estás viendo una vista previa"
     kundalini: "Energía Interior"
+
+  cookie_notice:
+    text: "Al continuar usando wemeditate.co usted estará aceptando nuestro uso de cookies."
+    learn_more: "Aprende Más"
 
   footer:
     scroll_to_top: "Volver al Inicio"

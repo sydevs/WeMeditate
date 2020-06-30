@@ -24,9 +24,12 @@ sv:
     live_meditations: "Live guided meditations" # TODO: Translate
     classes_near_me: "Guidade meditationer live"
     inspiration_from_within: "Inspiration kommer innifrån"
-    cookie_notice: "Genom att använda wemeditate tillåter du användning av cookies."
     preview_notice: "Detta är en förhandsgranskning"
     kundalini: "Inre Energi"
+
+  cookie_notice:
+    text: "Genom att använda wemeditate tillåter du användning av cookies."
+    learn_more: "Lär dig mer"
 
   footer:
     scroll_to_top: "Tillbaka till början"

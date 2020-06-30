@@ -2,7 +2,7 @@
 # FRONT END TRANSLATIONS
 # This file contains translations which will be seen by the public.
 
-tr:
+pl:
   we_meditate: "We Meditate" # This is the title of the website
   tagline: "Silence your mind and discover your inner potential with guided meditations. Connect with others around the world meditating for a better life."
 
@@ -18,11 +18,11 @@ tr:
     self_realization: "first-experience"
     classes: "classes"
     streams: "live"
-    
+
   header:
     learn_more: "Learn More"
     live_meditations: "Live guided meditations"
-    classes_near_me: "Classes Near Me"
+    classes_near_me: "Classes near me"
     inspiration_from_within: "Inspiration comes from within"
     preview_notice: "You are viewing a preview"
     kundalini: "Inner Energy"
@@ -54,9 +54,8 @@ tr:
     about_the_artist: "About the artist"
     written_by: "Written by"
     meditating_for:
-      one: "Meditating for %{count} year" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-      few: "Meditating for %{count} years" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
-      many: "Meditating for %{count} years" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+      one: "Meditating for 1 year"
+      other: "Meditating for %{count} years"
     countries:
       gb: UK
 

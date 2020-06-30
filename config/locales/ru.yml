@@ -24,9 +24,12 @@ ru:
     live_meditations: "Медитации в прямом эфире"
     classes_near_me: "Classes near me" # TODO: Translate
     inspiration_from_within: "Источник вдохновения внутри"
-    cookie_notice: "Продолжая использовать wemeditate.ru, ты даёшь согласие на использование файлов cookie."
     preview_notice: "ТЫ просматриваешь предварительный вариант"
     kundalini: "Внутренняя Энергия"
+
+  cookie_notice:
+    text: "Продолжая использовать wemeditate.ru, ты даёшь согласие на использование файлов cookie."
+    learn_more: "Ещё"
 
   footer:
     scroll_to_top: "Наверх"
@@ -103,6 +106,19 @@ ru:
     filter: "Фильтровать"
     show_all: "Показать всё"
     share: "Поделиться: "
+    months:
+      jan: Янв
+      feb: Февр
+      mar: Март
+      apr: Апр
+      may: Май
+      jun: Июнь
+      jul: Июль
+      aug: Авг
+      sep: Сент
+      oct: Окт
+      nov: Нояб
+      dec: Дек
 
   meditations:
     title: "Meditations"
