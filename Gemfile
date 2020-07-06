@@ -91,11 +91,13 @@ gem "recaptcha", require: "recaptcha/rails" # To protect against bots on the con
 # gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
 group :staging, :development do
-  # For profiling load times
-  gem 'flamegraph'
-  gem 'memory_profiler'
-  gem 'rack-mini-profiler', require: false
-  gem 'stackprof'
+  # For profiling load times, exclude windows
+  unless RUBY_PLATFORM =~ /win32/ 
+    gem 'flamegraph'
+    gem 'memory_profiler'
+    gem 'rack-mini-profiler', require: false
+    gem 'stackprof', platforms: %i[mingw mswin x64_mingw jruby]
+  end
 end
 
 group :development, :test do
