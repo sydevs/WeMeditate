@@ -158,11 +158,40 @@
 // ===== LANGUAGE LINKS ===== //
 .footer__language
   margin-top: 24px
-  font-size: 1.4rem
+  font-size: 1.5rem
+  position: relative
 
-  &__separator
-    display: inline
-    font-size: 1.25em
+  // &__separator
+  //   display: inline
+  //   font-size: 1.25em
+
+  &__selection
+    cursor: pointer
 
   .icon
     margin-left: 6px
+
+  &__popup
+    display: none
+    flex-flow: row wrap
+    justify-content: space-around
+
+    background-color: $background-white
+
+    position: absolute
+    width: 215px
+    margin: auto
+    padding: 5px
+    border-radius: 5px
+    box-shadow: 1px 1px 10px
+    z-index: $z-popup
+    right: 0%
+    bottom: 125%
+    
+  &__link
+    font-weight: $font-semibold 
+    padding: 10px
+    color: $color-text-normal
+
+.popup--open
+  display: flex

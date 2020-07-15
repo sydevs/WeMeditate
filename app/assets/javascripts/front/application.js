@@ -57,6 +57,7 @@ const Application = {
     Application.loadFirst('custom-meditation', CustomMeditation)
     Application.loadFirst('prescreen', Prescreen)
     Application.loadFirst('geosearch', GeoSearch)
+    Application.loadFirst('language', LanguageSwitcher)
   },
 
   unload() {

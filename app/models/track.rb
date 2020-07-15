@@ -1,6 +1,6 @@
 ## TRACK
 # A musical track, which in the context of this website means music to meditate to.
-require 'taglib'
+# require 'taglib'
 
 class Track < ApplicationRecord
 
@@ -48,6 +48,7 @@ class Track < ApplicationRecord
 
     # Use the TagLib library to extract the duration of this track before it is saved.
     def parse_duration
+      return
       return unless audio.present? && (duration.nil? || audio_changed?)
 
       # This can only be run when the audio file is changed because the file will be stored in the cache.
