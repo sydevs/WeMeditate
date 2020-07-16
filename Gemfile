@@ -78,7 +78,7 @@ gem 'lograge' # Reduce verbosity of Rails logs
 gem 'mail_form' # For the contact form
 gem 'sidekiq' # To power active jobs
 gem 'sitemap_generator' # For SEO purposes
-gem 'taglib-ruby', '~> 0.7.1' # To parse metadata from mp3 files
+gem 'taglib-ruby', '~> 0.7.1', platforms: %i[ruby] # To parse metadata from mp3 files
 gem 'geocoder' # For identifying users from specific regions
 gem 'cloudflare-rails' # To restore client IP addresses after proxy
 gem "recaptcha", require: "recaptcha/rails" # To protect against bots on the contact form
@@ -92,12 +92,11 @@ gem "recaptcha", require: "recaptcha/rails" # To protect against bots on the con
 
 group :staging, :development do
   # For profiling load times, exclude windows
-  unless RUBY_PLATFORM =~ /win32/ 
-    gem 'flamegraph'
-    gem 'memory_profiler'
-    gem 'rack-mini-profiler', require: false
-    gem 'stackprof', platforms: %i[mingw mswin x64_mingw jruby]
-  end
+  gem 'flamegraph'
+  gem 'memory_profiler'
+  gem 'rack-mini-profiler', require: false
+  gem 'fast_stack'
+  gem 'stackprof', platforms: %i[ruby]
 end
 
 group :development, :test do
@@ -124,3 +123,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+# To avoid polling for changes:
+# gem 'wdm', '>= 0.1.0' if Gem.win_platform?
