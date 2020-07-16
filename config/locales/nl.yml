@@ -121,6 +121,7 @@ nl:
         text: "Heb je al vaker met ons gemediteerd?"
         action: "Ga verder naar de geleide meditatie."
     featured:
+      self_realization: "Get started" # TODO: Translate
       daily_meditation: "Meditatie van de dag"
       trending_meditation: "Populaire meditaties"
       random_meditation: "Laat het lot beslissen"

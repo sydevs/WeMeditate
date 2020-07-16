@@ -121,6 +121,7 @@ cs:
         text: "Už jste s námi někdy meditovali?"
         action: "Pokračujte ve své meditaci"
     featured:
+      self_realization: "Get started" # TODO: Translate
       daily_meditation: "Meditace dnešního dne"
       trending_meditation: "Teď populární"
       random_meditation: "Ať rozhodne osud"

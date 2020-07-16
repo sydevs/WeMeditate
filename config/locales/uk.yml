@@ -122,6 +122,7 @@ uk:
         text: "Вже медитували з нами?"
         action: "Продовжити медитацію"
     featured:
+      self_realization: "Get started" # TODO: Translate
       daily_meditation: "Медитація дня"
       trending_meditation: "Зараз у тренді"
       random_meditation: "Нехай вирішить доля" #довіритись долі

@@ -122,6 +122,7 @@ ro:
         text: "Ați mai meditat cu noi înainte?"
         action: "Continuă către meditația ghidată" 
     featured:
+      self_realization: "Get started" # TODO: Translate
       daily_meditation: "Meditația zilei"
       trending_meditation: "Cele mai vizionate"
       random_meditation: "Lasă destinul să decidă"

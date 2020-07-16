@@ -123,6 +123,7 @@ it:
         text: "Hai già meditato con noi?"
         action: "Continua verso una meditazione guidata"
     featured:
+      self_realization: "Get started" # TODO: Translate
       daily_meditation: "Meditazione del giorno"
       trending_meditation: "In voga"
       random_meditation: "Lascia decidere il fato"

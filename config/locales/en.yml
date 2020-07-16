@@ -121,6 +121,7 @@ en:
         text: "Meditated with us before?"
         action: "Continue to your guided meditation"
     featured:
+      self_realization: "Get started"
       daily_meditation: "Meditation of the day"
       trending_meditation: "Trending now"
       random_meditation: "Let fate decide"

@@ -146,6 +146,7 @@ ru:
         text: "Уже медитировал с нами?"
         action: "Перейти к выбору медитации"
     featured:
+      self_realization: "Get started" # TODO: Translate
       daily_meditation: "Медитация дня"
       trending_meditation: "Сейчас в тренде"
       random_meditation: "Довериться воле судьбы"

@@ -121,6 +121,7 @@ de:
         text: "Du hast schon einmal mit uns meditiert?"
         action: "Fahre fort mit den geführten Meditationen"
     featured:
+      self_realization: "Get started" # TODO: Translate
       daily_meditation: "Meditation des Tages"
       trending_meditation: "Jetzt angesagt"
       random_meditation: "Lass das Schicksal entscheiden"
