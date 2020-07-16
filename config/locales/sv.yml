@@ -120,6 +120,7 @@ sv:
         text: "Mediterat med oss förut?"
         action: "Fortsätt till din guidade meditation"
     featured:
+      self_realization: "Get started" # TODO: Translate
       daily_meditation: "Dagens meditation"
       trending_meditation: "Trendande"
       random_meditation: "Låt ödet avgöra"
