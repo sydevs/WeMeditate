@@ -161,10 +161,6 @@
   font-size: 1.5rem
   position: relative
 
-  // &__separator
-  //   display: inline
-  //   font-size: 1.25em
-
   &__selection
     cursor: pointer
 
@@ -172,21 +168,36 @@
     margin-left: 6px
 
   &__popup
-    display: none
+    display: flex
     flex-flow: row wrap
     justify-content: space-around
 
-    background-color: $background-white
+    background: $background-white
+    opacity: 0
+    transition: all 0.5s ease
 
     position: absolute
-    width: 215px
+    width: 200px
+    max-height: 0px
+    overflow-y: auto
     margin: auto
-    padding: 5px
-    border-radius: 5px
+    padding: 0px 5px
     box-shadow: 1px 1px 10px
     z-index: $z-popup
-    right: 0%
     bottom: 125%
+
+    @include tablet-or-smaller
+      right: 50%
+      margin-right: -100px
+
+    @include laptop
+      right: 0%
+
+    @include desktop
+      right: 10%
+
+    @include widescreen
+      right: 25%
     
   &__link
     font-weight: $font-semibold 
@@ -194,4 +205,6 @@
     color: $color-text-normal
 
 .popup--open
-  display: flex
+  max-height: 160px
+  opacity: 1
+  transition: all 0.5s ease

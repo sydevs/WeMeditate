@@ -1,6 +1,6 @@
 /* global $, LazyLoad, zenscroll,
   Accordion, Carousel, Dropdown, Form, Grid, Loadmore, Video, ImageGallery, ReadingTime, CountdownTimer
-  Header, SubtleSystem, MusicPlayer, CustomMeditation, Prescreen, GeoSearch, VideoAnalytics */
+  Header, SubtleSystem, MusicPlayer, CustomMeditation, Prescreen, GeoSearch, VideoAnalytics, LanguageSwitcher */
 /* exported Application */
 
 /** Front Application
@@ -57,7 +57,7 @@ const Application = {
     Application.loadFirst('custom-meditation', CustomMeditation)
     Application.loadFirst('prescreen', Prescreen)
     Application.loadFirst('geosearch', GeoSearch)
-    Application.loadFirst('language', LanguageSwitcher)
+    Application.loadFirst('language-switcher', LanguageSwitcher)
   },
 
   unload() {

@@ -92,10 +92,10 @@ gem "recaptcha", require: "recaptcha/rails" # To protect against bots on the con
 
 group :staging, :development do
   # For profiling load times, exclude windows
+  gem 'fast_stack'
   gem 'flamegraph'
   gem 'memory_profiler'
   gem 'rack-mini-profiler', require: false
-  gem 'fast_stack'
   gem 'stackprof', platforms: %i[ruby]
 end
 
@@ -123,6 +123,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-# To avoid polling for changes:
-# gem 'wdm', '>= 0.1.0' if Gem.win_platform?

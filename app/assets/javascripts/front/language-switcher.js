@@ -1,3 +1,6 @@
+/* global */
+/* exported LanguageSwitcher */
+
 class LanguageSwitcher {
 
   constructor(element) {
