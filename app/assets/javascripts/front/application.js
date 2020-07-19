@@ -1,6 +1,6 @@
 /* global $, LazyLoad, zenscroll,
   Accordion, Carousel, Dropdown, Form, Grid, Loadmore, Video, ImageGallery, ReadingTime, CountdownTimer
-  Header, SubtleSystem, MusicPlayer, CustomMeditation, Prescreen, GeoSearch, VideoAnalytics, LanguageSwitcher */
+  Header, SubtleSystem, MusicPlayer, CustomMeditation, Prescreen, GeoSearch, LanguageSwitcher */
 /* exported Application */
 
 /** Front Application
