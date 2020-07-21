@@ -12,7 +12,9 @@ module Contentable
   included do |base|
     %i[content].each do |column|
       next if base.try(:translated_attribute_names)&.include?(column) || base.column_names.include?(column.to_s)
-      throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Contentable`" 
+      throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Contentable`"
+    rescue ActiveRecord::NoDatabaseError, ActiveRecord::StatementInvalid # rubocop:disable Lint/HandleExceptions
+      # avoid breaking rails db:create / db:drop etc due to boot time execution
     end
 
     base.has_many :media_files, as: :page, inverse_of: :page, dependent: :delete_all

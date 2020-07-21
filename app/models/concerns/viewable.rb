@@ -14,7 +14,9 @@ module Viewable
 
     %i[slug metatags].each do |column|
       next if base.try(:translated_attribute_names)&.include?(column) || base.column_names.include?(column.to_s)
-      throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Viewable`" 
+      throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Viewable`"
+    rescue ActiveRecord::NoDatabaseError, ActiveRecord::StatementInvalid # rubocop:disable Lint/HandleExceptions
+      # avoid breaking rails db:create / db:drop etc due to boot time execution
     end
 
     base.extend FriendlyId
