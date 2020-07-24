@@ -47,16 +47,17 @@ footer.footer
         - social_media_urls.each do |type, url|
           a.footer__social__link href=url
             i.icon class="icon--#{type}"
-        
-      - if Rails.configuration.published_locales.length > 1
-        .footer__language
-          .footer__header
-            = translate('footer.languages')
-            .icon.icon--language
-          - Rails.configuration.published_locales.each do |locale|
-            a.footer__language__link href=root_url(host: Rails.configuration.locale_hosts[locale])
-              = locale.to_s.upcase
-            - if locale != Rails.configuration.published_locales.last
-              .footer__language__separator  | 
 
+      - if Rails.configuration.published_locales.length > 1
+        .footer__language id="language-switcher"
+          .footer__language__input
+            a.footer__header.footer__language__selection
+              = translate('footer.languages')
+              div.icon.icon--language
+
+            .footer__language__popup
+              - Rails.configuration.published_locales.each do |locale|
+                a.footer__language__link href=root_url(host: Rails.configuration.locale_hosts[locale])
+                  = I18nData.languages(locale)[locale.to_s.upcase].titleize 
+          
   .footer__copyright &copy; WeMeditate, #{Time.zone.now.year}

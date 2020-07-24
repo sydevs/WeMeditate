@@ -17,8 +17,9 @@ module Stateable
 
     %i[state published_at].each do |column|
       next if base.try(:translated_attribute_names)&.include?(column) || base.column_names.include?(column.to_s)
-
       throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Stateable`"
+    rescue ActiveRecord::NoDatabaseError, ActiveRecord::StatementInvalid # rubocop:disable Lint/HandleExceptions
+      # avoid breaking rails db:create / db:drop etc due to boot time execution
     end
 
     base.enum state: {
