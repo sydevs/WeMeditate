@@ -35,7 +35,6 @@ class StreamsController < ApplicationController
     @stream = Stream.friendly.find(params[:id])
 
     return redirect_to @stream, status: :moved_permanently unless request.path == stream_path(@stream)
-    end
   end
 
   private

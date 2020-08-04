@@ -36,7 +36,6 @@ class TreatmentsController < ApplicationController
     @treatment = Treatment.friendly.find(params[:id])
 
     return redirect_to @treatment, status: :moved_permanently unless request.path == treatment_path(@treatment)
-    end
   end
 
 end

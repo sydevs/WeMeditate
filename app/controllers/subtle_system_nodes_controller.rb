@@ -33,7 +33,6 @@ class SubtleSystemNodesController < ApplicationController
     @subtle_system_node = SubtleSystemNode.friendly.find(params[:id])
 
     return redirect_to @subtle_system_node, status: :moved_permanently unless request.path == subtle_system_node_path(@subtle_system_node)
-    end
   end
 
 end

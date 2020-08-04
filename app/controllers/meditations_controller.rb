@@ -105,7 +105,6 @@ class MeditationsController < ApplicationController
     @meditation = Meditation.friendly.find(params[:id])
 
     return redirect_to @meditation, status: :moved_permanently unless request.path == meditation_path(@meditation)
-    end
   end
 
 end
