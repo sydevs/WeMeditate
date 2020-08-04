@@ -1,5 +1,7 @@
 class TreatmentsController < ApplicationController
 
+  before_action :redirect_treatment, except: [:index]
+
   def index
     @treatments = Treatment.publicly_visible.preload_for(:preview).all
     @static_page = StaticPage.preload_for(:content).find_by(role: :treatments)
@@ -28,6 +30,14 @@ class TreatmentsController < ApplicationController
     ]
 
     set_metadata(@treatment)
+  end
+
+  def redirect_treatment
+    @treatment = Treatment.friendly.find(params[:id])
+
+    if request.path != treatment_path(@treatment)
+      return redirect_to @treatment, :status => :moved_permanently
+    end
   end
 
 end

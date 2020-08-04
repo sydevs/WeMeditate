@@ -4,11 +4,13 @@
 class Treatment < ApplicationRecord
 
   # Extensions
+  extend FriendlyId
   audited
   translates *%i[
     name slug metatags published_at draft state
     excerpt content thumbnail_id horizontal_vimeo_id vertical_vimeo_id
   ]
+  friendly_id :name, use: [:slugged, :history]
 
   # Concerns
   include Viewable

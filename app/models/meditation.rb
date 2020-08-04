@@ -4,12 +4,14 @@
 class Meditation < ApplicationRecord
 
   # Extensions
+  extend FriendlyId
   audited
   translates *%i[
     name slug metatags views popularity published_at state
     excerpt description
     horizontal_vimeo_id vertical_vimeo_id vimeo_metadata
   ]
+  friendly_id :name, use: [:slugged, :history]
 
   # Concerns
   include Viewable

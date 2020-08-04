@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 
+  before_action :redirect_article
+
   def show
     @article = Article.publicly_visible.preload_for(:content).friendly.find(params[:id])
     return unless stale?(@article)
@@ -12,6 +14,14 @@ class ArticlesController < ApplicationController
     ]
 
     set_metadata(@article)
+  end
+
+  def redirect_article
+    @article = Article.friendly.find(params[:id])
+
+    if request.path != article_path(@article)
+      return redirect_to @article, :status => :moved_permanently
+    end
   end
 
 end

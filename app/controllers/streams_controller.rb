@@ -1,5 +1,6 @@
 class StreamsController < ApplicationController
 
+  before_action :redirect_stream, except: [:index]
   before_action :set_cache_headers
 
   def index
@@ -28,6 +29,14 @@ class StreamsController < ApplicationController
 
     @splash_style = :stream
     set_metadata(@stream)
+  end
+
+  def redirect_stream
+    @stream = Stream.friendly.find(params[:id])
+
+    if request.path != stream_path(@stream)
+      return redirect_to @stream, :status => :moved_permanently
+    end
   end
 
   private

@@ -9,6 +9,8 @@ class Stream < ApplicationRecord
   # Extensions
   extend ArrayEnum
   audited
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
 
   # Concerns
   include Viewable

@@ -1,5 +1,7 @@
 class MeditationsController < ApplicationController
 
+  before_action :redirect_meditation, except: [:index, :self_realization]
+
   MEDITATIONS_PER_PAGE = 10
 
   def index
@@ -97,6 +99,14 @@ class MeditationsController < ApplicationController
     raise ActiveRecord::RecordNotFound, 'No meditation found for the given filters' unless meditation.present?
 
     redirect_to meditation_url(meditation), status: :see_other
+  end
+
+  def redirect_meditation
+    @meditation = Meditation.friendly.find(params[:id])
+
+    if request.path != meditation_path(@meditation)
+      return redirect_to @meditation, :status => :moved_permanently
+    end
   end
 
 end

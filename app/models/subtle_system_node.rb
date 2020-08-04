@@ -8,8 +8,10 @@
 class SubtleSystemNode < ApplicationRecord
 
   # Extensions
+  extend FriendlyId
   audited
   translates :name, :slug, :excerpt, :metatags, :content, :draft, :state, :published_at
+  friendly_id :name, use: [:slugged, :history]
 
   # Concerns
   include Viewable

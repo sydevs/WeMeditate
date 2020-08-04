@@ -1,5 +1,7 @@
 class SubtleSystemNodesController < ApplicationController
 
+  before_action :redirect_subtle_system, except: [:index]
+
   def index
     @static_page = StaticPage.preload_for(:content).find_by(role: :subtle_system)
     @subtle_system_nodes = SubtleSystemNode.publicly_visible
@@ -25,6 +27,14 @@ class SubtleSystemNodesController < ApplicationController
     ]
 
     set_metadata(@subtle_system_node)
+  end
+
+  def redirect_subtle_system
+    @subtle_system_node = SubtleSystemNode.friendly.find(params[:id])
+
+    if request.path != subtle_system_node_path(@subtle_system_node)
+      return redirect_to @subtle_system_node, :status => :moved_permanently
+    end
   end
 
 end
