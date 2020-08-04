@@ -10,7 +10,7 @@ class Treatment < ApplicationRecord
     name slug metatags published_at draft state
     excerpt content thumbnail_id horizontal_vimeo_id vertical_vimeo_id
   ]
-  friendly_id :name, use: [:slugged, :history]
+  friendly_id :name, use: %i[slugged history]
 
   # Concerns
   include Viewable

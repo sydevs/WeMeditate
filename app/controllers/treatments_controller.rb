@@ -1,6 +1,6 @@
 class TreatmentsController < ApplicationController
 
-  before_action :redirect_treatment, except: [:index]
+  before_action :redirect_treatment, except: %i[index]
 
   def index
     @treatments = Treatment.publicly_visible.preload_for(:preview).all
@@ -35,8 +35,7 @@ class TreatmentsController < ApplicationController
   def redirect_treatment
     @treatment = Treatment.friendly.find(params[:id])
 
-    if request.path != treatment_path(@treatment)
-      return redirect_to @treatment, :status => :moved_permanently
+    return redirect_to @treatment, status: :moved_permanently unless request.path == treatment_path(@treatment)
     end
   end
 

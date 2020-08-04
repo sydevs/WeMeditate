@@ -13,7 +13,7 @@ class Article < ApplicationRecord
     draft published_at state
     excerpt banner_id thumbnail_id vimeo_id content
   ]
-  friendly_id :name, use: [:slugged, :history]
+  friendly_id :name, use: %i[slugged history]
 
   # Concerns
   include Viewable

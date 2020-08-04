@@ -1,6 +1,6 @@
 class SubtleSystemNodesController < ApplicationController
 
-  before_action :redirect_subtle_system, except: [:index]
+  before_action :redirect_subtle_system, except: %i[index]
 
   def index
     @static_page = StaticPage.preload_for(:content).find_by(role: :subtle_system)
@@ -32,8 +32,7 @@ class SubtleSystemNodesController < ApplicationController
   def redirect_subtle_system
     @subtle_system_node = SubtleSystemNode.friendly.find(params[:id])
 
-    if request.path != subtle_system_node_path(@subtle_system_node)
-      return redirect_to @subtle_system_node, :status => :moved_permanently
+    return redirect_to @subtle_system_node, status: :moved_permanently unless request.path == subtle_system_node_path(@subtle_system_node)
     end
   end
 

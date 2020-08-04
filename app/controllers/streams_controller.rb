@@ -1,6 +1,6 @@
 class StreamsController < ApplicationController
 
-  before_action :redirect_stream, except: [:index]
+  before_action :redirect_stream, except: %i[index]
   before_action :set_cache_headers
 
   def index
@@ -34,8 +34,7 @@ class StreamsController < ApplicationController
   def redirect_stream
     @stream = Stream.friendly.find(params[:id])
 
-    if request.path != stream_path(@stream)
-      return redirect_to @stream, :status => :moved_permanently
+    return redirect_to @stream, status: :moved_permanently unless request.path == stream_path(@stream)
     end
   end
 

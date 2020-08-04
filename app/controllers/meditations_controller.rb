@@ -1,6 +1,6 @@
 class MeditationsController < ApplicationController
 
-  before_action :redirect_meditation, except: [:index, :self_realization]
+  before_action :redirect_meditation, except: %i[index self_realization]
 
   MEDITATIONS_PER_PAGE = 10
 
@@ -104,8 +104,7 @@ class MeditationsController < ApplicationController
   def redirect_meditation
     @meditation = Meditation.friendly.find(params[:id])
 
-    if request.path != meditation_path(@meditation)
-      return redirect_to @meditation, :status => :moved_permanently
+    return redirect_to @meditation, status: :moved_permanently unless request.path == meditation_path(@meditation)
     end
   end
 
