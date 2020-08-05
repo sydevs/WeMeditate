@@ -67,6 +67,7 @@ class MeditationsController < ApplicationController
   def show
     @meditation = Meditation.publicly_visible.friendly.find(params[:id])
     return if redirect_legacy_url(@meditation)
+    
     @prescreen = !browser.bot? && cookies[:prescreen] != 'dismissed'
 
     meditations_page = StaticPage.preload_for(:content).find_by(role: :meditations)
