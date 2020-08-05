@@ -111,6 +111,13 @@ class ApplicationController < ActionController::Base
 
   protected
 
+    def redirect_legacy_url record
+      return false unless request.path != polymorphic_path(record)
+
+      redirect_to record, status: :moved_permanently
+      true
+    end
+
     def set_locale!
       params[:locale] = RouteTranslator.config.host_locales[request.host]
       I18n.locale = params[:locale]

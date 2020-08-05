@@ -481,6 +481,7 @@ ru:
 
     misc:
       no_translated_title: "Отсутствует Перевод Заголовка" # This should be written in titlecase
+      previous_slugs: "Previous URLs Used" # TODO: Translate
       menu:
         dashboard: "Dashboard" # TODO: Translate
         my_author: "Мой профиль"

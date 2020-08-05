@@ -1,6 +1,5 @@
 class StreamsController < ApplicationController
 
-  before_action :redirect_stream, except: %i[index]
   before_action :set_cache_headers
 
   def index
@@ -18,6 +17,7 @@ class StreamsController < ApplicationController
   def show
     time_zone = ActiveSupport::TimeZone.new(request.location.data['timezone']) rescue Time.zone
     @stream = Stream.public_stream.preload_for(:content).friendly.find(params[:id])
+    return if redirect_legacy_url(@stream)
     
     #return unless stale?(@stream)
 
@@ -29,12 +29,6 @@ class StreamsController < ApplicationController
 
     @splash_style = :stream
     set_metadata(@stream)
-  end
-
-  def redirect_stream
-    @stream = Stream.friendly.find(params[:id])
-
-    return redirect_to @stream, status: :moved_permanently unless request.path == stream_path(@stream)
   end
 
   private

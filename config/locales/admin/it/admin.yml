@@ -470,6 +470,7 @@ it:
 
     misc:
       no_translated_title: "Nessun Titolo Tradotto"
+      previous_slugs: "Previous URLs Used" # TODO: Translate
       menu:
         dashboard: "Cruscotto"
         my_author: "Il mio Profilo Autore"

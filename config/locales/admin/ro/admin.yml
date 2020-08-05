@@ -481,6 +481,7 @@ ro:
 
     misc:
       no_translated_title: "Titlu Netradus" # This should be written in titlecase
+      previous_slugs: "Previous URLs Used" # TODO: Translate
       menu:
         dashboard: "Tablou de Bord"
         my_author: "Profilul Meu"

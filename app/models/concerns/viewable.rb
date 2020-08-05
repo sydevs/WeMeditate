@@ -20,7 +20,7 @@ module Viewable
     end
 
     base.extend FriendlyId
-    base.friendly_id :name, use: (translatable ? :globalize : :slugged)
+    base.friendly_id :name, use: [(translatable ? :globalize : :slugged), :history]
     base.validates :slug, length: { minimum: 3, message: I18n.translate('admin.messages.text_too_short', count: 3) }
 
     def self.viewable?

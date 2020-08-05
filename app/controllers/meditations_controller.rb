@@ -1,7 +1,5 @@
 class MeditationsController < ApplicationController
 
-  before_action :redirect_meditation, except: %i[index self_realization]
-
   MEDITATIONS_PER_PAGE = 10
 
   def index
@@ -68,6 +66,7 @@ class MeditationsController < ApplicationController
 
   def show
     @meditation = Meditation.publicly_visible.friendly.find(params[:id])
+    return if redirect_legacy_url(@meditation)
     @prescreen = !browser.bot? && cookies[:prescreen] != 'dismissed'
 
     meditations_page = StaticPage.preload_for(:content).find_by(role: :meditations)
@@ -99,12 +98,6 @@ class MeditationsController < ApplicationController
     raise ActiveRecord::RecordNotFound, 'No meditation found for the given filters' unless meditation.present?
 
     redirect_to meditation_url(meditation), status: :see_other
-  end
-
-  def redirect_meditation
-    @meditation = Meditation.friendly.find(params[:id])
-
-    return redirect_to @meditation, status: :moved_permanently unless request.path == meditation_path(@meditation)
   end
 
 end

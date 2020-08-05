@@ -310,9 +310,6 @@ en:
     preview:
       no_custom_meditations: "The custom meditation interface cannot be previewed, and so it has been hidden for this preview."
 
-    slugs:
-      previous_slugs: "Previous URLs Used"
-
     metadata:
       key: "name"
       value: "value"
@@ -478,6 +475,7 @@ en:
 
     misc:
       no_translated_title: "No Translated Title" # This should be written in titlecase
+      previous_slugs: "Previous URLs Used"
       menu:
         dashboard: "Dashboard"
         my_author: "My Author Profile"

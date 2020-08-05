@@ -50,18 +50,18 @@
       - if record.is_a?(Meditation)
         .hint = translate('admin.hints.self_realization_slug', slug: translate('routes.self_realization', locale: context_locale))
 
-  - if record.viewable? && record.model_name != "StaticPage" && !record.slugs.empty?
+  - if record.viewable?  && !record.slugs.empty?
     .field
       .ui.accordion
         .title
           i.dropdown.icon
-          = translate 'admin.slugs.previous_slugs'
+          = translate 'admin.misc.previous_slugs'
         .content
           .ui.list
             ul
               - record.slugs.pluck(:slug).each do |slug|
                 li.item
-                  = "/#{slug}"
+                  = slug
 
 = render "admin/fields/#{record.model_name.param_key}", f: f, record: record
 

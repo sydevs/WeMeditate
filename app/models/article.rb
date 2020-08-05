@@ -6,14 +6,12 @@
 class Article < ApplicationRecord
 
   # Extensions
-  extend FriendlyId
   audited
   translates *%i[
     name slug metatags priority order
     draft published_at state
     excerpt banner_id thumbnail_id vimeo_id content
   ]
-  friendly_id :name, use: %i[slugged history]
 
   # Concerns
   include Viewable
