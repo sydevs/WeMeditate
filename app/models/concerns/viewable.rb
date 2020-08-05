@@ -28,4 +28,16 @@ module Viewable
     end
   end
 
+  # Some records cannot have their slug (aka URL) changed, this checks to see if the record is one of those.
+  def fixed_slug?
+    case self
+    when StaticPage
+      %i[home subtle_system articles treatments tracks meditations streams].include?(role&.to_sym)
+    when Meditation
+      slug == I18n.translate('routes.self_realization')
+    else
+      false
+    end
+  end
+
 end

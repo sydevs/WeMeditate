@@ -24,7 +24,7 @@
   - else
     = f.input :name
 
-  - if record_has_fixed_slug?
+  - if record.fixed_slug?
     = f.input :slug do
       - path = @record.is_a?(StaticPage) ? static_page_path_for(@record) : (@record.new_record? ? "#{polymorphic_path(@record)}/#{@record.slug}" : polymorphic_path(@record))
       - url = @record.is_a?(StaticPage) ? static_page_url_for(@record) : (@record.new_record? ? "#{polymorphic_url(@record)}/#{@record.slug}" : polymorphic_url(@record))
@@ -50,7 +50,7 @@
       - if record.is_a?(Meditation)
         .hint = translate('admin.hints.self_realization_slug', slug: translate('routes.self_realization', locale: context_locale))
 
-  - if record.viewable?  && !record.slugs.empty?
+  - if !record.fixed_slug?
     .field
       .ui.accordion
         .title

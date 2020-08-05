@@ -9,18 +9,6 @@ module Admin::RecordHelper
     destroy: 'trash',
   }.freeze
 
-  # Some records cannot have their slug (aka URL) changed, this checks to see if the active record is one of those.
-  def record_has_fixed_slug?
-    case @record
-    when StaticPage
-      %i[home subtle_system articles treatments tracks meditations streams].include?(@record.role&.to_sym)
-    when Meditation
-      @record.slug == translate('routes.self_realization')
-    else
-      false
-    end
-  end
-
   # ===== INTERFACE ====== #
 
   # Render a set of actions, as a button with a dropdown
