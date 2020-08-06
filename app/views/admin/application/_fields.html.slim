@@ -50,7 +50,7 @@
       - if record.is_a?(Meditation)
         .hint = translate('admin.hints.self_realization_slug', slug: translate('routes.self_realization', locale: context_locale))
 
-  - if !record.fixed_slug?
+  - unless record.fixed_slug?
     .field
       .ui.accordion
         .title
@@ -59,7 +59,7 @@
         .content
           .ui.list
             ul
-              - record.slugs.pluck(:slug).each do |slug|
+              - record.slugs.where(locale: Globalize.locale).pluck(:slug).each do |slug|
                 li.item
                   = slug
 
