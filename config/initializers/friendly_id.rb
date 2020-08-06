@@ -125,7 +125,7 @@ module FriendlyId
           Slug.arel_table[:sluggable_type].eq(base_class.to_s).and(Slug.arel_table[:slug].eq(id))
         end
       end
-      
+
     end
 
     def create_slug
