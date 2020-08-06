@@ -60,7 +60,7 @@ module NavigationHelper
   # Return a list of navigation items for mobile
   def mobile_navigation_items
     mobile_navigation = []
-    # home_page = static_page_preview_for(:home)
+    # home_page = StaticPage.preview_for(:home)
 
     # mobile_navigation.push({
     #   title: home_page.name,
