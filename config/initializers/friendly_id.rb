@@ -105,6 +105,7 @@ end
 
 module FriendlyId
   module History
+
     module FinderMethods
 
       include ::FriendlyId::FinderMethods
@@ -124,6 +125,7 @@ module FriendlyId
           Slug.arel_table[:sluggable_type].eq(base_class.to_s).and(Slug.arel_table[:slug].eq(id))
         end
       end
+      
     end
 
     def create_slug
@@ -135,6 +137,6 @@ module FriendlyId
         super_create_slug(nil)
       end
     end
-    
+
   end
 end
