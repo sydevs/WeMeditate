@@ -102,3 +102,37 @@ module FriendlyId
     end
   end
 end
+
+module FriendlyId
+  module History
+    module FinderMethods
+      include ::FriendlyId::FinderMethods
+
+      def exists_by_friendly_id?(id)
+        if respond_to?(:translation_class)
+          joins(:slugs, :translations).where(translation_class.arel_table[friendly_id_config.query_field].eq(id)).exists? || joins(:slugs).where(slug_history_clause(id)).exists?
+        else
+          joins(:slugs).where(slug_history_clause(id)).exists?
+        end
+      end
+
+      def slug_history_clause(id)
+        if respond_to?(:translation_class)
+          Slug.arel_table[:sluggable_type].eq(base_class.to_s).and(Slug.arel_table[:slug].eq(id)).and(Slug.arel_table[:locale].eq(::Globalize.locale))
+        else
+          Slug.arel_table[:sluggable_type].eq(base_class.to_s).and(Slug.arel_table[:slug].eq(id))
+        end
+      end
+    end
+
+    def create_slug
+      if respond_to?(:translation_class)
+        translations.map(&:locale).each do |locale|
+          ::Globalize.with_locale(locale) {super_create_slug(locale)}
+        end
+      else
+        super_create_slug(nil)
+      end
+    end
+  end
+end
