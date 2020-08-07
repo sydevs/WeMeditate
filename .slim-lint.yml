@@ -1,4 +1,7 @@
 linters:
+  LineLength:
+    enabled: false
+
   RuboCop:
     enabled: true
     # These cops are incredibly noisy since the Ruby we extract from Slim
@@ -37,6 +40,3 @@ linters:
       - Style/Next
       - Style/WhileUntilModifier
       - Style/IdenticalConditionalBranches
-
-  LineLength:
-    enabled: false
