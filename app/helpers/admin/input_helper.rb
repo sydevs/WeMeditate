@@ -130,8 +130,8 @@ module Admin::InputHelper
   # Special logic for `media` draftable fields
   def draftable_media_field form, attribute, type: :image, preview: true, **args
     key = "#{attribute}_id"
-    value = args[:value] ? args[:value] : form.object.send(key)
-    draft_value = args[:draft] ? args[:draft] : (form.object.draft.send(key) if form.object.draft&.key?(key))
+    value = args[:value] || form.object.send(key)
+    draft_value = args[:draft] || (form.object.draft.send(key) if form.object.draft&.key?(key))
 
     draftable_field form, key, type: :media, value: value, draft: draft_value, wrapper: (args[:wrapper] || {}) do |val|
       capture do
@@ -171,10 +171,10 @@ module Admin::InputHelper
   # Special logic for `coordinates` (aka Latitude & Longitude) draftable fields
   def draftable_coordinates_field form, hint: nil, **args
     args[:value] = form.object.coordinates unless args.key?(:value)
-    
+
     unless args.key?(:draft)
-      latitude_draft = form.object.parsed_draft&.has_key?('latitude') ? form.object.parsed_draft['latitude'] : args[:value][0]
-      longitude_draft = form.object.parsed_draft&.has_key?('longitude') ? form.object.parsed_draft['longitude'] : args[:value][1]
+      latitude_draft = form.object.parsed_draft&.key?('latitude') ? form.object.parsed_draft['latitude'] : args[:value][0]
+      longitude_draft = form.object.parsed_draft&.key?('longitude') ? form.object.parsed_draft['longitude'] : args[:value][1]
       args[:draft] = [latitude_draft, longitude_draft].compact
       args[:draft] = nil if args[:value] == args[:draft]
     end

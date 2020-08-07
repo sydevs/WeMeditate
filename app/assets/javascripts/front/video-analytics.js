@@ -1,63 +1,108 @@
-/* global */
-/* exported */
+/* global dataLayer */
+/* exported VideoAnalytics */
 
-/**
- * Capture video events to Google Analytics 
- *
- * Source: https://gist.github.com/placeless/6067714
- *
- * Usage:
- *
- *   document.addEventListener('DOMContentLoaded', init, false)
- *   var videoId = document.getElementById('video-id')
- *   var videoTitle = videoId.getAttribute('title')
- */
+class VideoAnalytics {
 
-// TODO: Actually hook up these functions to track analytics
+  constructor(player, localTitle, globalTitle) {
+    console.log('Init Video Analytics', localTitle, player)
 
-/*
-function init () {
-  videoId.addEventListener('ended', videoEnd, false)
-  videoId.addEventListener('timeupdate', videoTimeUpdate, false)
-  videoId.addEventListener('play', videoPlay, false)
-  videoId.addEventListener('pause', videoPause, false)
-}
+    this.localTitle = localTitle
+    this.globalTitle = globalTitle
+    this.player = player
 
-function setKeyFrames (duration) {
-  var quarter = (duration / 4).toFixed(1)
-  sessionStorage.setItem('one', quarter)
-  sessionStorage.setItem('two', (quarter * 2).toFixed(1))
-  sessionStorage.setItem('three', (quarter * 3).toFixed(1))
-}
+    this.lastTimeUpdate = null
+    this.totalWatchedTime = 0
+    this.lastReportedImpression = 0
+    this.lastReportedTotal = 0
+    this.reportingInterval = 5 // Percent
 
-function videoTimeUpdate () {
-  var curTime = videoId.currentTime.toFixed(1)
-  switch (curTime) {
-  case sessionStorage.getItem('one'):
-    ga('send', 'event', 'video', '25% video played', videoTitle)
-	sessionStorage.setItem('one', null)
-	break
-  case sessionStorage.getItem('two'):
-    ga('send', 'event', 'video', '50% video played', videoTitle)
-	sessionStorage.setItem('two', null)
-	break
-  case sessionStorage.getItem('three'):
-    ga('send', 'event', 'video', '75% video played', videoTitle)
-	sessionStorage.setItem('three', null)
-	breeak
+    player.addEventListener('timeupdate', _event => this.onTimeUpdate(), false)
+    player.addEventListener('play', _event => this.onPlay(), false)
+    player.addEventListener('pause', _event => this.onPause(), false)
+    player.addEventListener('seeked', _event => this.onSeek(), false)
   }
-}
 
-function videoEnd () {
-  ga('send', 'event', 'video', '100% video played', videoTitle)
-}
+  onTimeUpdate() {
+    if (this.player.seeking) return
 
-function videoPlay () {
-  ga('send', 'event', 'video', 'video played', videoTitle)
-  setKeyFrames(this.duration)
-}
+    const currentPercentage = this.getCurrentPercentage()
+    if (Math.floor(currentPercentage / this.reportingInterval) != this.lastReportedImpression) {
+      this.lastReportedImpression = Math.floor(currentPercentage / this.reportingInterval)
 
-function videoPause () {
-  ga('send', 'event', 'video', 'video paused', videoTitle)
+      this.sendEvent('Video Impression', {
+        time: (this.lastReportedImpression * this.reportingInterval / 100.0) * this.player.duration,
+        percentage: this.lastReportedImpression * this.reportingInterval,
+      })
+    }
+
+    if (this.lastTimeUpdate) {
+      this.totalWatchedTime += this.player.currentTime - this.lastTimeUpdate
+    }
+
+    this.lastTimeUpdate = this.player.currentTime
+
+    const totalPercentage = this.getTotalPercentageWatched()
+    if (Math.floor(totalPercentage / this.reportingInterval) != this.lastReportedTotal) {
+      this.lastReportedTotal = Math.floor(totalPercentage / this.reportingInterval)
+
+      this.sendEvent('Video Progress', {
+        time: this.getTotalTimeWatched(),
+        percentage: this.getTotalPercentageWatched(),
+      })
+    }
+
+    if (currentPercentage >= 95 && totalPercentage >= 95) {
+      this.sendEvent('Video Completed')
+    }
+  }
+
+  onPlay() {
+    this.lastTimeUpdate = null
+    if (this.player.seeking) return
+
+    this.sendEvent('Video Played')
+  }
+
+  onPause() {
+    this.lastTimeUpdate = this.player.currentTime
+    if (this.player.seeking) return
+    
+    this.sendEvent('Video Paused')
+  }
+
+  onSeek() {
+    this.sendEvent('Video Seeked')
+  }
+
+  sendEvent(name, overrides = {}) {
+    let data = {
+      event: name,
+      globalTitle: this.globalTitle,
+      localTitle: this.localTitle,
+      time: this.getCurrentTime(),
+      percentage: this.getCurrentPercentage(),
+    }
+
+    Object.assign(data, overrides)
+
+    console.log('Send Event', data)
+    dataLayer.push(data)
+  }
+
+  getCurrentPercentage() {
+    return parseInt(this.player.currentTime / this.player.duration * 100.0)
+  }
+
+  getCurrentTime() {
+    return this.player.currentTime.toFixed(1)
+  }
+
+  getTotalPercentageWatched() {
+    return parseInt(this.totalWatchedTime / this.player.duration * 100.0)
+  }
+
+  getTotalTimeWatched() {
+    return this.totalWatchedTime.toFixed(1)
+  }
+
 }
-*/

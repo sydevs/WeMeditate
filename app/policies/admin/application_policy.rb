@@ -17,7 +17,7 @@ module Admin
     end
 
     def index?
-      update? || create? || destroy?
+      update? || create?
     end
 
     def show?
@@ -26,7 +26,7 @@ module Admin
 
     def destroy?
       return false unless super_admin? && can_access_locale?
-      return false unless !record.respond_to?(:translated_locales) || record.translated_locales&.include?(I18n.locale)
+      return false unless !record.respond_to?(:translated_locales) || record.translated_locales&.include?(Globalize.locale)
       return true
     end
 
@@ -47,7 +47,7 @@ module Admin
     end
 
     def preview?
-      update?
+      show? || update?
     end
 
     def update_translation?
@@ -92,7 +92,7 @@ module Admin
     end
 
     def can_access_locale?
-      user.accessible_locales.include? I18n.locale
+      user.accessible_locales.include? Globalize.locale
     end
 
     def owns_record?
@@ -101,9 +101,9 @@ module Admin
       return true
     end
 
-    def needs_translation?
+    def can_translate?
       return true if record.is_a?(Class)
-      record.class.needs_translation_by(user).exists?(record.id)
+      record.translatable_by?(user)
     end
 
   end

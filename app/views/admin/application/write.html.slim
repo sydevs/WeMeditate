@@ -1,13 +1,15 @@
 
-- content_for :title, translate('admin.action.target.write', record: human_model_name(@record))
-- allow = policy(@record)
-- has_draft = @record.has_draft?(:content)
-- data = { upload: polymorphic_admin_path([:admin, @record, MediaFile]), triangle: image_path('graphics/triangle.svg') }
+ruby:
+  content_for :title, translate('admin.action.target.write', record: human_model_name(@record))
+  
+  allow = policy(@record)
+  has_draft = @record.has_draft?(:content)
+  data = { upload: polymorphic_admin_path([:admin, @record, MediaFile]), triangle: image_path('graphics/triangle.svg') }
 
-- locale = !@record.try(:has_translation?, :content) ? @record.original_locale : I18n.locale
-- Globalize.with_locale(locale) do
-  - content = has_draft ? @record.parsed_draft_content : (@record.parsed_content || {})
-  = simple_form_for @record, url: polymorphic_admin_path([:admin, @record]), html: { id: "editor-form" } do |f|
+= simple_form_for @record, url: polymorphic_admin_path([:admin, @record]), html: { id: "editor-form" } do |f|
+  - locale = !@record.try(:has_translation?, :content) ? @record.original_locale : Globalize.locale
+  - Globalize.with_locale(locale) do
+    - content = has_draft ? @record.parsed_draft_content : (@record.parsed_content || {})
     = f.hidden_field :content, as: :hidden, id: 'content-input'
 
     .field class=('draft' if has_draft) data-draft='content'
@@ -24,6 +26,10 @@
               #splash-background-image
               #splash-title.cdx-input.cdx-input--title contenteditable=true data-placeholder="Enter some leading text"
               #splash-text.cdx-input.cdx-input--text contenteditable=true data-placeholder="Enter a subtitle"
+
+              - if @splash_style == :stream
+                .cdx-splash-countdown 01:23:45
+              
               #splash-action.cdx-input.cdx-input--button contenteditable=true data-placeholder="Button Text"
               #splash-url.cdx-input.cdx-input--url contenteditable=true data-placeholder="Enter url link"
 

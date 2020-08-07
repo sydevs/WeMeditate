@@ -1,9 +1,11 @@
 doctype html
+
 html lang=locale
   head
     = google_tag_manager
     = render_metatags
     = csrf_meta_tags
+    = csp_meta_tag
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -19,10 +21,10 @@ html lang=locale
     = yield :head if content_for? :head
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', nonce: true, 'data-turbolinks-track': 'reload'
     = render_structured_data
 
-  body id='top'
+  body id='top' data-gtm-context=(controller_name == 'static_pages' ? @static_page.role : controller_name) data-gtm-page=action_name
     = render 'layouts/partials/header', cached: true
     = yield
     = render 'layouts/partials/footer', cached: true

@@ -1,0 +1,91 @@
+
+# EXTENSION TRANSLATIONS
+# This file contains translations for addons which are used by the website.
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+es:
+  devise:
+    failure:
+      invited: "Tiene una invitación pendiente, acéptela para terminar de crear su cuenta."
+      already_authenticated: "Ya has iniciado sesión."
+      inactive: "Tu cuenta aún no está activada."
+      invalid: "Inválida %{authentication_keys} o Contraseña."
+      locked: "Tu cuenta está bloqueada."
+      last_attempt: "Tienes un intento más antes de que se bloquee tu cuenta."
+      not_found_in_database: "Inválida %{authentication_keys} o contraseña."
+      timeout: "Su sesión expiró. Inicia sesión de nuevo para continuar."
+      unauthenticated: "Es necesario iniciar sesión o registrarse antes de continuar."
+      unconfirmed: "Debe confirmar su dirección de correo electrónico antes de continuar."
+    mailer:
+      reset_password_instructions:
+        subject: "Instrucciones para resetear contraseña"
+      unlock_instructions:
+        subject: "Instrucciones de desbloqueo"
+      email_changed:
+        subject: "Correo electrónico cambiado"
+      password_change:
+        subject: "Contraseña cambiada"
+      invitation_instructions:
+        subject: "Instrucciones de invitación"
+        hello: "Hola %{email}"
+        someone_invited_you: "Te invitaron a ser editor en %{url}, puedes aceptarlo a través del siguiente enlace."
+        accept: "Aceptar la invitación"
+        accept_until: "Esta invitación vencerá en %{due_date}."
+        ignore: "Si no desea aceptar la invitación, por favor ignore este correo electrónico.<br />\nSu cuenta no se creará hasta que acceda al enlace de arriba y establezca su contraseña."
+    passwords:
+      no_token: "No puedes acceder a esta página sin acceder desde un correo de restablecimiento de contraseña. Si accedes desde un correo de restablecimiento de contraseña, por favor asegurate de que usaste todo el URL facilitado."
+      send_instructions: "Recibirás un correo con instrucciones sobre cómo restablecer tu contraseña en unos minutos."
+      send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos, recibirás un enlace de recuperación de contraseña en tu correo en unos minutos."
+      updated: "Tu contraseña ha sido cambiada exitosamente. Ahora has iniciado sesión."
+      updated_not_active: "Tu contraseña ha sido cambiada exitosamente."
+    invitations:
+      send_instructions: "Un correo de invitación fue envíado a %{email}."
+      invitation_token_invalid: "La invitación proporcionada no es válida!"
+      updated: "Tu contraseña fue establecida exitosamente. Ahora has iniciado sesión."
+      updated_not_active: "Tu contraseña fue establecida exitosamente."
+      no_invitations_remaining: "No quedan invitaciones"
+      invitation_removed: "Tu invitación fue eliminada."
+      new:
+        header: "Enviar invitación"
+        submit_button: "Enviar una invitación"
+      edit:
+        header: "Establecer tu contraseña"
+        submit_button: "Establecer mi contraseña"
+    sessions:
+      signed_in: "Ha iniciado sesión exitosamente."
+      signed_out: "Cerró sesión exitosamente."
+      already_signed_out: "Cerró sesión exitosamente."
+    unlocks:
+      send_instructions: "Recibirás un correo con instrucciones sobre cómo desbloquear tu cuenta en unos minutos."
+      send_paranoid_instructions: "Si tu cuenta existe, recibirás un correo con instrucciones sobre cómo desbloquearla en unos minutos."
+      unlocked: "Su cuenta ha sido desbloqueada exitosamente. Por favor regístrese para continuar."
+  errors:
+    messages:
+      expired: "ha expirado, por favor solicite uno nuevo"
+      not_found: "no encontrado"
+      not_locked: "no fue bloqueado"
+      not_saved:
+        one: "%{count} error prohibio que este %{resource} se guarde:"
+        other: "%{count} errores prohibieron que este %{resource} se guarde:"
+  time:
+    formats:
+      default: '%k:%M' # Do not translate, unless you know what you are doing
+      time: :time.formats.default # Do not translate
+      date: :date.formats.default # Do not translate
+      short: :date.formats.default # Do not translate
+      devise:
+        mailer:
+          invitation_instructions:
+            accept_until_format: '%B %d, %Y %I:%M %p' # Do not translate, unless you know what you are doing
+  date:
+    formats:
+      default: '%d %b %Y' # Do not translate, unless you know what you are doing
+      date: :date.formats.default # Do not translate
+  simple_form:
+    'yes': "Si"
+    'no': "No"
+    required:
+      text: "necesario"
+      mark: '*' # Do not translate
+    error_notification:
+      default_message: "Por favor revise los problemas a continuación:"

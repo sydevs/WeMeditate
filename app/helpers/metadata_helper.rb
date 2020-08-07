@@ -11,7 +11,7 @@ module MetadataHelper
       @metatags.each do |key, value|
         if key == 'title'
           if action_name == 'home'
-            if value.present?
+            if value.present? && translate('we_meditate') != value
               concat tag.title "#{translate 'we_meditate'} | #{value}"
             else
               concat tag.title translate('we_meditate')
@@ -36,7 +36,7 @@ module MetadataHelper
   def render_structured_data
     return unless @structured_data.present?
 
-    tag.script @structured_data.to_json.html_safe, type: 'application/ld+json'
+    javascript_tag @structured_data.to_json.squish.html_safe, type: 'application/ld+json'
   end
 
   # Get the metatag data for a given record
@@ -95,7 +95,7 @@ module MetadataHelper
       tags['description'] = record.excerpt if record.respond_to?(:excerpt)
       tags['og:type'] = 'article'
       tags['og:image'] = record.thumbnail.url if record.try(:thumbnail).present?
-      tags['og:locale:alternate'] = record.translated_locales.map(&:to_s)
+      tags['og:locale:alternate'] = record.translated_locales.map(&:to_s) if record.try(:translatable?)
       tags['og:article:published_time'] = record.created_at.to_s(:db)
       tags['og:article:modified_time'] = record.updated_at.to_s(:db)
       tags['og:article:section'] = record.category&.name if record.is_a?(Article)
@@ -284,7 +284,7 @@ module MetadataHelper
           'width' => 132,
           'height' => 60,
         },
-        'sameAs' => I18n.translate('social_media').values.reject(&:empty?),
+        'sameAs' => social_media_urls.values.reject(&:empty?),
       }.freeze
     end
 

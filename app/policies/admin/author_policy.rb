@@ -26,7 +26,7 @@ module Admin
     end
 
     def update_translation?
-      return true if translator? && needs_translation? # This call is a bit more costly
+      return true if translator? && can_translate? # This call is a bit more costly
       return manage?
     end
 

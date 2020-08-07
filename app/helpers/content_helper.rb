@@ -4,15 +4,27 @@
 module ContentHelper
 
   # Renders the content blocks for a record, by calling their appropriate partials.
-  def render_content record
+  def render_content record, skip_splash: false
     return content_for(:content) if content_for?(:content)
     return unless record.parsed_content.present?
 
     record.content_blocks.each do |block|
+      next if block['type'] == 'splash' && skip_splash
+
       concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys, record: record
     end
 
     return nil
+  end
+
+  def render_splash_block record, overrides = {}
+    return unless record.parsed_content.present?
+
+    block = record.content_blocks.first['data'].deep_symbolize_keys
+    overrides[:url] = overrides[:url] + block[:url] if overrides[:url] && block[:url]&.starts_with?('#')
+    block.merge!(overrides)
+
+    render 'content_blocks/splash_block', block: block, record: record
   end
 
   # Render a decoration within a cotent block
@@ -31,7 +43,7 @@ module ContentHelper
     end
 
     if type == :circle
-      inline_svg 'graphics/circle.svg', class: classes
+      inline_svg_tag 'graphics/circle.svg', class: classes
     elsif type == :sidetext
       classes << 'sidetext--overlay' unless args[:static]
       content_tag :div, data[:text], class: classes
@@ -42,11 +54,11 @@ module ContentHelper
 
   # Basic formatting for a piece of text that might include line breaks
   def simple_format_content text
-    simple_format(text.gsub('<br>', "\n").html_safe).gsub("\n", '').html_safe
+    simple_format(text.gsub('<br>', "\n").html_safe).gsub("\n", '').html_safe if text
   end
 
   # Display an error message only to administrators, to help debug issues with the content blocks
-  def error message
+  def content_error message
     return unless current_user.present?
 
     content_tag :div, class: 'alert' do

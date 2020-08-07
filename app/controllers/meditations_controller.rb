@@ -4,7 +4,7 @@ class MeditationsController < ApplicationController
 
   def index
     @static_page = StaticPage.preload_for(:content).find_by(role: :meditations)
-    # expires_in 12.hours, public: true
+    expires_in 12.hours, public: true
 
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },
@@ -27,7 +27,8 @@ class MeditationsController < ApplicationController
   # The self realization page has a special action so that it can be redirected to from other parts of the site.
   def self_realization
     @meditation = Meditation.publicly_visible.get(:self_realization)
-    raise ActionController::RoutingError.new('Self Realization Page Not Found') if @meditation.nil?
+    raise ActionController::RoutingError, 'Self Realization Page Not Found' if @meditation.nil?
+
     set_metadata(@meditation)
     render :show
   end
@@ -49,11 +50,11 @@ class MeditationsController < ApplicationController
         @breadcrumbs = [
           { name: StaticPageHelper.preview_for(:home).name, url: root_path },
           { name: StaticPageHelper.preview_for(:meditations).name, url: meditations_path },
-          { name: helpers.human_model_name(Meditation, :plural), url: archive_meditations_path },
+          { name: translate('meditations.title'), url: archive_meditations_path },
           { name: translate('meditations.archive.title') },
         ]
 
-        set_metadata({ 'title' => helpers.human_model_name(Meditation, :plural) })
+        set_metadata({ 'title' => translate('meditations.title') })
         render :archive
       end
 

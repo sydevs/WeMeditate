@@ -12,7 +12,8 @@ module Publishable
   included do |base|
     %i[published published_at].each do |column|
       next if base.translated_attribute_names&.include?(column) || base.column_names.include?(column.to_s)
-      throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Publishable`" 
+
+      throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Publishable`"
     end
 
     base.before_validation :set_published_at, if: :published?
@@ -30,7 +31,7 @@ module Publishable
   private
 
     def set_published_at
-      published_at ||= DateTime.now
+      self.published_at ||= DateTime.now
     end
 
 end

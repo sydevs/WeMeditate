@@ -1,9 +1,12 @@
 
-- url = (block[:format] == 'contact' ? contact_path : subscribe_path)
-- classes = ['content__form', 'js-form']
-- classes << "content__form--#{block[:format]}"
+ruby:
+  url = (block[:format] == 'contact' ? contact_path : subscribe_path)
+  classes = ['content__form', 'js-form']
+  classes << "content__form--#{block[:format]}"
+  classes << 'content__form--compact' if block[:compact] == true
 
 = form_tag url, class: classes, remote: true do
+  .anchor id='signup'
   .divider.divider--leaf.divider--leaf-only.divider--leaf-up
 
   .content__form__content
@@ -13,13 +16,18 @@
     .content__form__fields
       .content__form__message
       = fields_for block[:format] do |f|
-        = f.hidden_field :gobbledigook if block[:format] == 'contact'
         = f.email_field :email_address, placeholder: t('form.input.email')
-        = f.text_area :message, placeholder: t('form.input.message'), rows: 5 if block[:format] == 'contact'
-          
-        - unless block[:format] == 'contact'
+
+        - if block[:format] == 'contact'
+          = f.text_area :message, placeholder: t('form.input.message'), rows: 5
+          = f.hidden_field :gobbledigook
+          = recaptcha_tags
+        - elsif block[:format] == 'signup'
+          = f.hidden_field :list_id, value: block[:list_id]
+
+        - if translate(block[:format], scope: 'form.input.privacy').present?
           .content__form__privacy
-            = translate 'form.input.privacy.text'
+            = translate(block[:format], scope: 'form.input.privacy')
             a href=static_page_path_for(:privacy) target='_blank' = translate 'form.input.privacy.learn_more'
 
     button.button.button--box = block[:action]

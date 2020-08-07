@@ -1,0 +1,91 @@
+# EXTENSION TRANSLATIONS
+# This file contains translations for addons which are used by the website.
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+ru:
+  devise:
+    failure:
+      invited: "У вас есть приглашение, ожидающее ответа. Примите его, чтобы завершить создание аккаунта."
+      already_authenticated: "Вы уже вошли в систему."
+      inactive: "Ваш аккаунт ещё не активирован."
+      invalid: "Неверный %{authentication_keys} или пароль."
+      locked: "Ваш аккаунт заблокирован."
+      last_attempt: "У вас есть последняя попытка, после которой ваш аккаунт будет заблокирован."
+      not_found_in_database: "Неверный %{authentication_keys} или пароль."
+      timeout: "Ваш сеанс истёк. Пожалуйста, войдите снова, чтобы продолжить."
+      unauthenticated: "Войдите в систему или зарегистрируйтесь, чтобы продолжить."
+      unconfirmed: "Подтвердите свой E-mail, чтобы продолжить."
+    mailer:
+      reset_password_instructions:
+        subject: "Инструкция для восстановления пароля"
+      unlock_instructions:
+        subject: "Инструкция для разблокировки"
+      email_changed:
+        subject: "E-mail Изменён"
+      password_change:
+        subject: "Пароль Изменён"
+      invitation_instructions:
+        subject: "Инструкция Приглашения"
+        hello: "Привет %{email}"
+        someone_invited_you: "Вы были приглашены стать редактором %{url}, вы можете принять приглашение, перейдя по ссылке."
+        accept: "Принять приглашение"
+        accept_until: "Это приглашение действительно до %{due_date}."
+        ignore: "Если вы не хотите принимать приглашение, пожалуйста, проигнорируйте этот E-mail.<br />\nВаш аккаунт не будет создан, пока вы не перейдёте по ссылке выше и не создадите свой пароль."
+    passwords:
+      no_token: "Вы не можете получить доступ к этой странице, не перейдя по ссылке в E-mail для восстановления пароля. Если вы перешли по ссылке из E-mail для восстановления пароля, убедитесь, что вы использовали URL-адрес из E-mail целиком."
+      send_instructions: "В течение нескольких минут вы получите E-mail с инструкцией для восстановления пароля."
+      send_paranoid_instructions: "Если ваш E-mail адрес имеется в нашей базе, вы получите ссылку для восстановления пароля по E-mail в течение нескольких минут."
+      updated: "Ваш пароль был успешно изменён. Теперь вы вошли в систему."
+      updated_not_active: "Ваш пароль был успешно изменён."
+    invitations:
+      send_instructions: "Приглашение было направлено по E-mail на %{email}."
+      invitation_token_invalid: "Указанный токен приглашения недействителен!"
+      updated: "Ваш пароль был успешно создан. Теперь вы вошли в систему."
+      updated_not_active: "Ваш пароль был успешно создан."
+      no_invitations_remaining: "Нет неотвеченных приглашений."
+      invitation_removed: "Ваше приглашение было удалено."
+      new:
+        header: "Отправить приглашение"
+        submit_button: "Отправить приглашение"
+      edit:
+        header: "Задать пароль"
+        submit_button: "Задать пароль"
+    sessions:
+      signed_in: "Вы успешно вошли в систему."
+      signed_out: "Вы успешно вышли из системы."
+      already_signed_out: "Вы успешно вышли из системы."
+    unlocks:
+      send_instructions: "В течение нескольких минут вы получите E-mail c инструкцией для разблокировки вашего аккаунта."
+      send_paranoid_instructions: "Если ваш аккаунт существует, вы получите E-mail c инструкцией для его разблокировки в течение нескольких минут."
+      unlocked: "Ваш аккаунт успешно разблокирован. Пожалуйста, войдите в систему, чтобы продолжить."
+  errors:
+    messages:
+      expired: "истёк срок действия, пожалуйста, запросите новый"
+      not_found: "не найден"
+      not_locked: "не был заблокирован"
+      not_saved:
+        one: "%{count} ошибка не позволяет сохранить %{resource}:" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "%{count} ошибки не позволяют сохранить %{resource}:" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+        many: "%{count} ошибки не позволяют сохранить %{resource}:" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+  time:
+    formats:
+      default: '%k:%M' # Do not translate, unless you know what you are doing
+      time: :time.formats.default # Do not translate
+      date: :date.formats.default # Do not translate
+      short: :date.formats.default # Do not translate
+      devise:
+        mailer:
+          invitation_instructions:
+            accept_until_format: '%B %d, %Y %I:%M %p' # Do not translate, unless you know what you are doing
+  date:
+    formats:
+      default: '%d %b %Y' # Do not translate, unless you know what you are doing
+      date: :date.formats.default # Do not translate
+  simple_form:
+    'yes': "Да"
+    'no': "Нет"
+    required:
+      text: "обязательно"
+      mark: '*' # Do not translate
+    error_notification:
+      default_message: "Пожалуйста, ознакомьтесь с проблемой ниже:"

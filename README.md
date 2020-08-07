@@ -84,9 +84,9 @@ Those vimeo videos that use the HTML5 player must have vimeo metadata loaded, an
 An additional complication is that some videos, such as those on the Meditation and Treatment pages also have vertical versions of those videos, which are used for mobile. JS/CSS code is set up to switch between these two orientations.
 
 ### Inline SVGs
-In many parts of the code we render SVGs inline so that we can then manipulate them using CSS. Unfortunately we use two methods to accomplish this inlining. One is the `inline_svg` gem/method on the server side, which is the preferred method. However some SVGs must be inlined using JavaScript and the `js-inline-svg` class. This is because those SVGs are hosted externally (on Google Cloud) and the `inline_svg` method is not able to handle them.
+In many parts of the code we render SVGs inline so that we can then manipulate them using CSS. Unfortunately we use two methods to accomplish this inlining. One is the `inline_svg_tag` gem/method on the server side, which is the preferred method. However some SVGs must be inlined using JavaScript and the `js-inline-svg` class. This is because those SVGs are hosted externally (on Google Cloud) and the `inline_svg_tag` method is not able to handle them.
 
-Ideally we would find a solution to remove the `js-inline-svg` method, and only using `inline_svg`, but for the moment this is how it works.
+Ideally we would find a solution to remove the `js-inline-svg` method, and only using `inline_svg_tag`, but for the moment this is how it works.
 
 ### CMS Code
 The entirety of the CMS rails code is heavily abstracted, because all these models are managed in almost the same patterns. As such, you wll not see the normal rails views folder structures. Instead there is just one `index`, `show`, `edit`, and `new` view for the whole CMS, and each model is rendered using partials within these views.
@@ -144,7 +144,7 @@ This is mainly useful for those who are not already familiar with Ruby on Rails.
 - `/Gemfile` - this file defines the Ruby packages which get bundle and installed with the server.
 
 # Deployment & Infrastructure
-The project's servers and hosted and deployed using Heroku. Any changes which are pushed to the `master` branch will be automatically deployed to the staging server (en.staging.wemeditate.co). If you need access to the staging server, please ask and a login will be created for you.
+The project's servers and hosted and deployed using Heroku. Any changes which are pushed to the `master` branch will be automatically deployed to the staging server (en.staging-wemeditate.com). If you need access to the staging server, please ask and a login will be created for you.
 
 Once a change has been verified on the staging server it can be deployed to production in the Heroku dashboard.
 

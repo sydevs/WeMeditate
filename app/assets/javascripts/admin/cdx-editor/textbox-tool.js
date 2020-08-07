@@ -37,6 +37,7 @@ class TextboxTool extends EditorTool {
       asVideo: data.asVideo || false,
       invert: data.invert || false,
       separate: data.separate || false,
+      compact: data.compact || false,
       decorations: data.decorations || {},
     }, { // Config
       id: 'textbox',
@@ -64,6 +65,10 @@ class TextboxTool extends EditorTool {
         {
           name: 'separate',
           icon: 'arrows alternate horizontal',
+        },
+        {
+          name: 'compact',
+          icon: 'clockwise rotated microchip',
         },
         {
           name: 'left',

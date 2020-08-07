@@ -26,7 +26,7 @@
         .ui.floating.simple.dropdown.icon.button
           i.dropdown.icon
           .menu
-            - if @record.has_draft?
+            - if @record.has_draft? && allow.edit?
               a.item href=polymorphic_admin_path([:edit, :admin, @record])
                 i.edit.icon
                 = translate 'admin.action.simple.edit_details'

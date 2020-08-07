@@ -15,6 +15,9 @@
 
 = f.input :name
 = f.input :email, as: :email
+= f.input :preferred_language, selected: current_user.preferred_language,
+                               collection: Rails.configuration.admin_locales.collect { |l| [language_name(l), l] },
+                               hint: translate('admin.hints.preferred_language')
 
 - if current_user != f.object
   - selected_languages_access = (@record.languages_access unless @record.languages_access == current_user.accessible_locales)
@@ -44,22 +47,28 @@
         '  -
         = translate(role, scope: %i[admin permissions role_description])
 - else
-  = f.input :languages_access, hint: translate('admin.hints.languages_access') do
+  = f.input :languages_access do
     - if record.can_access_all_locales?
       = translate('admin.misc.locale.all_languages')
     - else
       = record.languages_access.map { |lang| language_name(lang) }.join(', ')
 
-  = f.input :languages_known, hint: translate('admin.hints.languages_known') do
+  = f.input :languages_known do
     - if record.languages_known.present?
       = record.languages_known.map { |lang| language_name(lang) }.join(', ')
     - else
       = translate('admin.misc.locale.no_languages')
 
-  = f.input :role do
-    strong = human_enum_name(record, :role)
-    '  -
-    = translate(record.role, scope: %i[admin permissions role_description])
+  .ui.divider
+
+  .ui.small.icon.message
+    i.user.icon
+    .content
+      .header
+        = human_attribute_name(record, :role)
+        ' : 
+        = human_enum_name(record, :role)
+      .description = translate(record.role, scope: %i[admin permissions role_description]).sub(/^./, &:upcase)
 
   .ui.hidden.divider
 

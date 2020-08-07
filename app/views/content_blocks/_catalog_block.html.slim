@@ -1,15 +1,16 @@
 
-- item_ids = block[:items].map { |item| item[:id] }
-- showImages = block[:withImages] != false
-- records = block[:type].classify.constantize.published.where(id: item_ids).all
-- return unless records.present?
+ruby:
+  item_ids = block[:items].map { |item| item[:id] }
+  showImages = block[:withImages] != false
+  records = block[:type].classify.constantize.published.where(id: item_ids).all
+  return unless records.present?
 
 .content__catalog class="content__catalog--#{block[:type]}"
   - if block[:title].present? && block[:type] != 'treatments'
     h2.content__catalog__header
-      = inline_svg 'graphics/leaves.svg', class: 'content__catalog__header__leaf'
+      = inline_svg_tag 'graphics/leaves.svg', class: 'content__catalog__header__leaf'
       .content__catalog__header__text = block[:title]
-      = inline_svg 'graphics/leaves.svg', class: 'content__catalog__header__leaf'
+      = inline_svg_tag 'graphics/leaves.svg', class: 'content__catalog__header__leaf'
 
   - if block[:type] == 'articles' || !showImages
     - image_sizes = '(max-width: 767px) calc(100vw - 48px), 360px'
@@ -96,11 +97,11 @@
         = render_decoration :circle, { decorations: { circle: true } }
       /h2.content__catalog__title = block[:decorations][:sidetext][:text]
       .content__catalog__sidetext
-        = render_decoration :sidetext, block, static: true, alignment: :right
+        = render_decoration :sidetext, block, static: records.count > 1, alignment: :right
 
-    .carousel.js-carousel data-style='video'
+    .carousel class='js-carousel' data-style='video'
       - records.each do |meditation|
-        figure.carousel__item
+        figure.carousel__item class='js-carousel-item' data-gtm-label=meditation.name
           a.carousel__video.video href=meditation_path(meditation)
             .video__inner
               .video__thumbnail

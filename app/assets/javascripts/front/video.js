@@ -1,4 +1,4 @@
-/* global Application, Vimeo */
+/* global Application, Vimeo, VideoAnalytics */
 /* exported Video */
 
 class Video {
@@ -7,6 +7,17 @@ class Video {
     this.container = element
     this.responsive = element.classList.contains('video--responsive')
     this.button = element.querySelector('.video__button:not(.video__popup)')
+    this.players = element.querySelectorAll('video')
+
+    if (this.players.length > 0) {
+      this.analytics = []
+
+      for (let i = 0; i < this.players.length; i++) {
+        const player = this.players[i]
+        this.analytics[i] = new VideoAnalytics(player, element.dataset.gtmLocal, element.dataset.gtmGlobal)
+      }
+    }
+    
     if (this.button) {
       this.button.innerHTML = '<div class="video__button__loader icon icon--spinner"></div>'
       this.button.addEventListener('click', event => {

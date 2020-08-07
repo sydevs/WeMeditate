@@ -15,86 +15,10 @@
         - record.errors.full_messages.each do |message|
           li = message
 
-  - if record.stateable?
-    - states = record.avaliable_states.map { |state| [human_enum_name(record, :state, state), state.to_s] }
-    - if record.published? && !record.unpublishable?
-      = f.input :state do
-        .ui.icon.label
-          i.info.circle.icon
-          = human_enum_name(record, :state)
-    - elsif record.draftable?
-      = draftable_field f, :state, type: :collection, input: { collection: states } do |value|
-        - f.input_field :state, collection: states, selected: value, disabled: !allow.update_structure?
-    - else
-        - f.input :state, collection: states, disabled: !allow.update_structure?
-  - elsif record.publishable? && allow.review?
-    - if record.draftable?
-      = draftable_publish_field f
-    - elsif allow.publish?
-      = f.input :published do
-        = publish_input f, :published, enabled: allow.publish?
-
-  - if record.viewable?
-    - if record.draftable?
-      = draftable_field f, :name
-    - else
-      = f.input :name
-
-    - if record_has_fixed_slug?
-      = f.input :slug do
-        - url = @record.is_a?(StaticPage) ? static_page_url_for(@record) : (@record.new_record? ? "#{polymorphic_url(@record)}/#{@record.slug}" : polymorphic_url(@record))
-        = record_detail 'linkify', CGI.unescape(url), url: url
-        = f.hint translate('admin.hints.fixed_slug')
-    - elsif record.draftable?
-      / TODO: Try and improve this janky way of getting the url. It's because articles don't have an index route
-      - url = record.is_a?(Article) && record.new_record? ? "/#{translate 'routes.articles'}/*" : url_for(record)
-      = draftable_slug_field f, url
-    - else
-      - url = record.new_record? ? "/#{polymorphic_path(record.class)}/*" : polymorphic_path(record)
-      - url = url.gsub(%r{\/[^\/]*\/?$}, '/') # Strip the last element from the url
-      = f.input :slug do
-        = content_tag :div, class: 'ui labeled slug input' do
-          = tag.div CGI.unescape(url), class: 'ui basic label'
-          = f.input_field :slug
-        - if record.is_a?(Meditation)
-          .hint = translate('admin.hints.self_realization_slug', slug: translate('routes.self_realization'))
-
-  = render "admin/fields/#{record.model_name.param_key}", f: f, record: record
-
-  - if record.viewable? && allow.update_structure?
-    = render 'admin/partials/repeatable_fields', f: f, attribute: :metatags, horizontal: true do |ff, item|
-      = ff.text_field :name, value: item[0], placeholder: translate('admin.metadata.key'), name: "#{ff.object_name}[keys][]", data: { key: 'key' }
-      = ff.text_field :value, value: item[1], placeholder: translate('admin.metadata.value'), name: "#{ff.object_name}[values][]", data: { key: 'value' }
-
-    - unless record.new_record?
-      .field
-        .ui.accordion#metatags
-          .title
-            i.dropdown.icon
-            = translate 'admin.metadata.default_metadata'
-          .content
-            .ui.list
-              - default_metatags(record).each do |key, value|
-                .item
-                  strong = key
-                  - if value.is_a? Array
-                    span = value
-                  - else
-                    span "#{value}"
-
-        .ui.accordion#jsonld
-          .title
-            i.dropdown.icon
-            = translate 'admin.metadata.generated_jsonld'
-          .content
-            code = JSON.pretty_generate(structured_data(record))
-
-  - if record.respond_to?(:published) && !allow.review?
-    - if record.draftable?
-      = draftable_publish_field f
-    - elsif allow.publish?
-      = f.input :published do
-        = publish_input f, :published, enabled: allow.publish?
+  - locale = !@record.try(:has_translation?, :details) ? @record.original_locale : Globalize.locale
+  - context_locale = Globalize.locale
+  - Globalize.with_locale(locale) do
+    = render 'admin/application/fields', f: f, record: record, context_locale: context_locale
 
   .ui.hidden.divider
 

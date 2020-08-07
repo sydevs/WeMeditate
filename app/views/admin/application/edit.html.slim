@@ -19,9 +19,4 @@
 
 .clearfix
 
-- if @record.translatable?
-  - locale = !@record.try(:has_translation?, :details) ? @record.original_locale : I18n.locale
-  - Globalize.with_locale(locale) do
-    = render 'admin/application/form', record: @record
-- else
-  = render 'admin/application/form', record: @record
+= render 'admin/application/form', record: @record

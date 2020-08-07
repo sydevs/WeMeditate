@@ -1,6 +1,7 @@
 
-- classes = ['content__list']
-- classes << "content__list--#{block[:style]}"
+ruby:
+  classes = ['content__list']
+  classes << "content__list--#{block[:style]}"
 
 .content__list class="content__list--#{block[:style]}"
   - if block[:style] == 'ordered'

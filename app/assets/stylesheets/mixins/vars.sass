@@ -29,6 +29,7 @@ $narrow-content-width: 766px
 $laptop-content-width: 1150px
 $desktop-content-width: 1250px
 $widescreen-content-width: 1500px
+$max-stream-height: 1024px
 
 $gutter-width: 24px
 $scrollspy-width: 3px
@@ -46,6 +47,7 @@ $color-text-sidetext: #d8d5d5
 $color-text-inverse: white
 $color-text-orange: #e08e79
 $color-text-blue: #c5e0dc
+$color-text-blue-dark: #61aaa0
 
 $color-header: #555555
 $color-header-light: #7b7b7b
@@ -62,6 +64,7 @@ $color-player-light: #eeeeee
 $color-player-blue: #c5e0dc
 $color-player-orange: #ff856f
 $color-box-orange: #ff856f
+$color-box-blue: #c5e0dc
 
 $color-button-blue: #ebf4f3
 $color-button-blue-dark: #c5e0dc
@@ -169,4 +172,9 @@ $icon-computer: '\e90f'
 
 @mixin desktop-or-smaller
   @media only screen and (max-width: #{$desktop-width - 1px})
+    @content
+
+
+@mixin max-stream-height
+  @media only screen and (min-height: #{$max-stream-height})
     @content

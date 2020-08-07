@@ -17,7 +17,7 @@ class ParagraphTool extends EditorTool {
     }, { // Config
       id: 'paragraph',
       fields: {
-        text: { label: '' },
+        text: { label: '', contained: false },
       },
     }, api)
 
@@ -42,7 +42,8 @@ class ParagraphTool extends EditorTool {
   }
 
   onPaste(event) {
-    this.data = { text: event.detail.data }
+    this.data = { text: event.detail.data.innerHTML }
+    this.container.querySelector(`.${this.CSS.fields.text}`).innerHTML = this.data.text
   }
 
   // Check for emptiness
@@ -54,4 +55,15 @@ class ParagraphTool extends EditorTool {
   static get pasteConfig() {
     return { tags: ['P'] }
   }
+
+  // Enable Conversion Toolbar. Paragraph can be converted to/from other tools
+  /*
+  static get conversionConfig() {
+    return {
+      export: 'text', // to convert Paragraph to other block, use 'text' property of saved data
+      import: 'text', // to convert other block's exported string to Paragraph, fill 'text' property of tool data
+    }
+  }
+  */
+  
 }

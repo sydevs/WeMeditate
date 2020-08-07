@@ -7,74 +7,93 @@
 main
   h1.banner = @static_page.name
 
+  - if I18n.exists?('meditations.not_translated')
+    .message__wrapper
+      .message = translate('meditations.not_translated', language: language_name.downcase)
+
   .meditations
-    .meditations__featured.js-carousel data-style='meditations'
+    .meditations__featured class='js-carousel' data-style='meditations'
+      - meditation = Meditation.get(:self_realization)
+      - if meditation
+        .meditations__featured__item.preview.preview--small class='js-carousel-item' data=gtm_label('meditations.featured.self_realization')
+          h2.preview__header = translate('meditations.featured.self_realization')
+          a.preview__media.preview__media--force-ratio.video href=meditation_url(meditation) data=gtm_label('meditations.featured.self_realization')
+            = smart_image_tag meditation.image, image_sizes, class: 'preview__media__thumbnail', alt: meditation.name
+            .video__button.video__button--small
+          h3.preview__title = meditation.name
+          p.preview__text = meditation.excerpt
+
+      - meditation = Meditation.get(:trending, exclude: meditation&.id)
+      - if meditation
+        .meditations__featured__item.preview.preview--small class='js-carousel-item' data=gtm_label('meditations.featured.trending_meditation')
+          h2.preview__header = translate('meditations.featured.trending_meditation')
+          a.preview__media.preview__media--force-ratio.video href=meditation_url(meditation) data=gtm_label('meditations.featured.trending_meditation')
+            = smart_image_tag meditation.image, image_sizes, class: 'preview__media__thumbnail', alt: meditation.name
+            .video__button.video__button--small
+          h3.preview__title = meditation.name
+          p.preview__text = meditation.excerpt
+
       - meditation = Meditation.get(:daily)
-      .meditations__featured__item.preview.preview--small
-        h2.preview__header = translate 'meditations.featured.daily_meditation'
-        a.preview__media.preview__media--force-ratio.video href=meditation_url(meditation)
-          = smart_image_tag meditation.image, image_sizes, class: 'preview__media__thumbnail', alt: meditation.name
-          .video__button.video__button--small
-        h3.preview__title = meditation.name
-        p.preview__text = meditation.excerpt
+      - if meditation
+        .meditations__featured__item.preview.preview--small class='js-carousel-item' data=gtm_label('meditations.featured.daily_meditation')
+          h2.preview__header = translate('meditations.featured.daily_meditation')
+          a.preview__media.preview__media--force-ratio.video href=meditation_url(meditation) data=gtm_label('meditations.featured.daily_meditation')
+            = smart_image_tag meditation.image, image_sizes, class: 'preview__media__thumbnail', alt: meditation.name
+            .video__button.video__button--small
+          h3.preview__title = meditation.name
+          p.preview__text = meditation.excerpt
 
-      - meditation = Meditation.get(:trending, exclude: meditation.id)
-      .meditations__featured__item.preview.preview--small
-        h2.preview__header = translate 'meditations.featured.trending_meditation'
-        a.preview__media.preview__media--force-ratio.video href=meditation_url(meditation)
-          = smart_image_tag meditation.image, image_sizes, class: 'preview__media__thumbnail', alt: meditation.name
-          .video__button.video__button--small
-        h3.preview__title = meditation.name
-        p.preview__text = meditation.excerpt
-
-      .meditations__featured__item.preview.preview--small
-        h2.preview__header = translate 'meditations.featured.random_meditation'
-        a.preview__media.preview__media--force-ratio.video href=random_meditations_url
+      /.meditations__featured__item.preview.preview--small class='js-carousel-item' data=gtm_label('meditations.featured.random_meditation')
+        h2.preview__header = translate('meditations.featured.random_meditation')
+        a.preview__media.preview__media--force-ratio.video href=random_meditations_url data=gtm_label('meditations.featured.random_meditation')
           = static_image_tag 'meditations/random', image_sizes, class: 'preview__media__thumbnail', alt: t('featured_meditations.random_title')
           .video__button.video__button--small
         h3.preview__title = translate 'meditations.featured.random_meditation_title'
         p.preview__text = translate 'meditations.featured.random_meditation_description'
 
-    .meditations__custom id='custom-meditation'
-      .meditations__gradient.gradient.gradient--blue.gradient--left
+    - if action_name == 'preview'
+      .debug = translate('admin.preview.no_custom_meditations')
+    - else
+      .meditations__custom id='custom-meditation'
+        .meditations__gradient.gradient.gradient--blue.gradient--left
 
-      .meditations__custom__content
-        h2.meditations__custom__title = translate 'meditations.custom_meditation.title'
+        .meditations__custom__content
+          h2.meditations__custom__title = translate 'meditations.custom_meditation.title'
 
-        = form_tag find_meditations_url, method: :post, class: 'meditations__custom__form' do
-          .meditations__custom__goal
-            .meditations__custom__goal__input.dropdown.js-dropdown
-              = hidden_field_tag :goal_filter, nil, class: 'js-dropdown-input'
-              a.dropdown__selection.dropdown__selection--inactive
-                .dropdown__selection__title = translate 'meditations.custom_meditation.choose_goal'
-                .dropdown__selection__text = translate 'meditations.custom_meditation.goal_prompt'
-                .dropdown__selection__icon
-                  = inline_svg 'header/logo-small.svg'
-                  span = translate 'meditations.custom_meditation.goal_prompt'
+          = form_tag find_meditations_url, method: :post, class: 'meditations__custom__form' do
+            .meditations__custom__goal
+              .meditations__custom__goal__input.dropdown.js-dropdown
+                = hidden_field_tag :goal_filter, nil, class: 'js-dropdown-input'
+                a.dropdown__selection.dropdown__selection--inactive
+                  .dropdown__selection__title = translate 'meditations.custom_meditation.choose_goal'
+                  .dropdown__selection__text = translate 'meditations.custom_meditation.goal_prompt'
+                  .dropdown__selection__icon
+                    = inline_svg_tag 'header/logo-small.svg'
+                    span = translate 'meditations.custom_meditation.goal_prompt'
 
-              .dropdown__popup
-                .dropdown__close
-                h3.dropdown__popup__title = translate 'meditations.custom_meditation.goal_prompt'
-                ul.dropdown__list
-                  - @goal_filters.each_with_index do |goal_filter, index|
-                    li.dropdown__item id=dom_id(goal_filter) data-value=goal_filter.id
-                      // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
-                      .js-inline-svg data-url="#{goal_filter.icon.url}" data-namespace="#{goal_filter.name.parameterize.downcase}" data-background='true'
-                      span.dropdown__item__text = goal_filter.name
+                .dropdown__popup
+                  .dropdown__close
+                  h3.dropdown__popup__title = translate 'meditations.custom_meditation.goal_prompt'
+                  ul.dropdown__list
+                    - @goal_filters.each_with_index do |goal_filter, index|
+                      li.dropdown__item id=dom_id(goal_filter) data-value=goal_filter.id
+                        // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
+                        .js-inline-svg data-url="#{goal_filter.icon.url}" data-namespace="#{goal_filter.name.parameterize.downcase}" data-background='true'
+                        span.dropdown__item__text = goal_filter.name
 
-          .meditations__custom__duration
-            .radio_group
-              .meditations__custom__duration__title = translate 'meditations.custom_meditation.choose_duration'
-              .meditations__custom__duration__input.radio_wrapper
-                - @duration_filters.first(3).each_with_index do |duration_filter, index|
-                  label.radio
-                    = radio_button_tag :duration_filter, duration_filter.id
-                    .radio__button #{duration_filter.minutes} #{translate 'meditations.custom_meditation.minutes'}
+            .meditations__custom__duration
+              .radio_group
+                .meditations__custom__duration__title = translate 'meditations.custom_meditation.choose_duration'
+                .meditations__custom__duration__input.radio_wrapper
+                  - @duration_filters.first(3).each_with_index do |duration_filter, index|
+                    label.radio
+                      = radio_button_tag :duration_filter, duration_filter.id
+                      .radio__button #{duration_filter.minutes} #{translate 'meditations.custom_meditation.minutes'}
 
-          .clearfix
-          button.meditations__custom__submit.button.button--circle type='submit'
-            = inline_svg 'graphics/circle.svg'
-            .button__text = translate 'meditations.custom_meditation.submit'
+            .clearfix
+            button.meditations__custom__submit.button.button--circle type='submit'
+              = inline_svg_tag 'graphics/circle.svg'
+              .button__text = translate 'meditations.custom_meditation.submit'
 
       .meditations__image
         = static_image_tag 'meditations/prescreen-background', '100vw', class: 'meditations__image__background'

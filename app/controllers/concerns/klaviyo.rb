@@ -5,15 +5,18 @@ require 'httparty'
 
 module Klaviyo
 
-  def self.subscribe email
+  def self.subscribe email, list_id, referer
     return unless ENV['KLAVIYO_API_KEY'].present?
-    raise ArgumentError, "No newsletter ID has been defined." unless ENV['KLAVIYO_LIST_ID'].present?
 
-    Klaviyo.request("api/v2/list/#{ENV['KLAVIYO_LIST_ID']}/subscribe", {
+    list_id = ENV['KLAVIYO_LIST_ID'] unless list_id.present?
+    raise ArgumentError, "No newsletter ID has been defined." unless list_id.present?
+
+    Klaviyo.request("api/v2/list/#{list_id}/subscribe", {
       'api_key': ENV['KLAVIYO_API_KEY'],
       'profiles': [{
         'email': email,
         '$consent': 'email',
+        'referer': referer,
       }],
     })
   end

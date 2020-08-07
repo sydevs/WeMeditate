@@ -28,30 +28,41 @@ module Admin::PermissionsHelper
     static_page: {
       translator: %i[translate],
       writer: [],
-      editor: [],
+      editor: %i[update],
       regional_admin: %i[update publish],
-      super_admin: %i[update publish],
+      super_admin: {
+        update: true,
+        publish: true,
+        destroy: 'destroy_custom', # Some models require a special description of the permission.
+      },
     },
     subtle_system_node: {
       translator: %i[translate],
       writer: [],
-      editor: [],
+      editor: %i[update],
       regional_admin: %i[update publish],
       super_admin: %i[update publish],
+    },
+    stream: {
+      translator: [],
+      writer: [],
+      editor: [],
+      regional_admin: %i[create update publish],
+      super_admin: %i[create update publish destroy],
     },
 
     # Resource-type models
     meditation: {
       translator: [],
       writer: [],
-      editor: [],
+      editor: %i[update],
       regional_admin: %i[update publish create],
       super_admin: %i[update publish create destroy],
     },
     treatment: {
       translator: %i[translate],
       writer: [],
-      editor: [],
+      editor: %i[update],
       regional_admin: %i[update publish create],
       super_admin: %i[update publish create destroy],
     },
@@ -119,9 +130,15 @@ module Admin::PermissionsHelper
 
     # Other models
     user: {
-      translator: [],
-      writer: [],
-      editor: [],
+      translator: {
+        update: 'update_own_user',
+      },
+      writer: {
+        update: 'update_own_user',
+      },
+      editor: {
+        update: 'update_own_user',
+      },
       regional_admin: {
         update: 'update_subordinate',
         create: 'create_subordinate',
@@ -144,7 +161,7 @@ module Admin::PermissionsHelper
     # Render one row in the permissions table
     def permission_row model, permission_set
       content_tag :tr do
-        concat tag.td(translate model, scope: %i[activerecord models], count: -1)
+        concat tag.td(translate(model, scope: %i[activerecord models], count: -1))
         permission_set.values.each do |permissions|
           concat tag.td(permission_icons(model, permissions), class: 'collapsing')
         end
@@ -157,7 +174,7 @@ module Admin::PermissionsHelper
         pages: translate(model, scope: %i[activerecord models], count: -1),
         subordinates: %i[editor writer translator].map { |role| human_enum_name(User, :role, role) }.to_sentence,
       }
-      
+
       capture do
         if permissions.is_a? Array
           permissions.each do |permission|

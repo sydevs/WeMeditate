@@ -8,6 +8,8 @@ module Admin
         @parent = StaticPage.friendly.find(params[:static_page_id])
       elsif params[:subtle_system_node_id].present?
         @parent = SubtleSystemNode.friendly.find(params[:subtle_system_node_id])
+      elsif params[:stream_id].present?
+        @parent = Stream.where(locale: Globalize.locale).friendly.find(params[:stream_id])
       end
 
       authorize @parent, :upload?

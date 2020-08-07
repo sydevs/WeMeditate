@@ -5,11 +5,11 @@ main
 
   .inspiration
     .inspiration__filters.button_group.button_group--centered
-      a.button.button--filled.js-filter-all class="#{'button--active' if @category.nil?}" href=categories_path
+      a.inspiration__filters__item.button.button--filled.js-filter-all class="#{'button--active' if @category.nil?}" href=categories_path data=gtm_label('articles.show_all')
         = t('articles.show_all')
 
       - @categories.each do |category|
-        a.button.button--filled class="#{'button--active' if @category == category}" href=category_path(category)
+        a.inspiration__filters__item.button.button--filled class="#{'button--active' if @category == category}" href=category_path(category) data=gtm_record(category)
           = category.name
 
     #articles-grid.inspiration__grid.js-grid style='display: none'

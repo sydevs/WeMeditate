@@ -1,0 +1,91 @@
+
+# EXTENSION TRANSLATIONS
+# This file contains translations for addons which are used by the website.
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+de:
+  devise:
+    failure:
+      invited: "Wenn Sie eine ausstehende Einladung haben, akzeptieren Sie diese, um die Erstellung Ihres Kontos abzuschließen."
+      already_authenticated: "Sie sind bereits angemeldet."
+      inactive: "Ihr Benutzerkonto ist noch nicht aktiviert."
+      invalid: "Ungültige %{authentication_keys} oder Passwort."
+      locked: "Ihr Konto ist gesperrt."
+      last_attempt: "Sie haben noch einen Versuch, bevor Ihr Konto gesperrt wird."
+      not_found_in_database: "Ungültige %{authentication_keys} oder Passwort."
+      timeout: "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an, um fortzufahren."
+      unauthenticated: "Sie müssen sich anmelden, bevor Sie fortfahren können."
+      unconfirmed: "Sie müssen Ihre E-Mail-Adresse bestätigen, bevor Sie fortfahren können."
+    mailer:
+      reset_password_instructions:
+        subject: "Anweisungen zum Zurücksetzen des Passworts"
+      unlock_instructions:
+        subject: "Anweisungen für das Entsperren"
+      email_changed:
+        subject: "E-Mail wurde geändert"
+      password_change:
+        subject: "Passwort wurde geändert"
+      invitation_instructions:
+        subject: "Einladungs-Anweisungen"
+        hello: "Hallo %{email}"
+        someone_invited_you: "Sie wurden eingeladen, Redakteur bei %{url} zu werden. Sie können dies über den folgenden Link akzeptieren."
+        accept: "Einladung akzeptieren"
+        accept_until: "Diese Einladung ist gültig bis %{due_date}."
+        ignore: "Wenn Sie die Einladung nicht annehmen möchten, ignorieren Sie diese E-Mail.<br />\nIhr Konto wird erst erstellt, wenn Sie auf den obigen Link zugreifen und Ihr Passwort festlegen."
+    passwords:
+      no_token: "Sie können nicht auf diese Seite zugreifen, ohne von einer Passwort-Zurücksetzen-Mail zu kommen. Wenn Sie aus einer Passwort-Zurücksetzen-Mail kommen, stellen Sie bitte sicher, dass Sie die vollständige URL verwendet haben."
+      send_instructions: "Sie erhalten in wenigen Minuten eine E-Mail mit Anweisungen zum Zurücksetzen Ihres Passworts."
+      send_paranoid_instructions: "Wenn Ihre E-Mail-Adresse in unserer Datenbank vorhanden ist, erhalten Sie innerhalb weniger Minuten einen Link zur Passwortwiederherstellung an Ihre E-Mail-Adresse."
+      updated: "Ihr Passwort wurde erfolgreich geändert. Sie sind jetzt angemeldet."
+      updated_not_active: "Ihr Passwort wurde erfolgreich geändert."
+    invitations:
+      send_instructions: "Es wurde eine Einladungs-E-Mail an %{email} gesendet."
+      invitation_token_invalid: "Der bereitgestellte Einladungstoken ist ungültig!"
+      updated: "Ihr Passwort wurde erfolgreich festgelegt. Sie sind jetzt angemeldet."
+      updated_not_active: "Ihr Passwort wurde erfolgreich festgelegt."
+      no_invitations_remaining: "Keine Einladungen offen"
+      invitation_removed: "Ihre Einladung wurde entfernt."
+      new:
+        header: "Einladung senden"
+        submit_button: "Sende eine Einladung"
+      edit:
+        header: "Lege ein Passwort fest"
+        submit_button: "Setze mein Passwort"
+    sessions:
+      signed_in: "Erfolgreich angemeldet."
+      signed_out: "Erfolgreich abgemeldet."
+      already_signed_out: "Erfolgreich abgemeldet."
+    unlocks:
+      send_instructions: "Sie erhalten in wenigen Minuten eine E-Mail mit Anweisungen zum Entsperren Ihres Kontos."
+      send_paranoid_instructions: "Wenn Ihr Konto vorhanden ist, erhalten Sie in wenigen Minuten eine E-Mail mit Anweisungen zum Entsperren."
+      unlocked: "Ihr Konto wurde erfolgreich entsperrt. Bitte melden Sie sich an um fortzufahren."
+  errors:
+    messages:
+      expired: "ist abgelaufen, bitte fordern Sie ein neues an"
+      not_found: "nicht gefunden"
+      not_locked: "wurde nicht gesperrt"
+      not_saved:
+        one: "%{count} Fehler hat verhindert, dass diese %{resource} gespeichert wird:"
+        other: "%{count} Fehler haben verhindert, dass diese %{resource} gespeichert wird:"
+  time:
+    formats:
+      default: '%k:%M' # Do not translate, unless you know what you are doing
+      time: :time.formats.default # Do not translate
+      date: :date.formats.default # Do not translate
+      short: :date.formats.default # Do not translate
+      devise:
+        mailer:
+          invitation_instructions:
+            accept_until_format: '%B %d, %Y %I:%M %p' # Do not translate, unless you know what you are doing
+  date:
+    formats:
+      default: '%d %b %Y' # Do not translate, unless you know what you are doing
+      date: :date.formats.default # Do not translate
+  simple_form:
+    'yes': "Ja"
+    'no': "Nein"
+    required:
+      text: "erforderlich"
+      mark: '*' # Do not translate
+    error_notification:
+      default_message: "Bitte überprüfen Sie die folgenden Probleme:"

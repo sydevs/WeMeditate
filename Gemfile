@@ -31,11 +31,12 @@ gem 'jquery-rails' # Add jQuery
 gem 'jquery-slick-rails' # A slider library
 gem 'normalize-rails' # To normalize CSS
 gem 'photoswipe-rails' # For image gallery
-gem 'semantic-ui-sass' # CSS framework for the admin/CMS pages
+gem 'fomantic-ui-sass' # CSS framework for the admin/CMS pages
 
 # Models
 gem 'friendly_id' # Model routes use a slug instead of an ID number
 gem 'jsonb_accessor' # Makes it simpler to access attributes of a jsonb database column
+gem 'array_enum' # Allows the use of enum arrays
 
 # Uploads
 gem 'carrierwave' # Core support for file uploads
@@ -77,7 +78,10 @@ gem 'lograge' # Reduce verbosity of Rails logs
 gem 'mail_form' # For the contact form
 gem 'sidekiq' # To power active jobs
 gem 'sitemap_generator' # For SEO purposes
-gem 'taglib-ruby' # To parse metadata from mp3 files
+gem 'taglib-ruby', '~> 0.7.1', platforms: %i[ruby] # To parse metadata from mp3 files
+gem 'geocoder' # For identifying users from specific regions
+gem 'cloudflare-rails' # To restore client IP addresses after proxy
+gem "recaptcha", require: "recaptcha/rails" # To protect against bots on the contact form
 
 # Maybe needed later(?)
 # gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -87,11 +91,12 @@ gem 'taglib-ruby' # To parse metadata from mp3 files
 # gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
 group :staging, :development do
-  # For profiling load times
+  # For profiling load times, exclude windows
+  gem 'fast_stack'
   gem 'flamegraph'
   gem 'memory_profiler'
   gem 'rack-mini-profiler', require: false
-  gem 'stackprof'
+  gem 'stackprof', platforms: %i[ruby]
 end
 
 group :development, :test do

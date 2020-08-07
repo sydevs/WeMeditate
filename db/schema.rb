@@ -2,15 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_25_140352) do
+ActiveRecord::Schema.define(version: 2020_05_07_090423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_140352) do
     t.bigint "category_id"
     t.date "date"
     t.bigint "owner_id"
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.bigint "author_id"
     t.integer "article_type", default: 0, null: false
     t.float "latitude"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2019_10_25_140352) do
     t.string "name"
     t.string "url"
     t.jsonb "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "artists_tracks", id: false, force: :cascade do |t|
@@ -97,12 +99,12 @@ ActiveRecord::Schema.define(version: 2019_10_25_140352) do
     t.string "description"
     t.datetime "published_at"
     t.integer "state", default: 0
+    t.string "name"
     t.index ["author_id"], name: "index_author_translations_on_author_id"
     t.index ["locale"], name: "index_author_translations_on_locale"
   end
 
   create_table "authors", force: :cascade do |t|
-    t.string "name"
     t.integer "years_meditating"
     t.jsonb "image"
     t.bigint "user_id"
@@ -117,7 +119,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_140352) do
     t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
   end
 
   create_table "category_translations", force: :cascade do |t|
@@ -146,7 +148,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_140352) do
 
   create_table "duration_filters", force: :cascade do |t|
     t.integer "minutes"
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
@@ -180,7 +182,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_140352) do
   create_table "goal_filters", force: :cascade do |t|
     t.integer "order"
     t.string "icon", default: "", null: false
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
@@ -207,7 +209,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_140352) do
   create_table "instrument_filters", force: :cascade do |t|
     t.string "icon", null: false
     t.integer "order"
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
@@ -265,7 +267,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_140352) do
     t.jsonb "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.index ["duration_filter_id"], name: "index_meditations_on_duration_filter_id"
   end
 
@@ -285,7 +287,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_140352) do
     t.integer "order"
     t.jsonb "image"
     t.string "icon"
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
@@ -317,8 +319,32 @@ ActiveRecord::Schema.define(version: 2019_10_25_140352) do
     t.integer "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "original_locale", limit: 2, null: false
-    t.index ["role"], name: "index_static_pages_on_role", unique: true
+    t.string "original_locale", null: false
+    t.index ["role"], name: "index_static_pages_on_role"
+  end
+
+  create_table "streams", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.integer "thumbnail_id"
+    t.string "excerpt"
+    t.date "published_at"
+    t.string "location"
+    t.string "stream_url"
+    t.date "start_date"
+    t.string "start_time"
+    t.string "end_time"
+    t.integer "recurrence", default: [], null: false, array: true
+    t.integer "target_time_zones", default: [], null: false, array: true
+    t.jsonb "draft"
+    t.jsonb "content"
+    t.jsonb "metatags"
+    t.integer "state", default: 0
+    t.string "locale", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "time_zone_offset"
+    t.string "time_zone_identifier"
   end
 
   create_table "subtle_system_node_translations", force: :cascade do |t|
@@ -342,7 +368,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_140352) do
     t.integer "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.index ["role"], name: "index_subtle_system_nodes_on_role", unique: true
   end
 
@@ -360,7 +386,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_140352) do
 
   create_table "tracks", force: :cascade do |t|
     t.string "audio", null: false
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "duration"
@@ -390,7 +416,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_140352) do
     t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "original_locale", limit: 2, null: false
+    t.string "original_locale", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -421,6 +447,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_140352) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "languages_known", default: [], null: false, array: true
+    t.string "preferred_language"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"
