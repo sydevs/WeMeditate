@@ -1,7 +1,6 @@
 ruby:
   content_for :title, 'Review'
   contributors = @record.parsed_draft['contributors']
-  content_changes = @record.parsed_draft['content']
   detail_changes = @record.parsed_draft.except('contributors', 'content')
 
 .ui.inverted.dividing.fixed.header
