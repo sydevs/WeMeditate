@@ -13,8 +13,7 @@ module Admin::RecordHelper
   def record_has_fixed_slug?
     case @record
     when StaticPage
-      first_path_segment = static_page_path_for(@record).split('/').reject(&:empty?).first
-      first_path_segment != translate('routes.page')
+      %i[home subtle_system articles treatments tracks meditations streams].include?(@record.role&.to_sym)
     when Meditation
       @record.slug == translate('routes.self_realization')
     else
@@ -42,14 +41,12 @@ module Admin::RecordHelper
 
   # Generates a comparison of changes between the live content blocks and draft content blocks for a given record
   # This is used to create the reviiew page.
-  def block_comparison record, &block
+  def block_comparison record, &_block
     old_blocks = record.content_blocks
     new_blocks = record.draft_content_blocks
     old_block_ids = old_blocks.map { |block| block['data']['id'] }
     new_block_ids = new_blocks.map { |block| block['data']['id'] }
     diff = Diff::LCS.sdiff(old_block_ids, new_block_ids)
-
-    current_index = 0
 
     diff.flatten.each do |change|
       old_block = old_blocks[change.old_position]

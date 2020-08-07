@@ -13,7 +13,10 @@ module Admin
     end
 
     def update
-      super author_params
+      # Default to the existing name if no new name is set.
+      params = author_params
+      params[:name] ||= @record.name || @record.get_native_locale_attribute(:name, @record.original_locale)
+      super params
     end
 
     private

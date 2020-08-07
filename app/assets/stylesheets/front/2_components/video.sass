@@ -43,11 +43,15 @@ $activate-transition: 0.5s
       padding-top: 177.78%
     
     .video__horizontal
-      display: none
+      position: relative
+      overflow: hidden
+      height: 0 !important
 
   @media (orientation: landscape), (min-width: #{$tablet-width})
     .video__vertical
-      display: none
+      position: relative
+      overflow: hidden
+      height: 0 !important
 
 // ===== POPUP ===== //
 .video__popup

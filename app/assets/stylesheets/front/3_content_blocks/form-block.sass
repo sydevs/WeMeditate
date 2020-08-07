@@ -29,6 +29,10 @@
     &:hover:not(.button--disabled)
       border-color: $color-text-normal
 
+.content__form--compact
+  margin-top: 0 !important
+  margin-bottom: 0 !important
+
 .content__form__content
   max-width: 640px
   margin: auto
@@ -48,10 +52,10 @@
   margin-bottom: 24px
 
   &--positive
-    color: darken($color-text-blue, 20%)
+    color: darken($color-text-blue, 40%)
 
   &--negative
-    color: $color-text-orange
+    color: darken($color-text-orange, 20%)
 
 // ===== CONTENT ===== //
 .content__form__title
@@ -73,6 +77,12 @@
   line-height: 1.7647
   margin-top: 6px
   margin-bottom: 12px
+  padding: 0 $gutter-width
+
+  @include mobile
+    margin-left: auto
+    margin-right: auto
+    max-width: 300px
 
   @include laptop-or-larger
     line-height: 1
@@ -86,7 +96,7 @@
   padding: 0 $gutter-width
 
   @include mobile
-    max-width: 340px
+    max-width: 300px
     margin-left: auto
     margin-right: auto
 
@@ -131,3 +141,6 @@
 
   textarea
     resize: vertical
+
+  .g-recaptcha
+    margin-bottom: 8px

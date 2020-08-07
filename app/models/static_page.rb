@@ -21,16 +21,19 @@ class StaticPage < ApplicationRecord
   # Associations
   enum role: {
     home: 0, about: 1, contact: 2, shri_mataji: 3, subtle_system: 4, sahaja_yoga: 5, privacy: 7,
-    articles: 10, treatments: 11, tracks: 12, meditations: 13, classes: 14,
+    articles: 10, treatments: 11, tracks: 12, meditations: 13, classes: 14, streams: 15,
+    custom: 99,
   }
 
   # Validations
   validates :name, presence: true
-  validates :role, presence: true, uniqueness: true
+  validates :role, presence: true
+  validates :role, uniqueness: true, unless: :custom?
 
   # Scopes
   default_scope { order(:role) }
-  scope :q, -> (q) { with_translation.joins(:translations).where('static_page_translations.name ILIKE ? OR role ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
+  scope :q, -> (q) { with_translation.joins(:translations).where('static_page_translations.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
+  scope :special, -> { where.not(role: :custom) }
   
   # Include everything necessary to render this model
   def self.preload_for mode
@@ -46,7 +49,7 @@ class StaticPage < ApplicationRecord
 
   # Returns a list of which roles don't yet have a database representation.
   def self.available_roles
-    StaticPage.roles.keys - StaticPage.pluck(:role)
+    StaticPage.roles.keys - StaticPage.where.not(role: :custom).pluck(:role)
   end
 
 end

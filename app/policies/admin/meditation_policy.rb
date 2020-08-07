@@ -12,11 +12,13 @@ module Admin
     end
 
     def update_translation?
-      manage?
+      return false unless can_access_locale?
+      return true if admin? || editor?
+      return false
     end
 
     def update_structure?
-      (manage? && super_admin?) || (create? && record.new_record?)
+      manage? || (create? && record.new_record?)
     end
 
     def publish?

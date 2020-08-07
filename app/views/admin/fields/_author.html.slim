@@ -9,7 +9,7 @@ ruby:
       .message
         = simple_format translate('admin.tutorial.show.message.my_author')
 
-- if record.user.present? && record.new_record?
+- if record.user == current_user && record.new_record?
   .ui.info.message = translate('admin.messages.new_author_notice')
 
 = f.input :name, disabled: !allow.update_structure?, input_html: { value: (record.name || record.user&.name) }

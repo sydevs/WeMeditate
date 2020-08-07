@@ -1,0 +1,27 @@
+
+= render_splash_block(@stream)
+
+- if @streams.length > 1 && @stream&.parsed_content['blocks'].length > 1
+  .streams__skip
+    .streams__skip__title = translate('streams.skip.title')
+    .streams__skip__description = translate('streams.skip.description')
+    a.streams__skip__action.button.button--box href='#streams'
+      = translate('streams.skip.action')
+
+main.scrollspy-target
+  - cache @stream do
+    .content = render_content @stream, skip_splash: true
+
+- if @streams.length > 1
+  .content__header.content__header--centered
+    = translate('streams.title')
+
+  .streams__grid-wrapper id='streams'
+    - if @streams.length > 2
+      .streams__grid.js-grid data-max-columns=3
+        = render @streams, cached: true
+    - else
+      .streams__grid
+        = render @streams, cached: true
+
+= sharing_links

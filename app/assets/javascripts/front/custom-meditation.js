@@ -1,4 +1,4 @@
-/* global Application, zenscroll */
+/* global zenscroll */
 /* exported CustomMeditation */
 
 class CustomMeditation {
@@ -8,16 +8,13 @@ class CustomMeditation {
     this.form = element.querySelector('.meditations__custom__form')
     this.goalSection = element.querySelector('.meditations__custom__goal')
     this.goalDropdown = this.goalSection.querySelector('.meditations__custom__goal__input')
+    this.goalInput = this.goalDropdown.querySelector('input')
     this.durationSection = element.querySelector('.meditations__custom__duration')
     this.durationRadioGroup = this.durationSection.querySelector('.radio_group')
+    this.durationButtons = this.durationRadioGroup.querySelectorAll('input[type="radio"]')
 
-    this.hasGoalValue = false
-    this.hasDurationValue = false
-    
-    const radioButtons = element.querySelectorAll('input[type="radio"]')
-    for (let index = 0; index < radioButtons.length; index++) {
-      this.hasDurationValue = this.hasDurationValue || radioButtons[index].checked
-      radioButtons[index].addEventListener('click', event => this._onDurationChange(event))
+    for (let index = 0; index < this.durationButtons.length; index++) {
+      this.durationButtons[index].addEventListener('click', event => this._onDurationChange(event))
     }
 
     this.goalDropdown.addEventListener('change', event => this._onGoalChange(event))
@@ -26,29 +23,32 @@ class CustomMeditation {
 
   _onGoalChange(_event) {
     this.goalDropdown.classList.remove('dropdown--error')
-    this.hasGoalValue = true
 
     if (window.innerWidth < 768) {
       zenscroll.center(this.durationSection)
-    } else {
-      zenscroll.to(this.container)
     }
   }
 
-  _onDurationChange(_event) {
+  _onDurationChange(event) {
+    event.currentTarget.classList.add('test-checked')
     this.durationRadioGroup.classList.remove('radio_group--error')
-    this.hasDurationValue = true
   }
 
   _onSubmit(event) {
     let errorSection = null
+    let hasDurationValue = false
 
-    if (!this.hasDurationValue) {
+    for (let index = 0; index < this.durationButtons.length; index++) {
+      hasDurationValue = hasDurationValue || this.durationButtons[index].checked
+    }
+
+    if (!hasDurationValue) {
       this.durationRadioGroup.classList.add('radio_group--error')
       errorSection = this.durationSection
     }
     
-    if (!this.hasGoalValue) {
+    let hasGoalValue = Boolean(this.goalInput.value)
+    if (!hasGoalValue) {
       this.goalDropdown.classList.add('dropdown--error')
       errorSection = this.goalSection
     }
@@ -58,9 +58,9 @@ class CustomMeditation {
       event.stopPropagation()
 
       if (window.innerWidth >= 768) {
-        Application.header.scrollTo(this.container)
+        zenscroll.to(this.container)
       } else {
-        Application.header.scrollTo(errorSection, 100, 2000)
+        zenscroll.to(errorSection)
       }
     }
   }

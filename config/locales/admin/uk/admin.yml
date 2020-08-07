@@ -1,0 +1,510 @@
+
+# ADMINISTRATOR TRANSLATIONS
+# All translations in this file are seen by administrators of the website when managing the site content.
+
+uk:
+  admin:
+    # ===== ACTIONS ===== #
+    # This section deals with actions that an administrator can take.
+    action:
+      view_site: "Подивитися Сайт"
+      view_admin: "Перейти В Панель Управління Адміністратора"
+      tutorial: "Довідка (як користуватися)"
+      report_issue: "Повідомити Про Проблему"
+      search: "Пошук..."
+      sign_in: "Вхід"
+      sign_out: "Вихід"
+
+      draft:
+        reset: "Видалити Чернетку" # "Value" refers to a piece of information which is stored in the site's database. It could be a number, text, file, etc.
+        redo: "Використати Чернетку"
+        reset_tooltip: "Змінити \"%{value}\""
+        redo_tooltip: "Встановити \"%{value}\""
+
+      simple:
+        show: "Подивитися"
+        create: "Створити"
+        edit: "Редагувати"
+        write: "Написати"
+        edit_details: "Редагувати параметри" # These are the details of a page
+        edit_content: "Редагувати контент" # This is the content of a page
+        update: "Зберегти"
+        destroy: "Видалити"
+        preview: "Попередній Перегляд"
+        review: "Перевірити"
+        save_draft: "Зберегти Чернетку"
+        approve: "Підтвердити"
+        invite: "Запросити" # To invite a new editor to the website
+        reinvite: "Запросити вдруге"
+        cancel: "Скасувати"
+        back: "Назад"
+
+      target: # A 'record' refers to some part of the website, such as an Article, WebPage, Guided Meditation, etc.
+        show: "Подивитися %{record}"
+        upload: "Завантажити %{record}"
+        edit: "Редагувати %{record}"
+        write: "Написати %{record} контент"
+        review: "Перевірити %{record}"
+        reset: "Змінити %{record}"
+        publish: "Опублікувати %{record}"
+        unpublish: "Скасувати публікацію %{record}" # This means hiding the record from the public, the opposite of publishing
+        add: "Додати %{record}"
+        create: "Створити %{record}"
+        remove: "Видалити %{record}"
+        destroy: "Видалити %{record}"
+        back: "Повернутися до %{records}"
+        reorder: "Змінити Порядок %{record}"
+
+      descriptive:
+        show: "Подивитися на сайті"
+        preview: "Попередній перегляд на сайті"
+        reload_vimeo_data: "Перезавантажте метадані Vimeo"
+        audit: "Перегляд змін"
+
+    # ===== MESSAGES ===== #
+    # This section includes messages which will be displayed to the administrator.
+    
+    details:
+      original_language: "Мова оригіналу" 
+      translated_languages: "Перекладені мови"
+      priority: "Сторінка натхнення"
+      owned_by: "Належить %{owner}"
+      vertical_video: "Вертикальне Відео"
+      horizontal_video: "Горизонтальне Відео"
+      featured_video: "Відео Статті" # The video which will be shown on an article preview
+      featured_date: "Дата Статті" # The date which will be shown on an article preview
+      role: "Роль На Сайті"
+      pending_changes: "Ця %{page} має зміни в очікуванні затвердження"
+      start_date: "Start Date" # TODO: Translate
+
+    tags:
+      published: "Опубліковано"
+      unpublished: "Неопубліковано"
+      unapproved_changes: "Не підтверджені зміни"
+      unpublished_draft: "Неопублікована чернетка"
+      no_translation: "Відсутній переклад на %{language}" # "language" will be replaced with the language that this file is written in.
+      pending_translation: "Є переклад на %{language}, в очікуванні затвердження" # "language" will be replaced with the language that this file is written in.
+      in_progress_translation: "Переклад на %{language} не завершений" # "language" will be replaced with the language that this file is written in. 
+      pending_invitation: "Запрошення ще не прийнято"
+      this_is_you: "Це ви" 
+      missing_record: "Відсутня %{model}" 
+      too_many_pinned: "Більше, ніж %{count} закріплено %{model}"
+      updated_ago: "Змінено %{time_ago} назад"
+      published_ago: "Опубліковано %{time_ago} назад"
+      published_from_now: "Буде опубліковано %{time_from_now} відтепер"
+      urgency: # These are in order, with 'critical' as the most important, and 'pending' as the least important.
+        critical: "Критичне питання"
+        important: "Важливе питання"
+        normal: "Середній пріоритет"
+        pending: "Очікує на розгляд"
+      views: # This is the number of viewers or visits. Used to indicate the number of video views
+        one: "%{count} Перегляд" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "%{count} Переглядів" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+        many: "%{count} Переглядів" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "%{count} Перегляди" # Eg. 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0 
+      popularity: "Популярність: %{value}" 
+
+    messages:
+      loading: "Завантажується"
+      errors: "Помилки"
+      no_translations_found: "Усі статті типу \"%{pages}\" вже перекладені"
+      make_public: "Зробити %{page} видимим для публіки"
+      maintenance_mode: "Веб-сайт розробляється, повертайтесь незабаром."
+      confirm_destroy: "Ви впевнені, що бажаєте видалити це? Дію неможливо буде скасувати!"
+      confirm_discard_draft: "Ви впевнені, що бажаєте скасувати всі зміни на цій сторінці? Дію неможливо буде скасувати!" 
+      confirm_unsaved_changes: "Не збережені зміни будуть втрачені. Ви впевнені, що бажаєте залишити сторінку?"
+      drop_files_here: "Помістіть файли сюди"
+      unapproved_changes_notice: "%{page} має незбережені зміни. Зміни не видно користувачам, поки вони не затверджені адміністратором."
+      pending_invitation_notice: "%{person} отримав запрошення стати редактором сайту, але ще не відповів."
+      draft_notice: "Ви переглядаєте чернетку %{page}. Ця версія не відображаться користувачам, поки вона не затверджена адміністратором."
+      draft_contributed_by: "Ця чернетка містить зміни, внесені %{people}."
+      text_too_short: "повинний мати хоча б %{count} літери"
+      invalid_vimeo_id: "має бути дійсним Vimeo ID"
+      new_author_notice: "Ви ще не налаштували свій профіль автора, заповніть поля нижче та натисніть зберегти."
+      start_details_before_content: "Почніть спочатку перекладати деталі, а потім вміст."
+
+    hints: 
+      excerpt: "Це короткий перегляд вмісту %{page}, який відображатиметься у списках %{page}. \"%{page}\"."
+      article_visibility: "Це визначає, де стаття з’явиться на сторінці Натхнення."
+      article_author: "Профіль, який буде показаний у статті на веб-сайті."
+      article_article_type: "Різні типи статей пропонують кілька різних полів та відобразять автора по-різному."
+      article_owner: "Адміністратори і Редактори завжди можуть редагувати будь-які статті. Це поле дає автору спеціальний дозвіл на зміну статті після її публікації. Зазвичай це людина, яка написала першу версію статті."
+      article_video: "Якщо ви введете дане відео, воно з’явиться в попередньому перегляді статті."
+      article_date: "Тут встановіть дату початку події. Ця дата з’явиться у попередньому перегляді статті."
+      article_coordinates: "Забезпечення широти та довготи події дозволить отримати багаті результати пошуку в Google."
+      article_published_at: "Якщо ця дата буде надалі, то статтю планується опублікувати на цю дату. Залиште це поле пустим, щоб дата публікації була автоматично встановлена." # TODO: Translate
+      article_type_report: "'Report' type articles are general articles which we don't want to attribute to an individual author." # TODO: Translate
+      fixed_slug: "Це спеціальна сторінка, її URL-адресу неможливо змінити." 
+      languages_access: "Це місце, де цей користувач може змінювати вміст сайту."
+      languages_known: "Це мови, з яких користувач може перекладати вміст."
+      stream: # TODO: Translate
+        url: "This should be an embeddable link to whichever service this meditation is being streamed with. For example: Twitch, Vimeo, etc. This should be a stable URL that will work every time."
+        location: "Where is this meditation being broadcasted from?"
+        recurrence: "Which days of the week will you be streaming on? Click all that apply."
+        list_id: "You must have a list set up in Klaviyo (our mailing service) and supply a unique list ID here. This list will be used for those who want to subscribe for reminders of when the meditation starts."
+        target_time_zones: "Users in the selected timezones will be shown this stream on the main live meditations page. You can select multiple timezones. Selected zones are marked in green."
+        target_time_zones_conflict: "Note: If multiple streams are featured in the same timezone, the one which is physically closer to the user will be shown."
+
+    result:
+      created: "Успішно створено."
+      updated: "Успішно збережено."
+      deleted: "Успішно вилучено."
+      saved_but_needs_review: "Успішно збережені зміни будуть опубліковані після перевірки."
+      cannot_delete_attached_record: "Ви не можете видалити% {category}, прикріплений до% {pages}. Виберіть іншу% {pages} і спробуйте знову."
+      # Example: "You cannot delete a Category which has Articles attached to it. Reassign the Articles and try again."
+      published: "Успішно опубліковано."
+    
+    audit:
+      title: "Історія змін до \"%{record}\" %{model}"
+      changed_by: "від %{name}"
+      changed_to: "змінено на"
+    
+    # ===== CONTENT ===== #
+    # This section defines text that will be shown in the content editor.
+    content:
+      outline_title: "Структура %{page}" # The title for a section which outlines the structure of a page.
+      blocks: # These blocks are the types of elements that can be used on a page
+        header: "Заголовок"
+        paragraph: "Параграф"
+        image: "Зображення"
+        action: "Кнопка"
+        catalog: "Контент WeMeditate"
+        list: "Перелік"
+        quote: "Цитата"
+        form: "Форма"
+        structured: "Структурований Текст"
+        textbox: "Текст З Зображенням"
+        video: "Відео"
+      settings:
+        tunes: "Варіанти"
+        decorations: "Оформлення"
+      tunes: # These are formatting styles for content blocks
+        centered: "По Центру"
+        stretch: "На весь екран"
+        separate: "Окремо зображення і текст" 
+        asGallery: "Галерея"
+        asWisdom: "Стиль Древніх Знань"
+        asVideo: "Відео"
+        asPoem: "Поезія"
+        withImages: "Показати зображення" 
+        invert: "Інвертувати Кольори"
+        compact: "No Spacing After Block" # TODO: Translate
+        style: # These are list styles
+          unordered: "Невпорядкований Список" # Also called a "Bulleted" list
+          ordered: "Пронумерований Список" # Also called a "Numbered" list
+          leaf: "Список С Листям" # As in a list with a leaf icon instead of the bullet
+        alignment: # These are text alignments
+          left: "Вирівнювання По Лівому Краю"
+          center: "Вирівнювання По Центру"
+          right: "Вирівнювання По Правому Краю"
+        position: # A 'callout' is an image or quotation which is inserted at the side of the text
+          center: "По центру"
+          left: "З лівого боку"
+          right: "З правої сторони"
+        type: # Note to Developer: These must be translated manually because they are accessed in JavaScript
+          articles: "Статті Натхнення"
+          treatments: "Методи очищення"
+          meditations: "Медитації"
+        level: # These are heading levels # TOOD: Translate
+          h1: "Level 1"
+          h2: "Level 2"
+          h3: "Level 3"
+          h4: "Level 4"
+          h5: "Level 5"
+          h6: "Level 6"
+        size:
+          narrow: "Вузький"
+          wide: "Широкий"
+          small: "Small"
+          medium: "Medium"
+          large: "Large"
+        format:
+          button: "Кнопка"
+          grid: "Модульна Сітка"
+          accordion: "Акордеон"
+          columns: "Колонки"
+          signup: "Форма підписки" 
+          contact: "Контактна форма" 
+      decorations:
+        triangle: "Оформлення Трикутник"
+        circle: "Оформлення Коло"
+        gradient: "Градієнтне Оформлення"
+        leaves: "Оформлення Листя"
+        sidetext: "Текст По Вертикалі"
+        triangle_alignment:
+          left: "Трикутник З Лівої Сторони"
+          right: "Трикутник З Правої Сторони"
+        gradient_alignment:
+          left: "Градієнт З Лівої Сторони"
+          right: "Градієнт З Правої Сторони"
+        gradient_color:
+          orange: "Помаранчевий Градієнт"
+          blue: "Синій Градієнт"
+          gray: "Сірий Градієнт"
+        sidetext_text: "Введіть Текст По Вертикалі ..."
+      placeholders:
+        title: "Назва"
+        text: "Текст"
+        items: "Елементи"
+        action: "Текст Кнопки"
+        url: "Вставте Посилання"
+        quote: "Введіть цитату" # "Quote" as in a quotation from some other text or person
+        alt: "Опишіть, що на зображенні (потрібно для сео і людей з проблемами зору)" 
+        caption: "Введіть підпис до зображення" # "Caption" as in a piece of text describing an image
+        credit: "Введіть автора зображення / цитати" # "Credit" as in the credit for an image or quotation
+        optional: "не обов'язково"
+        search: "Шукати"
+      words:
+        one: "%{count} слово" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "%{count} слів" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+        many: "%{count} слів" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+      items:
+        one: "%{count} елемент" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "%{count} елементів" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+        many: "%{count} елементів" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+
+
+    # ===== MISCELLENEOUS ===== #
+    permissions: # These are messages relating to editor permissions
+      title: "Таблиця Прав Доступу"
+      own_languages_notice: "Всі редактори можуть вносити зміни тільки на своїй мові."
+      create: "Можна Створювати"
+      update: "Можна Змінювати"
+      translate: "Можна Змінювати не Перекладені %{pages}"
+      publish: "Можна Стверджувати Зміни"
+      destroy: "Можна Видаляти"
+      special:
+        update_own: "Можна Змінювати %{pages}"
+        publish_own: "Можна Стверджувати Зміни %{pages}"
+        update_own_bio: "Можна Змінювати Свою Біографію"
+        create_own_bio: "Можна Створити Свою Біографію"
+        update_own_user: "Can Modify Own Account" # TODO: Translate
+        update_subordinate: "Можна Змінювати %{subordinates}"
+        create_subordinate: "Можна Створювати %{subordinates}"
+        destroy_custom: "Can Destroy Custom %{pages}" # TODO: Translate
+      role_description: # This describes the responsibilities of a given type of administrator
+        translator: "Перекладають контент, який був опублікований на інших мовах, на відповідну мову."
+        writer: "Можуть створювати нові статті або редагувати старі, раніше написані ними."
+        editor: "Перевіряють та публікують статті, написані авторами, а також можуть самі писати статті."
+        regional_admin: "Відповідає за затвердження перекладів, переводить основну частину сайту, контролює публікацію нового контенту  відповідною мовою."
+        super_admin: "Керує основними елементами сайту і створенням нових редакторів."
+
+    review:
+      title: "Перегляньте Зміни"
+      changes_contributed_by: "Зміни, внесені:"
+      no_value: "Немає значення"
+      invalid_value: "Недійсне Значення"
+      no_changes: "Ніяких Змін"
+      discard_all_changes: "Скасувати всі зміни"
+      approve_changes: "Затвердити всі зміни"
+      or: "OR" # TODO: Translate
+      context:
+        details: "Деталі Сторінки"
+        content: "Зміст Сторінки"
+      effect:
+        moved: "Переміщено"
+        added: "Додано"
+        removed: "Вилучено"
+        modified: "Змінено"
+        nochange: "Без змін"
+
+    preview: # TODO: Translate
+      no_custom_meditations: "The custom meditation interface cannot be previewed, and so it has been hidden for this preview."
+
+    metadata:
+      key: "Назва"
+      value: "Значення"
+      default_metadata: "Метадані за замовчуванням"
+      generated_jsonld: "Згенеровані Структуровані Дані"
+
+    draft: # This section deals with the ability to create draft versions of new pages
+      no_image: "Зображення Відсутня"
+      items:
+        one: "%{count} елемент" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "%{count} елементів" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+        many: "%{count} елементів" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+      content:
+        original: # This is for a button that lets you revert to the previous content
+          one: "Початковий контент з %{count} блоком" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "Початковий контент з %{count} блоками" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+          many: "Початковий контент з %{count} блоками" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        draft: # This is for a button that lets you revert to the new content
+          one: "Чернетка з %{count} блоком" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+          few: "Чернетка з %{count} блоками" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+          many: "Чернетка з %{count} блоками" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+
+    dashboard:
+      title: "Панель управління for %{language}" # TODO: Translate
+      content:
+        title: "Опублікований контент"
+        public: "Веб-сайт %{language} (%{host}) відкритий для загального користування та має наступний опублікований контент."
+        private: "Веб-сайт %{language} (%{host}) закритий для загального користування та має наступний готовий вміст."
+      schedule:
+        title: "Графік публікації"
+        description: "Це перелік статей, які планується опублікувати найближчим часом."
+        no_schedule: "Жодних статей не планується публікувати."
+      alerts:
+        title: "Сповіщення"
+        description: "Це перелік важливих питань, які слід вирішити, щоб підтримувати сайт у здоровому порядку."
+        no_issues: "В даний момент проблем немає, так тримати!"
+
+    index:
+      columns:
+        status: "Статус"
+        name: "Ім'я"
+        role: "Роль"
+        updated_at: "Оновлено"
+        created_at: "Створено"
+        last_sign_in_at: "Останній вхід"
+        minutes: "Тривалість"
+        location: "Location" # TODO: Translate
+        local_time: "Local Time" # TODO: Translate
+        category_id: :activerecord.models.category.one # Do not translate
+        categories: :activerecord.models.category.other # Do not translate
+        popularity: :activerecord.attributes.meditation.popularity # Do not translate
+        node: "Вузол"
+        artist_id: :activerecord.models.artist.other # Do not translate
+        duration: :activerecord.attributes.track.duration # Do not translate
+        articles_count: :activerecord.models.article.other # Do not translate
+        instruments_count: :activerecord.models.instrument_filter.other # Do not translate
+        meditations_count: :activerecord.models.meditation.other # Do not translate
+        tracks_count: :activerecord.models.track.other # Do not translate
+        account: "Акаунт"
+        country_code: "Країна"
+      sort:
+        title: "Сортувати за"
+        columns:
+          default: "За замовчуванням"
+          name: "Ім'я"
+          country_code: "Країна"
+          updated_at: "Нещодавно оновлений"
+          created_at: "Нещодавно створений"
+          last_sign_in_at: "Нещодавно увійшли"
+          popularity: "Найпопулярніше"
+          articles_count: "Більшість статей"
+          meditations_count: "Більшість медитацій"
+          tracks_count: "Більшість треків"
+          duration: :activerecord.attributes.track.duration # Do not translate
+          role: "Роль"
+      filter:
+        title: "Фільтрувати за"
+      attribute:
+        status: "Статус"
+        none: "Жоден"
+        never: "Ніколи"
+        default: "За замовчуванням"
+      status: # Try to keep these translations short
+        # Draftable
+        needs_review: "Огляд потреб"
+        # Translatable
+        needs_translation: "Потреби перекладу"
+        not_translated: "Не перекладено"
+        # Stateable
+        no_state: "В процесі"
+        in_progress: "В процесі"
+        archived: :activerecord.attributes.generic.states.archived # Do not translate
+        published: :activerecord.attributes.generic.states.published # Do not translate
+        unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+        not_published: :activerecord.attributes.generic.states.unpublished # Do not translate
+        # Publishable
+        public: "Публічний"
+        private: "Приховано"
+        # Users
+        pending: "Очікує на розгляд"
+        inactive: "Неактивний"
+        active: "Активний"
+        this_is_you: "Це Ви"
+
+    tutorial:
+      title: "Посібник для початківців"
+      dashboard:
+        title: "Як я можу використовувати цей веб-сайт?"
+        message: "Якщо ви тільки починаєте керувати вмістом у WeMeditate, ми підготували кілька коротких відеороликів, щоб допомогти вам, якщо ви загубитесь."
+        role_description: "Ви %{role}, і тому Ви робите %{description}. Для відео, що пояснює, як це зробити, натисніть посилання нижче."
+        action: "Дивіться навчальні відео"
+      index:
+        title: "Що це?"
+        message:
+          # Pages
+          static_pages: "Це основні сторінки веб-сайту, такі як Домашня сторінка, Сторінка натхнення, Сторінка Шрі Матаджі і т.д. Ви можете використовувати цей індекс для редагування частини вмісту цих сторінок, але більшість із цих сторінок мають заздалегідь визначений вміст та URL-адреси."
+          articles: "Статті написані Сахаджа йогами, щоб надихнути шукачів. Вони можуть висвітлювати різні теми, такі як: медитація у повсякденному житті; написання про реалізовані душі; художні твори, музика чи поезія йогів; поглиблені статті на більш глибокі теми; тощо. Будь-що, про що йоги можуть надихнутись написати. <br> <br> Усі статті відображаються на \"Сторінка Натхнення.\"."
+          subtle_system_nodes: "Це сторінки, що описують різні частини тонкої системи. Кожна сторінка - це поглиблене пояснення якостей тієї чакри чи каналу, в якій вона проявляється у повсякденному житті та способів лікування, які стосуються її."
+          streams: "These are live online meditations that are streamed on a weekly basis at a set time. The livestream of the meditation will be embedded on We Meditate, and seekers can subscribe for a reminder when the meditation starts." # TODO: Translate
+          # Resources
+          meditations: "Це відеороботи путівних медитацій, оповідані йогами. Вони доступні громадськості на сторінці \"Медитації\" на веб-сайті.<br><br>Кожна медитація класифікується за її тривалістю та цілями цієї медитації, що дозволяє користувачам генерувати керовану медитацію, що відповідає їх потребам. Кожна медитація також має \"популярність\" статистику, яка відображає кількість переглядів, які медитація отримує останнім часом."
+          treatments: "Це сторінки, які описують різні способи лікування, якими йоги користуються, щоб очистити себе. Кожна техніка матиме текстовий опис, а може містити відео, ілюструючи лікування в дії."
+          tracks: "Музичні треки доступні для слухачів для прослуховування на сторінці \"Музика\" на веб-сайті. Плейлисти створюються автоматично для кожного типу інструменту."
+          # Filters
+          categories: "Кожна стаття належить до однієї з цих категорій. Шукач може використовувати ці категорії для фільтрування статей натхнення, щоб знайти те, що їх цікавить."
+          duration_filters: "Це дозволяє нам згрупувати медитації в приблизну тривалість, щоб шукачі могли спостерігати за провідною медитацією, яка є правильною тривалістю протягом часу, який вони мають."
+          goal_filters: "Вони дозволяють нам згрупувати медитації за тією чакрою чи якістю, на якій вони зосереджені, щоб шукачі могли спостерігати за керованою медитацією щодо викликів, з якими вони стикаються."
+          instrument_filters: "Вони дозволяють групувати музичні композиції, щоб шукачі могли слухати музику, яка відповідає їхньому настрою."
+          mood_filters: "Вони дозволяють групувати музичні композиції, щоб шукачі могли слухати музику, яка відповідає їхньому настрою."
+          artists: "Вони надають додаткову інформацію про музичного виконавця для кожного треку."
+          # People
+          authors: "Авторські профілі відображаються внизу статті «Натхнення». Вони корисні для встановлення достовірності та більш особистого зв’язку шукача з автором статті.<br><br>Деякі авторські профілі пов’язані з обліковим записом WeMeditate. Коли користувач із обліковим записом пише статтю, до нього автоматично додається їх авторський профіль. Інші учасники WeMeditate можуть не мати облікового запису на цьому веб-сайті, тому їхній профіль не має жодного пов’язаного облікового запису."
+          users: "Це люди, які можуть змінювати вміст WeMeditate. Кожен адміністратор має роль, яка визначає, що їм дозволено редагувати, і майже всі адміністратори обмежені певними мовами."
+      show:
+        title: "Що це?"
+        message:
+          tutorial: "Клацніть на вкладках нижче, щоб переглянути кілька коротких відео з поясненнями, як керувати вмістом на веб-сайті WeMeditate."
+          my_author: "Щоразу, коли ви пишете статтю, цей профіль відображатиметься внизу статті. Це допомагає шукачеві більше зв’язуватися з письменником статті, а також встановлює авторитет письменника.<br><br>Ось кілька порад щодо написання хорошої біографії.<br> - Використовуйте третю особу.<br> - Не зупиняйтеся занадто багато на своєму вихованні або на тому, як довго ви медитували.<br> - Згадайте свою професію чи навчання. Покажіть, що ви поважний член суспільства.<br> - Якщо ви не пишете біографію художника, намагайтеся бути приземленим і нехай читач бачить себе у вас."
+      role_vimeo_ids:
+        super_admin: 363132481
+        regional_admin: 363132481
+        editor: 363137633
+        writer: 363141876
+        translator: 363139502
+      panels:
+        overview:
+          menu: "Огляд"
+          title: "Як використовувати CMS як %{role}"
+          description: "Як %{role}, це ваша роль %{description}"
+        editor:
+          menu: "Написання змісту"
+          title: "Як користуватися редактором вмісту"
+          description: ""
+          vimeo_id: 363156142
+        issues:
+          menu: "Звітність про проблеми"
+          title: "Як повідомляти про проблеми"
+          description: "Будь ласка, натисніть на \"Report Issue\" кнопка в нижній частині лівого меню. Це відкриє ваш клієнт електронної пошти, куди ви зможете надіслати нам електронний лист на адресу admin@wemeditate.co"
+
+    report_issue:
+      name: "WeMeditate Administrator"
+      email: "admin@wemeditate.co"
+      subject: "WeMeditate Issue Report"
+      body: "Будь ласка, опишіть проблему на англійській ..."
+
+    misc:
+      no_translated_title: "Відсутній Переклад Заголовку" # This should be written in titlecase
+      menu:
+        dashboard: "Панель управління"
+        my_author: "Мій профіль"
+        all_authors: "Профілі всіх авторів"
+        # The website's editable content is broken into three sections Pages, Resources, and People
+        pages: "Сторінки"
+        resources: "Ресурси"
+        people: "Люди"
+        # For specific models
+        static_pages: "Основні Сторінки"
+        articles: "Статті Натхнення"
+        subtle_system_nodes: "Тонка Система"
+        streams: :activerecord.models.stream.other # Do not translate
+        meditations: :activerecord.models.meditation.other # Do not translate
+        treatments: :activerecord.models.treatment.other # Do not translate
+        tracks: "Музика"
+        users: :activerecord.models.user.other
+      locale:
+        no_languages: "Без мов"
+        all_languages: "Всі мови"
+        other_languages: "Інші мови"
+
+    javascript:      
+      email: "E-mail"
+      message: "Повідомлення"
+      drag_images_to_upload: "Перетягніть сюди зображення для завантаження"
+      no_results: "Результатів не знайдено ..."
+      waiting_for_upload: "Очікується завантаження %{count} файлів ..."
+      file: "Файл"
+      files: "Файли"

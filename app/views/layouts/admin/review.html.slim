@@ -15,4 +15,4 @@ html
   javascript:
     window.translate = #{translate('admin.javascript').to_json.html_safe}
     window.translate['content'] = #{translate('admin.content').to_json.html_safe}
-    window.locale = '#{I18n.locale}'
+    window.locale = '#{Globalize.locale}'

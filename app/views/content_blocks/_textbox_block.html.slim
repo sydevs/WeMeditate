@@ -1,13 +1,15 @@
-ruby:
-  is_wisdom = (block[:asWisdom] == true)
-  is_video = (block[:asVideo] == true)
-  classes = ["content__textbox--#{block[:alignment]}"]
-  classes << 'content__textbox--invert' if is_wisdom || block[:invert] == true
-  classes << "content__textbox--#{block[:separate] == true ? 'separate' : 'overlay'}" unless is_wisdom
-  classes << 'content__textbox--wisdom' if is_wisdom
-  classes << 'content__textbox--video' if is_video
 
-- return unless block[:image].is_a?(Hash)
+ruby:
+  isWisdom = (block[:asWisdom] == true)
+  isVideo = (block[:asVideo] == true)
+  classes = ["content__textbox--#{block[:alignment]}"]
+  classes << 'content__textbox--invert' if isWisdom || block[:invert] == true
+  classes << "content__textbox--#{block[:separate] == true ? 'separate' : 'overlay'}" unless isWisdom
+  classes << 'content__textbox--wisdom' if isWisdom
+  classes << 'content__textbox--video' if isVideo
+  classes << 'content__textbox--compact' if block[:compact] == true
+
+  return unless block[:image].is_a?(Hash)
 
 .content__textbox class=classes
   - if is_wisdom
@@ -23,8 +25,8 @@ ruby:
       .content__textbox__sidetext
         = render_decoration :sidetext, block, alignment: (block[:alignment] == 'right' ? :right : :left)
 
-    - if is_wisdom
-      = inline_svg 'content/ancient-wisdom.svg', class: 'content__textbox__graphic'
+    - if isWisdom
+      = inline_svg_tag 'content/ancient-wisdom.svg', class: 'content__textbox__graphic'
 
     - if is_video
       h2.content__textbox__title = block[:title]
@@ -35,11 +37,14 @@ ruby:
         .content__textbox__circle
           = render_decoration :circle, block
 
-        - if is_video
-          .content__textbox__action
-            - vimeo_id = block[:url].match(%r{/(\d+)/?\z})[1]
-            a.content__textbox__action__button href="https://vimeo.com/#{vimeo_id}" data-lity=true target='_blank'
-            .content__textbox__action__text = block[:action]
+        - if isVideo
+          - vimeo_id = block[:url].match(%r{/(\d+)/?\z})[1] rescue nil
+          - if vimeo_id.nil?
+            = content_error "Could not load invalid vimeo id '#{block[:url]}'"
+          - else
+            .content__textbox__action
+              a.content__textbox__action__button href="https://vimeo.com/#{vimeo_id}" data-lity=true target='_blank'
+              .content__textbox__action__text = block[:action]
 
     - unless is_video
       .content__textbox__box_wrapper

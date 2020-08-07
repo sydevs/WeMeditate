@@ -2,6 +2,8 @@
 Application.elements.form.map(function(form) {
   if (form.type == 'contact') {
     form.setMessage('<%= @message %>', '<%= @success ? "positive" : "negative" %>')
+    form.setButtonText('<%= @success ? translate("form.button.submitted") : translate("form.button.try_again") %>')
+    form.setButtonEnabled(<%= !@success %>)
     form.setLoadingState(false)
   }
 })

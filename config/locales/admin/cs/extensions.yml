@@ -1,0 +1,91 @@
+
+# EXTENSION TRANSLATIONS
+# This file contains translations for addons which are used by the website.
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+cs:
+  devise:
+    failure:
+      invited: "Máte čekající pozvánku, přijměte ji a dokončete vytváření účtu."
+      already_authenticated: "Již jste přihlášeni."
+      inactive: "Váš účet zatím není aktivován."
+      invalid: "Neplatné %{authentication_keys} nebo heslo."
+      locked: "Váš účet je uzamčený."
+      last_attempt: "Zbývá vám poslední pokus před tím, než bude váš účet zablokován."
+      not_found_in_database: "Neplatné %{authentication_keys} nebo heslo."
+      timeout: "Vaše časová relace vypršela. Chcete-li pokračovat, přihlaste se znovu."
+      unauthenticated: "Než budete pokračovat, musíte se přihlásit nebo zaregistrovat."
+      unconfirmed: "Než budete pokračovat, musíte potvrdit svou e-mailovou adresu."
+    mailer:
+      reset_password_instructions:
+        subject: "Pokyny k obnovení hesla."
+      unlock_instructions:
+        subject: "Pokyny k odemčení."
+      email_changed:
+        subject: "E-mail byl změněn."
+      password_change:
+        subject: "Heslo bylo změněno."
+      invitation_instructions:
+        subject: "Uvítací instrukce."
+        hello: "Dobrý den %{email}"
+        someone_invited_you: "Byli jste pozváni, abyste se stali editory %{url}, pozvánku můžete přijnout pomocí odkazu níže."
+        accept: "Přijmout pozvánku."
+        accept_until: "Tato pozvánka bude platná do %{due_date}."
+        ignore: "Pokud si nepřejete přijmout pozvánku, ignorujte prosím tento e-mai.<br />\nVáš účet nebude vytvořen, dokud nepřejdete na výše uvedený odkaz a nenastavíte heslo."
+    passwords:
+      no_token: "Na tuto stránku nemůžete přejít bez e-mailu s obnoveným heslem. Pokud máte e-mail s obnoveným heslem, ujistěte se, že jste použili úplnou adresu URL."
+      send_instructions: "Během několika minut obdržíte e-mail s pokyny, jak resetovat heslo."
+      send_paranoid_instructions: "Pokud je vaše e-mailová adresa v naší databázi, obdržíte na svou e-mailovou adresu během několika minut odkaz na obnovení hesla."
+      updated: "Vaše heslo bylo úspěšně změněno. Nyní jste přihlášeni."
+      updated_not_active: "Vaše heslo bylo úspěšně změněno."
+    invitations:
+      send_instructions: "E-mail s pozvánkou byl odeslán na %{email}."
+      invitation_token_invalid: "Elektronický klíč pozvánky není platný!"
+      updated: "Vaše heslo bylo úspěšně nastaveno. Nyní jste přihlášeni."
+      updated_not_active: "Vaše heslo bylo úspěšně nastaveno."
+      no_invitations_remaining: "Již nezbývají žádné pozvánky."
+      invitation_removed: "Vaše pozvánka byla odstraněna."
+      new:
+        header: "Poslat pozvánku"
+        submit_button: "Pošlete pozvánku"
+      edit:
+        header: "Nastavte své heslo"
+        submit_button: "Nastavit heslo"
+    sessions:
+      signed_in: "Úspěšně přihlášeno."
+      signed_out: "Úspěšně odhlášeno."
+      already_signed_out: "Úspěšně odhlášeno."
+    unlocks:
+      send_instructions: "Během několika minut obdržíte e-mail s pokyny, jak odemknout účet."
+      send_paranoid_instructions: "Pokud již máte účet, během několika minut obdržíte e-mail s pokyny, jak jej odemknout."
+      unlocked: "Váš účet byl úspěšně odemčen. Chcete-li pokračovat, přihlaste se."
+  errors:
+    messages:
+      expired: "vypršel, požádejte o nový."
+      not_found: "nenalezen"
+      not_locked: "nebyl uzamčen"
+      not_saved:
+        one: "%{count} chyba zabránila uložení tohoto %{resource}:"
+        other: "%{count} chyba zabránila uložení tohoto %{resource}:"
+  time:
+    formats:
+      default: '%k:%M' # Do not translate, unless you know what you are doing
+      time: :time.formats.default # Do not translate
+      date: :date.formats.default # Do not translate
+      short: :date.formats.default # Do not translate
+      devise:
+        mailer:
+          invitation_instructions:
+            accept_until_format: '%B %d, %Y %I:%M %p' # Do not translate, unless you know what you are doing
+  date:
+    formats:
+      default: '%d %b %Y' # Do not translate, unless you know what you are doing
+      date: :date.formats.default # Do not translate
+  simple_form:
+    'yes': "Ano"
+    'no': "Ne"
+    required:
+      text: "požadováno"
+      mark: '*' # Do not translate
+    error_notification:
+      default_message: "Zkontrolujte prosím níže uvedené problémy:"

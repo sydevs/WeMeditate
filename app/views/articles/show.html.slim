@@ -1,14 +1,14 @@
 main.scrollspy-target id=dom_id(@article)
   h1.banner = @article.name
 
-  - if @article.author && !@article.type_event?
+  - if @article.author && %w[article artwork].include?(@article.article_type)
     .author.author--mini
       a.author__image href='#author'
         = smart_image_tag @article.author.image, '64px'
       - if @article.type_artwork?
-        .author__name <em>#{@article.author.name}</em>, #{@article.author.country_code}
+        .author__name <em>#{@article.author.name}</em>, #{@article.author.country_name}
       - else
-        .author__name #{translate 'author.written_by'} <em>#{@article.author.name}</em>, #{@article.author.country_code}
+        .author__name #{translate 'author.written_by'} <em>#{@article.author.name}</em>, #{@article.author.country_name}
 
       /- if @article.author.title
         .author__title
@@ -27,17 +27,17 @@ main.scrollspy-target id=dom_id(@article)
   - cache @article do
     .content = render_content @article
 
-= sharing_links
+p = sharing_links
 
-- if @article.author && !@article.type_event?
+- if @article.author && %w[article artwork].include?(@article.article_type)
   .author.author--full id='author'
     - if @article.type_artwork?
       .author__header = translate 'author.about_the_artist'
     - else
       .author__header = translate 'author.about_the_author'
     .author__meta
-      .author__image = smart_image_tag @article.author.image, '128px'
-      .author__name #{@article.author.name}, #{@article.author.country_code}
+      .author__image= smart_image_tag @article.author.image, '128px'
+      .author__name #{@article.author.name}, #{@article.author.country_name}
       - if @article.author.title
         .author__title = @article.author.title
       - if @article.author.years_meditating

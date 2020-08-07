@@ -2,6 +2,4 @@
   = f.input :role, collection: StaticPage.available_roles.map { |k| [human_enum_name(record, :role, k), k] }, selected: StaticPage.available_roles.first
 - else
   = f.input :role do
-    .ui.icon.label
-      i.pin.icon
-      = human_enum_name(record, :role)
+    = label_tag :pin, human_enum_name(record, :role)

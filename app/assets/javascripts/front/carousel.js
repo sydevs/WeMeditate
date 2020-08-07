@@ -1,4 +1,4 @@
-/* global $, zenscroll */
+/* global $, Util, zenscroll */
 /* exported Carousel */
 
 class Carousel {
@@ -13,6 +13,7 @@ class Carousel {
       $element.on('init', (_event, slick) => this.updateArrowText(slick, slick.currentSlide))
     }
 
+    $element.on('afterChange', (_event, slick, currentSlide, _nextSlide) => this.sendAnalyticsSelectionEvent(slick, currentSlide))
     $element.slick(CarouselStyles[this.style])
   }
 
@@ -42,6 +43,13 @@ class Carousel {
 
   getSlide(slick, index) {
     return slick.$slides.get(index % slick.slideCount)
+  }
+
+  sendAnalyticsSelectionEvent(slick, slideIndex) {
+    const slide = this.getSlide(slick, slideIndex)
+    const global = slide.querySelector('.js-carousel-item').dataset.gtmGlobal || `Slide ${slideIndex}`
+    const local = slide.querySelector('.js-carousel-item').dataset.gtmLocal
+    Util.sendAnalyticsEvent('Slide Selected', { type: this.style, globalTitle: global, localTitle: local })
   }
 
 }

@@ -15,7 +15,7 @@ main
           h2.amplitude-playlists-title = translate 'tracks.choose_instruments'
           .amplitude-playlists-list
             - @instrument_filters.each do |instrument_filter|
-              .amplitude-playlist-button.amplitude-play.amplitude-interactive data-amplitude-playlist=instrument_filter.id
+              a.amplitude-playlist-button.amplitude-play.amplitude-interactive data=gtm_record(instrument_filter) data-amplitude-playlist=instrument_filter.id
                 .amplitude-playlist-button-icon
                   // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
                   .js-inline-svg data-url="#{instrument_filter.icon_url}" data-namespace="#{instrument_filter.name.parameterize.downcase}"
@@ -24,7 +24,7 @@ main
 
         .amplitude-controls
           .amplitude-info
-            .amplitude-play-pause.amplitude-interactive
+            a.amplitude-play-pause.amplitude-interactive
               .icon.icon--spinner
               .icon.icon--play
               /.icon.icon--pause
@@ -41,6 +41,8 @@ main
             .amplitude-skip
               span.amplitude-prev.amplitude-interactive
                 .icon.icon--backward
+              /span.amplitude-pause.amplitude-interactive
+                .icon.icon--pause
               span.amplitude-next.amplitude-interactive
                 .icon.icon--forward
               span.amplitude-shuffle.amplitude-interactive
@@ -67,7 +69,10 @@ main
                   // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
                   .js-inline-svg data-url="#{playlist[:cover_art_url]}" data-namespace="#{playlist[:title].parameterize.downcase}"
             .amplitude-playlist-list
-              = render partial: 'tracks/song', collection: playlist_songs, locals: { playlist: playlist_id }, cached: proc { |song| [song, playlist_id] }
+              /= render partial: 'tracks/song', collection: playlist_songs, locals: { playlist: playlist_id }, cached: Proc.new { |song| [song, playlist_id] }
+              - playlist_songs.each_with_index do |song, index|
+                - cache [song, playlist_id, I18n.locale] do
+                  = render 'tracks/song', song: song, playlist: playlist_id, song_counter: index
 
         .amplitude-cover.amplitude-cover--mobile
           .amplitude-cover-image

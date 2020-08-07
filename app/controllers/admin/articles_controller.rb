@@ -39,11 +39,11 @@ module Admin
       end
 
       def after_create
-        if params[:article][:thumbnail]
-          media_file = @record.media_files.create!(file: params[:article][:thumbnail])
-          @record.thumbnail_id = media_file.id
-          @record.save!(validate: @record.published?)
-        end
+        return unless params[:article][:thumbnail]
+
+        media_file = @record.media_files.create!(file: params[:article][:thumbnail])
+        @record.thumbnail_id = media_file.id
+        @record.save!(validate: @record.published?)
       end
 
   end

@@ -6,5 +6,6 @@
   .amplitude-song-title = song[:name]
   .amplitude-song-artist
     - song.artists.each do |artist|
-      a href=artist.url target='_blank' = artist.name
+      a href=artist.url target='_blank'
+        = artist.name
       = ', ' unless song.artists.last == artist

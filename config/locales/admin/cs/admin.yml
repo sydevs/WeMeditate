@@ -1,0 +1,508 @@
+
+# ADMINISTRATOR TRANSLATIONS
+# All translations in this file are seen by administrators of the website when managing the site content.
+
+cs:
+  admin:
+    # ===== ACTIONS ===== #
+    # This section deals with actions that an administrator can take.
+    action:
+      view_site: "View Site"
+      view_admin: "Go To Admin Dashboard"
+      tutorial: "Help (How to Use)"
+      report_issue: "Report Issue"
+      search: "Search..."
+      sign_in: "Log In"
+      sign_out: "Log Out"
+
+      draft:
+        reset: "Discard Draft Value" # "Value" refers to a piece of information which is stored in the site's database. It could be a number, text, file, etc.
+        redo: "Use Draft Value"
+        reset_tooltip: "Reset to \"%{value}\""
+        redo_tooltip: "Set to \"%{value}\""
+
+      simple:
+        show: "View"
+        create: "New"
+        edit: "Edit"
+        write: "Write"
+        edit_details: "Edit details" # These are the details of a page
+        edit_content: "Edit content" # This is the content of a page
+        update: "Save"
+        destroy: "Delete"
+        preview: "Preview"
+        review: "Review changes"
+        save_draft: "Save Draft"
+        approve: "Approve"
+        invite: "Invite" # To invite a new editor to the website
+        reinvite: "Resend Invitation"
+        cancel: "Cancel"
+        back: "Back"
+
+      target: # A 'record' refers to some part of the website, such as an Article, WebPage, Guided Meditation, etc.
+        show: "View %{record}"
+        upload: "Upload %{record}"
+        edit: "Edit %{record}"
+        write: "Write %{record} content"
+        review: "Review %{record}"
+        reset: "Reset %{record}"
+        publish: "Publish %{record}"
+        unpublish: "Unpublish %{record}" # This means hiding the record from the public, the opposite of publishing
+        add: "Add %{record}"
+        create: "New %{record}"
+        remove: "Remove %{record}"
+        destroy: "Delete this %{record}"
+        back: "Back to %{records}"
+        reorder: "Change %{record} Order"
+
+      descriptive:
+        show: "View on website"
+        preview: "Preview draft on website"
+        reload_vimeo_data: "Reload Vimeo Metadata"
+        audit: "View change logs"
+
+    # ===== MESSAGES ===== #
+    # This section includes messages which will be displayed to the administrator.
+    
+    details:
+      original_language: "Original Language"
+      translated_languages: "Translated Languages"
+      priority: "Inspiration Page"
+      owned_by: "Owned by %{owner}"
+      vertical_video: "Vertical Video"
+      horizontal_video: "Horizontal Video"
+      featured_video: "Featured Video" # The video which will be shown on an article preview
+      featured_date: "Featured Date" # The date which will be shown on an article preview
+      role: "Role On Website"
+      pending_changes: "This %{page} has changes pending approval"
+      start_date: "Start Date"
+
+    tags:
+      published: "Published"
+      unpublished: "Not Published"
+      unapproved_changes: "Has Unapproved Changes"
+      unpublished_draft: "Unpublished Draft"
+      no_translation: "No %{language} Translation" # "language" will be replaced with the language that this file is written in.
+      pending_translation: "Has %{language} Translation, Pending Approval" # "language" will be replaced with the language that this file is written in.
+      in_progress_translation: "Has Incomplete %{language} Translation" # "language" will be replaced with the language that this file is written in.
+      pending_invitation: "Has Not Yet Accepted Invitation"
+      this_is_you: "This is you"
+      missing_record: "Missing %{model}"
+      too_many_pinned: "More than %{count} pinned %{model}"
+      updated_ago: "Modified %{time_ago} ago"
+      published_ago: "Published %{time_ago} ago"
+      published_from_now: "Will be published %{time_from_now} from now"
+      urgency: # These are in order, with 'critical' as the most important, and 'pending' as the least important.
+        critical: "Critical Issue"
+        important: "Important Issue"
+        normal: "Normal Priority"
+        pending: "Pending"
+      views: # This is the number of viewers or visits. Used to indicate the number of video views
+        one: "%{count} View"
+        other: "%{count} Views"
+      popularity: "Popularity: %{value}"
+
+    messages:
+      loading: "Loading"
+      errors: "Errors"
+      no_translations_found: "No %{pages} to translate"
+      make_public: "Make this %{page} visible to the public"
+      maintenance_mode: "The website is under construction, come back soon."
+      confirm_destroy: "Are you sure you want to delete that? This cannot be undone!"
+      confirm_discard_draft: "Are you sure you want to discard all changes to this page? This cannot be undone!"
+      confirm_unsaved_changes: "Unsaved changes will be lost. Are you sure you want to leave the page?"
+      drop_files_here: "Drop files here"
+      unapproved_changes_notice: "This %{page} has unpublished changes. These will not be visible to the public until they have been reviewed by an administrator."
+      pending_invitation_notice: "This %{person} has been sent an invitation to become an editor on the website, but has not yet responded."
+      draft_notice: "You are viewing a draft version of this %{page}. This version not be visible to the public until it has been reviewed by an administrator."
+      draft_contributed_by: "This draft includes changed made by %{people}."
+      text_too_short: "must have at least %{count} letters"
+      invalid_vimeo_id: "must be a valid Vimeo ID"
+      new_author_notice: "You have not set up your author profile yet, fill out the fields below and press save."
+      start_details_before_content: "Start translating details first, then the content."
+
+    hints:
+      excerpt: "This is a short preview of the %{page} content that will be shown in %{page} listings."
+      article_visibility: "This determines where an article will appear on the Inspiration page."
+      article_author: "The profile which will be shown under the article on the website."
+      article_article_type: "Different article types will offer a few different fields and display the author differently."
+      article_owner: "Administrators and Editors can always edit all articles. This field gives a writer special permission to modify an article after it is published. Usually this is the person who wrote the article in the first place."
+      article_video: "If you enter a featured video, it will appear on the article preview."
+      article_date: "Set the start date of the event here. This date will appear on the article preview."
+      article_coordinates: "Providing the latitude and longitude of an event will allow rich Google search results."
+      article_published_at: "If this date is in the future, then the article will be scheduled to be published on that date. Leave this fiield blank to have the publish date set automatically."
+      article_type_report: "'Report' type articles are general articles which we don't want to attribute to an individual author."
+      fixed_slug: "This is a special page, it's URL cannot be changed."
+      preferred_language: "This is the language the user will view the admin website in."
+      languages_access: "These are the locales where this user can modify the website content."
+      languages_known: "These are the languages that a user can translate content from."
+      self_realization_slug: "The url for the self-realization page must be \"%{slug}\""
+      stream:
+        url: "This should be an embeddable link to whichever service this meditation is being streamed with. For example: Twitch, Vimeo, etc. This should be a stable URL that will work every time."
+        location: "Where is this meditation being broadcasted from?"
+        recurrence: "Which days of the week will you be streaming on? Click all that apply."
+        list_id: "You must have a list set up in Klaviyo (our mailing service) and supply a unique list ID here. This list will be used for those who want to subscribe for reminders of when the meditation starts."
+        target_time_zones: "Users in the selected timezones will be shown this stream on the main live meditations page. You can select multiple timezones. Selected zones are marked in green."
+        target_time_zones_conflict: "Note: If multiple streams are featured in the same timezone, the one which is physically closer to the user will be shown."
+
+    result:
+      created: "Created successfully."
+      updated: "Saved successfully."
+      deleted: "Deleted successfully."
+      saved_but_needs_review: "Saved successfully, changes will be published after they are reviewed."
+      cannot_delete_attached_record: "You cannot delete a %{category} which has %{pages} attached to it. Reassign the %{pages} and try again."
+      # Example: "You cannot delete a Category which has Articles attached to it. Reassign the Articles and try again."
+      published: "Published successfully."
+    
+    audit:
+      title: "History of changes to \"%{record}\" %{model}"
+      changed_by: "by %{name}"
+      changed_to: "changed to"
+
+    # ===== CONTENT ===== #
+    # This section defines text that will be shown in the content editor.
+    content:
+      outline_title: "Structure of the %{page} Content" # The title for a section which outlines the structure of a page.
+      blocks: # These blocks are the types of elements that can be used on a page
+        header: "Title"
+        paragraph: "Paragraph"
+        image: "Image"
+        action: "Button"
+        catalog: "WeMeditate Content"
+        list: "List"
+        quote: "Quote"
+        form: "Form"
+        structured: "Structured Text"
+        textbox: "Text With Image"
+        video: "Video"
+        whitespace: "Whitespace"
+      settings:
+        tunes: "Options"
+        decorations: "Decorations"
+      tunes: # These are formatting styles for content blocks
+        centered: "Centered"
+        stretch: "Fill screen width"
+        separate: "Separate image and text"
+        asGallery: "Gallery"
+        asWisdom: "Ancient Knowledge Style"
+        asVideo: "Video"
+        asPoem: "Poetry"
+        withImages: "Show Images"
+        invert: "Invert Colours"
+        compact: "No Spacing After Block"
+        style: # These are list styles
+          unordered: "Unordered" # Also called a "Bulleted" list
+          ordered: "Ordered" # Also called a "Numbered" list
+          leaf: "Leaf Icon" # As in a list with a leaf icon instead of the bullet
+        alignment: # These are text alignments
+          left: "Left Aligned"
+          center: "Center Aligned"
+          right: "Right Aligned"
+        position: # A 'callout' is an image or quotation which is inserted at the side of the text
+          center: "Centered"
+          left: "As Left Callout"
+          right: "As Right Callout"
+        type: # Note to Developer: These must be translated manually because they are accessed in JavaScript
+          articles: "Articles"
+          treatments: "Techniques"
+          meditations: "Meditations"
+        level: # These are heading levels
+          h1: "Level 1"
+          h2: "Level 2"
+          h3: "Level 3"
+          h4: "Level 4"
+          h5: "Level 5"
+          h6: "Level 6"
+        size:
+          narrow: "Narrow"
+          wide: "Wide"
+          small: "Small"
+          medium: "Medium"
+          large: "Large"
+        format:
+          button: "Button"
+          grid: "Grid"
+          accordion: "Accordion"
+          columns: "Columns"
+          signup: "Signup Form"
+          contact: "Contact Form"
+      decorations:
+        triangle: "Triangle Decoration"
+        circle: "Circle Decoration"
+        gradient: "Gradient Decoration"
+        leaves: "Leaf Decorations"
+        sidetext: "Vertical Text"
+        triangle_alignment:
+          left: "Left Triangle"
+          right: "Right Triangle"
+        gradient_alignment:
+          left: "Left Gradient"
+          right: "Right Gradient"
+        gradient_color:
+          orange: "Orange Gradient"
+          blue: "Blue Gradient"
+          gray: "Gray Gradient"
+        sidetext_text: "Enter vertical text..."
+      placeholders:
+        title: "Title"
+        text: "Text"
+        items: "Items"
+        action: "Button Text"
+        url: "Paste a link here"
+        quote: "Enter a quote" # "Quote" as in a quotation from some other text or person
+        alt: "Describe the image for the visually impaired"
+        caption: "Enter a caption" # "Caption" as in a piece of text describing an image
+        credit: "Enter a credit" # "Credit" as in the credit for an image or quotation
+        optional: "optional"
+        search: "Search"
+      words:
+        one: "%{count} word"
+        other: "%{count} words"
+      items:
+        one: "%{count} item"
+        other: "%{count} items"
+
+
+    # ===== MISCELLENEOUS ===== #
+    permissions: # These are messages relating to editor permissions
+      title: "Permissions Table"
+      own_languages_notice: "All editors are restricted to making modifications only in their own languages."
+      create: "Can Create"
+      update: "Can Modify"
+      translate: "Can Modify Untranslated %{pages}"
+      publish: "Can Approve Changes"
+      destroy: "Can Delete"
+      special:
+        update_own: "Can Modify Own %{pages}"
+        publish_own: "Can Approve Changes to Own %{pages}"
+        update_own_bio: "Can Modify Own Biography"
+        create_own_bio: "Can Create Own Biography"
+        update_own_user: "Can Modify Own Account"
+        update_subordinate: "Can Modify %{subordinates}"
+        create_subordinate: "Can Create %{subordinates}"
+        destroy_custom: "Can Destroy Custom %{pages}"
+      role_description: # This describes the responsibilities of a given type of administrator
+        translator: "translate existing content which has been published in other languages, to their assigned language."
+        writer: "can write new articles, or edit old articles which they themselves created."
+        editor: "should review and publish articles written by writers. They can also created their own articles."
+        regional_admin: "are responsible for approving translations, translating core parts of the site, and overseeing the publishing of new content in their language."
+        super_admin: "manage the fundamental elements of the site, and the creation of new editors."
+
+    review: # Text related to reviewing unapproved changes
+      title: "Review Changes"
+      changes_contributed_by: "Changes contributed by:"
+      no_value: "No Value"
+      invalid_value: "Invalid Value"
+      no_changes: "No Changes"
+      discard_all_changes: "Discard All Changes"
+      approve_changes: "Save Approved Changes"
+      or: "OR"
+      context:
+        details: "Page Details"
+        content: "Page Content"
+      effect:
+        moved: "Moved"
+        added: "Added"
+        removed: "Removed"
+        modified: "Changed"
+        nochange: "No Change"
+
+    preview:
+      no_custom_meditations: "The custom meditation interface cannot be previewed, and so it has been hidden for this preview."
+
+    metadata:
+      key: "name"
+      value: "value"
+      default_metadata: "Default Metadata"
+      generated_jsonld: "Generated Structured Data"
+
+    draft: # This section deals with the ability to create draft versions of new pages
+      no_image: "No Image"
+      items:
+        one: "%{count} item"
+        other: "%{count} items"
+      content:
+        original: # This is for a button that lets you revert to the previous content
+          one: "Original content with %{count} block"
+          other: "Original content with %{count} blocks"
+        draft: # This is for a button that lets you revert to the new content
+          one: "Draft content with %{count} block"
+          other: "Draft content with %{count} blocks"
+
+    dashboard:
+      title: "Dashboard for %{language}"
+      content:
+        title: "Published Content"
+        public: "The %{language} website (%{host}) is open to the public, and has the following published content."
+        private: "The %{language} website (%{host}) is closed to the public, and has the following ready content."
+      schedule:
+        title: "Publishing Schedule"
+        description: "This is a list of articles which are scheduled to be published in the near future."
+        no_schedule: "No articles are scheduled to be published."
+      alerts:
+        title: "Alerts"
+        description: "This is a list of important issues, that should be resolved to keep the site in healthy order."
+        no_issues: "No issues right now, good job!"
+
+    index:
+      columns:
+        status: "Status"
+        name: "Name"
+        role: "Role"
+        updated_at: "Updated"
+        created_at: "Created"
+        last_sign_in_at: "Last Login"
+        minutes: "Duration"
+        node: "Node"
+        location: "Location"
+        local_time: "Local Time"
+        category_id: :activerecord.models.category.one # Do not translate
+        categories: :activerecord.models.category.other # Do not translate
+        popularity: :activerecord.attributes.meditation.popularity # Do not translate
+        artist_id: :activerecord.models.artist.other # Do not translate
+        duration: :activerecord.attributes.track.duration # Do not translate
+        articles_count: :activerecord.models.article.other # Do not translate
+        instruments_count: :activerecord.models.instrument_filter.other # Do not translate
+        meditations_count: :activerecord.models.meditation.other # Do not translate
+        tracks_count: :activerecord.models.track.other # Do not translate
+        account: "Account"
+        country_code: "Country"
+      sort:
+        title: "Sort by"
+        columns:
+          default: "Default"
+          name: "Name"
+          country_code: "Country"
+          updated_at: "Recently Updated"
+          created_at: "Recently Created"
+          last_sign_in_at: "Recently Signed In"
+          popularity: "Most Popular"
+          articles_count: "Most Articles"
+          meditations_count: "Most Meditations"
+          tracks_count: "Most Tracks"
+          duration: :activerecord.attributes.track.duration # Do not translate
+          role: "Role"
+      filter:
+        title: "Filter by"
+      attribute:
+        status: "Status"
+        none: "None"
+        never: "Never"
+        default: "Default"
+      status: # Try to keep these translations short
+        # Draftable
+        needs_review: "Needs Review"
+        # Translatable
+        needs_translation: "Needs Translation"
+        not_translated: "Not Translated"
+        # Stateable
+        no_state: "In Progress"
+        in_progress: "In Progress"
+        archived: :activerecord.attributes.generic.states.archived # Do not translate
+        published: :activerecord.attributes.generic.states.published # Do not translate
+        unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+        not_published: :activerecord.attributes.generic.states.unpublished # Do not translate
+        # Publishable
+        public: "Public"
+        private: "Hidden"
+        # Users
+        pending: "Pending"
+        inactive: "Inactive"
+        active: "Active"
+        this_is_you: "This Is You"
+
+    tutorial:
+      title: "Starter Guide"
+      dashboard:
+        title: "How do I use this website?"
+        message: "If you are just getting started managing content on WeMeditate, we have prepared a few short videos, to help you if you're lost."
+        role_description: "You are a %{role}, and as such it is your role to %{description} For a video illustrating how to do this, please click the link below."
+        action: "Watch Tutorial Videos"
+      index:
+        title: "What are these?"
+        message:
+          # Pages
+          static_pages: "These are the primary pages of the website, such as the Home Page, Inspiration Page, Shri Mataji Page, etc. You can use this index to edit some of the content of these pages, but most of these pages have predefined conntent and urls."
+          articles: "Articles are written by Sahaja Yogis to inspire seekers. They can cover various topics, such as: meditation in daily life; writing about realized souls; artwork, music or poetry by yogis; in-depth articles on deeper topics; etc. Whatever a yogi may be inspired to write about.<br><br>All articles are shown on the site's \"Inspiration Page.\""
+          subtle_system_nodes: "These are the pages that describe different parts of the Subtle System. Each page is an in-depth explanation of the qualities of that chakra or channel, how it manifests in daily life, and the treatments that address it."
+          streams: "These are live online meditations that are streamed on a weekly basis at a set time. The livestream of the meditation will be embedded on We Meditate, and seekers can subscribe for a reminder when the meditation starts."
+          # Resources
+          meditations: "These are videos of guided meditations, narrated by yogis. They are available to the public on the website's \"Meditations\" page.<br><br>Each meditation is categorized by it's duration and the goals of that meditation, which allows users to generate a guided meditation that fits their needs. Each meditation also has a \"popularity\" statistic which represents the amount of views the meditation has been getting recently."
+          treatments: "These are the pages that describe different treatments that yogis use to clear themselves. Each technique will have a text description, and may have a video illustrating the treatment in action."
+          tracks: "Musical tracks are available for seekers to listen to on the website's \"Music\" page. Playlists are generated automatically for each type of instrument."
+          # Filters
+          categories: "Every article belongs to one of these categories. A seeker can use these categories to filter the Inspiration articles to find what they are interested in."
+          duration_filters: "These allow us to group meditations into approximate durations, so that seekers can watch a guided meditation that is the right length for the amount of time they have."
+          goal_filters: "These allow us to group meditations by what chakra or quality they focus on, so that seekers can watch a guided meditation for the challenges that they are facing."
+          instrument_filters: "These allow us to group music tracks, so that seekers can listen to music that fits their mood."
+          mood_filters: "These allow us to group music tracks, so that seekers can listen to music that fits their mood."
+          artists: "These provide extra information on the musical artist for each track."
+          # People
+          authors: "Author profiles appear at the bottom of Inspiration Articles. They are useful to establish credibility and a more personal connection for the seeker with the author of the article.<br><br>Some author profiles are associated with a WeMeditate account. When a user with an account writes an article, their author profile is automatically added to it. Other contributors to WeMeditate may not have an account on this site, and so their profile does not have any linked account."
+          users: "These are the people who can modify the content of WeMeditate. Each admin has a role which defines what they are allowed to edit, and almost all admins are restricted to certain languages."
+      show:
+        title: "What is this?"
+        message:
+          tutorial: "Click on the tabs below to view a few short videos explanations of how to manage content on the WeMeditate website."
+          my_author: "Whenever you write an article, this profile will be shown at the bottom of the article. This helps the seeker connect more with the writer of the article, and also establishes the credibility of the writer.<br><br>Here are some tips on writing a good bio.<br> - Use the third person.<br> - Don't dwell too much on your upbringing or how long you have been meditating.<br> - Do mention your profession or studies. Show that you are a respectable member of society.<br> - Unless you are writing an artist bio, try to be down to earth and let the reader see themselves in you."
+
+      role_vimeo_ids:
+        super_admin: 363132481
+        regional_admin: 363132481
+        editor: 363137633
+        writer: 363141876
+        translator: 363139502
+      panels:
+        overview:
+          menu: "Overview"
+          title: "How to use the CMS as a %{role}"
+          description: "As a %{role}, it is your role to %{description}"
+        editor:
+          menu: "Writing Content"
+          title: "How to use the content editor"
+          description: ""
+          vimeo_id: 363156142
+        issues:
+          menu: "Reporting Issues"
+          title: "How to report issues"
+          description: "Please click the \"Report Issue\" button at the bottom of the left-hand side menu. This will open up your email client where you will be able to send us an email at admin@wemeditate.co"
+
+    report_issue:
+      name: "WeMeditate Administrator"
+      email: "admin@wemeditate.co"
+      subject: "WeMeditate Issue Report"
+      body: "Please describe the issue in English..."
+
+    misc:
+      no_translated_title: "No Translated Title" # This should be written in titlecase
+      menu:
+        dashboard: "Dashboard"
+        my_author: "My Author Profile"
+        all_authors: "All Author Profiles"
+        # The website's editable content is broken into three sections Pages, Resources, and People
+        pages: "Pages"
+        resources: "Resources"
+        people: "People"
+        # For specific models
+        static_pages: "Main Pages"
+        articles: "Inspiration Articles"
+        subtle_system_nodes: "Subtle System"
+        streams: :activerecord.models.stream.other # Do not translate
+        meditations: :activerecord.models.meditation.other # Do not translate
+        treatments: :activerecord.models.treatment.other # Do not translate
+        tracks: "Music Tracks"
+        my_user: "My Account"
+        users: :activerecord.models.user.other # Do not translate
+      locale:
+        no_languages: "No Languages"
+        all_languages: "All Languages"
+        other_languages: "Other Languages"
+
+    javascript:      
+      email: "Email"
+      message: "Message"
+      drag_images_to_upload: "Drag images here to upload"
+      no_results: "No results found..."
+      waiting_for_upload: "Waiting for %{count} file(s) to finish uploading..."
+      file: "File"
+      files: "Files"

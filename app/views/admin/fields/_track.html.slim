@@ -4,3 +4,10 @@
 = f.input :audio, as: :file, wrapper: :semantic_file, icon: file_type_icon(:audio), file: record.audio, hint: duration_hint, input_html: { accept: file_type_accepts(:audio) }
 /= f.association :mood_filters
 = f.association :instrument_filters
+
+ruby:
+  translated_locales = record.translated_locales - [record.original_locale]
+  translated_locales = translated_locales.map { |lang| language_name(lang) }.join(', ')
+
+= f.input :translated_locales, label: translate('admin.details.translated_languages') do
+  = translated_locales

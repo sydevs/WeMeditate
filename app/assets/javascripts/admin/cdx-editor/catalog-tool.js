@@ -1,4 +1,4 @@
-/* global $, EditorTool, Util, translate */
+/* global $, EditorTool, Util, translate, locale */
 /* exported CatalogTool */
 
 class CatalogTool extends EditorTool {

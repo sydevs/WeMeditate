@@ -1,3 +1,4 @@
+
 ruby:
   block[:position] = block[:callout] if block[:callout].present? # Fallback for old data representations
   position = %w[left right center].include?(block[:position]) ? block[:position] : 'center'

@@ -1,47 +1,59 @@
-#logo.ui.centered.small.image
+
+.ui.centered.small.image id='logo'
   = render 'admin/partials/logo'
 
-.ui.section.divider
+.ui.section.divider class='locale-divider'
 
 .ui.fluid.secondary.vertical.menu
-  = link_to admin_root_path, class: "#{'active' if action_name == 'dashboard'} item"
-    = translate 'admin.dashboard.title'
+  p
+    .ui.fluid.label id='locale-label'
+      i.globe.icon
+      a href=root_url target='_blank'
+        = locale_host
+
+  = link_to admin_root_path(locale: Globalize.locale), class: "#{'active' if action_name == 'dashboard'} item"
+    = translate 'admin.misc.menu.dashboard'
 
   - if policy(Article).index? || policy(StaticPage).index? || policy(SubtleSystemNode).index?
     .item
       .title = translate 'admin.misc.menu.pages'
       .menu
         - if policy(StaticPage).index?
-          = link_to [:admin, StaticPage], class: "#{'active' if controller_name == 'static_pages'} item"
+          = link_to [:admin, StaticPage, locale: Globalize.locale], class: "#{'active' if controller_name == 'static_pages'} item"
             i.icon class=model_icon_key(StaticPage)
             = translate('admin.misc.menu.static_pages')
 
         - if policy(Article).index?
-          = link_to [:admin, Article], class: "#{'active' if %w[articles categories].include? controller_name} item"
+          = link_to [:admin, Article, locale: Globalize.locale], class: "#{'active' if ['articles', 'categories'].include? controller_name} item"
             i.icon class=model_icon_key(Article)
             = translate('admin.misc.menu.articles')
 
         - if policy(SubtleSystemNode).index?
-          = link_to [:admin, SubtleSystemNode], class: "#{'active' if controller_name == 'subtle_system_nodes'} item"
+          = link_to [:admin, SubtleSystemNode, locale: Globalize.locale], class: "#{'active' if controller_name == 'subtle_system_nodes'} item"
             i.icon class=model_icon_key(SubtleSystemNode)
             = translate('admin.misc.menu.subtle_system_nodes')
+
+        - if policy(Stream).index?
+          = link_to [:admin, Stream, locale: Globalize.locale], class: "#{'active' if controller_name == 'streams'} item"
+            i.icon class=model_icon_key(Stream)
+            = translate('admin.misc.menu.streams')
 
   - if policy(Track).index? || policy(Meditation).index? || policy(Treatment).index?
     .item
       .title = translate 'admin.misc.menu.resources'
       .menu
         - if policy(Meditation).index?
-          = link_to [:admin, Meditation], class: "#{'active' if %w[meditations goal_filters duration_filters].include? controller_name} item"
+          = link_to [:admin, Meditation, locale: Globalize.locale], class: "#{'active' if ['meditations', 'goal_filters', 'duration_filters'].include? controller_name} item"
             i.icon class=model_icon_key(Meditation)
             = translate('admin.misc.menu.meditations')
 
         - if policy(Treatment).index?
-          = link_to [:admin, Treatment], class: "#{'active' if controller_name == 'treatments'} item"
+          = link_to [:admin, Treatment, locale: Globalize.locale], class: "#{'active' if controller_name == 'treatments'} item"
             i.icon class=model_icon_key(Treatment)
             = translate('admin.misc.menu.treatments')
 
         - if policy(Track).index?
-          = link_to [:admin, Track], class: "#{'active' if %w[tracks mood_filters instrument_filters artists].include? controller_name} item"
+          = link_to [:admin, Track, locale: Globalize.locale], class: "#{'active' if ['tracks', 'mood_filters', 'instrument_filters', 'artists'].include? controller_name} item"
             i.icon class=model_icon_key(Track)
             = translate('admin.misc.menu.tracks')
 
@@ -51,20 +63,24 @@
       .title = translate 'admin.misc.menu.people'
       .menu
         - if policy(Author).create?
-          - action = current_user.author.present? && !current_user.author.new_record? ? edit_admin_author_path(current_user.author) : new_admin_author_path(self: true)
+          - action = current_user.author.present? && !current_user.author.new_record? ? edit_admin_author_path(current_user.author, locale: Globalize.locale) : new_admin_author_path(self: true, locale: Globalize.locale)
           = link_to action, class: "#{'active' if controller_name == 'authors' && is_author_bio} item"
             i.user.icon
             = translate('admin.misc.menu.my_author')
 
         - if policy(Author).index?
-          = link_to [:admin, Author], class: "#{'active' if controller_name == 'authors' && !is_author_bio} item"
+          = link_to [:admin, Author, locale: Globalize.locale], class: "#{'active' if controller_name == 'authors' && !is_author_bio} item"
             i.icon class=model_icon_key(Author)
             = translate('admin.misc.menu.all_authors')
 
         - if policy(User).index?
-          = link_to [:admin, User], class: "#{'active' if controller_name == 'users'} item"
+          = link_to [:admin, User, locale: Globalize.locale], class: "#{'active' if controller_name == 'users'} item"
             i.users.icon
             = translate('admin.misc.menu.users')
+        - else
+          = link_to [:edit, :admin, current_user, locale: Globalize.locale], class: "#{'active' if controller_name == 'users' && action_name == 'edit'} item"
+            i.user.icon
+            = translate('admin.misc.menu.my_user')
 
 .ui.hidden.divider
 

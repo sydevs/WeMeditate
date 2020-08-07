@@ -73,6 +73,10 @@ class QuoteTool extends EditorTool {
     }
   }*/
 
+  onPaste(event) {
+    this.data = { text: event.detail.data.innerText }
+  }
+
   static get enableLineBreaks() {
     return true
   }
@@ -80,5 +84,24 @@ class QuoteTool extends EditorTool {
   // Empty tool is not empty Block
   static get contentless() {
     return false
+  }
+
+  // Define the types of paste that should be handled by this tool.
+  static get pasteConfig() {
+    return { tags: ['BLOCKQUOTE'] }
+  }
+  
+  // Allow Quote to be converted to/from other blocks
+  static get conversionConfig() {
+    return {
+      import: 'text',
+      export: function (data) {
+        if (data.credit) {
+          return data.caption ? `${data.text} — ${data.credit} (${data.caption})` : data.text
+        } else {
+          return data.caption ? `${data.text} — ${data.caption}` : data.text
+        }
+      }
+    }
   }
 }

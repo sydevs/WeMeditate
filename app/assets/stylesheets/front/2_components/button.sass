@@ -55,7 +55,7 @@
 
   // If the button is hovered or active then the background should be full.
   &.button--active,
-  &.button--disabled,
+  &.button--disabled
     border-color: $color-button-blue
     color: $color-text-normal
 
@@ -125,6 +125,11 @@
   color: $color-text-inverse
   border-color: $color-text-inverse
   background: none
+
+  &.button--filled
+    background: transparentize(darkgrey, 0.8)
+    text-shadow: 0 0 2px transparentize(black, 0.2)
+    font-weight: $font-bold
 
 // ===== RESET FOR UNIQUE BUTTON TYPES ===== //
 .button--icon,

@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
 
   def show
     @static_page = StaticPage.publicly_visible.preload_for(:content).friendly.find(params[:id])
+    return redirect_to helpers.static_page_path_for(@static_page) unless helpers.static_page_path_for(@static_page) == request.path
     return unless stale?(@static_page)
 
     case @static_page.role
@@ -22,6 +23,9 @@ class StaticPagesController < ApplicationController
     end
 
     set_metadata(@static_page)
+  rescue ActiveRecord::RecordNotFound => e
+    @article = Article.publicly_visible.type_event.friendly.find(params[:id])
+    redirect_to @article, status: :moved_permanently if @article.present?
   end
 
 end

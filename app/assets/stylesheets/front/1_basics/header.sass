@@ -68,7 +68,7 @@
     stroke-width: 0.6px
 
 .header__action
-  max-width: 80px
+  max-width: 90px
   text-align: right
 
 .header__burger
@@ -560,12 +560,23 @@
       transform: rotateZ(-0.7854rad)
 
 
+// ===== MINIMAL HEADER ===== //
+.header--minimal
+  .header__wrapper--mobile
+    padding: 0 13px
+
+    .header__navigation
+      height: 50px
+
 // ===== STICKY HEADER ===== //
 // When the user scrolls down the page, the header should collapse and attach itself to the top of the page (triggered using javascript)
 // When that happens the header is said to be "sticky", and the following CSS rules are applied
 .header--sticky
-  .header__wrapper--mobile .header__navigation
-    height: 50px + $scrollspy-width
+  .header__wrapper--mobile
+    padding: 0 13px
+
+    .header__navigation
+      height: 50px
 
   .header
     &__banner,
@@ -615,10 +626,13 @@
     fill: $color-text-inverse
 
   &__breadcrumbs__item
-    color: $color-text-lighter
+    color: $color-text-inverse
 
-    &:not([href])
-      color: $color-text-inverse
+    &[href]
+      opacity: 0.7
+
+    &[href]:hover
+      opacity: 0.9
 
 // ===== OVERLAY TWEAKS ===== //
 // This causes the header to hover over the page.

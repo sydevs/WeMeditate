@@ -40,3 +40,29 @@ main
 #content
   display: block
   padding-top: 1rem
+
+// ===== LOCALE COLOURS ===== //
+$red: #db2828
+$orange: #f2711c
+$yellow: #fbbd08
+$olive: #b5cc18
+$green: #21ba45
+$teal: #00b5ad
+$blue: #2185d0
+$violet: #6435c9
+$purple: #a333c8
+$pink: #e03997
+$brown: #a5673f
+
+$locale-colours: en darkgrey, ru $blue, it $green, de $red, fr $teal, es $yellow, pt-br $olive, nl $violet, hy $purple, uk $brown, hi $orange, tr $red, ro $pink
+
+@each $locale, $colour in $locale-colours
+  body.locale--#{$locale}
+    #locale-label
+      background: transparentize($colour, 0.5)
+
+    .locale-divider
+      border-color: transparentize($colour, 0.5) !important
+
+    #locale-selector
+      box-shadow: 0px 0px 0px 1px transparentize($colour, 0.25) inset

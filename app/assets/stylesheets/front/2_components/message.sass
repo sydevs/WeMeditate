@@ -1,0 +1,12 @@
+@import "../../mixins/*"
+
+.message__wrapper
+  @extend %wide-content-width
+
+.message
+  font-weight: $font-medium
+  text-align: center
+  background: lighten($color-box-blue, 15%)
+  border: 1px solid $color-box-blue
+  padding: 1em 2em
+  margin-bottom: 3em

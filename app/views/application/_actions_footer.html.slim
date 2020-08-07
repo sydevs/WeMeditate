@@ -10,9 +10,9 @@
   .actions-footer__wrapper
     .actions-footer__content
       .actions-footer__gradient
-      a.actions-footer__item href=meditations_url
+      a.actions-footer__item href=meditations_url data=gtm_label('actions_footer.actions.online')
         .icon.icon--meditation
         .actions-footer__item__title = t('actions_footer.actions.online')
-      a.actions-footer__item href=static_page_path_for(:classes)
+      a.actions-footer__item href=static_page_path_for(:classes) data=gtm_label('actions_footer.actions.local')
         .icon.icon--location
         .actions-footer__item__title = t('actions_footer.actions.local')

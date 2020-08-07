@@ -3,7 +3,9 @@
   .header__dropdown__content
     ul.header__dropdown__list
       - nav[:content][:items].each do |item|
-        li: a.header__dropdown__item href=item[:url] = item[:title]
+        li
+          a.header__dropdown__item href=item[:url] data=item[:data]
+            = item[:title]
 
     .header__featured_wrapper
       - nav[:content][:featured].each do |item|

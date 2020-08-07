@@ -28,8 +28,8 @@ class DurationFilter < ApplicationRecord
   # Get all meditations that have content
   def self.has_content
     joins(meditations: [:translations, goal_filters: :translations]).where({
-      meditation_translations: { state: Meditation.states[:published], locale: I18n.locale },
-      goal_filter_translations: { published: true, locale: I18n.locale },
+      meditation_translations: { state: Meditation.states[:published], locale: Globalize.locale },
+      goal_filter_translations: { published: true, locale: Globalize.locale },
     }).uniq
   end
 

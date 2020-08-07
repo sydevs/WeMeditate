@@ -10,4 +10,6 @@
   ul.error__list
     - %i[meditations tracks articles].each do |role|
       - page = static_page_preview_for(role)
-      li: a href=static_page_path_for(page) = page.name
+      li
+        a href=static_page_path_for(page) data=gtm_record(page)
+          = page.name

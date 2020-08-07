@@ -1,6 +1,6 @@
 /* global $, EditorJS, Editor, SplashEditor, translate
   ParagraphTool, HeaderTool, ListTool, QuoteTool, ActionTool, ImageTool,
-  VideoTool, FormTool, TextboxTool, CatalogTool, StructuredTool */
+  VideoTool, FormTool, TextboxTool, CatalogTool, StructuredTool, WhitespaceTool */
 /* exported Editor */
 
 /** Content Editor
@@ -22,10 +22,19 @@ const Editor = {
   options: {
     holder: 'content-editor',
     tools: {
-      paragraph: ParagraphTool,
-      header: HeaderTool,
+      paragraph: {
+        class: ParagraphTool,
+        inlineToolbar: true,
+      },
+      header: {
+        class: HeaderTool,
+        inlineToolbar: false, //[],
+      },
       list: ListTool,
-      quote: QuoteTool,
+      quote: {
+        class: QuoteTool,
+        inlineToolbar: false, //[],
+      },
       action: ActionTool,
       image: ImageTool,
       video: VideoTool,
@@ -33,6 +42,7 @@ const Editor = {
       textbox: TextboxTool,
       catalog: CatalogTool,
       structured: StructuredTool,
+      whitespace: WhitespaceTool,
     },
     initialBlock: 'paragraph',
     autofocus: true,
@@ -92,7 +102,7 @@ const Editor = {
     Editor.adjustPendingUploads(+1)
 
     $.ajax({
-      url: `/en/vimeo_data?vimeo_id=${vimeo_id}`,
+      url: `/${window.locale}/vimeo_data?vimeo_id=${vimeo_id}`,
       type: 'GET',
       dataType: 'json',
       success: function(result) {
@@ -129,7 +139,7 @@ const Editor = {
     // Consolidate all the media file ids for easy reference
     let media_files = []
     for (let index = 0; index < data.length; index++) {
-      const block = outputData[index]
+      const block = data[index]
       if (block.data.media_files) media_files = media_files.concat(block.data.media_files)
       delete block.data.media_files
     }
@@ -160,10 +170,10 @@ const Editor = {
 
     // Retrieve the editor data, then store it in the input before the editor form is submitted.
     Editor.instance.save().then(outputData => {
-      console.log('Article data: ', outputData)
+      console.log('Article data: ', outputData) // eslint-disable-line no-console
       Editor.input.value = Editor.processDataForSave(outputData)
     }).catch((error) => {
-      console.error('Editor saving failed: ', error)
+      console.error('Editor saving failed: ', error) // eslint-disable-line no-console
       event.preventDefault()
     })
   },

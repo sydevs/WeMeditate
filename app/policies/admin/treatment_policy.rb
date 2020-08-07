@@ -13,7 +13,9 @@ module Admin
 
     def update_translation?
       return false unless can_access_locale?
-      manage? || (translator? && needs_translation?)
+      return true if admin? || editor?
+      return true if translator? && can_translate? # This call is a bit more costly
+      return false
     end
 
     def update_structure?

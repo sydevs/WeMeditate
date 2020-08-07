@@ -26,18 +26,19 @@ html
   font-family: $font-text
   font-weight: $font-normal
   color: $color-text-normal
+  scroll-behavior: smooth
 
 body
   font-size: 16px
   font-size: 1.6rem // Default font size for the document.
   -webkit-text-size-adjust: none
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
-  scroll-behavior: smooth
   
   overflow-x: hidden
   -webkit-overflow-scrolling: none
   overflow-scrolling-x: none
   width: 100%
+  background: white
 
 strong, b
   font-weight: $font-semibold
@@ -45,11 +46,11 @@ strong, b
 a
   outline: none
   text-decoration: none
-  color: $color-text-light
+  color: $color-text-blue-dark
   transition: all 0.3s ease
 
   &:hover
-    color: $color-text-blue
+    opacity: 0.5
 
 button
   cursor: pointer
@@ -84,3 +85,9 @@ h1,h2,h3,h4,h5,h6
 
 .noscroll
   overflow: hidden
+
+.anchor
+  display: block
+  position: relative
+  top: -100px
+  visibility: hidden

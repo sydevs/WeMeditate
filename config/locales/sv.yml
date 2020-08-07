@@ -1,0 +1,222 @@
+
+# FRONT END TRANSLATIONS
+# This file contains translations which will be seen by the public.
+
+sv:
+  we_meditate: "We Meditate" # This is the title of the website
+  tagline: "Stilla dina tankar och upptäck din inre potential via guidade meditationer. Kom i kontakt med andra runt om i världen för ett bättre liv."
+
+  routes: # These are for the website URLs, they should be all lower case and use dashes instead of spaces
+    inspiration: "inspiration"
+    articles: "articles"
+    meditations: "meditations"
+    techniques: "techniques"
+    subtle_system: "subtle-system"
+    page: "page"
+    music: "music"
+    archive: "all"
+    self_realization: "first-experience"
+    classes: "classes"
+    streams: "live"
+    
+  header:
+    learn_more: "Lär dig mer"
+    live_meditations: "Live guided meditations" # TODO: Translate
+    classes_near_me: "Guidade meditationer live"
+    inspiration_from_within: "Inspiration kommer innifrån"
+    preview_notice: "Detta är en förhandsgranskning"
+    kundalini: "Inre Energi"
+
+  cookie_notice:
+    text: "Genom att använda wemeditate tillåter du användning av cookies."
+    learn_more: "Lär dig mer"
+
+  footer:
+    scroll_to_top: "Tillbaka till början"
+    meditate_now: "Meditera Nu"
+    music_for_meditation: "Musik för meditation"
+    learn_more: "Lär dig mer"
+    come_meditate: "Meditationer"
+    online_meditations: "Guidade Meditationer"
+    languages: "Språk"
+    self_realization: "Den första upplevelsen"
+
+  actions_footer:
+    title: "Upplev det själv!"
+    subtitle: "Pröva meditationen själv och se hur det känns!"
+    sidetext: "Pröva meditera"
+    actions:
+      online: "Meditera online"
+      local: "Kurser nära mig"
+
+  author:
+    about_the_author: "Om skribenten"
+    about_the_artist: "Om artisten"
+    written_by: "Skriven av"
+    meditating_for:
+      one: "Mediterat i ett år"
+      other: "Mediterat i %{count} år"
+    countries:
+      gb: UK
+
+  form:
+    input:
+      email: "Din email"
+      message: "Meddelande"
+      privacy:
+        signup: "Genom att skicka detta formulär går du med på att vi hanterar din personliga data för att få tillgång till guidade meditationer och andra email från WeMeditate."
+        contact: "Genom att skicka detta formulär går du med på att din data kommer att hanteras i enlighet med vår integritetspolicy. Datan från formuläret kommer att skickas till teamet på WeMeditate via email och kommer ej att lagras i vår databas."
+        learn_more: "Lär dig mer."
+      name: "Ditt namn"
+      class: "Välj en kurs"
+    missing:
+      email: "Du måste skriva din email adress."
+      message: "Du glömde att skriva ett meddelande."
+      name: "Du måste skriva ditt namn."
+    success:
+      subscribe: "Du har prenumererat."
+      contact: "Ditt meddelande har skickats."
+      register: "Din registrering har mottagits."
+    button:
+      try_again: "Försök Igen"
+      submitted: "Skickad"
+
+  player: # For the music or video player
+    pause: "Pausa"
+    play: "Spela"
+    '%_buffered': "% buffrad"
+    skip_back: "Föregående spår"
+    skip_forward: "Nästa spår"
+    rewind_10_secs: "Spola tillbaka 10 sek"
+    forward_10_secs: "Spola fram 10 sek"
+    unmute: "Ljud på"
+    mute: "Ljud av"
+    volume: "Volym"
+    disable_captions: "Inaktivera undertext"
+    enable_captions: "Aktivera undertext"
+    exit_fullscreen: "Inaktivera fullskärm"
+    enter_fullscreen: "Aktivera fullskärm"
+    duration: "Längd"
+    current_time: "Nuvarande tid" # The current time that the player is at
+    seek: "Sök"
+    play_title: "Spela, %{title}" # %{title} is the title of a video or music track
+
+  articles:
+    read_more: "Läs mer" # Takes you to the article page
+    load_more: "Ladda fler" # Loads more articles
+    filter: "Filtrera"
+    show_all: "Alla"
+    share: "Dela: "
+
+  meditations:
+    prescreen:
+      title: "Lås upp våra guidade meditationer genom att väcka din %{kundalini} först"
+      kundalini: "inre energi"
+      action: "Väck Din Inre Energi"
+      explanation:
+        text: "Alla har en inre energi, som behöver väckas upp innan du kan uppleva tillståndet av meditation."
+        learn_more: "Läs mer"
+      skip:
+        text: "Mediterat med oss förut?"
+        action: "Fortsätt till din guidade meditation"
+    featured:
+      self_realization: "Get started" # TODO: Translate
+      daily_meditation: "Dagens meditation"
+      trending_meditation: "Trendande"
+      random_meditation: "Låt ödet avgöra"
+      random_meditation_title: "Pröva en slumpmässig meditation"
+      random_meditation_description: Inte säker på vad du behöver just nu? Klicka "play" och låt universum bestämma.
+    custom_meditation:
+      title: "Skapa din egen meditation"
+      choose_goal: "Jag önskar at känna ..." # Please keep ' ...' (with a space) at the end of your translation.
+      choose_duration: "Jag har"
+      goal_prompt: "Välj ett mål"
+      submit: "Börja meditationen"
+      minutes: "min"
+    archive:
+      see_all_meditations: "Se alla meditationer"
+      title: "Guidade meditationer"
+      view_meditation: "Visa meditation"
+      load_more: "Ladda fler"
+
+  tracks:
+    subtitle: "Undertexter för musik"
+    text: "Slappna av och njut av vår samling av meditationsmusik, skapad för att hjälpa dig att koppla bort från din omgivning och uppnå ett tillstånd av inre frid."
+    choose_mood: "Välj en stämning"
+    choose_instruments: "Välj ett ljud"
+    playlist: "Spellista"
+
+  treatments:
+    prescreen:
+      title: "Innan du använder olika metoder för att fördjupa din meditation behöver du först väcka din %{kundalini}"
+      kundalini: "inre kraft"
+      action: "Väck Din Inre Kraft"
+      explanation:
+        text: "Alla har en inre energi, som behöver väckas upp innan du kan uppleva tillståndet av meditation."
+        learn_more: "Läs mer"
+      skip:
+        text: "Mediterat med oss förut?"
+        action: "Fördjupa din meditation"
+    music:
+      title: "Musik"
+      description: "Musik kan vara både avslappnande och stimulerande, ta oss till balans och tillåta oss att gå bortom våra tankar. Utforska vår samling av speciellt utvalda låtar, skapade för att ta oss till ett djupare meditativt tillstånd."
+      read_more: "Välj från vår samling"
+    read_more: "Läs mer"
+    show_more: "Visa Mer Tekniker"
+
+  content:
+    credit: "Credit"
+    show_more: "Visa Mer"
+
+  subtle_system:
+    title:
+      desktop: "Håll muspekaren över för mer info"
+      mobile: "Tryck för att läsa mer"
+    chakras: "Chakran"
+    channels: "Kanaler"
+    read_more: "Läs Mer"
+
+  classes:
+    map_title: "Kurser Nära Mig"
+    prompt: "Skriv in din stad eller postnummer"
+    nearby: "Nära"
+    loading: "Lokaliserar..."
+    found: "Klicka för att bekräfta"
+
+  streams:
+    countdown:
+      title: "Håll koll här"
+      description: "Guidade meditationer Live. Varje vardag klockan 20:00. Nästa session börjar"
+      action: "Påminn mig"
+    live:
+      title: "Vi är live!"
+      action: "Gå med"
+      description: "Starta videon för att gå med i vår live-meditation just nu"
+    timing:
+      days: "Dagar"
+      hours: "Timmar"
+      minutes: "Minuter"
+      seconds: "Sekunder"
+
+  errors:
+    title: "Oops..."
+    coming_soon: "Kommer Snart"
+    no_programs: "Meditationskurser för ditt område kommer snart."
+    error: "Fel"
+    alternatives_title: "Pröva en av dessa istället:"
+    report_issue: "Var god försök igen, och rapportera felet felet om det kvarstår."
+    '404': "Sidan existerar ej"
+    '422': "Ändringen du skickade nekades"
+    '500': "Vi ber om ursäkt, men något gick fel"
+
+  javascript:
+    reading_time: "%minutes% minuters läsning"
+    loading: "Laddar..."
+    popup:
+      close: "Stäng (Esc)"
+      loading: "Laddar..."
+      prev: "Tidigare (vänster pil-tangent)"
+      next: "Höger (höger pil-tangent)"
+      counter: "%curr% av %total%"
+      image_error: "<a href=\"%url%\">Bilden</a> kunde ej laddas."
+      ajax_error: "<a href=\"%url%\">Innehållet</a> kunde ej laddas."

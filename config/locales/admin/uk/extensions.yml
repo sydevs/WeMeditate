@@ -1,0 +1,92 @@
+
+# EXTENSION TRANSLATIONS
+# This file contains translations for addons which are used by the website.
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+uk:
+  devise:
+    failure:
+      invited: "У вас є запрошення, що очікує на підтвердження. Прийміть його, щоб завершити створення акаунту."
+      already_authenticated: "Ви вже зайшли до системи."
+      inactive: "Ваш акаунт ще не активовано."
+      invalid: "Невірний %{authentication_keys} або пароль."
+      locked: "Ваш акаунт заблокований."
+      last_attempt: "У вас є остання спроба, після якої ваш акаунт буде заблокований."
+      not_found_in_database: "Невірний %{authentication_keys} або пароль."
+      timeout: "Ваш сеанс закінчився. Будь ласка, увійдіть знову, щоб продовжити."
+      unauthenticated: "Увійдіть в систему або зареєструйтеся, щоб продовжити."
+      unconfirmed: "Підтвердіть свій E-mail, щоб продовжити."
+    mailer:
+      reset_password_instructions:
+        subject: "Інструкція для відновлення пароля"
+      unlock_instructions:
+        subject: "Інструкція для розблокування"
+      email_changed:
+        subject: "E-mail Змінено"
+      password_change:
+        subject: "Пароль змінений"
+      invitation_instructions:
+        subject: "Інструкція Запрошення"
+        hello: "Привіт %{email}"
+        someone_invited_you: "Ви були запрошені стати редактором %{url}, ви можете прийняти запрошення, перейшовши за посиланням."
+        accept: "Прийняти запрошення"
+        accept_until: "Це запрошення дійсне до %{due_date}."
+        ignore: "Якщо ви не хочете приймати запрошення, будь ласка, ігноруйте цей E-mail.<br />\n Ваш акаунт не буде створено, поки ви не перейдете по посиланню вище і не створите свій пароль."
+    passwords:
+      no_token: "Ви не можете отримати доступ до цієї сторінки, якшо не перейшли за посиланням в E-mail для відновлення пароля. Якщо ви перейшли по посиланню з E-mail для відновлення пароля, переконайтеся, що ви використовували URL-адресу з E-mail цілком."
+      send_instructions: "Протягом декількох хвилин ви отримаєте E-mail з інструкцією для відновлення пароля."
+      send_paranoid_instructions: "Якщо ваша E-mail адреса є в нашій базі, ви отримаєте посилання для відновлення пароля по E-mail протягом кількох хвилин."
+      updated: "Ваш пароль успішно змінено. Тепер ви увійшли в систему."
+      updated_not_active: "Ваш пароль успішно змінено."
+    invitations:
+      send_instructions: "Запрошення було направлено по E-mail на %{email}."
+      invitation_token_invalid: "Зазначений токен запрошення недійсний!"
+      updated: "Ваш пароль був успішно створений. Тепер ви увійшли в систему."
+      updated_not_active: "Ваш пароль був успішно створений."
+      no_invitations_remaining: "Немає пропущених запрошень."
+      invitation_removed: "Ваше запрошення було видалено."
+      new:
+        header: "Відправити запрошення"
+        submit_button: "Відправити запрошення"
+      edit:
+        header: "Задати пароль"
+        submit_button: "Задати пароль"
+    sessions:
+      signed_in: "Ви успішно увійшли в систему."
+      signed_out: "Ви успішно вийшли з системи."
+      already_signed_out: "Ви успішно вийшли з системи."
+    unlocks:
+      send_instructions: "Протягом декількох хвилин ви отримаєте E-mail з інструкцією для розблокування вашого облікового запису."
+      send_paranoid_instructions: "Якщо ваш акаунт існує, ви отримаєте E-mail з інструкцією для його розблокування протягом декількох хвилин."
+      unlocked: "Ваш акаунт успішно розблоковано. Будь ласка, увійдіть в систему, щоб продовжити."
+  errors:
+    messages:
+      expired: "закінчився термін дії, будь ласка, запитайте новий"
+      not_found: "не знайдений"
+      not_locked: "не був заблокований"
+      not_saved:
+        one: "%{count} помилка не дозволяє зберегти %{resource}:" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "%{count} помилки не дозволяють зберегти %{resource}:" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+        many: "%{count} помилки не дозволяють зберегти %{resource}:" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+  time:
+    formats:
+      default: '%k:%M' # Do not translate, unless you know what you are doing
+      time: :time.formats.default # Do not translate
+      date: :date.formats.default # Do not translate
+      short: :date.formats.default # Do not translate
+      devise:
+        mailer:
+          invitation_instructions:
+            accept_until_format: '%B %d, %Y %I:%M %p' # Do not translate, unless you know what you are doing
+  date:
+    formats:
+      default: '%d %b %Y' # Do not translate, unless you know what you are doing
+      date: :date.formats.default # Do not translate
+  simple_form:
+    'yes': "Так"
+    'no': "Ні"
+    required:
+      text: "обов'язково"
+      mark: '*' # Do not translate
+    error_notification:
+      default_message: "Будь ласка, ознайомтеся з проблемою нижче:"

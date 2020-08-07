@@ -26,7 +26,7 @@ class Article < ApplicationRecord
   belongs_to :owner, class_name: 'User', optional: true
   belongs_to :author, optional: true
   enum priority: { high: 1, normal: 0, low: -1, pinned: 999, hidden: -999 }
-  enum article_type: { article: 0, artwork: 1, event: 2 }, _prefix: 'type'
+  enum article_type: { article: 0, artwork: 1, event: 2, report: 3 }, _prefix: 'type'
 
   # Validations
   validates :name, presence: true
@@ -93,9 +93,10 @@ class Article < ApplicationRecord
     # Compute the ordering of this Article that will be used on the Inspiration page
     def compute_order
       return unless published?
+
       self[:published_at] ||= DateTime.now
       published_at = self[:published_at]
-      published_at = DateTime.parse(published_at) if published_at.is_a?(String)
+      published_at = DateTime.parse(published_at) if published_at.present? && published_at.is_a?(String)
 
       if priority == 'pinned'
         # Pinned articles should always be shown at the top

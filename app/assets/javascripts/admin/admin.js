@@ -52,7 +52,10 @@ const Admin = {
     // Initialize dropdown elements.
     scope.find('.ui.dropdown:not(.simple)').each(function() {
       var $element = $(this)
-      var options = {}
+      var options = {
+        fullTextSearch: true,
+      }
+
       if ($element.hasClass('clearable')) {
         options.clearable = true
       }
@@ -72,7 +75,7 @@ const Admin = {
 
     // Add callbacks for a few input types
     scope.find('input[type=file]').on('change', event => this.onChangeFileInput(event.target))
-    scope.find('.js-vimeo-field input').on('change', event => this.onRefreshVimeoInput(event.target.parentNode))
+    scope.find('.js-vimeo-field input').on('change', event => this.onRefreshVimeoInput(event.target.parentNode.parentNode))
     scope.find('.js-vimeo-field + .preview-item .reload').on('click', event => this.onRefreshVimeoInput(event.target.parentNode.previousSibling))
   },
 
@@ -102,7 +105,6 @@ const Admin = {
     } else {
       meta.querySelector('.content').style.display = null
       input.classList.add('loading')
-      Editor.adjustPendingUploads(+1)
 
       Editor.retrieveVimeoVideo(vimeo_id, response => {
         // Render a preview of the returned meta data, and store it to an input to be saved.
@@ -113,7 +115,6 @@ const Admin = {
         meta.querySelector('input').value = JSON.stringify(response)
         
         input.classList.remove('loading')
-        Editor.adjustPendingUploads(-1)
       })
     }
   },

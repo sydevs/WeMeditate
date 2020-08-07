@@ -29,7 +29,7 @@ class Category < ApplicationRecord
   # Get all categories that have content
   def self.has_content
     joins(articles: :translations).where({
-      article_translations: { state: Article.states[:published], locale: I18n.locale },
+      article_translations: { state: Article.states[:published], locale: Globalize.locale },
     }).uniq
   end
 

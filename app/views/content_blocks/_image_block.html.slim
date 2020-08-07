@@ -1,3 +1,4 @@
+
 ruby:
   position = %w[left right center].include?(block[:position]) ? block[:position] : 'center'
   size = %w[narrow wide].include?(block[:size]) ? block[:size] : 'narrow'
@@ -18,6 +19,7 @@ ruby:
     classes << 'content__image--callout'
   else
     classes << 'content__image--center'
+  end
 
   if position == 'wide'
     image_sizes = '100vw'
@@ -27,9 +29,10 @@ ruby:
     image_sizes = '(max-width: 549px) 100vw, (max-width: 767px) 50vw, (max-width: 1111px) 34vw, (max-width: 1198px) 25vw, 300px'
   else # callouts
     image_sizes = '(max-width: 814px) calc(100vw - 48px), 766px'
+  end
 
 .content__image class=classes data-max-columns=(size == 'narrow' ? 3 : items.count) data-id=block[:id]
-  - items.each_with_index do |item, index|
+  - items.compact.each_with_index do |item, index|
     - media_file = record.media_files.find_by(id: item[:image][:id])
     - if media_file.present?
       - attributes = media_file.to_h.merge(title: item[:caption]) if is_gallery
@@ -47,7 +50,7 @@ ruby:
           - if item[:caption].present?
             figcaption.content__image__caption = item[:caption]
     - elsif current_user.present?
-      = error "Could not load media file with id #{item[:image][:id]}"
+      = content_error "Could not load media file with id #{item[:image][:id]}"
 
   - if is_gallery
     .content__image__triangle = render_decoration(:triangle, block)

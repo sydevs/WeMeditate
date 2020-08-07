@@ -1,0 +1,8 @@
+
+= render_splash_block(@stream)
+
+main.scrollspy-target
+  - cache @stream do
+    .content = render_content @stream, skip_splash: true
+
+= sharing_links

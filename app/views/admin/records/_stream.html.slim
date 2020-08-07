@@ -1,0 +1,17 @@
+
+tr.record id=dom_id(stream)
+  td.top.aligned
+    a href=polymorphic_admin_path([:admin, stream])
+      = stream.preview_name
+
+  td.collapsing.top.aligned.faded
+    = stream.location
+
+  td.collapsing.top.aligned.faded
+    - if params[:sort] == 'created_at'
+      = localize stream.created_at, format: :short
+    - else
+      = localize stream.updated_at, format: :short
+
+  td.collapsing.top.aligned
+    = table_record_status_label(stream)

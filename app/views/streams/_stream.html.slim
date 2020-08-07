@@ -1,0 +1,15 @@
+
+- image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 1197px) calc(34vw - 32px), 375px'
+
+article.streams__grid__item.preview id=dom_id(stream)
+  a.preview__media href=stream_path(stream)
+    = smart_image_tag stream.thumbnail, image_sizes, lazy: false, class: 'preview__media__thumbnail', alt: stream.name
+
+  a.preview__title href=url_for(stream) = stream.name
+  p.preview__text = stream.excerpt
+  .preview__meta
+    a.preview__meta__link href=stream_path(stream)
+      = t('streams.read_more')
+      .icon.icon--breadcrumb
+
+    .preview__meta__detail = stream.location

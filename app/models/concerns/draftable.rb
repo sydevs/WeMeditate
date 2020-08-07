@@ -4,19 +4,29 @@
 module Draftable
 
   extend ActiveSupport::Concern
-  
+
   def draftable?
     true
   end
 
   included do |base|
+    translatable = base.respond_to?(:translated_attribute_names)
+
     %i[draft].each do |column|
-      next if base.translated_attribute_names&.include?(column) || base.column_names.include?(column.to_s)
-      throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Draftable`" 
+      next if base.try(:translated_attribute_names)&.include?(column) || base.column_names.include?(column.to_s)
+      throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Draftable`"
+    rescue ActiveRecord::NoDatabaseError, ActiveRecord::StatementInvalid # rubocop:disable Lint/HandleExceptions
+      # avoid breaking rails db:create / db:drop etc due to boot time execution
     end
 
-    base.scope :has_draft, -> { with_translation.where.not(base::Translation.table_name => { draft: nil }) }
-    base.scope :has_no_draft, -> { with_translation.where(base::Translation.table_name => { draft: nil }) }
+    if translatable
+      base.scope :has_draft, -> { with_translation.where.not(base::Translation.table_name => { draft: nil }) }
+      base.scope :has_no_draft, -> { with_translation.where(base::Translation.table_name => { draft: nil }) }
+    else
+      base.scope :has_draft, -> { where.not(draft: nil) }
+      base.scope :has_no_draft, -> { where(draft: nil) }
+    end
+
     base.scope :needs_review, -> { has_draft }
 
     def self.draftable?
@@ -75,6 +85,12 @@ module Draftable
 
     changes.each do |key, (old_value, new_value)|
       next if only.present? && !only.include?(key.to_sym)
+
+      # Work around for the fact that globalize for some reason nilifies the values in the changes hash
+      if try(:translated_attributes)&.key?(key)
+        old_value = translation[key]
+        new_value = self[key]
+      end
 
       if old_value.to_s == new_value.to_s || (key == 'content' && content_equal?(old_value, new_value))
         new_draft.except!(key)
@@ -155,7 +171,7 @@ module Draftable
     else
       discard_draft! discard: %i[content]
     end
-    
+
     write_attribute :content, new_live_content
     #binding.pry
   end

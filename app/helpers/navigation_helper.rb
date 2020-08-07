@@ -16,6 +16,7 @@ module NavigationHelper
         title: static_page.name,
         url: static_page_path_for(static_page),
         active: controller_name == role.to_s,
+        data: gtm_record(static_page),
       })
     end
 
@@ -25,6 +26,7 @@ module NavigationHelper
     @navigation.push({
       title: I18n.translate('header.learn_more'),
       url: '#', # static_page_path_for(:about),
+      data: gtm_label('header.learn_more'),
       active: %w[static_pages subtle_system_nodes].include?(controller_name),
       content: {
         items: %i[sahaja_yoga shri_mataji subtle_system treatments classes].map { |role|
@@ -32,17 +34,20 @@ module NavigationHelper
           {
             title: static_page.name,
             url: static_page_path_for(static_page),
+            data: gtm_record(static_page),
           }
         } + [
           {
-            title: translate('meditations.prescreen.kundalini').titleize,
+            title: translate('header.kundalini'),
             url: url_for(kundalini_page),
-          }
+            data: gtm_record(kundalini_page),
+          },
         ],
         featured: Treatment.published.preload_for(:preview).first(2).map { |treatment|
           {
-            title: "#{human_model_name(Treatment)}: #{treatment.name}",
+            title: translate('treatments.header_title', title: treatment.name),
             url: treatment_path(treatment),
+            data: gtm_record(treatment),
             thumbnail: treatment.thumbnail.url,
           }
         },
@@ -67,25 +72,25 @@ module NavigationHelper
     mobile_navigation += navigation_items
 
     # Add classes near me
+    if Stream.public_stream.any?
+      mobile_navigation.push({
+        title: I18n.translate('header.live_meditations'),
+        url: static_page_path_for(:streams),
+        data: gtm_label('header.classes_near_me'),
+        active: controller_name == 'classes',
+      })
+    end
+    
+=begin
     mobile_navigation.push({
       title: I18n.translate('header.classes_near_me').gsub('<br>', ' '),
       url: static_page_path_for(:classes),
+      data: gtm_label('header.classes_near_me'),
       active: controller_name == 'classes',
     })
+=end
 
     mobile_navigation
-  end
-
-  # Fetch sharing links that can appear at the bottom of any article.
-  def sharing_links
-    url = ERB::Util.url_encode request.original_url.split('/', 3)[2]
-
-    tag.div class: 'sharing_links' do
-      concat tag.div I18n.translate('articles.share'), class: 'sharing_links__title'
-      I18n.translate('sharing').collect do |type, link|
-        concat tag.a (tag.span class: "icon icon--#{type} icon"), class: 'sharing_links__item', href: link.gsub('%{url}', url)
-      end
-    end
   end
 
 end

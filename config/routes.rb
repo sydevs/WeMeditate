@@ -1,21 +1,18 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  devise_for :users, controllers: { invitations: 'users/invitations' }
   get :maintenance, to: 'application#maintenance'
-
-  get '404', to: 'application#error'
-  get '422', to: 'application#error'
-  get '500', to: 'application#error'
+  get 'switch_user' => 'switch_user#set_current_user' if Rails.env.development?
 
   # ===== ADMIN ROUTES ===== #
   constraints DomainConstraint.new(Rails.configuration.admin_domain) do
+    devise_for :users, controllers: { invitations: 'users/invitations', sessions: 'users/sessions', passwords: 'users/passwords' }
+
     get '404', to: 'admin/application#error'
     get '422', to: 'admin/application#error'
     get '500', to: 'admin/application#error'
-  
+
     get '/', to: redirect('/en')
-    get 'switch_user' => 'switch_user#set_current_user'
 
     scope ':locale' do
       namespace :admin, path: nil do
@@ -27,7 +24,11 @@ Rails.application.routes.draw do
           put :sort, on: :collection
         end
 
-        resources :articles, :static_pages, :subtle_system_nodes, :treatments, except: %i[destroy] do
+        resources :meditations, only: [] do
+          get :preview, on: :member
+        end
+
+        resources :articles, :static_pages, :subtle_system_nodes, :treatments, :streams, except: %i[destroy] do
           get :write, on: :member
           get :review, on: :member
           patch :approve, on: :member, path: 'review'
@@ -36,12 +37,7 @@ Rails.application.routes.draw do
           resources :media_files, only: %i[create]
         end
 
-        resources :meditations, only: [] do
-          get :preview, on: :member
-        end
-
-        resources :articles, :treatments, only: %i[destroy]
-
+        resources :articles, :treatments, :streams, only: %i[destroy]
         resources :users, :artists, :meditations, :tracks, :authors,
                   :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters,
                   only: %i[index new edit create update destroy]
@@ -51,16 +47,21 @@ Rails.application.routes.draw do
 
   # ===== FRONT-END ROUTES ===== #
   constraints DomainConstraint.new(RouteTranslator.config.host_locales.keys) do
-    get '404', to: 'application#error'
-    get '422', to: 'application#error'
-    get '500', to: 'application#error'
 
     localized do
+      devise_for :users, controllers: { invitations: 'users/invitations' }
+
       root to: 'application#home'
       get 'sitemap.xml.gz', to: 'application#sitemap'
+      get '404', to: 'application#error'
+      get '422', to: 'application#error'
+      get '500', to: 'application#error'
+  
       post :contact, to: 'application#contact'
       post :subscribe, to: 'application#subscribe'
       get :map, to: 'application#map'
+      get :classes, to: 'application#classes'
+      get :live, to: 'streams#index'
 
       resources :articles, only: %i[show] do
         get '/category/:category_id', on: :collection, action: :index
@@ -77,10 +78,16 @@ Rails.application.routes.draw do
       resources :categories, only: %i[index show], path: 'inspiration'
       resources :treatments, only: %i[index show], path: 'techniques'
       resources :tracks, only: %i[index], path: 'music'
-      resources :static_pages, only: %i[show], path: 'page'
       resources :subtle_system_nodes, only: %i[index show], path: 'subtle_system'
+      resources :streams, only: %i[index show], path: 'streams'
+      resources :static_pages, only: %i[show], path: ''
     end
   end
 
+  get '404', to: 'application#error'
+  get '422', to: 'application#error'
+  get '500', to: 'application#error'
+
+  get 'page/:page', to: redirect('/%{page}') # Redirect for legacy route. Can be removed after July 2020.
   get '/', to: redirect('404')
 end

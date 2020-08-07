@@ -1,6 +1,6 @@
 /* global $, LazyLoad, zenscroll,
-  Accordion, Carousel, Dropdown, Form, Grid, Loadmore, Video, ImageGallery, ReadingTime,
-  Header, SubtleSystem, MusicPlayer, CustomMeditation, Prescreen */
+  Accordion, Carousel, Dropdown, Form, Grid, Loadmore, Video, ImageGallery, ReadingTime, CountdownTimer
+  Header, SubtleSystem, MusicPlayer, CustomMeditation, Prescreen, GeoSearch, LanguageSwitcher */
 /* exported Application */
 
 /** Front Application
@@ -28,9 +28,15 @@ const Application = {
     Application.loadAnimations()
 
     const preloader = document.querySelector('.preloader')
-    if (Application.preloaded && preloader) {
-      preloader.remove()
+    if (preloader) {
+      if (Application.preloaded) {
+        preloader.remove()
+      } else {
+        document.body.classList.add('noscroll')
+      }
     }
+
+    window.afterglow.initVideoElements()
 
     Application.elements = {}
     Application.loadAll('accordion', Accordion)
@@ -42,6 +48,7 @@ const Application = {
     Application.loadAll('video', Video)
     Application.loadAll('gallery', ImageGallery)
     Application.loadAll('reading-time', ReadingTime)
+    Application.loadAll('countdown', CountdownTimer)
 
     Application.element = {}
     Application.loadFirst('header', Header)
@@ -49,8 +56,8 @@ const Application = {
     Application.loadFirst('music-player', MusicPlayer)
     Application.loadFirst('custom-meditation', CustomMeditation)
     Application.loadFirst('prescreen', Prescreen)
-
-    window.afterglow.initVideoElements()
+    Application.loadFirst('geosearch', GeoSearch)
+    Application.loadFirst('language-switcher', LanguageSwitcher)
   },
 
   unload() {
@@ -171,8 +178,10 @@ const Application = {
 document.addEventListener('ready', () => Application.init())
 document.addEventListener('turbolinks:load', () => Application.load())
 document.addEventListener('turbolinks:before-cache', () => Application.unload())
+
 window.addEventListener('load', function() {
   $('.preloader').delay(1000).fadeOut('slow')
+  document.body.classList.remove('noscroll')
   Application.preloaded = true
   Application.init()
 })

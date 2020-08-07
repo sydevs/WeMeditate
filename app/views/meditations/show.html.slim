@@ -3,9 +3,13 @@
 main id=dom_id(@meditation)
   h1.banner = @meditation.name
 
+  - if I18n.exists?('meditations.not_translated')
+    .message__wrapper
+      .message = translate('meditations.not_translated', language: language_name.downcase)
+
   .meditation__media
     figure.content__video__item
-      .video.video--responsive.video--meditation class="js-video"
+      .video.video--responsive.video--meditation class="js-video" data-gtm-local=@meditation.name data-gtm-global=dom_id(@meditation).titleize
         .video__inner
           - if supports_afterglow_player?(@meditation.vimeo_metadata(:horizontal)) && supports_afterglow_player?(@meditation.vimeo_metadata(:vertical))
             .video__horizontal

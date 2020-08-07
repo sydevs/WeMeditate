@@ -1,0 +1,22 @@
+- content_for :title, translate('errors.error')
+
+h2.ui.header
+  | #{response.status} #{translate 'errors.error'}
+
+.ui.small.header
+  = translate "errors.#{response.status}", default: :'errors.500'
+
+- unless response.status == 404
+  p
+    = translate('errors.report_issue')
+
+  p
+    strong = translate('errors.error')
+    ' : 
+    = request.env['action_dispatch.exception']
+
+  p  
+    = link_to report_url, class: 'ui basic button' do
+      i.envelope.icon
+      = translate('admin.action.report_issue')
+

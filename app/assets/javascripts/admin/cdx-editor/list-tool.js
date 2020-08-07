@@ -118,7 +118,7 @@ class ListTool extends EditorTool {
 
   onPaste(event) {
     const list = event.detail.data
-    const {tagName: tag} = element
+    const { tagName: tag } = list
     let items = []
 
     if (tag === 'LI') {

@@ -23,15 +23,15 @@ module VideoHelper
         width: vimeo_data[:width],
         height: vimeo_data[:height],
         poster: vimeo_data[:thumbnail],
-        data: { skin: skin }
+        data: { skin: skin },
       } do
         vimeo_data[:sources].each do |source|
           next if source[:quality] == 'hls'
 
           concat tag.source({
-            type: source[:type], 
-            src: source[:link], 
-            data: { quality: ('hd' if source[:quality] != 'sd') }
+            type: source[:type],
+            src: source[:link],
+            data: { quality: ('hd' if source[:quality] != 'sd') },
           })
         end
       end
@@ -41,5 +41,5 @@ module VideoHelper
       tag.iframe class: klass, data: { src: url }, width: '100%', height: '100%', frameborder: '0', allow: 'autoplay; fullscreen', webkitallowfullscreen: true, mozallowfullscreen: true, allowfullscreen: true
     end
   end
-  
+
 end

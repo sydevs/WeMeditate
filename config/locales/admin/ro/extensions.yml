@@ -1,0 +1,93 @@
+
+# EXTENSION TRANSLATIONS
+# This file contains translations for addons which are used by the website.
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+ro:
+  devise:
+    failure:
+      invited: "Ai o invitație în așteptare, acceptă pentru a finaliza crearea contului tău." 
+      already_authenticated: "Ești deja autentificat." 
+      inactive: "Contul tău nu a fost încă activat."
+      invalid: "Cont %{authentication_keys} sau Parolă greșită."
+      locked: "Contul tău este blocat."
+      last_attempt: "Mai ai o încercare până când contul tău va fi blocat."
+      not_found_in_database: "Nu apare in Baza de date %{authentication_keys} sau parolă."
+      timeout: "Sesiunea a expirat. Te rog, autentifică-te din nou pentru a continua."
+      unauthenticated: "Autentifică-te sau înregistrează-te pentru a continua." 
+      unconfirmed: "Confirmă adresa de e-mail înainte de a continua."
+    mailer:
+      reset_password_instructions:
+        subject: "Resetează instrucțiunile de parolă"
+      unlock_instructions:
+        subject: "Deblochează instrucțiuni"
+      email_changed:
+        subject: "E-mail Schimbat"
+      password_change:
+        subject: "Parolă Schimbată"
+      invitation_instructions:
+        subject: "Instrucțiuni pentru invitație"
+        hello: "Bună %{email}"
+        someone_invited_you: "Ai fost invitat să fii editor la %{url}, poți accepta accesând link-ul de mai jos."
+        accept: "Acceptă invitația"
+        accept_until: "Această invitație este valabilă până pe %{due_date}."
+        ignore: "Dacă nu vrei să accepți invitația, te rugăm ignoră acest email.<br />\nContul tău nu va fi creat până când nu vei accesa link-ul de mai sus și îți vei seta parola."
+    passwords:
+      no_token: "Nu poți accesa această pagină fără e-mailul de resetare a parolei. Dacă ai ajuns aici printr-un e-mail de resetare al parolei, asigură-te că ai utilizat întreaga adresă URL furnizată."
+      send_instructions: "Vei primi un e-mail cu instrucțiunile de resetare ale parolei."
+      send_paranoid_instructions: "Dacă adresa ta de e-mail este înregistrată în baza noastră de date, în câteva minute vei primi un e-mail cu link-ul de recuperare al parolei."
+      updated: "Parola a fost modificată cu succes. Acum ești conectat."
+      updated_not_active: "Parola a fost modificată cu succes."
+    invitations:
+      send_instructions: "O invitație a fost trimisă la %{email}."
+      invitation_token_invalid: "Token-ul de invitație furnizat nu este valid!"
+      updated: "Parola a fost setată cu succes. Acum ești conectat."
+      updated_not_active: "Parola a fost setată cu succes."
+      no_invitations_remaining: "Nu au mai rămas invitații"
+      invitation_removed: "Invitația ta a fost anulată."
+      new:
+        header: "Trimite o invitație"
+        submit_button: "Invită"
+      edit:
+        header: "Setează-ți parola"
+        submit_button: "Setează parola"
+    sessions:
+      signed_in: "Autentificare reușită."
+      signed_out: "Deconectare reușită."
+      already_signed_out: "Deconectare reușită."
+    unlocks:
+      send_instructions: "În câteva minute vei primi un e-mail cu instrucțiunile necesare de deblocare a contului."
+      send_paranoid_instructions: "În câteva minute vei primi un e-mail cu instrucțiunile de deblocare ale contului tău, dacă acesta este înregistrat în baza noastră de date." 
+      unlocked: "Contul tău a fost deblocat cu succes. Te rugăm să te autentifici pentru a continua."
+  errors:
+    messages:
+      expired: "a expirat, te rugăm să soliciți unul nou"
+      not_found: "nu a fost găsit"
+      not_locked: "nu a fost blocat"
+      not_saved:
+        one: "%{count} eroarea nu a permis ca %{resource} să se salveze:"
+        few: "%{count} erorile nu au permis ca %{resource} să se salveze:"
+        other: "%{count} erorile nu au permis ca %{resource} să se salveze:"
+  time:
+    formats:
+      default: '%k:%M' # Do not translate, unless you know what you are doing
+      time: :time.formats.default # Do not translate
+      date: :date.formats.default # Do not translate
+      short: :date.formats.default # Do not translate
+      devise:
+        mailer:
+          invitation_instructions:
+            accept_until_format: '%B %d, %Y %I:%M %p' # Do not translate, unless you know what you are doing
+  date:
+    formats:
+      default: '%d %b %Y' # Do not translate, unless you know what you are doing
+      date: :date.formats.default # Do not translate
+  simple_form:
+    'yes': "Da"
+    'no': "Nu"
+    required:
+      text: "necesar"
+      mark: '*' # Do not translate
+    error_notification:
+      default_message: "Te rugăm să consulți problemele de mai jos:"
+
