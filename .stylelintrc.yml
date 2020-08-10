@@ -80,9 +80,7 @@ rules:
     - "^[a-z0-9\\-\\_]+$"
     - message: Selector should be written in lowercase with hyphens or dashes only (selector-class-pattern)
   selector-max-compound-selectors: 3
-  selector-max-id: 0
-  selector-no-qualifying-type:
-    - ignore: ["attribute", "class"]
+  selector-max-id: 1
   selector-no-vendor-prefix: true
   selector-pseudo-element-colon-notation: double
   selector-pseudo-element-no-unknown: true

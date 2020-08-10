@@ -1,12 +1,12 @@
 @import './vars'
 
-/* FUNCTIONS
+/*! FUNCTIONS
   This file defines functions that are used through the front-end sass code.
   */
 
 // When you use purely transparent values it can mess up gradient rendering on some sites.
 @mixin gradient($direction, $color)
-  background: linear-gradient($direction, rgba(255,255,255,.01) 0, rgba(255,255,255,0.18) 25%, map-get($color-gradient, #{$color}) 100%)
+  background: linear-gradient($direction, rgba(255, 255, 255, 0.01) 0, rgba(255, 255, 255, 0.18) 25%, map-get($color-gradient, #{$color}) 100%)
 
 // A shorthand to create an absolute positioning
 @mixin overlay($top: 0, $bottom: 0, $left: 0, $right: 0)
@@ -83,13 +83,13 @@
 // Implements a background image which is roughly responsive to screen size and dpi.
 // Assumes that the file has `mobile`, `tablet`, and `desktop` variations.
 @mixin responsive-background($path, $extension)
-  background-image: image-url("#{$path}-mobile.#{$extension}")
+  background-image: image-url('#{$path}-mobile.#{$extension}')
 
   @media (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px}), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
-    background-image: image-url("#{$path}-tablet.#{$extension}")
+    background-image: image-url('#{$path}-tablet.#{$extension}')
 
   @media (min-width: #{$laptop-width}), (min-width: #{$tablet-width}) and (-webkit-min-device-pixel-ratio: 2), (min-width: #{$tablet-width}) and (min-resolution: 192dpi)
-    background-image: image-url("#{$path}-desktop.#{$extension}")
+    background-image: image-url('#{$path}-desktop.#{$extension}')
 
 
 // These mixins are used to animate the equalizer animation that is shown in the play button when you are listening to a music track.

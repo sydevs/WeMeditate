@@ -3,9 +3,10 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
-    "stylelint": "^12.0.0",
-    "stylelint-config-sass-guidelines": "^6.1.0",
+    "stylelint": "^12.0.1",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-sass-guidelines": "^6.2.0",
     "stylelint-order": "^3.1.1",
-    "stylelint-scss": "^3.12.1"
+    "stylelint-scss": "^3.18.0"
   }
 }

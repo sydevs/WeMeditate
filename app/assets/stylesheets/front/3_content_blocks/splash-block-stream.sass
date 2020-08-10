@@ -1,4 +1,4 @@
-@import "../../mixins/*"
+@import '../../mixins/*'
 
 @mixin desktop-or-smaller
   @media only screen and (max-width: #{$desktop-width - 1px})
@@ -206,13 +206,13 @@
       text-align: center
       opacity: 0.6
 
-  .js-countdown-days[data-value="0"]
+  .js-countdown-days[data-value='0']
     display: none
 
     + .separator
       display: none
 
-  .js-countdown-days:not([data-value="0"])
+  .js-countdown-days:not([data-value='0'])
     ~ .js-countdown-seconds,
     ~ .js-countdown-minutes + .separator
       display: none
