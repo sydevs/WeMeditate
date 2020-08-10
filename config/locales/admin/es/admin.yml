@@ -477,6 +477,7 @@ es:
 
     misc:
       no_translated_title: "Título No Traducido" # This should be written in titlecase
+      previous_slugs: "Previous URLs Used" # TODO: Translate
       menu:
         dashboard: "Tablero de Instrumentos" # TODO: Translate
         my_author: "Mi Perfil de Autor es"

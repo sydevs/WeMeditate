@@ -15,6 +15,7 @@ class SubtleSystemNodesController < ApplicationController
 
   def show
     @subtle_system_node = SubtleSystemNode.publicly_visible.preload_for(:content).friendly.find(params[:id])
+    return if redirect_legacy_url(@subtle_system_node)
     return unless stale?(@subtle_system_node)
 
     subtle_system_page = StaticPage.preload_for(:preview).find_by(role: :subtle_system)

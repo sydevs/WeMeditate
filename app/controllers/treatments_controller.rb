@@ -17,6 +17,7 @@ class TreatmentsController < ApplicationController
 
   def show
     @treatment = Treatment.publicly_visible.preload_for(:content).friendly.find(params[:id])
+    return if redirect_legacy_url(@treatment)
 
     about_page = StaticPage.preload_for(:preview).find_by(role: :about)
     treatments_page = StaticPage.preload_for(:preview).find_by(role: :treatments)

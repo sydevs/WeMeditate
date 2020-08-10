@@ -20,11 +20,23 @@ module Viewable
     end
 
     base.extend FriendlyId
-    base.friendly_id :name, use: (translatable ? :globalize : :slugged)
+    base.friendly_id :name, use: [(translatable ? :globalize : :slugged), :history]
     base.validates :slug, length: { minimum: 3, message: I18n.translate('admin.messages.text_too_short', count: 3) }
 
     def self.viewable?
       true
+    end
+  end
+
+  # Some records cannot have their slug (aka URL) changed, this checks to see if the record is one of those.
+  def fixed_slug?
+    case self
+    when StaticPage
+      %i[home subtle_system articles treatments tracks meditations streams].include?(role&.to_sym)
+    when Meditation
+      slug == I18n.translate('routes.self_realization')
+    else
+      false
     end
   end
 

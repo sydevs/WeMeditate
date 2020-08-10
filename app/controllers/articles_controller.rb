@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.publicly_visible.preload_for(:content).friendly.find(params[:id])
+    return if redirect_legacy_url(@article)
     return unless stale?(@article)
 
     @breadcrumbs = [
