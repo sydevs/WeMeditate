@@ -59,7 +59,8 @@
         .content
           .ui.list
             ul
-              - record.slugs.where(locale: Globalize.locale).pluck(:slug).each do |slug|
+              - slugs = record.translatable? ? record.slugs.where(locale: Globalize.locale) : record.slugs
+              - slugs.pluck(:slug).each do |slug|
                 li.item
                   = slug
 
