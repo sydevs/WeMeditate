@@ -1,9 +1,7 @@
-@import "../../mixins/*"
+@import '../../mixins/*'
 
 /* CAROUSEL
-  A carousel is a slideshow of content. One or more items are shown at a time,
-  with arrows to scroll to the next item.
-
+  A carousel is a slideshow of content. One or more items are shown at a time, with arrows to scroll to the next item.
   Most of the basic styling for these carousels is defined by the Slick library that we are using.
   */
 
@@ -16,12 +14,12 @@
     li
       margin: 0 1px
 
-    li button:before
+    li button::before
       font-size: 6px
       opacity: 1
       color: $color-graphic-darker
 
-    li.slick-active button:before
+    li.slick-active button::before
       font-size: 8px
       color: $color-text-blue
 
@@ -32,7 +30,7 @@
       #{$side}: 0
       text-align: $side
 
-      &:before
+      &::before
         content: map-get($icon-arrow, #{$side})
         font-family: $font-icons
         font-size: 2.4rem
@@ -85,10 +83,10 @@
     li
       margin: 0 1px
 
-    li button:before
+    li button::before
       font-size: 8px
 
-    li.slick-active button:before
+    li.slick-active button::before
       font-size: 10px
       color: $color-text-blue
 
@@ -108,7 +106,7 @@
       width: 60px
       height: 60px
 
-    &:before
+    &::before
       color: white
 
     &:hover

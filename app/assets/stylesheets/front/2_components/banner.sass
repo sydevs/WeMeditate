@@ -1,4 +1,4 @@
-@import "../../mixins/*"
+@import '../../mixins/*'
 
 /* BANNER
   Banners are used at the top of most pages
@@ -33,7 +33,7 @@
     padding-top: 48px
     padding-bottom: 48px
 
-  &:before
+  &::before
     @include overlay(0, auto, 0, auto)
     @include gradient(to right, 'blue')
 
@@ -59,6 +59,6 @@
     margin-bottom: 60px
     padding-left: $gutter-width * 3
 
-  &:before
+  &::before
     @include tablet-or-larger
       width: 30%

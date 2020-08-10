@@ -1,5 +1,5 @@
-@import "../../mixins/*"
-@import "photoswipe"
+@import '../../mixins/*'
+@import 'photoswipe'
 
 /* BASIC STYLING
   This file defines basic site-wide styling for some html tags,
@@ -7,13 +7,13 @@
   */
 
 // Define the fonts used in the application
-+font-face("raleway", "RalewayExtraLight/RalewayExtraLight", 200)
-+font-face("raleway", "RalewayLight/RalewayLight", 300)
-+font-face("raleway", "RalewayRegular/RalewayRegular", 400)
-+font-face("raleway", "RalewayMedium/RalewayMedium", 500)
-+font-face("raleway", "RalewaySemiBold/RalewaySemiBold", 600)
-+font-face("raleway", "RalewayBold/RalewayBold", 700)
-+font-face("futura-book", "FuturaBook/FuturaBook")
++font-face('raleway', 'RalewayExtraLight/RalewayExtraLight', 200)
++font-face('raleway', 'RalewayLight/RalewayLight', 300)
++font-face('raleway', 'RalewayRegular/RalewayRegular', 400)
++font-face('raleway', 'RalewayMedium/RalewayMedium', 500)
++font-face('raleway', 'RalewaySemiBold/RalewaySemiBold', 600)
++font-face('raleway', 'RalewayBold/RalewayBold', 700)
++font-face('futura-book', 'FuturaBook/FuturaBook')
 
 // ===== BASIC HTML TAGS ===== //
 // Standard site-wide styles
@@ -31,12 +31,10 @@ html
 body
   font-size: 16px
   font-size: 1.6rem // Default font size for the document.
-  -webkit-text-size-adjust: none
+  text-size-adjust: none
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
   
   overflow-x: hidden
-  -webkit-overflow-scrolling: none
-  overflow-scrolling-x: none
   width: 100%
   background: white
 
@@ -71,11 +69,11 @@ h1
   color: $color-text-dark
   font-weight: $font-bold
 
-h2,h3,h4,h5,h6
+h2, h3, h4, h5, h6
   color: $color-text-dark
   font-weight: $font-semibold
 
-h1,h2,h3,h4,h5,h6
+h1, h2, h3, h4, h5, h6
   margin: 0.83em 0
 
 

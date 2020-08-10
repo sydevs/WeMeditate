@@ -1,17 +1,17 @@
-@import "../../mixins/*"
+@import '../../mixins/*'
 
 .divider
   max-width: 400px
   width: 100%
   margin: auto
 
-  background-color: #AAAAA9
+  background-color: #aaaaa9
   height: 1px
 
 .divider--leaf
   position: relative
 
-.divider--leaf:after
+.divider--leaf::after
   content: ''
   position: absolute
   left: 50%
@@ -33,7 +33,7 @@
 .divider--leaf-up
   margin-top: 2em
 
-  &:after
+  &::after
     top: 2px
     transform-origin: center
     transform: translateX(-50%) translateY(-100%)
@@ -41,7 +41,7 @@
 .divider--leaf-down
   margin-bottom: 2em
 
-  &:after
+  &::after
     top: -2px
     transform-origin: center
     transform: rotate(180deg) translateX(50%)
@@ -49,5 +49,5 @@
 .divider--leaf-only
   background: transparent
 
-  &:after
+  &::after
     background-color: transparent

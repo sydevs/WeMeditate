@@ -1,4 +1,4 @@
-@import "../../mixins/*"
+@import '../../mixins/*'
 
 /* AFTERGLOW
   We are using the afterglow library to play video content.
@@ -33,7 +33,7 @@ body .video-js.vjs-afterglow-skin
     transition: border-color 0.5s ease
     border-radius: 0 !important
 
-    &:before
+    &::before
       content: ''
 
   // Restore a CSS property that is being overridden by @extend %video-button
@@ -57,7 +57,7 @@ body .video-js.vjs-afterglow-skin
       */
 
   // Play/pause butto
-  .vjs-play-control:before
+  .vjs-play-control::before
     font-family: $font-icons
     content: $icon-play
     font-size: 18px
@@ -65,7 +65,7 @@ body .video-js.vjs-afterglow-skin
     @media (max-width: 512px) // This is an Afterglow breakpoint
       font-size: 14px !important
 
-  &.vjs-playing .vjs-play-control:before
+  &.vjs-playing .vjs-play-control::before
     content: $icon-pause
 
   // Time displays
@@ -79,11 +79,11 @@ body .video-js.vjs-afterglow-skin
 body .video-js.vjs-afterglow-skin
   .vjs-volume-menu-button,
   .vjs-mute-control
-    &:before
+    &::before
       font-family: $font-icons
       content: $icon-volume !important
     
-    &.vjs-vol-0:before
+    &.vjs-vol-0::before
       content: $icon-volume-muted !important
 
   .vjs-volume-bar

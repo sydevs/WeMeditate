@@ -1,4 +1,4 @@
-@import "../../mixins/*"
+@import '../../mixins/*'
 
 /* EXCERPT
   Similar to a preview, but a little bit more long form.
@@ -134,7 +134,7 @@
       @include tablet-or-larger
         flex-direction: if($side == right, row-reverse, row)
 
-      &:after
+      &::after
         #{$side}: -($gutter-width * 4)
         @include gradient(to #{$opposite}, 'blue')
 

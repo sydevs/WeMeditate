@@ -1,4 +1,4 @@
-@import "../../mixins/*"
+@import '../../mixins/*'
 
 $image-height: 80vh
 $gradient-padding: 150px
@@ -37,7 +37,7 @@ $gradient-padding: 150px
       text-align: center
       font-size: 3rem
 
-      &:before, &:after
+      &::before, &::after
         content: ''
         background-image: image-url('graphics/leaves.svg')
         background-repeat: no-repeat
@@ -47,7 +47,7 @@ $gradient-padding: 150px
         display: block
         margin: 30px auto
 
-      &:after
+      &::after
         transform: rotate(180deg)
 
 // ===== VIDEO ACTION ===== //
@@ -63,7 +63,7 @@ $gradient-padding: 150px
     margin-left: -85px
     margin-top: -85px
 
-  &:before
+  &::before
     // Background behind the action area
     content: ''
     position: absolute

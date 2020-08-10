@@ -1,11 +1,11 @@
-@import "../../mixins/*"
+@import '../../mixins/*'
 
 .content__action
   @extend %wide-content-width
   text-align: center
 
 .content__action--leaves
-  &:before, &:after
+  &::before, &::after
     content: ''
     background-image: image-url('graphics/leaves.svg')
     background-repeat: no-repeat
@@ -15,5 +15,5 @@
     display: block
     margin: 30px auto
 
-  &:after
+  &::after
     transform: rotate(180deg)
