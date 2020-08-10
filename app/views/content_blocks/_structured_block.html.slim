@@ -1,4 +1,3 @@
-
 .content__structured class="content__structured--#{block[:format]}"
   - if block[:format] == 'grid'
     .content__structured__grid.js-grid data-max-columns=3
@@ -33,4 +32,3 @@
             = smart_image_tag record.media_file(item[:image][:id]), image_sizes, lazy: false, class: 'content__structured__image'
           h3.content__structured__title = item[:title]
           .content__structured__text = simple_format_content item[:text]
-

@@ -1,4 +1,3 @@
-
 - allow = policy(record)
 
 - if record.stateable?
@@ -26,8 +25,15 @@
 
   - if record.fixed_slug?
     = f.input :slug do
-      - path = @record.is_a?(StaticPage) ? static_page_path_for(@record) : (@record.new_record? ? "#{polymorphic_path(@record)}/#{@record.slug}" : polymorphic_path(@record))
-      - url = @record.is_a?(StaticPage) ? static_page_url_for(@record) : (@record.new_record? ? "#{polymorphic_url(@record)}/#{@record.slug}" : polymorphic_url(@record))
+      ruby:
+        if @record.is_a?(StaticPage)
+          path = static_page_path_for(@record)
+          url = @record.is_a?(StaticPage)
+        else
+          path = @record.new_record? ? "#{polymorphic_path(@record)}/#{@record.slug}" : polymorphic_path(@record)
+          url = @record.new_record? ? "#{polymorphic_url(@record)}/#{@record.slug}" : polymorphic_url(@record)
+        end
+
       = record_detail 'linkify', CGI.unescape(path), url: url
       = f.hint translate('admin.hints.fixed_slug')
   - elsif record.draftable?
@@ -38,7 +44,7 @@
       else
         url = url_for(record)
       end
-      
+
     = draftable_slug_field f, url
   - else
     - url = record.new_record? ? "/#{polymorphic_path(record.class)}/*" : polymorphic_path(record)

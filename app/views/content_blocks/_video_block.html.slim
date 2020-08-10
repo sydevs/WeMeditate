@@ -1,3 +1,4 @@
+- is_gallery = block[:asGallery] == true
 
 ruby:
   isGallery = block[:asGallery] == true
@@ -7,7 +8,7 @@ ruby:
     .gradient-wrapper
       = render_decoration :gradient, block, size: %i[tall long]
 
-    - if isGallery
+    - if is_gallery
       - if block[:decorations] && block[:decorations][:sidetext]
         .content__video__circle
           = render_decoration :circle, { decorations: { circle: true } }

@@ -1,8 +1,7 @@
-
-- reorder = (params[:reorder] == 'true')
-- allow = policy(@model)
-
-- content_for :title, human_model_name(@model, :plural)
+ruby:
+  content_for :title, human_model_name(@model, :plural)
+  reorder = (params[:reorder] == 'true')
+  allow = policy(@model)
 
 .ui.icon.message
   i.question.circle.icon
@@ -79,7 +78,7 @@
     thead
       tr
         - table_columns(@model) do |column, index|
-          th class=('collapsing' unless index == 0 || column == :artist_id)
+          th class=('collapsing' unless index.zero? || column == :artist_id)
             - column = :created_at if params[:sort] == 'created_at' && column == :updated_at
             = translate(column, scope: %i[admin index columns])
             - if params[:sort] == column.to_s

@@ -1,9 +1,7 @@
-
 main
   h1.banner.banner--left = @static_page.name
 
   - if @tracks.present?
-    - first_track = @tracks.first
     - amplitude_data = amplitude_data(@tracks)
 
     .music
@@ -62,7 +60,7 @@ main
 
         - amplitude_data[:playlists].each do |playlist_id, playlist|
           - playlist_songs = amplitude_data[:songs].select { |song| playlist[:songs].include?(song[:index]) }
-          - active = 'amplitude-active-playlist-container' if playlist_id == 0
+          - active = 'amplitude-active-playlist-container' if playlist_id.zero?
           .amplitude-playlist-container class=active data-amplitude-playlist=playlist_id
             .amplitude-playlist-title
               = t('tracks.playlist')

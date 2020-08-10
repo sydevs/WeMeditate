@@ -1,7 +1,6 @@
-
 - content_for :title, t('devise.invitations.new.header')
 
-= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { class: "ui form #{'error' if resource.errors.present?}", method: :post } do |f|
+= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { class: "ui form #{'error' if resource.errors.present?}", method: :post } do |f|
   - resource.class.invite_key_fields.each do |field|
     .field
       = f.label field

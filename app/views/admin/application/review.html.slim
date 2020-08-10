@@ -1,8 +1,7 @@
-
-- content_for :title, 'Review'
-- contributors = @record.parsed_draft['contributors']
-- content_changes = @record.parsed_draft['content']
-- detail_changes = @record.parsed_draft.except('contributors', 'content')
+ruby:
+  content_for :title, 'Review'
+  contributors = @record.parsed_draft['contributors']
+  detail_changes = @record.parsed_draft.except('contributors', 'content')
 
 .ui.inverted.dividing.fixed.header
   .content
@@ -10,7 +9,7 @@
     = translate('admin.review.title').upcase
   .sub.header
     = @record.name
-    
+
 .ui.visible.left.sidebar
   .ui.basic.inverted.segment
     .cleartop
@@ -23,12 +22,12 @@
     .ui.inverted.dividing.small.header = translate('admin.review.context.details')
     .ui.fluid.inverted.vertical.secondary.menu
       - if @record.has_draft? :details
-        - detail_changes.each do |key, data|
+        - detail_changes.each do |key, _data|
           = review_menu_item key, 'details', record: @record
       - else
         .review.item class='review-button' data-context='details'
           = translate('admin.review.no_changes')
-          
+
     .ui.inverted.dividing.small.header = translate('admin.review.context.content')
     .ui.fluid.inverted.vertical.secondary.menu
       - if @record.has_draft? :content
@@ -41,7 +40,7 @@
           = translate('admin.review.no_changes')
 
     .ui.basic.center.aligned.segment
-      = simple_form_for @record, url: polymorphic_admin_path([:approve, :admin, @record]), html: { id: 'review-form', class: 'inverted' } do |f|
+      = simple_form_for @record, url: polymorphic_admin_path([:approve, :admin, @record]), html: { id: 'review-form', class: 'inverted' } do |_form|
         .ui.inverted.loader
         input id='review-input' type='hidden' name='review'
         button.ui.positive.basic.button type='submit'

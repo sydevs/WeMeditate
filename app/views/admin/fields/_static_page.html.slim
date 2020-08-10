@@ -1,4 +1,3 @@
-
 - if record.new_record?
   = f.input :role, collection: StaticPage.available_roles.map { |k| [human_enum_name(record, :role, k), k] }, selected: StaticPage.available_roles.first
 - else

@@ -1,4 +1,3 @@
-
 - content_for :title, t('.change_your_password')
 
 = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { class: "ui form #{'error' if resource.errors.present?}", method: :put } do |f|
@@ -6,11 +5,11 @@
 
   .field
     = f.label :password, t('.new_password')
-    = f.password_field :password, autofocus: true, autocomplete: "off"
+    = f.password_field :password, autofocus: true, autocomplete: 'off'
 
   .field
     = f.label :password_confirmation, t('.confirm_new_password')
-    = f.password_field :password_confirmation, autocomplete: "off"
+    = f.password_field :password_confirmation, autocomplete: 'off'
 
   = render 'devise/shared/errors', resource: resource
 

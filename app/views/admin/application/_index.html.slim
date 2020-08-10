@@ -1,6 +1,7 @@
-- reorder = (params[:reorder] == 'true')
-- show_navigation = (local_assigns[:navigation] != false)
-- allow = policy(model)
+ruby:
+  reorder = (params[:reorder] == 'true')
+  show_navigation = (local_assigns[:navigation] != false)
+  allow = policy(model)
 
 - if reorder
   = form_tag polymorphic_admin_path([:sort, :admin, model]), method: :put

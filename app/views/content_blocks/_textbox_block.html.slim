@@ -12,14 +12,14 @@ ruby:
   return unless block[:image].is_a?(Hash)
 
 .content__textbox class=classes
-  - if isWisdom
+  - if is_wisdom
     .gradient-wrapper
       .gradient.gradient--wisdom class="gradient--#{block[:alignment] == 'right' ? 'left' : 'right'}"
   - elsif block[:alignment] != 'center'
     .content__textbox__decoration.content__textbox__decoration--gradient
       .gradient-wrapper
         = render_decoration :gradient, block, size: %i[long]
-    
+
   .content__textbox__wrapper
     .content__textbox__decoration.content__textbox__decoration--sidetext
       .content__textbox__sidetext
@@ -28,7 +28,7 @@ ruby:
     - if isWisdom
       = inline_svg_tag 'content/ancient-wisdom.svg', class: 'content__textbox__graphic'
 
-    - if isVideo
+    - if is_video
       h2.content__textbox__title = block[:title]
 
     .content__textbox__image
@@ -46,7 +46,7 @@ ruby:
               a.content__textbox__action__button href="https://vimeo.com/#{vimeo_id}" data-lity=true target='_blank'
               .content__textbox__action__text = block[:action]
 
-    - unless isVideo
+    - unless is_video
       .content__textbox__box_wrapper
         .content__textbox__box class=('js-animate' if block[:invert] == true && block[:alignment] == 'center')
           h2.content__textbox__title = block[:title]

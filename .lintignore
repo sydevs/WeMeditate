@@ -1,0 +1,4 @@
+app/assets/javascripts/front/libraries/*
+app/assets/javascripts/admin/libraries/*
+app/assets/stylesheets/front/0_libraries/*
+app/assets/stylesheets/admin/libraries/*

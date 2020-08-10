@@ -4,4 +4,4 @@ p = translate('.greeting', recipient: @resource.email)
 p = translate('.message')
 p = translate('.instruction')
 
-p = link_to translate('.action'), unlock_url(@resource, :unlock_token => @token)
+p = link_to translate('.action'), unlock_url(@resource, unlock_token: @token)

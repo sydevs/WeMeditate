@@ -44,9 +44,6 @@ Style/ClassAndModuleChildren:
   Enabled: False
   # EnforcedStyle: compact
 
-Style/BracesAroundHashParameters:
-  Enabled: False
-
 Style/BlockDelimiters:
   Enabled: False
 
@@ -65,5 +62,5 @@ Layout/IndentationConsistency:
 Layout/SpaceInLambdaLiteral:
   EnforcedStyle: require_space
 
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent

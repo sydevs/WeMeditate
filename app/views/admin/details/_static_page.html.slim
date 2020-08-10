@@ -1,4 +1,3 @@
-
 .ui.details.list
   = record_detail 'info circle', human_enum_name(record, :state), human_attribute_name(record, :state)
   = record_detail 'language', language_name(record.original_locale), translate('admin.details.original_language') unless record.original_locale == Globalize.locale.to_s

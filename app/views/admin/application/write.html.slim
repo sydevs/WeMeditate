@@ -1,4 +1,3 @@
-
 ruby:
   content_for :title, translate('admin.action.target.write', record: human_model_name(@record))
   
@@ -67,6 +66,6 @@ ruby:
         button.ui.basic.positive.button type='submit'
           = translate 'admin.action.simple.update'
 
-      div#upload-loader style='display: none'
+      #upload-loader style='display: none'
         i.notched.circle.loading.icon
         span

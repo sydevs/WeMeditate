@@ -1,4 +1,3 @@
-
 main.scrollspy-target id=dom_id(@article)
   h1.banner = @article.name
 
@@ -14,7 +13,7 @@ main.scrollspy-target id=dom_id(@article)
       /- if @article.author.title
         .author__title
           = @article.author.title
-          '  in 
+          '  in
           = @article.author.country_code
       - if @article.author.years_meditating
         .author__experience = translate('author.meditating_for', count: @article.author.years_meditating)

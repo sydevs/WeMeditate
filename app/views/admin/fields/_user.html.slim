@@ -1,4 +1,3 @@
-
 - if record.invited_by
   = f.input :invited_by do
     i.icon class=model_icon_key(User)
@@ -38,7 +37,7 @@
                               prompt: translate('admin.misc.locale.no_languages'),
                               input_html: { multiple: true }
 
-  = f.input :role, collection: @assignable_roles.map { |k, v| [human_enum_name(User, :role, k), k] }
+  = f.input :role, collection: @assignable_roles.map { |k, _| [human_enum_name(User, :role, k), k] }
 
   ul.hint
     - User.roles.keys.each do |role|

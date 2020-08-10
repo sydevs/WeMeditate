@@ -1,8 +1,8 @@
-
-- content_for :title, human_model_name(@model)
-- reorder = (params[:reorder] == 'true')
-- model_name = human_model_name(@model).downcase
-- allow = policy(@record)
+ruby:
+  content_for :title, human_model_name(@model)
+  reorder = (params[:reorder] == 'true')
+  model_name = human_model_name(@model).downcase
+  allow = policy(@record)
 
 - unless reorder
   .table-actions
@@ -61,7 +61,7 @@
           = record_detail 'bullhorn', translate('admin.tags.published_from_now', time_from_now: time_ago_in_words(@record.published_at))
       = record_detail 'edit', translate('admin.tags.updated_ago', time_ago: time_ago_in_words(@record.updated_at))
 
-      - if owner = @record.try(:owner)
+      - if owner == @record.try(:owner)
         - owned_by = translate('admin.details.owned_by', owner: owner.name)
         - if policy(owner).edit?
           - view_user = translate('admin.action.target.show', record: human_model_name(User))

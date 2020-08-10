@@ -1,5 +1,5 @@
-
-- allow = policy(record)
+ruby:
+  allow = policy(record)
 
 - if record.user.present?
   .ui.icon.message
@@ -11,7 +11,6 @@
 
 - if record.user == current_user && record.new_record?
   .ui.info.message = translate('admin.messages.new_author_notice')
-
 
 = f.input :name, disabled: !allow.update_structure?, input_html: { value: (record.name || record.user&.name) }
 

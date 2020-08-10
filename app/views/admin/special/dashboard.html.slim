@@ -50,7 +50,6 @@ h3 = translate 'admin.dashboard.content.title'
         tr
           td = translate 'admin.dashboard.schedule.no_schedule'
 
-
 h3 = translate 'admin.dashboard.alerts.title'
 p = translate 'admin.dashboard.alerts.description'
 
@@ -71,7 +70,7 @@ table.ui.very.basic.compact.unstackable.models.table
 
         td.collapsing.right.aligned
           = table_icon urgency_icon_key(issue[:urgency]), translate(issue[:urgency], scope: %i[admin tags urgency])
-    
+
     - unless has_issues
       tr
         td = translate 'admin.dashboard.alerts.no_issues'

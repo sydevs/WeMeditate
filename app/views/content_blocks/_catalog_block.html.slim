@@ -12,7 +12,7 @@ ruby:
       .content__catalog__header__text = block[:title]
       = inline_svg_tag 'graphics/leaves.svg', class: 'content__catalog__header__leaf'
 
-  - if block[:type] == 'articles' || !showImages
+  - if block[:type] == 'articles' || !show_images
     - image_sizes = '(max-width: 767px) calc(100vw - 48px), 360px'
 
     .content__catalog__sidetext = render_decoration :sidetext, block, alignment: :left
@@ -20,7 +20,7 @@ ruby:
     .content__catalog__article_grid data-max-columns=3 class=(records.length < 3 ? 'content__catalog__article_grid--centered' : 'js-grid')
       - records.first(3).each do |record|
         article.preview.content__catalog__article
-          - if showImages
+          - if show_images
             a.content__catalog__media.preview__media href=polymorphic_path(record)
               = smart_image_tag record.thumbnail, image_sizes, lazy: false, class: 'preview__media__thumbnail', alt: record.name
 
@@ -53,10 +53,7 @@ ruby:
       .gradient.gradient--right.gradient--tall.gradient--fixed-height.gradient--orange
 
     h2.content__catalog__title
-      - if block[:title]
-        = block[:title]
-      - else
-        = block[:decorations] && block[:decorations][:sidetext] && block[:decorations][:sidetext][:text]
+      = block[:title] || (block[:decorations] && block[:decorations][:sidetext] && block[:decorations][:sidetext][:text])
     .content__catalog__sidetext = render_decoration :sidetext, block, alignment: :left
 
     .content__catalog__treatment_list.excerpt_list
@@ -85,7 +82,7 @@ ruby:
                 a.excerpt__link href=treatment_path(treatment)
                   = t('treatments.read_more')
                   .icon.icon--breadcrumb
-                  
+
               .clearfix
 
   - elsif block[:type] == 'meditations'
