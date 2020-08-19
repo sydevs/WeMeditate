@@ -10,6 +10,7 @@ class Header {
     this.splash = document.querySelector('.js-splash')
     this.container.style.height = 'auto'
     this.navigationHeight = $('.header__navigation', element).outerHeight(true)
+    // console.log("H.navht1: ", this.navigationHeight)
 
     this.desktopWrapper = element.querySelector('.header__wrapper--desktop')
     this.mobileWrapper = element.querySelector('.header__wrapper--mobile')
@@ -76,6 +77,7 @@ class Header {
     const isDesktop = $(this.desktopWrapper).is(':visible')
     this.headerHeight = $(isDesktop ? this.desktopWrapper : this.mobileWrapper).outerHeight(true)
     this.stickyPoint = isDesktop ? this.headerHeight - this.navigationHeight : 0
+    // console.log("H.stkpt: ", this.stickyPoint)
     zenscroll.setup(null, this.headerHeight)
 
     if (this.splash && this.splash.dataset.invert) {
@@ -87,6 +89,10 @@ class Header {
 
   _onScroll() {
     let scrollTop = $(window).scrollTop()
+
+    const isDesktop = $(this.desktopWrapper).is(':visible')
+    this.navigationHeight = $('.header__navigation', isDesktop ? this.desktopWrapper : this.mobileWrapper).outerHeight(true)
+    // console.log("H.navht2: ", this.navigationHeight)
 
     if (scrollTop > this.stickyPoint) {
       // Enable sticky-ing
