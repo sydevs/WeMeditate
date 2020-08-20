@@ -1,4 +1,4 @@
-/* global */
+/* global $, Application */
 /* exported Categories */
 
 class Categories {
