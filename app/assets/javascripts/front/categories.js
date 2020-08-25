@@ -1,4 +1,4 @@
-/* global $, Application */
+/* global $, Application, zenscroll */
 /* exported Categories */
 
 class Categories {
@@ -10,6 +10,11 @@ class Categories {
 
     window.addEventListener('resize', _event => this._onResize())
     window.addEventListener('scroll', _event => this._onScroll())
+
+    if (typeof zenscroll !== 'undefined') {
+      this._onResize()
+      this._onScroll()
+    }
   }
 
   init() {
@@ -19,20 +24,16 @@ class Categories {
 
   _onResize() {
     this.topOffset = $(this.filters).offset().top
-    // console.log("topOffset: ", this.topOffset)
   }
 
   _onScroll() {
     let scrollTop = $(window).scrollTop()
-    // console.log("F.scrtop: ", scrollTop)
 
-    let stickyPt = this.topOffset - this.header.navigationHeight
-    // console.log("F.stkpt: ", stickyPt)
+    let stickyPt = this.topOffset - this.header.navigationHeight - 29
 
     if (scrollTop > stickyPt) {
       if (!this.container.classList.contains('filters--sticky')) {
         this.container.style.height = `${$(this.container).outerHeight()}px`
-        // this.filters.style.top = `${this.header.navigationHeight}px`
         this.container.classList.add('filters--sticky')
       }
       this.filters.style.top = `${this.header.navigationHeight}px`

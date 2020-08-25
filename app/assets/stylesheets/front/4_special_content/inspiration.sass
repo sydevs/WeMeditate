@@ -38,11 +38,28 @@
   margin-top: 50px
 
 .filters--sticky
-  > .inspiration__filters
+  @include tablet-or-larger
+    margin-bottom: 38px
+
+  .inspiration__filters
     position: fixed
     left: 0
     right: 0
     z-index: $z-filter
     background: $background-white
-    margin-right: auto
-    margin-left: auto
+    
+    @include mobile
+      padding: 29px 25px 37px
+      max-width: 618px
+      max-height: 106px
+      overflow-y: hidden
+
+    .button--filled
+      @include mobile
+        min-width: 88px
+        width: 88px
+        height: 40px
+        font-size: 15px
+        padding: 10px
+        text-align: center
+        transition: all 0.5s ease
