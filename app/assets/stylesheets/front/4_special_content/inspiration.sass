@@ -36,6 +36,9 @@
   margin-top: 50px
 
 .filters--sticky
+  @include tablet-or-larger
+    margin-bottom: 38px
+
   .inspiration__filters
     position: fixed
     left: 0
@@ -43,9 +46,11 @@
     z-index: $z-filter
     background: $background-white
     
-    padding: 30px $gutter-width
-    padding-bottom: 6px
+    padding: 6px $gutter-width
     overflow-y: hidden
+
+    @include mobile
+      padding-top: 20px
 
     &__item
       margin-bottom: 0

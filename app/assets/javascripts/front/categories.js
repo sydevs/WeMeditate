@@ -8,22 +8,15 @@ class Categories {
     this.header = Application.element.header
     this.filters = element.querySelector('.inspiration__filters')
 
-    window.addEventListener('resize', _event => this._onResize())
     window.addEventListener('scroll', _event => this._onScroll())
 
     if (typeof zenscroll !== 'undefined') {
-      this._onResize()
       this._onScroll()
     }
   }
 
   init() {
-    this._onResize()
     this._onScroll()
-  }
-
-  _onResize() {
-    this.topOffset = $(this.filters).offset().top
   }
 
   _onScroll() {
