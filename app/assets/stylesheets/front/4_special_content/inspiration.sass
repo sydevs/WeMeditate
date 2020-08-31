@@ -4,10 +4,7 @@
   @extend %wide-content-width
   margin-top: 30px
   margin-bottom: 50px
-
-  @include mobile
-    position: relative
-    padding-top: 50px
+  position: relative
 
   @include tablet-or-larger
     margin-top: 64px
@@ -15,13 +12,14 @@
 
 .inspiration__filters
   @include mobile
-    @include overlay($bottom: auto)
     white-space: nowrap
-    padding-left: $gutter-width
-    padding-right: $gutter-width
 
   @include tablet-or-larger
     margin-bottom: 38px
+
+  .button
+    @include mobile
+      margin-bottom: 0
 
 .inspiration__grid
   position: relative
@@ -38,9 +36,6 @@
   margin-top: 50px
 
 .filters--sticky
-  @include tablet-or-larger
-    margin-bottom: 38px
-
   .inspiration__filters
     position: fixed
     left: 0
@@ -48,18 +43,15 @@
     z-index: $z-filter
     background: $background-white
     
-    @include mobile
-      padding: 29px 25px 37px
-      max-width: 618px
-      max-height: 106px
-      overflow-y: hidden
+    padding: 30px $gutter-width
+    padding-bottom: 6px
+    overflow-y: hidden
+
+    &__item
+      margin-bottom: 0
 
     .button--filled
-      @include mobile
-        min-width: 88px
-        width: 88px
-        height: 40px
-        font-size: 15px
-        padding: 10px
-        text-align: center
-        transition: all 0.5s ease
+      min-width: 94px
+      font-size: 15px
+      padding: 10px
+      text-align: center
