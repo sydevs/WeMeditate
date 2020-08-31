@@ -29,9 +29,7 @@ class Categories {
   _onScroll() {
     let scrollTop = $(window).scrollTop()
 
-    let stickyPt = this.topOffset - this.header.navigationHeight - 29
-
-    if (scrollTop > stickyPt) {
+    if (scrollTop > this.header.stickyPoint) {
       if (!this.container.classList.contains('filters--sticky')) {
         this.container.style.height = `${$(this.container).outerHeight()}px`
         this.container.classList.add('filters--sticky')
