@@ -88,6 +88,9 @@ class Header {
   _onScroll() {
     let scrollTop = $(window).scrollTop()
 
+    const isDesktop = $(this.desktopWrapper).is(':visible')
+    this.navigationHeight = $('.header__navigation', isDesktop ? this.desktopWrapper : this.mobileWrapper).outerHeight(true)
+
     if (scrollTop > this.stickyPoint) {
       // Enable sticky-ing
       if (!this.container.classList.contains('header--sticky')) {
