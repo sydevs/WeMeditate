@@ -54,7 +54,7 @@ module NavigationHelper
   def advanced_navigation_item
     @advanced_navigation_item ||= begin
       kundalini_page = SubtleSystemNode.find_by(role: :kundalini)
-      static_pages = %i[shri_mataji subtle_system treatments].map { |role|
+      static_pages = %i[shri_mataji sahaja_yoga subtle_system treatments].map { |role|
         static_page = static_page_preview_for(role)
         [role, {
           title: static_page.name,
@@ -84,6 +84,7 @@ module NavigationHelper
               data: gtm_record(kundalini_page),
             },
             static_pages[:shri_mataji],
+            static_pages[:sahaja_yoga],
             static_pages[:treatments],
           ],
           featured: Article.published.preload_for(:preview).first(2).map { |article|
