@@ -87,7 +87,7 @@ module NavigationHelper
             static_pages[:sahaja_yoga],
             static_pages[:treatments],
           ],
-          featured: Article.published.preload_for(:preview).first(2).map { |article|
+          featured: Article.published.preload_for(:preview).reorder("RANDOM()").limit(2).map { |article|
             {
               title: article.name,
               url: article_path(article),
