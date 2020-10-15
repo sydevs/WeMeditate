@@ -20,12 +20,14 @@ uk:
     streams: "live"
     
   header:
-    learn_more: "Детальніше"
+    advanced_articles: "All Articles" # TODO: Translate
+    advanced: "Детальніше"
     live_meditations: "Live guided meditations" # TODO: Translate
     classes_near_me: "Заняття поблизу"
     inspiration_from_within: "Джерело натхнення всередині"
     preview_notice: "Ви переглядаєте попередній варіант"
     kundalini: "Inner Energy" # TODO: Translate
+    social: "Follow us"
 
   cookie_notice:
     text: "Продовжуючи використовувати wemeditate.ua, ви даєте згоду на використання файлів cookie."

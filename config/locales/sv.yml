@@ -20,12 +20,14 @@ sv:
     streams: "live"
     
   header:
-    learn_more: "Lär dig mer"
+    advanced_articles: "All Articles" # TODO: Translate
+    advanced: "Lär dig mer"
     live_meditations: "Live guided meditations" # TODO: Translate
     classes_near_me: "Guidade meditationer live"
     inspiration_from_within: "Inspiration kommer innifrån"
     preview_notice: "Detta är en förhandsgranskning"
     kundalini: "Inre Energi"
+    social: "Follow us"
 
   cookie_notice:
     text: "Genom att använda wemeditate tillåter du användning av cookies."

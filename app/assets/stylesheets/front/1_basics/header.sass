@@ -487,6 +487,7 @@
 .header__menu__item--submenu
   .header__menu__link
     padding-right: 25px
+    margin-right: -25px
     position: relative
 
   .header__menu__link:after
@@ -532,6 +533,24 @@
   .header__menu__submenu_item:after
     transform: rotate(135deg)
     margin-top: -4px
+
+
+// ===== MOBILE SOCIAL LINKS ===== //
+.header__social
+  margin-top: 60px
+
+  &__title
+    font-size: 2rem
+    line-height: 1.25
+    margin-bottom: 27px
+
+  &__links
+    flex: 1 0 12%
+
+  &__link
+    font-size: 2.6rem
+    color: $color-text-dark
+    margin: 0 15px
 
 
 // ===== SHOW MOBILE MENU TWEAKS ===== //

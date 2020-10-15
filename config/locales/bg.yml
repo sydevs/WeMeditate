@@ -19,12 +19,14 @@ bg:
     streams: "на-живо"
 
   header:
-    learn_more: "Научете повече"
+    advanced_articles: "All Articles" # TODO: Translate
+    advanced: "Научете повече"
     classes_near_me: "Водени медитации на живо"
     inspiration_from_within: "Вдъхновението идва от вътре"
     cookie_notice: "Продължавайки да ползвате wemeditate.co, се съгласявате да употребяваме бисквитки."
     preview_notice: "Предварителен преглед"
     kundalini: "Вътрешна енергия"
+    social: "Follow us"
 
   cookie_notice:
     text: "Продължавайки да ползвате wemeditate.co, се съгласявате да употребяваме бисквитки."

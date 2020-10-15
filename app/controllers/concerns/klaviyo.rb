@@ -31,8 +31,8 @@ module Klaviyo
     Klaviyo.request('api/track', {
       'token': ENV['KLAVIYO_API_KEY'],
       'event': event,
-      'customer_properties' : {
-        '$email' : email,
+      'customer_properties': {
+        '$email': email,
       },
       'properties': properties,
     })

@@ -5,92 +5,98 @@ module NavigationHelper
 
   # Return a list of navigation items for desktop
   def navigation_items
-    return @navigation if defined? @navigation
+    @navigation_items ||= begin
+      result = []
 
-    @navigation = []
+      # Collect the three basic navigaton links
+      %i[meditations tracks articles].each do |role|
+        static_page = static_page_preview_for(role)
+        result.push({
+          title: static_page.name,
+          url: static_page_path_for(static_page),
+          active: controller_name == role.to_s,
+          data: gtm_record(static_page),
+        })
+      end
 
-    # Collect the three basic navigaton links
-    %i[meditations articles tracks].each do |role|
-      static_page = static_page_preview_for(role)
-      @navigation.push({
-        title: static_page.name,
-        url: static_page_path_for(static_page),
-        active: controller_name == role.to_s,
-        data: gtm_record(static_page),
-      })
+      # Define the dropdown navigation.
+      result.push(advanced_navigation_item)
+
+      result
     end
-
-    # Define the dropdown navigation.
-    kundalini_page = SubtleSystemNode.find_by(role: :kundalini)
-
-    @navigation.push({
-      title: I18n.translate('header.learn_more'),
-      url: '#', # static_page_path_for(:about),
-      data: gtm_label('header.learn_more'),
-      active: %w[static_pages subtle_system_nodes].include?(controller_name),
-      content: {
-        items: %i[sahaja_yoga shri_mataji subtle_system treatments classes].map { |role|
-          static_page = static_page_preview_for(role)
-          {
-            title: static_page.name,
-            url: static_page_path_for(static_page),
-            data: gtm_record(static_page),
-          }
-        } + [
-          {
-            title: translate('header.kundalini'),
-            url: url_for(kundalini_page),
-            data: gtm_record(kundalini_page),
-          },
-        ],
-        featured: Treatment.published.preload_for(:preview).first(2).map { |treatment|
-          {
-            title: translate('treatments.header_title', title: treatment.name),
-            url: treatment_path(treatment),
-            data: gtm_record(treatment),
-            thumbnail: treatment.thumbnail.url,
-          }
-        },
-      },
-    })
-
-    @navigation
   end
 
   # Return a list of navigation items for mobile
   def mobile_navigation_items
-    mobile_navigation = []
-    # home_page = StaticPage.preview_for(:home)
+    @mobile_navigation_items ||= begin
+      result = []
 
-    # mobile_navigation.push({
-    #   title: home_page.name,
-    #   url: static_page_path_for(home_page),
-    #   active: controller_name == 'application' && action_name == 'home',
-    # })
+      # Collect the four basic navigaton links
+      %i[meditations tracks streams articles].each do |role|
+        return if role == :streams && !Stream.public_stream.any?
 
-    # Use the desktop navigation as a base, and then modify it
-    mobile_navigation += navigation_items
+        static_page = static_page_preview_for(role)
+        result.push({
+          title: role == :streams ? translate('header.live_meditations') : static_page.name,
+          url: static_page_path_for(static_page),
+          active: controller_name == role.to_s,
+          data: gtm_record(static_page),
+        })
+      end
 
-    # Add classes near me
-    if Stream.public_stream.any?
-      mobile_navigation.push({
-        title: I18n.translate('header.live_meditations'),
-        url: static_page_path_for(:streams),
-        data: gtm_label('header.classes_near_me'),
-        active: controller_name == 'classes',
-      })
+      # Define the dropdown navigation.
+      result.push(advanced_navigation_item)
+
+      result
     end
-    
-=begin
-    mobile_navigation.push({
-      title: I18n.translate('header.classes_near_me').gsub('<br>', ' '),
-      url: static_page_path_for(:classes),
-      data: gtm_label('header.classes_near_me'),
-      active: controller_name == 'classes',
-    })
-=end
+  end
 
-    mobile_navigation
+  def advanced_navigation_item
+    @advanced_navigation_item ||= begin
+      kundalini_page = SubtleSystemNode.find_by(role: :kundalini)
+      static_pages = %i[shri_mataji subtle_system treatments].map { |role|
+        static_page = static_page_preview_for(role)
+        [role, {
+          title: static_page.name,
+          url: static_page_path_for(static_page),
+          data: gtm_record(static_page),
+        }]
+      }.to_h
+
+      {
+        title: I18n.translate('header.advanced'),
+        url: '#',
+        data: gtm_label('header.advanced'),
+        active: %w[static_pages subtle_system_nodes].include?(controller_name),
+        content: {
+          items: [
+=begin
+            {
+              title: translate('header.advanced_articles'),
+              url: '#', # static_page_path_for(static_page),
+              # data: gtm_record(static_page),
+            },
+=end
+            static_pages[:subtle_system],
+            {
+              title: translate('header.kundalini'),
+              url: url_for(kundalini_page),
+              data: gtm_record(kundalini_page),
+            },
+            static_pages[:shri_mataji],
+            static_pages[:treatments],
+          ],
+          featured: Article.published.preload_for(:preview).first(2).map { |article|
+            {
+              title: article.name,
+              url: article_path(article),
+              data: gtm_record(article),
+              thumbnail: article.thumbnail.url,
+            }
+          },
+        },
+      }
+    end
   end
 
 end

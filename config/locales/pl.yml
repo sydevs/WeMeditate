@@ -20,12 +20,14 @@ pl:
     streams: "live"
 
   header:
-    learn_more: "Learn More"
-    live_meditations: "Live guided meditations"
+    advanced_articles: "All Articles" # TODO: Translate
+    advanced: "About Meditation"
+    live_meditations: "Live Classes"
     classes_near_me: "Classes near me"
     inspiration_from_within: "Inspiration comes from within"
     preview_notice: "You are viewing a preview"
     kundalini: "Inner Energy"
+    social: "Follow us"
 
   cookie_notice:
     text: "By continuing to use wemeditate.co you will be agreeing to our use of cookies."
