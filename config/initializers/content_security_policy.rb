@@ -7,6 +7,7 @@
 Rails.application.config.content_security_policy do |policy|
   gtm_sources = %w[www.googletagmanager.com tagmanager.google.com www.google-analytics.com stats.g.doubleclick.net www.gstatic.com]
   jwp_sources = %w[cdn.jwplayer.com ssl.p.jwpcdn.com videos-cloudflare.jwpsrv.com assets-jpcust.jwpsrv.com prd.jwpltx.com]
+  vimeo_sources = %w[player.vimeo.com vod-progressive.akamaized.net]
   # jwp_sources = []
 
   policy.default_src :self, :https
@@ -15,10 +16,10 @@ Rails.application.config.content_security_policy do |policy|
   policy.object_src  :none
   policy.script_src  :self, *gtm_sources, *jwp_sources, :unsafe_eval, :unsafe_inline, :https
   policy.worker_src  :self, :blob
-  policy.connect_src :self, *gtm_sources, *jwp_sources
-  policy.media_src   :blob, 'cdn.jwplayer.com', 'player.vimeo.com', 'player.twitch.tv', 'www.youtube.com'
+  policy.connect_src :self, 'assets.wemeditate.co', *gtm_sources, *jwp_sources
+  policy.media_src   :blob, 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', *vimeo_sources
   policy.style_src   :self, :unsafe_inline, :https
-  policy.frame_src   :self, 'cdn.jwplayer.com', 'player.vimeo.com', 'player.twitch.tv', 'www.youtube.com', 'www.google.com', ENV['ATLAS_URL'] || ''
+  policy.frame_src   :self, 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', 'www.google.com', *vimeo_sources, ENV['ATLAS_URL'] || ''
 
   # Specify URI for violation reports
   # policy.report_uri "/csp-violation-report-endpoint"
