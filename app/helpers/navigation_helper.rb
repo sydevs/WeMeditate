@@ -33,7 +33,7 @@ module NavigationHelper
 
       # Collect the four basic navigaton links
       %i[meditations tracks streams articles].each do |role|
-        return if role == :streams && !Stream.public_stream.any?
+        next if role == :streams && !Stream.public_stream.any?
 
         static_page = static_page_preview_for(role)
         result.push({
