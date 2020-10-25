@@ -1,4 +1,4 @@
-/* global zenscroll */
+/* global zenscroll, $ */
 /* exported Realization */
 
 class Realization {
@@ -37,7 +37,7 @@ class Realization {
     this.remindForm.addEventListener('ajax:success', (event, data, status, xhr) => this.formSuccess())
     this.remindForm.addEventListener('ajax:error', (event, xhr, status, error) => this.formError())
 
-    this.target = "intro"
+    this.target = 'intro'
     
     this.introBtn.addEventListener('click', () => this.nextScreen(this.introBtn))
     this.readyBtn.addEventListener('click', () => this.nextScreen(this.readyBtn))
@@ -67,11 +67,11 @@ class Realization {
   nextScreen(btn) {
     switch (btn) {
       case this.introBtn:
-        this.target = "ready"
+        this.target = 'ready'
         this.container.dataset.screen = this.target
         break
       case this.readyBtn:
-        this.target = "video"
+        this.target = 'video'
         this.container.dataset.screen = this.target
         if ($(this.desktopVideo).is(':visible')) {
           // this.loadDesktopPlayer()
@@ -84,19 +84,19 @@ class Realization {
         }
         break
       case this.readyRemindBtn:
-        this.target = "remind"
+        this.target = 'remind'
         this.container.dataset.screen = this.target
         break
       case this.pausedBtn:
-        this.target = "video"
+        this.target = 'video'
         this.container.dataset.screen = this.target
         break
       case this.pausedFinishBtn:
-        this.target = "survey"
+        this.target = 'survey'
         this.container.dataset.screen = this.target
         break
       case this.remindBackBtn:
-        this.target = "ready"
+        this.target = 'ready'
         this.container.dataset.screen = this.target
         break
       default:
@@ -134,16 +134,16 @@ class Realization {
     jwplayer("desktopVideo").setup(jwConfig)
 
     let player = jwplayer("desktopVideo")
-    this.target = "video"
+    this.target = 'video'
 
     player.on('pause', () => {
-      this.target = "paused"
+      this.target = 'paused'
       this.container.dataset.screen = this.target
       this._scrollTo(this.target)
     })
 
     player.on('complete', () => {
-      this.target = "survey"
+      this.target = 'survey'
       this.container.dataset.screen = this.target
       this._scrollTo(this.target)
     })
@@ -178,16 +178,16 @@ class Realization {
     jwplayer("mobileVideo").setup(jwConfig)
 
     let player = jwplayer("mobileVideo")
-    this.target = "video"
+    this.target = 'video'
 
     player.on('pause', () => {
-      this.target = "paused"
+      this.target = 'paused'
       this.container.dataset.screen = this.target
       this._scrollTo(this.target)
     })
 
     player.on('complete', () => {
-      this.target = "survey"
+      this.target = 'survey'
       this.container.dataset.screen = this.target
       this._scrollTo(this.target)
     })
@@ -197,16 +197,16 @@ class Realization {
 
   loadJWPlayer(div) {
     let player = jwplayer(div)
-    this.target = "video"
+    this.target = 'video'
 
     player.on('pause', () => {
-      this.target = "paused"
+      this.target = 'paused'
       this.container.dataset.screen = this.target
       this._scrollTo(this.target)
     })
 
     player.on('complete', () => {
-      this.target = "survey"
+      this.target = 'survey'
       this.container.dataset.screen = this.target
       this._scrollTo(this.target)
     })
@@ -224,11 +224,11 @@ class Realization {
         feelings.push(surveyBtn.id)
       }
     }
-    if(feelFlag) {
+    if (feelFlag) {
       let props = {
         "feel": feelings
       }
-      this.target = "course"
+      this.target = 'course'
       this.container.dataset.screen = this.target
       this._scrollTo(this.target)
 
@@ -239,11 +239,11 @@ class Realization {
   }
 
   formSending(btn) {
-    btn.innerText = "Loading..."
+    btn.innerText = 'Loading...'
   }
 
   formSuccess() {
-    this.target = "thanks"
+    this.target = 'thanks'
     this.container.dataset.screen = this.target
   }
 
