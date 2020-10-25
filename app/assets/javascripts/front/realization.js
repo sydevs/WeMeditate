@@ -1,4 +1,4 @@
-/* global zenscroll, $ */
+/* global zenscroll, $, jwplayer */
 /* exported Realization */
 
 class Realization {
@@ -74,13 +74,13 @@ class Realization {
         this.target = 'video'
         this.container.dataset.screen = this.target
         if ($(this.desktopVideo).is(':visible')) {
-          // this.loadDesktopPlayer()
-          jwplayer("botr_1oDJAjaD_8SfP7aMx_div").on('ready', this.loadJWPlayer("botr_1oDJAjaD_8SfP7aMx_div"))
-          jwplayer("botr_1oDJAjaD_8SfP7aMx_div").play()
+          // this.setupDesktopPlayer()
+          jwplayer('botr_1oDJAjaD_8SfP7aMx_div').on('ready', this.loadJWPlayer('botr_1oDJAjaD_8SfP7aMx_div'))
+          jwplayer('botr_1oDJAjaD_8SfP7aMx_div').play()
         } else {
-          // this.loadMobilePlayer()
-          jwplayer("botr_8FivThod_NaHiexhY_div").on('ready', this.loadJWPlayer("botr_8FivThod_NaHiexhY_div"))
-          jwplayer("botr_8FivThod_NaHiexhY_div").play()
+          // this.setupMobilePlayer()
+          jwplayer('botr_8FivThod_NaHiexhY_div').on('ready', this.loadJWPlayer('botr_8FivThod_NaHiexhY_div'))
+          jwplayer('botr_8FivThod_NaHiexhY_div').play()
         }
         break
       case this.readyRemindBtn:
@@ -107,7 +107,7 @@ class Realization {
 
   }
 
-  loadDesktopPlayer() {
+  setupDesktopPlayer() {
     let jwConfig = {
       "aspectratio": "16:10",
       "autostart": false,
@@ -131,27 +131,12 @@ class Realization {
       "stretching": "uniform",
       "width": "100%"
     }
-    jwplayer("desktopVideo").setup(jwConfig)
+    jwplayer('desktopVideo').setup(jwConfig)
 
-    let player = jwplayer("desktopVideo")
-    this.target = 'video'
-
-    player.on('pause', () => {
-      this.target = 'paused'
-      this.container.dataset.screen = this.target
-      this._scrollTo(this.target)
-    })
-
-    player.on('complete', () => {
-      this.target = 'survey'
-      this.container.dataset.screen = this.target
-      this._scrollTo(this.target)
-    })
-
-    this._scrollTo(this.target)
+    this.loadJWPlayer('desktopVideo')
   }
 
-  loadMobilePlayer() {
+  setupMobilePlayer() {
     let jwConfig = {
       "aspectratio": "9:16",
       "autostart": false,
@@ -175,24 +160,9 @@ class Realization {
       "stretching": "uniform",
       "width": "100%"
     }
-    jwplayer("mobileVideo").setup(jwConfig)
+    jwplayer('mobileVideo').setup(jwConfig)
 
-    let player = jwplayer("mobileVideo")
-    this.target = 'video'
-
-    player.on('pause', () => {
-      this.target = 'paused'
-      this.container.dataset.screen = this.target
-      this._scrollTo(this.target)
-    })
-
-    player.on('complete', () => {
-      this.target = 'survey'
-      this.container.dataset.screen = this.target
-      this._scrollTo(this.target)
-    })
-
-    this._scrollTo(this.target)
+    this.loadJWPlayer('mobileVideo')
   }
 
   loadJWPlayer(div) {
@@ -226,7 +196,7 @@ class Realization {
     }
     if (feelFlag) {
       let props = {
-        "feel": feelings
+        'feel': feelings
       }
       this.target = 'course'
       this.container.dataset.screen = this.target
@@ -248,7 +218,7 @@ class Realization {
   }
 
   formError() {
-    console.log("Error in form submission...")
+    console.log('Error in form submission...')
   }
 
   share() {
