@@ -1,0 +1,83 @@
+@import "../../mixins/*"
+
+.ready
+  padding-top: 30px
+  margin-bottom: 100px
+  position: relative
+
+  &__content
+    @extend %narrow-content-width
+    padding-bottom: $gutter-width
+    position: relative
+
+  &__title
+    text-align: center
+    font-weight: $font-bold
+    font-size: 3.2rem
+    margin-top: 10px
+    margin-bottom: 30px
+
+    @include tablet-or-larger
+      font-size: 3.5rem
+
+    @include desktop
+      font-size: 4.5rem
+
+  &__button-wrapper
+    .button
+      display: block
+      width: 250px
+      font-size: 2rem
+      font-weight: $font-bold
+      padding: 20px 0
+      margin: auto
+
+      span
+        padding: 0 10px
+
+.ready__explanation-wrapper
+  margin-bottom: 15px
+
+.ready__explanation
+  max-width: 500px
+  margin: auto
+  margin-bottom: 30px
+  padding: 10px 10px
+  font-weight: $font-medium
+
+  li
+    font-size: 25px
+    max-width: 175px
+    margin: auto
+    margin-bottom: 10px
+    padding: 10px 10px
+    text-align: center
+    
+    span
+      font-size: 16px
+
+.ready__gradient
+  display: block
+  position: relative
+
+  &:before
+    top: -20px
+    bottom: -20px
+    width: 50%
+    z-index: 1
+
+.ready__remind
+  text-align: center
+  margin-top: 50px
+  font-size: 1.6rem
+
+  &__link
+    border-bottom: 1px solid $color-text-normal
+
+    &:not(:hover)
+      color: $color-text-normal
+
+    &:hover
+      cursor: pointer
+      color: darken($color-text-blue, 50%)
+      border: 0

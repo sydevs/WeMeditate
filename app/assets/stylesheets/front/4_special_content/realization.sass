@@ -1,0 +1,15 @@
+@mixin realization-screen($id)
+  .realization[data-screen="#{$id}"] .realization__screen--#{$id}
+    display: block
+
+.realization__screen
+  display: none
+
+@include realization-screen("intro")
+@include realization-screen("ready")
+@include realization-screen("video")
+@include realization-screen("paused")
+@include realization-screen("survey")
+@include realization-screen("course")
+@include realization-screen("remind")
+@include realization-screen("thanks")

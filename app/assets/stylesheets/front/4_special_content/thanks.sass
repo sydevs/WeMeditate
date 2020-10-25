@@ -1,0 +1,99 @@
+@import "../../mixins/*"
+
+.thanks
+  padding-top: 30px
+  margin-bottom: 100px
+  position: relative
+
+  &__content
+    @extend %narrow-content-width
+    padding-bottom: $gutter-width
+    background: url('graphics/circle.svg')  no-repeat center
+    position: relative
+    background-size: 300px
+    height: 350px
+
+    @include tablet-or-larger
+      background-size: 400px
+      height: 450px
+
+  &__title
+    text-align: center
+    font-weight: $font-bold
+    font-size: 3.2rem
+    margin-bottom: 10px
+    padding-top: 130px
+
+    @include tablet-or-larger
+      font-size: 3.5rem
+      padding-top: 170px
+
+    @include desktop
+      font-size: 4.5rem
+
+  &__subtitle
+    text-align: center
+    font-weight: $font-semibold
+    font-size: 2rem
+    margin-bottom: 30px
+    padding-top: 10px
+    width: 60%
+    margin: auto
+
+    @include tablet-or-larger
+      width: 35%
+
+  &__button-wrapper
+    margin: 10px 0
+
+    .button
+      display: block
+      width: 250px
+      font-size: 2rem
+      font-weight: $font-bold
+      padding: 20px 0
+      margin: auto
+
+.thanks__share__content
+  @extend %narrow-content-width
+  padding: 0
+  background: linear-gradient(to top, rgba(197,224,220,0.25) 0, rgba(197,224,220,0.75) 50%)
+
+.thanks__explanation-wrapper
+  margin-top: 20px
+
+.thanks__explanation
+  margin: auto
+  padding: 10px 10px
+  line-height: 2
+  font-size: 2rem
+  font-weight: $font-bold
+  text-align: center
+
+.share__button-wrapper
+  font-size: 30px
+  text-align: center
+  visibility: hidden
+
+  &--open
+    visibility: visible
+    transition: visibility 0s, opacity 0.5s ease
+
+.share__button
+  display: inline-block
+  margin: 10px
+
+  &__mail
+    color: $color-text-normal
+
+  &__facebook
+    color: #3b5988
+
+  &__twitter
+    color: #1da1f2
+
+  &__linkedin
+    color: #0077b5
+
+  &__flipboard
+    color: #e12828

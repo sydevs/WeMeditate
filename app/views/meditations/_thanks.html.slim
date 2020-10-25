@@ -1,0 +1,35 @@
+
+- translations = 'meditations.thanks'
+- gradient_classes = 'gradient--left gradient--blue'
+
+.thanks id="thanks"
+  .thanks__content
+    .thanks__title = translate "#{translations}.title"
+    .thanks__subtitle = translate "#{translations}.subtitle"
+
+  .thanks__share__content
+    .thanks__explanation-wrapper
+      .thanks__explanation
+        = translate "#{translations}.explanation"
+
+    .thanks__button-wrapper
+      a.thanks__button.button.button--box
+        .button__text = translate "#{translations}.action.share"
+
+    .share__button-wrapper
+      a.share__button.share__button__mail target='_blank' href='mailto:?subject={title}&body={url}'
+        i.icon.icon--facebook
+
+      a.share__button.share__button__facebook target='_blank' href='https://www.facebook.com/sharer.php?u={url}'
+        i.icon.icon--facebook
+
+      a.share__button.share__button__twitter target='_blank' href='https://twitter.com/intent/tweet?url={url}&text={title}'
+        i.icon.icon--facebook
+
+      a.share__button.share__button__linkedin target='_blank' href='https://www.linkedin.com/shareArticle?url={url}&title={title}&summary={text}&source={provider}'
+        i.icon.icon--facebook
+
+      a.share__button.share__button__flipboard target='_blank' href='https://share.flipboard.com/bookmarklet/popout?v=2&title={title}&url={url}'
+        i.icon.icon--facebook
+
+

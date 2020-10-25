@@ -1,0 +1,28 @@
+
+- translations = 'meditations.remind'
+- gradient_classes = 'gradient--left gradient--blue'
+
+.remind id="remind"
+  .remind__content
+    .remind__title
+      .remind__gradient.gradient class=gradient_classes = translate "#{translations}.title"
+    .remind__subtitle = translate "#{translations}.subtitle"
+
+    .remind__explanation-wrapper
+      .remind__explanation
+        = translate "#{translations}.explanation"
+
+    = form_tag subscribe_path, method: :post, remote: true, class: 'remind__form' do
+      .remind__form__fields
+        .remind__form__message
+        = email_field :signup, :email_address, placeholder: 'Your email', required: true
+        = hidden_field :signup, :list_id, value: 'remind'
+        .remind__form__notice = translate "#{translations}.form.notice"
+      
+      .remind__button-wrapper
+        button.remind__button.button.button--box type='submit'
+          .button__text = translate "#{translations}.action.send"
+
+    .remind__back
+      a.remind__back__link
+        = translate "#{translations}.action.back"

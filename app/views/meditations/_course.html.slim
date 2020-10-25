@@ -1,0 +1,24 @@
+
+- translations = 'meditations.course'
+- gradient_classes = 'gradient--left gradient--blue'
+
+.course id="course"
+  .course__content
+    .course__title
+      .course__gradient.gradient class=gradient_classes = translate "#{translations}.title"
+
+    .course__explanation-wrapper
+      .course__explanation
+        = translate "#{translations}.explanation"
+
+    = form_tag subscribe_path, method: :post, remote: true, class: 'course__form' do
+      .course__form__fields
+        = email_field :signup, :email_address, placeholder: 'Your email', required: true
+        = hidden_field :signup, :list_id, value: 'course'
+        = hidden_field :signup, :properties
+        = hidden_field :signup, :event, value: 'Klaviyo::Event.REALISATION_COMPLETED'
+        .course__form__notice = translate "#{translations}.form.notice"
+      
+      .course__button-wrapper
+        button.course__button.button.button--box type='submit'
+          .button__text = translate "#{translations}.action"

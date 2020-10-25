@@ -122,6 +122,59 @@ en:
       skip:
         text: "Meditated with us before?"
         action: "Continue to your guided meditation"
+    intro:
+      title: "Why meditate?"
+      subtitle: "It's really that simple"
+      explanation: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante."
+      action: "Try meditation"
+    ready:
+      title: "Get ready for meditation"
+      explanation:
+        first: "Find a quiet place, sit back and relax"
+        second: "It will only take 9 min and will literally change your life"
+      action:
+        start: "Start Meditation"
+        remind: "Remind me to try later"
+    paused:
+      title: "Get ready for meditation"
+      explanation:
+        first: "Find a quiet place, sit back and relax"
+        second: "It will only take 9 min and will literally change your life"
+      action:
+        continue: "Continue Meditation"
+        finish: "I finished. (show questionnaire)"
+    survey:
+      title: "What did you feel?"
+      explanation: "Tailor your next meditation by selecting what you felt on your palms and above your head"
+      message:
+        error: "Please select atleast one option"
+      action:
+        cool: "Cool breeze"
+        warm: "Warm breeze"
+        calm: "Just calm inside"
+        nothing: "Nothing"
+        next: "Next"
+    course:
+      title: "Great start!"
+      explanation: "Continue your journey with our free 4-week course delivered straight to your inbox"
+      action: "Get my course"
+      form:
+        notice: "By submitting you agree to receive your meditation course and other occasional meditation content"
+    remind:
+      title: "Get a reminder to meditate"
+      subtitle: "NO TIME RIGHT NOW?"
+      explanation: "We will send a link to get back to your meditation"
+      form:
+        notice: "By submitting you agree to receive your meditation course and other occasional meditation content"
+      action:
+        send: "Send"
+        back: "Take me back to meditation"
+    thanks:
+      title: "Thank you"
+      subtitle: "You will receive your first email shortly"
+      explanation: "Invite your friends to try it out"
+      action:
+        share: "Share"
     featured:
       self_realization: "Get started"
       daily_meditation: "Meditation of the day"

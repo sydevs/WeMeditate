@@ -60,6 +60,7 @@ const Application = {
     Application.loadFirst('geosearch', GeoSearch)
     Application.loadFirst('language-switcher', LanguageSwitcher)
     Application.loadFirst('categories', Categories)
+    Application.loadFirst('realization', Realization)
   },
 
   unload() {

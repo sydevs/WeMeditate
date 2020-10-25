@@ -1,0 +1,21 @@
+
+- translations = 'meditations.intro'
+- gradient_classes = 'gradient--left gradient--blue'
+
+.intro id="intro"
+  .intro__content
+    .intro__title
+      .intro__gradient.gradient class=gradient_classes = translate "#{translations}.title"
+    .intro__subtitle = translate "#{translations}.subtitle"
+
+    .intro__explanation-wrapper
+      .intro__explanation
+        = translate "#{translations}.explanation"
+
+    .divider.divider--leaf.divider--leaf-only.divider--leaf-up
+
+    .intro__button-wrapper
+      a.intro__button.button.button--box
+        .button__text = translate "#{translations}.action"
+
+    .divider.divider--leaf.divider--leaf-only.divider--leaf-down

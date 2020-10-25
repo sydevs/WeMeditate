@@ -1,0 +1,25 @@
+
+- translations = 'meditations.paused'
+- gradient_classes = 'gradient--left gradient--blue'
+
+.paused id="paused"
+  .paused__content
+    .paused__title
+      .paused__gradient.gradient class=gradient_classes = translate "#{translations}.title"
+
+    .paused__explanation-wrapper
+      ol.paused__explanation
+        li 
+          span = translate "#{translations}.explanation.first"
+        li 
+          span = translate "#{translations}.explanation.second"
+
+    .paused__button-wrapper
+      a.paused__button.button.button--box
+        .button__text
+          span = translate "#{translations}.action.continue"
+          .icon.icon--breadcrumb
+
+    .paused__finish
+      a.paused__finish__link
+        = translate "#{translations}.action.finish"

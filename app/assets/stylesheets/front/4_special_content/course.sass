@@ -1,0 +1,79 @@
+@import "../../mixins/*"
+
+.course
+  padding-top: 30px
+  margin-bottom: 100px
+  position: relative
+
+  &__content
+    @extend %narrow-content-width
+    padding-bottom: $gutter-width
+    position: relative
+
+  &__title
+    text-align: center
+    font-weight: $font-bold
+    font-size: 3.2rem
+    margin-top: 10px
+    margin-bottom: 30px
+
+    @include tablet-or-larger
+      font-size: 3.5rem
+
+    @include desktop
+      font-size: 4.5rem
+
+  &__button-wrapper
+    .button
+      display: block
+      width: 250px
+      font-size: 2rem
+      font-weight: $font-bold
+      padding: 20px 0
+      margin: auto
+      outline: none
+
+.course__explanation-wrapper
+  margin-bottom: 15px
+
+.course__explanation
+  max-width: 500px
+  margin: auto
+  margin-bottom: 30px
+  padding: 10px 10px
+  line-height: 2
+  font-weight: $font-medium
+  text-align: center
+
+.course__gradient
+  display: block
+  position: relative
+
+  &:before
+    top: -20px
+    bottom: -20px
+    width: 50%
+    z-index: 1
+
+.course__form__fields
+  width: 100%
+  max-width: 510px + (2 * $gutter-width)
+  padding: 0 $gutter-width
+  margin: auto
+  margin-top: 46px
+  margin-bottom: 62px
+
+  input
+    width: 100%
+    font-size: 1.6rem
+    padding: 16px 0
+    outline: transparent
+    background-color: transparent
+    border: none
+    border-bottom: 1px solid $color-text-dark
+    margin-bottom: 1.5em
+
+.course__form__notice
+  text-align: left
+  font-size: 1.2rem
+  line-height: 1.4

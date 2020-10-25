@@ -30,7 +30,9 @@ class MeditationsController < ApplicationController
     raise ActionController::RoutingError, 'Self Realization Page Not Found' if @meditation.nil?
 
     set_metadata(@meditation)
-    render :show
+
+    render :realization
+    # render :show
   end
 
   # Displays an index of all meditations.

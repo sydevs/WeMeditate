@@ -1,0 +1,36 @@
+
+- translations = 'meditations.survey'
+- gradient_classes = 'gradient--left gradient--blue'
+
+.survey id="survey"
+  .survey__content
+    .survey__title
+      .survey__gradient.gradient class=gradient_classes = translate "#{translations}.title"
+
+    .survey__explanation-wrapper
+      .survey__explanation
+        = translate "#{translations}.explanation"
+
+    .survey__button-wrapper
+      .survey__button.button.button--filled#cool
+        = inline_svg_tag 'graphics/leaves.svg'
+        .button__text = translate "#{translations}.action.cool"
+
+      .survey__button.button.button--filled#warm
+        = inline_svg_tag 'graphics/leaves.svg'
+        .button__text = translate "#{translations}.action.warm"
+
+      .survey__button.button.button--filled#calm
+        = inline_svg_tag 'graphics/leaves.svg'
+        .button__text = translate "#{translations}.action.calm"
+
+      .survey__button.button.button--filled#nothing
+        = inline_svg_tag 'graphics/leaves.svg'
+        .button__text = translate "#{translations}.action.nothing"
+
+    .survey__message-wrapper
+      .survey__message = translate "#{translations}.message.error"
+
+    .survey__next
+      a.survey__next__link.button.button--box
+        = translate "#{translations}.action.next"
