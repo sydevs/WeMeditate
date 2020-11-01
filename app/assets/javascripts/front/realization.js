@@ -66,41 +66,41 @@ class Realization {
 
   nextScreen(btn) {
     switch (btn) {
-      case this.introBtn:
-        this.target = 'ready'
-        this.container.dataset.screen = this.target
-        break
-      case this.readyBtn:
-        this.target = 'video'
-        this.container.dataset.screen = this.target
-        if ($(this.desktopVideo).is(':visible')) {
-          // this.setupDesktopPlayer()
-          jwplayer('botr_1oDJAjaD_8SfP7aMx_div').on('ready', this.loadJWPlayer('botr_1oDJAjaD_8SfP7aMx_div'))
-          jwplayer('botr_1oDJAjaD_8SfP7aMx_div').play()
-        } else {
-          // this.setupMobilePlayer()
-          jwplayer('botr_8FivThod_NaHiexhY_div').on('ready', this.loadJWPlayer('botr_8FivThod_NaHiexhY_div'))
-          jwplayer('botr_8FivThod_NaHiexhY_div').play()
-        }
-        break
-      case this.readyRemindBtn:
-        this.target = 'remind'
-        this.container.dataset.screen = this.target
-        break
-      case this.pausedBtn:
-        this.target = 'video'
-        this.container.dataset.screen = this.target
-        break
-      case this.pausedFinishBtn:
-        this.target = 'survey'
-        this.container.dataset.screen = this.target
-        break
-      case this.remindBackBtn:
-        this.target = 'ready'
-        this.container.dataset.screen = this.target
-        break
-      default:
-        break
+    case this.introBtn:
+      this.target = 'ready'
+      this.container.dataset.screen = this.target
+      break
+    case this.readyBtn:
+      this.target = 'video'
+      this.container.dataset.screen = this.target
+      if ($(this.desktopVideo).is(':visible')) {
+        // this.setupDesktopPlayer()
+        jwplayer('botr_1oDJAjaD_8SfP7aMx_div').on('ready', this.loadJWPlayer('botr_1oDJAjaD_8SfP7aMx_div'))
+        jwplayer('botr_1oDJAjaD_8SfP7aMx_div').play()
+      } else {
+        // this.setupMobilePlayer()
+        jwplayer('botr_8FivThod_NaHiexhY_div').on('ready', this.loadJWPlayer('botr_8FivThod_NaHiexhY_div'))
+        jwplayer('botr_8FivThod_NaHiexhY_div').play()
+      }
+      break
+    case this.readyRemindBtn:
+      this.target = 'remind'
+      this.container.dataset.screen = this.target
+      break
+    case this.pausedBtn:
+      this.target = 'video'
+      this.container.dataset.screen = this.target
+      break
+    case this.pausedFinishBtn:
+      this.target = 'survey'
+      this.container.dataset.screen = this.target
+      break
+    case this.remindBackBtn:
+      this.target = 'ready'
+      this.container.dataset.screen = this.target
+      break
+    default:
+      break
     }
 
     this._scrollTo(this.target)
@@ -109,27 +109,27 @@ class Realization {
 
   setupDesktopPlayer() {
     let jwConfig = {
-      "aspectratio": "16:10",
-      "autostart": false,
-      "cast": {
-        "appid": "00000000"
+      aspectratio: '16:10',
+      autostart: false,
+      cast: {
+        appid: '00000000'
       },
-      "controls": true,
-      "displaydescription": true,
-      "displaytitle": true,
-      "flashplayer": "//ssl.p.jwpcdn.com/player/v/8.17.7/jwplayer.flash.swf",
-      "height": 360,
-      "key": "tlbC+HgyRBgC8seKreQwmghcO2P9nQ4y+l4ZeKQEfzpgOSzuT9f5+N0odL4=",
-      "mute": false,
-      "ph": 3,
-      "pid": "8SfP7aMx",
-      "playbackRateControls": false,
-      "playlist": "//cdn.jwplayer.com/v2/media/1oDJAjaD?recommendations_playlist_id=xFiJh22s",
-      "preload": "metadata",
-      "repeat": false,
-      "stagevideo": false,
-      "stretching": "uniform",
-      "width": "100%"
+      controls: true,
+      displaydescription: true,
+      displaytitle: true,
+      flashplayer: '//ssl.p.jwpcdn.com/player/v/8.17.7/jwplayer.flash.swf',
+      height: 360,
+      key: 'tlbC+HgyRBgC8seKreQwmghcO2P9nQ4y+l4ZeKQEfzpgOSzuT9f5+N0odL4=',
+      mute: false,
+      ph: 3,
+      pid: '8SfP7aMx',
+      playbackRateControls: false,
+      playlist: '//cdn.jwplayer.com/v2/media/1oDJAjaD?recommendations_playlist_id=xFiJh22s',
+      preload: 'metadata',
+      repeat: false,
+      stagevideo: false,
+      stretching: 'uniform',
+      width: '100%'
     }
     jwplayer('desktopVideo').setup(jwConfig)
 
@@ -138,27 +138,27 @@ class Realization {
 
   setupMobilePlayer() {
     let jwConfig = {
-      "aspectratio": "9:16",
-      "autostart": false,
-      "cast": {
-        "appid": "00000000"
+      aspectratio: '9:16',
+      autostart: false,
+      cast: {
+        appid: '00000000'
       },
-      "controls": true,
-      "displaydescription": false,
-      "displaytitle": false,
-      "flashplayer": "//ssl.p.jwpcdn.com/player/v/8.17.7/jwplayer.flash.swf",
-      "height": 360,
-      "key": "G4TQ74H6dL+J2s9zjsY53y72/VJdEKk5UO4K8F3CL4mUDDFs7Wl6siOex5c=",
-      "mute": false,
-      "ph": 3,
-      "pid": "NaHiexhY",
-      "playbackRateControls": false,
-      "playlist": "//cdn.jwplayer.com/v2/media/8FivThod?recommendations_playlist_id=xFiJh22s",
-      "preload": "metadata",
-      "repeat": false,
-      "stagevideo": false,
-      "stretching": "uniform",
-      "width": "100%"
+      controls: true,
+      displaydescription: false,
+      displaytitle: false,
+      flashplayer: '//ssl.p.jwpcdn.com/player/v/8.17.7/jwplayer.flash.swf',
+      height: 360,
+      key: 'G4TQ74H6dL+J2s9zjsY53y72/VJdEKk5UO4K8F3CL4mUDDFs7Wl6siOex5c=',
+      mute: false,
+      ph: 3,
+      pid: 'NaHiexhY',
+      playbackRateControls: false,
+      playlist: '//cdn.jwplayer.com/v2/media/8FivThod?recommendations_playlist_id=xFiJh22s',
+      preload: 'metadata',
+      repeat: false,
+      stagevideo: false,
+      stretching: 'uniform',
+      width: '100%'
     }
     jwplayer('mobileVideo').setup(jwConfig)
 
