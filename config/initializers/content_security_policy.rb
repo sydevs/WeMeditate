@@ -16,7 +16,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.object_src  :none
   policy.script_src  :self, *gtm_sources, *jwp_sources, :unsafe_eval, :unsafe_inline, :https
   policy.worker_src  :self, :blob
-  policy.connect_src :self, 'assets.wemeditate.co', *gtm_sources, *jwp_sources
+  policy.connect_src :self, 'assets.wemeditate.co', 'cdn.jsdelivr.net', *gtm_sources, *jwp_sources
   policy.media_src   :blob, 'assets.wemeditate.co', 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', *vimeo_sources
   policy.style_src   :self, :unsafe_inline, :https
   policy.frame_src   :self, 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', 'www.google.com', *vimeo_sources, ENV['ATLAS_URL'] || ''
