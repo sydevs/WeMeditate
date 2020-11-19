@@ -1,4 +1,4 @@
-/* global zenscroll, $, jwplayer */
+/* global zenscroll, $, jwplayer, Util */
 /* exported Realization */
 
 class Realization {
@@ -72,7 +72,7 @@ class Realization {
     this.display = screen
     this.container.dataset.screen = this.display
     history.pushState({screen: this.display}, '', `${this.display}`)
-    if(this.display == 'video') {
+    if (this.display == 'video') {
       if ($(this.desktopVideo).is(':visible')) {
         jwplayer('botr_1oDJAjaD_8SfP7aMx_div').on('ready', this.loadJWPlayer('botr_1oDJAjaD_8SfP7aMx_div'))
         jwplayer('botr_1oDJAjaD_8SfP7aMx_div').play()

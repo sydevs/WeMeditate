@@ -15,8 +15,8 @@ const Util = {
 
   share(shareData) {
     navigator.share(shareData)
-        .then(() => console.log('Successful share'))    // eslint-disable-line no-console
-        .catch((error) => console.error('Error sharing...', error))   // eslint-disable-line no-console
+        .then(() => console.log('Successful share')) // eslint-disable-line no-console
+        .catch((error) => console.error('Error sharing...', error)) // eslint-disable-line no-console
   },
 
   shareFallback(shareData, shareBtns) {
