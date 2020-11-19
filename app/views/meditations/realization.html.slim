@@ -1,26 +1,7 @@
 
-.realization id="realization" data-screen="intro"
+.realization id="realization" data-screen="ready"
 
-  .realization__screen.realization__screen--intro
-    = render 'intro'
-
-  .realization__screen.realization__screen--ready
-    = render 'ready'
-
-  .realization__screen.realization__screen--video
-    = render 'video'
-
-  .realization__screen.realization__screen--paused
-    = render 'paused'
-
-  .realization__screen.realization__screen--survey
-    = render 'survey'
-
-  .realization__screen.realization__screen--course
-    = render 'course'
-
-  .realization__screen.realization__screen--remind
-    = render 'remind'
-
-  .realization__screen.realization__screen--thanks
-    = render 'thanks'
+  - %w[ready video paused survey course remind thanks].each do |screen|
+    .realization__screen class="realization__screen--#{screen}"
+      = render screen
+  end

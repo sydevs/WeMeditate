@@ -1,28 +1,28 @@
 
 - translations = 'meditations.remind'
 - gradient_classes = 'gradient--left gradient--blue'
+- form_classes = 'realization__remind__form js-remind-form'
 
-.remind id="remind"
-  .remind__content
-    .remind__title
-      .remind__gradient.gradient class=gradient_classes = translate "#{translations}.title"
-    .remind__subtitle = translate "#{translations}.subtitle"
+.realization__remind id="remind"
+  .realization__remind__content
+    .realization__remind__title
+      .realization__remind__gradient.gradient class=gradient_classes = translate "#{translations}.title"
+    .realization__remind__subtitle = translate "#{translations}.subtitle"
 
-    .remind__explanation-wrapper
-      .remind__explanation
+    .realization__remind__explanation-wrapper
+      .realization__remind__explanation
         = translate "#{translations}.explanation"
 
-    = form_tag subscribe_path, method: :post, remote: true, class: 'remind__form' do
-      .remind__form__fields
-        .remind__form__message
+    = form_tag subscribe_path, method: :post, remote: true, class: form_classes do
+      .realization__remind__form__fields
         = email_field :signup, :email_address, placeholder: 'Your email', required: true
         = hidden_field :signup, :list_id, value: 'remind'
-        .remind__form__notice = translate "#{translations}.form.notice"
+        .realization__remind__form__notice = translate "#{translations}.form.notice"
       
-      .remind__button-wrapper
-        button.remind__button.button.button--box type='submit'
+      .realization__remind__button-wrapper
+        button.realization__remind__button.js-remind-button.button.button--box type='submit'
           .button__text = translate "#{translations}.action.send"
 
-    .remind__back
-      a.remind__back__link
+    .realization__remind__back
+      a.realization__remind__back__link.js-remind-back-link
         = translate "#{translations}.action.back"

@@ -32,7 +32,6 @@ class MeditationsController < ApplicationController
     set_metadata(@meditation)
 
     render :realization
-    # render :show
   end
 
   # Displays an index of all meditations.

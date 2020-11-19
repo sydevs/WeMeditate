@@ -2,35 +2,36 @@
 - translations = 'meditations.survey'
 - gradient_classes = 'gradient--left gradient--blue'
 
-.survey id="survey"
-  .survey__content
-    .survey__title
-      .survey__gradient.gradient class=gradient_classes = translate "#{translations}.title"
+.realization__survey id="survey"
+  .realization__survey__content
+    .realization__survey__title
+      .realization__survey__gradient.gradient class=gradient_classes = translate "#{translations}.title"
 
-    .survey__explanation-wrapper
-      .survey__explanation
+    .realization__survey__explanation-wrapper
+      .realization__survey__explanation
         = translate "#{translations}.explanation"
 
-    .survey__button-wrapper
-      .survey__button.button.button--filled#cool
+    .realization__survey__button-wrapper
+      .realization__survey__button.js-survey-button.button.button--filled#cool
         = inline_svg_tag 'graphics/leaves.svg'
         .button__text = translate "#{translations}.action.cool"
 
-      .survey__button.button.button--filled#warm
+      .realization__survey__button.js-survey-button.button.button--filled#warm
         = inline_svg_tag 'graphics/leaves.svg'
         .button__text = translate "#{translations}.action.warm"
 
-      .survey__button.button.button--filled#calm
+      .realization__survey__button.js-survey-button.button.button--filled#calm
         = inline_svg_tag 'graphics/leaves.svg'
         .button__text = translate "#{translations}.action.calm"
 
-      .survey__button.button.button--filled#nothing
+      .realization__survey__button.js-survey-button.button.button--filled#nothing
         = inline_svg_tag 'graphics/leaves.svg'
         .button__text = translate "#{translations}.action.nothing"
 
-    .survey__message-wrapper
-      .survey__message = translate "#{translations}.message.error"
+    .realization__survey__message-wrapper
+      .realization__survey__message.js-survey-message
+        = translate "#{translations}.message.error"
 
-    .survey__next
-      a.survey__next__link.button.button--box
+    .realization__survey__next
+      a.realization__survey__next__link.js-survey-next-link.button.button--box
         = translate "#{translations}.action.next"

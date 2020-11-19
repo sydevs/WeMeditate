@@ -2,24 +2,24 @@
 - translations = 'meditations.ready'
 - gradient_classes = 'gradient--left gradient--blue'
 
-.ready id="ready"
-  .ready__content
-    .ready__title
-      .ready__gradient.gradient class=gradient_classes = translate "#{translations}.title"
+.realization__ready id="ready"
+  .realization__ready__content
+    .realization__ready__title
+      .realization__ready__gradient.gradient class=gradient_classes = translate "#{translations}.title"
 
-    .ready__explanation-wrapper
-      ol.ready__explanation
+    .realization__ready__explanation-wrapper
+      ol.realization__ready__explanation
         li 
           span = translate "#{translations}.explanation.first"
         li 
           span = translate "#{translations}.explanation.second"
 
-    .ready__button-wrapper
-      a.ready__button.button.button--box
+    .realization__ready__button-wrapper
+      a.realization__ready__button.js-ready-button.button.button--box
         .button__text
           span = translate "#{translations}.action.start"
           .icon.icon--breadcrumb
 
-    .ready__remind
-      a.ready__remind__link
+    .realization__ready__remind
+      a.realization__ready__remind__link.js-ready-remind-link
         = translate "#{translations}.action.remind"

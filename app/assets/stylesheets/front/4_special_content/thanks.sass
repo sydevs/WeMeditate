@@ -1,6 +1,6 @@
 @import "../../mixins/*"
 
-.thanks
+.realization__thanks
   padding-top: 30px
   margin-bottom: 100px
   position: relative
@@ -54,15 +54,16 @@
       padding: 20px 0
       margin: auto
 
-.thanks__share__content
+.realization__thanks__share__content
   @extend %narrow-content-width
   padding: 0
-  background: linear-gradient(to top, rgba(197,224,220,0.25) 0, rgba(197,224,220,0.75) 50%)
+  @include gradient(to top, 'blue')
+  // background: linear-gradient(to top, rgba(197,224,220,0.25) 0, rgba(197,224,220,0.75) 50%)
 
-.thanks__explanation-wrapper
+.realization__thanks__explanation-wrapper
   margin-top: 20px
 
-.thanks__explanation
+.realization__thanks__explanation
   margin: auto
   padding: 10px 10px
   line-height: 2
@@ -70,7 +71,7 @@
   font-weight: $font-bold
   text-align: center
 
-.share__button-wrapper
+.realization__share__button-wrapper
   font-size: 30px
   text-align: center
   visibility: hidden
@@ -79,7 +80,7 @@
     visibility: visible
     transition: visibility 0s, opacity 0.5s ease
 
-.share__button
+.realization__share__button
   display: inline-block
   margin: 10px
 
@@ -87,13 +88,13 @@
     color: $color-text-normal
 
   &__facebook
-    color: #3b5988
+    color: $color-icon-facebook
 
   &__twitter
-    color: #1da1f2
+    color: $color-icon-twitter
 
   &__linkedin
-    color: #0077b5
+    color: $color-icon-linkedin
 
   &__flipboard
-    color: #e12828
+    color: $color-icon-flipboard

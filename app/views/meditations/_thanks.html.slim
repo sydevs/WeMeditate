@@ -2,34 +2,34 @@
 - translations = 'meditations.thanks'
 - gradient_classes = 'gradient--left gradient--blue'
 
-.thanks id="thanks"
-  .thanks__content
-    .thanks__title = translate "#{translations}.title"
-    .thanks__subtitle = translate "#{translations}.subtitle"
+.realization__thanks id="thanks"
+  .realization__thanks__content
+    .realization__thanks__title = translate "#{translations}.title"
+    .realization__thanks__subtitle = translate "#{translations}.subtitle"
 
-  .thanks__share__content
-    .thanks__explanation-wrapper
-      .thanks__explanation
+  .realization__thanks__share__content
+    .realization__thanks__explanation-wrapper
+      .realization__thanks__explanation
         = translate "#{translations}.explanation"
 
-    .thanks__button-wrapper
-      a.thanks__button.button.button--box
+    .realization__thanks__button-wrapper
+      a.realization__thanks__button.js-thanks-button.button.button--box
         .button__text = translate "#{translations}.action.share"
 
-    .share__button-wrapper
-      a.share__button.share__button__mail target='_blank' href='mailto:?subject={title}&body={url}'
+    .realization__share__button-wrapper.js-share-button-wrapper
+      a.realization__share__button.realization__share__button__mail target='_blank' href='mailto:?subject={title}&body={url}'
         i.icon.icon--facebook
 
-      a.share__button.share__button__facebook target='_blank' href='https://www.facebook.com/sharer.php?u={url}'
+      a.realization__share__button.js-share-button.realization__share__button__facebook target='_blank' href='https://www.facebook.com/sharer.php?u={url}'
         i.icon.icon--facebook
 
-      a.share__button.share__button__twitter target='_blank' href='https://twitter.com/intent/tweet?url={url}&text={title}'
+      a.realization__share__button.js-share-button.realization__share__button__twitter target='_blank' href='https://twitter.com/intent/tweet?url={url}&text={title}'
+        i.icon.icon--twitter
+
+      a.realization__share__button.js-share-button.realization__share__button__linkedin target='_blank' href='https://www.linkedin.com/shareArticle?url={url}&title={title}&summary={text}&source={provider}'
         i.icon.icon--facebook
 
-      a.share__button.share__button__linkedin target='_blank' href='https://www.linkedin.com/shareArticle?url={url}&title={title}&summary={text}&source={provider}'
-        i.icon.icon--facebook
-
-      a.share__button.share__button__flipboard target='_blank' href='https://share.flipboard.com/bookmarklet/popout?v=2&title={title}&url={url}'
+      a.realization__share__button.js-share-button.realization__share__button__flipboard target='_blank' href='https://share.flipboard.com/bookmarklet/popout?v=2&title={title}&url={url}'
         i.icon.icon--facebook
 
 

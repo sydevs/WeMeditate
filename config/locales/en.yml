@@ -122,11 +122,6 @@ en:
       skip:
         text: "Meditated with us before?"
         action: "Continue to your guided meditation"
-    intro:
-      title: "Why meditate?"
-      subtitle: "It's really that simple"
-      explanation: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida neque quam, eget eleifend dolor ultricies eget. Morbi sed imperdiet dolor. Nulla facilisi. Nulla sed erat cursus, bibendum tortor non, suscipit ante."
-      action: "Try meditation"
     ready:
       title: "Get ready for meditation"
       explanation:
