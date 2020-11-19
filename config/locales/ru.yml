@@ -147,6 +147,54 @@ ru:
       skip:
         text: "Уже медитировал с нами?"
         action: "Перейти к выбору медитации"
+    ready:
+      title: "Get ready for meditation" # TODO: Translate
+      explanation:
+        first: "Find a quiet place, sit back and relax" # TODO: Translate
+        second: "It will only take 9 min and will literally change your life" # TODO: Translate
+      action:
+        start: "Start Meditation" # TODO: Translate
+        remind: "Remind me to try later" # TODO: Translate
+    paused:
+      title: "Get ready for meditation" # TODO: Translate
+      explanation:
+        first: "Find a quiet place, sit back and relax" # TODO: Translate
+        second: "It will only take 9 min and will literally change your life" # TODO: Translate
+      action:
+        continue: "Continue Meditation" # TODO: Translate
+        finish: "I finished. (show questionnaire)" # TODO: Translate
+    survey:
+      title: "What did you feel?" # TODO: Translate
+      explanation: "Tailor your next meditation by selecting what you felt on your palms and above your head" # TODO: Translate
+      message:
+        error: "Please select atleast one option" # TODO: Translate
+      action:
+        cool: "Cool breeze" # TODO: Translate
+        warm: "Warm breeze" # TODO: Translate
+        calm: "Just calm inside" # TODO: Translate
+        nothing: "Nothing" # TODO: Translate
+        next: "Next" # TODO: Translate
+    course:
+      title: "Great start!" # TODO: Translate
+      explanation: "Continue your journey with our free 4-week course delivered straight to your inbox" # TODO: Translate
+      action: "Get my course" # TODO: Translate
+      form:
+        notice: "By submitting you agree to receive your meditation course and other occasional meditation content" # TODO: Translate
+    remind:
+      title: "Get a reminder to meditate" # TODO: Translate
+      subtitle: "NO TIME RIGHT NOW?" # TODO: Translate
+      explanation: "We will send a link to get back to your meditation" # TODO: Translate
+      form:
+        notice: "By submitting you agree to receive your meditation course and other occasional meditation content" # TODO: Translate
+      action:
+        send: "Send" # TODO: Translate
+        back: "Take me back to meditation" # TODO: Translate
+    thanks:
+      title: "Thank you" # TODO: Translate
+      subtitle: "You will receive your first email shortly" # TODO: Translate
+      explanation: "Invite your friends to try it out" # TODO: Translate
+      action:
+        share: "Share" # TODO: Translate
     featured:
       self_realization: "Начать" # TODO: Translate
       daily_meditation: "Медитация дня"
