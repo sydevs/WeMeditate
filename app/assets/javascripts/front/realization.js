@@ -64,7 +64,7 @@ class Realization {
   }
 
   checkDisplay() {
-    let slug = window.location.pathname.split('/').pop()
+    let slug = window.location.pathname.split('/')[2] || 'ready'
     this.container.dataset.screen = slug
   }
 

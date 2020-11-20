@@ -26,10 +26,9 @@ class MeditationsController < ApplicationController
 
   # The self realization page has a special action so that it can be redirected to from other parts of the site.
   def self_realization
-    @meditation = Meditation.publicly_visible.get(:self_realization)
-    raise ActionController::RoutingError, 'Self Realization Page Not Found' if @meditation.nil?
-
-    set_metadata(@meditation)
+    # @meditation = Meditation.publicly_visible.get(:self_realization)
+    # raise ActionController::RoutingError, 'Self Realization Page Not Found' if @meditation.nil?
+    # set_metadata(@meditation)
 
     render :realization
   end
