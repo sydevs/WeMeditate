@@ -35,7 +35,7 @@ class Realization {
     this.remindForm.addEventListener('ajax:error', (_event, _xhr, _status, _error) => this.formError(this.remindBtn))
 
     this.display = this.container.dataset.screen
-    history.pushState({screen: this.display}, '', `${this.display}`)
+    history.pushState({ screen: this.display }, '', `${this.display}`)
     
     this.readyBtn.addEventListener('click', () => this.displayScreen('video'))
     this.readyRemindBtn.addEventListener('click', () => this.displayScreen('remind'))
@@ -71,7 +71,8 @@ class Realization {
   displayScreen(screen) {
     this.display = screen
     this.container.dataset.screen = this.display
-    history.pushState({screen: this.display}, '', `${this.display}`)
+    history.pushState({ screen: this.display }, '', `${this.display}`)
+
     if (this.display == 'video') {
       if ($(this.desktopVideo).is(':visible')) {
         jwplayer('botr_1oDJAjaD_8SfP7aMx_div').on('ready', this.loadJWPlayer('botr_1oDJAjaD_8SfP7aMx_div'))
@@ -81,6 +82,7 @@ class Realization {
         jwplayer('botr_8FivThod_NaHiexhY_div').play()
       }
     }
+
     this._scrollTo(this.display)
   }
 
