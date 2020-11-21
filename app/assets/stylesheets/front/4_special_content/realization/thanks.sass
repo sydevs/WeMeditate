@@ -58,7 +58,6 @@
   @extend %narrow-content-width
   padding: 0
   @include gradient(to top, 'blue')
-  // background: linear-gradient(to top, rgba(197,224,220,0.25) 0, rgba(197,224,220,0.75) 50%)
 
 .realization__thanks__explanation-wrapper
   margin-top: 20px
@@ -84,17 +83,18 @@
   display: inline-block
   margin: 10px
 
-  &__mail
-    color: $color-text-normal
+.icon--share
+  &--email:before
+    content: $icon-share-email
 
-  &__facebook
-    color: $color-icon-facebook
+  &--facebook:before
+    content: $icon-share-facebook
 
-  &__twitter
-    color: $color-icon-twitter
+  &--twitter:before
+    content: $icon-share-twitter
 
-  &__linkedin
-    color: $color-icon-linkedin
+  &--linkedin:before
+    content: $icon-share-linkedin
 
-  &__flipboard
-    color: $color-icon-flipboard
+  &--flipboard:before
+    content: $icon-share-flipboard

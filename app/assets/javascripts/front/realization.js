@@ -128,7 +128,12 @@ class Realization {
 
   formSuccess(btn) {
     this.displayScreen('thanks')
-    btn.innerText = 'Get my course'
+
+    if (btn == this.courseBtn) {
+      btn.innerText = 'Get my course'
+    } else if (btn == this.remindBtn) {
+      btn.innerText = 'Send'
+    }
   }
 
   formError(btn) {
