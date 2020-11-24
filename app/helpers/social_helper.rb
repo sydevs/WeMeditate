@@ -11,8 +11,8 @@ module SocialHelper
     vk: 'http://vk.com/share.php?url=%{url}',
     flipboard: 'https://share.flipboard.com/bookmarklet/popout?v=2&title={title}&url={url}',
     linkedin: 'https://www.linkedin.com/shareArticle?url={url}&title={title}&summary={text}&source={provider}',
-    email: 'mailto:?subject=&body={url}'
-  }
+    email: 'mailto:?subject=&body={url}',
+  }.freeze
 
   SHARING_DATA = {
     default: {
@@ -23,7 +23,7 @@ module SocialHelper
       articles: %i[vk],
       meditations: %i[email vk],
     },
-  }
+  }.freeze
 
   SOCIAL_DATA = {
     default: {
@@ -34,7 +34,7 @@ module SocialHelper
       instagram: 'https://www.instagram.com/wemeditate.ru',
       vk: 'https://vk.com/wemeditate',
     },
-  }
+  }.freeze
 
   # Fetch sharing links that can appear at the bottom of any article.
   def sharing_links location: :articles
