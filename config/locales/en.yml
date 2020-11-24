@@ -122,19 +122,38 @@ en:
       skip:
         text: "Meditated with us before?"
         action: "Continue to your guided meditation"
+    featured:
+      self_realization: "Get started"
+      daily_meditation: "Meditation of the day"
+      trending_meditation: "Trending now"
+      random_meditation: "Let fate decide"
+      random_meditation_title: "Try a random meditation"
+      random_meditation_description: "Not sure what you need right now? Just feel like taking a chance? Click play and let the universe decide."
+    custom_meditation:
+      title: "Set Up your own Meditation"
+      choose_goal: "I wish to feel ..." # Please keep ' ...' (with a space) at the end of your translation.
+      choose_duration: "I have"
+      goal_prompt: "Select goal"
+      submit: "Start meditation"
+      minutes: "min"
+    archive:
+      see_all_meditations: "See all meditations"
+      title: "Guided Meditations"
+      view_meditation: "View meditation"
+      load_more: "Load more"
+
+  realization:
     ready:
       title: "Get ready for meditation"
       explanation:
-        first: "Find a quiet place, sit back and relax"
-        second: "It will only take 9 min and will literally change your life"
+        - "Find a quiet place, sit back and relax"
+        - "It will only take 9 min and will literally change your life"
       action:
         start: "Start Meditation"
         remind: "Remind me to try later"
     paused:
-      title: "Get ready for meditation"
-      explanation:
-        first: "Find a quiet place, sit back and relax"
-        second: "It will only take 9 min and will literally change your life"
+      title: :realization.ready.title
+      explanation: :realization.ready.explanation
       action:
         continue: "Continue Meditation"
         finish: "I finished. (show questionnaire)"
@@ -170,25 +189,6 @@ en:
       explanation: "Invite your friends to try it out"
       action:
         share: "Share"
-    featured:
-      self_realization: "Get started"
-      daily_meditation: "Meditation of the day"
-      trending_meditation: "Trending now"
-      random_meditation: "Let fate decide"
-      random_meditation_title: "Try a random meditation"
-      random_meditation_description: "Not sure what you need right now? Just feel like taking a chance? Click play and let the universe decide."
-    custom_meditation:
-      title: "Set Up your own Meditation"
-      choose_goal: "I wish to feel ..." # Please keep ' ...' (with a space) at the end of your translation.
-      choose_duration: "I have"
-      goal_prompt: "Select goal"
-      submit: "Start meditation"
-      minutes: "min"
-    archive:
-      see_all_meditations: "See all meditations"
-      title: "Guided Meditations"
-      view_meditation: "View meditation"
-      load_more: "Load more"
 
   tracks:
     subtitle: "Subtitle for music"

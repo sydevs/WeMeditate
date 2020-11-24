@@ -1,5 +1,5 @@
 
-- translations = 'meditations.paused'
+- translations = 'realization.paused'
 
 .realization__paused id="paused"
   .realization__paused__content
@@ -7,10 +7,8 @@
 
     .realization__paused__explanation-wrapper
       ol.realization__paused__explanation
-        li 
-          span = translate "#{translations}.explanation.first"
-        li 
-          span = translate "#{translations}.explanation.second"
+        - translate("#{translations}.explanation").each do |text|
+          li: span = text
 
     .realization__paused__button-wrapper
       a.realization__paused__button.js-paused-button.button.button--box

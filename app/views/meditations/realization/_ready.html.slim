@@ -1,5 +1,5 @@
 
-- translations = 'meditations.ready'
+- translations = 'realization.ready'
 
 .realization__ready id="ready"
   .realization__ready__content
@@ -7,10 +7,8 @@
 
     .realization__ready__explanation-wrapper
       ol.realization__ready__explanation
-        li 
-          span = translate "#{translations}.explanation.first"
-        li 
-          span = translate "#{translations}.explanation.second"
+        - translate("#{translations}.explanation").each do |text|
+          li: span = text
 
     .realization__ready__button-wrapper
       a.realization__ready__button.js-ready-button.button.button--box
