@@ -16,17 +16,6 @@
         .button__text = translate "#{translations}.action.share"
 
     .realization__share__button-wrapper.js-share-button-wrapper
-      a.realization__share__button.js-share-button.realization__share__button__mail target='_blank' href='mailto:?subject={title}&body={url}'
-        i.icon.icon--share--email
-
-      a.realization__share__button.js-share-button.realization__share__button__facebook target='_blank' href='https://www.facebook.com/sharer.php?u={url}'
-        i.icon.icon--share--facebook
-
-      a.realization__share__button.js-share-button.realization__share__button__twitter target='_blank' href='https://twitter.com/intent/tweet?url={url}&text={title}'
-        i.icon.icon--share--twitter
-
-      a.realization__share__button.js-share-button.realization__share__button__linkedin target='_blank' href='https://www.linkedin.com/shareArticle?url={url}&title={title}&summary={text}&source={provider}'
-        i.icon.icon--share--linkedin
-
-      a.realization__share__button.js-share-button.realization__share__button__flipboard target='_blank' href='https://share.flipboard.com/bookmarklet/popout?v=2&title={title}&url={url}'
-        i.icon.icon--share--flipboard
+      - sharing_urls(:meditations).each do |type, link|
+        a.realization__share__button class="js-share-button" target='_blank' href=link
+          .icon.icon--color class="icon--#{type}"
