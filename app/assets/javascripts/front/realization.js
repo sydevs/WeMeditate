@@ -64,7 +64,7 @@ class Realization {
   }
 
   checkDisplay() {
-    let slug = window.location.pathname.split('/')[2] || 'ready'
+    let slug = window.location.pathname.split('/')[3] || 'ready'
     this.container.dataset.screen = slug
   }
 
@@ -112,9 +112,7 @@ class Realization {
       }
     }
     if (feelFlag) {
-      let props = {
-        'feel': feelings
-      }
+      let props = { feel: feelings }
       this.displayScreen('course')
       this.courseFeelInput.value = JSON.stringify(props)
     } else {
@@ -146,6 +144,7 @@ class Realization {
       text: 'Experience Self Realization',
       url: window.location.href
     }
+
     if (navigator.share) {
       Util.share(shareData)
     } else {
