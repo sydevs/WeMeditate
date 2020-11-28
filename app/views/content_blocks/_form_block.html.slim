@@ -30,6 +30,17 @@ ruby:
             = translate(block[:format], scope: 'form.input.privacy')
             a href=static_page_path_for(:privacy) target='_blank' = translate 'form.input.privacy.learn_more'
 
-    button.button.button--box = block[:action]
+    .content__form__buttons
+      button.button.button--box = block[:action]
+
+      - if block[:format] == 'signup' && block[:title] == 'Не пропусти!'
+        br
+        a.button.button--icon.button--box.button--colored href='https://taplink.cc/link/29656052.c68a3b/telegram/' style='background: #0088cc'
+          .icon.icon--telegram
+          .button__text Подписаться в Телеграмм
+        br
+        a.button.button--icon.button--box.button--colored href='https://vk.com/app6258612_-194521438#lists/5ec4dbc6f450b927aea43d50/subscribe' style='background: #45668e'
+          .icon.icon--vk
+          .button__text Подписаться ВКонтакте
 
   .divider.divider--leaf.divider--leaf-only.divider--leaf-down

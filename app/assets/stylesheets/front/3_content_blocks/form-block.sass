@@ -24,10 +24,18 @@
 
   .button
     background: transparent
-    width: 230px
+    width: 100%
+    max-width: 400px
+
+    @include tablet-or-larger
+      width: 300px
 
     &:hover:not(.button--disabled)
       border-color: $color-text-normal
+
+  .button__text
+    flex-basis: 202px
+    flex-shrink: 1
 
 .content__form--compact
   margin-top: 0 !important
@@ -111,6 +119,15 @@
 
   a
     margin-left: 4px
+
+.content__form__buttons
+  padding: 0 $gutter-width
+
+  .button
+    margin: auto
+
+  .button:not(:first-child)
+    margin-top: 32px
 
 // ===== INPUTS ===== //
 .content__form
