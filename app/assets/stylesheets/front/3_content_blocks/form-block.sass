@@ -129,6 +129,9 @@
   .button:not(:first-child)
     margin-top: 32px
 
+    @include tablet-or-larger
+      margin-top: 16px
+
 // ===== INPUTS ===== //
 .content__form
   input:not([type="checkbox"]), textarea, select
