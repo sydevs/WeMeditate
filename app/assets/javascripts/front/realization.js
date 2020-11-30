@@ -60,7 +60,7 @@ class Realization {
 
   _scrollTo(target) {
     let el = document.getElementById(target)
-    zenscroll.toY(zenscroll.getTopOf(el) - 30)
+    zenscroll.toY(zenscroll.getTopOf(el) - 35)
   }
 
   checkDisplay() {
