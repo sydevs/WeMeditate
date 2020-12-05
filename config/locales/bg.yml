@@ -1,225 +1,226 @@
-
 # FRONT END TRANSLATIONS
 # This file contains translations which will be seen by the public.
 
 bg:
-  we_meditate: "We Meditate" # This is the title of the website
-  tagline: "Silence your mind and discover your inner potential with guided meditations. Connect with others around the world meditating for a better life."
+  we_meditate: "WeMeditate" # This is the title of the website
+  tagline: "Успокойте ума си и открийте вътрешния си потенциал чрез водени медитации. Свържете се с други хора по света, които медитират за по-добър живот."
 
   routes: # These are for the website URLs, they should be all lower case and use dashes instead of spaces
-    inspiration: "inspiration"
-    articles: "articles"
-    meditations: "meditations"
-    techniques: "techniques"
-    subtle_system: "subtle-system"
-    page: "page"
-    music: "music"
-    archive: "all"
-    self_realization: "first-experience"
-    classes: "classes"
-    streams: "live"
+    inspiration: "вдъхновение"
+    articles: "статии"
+    meditations: "медитации"
+    techniques: "техники"
+    subtle_system: "фина-система"
+    page: "страница"
+    music: "музика"
+    archive: "всичко"
+    self_realization: "първо-преживяване"
+    classes: "занятия"
+    streams: "на-живо"
 
   header:
-    learn_more: "Learn More"
-    live_meditations: "Live guided meditations"
-    classes_near_me: "Classes near me"
-    inspiration_from_within: "Inspiration comes from within"
-    preview_notice: "You are viewing a preview"
-    kundalini: "Inner Energy"
+    advanced_articles: "All Articles" # TODO: Translate
+    advanced: "Научете повече"
+    classes_near_me: "Водени медитации на живо"
+    inspiration_from_within: "Вдъхновението идва от вътре"
+    cookie_notice: "Продължавайки да ползвате wemeditate.co, се съгласявате да употребяваме бисквитки."
+    preview_notice: "Предварителен преглед"
+    kundalini: "Вътрешна енергия"
+    social: "Follow us"
 
   cookie_notice:
-    text: "By continuing to use wemeditate.co you will be agreeing to our use of cookies."
-    learn_more: "Learn More"
+    text: "Продължавайки да ползвате wemeditate.co, се съгласявате да употребяваме бисквитки."
+    learn_more: "Научете повече."
 
   footer:
-    scroll_to_top: "Back to Top"
-    meditate_now: "Meditate Now"
-    music_for_meditation: "Music for meditation"
-    learn_more: "Learn more"
-    come_meditate: "Come meditate"
-    online_meditations: "Guided Meditations Online"
-    languages: "Languages"
-    self_realization: "The First Experience"
+    scroll_to_top: "Обратно към началото"
+    meditate_now: "Медитирайте сега"
+    music_for_meditation: "Музика за медитация"
+    learn_more: "Научете повече"
+    come_meditate: "Елате да медитирате"
+    online_meditations: "Онлайн водени медитации"
+    languages: "Езици"
+    self_realization: "Първото преживяване"
 
   actions_footer:
-    title: "Discover it for yourself!"
-    subtitle: "Don’t just take our word for it. Try meditating and see how you feel!"
-    sidetext: "Try Meditation"
+    title: "Открийте сами!"
+    subtitle: "Не ни вярвайте сляпо. Опитайте се да медитирате и вижте как се чувствате!"
+    sidetext: "Опитайте се да медитирате"
     actions:
-      online: "Meditate online"
-      local: "Classes near me"
+      online: "Медитирайте онлайн"
+      local: "Занятия в близост до мен"
 
   author:
-    about_the_author: "About the author"
-    about_the_artist: "About the artist"
-    written_by: "Written by"
+    about_the_author: "Относно автора"
+    about_the_artist: "Относно изпълнителя"
+    written_by: "Написано от"
     meditating_for:
-      one: "Meditating for 1 year"
-      other: "Meditating for %{count} years"
+      one: "Медитирам от 1 година"
+      other: "Медитирам от %{count} години"
     countries:
       gb: UK
 
   form:
     input:
-      email: "Your email"
-      message: "Message"
+      email: "Вашият имейл"
+      message: "Съобщение"
       privacy:
-        signup: "By submitting this form, you agree to the processing of your personal data to receive guided meditations and other emails from WeMeditate."
-        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database."
-        learn_more: "Learn more."
-      name: "Your name"
-      class: "Select class"
+        signup: "Предоставяйки този формуляр, се съгласявате да бъдат ползвани личните ви данни, за да получавате водени медитации и други имейли от WeMeditate."
+        contact: "Предоставяйки този формуляр, се съгласявате данните ви да бъдат ползвани съобразно политиката ни за поверителност. Данните от този формуляр ще бъдат препратени към WeMeditate екипа чрез имейл и няма да бъдат съхранени в нашата база данни."
+        learn_more: "Научете повече."
+      name: "Вашето име"
+      class: "Изберете адрес за медитация"
     missing:
-      email: "You must provide an email address."
-      message: "You forgot to fill out a message."
-      name: "You must provide your name."
+      email: "Трябва да предоставите имейл адрес."
+      message: "Забравихте да попълните съобщение."
+      name: "Трябва да предоставите името си."
     success:
-      subscribe: "You have been subscribed."
-      contact: "Your message has been received."
-      register: "You have been registered."
+      subscribe: "Абониран сте."
+      contact: "Съобщението ви е получено."
+      register: "Регистриран сте."
     button:
-      try_again: "Try Again"
-      submitted: "Submitted"
+      try_again: "Опитайте отново"
+      submitted: "Подадено"
 
   player: # For the music or video player
-    pause: "Pause"
-    play: "Play"
-    '%_buffered': "% buffered"
-    skip_back: "Previous Track"
-    skip_forward: "Next Track"
-    rewind_10_secs: "Rewind 10 secs"
-    forward_10_secs: "Forward 10 secs"
-    unmute: "Unmute"
-    mute: "Mute"
-    volume: "Volume"
-    disable_captions: "Disable captions"
-    enable_captions: "Enable captions"
-    exit_fullscreen: "Exit fullscreen"
-    enter_fullscreen: "Enter fullscreen"
-    duration: "Duration"
-    current_time: "Current time" # The current time that the player is at
-    seek: "Seek"
-    play_title: "Play, %{title}" # %{title} is the title of a video or music track
+    pause: "Пауза"
+    play: "Пусни"
+    '%_buffered': "% Заредено"
+    skip_back: "Предишно"
+    skip_forward: "Следващо"
+    rewind_10_secs: "Назад 10 секунди"
+    forward_10_secs: "Напред 10 секунди"
+    unmute: "Озвучи"
+    mute: "Заглуши"
+    volume: "Сила на звука"
+    disable_captions: "Изключи надписите"
+    enable_captions: "Включи надписите"
+    exit_fullscreen: "Изход от цял екран"
+    enter_fullscreen: "Цял екран"
+    duration: "Времетраене"
+    current_time: "Изтекло време" # The current time that the player is at
+    seek: "Търси"
+    play_title: "Пусни, %{title}" # %{title} is the title of a video or music track
 
   articles:
-    read_more: "Read more" # Takes you to the article page
-    load_more: "Load more" # Loads more articles
-    filter: "Filter"
-    show_all: "All"
-    share: "Share: "
+    read_more: "Прочетете повече" # Takes you to the article page
+    load_more: "Зареди повече" # Loads more articles
+    filter: "Филтър"
+    show_all: "Всичко"
+    share: "Сподели: "
 
   meditations:
-    title: "Meditations"
+    title: "Медитации"
     prescreen:
-      title: "Unlock guided meditations by awakening your %{kundalini} first"
-      kundalini: "inner energy"
-      action: "Awaken Your Inner Energy"
+      title: "Поставете начало на водените медитации, като най-напред събудите %{kundalini}"
+      kundalini: "вътрешната си енергия"
+      action: "Събуди вътрешната си енергия"
       explanation:
-        text: "Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation."
-        learn_more: "Learn more"
+        text: "Всеки има вътрешна енергия, която трябва да бъде събудена, преди да преживеете състоянието на медитация."
+        learn_more: "Научете повече"
       skip:
-        text: "Meditated with us before?"
-        action: "Continue to your guided meditation"
+        text: "Медитирали ли сте с нас преди?"
+        action: "Продължете с водената си медитация"
     featured:
-      daily_meditation: "Meditation of the day"
-      trending_meditation: "Trending now"
-      random_meditation: "Let fate decide"
-      random_meditation_title: "Try a random meditation"
-      random_meditation_description: "Not sure what you need right now? Just feel like taking a chance? Click play and let the universe decide."
+      daily_meditation: "Медитация за деня"
+      trending_meditation: "Актуално в момента"
+      random_meditation: "Остави съдбата да реши"
+      random_meditation_title: "Избери произволно медитация" 
+      random_meditation_description: "Не сте сигурен от какво се нуждаете точно сега? Просто действате на принципа на случайния избор? Натиснете Пусни и нека вселената решава."
     custom_meditation:
-      title: "Set Up your own Meditation"
-      choose_goal: "I wish to feel ..." # Please keep ' ...' (with a space) at the end of your translation.
-      choose_duration: "I have"
-      goal_prompt: "Select goal"
-      submit: "Start meditation"
-      minutes: "min"
+      title: "Настройте медитацията си" 
+      choose_goal: "Искам да се чувствам ..." # Please keep ' ...' (with a space) at the end of your translation.
+      choose_duration: "Разполагам със"
+      goal_prompt: "Изберете цел"
+      submit: "Започнете медитацията"
+      minutes: "минути"
     archive:
-      see_all_meditations: "See all meditations"
-      title: "Guided Meditations"
-      view_meditation: "View meditation"
-      load_more: "Load more"
+      see_all_meditations: "Вижте всички медитации" 
+      title: "Водени медитации"
+      view_meditation: "Преглед на медитацията"
+      load_more: "Зареди повече"
 
   tracks:
-    subtitle: "Subtitle for music"
-    text: "Enjoy a curated collection of meditation music we produced to help you disconnect from your surroundings and achieve a true state of inner peace."
-    choose_mood: "Choose the mood"
-    choose_instruments: "Choose your sound"
-    playlist: "Playlist"
+    subtitle: "Субтитри към музиката"
+    text: "Насладете се на подбрана колекция от музика за медитация, която направихме, за да Ви помогнем да се дистанцирате от заобикалящата ви среда и да постигнете действително състояние на вътрешен мир."
+    choose_mood: "Избери" 
+    choose_instruments: "Изберете инструмент"
+    playlist: "Плейлист"
 
   treatments:
-    header_title: "Technique: %{title}"
+    header_title: "Техника: %{title}"
     prescreen:
-      title: "Before using methods to improve meditation, you need to awaken your %{kundalini}"
-      kundalini: "inner energy"
-      action: "Awaken Your Inner Energy"
+      title: "Преди да ползвате начини за подобряване на медитацията, трябва да събудите своята %{kundalini}"
+      kundalini: "вътрешна енергия"
+      action: "Събудете вдътрешната си енергия"
       explanation:
-        text: "Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation."
-        learn_more: "Learn more"
+        text: "Всеки има вътрешна енергия, която трябва да бъде събудена, преди да можете да преживеете състоянието на медитация."
+        learn_more: "Научете повече"
       skip:
-        text: "Meditated with us before?"
-        action: "Improve your meditation!"
+        text: "Медитирали ли сте с нас преди?"
+        action: "Подобрете медитацията си!"
     music:
-      title: "Music"
-      description: "Music can be both relaxing and gently stimulating, bringing us into balance and allowing our minds to go thoughtless, Explore our curated collection of specially composed tracks, created to enable a deeper state of meditation."
-      read_more: "Choose from our collection"
-    read_more: "Learn more"
-    show_more: "Show More Techniques"
+      title: "Музика "
+      description: "Музиката може както да отпуска, така и нежно да стимулира, отвеждайки ни в баланс, и да позволи на ума ни да остане без мисли. Разгледайте нашата подбрана колекция от специално композирани творби, създадена, за да направи възможно по-дълбоко състоянието на медитация."
+      read_more: "Изберете от колекцията ни"
+    read_more: "Научете повече"
+    show_more: "Покажи още техники"
 
   content:
-    credit: "Credit"
-    show_more: "Show More"
+    credit: "Кредити"
+    show_more: "Покажи повече"
 
   subtle_system:
     title:
-      desktop: "Hover to learn more"
-      mobile: "Tap to learn more"
-    chakras: "Chakras"
-    channels: "Channels"
-    read_more: "Learn More"
+      desktop: "Плъзнете, за да научите повече"
+      mobile: "Докоснете, за да научите повече"
+    chakras: "Чакри"
+    channels: "Канали"
+    read_more: "Научете повече"
 
   classes:
-    map_title: "Meditation Classes Near Me"
-    prompt: "Enter your city or post code"
-    nearby: "Nearby"
-    loading: "Locating..."
-    found: "Click to confirm"
+    map_title: "Занятия в близост до мен"
+    prompt: "Въведета своя град или пощенски код"
+    nearby: "Наблизо"
+    loading: "Локализиране ..."
+    found: "Кликнете, за да потвърдите"
 
   streams:
-    title: "All Live Meditations"
-    read_more: "Learn more"
+    title: "Всички медитации на живо"
+    read_more: "Научете повече"
     skip:
-      title: "Time doesn't suit you?"
-      description: "Choose an alternative stream that works for you"
-      action: "See other times"
+      title: "Времето не е подходящо за Вас?"
+      description: "Изберете алтернативен стрийм, който е подходящ за вас"
+      action: "Вижте други времеви варианти"
     live:
-      title: "We are live now!"
-      action: "Join now"
-      description: "Press play to join our live meditation session streaming right now"
+      title: "На живо сме!"
+      action: "Присъединете се"
+      description: "Натиснете Пусни, за да се присъедините точно сега към нашата медитация на живо"
     timing:
-      days: "Days"
-      hours: "Hours"
-      minutes: "Minutes"
-      seconds: "Seconds"
+      days: "Дни"
+      hours: "Часове"
+      minutes: "Минути"
+      seconds: "Секунди"
 
   errors:
-    title: "Oops..."
-    coming_soon: "Coming Soon"
-    no_programs: "Meditation classes in your area are coming soon."
-    error: "Error"
-    alternatives_title: "Try one of these instead:"
-    report_issue: "Please try again, and report this issue if it continues to occur. When reporting the issue, please do your best to describe what specific actions you were taking before the issue occurred."
-    '404': "This page doesn’t exist"
-    '422': "The change you wanted was rejected"
-    '500': "We're sorry, but something went wrong"
+    title: "Опс..."
+    coming_soon: "Скоро"
+    no_programs: "Скоро ще има място за медитация в близост до Вас."
+    error: "Грешка"
+    alternatives_title: "Опитайте едно от тези:"
+    report_issue: "Моля, опитайте отново и съобщете, ако проблемът продължава да се появява. Когато съобщавате за проблема, моля, направете всичко възможно, за да опишете какви конкретни действия сте извършили, преди да се появи проблемът."
+    '404': "Тази страница не съществува"
+    '422': "Желаната от Вас промяна е отхвърлена"
+    '500': "Съжаляваме, но нещо се обърка"
 
   javascript:
-    reading_time: "%minutes% minute read"
-    loading: "Loading..."
+    reading_time: "%minutes% минути четено"
+    loading: "Зареждане..."
     popup:
-      close: "Close (Esc)"
-      loading: "Loading..."
-      prev: "Previous (Left arrow key)"
-      next: "Next (Right arrow key)"
-      counter: "%curr% of %total%"
-      image_error: "<a href=\"%url%\">The image</a> could not be loaded."
-      ajax_error: "<a href=\"%url%\">The content</a> could not be loaded."
+      close: "Затвори (Esc)"
+      loading: "Зареждане..."
+      prev: "Предишно (Бутон Стрелка наляво)"
+      next: "Следващо (Бутон Стрелка надясно)"
+      counter: "%curr% от %total%"
+      image_error: "<a href=\"%url%\">Изображението</a> не можа да се зареди."
+      ajax_error: "<a href=\"%url%\">Съдържанието</a> не можа да се зареди."

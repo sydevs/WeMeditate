@@ -1,0 +1,9 @@
+
+.js-image:not(.loaded)
+  opacity: 0
+  filter: blur(4px)
+
+.js-image.loaded
+  opacity: 1
+  filter: blur(0)
+  transition: 0.25s ease-out

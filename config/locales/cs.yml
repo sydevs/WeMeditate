@@ -20,12 +20,14 @@ cs:
     streams: "live"
 
   header:
-    learn_more: "Dozvědět se více"
+    advanced_articles: "All Articles" # TODO: Translate
+    advanced: "Dozvědět se více"
     live_meditations: "Live guided meditations" # TODO: Translate
     classes_near_me: "Meditace živě"
     inspiration_from_within: "Inspirace přichází zevnitř"
     preview_notice: "Prohlížíte náhled"
     kundalini: "Vnitřní Energie"
+    social: "Follow us"
 
   cookie_notice:
     text: "Tyto stránky používají k analýze návštěvnosti soubory cookies. Setrváním na stránce souhlasíte s jejich používáním."
@@ -121,6 +123,7 @@ cs:
         text: "Už jste s námi někdy meditovali?"
         action: "Pokračujte ve své meditaci"
     featured:
+      self_realization: "Get started" # TODO: Translate
       daily_meditation: "Meditace dnešního dne"
       trending_meditation: "Teď populární"
       random_meditation: "Ať rozhodne osud"

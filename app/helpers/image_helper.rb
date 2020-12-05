@@ -98,6 +98,7 @@ module ImageHelper
         # Add the js-image class if this image is lazyloaded
         args[:class] ||= ''
         args[:class] << ' js-image'
+        args[:src] = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
 
         # Use `data` attributes for a lazyloaded image
         concat tag.source type: 'image/webp', data: { srcset: webp_srcset, sizes: sizes } unless webp_srcset.nil?

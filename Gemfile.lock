@@ -135,7 +135,9 @@ GEM
     execjs (2.7.0)
     faraday (0.17.3)
       multipart-post (>= 1.2, < 3)
+    fast_stack (0.2.0)
     ffi (1.12.2)
+    ffi (1.12.2-x64-mingw32)
     flamegraph (0.9.5)
     fomantic-ui-sass (2.8.3)
       autoprefixer-rails
@@ -263,16 +265,19 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    nokogiri (1.10.9-x64-mingw32)
+      mini_portile2 (~> 2.4.0)
     normalize-rails (4.1.1)
     orm_adapter (0.5.0)
     os (1.0.1)
     pg (1.2.2)
+    pg (1.2.2-x64-mingw32)
     photoswipe-rails (4.1.2)
     public_suffix (4.0.3)
     puma (4.3.5)
       nio4r (~> 2.0)
-    rack (2.2.2)
-    rack-mini-profiler (1.1.6)
+    rack (2.2.3)
+    rack-mini-profiler (2.0.2)
       rack (>= 1.2.0)
     rack-protection (2.0.8.1)
       rack
@@ -340,6 +345,8 @@ GEM
     rubyzip (2.2.0)
     sassc (2.2.1)
       ffi (~> 1.9)
+    sassc (2.2.1-x64-mingw32)
+      ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
       sassc (>= 2.0)
@@ -397,6 +404,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2020.1)
+      tzinfo (>= 1.0.0)
     uber (0.1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
@@ -420,6 +429,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   array_enum
@@ -441,6 +451,7 @@ DEPENDENCIES
   devise_invitable
   diff-lcs
   dotenv-rails
+  fast_stack
   flamegraph
   fomantic-ui-sass
   friendly_id

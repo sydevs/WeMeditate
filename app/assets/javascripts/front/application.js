@@ -1,6 +1,6 @@
 /* global $, LazyLoad, zenscroll,
   Accordion, Carousel, Dropdown, Form, Grid, Loadmore, Video, ImageGallery, ReadingTime, CountdownTimer
-  Header, SubtleSystem, MusicPlayer, CustomMeditation, Prescreen, GeoSearch, VideoAnalytics */
+  Header, SubtleSystem, MusicPlayer, CustomMeditation, Prescreen, GeoSearch, LanguageSwitcher, Categories */
 /* exported Application */
 
 /** Front Application
@@ -21,6 +21,7 @@ const Application = {
     }
 
     if (Application.element.header) Application.element.header.init()
+    if (Application.element.categories) Application.element.categories.init()
   },
 
   load() {
@@ -57,6 +58,8 @@ const Application = {
     Application.loadFirst('custom-meditation', CustomMeditation)
     Application.loadFirst('prescreen', Prescreen)
     Application.loadFirst('geosearch', GeoSearch)
+    Application.loadFirst('language-switcher', LanguageSwitcher)
+    Application.loadFirst('categories', Categories)
   },
 
   unload() {

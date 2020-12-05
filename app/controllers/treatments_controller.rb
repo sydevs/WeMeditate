@@ -8,7 +8,7 @@ class TreatmentsController < ApplicationController
     about_page = StaticPage.preload_for(:preview).find_by(role: :about)
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },
-      { name: I18n.t('header.learn_more'), url: static_page_path(about_page) },
+      { name: I18n.t('header.advanced'), url: static_page_path(about_page) },
       { name: @static_page.name },
     ]
 
@@ -17,12 +17,13 @@ class TreatmentsController < ApplicationController
 
   def show
     @treatment = Treatment.publicly_visible.preload_for(:content).friendly.find(params[:id])
+    return if redirect_legacy_url(@treatment)
 
     about_page = StaticPage.preload_for(:preview).find_by(role: :about)
     treatments_page = StaticPage.preload_for(:preview).find_by(role: :treatments)
     @breadcrumbs = [
       { name: StaticPageHelper.preview_for(:home).name, url: root_path },
-      { name: I18n.t('header.learn_more'), url: static_page_path(about_page) },
+      { name: I18n.t('header.advanced'), url: static_page_path(about_page) },
       { name: treatments_page.name, url: treatments_path },
       { name: @treatment.name },
     ]

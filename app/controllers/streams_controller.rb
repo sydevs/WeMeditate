@@ -17,6 +17,7 @@ class StreamsController < ApplicationController
   def show
     time_zone = ActiveSupport::TimeZone.new(request.location.data['timezone']) rescue Time.zone
     @stream = Stream.public_stream.preload_for(:content).friendly.find(params[:id])
+    return if redirect_legacy_url(@stream)
     
     #return unless stale?(@stream)
 

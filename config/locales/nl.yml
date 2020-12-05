@@ -20,12 +20,14 @@ nl:
     streams: "live"
     
   header:
-    learn_more: "Meer informatie"
+    advanced_articles: "All Articles" # TODO: Translate
+    advanced: "Meer informatie"
     live_meditations: "Live guided meditations" # TODO: Translate
     classes_near_me: "Cursussen in mijn buurt"
     inspiration_from_within: "Inspiratie komt van binnen"
     preview_notice: "Dit is een voorbeeldweergave"
     kundalini: "Inner Energy" # TODO: Translate
+    social: "Follow us"
 
   cookie_notice:
     text: "Bij verder gebruik van nl.wemeditate.co geef je automatisch toestemming voor het gebruik van cookies."
@@ -121,6 +123,7 @@ nl:
         text: "Heb je al vaker met ons gemediteerd?"
         action: "Ga verder naar de geleide meditatie."
     featured:
+      self_realization: "Get started" # TODO: Translate
       daily_meditation: "Meditatie van de dag"
       trending_meditation: "Populaire meditaties"
       random_meditation: "Laat het lot beslissen"

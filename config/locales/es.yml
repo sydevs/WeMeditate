@@ -20,12 +20,14 @@ es:
     streams: "live"
     
   header:
-    learn_more: "Aprende Más"
+    advanced_articles: "All Articles" # TODO: Translate
+    advanced: "Aprende Más"
     live_meditations: "Live guided meditations" # TODO: Translate
     classes_near_me: "Clases cerda de Mí"
     inspiration_from_within: "La Inspiración viene del interior"
     preview_notice: "Estás viendo una vista previa"
     kundalini: "Energía Interior"
+    social: "Follow us"
 
   cookie_notice:
     text: "Al continuar usando wemeditate.co usted estará aceptando nuestro uso de cookies."
@@ -121,6 +123,7 @@ es:
         text: "Meditó con nosotros antes?"
         action: "Continúa con tu meditación guiada"
     featured:
+      self_realization: "Get started" # TODO: Translate
       daily_meditation: "Meditación del día"
       trending_meditation: "Tendencia actual"
       random_meditation: "Dejemos que el destino decida"

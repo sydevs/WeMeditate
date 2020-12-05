@@ -474,6 +474,7 @@ fr:
 
     misc:
       no_translated_title: "Pas de Titre Traduit" # This should be written in titlecase
+      previous_slugs: "Previous URLs Used" # TODO: Translate
       menu:
         dashboard: "Tableau de Bord"
         my_author: "Mon Profil d'Auteur"

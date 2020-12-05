@@ -14,12 +14,18 @@ class CountdownTimer {
     
     this.interval = setInterval(() => this.update(), 1000)
 
-    const now = Date.now()
-    const duration = parseFloat(element.dataset.duration)
-    const timeUntilStart = this.targetDate - now
-    const timeUntilEnd = this.targetDate + duration - now
-    const live = timeUntilStart < 300000 && timeUntilEnd > 0
-    this.setMode(live ? 'live' : 'countdown')
+    const params = new URLSearchParams(window.location.search)
+    if (params.has('live')) {
+      const live = params.get('live') == 'true'
+      this.setMode(live ? 'live' : 'countdown')
+    } else {
+      const now = Date.now()
+      const duration = parseFloat(element.dataset.duration)
+      const timeUntilStart = this.targetDate - now
+      const timeUntilEnd = this.targetDate + duration - now
+      const live = timeUntilStart < 300000 && timeUntilEnd > 0
+      this.setMode(live ? 'live' : 'countdown')
+    }
 
     this.update()
     this.container.classList.remove('content__splash__countdown--hidden')

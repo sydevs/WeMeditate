@@ -42,7 +42,8 @@ module StaticPageHelper
     when nil
       ''
     else
-      static_page_path(static_page_preview_for(role))
+      page = StaticPage.preload_for(:preview).find_by_role(role)
+      static_page_path(page)
     end
   end
 
@@ -70,7 +71,8 @@ module StaticPageHelper
     when nil
       ''
     else
-      static_page_url(static_page_preview_for(role))
+      page = StaticPage.preload_for(:preview).find_by_role(role)
+      static_page_url(page)
     end
   end
 

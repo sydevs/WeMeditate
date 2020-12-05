@@ -4,17 +4,19 @@
 module Draftable
 
   extend ActiveSupport::Concern
-  
+
   def draftable?
     true
   end
 
   included do |base|
     translatable = base.respond_to?(:translated_attribute_names)
-    
+
     %i[draft].each do |column|
       next if base.try(:translated_attribute_names)&.include?(column) || base.column_names.include?(column.to_s)
-      throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Draftable`" 
+      throw "Column `#{column}` must be defined to make the `#{base.model_name}` model `Draftable`"
+    rescue ActiveRecord::NoDatabaseError, ActiveRecord::StatementInvalid # rubocop:disable Lint/HandleExceptions
+      # avoid breaking rails db:create / db:drop etc due to boot time execution
     end
 
     if translatable
@@ -169,7 +171,7 @@ module Draftable
     else
       discard_draft! discard: %i[content]
     end
-    
+
     write_attribute :content, new_live_content
     #binding.pry
   end

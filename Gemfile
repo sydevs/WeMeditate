@@ -78,7 +78,7 @@ gem 'lograge' # Reduce verbosity of Rails logs
 gem 'mail_form' # For the contact form
 gem 'sidekiq' # To power active jobs
 gem 'sitemap_generator' # For SEO purposes
-gem 'taglib-ruby', '~> 0.7.1' # To parse metadata from mp3 files
+gem 'taglib-ruby', '~> 0.7.1', platforms: %i[ruby] # To parse metadata from mp3 files
 gem 'geocoder' # For identifying users from specific regions
 gem 'cloudflare-rails' # To restore client IP addresses after proxy
 gem "recaptcha", require: "recaptcha/rails" # To protect against bots on the contact form
@@ -91,11 +91,12 @@ gem "recaptcha", require: "recaptcha/rails" # To protect against bots on the con
 # gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
 group :staging, :development do
-  # For profiling load times
+  # For profiling load times, exclude windows
+  gem 'fast_stack'
   gem 'flamegraph'
   gem 'memory_profiler'
   gem 'rack-mini-profiler', require: false
-  gem 'stackprof'
+  gem 'stackprof', platforms: %i[ruby]
 end
 
 group :development, :test do

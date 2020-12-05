@@ -49,6 +49,12 @@
     .streams__grid__item
       padding: $gutter-width
 
+      @include mobile
+        width: 100%
+
+      @include tablet
+        width: 50%
+
   &__item
     box-sizing: border-box
     padding: $gutter-width / 2

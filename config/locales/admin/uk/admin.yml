@@ -478,6 +478,7 @@ uk:
 
     misc:
       no_translated_title: "Відсутній Переклад Заголовку" # This should be written in titlecase
+      previous_slugs: "Previous URLs Used" # TODO: Translate
       menu:
         dashboard: "Панель управління"
         my_author: "Мій профіль"

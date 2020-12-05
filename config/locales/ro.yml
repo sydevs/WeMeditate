@@ -20,12 +20,14 @@ ro:
     streams: "live"
 
   header:
-    learn_more: "Află mai Multe"
+    advanced_articles: "All Articles" # TODO: Translate
+    advanced: "Află mai Multe"
     live_meditations: "Live guided meditations" # TODO: Translate
     classes_near_me: "Cursuri în Apropierea Mea"
     inspiration_from_within: "Inspirația vine din interior"
     preview_notice: "Acesta este un preview"
     kundalini: "Energia Interioară"
+    social: "Follow us"
 
   cookie_notice:
     text: "Acest site folosește cookies. Continuarea navigării implică acceptarea lor."
@@ -122,6 +124,7 @@ ro:
         text: "Ați mai meditat cu noi înainte?"
         action: "Continuă către meditația ghidată" 
     featured:
+      self_realization: "Get started" # TODO: Translate
       daily_meditation: "Meditația zilei"
       trending_meditation: "Cele mai vizionate"
       random_meditation: "Lasă destinul să decidă"

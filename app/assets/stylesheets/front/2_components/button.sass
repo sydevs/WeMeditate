@@ -100,13 +100,13 @@
     background: $color-button-blue-dark
 
   &.button--active
-    transition: color 0.5s
+    transition: all 0.5s
     color: $color-text-inverse
 
   &:not(.button--disabled):hover,
   &:not(.button--disabled):active
     @include laptop-or-larger
-      transition: color 0.5s
+      transition: all 0.5s
       color: $color-text-inverse
 
 // SIZES
@@ -120,6 +120,7 @@
 .button--disabled
   opacity: 0.8
   cursor: default
+  filter: grayscale(80%)
 
 .button--invert
   color: $color-text-inverse
@@ -142,60 +143,28 @@
   display: inline-flex
   flex-direction: row
   align-items: center
+  justify-content: center
+  line-height: 53px
+  padding-top: 0
+  padding-bottom: 0
+  
+  @include mobile
+    padding: 0 ($gutter-width / 2)
 
-  width: 140px
-  margin: 16px auto
-  padding: 0
+  > .icon
+    font-size: 2em
+    margin-right: 0.5em
 
-  font-size: 1.8rem
-  letter-spacing: 0.2px
-  color: $color-text-dark
+  .button__text
+    white-space: nowrap
+    overflow: hidden
 
-  @include tablet-or-larger
-    width: auto
-    margin: 6px 0
-    margin-right: 72px
+.button--colored
+  color: white !important
+  border-color: $color-text-light
 
-  &.button--active, &:hover
-    opacity: 0.95
-    color: $color-text-blue !important
-
-    .button__icon > svg
-      fill: $color-text-blue
-
-  &:not(.button--active):hover
-    @media (hover: none)
-      opacity: 1
-      color: inherit
-
-      .button__icon > svg
-        fill: inherit
-
-.button__icon
-  width: 40%
-  text-align: left
-  display: inline-block
-
-  @include tablet-or-larger
-    width: auto
-    margin-right: 18px
-
-  > svg
-    fill: $color-text-normal
-    height: 56px
-    width: auto
-    transition: fill 0.3s ease
-    max-width: 60px
-
-.button--icon .button__text
-  width: 60%
-  line-height: 60px
-  text-align: right
-  display: inline-block
-
-  @include tablet-or-larger
-    width: auto
-    text-align: left
+  &:hover
+    opacity: 0.8
 
 // ===== CIRCLE BUTTON ===== //
 .button--circle

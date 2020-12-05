@@ -158,11 +158,53 @@
 // ===== LANGUAGE LINKS ===== //
 .footer__language
   margin-top: 24px
-  font-size: 1.4rem
+  font-size: 1.5rem
+  position: relative
 
-  &__separator
-    display: inline
-    font-size: 1.25em
+  &__selection
+    cursor: pointer
 
   .icon
     margin-left: 6px
+
+  &__popup
+    display: flex
+    flex-flow: row wrap
+    justify-content: space-around
+
+    background: $background-white
+    opacity: 0
+    transition: all 0.5s ease
+
+    position: absolute
+    width: 200px
+    max-height: 0px
+    overflow-y: auto
+    margin: auto
+    padding: 0px 5px
+    box-shadow: 1px 1px 10px
+    z-index: $z-popup
+    bottom: 125%
+
+    @include tablet-or-smaller
+      right: 50%
+      margin-right: -100px
+
+    @include laptop
+      right: 0%
+
+    @include desktop
+      right: 10%
+
+    @include widescreen
+      right: 25%
+    
+  &__link
+    font-weight: $font-semibold 
+    padding: 10px
+    color: $color-text-normal
+
+.popup--open
+  max-height: 160px
+  opacity: 1
+  transition: all 0.5s ease

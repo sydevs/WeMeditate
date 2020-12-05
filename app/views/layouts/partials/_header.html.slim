@@ -84,3 +84,11 @@ header#header.header class=classes
               li
                 a.header__menu__submenu_item href=item[:url] data=item[:data]
                   = item[:title]
+
+    .header__social
+      /.header__social__title
+        = translate('header.social')
+      .header__social__links
+        - social_media_urls.each do |type, url|
+          a.header__social__link href=url target="_blank"
+            i.icon class="icon--#{type}"
