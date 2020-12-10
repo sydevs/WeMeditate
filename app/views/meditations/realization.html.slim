@@ -1,6 +1,5 @@
 
-.realization id="realization" data-screen="ready"
-
+.realization id="realization" data-screen=(params[:screen] || 'ready')
   - %w[ready video paused survey course remind thanks].each do |screen|
     .realization__screen class="realization__screen--#{screen}"
       = render "meditations/realization/#{screen}"
