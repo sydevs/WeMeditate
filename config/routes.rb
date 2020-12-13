@@ -47,7 +47,6 @@ Rails.application.routes.draw do
 
   # ===== FRONT-END ROUTES ===== #
   constraints DomainConstraint.new(RouteTranslator.config.host_locales.keys) do
-
     localized do
       devise_for :users, controllers: { invitations: 'users/invitations' }
 
