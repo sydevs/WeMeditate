@@ -223,6 +223,6 @@ fa:
       loading: "در حال بارگذاری..."
       prev: "قبلی (Left arrow key)" # TODO: Translate
       next: "بعدی (Right arrow key)" # TODO: Translate
-      counter: "%curr% of %total%"
+      counter: "%curr% of %total%" # TODO: Translate
       image_error: "<a href=\"%url%\">تصویر </a> قابل بارگذاری نمی باشد"
       ajax_error: "<a href=\"%url%\">محتوای </a> قابل بارگذاری نمی باشد"
