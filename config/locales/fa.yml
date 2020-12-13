@@ -3,226 +3,226 @@
 # This file contains translations which will be seen by the public.
 
 fa:
-  we_meditate: "We Meditate" # This is the title of the website
-  tagline: "Silence your mind and discover your inner potential with guided meditations. Connect with others around the world meditating for a better life."
+  we_meditate: "مدیتیشن ما" # This is the title of the website
+  tagline: "ذهن خود را آرام کنید و با مدیتیشن های راهنما، قابلیت های درونی خود را کشف نمایید. برای یک زندگی بهتر، به دیگران که در سراسر جهان مدیتیشن می کنند متصل شوید"
 
   routes: # These are for the website URLs, they should be all lower case and use dashes instead of spaces
-    inspiration: "inspiration"
-    articles: "articles"
-    meditations: "meditations"
-    techniques: "techniques"
-    subtle_system: "subtle-system"
-    page: "page"
-    music: "music"
-    archive: "all"
-    self_realization: "first-experience"
-    classes: "classes"
-    streams: "live"
+    inspiration: "الهامات"
+    articles: "مقالات"
+    meditations: "مدیتیشن ها"
+    techniques: "تکنیک ها"
+    subtle_system: "سیستم ظریف"
+    page: "صفحه"
+    music: "موسیقی"
+    archive: "همه"
+    self_realization: "نخستین تجربه"
+    classes: "کلاس ها"
+    streams: "پخش زنده"
 
   header:
-    advanced_articles: "All Articles"
-    advanced: "About Meditation"
-    live_meditations: "Live Classes"
-    classes_near_me: "Classes near me"
-    kundalini: "Inner Energy"
-    inspiration_from_within: "Inspiration comes from within"
-    preview_notice: "You are viewing a preview"
-    social: "Follow us"
+    advanced_articles: "همه مقالات"
+    advanced: "درباره مدیتیشن"
+    live_meditations: "کلاس های زنده"
+    classes_near_me: "کلاس های نزدیک من"
+    kundalini: "انرژی درونی"
+    inspiration_from_within: "الهامات از درون می آیند"
+    preview_notice: "شما در حال مشاهده پیش نمایش هستید"
+    social: "ما را دنبال کنید"
 
   cookie_notice:
-    text: "By continuing to use wemeditate.co you will be agreeing to our use of cookies."
-    learn_more: "Learn More"
+    text: "با ادامه استفاده از این وبسایت، شما با استفاده از کوکی ها موافقت خواهید کرد."
+    learn_more: "بیشتر بدانید"
 
   footer:
-    scroll_to_top: "Back to Top"
-    meditate_now: "Meditate Now"
-    music_for_meditation: "Music for meditation"
-    learn_more: "Learn more"
-    come_meditate: "Come meditate"
-    online_meditations: "Guided Meditations Online"
-    languages: "Languages"
-    self_realization: "The First Experience"
+    scroll_to_top: "بازگشت به بالای صفحه"
+    meditate_now: "هم اکنون مدیتیشن کنید"
+    music_for_meditation: "موسیقی مدیتیشن"
+    learn_more: "بیشتر بدانید"
+    come_meditate: "بیایید مدیتیشن کنیم"
+    online_meditations: "مدیتیشن های آنلاین راهنما"
+    languages: "زبان ها"
+    self_realization: "نخستین تجربه"
 
   actions_footer:
-    title: "Discover it for yourself!"
-    subtitle: "Don’t just take our word for it. Try meditating and see how you feel!"
-    sidetext: "Try Meditation"
+    title: "خودتان آن را کشف کنید!"
+    subtitle: "فقط حرف ما را قبول نکنید. مدیتیشن کنید و ببینید چه حس می کنید!"
+    sidetext: "مدیتیشن را امتحان کنید"
     actions:
-      online: "Meditate online"
-      local: "Classes near me"
+      online: "مدیتیشن آنلاین"
+      local: "کلاس های نزدیک من"
 
   author:
-    about_the_author: "About the author"
-    about_the_artist: "About the artist"
-    written_by: "Written by"
+    about_the_author: "درباره نویسنده"
+    about_the_artist: "درباره هنرمند"
+    written_by: "نوشته شده توسط"
     meditating_for:
-      one: "Meditating for 1 year"
-      other: "Meditating for %{count} years"
+      one: "1 سال است که مدیتیشن می کند"
+      other: "سال است که مدیتیشن می کند %{count} "
     countries:
       gb: UK
 
   form:
     input:
-      email: "Your email"
-      message: "Message"
+      email: "ایمیل شما"
+      message: "پیام"
       privacy:
-        signup: "By submitting this form, you agree to the processing of your personal data to receive guided meditations and other emails from WeMeditate."
-        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database."
-        learn_more: "Learn more."
-      name: "Your name"
-      class: "Select class"
+        signup: "با ارسال این فرم، شما با پردازش اطلاعات شخصی خود برای دریافت مدیتیشن های راهنما و سایر ایمیل ها از این وبسایت، موافقت می کنید."
+        contact: "با ارسال این فرم، شما با پردازش داده هایتان مطابق با سیاست حفظ حریم خصوصی ما موافقت می کنید. داده های این فرم از طریق ایمیل به تیم این وبسایت ارسال شده و در پایگاه داده های ما ذخیره نمی شود."
+        learn_more: "بیشتر بدانید."
+      name: "نام شما"
+      class: "انتخاب کلاس"
     missing:
-      email: "You must provide an email address."
-      message: "You forgot to fill out a message."
-      name: "You must provide your name."
+      email: "باید یک آدرس ایمیل وارد کنید."
+      message: "فراموش کردید پیام خود را وارد کنید."
+      name: "باید نام خود را وارد کنید."
     success:
-      subscribe: "You have been subscribed."
-      contact: "Your message has been received."
-      register: "You have been registered."
+      subscribe: "شما مشترک شده اید."
+      contact: "پیام شما دریافت شده است."
+      register: "شما ثبت نام شده اید"
     button:
-      try_again: "Try Again"
-      submitted: "Submitted"
+      try_again: "دوباره امتحان کنید"
+      submitted: "ارسال شد"
 
   player: # For the music or video player
-    pause: "Pause"
-    play: "Play"
-    '%_buffered': "% buffered"
-    skip_back: "Previous Track"
-    skip_forward: "Next Track"
-    rewind_10_secs: "Rewind 10 secs"
-    forward_10_secs: "Forward 10 secs"
-    unmute: "Unmute"
-    mute: "Mute"
-    volume: "Volume"
-    disable_captions: "Disable captions"
-    enable_captions: "Enable captions"
-    exit_fullscreen: "Exit fullscreen"
-    enter_fullscreen: "Enter fullscreen"
-    duration: "Duration"
-    current_time: "Current time" # The current time that the player is at
-    seek: "Seek"
-    play_title: "Play, %{title}" # %{title} is the title of a video or music track
+    pause: "مکث"
+    play: "پخش"
+    '%_buffered': "% buffered" # TODO: Translate this
+    skip_back: "آهنگ قبلی"
+    skip_forward: "آهنگ بعدی"
+    rewind_10_secs: "10 ثانیه به عقب"
+    forward_10_secs: "10 ثانیه به جلو"
+    unmute: "پخش کردن صدا"
+    mute: "بیصدا کردن"
+    volume: "میزان صدا"
+    disable_captions: "غیرفعال کردن زیرنویس"
+    enable_captions: "فعال کردن زیرنویس"
+    exit_fullscreen: "خروج از حالت تمام صفحه"
+    enter_fullscreen: "ورود به حالت تمام صفحه"
+    duration: "مدت زمان"
+    current_time: "زمان فعلی" # The current time that the player is at
+    seek: "Seek" # TODO: Translate this
+    play_title: "پخش, %{title}" # %{title} is the title of a video or music track
 
   articles:
-    read_more: "Read more" # Takes you to the article page
-    load_more: "Load more" # Loads more articles
-    filter: "Filter"
-    show_all: "All"
-    share: "Share: "
+    read_more: "بیشتر بخوانید" # Takes you to the article page
+    load_more: "بارگذاری بیشتر" # Loads more articles
+    filter: "فیلتر"
+    show_all: "همه"
+    share: "اشتراک گذاری: "
 
   meditations:
-    title: "Meditations"
+    title: "مدیتیشن ها"
     prescreen:
-      title: "Unlock guided meditations by awakening your %{kundalini} first"
-      kundalini: "inner energy"
-      action: "Awaken Your Inner Energy"
+      title: " نخست بیداری کندالینی تان را تجربه کنید و سپس به بخش مدیتیشن های راهنما مراجعه نمایید"
+      kundalini: "انرژی درونی"
+      action: "انرژی درونی تان را بیدار کنید"
       explanation:
-        text: "Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation."
-        learn_more: "Learn more"
+        text: "هر کسی دارای انرژی درونی است که می بایست قبل از تجربه حالت مدیتیشن، این انرژی بیدار گردد."
+        learn_more: "بیشتر بدانید"
       skip:
-        text: "Meditated with us before?"
-        action: "Continue to your guided meditation"
+        text: "آیا قبلا با ما مدیتیشن کرده اید؟"
+        action: "به مدیتیشن راهنما ادامه دهید"
     featured:
-      self_realization: "Get started"
-      daily_meditation: "Meditation of the day"
-      trending_meditation: "Trending now"
-      random_meditation: "Let fate decide"
-      random_meditation_title: "Try a random meditation"
-      random_meditation_description: "Not sure what you need right now? Just feel like taking a chance? Click play and let the universe decide."
+      self_realization: "شروع کنید"
+      daily_meditation: "مدیتیشن روز"
+      trending_meditation: "مدیتیشن پرطرفدار"
+      random_meditation: "انتخاب مدیتیشن اتفاقی"
+      random_meditation_title: "یک مدیتیشن اتفاقی را امتحان کنید"
+      random_meditation_description: "نمی دانید اکنون به چه چیز نیاز دارید؟ در پی یک شانس هستید؟ دکمه پخش را فشار دهید و اجازه دهید کائنات تصمیم بگیرد"
     custom_meditation:
-      title: "Set Up your own Meditation"
-      choose_goal: "I wish to feel ..." # Please keep ' ...' (with a space) at the end of your translation.
-      choose_duration: "I have"
-      goal_prompt: "Select goal"
-      submit: "Start meditation"
-      minutes: "min"
+      title: "مدیتیشن خودتان را تنظیم کنید"
+      choose_goal: "می خواهم این حس را داشته باشم: ..." # Please keep ' ...' (with a space) at the end of your translation.
+      choose_duration: "مدت مدیتیشن من"
+      goal_prompt: "انتخاب هدف"
+      submit: "شروع مدیتیشن"
+      minutes: "دقیقه"
     archive:
-      see_all_meditations: "See all meditations"
-      title: "Guided Meditations"
-      view_meditation: "View meditation"
-      load_more: "Load more"
+      see_all_meditations: "مشاهده همه مدیتیشن ها"
+      title: "مدیتیشن های راهنما"
+      view_meditation: "نمایش مدیتیشن"
+      load_more: "بازگذاری بیشتر"
 
   tracks:
-    subtitle: "Subtitle for music"
-    text: "Enjoy a curated collection of meditation music we produced to help you disconnect from your surroundings and achieve a true state of inner peace."
-    choose_mood: "Choose the mood"
-    choose_instruments: "Choose your sound"
-    playlist: "Playlist"
+    subtitle: "زیرنویس موسیقی"
+    text: "برای قطع ارتباط از محیط اطراف خود و دستیابی به حالت واقعی صلح درونی، می توانید از مجموعه موسیقی مدیتیشن که ما برای شما جمع آوری کرده ایم لذت ببرید."
+    choose_mood: "انتخاب حال و هوا"
+    choose_instruments: "انتخاب ساز و نوا"
+    playlist: "فهرست پخش"
 
   treatments:
-    header_title: "Technique: %{title}"
+    header_title: "تکنیک: %{title}"
     prescreen:
-      title: "Before using methods to improve meditation, you need to awaken your %{kundalini}"
-      kundalini: "inner energy"
-      action: "Awaken Your Inner Energy"
+      title: "پیش از استفاده از روش های بهبود مدیتیشن، می بایست کندالینی تان بیدار شود"
+      kundalini: "انرژی درونی"
+      action: "انرژی درونی تان را بیدار کنید"
       explanation:
-        text: "Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation."
-        learn_more: "Learn more"
+        text: "هر کسی دارای انرژی درونی است که برای تجربه حالت واقعی مدیتیشن، نخست این انرژی باید بیدار گردد."
+        learn_more: "بیشتر بدانید"
       skip:
-        text: "Meditated with us before?"
-        action: "Improve your meditation!"
+        text: "آیا قبلا با ما مدیتیشن کرده اید؟"
+        action: "مدیتیشن خود را بهبود ببخشید"
     music:
-      title: "Music"
-      description: "Music can be both relaxing and gently stimulating, bringing us into balance and allowing our minds to go thoughtless, Explore our curated collection of specially composed tracks, created to enable a deeper state of meditation."
-      read_more: "Choose from our collection"
-    read_more: "Learn more"
-    show_more: "Show More Techniques"
+      title: "موسیقی"
+      description: "موسیقی می تواند هم آرامش بخش باشد و هم انرژی دهنده، به ما تعادل بدهد و نیز ذهن ما را بی فکر نماید؛ مجموعه جمع آوری شده ما، به ویژه شامل قطعاتی است که برای رسیدن به حالت عمیق تری از مدیتیشن خلق شده اند."
+      read_more: "از مجموعه ما انتخاب کنید"
+    read_more: "بیشتر بدانید"
+    show_more: "نمایش تکنیک های بیشتر"
 
   content:
-    credit: "Credit"
-    show_more: "Show More"
+    credit: "اعتبار"
+    show_more: "نمایش بیشتر"
 
   subtle_system:
     title:
-      desktop: "Hover to learn more"
-      mobile: "Tap to learn more"
-    chakras: "Chakras"
-    channels: "Channels"
-    read_more: "Learn More"
+      desktop: "برای یادگیری بیشتر، روی عکس حرکت کنید"
+      mobile: "برای یادگیری بیشتر، روی عکس ضربه بزنید"
+    chakras: "چاکراها"
+    channels: "کانال ها"
+    read_more: "بیشتر بخوانید"
 
   classes:
-    map_title: "Meditation Classes Near Me"
-    prompt: "Enter your city or post code"
-    nearby: "Nearby"
-    loading: "Locating..."
-    found: "Click to confirm"
+    map_title: "کلاس های مدیتیشن نزدیک من"
+    prompt: "نام شهر یا کد پستی خود را وارد نمایید"
+    nearby: "در همین نزدیکی"
+    loading: "مکان یابی..."
+    found: "برای تأیید کلیک کنید"
 
   streams:
-    title: "All Live Meditations"
-    read_more: "Learn more"
+    title: "همه مدیتیشن های زنده"
+    read_more: "بیشتر بدانید"
     skip:
-      title: "Time doesn't suit you?"
-      description: "Choose an alternative stream that works for you"
-      action: "See other times"
+      title: "زمان آن مناسب شما نیست؟"
+      description: "یک مسیر جایگزین انتخاب کنید که برای شما مناسب باشد"
+      action: "دیگر زمان ها را ببینید"
     live:
-      title: "We are live now!"
-      action: "Join now"
-      description: "Press play to join our live meditation session streaming right now"
+      title: "ما الان در حال پخش زنده هستیم!"
+      action: "همین الان بپیوندید"
+      description: "دکمه پخش را فشار دهید تا همین الان به پخش زنده  مدیتیشن ما بپیوندید"
     timing:
-      days: "Days"
-      hours: "Hours"
-      minutes: "Minutes"
-      seconds: "Seconds"
+      days: "روزها"
+      hours: "ساعت ها"
+      minutes: "دقیقه ها"
+      seconds: "ثانیه ها"
 
   errors:
-    title: "Oops..."
-    coming_soon: "Coming Soon"
-    no_programs: "Meditation classes in your area are coming soon."
-    error: "Error"
-    alternatives_title: "Try one of these instead:"
-    report_issue: "Please try again, and report this issue if it continues to occur. When reporting the issue, please do your best to describe what specific actions you were taking before the issue occurred."
-    '404': "This page doesn’t exist"
-    '422': "The change you wanted was rejected"
-    '500': "We're sorry, but something went wrong"
+    title: "ای وای..."
+    coming_soon: "بزودی"
+    no_programs: "کلاس های مدیتیشن بزودی در نزدیکی شما برگزار می شوند"
+    error: "خطا"
+    alternatives_title: "برای جایگزین، یکی از اینها را انتخاب کنید"
+    report_issue: "لطفا دوباره سعی کنید و اگر این مورد تکرار شد آن را گزارش دهید. در گزارش ارسالی خود، لطفا به دقت عملی که قبل از بروز این مسأله انجام داده اید را شرح دهید."
+    '404': "این صفحه وجود ندارد"
+    '422': "تغییر مورد نظر شما رد شد"
+    '500': "متأسفیم، اما مشکلی پیش آمده است"
 
   javascript:
-    reading_time: "%minutes% minute read"
-    loading: "Loading..."
+    reading_time: "زمان مطالعه: %minutes%  دقیقه"
+    loading: "در حال بارگذاری..."
     popup:
-      close: "Close (Esc)"
-      loading: "Loading..."
-      prev: "Previous (Left arrow key)"
-      next: "Next (Right arrow key)"
+      close: "ببندید (Esc)" # TODO: Translate
+      loading: "در حال بارگذاری..."
+      prev: "قبلی (Left arrow key)" # TODO: Translate
+      next: "بعدی (Right arrow key)" # TODO: Translate
       counter: "%curr% of %total%"
-      image_error: "<a href=\"%url%\">The image</a> could not be loaded."
-      ajax_error: "<a href=\"%url%\">The content</a> could not be loaded."
+      image_error: "<a href=\"%url%\">تصویر </a> قابل بارگذاری نمی باشد"
+      ajax_error: "<a href=\"%url%\">محتوای </a> قابل بارگذاری نمی باشد"
