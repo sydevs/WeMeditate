@@ -5,7 +5,7 @@ module Admin::LookupHelper
   # Language codes don't always line up with an appropriate flag to represent that language
   # So we define that mapping manually here.
   LANGUAGE_TO_FLAG_MAP = {
-    en: 'gb', # English
+    en: 'gb', # UK for English
     ru: 'ru', # Russian
     it: 'it', # Italian
     de: 'de', # German
@@ -23,6 +23,7 @@ module Admin::LookupHelper
     sv: 'se', # Swedish
     pl: 'pl', # Polish
     bg: 'bg', # Bulgarian
+    fa: 'ir', # Iran for Farsi
   }.freeze
 
   # The icon used for different levels of urgency
