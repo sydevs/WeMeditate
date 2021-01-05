@@ -224,13 +224,13 @@ ru:
       identifier:
         zoom: zoom.us # Do not translate
         google: meet.google.com # Do not translate
-      action: # TODO: Translate
-        stream: "Watch the Broadcast"
-        zoom: "Join via Zoom"
-        google: "Join via Google Meet"
-        default: "Join via Video Call"
+      action:
+        stream: "Смотреть трансляцию"
+        zoom: "Подключиться в Zoom"
+        google: "Подключиться в Google Meet"
+        default: "Join via Video Call" # TODO: Translate
       description: "Присоединиться" 
-      alt_description: "Enjoy the meditation via broadcast, or join a video call where you can ask questions." # TODO: Translate
+      alt_description: "Задавайте вопросы в Zoom, или просто медитируйте, следуя указаниям в трансляции."
     timing:
       days: "д."
       hours: "час."
