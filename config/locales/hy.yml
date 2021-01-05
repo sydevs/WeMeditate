@@ -196,8 +196,16 @@ hy:
       action: "See other times"
     live:
       title: "We are live now!"
-      action: "Join now"
+      identifier:
+        zoom: zoom.us # Do not translate
+        google: meet.google.com # Do not translate
+      action:
+        stream: "Watch the Broadcast"
+        zoom: "Join via Zoom"
+        google: "Join via Google Meet"
+        default: "Join via Video Call"
       description: "Press play to join our live meditation session streaming right now"
+      alt_description: "Enjoy the meditation via broadcast, or join a video call where you can ask questions."
     timing:
       days: "Days"
       hours: "Hours"

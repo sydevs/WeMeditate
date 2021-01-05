@@ -212,6 +212,7 @@ uk:
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         excerpt: "Excerpt"
         stream_url: "Embeddable Stream URL"
+        video_conference_url: "Video Conference URL"
         thumbnail: "Thumbnail"
         thumbnail_id: :activerecord.attributes.stream.thumbnail # Do not translate
         location: "Location"

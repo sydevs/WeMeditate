@@ -207,8 +207,16 @@ fr:
       action: "See other times"
     live:
       title: "En direct maintenant!"
-      action: "Rejoignez-nous maintenant"
+      identifier:
+        zoom: zoom.us # Do not translate
+        google: meet.google.com # Do not translate
+      action: # TODO: Translate
+        stream: "Watch the Broadcast"
+        zoom: "Join via Zoom"
+        google: "Join via Google Meet"
+        default: "Join via Video Call"
       description: "Appuyez sur play pour rejoindre notre méditation en direct maintenant"
+      alt_description: "Enjoy the meditation via broadcast, or join a video call where you can ask questions." # TODO: Translate
     timing:
       days: "Jours"
       hours: "Heures"
