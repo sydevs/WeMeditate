@@ -38,9 +38,14 @@ class MusicPlayer {
           this.active = true
           this.validateActivePlaylist()
           this.sendAnalyticsEvent('Play')
+          this.setupMediaSession()
+          this.playButton.classList.remove('amplitude-paused')
+          this.playButton.classList.add('amplitude-playing')
         },
         pause: () => {
           this.sendAnalyticsEvent('Pause')
+          this.playButton.classList.remove('amplitude-playing')
+          this.playButton.classList.add('amplitude-paused')
         }
       }
     })
@@ -124,6 +129,63 @@ class MusicPlayer {
   sendAnalyticsEvent(type) {
     const data = Amplitude.getActiveSongMetadata()
     Util.sendAnalyticsEvent(`Music ${type}`, { globalTitle: `Song ${data.id}`, localTitle: data.name })
+  }
+
+  seek(seconds, direction) {
+    const duration = Amplitude.getSongDuration()
+    const currentTime = parseFloat(Amplitude.getSongPlayedSeconds())
+    let targetTime = direction == 'backward' ? currentTime - seconds : currentTime + seconds
+    Amplitude.setSongPlayedPercentage((targetTime / duration) * 100)
+  }
+
+  setupMediaSession() {
+    const data = Amplitude.getActiveSongMetadata()
+    // console.log(data)
+    // let artistsNames = data.artists.map(artist => artist.name).join(', ')
+    // console.log(artistsNames)
+    // const playlistId = Amplitude.getActivePlaylist()
+    // console.log(playlistId)
+    // console.log(this.activePlaylistId)
+    // console.log(this.playlists)
+    // let currentPlaylist = this.playlists[this.activePlaylistId]
+    // let playlistLength = currentPlaylist.songs.length
+    // console.log(playlistLength)
+    // let songs = Amplitude.getSongsInPlaylist(this.activePlaylistId)
+    // console.log('songs: ', songs, 'length: ', songs.length)
+    let skipSeconds = 10
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: data.name,
+        artist: this.artistsList.innerText,
+        // album: 'data.album.name',
+        artwork: [
+          { src: 'https://dummyimage.com/96x96',   sizes: '96x96',   type: 'image/png' },
+          { src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png' },
+          { src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png' },
+          { src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png' },
+          { src: 'https://dummyimage.com/384x384', sizes: '384x384', type: 'image/png' },
+          { src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png' },
+        ]
+      })
+
+      navigator.mediaSession.setActionHandler('previoustrack', () => {
+        Amplitude.prev()
+      })
+
+      navigator.mediaSession.setActionHandler('nexttrack', () => {
+        Amplitude.next()
+        Amplitude.play()
+      })
+
+      navigator.mediaSession.setActionHandler('seekbackward', () => {
+        this.seek(skipSeconds, 'backward')
+      })
+
+      navigator.mediaSession.setActionHandler('seekforward', () => {
+        this.seek(skipSeconds, 'forward')
+      })
+
+    }
   }
 
 }
