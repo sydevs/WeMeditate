@@ -1,4 +1,4 @@
-/* global Amplitude, zenscroll, Util */
+/* global Amplitude, zenscroll, Util, MediaMetadata */
 /* exported MusicPlayer */
 
 // TODO: Implement responsive artist images
@@ -146,7 +146,7 @@ class MusicPlayer {
         title: data.name,
         artist: this.artistsList.innerText,
         artwork: [
-          { src: 'https://dummyimage.com/96x96',   sizes: '96x96',   type: 'image/png' },
+          { src: 'https://dummyimage.com/96x96', sizes: '96x96', type: 'image/png' },
           { src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png' },
           { src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png' },
           { src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png' },
