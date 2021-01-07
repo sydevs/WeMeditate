@@ -140,24 +140,11 @@ class MusicPlayer {
 
   setupMediaSession() {
     const data = Amplitude.getActiveSongMetadata()
-    // console.log(data)
-    // let artistsNames = data.artists.map(artist => artist.name).join(', ')
-    // console.log(artistsNames)
-    // const playlistId = Amplitude.getActivePlaylist()
-    // console.log(playlistId)
-    // console.log(this.activePlaylistId)
-    // console.log(this.playlists)
-    // let currentPlaylist = this.playlists[this.activePlaylistId]
-    // let playlistLength = currentPlaylist.songs.length
-    // console.log(playlistLength)
-    // let songs = Amplitude.getSongsInPlaylist(this.activePlaylistId)
-    // console.log('songs: ', songs, 'length: ', songs.length)
     let skipSeconds = 10
     if ('mediaSession' in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: data.name,
         artist: this.artistsList.innerText,
-        // album: 'data.album.name',
         artwork: [
           { src: 'https://dummyimage.com/96x96',   sizes: '96x96',   type: 'image/png' },
           { src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png' },
