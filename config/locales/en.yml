@@ -143,52 +143,47 @@ en:
       load_more: "Load more"
 
   realization:
-    ready:
+    info:
       title: "Get ready for meditation"
       explanation:
         - "Find a quiet place, sit back and relax"
         - "It will only take 9 min and will literally change your life"
       action:
         start: "Start Meditation"
-        remind: "Remind me to try later"
-    paused:
-      title: :realization.ready.title
-      explanation: :realization.ready.explanation
-      action:
-        continue: "Continue Meditation"
-        finish: "I finished. (show questionnaire)"
-    survey:
-      title: "What did you feel?"
-      explanation: "Tailor your next meditation by selecting what you felt on your palms and above your head"
-      message:
-        error: "Please select atleast one option"
-      action:
-        cool: "Cool breeze"
-        warm: "Warm breeze"
-        calm: "Just calm inside"
-        nothing: "Nothing"
-        next: "Next"
-    course:
-      title: "Great start!"
-      explanation: "Continue your journey with our free 4-week course delivered straight to your inbox"
-      action: "Get my course"
-      form:
-        notice: "By submitting you agree to receive your meditation course and other occasional meditation content"
-    remind:
-      title: "Get a reminder to meditate"
-      subtitle: "NO TIME RIGHT NOW?"
-      explanation: "We will send a link to get back to your meditation"
-      form:
-        notice: "By submitting you agree to receive your meditation course and other occasional meditation content"
-      action:
-        send: "Send"
+        continue: "Continue"
+        reminder: "Remind me to try later"
+        skip: "I've finished (show questionnaire)"
+    form:
+      email: "Your email"
+      notice: "By submitting you agree to receive your meditation course and other occasional meditation content"
+      reminder:
+        title: "Get a reminder to meditate"
+        subtitle: "NO TIME RIGHT NOW?"
+        description: "We'll send a link to get back to your meditation."
+        submit: "Signup"
         back: "Take me back to meditation"
+      course:
+        title: "Great start!"
+        description: "Continue your journey with our free 4-week course delivered straight to your inbox."
+        submit: "Get my course"
+        skip: "No thanks"
     thanks:
       title: "Thank you"
       subtitle: "You will receive your first email shortly"
       explanation: "Invite your friends to try it out"
-      action:
-        share: "Share"
+      action: "Share"
+      share_copied: "Copied!"
+    survey:
+      title: "What did you feel?"
+      explanation: "Tailor your next meditation by selecting what you felt on your palms or above your head."
+      error: "Please select atleast one option."
+      options:
+        cool: "Cool breeze"
+        warm: "Warm breeze"
+        calm: "Just calm inside"
+        nothing: "Nothing"
+      action: "Next"
+      skip: "No thanks"
 
   tracks:
     subtitle: "Subtitle for music"

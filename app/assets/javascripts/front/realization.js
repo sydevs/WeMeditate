@@ -5,137 +5,108 @@ class Realization {
 
   constructor(element) {
     this.container = element
-    this.readyBtn = element.querySelector('.js-ready-button')
-    this.readyRemindBtn = element.querySelector('.js-ready-remind-link')
-    this.pausedBtn = element.querySelector('.js-paused-button')
-    this.pausedFinishBtn = element.querySelector('.js-paused-finish-link')
-    this.remindBtn = element.querySelector('.js-remind-button')
-    this.remindBackBtn = element.querySelector('.js-remind-back-link')
-    this.surveyBtns = element.querySelectorAll('.js-survey-button')
-    this.surveyMsg = element.querySelector('.js-survey-message')
-    this.surveyNextBtn = element.querySelector('.js-survey-next-link')
-    this.courseBtn = element.querySelector('.js-course-button')
-    this.thanksBtn = element.querySelector('.js-thanks-button')
-    this.shareBtnsContainer = element.querySelector('.js-share-button-wrapper')
-    this.shareBtns = element.querySelectorAll('.js-share-button')
+    
+    this.display = this.container.dataset.screen
+    history.pushState({ screen: this.display }, '', `/meditations/first-experience/${this.display}`)
+    window.addEventListener('popstate', () => this.checkDisplay())
 
     this.desktopVideo = element.querySelector('.js-video-desktop')
     this.mobileVideo = element.querySelector('.js-video-mobile')
-
-    this.courseForm = element.querySelector('.js-course-form')
-    this.courseFeelInput = this.courseForm.querySelector('#signup_properties')
-
-    this.remindForm = element.querySelector('.js-remind-form')
-
-    this.courseForm.addEventListener('ajax:send', (_event, _xhr) => this.formSending(this.courseBtn))
-    this.courseForm.addEventListener('ajax:success', (_event, _data, _status, _xhr) => this.formSuccess(this.courseBtn))
-    this.courseForm.addEventListener('ajax:error', (_event, _xhr, _status, _error) => this.formError(this.courseBtn))
-    this.remindForm.addEventListener('ajax:send', (_event, _xhr) => this.formSending(this.remindBtn))
-    this.remindForm.addEventListener('ajax:success', (_event, _data, _status, _xhr) => this.formSuccess(this.remindBtn))
-    this.remindForm.addEventListener('ajax:error', (_event, _xhr, _status, _error) => this.formError(this.remindBtn))
-
-    this.display = this.container.dataset.screen
-    history.pushState({ screen: this.display }, '', `/meditations/first-experience/${this.display}`)
+    this.surveyOptions = element.querySelectorAll('input[name="survey[]"]')
+    this.surveyInput = element.querySelector('input[name="signup[survey]"]')
+    this.changeableInputs = element.querySelectorAll('input[data-for]')
+    this.form = element.querySelector('form')
+    this.submitButton = element.querySelector('button[type=submit]')
     
-    this.readyBtn.addEventListener('click', () => this.displayScreen('video'))
-    this.readyRemindBtn.addEventListener('click', () => this.displayScreen('remind'))
-    this.pausedBtn.addEventListener('click', () => this.displayScreen('video'))
-    this.pausedFinishBtn.addEventListener('click', () => this.displayScreen('survey'))
-    this.remindBackBtn.addEventListener('click', () => this.displayScreen('ready'))
-    this.surveyNextBtn.addEventListener('click', () => this.passFeel())
-    this.thanksBtn.addEventListener('click', () => this.share())
-    
-    for (let i = 0; i < this.surveyBtns.length; i++) {
-      const surveyBtn = this.surveyBtns[i]
-      surveyBtn.addEventListener('click', () => surveyBtn.classList.toggle('button--active'))
+    this.form.addEventListener('ajax:send', (_event, _xhr) => this.formSending())
+    this.form.addEventListener('ajax:success', (_event, _data, _status, _xhr) => this.formSuccess())
+    this.form.addEventListener('ajax:error', (_event, _xhr, _status, _error) => this.formError())
+
+    const actions = element.querySelectorAll('[data-goto]')
+    for (let i = 0; i < actions.length; i++) {
+      actions[i].addEventListener('click', event => this.displayScreen(event.currentTarget.dataset.goto))
     }
 
-    window.addEventListener('popstate', () => this.checkDisplay())
-    
-    if (typeof zenscroll !== 'undefined') {
-      this._scrollTo(this.display)
-    }
-
+    element.querySelector('.js-permalink').addEventListener('focus', event => {
+      event.currentTarget.select()
+      event.currentTarget.setSelectionRange(0, 99999) // For mobile
+      document.execCommand('copy')
+    })
   }
 
   _scrollTo(target) {
+    return // Temporarily disable this
+
+    if (!zenscroll) return // Return if zenscroll isn't defined
     let el = document.getElementById(target)
     zenscroll.toY(zenscroll.getTopOf(el) - 35)
   }
 
   checkDisplay() {
     let slug = window.location.pathname.split('/')[3] || 'ready'
-    this.container.dataset.screen = slug
+    this.displayScreen(slug)
   }
 
   displayScreen(screen) {
+    if (this.display == screen) return // Do nothing if it's the same screen.
+
+    if (this.display == 'video') {
+      this.player.pause() // Pause video if not already paused.
+    }
+
+    if (this.display == 'survey') {
+      let surveyValue = []
+
+      for (let i = 0; i < this.surveyOptions.length; i++) {
+        const option = this.surveyOptions[i]
+        if (option.checked) {
+          surveyValue.push(option.value)
+        }
+      }
+
+      this.surveyInput.value = surveyValue.join(',')
+    }
+
     this.display = screen
     this.container.dataset.screen = this.display
     history.pushState({ screen: this.display }, '', `/meditations/first-experience/${this.display}`)
 
     if (this.display == 'video') {
-      if ($(this.desktopVideo).is(':visible')) {
-        jwplayer('botr_1oDJAjaD_8SfP7aMx_div').on('ready', this.loadJWPlayer('botr_1oDJAjaD_8SfP7aMx_div'))
-        jwplayer('botr_1oDJAjaD_8SfP7aMx_div').play()
-      } else {
-        jwplayer('botr_8FivThod_NaHiexhY_div').on('ready', this.loadJWPlayer('botr_8FivThod_NaHiexhY_div'))
-        jwplayer('botr_8FivThod_NaHiexhY_div').play()
+      if (!this.player) {
+        const isDesktop = $(this.desktopVideo).is(':visible')
+        const videoId = isDesktop ? 'botr_1oDJAjaD_8SfP7aMx_div' : 'botr_8FivThod_NaHiexhY_div'
+        this.player = this.loadJWPlayer(videoId)
       }
+
+      this.player.play()
     }
 
-    this._scrollTo(this.display)
+    // Disable any form inputs which aren't for the current screen.
+    const inputs = this.changeableInputs
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].disabled = (inputs[i].dataset.for != this.display)
+    }
+
+    this._scrollTo('#realization')
   }
 
   loadJWPlayer(div) {
-    let player = jwplayer(div)
-    this.display = 'video'
-
-    player.on('pause', () => {
-      this.displayScreen('paused')
-    })
-
-    player.on('complete', () => {
-      this.displayScreen('survey')
-    })
-
-    this._scrollTo(this.display)
+    const player = jwplayer(div)
+    player.on('pause', () => this.displayScreen('paused'))
+    player.on('complete', () => this.displayScreen('survey'))
+    return player
   }
 
-  passFeel() {
-    let feelings = []
-    let feelFlag = false
-    for (let i = 0; i < this.surveyBtns.length; i++) {
-      let surveyBtn = this.surveyBtns[i]
-      if (surveyBtn.classList.contains('button--active')) {
-        feelFlag = true
-        feelings.push(surveyBtn.id)
-      }
-    }
-    if (feelFlag) {
-      let props = { feel: feelings }
-      this.displayScreen('course')
-      this.courseFeelInput.value = JSON.stringify(props)
-    } else {
-      $(this.surveyMsg).show()
-    }
+  formSending() {
+    this.submitButton.innerText = 'Loading...'
   }
 
-  formSending(btn) {
-    btn.innerText = 'Loading...'
-  }
-
-  formSuccess(btn) {
+  formSuccess() {
     this.displayScreen('thanks')
-
-    if (btn == this.courseBtn) {
-      btn.innerText = 'Get my course'
-    } else if (btn == this.remindBtn) {
-      btn.innerText = 'Send'
-    }
   }
 
-  formError(btn) {
-    btn.innerText = 'Try Again...'
+  formError() {
+    this.submitButton.innerText = 'Try Again...'
   }
 
   share() {
@@ -148,13 +119,9 @@ class Realization {
     if (navigator.share) {
       Util.share(shareData)
     } else {
-      this.shareFallback(shareData)
+      this.shareBtnsContainer.classList.add('realization__share__button-wrapper--open')
+      Util.shareFallback(shareData, this.shareBtns)
     }
-  }
-
-  shareFallback(shareData) {
-    this.shareBtnsContainer.classList.add('realization__share__button-wrapper--open')
-    Util.shareFallback(shareData, this.shareBtns)
   }
 
 }
