@@ -49,12 +49,12 @@ class ApplicationUploader < CarrierWave::Uploader::Base
     "#{secure_token(10)}.#{file.extension}" if original_filename.present?
   end
 
-  def to_json
+  def to_json _obj
     if self.class::VERSIONS.present?
       {
         url: url,
         type: file.extension,
-        versions: self.class::VERSIONS.map { |key, width| { width: width, url: url(key) } }
+        versions: self.class::VERSIONS.map { |key, width| { width: width, url: url(key) } },
       }
     else
       { url: url }
