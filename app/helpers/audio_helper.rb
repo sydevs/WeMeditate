@@ -25,13 +25,16 @@ module AudioHelper
         end
       end
 
+      image = track.artists.sample&.image
+
       # Return the data for this song to be added to the songs list
       {
         index: index,
         name: track.name,
         artists: amplitude_artists_data(track.artists),
         url: track.audio_url,
-        cover_art_url: track.artists.sample&.image_url,
+        cover_art_url: image&.url,
+        image: image&.to_json,
         duration: track.duration_as_string,
       }
     end

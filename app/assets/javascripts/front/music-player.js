@@ -141,18 +141,14 @@ class MusicPlayer {
   setupMediaSession() {
     const data = Amplitude.getActiveSongMetadata()
     let skipSeconds = 10
+
     if ('mediaSession' in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: data.name,
         artist: this.artistsList.innerText,
-        artwork: [
-          { src: data.cover_art_url, sizes: '96x96', type: 'image/jpg' },
-          { src: data.cover_art_url, sizes: '128x128', type: 'image/jpg' },
-          { src: data.cover_art_url, sizes: '192x192', type: 'image/jpg' },
-          { src: data.cover_art_url, sizes: '256x256', type: 'image/jpg' },
-          { src: data.cover_art_url, sizes: '384x384', type: 'image/jpg' },
-          { src: data.cover_art_url, sizes: '512x512', type: 'image/jpg' },
-        ]
+        artwork: data.image.versions.map(version => {
+          return { src: version.url, sizes: `${version.width}x${version.width}`, type: `image/${version.type}` }
+        })
       })
 
       navigator.mediaSession.setActionHandler('previoustrack', () => {
