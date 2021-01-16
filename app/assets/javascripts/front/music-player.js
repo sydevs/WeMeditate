@@ -151,22 +151,25 @@ class MusicPlayer {
         })
       })
 
-      navigator.mediaSession.setActionHandler('previoustrack', () => {
-        Amplitude.prev()
-      })
+      const actionHandlers = {
+        previoustrack: () => {
+          Amplitude.prev()
+        },
+        nexttrack: () => {
+          Amplitude.next()
+          Amplitude.play()
+        },
+        seekbackward: () => {
+          this.seek(skipSeconds, 'backward')
+        },
+        seekforward: () => {
+          this.seek(skipSeconds, 'forward')
+        }
+      }
 
-      navigator.mediaSession.setActionHandler('nexttrack', () => {
-        Amplitude.next()
-        Amplitude.play()
-      })
-
-      navigator.mediaSession.setActionHandler('seekbackward', () => {
-        this.seek(skipSeconds, 'backward')
-      })
-
-      navigator.mediaSession.setActionHandler('seekforward', () => {
-        this.seek(skipSeconds, 'forward')
-      })
+      for ( let [action, handler] of Object.entries(actionHandlers) ) {
+        navigator.mediaSession.setActionHandler(action, handler)
+      }
 
     }
   }
