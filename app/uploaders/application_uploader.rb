@@ -1,6 +1,6 @@
 class ApplicationUploader < CarrierWave::Uploader::Base
 
-  storage ENV['GCLOUD_BUCKET'].present? ? :gcloud : :file
+  storage ENV['GCLOUD_BUCKET'].present? ? :fog : :file
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
