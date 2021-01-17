@@ -25,7 +25,7 @@ module AudioHelper
         end
       end
 
-      image = track.artists.sample&.image
+      image = track.artists.first&.image
 
       # Return the data for this song to be added to the songs list
       {
