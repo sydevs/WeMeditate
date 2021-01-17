@@ -1,7 +1,6 @@
 RouteTranslator.config do |config|
   config.locale_param_key = :locale
   config.hide_locale = true
-  config.verify_host_path_consistency = true
 
   if Rails.env.production?
     Rails.configuration.admin_domain = 'admin.wemeditate.co'
