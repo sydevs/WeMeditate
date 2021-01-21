@@ -12,7 +12,7 @@ class ListTool extends EditorTool {
   // Sanitizer data before saving
   static get sanitize() {
     return {
-      items: { br: true },
+      items: {},
     }
   }
 
