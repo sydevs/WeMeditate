@@ -1,4 +1,4 @@
-/* global Amplitude, zenscroll, Util */
+/* global Amplitude, zenscroll, Util, MediaMetadata */
 /* exported MusicPlayer */
 
 // TODO: Implement responsive artist images
@@ -38,9 +38,14 @@ class MusicPlayer {
           this.active = true
           this.validateActivePlaylist()
           this.sendAnalyticsEvent('Play')
+          this.setupMediaSession()
+          this.playButton.classList.remove('amplitude-paused')
+          this.playButton.classList.add('amplitude-playing')
         },
         pause: () => {
           this.sendAnalyticsEvent('Pause')
+          this.playButton.classList.remove('amplitude-playing')
+          this.playButton.classList.add('amplitude-paused')
         }
       }
     })
@@ -124,6 +129,49 @@ class MusicPlayer {
   sendAnalyticsEvent(type) {
     const data = Amplitude.getActiveSongMetadata()
     Util.sendAnalyticsEvent(`Music ${type}`, { globalTitle: `Song ${data.id}`, localTitle: data.name })
+  }
+
+  seek(seconds, direction) {
+    const duration = Amplitude.getSongDuration()
+    const currentTime = parseFloat(Amplitude.getSongPlayedSeconds())
+    let targetTime = direction == 'backward' ? currentTime - seconds : currentTime + seconds
+    Amplitude.setSongPlayedPercentage((targetTime / duration) * 100)
+  }
+
+  setupMediaSession() {
+    const data = Amplitude.getActiveSongMetadata()
+    let skipSeconds = 10
+
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: data.name,
+        artist: this.artistsList.innerText,
+        artwork: data.image.versions.map(version => {
+          return { src: version.url, sizes: `${version.width}x${version.width}`, type: `image/${version.type}` }
+        })
+      })
+
+      const actionHandlers = {
+        previoustrack: () => {
+          Amplitude.prev()
+        },
+        nexttrack: () => {
+          Amplitude.next()
+          Amplitude.play()
+        },
+        seekbackward: () => {
+          this.seek(skipSeconds, 'backward')
+        },
+        seekforward: () => {
+          this.seek(skipSeconds, 'forward')
+        }
+      }
+
+      for ( let [action, handler] of Object.entries(actionHandlers) ) {
+        navigator.mediaSession.setActionHandler(action, handler)
+      }
+
+    }
   }
 
 }

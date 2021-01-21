@@ -49,6 +49,18 @@ class ApplicationUploader < CarrierWave::Uploader::Base
     "#{secure_token(10)}.#{file.extension}" if original_filename.present?
   end
 
+  def to_json _obj = nil
+    if self.class::VERSIONS.present?
+      {
+        url: url,
+        type: file.extension,
+        versions: self.class::VERSIONS.map { |key, width| { width: width, url: url(key) } },
+      }
+    else
+      { url: url }
+    end
+  end
+
   protected
 
     # This checks if a secure token already exists for this file, and otherwise generates a new one.
