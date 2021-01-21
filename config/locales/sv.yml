@@ -104,6 +104,7 @@ sv:
     play_title: "Spela, %{title}" # %{title} is the title of a video or music track
 
   articles:
+    table_of_contents: "Table of Contents" # TODO: Translate
     read_more: "Läs mer" # Takes you to the article page
     load_more: "Ladda fler" # Loads more articles
     filter: "Filtrera"

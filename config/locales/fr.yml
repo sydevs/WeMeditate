@@ -114,6 +114,7 @@ fr:
     play_title: "Lire %{title}" # %{title} is the title of a video or music track
 
   articles:
+    table_of_contents: "Table of Contents" # TODO: Translate
     read_more: "Lire la Suite" # Takes you to the article page
     load_more: "En Télécharger Plus" # Loads more articles
     filter: "Filtre"

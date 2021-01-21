@@ -100,6 +100,7 @@ it:
         thumbnail_id: "Miniatura (png)"
         vimeo_id: "Video principale (Vimeo ID)"
         date: "Data di riferimento"
+        table_of_contents: "Use Table of Contents" # TODO: Translate
         content: "Contenuto"
         metatags: "Metadata"
         coordinates: "Luogo"

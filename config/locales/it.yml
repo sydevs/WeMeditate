@@ -105,6 +105,7 @@ it:
     play_title: "Suona, %{title}" # %{title} is the title of a video or music track
 
   articles:
+    table_of_contents: "Table of Contents" # TODO: Translate
     read_more: "Continua a leggere"
     load_more: "Carica Altri"
     filter: "Filtra"

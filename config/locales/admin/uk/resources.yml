@@ -131,6 +131,7 @@ uk:
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
         vimeo_id: "Рекомендоване відео (Vimeo ID)"
         date: "Рекомендована дата"
+        table_of_contents: "Use Table of Contents" # TODO: Translate
         content: "Контент"
         metatags: "Метатеги"
         coordinates: "Розташування"

@@ -146,6 +146,7 @@ ru:
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
         vimeo_id: "Представленное Видео (Vimeo ID)"
         date: "Дата"
+        table_of_contents: "Use Table of Contents" # TODO: Translate
         content: "Контент"
         metatags: "Метаданные"
         coordinates: "Местоположение"

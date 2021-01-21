@@ -99,6 +99,7 @@ es:
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
         vimeo_id: "Vídeo Destacado (Vimeo ID)"
         date: "Fecha Destacada"
+        table_of_contents: "Use Table of Contents" # TODO: Translate
         content: "Contenido"
         metatags: "Metadatos"
         coordinates: "Localización"

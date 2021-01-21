@@ -116,6 +116,7 @@ ro:
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
         vimeo_id: "Video Recomandat (Vimeo ID)"
         date: "Dată"
+        table_of_contents: "Use Table of Contents" # TODO: Translate
         content: "Conținut"
         metatags: "Metadata"
         coordinates: "Locație"

@@ -105,6 +105,7 @@ uk:
     play_title: "Відтворити, %{title}" # %{title} is the title of a video or music track
 
   articles:
+    table_of_contents: "Table of Contents" # TODO: Translate
     read_more: "Детальніше" # Takes you to the article page
     load_more: "Завантажити ще" # Loads more articles
     filter: "Фільтрувати"

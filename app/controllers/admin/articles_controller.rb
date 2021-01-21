@@ -19,7 +19,7 @@ module Admin
           params.fetch(:article, {}).permit(
             :name, :slug, :category_id, :priority, :state, :published_at, :owner_id, :article_type,
             :excerpt, :banner_id, :thumbnail_id, :vimeo_id, :content,
-            :author_id, :latitude, :longitude, :date,
+            :author_id, :latitude, :longitude, :date, :table_of_contents,
             metatags: {}
           )
         else
