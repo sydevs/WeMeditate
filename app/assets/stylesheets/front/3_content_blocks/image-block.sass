@@ -44,13 +44,20 @@
     margin: 50px 0
 
     @include tablet-or-larger
-      margin: 40px 0
+      margin: 24px 0
 
   .content__image__img
     width: auto
     min-height: 300px
     max-width: 100%
     max-height: 400px
+
+  .content__image__item__content
+    display: flex
+
+  .content__image__caption
+    width: 0
+    flex-grow: 1
 
   &-right .content__image__credit
     right: auto
