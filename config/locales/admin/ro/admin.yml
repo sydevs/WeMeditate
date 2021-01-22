@@ -123,6 +123,7 @@ ro:
       start_details_before_content: "Începe traducerea detaliilor mai întâi, apoi a conținutul."
 
     hints:
+      table_of_contents_position: "after block:" # TODO: Translate
       excerpt: "Aceasta este o scurtă previzualizare a conținutului %{page} care va fi afișat în lista %{page}."
       article_visibility: "Aceasta determină locul în care va apărea un articol pe pagina de Inspirație."
       article_author: "Profilul care va fi afișat în conformitate cu articolul de pe site-ul web."

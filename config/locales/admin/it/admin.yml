@@ -120,6 +120,7 @@ it:
       start_details_before_content: "Tradurre prima i dettagli poi il contenuto."
 
     hints:
+      table_of_contents_position: "after block:" # TODO: Translate
       excerpt: "Questa è una anteprima del contenuto della %{page} che verrà mostrato nella lista %{page}."
       article_visibility: "Questo specifica dove apparirà l'articolo nella pagina Ispirazioni."
       article_author: "Questo profilo viene mostrato sotto l'articolo quando questo viene pubblicato."

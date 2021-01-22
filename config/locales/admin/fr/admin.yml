@@ -121,6 +121,7 @@ fr:
       start_details_before_content: "Commencez par traduire les détails en premier, puis le contenu."
 
     hints:
+      table_of_contents_position: "after block:" # TODO: Translate
       excerpt: "Voici un bref aperçu du contenu de %{page} qui sera affiché dans les listes %{page}."
       article_visibility: "Les articles avec une plus grande visibilité seront affichés au plus près du haut de la Page Inspiration."
       article_author: "Le profil qui sera affiché sous l'article sur le site."

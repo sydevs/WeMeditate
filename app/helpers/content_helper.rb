@@ -8,13 +8,30 @@ module ContentHelper
     return content_for(:content) if content_for?(:content)
     return unless record.parsed_content.present?
 
-    record.content_blocks.each do |block|
+    toc_position = record.try(:table_of_contents_position) || 0 if record.try(:table_of_contents?)
+    record.content_blocks.each_with_index do |block, index|
       next if block['type'] == 'splash' && skip_splash
 
+      concat render_table_of_contents(record) if !toc_position.nil? && index == toc_position
       concat render "content_blocks/#{block['type']}_block", block: block['data'].deep_symbolize_keys, record: record
     end
 
     return nil
+  end
+
+  def render_table_of_contents record
+    content_tag(:div, class: 'contents') do
+      content_tag(:div, class: 'contents__list') do
+        record.content_blocks.each do |block|
+          next unless block['type'] == 'header'
+          
+          concat content_tag(:a, block['data']['text'], {
+            class: "contents__item contents__item--#{block['data']['level'][1].to_i - 1}",
+            href: "##{block['data']['text'].parameterize}",
+          })
+        end
+      end
+    end
   end
 
   def render_splash_block record, overrides = {}
