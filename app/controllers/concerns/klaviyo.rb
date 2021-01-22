@@ -43,9 +43,7 @@ module Klaviyo
     def self.request path, request_params
       HTTParty.post("https://a.klaviyo.com/#{path}", {
         body: request_params.to_json,
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        headers: { 'Content-Type': 'application/json' },
       })
     end
 
