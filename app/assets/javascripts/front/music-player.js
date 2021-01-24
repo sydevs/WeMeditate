@@ -41,11 +41,19 @@ class MusicPlayer {
           this.setupMediaSession()
           this.playButton.classList.remove('amplitude-paused')
           this.playButton.classList.add('amplitude-playing')
+          if ('mediaSession' in navigator) {
+            navigator.mediaSession.playbackState = 'playing'
+            this.updatePositionState()
+          }
         },
         pause: () => {
           this.sendAnalyticsEvent('Pause')
           this.playButton.classList.remove('amplitude-playing')
           this.playButton.classList.add('amplitude-paused')
+          if ('mediaSession' in navigator) {
+            navigator.mediaSession.playbackState = 'paused'
+            this.updatePositionState()
+          }
         }
       }
     })
@@ -133,9 +141,19 @@ class MusicPlayer {
 
   seek(seconds, direction) {
     const duration = Amplitude.getSongDuration()
-    const currentTime = parseFloat(Amplitude.getSongPlayedSeconds())
+    const currentTime = Amplitude.getSongPlayedSeconds()
     let targetTime = direction == 'backward' ? currentTime - seconds : currentTime + seconds
     Amplitude.setSongPlayedPercentage((targetTime / duration) * 100)
+  }
+
+  updatePositionState() {
+    if ('setPositionState' in navigator.mediaSession) {
+      navigator.mediaSession.setPositionState({
+        duration: Amplitude.getSongDuration(),
+        playbackRate: Amplitude.getPlaybackSpeed(),
+        position: Amplitude.getSongPlayedSeconds()
+      })
+    }
   }
 
   setupMediaSession() {
@@ -154,16 +172,28 @@ class MusicPlayer {
       const actionHandlers = {
         previoustrack: () => {
           Amplitude.prev()
+          navigator.mediaSession.setPositionState(null)
+          this.updatePositionState()
         },
         nexttrack: () => {
           Amplitude.next()
           Amplitude.play()
+          navigator.mediaSession.setPositionState(null)
+          this.updatePositionState()
         },
         seekbackward: () => {
           this.seek(skipSeconds, 'backward')
+          this.updatePositionState()
         },
         seekforward: () => {
           this.seek(skipSeconds, 'forward')
+          this.updatePositionState()
+        },
+        seekto: (event) => {
+          const duration = Amplitude.getSongDuration()
+          let percent = (event.seekTime / duration) * 100
+          Amplitude.setSongPlayedPercentage(percent)
+          this.updatePositionState()
         }
       }
 
