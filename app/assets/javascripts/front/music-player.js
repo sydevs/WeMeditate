@@ -33,6 +33,10 @@ class MusicPlayer {
           this.active = true
           this.updateSongArtists()
           this.sendAnalyticsEvent('Change')
+          if ('mediaSession' in navigator) {
+            navigator.mediaSession.setPositionState(null)
+            this.updatePositionState()
+          }
         },
         play: () => {
           this.active = true
@@ -143,6 +147,7 @@ class MusicPlayer {
     const duration = Amplitude.getSongDuration()
     const currentTime = Amplitude.getSongPlayedSeconds()
     let targetTime = direction == 'backward' ? currentTime - seconds : currentTime + seconds
+    targetTime = targetTime <= 0 ? 0.1 : targetTime >= duration ? duration - 0.1 : targetTime
     Amplitude.setSongPlayedPercentage((targetTime / duration) * 100)
   }
 
@@ -172,14 +177,10 @@ class MusicPlayer {
       const actionHandlers = {
         previoustrack: () => {
           Amplitude.prev()
-          navigator.mediaSession.setPositionState(null)
-          this.updatePositionState()
         },
         nexttrack: () => {
           Amplitude.next()
           Amplitude.play()
-          navigator.mediaSession.setPositionState(null)
-          this.updatePositionState()
         },
         seekbackward: () => {
           this.seek(skipSeconds, 'backward')
@@ -191,8 +192,9 @@ class MusicPlayer {
         },
         seekto: (event) => {
           const duration = Amplitude.getSongDuration()
-          let percent = (event.seekTime / duration) * 100
-          Amplitude.setSongPlayedPercentage(percent)
+          let targetTime = event.seekTime
+          targetTime = targetTime <= 0 ? 0.1 : targetTime >= duration ? duration - 0.1 : targetTime
+          Amplitude.setSongPlayedPercentage((targetTime / duration) * 100)
           this.updatePositionState()
         }
       }
