@@ -58,6 +58,11 @@ class MusicPlayer {
             navigator.mediaSession.playbackState = 'paused'
             this.updatePositionState()
           }
+        },
+        seeked: () => {
+          if ('mediaSession' in navigator) {
+            this.updatePositionState()
+          }
         }
       }
     })
