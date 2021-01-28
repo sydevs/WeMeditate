@@ -28,3 +28,10 @@
 .env.local
 .env.development.local
 .env.test.local
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
