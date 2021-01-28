@@ -104,7 +104,6 @@ nl:
     play_title: "Speel %{title} af" # %{title} is the title of a video or music track
 
   articles:
-    table_of_contents: "Table of Contents" # TODO: Translate
     read_more: "Meer lezen" # Takes you to the article page
     load_more: "Meer laden" # Loads more articles
     filter: "Filter"

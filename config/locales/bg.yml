@@ -103,7 +103,6 @@ bg:
     play_title: "Пусни, %{title}" # %{title} is the title of a video or music track
 
   articles:
-    table_of_contents: "Table of Contents" # TODO: Translate
     read_more: "Прочетете повече" # Takes you to the article page
     load_more: "Зареди повече" # Loads more articles
     filter: "Филтър"

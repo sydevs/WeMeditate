@@ -104,7 +104,6 @@ es:
     play_title: "Reproducir, %{title}" # %{title} is the title of a video or music track
 
   articles:
-    table_of_contents: "Table of Contents" # TODO: Translate
     read_more: "Leer más" # Takes you to the article page
     load_more: "Cargar más" # Loads more articles
     filter: "Filtrar"

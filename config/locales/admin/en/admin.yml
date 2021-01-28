@@ -122,7 +122,6 @@ en:
       start_details_before_content: "Start translating details first, then the content."
 
     hints:
-      table_of_contents_position: "after block:"
       excerpt: "This is a short preview of the %{page} content that will be shown in %{page} listings."
       article_visibility: "This determines where an article will appear on the Inspiration page."
       article_author: "The profile which will be shown under the article on the website."

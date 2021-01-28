@@ -7,11 +7,6 @@ ruby:
   data = { upload: polymorphic_admin_path([:admin, @record, MediaFile]), triangle: image_path('graphics/triangle.svg') }
 
 = simple_form_for @record, url: polymorphic_admin_path([:admin, @record]), html: { id: "editor-form" } do |f|
-  - if @record.respond_to? :table_of_contents
-    .inline.fields
-      = f.input :table_of_contents, wrapper: :semantic_checkbox_toggle
-      = f.input :table_of_contents_position, label: translate('admin.hints.table_of_contents_position')
-
   - locale = !@record.try(:has_translation?, :content) ? @record.original_locale : Globalize.locale
   - Globalize.with_locale(locale) do
     - content = has_draft ? @record.parsed_draft_content : (@record.parsed_content || {})

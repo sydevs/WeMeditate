@@ -105,7 +105,6 @@ hi:
     play_title: "Play, %{title}" # %{title} is the title of a video or music track
 
   articles:
-    table_of_contents: "Table of Contents"
     read_more: "Read more" # Takes you to the article page
     load_more: "Load more" # Loads more articles
     filter: "Filter"

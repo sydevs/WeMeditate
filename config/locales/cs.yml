@@ -104,7 +104,6 @@ cs:
     play_title: "Přehrát, %{title}" # %{title} is the title of a video or music track
 
   articles:
-    table_of_contents: "Table of Contents" # TODO: Translate
     read_more: "Přečtěte si více" # Takes you to the article page
     load_more: "Načíst další" # Loads more articles
     filter: "Filtrovat"

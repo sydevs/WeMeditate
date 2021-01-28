@@ -28,15 +28,6 @@ main.scrollspy-target id=dom_id(@article)
         .author__reading_time.js-reading-time
 
   - cache @article do
-    /- if @article.table_of_contents?
-      .contents
-        .contents__header = translate('articles.table_of_contents')
-        .contents__list
-          - @article.content_blocks.each do |block|
-            - next unless block['type'] == 'header'
-            a.contents__item class="contents__item--#{block['data']['level'][1].to_i - 1}" href="##{block['data']['text'].parameterize}"
-              = block['data']['text']
-
     .content = render_content @article
 
 p = sharing_links
