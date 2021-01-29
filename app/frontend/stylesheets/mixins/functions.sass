@@ -83,13 +83,14 @@
 // Implements a background image which is roughly responsive to screen size and dpi.
 // Assumes that the file has `mobile`, `tablet`, and `desktop` variations.
 @mixin responsive-background($path, $extension)
-  background-image: image-url("#{$path}-mobile.#{$extension}")
+  // TODO: Fix this for webpacker
+  //background-image: image-url("#{$path}-mobile.#{$extension}")
 
-  @media (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px}), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
-    background-image: image-url("#{$path}-tablet.#{$extension}")
+  //@media (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px}), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+  //  background-image: image-url("#{$path}-tablet.#{$extension}")
 
-  @media (min-width: #{$laptop-width}), (min-width: #{$tablet-width}) and (-webkit-min-device-pixel-ratio: 2), (min-width: #{$tablet-width}) and (min-resolution: 192dpi)
-    background-image: image-url("#{$path}-desktop.#{$extension}")
+  //@media (min-width: #{$laptop-width}), (min-width: #{$tablet-width}) and (-webkit-min-device-pixel-ratio: 2), (min-width: #{$tablet-width}) and (min-resolution: 192dpi)
+  //  background-image: image-url("#{$path}-desktop.#{$extension}")
 
 
 // These mixins are used to animate the equalizer animation that is shown in the play button when you are listening to a music track.

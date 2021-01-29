@@ -42,7 +42,8 @@
     content: ''
     display: block
     position: absolute
-    background: image-url('graphics/triangle.svg') no-repeat center
+    // TODO: Fix this for webpacker
+    // background: image-url('graphics/triangle.svg') no-repeat center
     background-size: cover
     z-index: 1
 
@@ -175,7 +176,7 @@
     #{$side}: 0
 
   @each $color in blue orange gray
-    .gradient--#{$side}.gradient--#{$color}:before
+    .gradient--#{$side}.gradient--#{"" + $color}:before
       @include gradient(to #{$opposite}, $color)
 
   .gradient--#{$side}.gradient--wisdom:before
