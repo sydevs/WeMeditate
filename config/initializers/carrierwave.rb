@@ -1,5 +1,5 @@
 CarrierWave.configure do |config|
-  config.asset_host = ActionController::Base.asset_host
+  config.asset_host = "https://#{ENV['GCLOUD_BUCKET']}" if ENV['GCLOUD_BUCKET']
 
   if ENV['GCLOUD_BUCKET'].present?
     config.storage = :fog
