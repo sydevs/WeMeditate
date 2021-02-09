@@ -23,6 +23,7 @@ default: &default
     - .jpeg
     - .png
     - .gif
+    - .webp
     - .tiff
     - .ico
     - .svg

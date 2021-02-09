@@ -77,6 +77,6 @@ $blue: #c5e0dc
     &.cdx-decoration--large .cdx-decoration__preview
       height: 120px
 
-    @each $color in blue orange
-      &.cdx-decoration--#{$color} .cdx-decoration__gradient
-        background: linear-gradient(to #{$opposite}, transparentize(map-get($gradient, #{$color}), 0.88), transparentize(map-get($gradient, #{$color}), 0.01))
+    @each $style in blue orange
+      &.cdx-decoration--#{'' + $style} .cdx-decoration__gradient
+        background: linear-gradient(to #{$opposite}, transparentize(map-get($gradient, #{$style}), 0.88), transparentize(map-get($gradient, #{$style}), 0.01))

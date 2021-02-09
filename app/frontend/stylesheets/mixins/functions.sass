@@ -9,8 +9,8 @@
   @return image-url("../images/#{$path}")
 
 // When you use purely transparent values it can mess up gradient rendering on some sites.
-@mixin gradient($direction, $color)
-  background: linear-gradient($direction, rgba(255,255,255,.01) 0, rgba(255,255,255,0.18) 25%, map-get($color-gradient, #{$color}) 100%)
+@mixin gradient($direction, $style)
+  background: linear-gradient($direction, rgba(255,255,255,.01) 0, rgba(255,255,255,0.18) 25%, map-get($color-gradient, $style) 100%)
 
 // A shorthand to create an absolute positioning
 @mixin overlay($top: 0, $bottom: 0, $left: 0, $right: 0)
