@@ -1,6 +1,14 @@
 const { environment } = require('@rails/webpacker')
 const globCssImporter = require('node-sass-glob-importer')
- 
+const webpack = require('webpack')
+
+environment.plugins.prepend('Provide',
+  new webpack.ProvidePlugin({
+    $: 'jquery/src/jquery',
+    jQuery: 'jquery/src/jquery'
+  })
+)
+
 environment.loaders.get('sass')
   .use
   .find(item => item.loader === 'sass-loader')

@@ -1,0 +1,5 @@
+require('@rails/ujs').start()
+require('turbolinks').start()
+require('semantic-ui')
+require('sortable')
+require('autosize')
