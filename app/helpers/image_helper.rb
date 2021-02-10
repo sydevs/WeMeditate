@@ -110,4 +110,8 @@ module ImageHelper
     end
   end
 
+  def inline_svg_tag src, **attrs
+    inline_svg_pack_tag "media/images/#{src}", **attrs
+  end
+
 end

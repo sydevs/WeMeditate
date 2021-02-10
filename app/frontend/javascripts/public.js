@@ -4,7 +4,7 @@ import { initLazyImages, initInlineSVGs } from './public/images.js'
 let preloaded = false
 let preloader
 
-$.ready(() => {
+document.addEventListener('DOMContentLoaded', () => {
   console.log('ready')
   initLazyImages()
   initInlineSVGs()
