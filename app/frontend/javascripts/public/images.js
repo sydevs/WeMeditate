@@ -1,7 +1,5 @@
 import $ from 'jquery'
-import Lazyload from 'lazyload'
-
-let lazyloader
+import Lazyload from 'vanilla-lazyload'
 
 function renderSVG(target, url, namespace, background) {
   $.ajax({
@@ -28,9 +26,7 @@ function renderSVG(target, url, namespace, background) {
 }
 
 export function initLazyImages() {
-  let images = document.querySelectorAll('.js-image')
-  console.log(images)
-  lazyloader = new Lazyload(images)
+  new Lazyload({ elements_selector: '.js-image' }) // eslint-disable-line no-new
 }
 
 export function initInlineSVGs() {
