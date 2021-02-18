@@ -5,6 +5,9 @@
 import zenscroll from 'zenscroll'
 import Accordion from './elements/accordion'
 import Carousel from './elements/carousel'
+import Categories from './elements/categories'
+import Header, { setHeader } from './elements/header'
+
 
 let instances = {}
 window.instances = instances // For debugging purposes
@@ -54,16 +57,20 @@ export function load() {
   loadAll('gallery', ImageGallery)
   loadAll('reading-time', ReadingTime)
   loadAll('countdown', CountdownTimer)
+  */
 
   loadFirst('header', Header)
+  loadFirst('categories', Categories)
+  /*
   loadFirst('subtle-system', SubtleSystem)
   loadFirst('music-player', MusicPlayer)
   loadFirst('custom-meditation', CustomMeditation)
   loadFirst('prescreen', Prescreen)
   loadFirst('geosearch', GeoSearch)
   loadFirst('language-switcher', LanguageSwitcher)
-  loadFirst('categories', Categories)
   */
+
+  setHeader(instances.header[0])
 }
 
 export function unload() {
