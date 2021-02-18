@@ -1,11 +1,12 @@
 import $ from 'jquery'
 import { initLazyImages, initInlineSVGs } from './public/images.js'
+import { init, load, unload } from './public/application.js'
 
 let preloaded = false
 let preloader
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('ready')
+  init()
   initLazyImages()
   initInlineSVGs()
 
@@ -19,9 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })
 
-window.addEventListener('load', () => {
-  console.log('load')
-  $(preloader).delay(1000).fadeOut('slow')
+window.addEventListener('load', function() {
+  $('.preloader').delay(1000).fadeOut('slow')
   document.body.classList.remove('noscroll')
   preloaded = true
+  init()
 })
+
+document.addEventListener('turbolinks:load', () => load())
+document.addEventListener('turbolinks:before-cache', () => unload())
