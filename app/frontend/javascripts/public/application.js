@@ -2,7 +2,9 @@
  * This file orchestrates and loads all the other files in this folder.
  */
 
-import Accordion from './accordions'
+import zenscroll from 'zenscroll'
+import Accordion from './elements/accordion'
+import Carousel from './elements/carousel'
 
 let instances = {}
 window.instances = instances // For debugging purposes
@@ -28,7 +30,6 @@ function loadFirst(id, Klass) {
 }
 
 export function init() {
-  /*
   const scrollback = document.querySelector('.footer__scrollback')
   if (scrollback) {
     scrollback.addEventListener('click', event => {
@@ -37,15 +38,14 @@ export function init() {
     })
   }
 
-  if (instances.header.count > 0) instances.header[0].init()
-  if (instances.categories.count > 0) instances.categories[0].init()
-  */
+  if (instances.header && instances.header.count > 0) instances.header[0].init()
+  if (instances.categories && instances.categories.count > 0) instances.categories[0].init()
 }
 
 export function load() {
   loadAll('accordion', Accordion)
-  /*
   loadAll('carousel', Carousel)
+  /*
   loadAll('dropdown', Dropdown)
   loadAll('form', Form)
   loadAll('grid', Grid)
