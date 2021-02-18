@@ -7,6 +7,7 @@ import Accordion from './elements/accordion'
 import Carousel from './elements/carousel'
 import Categories from './elements/categories'
 import Header, { setHeader } from './elements/header'
+import CountdownTimer from './elements/countdown-timer'
 
 
 let instances = {}
@@ -48,6 +49,7 @@ export function init() {
 export function load() {
   loadAll('accordion', Accordion)
   loadAll('carousel', Carousel)
+  loadAll('countdown', CountdownTimer)
   /*
   loadAll('dropdown', Dropdown)
   loadAll('form', Form)
@@ -56,7 +58,6 @@ export function load() {
   loadAll('video', Video)
   loadAll('gallery', ImageGallery)
   loadAll('reading-time', ReadingTime)
-  loadAll('countdown', CountdownTimer)
   */
 
   loadFirst('header', Header)
