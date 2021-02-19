@@ -8,3 +8,5 @@ export function sendAnalyticsEvent(name, attributes) {
   console.log('Analytics Event', attributes) // eslint-disable-line no-console
   if (typeof window.dataLayer !== 'undefined') window.dataLayer.push(attributes)
 }
+
+export function translate() { return window.translate }

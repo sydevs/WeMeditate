@@ -7,6 +7,7 @@ import Accordion from './elements/accordion'
 import Carousel from './elements/carousel'
 import CountdownTimer from './elements/countdown-timer'
 import Dropdown from './elements/dropdown'
+import Form from './elements/form'
 
 import Header, { setHeader } from './features/header'
 import Categories from './features/categories'
@@ -14,7 +15,7 @@ import CustomMeditation from './features/custom-meditation'
 
 
 let instances = {}
-window.instances = instances // For debugging purposes
+window.instances = instances
 
 function loadAll(selector, Klass) {
   console.log('loading', selector) // eslint-disable-line no-console
@@ -54,8 +55,8 @@ export function load() {
   loadAll('carousel', Carousel)
   loadAll('countdown', CountdownTimer)
   loadAll('dropdown', Dropdown)
-  /*
   loadAll('form', Form)
+  /*
   loadAll('grid', Grid)
   loadAll('loadmore', Loadmore)
   loadAll('video', Video)
