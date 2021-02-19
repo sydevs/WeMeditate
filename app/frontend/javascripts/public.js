@@ -20,12 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })
 
-window.addEventListener('load', function() {
-  $('.preloader').delay(1000).fadeOut('slow')
-  document.body.classList.remove('noscroll')
-  preloaded = true
-  init()
+window.addEventListener('load', () => init())
+
+document.addEventListener('turbolinks:load', () => {
+  load()
+
+  preloader = document.querySelector('.preloader')
+  if (preloaded) {
+    preloader.remove()
+  } else {
+    $('.preloader').delay(1000).fadeOut('slow')
+    document.body.classList.remove('noscroll')
+    preloaded = true
+  }
 })
 
-document.addEventListener('turbolinks:load', () => load())
 document.addEventListener('turbolinks:before-cache', () => unload())

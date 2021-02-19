@@ -5,9 +5,12 @@
 import zenscroll from 'zenscroll'
 import Accordion from './elements/accordion'
 import Carousel from './elements/carousel'
-import Categories from './elements/categories'
-import Header, { setHeader } from './elements/header'
 import CountdownTimer from './elements/countdown-timer'
+import Dropdown from './elements/dropdown'
+
+import Header, { setHeader } from './features/header'
+import Categories from './features/categories'
+import CustomMeditation from './features/custom-meditation'
 
 
 let instances = {}
@@ -50,8 +53,8 @@ export function load() {
   loadAll('accordion', Accordion)
   loadAll('carousel', Carousel)
   loadAll('countdown', CountdownTimer)
-  /*
   loadAll('dropdown', Dropdown)
+  /*
   loadAll('form', Form)
   loadAll('grid', Grid)
   loadAll('loadmore', Loadmore)
@@ -62,10 +65,10 @@ export function load() {
 
   loadFirst('header', Header)
   loadFirst('categories', Categories)
+  loadFirst('custom-meditation', CustomMeditation)
   /*
   loadFirst('subtle-system', SubtleSystem)
   loadFirst('music-player', MusicPlayer)
-  loadFirst('custom-meditation', CustomMeditation)
   loadFirst('prescreen', Prescreen)
   loadFirst('geosearch', GeoSearch)
   loadFirst('language-switcher', LanguageSwitcher)
