@@ -1,10 +1,14 @@
 import $ from 'jquery'
 import zenscroll from 'zenscroll'
 
-export let header = null
+let header = null
 
 export function setHeader(instance) {
   header = instance
+}
+
+export function getHeader() {
+  return header
 }
 
 export default class Header {

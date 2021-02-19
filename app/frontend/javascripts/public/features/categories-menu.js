@@ -1,8 +1,8 @@
 import $ from 'jquery'
 import zenscroll from 'zenscroll'
-import { header } from './header'
+import { getHeader } from './header'
 
-export default class Categories {
+export default class CategoriesMenu {
 
   constructor(element) {
     this.container = element
@@ -21,6 +21,7 @@ export default class Categories {
 
   _onScroll() {
     let scrollTop = $(window).scrollTop()
+    const header = getHeader()
 
     if (scrollTop > header.stickyPoint) {
       if (!this.container.classList.contains('filters--sticky')) {

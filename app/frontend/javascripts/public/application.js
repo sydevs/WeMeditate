@@ -8,9 +8,10 @@ import Carousel from './elements/carousel'
 import CountdownTimer from './elements/countdown-timer'
 import Dropdown from './elements/dropdown'
 import Form from './elements/form'
+import Grid from './elements/grid'
 
 import Header, { setHeader } from './features/header'
-import Categories from './features/categories'
+import CategoriesMenu from './features/categories-menu'
 import CustomMeditation from './features/custom-meditation'
 import GeoSearch from './features/geosearch'
 
@@ -57,8 +58,8 @@ export function load() {
   loadAll('countdown', CountdownTimer)
   loadAll('dropdown', Dropdown)
   loadAll('form', Form)
-  /*
   loadAll('grid', Grid)
+  /*
   loadAll('loadmore', Loadmore)
   loadAll('video', Video)
   loadAll('gallery', ImageGallery)
@@ -66,7 +67,8 @@ export function load() {
   */
 
   loadFirst('header', Header)
-  loadFirst('categories', Categories)
+  setHeader(instances.header[0])
+  loadFirst('categories-menu', CategoriesMenu)
   loadFirst('custom-meditation', CustomMeditation)
   loadFirst('geosearch', GeoSearch)
   /*
@@ -76,7 +78,6 @@ export function load() {
   loadFirst('language-switcher', LanguageSwitcher)
   */
 
-  setHeader(instances.header[0])
 }
 
 export function unload() {
