@@ -10,6 +10,7 @@ import Dropdown from './elements/dropdown'
 import Form from './elements/form'
 import Grid from './elements/grid'
 import ImageGallery from './elements/image-gallery'
+import Loadmore from './elements/loadmore'
 
 import Header, { setHeader } from './features/header'
 import CategoriesMenu from './features/categories-menu'
@@ -62,8 +63,8 @@ export function load() {
   loadAll('form', Form)
   loadAll('grid', Grid)
   loadAll('image-gallery', ImageGallery)
-  /*
   loadAll('loadmore', Loadmore)
+  /*
   loadAll('video', Video)
   loadAll('reading-time', ReadingTime)
   */

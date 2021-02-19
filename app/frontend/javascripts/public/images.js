@@ -1,6 +1,16 @@
 import $ from 'jquery'
 import Lazyload from 'vanilla-lazyload'
 
+let lazyloader
+
+export function updateLazyloader() {
+  lazyloader.update()
+}
+
+export function initLazyImages() {
+  lazyloader = new Lazyload({ elements_selector: '.js-image' }) // eslint-disable-line no-new
+}
+
 function renderSVG(target, url, namespace, background) {
   $.ajax({
     url: url,
@@ -23,10 +33,6 @@ function renderSVG(target, url, namespace, background) {
 
     target.replaceWith(svg)
   })
-}
-
-export function initLazyImages() {
-  new Lazyload({ elements_selector: '.js-image' }) // eslint-disable-line no-new
 }
 
 export function initInlineSVGs() {
