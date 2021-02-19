@@ -12,6 +12,7 @@ import Form from './elements/form'
 import Header, { setHeader } from './features/header'
 import Categories from './features/categories'
 import CustomMeditation from './features/custom-meditation'
+import GeoSearch from './features/geosearch'
 
 
 let instances = {}
@@ -67,11 +68,11 @@ export function load() {
   loadFirst('header', Header)
   loadFirst('categories', Categories)
   loadFirst('custom-meditation', CustomMeditation)
+  loadFirst('geosearch', GeoSearch)
   /*
   loadFirst('subtle-system', SubtleSystem)
   loadFirst('music-player', MusicPlayer)
   loadFirst('prescreen', Prescreen)
-  loadFirst('geosearch', GeoSearch)
   loadFirst('language-switcher', LanguageSwitcher)
   */
 
