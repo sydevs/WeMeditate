@@ -14,12 +14,12 @@ Rails.application.config.content_security_policy do |policy|
 
   policy.default_src :self, :https
   policy.font_src    :self, :https, :data
-  policy.img_src     :self, ApplicationUploader.asset_host || '', *gtm_sources, *jwp_sources, :https, :data
+  policy.img_src     :self, ApplicationUploader.asset_host || 'localhost:3000', *gtm_sources, *jwp_sources, :https, :data
   policy.object_src  :none
   policy.script_src  :self, *gtm_sources, *jwp_sources, :unsafe_eval, :unsafe_inline, :https
   policy.worker_src  :self, :blob
-  policy.connect_src :self, ApplicationUploader.asset_host || '', *featured_stream_sources, *gtm_sources, *jwp_sources, *mapbox_sources
-  policy.media_src   :blob, ApplicationUploader.asset_host || '', 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', *vimeo_sources
+  policy.connect_src :self, ApplicationUploader.asset_host || 'localhost:3000', *featured_stream_sources, *gtm_sources, *jwp_sources, *mapbox_sources
+  policy.media_src   :blob, ApplicationUploader.asset_host || 'localhost:3000', 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', *vimeo_sources
   policy.style_src   :self, :unsafe_inline, :https
   policy.frame_src   :self, 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', 'www.google.com', *vimeo_sources, ENV['ATLAS_URL'] || ''
 

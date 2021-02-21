@@ -17,6 +17,7 @@ import CategoriesMenu from './features/categories-menu'
 import CustomMeditation from './features/custom-meditation'
 import GeoSearch from './features/geosearch'
 import LanguageSwitcher from './features/language-switcher'
+import MusicPlayer from './features/music-player'
 
 
 let instances = {}
@@ -75,9 +76,9 @@ export function load() {
   loadFirst('custom-meditation', CustomMeditation)
   loadFirst('geosearch', GeoSearch)
   loadFirst('language-switcher', LanguageSwitcher)
+  loadFirst('music-player', MusicPlayer)
   /*
   loadFirst('subtle-system', SubtleSystem)
-  loadFirst('music-player', MusicPlayer)
   loadFirst('prescreen', Prescreen)
   */
 
