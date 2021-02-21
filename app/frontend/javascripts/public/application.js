@@ -11,6 +11,7 @@ import Form from './elements/form'
 import Grid from './elements/grid'
 import ImageGallery from './elements/image-gallery'
 import Loadmore from './elements/loadmore'
+import ReadingTime from './elements/reading-time'
 
 import Header, { setHeader } from './features/header'
 import CategoriesMenu from './features/categories-menu'
@@ -66,9 +67,9 @@ export function load() {
   loadAll('grid', Grid)
   loadAll('image-gallery', ImageGallery)
   loadAll('loadmore', Loadmore)
+  loadAll('reading-time', ReadingTime)
   /*
   loadAll('video', Video)
-  loadAll('reading-time', ReadingTime)
   */
 
   loadFirst('header', Header)
