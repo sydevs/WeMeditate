@@ -20,6 +20,7 @@ import GeoSearch from './features/geosearch'
 import LanguageSwitcher from './features/language-switcher'
 import MusicPlayer from './features/music-player'
 import Prescreen from './features/prescreen'
+import SubtleSystem from './features/subtle-system'
 
 
 let instances = {}
@@ -80,10 +81,7 @@ export function load() {
   loadFirst('language-switcher', LanguageSwitcher)
   loadFirst('music-player', MusicPlayer)
   loadFirst('prescreen', Prescreen)
-  /*
   loadFirst('subtle-system', SubtleSystem)
-  */
-
 }
 
 export function unload() {

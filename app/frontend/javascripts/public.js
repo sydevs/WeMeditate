@@ -27,7 +27,7 @@ document.addEventListener('turbolinks:load', () => {
 
   preloader = document.querySelector('.preloader')
   if (preloaded) {
-    preloader.remove()
+    $('.preloader').remove()
   } else {
     $('.preloader').delay(1000).fadeOut('slow')
     document.body.classList.remove('noscroll')
