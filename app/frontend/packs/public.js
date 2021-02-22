@@ -16,8 +16,5 @@ import '../stylesheets/public.scss'
 // Load Javascript
 Rails.start()
 Turbolinks.start()
-//require('jquery')
-//require('jquery.slick')
-//require('photoswipe')
 
 import '../javascripts/public'
