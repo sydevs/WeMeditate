@@ -21,7 +21,6 @@ environment.loaders.get('sass')
 
 environment.loaders.get('sass').use.splice(-1, 0, {
   loader: 'resolve-url-loader',
-  options: { root: 'media' }
 })
 
 module.exports = environment

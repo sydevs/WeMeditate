@@ -9,7 +9,7 @@
   @return image-url("//images/#{$path}")
 
 @function font($path)
-  @return asset-url("//fonts/#{$path}")
+  @return url("../fonts/#{$path}")
 
 // When you use purely transparent values it can mess up gradient rendering on some sites.
 @mixin gradient($direction, $style)
@@ -72,10 +72,10 @@
     font-weight: $weight
     font-style: $style
 
-    @if $woff2
-      // src: font('#{$file-path}.woff2') format('woff2'), font('#{$file-path}.woff') format('woff'), font('#{$file-path}.ttf') format('truetype')
-    @else
-      // src: font('#{$file-path}.woff') format('woff'), font('#{$file-path}.ttf') format('truetype')
+    //@if $woff2
+    //  src: font('#{$file-path}.woff2') format('woff2'), font('#{$file-path}.woff') format('woff'), font('#{$file-path}.ttf') format('truetype')
+    //@else
+    src: font('#{$file-path}.woff') format('woff'), font('#{$file-path}.ttf') format('truetype')
 
 
 // A standard pulse animation which is used throughout the site
