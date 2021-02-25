@@ -1544,11 +1544,6 @@ brorand@^1.0.1:
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
 
-browser-split@0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/browser-split/-/browser-split-0.0.0.tgz#41419caef769755929dd518967d3eec0a6262771"
-  integrity sha1-QUGcrvdpdVkp3VGJZ9PuwKYmJ3E=
-
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/browserify-aes/-/browserify-aes-1.2.0.tgz#326734642f403dabc3003209853bb70ad428ef48"
@@ -1914,13 +1909,6 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
-
-class-list@~0.1.0:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/class-list/-/class-list-0.1.1.tgz#9b9745192c4179b5da0a0d7633658e3c70d796cb"
-  integrity sha1-m5dFGSxBebXaCg12M2WOPHDXlss=
-  dependencies:
-    indexof "0.0.1"
 
 class-utils@^0.3.5:
   version "0.3.6"
@@ -3727,14 +3715,6 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
-hyperscript@~1.0.1:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/hyperscript/-/hyperscript-1.0.7.tgz#d88ed3c51934c6d6fa35b2abfd7c00f100820f65"
-  integrity sha1-2I7TxRk0xtb6NbKr/XwA8QCCD2U=
-  dependencies:
-    browser-split "0.0.0"
-    class-list "~0.1.0"
-
 iconv-lite@0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
@@ -3828,11 +3808,6 @@ indexes-of@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/indexes-of/-/indexes-of-1.0.1.tgz#f30f716c8e2bd346c7b67d3df3915566a7c05607"
   integrity sha1-8w9xbI4r00bHtn0985FVZqfAVgc=
-
-indexof@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
-  integrity sha1-gtwzbSMrkGIXnQWrMpOmYFn9Q10=
 
 infer-owner@^1.0.3, infer-owner@^1.0.4:
   version "1.0.4"
@@ -4222,11 +4197,6 @@ jest-worker@^26.5.0:
     "@types/node" "*"
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
-
-jquery-browserify@~1.8.1:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/jquery-browserify/-/jquery-browserify-1.8.1.tgz#0dea9d741a4f4115ae1980c4531b22502991a015"
-  integrity sha1-DeqddBpPQRWuGYDEUxsiUCmRoBU=
 
 jquery@^3.5.1, jquery@x.*:
   version "3.5.1"
@@ -5163,11 +5133,6 @@ object.values@^1.1.0:
     define-properties "^1.1.3"
     es-abstract "^1.18.0-next.1"
     has "^1.0.3"
-
-observable@~1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/observable/-/observable-1.3.1.tgz#3d2a203b1430daf6a4d6d36f236cc13e6ed5bb4e"
-  integrity sha1-PSogOxQw2vak1tNvI2zBPm7Vu04=
 
 obuf@^1.0.0, obuf@^1.1.2:
   version "1.1.2"
@@ -6572,6 +6537,11 @@ repeat-string@^1.6.1:
   resolved "https://registry.yarnpkg.com/repeat-string/-/repeat-string-1.6.1.tgz#8dcae470e1c88abc2d600fff4a776286da75e637"
   integrity sha1-jcrkcOHIirwtYA//Sndihtp15jc=
 
+repeatable-fields@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/repeatable-fields/-/repeatable-fields-1.5.0.tgz#1589911b68203def75b3b4ee2764ffe7eae5d55d"
+  integrity sha512-St+NR3kshgTjAS7LsdDz8ANRYqVANfMJK9mAtTXprcYiyEtfrozDbrBma5/VskckqYHD6CjsIFZldMXOKDwd/A==
+
 repeating@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/repeating/-/repeating-2.0.1.tgz#5214c53a926d3552707527fbab415dbc08d06dda"
@@ -6849,6 +6819,11 @@ selfsigned@^1.10.8:
   dependencies:
     node-forge "^0.10.0"
 
+semantic-ui-calendar@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/semantic-ui-calendar/-/semantic-ui-calendar-0.0.8.tgz#ae16504e4d8016cac5ba9a00ad8ccd4a430de3ef"
+  integrity sha1-rhZQTk2AFsrFupoArYzNSkMN4+8=
+
 semantic-ui-css@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/semantic-ui-css/-/semantic-ui-css-2.4.1.tgz#f5aea39fafb787cbd905ec724272a3f9cba9004a"
@@ -7086,14 +7061,10 @@ sort-keys@^1.0.0:
   dependencies:
     is-plain-obj "^1.0.0"
 
-sortable@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/sortable/-/sortable-2.0.0.tgz#34b3542b42904c59b8454f55148a0f4f60186943"
-  integrity sha1-NLNUK0KQTFm4RU9VFIoPT2AYaUM=
-  dependencies:
-    hyperscript "~1.0.1"
-    jquery-browserify "~1.8.1"
-    observable "~1.3.1"
+sortablejs@^1.13.0:
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.13.0.tgz#3ab2473f8c69ca63569e80b1cd1b5669b51269e9"
+  integrity sha512-RBJirPY0spWCrU5yCmWM1eFs/XgX2J5c6b275/YyxFRgnzPhKl/TDeU2hNR8Dt7ITq66NRPM4UlOt+e5O4CFHg==
 
 source-list-map@^2.0.0:
   version "2.0.1"

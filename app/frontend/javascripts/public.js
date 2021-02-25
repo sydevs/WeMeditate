@@ -1,6 +1,6 @@
 import $ from 'jquery'
-import { initLazyImages, initInlineSVGs } from './public/images.js'
-import { init, load, unload } from './public/application.js'
+import { initLazyImages, initInlineSVGs } from './public/images'
+import { init, load, unload } from './public/application'
 
 let preloaded = false
 let preloader
