@@ -65,7 +65,7 @@ module Admin
       def redirect_to_locale!
         return if current_user.accessible_locales.include?(Globalize.locale)
 
-        redirect_to root_path(locale: current_user.accessible_locales.first), status: :see_other
+        redirect_to admin_root_path(locale: current_user.accessible_locales.first), status: :see_other
       end
 
       # Read more: https://github.com/rails/rails/issues/26040#issuecomment-574112746
