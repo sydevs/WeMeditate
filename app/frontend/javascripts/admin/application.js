@@ -3,6 +3,7 @@ import autosize from 'autosize'
 import Sortable from 'sortablejs'
 import RepeatableFields from 'repeatable-fields'
 import initDraftSystem from './features/draft'
+import initFormFeatures from './features/form'
 
 // $, Sortable, Editor, RepeatableFields, autosize
 
@@ -16,6 +17,7 @@ export function load() {
   // Initialize javascript-reliant elements for the entire body
   init($(document.body))
   initDraftSystem()
+  initFormFeatures()
 
   // Activate the loader icon on form submit
   $('form').on('submit', function() {
