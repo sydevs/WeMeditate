@@ -4,8 +4,7 @@ import Sortable from 'sortablejs'
 import RepeatableFields from 'repeatable-fields'
 import initDraftSystem from './features/draft'
 import initFormFeatures from './features/form'
-
-// $, Sortable, Editor, RepeatableFields, autosize
+import TimeZonesMap from './elements/time-zones-map'
 
 /** Admin
  * This file orchestrates all the code for the administrative part of the website (ie. admin.wemeditate.co)
@@ -18,6 +17,9 @@ export function load() {
   init($(document.body))
   initDraftSystem()
   initFormFeatures()
+
+  const timeZoneMap = document.getElementById('timezone-map')
+  new TimeZonesMap(timeZoneMap) // eslint-disable-line no-new
 
   // Activate the loader icon on form submit
   $('form').on('submit', function() {
