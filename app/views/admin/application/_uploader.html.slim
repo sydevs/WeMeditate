@@ -1,0 +1,17 @@
+
+#uploader data-endpoint=endpoint
+  div id="uploader-loader" style='display: none'
+    i.notched.circle.loading.icon
+    span
+
+  .ui.basic.modal id="uploader-modal"
+    .ui.icon.header
+      i.notched.circle.loading.icon
+      | Waiting for File Uploads to Complete
+    .content
+    .actions
+      .ui.basic.cancel.inverted.button
+        | Continue Editing 
+      .ui.disabled.green.ok.inverted.button
+        i.checkmark.icon
+        | Save
