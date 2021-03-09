@@ -123,7 +123,7 @@ SitemapGenerator::Sitemap.create do
     SitemapGenerator::Sitemap.default_host = host
     Rails.application.routes.default_url_options[:host] = host
     I18n.locale = locale
-    group(:sitemaps_path => 'sitemaps/', :filename => "sitemap.#{locale}") do
+    group(sitemaps_path: 'sitemaps/', filename: "sitemap.#{locale}") do
       add '/'
 
       StaticPage.published.preload_for(:content).where.not(role: EXCLUDE_STATIC_PAGES).each do |static_page|
