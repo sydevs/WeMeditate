@@ -27,8 +27,6 @@ export default class EditorTool {
       })
     })
 
-    console.log(this.tunes)
-    
     // A convenience to lookup the CSS classes used in the editor
     this.CSS = {
       baseClass: this.api.styles.block,
@@ -119,10 +117,12 @@ export default class EditorTool {
     }
 
     // Add the classes for any active tunes
+    console.log('add classes for', this.data)
     for (const key in this.tunes) {
       const group = this.tunes[key]
       for (let i = 0; i < group.options.length; i++) {
         const tune = group.options[i]
+        console.log('add class for', tune.name, '?', this.isTuneActive(tune), this.CSS.tunes[tune.name])
         container.classList.toggle(this.CSS.tunes[tune.name], this.isTuneActive(tune))
       }
     }
@@ -132,7 +132,6 @@ export default class EditorTool {
     //make('div', [this.CSS.optionsWrapper], {}, container)
 
     this.container = container // Save a reference to the container
-    console.log(container)
     return container
   }
 
@@ -218,13 +217,20 @@ export default class EditorTool {
   // =============== SAVING =============== //
 
   // Extract data from the tool element, so that it can be saved.
-  save(toolElement) {
+  save(blockContainer) {
     let newData = {}
 
     // Get the contents of each field for this tool.
     for (let key in this.fields) {
-      newData[key] = toolElement.querySelector(`.${this.CSS.fields[key]}`).innerHTML
+      newData[key] = blockContainer.querySelector(`.${this.CSS.input}[data-key=${key}]`).innerHTML
       newData[key] = newData[key].replace('&nbsp;', ' ').trim() // Stip non-breaking whitespace
+    }
+
+    // Remove any non-enabled tunes
+    for (const key in this.tunes) {
+      if (!this.isTuneGroupActive(this.tunes[key])) {
+        delete this.data[key]
+      }
     }
 
     return Object.assign(this.data, newData)
@@ -240,7 +246,6 @@ export default class EditorTool {
 
     // Render tunes if there is at least one defined.
     if (Object.keys(this.tunes).length > 0) {
-      console.log('rendering tunes', this.tunes)
       //make('label', '', { innerText: translate().content.settings.tunes }, settingsContainer)
       this.tunesWrapper = make('div', '', {}, settingsContainer)
       this.renderTunes(this.tunesWrapper)
@@ -264,40 +269,8 @@ export default class EditorTool {
     return settingsContainer
   }
 
-  // Create this tool's settings menu.
-  renderSettingsBlock(container = null) {
-    const settingsContainer = make('div', null, null, container)
-
-    // Render tunes if there is at least one defined.
-    if (Object.keys(this.tunes).length > 0) {
-      console.log('rendering tunes', this.tunes)
-      //make('label', '', { innerText: translate().content.settings.tunes }, settingsContainer)
-      this.tunesWrapper = make('div', [this.CSS.settingsWrapper], {}, settingsContainer)
-      this.renderTunes(this.tunesWrapper)
-    }
-
-    // Render decorations if there is at least one allowed.
-    /*
-    if (this.allowedDecorations.length > 0) {
-      make('label', '', { innerText: translate().content.settings.decorations }, settingsContainer)
-      this.decorationsWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.decorationsWrapper], {}, settingsContainer)
-      this.renderDecorations(this.decorationsWrapper)
-
-      // Render decoration inputs
-      this.inputsWrapper = make('div', [this.CSS.settingsWrapper, this.CSS.decorationInputsWrapper], {}, settingsContainer)
-      this.renderDecorationInputs(this.inputsWrapper)
-    }
-    */
-
-    // Lastly, update the settings buttons to reflect the current state of the block.
-    //this.updateOptionsButtons()
-    //return settingsContainer
-  }
-
   // Updates the appearance of all settings buttons and inputs to reflect the current state of the block.
   updateOptionsButtons() {
-    console.log('update option buttons', this.data)
-
     if (this.tunesWrapper) {
       // If tunes are defined, updated them
       for (const key in this.tunes) {
@@ -397,7 +370,6 @@ export default class EditorTool {
 
   // Check if a tune if currently selected.
   isTuneGroupActive(group) {
-    console.log('check group active', group, !group.requires, this.data[group.name])
     if (!group.requires) return true
 
     for (const key in group.requires) {

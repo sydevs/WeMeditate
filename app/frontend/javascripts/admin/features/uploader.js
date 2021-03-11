@@ -18,13 +18,12 @@ export default function load() {
   }
 }
 
-export function hasPendingUploads(onCompletion) {
-  if (pendingUploads > 0) {
-    $(modal).modal({ onApprove: () => onCompletion })
-    return true
-  } else {
-    return false
-  }
+export function hasPendingUploads() {
+  return pendingUploads > 0
+}
+
+export function afterPendingUploads(onCompletion) {
+  $(modal).modal({ onApprove: () => onCompletion })
 }
 
 // This sends a file to our server's upload endpoint

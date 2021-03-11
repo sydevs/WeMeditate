@@ -8,7 +8,6 @@ export default function load() {
   console.log('loading Form.js') // eslint-disable-line no-console
   $('#article_article_type').on('change', onSetArticleType)
   $('#article_article_type').trigger('change')
-
   $('.ui.toggle.button').on('click', toggleButton)
 }
 

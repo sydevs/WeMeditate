@@ -6,6 +6,9 @@
   min-height: 260px
   padding-bottom: 30px
 
+  [contenteditable]:empty:after
+    content: none !important
+
 .ce-block
   padding-left: 10px
   padding-right: 45px
@@ -47,11 +50,6 @@
   cursor: default
   opacity: 0.8
   background: none !important
-
-.ce-settings__tunes
-  margin-bottom: 4px
-  padding-bottom: 8px
-  border-bottom: 1px solid lightgray
 
 .ce-settings__inputs
   margin-top: 8px

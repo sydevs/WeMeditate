@@ -26,14 +26,15 @@ module Contentable
   end
 
   def parsed_content
-    self[:content].is_a?(Hash) || self[:content].nil? ? self[:content] : JSON.parse(self[:content])
+    return nil unless self[:content].present?
+    self[:content].is_a?(Hash) ? self[:content] : JSON.parse(self[:content])
   end
 
   def content_blocks
-    if self[:content].nil?
-      []
-    else
+    if self[:content].present?
       parsed_content['blocks']
+    else
+      []
     end
   end
 

@@ -14,8 +14,8 @@ export default class TextTool extends EditorTool {
     super({ // Data
       id: data.id || generateId(),
       text: data.text || '',
-      type: ['text', 'heading', 'quote', 'blockquote'].includes(data.type) ? data.type : 'text',
-      level: ['h2', 'h3', 'h4'].includes(data.type) ? data.type : 'h2',
+      type: ['text', 'header'].includes(data.type) ? data.type : 'text',
+      level: ['h2', 'h3', 'h4', 'h5'].includes(data.type) ? data.type : 'h2',
     }, { // Config
       id: 'text',
       fields: {
@@ -34,6 +34,7 @@ export default class TextTool extends EditorTool {
             { name: 'h2', icon: 'heading' },
             { name: 'h3', icon: 'heading' },
             { name: 'h4', icon: 'heading' },
+            { name: 'h5', icon: 'heading' },
           ]
         },
       },

@@ -1,5 +1,5 @@
 import EditorJS from '@editorjs/editorjs'
-import { hasPendingUploads } from './uploader'
+import { afterPendingUploads, hasPendingUploads } from './uploader'
 import TextTool from '../editor-blocks/text-tool'
 
 /** Content Editor
@@ -55,6 +55,7 @@ export default function load() {
   if (form && contentEditor) {
     //SplashEditor.load()
 
+    console.log('set submit to', onSubmit, 'for', form)
     form.onsubmit = onSubmit
     editorInput = form.querySelector('#content-input')
 
@@ -73,12 +74,11 @@ export function getCurrentEditorBlock() {
 }
 
 function onSubmit(event) {
-  if (hasPendingUploads(form.submit)) {
+  if (hasPendingUploads()) {
+    afterPendingUploads(() => form.submit())
     event.preventDefault()
     return false
-  }
-
-  hasPendingUploads(() => {
+  } else {
     // Retrieve the editor data, then store it in the input before the editor form is submitted.
     editorInstance.save().then(outputData => {
       console.log('Article data: ', outputData) // eslint-disable-line no-console
@@ -87,7 +87,7 @@ function onSubmit(event) {
       console.error('Editor saving failed: ', error) // eslint-disable-line no-console
       event.preventDefault()
     })
-  })
+  }
 }
 
 // Do any extra processing on the JSON data which is given to us by the editor
