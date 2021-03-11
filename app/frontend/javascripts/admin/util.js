@@ -28,3 +28,5 @@ export function make(tagName, classNames = null, attributes = {}, parent = null)
 
   return el
 }
+
+export function translate() { return window.translate }

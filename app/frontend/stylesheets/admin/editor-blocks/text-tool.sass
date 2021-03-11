@@ -1,0 +1,31 @@
+
+.cdx-text
+  padding-left: 40px
+  outline: none
+
+  &__item
+    padding: 5.5px 0 5.5px 3px
+    line-height: 1.2em
+
+// SETTINGS
+@include wide-settings(text, [text, header, quote, list])
+
+.cdx-text .cdx-settings-button
+  @for $level from 1 through 6
+    &[data-key="h#{$level}"]
+      .icon::after
+        content: '#{$level}'
+        font-weight: bold
+
+// TUNES
+.cdx-text--header
+  .cdx-input[data-key="text"]
+    font-size: 1.7rem
+    padding: 0.5em 0
+    margin: 0
+    line-height: 1.25em
+    outline: none
+
+  @for $level from 1 through 6
+    &.cdx-text--h#{$level} .cdx-input[data-key="text"]
+      font-size: 1.7rem * (1 - (($level - 2) * 0.15))

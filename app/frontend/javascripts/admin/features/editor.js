@@ -1,6 +1,6 @@
-import $ from 'jquery'
 import EditorJS from '@editorjs/editorjs'
 import { hasPendingUploads } from './uploader'
+import TextTool from '../editor-blocks/text-tool'
 
 /** Content Editor
  * We use the editorjs (https://editorjs.io) to provide a block-based content editor for our CMS.
@@ -11,6 +11,14 @@ let form, editorInstance, editorInput
 
 const editorParameters = {
   holder: 'content-editor',
+  autofocus: true,
+  defaultBlock: 'text',
+  tools: {
+    text: {
+      class: TextTool,
+      inlineToolbar: true,
+    },
+  },
   /*tools: {
     paragraph: {
       class: ParagraphTool,
@@ -35,7 +43,6 @@ const editorParameters = {
     whitespace: WhitespaceTool,
   },
   initialBlock: 'paragraph',*/
-  autofocus: true,
 }
 
 export default function load() {
@@ -71,7 +78,7 @@ function onSubmit(event) {
     return false
   }
 
-  checkForUploadCompletion(() => {
+  hasPendingUploads(() => {
     // Retrieve the editor data, then store it in the input before the editor form is submitted.
     editorInstance.save().then(outputData => {
       console.log('Article data: ', outputData) // eslint-disable-line no-console

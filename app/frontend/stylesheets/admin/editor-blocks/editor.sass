@@ -72,6 +72,40 @@
   input
     width: 100%
 
+// OPTIONS
+.cdx-options
+  position: absolute
+  left: calc(100% + 100px)
+  top: 0
+
+  display: none
+  white-space: nowrap
+
+  .ce-block--focused &
+    display: block
+
+  label
+    display: block
+    padding: 4px
+    padding-bottom: 0
+    font-weight: bold
+    font-size: 10px
+    text-transform: uppercase
+    opacity: 0.8
+
+    &::after
+      font-weight: normal
+      content: ":  " attr(data-value)
+
+  .cdx-settings-button
+    display: inline-block
+
+.cdx-options__group
+  display: none
+
+  &--active
+    display: block
+
 // INPUTS
 .cdx-input
   outline: none
@@ -131,37 +165,3 @@
     border-radius: 0.28571429rem
     background: #FFFFFF
     box-shadow: 0px 0em 0em 0em rgba(34, 36, 38, 0.35) inset
-
-// UPLOADER INPUT
-/*
-  .cdx-input__uploader
-    border: 2px dashed lightgray
-    border-radius: 6px
-    color: lightgray
-    text-align: center
-    font-weight: bold
-    font-size: 18px
-    line-height: 20px
-    padding: 10px
-    transition: color 0.2s
-
-    &:hover
-      cursor: pointer
-      border-color: gray
-      color: gray
-
-    &--dropping
-      border-color: #85B7D9
-      color: #85B7D9
-
-    &--error
-      border-color: lightred
-      color: lightred
-
-    input
-      width: 0 !important
-      height: 0 !important
-      overflow: hidden !important
-      padding: 0 !important
-      border: none !important
-  */
