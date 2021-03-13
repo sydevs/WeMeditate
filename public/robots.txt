@@ -2,5 +2,11 @@
 
 User-agent: *
 Allow: /
+Disallow: *?fbclid=*
+Disallow: *?_ke=*
+Disallow: *q=*
+Disallow: /*?utm_source=
+Disallow: /maintenance
+Disallow: /users
 
 Sitemap: https://www.wemeditate.co/sitemap.xml.gz
