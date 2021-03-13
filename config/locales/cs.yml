@@ -196,8 +196,16 @@ cs:
       action: "See other times"
     live:
       title: "Vysílání - živě!"
-      action: "Připojte se"
+      identifier:
+        zoom: zoom.us # Do not translate
+        google: meet.google.com # Do not translate
+      action: # TODO: Translate
+        stream: "Watch the Broadcast"
+        zoom: "Join via Zoom"
+        google: "Join via Google Meet"
+        default: "Join via Video Call"
       description: "Klikněte na přehrát a připojte se k naší živé on-line meditaci, kterou teď vysíláme"
+      alt_description: "Enjoy the meditation via broadcast, or join a video call where you can ask questions." # TODO: Translate
     timing:
       days: "Dny"
       hours: "Hodiny"

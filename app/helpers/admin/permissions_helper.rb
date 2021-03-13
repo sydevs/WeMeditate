@@ -47,8 +47,8 @@ module Admin::PermissionsHelper
       translator: [],
       writer: [],
       editor: [],
-      regional_admin: %i[create update publish],
-      super_admin: %i[create update publish destroy],
+      regional_admin: %i[update publish create],
+      super_admin: %i[update publish create destroy],
     },
 
     # Resource-type models

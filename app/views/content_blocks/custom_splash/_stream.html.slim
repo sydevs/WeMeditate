@@ -8,9 +8,19 @@ ruby:
   .content__splash__wrapper-live
     .content__splash__wrapper
       h1.content__splash__title = translate('streams.live.title')
-      .content__splash__action = translate('streams.live.action')
-      a.content__splash__play.video__button title=translate('streams.live.action') data-lity=true href=record.stream_url
-      .content__splash__description = translate('streams.live.description')
+      .content__splash__action
+        .content__splash__watch
+          a title=translate('streams.live.action.stream') data-lity=true href=record.stream_url
+          span = translate('streams.live.action.stream')
+
+        - if record.video_conference_url.present?
+          .content__splash__divider
+          .content__splash__conference
+            a title=translate("streams.live.action.#{record.video_conference_type}") href=record.video_conference_url target='_blank'
+              img src=image_path("streams/#{record.video_conference_type}.png")
+            span = translate("streams.live.action.#{record.video_conference_type}")
+
+      .content__splash__description = translate(record.video_conference_url.present? ? 'streams.live.alt_description' : 'streams.live.description')
 
   .content__splash__wrapper-countdown
     .content__splash__wrapper

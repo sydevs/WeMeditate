@@ -8,7 +8,6 @@
   text-align: center
   color: $color-text-inverse
   height: 100vh
-  padding-top: 20vh
   margin-bottom: 100px
   position: relative
   background: image-url('content/streams-mobile.jpg')
@@ -16,14 +15,12 @@
   background-size: cover
   background-repeat: no-repeat
 
+  display: flex
+  flex-direction: column
+  justify-content: center
+
   @include tablet-or-larger
     background-image: image-url('content/streams.jpg')
-
-  @include laptop-or-larger
-    padding-top: 35vh
-
-  @include max-stream-height
-    padding-top: 360px
 
   &:before
     @include overlay
@@ -37,7 +34,6 @@
   // Mode
   .content__splash__wrapper-live,
   .content__splash__wrapper-countdown
-    overflow: hidden
     max-height: 0
     opacity: 0
     transition: opacity 0.5s ease, max-height 1s ease
@@ -56,7 +52,14 @@
     padding-top: 160px
     padding: 0 24px
     max-width: 468px
+    margin-top: 20vh
     margin-bottom: 50px
+
+    @include tablet
+      margin-top: 15vh
+
+    @include laptop-or-larger
+      margin-top: 10vh
 
   &__title
     font-weight: $font-normal
@@ -74,30 +77,67 @@
       margin-bottom: 82px
 
   &__action
-    font-weight: $font-medium
-    font-size: 3rem
-    margin-bottom: 12px
+    font-size: 1.8rem
+    line-height: 2.2rem
+    letter-spacing: 0.56px
 
-  &__play
-    position: static
-    transform: none
-    cursor: pointer
-    border-color: $color-button-video
-    margin-bottom: 12vh
+    display: flex
+    justify-content: space-evenly
+    margin-bottom: 40px
 
-    @include tablet-or-larger
-      margin-bottom: 9vh
+    @include tablet
+      margin-bottom: 70px
+
+    @include laptop-or-larger
+      margin-bottom: 55px
 
     @include max-stream-height
       margin-bottom: 92px
 
+  &__action > *
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 120px
+
+  &__divider
+    width: 0
+    border-left: 1px solid white
+
+  &__watch a
+    @extend %video-button
+
+    position: static
+    transform: none
+    cursor: pointer
+    margin-bottom: 12px
+
+    &:not(:hover)
+      border-color: transparent !important
+
+    &:hover
+      opacity: 0.95
+
+  &__conference a
+    padding: 17px
+    height: 102px
+    width: 102px
+    margin-bottom: 12px
+
+    &:hover
+      opacity: 0.95
+
+  &__conference img
+    width: 100%
+
   &__description
-    font-size: 2.2rem
+    font-size: 1.8rem
     line-height: 1.15
     max-width: 240px
     margin: auto
 
     @include tablet-or-larger
+      font-size: 2.2rem
       letter-spacing: 0.69px
       max-width: none
 

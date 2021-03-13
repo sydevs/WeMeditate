@@ -1,6 +1,6 @@
 class ApplicationUploader < CarrierWave::Uploader::Base
 
-  storage ENV['GCLOUD_BUCKET'].present? ? :gcloud : :file
+  storage ENV['GCLOUD_BUCKET'].present? ? :fog : :file
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -47,6 +47,18 @@ class ApplicationUploader < CarrierWave::Uploader::Base
   # Replace all file names with a unique random string
   def filename
     "#{secure_token(10)}.#{file.extension}" if original_filename.present?
+  end
+
+  def to_json _obj = nil
+    if self.class::VERSIONS.present?
+      {
+        url: url,
+        type: file.extension,
+        versions: self.class::VERSIONS.map { |key, width| { width: width, url: url(key) } },
+      }
+    else
+      { url: url }
+    end
   end
 
   protected

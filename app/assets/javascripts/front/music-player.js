@@ -1,4 +1,4 @@
-/* global Amplitude, zenscroll, Util */
+/* global Amplitude, zenscroll, Util, MediaMetadata */
 /* exported MusicPlayer */
 
 // TODO: Implement responsive artist images
@@ -33,14 +33,36 @@ class MusicPlayer {
           this.active = true
           this.updateSongArtists()
           this.sendAnalyticsEvent('Change')
+          if ('mediaSession' in navigator) {
+            navigator.mediaSession.setPositionState(null)
+            this.updatePositionState()
+          }
         },
         play: () => {
           this.active = true
           this.validateActivePlaylist()
           this.sendAnalyticsEvent('Play')
+          this.setupMediaSession()
+          this.playButton.classList.remove('amplitude-paused')
+          this.playButton.classList.add('amplitude-playing')
+          if ('mediaSession' in navigator) {
+            navigator.mediaSession.playbackState = 'playing'
+            this.updatePositionState()
+          }
         },
         pause: () => {
           this.sendAnalyticsEvent('Pause')
+          this.playButton.classList.remove('amplitude-playing')
+          this.playButton.classList.add('amplitude-paused')
+          if ('mediaSession' in navigator) {
+            navigator.mediaSession.playbackState = 'paused'
+            this.updatePositionState()
+          }
+        },
+        seeked: () => {
+          if ('mediaSession' in navigator) {
+            this.updatePositionState()
+          }
         }
       }
     })
@@ -124,6 +146,69 @@ class MusicPlayer {
   sendAnalyticsEvent(type) {
     const data = Amplitude.getActiveSongMetadata()
     Util.sendAnalyticsEvent(`Music ${type}`, { globalTitle: `Song ${data.id}`, localTitle: data.name })
+  }
+
+  seek(seconds, direction) {
+    const duration = Amplitude.getSongDuration()
+    const currentTime = Amplitude.getSongPlayedSeconds()
+    let targetTime = direction == 'backward' ? currentTime - seconds : currentTime + seconds
+    targetTime = targetTime <= 0 ? 0.1 : targetTime >= duration ? duration - 0.1 : targetTime
+    Amplitude.setSongPlayedPercentage((targetTime / duration) * 100)
+  }
+
+  updatePositionState() {
+    if ('setPositionState' in navigator.mediaSession) {
+      navigator.mediaSession.setPositionState({
+        duration: Amplitude.getSongDuration(),
+        playbackRate: Amplitude.getPlaybackSpeed(),
+        position: Amplitude.getSongPlayedSeconds()
+      })
+    }
+  }
+
+  setupMediaSession() {
+    const data = Amplitude.getActiveSongMetadata()
+    let skipSeconds = 10
+
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: data.name,
+        artist: this.artistsList.innerText,
+        artwork: data.image.versions.map(version => {
+          return { src: version.url, sizes: `${version.width}x${version.width}`, type: `image/${version.type}` }
+        })
+      })
+
+      const actionHandlers = {
+        previoustrack: () => {
+          Amplitude.prev()
+        },
+        nexttrack: () => {
+          Amplitude.next()
+          Amplitude.play()
+        },
+        seekbackward: () => {
+          this.seek(skipSeconds, 'backward')
+          this.updatePositionState()
+        },
+        seekforward: () => {
+          this.seek(skipSeconds, 'forward')
+          this.updatePositionState()
+        },
+        seekto: (event) => {
+          const duration = Amplitude.getSongDuration()
+          let targetTime = event.seekTime
+          targetTime = targetTime <= 0 ? 0.1 : targetTime >= duration ? duration - 0.1 : targetTime
+          Amplitude.setSongPlayedPercentage((targetTime / duration) * 100)
+          this.updatePositionState()
+        }
+      }
+
+      for ( let [action, handler] of Object.entries(actionHandlers) ) {
+        navigator.mediaSession.setActionHandler(action, handler)
+      }
+
+    }
   }
 
 }

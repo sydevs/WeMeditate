@@ -1,12 +1,12 @@
 RouteTranslator.config do |config|
   config.locale_param_key = :locale
   config.hide_locale = true
-  config.verify_host_path_consistency = true
 
   if Rails.env.production?
     Rails.configuration.admin_domain = 'admin.wemeditate.co'
     Rails.configuration.admin_host = Rails.configuration.admin_domain
     config.host_locales = {
+      'fa.wemeditate.co' => :fa, # Farsi
       'ua.wemeditate.co' => :uk, # Ukrainian
       'am.wemeditate.co' => :hy, # Armenian
       'nl.wemeditate.co' => :nl, # Dutch

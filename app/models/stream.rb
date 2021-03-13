@@ -6,6 +6,11 @@
 
 class Stream < ApplicationRecord
 
+  VIDEO_CONFERENCE_TYPES = {
+    zoom: 'zoom.us',
+    google: 'meet.google.com',
+  }.freeze
+
   # Extensions
   extend ArrayEnum
   audited
@@ -64,25 +69,30 @@ class Stream < ApplicationRecord
   def next_stream_time
     current_time = time_zone.now
     current_date = current_time.beginning_of_day
-    puts "CURRENT DATE #{current_date.to_s(:short)} / TIME #{current_time.to_s(:short)} (#{time_zone.name})"
     countdown_time = next_stream_time_for(current_date)
-    puts "COUNTDOWN TIME OPT 1: #{countdown_time}"
     countdown_time = next_stream_time_for(current_date + 1.day) if current_time > countdown_time + duration
-    puts "COUNTDOWN TIME OPT 1: #{countdown_time}"
     countdown_time
   end
 
   def next_stream_time_for date
     weekday = Stream.recurrences.key(date.wday)
-    puts "CURRENT WEEKDAY #{weekday}"
+
     if recurrence.include? weekday
       time = start_time.split(':')
-      puts "START TIME #{time}"
       date.to_time.change(hour: time[0].to_i, min: time[1].to_i)
     else
-      puts "#{weekday} not in #{recurrence}"
       next_stream_time_for(date + 1.day)
     end
+  end
+
+  def video_conference_type
+    return nil unless video_conference_url
+
+    VIDEO_CONFERENCE_TYPES.each do |key, identifier|
+      return key if video_conference_url.include?(identifier)
+    end
+
+    :default
   end
 
   private

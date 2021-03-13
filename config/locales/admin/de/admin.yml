@@ -144,6 +144,7 @@ de:
         list_id: "You must have a list set up in Klaviyo (our mailing service) and supply a unique list ID here. This list will be used for those who want to subscribe for reminders of when the meditation starts."
         target_time_zones: "Users in the selected timezones will be shown this stream on the main live meditations page. You can select multiple timezones. Selected zones are marked in green."
         target_time_zones_conflict: "Note: If multiple streams are featured in the same timezone, the one which is physically closer to the user will be shown."
+        video_conference_url: "This may be a link to Zoom, Google Hangouts, or another live video call where attendees will be able to interact with the program leader."
 
     result:
       created: "Erfolgreich erstellt."

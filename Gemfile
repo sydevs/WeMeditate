@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.6.5'
+ruby '2.7.2'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
@@ -40,7 +40,7 @@ gem 'array_enum' # Allows the use of enum arrays
 
 # Uploads
 gem 'carrierwave' # Core support for file uploads
-gem 'carrierwave-google-storage' # Let's us store the files in Google Storage
+gem "fog-google" # Let's us store the files in Google Storage
 gem 'carrierwave-meta' # To get image meta data
 gem 'google-cloud-storage' # Needed to access sitemaps
 gem 'mini_magick' # Image processing during upload

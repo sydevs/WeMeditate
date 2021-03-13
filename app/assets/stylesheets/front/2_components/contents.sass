@@ -1,0 +1,35 @@
+@import "../../mixins/*"
+
+.contents
+  @extend %narrow-content-width
+  margin-top: 2rem
+  margin-bottom: 4rem
+
+  &__list
+    margin: 0
+    font-size: 1.8rem
+    line-height: 1.5
+    counter-reset: toc-1
+
+  &__item
+    display: block
+
+  &__item::before
+    color: $color-text-normal
+
+  @for $i from 1 through 4
+    &__item--#{$i}
+      margin-left: 3rem * $i - 1.5rem
+
+      counter-increment: toc-#{$i}
+      @for $j from ($i + 1) through 4
+        counter-reset: toc-#{$j}
+
+      &::before
+        content: "• "
+
+  &__item--1
+    margin-top: 0.25rem
+
+    &::before
+      content: counter(toc-1) ". "

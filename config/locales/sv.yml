@@ -192,8 +192,16 @@ sv:
       action: "Påminn mig"
     live:
       title: "Vi är live!"
-      action: "Gå med"
+      identifier:
+        zoom: zoom.us # Do not translate
+        google: meet.google.com # Do not translate
+      action: # TODO: Translate
+        stream: "Watch the Broadcast"
+        zoom: "Join via Zoom"
+        google: "Join via Google Meet"
+        default: "Join via Video Call"
       description: "Starta videon för att gå med i vår live-meditation just nu"
+      alt_description: "Enjoy the meditation via broadcast, or join a video call where you can ask questions." # TODO: Translate
     timing:
       days: "Dagar"
       hours: "Timmar"

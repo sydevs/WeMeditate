@@ -4,26 +4,28 @@ main.scrollspy-target id=dom_id(@article)
 
   - if @article.author && %w[article artwork].include?(@article.article_type)
     .author.author--mini
-      a.author__image href='#author'
-        = smart_image_tag @article.author.image, '64px'
-      - if @article.type_artwork?
-        .author__name <em>#{@article.author.name}</em>, #{@article.author.country_name}
-      - else
-        .author__name #{translate 'author.written_by'} <em>#{@article.author.name}</em>, #{@article.author.country_name}
+      .author__content
+        a.author__image href='#author'
+          = smart_image_tag @article.author.image, '64px'
+        - if @article.type_artwork?
+          .author__name <em>#{@article.author.name}</em>, #{@article.author.country_name}
+        - else
+          .author__name #{translate 'author.written_by'} <em>#{@article.author.name}</em>, #{@article.author.country_name}
 
-      /- if @article.author.title
-        .author__title
-          = @article.author.title
-          '  in 
-          = @article.author.country_code
-      - if @article.author.years_meditating
-        .author__experience = translate('author.meditating_for', count: @article.author.years_meditating)
+        /- if @article.author.title
+          .author__title
+            = @article.author.title
+            '  in 
+            = @article.author.country_code
+        - if @article.author.years_meditating
+          .author__experience = translate('author.meditating_for', count: @article.author.years_meditating)
 
-      - if @article.type_article?
-        .author__reading_time.js-reading-time
+        - if @article.type_article?
+          .author__reading_time.js-reading-time
   /- else
     .author.author--mini
-      .author__reading_time.js-reading-time
+      .author__content
+        .author__reading_time.js-reading-time
 
   - cache @article do
     .content = render_content @article

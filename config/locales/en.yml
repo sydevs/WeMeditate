@@ -86,7 +86,7 @@ en:
   player: # For the music or video player
     pause: "Pause"
     play: "Play"
-    '%_buffered': "% buffered"
+    '%_buffered': "% buffered" # This is referring to the amount of a video which has been loaded.
     skip_back: "Previous Track"
     skip_forward: "Next Track"
     rewind_10_secs: "Rewind 10 secs"
@@ -100,7 +100,7 @@ en:
     enter_fullscreen: "Enter fullscreen"
     duration: "Duration"
     current_time: "Current time" # The current time that the player is at
-    seek: "Seek"
+    seek: "Seek" # This is the action that you do when you drag the current time of a video. In English you would say that you are "Seeking through the video"
     play_title: "Play, %{title}" # %{title} is the title of a video or music track
 
   articles:
@@ -196,8 +196,16 @@ en:
       action: "See other times"
     live:
       title: "We are live now!"
-      action: "Join now"
+      identifier:
+        zoom: zoom.us # Do not translate
+        google: meet.google.com # Do not translate
+      action:
+        stream: "Watch the Broadcast"
+        zoom: "Join via Zoom"
+        google: "Join via Google Meet"
+        default: "Join via Video Call"
       description: "Press play to join our live meditation session streaming right now"
+      alt_description: "Enjoy the meditation via broadcast, or join a video call where you can ask questions."
     timing:
       days: "Days"
       hours: "Hours"
