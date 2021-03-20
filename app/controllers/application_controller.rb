@@ -65,6 +65,13 @@ class ApplicationController < ActionController::Base
 
       begin
         Klaviyo.subscribe(email, list_id, request.referer)
+
+        if params[:signup][:properties].present?
+          properties = params[:signup][:properties]
+          event = params[:signup][:event]
+          Klaviyo.track(email, event, properties)
+        end
+        
         @message = I18n.translate('form.success.subscribe')
         @success = true
       rescue Error => e

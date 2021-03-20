@@ -40,7 +40,15 @@
   &--shuffle:before
     content: $icon-shuffle
 
-  // Social icons
+  // Sharing icons
+  $social-colors: ('email': $color-text-orange, 'facebook': #3b5998, 'vk': #45668e, 'linkedin': #0077b5, 'twitter': #1da1f2, 'flipboard': #e12828)
+
+  @each $brand, $color in $social-colors
+    &--color.icon--#{$brand}
+      color: $color
+
+  &--email:before
+    content: $icon-share-email
   &--facebook:before
     content: $icon-facebook
   &--instagram:before
@@ -55,6 +63,10 @@
     content: $icon-telegram
   &--vk:before
     content: $icon-vk
+  &--linkedin:before
+    content: $icon-share-linkedin
+  &--flipboard:before
+    content: $icon-share-flipboard
 
   // UI icons
   &--player:before

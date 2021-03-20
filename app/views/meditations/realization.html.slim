@@ -1,0 +1,114 @@
+
+.realization id='realization' data-screen=(params[:screen] || 'ready')
+  .realization__info
+    .banner
+      = translate('realization.info.title')
+
+    ol.realization__explanation
+      - translate('realization.info.explanation').each do |text|
+        li: span = text
+
+    .realization__buttons
+      a.button.button--box data-goto='video'
+        .button__text
+          span data-for='ready' = translate('realization.info.action.start')
+          span data-for='paused' = translate('realization.info.action.continue')
+          .icon.icon--breadcrumb
+
+    .realization__links
+      .realization__link
+        a data-goto='reminder'
+          = translate('realization.info.action.reminder')
+
+      .realization__link data-for='paused'
+        a data-goto='survey'
+          = translate('realization.info.action.skip')
+
+  .realization__video
+    .realization__video-frame--desktop class='js-video-desktop'
+      script src="https://cdn.jwplayer.com/players/1oDJAjaD-8SfP7aMx.js"
+    
+    .realization__video-frame--mobile class='js-video-mobile'
+      script src="https://cdn.jwplayer.com/players/8FivThod-NaHiexhY.js"
+
+  .realization__form
+    .banner
+      span data-for='reminder' = translate('realization.form.reminder.title')
+      span data-for='course' = translate('realization.form.course.title')
+
+    div
+      .realization__subtitle
+        span data-for='reminder' = translate('realization.form.reminder.subtitle')
+
+      .realization__explanation
+        span data-for='reminder' = translate('realization.form.reminder.description')
+        span data-for='course' = translate('realization.form.course.description')
+
+    = form_tag subscribe_path, method: :post, remote: true do
+      .realization__form__fields
+        = email_field :signup, :email_address, placeholder: translate('realization.form.email'), required: true
+        = hidden_field :signup, :list_id, value: translate('realization.form.reminder.list_id'), data: { for: 'reminder' }
+        = hidden_field :signup, :survey, data: { for: 'course' }
+        = hidden_field :signup, :list_id, value: translate('realization.form.course.list_id'), data: { for: 'course' }
+        .realization__form__notice = translate('realization.form.notice')
+      
+      .realization__buttons
+        button.button.button--box type='submit'
+          .button__text data-for='reminder' = translate('realization.form.reminder.submit')
+          .button__text data-for='course' = translate('realization.form.reminder.submit')
+
+    .realization__links
+      .realization__link
+        a data-for='reminder' data-goto='ready'
+          = translate('realization.form.reminder.back')
+      .realization__link
+        a data-for='course' data-goto='thanks'
+          = translate('realization.form.course.skip')
+
+  .realization__survey
+    .banner = translate 'realization.survey.title'
+
+    .realization__explanation
+      = translate 'realization.survey.explanation'
+
+    .realization__survey__options
+      - translate('realization.survey.options').each do |key, text|
+        label.realization__survey__option class="realization__survey__option--#{key}"
+          = check_box_tag 'survey[]', key
+          .realization__survey__option-box
+            = inline_svg_tag "meditations/realization/#{key}.svg"
+            = text
+
+    .realization__survey__message class='js-survey-message'
+      = translate('realization.survey.error')
+
+    .realization__buttons
+      .button.button--box data-goto='course'
+        .button__text = translate('realization.survey.action')
+
+    .realization__links
+      .realization__link
+        a data-goto='thanks'
+          = translate('realization.form.course.skip')
+
+  .realization__thanks
+    .realization__circle
+      strong = translate('realization.thanks.title')
+      span = translate('realization.thanks.subtitle')
+
+    .realization__thanks__content
+      .realization__explanation
+        = translate('realization.thanks.explanation')
+
+      .realization__buttons data-for='thanks'
+        a.button.button--box data-goto='share'
+          .button__text = translate('realization.thanks.action')
+
+      .realization__share__permalink data-for='share'
+        input class='js-permalink' value=self_realization_meditations_url
+        span = translate('realization.thanks.share_copied')
+
+      .realization__share__links data-for='share'
+        - sharing_urls(:meditations).each do |type, link|
+          a.realization__share__button target='_blank' href=link
+            .icon.icon--color class="icon--#{type}"
