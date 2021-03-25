@@ -157,11 +157,9 @@ export default class ListTool extends EditorTool {
 
   /**
    * Handle UL, OL and LI tags paste and returns List data
-   *
-   * @param {HTMLUListElement|HTMLOListElement|HTMLLIElement} element
-   * @returns {ListData}
    */
-  pasteHandler(element) {
+  pasteHandler(event) {
+    const element = event.detail.data
     const { tagName: tag } = element
     let style
 
@@ -174,19 +172,27 @@ export default class ListTool extends EditorTool {
       style = 'unordered'
     }
 
-    const data = { style, items: [] }
+    const data = {
+      type: 'text',
+      style: style,
+      items: []
+    }
 
     if (tag === 'LI') {
       data.items = [element.innerHTML]
     } else {
-      const items = Array.from(element.querySelectorAll('LI'))
-
-      data.items = items
-        .map((li) => li.innerHTML)
-        .filter((item) => Boolean(item.trim()))
+      data.items = Array
+        .from(element.querySelectorAll('LI'))
+        .map(li => li.innerHTML)
+        .filter(item => Boolean(item.trim()))
     }
 
-    return data
+    this.data = data
+
+    this.container.innerHTML = ''
+    this.data.items.forEach(item => {
+      make('li', this.CSS.item, { innerHTML: item }, this.container)
+    })
   }
 
   // Sanitizer data before saving

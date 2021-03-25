@@ -59,14 +59,14 @@ export default class TextTool extends EditorTool {
     this.data = { text: this.data.text + data.text }
   }
 
-  onPaste(event) {
-    this.data = { text: event.detail.data.innerHTML }
-    this.container.querySelector(`.${this.CSS.fields.text}`).innerHTML = this.data.text
-  }
-
   // Check for emptiness
   validate(blockData) {
     return blockData.text.trim() !== ''
+  }
+
+  pasteHandler(event) {
+    this.data = { text: event.detail.data.innerHTML }
+    this.container.querySelector(`.${this.CSS.fields.text}`).innerHTML = this.data.text
   }
 
   // Define the types of paste that should be handled by this tool.

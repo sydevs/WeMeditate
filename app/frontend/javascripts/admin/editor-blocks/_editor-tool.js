@@ -131,13 +131,8 @@ export default class EditorTool {
     this.renderOptions(this.wrapper)
 
     // Add the classes for any active tunes
-    for (const key in this.tunes) {
-      const group = this.tunes[key]
-      for (let i = 0; i < group.options.length; i++) {
-        const tune = group.options[i]
-        this.wrapper.classList.toggle(this.CSS.tunes[tune.name], this.isTuneActive(tune))
-      }
-    }
+    this.updateOptionButtons()
+    this.updateOptionClasses()
   }
 
   // Renders a standard type of input
@@ -146,7 +141,7 @@ export default class EditorTool {
     let field = this.fields[key]
     let type = field.input || 'text'
 
-    result = make('div', [this.CSS.input, this.CSS.inputs[type]], {
+    result = make('div', [this.CSS.input, this.CSS.inputs[type], this.CSS.fields[key]], {
       type: 'text',
       innerHTML: this.data[key],
       contentEditable: true,
@@ -286,13 +281,21 @@ export default class EditorTool {
     }
     */
 
-    // Lastly, update the settings buttons to reflect the current state of the block.
-    this.updateOptionsButtons()
     return settingsContainer
   }
 
+  updateOptionClasses() {
+    for (const key in this.tunes) {
+      const group = this.tunes[key]
+      for (let i = 0; i < group.options.length; i++) {
+        const tune = group.options[i]
+        this.wrapper.classList.toggle(this.CSS.tunes[tune.name], this.isTuneActive(tune))
+      }
+    }
+  }
+
   // Updates the appearance of all settings buttons and inputs to reflect the current state of the block.
-  updateOptionsButtons() {
+  updateOptionButtons() {
     if (this.tunesWrapper) {
       // If tunes are defined, updated them
       for (const key in this.tunes) {
@@ -382,7 +385,7 @@ export default class EditorTool {
     button.addEventListener('click', () => {
       if (!event.currentTarget.classList.contains(this.CSS.optionsButtonDisabled)) {
         this.selectTune(tune)
-        this.updateOptionsButtons()
+        this.updateOptionButtons()
       }
     })
 
@@ -432,6 +435,14 @@ export default class EditorTool {
   }
   */
 
+  // ------ PASTE HANDLING ----- //
+
+  onPaste(event) {
+    this.pasteHandler(event)
+    this.updateOptionButtons()
+    this.updateOptionClasses()
+  }
+
   // ------ DECORATIONS ------ //
 
   renderDecorations(_container) {
@@ -451,7 +462,7 @@ export default class EditorTool {
     button.addEventListener('click', () => {
       if (!event.target.classList.contains(this.CSS.optionsButtonDisabled)) {
         this.setDecorationSelected(decoration, !this.isDecorationSelected(decoration.name))
-        this.updateOptionsButtons()
+        this.updateOptionButtons()
       }
     })
 
