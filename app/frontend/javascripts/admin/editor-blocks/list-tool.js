@@ -9,18 +9,11 @@ export default class ListTool extends EditorTool {
     }
   }
 
-  // Sanitizer data before saving
-  static get sanitize() {
-    return {
-      items: {},
-    }
-  }
-
   constructor({data, _config, api}) {
     super({ // Data
       id: data.id || generateId(),
       items: data.items || [],
-      type: ['text', 'contents', 'references'].includes(data.type) ? data.type : 'text',
+      type: ['text', 'contents'/*, 'references'*/].includes(data.type) ? data.type : 'text',
       style: ['unordered', 'ordered', 'leaf'].includes(data.style) ? data.style : 'unordered',
     }, { // Config
       id: 'list',
@@ -32,7 +25,7 @@ export default class ListTool extends EditorTool {
           options: [
             { name: 'text', icon: 'font', },
             { name: 'contents', icon: 'book' },
-            { name: 'references', icon: 'external square alternate icon' },
+            //{ name: 'references', icon: 'external square alternate icon' },
           ]
         },
         style: {
@@ -87,31 +80,21 @@ export default class ListTool extends EditorTool {
   }
 
   _onItemKeydown(event) {
-    if (event.key == 'Enter' || event.keyCode == 13) { // ENTER
-      const item = this.currentItem
-      const items = item.parentNode.children
-      if (items.length >= 2 && item.nextSibling == null && !item.textContent.trim().length) {
-        this.api.blocks.insert()
-        this.api.caret.setToNextBlock('start', 0)
-        item.remove()
-        event.preventDefault()
-        event.stopPropagation()
-        return false
-      }
-    } else if (event.key == 'Backspace' || event.keyCode == 8) { // BACKSPACE
-      const items = this.container.querySelectorAll(`.${this.CSS.item}`)
-      const firstItem = items[0]
+    const [ENTER, BACKSPACE] = [13, 8] // key codes
 
-      // Save the last one.
-      if (items.length < 2 && firstItem && !firstItem.innerHTML.replace('<br>', ' ').trim()) {
-        event.preventDefault()
-      }
+    switch (event.keyCode) {
+    case ENTER:
+      this.getOutofList(event)
+      break
+    case BACKSPACE:
+      this.backspace(event)
+      break
     }
-
-    return true
   }
 
-  // Returns current List item by the caret position
+  /**
+   * Returns current List item by the caret position
+   */
   get currentItem() {
     let currentNode = window.getSelection().anchorNode
 
@@ -122,25 +105,51 @@ export default class ListTool extends EditorTool {
     return currentNode.closest(`.${this.CSS.item}`)
   }
 
-  onPaste(event) {
-    const list = event.detail.data
-    const { tagName: tag } = list
-    let items = []
+  /**
+   * Get out from List Tool by Enter on the empty last item
+   */
+  getOutofList(event) {
+    const items = this.container.querySelectorAll('.' + this.CSS.item)
 
-    if (tag === 'LI') {
-      items = [list.innerHTML]
-    } else {
-      const listItems = Array.from(list.querySelectorAll('LI'))
-      items = listItems.map(li => li.innerHTML).filter(item => Boolean(item.trim()))
+    // Save the last one.
+    if (items.length < 2) {
+      return
     }
 
-    this.data = {
-      style: tag == 'OL' ? 'ordered' : 'unordered',
-      items: items,
+    const lastItem = items[items.length - 1]
+    const currentItem = this.currentItem
+
+    // Prevent Default li generation if item is empty
+    if (currentItem === lastItem && !lastItem.textContent.trim().length) {
+      // Insert New Block and set caret
+      currentItem.parentElement.removeChild(currentItem)
+      this.api.blocks.insert()
+      this.api.caret.setToBlock(this.api.blocks.getCurrentBlockIndex())
+      event.preventDefault()
+      event.stopPropagation()
     }
   }
 
-  // Select LI content by CMD+A
+  /**
+   * Handle backspace
+   */
+  backspace(event) {
+    const items = this.container.querySelectorAll('.' + this.CSS.item)
+    const firstItem = items[0]
+
+    if (!firstItem) {
+      return
+    }
+
+    // Save the last one.
+    if (items.length < 2 && !firstItem.innerHTML.replace('<br>', ' ').trim()) {
+      event.preventDefault()
+    }
+  }
+
+  /**
+   * Select LI content by CMD+A
+   */
   selectItem(event) {
     event.preventDefault()
 
@@ -150,8 +159,50 @@ export default class ListTool extends EditorTool {
     const range = new Range()
 
     range.selectNodeContents(currentItem)
+
     selection.removeAllRanges()
     selection.addRange(range)
+  }
+
+  /**
+   * Handle UL, OL and LI tags paste and returns List data
+   *
+   * @param {HTMLUListElement|HTMLOListElement|HTMLLIElement} element
+   * @returns {ListData}
+   */
+  pasteHandler(element) {
+    const { tagName: tag } = element
+    let style
+
+    switch (tag) {
+    case 'OL':
+      style = 'ordered'
+      break
+    case 'UL':
+    case 'LI':
+      style = 'unordered'
+    }
+
+    const data = { style, items: [] }
+
+    if (tag === 'LI') {
+      data.items = [element.innerHTML]
+    } else {
+      const items = Array.from(element.querySelectorAll('LI'))
+
+      data.items = items
+        .map((li) => li.innerHTML)
+        .filter((item) => Boolean(item.trim()))
+    }
+
+    return data
+  }
+
+  // Sanitizer data before saving
+  static get sanitize() {
+    return {
+      items: {},
+    }
   }
 
   // Define the types of paste that should be handled by this tool.
