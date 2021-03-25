@@ -2,75 +2,42 @@
 .codex-editor
   max-width: 650px
 
-.codex-editor__redactor
-  min-height: 260px
-  padding-bottom: 30px
-
-  [contenteditable]:empty:after
-    content: none !important
-
 .ce-block
+  position: relative
+
+/*.codex-editor__redactor
+  min-height: 260px
+  padding-bottom: 30px*/
+
+/*.ce-block
   padding-left: 10px
   padding-right: 45px
   border: solid transparent
   border-width: 0 2px
 
-.ce-block--focused
+/*.ce-block--focused
   background: none
   border-color: transparentize(black, 0.5)
 
-.cdx-block
+/*.cdx-block
   padding-bottom: 1em
 
-.ce-paragraph
+/*.ce-paragraph
   min-height: 3em
 
-.ce-toolbox
+/*.ce-toolbox
   left: 5px
 
-.ce-toolbox__button--active
+/*.ce-toolbox__button--active
   animation: none
 
-.ce-settings__default-zone
+/*.ce-settings__default-zone
   padding: 2px !important
 
-// SETTINGS
-.ce-settings i.icon
+// OPTIONS
+.cdx-options i.icon
   height: auto
 
-.ce-settings label
-  padding: 4px
-  padding-top: 0
-  font-weight: bold
-  font-size: 10px
-  text-transform: uppercase
-  opacity: 0.8
-
-.cdx-settings-button--disabled
-  cursor: default
-  opacity: 0.8
-  background: none !important
-
-.ce-settings__inputs
-  margin-top: 8px
-  font-size: 11.5px
-  width: 108px
-  
-  > *
-    margin: 4px 0
-    padding: 0 4px
-    border-bottom: 1px dashed transparentize(#388ae5, 0.5)
-
-  .ui.input
-    width: 100% !important
-
-  .ui.dropdown > .text
-    font-weight: normal !important
-
-  input
-    width: 100%
-
-// OPTIONS
 .cdx-options
   position: absolute
   left: calc(100% + 100px)

@@ -1,6 +1,7 @@
 import EditorJS from '@editorjs/editorjs'
 import { afterPendingUploads, hasPendingUploads } from './uploader'
 import TextTool from '../editor-blocks/text-tool'
+import ListTool from '../editor-blocks/list-tool'
 
 /** Content Editor
  * We use the editorjs (https://editorjs.io) to provide a block-based content editor for our CMS.
@@ -10,39 +11,19 @@ import TextTool from '../editor-blocks/text-tool'
 let form, editorInstance, editorInput
 
 const editorParameters = {
-  holder: 'content-editor',
   autofocus: true,
-  defaultBlock: 'text',
+  placeholder: 'Let`s write an awesome story!',
   tools: {
-    text: {
+    paragraph: {
       class: TextTool,
       inlineToolbar: true,
     },
-  },
-  /*tools: {
-    paragraph: {
-      class: ParagraphTool,
+    list: {
+      class: ListTool,
       inlineToolbar: true,
     },
-    header: {
-      class: HeaderTool,
-      inlineToolbar: false, //[],
-    },
-    list: ListTool,
-    quote: {
-      class: QuoteTool,
-      inlineToolbar: false, //[],
-    },
-    action: ActionTool,
-    image: ImageTool,
-    video: VideoTool,
-    form: FormTool,
-    textbox: TextboxTool,
-    catalog: CatalogTool,
-    structured: StructuredTool,
-    whitespace: WhitespaceTool,
   },
-  initialBlock: 'paragraph',*/
+  defaultBlock: 'paragraph',
 }
 
 export default function load() {
@@ -55,13 +36,14 @@ export default function load() {
   if (form && contentEditor) {
     //SplashEditor.load()
 
-    console.log('set submit to', onSubmit, 'for', form)
     form.onsubmit = onSubmit
     editorInput = form.querySelector('#content-input')
 
     if (contentEditor.dataset.content) {
       editorParameters.data = processDataForLoad(contentEditor.dataset.content)
     }
+
+    editorParameters.holder = contentEditor
 
     // Initialize the CodeX Editor (aka EditorJS)
     editorInstance = new EditorJS(editorParameters)

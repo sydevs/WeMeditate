@@ -29,8 +29,11 @@ export default class EditorTool {
 
     // A convenience to lookup the CSS classes used in the editor
     this.CSS = {
+      wrapper: this.api.styles.wrapper,
       baseClass: this.api.styles.block,
       container: `cdx-${this.id}`,
+      input: this.api.styles.input,
+      inputs: {},
       optionsWrapper: 'cdx-options',
       optionsGroup: 'cdx-options__group',
       optionsGroupActive: 'cdx-options__group--active',
@@ -39,16 +42,14 @@ export default class EditorTool {
       optionsButtonDisabled: `${this.api.styles.settingsButton}--disabled`,
       optionsInputWrapper: 'cdx-settings-input-zone',
       optionsSelect: 'ce-settings-select',
-      settingsInput: 'ce-settings-input',
-      semanticInput: 'cdx-semantic-input',
       decorationsWrapper: 'ce-settings__decorations',
       decorationInputsWrapper: 'ce-settings__inputs',
+      settingsInput: 'ce-settings-input',
+      semanticInput: 'cdx-semantic-input',
       tuneButtons: {},
       decorationButtons: {},
       tunes: {},
       fields: {},
-      input: this.api.styles.input,
-      inputs: {},
     }
 
     // The standard configurations for different types of block decorations
@@ -117,22 +118,22 @@ export default class EditorTool {
     }
 
     // Add the classes for any active tunes
-    console.log('add classes for', this.data)
     for (const key in this.tunes) {
       const group = this.tunes[key]
       for (let i = 0; i < group.options.length; i++) {
         const tune = group.options[i]
-        console.log('add class for', tune.name, '?', this.isTuneActive(tune), this.CSS.tunes[tune.name])
         container.classList.toggle(this.CSS.tunes[tune.name], this.isTuneActive(tune))
       }
     }
 
-    // Render the settings block
-    this.renderOptions(container)
-    //make('div', [this.CSS.optionsWrapper], {}, container)
-
     this.container = container // Save a reference to the container
     return container
+  }
+
+  rendered() {
+    // Render the settings block
+    const wrapper = this.container.parentElement.parentElement
+    this.renderOptions(wrapper)
   }
 
   // Renders a standard type of input
@@ -226,15 +227,32 @@ export default class EditorTool {
       newData[key] = newData[key].replace('&nbsp;', ' ').trim() // Stip non-breaking whitespace
     }
 
+    this.removeInactiveTunes()
+    return Object.assign(this.data, newData)
+  }
+
+  removeInactiveTunes() {
     // Remove any non-enabled tunes
     for (const key in this.tunes) {
       if (!this.isTuneGroupActive(this.tunes[key])) {
         delete this.data[key]
       }
     }
-
-    return Object.assign(this.data, newData)
   }
+
+  /*
+  get isEmpty() {
+    const data = this.save(this.container)
+
+    for (let key in this.fields) {
+      if (data[key]) {
+        return false
+      }
+    }
+
+    return true
+  }
+  */
 
 
   // =============== SETTINGS =============== //

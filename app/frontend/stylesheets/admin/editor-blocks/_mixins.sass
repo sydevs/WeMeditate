@@ -1,6 +1,4 @@
 
-@mixin wide-settings($tool, $settings)
-  .cdx-#{$tool}-settings .cdx-settings-button
-    @each $setting in $settings
-      &__#{$setting}
-        width: 51px
+// To convert simple image paths to their proper location
+@function image($path)
+  @return image-url("//images/#{$path}")

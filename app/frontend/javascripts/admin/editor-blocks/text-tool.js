@@ -2,11 +2,10 @@ import { generateId } from '../util'
 import EditorTool from './_editor-tool'
 
 export default class TextTool extends EditorTool {
-
-  // Sanitizer data before saving
-  static get sanitize() {
+  static get toolbox() {
     return {
-      text: {},
+      icon: '<i class="font icon"></i>',
+      title: 'Text',
     }
   }
 
@@ -17,7 +16,7 @@ export default class TextTool extends EditorTool {
       type: ['text', 'header'].includes(data.type) ? data.type : 'text',
       level: ['h2', 'h3', 'h4', 'h5'].includes(data.type) ? data.type : 'h2',
     }, { // Config
-      id: 'text',
+      id: 'paragraph',
       fields: {
         text: { label: '', contained: false },
       },
@@ -71,9 +70,23 @@ export default class TextTool extends EditorTool {
   }
 
   // Define the types of paste that should be handled by this tool.
-  /*
   static get pasteConfig() {
     return { tags: ['P'] }
   }
+
+  /*
+  static get conversionConfig() {
+    return {
+      export: 'text', // to convert Paragraph to other block, use 'text' property of saved data
+      import: 'text', // to convert other block's exported string to Paragraph, fill 'text' property of tool data
+    }
+  }
   */
+
+  // Sanitizer data before saving
+  static get sanitize() {
+    return {
+      text: {},
+    }
+  }
 }
