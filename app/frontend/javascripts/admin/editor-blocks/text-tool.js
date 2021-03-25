@@ -65,13 +65,26 @@ export default class TextTool extends EditorTool {
   }
 
   pasteHandler(event) {
-    this.data = { text: event.detail.data.innerHTML }
+    const element = event.detail.data
+    const { tagName: tag } = element
+    let data = {
+      text: element.innerHTML,
+      type: tag == 'P' ? 'text' : 'header'
+    }
+
+    if (tag != 'P') {
+      data.level = tag.toLowerCase()
+      if (data.level == 'h1') data.level = 'h2'
+      if (data.level == 'h6') data.level = 'h5'
+    }
+
+    this.data = data
     this.container.querySelector(`.${this.CSS.fields.text}`).innerHTML = this.data.text
   }
 
   // Define the types of paste that should be handled by this tool.
   static get pasteConfig() {
-    return { tags: ['P'] }
+    return { tags: ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'] }
   }
 
   /*
