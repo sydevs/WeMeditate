@@ -29,11 +29,13 @@ export default class EditorTool {
 
     // A convenience to lookup the CSS classes used in the editor
     this.CSS = {
-      wrapper: this.api.styles.wrapper,
+      wrapper: `ce-${this.id}`,
       baseClass: this.api.styles.block,
       container: `cdx-${this.id}`,
+
       input: this.api.styles.input,
       inputs: {},
+
       optionsWrapper: 'cdx-options',
       optionsGroup: 'cdx-options__group',
       optionsGroupActive: 'cdx-options__group--active',
@@ -92,7 +94,7 @@ export default class EditorTool {
       const group = this.tunes[key]
       for (let i = 0; i < group.options.length; i++) {
         const tune = group.options[i]
-        this.CSS.tunes[tune.name] = `${this.CSS.container}--${tune.name}`
+        this.CSS.tunes[tune.name] = `${this.CSS.wrapper}--${tune.name}`
         this.CSS.tuneButtons[tune.name] = `${this.CSS.optionsButton}__${tune.name}`
       }
     }
@@ -109,6 +111,7 @@ export default class EditorTool {
   // Creates the tool html with inputs
   render() {
     const container = make('div', [this.CSS.baseClass, this.CSS.container])
+    this.container = container
 
     // Render the fields which are defined for this tool
     for (let key in this.fields) {
@@ -117,23 +120,24 @@ export default class EditorTool {
       this.renderInput(key, container)
     }
 
+    return container
+  }
+
+  rendered() {
+    this.wrapper = this.container.parentElement.parentElement
+    this.wrapper.classList.add(this.CSS.wrapper)
+
+    // Render the settings block
+    this.renderOptions(this.wrapper)
+
     // Add the classes for any active tunes
     for (const key in this.tunes) {
       const group = this.tunes[key]
       for (let i = 0; i < group.options.length; i++) {
         const tune = group.options[i]
-        container.classList.toggle(this.CSS.tunes[tune.name], this.isTuneActive(tune))
+        this.wrapper.classList.toggle(this.CSS.tunes[tune.name], this.isTuneActive(tune))
       }
     }
-
-    this.container = container // Save a reference to the container
-    return container
-  }
-
-  rendered() {
-    // Render the settings block
-    const wrapper = this.container.parentElement.parentElement
-    this.renderOptions(wrapper)
   }
 
   // Renders a standard type of input
@@ -412,19 +416,21 @@ export default class EditorTool {
   }
 
   setTuneValue(key, value) {
-    this.container.classList.remove(this.CSS.tunes[this.data[key]])
+    this.wrapper.classList.remove(this.CSS.tunes[this.data[key]])
     this.data[key] = value
-    this.container.classList.add(this.CSS.tunes[value])
+    this.wrapper.classList.add(this.CSS.tunes[value])
   }
 
   setTuneBoolean(key, value) {
     this.data[key] = value
-    this.container.classList.toggle(this.CSS.tunes[key], value)
+    this.wrapper.classList.toggle(this.CSS.tunes[key], value)
   }
 
+  /*
   setTuneEnabled(key, enabled) {
     this.tunesWrapper.querySelector(`.${this.CSS.tuneButtons[key]}`).classList.toggle(this.CSS.optionsButtonDisabled, !enabled)
   }
+  */
 
   // ------ DECORATIONS ------ //
 

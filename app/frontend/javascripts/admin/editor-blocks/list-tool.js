@@ -67,15 +67,6 @@ export default class ListTool extends EditorTool {
       make('li', this.CSS.item, {}, this.container)
     }
 
-    // TODO: Extract this into a function in the super class
-    for (const key in this.tunes) {
-      const group = this.tunes[key]
-      for (let i = 0; i < group.options.length; i++) {
-        const tune = group.options[i]
-        this.container.classList.toggle(this.CSS.tunes[tune.name], this.isTuneActive(tune))
-      }
-    }
-
     return this.container
   }
 

@@ -1,6 +1,6 @@
 
 // SETTINGS
-.cdx-paragraph .cdx-settings-button
+.ce-paragraph .cdx-settings-button
   @for $level from 1 through 6
     &[data-key="h#{$level}"]
       .icon::after
@@ -8,7 +8,7 @@
         font-weight: bold
 
 // TUNES
-.cdx-paragraph--header
+.ce-paragraph--header
   .cdx-input[data-key="text"]
     font-size: 1.7rem
     padding: 0.5em 0
@@ -17,5 +17,5 @@
     outline: none
 
   @for $level from 1 through 6
-    &.cdx-paragraph--h#{$level} .cdx-input[data-key="text"]
+    &.ce-paragraph--h#{$level} .cdx-input[data-key="text"]
       font-size: 1.7rem * (1 - (($level - 2) * 0.15))
