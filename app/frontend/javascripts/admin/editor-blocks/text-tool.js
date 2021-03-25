@@ -43,7 +43,7 @@ export default class TextTool extends EditorTool {
   }
 
   // Check if text content is empty and set empty string to inner html.
-  // We need this because some browsers (e.g. Safari) insert <br> into empty contenteditanle elements
+  // We need this because some browsers (e.g. Safari) insert <br> into empty contenteditable elements
   onKeyUp(event) {
     if (event.code !== 'Backspace' && event.code !== 'Delete') {
       return
@@ -86,15 +86,6 @@ export default class TextTool extends EditorTool {
   static get pasteConfig() {
     return { tags: ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'] }
   }
-
-  /*
-  static get conversionConfig() {
-    return {
-      export: 'text', // to convert Paragraph to other block, use 'text' property of saved data
-      import: 'text', // to convert other block's exported string to Paragraph, fill 'text' property of tool data
-    }
-  }
-  */
 
   // Sanitizer data before saving
   static get sanitize() {
