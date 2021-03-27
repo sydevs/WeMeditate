@@ -1,0 +1,24 @@
+$-tool: empty !default
+
+@mixin set($tool: null)
+  $-tool: $tool !global
+
+@mixin block
+  .ce-#{$-tool}
+    @content
+
+@mixin type($type)
+  .ce-#{$-tool}[data-type="#{$type}"]
+    @content
+
+@mixin with-option($key, $value)
+  &.ce-#{$-tool}[data-#{$key}="#{$value}"] .cdx-block
+    @content
+
+@mixin on-option($key, $value)
+  .cdx-options__group[data-key="#{$key}"] .cdx-settings-button[data-key="#{$value}"]
+    @content
+
+@mixin on-field($key)
+  .cdx-input[data-key="#{$key}"]
+    @content

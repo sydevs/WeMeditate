@@ -1,15 +1,15 @@
+@use 'tool'
+@include set($tool: paragraph)
 
-// SETTINGS
-.ce-paragraph .cdx-settings-button
+@include block
   @for $level from 1 through 6
-    &[data-key="h#{$level}"]
+    @include on-option(level, "h#{$level}")
       .icon::after
         content: '#{$level}'
         font-weight: bold
 
-// TUNES
-.ce-paragraph--header
-  .cdx-input[data-key="text"]
+@include type(header)
+  @include on-field(text)
     font-size: 1.7rem
     padding: 0.5em 0
     margin: 0
@@ -17,5 +17,5 @@
     outline: none
 
   @for $level from 1 through 6
-    &.ce-paragraph--h#{$level} .cdx-input[data-key="text"]
+    @include with-option(level, "h#{$level}")
       font-size: 1.7rem * (1 - (($level - 2) * 0.15))

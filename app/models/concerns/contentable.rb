@@ -53,7 +53,7 @@ module Contentable
       Globalize.with_locale(locale) do
         if content_blocks.present?
           content_blocks.each do |block|
-            result += block['data']['media_files'] if block['data']['media_files']
+            result += block['data']['mediaFiles'] if block['data']['mediaFiles']
           end
         end
 
@@ -62,7 +62,7 @@ module Contentable
         if draftable? && has_draft?
           if parsed_draft_content.present?
             parsed_draft_content['blocks'].each do |block|
-              result += block['data']['media_files'] if block['data']['media_files']
+              result += block['data']['mediaFiles'] if block['data']['mediaFiles']
             end
           end
 

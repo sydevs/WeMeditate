@@ -69,7 +69,8 @@ a > .icon:not(.fitted):last-child
 [contenteditable]:empty:before
   content: attr(data-placeholder)
   color: gray
-  display: block // For Firefox
+  width: 100%
+  -moz-display: block // For Firefox
 
 [contenteditable]:focus:before
   color: darkgray

@@ -223,11 +223,26 @@ export default class EditorTool {
     // Get the contents of each field for this tool.
     for (let key in this.fields) {
       newData[key] = blockContainer.querySelector(`.${this.CSS.input}[data-key=${key}]`).innerHTML
-      newData[key] = newData[key].replace('&nbsp;', ' ').trim() // Stip non-breaking whitespace
+      newData[key] = newData[key].replace('&nbsp;', ' ').trim() // Strip non-breaking whitespace
     }
 
     this.removeInactiveTunes()
     return Object.assign(this.data, newData)
+  }
+
+  validate(blockData) {
+    const fields = Object.keys(this.fields)
+
+    for (let i = 0; i < fields.length; i++) {
+      const value = blockData[fields[i]]
+      if (typeof value === 'string' && new String(value).trim() !== '') {
+        return true
+      } else if (value) {
+        return true
+      }
+    }
+
+    return false
   }
 
   removeInactiveTunes() {
@@ -239,19 +254,9 @@ export default class EditorTool {
     }
   }
 
-  /*
   get isEmpty() {
-    const data = this.save(this.container)
-
-    for (let key in this.fields) {
-      if (data[key]) {
-        return false
-      }
-    }
-
-    return true
+    return this.validate()
   }
-  */
 
 
   // =============== SETTINGS =============== //
@@ -261,9 +266,10 @@ export default class EditorTool {
   renderOptions(container = null) {
     const settingsContainer = make('div', [this.CSS.optionsWrapper], {}, container)
 
+    make('strong', '', { innerText: this.constructor.toolbox.title }, settingsContainer)
+
     // Render tunes if there is at least one defined.
     if (Object.keys(this.tunes).length > 0) {
-      //make('label', '', { innerText: translate().content.settings.tunes }, settingsContainer)
       this.tunesWrapper = make('div', '', {}, settingsContainer)
       this.renderTunes(this.tunesWrapper)
     }
@@ -287,10 +293,7 @@ export default class EditorTool {
   updateOptionClasses() {
     for (const key in this.tunes) {
       const group = this.tunes[key]
-      for (let i = 0; i < group.options.length; i++) {
-        const tune = group.options[i]
-        this.wrapper.classList.toggle(this.CSS.tunes[tune.name], this.isTuneActive(tune))
-      }
+      this.wrapper.dataset[group.name] = this.data[group.name]
     }
   }
 
@@ -353,11 +356,6 @@ export default class EditorTool {
     const optionsGroup = make('div', this.CSS.optionsGroup, {}, container)
     optionsGroup.dataset.key = group.name
 
-    if (group.requires) {
-      optionsGroup.dataset.requiresKey = Object.keys(group.requires)[0]
-      optionsGroup.dataset.requiresValue = Object.values(group.requires)[0]
-    }
-
     make('label', '', { innerText: group.name }, optionsGroup)
     group.options.forEach(tune => {
       tune.group = group.name
@@ -372,15 +370,6 @@ export default class EditorTool {
     button.dataset.group = tune.group
     button.dataset.key = tune.name
     button.innerHTML = '<i class="' + tune.icon + ' icon"></i>'
-
-    //button.dataset.tooltip = tune.name.toUpper()
-    /*
-    if (group) {
-      button.dataset.tooltip = translate().content.tunes[group.name][tune.name]
-    } else {
-      button.dataset.tooltip = translate().content.tunes[tune.name]
-    }
-    */
 
     button.addEventListener('click', () => {
       if (!event.currentTarget.classList.contains(this.CSS.optionsButtonDisabled)) {
@@ -398,42 +387,22 @@ export default class EditorTool {
     if (!group.requires) return true
 
     for (const key in group.requires) {
-      const value = group.requires[key]
-      return this.data[key] === value
+      let result = group.requires[key].find(value => this.data[key] === value)
+      if (!result) return false 
     }
+
+    return true
   }
 
   // Check if a tune if currently selected.
   isTuneActive(tune) {
-    return tune.group ? tune.name === this.data[tune.group] : this.data[tune.name] == true
+    return this.data[tune.group] === tune.name
   }
 
   selectTune(tune) {
-    if (tune.group) {
-      this.setTuneValue(tune.group, tune.name)
-    } else {
-      this.setTuneBoolean(tune.name, !this.data[tune.name])
-    }
-
-    return this.isTuneActive(tune)
+    this.wrapper.dataset[tune.group] = tune.name
+    this.data[tune.group] = tune.name
   }
-
-  setTuneValue(key, value) {
-    this.wrapper.classList.remove(this.CSS.tunes[this.data[key]])
-    this.data[key] = value
-    this.wrapper.classList.add(this.CSS.tunes[value])
-  }
-
-  setTuneBoolean(key, value) {
-    this.data[key] = value
-    this.wrapper.classList.toggle(this.CSS.tunes[key], value)
-  }
-
-  /*
-  setTuneEnabled(key, enabled) {
-    this.tunesWrapper.querySelector(`.${this.CSS.tuneButtons[key]}`).classList.toggle(this.CSS.optionsButtonDisabled, !enabled)
-  }
-  */
 
   // ------ PASTE HANDLING ----- //
 

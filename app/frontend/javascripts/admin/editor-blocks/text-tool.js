@@ -13,7 +13,7 @@ export default class TextTool extends EditorTool {
     super({ // Data
       id: data.id || generateId(),
       text: data.text || '',
-      type: ['text', 'header'].includes(data.type) ? data.type : 'text',
+      type: ['paragraph', 'header'].includes(data.type) ? data.type : 'paragraph',
       level: ['h2', 'h3', 'h4', 'h5'].includes(data.type) ? data.type : 'h2',
     }, { // Config
       id: 'paragraph',
@@ -23,12 +23,12 @@ export default class TextTool extends EditorTool {
       tunes: {
         type: {
           options: [
-            { name: 'text', icon: 'font', },
+            { name: 'paragraph', icon: 'font' },
             { name: 'header', icon: 'heading' },
           ]
         },
         level: {
-          requires: { type: 'header' },
+          requires: { type: ['header'] },
           options: [
             { name: 'h2', icon: 'heading' },
             { name: 'h3', icon: 'heading' },

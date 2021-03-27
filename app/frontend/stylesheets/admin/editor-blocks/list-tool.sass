@@ -1,26 +1,28 @@
+@use 'tool'
+@include set($tool: list)
 
-.cdx-list
-  padding-left: 20px
-  outline: none
+@include block
+  .cdx-list
+    padding-left: 20px
+    outline: none
 
-  &__item
-    padding: 5.5px 0 5.5px 3px
-    line-height: 1.2em
+    &__item
+      padding: 5.5px 0 5.5px 3px
+      line-height: 1.2em
 
-// TUNES
-.ce-list--text.ce-list
-  &--unordered ul
+@include type(text)
+  @include with-option(style, unordered)
     list-style-type: disc
 
-  &--ordered ul
+  @include with-option(style, ordered)
     list-style-type: decimal
 
-  &--leaf ul
+  @include with-option(style, leaf)
     list-style-type: circle
     list-style-type: image('graphics/leaf.svg')
 
-.ce-list--contents
-  .cdx-list
+@include type(contents)
+  .cdx-block
     width: 100%
     margin: 10px 0
     padding: 0
@@ -37,5 +39,5 @@
       content: 'TABLE OF CONTENTS'
       line-height: 170px
 
-    li
+    .cdx-input
       display: none

@@ -62,7 +62,7 @@ export default class FileUploader {
   }
 
   isAcceptedFileType(file) {
-    return this.accepts.includes(file.type)
+    return this.input.accept.includes(file.type)
   }
 
   uploadFile(file) {

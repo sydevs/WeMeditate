@@ -2,6 +2,7 @@ import EditorJS from '@editorjs/editorjs'
 import { afterPendingUploads, hasPendingUploads } from './uploader'
 import TextTool from '../editor-blocks/text-tool'
 import ListTool from '../editor-blocks/list-tool'
+import TextboxTool from '../editor-blocks/textbox-tool'
 
 /** Content Editor
  * We use the editorjs (https://editorjs.io) to provide a block-based content editor for our CMS.
@@ -22,6 +23,7 @@ const editorParameters = {
       class: ListTool,
       inlineToolbar: true,
     },
+    textbox: TextboxTool,
   },
   defaultBlock: 'paragraph',
 }

@@ -1,0 +1,133 @@
+@use 'tool'
+@include set($tool: textbox)
+
+// IMAGE UPLOADER
+@include block
+  .cdx-input__uploader,
+  .ui.placeholder
+    height: 100%
+
+  .cdx-textbox__image__remove
+    position: absolute
+    top: 5px
+    right: 5px
+    background: white
+    overflow: hidden
+    width: 18px !important
+    height: 18px !important
+    border-radius: 100%
+
+    &:hover
+      color: #DB2828
+
+  &:not(.ce-block--focused) .cdx-textbox__image__remove
+    display: none
+
+
+// SINGLE TYPE
+@include type(single)
+  .cdx-block
+    padding: 15px 5px
+    text-align: center
+    max-width: 80%
+    margin-left: auto
+    margin-right: auto
+
+  .cdx-textbox__fields
+    display: flex
+    flex-direction: column
+
+  @include on-field(text)
+    font-size: 1.125em
+    min-height: 0
+    margin-bottom: 10px
+    order: -1
+
+  @include on-field(title)
+    margin: 0
+    font-weight: 500
+
+  @include on-field(subtitle)
+    font-size: 0.8em
+
+  @include on-field(action)
+      display: none
+
+  @include on-field(url)
+      display: none
+
+  @include on-field(image)
+      display: none
+
+  @include with-option(alignment, left)
+    padding-right: 30%
+    text-align: left
+    margin-left: 0
+
+    border-left: 4px solid lightgray
+
+  @include with-option(alignment, right)
+    padding-left: 30%
+    text-align: right
+    margin-right: 0
+
+  @include with-option(style, poem)
+    font-style: italic
+
+
+// IMAGE TYPE
+@include type(image)
+  .cdx-textbox
+    display: flex
+    padding: 3em 0
+
+  .cdx-textbox__fields
+    flex-basis: 60%
+    width: 60%
+    margin: 10px
+    padding: 10px
+    border: 1px solid rgba(0,0,0,0.2)
+
+  @include on-field(image)
+    flex-basis: 40%
+    position: relative
+    text-align: center
+
+    .uploader
+      height: 100%
+      display: flex
+      align-items: center
+      padding: 50px
+
+    img
+      min-width: 150px
+      width: 100%
+
+  @include on-field(url)
+    border-left: 2px solid gray
+
+  @include on-field(subtitle)
+    display: none
+
+  // Option adjustments
+  @include with-option(position, right)
+    flex-direction: row-reverse
+
+    .cdx-textbox__fields
+      align-self: flex-end
+
+  @include with-option(background, image)
+    flex-direction: column
+
+    @include on-field(image)
+      width: 100%
+      margin-top: 10px
+
+      .uploader
+        height: auto
+        padding: 10px
+        display: block
+
+  @include with-option(background, wisdom)
+    background: beige
+    padding: 10px

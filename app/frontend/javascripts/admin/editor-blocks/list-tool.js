@@ -29,7 +29,7 @@ export default class ListTool extends EditorTool {
           ]
         },
         style: {
-          requires: { type: 'text' },
+          requires: { type: ['text'] },
           options: [
             { name: 'unordered', icon: 'list ul' },
             { name: 'ordered', icon: 'list ol' },
@@ -56,15 +56,17 @@ export default class ListTool extends EditorTool {
   }
 
   render() {
-    this.container = make('ul', [this.CSS.baseClass, this.CSS.container], { contentEditable: true })
+    this.container = make('div', [this.CSS.baseClass, this.CSS.container])
     this.container.addEventListener('keydown', event => this._onItemKeydown(event))
+
+    const list = make('ul', [this.CSS.input], { contentEditable: true, data: { key: 'items' } }, this.container)
 
     if (this.data.items.length) {
       this.data.items.forEach(item => {
-        make('li', this.CSS.item, { innerHTML: item }, this.container)
+        make('li', this.CSS.item, { innerHTML: item }, list)
       })
     } else {
-      make('li', this.CSS.item, {}, this.container)
+      make('li', this.CSS.item, {}, list)
     }
 
     return this.container
