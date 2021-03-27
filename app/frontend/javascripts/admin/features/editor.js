@@ -60,6 +60,7 @@ export function getCurrentEditorBlock() {
 function onSubmit(event) {
   if (hasPendingUploads()) {
     afterPendingUploads(() => form.submit())
+    event.stopPropagation()
     event.preventDefault()
     return false
   } else {

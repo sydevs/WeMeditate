@@ -1,10 +1,12 @@
 import $ from 'jquery'
+import { make } from '../util'
 
 let uploads = {}
 let pendingUploads = 0
-let failedUploads = []
 let uploadEndpoint
 let loaderElement
+let listElement
+let submitButton
 let modal
 
 export default function load() {
@@ -13,8 +15,11 @@ export default function load() {
   const uploaderContainer = document.getElementById('uploader')
   if (uploaderContainer) {
     uploadEndpoint = uploaderContainer.dataset.endpoint
-    loaderElement = document.getElementById('uploader-loader')
     modal = document.getElementById('uploader-modal')
+    loaderElement = document.getElementById('uploader-loader')
+    submitButton = document.getElementById('uploader-submit')
+    listElement = document.getElementById('uploader-list')
+    listElement.innerHTML = null
   }
 }
 
@@ -23,13 +28,13 @@ export function hasPendingUploads() {
 }
 
 export function afterPendingUploads(onCompletion) {
-  $(modal).modal({ onApprove: () => onCompletion })
+  // TODO: This onApprove callback doesn't work.
+  $(modal).modal({ onApprove: () => onCompletion }).modal('show')
 }
 
 // This sends a file to our server's upload endpoint
 export function uploadFile(file, success, failure) {
-  console.log('upload file')
-  adjustPendingUploads(+1)
+  addUpload(file)
 
   const data = new FormData()
   data.append('file', file)
@@ -42,15 +47,34 @@ export function uploadFile(file, success, failure) {
     dataType: 'json',
     data: data,
     success: function(result) {
-      adjustPendingUploads(-1)
+      updateUpload(file.name, 'success')
       success(result)
     },
     error: function(result) {
-      failedUploads.push(result)
-      adjustPendingUploads(-1)
+      let error = result.responseJSON.errors[0]
+      error = error.split(' Original Error: ')[0]
+      updateUpload(file.name, 'error', error)
       failure(result)
     },
   })
+}
+
+function addUpload(file) {
+  adjustPendingUploads(+1)
+  uploads[file.name] = {
+    status: 'pending',
+    file: file
+  }
+
+  listElement.appendChild(buildUploadItem(uploads[file.name]))
+}
+
+function updateUpload(name, status, message = null) {
+  adjustPendingUploads(-1)
+  uploads[name].status = status
+  uploads[name].message = message
+  const item = listElement.querySelector(`.item[data-file="${name}"]`)
+  listElement.replaceChild(buildUploadItem(uploads[name]), item)
 }
 
 function adjustPendingUploads(adjustment) {
@@ -60,5 +84,32 @@ function adjustPendingUploads(adjustment) {
     loaderElement.querySelector('span').innerText = window.translate.waiting_for_upload.replace('%{count}', pendingUploads)
   }
 
+  submitButton.classList.toggle('disabled', pendingUploads > 0)
   $(loaderElement).toggle(pendingUploads > 0)
 }
+
+function buildUploadItem(upload) {
+  const item = make('div', 'item', { data: { file: upload.file.name }})
+
+  switch (upload.status) {
+  case 'success':
+    make('i', ['green', 'check', 'circle', 'icon'], {}, item)
+    break
+  case 'error':
+    make('i', ['red', 'times', 'circle', 'icon'], {}, item)
+    break
+  default:
+    make('i', ['fitted', 'sync', 'loading', 'icon'], {}, item)
+    break
+  }
+
+  const content = make('div', 'content', {}, item)
+  make('div', 'header', { innerText: upload.file.name }, content)
+
+  if (upload.message) {
+    make('div', 'description', { innerText: upload.message }, content)
+  }
+
+  return item
+}
+

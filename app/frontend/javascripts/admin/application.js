@@ -26,7 +26,7 @@ export function load() {
   new TimeZonesMap(timeZoneMap) // eslint-disable-line no-new
 
   // Activate the loader icon on form submit
-  $('form').on('submit', function() {
+  $('form:not(#editor-form)').on('submit', function() {
     $(this).addClass('loading')
     $('#loader').addClass('active')
   })

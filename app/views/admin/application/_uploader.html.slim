@@ -4,14 +4,14 @@
     i.notched.circle.loading.icon
     span
 
-  .ui.basic.modal id="uploader-modal"
+  .ui.tiny.modal id="uploader-modal"
     .ui.icon.header
-      i.notched.circle.loading.icon
-      | Waiting for File Uploads to Complete
+      | Waiting for File Uploads
     .content
+      .ui.list id="uploader-list"
     .actions
-      .ui.basic.cancel.inverted.button
+      .ui.basic.cancel.button
         | Continue Editing 
-      .ui.disabled.green.ok.inverted.button
+      .ui.disabled.green.ok.button id='uploader-submit'
         i.checkmark.icon
-        | Save
+        | Okay

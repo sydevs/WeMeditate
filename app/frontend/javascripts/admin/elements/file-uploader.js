@@ -75,11 +75,11 @@ export default class FileUploader {
     this.wrapper.dispatchEvent(event)
 
     uploadFile(file, (result) => {
-      console.log('uploaded', result)
       const event = new CustomEvent('uploadend', { detail: { index: index, response: result } })
       this.wrapper.dispatchEvent(event)
     }, (result) => {
-      console.error('upload failed', result)
+      const event = new CustomEvent('uploadfailed', { detail: { index: index, response: result } })
+      this.wrapper.dispatchEvent(event)
     })
 
     return true
