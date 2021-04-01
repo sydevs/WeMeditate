@@ -50,13 +50,7 @@
   @include on-field(subtitle)
     font-size: 0.8em
 
-  @include on-field(action)
-      display: none
-
-  @include on-field(url)
-      display: none
-
-  @include on-field(image)
+  @include on-fields(action, url, image)
       display: none
 
   @include with-option(alignment, left)
@@ -80,6 +74,7 @@
   .cdx-textbox
     display: flex
     padding: 3em 0
+    margin: 10px 0
 
   .cdx-textbox__fields
     flex-basis: 60%

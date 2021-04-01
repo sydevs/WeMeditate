@@ -19,6 +19,11 @@ $-tool: empty !default
   .cdx-options__group[data-key="#{$key}"] .cdx-settings-button[data-key="#{$value}"]
     @content
 
+@mixin on-fields($keys...)
+  @each $key in $keys
+    .cdx-input[data-key="#{$key}"]
+      @content
+
 @mixin on-field($key)
-  .cdx-input[data-key="#{$key}"]
+  @include on-fields($key)
     @content

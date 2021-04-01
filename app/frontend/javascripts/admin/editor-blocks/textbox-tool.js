@@ -111,8 +111,6 @@ export default class TextTool extends EditorTool {
     this.imageRemoveIcon = make('i', [this.CSS.image.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, this.imageContainer)
     this.imageRemoveIcon.addEventListener('click', () => this.setImage(null))
 
-    console.log('load image', this.data)
-
     if (this.data.image && this.data.image.preview) {
       make('img', this.CSS.image.img, { src: this.data.image.preview }, this.imageContainer)
       this.imageContainer.dataset.attributes = JSON.stringify(this.data.image)
@@ -137,7 +135,6 @@ export default class TextTool extends EditorTool {
       delete data.image
     }
 
-    console.log('save textbox data', JSON.stringify(data))
     this.data = data
     return data
   }
