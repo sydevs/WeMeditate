@@ -2,7 +2,7 @@
 /* exported Admin */
 
 /** Admin
- * This file orchestrates all the code for the administrative part of the website (ie. admin.wemeditate.co)
+ * This file orchestrates all the code for the administrative part of the website (ie. admin.wemeditate.com)
  */
 
 const Admin = {

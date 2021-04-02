@@ -3,7 +3,7 @@ RouteTranslator.config do |config|
   config.hide_locale = true
 
   if Rails.env.production?
-    Rails.configuration.admin_domain = 'admin.wemeditate.co'
+    Rails.configuration.admin_domain = 'admin.wemeditate.com'
     Rails.configuration.admin_host = Rails.configuration.admin_domain
     config.host_locales = {
       # TODO: Remove legacy .co host_locales after 301 redirects to .com are in place

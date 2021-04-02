@@ -118,7 +118,7 @@ Rails.application.configure do
   config.lograge.enabled = true
 
   # Devise config
-  config.action_mailer.default_url_options = { host: 'admin.wemeditate.co' }
+  config.action_mailer.default_url_options = { host: 'admin.wemeditate.com' }
 
   config.action_mailer.delivery_method = :smtp
 end
