@@ -9,4 +9,4 @@ Disallow: /*?utm_source=
 Disallow: /maintenance
 Disallow: /users
 
-Sitemap: https://www.wemeditate.co/sitemap.xml.gz
+Sitemap: https://wemeditate.com/sitemap.xml.gz
