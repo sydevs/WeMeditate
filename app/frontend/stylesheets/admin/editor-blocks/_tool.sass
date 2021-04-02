@@ -12,7 +12,7 @@ $-tool: empty !default
     @content
 
 @mixin with-option($key, $value)
-  &.ce-#{$-tool}[data-#{$key}="#{$value}"] .cdx-block
+  &.ce-#{$-tool}[data-#{$key}="#{$value}"]
     @content
 
 @mixin on-option($key, $value)

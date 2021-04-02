@@ -51,27 +51,30 @@
     font-size: 0.8em
 
   @include on-fields(action, url, image)
-      display: none
+    display: none
 
   @include with-option(alignment, left)
-    padding-right: 30%
-    text-align: left
-    margin-left: 0
+    .cdx-block
+      padding-right: 30%
+      text-align: left
+      margin-left: 0
 
-    border-left: 4px solid lightgray
+      border-left: 4px solid lightgray
 
   @include with-option(alignment, right)
-    padding-left: 30%
-    text-align: right
-    margin-right: 0
+    .cdx-block
+      padding-left: 30%
+      text-align: right
+      margin-right: 0
 
   @include with-option(style, poem)
-    font-style: italic
+    .cdx-block
+      font-style: italic
 
 
 // IMAGE TYPE
 @include type(image)
-  .cdx-textbox
+  .cdx-block
     display: flex
     padding: 3em 0
     margin: 10px 0

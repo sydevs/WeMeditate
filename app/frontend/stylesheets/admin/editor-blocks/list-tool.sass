@@ -12,14 +12,17 @@
 
 @include type(text)
   @include with-option(style, unordered)
-    list-style-type: disc
+    .cdx-block
+      list-style-type: disc
 
   @include with-option(style, ordered)
-    list-style-type: decimal
+    .cdx-block
+      list-style-type: decimal
 
   @include with-option(style, leaf)
-    list-style-type: circle
-    list-style-type: image('graphics/leaf.svg')
+    .cdx-block
+      list-style-type: circle
+      list-style-type: image('graphics/leaf.svg')
 
 @include type(contents)
   .cdx-block
