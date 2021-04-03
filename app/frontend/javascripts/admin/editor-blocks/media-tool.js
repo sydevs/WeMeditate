@@ -211,22 +211,59 @@ export default class MediaTool extends EditorTool {
     return this.data.quantity == 'gallery'
   }
 
-  pasteHandler(event) {
-    /*
-    const element = event.detail.data
-    let data = {
-      type: 'single',
-      text: element.innerText
+  async onPaste(event) {
+    // sawait this.pasteHandler(event)
+    this.updateOptionButtons()
+    this.updateOptionClasses()
+  }
+
+  async pasteHandler(event) {
+    //const element = event.detail.data
+    //const { tagName: tag } = element
+
+    switch (event.type) {
+    case 'tag': {
+      const image = event.detail.data
+      if (/^blob:/.test(image.src)) {
+        const response = await fetch(image.src)
+        const file = await response.blob()
+        this.uploadFile(file)
+        break
+      }
+
+      this.uploadUrl(image.src)
+      break
+    }
+    case 'pattern': {
+      const url = event.detail.data
+      this.uploadUrl(url)
+      break
+    }
+    case 'file': {
+      const file = event.detail.file
+      this.uploadFile(file)
+      break
+    }
     }
 
-    this.data = data
-    this.container.querySelector(`.${this.CSS.fields.text}`).innerHTML = data.text
-    */
+    this.data = {
+      items: [{
+        image: file,
+      }]
+    }
   }
 
   // Define the types of paste that should be handled by this tool.
   static get pasteConfig() {
-    return { tags: ['IMG', 'FIGURE', 'FIGCAPTION'] }
+    return {
+      tags: ['IMG'],
+      patterns: {
+        image: /https?:\/\/\S+\.(gif|jpe?g|tiff|png)$/i,
+      },
+      files: {
+        mimeTypes: [ 'image/*' ],
+      },
+    }
   }
 
   static get sanitize() {
