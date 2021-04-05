@@ -1,12 +1,14 @@
 require 'rubygems'
-require 'carrierwave'
+require 'google/cloud/storage'
 require 'sitemap_generator'
 
 # ===== CONFIGURATION ===== #
 SitemapGenerator::Sitemap.sitemaps_host = ApplicationUploader.asset_host
 SitemapGenerator::Sitemap.public_path = 'tmp/'
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
-SitemapGenerator::Sitemap.adapter = SitemapGenerator::WaveAdapter.new
+SitemapGenerator::Sitemap.adapter = SitemapGenerator::GoogleStorageAdapter.new(
+  bucket: ENV.fetch('GCLOUD_BUCKET')
+)
 SitemapGenerator::Sitemap.create_index = true
 
 HOSTS = Rails.configuration.locale_hosts.slice(*Rails.configuration.published_locales)
