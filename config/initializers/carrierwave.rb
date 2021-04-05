@@ -2,8 +2,6 @@ CarrierWave.configure do |config|
   config.asset_host = "https://#{ENV['GCLOUD_BUCKET']}" if ENV['GCLOUD_BUCKET']
 
   if ENV['GCLOUD_BUCKET'].present?
-    config.storage = :fog
-
     config.fog_provider = 'fog/google'
     config.fog_directory = ENV['GCLOUD_BUCKET']
     config.fog_attributes = { expires: 600 }
@@ -12,6 +10,7 @@ CarrierWave.configure do |config|
       google_project:         'we-meditate',
       google_json_key_string: ENV['GOOGLE_CLOUD_KEYFILE'].present? ? ENV['GOOGLE_CLOUD_KEYFILE'] : nil,
     }
+    config.storage = :fog
   else
     config.storage = :file
   end
