@@ -6,6 +6,7 @@ import TextboxTool from '../editor-blocks/textbox-tool'
 import ActionTool from '../editor-blocks/action-tool'
 import MediaTool from '../editor-blocks/media-tool'
 import WhitespaceTool from '../editor-blocks/whitespace-tool'
+import LayoutTool from '../editor-blocks/layout-tool'
 
 /** Content Editor
  * We use the editorjs (https://editorjs.io) to provide a block-based content editor for our CMS.
@@ -26,9 +27,10 @@ const editorParameters = {
       class: ListTool,
       inlineToolbar: true,
     },
-    textbox: TextboxTool,
-    action: ActionTool,
     media: MediaTool,
+    action: ActionTool,
+    textbox: TextboxTool,
+    layout: LayoutTool,
     whitespace: WhitespaceTool,
   },
   defaultBlock: 'paragraph',

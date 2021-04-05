@@ -211,7 +211,7 @@ export default class MediaTool extends EditorTool {
     return this.data.quantity == 'gallery'
   }
 
-  async onPaste(event) {
+  async onPaste(_event) {
     // sawait this.pasteHandler(event)
     this.updateOptionButtons()
     this.updateOptionClasses()
@@ -246,11 +246,13 @@ export default class MediaTool extends EditorTool {
     }
     }
 
+    /*
     this.data = {
       items: [{
         image: file,
       }]
     }
+    */
   }
 
   // Define the types of paste that should be handled by this tool.
