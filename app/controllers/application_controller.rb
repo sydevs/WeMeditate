@@ -98,12 +98,8 @@ class ApplicationController < ActionController::Base
     expires_in 1.day, public: true
 
     # The sitemap itself is hosted on Google Cloud storage, we read it from them and send it back to the accessor of this endpoint.
-    storage = Google::Cloud::Storage.new({
-      project_id: 'we-meditate',
-      credentials: ENV['GOOGLE_CLOUD_KEYFILE'].present? ? JSON.parse(ENV['GOOGLE_CLOUD_KEYFILE']) : nil,
-    })
-
-    bucket = storage.bucket 'wemeditate'
+    storage = Google::Cloud::Storage.new
+    bucket = storage.bucket ENV.fetch('GCLOUD_BUCKET')
     file = bucket.file "sitemaps/sitemap.#{I18n.locale}.xml.gz"
 
     send_data file.download.read, type: 'text/xml'
