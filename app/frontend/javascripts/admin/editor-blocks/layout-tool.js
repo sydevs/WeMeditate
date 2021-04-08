@@ -67,9 +67,9 @@ export default class LayoutTool extends EditorTool {
     // Add Image uploader
     const imageContainer = make('div', [this.CSS.input, this.CSS.item.image], {}, container)
 
-    const imageUploader = new FileUploader(imageContainer)
-    imageUploader.addEventListener('uploadstart', event => this.setItemImage(container, event.detail.file))
-    imageUploader.addEventListener('uploadend', event => {
+    this.uploader = new FileUploader(imageContainer)
+    this.uploader.addEventListener('uploadstart', event => this.setItemImage(container, event.detail.file))
+    this.uploader.addEventListener('uploadend', event => {
       imageContainer.dataset.attributes = JSON.stringify(event.detail.response)
     })
 
@@ -80,7 +80,7 @@ export default class LayoutTool extends EditorTool {
     if (data.image && data.image.preview) {
       make('img', this.CSS.item.img, { src: data.image.preview }, imageContainer)
       imageContainer.dataset.attributes = JSON.stringify(data.image)
-      $(imageUploader.wrapper).hide()
+      $(this.uploader.wrapper).hide()
     } else {
       $(imageRemoveIcon).hide()
     }
@@ -109,7 +109,7 @@ export default class LayoutTool extends EditorTool {
     if (file) {
       const placeholder = make('div', [this.CSS.item.img, 'ui', 'fluid', 'placeholder'], {})
       item.querySelector(`.${this.CSS.item.image}`).appendChild(placeholder)
-      $(item.querySelector('.cdx-input__uploader')).hide()
+      $(this.uploader.wrapper).hide()
       $(item.querySelector(`.${this.CSS.item.remove}`)).show()
 
       const reader = new FileReader()
@@ -121,7 +121,7 @@ export default class LayoutTool extends EditorTool {
     } else {
       item.querySelector(`.${this.CSS.item.image}`).dataset.attributes = null
       item.querySelector(`.${this.CSS.item.img}`).remove()
-      $(item.querySelector('.cdx-input__uploader')).show()
+      $(this.uploader.wrapper).show()
       $(item.querySelector(`.${this.CSS.item.remove}`)).hide()
     }
   }
@@ -185,13 +185,11 @@ export default class LayoutTool extends EditorTool {
       const title = items[i].querySelector(`.${this.CSS.item.title}`).innerText
       const text = items[i].querySelector(`.${this.CSS.item.text}`).innerHTML
 
-      console.log('save layout item', items[i], title, text)
       if (title || text) {
         const data = { title: title, text: text }
 
         if (this.data.type === 'columns') {
           let imageData = items[i].querySelector(`.${this.CSS.item.image}`).dataset.attributes
-          console.log('save image', imageData)
           if (imageData) {
             imageData = JSON.parse(imageData)
             data.image = imageData
