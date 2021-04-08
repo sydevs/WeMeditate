@@ -190,7 +190,6 @@ export default class MediaTool extends EditorTool {
     }
 
     this.removeInactiveTunes()
-    console.log('saving', newData)
     return Object.assign(this.data, newData)
   }
 

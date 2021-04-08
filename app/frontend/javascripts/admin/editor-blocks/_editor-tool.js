@@ -143,11 +143,10 @@ export default class EditorTool {
 
     result = make('div', [this.CSS.input, this.CSS.inputs[type], this.CSS.fields[key]], {
       type: 'text',
+      data: { key: key },
       innerHTML: this.data[key],
       contentEditable: true,
     }, container)
-
-    result.dataset.key = key
 
     if (type == 'url') {
       // URL inputs should auto-prepend an HTTP protocol if no protocol is defined.
