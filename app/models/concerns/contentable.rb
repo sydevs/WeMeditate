@@ -79,4 +79,165 @@ module Contentable
     #media_files.where.not(id: essential_media_files).destroy_all
   end
 
+  def migrate_content!
+    blocks = content_blocks.map do |block|
+      case block['type']
+      when 'action'
+        {
+          type: 'action',
+          data: {
+            id: block['data']['id'],
+            action: block['data']['text'],
+            url: Contentable.strip_url(block['data']['url']),
+            type: 'button',
+          }
+        }
+      when 'catalog'
+        {
+          type: 'catalog',
+          data: {
+            id: block['data']['id'],
+            items: block['data']['items'].map { |item| item['id'].to_i },
+            type: block['data']['type'],
+            style: block['data']['withImages'] ? 'image' : 'text'
+          }
+        }
+      when 'form'
+        {
+          type: 'action',
+          data: {
+            id: block['data']['id'],
+            title: block['data']['title'],
+            subtitle: block['data']['subtitle'],
+            text: block['data']['text'],
+            action: block['data']['action'],
+            list_id: block['data']['list_id'],
+            type: 'form',
+            form: block['data']['format'],
+            spacing: block['data']['compact'] ? 'compact' : 'spaced',
+          }
+        }
+      when 'header'
+        {
+          type: 'paragraph',
+          data: {
+            id: block['data']['id'],
+            text: block['data']['text'],
+            type: 'header',
+            level: block['data']['level'],
+          }
+        }
+      when 'image'
+        {
+          type: 'media',
+          data: {
+            id: block['data']['id'],
+            items: block['data']['items'],
+            type: 'image',
+            quantity: block['data']['asGallery'] ? 'gallery' : 'single',
+            position: block['data']['position'],
+            size: block['data']['size'] == 'wide' ? 'wide' : 'narrow',
+            mediaFiles: block['data']['media_files'],
+          }
+        }
+      when 'list'
+        {
+          type: 'list',
+          data: {
+            id: block['data']['id'],
+            items: block['data']['items'],
+            type: 'text',
+            style: block['data']['style'],
+          }
+        }
+      when 'paragraph'
+        {
+          type: 'paragraph',
+          data: {
+            id: block['data']['id'],
+            text: block['data']['text'],
+            type: 'paragraph',
+          }
+        }
+      when 'quote'
+        {
+          type: 'textbox',
+          data: {
+            id: block['data']['id'],
+            text: block['data']['text'],
+            title: block['data']['credit'],
+            subtitle: block['data']['caption'],
+            type: 'text',
+            style: block['data']['asPoem'] ? 'poem' : 'quote',
+            alignment: block['data']['position'],
+          }
+        }
+      when 'structured'
+        {
+          type: 'layout',
+          data: {
+            id: block['data']['id'],
+            items: block['data']['items'],
+            type: block['data']['format'],
+            mediaFiles: block['data']['media_files'],
+          }
+        }
+      when 'textbox'
+        if block['data']['asVideo']
+          # Remove this block in migration
+        else
+          {
+            type: 'textbox',
+            data: {
+              id: block['data']['id'],
+              image: block['data']['image'],
+              title: block['data']['title'],
+              text: block['data']['text'],
+              action: block['data']['title'],
+              url: Contentable.strip_url(block['data']['url']),
+              type: 'image',
+              background: block['data']['asWisdom'] ? 'beige' : (block['data']['alignment'] == 'center' ? 'image' : 'white'),
+              color: block['data']['invert'] ? 'light' : 'dark',
+              position: block['data']['alignment'] == 'right' ? 'right' : 'left',
+              spacing: block['data']['separate'] ? 'separate' : 'overlap',
+              mediaFiles: block['data']['media_files'],
+            }
+          }
+        end
+      when 'video'
+        {
+          type: 'media',
+          data: {
+            id: block['data']['id'],
+            items: block['data']['items'],
+            type: 'vimeo',
+            quantity: block['data']['asGallery'] ? 'gallery' : 'single',
+          }
+        }
+      when 'whitespace'
+        {
+          type: 'whitespace',
+          data: {
+            id: block['data']['id'],
+            size: block['data']['size'],
+          }
+        }
+      else
+        puts "[WARN] Unsupported block type! #{block.type}"
+      end
+    end
+
+    puts "Migrated content"
+    content_blocks.each_with_index do |block, i|
+      next unless %w[textbox whitespace action].include?(block['type'])
+
+      puts "\e[32m#{block.pretty_inspect}\e[0m -> \e[36m#{blocks[i].pretty_inspect}"
+      puts "-----"
+    end
+  end
+
+  def self.strip_url url
+    url # TODO: Remove wemeditate.co and assets.wemeditate.co
+  end
+
 end
