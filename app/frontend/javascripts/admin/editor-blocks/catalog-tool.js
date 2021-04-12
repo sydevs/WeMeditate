@@ -42,87 +42,133 @@ export default class CatalogTool extends EditorTool {
       },
     }, api)
 
-    this.CSS.fields.type = `${this.CSS.container}__type`
-    this.CSS.itemsContainer = `${this.CSS.fields.items}__container`
+    this.selectedItems = {}
+
+    this.CSS.items = `${this.CSS.container}__items`
+    this.CSS.itemsEmpty = `${this.CSS.container}__empty`
+    this.CSS.item = {
+      container: `${this.CSS.container}__item`,
+      image: `${this.CSS.items}__image`,
+      title: `${this.CSS.items}__title`,
+      text: `${this.CSS.items}__text`,
+    }
+
     this.CSS.search = {
-      container: `${this.CSS.container}__search_results`,
+      container: `${this.CSS.container}__search`,
+      results: `${this.CSS.container}__search_results`,
+      selection: `${this.CSS.container}__search_selection`,
       item: `${this.CSS.container}__search_item`,
       input: `${this.CSS.container}__search`,
-      inputWrapper: `${this.CSS.container}__search_wrapper`,
+      open: `${this.CSS.container}__search_open`,
     }
   }
 
   render() {
     const container = super.render()
 
-    this.typeLabel = make('div', this.CSS.fields.type, {})
-    make('i', 'icon', {}, this.typeLabel)
-    make('span', null, {}, this.typeLabel)
-    container.prepend(this.typeLabel)
+    this.itemsInput = container.querySelector(`.${this.CSS.input}[data-key="items"]`)
 
-    const searchInputWrapper = make('div', [this.CSS.search.inputWrapper, 'ui', 'fluid', 'icon', 'input'], {}, container)
-    this.searchInput = make('div', [this.CSS.search.input, this.CSS.semanticInput], {
+    const openButton = make('div', ['ui', 'small', 'right', 'floated', 'button'], {})
+    make('i', ['cog', 'icon'], {}, openButton)
+    make('span', '', { innerText: 'Change Items' }, openButton)
+    openButton.addEventListener('click', () => this.openModal())
+    container.prepend(openButton)
+
+    this.itemsContainer = make('div', [this.CSS.items, 'ui', 'list'], {}, container)
+    this.itemsContainer.addEventListener('click', event => this._clickHandler(event))
+    
+    const dimmer = make('div', ['ui', 'active', 'inverted', 'dimmer'], {}, this.itemsContainer)
+    make('div', ['ui', 'text', 'loader'], { innerText: 'Loading' }, dimmer)
+
+    // Render Modal
+    this.modal = make('div', ['ui', 'tiny', 'modal'])
+    $(this.modal).modal({ onApprove: () => this.approveModal() })
+
+    make('div', 'header', { innerText: 'Search for We Meditate Content' }, this.modal)
+    const modalContent = make('div', ['content', this.CSS.search.container], {}, this.modal)
+    modalContent.addEventListener('click', event => this._clickHandler(event))
+
+    const searchInputWrapper = make('div', ['ui', 'fluid', 'icon', 'input'], {}, modalContent)
+    this.searchInput = make('input', [this.CSS.search.input, this.CSS.semanticInput], {
       placeholder: `${translate().content.placeholders.search} ${translate().content.tunes.type[this.data.type].toLowerCase()}`,
-      contentEditable: true,
     }, searchInputWrapper)
-    this.searchInput.dataset.placeholder = `${translate().content.placeholders.search} ${translate().content.tunes.type[this.data.type].toLowerCase()}`
+
     make('i', ['search', 'icon'], {}, searchInputWrapper)
-
     this.searchInput.addEventListener('keyup', event => this._onSearchChange(event))
+    this.searchResultContainer = make('div', [this.CSS.search.results, 'ui', 'list'], {}, modalContent)
+    this.searchSelectionContainer = make('div', [this.CSS.search.selection, 'ui', 'list'], {}, modalContent)
 
-    this.searchContainer = make('div', [this.CSS.search.container, 'ui', 'list'], {}, container)
+    const modalFooter = make('div', 'actions', {}, this.modal)
+    make('div', ['ui', 'cancel', 'button'], { innerText: 'Cancel' }, modalFooter)
+    make('div', ['ui', 'green', 'ok', 'button'], { innerHTML: '<i class="check icon"></i> Select' }, modalFooter)
 
-    this.itemsInput = make('input', this.CSS.fields.items, {
-      type: 'hidden',
-      value: this.data.items.map(item => item.id).join(','),
-      data: { key: 'items' },
-    }, container)
+    this.loadItems()
+    return container
+  }
 
-    this.itemsContainer = make('div', [this.CSS.itemsContainer, 'ui', 'list'], {}, container)
+  loadItems() {
     if (this.data.items.length) {
-      this.data.items.forEach(item => {
+      $.get(`/${locale()}/${this.data.type}.json`, {
+        ids: this.data.items.join(','),
+      }, data => {
+        this.selectedItems[this.data.type] = data
+        this.displayItems(data)
+      }, 'json')
+    } else {
+      this.displayItems([])
+    }
+  }
+
+  displayItems(items) {
+    this.itemsContainer.innerHTML = ''
+
+    if (items.length) {
+      items.forEach(item => {
         this.itemsContainer.appendChild(this.renderItem(item))
       })
+    } else {
+      make('div', [this.CSS.itemsEmpty], { innerText: 'Add items using the "Change Items" button' }, this.itemsContainer)
     }
+  }
 
-    this.searchContainer.addEventListener('click', (event) => {
-      if (event.target.classList.contains('link') && event.target.classList.contains('icon')) {
-        this._onItemIconClick(event)
-      }
-    })
-
-    this.itemsContainer.addEventListener('click', (event) => {
-      if (event.target.classList.contains('link') && event.target.classList.contains('icon')) {
-        this._onItemIconClick(event)
-      }
-    })
-
-    // Update the type label
-    for (let i = 0; i < this.tunes.length; i++) {
-      const tune = this.tunes[i]
-      if (tune.group == 'type' && this.data.type == tune.name) {
-        this.updateTypeLabel(tune)
-        break
-      }
-    }
+  renderItem(item = {}) {
+    const container = make('div', this.CSS.item.container, { data: item })
+    const img = make('div', [this.CSS.item.image, 'ui', 'rounded', 'image'], {}, container)
+    make('img', null, { src: item.preview }, img)
+    make('div', [this.CSS.item.title], { innerText: item.name }, container)
+    make('p', [this.CSS.item.text], { innerText: item.excerpt }, container)
 
     return container
   }
 
-  renderItem(item, selected = true) {
-    const container = make('div', 'item', { id: `${this.data.type}_${item.id}` })
+  renderModalItem(item, selected = true) {
+    const container = make('div', 'item', { data: item })
     const state = selected ? 'check' : 'plus'
     make('i', [state, 'circle', 'link', 'icon'], {}, container)
     make('div', 'content', { innerText: item.name }, container)
-    container.dataset.id = item.id
-    container.dataset.name = item.name
 
     return container
+  }
+
+  openModal() {
+    this.searchInput.value = ''
+    this.searchResultContainer.innerHTML = ''
+    this.searchSelectionContainer.innerHTML = ''
+    this.draftItems = this.currentSelectedItems.slice() // clone array
+
+    if (this.draftItems.length) {
+      this.draftItems.forEach(item => {
+        this.searchSelectionContainer.appendChild(this.renderModalItem(item))
+      })
+    }
+
+    $(this.searchInput).focus()
+    $(this.modal).modal('show')
   }
 
   _onSearchChange(event) {
     if (this.timer) clearTimeout(this.timer)
-    if (event.target.innerText.length < 3) {
+    if (event.target.value.length < 3) {
       this.searchInput.parentNode.classList.remove('loading')
       return
     }
@@ -130,20 +176,19 @@ export default class CatalogTool extends EditorTool {
     this.searchInput.parentNode.classList.add('loading')
     this.timer = setTimeout(() => {
       $.get(`/${locale()}/${this.data.type}.json`, {
-        q: event.target.innerText,
+        q: event.target.value,
+        exclude: this.draftItems.map(item => item.id).join(','),
       }, data => {
-        this.searchContainer.innerHTML = ''
+        this.searchResultContainer.innerHTML = ''
         
         if (data.length) {
           data.forEach(item => {
-            if (this.container.querySelector(`#${this.data.type}_${item.id}`) == null) {
-              const el = this.renderItem(item, false)
-              el.dataset.id = item.id
-              this.searchContainer.appendChild(el)
-            }
+            const el = this.renderModalItem(item, false)
+            el.dataset.id = item.id
+            this.searchResultContainer.appendChild(el)
           })
         } else {
-          this.searchContainer.innerText = translate().no_results
+          this.searchResultContainer.innerText = translate().no_results
         }
 
         this.searchInput.parentNode.classList.remove('loading')
@@ -151,32 +196,32 @@ export default class CatalogTool extends EditorTool {
     }, 1000)
   }
 
-  _onItemIconClick(event) {
+  _clickHandler(event) {
+    if (!event.target.classList.contains('link') || !event.target.classList.contains('icon')) {
+      return
+    }
+
     const icon = event.target
     const item = icon.parentNode
 
     if (icon.classList.contains('plus')) {
       // Add the item
       icon.classList.replace('plus', 'check')
-      this.itemsInput.value = this.itemsInput.value ? `${this.itemsInput.value},${item.dataset.id}` : item.dataset.id
-      this.itemsContainer.appendChild(item)
+      this.draftItems.push(item.dataset)
+      this.searchSelectionContainer.appendChild(item)
     } else {
       // Remove the item
-      this.itemsInput.value = this.itemsInput.value.split(',').filter(id => id != item.dataset.id).join(',')
+      this.draftItems = this.draftItems.filter(i => {
+        return i.id != item.dataset.id
+      })
       item.remove()
     }
   }
 
-  save(toolElement) {
-    const data = super.save(toolElement)
-    data.items = []
-
-    for (let i = 0; i < this.itemsContainer.childElementCount; i++) {
-      const item = this.itemsContainer.children[i]
-      data.items.push({ id: item.dataset.id, name: item.dataset.name })
-    }
-
-    return this.data
+  approveModal() {
+    this.data.items = this.draftItems.map(i => i.id)
+    this.selectedItems[this.data.type] = this.draftItems
+    this.displayItems(this.draftItems)
   }
 
   validate(blockData) {
@@ -189,21 +234,22 @@ export default class CatalogTool extends EditorTool {
 
     // If the type changes we clear the items data
     if (tune.group == 'type' && currentType != tune.name) {
-      this.searchInput.value = ''
-      this.itemsInput.value = ''
-      this.searchContainer.innerHTML = ''
-      this.itemsContainer.innerHTML = ''
-      this.updateTypeLabel(tune)
+      const selectedItems = this.currentSelectedItems
+      if (selectedItems && selectedItems.length) {
+        this.data.items = selectedItems.map(i => i.id)
+        this.displayItems(selectedItems)
+      } else {
+        this.data.items = []
+        this.displayItems([])
+      }
     }
   }
 
-  updateTypeLabel(tune) {
-    this.typeLabel.querySelector('.icon').className = `${tune.icon} icon`
-    this.typeLabel.querySelector('span').innerText = translate().content.tunes[tune.group][tune.name]
-    this.searchInput.dataset.placeholder = `${translate().content.placeholders.search} ${translate().content.tunes[tune.group][tune.name].toLowerCase()}`
+  get currentSelectedItems() {
+    return this.selectedItems[this.data.type] || []
   }
 
-  pasteHandler(event) {
+  pasteHandler(_event) {
     // TODO: Handle the paste
   }
 

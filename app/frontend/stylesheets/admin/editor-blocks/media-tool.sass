@@ -39,12 +39,8 @@
       padding: 0 10px
 
   @include with-option(quantity, single)
-    .cdx-media
-      &__item:not(:first-child)
-        display: none
-
-      &__items__remove
-        // test 
+    .cdx-media__item:not(:first-child)
+      display: none
 
     img
       max-height: 300px
