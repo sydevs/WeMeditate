@@ -20,7 +20,7 @@ export default class TextTool extends EditorTool {
       action: data.action || '',
       url: data.url || '',
       image: data.image || null,
-      type: ['single', 'multiple', 'image'].includes(data.type) ? data.type : 'single',
+      type: ['text', 'image'].includes(data.type) ? data.type : 'text',
       alignment: ['left', 'center', 'right'].includes(data.alignment) ? data.alignment : 'left',
       style: ['quote', 'poem'].includes(data.style) ? data.style : 'quote',
       format: ['columns', 'accordion', 'grid'].includes(data.format) ? data.format : 'columns',
@@ -39,13 +39,12 @@ export default class TextTool extends EditorTool {
       tunes: {
         type: {
           options: [
-            { name: 'single', icon: 'square', },
-            //{ name: 'multiple', icon: 'clone', },
+            { name: 'text', icon: 'square', },
             { name: 'image', icon: 'images' },
           ]
         },
         alignment: {
-          requires: { type: ['single'] },
+          requires: { type: ['text'] },
           options: [
             { name: 'left', icon: 'indent' },
             { name: 'center', icon: 'align center' },
@@ -53,7 +52,7 @@ export default class TextTool extends EditorTool {
           ]
         },
         style: {
-          requires: { type: ['single'] },
+          requires: { type: ['text'] },
           options: [
             { name: 'quote', icon: 'font' },
             { name: 'poem', icon: 'quora' },
@@ -162,7 +161,7 @@ export default class TextTool extends EditorTool {
   pasteHandler(event) {
     const element = event.detail.data
     let data = {
-      type: 'single',
+      type: 'text',
       text: element.innerText
     }
 
