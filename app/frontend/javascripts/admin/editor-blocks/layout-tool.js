@@ -16,6 +16,7 @@ export default class LayoutTool extends EditorTool {
       id: data.id || generateId(),
       items: data.items || [],
       type: ['grid', 'accordion', 'columns'].includes(data.type) ? data.type : 'grid',
+      mediaFiles: data.mediaFiles || [],
     }, { // Config
       id: 'layout',
       fields: {},

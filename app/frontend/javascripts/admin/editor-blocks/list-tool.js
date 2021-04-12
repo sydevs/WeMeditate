@@ -13,7 +13,7 @@ export default class ListTool extends EditorTool {
     super({ // Data
       id: data.id || generateId(),
       items: data.items || [],
-      type: ['text', 'contents'/*, 'references'*/].includes(data.type) ? data.type : 'text',
+      type: ['text', 'contents'].includes(data.type) ? data.type : 'text',
       style: ['unordered', 'ordered', 'leaf'].includes(data.style) ? data.style : 'unordered',
     }, { // Config
       id: 'list',
@@ -25,7 +25,6 @@ export default class ListTool extends EditorTool {
           options: [
             { name: 'text', icon: 'font', },
             { name: 'contents', icon: 'book' },
-            //{ name: 'references', icon: 'external square alternate icon' },
           ]
         },
         style: {

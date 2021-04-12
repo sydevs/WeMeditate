@@ -20,6 +20,7 @@ export default class TextTool extends EditorTool {
       action: data.action || '',
       url: data.url || '',
       image: data.image || null,
+      mediaFiles: data.mediaFiles || [],
       type: ['text', 'image'].includes(data.type) ? data.type : 'text',
       alignment: ['left', 'center', 'right'].includes(data.alignment) ? data.alignment : 'left',
       style: ['quote', 'poem'].includes(data.style) ? data.style : 'quote',

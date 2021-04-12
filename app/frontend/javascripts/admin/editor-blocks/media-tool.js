@@ -15,6 +15,7 @@ export default class MediaTool extends EditorTool {
     super({ // Data
       id: data.id || generateId(),
       items: data.items || [],
+      mediaFiles: data.mediaFiles || [],
       type: ['image', 'video', 'image'].includes(data.type) ? data.type : 'image',
       quantity: ['single', 'gallery'].includes(data.quantity) ? data.quantity : 'single',
       position: ['left', 'center', 'right'].includes(data.position) ? data.position : 'center',
