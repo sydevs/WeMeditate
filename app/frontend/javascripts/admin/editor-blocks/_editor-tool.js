@@ -292,7 +292,11 @@ export default class EditorTool {
   updateOptionClasses() {
     for (const key in this.tunes) {
       const group = this.tunes[key]
-      this.wrapper.dataset[group.name] = this.data[group.name]
+      if (this.isTuneGroupActive(group)) {
+        this.wrapper.dataset[group.name] = this.data[group.name]
+      } else {
+        delete this.wrapper.dataset[group.name]// = null
+      }
     }
   }
 
@@ -386,7 +390,10 @@ export default class EditorTool {
     if (!group.requires) return true
 
     for (const key in group.requires) {
-      let result = group.requires[key].find(value => this.data[key] === value)
+      let result = group.requires[key].find(value => {
+        return this.isTuneGroupActive(this.tunes[key]) && this.data[key] === value
+      })
+      
       if (!result) return false 
     }
 
@@ -399,8 +406,9 @@ export default class EditorTool {
   }
 
   selectTune(tune) {
-    this.wrapper.dataset[tune.group] = tune.name
+    //this.wrapper.dataset[tune.group] = tune.name
     this.data[tune.group] = tune.name
+    this.updateOptionClasses()
   }
 
   // ------ PASTE HANDLING ----- //

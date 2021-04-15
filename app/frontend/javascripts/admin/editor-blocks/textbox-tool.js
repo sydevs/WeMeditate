@@ -24,8 +24,9 @@ export default class TextTool extends EditorTool {
       type: ['text', 'image'].includes(data.type) ? data.type : 'text',
       alignment: ['left', 'center', 'right'].includes(data.alignment) ? data.alignment : 'left',
       style: ['quote', 'poem'].includes(data.style) ? data.style : 'quote',
-      format: ['columns', 'accordion', 'grid'].includes(data.format) ? data.format : 'columns',
+      spacing: ['overlap', 'separate'].includes(data.spacing) ? data.spacing : 'overlap',
       background: ['white', 'image', 'wisdom'].includes(data.background) ? data.background : 'white',
+      color: ['dark', 'light'].includes(data.color) ? data.color : 'dark',
       position: ['left', 'right'].includes(data.position) ? data.position : 'left',
     }, { // Config
       id: 'textbox',
@@ -59,14 +60,6 @@ export default class TextTool extends EditorTool {
             { name: 'poem', icon: 'quora' },
           ]
         },
-        format: {
-          requires: { type: ['multiple'] },
-          options: [
-            { name: 'columns', icon: 'columns' },
-            { name: 'accordion', icon: 'th list' },
-            { name: 'grid', icon: 'th' },
-          ]
-        },
         position: {
           requires: { type: ['image'] },
           options: [
@@ -80,6 +73,20 @@ export default class TextTool extends EditorTool {
             { name: 'white', icon: 'square outline' },
             { name: 'image', icon: 'image outline' },
             { name: 'wisdom', icon: 'university' },
+          ]
+        },
+        spacing: {
+          requires: { background: ['white', 'beige'] },
+          options: [
+            { name: 'overlap', icon: 'clone outline' },
+            { name: 'separate', icon: 'columns' },
+          ]
+        },
+        color: {
+          requires: { type: ['image'], background: ['image'] },
+          options: [
+            { name: 'dark', icon: 'list alternate outline' },
+            { name: 'light', icon: 'list alternate' },
           ]
         },
       },

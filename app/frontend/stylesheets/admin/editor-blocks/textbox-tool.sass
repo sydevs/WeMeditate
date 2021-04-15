@@ -75,21 +75,28 @@
 // IMAGE TYPE
 @include type(image)
   .cdx-block
-    display: flex
-    padding: 3em 0
     margin: 10px 0
 
+  .cdx-input--button
+    border-color: transparentize(black, 0.15)
+
+  .cdx-input--url
+    border-left: 2px solid transparentize(black, 0.15)
+
   .cdx-textbox__fields
-    flex-basis: 60%
-    width: 60%
-    margin: 10px
+    position: absolute
+    top: 40px
+    z-index: 1
+    width: 50%
+    margin: 30px
     padding: 10px
-    border: 1px solid rgba(0,0,0,0.2)
+    text-align: left
 
   @include on-field(image)
-    flex-basis: 40%
     position: relative
-    text-align: center
+    width: 40%
+    display: inline-block
+    //text-align: center
 
     .uploader
       height: 100%
@@ -98,34 +105,55 @@
       padding: 50px
 
     img
-      min-width: 150px
       width: 100%
-
-  @include on-field(url)
-    border-left: 2px solid gray
+      height: 100%
+      object-fit: cover
 
   @include on-field(subtitle)
     display: none
 
   // Option adjustments
-  @include with-option(position, right)
-    flex-direction: row-reverse
+  @include with-option(position, left)
+    .cdx-block
+      text-align: right
 
     .cdx-textbox__fields
-      align-self: flex-end
+      left: 0
+
+  @include with-option(position, right)
+    .cdx-textbox__fields
+      right: 0
+
+  @include with-option(spacing, overlap)
+    .cdx-textbox__fields
+      width: 60%
+
+  @include with-option(background, white)
+    .cdx-textbox__fields
+      border: 1px solid transparentize(black, 0.2)
+      background: white
 
   @include with-option(background, image)
-    flex-direction: column
+    .cdx-textbox__fields
+      border: 2px solid lighten(black, 15%)
 
     @include on-field(image)
       width: 100%
-      margin-top: 10px
+      height: 300px
 
       .uploader
         height: auto
         padding: 10px
         display: block
 
+    @include with-option(color, light)
+      .cdx-textbox__fields
+        filter: invert(1)
+
   @include with-option(background, wisdom)
     background: beige
     padding: 10px
+
+    .cdx-textbox__fields
+      top: 0
+      margin: 20px
