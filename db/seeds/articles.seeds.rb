@@ -391,6 +391,25 @@ article.update!(content: content([
     type: :header,
     data: {
       text: 'Section 1',
+      level: :h2
+    },
+  }, {
+    type: :header,
+    data: {
+      text: 'Section 2',
+      level: :h3
+    },
+  }, {
+    type: :header,
+    data: {
+      text: 'Section 3',
+      level: :h4
+    },
+  }, {
+    type: :header,
+    data: {
+      text: 'Section 4',
+      level: :h5
     },
   }, {
     type: :paragraph,
@@ -641,6 +660,33 @@ article.update!(content: content([
     type: :textbox,
     data: {
       image: content_attachment('articles/lefthand.jpg', article),
+      title: 'Compact Block',
+      text: paragraphs(1),
+      action: 'Read More',
+      url: '/en',
+      alignment: :left,
+      compact: true,
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: sentences(4),
+    },
+  }, {
+    type: :textbox,
+    data: {
+      image: content_attachment('articles/lefthand.jpg', article),
+      title: 'Separated Block',
+      text: paragraphs(1),
+      action: 'Read More',
+      url: '/en',
+      alignment: :left,
+      separate: true,
+    },
+  }, {
+    type: :textbox,
+    data: {
+      image: content_attachment('articles/lefthand.jpg', article),
       title: 'About Us',
       text: paragraphs(1),
       action: 'Read More',
@@ -694,8 +740,27 @@ article.update!(content: content([
     type: :catalog,
     data: {
       type: :articles,
-      items: Article.all.sample(6).map { |article_item|
-        { id: article_item.id, name: article_item.name }
+      title: "Articles",
+      items: Article.all.sample(6).map { |item|
+        { id: item.id, name: item.name }
+      },
+    },
+  }, {
+    type: :catalog,
+    data: {
+      type: :treatments,
+      title: "Treatments",
+      items: Treatment.all.sample(3).map { |item|
+        { id: item.id, name: item.name }
+      },
+    },
+  }, {
+    type: :catalog,
+    data: {
+      type: :meditations,
+      title: "Meditations",
+      items: Meditation.all.sample(3).map { |item|
+        { id: item.id, name: item.name }
       },
     },
   },
