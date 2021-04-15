@@ -10,7 +10,7 @@
 
 @include type(header)
   @include on-field(text)
-    font-size: 1.7rem
+    font-size: 1.8rem
     padding: 0.5em 0
     margin: 0
     line-height: 1.25em
@@ -18,4 +18,5 @@
 
   @for $level from 1 through 6
     @include with-option(level, "h#{$level}")
-      font-size: 1.7rem * (1 - (($level - 2) * 0.15))
+      @include on-field(text)
+        font-size: 1.8rem * (1 - (($level - 2) * 0.125))
