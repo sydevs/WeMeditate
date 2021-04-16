@@ -22,12 +22,12 @@ export default class TextTool extends EditorTool {
       url: data.url || '',
       image: data.image || null,
       mediaFiles: data.mediaFiles || [],
-      type: ['text', 'image'].includes(data.type) ? data.type : 'text',
+      type: ['text', 'image', 'splash'].includes(data.type) ? data.type : 'text',
       alignment: ['left', 'center', 'right'].includes(data.alignment) ? data.alignment : 'left',
       style: ['quote', 'poem'].includes(data.style) ? data.style : 'quote',
       spacing: ['overlap', 'separate'].includes(data.spacing) ? data.spacing : 'overlap',
       background: ['white', 'image', 'brown'].includes(data.background) ? data.background : 'white',
-      color: ['dark', 'light'].includes(data.color) ? data.color : 'dark',
+      color: ['dark', 'light'].includes(data.color) ? data.color : 'light',
       position: ['left', 'right'].includes(data.position) ? data.position : 'left',
     }, { // Config
       id: 'textbox',
@@ -44,6 +44,7 @@ export default class TextTool extends EditorTool {
           options: [
             { name: 'text', icon: 'square', },
             { name: 'image', icon: 'images' },
+            { name: 'splash', icon: 'ticket alternate' },
           ]
         },
         alignment: {
@@ -84,7 +85,10 @@ export default class TextTool extends EditorTool {
           ]
         },
         color: {
-          requires: { type: ['image'], background: ['image'] },
+          requires: [
+            { type: ['image'], background: ['image'] },
+            { type: ['splash'] },
+          ],
           options: [
             { name: 'dark', icon: 'list alternate outline' },
             { name: 'light', icon: 'list alternate' },

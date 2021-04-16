@@ -101,6 +101,7 @@ en:
             label: "Type"
             text: "Text Only"
             image: "With Image"
+            splash: "Splash Screen"
           alignment:
             label: "Alignment"
             left: "Left"
@@ -168,3 +169,4 @@ en:
         search: "Search"
         email: "Email"
         message: "Message"
+        countdown: "01:23:45"

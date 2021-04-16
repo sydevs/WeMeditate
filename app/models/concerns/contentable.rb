@@ -80,7 +80,11 @@ module Contentable
   end
 
   def migrate_content!
-    blocks = content_blocks.map do |block|
+    return unless parsed_content.present?
+
+    migrated_blocks = content_blocks.map do |block|
+      puts "\e[0m-----"
+      pp block
       case block['type']
       when 'action'
         {
@@ -182,6 +186,21 @@ module Contentable
             mediaFiles: block['data']['media_files'],
           }
         }
+      when 'splash'
+        {
+          type: 'textbox',
+          data: {
+            id: block['data']['id'],
+            image: block['data']['image'],
+            title: block['data']['title'],
+            subtitle: block['data']['text'],
+            action: block['data']['action'],
+            url: Contentable.strip_url(block['data']['url']),
+            type: 'splash',
+            color: 'light',
+            mediaFiles: block['data']['media_files'],
+          }
+        }
       when 'textbox'
         if block['data']['asVideo']
           # Remove this block in migration
@@ -193,7 +212,7 @@ module Contentable
               image: block['data']['image'],
               title: block['data']['title'],
               text: block['data']['text'],
-              action: block['data']['title'],
+              action: block['data']['action'],
               url: Contentable.strip_url(block['data']['url']),
               type: 'image',
               background: block['data']['asWisdom'] ? 'beige' : (block['data']['alignment'] == 'center' ? 'image' : 'white'),
@@ -229,11 +248,13 @@ module Contentable
 
     puts "Migrated content"
     content_blocks.each_with_index do |block, i|
-      next unless %w[textbox whitespace action].include?(block['type'])
+      next unless %w[splash textbox whitespace action].include?(block['type'])
 
-      puts "\e[32m#{block.pretty_inspect}\e[0m -> \e[36m#{blocks[i].pretty_inspect}"
-      puts "-----"
+      puts "\e[32m#{block.pretty_inspect}\e[0m -> \e[36m#{migrated_blocks[i].pretty_inspect}"
+      puts "\e[0m-----"
     end
+
+    update!(content: parsed_content.merge("blocks" => migrated_blocks).to_json)
   end
 
   def self.strip_url url

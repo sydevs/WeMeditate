@@ -68,9 +68,9 @@ a > .icon:not(.fitted):last-child
 // PLACEHOLDER HACK
 [contenteditable]:empty:before
   content: attr(data-placeholder)
-  color: gray
+  color: lighten(black, 20%)
   width: 100%
   -moz-display: block // For Firefox
 
 [contenteditable]:focus:before
-  color: darkgray
+  color: lighten(black, 40%)

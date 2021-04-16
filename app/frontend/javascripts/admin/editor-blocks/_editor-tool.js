@@ -392,15 +392,23 @@ export default class EditorTool {
   isTuneGroupActive(group) {
     if (!group.requires) return true
 
-    for (const key in group.requires) {
-      let result = group.requires[key].find(value => {
-        return this.isTuneGroupActive(this.tunes[key]) && this.data[key] === value
-      })
-      
-      if (!result) return false 
+    const requires = Array.isArray(group.requires) ? group.requires : [group.requires]
+    for (let i = 0; i < requires.length; i++) {
+      const ruleGroup = requires[i]
+      let result = true
+      for (const key in ruleGroup) {
+        let success = ruleGroup[key].find(value => {
+          return this.isTuneGroupActive(this.tunes[key]) && this.data[key] === value
+        })
+
+        result = result && Boolean(success)
+        if (!result) break
+      }
+
+      if (result) return true
     }
 
-    return true
+    return false
   }
 
   // Check if a tune if currently selected.
