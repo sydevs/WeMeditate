@@ -1,11 +1,11 @@
 import $ from 'jquery'
 import autosize from 'autosize'
 import Sortable from 'sortablejs'
-//import RepeatableFields from 'repeatable-fields'
 import initDraftSystem from './features/draft'
 import initFormFeatures from './features/form'
 import initContentEditor from './features/editor'
 import initFileUploader from './features/uploader'
+import initReviewPage from './features/review'
 import TimeZonesMap from './elements/time-zones-map'
 import RepeatableFields from './elements/repeatable-fields'
 
@@ -22,6 +22,7 @@ export function load() {
   initFormFeatures()
   initContentEditor()
   initFileUploader()
+  initReviewPage()
 
   const timeZoneMap = document.getElementById('timezone-map')
   new TimeZonesMap(timeZoneMap) // eslint-disable-line no-new
