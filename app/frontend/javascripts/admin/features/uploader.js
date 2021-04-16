@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import { make } from '../util'
+import { translate } from '../../i18n'
 
 let uploads = {}
 let pendingUploads = 0
@@ -81,7 +82,7 @@ function adjustPendingUploads(adjustment) {
   pendingUploads += adjustment
 
   if (pendingUploads > 0) {
-    loaderElement.querySelector('span').innerText = window.translate.waiting_for_upload.replace('%{count}', pendingUploads)
+    loaderElement.querySelector('span').innerText = translate('uploader.waiting', { count: pendingUploads })
   }
 
   submitButton.classList.toggle('disabled', pendingUploads > 0)

@@ -1,11 +1,12 @@
 import { generateId } from '../util'
+import { translate } from '../../i18n'
 import EditorTool from './_editor-tool'
 
 export default class TextTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="font icon"></i>',
-      title: 'Text',
+      title: translate('blocks.paragraph.label'),
     }
   }
 

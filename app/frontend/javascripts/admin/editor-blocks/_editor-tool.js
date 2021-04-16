@@ -1,5 +1,6 @@
 import $ from 'jquery'
-import { translate, make } from '../util'
+import { make } from '../util'
+import { translate } from '../../i18n'
 
 /** Editor Tool
  * This folder contains definitions for each type of block which can be used in our content editor.
@@ -167,11 +168,11 @@ export default class EditorTool {
     }
 
     // Add the field's label as a placeholder, or use a default placeholder
-    result.dataset.placeholder = field.label || translate().content.placeholders[key]
+    result.dataset.placeholder = field.label || translate(`placeholders.${key}`)
 
     if (field.optional) {
       // If this field is optional append that to the placeholder
-      result.dataset.placeholder += ` (${translate().content.placeholders.optional})`
+      result.dataset.placeholder += ` (${translate('placeholders.optional')})`
     }
 
     return result
@@ -276,7 +277,7 @@ export default class EditorTool {
     // Render decorations if there is at least one allowed.
     /*
     if (this.allowedDecorations.length > 0) {
-      make('label', '', { innerText: translate().content.settings.decorations }, settingsContainer)
+      make('label', '', { innerText: translate('content.settings.decorations') }, settingsContainer)
       this.decorationsWrapper = make('div', [this.CSS.optionsWrapper, this.CSS.decorationsWrapper], {}, settingsContainer)
       this.renderDecorations(this.decorationsWrapper)
 
@@ -309,7 +310,7 @@ export default class EditorTool {
         const groupWrapper = this.tunesWrapper.querySelector(`.${this.CSS.optionsGroup}[data-key=${key}]`)
         const isActive = this.isTuneGroupActive(group)
         groupWrapper.classList.toggle(this.CSS.optionsGroupActive, isActive)
-        groupWrapper.querySelector('label').dataset.value = this.data[group.name]
+        groupWrapper.querySelector('label').dataset.label = translate(`blocks.${this.id}.${group.name}.${this.data[group.name]}`)
         
         if (isActive) {
           for (let i = 0; i < group.options.length; i++) {
@@ -359,7 +360,10 @@ export default class EditorTool {
     const optionsGroup = make('div', this.CSS.optionsGroup, {}, container)
     optionsGroup.dataset.key = group.name
 
-    make('label', '', { innerText: group.name }, optionsGroup)
+    make('label', '', {
+      innerText: translate(`blocks.${this.id}.${group.name}.label`)
+    }, optionsGroup)
+
     group.options.forEach(tune => {
       tune.group = group.name
       this.renderTuneButton(tune, optionsGroup)
@@ -368,10 +372,9 @@ export default class EditorTool {
 
   // Renders one tune button
   renderTuneButton(tune, container) {
-    const button = make('div', [this.CSS.optionsButton], null, container)
-    button.dataset.position = 'top right'
-    button.dataset.group = tune.group
-    button.dataset.key = tune.name
+    const button = make('div', [this.CSS.optionsButton], {
+      data: { group: tune.group, key: tune.name },
+    }, container)
     button.innerHTML = '<i class="' + tune.icon + ' icon"></i>'
 
     button.addEventListener('click', () => {
@@ -433,7 +436,7 @@ export default class EditorTool {
     const button = make('div', [this.CSS.optionsButton, this.CSS.decorationButtons[decoration.name]], null, container)
     button.dataset.position = 'top right'
     button.innerHTML = '<i class="' + decoration.icon + ' icon"></i>'
-    button.dataset.tooltip = translate().content.decorations[decoration.name]
+    button.dataset.tooltip = translate(`content.decorations.${decoration.name}`)
 
     button.addEventListener('click', () => {
       if (!event.target.classList.contains(this.CSS.optionsButtonDisabled)) {
@@ -467,11 +470,11 @@ export default class EditorTool {
     if (input.type == 'select') {
       result = make('div', [this.CSS.optionsSelect, 'ui', 'inline', 'dropdown'], {}, container)
       inputElement = make('input', 'text', { type: 'hidden' }, result)
-      make('div', 'text', { innerText: translate().content.decorations[`${key}_${input.name}`][value] }, result)
+      make('div', 'text', { innerText: translate(`content.decorations.${key}_${input.name}.${value}`) }, result)
       make('i', ['dropdown', 'icon'], {}, result)
       const menu = make('div', 'menu', {}, result)
       input.values.forEach(val => {
-        const label = translate().content.decorations[`${key}_${input.name}`][val]
+        const label = translate(`content.decorations.${key}_${input.name}.${val}`)
         const item = make('div', 'item', { innerText: label }, menu)
         item.dataset.value = val
       })
@@ -481,7 +484,7 @@ export default class EditorTool {
       result = make('div', ['ui', 'transparent', 'input'], {}, container)
       inputElement = make('input', this.CSS.settingsInput, {
         type: input.type,
-        placeholder: translate().content.decorations[`${key}_${input.name}`],
+        placeholder: translate(`content.decorations.${key}_${input.name}`),
         value: value,
       }, result)
     }

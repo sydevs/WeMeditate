@@ -1,4 +1,5 @@
 import { make } from '../util'
+import { translate } from '../../i18n'
 import { uploadFile } from '../features/uploader'
 
 export default class FileUploader {
@@ -7,7 +8,7 @@ export default class FileUploader {
     this.fileCounter = 0
 
     this.wrapper = make('div', 'uploader', {
-      innerHTML: window.translate.drag_images_to_upload
+      innerHTML: translate('uploader.drag', { file: translate('uploader.file.many').toLowerCase() })
     }, container)
 
     this.input = make('input', '', {
@@ -90,8 +91,10 @@ export default class FileUploader {
 
     if (allow) {
       this.input.setAttribute('multiple', true)
+      this.wrapper.innerHTML = translate('uploader.drag', { file: translate('uploader.file.many').toLowerCase() })
     } else {
       this.input.removeAttribute('multiple')
+      this.wrapper.innerHTML = translate('uploader.drag', { file: translate('uploader.file.one').toLowerCase() })
     }
   }
 

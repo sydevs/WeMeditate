@@ -1,11 +1,12 @@
-import { generateId, make, translate } from '../util'
+import { generateId, make } from '../util'
+import { translate } from '../../i18n'
 import EditorTool from './_editor-tool'
 
 export default class ActionTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="edit icon"></i>',
-      title: 'Action',
+      title: translate('blocks.action.label'),
     }
   }
 
@@ -68,8 +69,8 @@ export default class ActionTool extends EditorTool {
     const button = container.querySelector(`.${this.CSS.fields.action}`)
     const fields = make('div', this.CSS.sample.form)
 
-    make('div', [this.CSS.sample.input, this.CSS.sample.email], { innerText: translate().email }, fields)
-    make('div', [this.CSS.sample.input, this.CSS.sample.message], { innerText: translate().message }, fields)
+    make('div', [this.CSS.sample.input, this.CSS.sample.email], { innerText: translate('placeholders.email') }, fields)
+    make('div', [this.CSS.sample.input, this.CSS.sample.message], { innerText: translate('placeholders.message') }, fields)
 
     container.insertBefore(fields, button)
     return container

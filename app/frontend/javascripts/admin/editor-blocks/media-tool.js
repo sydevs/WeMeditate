@@ -1,5 +1,6 @@
 import $ from 'jquery'
-import { generateId, make, translate } from '../util'
+import { generateId, make } from '../util'
+import { translate } from '../../i18n'
 import EditorTool from './_editor-tool'
 import FileUploader from '../elements/file-uploader'
 
@@ -7,7 +8,7 @@ export default class MediaTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="camera icon"></i>',
-      title: 'Media',
+      title: translate('blocks.media.label'),
     }
   }
 
@@ -103,7 +104,7 @@ export default class MediaTool extends EditorTool {
       innerHTML: item.alt || '',
     }, container)
 
-    alt.dataset.placeholder = translate().content.placeholders.alt
+    alt.dataset.placeholder = translate('placeholders.alt')
     alt.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
 
     let caption = make('div', [this.CSS.input, this.CSS.inputs.alt, this.CSS.item.caption], {
@@ -111,7 +112,7 @@ export default class MediaTool extends EditorTool {
       innerHTML: item.caption || '',
     }, container)
 
-    caption.dataset.placeholder = translate().content.placeholders.caption
+    caption.dataset.placeholder = translate('placeholders.caption')
     caption.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
 
     let credit = make('div', [this.CSS.input, this.CSS.inputs.caption, this.CSS.item.credit], {
@@ -119,7 +120,7 @@ export default class MediaTool extends EditorTool {
       innerHTML: item.credit || '',
     }, container)
 
-    credit.dataset.placeholder = translate().content.placeholders.credit
+    credit.dataset.placeholder = translate('placeholders.credit')
     credit.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
 
     let remove = make('i', [this.CSS.item.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, container)

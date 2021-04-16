@@ -36,10 +36,6 @@ export function make(tagName, classNames = null, attributes = {}, parent = null)
   return el
 }
 
-export function translate() { return window.translate }
-
-export function locale() { return window.locale }
-
 // Taken from https://stackoverflow.com/a/512542
 // Set the element and position for the user's cursor.
 export function setCaretPosition(elem, caretPos = 0) {

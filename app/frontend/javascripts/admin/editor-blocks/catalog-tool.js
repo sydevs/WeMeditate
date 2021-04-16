@@ -1,12 +1,13 @@
 import $ from 'jquery'
-import { generateId, make, translate, locale } from '../util'
+import { generateId, make, locale } from '../util'
+import { translate } from '../../i18n'
 import EditorTool from './_editor-tool'
 
 export default class CatalogTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="sitemap icon"></i>',
-      title: 'We Meditate Content',
+      title: translate('blocks.catalog.label'),
     }
   }
 
@@ -90,7 +91,7 @@ export default class CatalogTool extends EditorTool {
 
     const searchInputWrapper = make('div', ['ui', 'fluid', 'icon', 'input'], {}, modalContent)
     this.searchInput = make('input', [this.CSS.search.input, this.CSS.semanticInput], {
-      placeholder: `${translate().content.placeholders.search} ${translate().content.tunes.type[this.data.type].toLowerCase()}`,
+      placeholder: translate('placeholders.search'),
     }, searchInputWrapper)
 
     make('i', ['search', 'icon'], {}, searchInputWrapper)
@@ -188,7 +189,7 @@ export default class CatalogTool extends EditorTool {
             this.searchResultContainer.appendChild(el)
           })
         } else {
-          this.searchResultContainer.innerText = translate().no_results
+          this.searchResultContainer.innerText = translate('no_results')
         }
 
         this.searchInput.parentNode.classList.remove('loading')

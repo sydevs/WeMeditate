@@ -1,5 +1,6 @@
 import $ from 'jquery'
-import { generateId, make, translate, setCaretPosition, getSelectionTextInfo } from '../util'
+import { generateId, make, setCaretPosition, getSelectionTextInfo } from '../util'
+import { translate } from '../../i18n'
 import EditorTool from './_editor-tool'
 import FileUploader from '../elements/file-uploader'
 
@@ -7,7 +8,7 @@ export default class LayoutTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="object group icon"></i>',
-      title: 'Layout',
+      title: translate('blocks.layout.label'),
     }
   }
 
@@ -92,7 +93,7 @@ export default class LayoutTool extends EditorTool {
       innerHTML: data.title || '',
     }, container)
 
-    title.dataset.placeholder = translate().content.placeholders.title
+    title.dataset.placeholder = translate('placeholders.title')
 
     // Add text input
     const text = make('div', [this.CSS.input, this.CSS.inputs.text, this.CSS.item.text], {
@@ -100,7 +101,7 @@ export default class LayoutTool extends EditorTool {
       innerHTML: data.text || '',
     }, container)
 
-    text.dataset.placeholder = translate().content.placeholders.text
+    text.dataset.placeholder = translate('placeholders.text')
     text.addEventListener('paste', event => this.containPaste(event))
 
     return container

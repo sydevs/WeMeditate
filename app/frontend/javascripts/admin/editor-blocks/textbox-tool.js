@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import { generateId, make } from '../util'
+import { translate } from '../../i18n'
 import EditorTool from './_editor-tool'
 import FileUploader from '../elements/file-uploader'
 
@@ -7,7 +8,7 @@ export default class TextTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="list alternate icon"></i>',
-      title: 'Textbox',
+      title: translate('blocks.textbox.label'),
     }
   }
 
@@ -25,7 +26,7 @@ export default class TextTool extends EditorTool {
       alignment: ['left', 'center', 'right'].includes(data.alignment) ? data.alignment : 'left',
       style: ['quote', 'poem'].includes(data.style) ? data.style : 'quote',
       spacing: ['overlap', 'separate'].includes(data.spacing) ? data.spacing : 'overlap',
-      background: ['white', 'image', 'wisdom'].includes(data.background) ? data.background : 'white',
+      background: ['white', 'image', 'brown'].includes(data.background) ? data.background : 'white',
       color: ['dark', 'light'].includes(data.color) ? data.color : 'dark',
       position: ['left', 'right'].includes(data.position) ? data.position : 'left',
     }, { // Config
@@ -72,11 +73,11 @@ export default class TextTool extends EditorTool {
           options: [
             { name: 'white', icon: 'square outline' },
             { name: 'image', icon: 'image outline' },
-            { name: 'wisdom', icon: 'university' },
+            { name: 'brown', icon: 'university' },
           ]
         },
         spacing: {
-          requires: { background: ['white', 'beige'] },
+          requires: { background: ['white'] },
           options: [
             { name: 'overlap', icon: 'clone outline' },
             { name: 'separate', icon: 'columns' },

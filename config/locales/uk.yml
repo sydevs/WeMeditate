@@ -225,7 +225,7 @@ uk:
     '500': "На жаль, щось пішло не так."
 
   javascript:
-    reading_time: "%minutes% хвилина читання"
+    reading_time: "%{minutes} хвилина читання"
     loading: "Loading..." # TODO: Translate
     popup:
       close: "Закрити (Esc)"

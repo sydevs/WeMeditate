@@ -31,4 +31,5 @@ html lang=locale
     = render 'layouts/partials/photoswipe', cached: true
 
   javascript:
-    window.translate = #{translate('javascript').to_json.html_safe}
+    window.translations = #{translate('javascript').to_json.html_safe}
+    window.locale = '#{Globalize.locale}'

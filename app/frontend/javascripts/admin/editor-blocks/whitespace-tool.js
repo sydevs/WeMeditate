@@ -1,11 +1,12 @@
-import { generateId, make, translate } from '../util'
+import { generateId, make } from '../util'
+import { translate } from '../../i18n'
 import EditorTool from './_editor-tool'
 
 export default class TextTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="minus icon"></i>',
-      title: 'Whitespace',
+      title: translate('blocks.whitespace.label'),
     }
   }
 
@@ -30,7 +31,7 @@ export default class TextTool extends EditorTool {
 
   render() {
     this.container = super.render()
-    make('span', null, { innerText: translate().content.blocks.whitespace }, this.container)
+    make('span', null, { innerText: translate('blocks.whitespace.label') }, this.container)
 
     return this.container
   }

@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import { translate } from '../util'
+import { translate } from '../../i18n'
 
 export default class Form {
 
@@ -55,7 +55,7 @@ export default class Form {
       }
 
       this.setButtonEnabled(false)
-      this.setMessage(translate().loading)
+      this.setMessage(translate('loading'))
     } else {
       for (let index = 0; index < inputs.length; index++) {
         inputs[index].removeAttribute('disabled')

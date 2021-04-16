@@ -9,8 +9,6 @@ export function sendAnalyticsEvent(name, attributes) {
   if (typeof window.dataLayer !== 'undefined') window.dataLayer.push(attributes)
 }
 
-export function translate() { return window.translate }
-
 export function getOrientation() {
   return window.innerWidth > window.innerHeight ? 'horizontal' : 'vertical'
 }

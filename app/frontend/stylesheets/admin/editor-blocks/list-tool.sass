@@ -12,15 +12,15 @@
 
 @include type(text)
   @include with-option(style, unordered)
-    .cdx-block
+    ul
       list-style-type: disc
 
   @include with-option(style, ordered)
-    .cdx-block
+    ul
       list-style-type: decimal
 
   @include with-option(style, leaf)
-    .cdx-block
+    ul
       list-style-type: circle
       list-style-type: image('graphics/leaf.svg')
 
@@ -39,8 +39,8 @@
     letter-spacing: 1px
 
     &::before
-      content: 'TABLE OF CONTENTS'
+      content: attr(data-contents)
       line-height: 170px
 
-    .cdx-input
+    li
       display: none

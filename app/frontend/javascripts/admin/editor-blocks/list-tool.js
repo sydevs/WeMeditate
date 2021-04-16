@@ -1,11 +1,12 @@
 import { generateId, make } from '../util'
+import { translate } from '../../i18n'
 import EditorTool from './_editor-tool'
 
 export default class ListTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="list icon"></i>',
-      title: 'List',
+      title: translate('blocks.list.label'),
     }
   }
 
@@ -55,7 +56,9 @@ export default class ListTool extends EditorTool {
   }
 
   render() {
-    this.container = make('div', [this.CSS.baseClass, this.CSS.container])
+    this.container = make('div', [this.CSS.baseClass, this.CSS.container], {
+      data: { contents: translate('blocks.list.type.contents') }
+    })
     this.container.addEventListener('keydown', event => this._onItemKeydown(event))
 
     const list = make('ul', [this.CSS.input], { contentEditable: true, data: { key: 'items' } }, this.container)
