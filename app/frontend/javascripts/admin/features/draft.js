@@ -1,5 +1,6 @@
 import $ from 'jquery'
-import RepeatableFields from 'repeatable-fields'
+import RepeatableFields from '../elements/repeatable-fields'
+import { setContent } from './editor'
 
 /** Draft
  * This sets up a few simple handlers that let us toggle between draft values and live values for an input field.
@@ -44,10 +45,16 @@ function toggle() {
     $field.find('input[data-draft=longitude]').attr('value', value.length < 2 ? null : value[1])
     break
   case 'repeatable':
-    //RepeatableFields.reset($field, value)
+    if ($field.data('attribute') == 'metatags') {
+      value = Object.entries(value).map(pair => {
+        return { keys: pair[0], values: pair[1] }
+      })
+    }
+
+    RepeatableFields.reset($field, value)
     break
   case 'content':
-    //Editor.instance.render(value)
+    setContent(value)
     break
   default:
     console.error('Draft reset is not yet implemented for', $field.data('draft')) // eslint-disable-line no-console

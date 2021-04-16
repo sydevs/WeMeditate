@@ -67,6 +67,10 @@ export function getCurrentEditorBlock() {
   return editorInstance.blocks.getBlockByIndex(editorInstance.blocks.getCurrentBlockIndex())
 }
 
+export function setContent(jsonData) {
+  editorInstance.render(jsonData)
+}
+
 function onSubmit(event) {
   if (hasPendingUploads()) {
     afterPendingUploads(() => form.submit())

@@ -7,6 +7,7 @@ import initFormFeatures from './features/form'
 import initContentEditor from './features/editor'
 import initFileUploader from './features/uploader'
 import TimeZonesMap from './elements/time-zones-map'
+import RepeatableFields from './elements/repeatable-fields'
 
 /** Admin
  * This file orchestrates all the code for the administrative part of the website (ie. admin.wemeditate.co)
@@ -60,7 +61,10 @@ export function init(scope) {
   scope.find('.ui.accordion').accordion()
   scope.find('.ui.date.picker').calendar({ type: 'date' })
   autosize(scope.find('textarea'))
-  //RepeatableFields.initialize(scope)
+
+  scope.find('.repeatable.fields').each(function() {
+    new RepeatableFields(this) // eslint-disable-line no-new
+  })
 
   // Initialize dropdown elements.
   scope.find('.ui.dropdown:not(.simple)').each(function() {
