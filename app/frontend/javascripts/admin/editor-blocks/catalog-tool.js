@@ -1,6 +1,6 @@
 import $ from 'jquery'
-import { generateId, make, locale } from '../util'
-import { translate } from '../../i18n'
+import { generateId, make } from '../util'
+import { translate, locale } from '../../i18n'
 import EditorTool from './_editor-tool'
 
 export default class CatalogTool extends EditorTool {
@@ -66,10 +66,9 @@ export default class CatalogTool extends EditorTool {
 
   render() {
     const container = super.render()
-
     this.itemsInput = container.querySelector(`.${this.CSS.input}[data-key="items"]`)
 
-    const openButton = make('div', ['ui', 'small', 'right', 'floated', 'button'], {})
+    const openButton = make('div', ['ui', 'tiny', 'right', 'floated', 'button'], {})
     make('i', ['cog', 'icon'], {}, openButton)
     make('span', '', { innerText: 'Change Items' }, openButton)
     openButton.addEventListener('click', () => this.openModal())
@@ -77,7 +76,7 @@ export default class CatalogTool extends EditorTool {
 
     this.itemsContainer = make('div', [this.CSS.items, 'ui', 'list'], {}, container)
     this.itemsContainer.addEventListener('click', event => this._clickHandler(event))
-    
+
     const dimmer = make('div', ['ui', 'active', 'inverted', 'dimmer'], {}, this.itemsContainer)
     make('div', ['ui', 'text', 'loader'], { innerText: 'Loading' }, dimmer)
 
@@ -112,6 +111,7 @@ export default class CatalogTool extends EditorTool {
       $.get(`/${locale()}/${this.data.type}.json`, {
         ids: this.data.items.join(','),
       }, data => {
+        console.log('got', data)
         this.selectedItems[this.data.type] = data
         this.displayItems(data)
       }, 'json')

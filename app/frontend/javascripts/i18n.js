@@ -20,7 +20,9 @@ export const translate = function(key, args) {
   return result
 }
 
+export const locale = () => window.locale
+
 export default {
-  locale: window.locale,
+  locale: locale,
   t: translate,
 }
