@@ -17,7 +17,7 @@ export default class MediaTool extends EditorTool {
       id: data.id || generateId(),
       items: data.items || [],
       mediaFiles: data.mediaFiles || [],
-      type: ['image', 'video', 'image'].includes(data.type) ? data.type : 'image',
+      type: ['image', 'video', 'audio', 'vimeo'].includes(data.type) ? data.type : 'image',
       quantity: ['single', 'gallery'].includes(data.quantity) ? data.quantity : 'single',
       position: ['left', 'center', 'right'].includes(data.position) ? data.position : 'center',
       size: ['narrow', 'wide'].includes(data.size) ? data.size : 'normal',
@@ -90,6 +90,8 @@ export default class MediaTool extends EditorTool {
 
   renderItem(item = {}) {
     const container = make('div', this.CSS.item.container, {})
+
+    make('pre', [], { innerText: JSON.stringify(item) }, container)
 
     if (item.image && item.image.preview) {
       const img = make('div', [this.CSS.item.image, 'ui', 'rounded', 'image'], {}, container)

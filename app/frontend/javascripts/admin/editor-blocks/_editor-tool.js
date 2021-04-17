@@ -296,7 +296,7 @@ export default class EditorTool {
       if (this.isTuneGroupActive(group)) {
         this.wrapper.dataset[group.name] = this.data[group.name]
       } else {
-        delete this.wrapper.dataset[group.name]// = null
+        delete this.wrapper.dataset[group.name]
       }
     }
   }
@@ -417,7 +417,6 @@ export default class EditorTool {
   }
 
   selectTune(tune) {
-    //this.wrapper.dataset[tune.group] = tune.name
     this.data[tune.group] = tune.name
     this.updateOptionClasses()
   }

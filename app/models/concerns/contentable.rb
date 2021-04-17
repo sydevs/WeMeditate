@@ -225,12 +225,10 @@ module Contentable
         end
       when 'video'
         {
-          type: 'media',
+          type: 'vimeo',
           data: {
             id: block['data']['id'],
             items: block['data']['items'],
-            type: 'vimeo',
-            quantity: block['data']['asGallery'] ? 'gallery' : 'single',
           }
         }
       when 'whitespace'

@@ -8,6 +8,7 @@ import MediaTool from '../editor-blocks/media-tool'
 import WhitespaceTool from '../editor-blocks/whitespace-tool'
 import LayoutTool from '../editor-blocks/layout-tool'
 import CatalogTool from '../editor-blocks/catalog-tool'
+import LegacyVimeoTool from '../editor-blocks/legacy/vimeo-tool'
 
 /** Content Editor
  * We use the editorjs (https://editorjs.io) to provide a block-based content editor for our CMS.
@@ -34,6 +35,7 @@ const editorParameters = {
     layout: LayoutTool,
     catalog: CatalogTool,
     whitespace: WhitespaceTool,
+    vimeo: LegacyVimeoTool,
   },
   defaultBlock: 'paragraph',
 }
