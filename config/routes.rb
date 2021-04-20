@@ -87,6 +87,6 @@ Rails.application.routes.draw do
   get '422', to: 'application#error'
   get '500', to: 'application#error'
 
-  get 'page/:page', to: redirect('/%{page}') # Redirect for legacy route. Can be removed after July 2020.
+  get 'surrey', to: redirect('/live/surrey')
   get '/', to: redirect('404')
 end
