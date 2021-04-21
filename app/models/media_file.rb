@@ -6,7 +6,6 @@
 class MediaFile < ActiveRecord::Base
 
   extend CarrierWave::Meta::ActiveRecord
-  after_save :save_metadata
 
   # Associations
   belongs_to :page, polymorphic: true
@@ -27,13 +26,6 @@ class MediaFile < ActiveRecord::Base
       # Choose some plausible default if the metadata is missing.
       { pid: id, src: file.large.url, msrc: file.tiny.url, w: 1440, h: 900 }
     end
-  end
-
-  # Save some size metadata about the original image
-  def save_metadata
-    return if !file.present? || image_meta.present?
-
-    update!(image_meta: file.get_metadata)
   end
 
 end
