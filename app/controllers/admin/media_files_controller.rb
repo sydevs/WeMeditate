@@ -6,6 +6,8 @@ module Admin
     def create
       if params[:article_id].present?
         @parent = Article.friendly.find(params[:article_id])
+      elsif params[:treatment_id].present?
+        @parent = Treatment.friendly.find(params[:treatment_id])
       elsif params[:static_page_id].present?
         @parent = StaticPage.friendly.find(params[:static_page_id])
       elsif params[:subtle_system_node_id].present?
