@@ -41,6 +41,7 @@ gem 'array_enum' # Allows the use of enum arrays
 # Uploads
 gem 'carrierwave' # Core support for file uploads
 gem 'carrierwave-google-storage' # Let's us store the files in Google Storage
+gem 'google-api-client' # An unspecified dependency for carrierwave-google-storage
 gem 'carrierwave-meta' # To get image meta data
 gem 'google-cloud-storage' # Needed to access sitemaps
 gem 'mini_magick' # Image processing during upload
