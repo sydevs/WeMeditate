@@ -14,6 +14,7 @@ export default class TextTool extends EditorTool {
     super({ // Data
       id: data.id || generateId(),
       size: ['small', 'medium', 'large'].includes(data.size) ? data.size : 'medium',
+      decorations: data.decorations || {},
     }, { // Config
       id: 'whitespace',
       fields: {},
@@ -25,7 +26,12 @@ export default class TextTool extends EditorTool {
             { name: 'large', icon: 'expand arrows alternate' },
           ]
         },
-      }
+      },
+      decorations: {
+        triangle: {},
+        gradient: {},
+        circle: {},
+      },
     }, api)
   }
 

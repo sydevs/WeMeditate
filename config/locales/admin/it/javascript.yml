@@ -135,26 +135,32 @@ en:
             small: "Small"
             medium: "Medium"
             large: "Large"
-      settings:
-        tunes: "Options"
-        decorations: "Decorations"
       decorations:
-        triangle: "Triangle Decoration"
-        circle: "Circle Decoration"
-        gradient: "Gradient Decoration"
-        leaves: "Leaf Decorations"
-        sidetext: "Vertical Text"
-        triangle_alignment:
-          left: "Left Triangle"
-          right: "Right Triangle"
-        gradient_alignment:
-          left: "Left Gradient"
-          right: "Right Gradient"
-        gradient_color:
-          orange: "Orange Gradient"
-          blue: "Blue Gradient"
-          gray: "Gray Gradient"
-        sidetext_text: "Enter vertical text..."
+        label: "Decorations"
+        triangle:
+          label: "Triangle"
+          alignment:
+            label: "Alignment"
+            left: "Left"
+            right: "Right"
+        circle:
+          label: "Circle"
+        gradient:
+          label: "Gradient"
+          alignment:
+            label: "Alignment"
+            left: "Left"
+            right: "Right"
+          color:
+            label: "Colour"
+            orange: "Orange"
+            blue: "Blue"
+            gray: "Gray"
+        leaves:
+          label: "Leaves"
+        sidetext:
+          label: "Vertical Text"
+          text: "Enter vertical text..."
       placeholders:
         title: "Title"
         text: "Text"

@@ -18,6 +18,7 @@ export default class CatalogTool extends EditorTool {
       items: data.items || [],
       type: ['articles', 'treatments', 'meditations'].includes(data.type) ? data.type : 'articles',
       style: ['image', 'text', 'title'].includes(data.style) ? data.style : 'image',
+      decorations: data.decorations || {},
     }, { // Config
       id: 'catalog',
       fields: {
@@ -40,6 +41,9 @@ export default class CatalogTool extends EditorTool {
             { name: 'title', icon: 'heading' },
           ]
         },
+      },
+      decorations: {
+        sidetext: {},
       },
     }, api)
 

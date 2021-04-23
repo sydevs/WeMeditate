@@ -22,6 +22,7 @@ export default class ActionTool extends EditorTool {
       type: ['button', 'form'].includes(data.type) ? data.type : 'button',
       form: ['signup', 'contact'].includes(data.form) ? data.form : 'signup',
       spacing: ['spaced', 'compact'].includes(data.spacing) ? data.spacing : 'spaced',
+      decorations: data.decorations || {},
     }, { // Config
       id: 'action',
       fields: {
@@ -53,6 +54,9 @@ export default class ActionTool extends EditorTool {
             { name: 'compact', icon: 'compress' },
           ]
         },
+      },
+      decorations: {
+        leaves: { requires: { type: ['button'] } },
       },
     }, api)
 

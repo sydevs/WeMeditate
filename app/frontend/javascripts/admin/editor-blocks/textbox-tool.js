@@ -29,6 +29,7 @@ export default class TextTool extends EditorTool {
       background: ['white', 'image', 'brown'].includes(data.background) ? data.background : 'white',
       color: ['dark', 'light'].includes(data.color) ? data.color : 'light',
       position: ['left', 'right'].includes(data.position) ? data.position : 'left',
+      decorations: data.decorations || {},
     }, { // Config
       id: 'textbox',
       fields: {
@@ -95,6 +96,12 @@ export default class TextTool extends EditorTool {
           ]
         },
       },
+      decorations: {
+        sidetext: { requires: { type: ['image'] } },
+        triangle: { requires: { type: ['image'] } },
+        gradient: { requires: { type: ['image'] } },
+        circle: { requires: { type: ['image'] } },
+      },
     }, api)
 
     this.CSS.fieldsContainer = `${this.CSS.container}__fields`
@@ -110,7 +117,6 @@ export default class TextTool extends EditorTool {
     const fieldsContainer = make('div', this.CSS.fieldsContainer, { innerHTML: container.innerHTML })
     container.innerHTML = null
     container.append(fieldsContainer)
-    this.renderDecorations(container)
 
     this.imageContainer = make('div', [this.CSS.input, this.CSS.fields.image], { data: { key: 'image' } }, container)
 

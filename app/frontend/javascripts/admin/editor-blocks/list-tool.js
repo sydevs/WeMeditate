@@ -51,7 +51,7 @@ export default class ListTool extends EditorTool {
       if (value) itemsData.push(items[i].innerHTML)
     }
 
-    this.removeInactiveTunes()
+    this.removeInactiveData()
     return Object.assign(this.data, { items: itemsData })
   }
 

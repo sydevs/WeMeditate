@@ -22,6 +22,7 @@ export function make(tagName, classNames = null, attributes = {}, parent = null)
     if (attrName == 'data') {
       const data = attributes[attrName]
       for (let key in data) {
+        if (!data[key]) continue
         el.dataset[key] = data[key]
       }
     } else {
@@ -34,6 +35,18 @@ export function make(tagName, classNames = null, attributes = {}, parent = null)
   }
 
   return el
+}
+
+export function show(element, type = 'block') {
+  element.style.display = type
+}
+
+export function hide(element) {
+  element.style.display = 'none'
+}
+
+export function toggle(element, visible, type = 'block') {
+  element.style.display = visible ? type : 'none'
 }
 
 // Taken from https://stackoverflow.com/a/512542

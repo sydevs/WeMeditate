@@ -5,35 +5,6 @@
 .ce-block
   position: relative
 
-/*.codex-editor__redactor
-  min-height: 260px
-  padding-bottom: 30px*/
-
-/*.ce-block
-  padding-left: 10px
-  padding-right: 45px
-  border: solid transparent
-  border-width: 0 2px
-
-/*.ce-block--focused
-  background: none
-  border-color: transparentize(black, 0.5)
-
-/*.cdx-block
-  padding-bottom: 1em
-
-/*.ce-paragraph
-  min-height: 3em
-
-/*.ce-toolbox
-  left: 5px
-
-/*.ce-toolbox__button--active
-  animation: none
-
-/*.ce-settings__default-zone
-  padding: 2px !important
-
 // OPTIONS
 .cdx-options i.icon
   height: auto
@@ -46,16 +17,21 @@
   display: none
   white-space: nowrap
 
-  .ce-block--focused &
+  .cdx-block--custom-focus &
     display: block
 
-  strong
+  .cdx-options__header
+    display: block
     font-weight: bold
     font-size: 12px
     text-transform: uppercase
     padding: 4px
 
-  label
+    &:not(:first-child)
+      font-size: 11px
+      margin-top: 4px
+
+  .cdx-options__title
     display: block
     padding: 4px
     padding-bottom: 0
@@ -64,7 +40,7 @@
     text-transform: uppercase
     opacity: 0.8
 
-    &::after
+    &[data-label]::after
       font-weight: normal
       content: ":  " attr(data-label)
 
@@ -78,12 +54,21 @@
 
   .cdx-settings-button
     display: inline-block
+    margin-right: 3px
 
-.cdx-options__group
-  display: none
+    &--fluid
+      display: block
+      width: 100%
+      text-align: left
+      padding: 0 5px !important
+      line-height: 24px
+      height: 24px
+      font-size: 12px
+      margin: 0
+      margin-bottom: 1px
 
-  &--active
-    display: block
+    &--active.cdx-settings-button--fluid i::before
+      content: "\f00c"
 
 // INPUTS
 .cdx-input
@@ -123,24 +108,18 @@
     white-space: nowrap
     overflow: hidden
 
-.cdx-semantic-input
-  outline: none
-  width: 100%
-  tap-highlight-color: rgba(255, 255, 255, 0)
-  line-height: 1.21428571em
-  min-height: 2.57142857em
-  padding: 0.67857143em 1em
-  font-size: 1em
-  background: #FFFFFF
-  border: 1px solid rgba(34, 36, 38, 0.15)
-  color: rgba(0, 0, 0, 0.87)
-  border-radius: 0.28571429rem
-  box-shadow: 0em 0em 0em 0em transparent inset
-  transition: color 0.1s ease, border-color 0.1s ease
+.ui.form .cdx-options
+  .ce-settings-input,
+  .ce-settings-select
+    //display: block
+    margin-bottom: 1px
+    margin-left: 20px
+    font-size: 13px
 
-  &:focus
-    color: rgba(0, 0, 0, 0.95)
-    border-color: #85B7D9
-    border-radius: 0.28571429rem
-    background: #FFFFFF
-    box-shadow: 0px 0em 0em 0em rgba(34, 36, 38, 0.35) inset
+    &:last-child
+      margin-bottom: 5px
+
+.cdx-settings-button:not(.cdx-settings-button--active)
+  ~ .ce-settings-input,
+  ~ .ce-settings-select
+    display: none

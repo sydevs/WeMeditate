@@ -21,6 +21,7 @@ export default class MediaTool extends EditorTool {
       quantity: ['single', 'gallery'].includes(data.quantity) ? data.quantity : 'single',
       position: ['left', 'center', 'right'].includes(data.position) ? data.position : 'center',
       size: ['narrow', 'wide'].includes(data.size) ? data.size : 'normal',
+      decorations: data.decorations || {},
     }, { // Config
       id: 'media',
       fields: {},
@@ -54,6 +55,11 @@ export default class MediaTool extends EditorTool {
           ]
         },
       },
+      decorations: {
+        triangle: { requires: { type: ['image'], position: ['center'] }},
+        sidetext: { requires: { type: ['video'] }},
+        gradient: { requires: { type: ['video'] }},
+      }
     }, api)
 
     this.CSS.items = `${this.CSS.container}__items`
@@ -193,7 +199,7 @@ export default class MediaTool extends EditorTool {
       //if (!this.isGallery) break // TODO: Only save one image, if we are in single mode.
     }
 
-    this.removeInactiveTunes()
+    this.removeInactiveData()
     return Object.assign(this.data, newData)
   }
 
@@ -215,9 +221,9 @@ export default class MediaTool extends EditorTool {
   }
 
   async onPaste(_event) {
-    // sawait this.pasteHandler(event)
-    this.updateOptionButtons()
-    this.updateOptionClasses()
+    // await this.pasteHandler(event)
+    this.updateSettingButtons()
+    this.updateSettingClasses()
   }
 
   async pasteHandler(event) {
