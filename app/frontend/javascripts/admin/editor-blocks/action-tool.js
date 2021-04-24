@@ -70,7 +70,7 @@ export default class ActionTool extends EditorTool {
 
   render() {
     const container = super.render()
-    const button = container.querySelector(`.${this.CSS.fields.action}`)
+    const button = container.querySelector(`.${this.CSS.input}[data-key="action"]`)
     const fields = make('div', this.CSS.sample.form)
 
     make('div', [this.CSS.sample.input, this.CSS.sample.email], { innerText: translate('placeholders.email') }, fields)
@@ -88,8 +88,8 @@ export default class ActionTool extends EditorTool {
     }
 
     this.data = data
-    this.container.querySelector(`.${this.CSS.fields.action}`).innerText = this.data.action
-    this.container.querySelector(`.${this.CSS.fields.url}`).innerText = this.data.url
+    this.container.querySelector(`.${this.CSS.input}[data-key="action"]`).innerText = this.data.action
+    this.container.querySelector(`.${this.CSS.input}[data-key="url"]`).innerText = this.data.url
   }
 
   // Define the types of paste that should be handled by this tool.

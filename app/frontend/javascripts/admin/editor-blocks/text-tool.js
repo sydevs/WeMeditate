@@ -80,7 +80,7 @@ export default class TextTool extends EditorTool {
     }
 
     this.data = data
-    this.container.querySelector(`.${this.CSS.fields.text}`).innerHTML = this.data.text
+    this.container.querySelector(`.${this.CSS.input}[data-key="text"]`).innerHTML = this.data.text
   }
 
   // Define the types of paste that should be handled by this tool.

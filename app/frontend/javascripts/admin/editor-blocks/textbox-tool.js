@@ -106,8 +106,8 @@ export default class TextTool extends EditorTool {
 
     this.CSS.fieldsContainer = `${this.CSS.container}__fields`
     this.CSS.image = {
-      remove: `${this.CSS.fields.image}__remove`,
-      img: `${this.CSS.fields.image}__img`,
+      remove: `cdx-${this.id}__remove-image`,
+      img: `cdx-${this.id}__image`,
     }
   }
 
@@ -118,7 +118,7 @@ export default class TextTool extends EditorTool {
     container.innerHTML = null
     container.append(fieldsContainer)
 
-    this.imageContainer = make('div', [this.CSS.input, this.CSS.fields.image], { data: { key: 'image' } }, container)
+    this.imageContainer = make('div', [this.CSS.input], { data: { key: 'image' } }, container)
 
     this.uploader = new FileUploader(this.imageContainer)
     this.uploader.addEventListener('uploadstart', event => this.setImage(event.detail.file))
@@ -137,8 +137,7 @@ export default class TextTool extends EditorTool {
       $(this.imageRemoveIcon).hide()
     }
 
-    fieldsContainer.querySelector(`.${this.CSS.fields.text}`).addEventListener('keydown', event => this.insertParagraphBreak(event))
-
+    fieldsContainer.querySelector(`.${this.CSS.input}[data-key="text"]`).addEventListener('keydown', event => this.insertParagraphBreak(event))
     return container
   }
 
@@ -185,7 +184,7 @@ export default class TextTool extends EditorTool {
     }
 
     this.data = data
-    this.container.querySelector(`.${this.CSS.fields.text}`).innerHTML = data.text
+    this.container.querySelector(`.${this.CSS.input}[data-key="action"]`).innerHTML = data.text
   }
 
   // Define the types of paste that should be handled by this tool.

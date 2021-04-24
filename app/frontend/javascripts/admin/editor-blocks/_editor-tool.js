@@ -73,16 +73,11 @@ export default class EditorTool {
       optionsButtonDisabled: `${this.api.styles.settingsButton}--disabled`,
       settingsSelect: 'ce-settings-select',
       settingsInput: 'ce-settings-input',
-      fields: {},
-    }
-    
-    // For every field used by this tool, save a CSS class
-    for (let key in this.fields) {
-      this.CSS.fields[key] = `cdx-${this.id}__${key}`
     }
 
     // A few special types of inputs also have their own CSS class
-    ['title', 'caption', 'textarea', 'text', 'content', 'button', 'url'].forEach(name => {
+    const inputs = ['title', 'caption', 'textarea', 'text', 'content', 'button', 'url']
+    inputs.forEach(name => {
       this.CSS.inputs[name] = `${this.CSS.input}--${name}`
     })
   }
@@ -124,7 +119,7 @@ export default class EditorTool {
     let field = this.fields[key]
     let type = field.input || 'text'
 
-    result = make('div', [this.CSS.input, this.CSS.inputs[type], this.CSS.fields[key]], {
+    result = make('div', [this.CSS.input, this.CSS.inputs[type]], {
       type: 'text',
       data: { key: key },
       innerHTML: this.data[key],
