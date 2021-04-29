@@ -4,6 +4,8 @@
 module AnalyticsHelper
 
   def gtm_record record, prefix: nil
+    return nil if record.nil?
+
     if record.respond_to?(:role)
       global_name = record.role.titleize
     else
