@@ -1,6 +1,6 @@
 class MeditationsController < ApplicationController
 
-  MEDITATIONS_PER_PAGE = 10
+  MEDITATIONS_PER_PAGE = 30
 
   def index
     @static_page = StaticPage.preload_for(:content).find_by(role: :meditations)
