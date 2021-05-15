@@ -27,6 +27,7 @@ RouteTranslator.config do |config|
       'de.wemeditate.com' => :de, # German
       'es.wemeditate.com' => :es, # Spanish
       'fa.wemeditate.com' => :fa, # Farsi
+      'gr.wemeditate.com' => :gr, # Greek
       'hi.wemeditate.com' => :hi, # Hindi
       'hy.wemeditate.com' => :hy, # Armenian
       'nl.wemeditate.com' => :nl, # Dutch
