@@ -30,5 +30,5 @@ module LocaleHelper
     # Get the localized langugae names for the given locale, or default to english if there is an error
     I18nData.languages(language) rescue I18nData.languages
   end
-  
+
 end

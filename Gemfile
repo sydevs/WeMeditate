@@ -77,7 +77,6 @@ gem 'browser' # Detect the user's browser / device
 gem 'httparty' # For http requests (specifically Klaviyo)
 gem 'lograge' # Reduce verbosity of Rails logs
 gem 'mail_form' # For the contact form
-gem 'sidekiq' # To power active jobs
 gem 'sitemap_generator' # For SEO purposes
 gem 'taglib-ruby', '~> 0.7.1', platforms: %i[ruby] # To parse metadata from mp3 files
 gem 'geocoder' # For identifying users from specific regions
