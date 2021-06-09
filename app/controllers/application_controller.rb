@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   include Regulator
   include Klaviyo
-  protect_from_forgery with: :exception
+  protect_from_forgery prepend: true
   prepend_before_action :set_locale!
   before_action :enforce_maintenance_mode, except: %i[maintenance]
   before_action :force_no_ssl_for_staging
