@@ -21,15 +21,11 @@ export default class LegacyVimeoTool extends EditorTool {
   }
 
   render() {
-    console.log('test0')
     this.container = super.render()
-    console.log('test1')
     this.data.items.forEach(item => {
-      console.log('test1a')
       this.container.appendChild(this.renderItem(item))
     })
 
-    console.log('test2')
     return this.container
   }
 

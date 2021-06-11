@@ -94,6 +94,7 @@ module Contentable
             action: block['data']['text'],
             url: Contentable.strip_url(block['data']['url']),
             type: 'button',
+            decorations: block['data']['decorations'] || {},
           }
         }
       when 'catalog'
@@ -103,7 +104,8 @@ module Contentable
             id: block['data']['id'],
             items: block['data']['items'].map { |item| item['id'].to_i },
             type: block['data']['type'],
-            style: block['data']['withImages'] ? 'image' : 'text'
+            style: block['data']['withImages'] ? 'image' : 'text',
+            decorations: block['data']['decorations'] || {},
           }
         }
       when 'form'
@@ -119,6 +121,7 @@ module Contentable
             type: 'form',
             form: block['data']['format'],
             spacing: block['data']['compact'] ? 'compact' : 'spaced',
+            decorations: block['data']['decorations'] || {},
           }
         }
       when 'header'
@@ -142,6 +145,7 @@ module Contentable
             position: block['data']['position'] == 'wide' ? 'center' : block['data']['position'],
             size: block['data']['size'] == 'wide' || block['data']['position'] == 'wide' ? 'wide' : 'normal',
             mediaFiles: block['data']['media_files'],
+            decorations: block['data']['decorations'] || {},
           }
         }
       when 'list'
@@ -174,6 +178,7 @@ module Contentable
             type: 'text',
             style: block['data']['asPoem'] ? 'poem' : 'quote',
             alignment: block['data']['position'],
+            decorations: block['data']['decorations'] || {},
           }
         }
       when 'structured'
@@ -199,6 +204,7 @@ module Contentable
             type: 'splash',
             color: 'light',
             mediaFiles: block['data']['media_files'],
+            decorations: block['data']['decorations'] || {},
           }
         }
       when 'textbox'
@@ -220,6 +226,7 @@ module Contentable
               position: block['data']['alignment'] == 'right' ? 'right' : 'left',
               spacing: block['data']['separate'] ? 'separate' : 'overlap',
               mediaFiles: block['data']['media_files'],
+              decorations: block['data']['decorations'] || {},
             }
           }
         end
@@ -229,6 +236,7 @@ module Contentable
           data: {
             id: block['data']['id'],
             items: block['data']['items'],
+            decorations: block['data']['decorations'] || {},
           }
         }
       when 'whitespace'
@@ -237,6 +245,7 @@ module Contentable
           data: {
             id: block['data']['id'],
             size: block['data']['size'],
+            decorations: block['data']['decorations'] || {},
           }
         }
       else
