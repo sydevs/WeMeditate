@@ -9,16 +9,16 @@ ruby:
     .content__splash__wrapper
       h1.content__splash__title = translate('streams.live.title')
       .content__splash__action
-        .content__splash__watch
-          a title=translate('streams.live.action.stream') data-lity=true href=record.stream_url
-          span = translate('streams.live.action.stream')
-
         - if record.video_conference_url.present?
-          .content__splash__divider
+          /.content__splash__divider
           .content__splash__conference
             a title=translate("streams.live.action.#{record.video_conference_type}") href=record.video_conference_url target='_blank'
               = image_pack_tag "streams/#{record.video_conference_type}.png"
             span = translate("streams.live.action.#{record.video_conference_type}")
+        - else
+          .content__splash__watch
+            a title=translate('streams.live.action.stream') data-lity=true href=record.stream_url
+            span = translate('streams.live.action.stream')
 
       .content__splash__description = translate(record.video_conference_url.present? ? 'streams.live.alt_description' : 'streams.live.description')
 

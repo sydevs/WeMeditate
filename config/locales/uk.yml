@@ -4,51 +4,51 @@
 
 uk:
   we_meditate: "We Meditate" # This is the title of the website
-  tagline: "Сповни свій розум тишею та відчуй свій внутрішній потенціал через медитацію з супроводом. Долучись до людей по всьому світу, котрі медитують за для змін на краще."
+  tagline: "Відчуйте тишу всередині себе та розкрийте свій внутрішній потенціал за допомогою онлайн медитацій."
 
   routes: # These are for the website URLs, they should be all lower case and use dashes instead of spaces
-    inspiration: "inspiration"
-    articles: "articles"
-    meditations: "meditations"
-    techniques: "techniques"
-    subtle_system: "subtle-system"
-    page: "page"
-    music: "music"
-    archive: "all"
-    self_realization: "first-experience"
-    classes: "classes"
-    streams: "live"
+    inspiration: "надхнення"
+    articles: "статті"
+    meditations: "медитації"
+    techniques: "техніки"
+    subtle_system: "тонка-система"
+    page: "сторінка"
+    music: "музика"
+    archive: "все"
+    self_realization: "перший-досвід"
+    classes: "заняття"
+    streams: "наживо"
     
   header:
-    advanced_articles: "All Articles" # TODO: Translate
-    advanced: "Детальніше"
-    live_meditations: "Live guided meditations" # TODO: Translate
+    advanced_articles: "Всі статті"
+    advanced: "Дізнатись більше"
+    live_meditations: "Медитація наживо"
     classes_near_me: "Заняття поблизу"
     inspiration_from_within: "Джерело натхнення всередині"
     preview_notice: "Ви переглядаєте попередній варіант"
-    kundalini: "Inner Energy" # TODO: Translate
-    social: "Follow us"
+    kundalini: "Внутрішня енергія"
+    social: "Підписатись"
 
   cookie_notice:
-    text: "Продовжуючи використовувати wemeditate.ua, ви даєте згоду на використання файлів cookie."
-    learn_more: "Детальніше"
+    text: "Продовжуючи використовувати wemeditate.ua, Ви даєте згоду на використання файлів cookie."
+    learn_more: "Дізнатись більше"
 
   footer:
     scroll_to_top: "Догори"
-    meditate_now: "Медитувати"
+    meditate_now: "Медитувати онлайн"
     music_for_meditation: "Музика для медитації"
     learn_more: "Дізнатись більше"
-    come_meditate: "Медитуймо"
-    online_meditations: "Медитація з супроводом Online"
+    come_meditate: "Медитуйте з нами"
+    online_meditations: "Медитації в записі"
     languages: "Мови"
     self_realization: "Перший досвід"
 
   actions_footer:
     title: "Відкрий це для себе!"
-    subtitle: "Не беріть нас на слово. Спробуйте помедитувати та подивіться, що ви відчуваєте"
-    sidetext: "Спробуйте Медитацію"
+    subtitle: "Не вір нам на слово. Спробуй сам і відчуй, що таке медитація на власному досвіді!"
+    sidetext: "Медитуйте з нами"
     actions:
-      online: "Медитуйте online"
+      online: "Медитувати онлайн"
       local: "Заняття поблизу"
 
   author:
@@ -57,7 +57,7 @@ uk:
     written_by: "Написано"
     meditating_for:
       one: "Медитує %{count} рік" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-      few: "Медитує %{count} років" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+      few: "Медитує %{count} роки" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
       many: "Медитує %{count} років" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
     countries:
       gb: UK
@@ -67,29 +67,29 @@ uk:
       email: "Ваш email"
       message: "Повідомлення"
       privacy:
-        signup: "Надіславши цю форму, ви погоджуєтесь на обробку ваших особистих даних для отримання медитацій з супроводом та інших електронних листів від WeMeditate"
-        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database." # TODO: Translate
+        signup: "Надіславши цю форму, Ви погоджуєтесь на обробку Ваших особистих даних для отримання повідомлень про онлайн медитації та інших електронних листів від WeMeditate."
+        contact: "Надсилаючи цю форму, Ви погоджуєтесь, що Ваші дані будуть оброблятися відповідно до нашої Політики конфіденційності. Дані з цієї форми будуть передані команді We Meditate електронною поштою та не зберігатимуться в нашій базі даних."
         learn_more: "Дізнатись більше"
       name: "Ваше ім'я"
-      class: "Оберіть клас"
+      class: "Оберіть заняття"
     missing:
-      email: "Вам необхідно вказати електронну адресу."
+      email: "Вкажіть електронну адресу."
       message: "Ви забули ввести повідомлення."
       name: "Вам необхідно вказати своє ім’я."
     success:
       subscribe: "Ви підписалися"
       contact: "Ваше повідомлення було отримано."
       register: "Ви зареєстровані."
-    button: # TODO: Translate
-      try_again: "Try Again"
-      submitted: "Submitted"
+    button:
+      try_again: "Спробуйте ще"
+      submitted: "Надіслано"
 
   player: # For the music or video player
     pause: "Пауза"
     play: "Відтворити"
     '%_buffered': "% завантажено"
     skip_back: "Попередній трек"
-    skip_forward: "Наступний Трек"
+    skip_forward: "Наступний трек"
     rewind_10_secs: "Назад на 10 секунд"
     forward_10_secs: "Вперед на 10 секунд"
     unmute: "Увімкнути звук"
@@ -109,69 +109,69 @@ uk:
     load_more: "Завантажити ще" # Loads more articles
     filter: "Фільтрувати"
     show_all: "Показати все"
-    share: "Поділитися: "
+    share: "Поділитися"
 
   meditations:
-    title: "Медитации" # TODO: Translate
+    title: "Медитації"
     prescreen:
-      title: "Розблокуйте медитації з супроводом, пробудивши свою %{kundalini}"
-      kundalini: "внутрішня енергія"
+      title: "Перед початком медитації в записі пробудіть свою %{kundalini}"
+      kundalini: "внутрішню енергію"
       action: "Пробудіть свою внутрішню енергію"
       explanation:
-        text: "Кожний має внутрішню енергію, пробудивши яку можливо досягнути стан медитації."
+        text: "Всередині кожного є енергія, пробудивши яку можна досягти стану медитації."
         learn_more: "Дізнатись більше"
       skip:
         text: "Вже медитували з нами?"
         action: "Продовжити медитацію"
     featured:
-      self_realization: "Get started" # TODO: Translate
+      self_realization: "Розпочати"
       daily_meditation: "Медитація дня"
       trending_meditation: "Зараз у тренді"
-      random_meditation: "Нехай вирішить доля" #довіритись долі
+      random_meditation: "Нехай вирішить доля"
       random_meditation_title: "Спробуйте випадкову медитацію"
-      random_meditation_description: "Відчуваєте занепад сил і настрій на нулі? Розвійте всі негативні думки та відчуйте впевненість у собі."
+      random_meditation_description: "Відчуваєте виснаження? Відкиньте усі негативні думки та відчуйте спокій всередині."
     custom_meditation:
-      title: "Налаштуйте власну Медитацію"
+      title: "Налаштуйте власну медитацію"
       choose_goal: "Я бажаю відчути ..." # Please keep ' ...' (with a space) at the end of your translation.
-      choose_duration: "Я маю"
+      choose_duration: "В мене є"
       goal_prompt: "Обрати настрій"
-      submit: "Почати медитацію"
+      submit: "Розпочати медитацію"
       minutes: "хв"
     archive:
       see_all_meditations: "Усі медитації"
-      title: "Медитації з Супроводом"
-      view_meditation: "Перегляд медитації"
+      title: "Онлайн гід з медитації "
+      view_meditation: "Переглянути медитацію"
       load_more: "Завантажити ще"
 
   tracks:
     subtitle: "Музика для медитації"
-    text: "Насолоджуйтесь створеною колекцією музики для медитації, яка допоможе вам звернути увагу з зовнішньої метушні та досягти стану справжнього спокою всередині."
+    text: "Ми підібрали для Вас колекцію медитативної музики, яка допоможе направити увагу всередину та досягти справжнього спокою."
     choose_mood: "Оберіть настрій"
     choose_instruments: "Оберіть звучання"
     playlist: "Плейлист"
 
   treatments:
-    header_title: "Technique: %{title}" # TODO: Translate
+    header_title: "Метод: %{title}"
     prescreen:
       title: "Перш ніж перейти до поглиблення медитації, пробудіть свою %{kundalini}"
       kundalini: "внутрішню енергію"
-      action: "Пробудіть Свою Внутрішню Енергію"
+      action: "Пробудіть свою внутрішню енергію"
       explanation:
-        text: "Кожний має внутрішню енергію, пробудивши яку можливо досягнути стан медитації."
+        text: "Всередині кожного є енергія, пробудивши яку можна досягти стану медитації."
         learn_more: "Дізнатись більше"
       skip:
         text: "Вже медитували з нами?"
-        action: "Поглибити медитацію!"
+        action: "Заглибитись в медитацію!"
     music:
       title: "Музика"
-      description: "Музика може допомогти нам розслабитися або, навпаки, надати сил, налаштовуючи на активну роботу. Вона приводить нас в баланс і дозволяє нашому розуму залишатися в тиші, в стані без думок. Насолоджуйтесь нашою підбіркою музики, а разом з нею і глибоким станом медитації."
-      read_more: "Оберітати з колекції"
+      description: "Музика допомагає розслабитися або, навпаки, надає сил, налаштовуючи на активну роботу. Вона приводить нас в баланс і дозволяє нашому розуму залишатися в тиші, в стані без думок. Насолоджуйтесь нашою підбіркою музики, а разом з нею і глибоким станом медитації."
+      read_more: "Обрати з колекції"
     read_more: "Детальніше"
-    show_more: "Показати Більше Методик"
+    show_more: "Більше методик"
 
   content:
     credit: "Автори"
-    show_more: "Показати Більше"
+    show_more: "Показати більше"
 
   subtle_system:
     title:
@@ -184,54 +184,54 @@ uk:
   classes:
     map_title: "Заняття з медитації поблизу"
     prompt: "Введіть своє місто чи поштовий індекс"
-    nearby: "Nearby" # TODO: Translate
-    loading: "Locating..." # TODO: Translate
-    found: "Click to confirm" # TODO: Translate
+    nearby: "Поблизу"
+    loading: "Знаходиться..."
+    found: "Підтвердити"
 
-  streams: # TODO: Translate
-    title: "All Live Meditations"
-    read_more: "Learn more"
+  streams:
+    title: "Всі медитації наживо"
+    read_more: "Дізнатись більше"
     skip:
-      title: "Time doesn't suit you?"
-      description: "Choose an alternative stream that works for you"
-      action: "See other times"
+      title: "Не підходить час?"
+      description: "Виберіть зручний для Вас стрім"
+      action: "Обрати інший час"
     live:
-      title: "We are live now!"
+      title: "Ми в ефірі!"
       identifier:
         zoom: zoom.us # Do not translate
         google: meet.google.com # Do not translate
       action:
-        stream: "Watch the Broadcast"
-        zoom: "Join via Zoom"
-        google: "Join via Google Meet"
-        default: "Join via Video Call"
-      description: "Press play to join our live meditation session streaming right now"
-      alt_description: "Enjoy the meditation via broadcast, or join a video call where you can ask questions."
+        stream: "Дивитися пряме включення з сайту"
+        zoom: "Приєднатися через Zoom"
+        google: "Приєднатися через Google Meet"
+        default: "Приєднатися через Video Call"
+      description: "Натисніть \"Програвати\", щоб приєднатися до медитації в прямому ефірі вже зараз."
+      alt_description: "Насолоджуйтесь медитацією через пряме включення з сайту, або приєднайтесь через інші платформи, щоб задати актуальні для Вас запитання."
     timing:
-      days: "Days"
-      hours: "Hours"
-      minutes: "Minutes"
-      seconds: "Seconds"
+      days: "Дні"
+      hours: "Години"
+      minutes: "Хвилини"
+      seconds: "Секунди"
 
   errors:
     title: "Ох..."
     coming_soon: "Незабаром"
-    no_programs: "Незабаром розпочнуться заняття з медитації у вашому районі."
+    no_programs: "Незабаром розпочнуться заняття з медитації у Вашому місті."
     error: "Помилка"
     alternatives_title: "Спробуйте один із наступних варіантів:"
-    report_issue: "Спробуйте ще раз, та повідомьте, якщо знову виникають проблеми. Повідомляючи про проблему, будь ласка, опишіть які конкретно дії ви вживали до того, як виникла проблема."
+    report_issue: "Спробуйте ще раз та повідомте, якщо знову виникнуть проблеми. Повідомляючи про проблему, опишіть, будь ласка, які конкретно дії Ви виконували перед тим, як виникла проблема."
     '404': "Такої сторінки не існує."
-    '422': "Зміна була відхилена"
+    '422': "Зміна була відхилена."
     '500': "На жаль, щось пішло не так."
 
   javascript:
     reading_time: "%{minutes} хвилина читання"
-    loading: "Loading..." # TODO: Translate
+    loading: "Завантажується..."
     popup:
       close: "Закрити (Esc)"
       loading: "Завантажується..."
-      prev: "Попередній (Клавіша зі стрілкою вліво)"
-      next: "Наступний (Клавіша зі стрілкою вправо)"
+      prev: "Попередній (клавіша зі стрілкою вліво)"
+      next: "Наступний (клавіша зі стрілкою вправо)"
       counter: "%curr% з %total%"
       image_error: "Не вдалося завантажити <a href=\"%url%\"> зображення</a>."
-      ajax_error: "Не вдалося завантажити <a href=\"%url%\"> контект</a>."
+      ajax_error: "Не вдалося завантажити <a href=\"%url%\"> контекст</a>."

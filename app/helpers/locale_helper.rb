@@ -20,7 +20,7 @@ module LocaleHelper
   def language_name language = I18n.locale, native: false
     language = language.to_s.split('-')[0].to_sym
 
-    languages(native ? language : I18n.locale)[language.to_s.upcase].titleize.split(';')[0]
+    languages(native ? language : I18n.locale)[language.to_s.upcase].titleize.split(/[,;]/)[0]
   end
 
   # Get the translated names for each language for a given language
@@ -30,5 +30,5 @@ module LocaleHelper
     # Get the localized langugae names for the given locale, or default to english if there is an error
     I18nData.languages(language) rescue I18nData.languages
   end
-  
+
 end

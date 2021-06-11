@@ -68,6 +68,7 @@ class Stream < ApplicationRecord
 
   def next_stream_time
     current_time = time_zone.now
+    current_time = start_date.in_time_zone(time_zone) if current_time < start_date
     current_date = current_time.beginning_of_day
     countdown_time = next_stream_time_for(current_date)
     countdown_time = next_stream_time_for(current_date + 1.day) if current_time > countdown_time + duration

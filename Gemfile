@@ -41,7 +41,8 @@ gem 'array_enum' # Allows the use of enum arrays
 
 # Uploads
 gem 'carrierwave' # Core support for file uploads
-gem 'fog-google' # Let's us store the files in Google Storage
+gem 'carrierwave-google-storage' # Let's us store the files in Google Storage
+gem 'google-api-client' # An unspecified dependency for carrierwave-google-storage
 gem 'carrierwave-meta' # To get image meta data
 gem 'google-cloud-storage' # Needed to access sitemaps
 gem 'mini_magick' # Image processing during upload
@@ -77,7 +78,6 @@ gem 'browser' # Detect the user's browser / device
 gem 'httparty' # For http requests (specifically Klaviyo)
 gem 'lograge' # Reduce verbosity of Rails logs
 gem 'mail_form' # For the contact form
-gem 'sidekiq' # To power active jobs
 gem 'sitemap_generator' # For SEO purposes
 gem 'taglib-ruby', '~> 0.7.1', platforms: %i[ruby] # To parse metadata from mp3 files
 gem 'geocoder' # For identifying users from specific regions

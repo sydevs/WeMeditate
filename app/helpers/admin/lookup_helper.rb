@@ -24,6 +24,7 @@ module Admin::LookupHelper
     pl: 'pl', # Polish
     bg: 'bg', # Bulgarian
     fa: 'ir', # Iran for Farsi
+    el: 'gr', # Greece for Greek
   }.freeze
 
   # The icon used for different levels of urgency

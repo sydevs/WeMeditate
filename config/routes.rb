@@ -47,6 +47,8 @@ Rails.application.routes.draw do
 
   # ===== FRONT-END ROUTES ===== #
   constraints DomainConstraint.new(RouteTranslator.config.host_locales.keys) do
+    get 'surrey', to: redirect('/live/surrey')
+    
     localized do
       devise_for :users, controllers: { invitations: 'users/invitations' }
 
@@ -87,6 +89,5 @@ Rails.application.routes.draw do
   get '422', to: 'application#error'
   get '500', to: 'application#error'
 
-  get 'page/:page', to: redirect('/%{page}') # Redirect for legacy route. Can be removed after July 2020.
   get '/', to: redirect('404')
 end

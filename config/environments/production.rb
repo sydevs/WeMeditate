@@ -60,7 +60,7 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
-  config.active_job.queue_adapter = :sidekiq
+  # config.active_job.queue_adapter = :sidekiq
   # config.active_job.queue_name_prefix = "wemeditate_#{Rails.env}"
   # Use a real queuing backend for Active Job (and separate queues per environment).
 
@@ -118,7 +118,7 @@ Rails.application.configure do
   config.lograge.enabled = true
 
   # Devise config
-  config.action_mailer.default_url_options = { host: 'admin.wemeditate.co' }
+  config.action_mailer.default_url_options = { host: 'admin.wemeditate.com' }
 
   config.action_mailer.delivery_method = :smtp
 end

@@ -5,6 +5,8 @@ class MediaFileUploader < ApplicationUploader
 
   include CarrierWave::MiniMagick
 
+  process :store_dimensions
+
   VERSIONS = {
     huge: 2880,
     large: 1440,
@@ -29,13 +31,15 @@ class MediaFileUploader < ApplicationUploader
     new_file.content_type.start_with? 'image'
   end
 
-  # Get the metadata of an image so that it can be stored in the database for later.
-  def get_metadata
-    return nil unless file
-    url = file.file
-    url = file.file.url unless url.is_a?(String)
-    width, height = ::MiniMagick::Image.open(url)[:dimensions]
-    { width: width, height: height }
+  # Store width and height in model image_meta attribute
+  def store_dimensions
+    return nil unless file && model
+
+    # Note: file on Heroku is CarrierWave::Storage::Fog::File but in dev it's
+    # CarrierWave::SanitizedFile (whether GCLOUD_BUCKET is set or not).
+    # Unfortunately don't have any explanation for the discrepancy.
+    width, height = ::MiniMagick::Image.open(file.file)[:dimensions]
+    model.image_meta = { width: width, height: height }
   end
 
 end

@@ -51,5 +51,5 @@ In general, follow the comments throughout the translation files and you should 
 
 ### Other notes
 
- - It is typically a good idea to use the same style of capitalization as has been used in the English translation. Especially in the _en.admin.yml_ file you will find a lot of capitalized words because most of the translations are for titles and buttons.
- - When translating a phrase which includes a number, such as "1", it is usually best to keep the number ("1") instead of replacing it with a word ("One"). Especially in the _en.admin.yml_ file.
+ - It is typically a good idea to use the same style of capitalization as has been used in the English translation. Especially in the _admin/en/admin.yml_ file you will find a lot of capitalized words because most of the translations are for titles and buttons.
+ - When translating a phrase which includes a number, such as "1", it is usually best to keep the number ("1") instead of replacing it with a word ("One"). Especially in the _admin/en/admin.yml_ file.

@@ -2,7 +2,7 @@
 # FRONT END TRANSLATIONS
 # This file contains translations which will be seen by the public.
 
-tr:
+el:
   we_meditate: "We Meditate" # This is the title of the website
   tagline: "Silence your mind and discover your inner potential with guided meditations. Connect with others around the world meditating for a better life."
 
@@ -18,15 +18,15 @@ tr:
     self_realization: "first-experience"
     classes: "classes"
     streams: "live"
-    
+
   header:
-    advanced_articles: "All Articles" # TODO: Translate
+    advanced_articles: "All Articles"
     advanced: "About Meditation"
     live_meditations: "Live Classes"
-    classes_near_me: "Classes Near Me"
+    classes_near_me: "Classes near me"
+    kundalini: "Inner Energy"
     inspiration_from_within: "Inspiration comes from within"
     preview_notice: "You are viewing a preview"
-    kundalini: "Inner Energy"
     social: "Follow us"
 
   cookie_notice:
@@ -56,9 +56,8 @@ tr:
     about_the_artist: "About the artist"
     written_by: "Written by"
     meditating_for:
-      one: "Meditating for %{count} year" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-      few: "Meditating for %{count} years" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
-      many: "Meditating for %{count} years" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+      one: "Meditating for 1 year"
+      other: "Meditating for %{count} years"
     countries:
       gb: UK
 
@@ -87,7 +86,7 @@ tr:
   player: # For the music or video player
     pause: "Pause"
     play: "Play"
-    '%_buffered': "% buffered"
+    '%_buffered': "% buffered" # This is referring to the amount of a video which has been loaded.
     skip_back: "Previous Track"
     skip_forward: "Next Track"
     rewind_10_secs: "Rewind 10 secs"
@@ -101,7 +100,7 @@ tr:
     enter_fullscreen: "Enter fullscreen"
     duration: "Duration"
     current_time: "Current time" # The current time that the player is at
-    seek: "Seek"
+    seek: "Seek" # This is the action that you do when you drag the current time of a video. In English you would say that you are "Seeking through the video"
     play_title: "Play, %{title}" # %{title} is the title of a video or music track
 
   articles:
@@ -225,7 +224,7 @@ tr:
     '500': "We're sorry, but something went wrong"
 
   javascript:
-    reading_time: "%{minutes} minute read"
+    reading_time: "%minutes% minute read"
     loading: "Loading..."
     popup:
       close: "Close (Esc)"
