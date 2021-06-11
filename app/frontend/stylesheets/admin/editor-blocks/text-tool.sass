@@ -2,6 +2,9 @@
 @include set($tool: paragraph)
 
 @include block
+  &.cdx-block--custom-focus
+    index: 0
+
   @for $level from 1 through 6
     @include on-option(level, "h#{$level}")
       .icon::after

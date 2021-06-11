@@ -170,6 +170,11 @@ en:
       items:
         one: "%{count} item"
         other: "%{count} items"
+      blocks:
+        paragraph:
+          header: "Header"
+          paragraph: "Paragraph"
+
 
 
     # ===== MISCELLENEOUS ===== #

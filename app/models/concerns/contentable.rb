@@ -139,8 +139,8 @@ module Contentable
             items: block['data']['items'],
             type: 'image',
             quantity: block['data']['asGallery'] ? 'gallery' : 'single',
-            position: block['data']['position'],
-            size: block['data']['size'] == 'wide' ? 'wide' : 'narrow',
+            position: block['data']['position'] == 'wide' ? 'center' : block['data']['position'],
+            size: block['data']['size'] == 'wide' || block['data']['position'] == 'wide' ? 'wide' : 'normal',
             mediaFiles: block['data']['media_files'],
           }
         }

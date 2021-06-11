@@ -19,9 +19,28 @@
 
     &:hover
       color: #DB2828
+      
+  &.cdx-block--custom-focus
+    .cdx-textbox__fields
+      z-index: 10
+      box-shadow: 0px 3px 15px rgba(0,0,0,0.2)
+      background: transparentize(white, 0.5)
 
-  &:not(.cdx-block--custom-focus) .cdx-textbox__remove-image
-    display: none
+  &:not(.cdx-block--custom-focus)
+    overflow: hidden
+
+    &::after
+      content: ""
+      display: block
+      position: absolute
+      width: 100%
+      height: 20px
+      bottom: 0
+      background: linear-gradient(transparent, #FFF) left repeat
+      z-index: 1
+
+    .cdx-textbox__remove-image
+      display: none
 
 
 // TEXT TYPE
@@ -88,7 +107,7 @@
     position: absolute
     top: 40px
     z-index: 1
-    width: 45%
+    width: 50%
     margin: 30px
     padding: 10px
     text-align: left

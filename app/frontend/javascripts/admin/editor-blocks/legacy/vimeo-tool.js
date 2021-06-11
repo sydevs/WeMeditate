@@ -13,7 +13,6 @@ export default class LegacyVimeoTool extends EditorTool {
       tunes: {},
     }, api)
 
-
     this.CSS.item = {
       container: `${this.CSS.container}__item`,
       image: `${this.CSS.container}__items__image`,
@@ -34,15 +33,12 @@ export default class LegacyVimeoTool extends EditorTool {
     return this.container
   }
 
-  renderOptions(container) {
+  renderSettings(container) {
     const settingsContainer = make('div', [this.CSS.optionsWrapper], {}, container)
-    make('strong', '', { innerText: translate('blocks.media.label') }, settingsContainer)
-    make('label', '', {
-      innerText: translate('blocks.media.type.label'),
-      data: { label: 'Vimeo (Legacy)' },
-    }, settingsContainer)
+
+    make('div', this.CSS.optionsHeader, { innerText: 'Vimeo (Legacy)' }, settingsContainer)
     make('p', '', {
-      innerText: 'This block is outdated and is no longer editable. Please create a new media block, using videos from JWPlayer instead of Vimeo'
+      innerText: 'This block is outdated and is no longer editable. Please create a new media block, using videos from JWPlayer instead of Vimeo.'
     }, settingsContainer)
 
     return settingsContainer

@@ -20,7 +20,7 @@ export default class MediaTool extends EditorTool {
       type: ['image', 'video', 'audio', 'vimeo'].includes(data.type) ? data.type : 'image',
       quantity: ['single', 'gallery'].includes(data.quantity) ? data.quantity : 'single',
       position: ['left', 'center', 'right'].includes(data.position) ? data.position : 'center',
-      size: ['narrow', 'wide'].includes(data.size) ? data.size : 'normal',
+      size: ['normal', 'wide'].includes(data.size) ? data.size : 'normal',
       decorations: data.decorations || {},
     }, { // Config
       id: 'media',
@@ -29,8 +29,8 @@ export default class MediaTool extends EditorTool {
         type: {
           options: [
             { name: 'image', icon: 'image', },
-            { name: 'video', icon: 'film', },
-            { name: 'audio', icon: 'volume up' },
+            //{ name: 'video', icon: 'film', },
+            //{ name: 'audio', icon: 'volume up' },
           ]
         },
         quantity: {
@@ -96,8 +96,6 @@ export default class MediaTool extends EditorTool {
 
   renderItem(item = {}) {
     const container = make('div', this.CSS.item.container, {})
-
-    make('pre', [], { innerText: JSON.stringify(item) }, container)
 
     if (item.image && item.image.preview) {
       const img = make('div', [this.CSS.item.image, 'ui', 'rounded', 'image'], {}, container)
