@@ -1,0 +1,7 @@
+
+.content__structured.content__structured--accordion
+  .content__structured__accordion.js-accordion
+    - block[:items].each do |item|
+      article.content__structured__item
+        h3.content__structured__title = item[:title]
+        .content__structured__text = simple_format_content item[:text]

@@ -177,7 +177,7 @@ module Contentable
             subtitle: block['data']['caption'],
             type: 'text',
             style: block['data']['asPoem'] ? 'poem' : 'quote',
-            alignment: block['data']['position'],
+            alignment: block['data']['position'] || 'center',
             decorations: block['data']['decorations'] || {},
           }
         }
@@ -221,7 +221,7 @@ module Contentable
               action: block['data']['action'],
               url: Contentable.strip_url(block['data']['url']),
               type: 'image',
-              background: block['data']['asWisdom'] ? 'beige' : (block['data']['alignment'] == 'center' ? 'image' : 'white'),
+              background: block['data']['asWisdom'] ? 'brown' : (block['data']['alignment'] == 'center' ? 'image' : 'white'),
               color: block['data']['invert'] ? 'light' : 'dark',
               position: block['data']['alignment'] == 'right' ? 'right' : 'left',
               spacing: block['data']['separate'] ? 'separate' : 'overlap',
@@ -236,6 +236,8 @@ module Contentable
           data: {
             id: block['data']['id'],
             items: block['data']['items'],
+            quantity: block['data']['asGallery'] ? 'gallery' : 'single',
+            legacy: true,
             decorations: block['data']['decorations'] || {},
           }
         }

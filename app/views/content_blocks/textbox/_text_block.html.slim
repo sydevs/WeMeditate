@@ -1,0 +1,27 @@
+
+pre = block.pretty_inspect
+
+ruby:
+  alignment = %w[left right center].include?(block[:alignment]) ? block[:alignment] : 'center'
+  is_poem = block[:style] == 'poem'
+  is_callout = %w[left right].include?(alignment) && !is_poem
+  classes = []
+  classes << "content__quote--#{alignment}"
+  classes << 'content__quote--callout' if is_callout
+  classes << "content__quote--#{block[:style]}"
+
+.content__quote class=classes
+  blockquote.content__quote__block
+    - if alignment == 'center'
+      .divider.divider--leaf.divider--leaf-up
+
+    .content__quote__text = simple_format block[:text]
+
+    - if block[:title].present?
+      .content__quote__credit = block[:title]
+
+    - if block[:subtitle].present?
+      .content__quote__caption = block[:subtitle]
+
+    - if alignment == 'center'
+      .divider.divider--leaf.divider--leaf-down

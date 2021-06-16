@@ -7,6 +7,7 @@ export default class LegacyVimeoTool extends EditorTool {
     super({ // Data
       id: data.id || generateId(),
       items: data.items || [],
+      legacy: true,
     }, { // Config
       id: 'vimeo',
       fields: {},

@@ -478,6 +478,14 @@ article.update!(content: content([
       caption: 'University professor',
     },
   }, {
+    type: :quote,
+    data: {
+      text: sentences(2),
+      credit: 'John Smith',
+      caption: 'University professor',
+      asPoem: true,
+    },
+  }, {
     type: :action,
     data: {
       text: 'Button Text',
@@ -567,6 +575,36 @@ article.update!(content: content([
     type: :paragraph,
     data: {
       text: sentences(4),
+    },
+  }, {
+    type: :whitespace,
+    data: {
+      size: 'small',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: sentences(5),
+    },
+  }, {
+    type: :whitespace,
+    data: {
+      size: 'medium',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: sentences(5),
+    },
+  }, {
+    type: :whitespace,
+    data: {
+      size: 'large',
+    },
+  }, {
+    type: :paragraph,
+    data: {
+      text: sentences(5),
     },
   }, {
     type: :video,

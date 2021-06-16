@@ -20,7 +20,7 @@ export default class MediaTool extends EditorTool {
       type: ['image', 'video', 'audio', 'vimeo'].includes(data.type) ? data.type : 'image',
       quantity: ['single', 'gallery'].includes(data.quantity) ? data.quantity : 'single',
       position: ['left', 'center', 'right'].includes(data.position) ? data.position : 'center',
-      size: ['normal', 'wide'].includes(data.size) ? data.size : 'normal',
+      size: ['narrow', 'wide'].includes(data.size) ? data.size : 'narrow',
       decorations: data.decorations || {},
     }, { // Config
       id: 'media',
@@ -50,7 +50,7 @@ export default class MediaTool extends EditorTool {
         size: {
           requires: { type: ['image'], quantity: ['single'], position: ['center'] },
           options: [
-            { name: 'normal', icon: 'minus' },
+            { name: 'narrow', icon: 'minus' },
             { name: 'wide', icon: 'arrows alternate horizontal' },
           ]
         },

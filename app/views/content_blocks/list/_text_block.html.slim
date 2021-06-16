@@ -1,0 +1,14 @@
+
+ruby:
+  classes = ['content__list']
+  classes << "content__list--#{block[:style]}"
+
+.content__list class="content__list--#{block[:style]}"
+  - if block[:style] == 'ordered'
+    ol
+      - block[:items].each do |item|
+        li.content__list__item = item
+  - else
+    ul
+      - block[:items].each do |item|
+        li.content__list__item = item

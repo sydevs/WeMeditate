@@ -1,0 +1,17 @@
+
+.content__structured.content__structured--grid
+  .content__structured__grid.js-grid data-max-columns=3
+    - block[:items].first(3).each do |item|
+      article.content__structured__item
+        h3.content__structured__title = item[:title]
+        .content__structured__text = simple_format_content item[:text]
+
+  - if block[:items].count > 3
+    .content__structured__loadmore.js-loadmore
+      button.button.button--box
+        = translate 'content.show_more'
+      template
+        - block[:items].drop(3).each do |item|
+          article.content__structured__item
+            h3.content__structured__title = item[:title]
+            .content__structured__text = simple_format_content item[:text]
