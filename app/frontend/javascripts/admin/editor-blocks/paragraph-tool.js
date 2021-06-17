@@ -2,7 +2,7 @@ import { generateId } from '../util'
 import { translate } from '../../i18n'
 import EditorTool from './_editor-tool'
 
-export default class TextTool extends EditorTool {
+export default class ParagraphTool extends EditorTool {
   static get toolbox() {
     return {
       icon: '<i class="font icon"></i>',
@@ -14,8 +14,9 @@ export default class TextTool extends EditorTool {
     super({ // Data
       id: data.id || generateId(),
       text: data.text || '',
-      type: ['paragraph', 'header'].includes(data.type) ? data.type : 'paragraph',
+      type: ['text', 'header'].includes(data.type) ? data.type : 'text',
       level: ['h2', 'h3', 'h4', 'h5'].includes(data.type) ? data.type : 'h2',
+      decorations: data.decorations || {},
     }, { // Config
       id: 'paragraph',
       fields: {
@@ -37,6 +38,9 @@ export default class TextTool extends EditorTool {
             { name: 'h5', icon: 'heading' },
           ]
         },
+      },
+      decorations: {
+        //leaves: { requires: { type: ['header'] }},
       },
     }, api)
 

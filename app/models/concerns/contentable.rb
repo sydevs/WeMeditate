@@ -132,6 +132,7 @@ module Contentable
             text: block['data']['text'],
             type: 'header',
             level: block['data']['level'],
+            decorations: block['data']['centered'] ? { leaves: true } : {}
           }
         }
       when 'image'
@@ -164,7 +165,7 @@ module Contentable
           data: {
             id: block['data']['id'],
             text: block['data']['text'],
-            type: 'paragraph',
+            type: 'text',
           }
         }
       when 'quote'

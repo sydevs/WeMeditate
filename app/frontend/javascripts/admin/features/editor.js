@@ -1,6 +1,6 @@
 import EditorJS from '@editorjs/editorjs'
 import { afterPendingUploads, hasPendingUploads } from './uploader'
-import TextTool from '../editor-blocks/text-tool'
+import ParagraphTool from '../editor-blocks/paragraph-tool'
 import ListTool from '../editor-blocks/list-tool'
 import TextboxTool from '../editor-blocks/textbox-tool'
 import ActionTool from '../editor-blocks/action-tool'
@@ -22,7 +22,7 @@ const editorParameters = {
   placeholder: 'Let`s write an awesome story!',
   tools: {
     paragraph: {
-      class: TextTool,
+      class: ParagraphTool,
       inlineToolbar: true,
     },
     list: {
