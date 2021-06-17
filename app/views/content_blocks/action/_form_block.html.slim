@@ -1,39 +1,39 @@
 
 ruby:
-  url = (block[:format] == 'contact' ? contact_path : subscribe_path)
-  classes = ['content__form', 'js-form']
-  classes << "content__form--#{block[:format]}"
-  classes << 'content__form--compact' if block[:compact] == true
+  url = (block[:form] == 'contact' ? contact_path : subscribe_path)
+  classes = ['cb-form-action', 'js-form']
+  classes << "cb-form-action--#{block[:format]}"
+  classes << "cb-form-action--#{block[:spacing]}"
 
 = form_tag url, class: classes, remote: true do
   .anchor id='signup'
   .divider.divider--leaf.divider--leaf-only.divider--leaf-up
 
-  .content__form__content
-    h3.content__form__title = block[:title]
-    .content__form__subtitle = block[:subtitle]
-    .content__form__description = block[:text]
-    .content__form__fields
-      .content__form__message
-      = fields_for block[:format] do |f|
+  .cb-form-action__content
+    h3.cb-form-action__title = block[:title]
+    .cb-form-action__subtitle = block[:subtitle]
+    .cb-form-action__description = block[:text]
+    .cb-form-action__fields
+      .cb-form-action__message
+      = fields_for block[:form] do |f|
         = f.email_field :email_address, placeholder: t('form.input.email')
 
-        - if block[:format] == 'contact'
+        - if block[:form] == 'contact'
           = f.text_area :message, placeholder: t('form.input.message'), rows: 5
           = f.hidden_field :gobbledigook
-          = recaptcha_tags
-        - elsif block[:format] == 'signup'
+          = recaptcha_tags unless Rails.env.development?
+        - elsif block[:form] == 'signup'
           = f.hidden_field :list_id, value: block[:list_id]
 
-        - if translate(block[:format], scope: 'form.input.privacy').present?
-          .content__form__privacy
-            = translate(block[:format], scope: 'form.input.privacy')
+        - if translate(block[:form], scope: 'form.input.privacy').present?
+          .cb-form-action__privacy
+            = translate(block[:form], scope: 'form.input.privacy')
             a href=static_page_path_for(:privacy) target='_blank' = translate 'form.input.privacy.learn_more'
 
-    .content__form__buttons
+    .cb-form-action__buttons
       button.button.button--box = block[:action]
 
-      - if block[:format] == 'signup' && block[:title] == 'Не пропусти!'
+      - if block[:form] == 'signup' && block[:title] == 'Не пропусти!'
         br
         a.button.button--icon.button--box.button--colored href='https://taplink.cc/link/29656052.c68a3b/telegram/' style='background: #0088cc'
           .icon.icon--telegram
