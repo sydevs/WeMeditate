@@ -2,6 +2,8 @@
  * This file orchestrates and loads all the other files in this folder.
  */
 
+import 'lity'
+
 import zenscroll from 'zenscroll'
 import Accordion from './elements/accordion'
 import Carousel from './elements/carousel'
@@ -58,6 +60,7 @@ export function init() {
 
   if (instances.header && instances.header.count > 0) instances.header[0].init()
   if (instances.categories && instances.categories.count > 0) instances.categories[0].init()
+  //$(document).on('click', '[data-lity]', lity)
 }
 
 export function load() {

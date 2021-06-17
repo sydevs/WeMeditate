@@ -1,15 +1,14 @@
 
 ruby:
-  is_gallery = block[:items].length > 1
   classes = []
-  classes << "cb-video-media--#{is_gallery ? 'gallery' : 'single'}"
+  classes << "cb-video-media--#{block[:quantity]}"
 
 - if block[:items].length > 0
   .cb-video-media class=classes
     .gradient-wrapper
       = render_decoration :gradient, block, size: %i[tall long]
 
-    - if is_gallery
+    - if block[:quantity] == 'gallery'
       - if block[:decorations] && block[:decorations][:sidetext]
         .cb-video-media__circle
           = render_decoration :circle, { decorations: { circle: true } }

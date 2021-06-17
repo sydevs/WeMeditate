@@ -95,7 +95,7 @@
       transform: rotate(-90deg)
 
 // Video button styling
-%video-button
+@mixin video-button
   display: inline-block
   position: relative
 
@@ -116,7 +116,7 @@
     cursor: pointer
 
   &:after
-    background-image: image('graphics/play-video.svg')
+    background: image('graphics/play-video.svg')
     background-position: center
     background-size: cover
     display: block
