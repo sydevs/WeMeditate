@@ -1,14 +1,14 @@
 
 ruby:
-  classes = ['content__list']
-  classes << "content__list--#{block[:style]}"
+  classes = []
+  classes << "cb-text-list--#{block[:style]}"
 
-.content__list class="content__list--#{block[:style]}"
+.cb-text-list class=classes
   - if block[:style] == 'ordered'
     ol
       - block[:items].each do |item|
-        li.content__list__item = item
+        li.cb-text-list__item = item
   - else
     ul
       - block[:items].each do |item|
-        li.content__list__item = item
+        li.cb-text-list__item = item
