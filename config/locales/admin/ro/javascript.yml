@@ -119,7 +119,7 @@ en:
             title: "Background"
             white: "White"
             image: "Image"
-            brown: "Gold/Brown"
+            ornate: "Ornate"
           color:
             title: "Colour"
             dark: "Dark"

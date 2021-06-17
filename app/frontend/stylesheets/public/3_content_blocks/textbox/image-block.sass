@@ -1,0 +1,126 @@
+
+.cb-image-textbox
+  position: relative
+
+  @include tablet
+    margin-bottom: 100px
+
+  @include laptop-or-larger
+    min-height: 91vh
+
+.cb-image-textbox__box,
+.cb-image-textbox__text
+  > *:first-child
+    margin-top: 0 !important
+
+  > *:last-child
+    margin-bottom: 0 !important
+
+.cb-image-textbox__wrapper
+  @extend %wide-content-width
+  position: relative
+
+// Extra desktop sizing
+.cb-image-textbox:not(.cb-image-textbox--image)
+  @include desktop
+    min-height: 900px
+
+  .cb-image-textbox__box_wrapper
+    @include desktop
+      min-height: 900px
+
+.cb-image-textbox--compact
+  margin-top: 0 !important
+  margin-bottom: 0 !important
+  
+// ===== CONTENT ===== //
+.cb-image-textbox__image
+  margin-bottom: 56px
+  overflow: visible
+
+  @include laptop-or-larger
+    margin-bottom: 0
+
+.cb-image-textbox__img
+  height: 51vh
+  position: relative
+  display: inline-block
+
+  @include laptop-or-larger
+    height: auto
+    display: inline-block
+    -webkit-user-drag: none // autoprefixer doesn't appear to handle this one.
+    user-drag: none
+    user-select: none
+
+  picture
+    display: block
+    height: 100%
+
+  img
+    height: 100%
+
+.cb-image-textbox__title
+  font-weight: $font-bold
+  letter-spacing: 0.25px
+
+  @include laptop-or-larger
+    margin-bottom: 1.17em
+
+.cb-image-textbox__text
+  line-height: 1.75
+  letter-spacing: 0.44px
+
+  @include laptop-or-larger
+    font-size: 1.8rem
+    line-height: 1.6667
+    letter-spacing: 0.2px
+
+.cb-image-textbox__button
+  display: inline-block
+  margin-top: 24px
+
+
+// ===== DECORATIONS ===== //
+.cb-image-textbox__sidetext,
+.cb-image-textbox__triangle
+  position: relative
+
+.cb-image-textbox__decoration--gradient
+  @include overlay
+  z-index: -1
+
+.cb-image-textbox__circle
+  position: absolute
+  bottom: -160px
+
+// ===== ALIGNED ===== //
+@each $side in left right
+  .cb-image-textbox--#{$side}
+    .cb-image-textbox__circle
+      #{$side}: -160px
+
+
+// ===== DARK THEME ===== //
+.cb-image-textbox--light
+  @include laptop-or-larger
+    .cb-image-textbox__box,
+    .cb-image-textbox__button
+      color: $color-text-inverse
+      border-color: $color-text-inverse
+      background: none
+
+    .cb-image-textbox__title
+      color: $color-text-inverse
+
+.cb-image-textbox--light.cb-image-textbox--image
+  .cb-image-textbox__box
+    @include laptop-or-larger
+      margin-left: 80px
+
+    // Draw outline
+    @include laptop-or-larger
+      @include animate-border-box(white, 2px)
+        
+
+  

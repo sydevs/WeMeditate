@@ -1,0 +1,77 @@
+
+// ===== CONTENT ===== //
+.cb-image-textbox--separate .cb-image-textbox
+  &__image
+    margin-left: -24px
+    margin-right: -24px
+
+    @include laptop-or-larger
+      margin: 0
+      margin-bottom: 100px
+
+  &__img
+    @include laptop-or-larger
+      height: 91vh
+
+    @include widescreen
+      max-height: 900px
+
+  &__box_wrapper
+    @include mobile
+      padding: 0
+
+  &__box
+    max-width: $narrow-content-width
+
+    @include tablet
+      padding-left: $gutter-width * 2
+      padding-right: $gutter-width * 2
+
+    @include laptop-or-larger
+      padding-top: 80px
+
+    @include widescreen
+      max-width: 680px
+
+// ===== ALIGNED ===== //
+.cb-image-textbox--separate.cb-image-textbox--left
+  .cb-image-textbox__box
+    @include laptop-or-larger
+      padding-left: 80px
+
+    @include widescreen
+      padding-left: 150px
+
+  .cb-image-textbox__image
+    @include laptop-or-larger
+      margin-left: 72px
+  
+.cb-image-textbox--separate.cb-image-textbox--right
+  .cb-image-textbox__box
+    @include laptop-or-larger
+      padding-top: 160px
+
+    @include widescreen
+      padding-right: 180px
+
+  .cb-image-textbox__image
+    @include laptop-or-larger
+      margin-right: 120px
+
+  .cb-image-textbox__sidetext
+    @include laptop-or-larger
+      right: $gutter-width
+
+.cb-image-textbox--separate.cb-image-textbox
+  @each $side in left right
+    $opposite: if($side == right, left, right)
+
+    &--#{$side}
+      .cb-image-textbox__image
+        text-align: $opposite
+
+        @include laptop-or-larger
+          float: $opposite
+
+      .cb-image-textbox__box
+        margin-#{$opposite}: auto
