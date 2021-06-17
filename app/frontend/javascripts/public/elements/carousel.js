@@ -35,12 +35,12 @@ export default class Carousel {
 
     if (prevArrow) {
       const prevSlide = this.getSlide(slick, currentSlide - 1)
-      prevArrow.innerText = prevSlide.querySelector('.content__structured__title').innerText
+      prevArrow.innerText = prevSlide.querySelector('.js-carousel-title').innerText
     }
 
     if (nextArrow) {
       const nextSlide = this.getSlide(slick, currentSlide + 1)
-      nextArrow.innerText = nextSlide.querySelector('.content__structured__title').innerText
+      nextArrow.innerText = nextSlide.querySelector('.js-carousel-title').innerText
     }
   }
 

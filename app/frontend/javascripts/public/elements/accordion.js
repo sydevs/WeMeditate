@@ -8,22 +8,22 @@ export default class Accordion {
     this.container = element
     this.activeItem = null
 
-    const textElements = element.querySelectorAll('.content__structured__text')
+    const textElements = element.querySelectorAll('.js-accordion-text')
     for (let index = 0; index < textElements.length; index++) {
       textElements[index].style.maxHeight = textElements[index].offsetHeight + 'px'
     }
 
-    const titleElements = element.querySelectorAll('.content__structured__title')
+    const titleElements = element.querySelectorAll('.js-accordion-title')
     for (let index = 0; index < titleElements.length; index++) {
       titleElements[index].addEventListener('click', event => this.selectItem(event.currentTarget.parentNode))
-      titleElements[index].parentNode.classList.add('content__structured__item--closed')
+      titleElements[index].parentNode.classList.add('closed')
     }
   }
 
   unload() {
-    const textElements = this.container.querySelectorAll('.content__structured__text')
+    const textElements = this.container.querySelectorAll('.js-accordion-text')
     for (let index = 0; index < textElements.length; index++) {
-      textElements[index].parentNode.classList.remove('content__structured__item--closed')
+      textElements[index].parentNode.classList.remove('closed')
       textElements[index].style.maxHeight = null
     }
 
@@ -32,12 +32,12 @@ export default class Accordion {
 
   selectItem(item) {
     if (this.activeItem) {
-      this.activeItem.classList.add('content__structured__item--closed')
+      this.activeItem.classList.add('closed')
     }
 
     if (this.activeItem != item) {
       this.activeItem = item
-      this.activeItem.classList.remove('content__structured__item--closed')
+      this.activeItem.classList.remove('closed')
     } else {
       this.activeItem = null
     }
