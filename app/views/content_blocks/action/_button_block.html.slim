@@ -1,8 +1,8 @@
 
 ruby:
-  classes = ['content__action']
-  classes << 'content__action--leaves' if block[:decorations] && block[:decorations][:leaves]
+  classes = []
+  classes << 'cb-button-action--leaves' if block[:decorations] && block[:decorations][:leaves]
 
-.content__action class=classes
+.cb-button-action class=classes
   a.button.button--box href=block[:url] class="#{'scroll' if block[:url][0,1] == '#'}"
     = block[:action]

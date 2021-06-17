@@ -1,27 +1,30 @@
 
-pre = block.pretty_inspect
-
 ruby:
   alignment = %w[left right center].include?(block[:alignment]) ? block[:alignment] : 'center'
-  is_poem = block[:style] == 'poem'
-  is_callout = %w[left right].include?(alignment) && !is_poem
+  floating = %w[left right].include?(alignment) && block[:style] == 'quote'
   classes = []
-  classes << "content__quote--#{alignment}"
-  classes << 'content__quote--callout' if is_callout
-  classes << "content__quote--#{block[:style]}"
+  classes << "cb-text-textbox--#{alignment}"
+  classes << 'cb-text-textbox--floating' if floating
+  classes << "cb-text-textbox--#{block[:style]}"
 
-.content__quote class=classes
-  blockquote.content__quote__block
+.cb-text-textbox class=classes
+  blockquote.cb-text-textbox__block
     - if alignment == 'center'
       .divider.divider--leaf.divider--leaf-up
 
-    .content__quote__text = simple_format block[:text]
+    - if block[:style] == 'poem'
+      - if block[:title].present?
+        .cb-text-textbox__title = block[:title]
+      - if block[:subtitle].present?
+        .cb-text-textbox__caption = block[:subtitle]
 
-    - if block[:title].present?
-      .content__quote__credit = block[:title]
+    .cb-text-textbox__text = simple_format block[:text]
 
-    - if block[:subtitle].present?
-      .content__quote__caption = block[:subtitle]
+    - if block[:style] != 'poem'
+      - if block[:title].present?
+        .cb-text-textbox__credit = block[:title]
+      - if block[:subtitle].present?
+        .cb-text-textbox__caption = block[:subtitle]
 
     - if alignment == 'center'
       .divider.divider--leaf.divider--leaf-down

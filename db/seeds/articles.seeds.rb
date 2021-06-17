@@ -481,8 +481,8 @@ article.update!(content: content([
     type: :quote,
     data: {
       text: sentences(2),
-      credit: 'John Smith',
-      caption: 'University professor',
+      credit: 'A Poem About Truth',
+      caption: 'John Smith',
       asPoem: true,
     },
   }, {
