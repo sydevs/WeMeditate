@@ -29,6 +29,7 @@
 .env.development.local
 .env.test.local
 
+/public/assets
 /public/packs
 /public/packs-test
 /node_modules
