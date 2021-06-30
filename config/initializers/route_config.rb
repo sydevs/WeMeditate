@@ -6,28 +6,13 @@ RouteTranslator.config do |config|
     Rails.configuration.admin_domain = 'admin.wemeditate.com'
     Rails.configuration.admin_host = Rails.configuration.admin_domain
     config.host_locales = {
-      # TODO: Remove legacy .co host_locales after 301 redirects to .com are in place
-      'fa.wemeditate.co' => :fa, # Farsi
-      'ua.wemeditate.co' => :uk, # Ukrainian
-      'am.wemeditate.co' => :hy, # Armenian
-      'nl.wemeditate.co' => :nl, # Dutch
-      'es.wemeditate.co' => :es, # Spanish
-      'de.wemeditate.co' => :de, # German
-      'br.wemeditate.co' => :'pt-br', # Brazilian Portuguese
-      'ro.wemeditate.co' => :ro, # Romanian
-      'hy.wemeditate.co' => :hy, # Armenian
-      'hi.wemeditate.co' => :hi, # Hindi
-      'tr.wemeditate.co' => :tr, # Turkish
-      'se.wemeditate.co' => :sv, # Swedish
-      'bg.wemeditate.co' => :bg, # Bulgarian
-
       'am.wemeditate.com' => :hy, # Armenian
       'bg.wemeditate.com' => :bg, # Bulgarian
       'br.wemeditate.com' => :'pt-br', # Brazilian Portuguese
       'de.wemeditate.com' => :de, # German
+      'el.wemeditate.com' => :el, # Greek
       'es.wemeditate.com' => :es, # Spanish
       'fa.wemeditate.com' => :fa, # Farsi
-      'el.wemeditate.com' => :el, # Greek
       'hi.wemeditate.com' => :hi, # Hindi
       'hy.wemeditate.com' => :hy, # Armenian
       'nl.wemeditate.com' => :nl, # Dutch
@@ -41,7 +26,6 @@ RouteTranslator.config do |config|
       'wemeditate.it' => :it, # Italian
       'wemeditate.ru' => :ru, # Russian
       'wemeditate.co.uk' => :en, # English
-      'wemeditate.co' => :en, # English (legacy)
       'wemeditate.com' => :en, # English
     } # Domains at the bottom of the list have highest priority.
   elsif Rails.env.staging?
