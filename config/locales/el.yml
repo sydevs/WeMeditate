@@ -1,236 +1,235 @@
-
 # FRONT END TRANSLATIONS
 # This file contains translations which will be seen by the public.
 
 el:
   we_meditate: "We Meditate" # This is the title of the website
-  tagline: "Silence your mind and discover your inner potential with guided meditations. Connect with others around the world meditating for a better life."
+  tagline: "Ελευθερωθείτε από τις σκέψεις σας και ανακαλύψτε τις δυνατότητες που έχετε μέσα σας με τη βοήθεια καθοδηγούμενου διαλογισμού. Συνδεθείτε με άλλους απ´όλο τον κόσμο που διαλογίζονται για μια καλύτερη ζωή."   
 
   routes: # These are for the website URLs, they should be all lower case and use dashes instead of spaces
-    inspiration: "inspiration"
-    articles: "articles"
-    meditations: "meditations"
-    techniques: "techniques"
-    subtle_system: "subtle-system"
-    page: "page"
-    music: "music"
-    archive: "all"
-    self_realization: "first-experience"
-    classes: "classes"
+    inspiration: "έμπνευση"  
+    articles: "άρθρα"    
+    meditations: "διαλογισμοί"  
+    techniques: "τεχνικές"    
+    subtle_system: "το λεπτό σύστημα"   
+    page: "σελίδα"  
+    music: "μουσική" 
+    archive: "όλα"  
+    self_realization: "η πρώτη εμπειρία"  
+    classes: "μαθήματα"    
     streams: "live"
 
   header:
-    advanced_articles: "All Articles"
-    advanced: "About Meditation"
-    live_meditations: "Live Classes"
-    classes_near_me: "Classes near me"
-    kundalini: "Inner Energy"
-    inspiration_from_within: "Inspiration comes from within"
-    preview_notice: "You are viewing a preview"
-    social: "Follow us"
+    advanced_articles: "Όλα τα Άρθρα"  
+    advanced: "Σχετικά με το Διαλογισμό"  
+    live_meditations: "Ζωντανά Μαθήματα"   
+    classes_near_me: "Προγράμματα στην περιοχή μου"
+    kundalini: "Η Εσωτερική Ενέργεια"  
+    inspiration_from_within: "Η Έμπνευση πηγάζει από μέσα μας"  
+    preview_notice: "Για να πάρετε μια ιδέα"  
+    social: "Ακολουθήστε μας"
 
   cookie_notice:
-    text: "By continuing to use wemeditate.com you will be agreeing to our use of cookies."
-    learn_more: "Learn More"
+    text: "Συνεχίζοντας τη χρήση του wemeditate.com αποδέχεστε τα cookies."      
+    learn_more: "Μάθετε Περισσότερα"
 
   footer:
-    scroll_to_top: "Back to Top"
-    meditate_now: "Meditate Now"
-    music_for_meditation: "Music for meditation"
-    learn_more: "Learn more"
-    come_meditate: "Come meditate"
-    online_meditations: "Guided Meditations Online"
-    languages: "Languages"
-    self_realization: "The First Experience"
+    scroll_to_top: "Πίσω στην Αρχή" 
+    meditate_now: "Βιώστε Τώρα το Διαλογισμό"   
+    music_for_meditation: "Μουσική διαλογισμού"
+    learn_more: "Μάθετε περισσότερα"   
+    come_meditate: "Ας διαλογιστούμε"    
+    online_meditations: "Online Καθοδηγούμενοι Διαλογισμοί Online" 
+    languages: "Γλώσσες" 
+    self_realization: "Η Πρώτη Εμπειρία"
 
   actions_footer:
-    title: "Discover it for yourself!"
-    subtitle: "Don’t just take our word for it. Try meditating and see how you feel!"
-    sidetext: "Try Meditation"
+    title: "Ανακαλύψτε το μόνοι σας!"   
+    subtitle: "Δεν χρειάζεται να πιστεύετε τυφλά. Νοιώστε την εμπειρία από μόνοι σας!"    
+    sidetext: "Ξεκινήστε το Διαλογισμό"
     actions:
-      online: "Meditate online"
-      local: "Classes near me"
+      online: "online Διαλογισμός online"    
+      local: "Προγράμματα στη περιοχή μου"
 
   author:
-    about_the_author: "About the author"
-    about_the_artist: "About the artist"
-    written_by: "Written by"
+    about_the_author: "Σχετικά με το συγγραφέα"   
+    about_the_artist: "Σχετικά με τον καλλιτέχνη"   
+    written_by: "Σύνταξη κειμένου"
     meditating_for:
-      one: "Meditating for 1 year"
-      other: "Meditating for %{count} years"
+      one: "Διαλογίζεται για ένα χρόνο"  
+      other: "Διαλογίζεται για %{count} χρόνια"
     countries:
-      gb: UK
+      gb: ΗΒ
 
   form:
     input:
-      email: "Your email"
-      message: "Message"
+      email: "Το email σας"   
+      message: "Μήνυμα"
       privacy:
-        signup: "By submitting this form, you agree to the processing of your personal data to receive guided meditations and other emails from WeMeditate."
-        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database."
-        learn_more: "Learn more."
-      name: "Your name"
-      class: "Select class"
+        signup: "Με την υποβολή αυτής της φόρμας, συμφωνείτε με την επεξεργασία των προσωπικών σας δεδομένων για να λαμβάνετε καθοδηγούμενους διαλογισμούς και άλλα emails από το WeMeditate."   
+        contact: "Με την υποβολή αυτής της φόρμας, συμφωνείτε με την επεξεργασία των προσωπικών σας δεδομένων σύμφωνα με την πολιτική απορρήτου μας.Τα δεδομένα από αυτή τη φόρμα θα προωθηθούν στην ομάδα We Meditate μέσω email και δεν θα αποθηκευτούν στη βάση δεδομένων μας."   
+        learn_more: "Μάθετε περισσότερα."   
+      name: "Το όνομά σας"   
+      class: "Επιλέξτε το μάθημα"
     missing:
-      email: "You must provide an email address."
-      message: "You forgot to fill out a message."
-      name: "You must provide your name."
+      email: "Γράψτε το email σας."
+      message: "Ξεχάσατε να αφήσετε το μήνυμά."
+      name: "Αφήστε το όνομά σας."
     success:
-      subscribe: "You have been subscribed."
-      contact: "Your message has been received."
-      register: "You have been registered."
+      subscribe: "Έχετε εγγραφεί"
+      contact: "Εχουμε λάβει το μήνυμά σας."
+      register: "Εχετε καταχωρηθεί."
     button:
-      try_again: "Try Again"
-      submitted: "Submitted"
+      try_again: "Προσπαθήστε ξανά"  
+      submitted: "Το αίτημα σας έγινε δεκτό"
 
   player: # For the music or video player
     pause: "Pause"
     play: "Play"
     '%_buffered': "% buffered" # This is referring to the amount of a video which has been loaded.
-    skip_back: "Previous Track"
-    skip_forward: "Next Track"
+    skip_back: "Προηγούμενο Track"
+    skip_forward: "Επόμενο Track"
     rewind_10_secs: "Rewind 10 secs"
     forward_10_secs: "Forward 10 secs"
-    unmute: "Unmute"
-    mute: "Mute"
-    volume: "Volume"
-    disable_captions: "Disable captions"
-    enable_captions: "Enable captions"
-    exit_fullscreen: "Exit fullscreen"
-    enter_fullscreen: "Enter fullscreen"
-    duration: "Duration"
-    current_time: "Current time" # The current time that the player is at
-    seek: "Seek" # This is the action that you do when you drag the current time of a video. In English you would say that you are "Seeking through the video"
+    unmute: "Επαναφορά ήχου"   
+    mute: "Σίγαση ήχου"   
+    volume: "Ένταση"  
+    disable_captions: "Απενεργοποίηση υπότιτλων" 
+    enable_captions: "Ενεργοποίηση υπότιτλων"  
+    exit_fullscreen: "Έξοδος από πλήρη οθόνη"  
+    enter_fullscreen: "Είσοδος σε πλήρη οθόνη"     
+    duration: "Διάρκεια"  
+    current_time: "Τρέχουσα ώρα" # The current time that the player is at
+    seek: "Αναζήτηση" # This is the action that you do when you drag the current time of a video. In English you would say that you are "Seeking through the video"
     play_title: "Play, %{title}" # %{title} is the title of a video or music track
 
   articles:
-    read_more: "Read more" # Takes you to the article page
-    load_more: "Load more" # Loads more articles
-    filter: "Filter"
-    show_all: "All"
-    share: "Share: "
+    read_more: "Διαβάστε περισσότερα" # Takes you to the article page
+    load_more: " Κατεβάστε περισσότερα" # Loads more articles
+    filter: "Φίλτρο"  
+    show_all: "Ολα"  
+    share: "Κοινοποιήστε:"
 
   meditations:
-    title: "Meditations"
+    title: "Διαλογισμοί"
     prescreen:
-      title: "Unlock guided meditations by awakening your %{kundalini} first"
-      kundalini: "inner energy"
-      action: "Awaken Your Inner Energy"
+      title: "Παρακολουθήστε καθοδηγούμενους διαλογισμούς αφυπνίζοντας πρώτα την %{κουνταλίνη} σας "   
+      kundalini: "εσωτερική ενέργεια"
+      action: "Αφυπνίστε την Εσωτερική σας Ενέργεια"
       explanation:
-        text: "Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation."
-        learn_more: "Learn more"
+        text: "Ο καθένας έχει μία εσωτερική ενέργεια, η οποία πρέπει να αφυπνιστεί πριν από την εμπειρία του διαλογισμού."  
+        learn_more: "Μάθετε περισσότερα"
       skip:
-        text: "Meditated with us before?"
-        action: "Continue to your guided meditation"
+        text: "Έχετε κάνει διαλογισμό ξανά μαζί μας?"  
+        action: "Συνεχίστε με καθοδηγούμενο διαλογισμό"
     featured:
-      self_realization: "Get started"
-      daily_meditation: "Meditation of the day"
-      trending_meditation: "Trending now"
-      random_meditation: "Let fate decide"
-      random_meditation_title: "Try a random meditation"
-      random_meditation_description: "Not sure what you need right now? Just feel like taking a chance? Click play and let the universe decide."
+      self_realization: "Ας ξεκινήσουμε"   
+      daily_meditation: "Ο καθημερινός διαλογισμός" 
+      trending_meditation: "Προβάλετε τώρα" 
+      random_meditation: "Αφήστε να σας καθοδηγήσει η έμπνευσή σας"  
+      random_meditation_title: "Διαλέξτε το διαλογισμό που σας ταιριάζει"   
+      random_meditation_description: "Δεν είστε σίγουροι τι να επιλέξετε? Απλά δοκιμάστε το και νοιώστε τα οφέλη."
     custom_meditation:
-      title: "Set Up your own Meditation"
-      choose_goal: "I wish to feel ..." # Please keep ' ...' (with a space) at the end of your translation.
-      choose_duration: "I have"
-      goal_prompt: "Select goal"
-      submit: "Start meditation"
-      minutes: "min"
+      title: "Επιλέξτε το διαλογισμό σας"  
+      choose_goal: "Επιθυμώ να αισθανθώ ..." # Please keep ' ...' (with a space) at the end of your translation.
+      choose_duration: "Έχω"
+      goal_prompt: "Επιλέξτε το στόχο σας"  
+      submit: "Ξεκινήστε το διαλογισμό"   
+      minutes:  "διάρκεια"
     archive:
-      see_all_meditations: "See all meditations"
-      title: "Guided Meditations"
-      view_meditation: "View meditation"
-      load_more: "Load more"
+      see_all_meditations: "Δείτε όλους τους διαλογισμούς"  
+      title: "Καθοδηγούμενοι Διαλογισμοί"   
+      view_meditation: "Παρακολουθήστε το διαλογισμό"  
+      load_more: "Κατεβάστε περισσότερα"
 
   tracks:
-    subtitle: "Subtitle for music"
-    text: "Enjoy a curated collection of meditation music we produced to help you disconnect from your surroundings and achieve a true state of inner peace."
-    choose_mood: "Choose the mood"
-    choose_instruments: "Choose your sound"
+    subtitle: "Υπότιτλοι για τη μουσική"   
+    text: " Απολαύστε επιλεγμένα μουσικά κομμάτια για διαλογισμό που προτείνουμε για να αποστασιοποιηθείτε από το περιβάλλον σας και να βιώσετε εσωτερική γαλήνη." 
+    choose_mood: "Επιλέξτε το είδος μουσικής" 
+    choose_instruments: "Επιλέξτε τη μουσική που σας ταιριάζει" 
     playlist: "Playlist"
 
   treatments:
-    header_title: "Technique: %{title}"
+    header_title: "Επικεφαλίδα: %{title}"
     prescreen:
-      title: "Before using methods to improve meditation, you need to awaken your %{kundalini}"
-      kundalini: "inner energy"
-      action: "Awaken Your Inner Energy"
+      title: "Προτού επιλέξετε μέθοδο γιά να βελτιώσετε το διαλογισμό σας, πρέπει να αφυπνίσετε την %{κουνταλίνη} σας"   
+      kundalini: "εσωτερική ενέργεια"  
+      action: "Αφυπνίστε την Εσωτερική Σας Ενέργεια"
       explanation:
-        text: "Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation."
-        learn_more: "Learn more"
+        text: "Ολοι έχουμε μία εσωτερική ενέργεια η οποία πρώτα πρέπει να αφυπνιστεί πριν να βιώσουμε την εμπειρία του διαλογισμού."  
+        learn_more: "Μάθετε περισσότερα"
       skip:
-        text: "Meditated with us before?"
-        action: "Improve your meditation!"
+        text: "Έχετε ξανακάνει διαλογισμό μαζί μας?"   
+        action: "Βελτιώστε το διαλογισμό σας!"
     music:
-      title: "Music"
-      description: "Music can be both relaxing and gently stimulating, bringing us into balance and allowing our minds to go thoughtless, Explore our curated collection of specially composed tracks, created to enable a deeper state of meditation."
-      read_more: "Choose from our collection"
-    read_more: "Learn more"
-    show_more: "Show More Techniques"
+      title: "Μουσική" 
+      description: "Η μουσική μπορεί να είναι τόσο χαλαρωτική όσο και αναζωογονητική, μας βοηθάει να ξαναβρούμε την ισορροπία μας και ελευθερώνει το μυαλό από τις σκέψεις μας. Απολαύστε μια ειδικά επιλεγμένη μουσική για να βιώσετε μια βαθύτερη κατάσταση διαλογισμού."  
+      read_more: "Διαλέξτε από τη συλλογή μας"  
+    read_more: "Μάθετε περισσότερα"   
+    show_more: "Δείτε Περισσότερες Τεχνικές"
 
   content:
     credit: "Credit"
-    show_more: "Show More"
+    show_more: "Προβάλετε Περισσότερα"
 
   subtle_system:
     title:
-      desktop: "Hover to learn more"
-      mobile: "Tap to learn more"
-    chakras: "Chakras"
-    channels: "Channels"
-    read_more: "Learn More"
+      desktop: "Ψάξτε για να μάθετε περισσότερα" 
+      mobile: "Πληκτρολογήστε για να μάθετε περισσότερα"  
+    chakras: "Τα Τσάκρας"   
+    channels: "Τα Κανάλια" 
+    read_more: "Μάθετε Περισσότερα"
 
   classes:
-    map_title: "Meditation Classes Near Me"
-    prompt: "Enter your city or post code"
-    nearby: "Nearby"
-    loading: "Locating..."
-    found: "Click to confirm"
+    map_title: "Προγράμματα Διαλογισμού Στην Περιοχή Μου"    
+    prompt: "Πληκτρολογήστε την πόλη σας ή τον ταχυδρομικό σας κώδικα"
+    nearby: "Κοντά" 
+    loading: "Εντοπισμός..."   
+    found: "Κάντε κλικ για επιβεβαίωση"
 
   streams:
-    title: "All Live Meditations"
-    read_more: "Learn more"
+    title: "Όλοι Οι Ζωντανοί Διαλογισμοί"
+    read_more: "Μάθετε περισσότερα"
     skip:
-      title: "Time doesn't suit you?"
-      description: "Choose an alternative stream that works for you"
-      action: "See other times"
+      title: "Τι ωράρια δεν σας ταιριάζουν?"    
+      description: "Επιλέξτε τη μετάδοση που σας ταιριάζει καλύτερα" 
+      action: "Άλλα ωράρια"
     live:
-      title: "We are live now!"
+      title: "Είμαστε στον αέρα τώρα!"
       identifier:
         zoom: zoom.us # Do not translate
         google: meet.google.com # Do not translate
       action:
-        stream: "Watch the Broadcast"
-        zoom: "Join via Zoom"
-        google: "Join via Google Meet"
-        default: "Join via Video Call"
-      description: "Press play to join our live meditation session streaming right now"
-      alt_description: "Enjoy the meditation via broadcast, or join a video call where you can ask questions."
+        stream: "Παρακολουθήστε την Εκπομπή"   
+        zoom: "Συνδεθείτε μέσω Zoom"     
+        google: "Συνδεθείτε μέσω Google Meet"   
+        default: "Συνδεθείτε μέσω Video Call" 
+      description: "Πατήστε play για να συνδεθείτε με ζωντανό διαλογισμό που εκπέμπεται αυτή την στιγμή"    
+      alt_description: "Απολαύστε το διαλογισμό μέσω αναμετάδοσης ή συνδεθείτε μέσω video call όπου μπορείτε να κάνετε ερωτήσεις.
     timing:
-      days: "Days"
-      hours: "Hours"
-      minutes: "Minutes"
-      seconds: "Seconds"
+      days: "Μέρες"   
+      hours: "Ωρες"  
+      minutes: "Λεπτά"  
+      seconds: "Δευτερόλεπτα"
 
   errors:
     title: "Oops..."
-    coming_soon: "Coming Soon"
-    no_programs: "Meditation classes in your area are coming soon."
-    error: "Error"
-    alternatives_title: "Try one of these instead:"
-    report_issue: "Please try again, and report this issue if it continues to occur. When reporting the issue, please do your best to describe what specific actions you were taking before the issue occurred."
-    '404': "This page doesn’t exist"
-    '422': "The change you wanted was rejected"
-    '500': "We're sorry, but something went wrong"
+    coming_soon: "Προσεχώς"   
+    no_programs: "Έρχονται σύντομα προγράμματα διαλογισμού στην περιοχή σας."   
+    error: "Λάθος
+    alternatives_title: "Εναλλακτικά δοκιμάστε ένα από αυτά:"    
+    report_issue: "Παρακαλούμε να προσπαθήσετε ξανά, και να αναφέρετε το πρόβλημα εάν συνεχίζει να προκύπτει. Επίσης παρακαλούμε να περιγράψετε τις συγκεκριμένες ενέργειες που κάνατε πριν να εμφανιστεί το πρόβλημα." 
+    '404': "Αυτή η σελίδα δεν υπάρχει"    
+    '422': "Η αλλαγή που επιλέξατε απορρίφθηκε"
+    '500': "Λυπούμαστε, κάτι πήγε λάθος"
 
   javascript:
     reading_time: "%minutes% minute read"
-    loading: "Loading..."
+    loading: "Φόρτωση..."
     popup:
-      close: "Close (Esc)"
-      loading: "Loading..."
-      prev: "Previous (Left arrow key)"
-      next: "Next (Right arrow key)"
+      close: "Κλείσιμο (Esc)"
+      loading: "Φόρτωση..."
+      prev: "Προηγούμενο (Left arrow key)"
+      next: "Επόμενο (Right arrow key)"
       counter: "%curr% of %total%"
-      image_error: "<a href=\"%url%\">The image</a> could not be loaded."
-      ajax_error: "<a href=\"%url%\">The content</a> could not be loaded."
+      image_error: "<a href=\"%url%\">Η εικόνα</a>δεν μπόρει να φορτωθεί."   
+      ajax_error: "<a href=\"%url%\">Το περιεχόμενο</a>δεν μπόρει να φορτωθεί."
