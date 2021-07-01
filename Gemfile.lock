@@ -131,7 +131,6 @@ GEM
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
-    error_page_assets (0.4)
     erubi (1.10.0)
     execjs (2.7.0)
     faraday (1.3.0)
@@ -482,7 +481,6 @@ DEPENDENCIES
   devise_invitable
   diff-lcs
   dotenv-rails
-  error_page_assets
   fast_stack
   flamegraph
   fomantic-ui-sass
