@@ -16,4 +16,4 @@ install:
   - bundle install --deployment -j 4
   - bundle exec rails db:create db:schema:load
   - bundle exec rails runner "Webdrivers::Chromedriver.update" # prepares chromedriver via webdrivers gem
-script: bundle exec rails test:system
+script: bundle exec rails test:system test
