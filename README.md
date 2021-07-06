@@ -21,7 +21,7 @@
   - [Services](#services)
 
 # About WeMeditate
-The WeMeditate project is comprehensive website promotig the practice of meditation through the techniques of Sahaja Yoga meditation. This website is designed to be translated to almost any language world wide and provide the following features:
+The WeMeditate project is comprehensive website promoting the practice of meditation through the techniques of Sahaja Yoga meditation. This website is designed to be translated to almost any language world wide and provide the following features:
  - **Guided meditations**, which can be generated based on your goal and available time.
  - **Meditation music**, by various musicians with different styles and instruments.
  - **Inspirational articles** related to meditation, spirituality, and creativity.
@@ -36,10 +36,10 @@ Knowing the above features will also help one understand broadly what is going o
 We support only the most recent versions of Chrome, Safari, Firefox, Edge, and Opera - including the mobile versions of these browsers. No other browser is officially supported. Internet Explorer is not supported.
 
 # Getting Started
-There are several concepts which are common throughout the codebase that it will help to be aware of.
 
 ## Setup
 - Install Postgres on your computer (for Mac, I recommend [Postgress.app](https://postgresapp.com)), for windows you can try the [official installer](https://www.postgresql.org/download/windows/).
+- You may need to [install Ruby](https://www.ruby-lang.org/en/documentation/installation/) if your computer does not already have it installed.
 - Clone this repository
 - Run `rails db:setup` to create and populate the database.
 - Run `rails server` to run the server.
@@ -53,14 +53,20 @@ Once the server is running you should be able to can access these urls
 When accessing the admin site you will be asked to login, in the development environment you can use a simple dropdown (shown under the login window) to select which account you want to be logged in as, without having to enter a password.
 
 ## Framework & Languages
- - **Ruby on Rails** is our core server framework. If you are not familiar with Ruby, I recommend looking through [this summary](https://learnxinyminutes.com/docs/ruby/) of how to do standard programming things in Ruby.
- - **Postgres** is our database architecture. However, Rails takes care of almost all the details of this, so 
- - **Vanilla JavaScript** is used for client side programming. jQuery is currently included as well, but we prefer not to use it when it can be avoided.
+ - **Ruby on Rails** is our core server framework. If you are not familiar with Ruby, I recommend looking through [this summary](https://learnxinyminutes.com/docs/ruby/) of how to do standard programming things in Ruby. This README will not directly explain how Rails works, but rather just explain the things that you need to know to get started. However, you should be familiar with the concept of [Model-View-Controller](https://www.codecademy.com/articles/mvc), which Rails uses heavily.
+ - **Postgres** is our database architecture. However, Rails takes care of almost all the details of this, so you won't be dealing with SQL queries much, but instead calling Rails functions.
+ - **Vanilla JavaScript** is used for client side programming. jQuery is currently included as well, but we prefer not to use it when it can be avoided, with a mind to eventually phasing it out.
  - **Sass** is used for stylesheets. Sass is basically the same as CSS, but has a more clean syntax and allows you to use variables and basic functions. Otherwise it uses all the same selectors and attributes as CSS. We also use a library called [Autoprefixer](https://github.com/ai/autoprefixer-rails), which automatically add any necessary prefixes (like `-webkit-`) to your CSS rules. So it is not necessary for you to add these yourself. [Sass Documentation](https://sass-lang.com/guide).
  - **Slim** is used for HTML markup. As Sass does for CSS, Slim does for HTML. It creates a cleaner markup to allow us to write HTML more easily. [Slim Documentation](http://slim-lang.com).
 
 ## Concepts
 There are a few pointers that it will be helpful to know when navigating the codebase.
+
+### Models / Views / Controllers
+This is a core concept of how Rails works. Models represent entries in the database. Views represent pages of the website that will be shown to users. When a user accesses a URL on the website, the controller will fetch models from the database and prepare any other data, then send that information to a view to be rendered.
+
+#### Concerns
+Concerns are packages of code which get added to a model or controller. This are mainly used for grouping related features that can be reused across multiple models or controllers.
 
 ### Translation / Drafting
 Almost every model in this project can be translated, and most of them can also save a draft version of the model, for a administrator to later approve. This allows the site to have users with multiple levels of access who can propose changes to the site which are then later approved.
@@ -103,6 +109,7 @@ Each model corresponds to a table in the database, and collectively these form t
  - **Meditation**, a guided meditation with an associated video and a brief description
  - **Track**, a musical track for the music player.
  - **Treatment**, a meditation technique which are shown in the "Improving Meditation" section.
+ - **Streams**, a livestreamed meditation session.
 
 #### Filters
 These are used to categorize other types of models
