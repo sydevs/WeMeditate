@@ -134,7 +134,7 @@ fr:
         text: "Vous avez déja médité avec nous?"
         action: "Continuez vers votre méditation guidée"
     featured:
-      self_realization: "Get started" # TODO: Translate
+      self_realization: "Pour commencer"
       daily_meditation: "Méditation du jour"
       trending_meditation: "Méditation tendance"
       random_meditation: "Laissez le hasard décider"
