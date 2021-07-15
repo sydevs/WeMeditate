@@ -67,8 +67,8 @@
   padding-bottom: 75px
 
   @include tablet-or-larger
-    padding-left: $gutter-width / 2
-    padding-right: $gutter-width / 2
+    padding-left: math.div($gutter-width, 2)
+    padding-right: math.div($gutter-width, 2)
 
   @include laptop-or-larger
     min-height: 100px
