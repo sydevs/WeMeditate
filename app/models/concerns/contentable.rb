@@ -222,7 +222,7 @@ module Contentable
               action: block['data']['action'],
               url: Contentable.strip_url(block['data']['url']),
               type: 'image',
-              background: block['data']['asWisdom'] ? 'brown' : (block['data']['alignment'] == 'center' ? 'image' : 'white'),
+              background: block['data']['asWisdom'] ? 'ornate' : (block['data']['alignment'] == 'center' ? 'image' : 'white'),
               color: block['data']['invert'] ? 'light' : 'dark',
               position: block['data']['alignment'] == 'right' ? 'right' : 'left',
               spacing: block['data']['separate'] ? 'separate' : 'overlap',

@@ -6,8 +6,8 @@
 
   &:before
     position: absolute
-    left: $gutter-width / 2
-    right: $gutter-width / 2
+    left: math.div($gutter-width, 2)
+    right: math.div($gutter-width, 2)
     display: block
     content: ''
     height: 2px
@@ -16,6 +16,6 @@
   &__message
     position: absolute
     top: 2px
-    left: $gutter-width / 2
+    left: math.div($gutter-width, 2)
     padding: 4px 8px
     background: pink

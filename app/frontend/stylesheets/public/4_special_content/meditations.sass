@@ -12,12 +12,12 @@
 
 .meditations__grid
   position: relative
-  margin: 0 (-$gutter-width / 2)
+  margin: 0 math.div(-$gutter-width, 2)
   margin-top: $gutter-width
 
   &__item
     box-sizing: border-box
-    padding: $gutter-width / 2
+    padding: math.div($gutter-width, 2)
     padding-bottom: 42px
 
   &__loadmore

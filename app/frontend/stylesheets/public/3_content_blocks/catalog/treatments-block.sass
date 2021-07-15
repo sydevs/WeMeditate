@@ -1,0 +1,71 @@
+
+.cb-treatments-catalog
+  @extend %wide-content-width
+  position: relative
+
+.cb-treatments-catalog__sidetext
+  display: none
+
+  @include laptop-or-larger
+    position: relative
+    display: block
+
+.cb-treatments-catalog__loadmore
+  text-align: center
+  margin-top: 80px
+
+  @include tablet
+    margin-bottom: 120px
+
+  @include laptop-or-larger
+    margin-bottom: 200px
+
+// ===== TITLE ===== //
+.cb-treatments-catalog__title
+  font-weight: $font-bold
+  font-size: 2.4rem
+  line-height: 1.25
+  letter-spacing: 0.25px
+
+  @include tablet-or-larger
+    font-size: 3rem
+
+  @include laptop-or-larger
+    display: none
+
+.cb-treatments-catalog__header
+  text-align: center
+  margin-top: 85px
+  margin-bottom: 52px
+
+  font-weight: $font-bold
+  font-size: 2.8rem
+  line-height: 65px
+  letter-spacing: 1px
+
+  &__text
+    display: inline-block
+    vertical-align: text-bottom
+    padding: 0 15px
+    font-size: 3.5rem
+
+  &__leaf
+    width: 1.7217em
+
+    &:first-child
+      transform: rotate(90deg) scaleX(-1) scaleY(-1)
+
+    &:last-child
+      transform: rotate(-90deg) scaleY(-1)
+
+    path
+      fill: $color-graphic-dark
+
+.cb-treatments-catalog__list
+  margin-top: 35px
+
+  @include tablet
+    margin-top: 80px
+
+  @include laptop-or-larger
+    margin-top: 150px
