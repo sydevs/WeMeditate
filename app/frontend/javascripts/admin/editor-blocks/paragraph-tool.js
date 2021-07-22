@@ -15,7 +15,7 @@ export default class ParagraphTool extends EditorTool {
       id: data.id || generateId(),
       text: data.text || '',
       type: ['text', 'header'].includes(data.type) ? data.type : 'text',
-      level: ['h2', 'h3', 'h4', 'h5'].includes(data.type) ? data.type : 'h2',
+      level: ['h2', 'h3', 'h4', 'h5'].includes(data.level) ? data.level : 'h2',
       decorations: data.decorations || {},
     }, { // Config
       id: 'paragraph',
