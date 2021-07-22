@@ -41,6 +41,7 @@ const Admin = {
   },
 
   initialize: function(scope) {
+    console.log('init adm', scope)
     // Initialize basic javascript elements.
     scope.find('.ui.checkbox').checkbox()
     scope.find('.tabs.menu > .item').tab()

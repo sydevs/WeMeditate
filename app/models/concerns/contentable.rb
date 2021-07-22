@@ -144,7 +144,7 @@ module Contentable
             type: 'image',
             quantity: block['data']['asGallery'] ? 'gallery' : 'single',
             position: block['data']['position'] == 'wide' ? 'center' : block['data']['position'],
-            size: block['data']['size'] == 'wide' || block['data']['position'] == 'wide' ? 'wide' : 'normal',
+            size: (block['data']['size'] == 'wide' || block['data']['position'] == 'wide') ? 'wide' : 'normal',
             mediaFiles: block['data']['media_files'],
             decorations: block['data']['decorations'] || {},
           }
