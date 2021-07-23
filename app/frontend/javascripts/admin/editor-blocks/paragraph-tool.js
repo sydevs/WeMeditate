@@ -25,7 +25,7 @@ export default class ParagraphTool extends EditorTool {
       tunes: {
         type: {
           options: [
-            { name: 'paragraph', icon: 'font' },
+            { name: 'text', icon: 'font' },
             { name: 'header', icon: 'heading' },
           ]
         },
