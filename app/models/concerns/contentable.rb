@@ -269,7 +269,19 @@ module Contentable
   end
 
   def self.strip_url url
-    url # TODO: Remove wemeditate.co and assets.wemeditate.co
+    local_domain = false
+
+    %w[
+      wemeditate.co www.wemeditate.co
+      wemeditate.fr www.wemeditate.fr
+      wemeditate.ru www.wemeditate.ru
+      wemeditate.cz www.wemeditate.cz
+      wemeditate.it www.wemeditate.it
+    ].each do |domain|
+      local_domain = domain if url.include?(domain)
+    end
+
+    local_domain.present? ? url.split(local_domain).last : url
   end
 
 end
