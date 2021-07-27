@@ -252,7 +252,7 @@ export default class CatalogTool extends EditorTool {
   get currentSelectedItems() {
     return this.selectedItems[this.data.type] || []
   }
-
+  /*
   pasteHandler(_event) {
     // TODO: Handle the paste
   }
@@ -264,7 +264,7 @@ export default class CatalogTool extends EditorTool {
       }
     }
   }
-
+  */
   static get sanitize() {
     return {
       title: {},

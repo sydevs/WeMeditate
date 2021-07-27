@@ -219,6 +219,7 @@ export default class MediaTool extends EditorTool {
   }
 
   async onPaste(_event) {
+    // TODO: Implement paste handlers
     // await this.pasteHandler(event)
     this.updateSettingButtons()
     this.updateSettingClasses()
