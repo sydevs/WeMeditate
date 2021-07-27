@@ -31,8 +31,14 @@ const editorParameters = {
     },
     media: MediaTool,
     action: ActionTool,
-    textbox: TextboxTool,
-    layout: LayoutTool,
+    textbox: {
+      class: TextboxTool,
+      inlineToolbar: true,
+    },
+    layout: {
+      class: LayoutTool,
+      inlineToolbar: true,
+    },
     catalog: CatalogTool,
     whitespace: WhitespaceTool,
     vimeo: LegacyVimeoTool,

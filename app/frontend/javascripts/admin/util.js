@@ -19,7 +19,9 @@ export function make(tagName, classNames = null, attributes = {}, parent = null)
   }
 
   for (let attrName in attributes) {
-    if (attrName == 'data') {
+    if (attrName == 'value') {
+      el.setAttribute('value', attributes[attrName])
+    } else if (attrName == 'data') {
       const data = attributes[attrName]
       for (let key in data) {
         if (!data[key]) continue

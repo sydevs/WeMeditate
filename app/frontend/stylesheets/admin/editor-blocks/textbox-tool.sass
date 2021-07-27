@@ -30,6 +30,9 @@
     margin-left: auto
     margin-right: auto
 
+  .cdx-input
+    text-align: center
+
   .cdx-textbox__fields
     display: flex
     flex-direction: column
@@ -58,11 +61,17 @@
 
       border-left: 4px solid lightgray
 
+    .cdx-input
+      text-align: left
+
   @include with-option(alignment, right)
     .cdx-block
       padding-left: 30%
       text-align: right
       margin-right: 0
+
+    .cdx-input
+      text-align: right
 
   @include with-option(style, poem)
     .cdx-block
@@ -189,6 +198,9 @@
     text-align: center
     margin: 10px 0
     padding: 0
+
+  .cdx-input
+    text-align: center
 
   .cdx-input--button
     border-color: transparentize(black, 0.15)
