@@ -79,24 +79,7 @@ export default class ActionTool extends EditorTool {
     container.insertBefore(fields, button)
     return container
   }
-
-  pasteHandler(event) {
-    const element = event.detail.data
-    let data = {
-      action: element.innerText,
-      url: element.href
-    }
-
-    this.data = data
-    this.container.querySelector(`.${this.CSS.input}[data-key="action"]`).innerText = this.data.action
-    this.container.querySelector(`.${this.CSS.input}[data-key="url"]`).innerText = this.data.url
-  }
-
-  // Define the types of paste that should be handled by this tool.
-  static get pasteConfig() {
-    return { tags: ['A'] }
-  }
-
+  
   // Sanitizer data before saving
   static get sanitize() {
     return {

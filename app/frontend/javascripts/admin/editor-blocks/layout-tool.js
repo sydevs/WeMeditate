@@ -102,6 +102,10 @@ export default class LayoutTool extends EditorTool {
     }, container)
 
     text.dataset.placeholder = translate('placeholders.text')
+    text.addEventListener('keydown', event => {
+      console.log(event)
+      if (event.shiftKey) this.insertParagraphBreak(event)
+    })
     text.addEventListener('paste', event => this.containPaste(event))
 
     return container

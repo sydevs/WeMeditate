@@ -138,6 +138,7 @@ export default class TextTool extends EditorTool {
     }
 
     fieldsContainer.querySelector(`.${this.CSS.input}[data-key="text"]`).addEventListener('keydown', event => this.insertParagraphBreak(event))
+    fieldsContainer.addEventListener('paste', event => this.containPaste(event))
     return container
   }
 

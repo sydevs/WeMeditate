@@ -194,8 +194,9 @@ export default class ListTool extends EditorTool {
     this.data = data
 
     this.container.innerHTML = ''
+    const list = make('ul', [this.CSS.input], { contentEditable: true, data: { key: 'items' } }, this.container)
     this.data.items.forEach(item => {
-      make('li', this.CSS.item, { innerHTML: item }, this.container)
+      make('li', this.CSS.item, { innerHTML: item }, list)
     })
   }
 
