@@ -115,7 +115,6 @@ export default class CatalogTool extends EditorTool {
       $.get(`/${locale()}/${this.data.type}.json`, {
         ids: this.data.items.join(','),
       }, data => {
-        console.log('got', data)
         this.selectedItems[this.data.type] = data
         this.displayItems(data)
       }, 'json')

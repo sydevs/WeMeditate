@@ -102,6 +102,7 @@ module Contentable
           type: 'catalog',
           data: {
             id: block['data']['id'],
+            title: block['data']['title'],
             items: block['data']['items'].map { |item| item['id'].to_i },
             type: block['data']['type'],
             style: block['data']['withImages'] ? 'image' : 'text',
