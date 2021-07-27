@@ -42,14 +42,6 @@
     font-size: 1.125em
     min-height: 0
     margin-bottom: 10px
-    order: -1
-
-  @include on-field(title)
-    margin: 0
-    font-weight: 500
-
-  @include on-field(subtitle)
-    font-size: 0.8em
 
   @include on-fields(action, url, image)
     display: none
@@ -75,8 +67,26 @@
       text-align: right
 
   @include with-option(style, poem)
+    @include on-field(title)
+      margin-bottom: 2px
+
+    @include on-field(subtitle)
+      margin-bottom: 10px
+      font-size: 1em
+
     .cdx-block
       font-style: italic
+
+  @include with-option(style, quote)
+    @include on-field(title)
+      margin-bottom: 2px
+      font-weight: 500
+
+    @include on-field(subtitle)
+      font-size: 0.9em
+
+    @include on-field(text)
+      order: -1
 
 
 // IMAGE TYPE

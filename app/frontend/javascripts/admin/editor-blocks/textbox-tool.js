@@ -59,8 +59,8 @@ export default class TextTool extends EditorTool {
         style: {
           requires: { type: ['text'] },
           options: [
-            { name: 'quote', icon: 'font' },
-            { name: 'poem', icon: 'quora' },
+            { name: 'quote', icon: 'quote left' },
+            { name: 'poem', icon: 'feather alternate' },
           ]
         },
         position: {
