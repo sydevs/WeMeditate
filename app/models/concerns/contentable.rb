@@ -259,7 +259,7 @@ module Contentable
 
     puts "Migrated content"
     content_blocks.each_with_index do |block, i|
-      next unless %w[splash textbox whitespace action].include?(block['type'])
+      next unless %w[structured].include?(block['type'])
 
       puts "\e[32m#{block.pretty_inspect}\e[0m -> \e[36m#{migrated_blocks[i].pretty_inspect}"
       puts "\e[0m-----"

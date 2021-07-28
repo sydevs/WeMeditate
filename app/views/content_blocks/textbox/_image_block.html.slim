@@ -22,7 +22,7 @@ ruby:
         = render_decoration :sidetext, block, position: (block[:position] == 'right' ? :right : :left)
 
     - if block[:background] == 'ornate'
-      = inline_svg_tag 'content/ornate-background.svg', class: 'cb-image-textbox__graphic'
+      = inline_svg_tag 'content/ornate-graphic.svg', class: 'cb-image-textbox__graphic'
 
     .cb-image-textbox__image
       .cb-image-textbox__img
