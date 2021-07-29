@@ -16,7 +16,7 @@ module ContentHelper
       if block['data']['legacy']
         concat render "content_blocks/legacy/#{block['type']}_block", block: block_data, record: record
       elsif block['type'] == 'catalog' && (block['data']['style'] != 'image' || block['data']['type'] == 'articles')
-        concat render 'content_blocks/catalog/items_block', block: block_data, record: record
+        concat render 'content_blocks/catalog/generic_block', block: block_data, record: record
       elsif block['data']['type']
         concat render "content_blocks/#{block['type']}/#{block['data']['type']}_block", block: block_data, record: record
       else
