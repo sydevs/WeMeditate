@@ -56,7 +56,6 @@ export function load() {
 }
 
 export function init(scope) {
-  console.log('init app', scope.find('.ui.checkbox'))
   // Initialize basic javascript elements.
   scope.find('.ui.checkbox').checkbox()
   scope.find('.tabs.menu > .item').tab()

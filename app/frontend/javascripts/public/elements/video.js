@@ -49,10 +49,9 @@ export default class Video {
   }
 
   loadPlayer(iframe) {
-    console.log('load vimeo?', iframe.src)
     if (!iframe) return
+    
     iframe.src = iframe.dataset.src
-    console.log('load vimeo', iframe.src)
     const player = new VimeoPlayer(iframe)
 
     player.on('pause', () => {

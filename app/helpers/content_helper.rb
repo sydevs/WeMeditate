@@ -22,7 +22,7 @@ module ContentHelper
       else
         concat render "content_blocks/#{block['type']}_block", block: block_data, record: record
       end
-    rescue ActionView::MissingTemplate => e
+    rescue ActionView::MissingTemplate => _e
       concat content_tag(:p, "Unsupported block #{block.inspect}")
     end
 
