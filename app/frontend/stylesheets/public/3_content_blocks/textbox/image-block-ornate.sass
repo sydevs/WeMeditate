@@ -2,11 +2,14 @@
 $top-padding: 120px
 
 .cb-image-textbox--ornate
+  background-image: image('../../../images/content/ornate-background.jpg')
+  background-size: cover
+  background-position: center
+  z-index: 0 // This is necessary to make the cb-image-textbox__graphic visible
+  padding: 8% 5%
+
   @include laptop-or-larger
-    background-image: image('../../../images/content/ornate-background.jpg')
-    background-size: cover
-    background-position: center
-    z-index: 0 // This is necessary to make the cb-image-textbox__graphic visible
+    padding: 0
 
   &:after
     clear: both
@@ -16,8 +19,6 @@ $top-padding: 120px
 // ===== CONTENT ===== //
 .cb-image-textbox--ornate .cb-image-textbox
   &__box_wrapper
-    position: relative
-
     @include tablet
       max-width: $narrow-content-width
       margin: auto
@@ -27,6 +28,8 @@ $top-padding: 120px
       padding-bottom: 50px
 
   &__box
+    position: relative
+
     @include tablet
       padding: 25px 100px
 
@@ -43,26 +46,23 @@ $top-padding: 120px
       top: $top-padding
 
   &__graphic
-    display: none
+    display: block
+    position: absolute
+    top: 0
+    height: 100%
+    width: 100%
+    max-width: 1000px
+    z-index: -1
+    opacity: 0.8
 
-    @include laptop-or-larger
-      display: block
-      position: absolute
-      top: 0
-      height: 100%
-      width: 100%
-      max-width: 1000px
-      z-index: -1
-      opacity: 0.8
-
-      $minimum-fade: rgba(0,0,0,0.4)
-      mask-image: linear-gradient(to top right, $minimum-fade, $minimum-fade 50%, white)
+    $minimum-fade: rgba(0,0,0,0.4)
+    mask-image: linear-gradient(to top right, $minimum-fade, $minimum-fade 50%, white)
 
   &__image
     margin-bottom: 36px
 
     @include laptop-or-larger
-      margin-top: $top-padding + 154px
+      margin-top: $top-padding + 96px
       margin-bottom: 54px
       width: 40%
 
@@ -77,10 +77,18 @@ $top-padding: 120px
   &__title
     font-size: 2.4rem
     margin-top: 0
-    
+    color: white
+
     @include laptop-or-larger
       font-weight: $font-normal
       font-size: 3.5rem
+
+  &__text
+    color: white
+
+  &__button
+    color: white
+    border-color: white
 
   &__text > p:first-child
     margin-top: 0
@@ -129,3 +137,7 @@ $top-padding: 120px
           float: $opposite
           margin-#{$side}: 54px
           margin-#{$opposite}: 0
+
+      .cb-image-textbox__img img
+        @include tablet-or-smaller
+          float: $opposite
