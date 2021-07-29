@@ -391,25 +391,25 @@ article.update!(content: content([
     type: :header,
     data: {
       text: 'Section 1',
-      level: :h2
+      level: :h2,
     },
   }, {
     type: :header,
     data: {
       text: 'Section 2',
-      level: :h3
+      level: :h3,
     },
   }, {
     type: :header,
     data: {
       text: 'Section 3',
-      level: :h4
+      level: :h4,
     },
   }, {
     type: :header,
     data: {
       text: 'Section 4',
-      level: :h5
+      level: :h5,
     },
   }, {
     type: :paragraph,
