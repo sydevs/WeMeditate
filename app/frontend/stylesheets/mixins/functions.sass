@@ -6,7 +6,7 @@
 
 // To convert simple image paths to their proper location
 @function image($path)
-  @return image-url("//images/#{$path}")
+  @return url($path)
 
 @function font($path)
   @return url("../fonts/#{$path}")
