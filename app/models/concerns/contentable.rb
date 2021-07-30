@@ -278,7 +278,7 @@ module Contentable
       wemeditate.cz www.wemeditate.cz
       wemeditate.it www.wemeditate.it
     ].each do |domain|
-      local_domain = domain if url.include?(domain)
+      local_domain = domain if url.present? && url.include?(domain)
     end
 
     local_domain.present? ? url.split(local_domain).last : url
