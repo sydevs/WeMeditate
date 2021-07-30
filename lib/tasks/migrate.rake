@@ -6,7 +6,7 @@ namespace :migrate do
       record.migrate_content!
     else
       [Article, StaticPage, Stream, SubtleSystemNode, Treatment].each do |model|
-        model.in_batches(&:migrate_content!)
+        model.in_batches.each_record(&:migrate_content!)
       end
     end
   end
