@@ -88,12 +88,12 @@ export default class LayoutTool extends EditorTool {
     }
 
     // Add title input
-    const title = make('div', [this.CSS.input, this.CSS.inputs.title, this.CSS.item.title], {
-      contentEditable: true,
-      innerHTML: data.title || '',
+    const title = make('input', [this.CSS.input, this.CSS.inputs.title, this.CSS.item.title], {
+      type: 'editorjs',
+      value: data.title || '',
     }, container)
 
-    title.dataset.placeholder = translate('placeholders.title')
+    title.placeholder = translate('placeholders.title')
 
     // Add text input
     const text = make('div', [this.CSS.input, this.CSS.inputs.text, this.CSS.item.text], {
@@ -102,6 +102,9 @@ export default class LayoutTool extends EditorTool {
     }, container)
 
     text.dataset.placeholder = translate('placeholders.text')
+    text.addEventListener('keydown', event => {
+      if (event.shiftKey) this.insertParagraphBreak(event)
+    })
     text.addEventListener('paste', event => this.containPaste(event))
 
     return container

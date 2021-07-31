@@ -15,6 +15,7 @@
     overflow: hidden
     width: 18px !important
     height: 18px !important
+    line-height: 18px
     border-radius: 100%
 
     &:hover
@@ -30,6 +31,9 @@
     margin-left: auto
     margin-right: auto
 
+  .cdx-input
+    text-align: center
+
   .cdx-textbox__fields
     display: flex
     flex-direction: column
@@ -38,14 +42,6 @@
     font-size: 1.125em
     min-height: 0
     margin-bottom: 10px
-    order: -1
-
-  @include on-field(title)
-    margin: 0
-    font-weight: 500
-
-  @include on-field(subtitle)
-    font-size: 0.8em
 
   @include on-fields(action, url, image)
     display: none
@@ -58,15 +54,39 @@
 
       border-left: 4px solid lightgray
 
+    .cdx-input
+      text-align: left
+
   @include with-option(alignment, right)
     .cdx-block
       padding-left: 30%
       text-align: right
       margin-right: 0
 
+    .cdx-input
+      text-align: right
+
   @include with-option(style, poem)
+    @include on-field(title)
+      margin-bottom: 2px
+
+    @include on-field(subtitle)
+      margin-bottom: 10px
+      font-size: 1em
+
     .cdx-block
       font-style: italic
+
+  @include with-option(style, quote)
+    @include on-field(title)
+      margin-bottom: 2px
+      font-weight: 500
+
+    @include on-field(subtitle)
+      font-size: 0.9em
+
+    @include on-field(text)
+      order: -1
 
 
 // IMAGE TYPE
@@ -189,6 +209,9 @@
     text-align: center
     margin: 10px 0
     padding: 0
+
+  .cdx-input
+    text-align: center
 
   .cdx-input--button
     border-color: transparentize(black, 0.15)

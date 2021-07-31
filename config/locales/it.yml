@@ -112,7 +112,6 @@ it:
     share: "Condividi: "
 
   meditations:
-    not_translated: "Le meditazioni non sono ancora state tradotte per il francese. Le nostre scuse. Speriamo di finire presto la traduzione."
     title: "Meditazioni"
     prescreen:
       title: "Per accedere alle meditazioni guidate, risveglia ora la tua %{kundalini}"

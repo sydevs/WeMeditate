@@ -26,7 +26,7 @@ export default class TextTool extends EditorTool {
       alignment: ['left', 'center', 'right'].includes(data.alignment) ? data.alignment : 'left',
       style: ['quote', 'poem'].includes(data.style) ? data.style : 'quote',
       spacing: ['overlap', 'separate'].includes(data.spacing) ? data.spacing : 'overlap',
-      background: ['white', 'image', 'brown'].includes(data.background) ? data.background : 'white',
+      background: ['white', 'image', 'ornate'].includes(data.background) ? data.background : 'white',
       color: ['dark', 'light'].includes(data.color) ? data.color : 'light',
       position: ['left', 'right'].includes(data.position) ? data.position : 'left',
       decorations: data.decorations || {},
@@ -59,8 +59,8 @@ export default class TextTool extends EditorTool {
         style: {
           requires: { type: ['text'] },
           options: [
-            { name: 'quote', icon: 'font' },
-            { name: 'poem', icon: 'quora' },
+            { name: 'quote', icon: 'quote left' },
+            { name: 'poem', icon: 'feather alternate' },
           ]
         },
         position: {
@@ -75,7 +75,7 @@ export default class TextTool extends EditorTool {
           options: [
             { name: 'white', icon: 'square outline' },
             { name: 'image', icon: 'image outline' },
-            { name: 'brown', icon: 'university' },
+            { name: 'ornate', icon: 'university' },
           ]
         },
         spacing: {
@@ -138,6 +138,7 @@ export default class TextTool extends EditorTool {
     }
 
     fieldsContainer.querySelector(`.${this.CSS.input}[data-key="text"]`).addEventListener('keydown', event => this.insertParagraphBreak(event))
+    fieldsContainer.addEventListener('paste', event => this.containPaste(event))
     return container
   }
 

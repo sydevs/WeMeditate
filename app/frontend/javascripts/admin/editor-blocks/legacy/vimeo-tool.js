@@ -1,5 +1,4 @@
 import { generateId, make } from '../../util'
-import { translate } from '../../../i18n'
 import EditorTool from '../_editor-tool'
 
 export default class LegacyVimeoTool extends EditorTool {

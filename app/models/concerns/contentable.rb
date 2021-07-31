@@ -95,18 +95,19 @@ module Contentable
             url: Contentable.strip_url(block['data']['url']),
             type: 'button',
             decorations: block['data']['decorations'] || {},
-          }
+          },
         }
       when 'catalog'
         {
           type: 'catalog',
           data: {
             id: block['data']['id'],
+            title: block['data']['title'],
             items: block['data']['items'].map { |item| item['id'].to_i },
             type: block['data']['type'],
             style: block['data']['withImages'] ? 'image' : 'text',
             decorations: block['data']['decorations'] || {},
-          }
+          },
         }
       when 'form'
         {
@@ -122,7 +123,7 @@ module Contentable
             form: block['data']['format'],
             spacing: block['data']['compact'] ? 'compact' : 'spaced',
             decorations: block['data']['decorations'] || {},
-          }
+          },
         }
       when 'header'
         {
@@ -133,7 +134,7 @@ module Contentable
             type: 'header',
             level: block['data']['level'],
             decorations: block['data']['centered'] ? { leaves: true } : {}
-          }
+          },
         }
       when 'image'
         {
@@ -144,10 +145,10 @@ module Contentable
             type: 'image',
             quantity: block['data']['asGallery'] ? 'gallery' : 'single',
             position: block['data']['position'] == 'wide' ? 'center' : block['data']['position'],
-            size: block['data']['size'] == 'wide' || block['data']['position'] == 'wide' ? 'wide' : 'normal',
+            size: (block['data']['size'] == 'wide' || block['data']['position'] == 'wide') ? 'wide' : 'normal',
             mediaFiles: block['data']['media_files'],
             decorations: block['data']['decorations'] || {},
-          }
+          },
         }
       when 'list'
         {
@@ -157,7 +158,7 @@ module Contentable
             items: block['data']['items'],
             type: 'text',
             style: block['data']['style'],
-          }
+          },
         }
       when 'paragraph'
         {
@@ -166,7 +167,7 @@ module Contentable
             id: block['data']['id'],
             text: block['data']['text'],
             type: 'text',
-          }
+          },
         }
       when 'quote'
         {
@@ -180,7 +181,7 @@ module Contentable
             style: block['data']['asPoem'] ? 'poem' : 'quote',
             alignment: block['data']['position'] || 'center',
             decorations: block['data']['decorations'] || {},
-          }
+          },
         }
       when 'structured'
         {
@@ -190,7 +191,7 @@ module Contentable
             items: block['data']['items'],
             type: block['data']['format'],
             mediaFiles: block['data']['media_files'],
-          }
+          },
         }
       when 'splash'
         {
@@ -206,7 +207,7 @@ module Contentable
             color: 'light',
             mediaFiles: block['data']['media_files'],
             decorations: block['data']['decorations'] || {},
-          }
+          },
         }
       when 'textbox'
         if block['data']['asVideo']
@@ -228,7 +229,7 @@ module Contentable
               spacing: block['data']['separate'] ? 'separate' : 'overlap',
               mediaFiles: block['data']['media_files'],
               decorations: block['data']['decorations'] || {},
-            }
+            },
           }
         end
       when 'video'
@@ -240,7 +241,7 @@ module Contentable
             quantity: block['data']['asGallery'] ? 'gallery' : 'single',
             legacy: true,
             decorations: block['data']['decorations'] || {},
-          }
+          },
         }
       when 'whitespace'
         {
@@ -249,26 +250,38 @@ module Contentable
             id: block['data']['id'],
             size: block['data']['size'],
             decorations: block['data']['decorations'] || {},
-          }
+          },
         }
       else
-        puts "[WARN] Unsupported block type! #{block.type}"
+        puts "[WARN] Unsupported block type! #{block['type']}"
       end
     end
 
-    puts "Migrated content"
+    puts 'Migrated content'
     content_blocks.each_with_index do |block, i|
-      next unless %w[splash textbox whitespace action].include?(block['type'])
+      next unless %w[structured].include?(block['type'])
 
       puts "\e[32m#{block.pretty_inspect}\e[0m -> \e[36m#{migrated_blocks[i].pretty_inspect}"
       puts "\e[0m-----"
     end
 
-    update!(content: parsed_content.merge("blocks" => migrated_blocks).to_json)
+    update!(content: parsed_content.merge('blocks' => migrated_blocks).to_json)
   end
 
   def self.strip_url url
-    url # TODO: Remove wemeditate.co and assets.wemeditate.co
+    local_domain = false
+
+    %w[
+      wemeditate.co www.wemeditate.co
+      wemeditate.fr www.wemeditate.fr
+      wemeditate.ru www.wemeditate.ru
+      wemeditate.cz www.wemeditate.cz
+      wemeditate.it www.wemeditate.it
+    ].each do |domain|
+      local_domain = domain if url.present? && url.include?(domain)
+    end
+
+    local_domain.present? ? url.split(local_domain).last : url
   end
 
 end

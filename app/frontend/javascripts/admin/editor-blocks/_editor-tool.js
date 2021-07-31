@@ -119,12 +119,25 @@ export default class EditorTool {
     let field = this.fields[key]
     let type = field.input || 'text'
 
-    result = make('div', [this.CSS.input, this.CSS.inputs[type]], {
-      type: 'text',
-      data: { key: key },
-      innerHTML: this.data[key],
-      contentEditable: true,
-    }, container)
+    if (['text', 'content'].includes(type)) {
+      result = make('div', [this.CSS.input, this.CSS.inputs[type]], {
+        data: { key: key },
+        innerHTML: this.data[key],
+        contentEditable: true,
+      }, container)
+
+      // Add the field's label as a placeholder, or use a default placeholder
+      result.dataset.placeholder = field.label || translate(`placeholders.${key}`)
+    } else {
+      result = make('input', [this.CSS.input, this.CSS.inputs[type]], {
+        type: 'editorjs',
+        data: { key: key },
+        value: this.data[key]
+      }, container)
+
+      // Add the field's label as a placeholder, or use a default placeholder
+      result.placeholder = field.label || translate(`placeholders.${key}`)
+    }
 
     if (type == 'url') {
       // URL inputs should auto-prepend an HTTP protocol if no protocol is defined.
@@ -143,9 +156,6 @@ export default class EditorTool {
       // Any field wiith the contained attriibute set should prevent enter/backspace from creating/deleting blocks.
       result.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event, false))
     }
-
-    // Add the field's label as a placeholder, or use a default placeholder
-    result.dataset.placeholder = field.label || translate(`placeholders.${key}`)
 
     if (field.optional) {
       // If this field is optional append that to the placeholder
@@ -270,7 +280,8 @@ export default class EditorTool {
 
     // Get the contents of each field for this tool.
     for (let key in this.fields) {
-      newData[key] = blockContainer.querySelector(`.${this.CSS.input}[data-key=${key}]`).innerHTML
+      const element = blockContainer.querySelector(`.${this.CSS.input}[data-key=${key}]`)
+      newData[key] = element.tagName == 'INPUT' ? element.value : element.innerHTML
       newData[key] = newData[key].replace('&nbsp;', ' ').trim() // Strip non-breaking whitespace
     }
 

@@ -1,7 +1,7 @@
 
 en:
   admin:
-    javascript: # TODO: Translate
+    javascript:
       search:
         no_results: "No results found..."
       uploader:
@@ -79,14 +79,14 @@ en:
             center: "Full-width"
           size:
             label: "Size"
-            normal: "Normal"
+            narrow: "Normal"
             wide: "Wide"
         paragraph:
           label: "Text"
           type:
             label: "Type"
-            paragraph: "Paragraph"
             header: "Header"
+            text: "Paragraph"
           level:
             label: "Level"
             h1: "H1"
