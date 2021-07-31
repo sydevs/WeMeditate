@@ -253,7 +253,7 @@ module Contentable
           },
         }
       else
-        puts "[WARN] Unsupported block type! #{block.type}"
+        puts "[WARN] Unsupported block type! #{block['type']}"
       end
     end
 
