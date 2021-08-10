@@ -20,7 +20,7 @@ module SocialHelper
     ru: {
       instagram: 'https://www.instagram.com/wemeditate.ru',
       vk: 'https://vk.com/wemeditate',
-      sharing: %i[facebook twitter pinterest whatsapp],
+      sharing: %i[vk facebook twitter pinterest whatsapp],
     },
     uk: {
       instagram: 'https://www.instagram.com/wemeditate.ua',
