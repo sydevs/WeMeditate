@@ -115,7 +115,6 @@ class ApplicationController < ActionController::Base
     end
 
     def set_locale!
-      params[:locale] = RouteTranslator.config.host_locales[request.host]
       I18n.locale = params[:locale]
       Globalize.locale = params[:locale]
     end

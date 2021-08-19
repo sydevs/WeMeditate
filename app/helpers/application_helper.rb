@@ -20,7 +20,7 @@ module ApplicationHelper
 
   # Get the web domain for the current locale
   def locale_host
-    Rails.configuration.locale_hosts[Globalize.locale]
+    Rails.configuration.local_domain
   end
 
 end

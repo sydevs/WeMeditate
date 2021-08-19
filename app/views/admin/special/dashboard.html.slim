@@ -15,9 +15,9 @@
 
 h3 = translate 'admin.dashboard.content.title'
 - if Rails.configuration.published_locales.include?(Globalize.locale.to_sym)
-  p = translate 'admin.dashboard.content.public', language: language_name(Globalize.locale).downcase, host: Rails.configuration.locale_hosts[Globalize.locale.to_sym]
+  p = translate 'admin.dashboard.content.public', language: language_name(Globalize.locale).downcase, host: Rails.configuration.local_domain
 - else
-  p = translate 'admin.dashboard.content.private', language: language_name(Globalize.locale).downcase, host: Rails.configuration.locale_hosts[Globalize.locale.to_sym]
+  p = translate 'admin.dashboard.content.private', language: language_name(Globalize.locale).downcase, host: Rails.configuration.local_domain
 .ui.four.statistics
   .statistic
     .value = Article.published.count

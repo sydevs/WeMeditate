@@ -1,6 +1,6 @@
 
 = translate("devise.mailer.invitation_instructions.hello", email: @resource.name)
-= translate("devise.mailer.invitation_instructions.someone_invited_you", url: Rails.configuration.locale_hosts[Globalize.locale])
+= translate("devise.mailer.invitation_instructions.someone_invited_you", url: Rails.configuration.local_domain)
 = accept_invitation_url(@resource, invitation_token: @token)
 
 - if @resource.invitation_due_at
