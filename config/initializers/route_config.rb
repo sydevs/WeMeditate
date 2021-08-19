@@ -2,11 +2,11 @@ RouteTranslator.config do |config|
   config.locale_param_key = :locale
 
   if Rails.env.production?
-    Rails.configuration.local_domain = "wemeditate.com"
+    Rails.configuration.local_domain = 'wemeditate.com'
     Rails.configuration.admin_domain = 'admin.wemeditate.com'
     Rails.configuration.admin_host = Rails.configuration.admin_domain
   elsif Rails.env.staging?
-    Rails.configuration.local_domain = "staging-wemeditate.com"
+    Rails.configuration.local_domain = 'staging-wemeditate.com'
     Rails.configuration.admin_domain = 'admin.staging-wemeditate.com'
     Rails.configuration.admin_host = Rails.configuration.admin_domain
   else
