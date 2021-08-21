@@ -46,7 +46,7 @@ Rails.application.routes.draw do
   end
 
   # ===== FRONT-END ROUTES ===== #
-  constraints DomainConstraint.new(Rails.configuration.local_domain) do
+  constraints DomainConstraint.new(Rails.configuration.public_domain) do
     get 'surrey', to: redirect('/live/surrey')
     get '/en', to: redirect('/')
     
