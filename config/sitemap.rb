@@ -9,8 +9,8 @@ SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::GoogleStorageAdapter.new(
   bucket: ENV.fetch('GCLOUD_BUCKET')
 )
-  
-host = 'https://www.wemeditate.com'
+
+host = 'https://www.wemeditate.com'.freeze
 HOSTS = {}
 Rails.configuration.published_locales.each do |locale|
   HOSTS[locale] = host
