@@ -19,12 +19,12 @@ module ApplicationHelper
   end
 
   # Get the web url for the current locale
-  def locale_url
+  def public_url
     locale = Globalize.locale || I18n.locale
     if locale == :en
-      Rails.configuration.local_domain
+      Rails.configuration.public_host
     else
-      "#{Rails.configuration.local_domain}/#{locale}"
+      "#{Rails.configuration.public_host}/#{locale}"
     end
   end
 
