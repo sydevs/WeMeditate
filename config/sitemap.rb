@@ -11,7 +11,7 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::GoogleStorageAdapter.new(
 )
 
 host = 'https://www.wemeditate.com'.freeze
-HOSTS = {}
+HOSTS = {} # rubocop:disable Style/MutableConstant
 Rails.configuration.published_locales.each do |locale|
   HOSTS[locale] = host
 end
