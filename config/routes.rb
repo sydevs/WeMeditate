@@ -49,10 +49,9 @@ Rails.application.routes.draw do
   constraints DomainConstraint.new(Rails.configuration.public_domain) do
     get 'surrey', to: redirect('/live/surrey')
     get '/en', to: redirect('/')
+    devise_for :users, controllers: { invitations: 'users/invitations' }
     
     localized do
-      devise_for :users, controllers: { invitations: 'users/invitations' }
-
       root to: 'application#home'
       get 'sitemap.xml.gz', to: 'application#sitemap'
       get '404', to: 'application#error'
