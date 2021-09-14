@@ -15,7 +15,7 @@ module ApplicationHelper
   
   # Given an image page, convert it to the full image URL
   def path_to_url path
-    "https://#{Rails.configuration.public_host}/#{path.sub(/^\//, '')}"
+    "https://#{Rails.configuration.public_host}/#{path.sub(%r{^\/}, '')}"
   end
 
   # Get the web url for the current locale
