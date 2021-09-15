@@ -1,0 +1,18 @@
+
+cite
+  position: relative
+  padding: 3px 0
+  vertical-align: super
+  font-style: normal
+  font-size: small
+  color: $color-text-blue-dark
+
+cite::before
+  position: absolute
+  bottom: 100%
+  right: 0%
+  max-width: 180px
+
+  content: attr(data-title)
+  background: white
+  padding: 3px 1px

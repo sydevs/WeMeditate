@@ -1,5 +1,6 @@
 import EditorJS from '@editorjs/editorjs'
 import { afterPendingUploads, hasPendingUploads } from './uploader'
+
 import ParagraphTool from '../editor-blocks/paragraph-tool'
 import ListTool from '../editor-blocks/list-tool'
 import TextboxTool from '../editor-blocks/textbox-tool'
@@ -9,6 +10,8 @@ import WhitespaceTool from '../editor-blocks/whitespace-tool'
 import LayoutTool from '../editor-blocks/layout-tool'
 import CatalogTool from '../editor-blocks/catalog-tool'
 import LegacyVimeoTool from '../editor-blocks/legacy/vimeo-tool'
+
+import CitationTool from '../editor-inline-tools/citation-tool'
 
 /** Content Editor
  * We use the editorjs (https://editorjs.io) to provide a block-based content editor for our CMS.
@@ -20,6 +23,8 @@ let form, editorInstance, editorInput
 const editorParameters = {
   autofocus: true,
   placeholder: 'Let`s write an awesome story!',
+  inlineToolbar: ['link', 'bold', 'italic'],
+  //inlineToolbar: ['link', 'bold', 'italic', 'citation'],
   tools: {
     paragraph: {
       class: ParagraphTool,
@@ -42,6 +47,7 @@ const editorParameters = {
     catalog: CatalogTool,
     whitespace: WhitespaceTool,
     vimeo: LegacyVimeoTool,
+    citation: CitationTool,
   },
   defaultBlock: 'paragraph',
 }
