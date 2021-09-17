@@ -1,18 +1,11 @@
-
-cite
-  position: relative
-  padding: 3px 0
-  vertical-align: super
-  font-style: normal
-  font-size: small
-  color: $color-text-blue-dark
-
-cite::before
-  position: absolute
-  bottom: 100%
-  right: 0%
-  max-width: 180px
-
-  content: attr(data-title)
+cite::after
+  //content: ' [' attr(data-title) ']'
+  content: ' [cite]'
+  display: inline-block
   background: white
-  padding: 3px 1px
+  color: $color-text-blue-dark
+  padding-bottom: 3px
+  padding-left: 3px
+  font-style: normal
+  vertical-align: super
+  font-size: small

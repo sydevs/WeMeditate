@@ -1,3 +1,4 @@
+import SelectionUtils from '../selection'
 import { make } from '../util'
 
 const ENTER_KEY = 13
@@ -36,6 +37,7 @@ export default class CitationTool {
   constructor({ api }) {
     this.api = api
     this.button = null
+    this.selection = new SelectionUtils()
     this._state = false
 
     this.tag = 'CITE'
@@ -52,31 +54,37 @@ export default class CitationTool {
   }
 
   surround(range) {
-    if (this.state) {
-      this.unwrap(range, this.wrap)
-      return
-    }
+    this.cite = this.api.selection.findParentTag(this.tag)
 
-    this.wrap(range)
-    this.range = range
+    if (this.actions.hidden) {
+      this.selection.save()
+      //this.selection.setFakeBackground()
+    } else {
+      this.selection.restore()
+      //this.selection.removeFakeBackground()
+    }
+    
+    if (this.state) {
+      this.unwrap(range)
+    } else {
+      this.wrap(range)
+    }
   } 
 
   wrap(range) {
-    const selectedText = range.extractContents()
+    const selectedText = range.extractContents().textContent
     const cite = document.createElement(this.tag)
-
+    this.cite = cite
     cite.classList.add(this.class)
-    cite.appendChild(selectedText)
+    cite.innerText = selectedText
     range.insertNode(cite)
     this.api.selection.expandToTag(cite)
   }
 
   unwrap(range) {
-    range = range ? range : this.range
-    const cite = this.api.selection.findParentTag(this.tag)
-    const text = cite.innerText
+    const text = this.cite.firstChild
 
-    cite.remove()
+    this.cite.remove()
     range.insertNode(text)
   }
 
@@ -112,6 +120,7 @@ export default class CitationTool {
     this.inputTitle.addEventListener('keydown', event => this.enterPressed(event))
     this.inputLink.addEventListener('keydown', event => this.enterPressed(event))
 
+    this.inputTitle.focus()
     this.actions.hidden = false
   }
 
@@ -124,18 +133,17 @@ export default class CitationTool {
   }
 
   enterPressed(event) {
-    console.log('enter pressed?')
     if (event.keyCode !== ENTER_KEY) return
-    console.log('enter pressed')
 
     let title = this.inputTitle.value || ''
     let link = this.inputLink.value || ''
 
     if (!title.trim() || !link.trim()) {
-      //this.api.selection.restore()
-      this.unwrap()
+      this.selection.restore()
+      this.selection.removeFakeBackground()
+      this.unwrap(SelectionUtils.range)
       event.preventDefault()
-      this.closeActions()
+      this.hideActions()
       return
     }
 
@@ -149,26 +157,24 @@ export default class CitationTool {
       return
     }
 
-    //this.api.selection.restore()
-    //this.api.selection.removeFakeBackground()
+    this.selection.restore()
+    this.selection.removeFakeBackground()
     this.setData(title, link)
 
     // Preventing events that will be able to happen
     event.preventDefault()
     event.stopPropagation()
     event.stopImmediatePropagation()
-    this.api.selection.collapseToEnd()
-    this.inlineToolbar.close()
+    this.selection.collapseToEnd()
+    this.api.inlineToolbar.close()
   }
 
   setData(title, link) {
-    const cite = this.api.selection.findParentTag(this.tag)
-    console.log('citation 1', cite)
+    const cite = this.cite // this.api.selection.findParentTag(this.tag)
     if (cite) {
       this.api.selection.expandToTag(cite)
     }
 
-    console.log('citation 2', cite)
     link = this.prepareLink(link)
     this.inputLink.value = link
     cite.dataset.link = link

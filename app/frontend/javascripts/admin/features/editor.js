@@ -23,8 +23,7 @@ let form, editorInstance, editorInput
 const editorParameters = {
   autofocus: true,
   placeholder: 'Let`s write an awesome story!',
-  inlineToolbar: ['link', 'bold', 'italic'],
-  //inlineToolbar: ['link', 'bold', 'italic', 'citation'],
+  inlineToolbar: ['link', 'bold', 'italic', 'citation'],
   tools: {
     paragraph: {
       class: ParagraphTool,

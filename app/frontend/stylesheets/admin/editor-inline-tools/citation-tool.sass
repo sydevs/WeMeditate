@@ -1,8 +1,16 @@
 @import '../../mixins/vars'
 
 .cdx-citation
+  background: lighten($color-box-blue, 0.75)
+
+.cdx-citation::after
+  //content: ' [' attr(data-title) ']'
+  content: ' [cite]'
+  display: inline-block
+  background: white
   color: $color-text-blue-dark
-  padding: 3px 0
+  padding-bottom: 3px
+  padding-left: 3px
   font-style: normal
   vertical-align: super
   font-size: small
