@@ -3,11 +3,10 @@ Rails.application.routes.draw do
 
   get :maintenance, to: 'application#maintenance'
   get 'switch_user' => 'switch_user#set_current_user' if Rails.env.development?
+  devise_for :users, controllers: { invitations: 'users/invitations', sessions: 'users/sessions', passwords: 'users/passwords' }
 
   # ===== ADMIN ROUTES ===== #
   constraints DomainConstraint.new(Rails.configuration.admin_domain) do
-    devise_for :users, controllers: { invitations: 'users/invitations', sessions: 'users/sessions', passwords: 'users/passwords' }
-
     get '404', to: 'admin/application#error'
     get '422', to: 'admin/application#error'
     get '500', to: 'admin/application#error'
@@ -47,7 +46,6 @@ Rails.application.routes.draw do
 
   # ===== FRONT-END ROUTES ===== #
   constraints DomainConstraint.new(Rails.configuration.public_domain) do
-    devise_for :users, controllers: { sessions: 'users/sessions' }
     get 'surrey', to: redirect('/live/surrey')
     get '/en', to: redirect('/')
     
