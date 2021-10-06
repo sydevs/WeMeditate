@@ -47,12 +47,11 @@ Rails.application.routes.draw do
 
   # ===== FRONT-END ROUTES ===== #
   constraints DomainConstraint.new(Rails.configuration.public_domain) do
+    devise_for :users, controllers: { sessions: 'users/sessions' }
     get 'surrey', to: redirect('/live/surrey')
     get '/en', to: redirect('/')
     
     localized do
-      devise_for :users, controllers: { sessions: 'users/sessions' }
-
       root to: 'application#home'
       get 'sitemap.xml.gz', to: 'application#sitemap'
       get '404', to: 'application#error'
