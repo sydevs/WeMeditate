@@ -7,8 +7,8 @@ ruby:
   - if block[:style] == 'ordered'
     ol
       - block[:items].each do |item|
-        li.cb-text-list__item = item
+        li.cb-text-list__item = item.is_a?(Hash) ? item[:text] : item
   - else
     ul
       - block[:items].each do |item|
-        li.cb-text-list__item = item
+        li.cb-text-list__item = item.is_a?(Hash) ? item[:text] : item

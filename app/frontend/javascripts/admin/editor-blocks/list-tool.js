@@ -40,6 +40,7 @@ export default class ListTool extends EditorTool {
     }, api)
 
     this.CSS.item = `${this.CSS.container}__item`
+    this.CSS.refresh = `${this.CSS.container}__refresh`
   }
 
   save(toolElement) {
@@ -48,11 +49,32 @@ export default class ListTool extends EditorTool {
 
     for (let i = 0; i < items.length; i++) {
       const value = items[i].innerHTML.replace('<br>', ' ').trim()
-      if (value) itemsData.push(items[i].innerHTML)
+      let item = { text: items[i].innerHTML }
+      if (this.data.type == 'contents') item.level = this.data.items[i].level
+      if (value) itemsData.push(item)
     }
 
     this.removeInactiveData()
     return Object.assign(this.data, { items: itemsData })
+  }
+
+  refreshTableOfContents() {
+    const blocksCount = this.api.blocks.getBlocksCount()
+    this.data.items = []
+    for (let i = 0; i < blocksCount; i++) {
+      const block = this.api.blocks.getBlockByIndex(i)
+      if (block.name == 'paragraph') {
+        const element = block.holder
+        if (element.dataset.type == 'header') {
+          const text = element.querySelector('.cdx-input[data-key=text]').textContent
+          this.data.items.push({ text: text, level: element.dataset.level })
+        }
+      } else {
+        //console.log('skip block', block.name)
+      }
+    }
+
+    this.renderItems()
   }
 
   render() {
@@ -61,17 +83,48 @@ export default class ListTool extends EditorTool {
     })
     this.container.addEventListener('keydown', event => this._onItemKeydown(event))
 
-    const list = make('ul', [this.CSS.input], { contentEditable: true, data: { key: 'items' } }, this.container)
+    const editable = this.data.type != 'contents'
+    this.listElement = make('ul', [this.CSS.input], { contentEditable: editable, data: { key: 'items' } }, this.container)
 
     if (this.data.items.length) {
-      this.data.items.forEach(item => {
-        make('li', this.CSS.item, { innerHTML: item }, list)
-      })
+      this.renderItems()
     } else {
-      make('li', this.CSS.item, {}, list)
+      make('li', this.CSS.item, {}, this.listElement)
     }
 
+    this.refreshButton = make('div', [this.CSS.refresh], {}, this.container)
+    make('i', ['fitted', 'redo', 'alternate', 'icon'], {}, this.refreshButton)
+    this.refreshButton.addEventListener('click', () => this.refreshTableOfContents())
+    this.container.addEventListener('click', () => {
+      if (this.data.type == 'contents') {
+        this.refreshTableOfContents() 
+      }
+    })
+
     return this.container
+  }
+
+  renderItems() {
+    this.listElement.innerHTML = null
+    this.data.items.forEach(item => {
+      if (typeof(item) == 'object') {
+        make('li', this.CSS.item, { innerHTML: item.text, data: { level: item.level } }, this.listElement)
+      } else {
+        make('li', this.CSS.item, { innerHTML: item }, this.listElement)
+      }
+    })
+  }
+
+  selectTune(tune) {
+    super.selectTune(tune)
+
+    if (this.data.type == 'contents') {
+      this.listElement.contentEditable = false
+      console.log('refresh', this.data)
+      this.refreshTableOfContents()
+    } else {
+      this.listElement.contentEditable = true
+    }
   }
 
   _onItemKeydown(event) {

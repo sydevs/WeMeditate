@@ -52,8 +52,14 @@ module Admin::ApplicationHelper
           end
 
         when 'list'
-          result = block['data']['items'].map { |i| "— #{i}".truncate(60) }.join('<br>')
-          result = sanitize(result, tags: %w[br])
+          result = ''
+          result = "<em>#{translate('admin.javascript.blocks.list.type.contents')}</em><br>" if block['data']['type'] == 'contents'
+          result += block['data']['items'].map { |i|
+            depth = (i.is_a?(Hash) ? (i.dig('level') || 'h2')[1].to_i : 2) - 1
+            text = i.is_a?(Hash) ? i['text'] : i
+            "#{'—' * depth} #{text}".truncate(60)
+          }.join('<br>')
+          result = sanitize(result, tags: %w[em br])
 
         when 'layout'
           result = block['data']['items'].map { |i| "— #{i['title']}" }.join('<br>')
@@ -64,7 +70,7 @@ module Admin::ApplicationHelper
           result += ": #{translate('admin.content.items', count: block['data']['items'].length)}"
 
         when 'textbox'
-          result = "<strong>#{block['data']['title']}</strong><br>#{block['data']['text'].truncate(60)}<br>"
+          result = "<strong>#{block['data']['title']}</strong><br>#{block['data']['text']&.truncate(60)}<br>"
           result += tag.span("[#{block['data']['action']}] → ") + tag.small(block['data']['url']) if block['data']['action'] && block['data']['url']
           result = sanitize(result, tags: %w[strong br])
 

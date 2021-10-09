@@ -1,0 +1,7 @@
+
+.cb-contents-list
+  ul
+    - block[:items].each do |item|
+      li.cb-contents-list__item data-level=item[:level]
+        a href="##{item[:text].parameterize.dasherize}"
+          = item[:text]
