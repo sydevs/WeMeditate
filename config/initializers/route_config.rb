@@ -5,29 +5,23 @@ RouteTranslator.config do |config|
   if Rails.env.production?
     Rails.configuration.admin_domain = 'admin.wemeditate.com'
     Rails.configuration.admin_host = Rails.configuration.admin_domain
-    config.host_locales = {
-      'am.wemeditate.com' => :hy, # Armenian
-      'bg.wemeditate.com' => :bg, # Bulgarian
-      'br.wemeditate.com' => :'pt-br', # Brazilian Portuguese
-      'de.wemeditate.com' => :de, # German
-      'el.wemeditate.com' => :el, # Greek
-      'es.wemeditate.com' => :es, # Spanish
-      'fa.wemeditate.com' => :fa, # Farsi
-      'hi.wemeditate.com' => :hi, # Hindi
-      'hy.wemeditate.com' => :hy, # Armenian
-      'nl.wemeditate.com' => :nl, # Dutch
-      'ro.wemeditate.com' => :ro, # Romanian
-      'se.wemeditate.com' => :sv, # Swedish
-      'tr.wemeditate.com' => :tr, # Turkish
-      'ua.wemeditate.com' => :uk, # Ukrainian
+    locale_hosts = {
+      :'pt-br' => 'br.wemeditate.com', # Brazilian Portuguese
+      fr: 'wemeditate.fr', # French
+      cs: 'wemeditate.cz', # Czech
+      it: 'wemeditate.it', # Italian
+      ru: 'wemeditate.ru', # Russian
+      en: 'wemeditate.com', # English
+    }
 
-      'wemeditate.fr' => :fr, # French
-      'wemeditate.cz' => :cs, # Czech
-      'wemeditate.it' => :it, # Italian
-      'wemeditate.ru' => :ru, # Russian
-      'wemeditate.co.uk' => :en, # English
-      'wemeditate.com' => :en, # English
-    } # Domains at the bottom of the list have highest priority.
+    I18n.available_locales.each do |locale|
+      config.host_locales["#{locale}.wemeditate.com"] = locale unless locale_hosts.key?(locale)
+    end
+
+    config.host_locales = locale_hosts.invert
+    config.host_locales.reverse_merge!({
+      'wemeditate.co.uk' => :en
+    })
   elsif Rails.env.staging?
     Rails.configuration.admin_domain = 'admin.staging-wemeditate.com'
     Rails.configuration.admin_host = Rails.configuration.admin_domain
