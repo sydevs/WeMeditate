@@ -11,7 +11,7 @@
       a href=root_url target='_blank'
         = locale_host
 
-  = link_to admin_root_path(locale: Globalize.locale), class: "#{'active' if action_name == 'dashboard'} item"
+  = link_to admin_root_path(locale: Globalize.locale), host: Rails.configuration.admin_host, class: "#{'active' if action_name == 'dashboard'} item"
     = translate 'admin.misc.menu.dashboard'
 
   - if policy(Article).index? || policy(StaticPage).index? || policy(SubtleSystemNode).index?
