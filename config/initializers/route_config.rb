@@ -5,7 +5,7 @@ RouteTranslator.config do |config|
   if Rails.env.production?
     Rails.configuration.admin_domain = 'admin.wemeditate.com'
     Rails.configuration.admin_host = Rails.configuration.admin_domain
-    locale_hosts = {
+    Rails.configuration.locale_hosts = {
       :'pt-br' => 'br.wemeditate.com', # Brazilian Portuguese
       fr: 'wemeditate.fr', # French
       cs: 'wemeditate.cz', # Czech
@@ -15,7 +15,9 @@ RouteTranslator.config do |config|
     }
 
     I18n.available_locales.each do |locale|
-      config.host_locales["#{locale}.wemeditate.com"] = locale unless locale_hosts.key?(locale)
+      return if Rails.configuration.locale_hosts.key?(locale)
+
+      Rails.configuration.locale_hosts[locale] = "#{locale}.wemeditate.com"
     end
 
     config.host_locales = locale_hosts.invert
