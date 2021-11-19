@@ -57,7 +57,7 @@ footer.footer
 
             .footer__language__popup
               - Rails.configuration.published_locales.each do |locale|
-                a.footer__language__link href=root_url(host: Rails.configuration.locale_hosts[locale])
+                a.footer__language__link href="/#{locale}"
                   = I18nData.languages(locale)[locale.to_s.upcase].titleize 
           
   .footer__copyright &copy; WeMeditate, #{Time.zone.now.year}
