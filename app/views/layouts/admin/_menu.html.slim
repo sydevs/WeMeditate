@@ -9,7 +9,7 @@
     .ui.fluid.label id='locale-label'
       i.globe.icon
       a href=root_url target='_blank'
-        = locale_host
+        = public_url
 
   = link_to admin_root_path(locale: Globalize.locale), class: "#{'active' if action_name == 'dashboard'} item"
     = translate 'admin.misc.menu.dashboard'

@@ -9,10 +9,13 @@ SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::GoogleStorageAdapter.new(
   bucket: ENV.fetch('GCLOUD_BUCKET')
 )
-SitemapGenerator::Sitemap.create_index = true
 
-HOSTS = Rails.configuration.locale_hosts.slice(*Rails.configuration.published_locales)
-HOSTS.each { |key, host| HOSTS[key] = "https://#{host}" }
+host = 'https://www.wemeditate.com'.freeze
+HOSTS = {} # rubocop:disable Style/MutableConstant
+Rails.configuration.published_locales.each do |locale|
+  HOSTS[locale] = host
+end
+
 EXCLUDE_STATIC_PAGES = %i[].freeze
 SPECIAL_PAGES = {
   home: { url: :root_url, path: :root_path, changefreq: 'weekly' },
@@ -121,42 +124,36 @@ end
 SitemapGenerator::Interpreter.send :include, SitemapHelper
 
 SitemapGenerator::Sitemap.create do
-  HOSTS.each do |locale, host|
-    SitemapGenerator::Sitemap.default_host = host
-    Rails.application.routes.default_url_options[:host] = host
-    I18n.locale = locale
-    group(sitemaps_path: 'sitemaps/', filename: "sitemap.#{locale}") do
-      add '/'
+  SitemapGenerator::Sitemap.default_host = host
+  Rails.application.routes.default_url_options[:host] = host
 
-      StaticPage.published.preload_for(:content).where.not(role: EXCLUDE_STATIC_PAGES).each do |static_page|
-        role = static_page.role&.to_sym
+  StaticPage.published.preload_for(:content).where.not(role: EXCLUDE_STATIC_PAGES).each do |static_page|
+    role = static_page.role&.to_sym
 
-        if SPECIAL_PAGES.key? role
-          add send(SPECIAL_PAGES[role][:path]), changefreq: SPECIAL_PAGES[role][:changefreq], **record_data(static_page)
-        else
-          add static_page_path(static_page), changefreq: 'weekly', **record_data(static_page)
-        end
-      end
-
-      SubtleSystemNode.published.preload_for(:content).find_each do |subtle_system_node|
-        add subtle_system_node_path(subtle_system_node), changefreq: 'weekly', **record_data(subtle_system_node)
-      end
-
-      Meditation.published.preload_for(:content).find_each do |meditation|
-        add meditation_path(meditation), changefreq: 'weekly', **record_data(meditation)
-      end
-
-      Treatment.published.preload_for(:content).find_each do |treatment|
-        add treatment_path(treatment), changefreq: 'weekly', **record_data(treatment)
-      end
-
-      Article.published.preload_for(:content).find_each do |article|
-        add article_path(article), changefreq: 'weekly', **record_data(article)
-      end
-
-      Stream.published.preload_for(:content).find_each do |stream|
-        add stream_path(stream), changefreq: 'weekly', **record_data(stream)
-      end
+    if SPECIAL_PAGES.key? role
+      add send(SPECIAL_PAGES[role][:path]), changefreq: SPECIAL_PAGES[role][:changefreq], **record_data(static_page)
+    else
+      add static_page_path(static_page), changefreq: 'weekly', **record_data(static_page)
     end
+  end
+
+  SubtleSystemNode.published.preload_for(:content).find_each do |subtle_system_node|
+    add subtle_system_node_path(subtle_system_node), changefreq: 'weekly', **record_data(subtle_system_node)
+  end
+
+  Meditation.published.preload_for(:content).find_each do |meditation|
+    add meditation_path(meditation), changefreq: 'weekly', **record_data(meditation)
+  end
+
+  Treatment.published.preload_for(:content).find_each do |treatment|
+    add treatment_path(treatment), changefreq: 'weekly', **record_data(treatment)
+  end
+
+  Article.published.preload_for(:content).find_each do |article|
+    add article_path(article), changefreq: 'weekly', **record_data(article)
+  end
+
+  Stream.published.preload_for(:content).find_each do |stream|
+    add stream_path(stream), changefreq: 'weekly', **record_data(stream)
   end
 end
