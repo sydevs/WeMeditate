@@ -169,8 +169,10 @@ export default class TextTool extends EditorTool {
       reader.onloadend = () => {
         const img = make('img', this.CSS.image.img, { src: reader.result })
         placeholder.replaceWith(img)
+        this.wrapper.dataset.hasImage = true
       }
     } else {
+      this.wrapper.dataset.hasImage = false
       this.imageContainer.querySelector(`.${this.CSS.image.img}`).remove()
       $(this.uploader.wrapper).show()
       $(this.imageRemoveIcon).hide()
