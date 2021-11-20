@@ -7,8 +7,8 @@ ruby:
   - if block[:style] == 'ordered'
     ol
       - block[:items].each do |item|
-        li.cb-text-list__item = item.is_a?(Hash) ? item[:text] : item
+        li.cb-text-list__item = sanitize(item.is_a?(Hash) ? item[:text] : item, tags: %w[strong em b i a cite])
   - else
     ul
       - block[:items].each do |item|
-        li.cb-text-list__item = item.is_a?(Hash) ? item[:text] : item
+        li.cb-text-list__item = sanitize(item.is_a?(Hash) ? item[:text] : item, tags: %w[strong em b i a cite])

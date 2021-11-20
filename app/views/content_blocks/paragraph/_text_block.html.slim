@@ -1,2 +1,2 @@
 
-p.cb-text-paragraph = block[:text].html_safe
+p.cb-text-paragraph = sanitize(block[:text], tags: %w[strong em b i a cite])

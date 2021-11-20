@@ -32,7 +32,7 @@ module Admin
     protected
 
       def default_url_options options = {}
-        { locale: Globalize.locale, host: Rails.configuration.admin_host }.merge(options)
+        { locale: Globalize.locale, host: Rails.configuration.public_host }.merge(options)
       end
 
       def localize mode
@@ -58,7 +58,7 @@ module Admin
       def set_locale!
         I18n.locale = current_user&.preferred_language&.to_sym || :en
         Globalize.locale = params[:locale].to_sym || :en
-        Rails.application.routes.default_url_options[:host] = Rails.configuration.admin_host
+        Rails.application.routes.default_url_options[:host] = Rails.configuration.public_host
         Rails.application.routes.default_url_options[:locale] = Globalize.locale
       end
 
