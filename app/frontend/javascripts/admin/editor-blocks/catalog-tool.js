@@ -192,7 +192,7 @@ export default class CatalogTool extends EditorTool {
             this.searchResultContainer.appendChild(el)
           })
         } else {
-          this.searchResultContainer.innerText = translate('no_results')
+          this.searchResultContainer.innerText = translate('search.no_results')
         }
 
         this.searchInput.parentNode.classList.remove('loading')
