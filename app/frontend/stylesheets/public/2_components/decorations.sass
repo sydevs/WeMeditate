@@ -173,12 +173,9 @@
   .gradient--#{$side}:before
     #{$side}: 0
 
-  @each $color in blue orange gray
-    .gradient--#{$side}.gradient--#{"" + $color}:before
-      @include gradient(to #{$opposite}, $color)
-
-  .gradient--#{$side}.gradient--ornate:before
-    @include gradient(to #{$opposite}, 'ornate')
+  @each $style in 'orange', 'gray', 'blue', 'ornate'
+    .gradient--#{$side}.gradient--#{$style}:before
+      @include gradient(to #{$opposite}, $style)
 
 .gradient--ornate:before
   top: 0

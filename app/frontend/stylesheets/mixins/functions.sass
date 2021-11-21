@@ -11,9 +11,15 @@
 @function font($path)
   @return url("../fonts/#{$path}")
 
+@function map-get-strict($map, $key)
+  @if map-has-key($map, $key)
+    @return map-get($map, $key)
+  @else
+    @error "ERROR: Specified index (#{$key}, #{type-of($key)}) does not exist in the mapping"
+
 // When you use purely transparent values it can mess up gradient rendering on some sites.
 @mixin gradient($direction, $style)
-  background: linear-gradient($direction, rgba(255,255,255,.01) 0, rgba(255,255,255,0.18) 25%, map-get($color-gradient, $style) 100%)
+  background: linear-gradient($direction, rgba(255,255,255,.01) 0, rgba(255,255,255,0.18) 25%, map-get-strict($color-gradient, $style) 100%)
 
 // A shorthand to create an absolute positioning
 @mixin overlay($top: 0, $bottom: 0, $left: 0, $right: 0)
