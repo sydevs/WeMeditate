@@ -14,8 +14,10 @@ module ApplicationHelper
 
     if source.starts_with?('uploads')
       path_to_url source
-    else
+    elsif !source.starts_with?('http')
       path_to_url asset_pack_path("media/images/#{source}")
+    else
+      source
     end
   end
   
