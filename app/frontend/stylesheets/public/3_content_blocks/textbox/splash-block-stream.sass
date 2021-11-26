@@ -3,13 +3,13 @@
   @media only screen and (max-width: #{$desktop-width - 1px})
     @content
 
-.content__splash--stream
+.cb-splash-textbox--stream
   text-align: center
   color: $color-text-inverse
   height: 100vh
   margin-bottom: 100px
   position: relative
-  background: image('../../images/content/streams-mobile.jpg')
+  //background: image('../../images/content/streams-mobile.jpg')
   background-position: center
   background-size: cover
   background-repeat: no-repeat
@@ -18,8 +18,8 @@
   flex-direction: column
   justify-content: center
 
-  @include tablet-or-larger
-    background-image: image('../../images/content/streams.jpg')
+  //@include tablet-or-larger
+  //  background-image: image('../../images/content/streams.jpg')
 
   &:before
     @include overlay
@@ -31,20 +31,20 @@
     margin-top: 12px
 
   // Mode
-  .content__splash__wrapper-live,
-  .content__splash__wrapper-countdown
+  .cb-splash-textbox__wrapper-live,
+  .cb-splash-textbox__wrapper-countdown
     max-height: 0
     opacity: 0
     transition: opacity 0.5s ease, max-height 1s ease
 
-  &.content__splash--live .content__splash__wrapper-live,
-  &.content__splash--countdown .content__splash__wrapper-countdown
+  &.cb-splash-textbox--live .cb-splash-textbox__wrapper-live,
+  &.cb-splash-textbox--countdown .cb-splash-textbox__wrapper-countdown
     max-height: 100vh
     opacity: 1
     transition: all 1s ease
 
 // ===== LIVE ===== //
-.content__splash__wrapper-live .content__splash
+.cb-splash-textbox__wrapper-live .cb-splash-textbox
   &__wrapper
     @extend %narrow-content-width
     position: relative
@@ -141,7 +141,7 @@
       max-width: none
 
 // ===== COUNTDOWN ===== //
-.content__splash__wrapper-countdown .content__splash
+.cb-splash-textbox__wrapper-countdown .cb-splash-textbox
   &__wrapper
     @extend %narrow-content-width
     position: relative
@@ -210,7 +210,7 @@
         fill: white
 
 // ===== TIMER ===== //
-.content__splash--countdown .content__splash__countdown
+.cb-splash-textbox--countdown .cb-splash-textbox__countdown
   font-family: $font-number
   font-size: 6.8rem
   line-height: 95px
@@ -224,7 +224,7 @@
   @include max-stream-height
     margin-bottom: 82px
 
-  &.content__splash__countdown--hidden
+  &.cb-splash-textbox__countdown--hidden
     opacity: 0
 
   > span

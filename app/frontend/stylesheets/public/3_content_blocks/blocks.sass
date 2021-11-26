@@ -53,7 +53,8 @@
 
 @mixin wide-block
   .cb-treatments-catalog,
-  .cb-image-textbox
+  .cb-image-textbox,
+  .cb-splash-textbox
     @content
 
 @mixin text-spacing
@@ -126,6 +127,10 @@
     @include text-block
       @include text-spacing
 
+  +
+    @include wide-block
+      @include wide-spacing
+
   + .cb-header-paragraph:not(.cb-header-paragraph--centered)
     margin-top: 2em
 
@@ -143,10 +148,6 @@
 
 .cb-header-paragraph + *
   margin-top: 1em !important
-
-/*.content__splash + *
-  @include medium-spacing
-  */
 
 // BOTTOM MARGIN
 .content

@@ -19,12 +19,21 @@ static_pages = {}
   meditations: 'Meditate Now',
   classes: 'Classes Near Me',
   privacy: 'Privacy Notice',
+  streams: 'Live Meditations',
 }.each do |role, name|
   static_pages[role] = StaticPage.find_or_initialize_by(role: role)
   static_pages[role].update!({
     name: name,
     state: :published,
     published_at: DateTime.now,
+    content: content([
+      {
+        type: :header,
+        data: {
+          text: 'Section 1',
+        },
+      }
+    ])
   })
   puts "Created Static Page - #{role}"
 end
@@ -470,7 +479,7 @@ static_pages[:classes].update!(content: content([
   },
 ]))
 
-# ===== CREATE SELF REALIZATION CONTENT ===== #
+# ===== CREATE PRIVACY PAGE CONTENT ===== #
 static_pages[:privacy].update!(content: content([
   {
     type: :header,
@@ -486,6 +495,37 @@ static_pages[:privacy].update!(content: content([
     type: :paragraph,
     data: {
       text: 'This Policy applies to Our use of any and all data collected by us in relation to your use of Our Site. Please read this Privacy Policy carefully and ensure that you understand it. Your acceptance of Our Privacy Policy is deemed to occur upon your first use of Our Site. If you do not accept and agree with this Privacy Policy, you must stop using Our Site immediately.',
+    },
+  },
+]))
+
+# ===== CREATE STREAMS CONTENT ===== #
+static_pages[:streams].update!(content: content([
+  {
+    type: :form,
+    data: {
+      title: 'Don\'t miss out!',
+      subtitle: 'Meditations take place every week day at 7pm BST / 2pm EST',
+      text: 'We will remind you one hour before we go live',
+      action: 'Sign Up',
+      list_id: 'H9eVYD',
+      format: :signup,
+    },
+  }, {
+    type: :header,
+    data: {
+      text: 'FAQ',
+      centered: true,
+    },
+  }, {
+    type: :structured,
+    data: {
+      items: [
+        { title: 'How long is the session?', text: sentences(4) },
+        { title: 'Is it suitable for beginners?', text: sentences(4) },
+        { title: 'What should I expect?', text: sentences(4) },
+      ],
+      format: :accordion,
     },
   },
 ]))

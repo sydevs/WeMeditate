@@ -25,7 +25,7 @@ export default class CountdownTimer {
     }
 
     this.update()
-    this.container.classList.remove('content__splash__countdown--hidden')
+    this.container.classList.remove('cb-splash-textbox__countdown--hidden')
   }
 
   update() {
@@ -55,8 +55,8 @@ export default class CountdownTimer {
   setMode(mode) {
     const opposite = (mode == 'live' ? 'countdown' : 'live')
     const wrapper = this.container.parentNode.parentNode.parentNode
-    wrapper.classList.remove(`content__splash--${opposite}`)
-    wrapper.classList.add(`content__splash--${mode}`)
+    wrapper.classList.remove(`cb-splash-textbox--${opposite}`)
+    wrapper.classList.add(`cb-splash-textbox--${mode}`)
   }
 
 }

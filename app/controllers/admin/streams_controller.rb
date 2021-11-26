@@ -37,7 +37,19 @@ module Admin
     end
 
     def write
-      @splash_style = :stream
+      @record.content = {
+        time: DateTime.now.to_i,
+        version: "2.22.2",
+        mediaFiles: [],
+        blocks: [{
+          type: 'textbox',
+          data: {
+            type: 'splash',
+          },
+        }, {
+          type: 'paragraph',
+        }]
+      }.to_json if @record.content_blocks.empty?
     end
 
     protected

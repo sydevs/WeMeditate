@@ -206,7 +206,7 @@ module Contentable
             type: 'splash',
             color: 'light',
             mediaFiles: block['data']['media_files'],
-            decorations: block['data']['decorations'] || {},
+            decorations: block['data']['style'] == 'home' ? { leaves: true } : {},
           },
         }
       when 'textbox'

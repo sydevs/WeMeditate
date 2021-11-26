@@ -1,7 +1,13 @@
 
-// ===== CUSTOM PAGE SPLASH ===== //
-.content__splash--custom
-  .content__splash__wrapper
+// ===== HOME PAGE ===== //
+.cb-splash-textbox--home
+  @include mobile
+    background-position-x: -85vh
+
+  @include tablet
+    background-position-x: -74vh
+
+  .cb-splash-textbox__wrapper
     position: absolute
     bottom: 0
     left: 0
@@ -15,7 +21,7 @@
       position: static
       padding-bottom: 0
 
-  .content__splash__title
+  .cb-splash-textbox__title
     margin-top: 22%
     margin-bottom: 10vh
     padding: 0 3vw
@@ -40,8 +46,9 @@
       margin-top: 196px
       margin-bottom: 40px
 
-  .content__splash__text
-    max-width: 225px
+  .cb-splash-textbox__subtitle,
+  .cb-splash-textbox__text
+    max-width: 235px
     margin-bottom: 12vh
 
     @include tiny
@@ -59,3 +66,30 @@
     @include desktop
       margin-bottom: 80px
 
+// HOME PAGE ACTION
+.cb-splash-textbox--home .cb-splash-textbox__action
+  display: flex
+  align-items: center
+  justify-content: center
+
+  font-weight: $font-medium
+  font-size: 3rem
+  line-height: 1.0333
+  letter-spacing: normal
+
+  @include pulse-animation
+
+  &__text
+    width: 150px
+
+  &__leaf
+    width: 1.7217em
+
+    &:first-child
+      transform: rotate(90deg) scaleX(-1) scaleY(-1)
+
+    &:last-child
+      transform: rotate(-90deg) scaleY(-1)
+
+    path
+      fill: $color-graphic-normal

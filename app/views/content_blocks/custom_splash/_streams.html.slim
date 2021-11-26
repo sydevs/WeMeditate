@@ -1,33 +1,38 @@
 
 ruby:
-  invert = 'true' # TODO: This needs to be configurable.
+  invert = block[:color] == 'light'
   image_url = record.media_file(block[:image][:id]).large.url if block[:image]
   background = image_url ? "background-image: url(#{image_url})" : nil
 
-.content__splash.content__splash--stream class='js-splash' style=background data-invert=invert
-  .content__splash__wrapper-live
-    .content__splash__wrapper
-      h1.content__splash__title = translate('streams.live.title')
-      .content__splash__action
+  classes = ['cb-splash-textbox--stream']
+  classes << 'js-splash' if index.zero?
+  classes << "cb-splash-textbox--#{block[:color] || 'dark'}"
+
+.cb-splash-textbox.cb-splash-textbox--stream class='js-splash' style=background data-invert=(block[:color] == 'light' ? 'true' : null)
+  .cb-splash-textbox__wrapper-live
+    .cb-splash-textbox__wrapper
+      h1.cb-splash-textbox__title = translate('streams.live.title')
+      .cb-splash-textbox__action
         - if record.video_conference_url.present?
-          /.content__splash__divider
-          .content__splash__conference
+          /.cb-splash-textbox__divider
+          .cb-splash-textbox__conference
             a title=translate("streams.live.action.#{record.video_conference_type}") href=record.video_conference_url target='_blank'
               = image_pack_tag "streams/#{record.video_conference_type}.png"
             span = translate("streams.live.action.#{record.video_conference_type}")
         - else
-          .content__splash__watch
+          .cb-splash-textbox__watch
             a title=translate('streams.live.action.stream') data-lity=true href=record.stream_url
             span = translate('streams.live.action.stream')
 
-      .content__splash__description = translate(record.video_conference_url.present? ? 'streams.live.alt_description' : 'streams.live.description')
+      .cb-splash-textbox__description = translate(record.video_conference_url.present? ? 'streams.live.alt_description' : 'streams.live.description')
 
-  .content__splash__wrapper-countdown
-    .content__splash__wrapper
-      h1.content__splash__title = block[:title]
-      .content__splash__description = block[:text]
+  .cb-splash-textbox__wrapper-countdown
+    .cb-splash-textbox__wrapper
+      h1.cb-splash-textbox__title = block[:title]
+      .cb-splash-textbox__subtitle = block[:subtitle]
+      .cb-splash-textbox__description = block[:text]
 
-      .content__splash__countdown.content__splash__countdown--hidden class='js-countdown' data-time=(record.next_stream_time.to_f * 1000) data-duration=(record.duration * 1000)
+      .cb-splash-textbox__countdown.cb-splash-textbox__countdown--hidden class='js-countdown' data-time=(record.next_stream_time.to_f * 1000) data-duration=(record.duration * 1000)
         span class='js-countdown-days' data-label=translate('streams.timing.days')
         span.separator = ' '
         span class='js-countdown-hours' data-label=translate('streams.timing.hours')
@@ -36,10 +41,10 @@ ruby:
         span.separator = ':'
         span class='js-countdown-seconds' data-label=translate('streams.timing.seconds')
 
-      .content__splash__action
-        = inline_svg_tag 'graphics/leaves.svg', class: 'content__splash__action__leaf'
-        a.content__splash__action__text href=block[:url] = block[:action]
-        = inline_svg_tag 'graphics/leaves.svg', class: 'content__splash__action__leaf'
+      .cb-splash-textbox__action
+        = inline_svg_tag 'graphics/leaves.svg', class: 'cb-splash-textbox__action__leaf'
+        a.cb-splash-textbox__action__text href=block[:url] = block[:action]
+        = inline_svg_tag 'graphics/leaves.svg', class: 'cb-splash-textbox__action__leaf'
 
 - location = request&.location&.data
 - time_zone = ActiveSupport::TimeZone.new(location['timezone']) rescue Time.zone

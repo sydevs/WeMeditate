@@ -101,6 +101,7 @@ export default class TextTool extends EditorTool {
         triangle: { requires: { type: ['image'] } },
         gradient: { requires: { type: ['image'] } },
         circle: { requires: { type: ['image'] } },
+        leaves: { requires: { type: ['splash'] } },
       },
     }, api)
 
@@ -140,6 +141,14 @@ export default class TextTool extends EditorTool {
     fieldsContainer.querySelector(`.${this.CSS.input}[data-key="text"]`).addEventListener('keydown', event => this.insertParagraphBreak(event))
     fieldsContainer.addEventListener('paste', event => this.containPaste(event))
     return container
+  }
+
+  rendered() {
+    super.rendered()
+    
+    if (this.data.image && this.data.image.preview) {
+      this.wrapper.dataset.hasImage = true
+    }
   }
 
   save(toolElement) {

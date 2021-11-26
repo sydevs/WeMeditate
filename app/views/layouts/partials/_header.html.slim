@@ -2,8 +2,8 @@
 ruby:
   minimal = false unless defined? local_assigns[:minimal]
   classes = []
-  classes << 'header--overlay' if action_name == 'home' || @static_page&.role&.to_sym == :classes
-  classes << 'header--invert' if action_name == 'home'
+  classes << 'header--overlay' if @static_page&.role&.to_sym == :home || @static_page&.role&.to_sym == :classes
+  classes << 'header--invert' if @static_page&.role&.to_sym == :home
   classes << 'header--minimal' if minimal
   classes << "header--custom-#{@header_style}" if @header_style
 

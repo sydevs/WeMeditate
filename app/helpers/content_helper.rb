@@ -8,20 +8,25 @@ module ContentHelper
     return content_for(:content) if content_for?(:content)
     return unless record.parsed_content.present?
 
-    record.content_blocks.each do |block|
-      next if block['type'] == 'splash' && skip_splash
+    record.content_blocks.each_with_index do |block, index|
+      next if block['data']['type'] == 'splash' && skip_splash && index.zero?
 
       block_data = block['data'].deep_symbolize_keys
+      puts "LOAD #{block['type']} #{block_data.pretty_inspect}"
 
-      if block['data']['legacy']
-        concat render "content_blocks/legacy/#{block['type']}_block", block: block_data, record: record
-      elsif block['type'] == 'catalog' && (block['data']['style'] != 'image' || block['data']['type'] == 'articles')
-        concat render 'content_blocks/catalog/generic_block', block: block_data, record: record
-      elsif block['data']['type']
-        concat render "content_blocks/#{block['type']}/#{block['data']['type']}_block", block: block_data, record: record
+      if block_data[:legacy]
+        block_partial = "legacy/#{block['type']}_block"
+      elsif block_data[:type] == 'splash'
+        block_partial = get_splash_partial
+      elsif block['type'] == 'catalog' && (block_data[:style] != 'image' || block_data[:type] == 'articles')
+        block_partial = 'catalog/generic_block'
+      elsif block_data[:type]
+        block_partial = "#{block['type']}/#{block['data']['type']}_block"
       else
-        concat render "content_blocks/#{block['type']}_block", block: block_data, record: record
+        block_partial = "#{block['type']}_block"
       end
+
+      concat render "content_blocks/#{block_partial}", block: block_data, record: record, index: index
     rescue ActionView::MissingTemplate => _e
       concat content_tag(:p, "Unsupported block #{block.inspect}")
     end
@@ -36,7 +41,19 @@ module ContentHelper
     overrides[:url] = overrides[:url] + block[:url] if overrides[:url] && block[:url]&.starts_with?('#')
     block.merge!(overrides)
 
-    render 'content_blocks/splash_block', block: block, record: record
+    block_partial = get_splash_partial
+
+    render "content_blocks/#{block_partial}", block: block, record: record, index: 0
+  end
+
+  def get_splash_partial
+    file_name = controller_name == 'streams' ? 'streams' : @static_page&.role || @record&.slug
+    puts "GET SPLASH PARTIAL #{file_name}"
+    if File.exists?(Rails.root.join("app", "views", "content_blocks", "custom_splash", "_#{file_name}.html.slim"))
+      "custom_splash/#{file_name}"
+    else
+      'textbox/splash_block'
+    end
   end
 
   # Render a decoration within a cotent block
