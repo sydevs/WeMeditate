@@ -1,8 +1,9 @@
 
 ruby:
   classes = ["cb-image-textbox--#{block[:position]}"]
-  classes << "cb-image-textbox--#{block[:color] || 'dark'}"
+  classes << "cb-image-textbox--#{block[:color]}"
   classes << "cb-image-textbox--#{block[:spacing]}" unless block[:background] == 'ornate'
+  classes << "cb-image-textbox--overlap" if block[:background] == 'image'
   classes << "cb-image-textbox--#{block[:background]}"
 
   return unless block[:image].is_a?(Hash)

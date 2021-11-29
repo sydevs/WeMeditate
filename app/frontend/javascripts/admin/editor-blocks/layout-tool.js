@@ -187,10 +187,8 @@ export default class LayoutTool extends EditorTool {
 
     const items = toolElement.querySelector(`.${this.CSS.items}`).children
     for (let i = 0; i < items.length; i++) {
-      console.log('save item', items[i])
       const title = items[i].querySelector(`.${this.CSS.item.title}`).value
       const text = items[i].querySelector(`.${this.CSS.item.text}`).innerHTML
-      console.log('save item title', title, 'from', items[i].querySelector(`.${this.CSS.item.title}`), 'from', this.CSS.item.title)
 
       if (title || text) {
         const data = { title: title, text: text }
