@@ -32,6 +32,7 @@ export default class LayoutTool extends EditorTool {
       }
     }, api)
 
+    this.uploaders = []
     this.CSS.items = `${this.CSS.container}__items`
     this.CSS.item = {
       container: `${this.CSS.container}__item`,
@@ -48,9 +49,9 @@ export default class LayoutTool extends EditorTool {
     this.itemsContainer = make('div', this.CSS.items, {}, container)
 
     if (this.data.items.length) {
-      this.data.items.forEach(item => {
-        this.itemsContainer.appendChild(this.renderItem(item))
-      })
+      for (let i = 0; i < this.data.items.length; i++) {
+        this.itemsContainer.appendChild(this.renderItem(i, this.data.items[i]))
+      }      
     } else {
       for (let i = 0; i < 3; i++) {
         this.itemsContainer.appendChild(this.renderItem())
@@ -60,7 +61,7 @@ export default class LayoutTool extends EditorTool {
     return container
   }
 
-  renderItem(data = {}) {
+  renderItem(index, data = {}) {
     const container = make('div', this.CSS.item.container, {})
     container.addEventListener('keydown', (event) => {
       return this._onItemKeydown(event, event.currentTarget)
@@ -69,20 +70,20 @@ export default class LayoutTool extends EditorTool {
     // Add Image uploader
     const imageContainer = make('div', [this.CSS.input, this.CSS.item.image], {}, container)
 
-    this.uploader = new FileUploader(imageContainer)
-    this.uploader.addEventListener('uploadstart', event => this.setItemImage(container, event.detail.file))
-    this.uploader.addEventListener('uploadend', event => {
+    this.uploaders[index] = new FileUploader(imageContainer)
+    this.uploaders[index].addEventListener('uploadstart', event => this.setItemImage(index, container, event.detail.file))
+    this.uploaders[index].addEventListener('uploadend', event => {
       imageContainer.dataset.attributes = JSON.stringify(event.detail.response)
     })
 
     const imageRemoveIcon = make('i', [this.CSS.item.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, imageContainer)
-    imageRemoveIcon.addEventListener('click', () => this.setItemImage(container, null))
+    imageRemoveIcon.addEventListener('click', () => this.setItemImage(index, container, null))
 
     // TODO: The way we handle image removal doesn't make sense.
     if (data.image && data.image.preview) {
       make('img', this.CSS.item.img, { src: data.image.preview }, imageContainer)
       imageContainer.dataset.attributes = JSON.stringify(data.image)
-      $(this.uploader.wrapper).hide()
+      $(this.uploaders[index].wrapper).hide()
     } else {
       $(imageRemoveIcon).hide()
     }
@@ -110,11 +111,11 @@ export default class LayoutTool extends EditorTool {
     return container
   }
 
-  setItemImage(item, file) {
+  setItemImage(index, item, file) {
     if (file) {
       const placeholder = make('div', [this.CSS.item.img, 'ui', 'fluid', 'placeholder'], {})
       item.querySelector(`.${this.CSS.item.image}`).appendChild(placeholder)
-      $(this.uploader.wrapper).hide()
+      $(this.uploaders[index].wrapper).hide()
       $(item.querySelector(`.${this.CSS.item.remove}`)).show()
 
       const reader = new FileReader()
@@ -126,7 +127,7 @@ export default class LayoutTool extends EditorTool {
     } else {
       item.querySelector(`.${this.CSS.item.image}`).dataset.attributes = null
       item.querySelector(`.${this.CSS.item.img}`).remove()
-      $(this.uploader.wrapper).show()
+      $(this.uploaders[index].wrapper).show()
       $(item.querySelector(`.${this.CSS.item.remove}`)).hide()
     }
   }
