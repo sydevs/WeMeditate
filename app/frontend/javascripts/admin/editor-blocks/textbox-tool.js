@@ -36,7 +36,7 @@ export default class TextTool extends EditorTool {
         image: { input: false },
         title: { input: 'title', contained: true },
         subtitle: { label: 'Subtitle', input: 'caption', contained: true },
-        text: { input: 'content' },
+        text: { input: 'content', contained: true },
         action: { input: 'button', contained: true },
         url: { input: 'url', contained: true },
       },
@@ -138,7 +138,6 @@ export default class TextTool extends EditorTool {
       $(this.imageRemoveIcon).hide()
     }
 
-    fieldsContainer.querySelector(`.${this.CSS.input}[data-key="text"]`).addEventListener('keydown', event => this.insertParagraphBreak(event))
     fieldsContainer.addEventListener('paste', event => this.containPaste(event))
     return container
   }

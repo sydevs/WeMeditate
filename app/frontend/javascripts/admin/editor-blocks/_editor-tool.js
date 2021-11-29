@@ -493,8 +493,8 @@ export default class EditorTool {
   insertParagraphBreak(event) {
     if (event.key == 'Enter' || event.keyCode == 13) { // ENTER
       document.execCommand('insertHTML', false, '\r\n')
-      event.preventDefault()
       event.stopPropagation()
+      event.preventDefault()
       return false
     }
   }

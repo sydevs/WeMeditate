@@ -164,7 +164,6 @@ export default class LayoutTool extends EditorTool {
   }
 
   _onItemKeydownBackspace(input, item) {
-    //if (input.classList.contains(this.CSS.item.title)) {
     const isOnlyItem = (item == item.parentNode.firstChild && item == item.parentNode.lastChild)
     const titleContent = item.querySelector(`.${this.CSS.item.title}`).innerText.trim()
     const textContent = item.querySelector(`.${this.CSS.item.text}`).innerText.trim()
