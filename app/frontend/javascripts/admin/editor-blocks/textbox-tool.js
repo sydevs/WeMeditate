@@ -99,7 +99,7 @@ export default class TextTool extends EditorTool {
       decorations: {
         sidetext: { requires: { type: ['image'] } },
         triangle: { requires: { type: ['image'] } },
-        gradient: { requires: { type: ['image'] } },
+        gradient: { requires: { background: ['white', 'image'] } },
         circle: { requires: { type: ['image'] } },
         leaves: { requires: { type: ['splash'] } },
       },
