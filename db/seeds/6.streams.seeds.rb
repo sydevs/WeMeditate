@@ -18,12 +18,12 @@ streams = {}
   time_zone_identifier: 'Europe/London',
   time_zone_offset: 0,
   target_time_zones: [0],
-}].each_with_index do |atts, index| # rubocop:disable Style/TrailingCommaInArrayLiteral
+}].each_with_index do |atts, index|
   stream = Stream.find_or_initialize_by(name: atts[:name])
   atts.merge!({
     state: :published,
     locale: :en,
-    thumbnail_id: attachment("classes/streams.jpg", stream),
+    thumbnail_id: attachment('classes/streams.jpg', stream),
   })
   stream.update!(atts)
   streams[index] = stream

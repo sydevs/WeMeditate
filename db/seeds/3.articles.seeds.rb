@@ -778,7 +778,7 @@ article.update!(content: content([
     type: :catalog,
     data: {
       type: :articles,
-      title: "Articles",
+      title: 'Articles',
       items: Article.all.sample(6).map { |item|
         { id: item.id, name: item.name }
       },
@@ -787,7 +787,7 @@ article.update!(content: content([
     type: :catalog,
     data: {
       type: :treatments,
-      title: "Treatments",
+      title: 'Treatments',
       items: Treatment.all.sample(3).map { |item|
         { id: item.id, name: item.name }
       },
@@ -796,7 +796,7 @@ article.update!(content: content([
     type: :catalog,
     data: {
       type: :meditations,
-      title: "Meditations",
+      title: 'Meditations',
       items: Meditation.all.sample(3).map { |item|
         { id: item.id, name: item.name }
       },
