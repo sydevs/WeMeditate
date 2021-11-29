@@ -27,6 +27,7 @@ module Contentable
 
   def parsed_content
     return nil unless self[:content].present?
+
     self[:content].is_a?(Hash) ? self[:content] : JSON.parse(self[:content])
   end
 
@@ -133,7 +134,7 @@ module Contentable
             text: block['data']['text'],
             type: 'header',
             level: block['data']['level'],
-            decorations: block['data']['centered'] ? { leaves: true } : {}
+            decorations: block['data']['centered'] ? { leaves: true } : {},
           },
         }
       when 'image'

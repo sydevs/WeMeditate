@@ -17,7 +17,7 @@ module ContentHelper
       if block_data[:legacy]
         block_partial = "legacy/#{block['type']}_block"
       elsif block_data[:type] == 'splash'
-        block_partial = get_splash_partial
+        block_partial = splash_partial
       elsif block['type'] == 'catalog' && (block_data[:style] != 'image' || block_data[:type] == 'articles')
         block_partial = 'catalog/generic_block'
       elsif block_data[:type]
@@ -41,15 +41,15 @@ module ContentHelper
     overrides[:url] = overrides[:url] + block[:url] if overrides[:url] && block[:url]&.starts_with?('#')
     block.merge!(overrides)
 
-    block_partial = get_splash_partial
+    block_partial = splash_partial
 
     render "content_blocks/#{block_partial}", block: block, record: record, index: 0
   end
 
-  def get_splash_partial
+  def splash_partial
     file_name = controller_name == 'streams' ? 'streams' : @static_page&.role || @record&.slug
     puts "GET SPLASH PARTIAL #{file_name}"
-    if File.exists?(Rails.root.join("app", "views", "content_blocks", "custom_splash", "_#{file_name}.html.slim"))
+    if File.exist?(Rails.root.join('app', 'views', 'content_blocks', 'custom_splash', "_#{file_name}.html.slim"))
       "custom_splash/#{file_name}"
     else
       'textbox/splash_block'
