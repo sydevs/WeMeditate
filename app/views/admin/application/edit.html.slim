@@ -9,7 +9,7 @@
 
       - if @record.viewable?
         - if @record.published?
-          a.ui.button href=polymorphic_url(@record) target='_blank'
+          a.ui.button href=polymorphic_public_url(@record) target='_blank'
             i.eye.icon
             = translate('admin.action.descriptive.show')
         - elsif @record.has_translation?

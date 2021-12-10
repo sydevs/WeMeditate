@@ -36,7 +36,7 @@ module SitemapHelper
           Rails.application.routes.default_url_options[:host] = HOSTS[locale]
           special_url = send(SPECIAL_PAGES[record.role&.to_sym][:url]) if record.is_a?(StaticPage) && SPECIAL_PAGES.key?(record.role&.to_sym)
           {
-            href: special_url || polymorphic_url(record),
+            href: special_url || polymorphic_public_url(record),
             lang: locale,
           }
         end

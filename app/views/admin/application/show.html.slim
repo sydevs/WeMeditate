@@ -31,7 +31,7 @@
                 i.edit.icon
                 = translate 'admin.action.simple.edit_details'
             - if @record.published?
-              - url = @record.is_a?(StaticPage) ? static_page_url_for(@record) : polymorphic_url(@record)
+              - url = @record.is_a?(StaticPage) ? static_page_url_for([@record, Globalize.locale]) : polymorphic_public_url(@record)
               a.item href=url target='_blank'
                 i.eye.icon
                 = translate 'admin.action.descriptive.show'
