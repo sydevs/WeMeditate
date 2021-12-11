@@ -60,6 +60,7 @@ ro:
         preview: "Previzualizează schița pe site"
         reload_vimeo_data: "Reîncarcă Metadatele Vimeo"
         audit: "Vezi istoricul modificărilor"
+        restore_autosave: "restore autosave" # TODO: Translate
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
@@ -121,6 +122,7 @@ ro:
       invalid_vimeo_id: "trebuie sa fie un ID Vimeo valid"
       new_author_notice: "Încă nu ai configurat profilul tău de autorului, completează câmpurile de mai jos și apasă salvează."
       start_details_before_content: "Începe traducerea detaliilor mai întâi, apoi a conținutul."
+      autosave_detected: "Autosave detected" # TODO: Translate
 
     hints:
       excerpt: "Aceasta este o scurtă previzualizare a conținutului %{page} care va fi afișat în lista %{page}."

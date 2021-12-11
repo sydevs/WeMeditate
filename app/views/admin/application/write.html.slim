@@ -5,6 +5,13 @@ ruby:
   allow = policy(@record)
   has_draft = @record.has_draft?(:content)
 
+#autosaver style='display: none'
+  strong = translate('admin.messages.autosave_detected')
+  br
+  em = Date.today.to_s(:long)
+  br
+  a href="?autosave=load" = translate('admin.action.descriptive.restore_autosave')
+
 = simple_form_for @record, url: polymorphic_admin_path([:admin, @record]), html: { id: "editor-form" } do |f|
   - locale = !@record.try(:has_translation?, :content) ? @record.original_locale : Globalize.locale
   - Globalize.with_locale(locale) do
@@ -18,7 +25,7 @@ ruby:
         /= draft_reset_buttons(:content, @record.parsed_content, JSON.parse(content))
         /.clearfix
 
-      #content-editor data-content=content.to_json
+      #content-editor data-content=content.to_json data-autosave-key="wemeditate.autosave.#{@record.model_name.route_key}.#{@record.id}" data-load-autosave=(params[:autosave] == 'load' ? 'true' : nil)
 
     - if @record.respond_to?(:published) && !allow.review?
       - if @record.draftable?

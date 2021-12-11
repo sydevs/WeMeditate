@@ -60,6 +60,7 @@ de:
         preview: "Zeige Entwurf auf Webseite"
         reload_vimeo_data: "Vimeo Metadaten neu laden"
         audit: "Zeige Änderungsbericht"
+        restore_autosave: "restore autosave" # TODO: Translate
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
@@ -120,6 +121,7 @@ de:
       invalid_vimeo_id: "muss eine gültige Vimeo-ID sein"
       new_author_notice: "Sie haben Ihr Autorenprofil noch nicht eingerichtet. Füllen Sie die folgenden Felder aus und klicken Sie auf Speichern."
       start_details_before_content: "Beginnen Sie zuerst mit der Übersetzung der Details und dann mit dem Inhalt."
+      autosave_detected: "Autosave detected" # TODO: Translate
 
     hints:
       excerpt: "Dies ist eine kurze Vorschau des %{page} Inhalts, der in %{page} Listen angezeigt wird."

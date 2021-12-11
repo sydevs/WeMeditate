@@ -59,6 +59,7 @@ fr:
         show: "Voir sur le Site"
         preview: "Aperçu du Brouillon sur le Site"
         reload_vimeo_data: "Recharger les Métadonnées Vimeo"
+        restore_autosave: "restore autosave" # TODO: Translate
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
@@ -119,6 +120,7 @@ fr:
       invalid_vimeo_id: "doit être un identifiant Vimeo valide"
       new_author_notice: "Vous n'avez pas encore configuré votre profil d'auteur, remplissez les champs ci-dessous et appuyez sur enregistrer."
       start_details_before_content: "Commencez par traduire les détails en premier, puis le contenu."
+      autosave_detected: "Autosave detected" # TODO: Translate
 
     hints:
       excerpt: "Voici un bref aperçu du contenu de %{page} qui sera affiché dans les listes %{page}."

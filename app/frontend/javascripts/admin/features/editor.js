@@ -1,5 +1,6 @@
 import EditorJS from '@editorjs/editorjs'
 import { afterPendingUploads, hasPendingUploads } from './uploader'
+import { debounce } from '../util'
 
 import ParagraphTool from '../editor-blocks/paragraph-tool'
 import ListTool from '../editor-blocks/list-tool'
@@ -18,10 +19,11 @@ import CitationTool from '../editor-inline-tools/citation-tool'
  * This is a fairly complex system which uses all the files in the 'cdx-editor' subfolder.
  */
 
-let form, editorInstance, editorInput
+let form, editorInstance, editorInput, contentEditor
 
 const editorParameters = {
   autofocus: true,
+  onChange: debounce(() => autoSave()),
   placeholder: 'Let`s write an awesome story!',
   inlineToolbar: ['link', 'bold', 'italic', 'citation'],
   tools: {
@@ -55,23 +57,32 @@ export default function load() {
   console.log('loading Editor.js') // eslint-disable-line no-console
   form = document.getElementById('editor-form')
 
-  let contentEditor = document.getElementById('content-editor')
+  contentEditor = document.getElementById('content-editor')
 
   // Only intialize if the content editor actually exists on this page.
   if (form && contentEditor) {
-    //SplashEditor.load()
-
     form.onsubmit = onSubmit
     editorInput = form.querySelector('#content-input')
 
-    if (contentEditor.dataset.content) {
+    if (contentEditor.dataset.loadAutosave) {
+      let localStorageData = localStorage.getItem(contentEditor.dataset.autosaveKey)
+      editorParameters.data = processDataForLoad(localStorageData)
+    } else if (contentEditor.dataset.content) {
       editorParameters.data = processDataForLoad(contentEditor.dataset.content)
     }
 
     editorParameters.holder = contentEditor
-
-    // Initialize the CodeX Editor (aka EditorJS)
     editorInstance = new EditorJS(editorParameters)
+  }
+
+  if (!contentEditor.dataset.loadAutosave) {
+    let localStorageData = localStorage.getItem(contentEditor.dataset.autosaveKey)
+    console.log('has autosave?', localStorageData, )
+    if (localStorageData) {
+      let autosaver = document.getElementById('autosaver')
+      autosaver.style = null
+      autosaver.querySelector('em').innerText = localStorage.getItem(contentEditor.dataset.autosaveKey + '.date')
+    }
   }
 }
 
@@ -95,6 +106,8 @@ function onSubmit(event) {
     editorInstance.save().then(outputData => {
       console.log('Article data: ', outputData) // eslint-disable-line no-console
       editorInput.value = processDataForSave(outputData)
+      localStorage.removeItem(contentEditor.dataset.autosaveKey)
+      localStorage.removeItem(contentEditor.dataset.autosaveKey + '.date')
     }).catch((error) => {
       console.error('Editor saving failed: ', error) // eslint-disable-line no-console
       event.preventDefault()
@@ -104,13 +117,6 @@ function onSubmit(event) {
 
 // Do any extra processing on the JSON data which is given to us by the editor
 function processDataForSave(data) {
-  /*
-  if (SplashEditor.isActive) {
-    // If this page has a splash editor, then we need to add that data to the editor data before it gets saved.
-    data.blocks.unshift(SplashEditor.getData())
-  }
-  */
-
   // Consolidate all the media file ids for easy reference
   let mediaFiles = []
   for (let index = 0; index < data.length; index++) {
@@ -125,15 +131,18 @@ function processDataForSave(data) {
 
 // Do any extra processing on the JSON data before we load it into the editor
 function processDataForLoad(data) {
-  data = JSON.parse(data)
+  return JSON.parse(data)
+}
 
-  /*
-  if (data.blocks && data.blocks.length > 0 && data.blocks[0].type === 'splash') {
-    // Remove the splash data before sending it to editorjs
-    const splashData = data.blocks.shift()
-    SplashEditor.setData(splashData)
-  }
-  */
-
-  return data
+async function autoSave() {
+  // Retrieve the editor data, then store it in the input before the editor form is submitted.
+  editorInstance.save().then(outputData => {
+    console.log('Autosave: ', outputData) // eslint-disable-line no-console
+    let data = processDataForSave(outputData)
+    localStorage.setItem(contentEditor.dataset.autosaveKey, data)
+    localStorage.setItem(contentEditor.dataset.autosaveKey + '.date', new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }))
+    editorInput.value = data
+  }).catch((error) => {
+    console.error('Editor saving failed: ', error) // eslint-disable-line no-console
+  })
 }

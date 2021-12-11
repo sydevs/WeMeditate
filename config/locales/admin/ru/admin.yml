@@ -60,6 +60,7 @@ ru:
         preview: "Предварительный просмотр на сайте"
         reload_vimeo_data: "Reload Vimeo Metadata"
         audit: "Просмотреть изменения" 
+        restore_autosave: "restore autosave" # TODO: Translate
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
@@ -123,6 +124,7 @@ ru:
       new_author_notice: "Вы ещё не настроили свой профиль автора, заполните поля ниже и нажмите сохранить."
       start_details_before_content: "Сначала надо перевести параметры, потом контент." 
       self_realization_slug: "Адрес страницы самореализации должен быть \"%{slug}\"" 
+      autosave_detected: "Autosave detected" # TODO: Translate
 
     hints: 
       excerpt: "Это короткое превью страницы, которое будет показано в списке страниц типа \"%{page}\"."
