@@ -77,7 +77,6 @@ export default function load() {
 
   if (!contentEditor.dataset.loadAutosave) {
     let localStorageData = localStorage.getItem(contentEditor.dataset.autosaveKey)
-    console.log('has autosave?', localStorageData, )
     if (localStorageData) {
       let autosaver = document.getElementById('autosaver')
       autosaver.style = null
