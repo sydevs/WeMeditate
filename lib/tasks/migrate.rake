@@ -1,10 +1,9 @@
 namespace :migrate do
   desc 'Migrate content json to the new format'
   task :content, %i[model id] => :environment do |_, args|
-    locales = (ENV['LOCALES'] || '').split(',').map(&:to_sym)
-    puts "Migrating content for #{locales.inspect}"
+    puts "Migrating content for #{I18n.available_locales.inspect}"
 
-    locales.each do |locale|
+    I18n.available_locales.each do |locale|
       Globalize.with_locale(locale) do
         if args.model && args.id
           record = args.model.classify.constantize.find(args.id)
