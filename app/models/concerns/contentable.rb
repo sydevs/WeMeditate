@@ -84,6 +84,8 @@ module Contentable
     return unless parsed_content.present?
 
     migrated_blocks = content_blocks.map do |block|
+      next if block.nil?
+
       puts "\e[0m-----"
       pp block
       case block['type']
@@ -104,7 +106,7 @@ module Contentable
           data: {
             id: block['data']['id'],
             title: block['data']['title'],
-            items: block['data']['items'].map { |item| item['id'].to_i },
+            items: block['data']['items'].map { |item| item.is_a?(Integer) ? item : item['id'].to_i },
             type: block['data']['type'],
             style: block['data']['withImages'] ? 'image' : 'text',
             decorations: block['data']['decorations'] || {},
@@ -256,15 +258,15 @@ module Contentable
       else
         puts "[WARN] Unsupported block type! #{block['type']}"
       end
-    end
+    end.compact
 
     puts 'Migrated content'
-    content_blocks.each_with_index do |block, i|
-      next unless %w[structured].include?(block['type'])
-
-      puts "\e[32m#{block.pretty_inspect}\e[0m -> \e[36m#{migrated_blocks[i].pretty_inspect}"
-      puts "\e[0m-----"
-    end
+    # content_blocks.each_with_index do |block, i|
+    #   # next unless %w[structured].include?(block['type'])
+    # 
+    #   puts "\e[32m#{block.pretty_inspect}\e[0m -> \e[36m#{migrated_blocks[i].pretty_inspect}"
+    #   puts "\e[0m-----"
+    # end
 
     update!(content: parsed_content.merge('blocks' => migrated_blocks).to_json)
   end
