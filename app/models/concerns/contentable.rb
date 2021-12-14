@@ -28,7 +28,6 @@ module Contentable
   def parsed_content
     return nil unless self[:content].present?
 
-    puts "PARSED CONTENT IS #{self[:content].class}"
     self[:content].is_a?(Hash) ? self[:content] : JSON.parse(self[:content])
   end
 
@@ -82,6 +81,7 @@ module Contentable
   end
 
   def migrate_content!
+    puts "MIGRATE CONTENT FOR #{self.model_name} #{self.id} - #{self[:content].class}"
     return unless parsed_content.present?
     return if parsed_content['migrated']
 
