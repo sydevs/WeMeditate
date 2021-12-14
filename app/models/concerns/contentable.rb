@@ -28,6 +28,7 @@ module Contentable
   def parsed_content
     return nil unless self[:content].present?
 
+    puts "PARSED CONTENT IS #{self[:content].class}"
     self[:content].is_a?(Hash) ? self[:content] : JSON.parse(self[:content])
   end
 
@@ -82,6 +83,7 @@ module Contentable
 
   def migrate_content!
     return unless parsed_content.present?
+    return if parsed_content['migrated']
 
     migrated_blocks = content_blocks.map do |block|
       next if block.nil?
@@ -263,12 +265,11 @@ module Contentable
     puts 'Migrated content'
     # content_blocks.each_with_index do |block, i|
     #   # next unless %w[structured].include?(block['type'])
-    # 
     #   puts "\e[32m#{block.pretty_inspect}\e[0m -> \e[36m#{migrated_blocks[i].pretty_inspect}"
     #   puts "\e[0m-----"
     # end
 
-    update!(content: parsed_content.merge('blocks' => migrated_blocks).to_json)
+    update!(content: parsed_content.merge('blocks' => migrated_blocks, 'migrated' => true).to_json)
   end
 
   def self.strip_url url
