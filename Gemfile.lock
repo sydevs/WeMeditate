@@ -72,7 +72,7 @@ GEM
       execjs
     autosize (2.4.0.0)
     bcrypt (3.1.13)
-    better_errors (2.8.0)
+    better_errors (2.9.1)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
@@ -300,6 +300,8 @@ GEM
     rack (2.2.3)
     rack-mini-profiler (2.0.2)
       rack (>= 1.2.0)
+    rack-proxy (0.7.0)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.4.1)
@@ -377,6 +379,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    semantic_range (3.0.0)
     signet (0.15.0)
       addressable (~> 2.3)
       faraday (>= 0.17.3, < 2.0)
@@ -436,6 +439,11 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
+    webpacker (5.4.0)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     webrick (1.7.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -525,6 +533,7 @@ DEPENDENCIES
   web-console
   webdrivers
   webmock
+  webpacker
 
 RUBY VERSION
    ruby 2.7.2p137

@@ -60,6 +60,7 @@ cs:
         preview: "Preview draft on website"
         reload_vimeo_data: "Reload Vimeo Metadata"
         audit: "View change logs"
+        restore_autosave: "restore autosave" # TODO: Translate
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
@@ -120,6 +121,7 @@ cs:
       invalid_vimeo_id: "must be a valid Vimeo ID"
       new_author_notice: "You have not set up your author profile yet, fill out the fields below and press save."
       start_details_before_content: "Start translating details first, then the content."
+      autosave_detected: "Autosave detected" # TODO: Translate
 
     hints:
       excerpt: "This is a short preview of the %{page} content that will be shown in %{page} listings."
@@ -499,12 +501,3 @@ cs:
         no_languages: "No Languages"
         all_languages: "All Languages"
         other_languages: "Other Languages"
-
-    javascript:      
-      email: "Email"
-      message: "Message"
-      drag_images_to_upload: "Drag images here to upload"
-      no_results: "No results found..."
-      waiting_for_upload: "Waiting for %{count} file(s) to finish uploading..."
-      file: "File"
-      files: "Files"

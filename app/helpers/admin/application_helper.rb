@@ -50,70 +50,68 @@ module Admin::ApplicationHelper
     blocks = record.content_blocks if record.parsed_content.present?
     return unless blocks
 
-    content_tag :ul do
+    content_tag :ul, class: 'content-outline' do
       # Loop through each block in the record, and generate a short piece of text describing that block.
       for block in blocks
         case block['type']
-        when 'splash', 'header', 'textbox' # Bold title
-          field = block['type'] == 'header' ? 'text' : 'title'
-          title = block['data'][field]
-          type = translate(block['type'], scope: %i[admin content blocks])
-          word_count = block['data']['text'] ? block['data']['text'].split.size : 0
-          word_count = translate('admin.content.words', count: word_count)
-
-          title = "#{block['data']['level']&.upcase || 'H2'} - #{title}" if block['type'] == 'header'
-
-          concat content_tag :li, tag.strong(title)
-          concat content_tag :li, tag.i("#{type}: #{word_count}") if block['type'] == 'textbox' && !block['data']['asVideo']
-
-        when 'form' # Content
-          concat content_tag :li, "#{block['type'].titleize}: #{block['data']['title']}"
-
-        when 'video', 'structured' # Items list
-          items = block['data']['items']&.map { |item| item['title'] }&.join(', ')
-
-          case block['type']
-          when 'structured'
-            type = translate(block['data']['format'], scope: %i[admin content tunes format])
+        when 'paragraph'
+          text = block['data']['text']
+          if block['data']['type'] == 'header'
+            result = tag.strong(text)
           else
-            type = translate(block['type'], scope: %i[admin content blocks])
+            result = block['data']['text'].truncate(200)
           end
 
-          concat content_tag :li, "#{type.titleize}: #{items}"
+        when 'list'
+          result = ''
+          result = "<em>#{translate('admin.javascript.blocks.list.type.contents')}</em><br>" if block['data']['type'] == 'contents'
+          result += block['data']['items'].map { |i|
+            depth = (i.is_a?(Hash) ? (i.dig('level') || 'h2')[1].to_i : 2) - 1
+            text = i.is_a?(Hash) ? i['text'] : i
+            "#{'—' * depth} #{text}".truncate(60)
+          }.join('<br>')
+          result = sanitize(result, tags: %w[em br])
 
-        when 'paragraph', 'quote' # Word count
-          type = translate(block['type'], scope: %i[admin content blocks])
-          word_count = translate('admin.content.words', count: block['data']['text'].split.size)
-          concat content_tag :li, tag.i("#{type}: #{word_count}")
+        when 'layout'
+          result = block['data']['items'].map { |i| "— #{i['title']}" }.join('<br>')
+          result = sanitize(result, tags: %w[br])
 
-        when 'list', 'catalog', 'image' # Items count
-          item_count = translate('admin.content.items', count: block['data']['items'].split.size)
+        when 'catalog'
+          result = translate("activerecord.models.#{block['data']['type'].singularize}.other")
+          result += ": #{translate('admin.content.items', count: block['data']['items'].length)}"
 
-          case block['type']
-          when 'catalog'
-            type = translate(block['data']['type'], scope: %i[admin content tunes type])
-          else
-            type = translate(block['type'], scope: %i[admin content blocks])
-          end
+        when 'textbox'
+          result = ''
+          result += "<strong>#{block['data']['title']}</strong><br>" if block['data']['title'].present?
+          result += "#{block['data']['text']&.truncate(60)}<br>" if block['data']['text'].present?
+          result += tag.span("[#{block['data']['action']}] → ") + tag.small(block['data']['url']) if block['data']['action'] && block['data']['url']
+          result = sanitize(result, tags: %w[strong br])
 
-          concat content_tag :li, tag.i("#{type}: #{item_count}")
+        when 'action'
+          result = tag.span("[#{block['data']['action']}] → ") + tag.small(block['data']['url']) if block['data']['action'] && block['data']['url']
 
-        when 'action' # Short text link
-          type = translate(block['type'], scope: %i[admin content blocks])
-          concat content_tag :li, tag.em(type) + tag.span(": [#{block['data']['text']}] → ") + tag.small(block['data']['url'])
+        when 'media'
+          result = block['data']['items'].map { |i| "#{tag.i(class: "#{block['data']['type']} icon")} <a href=\"#{i['image']['preview']}\" target=\"_blank\">#{i['image']['preview'].split('/').last}</a>#{" - \"#{i['caption'].truncate(100)}\"" if i['caption']}" }.join('<br>')
+          result = sanitize(result, tags: %w[i a br])
 
-        when 'whitespace' # Whitespace
+        when 'vimeo'
+          result = block['data']['items'].map { |i| "#{tag.i(class: 'video icon')} #{i['title']}" }.join('<br>')
+          result = sanitize(result, tags: %w[i a br])
+
+        when 'whitespace'
           separators = {
             large: '==',
             medium: '—',
             small: '--',
           }
 
-          concat content_tag :li, separators[block['data']['size'].to_sym] * 3
+          result = separators[block['data']['size'].to_sym] * 3
 
         else
           concat block.inspect
         end
+
+        concat content_tag :li, result, class: "content-outline__#{block['type']} content-outline__#{block['type']}--#{block['data']['type']}"
       end
     end
   end

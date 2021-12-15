@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title> Error | We Meditate </title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      border: red;
+      overflow-x: hidden;
+      font-size: 62.5%;
+      font-family: "Raleway", sans-serif;
+      font-weight: 300;
+      color: #7b7b7b;
+      scroll-behavior: smooth;
+      line-height: 1.15;
+    }
+
+    body {
+      font-size: 16px;
+      font-size: 1.6rem;
+      -webkit-text-size-adjust: none;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: none;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      margin: 0;
+    }
+
+    h1 {
+      margin: 0.67em 0;
+      color: #7b7b7b;
+      font-weight: 600;
+    }
+
+    h2 {
+      margin: 0.83em 0;
+      color: #7b7b7b;
+      font-weight: 500;
+    }
+
+    a {
+      background-color: transparent;
+      outline: none;
+      text-decoration: none;
+      color: #61aaa0;
+      transition: all .3s ease;
+    }
+
+    a:hover {
+      opacity: 0.5;
+    }
+
+    .error_container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .error {
+      position: relative;
+      text-align: center;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 24px;
+      max-width: 814px;
+    }
+
+    .banner {
+      position: relative;
+      margin: 28px auto;
+      padding: 24px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 2.8rem;
+      line-height: 1.4;
+      letter-spacing: 1px;
+    }
+
+    .banner:before {
+      position: absolute;
+      top: 0;
+      bottom: auto;
+      left: 0;
+      right: auto;
+      background: linear-gradient(to right, rgba(255, 255, 255, .01) 0, rgba(255, 255, 255, 0.18) 25%, rgba(197, 224, 220, 0.3) 100%);
+      display: block;
+      content: '';
+      height: 100%;
+      width: 50%;
+      z-index: -1;
+    }
+
+    .error__banner {
+      font-weight: 600;
+      font-size: 2.8rem;
+      letter-spacing: .93px;
+    }
+
+    .error__title {
+      font-size: 2.2rem;
+      font-weight: 300;
+      margin-top: 0;
+      margin-bottom: 56px;
+    }
+
+    .error__subtitle {
+      font-size: 1.8rem;
+      line-height: 1.6667;
+      margin-bottom: 48px;
+      text-align: left;
+    }
+
+    .error__list {
+      text-align: left;
+      margin: 0;
+    }
+
+    .error__list li {
+      font-size: 2.2rem;
+      line-height: 1.1818;
+      margin-bottom: 58px;
+      padding-left: 24px;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+      .error {
+        padding-left: 96px;
+        padding-right: 96px;
+      }
+    }
+
+    @media only screen and (min-width: 768px) {
+      .banner {
+        font-size: 3.2rem;
+        letter-spacing: 1.5px;
+        padding-top: 32px;
+        padding-bottom: 32px;
+      }
+
+      .error__banner {
+        font-size: 4.5rem;
+        margin-bottom: 40px;
+      }
+
+      .error__title {
+        font-size: 3.5rem;
+      }
+
+      .error__subtitle {
+        font-size: 2.8rem;
+        text-align: center;
+      }
+
+      .error__list {
+        display: inline-block;
+      }
+    }
+
+    @media only screen and (min-width: 2180px) {
+      .banner {
+        padding-top: 48px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="error_container">
+
+    <div class="error">
+
+      <img src="packs/media/images/header/logo-small-953b6302b3fa9921d7da7abfd7fef98c.svg">
+
+      <h1 class="error__banner banner">
+        We Meditate
+      </h1>
+
+      <h2 class="error__title">
+        We're sorry, but something went wrong
+      </h2>
+
+      <p class="error__subtitle"> Try one of these instead: </p>
+
+      <ul class="error__list">
+        <li>
+          <a href="/meditations">Meditate Now</a>
+        </li>
+        <li>
+          <a href="/music">Music for Meditation</a>
+        </li>
+        <li>
+          <a href="/inspiration">Inspiration</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>

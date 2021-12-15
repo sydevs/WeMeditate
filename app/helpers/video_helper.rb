@@ -6,12 +6,14 @@ module VideoHelper
   # Check if a set of vimeo metadata has the necessary attributes for the afterglow video player.
   def supports_afterglow_player? vimeo_data
     # We need to have download links stored in `sources` in order to use the afterglow player.
-    vimeo_data.is_a?(Hash) && vimeo_data[:sources].present?
+    false && vimeo_data.is_a?(Hash) && vimeo_data[:sources].present?
   end
 
   # Render a video player for a set of vimeo metadata
   def vimeo_tag vimeo_data, **args
-    if supports_afterglow_player?(vimeo_data)
+    if vimeo_data.is_a?(Hash) && vimeo_data[:sources].present?
+      tag.iframe class: args[:class], data: { src: vimeo_data[:embed_url] }, width: '100%', height: '100%', frameborder: '0', allow: 'autoplay; fullscreen', webkitallowfullscreen: true, mozallowfullscreen: true, allowfullscreen: true
+    elsif supports_afterglow_player?(vimeo_data)
       klass = args[:class].is_a?(Array) ? args[:class] : [args[:class]]
       klass << 'afterglow'
       klass << 'afterglow--ios' if browser.platform.ios?

@@ -1,0 +1,63 @@
+@import "../../mixins/*"
+
+.streams__skip
+  text-align: center
+  max-width: 288px
+  margin: auto
+  margin-top: 80px
+  margin-bottom: 75px
+
+  @include tablet-or-larger
+    max-width: 450px
+
+  &__title
+    font-weight: $font-semibold
+    font-size: 2.2rem
+    line-height: 1.41
+    margin-bottom: 34px
+
+    @include tablet-or-larger
+      font-size: 2.8rem
+
+  &__description
+    font-size: 1.7rem
+    line-height: 1.82
+    margin-bottom: 34px
+
+    @include tablet-or-larger
+      font-size: 2rem
+
+// ===== GRID ===== //
+.streams__grid-wrapper
+  @extend %wide-content-width
+  margin-bottom: 64px
+
+  @include tablet-or-larger
+    padding-left: $gutter-width
+    padding-left: $gutter-width
+
+.streams__grid
+  position: relative
+  margin: 0 math.div(-$gutter-width, 2)
+  margin-top: $gutter-width
+
+  &:not(.js-grid)
+    @include tablet-or-larger
+      display: flex
+      justify-content: center
+
+    .streams__grid__item
+      padding: $gutter-width
+
+      @include mobile
+        width: 100%
+
+      @include tablet
+        width: 50%
+
+  &__item
+    box-sizing: border-box
+    padding: math.div($gutter-width, 2)
+    padding-bottom: 42px
+    width: 33%
+    flex-grow: 0

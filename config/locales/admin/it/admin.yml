@@ -59,6 +59,7 @@ it:
         preview: "Mostra anteprima del sito"
         reload_vimeo_data: "Ricarica Metadata Vimeo"
         audit: "Visualizza i log"
+        restore_autosave: "restore autosave" # TODO: Translate
 
     # ===== MESSAGES ===== #
     
@@ -118,6 +119,7 @@ it:
       invalid_vimeo_id: "deve essere un Vimeo ID valido"
       new_author_notice: "Non hai ancora creato il tuo Profilo Autore, riempi tutti i campi sotto e pressa Salva."
       start_details_before_content: "Tradurre prima i dettagli poi il contenuto."
+      autosave_detected: "Autosave detected" # TODO: Translate
 
     hints:
       excerpt: "Questa è una anteprima del contenuto della %{page} che verrà mostrato nella lista %{page}."
@@ -493,12 +495,3 @@ it:
         no_languages: "Nessuna Lingua"
         all_languages: "Tutte le lingue"
         other_languages: "Altre lingue"
-
-    javascript:      
-      email: "Email"
-      message: "Messaggio"
-      drag_images_to_upload: "Trascina le immagini qui per caricarle"
-      no_results: "Nessun risultato..."
-      waiting_for_upload: "Aspettando per il caricamento di %{count} file(s)..."
-      file: "File"
-      files: "Files"

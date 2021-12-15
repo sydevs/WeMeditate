@@ -60,6 +60,7 @@ es:
         preview: "Previsualizar en la Web"
         reload_vimeo_data: "Carga de nuevo Vimeo Metadata"
         audit: "View change logs" # TODO: Translate
+        restore_autosave: "restore autosave" # TODO: Translate
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
@@ -120,6 +121,7 @@ es:
       invalid_vimeo_id: "Debe ser un ID de Vimeo válido."
       new_author_notice: "Todavía no has establecido tu perfil de autor, rellena todos los campos y selecciona guardar."
       start_details_before_content: "Start translating details first, then the content." # TODO: Translate
+      autosave_detected: "Autosave detected" # TODO: Translate
 
     hints:
       excerpt: "Breve vista previa del contenido de %{page} que se vera en el listado de %{page}."
@@ -500,12 +502,3 @@ es:
       locale:
         all_languages: "Todos los Idiomas"
         other_languages: "Otros Idiomas"
-
-    javascript:      
-      email: "Email"
-      message: "Mensaje"
-      drag_images_to_upload: "Arrastra las imágenes aquí para subir"
-      no_results: "No se encontraron resultados..."
-      waiting_for_upload: "Esperando a que terminen de subirse  %{count} archivo/s..."
-      file: "Archivo"
-      files: "Archivos"

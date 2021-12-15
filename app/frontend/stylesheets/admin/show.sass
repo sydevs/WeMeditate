@@ -1,0 +1,59 @@
+
+.details > .ui.image
+    max-width: 55%
+
+.ui.details.list
+  .item:after
+    display: none
+    content: none
+
+  .content
+    .label, .icon
+      font-weight: lighter
+      white-space: nowrap
+      display: inline-block
+      opacity: 0.6
+      transition: opacity 0.1s
+      margin-left: 4px
+
+    .label:before
+      content: '- '
+
+  a.content
+    opacity: 1
+
+  a.content:hover
+    text-decoration: none
+
+    .text
+      text-decoration: underline
+
+  .item:not(:hover) .content
+    .label, .icon
+      display: none
+      //opacity: 0
+
+  &.small
+    .text, .icon
+      opacity: 0.6
+
+.ui.buttons
+  .ui.active.button
+    cursor: default
+
+.content-outline
+  &__paragraph--header
+    margin-top: 10px
+
+  &__list--text
+    padding-left: 10px
+
+  &__textbox
+    background: transparentize(gray, 0.8)
+    padding: 4px
+
+  a
+    opacity: 0.7
+
+  li
+    margin-bottom: 6px

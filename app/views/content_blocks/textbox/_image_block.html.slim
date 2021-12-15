@@ -1,0 +1,45 @@
+
+ruby:
+  classes = ["cb-image-textbox--#{block[:position]}"]
+  classes << "cb-image-textbox--#{block[:color]}"
+  classes << "cb-image-textbox--#{block[:spacing]}" unless block[:background] == 'ornate'
+  classes << "cb-image-textbox--overlap" if block[:background] == 'image'
+  classes << "cb-image-textbox--#{block[:background]}"
+
+  return unless block[:image].is_a?(Hash)
+
+.cb-image-textbox class=classes
+  - if block[:background] == 'ornate'
+    .gradient-wrapper
+      .gradient.gradient--ornate class="gradient--#{block[:position] == 'right' ? 'left' : 'right'}"
+  - elsif block[:background] != 'image'
+    .cb-image-textbox__decoration.cb-image-textbox__decoration--gradient
+      .gradient-wrapper
+        = render_decoration :gradient, block, size: %i[long]
+    
+  .cb-image-textbox__wrapper
+    .cb-image-textbox__decoration.cb-image-textbox__decoration--sidetext
+      .cb-image-textbox__sidetext
+        = render_decoration :sidetext, block, position: (block[:position] == 'right' ? :right : :left)
+
+    - if block[:background] == 'ornate'
+      = inline_svg_tag 'graphics/ornate.svg', class: 'cb-image-textbox__graphic'
+
+    .cb-image-textbox__image
+      .cb-image-textbox__img
+        = smart_image_tag record.media_file(block[:image][:id]), block[:position] == 'center' ? '100vw' : '(max-width: 767px) calc(60vw - 48px), 50vw'
+        .cb-image-textbox__circle
+          = render_decoration :circle, block
+
+    .cb-image-textbox__box_wrapper
+      .cb-image-textbox__box class=('js-animate' if block[:color] == 'dark' && block[:background] == 'image')
+        h2.cb-image-textbox__title = block[:title]
+        .cb-image-textbox__text
+          = simple_format_content block[:text]
+          - if block[:action].present? && block[:url].present?
+            a.cb-image-textbox__button.button.button--box.button--large href=block[:url]
+              = block[:action]
+
+  .cb-image-textbox__decoration.cb-image-textbox__decoration--triangle
+    .cb-image-textbox__triangle
+      = render_decoration :triangle, block

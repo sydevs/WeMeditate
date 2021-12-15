@@ -16,10 +16,6 @@ module Admin
       super static_page_params
     end
 
-    def write
-      @splash_style = @record.role.to_sym if @record.home? || @record.custom?
-    end
-
     protected
 
       def static_page_params

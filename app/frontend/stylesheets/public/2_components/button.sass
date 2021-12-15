@@ -1,0 +1,223 @@
+@import "../../mixins/*"
+
+// ===== BUTTON GROUP ===== //
+.button_group
+  -ms-overflow-style: none // Disable scrollbars for microsoft
+  scrollbar-width: none // Disable scrollbars for mozilla
+  overflow: -moz-scrollbars-none // Disable scrollbars for mozilla
+  overflow-x: auto
+
+  // Disable scrollbars for webkit
+  &::-webkit-scrollbar
+    width: 0 !important
+
+  > .button
+    margin-bottom: 28px
+
+  > .button:not(.button--icon)
+    margin-right: 8px
+
+.button_group--centered
+  text-align: center
+
+  > .button
+    @include laptop-or-larger
+      margin-right: 2%
+
+  > .button:last-child
+    margin: 0
+
+
+// ===== SINGLE BUTTONS ===== //
+.button
+  color: $color-text-dark
+  font-weight: $font-semibold
+  font-size: 1.6rem
+  line-height: 1.1875
+  letter-spacing: 0.2px
+  text-align: center
+  background-color: transparent
+
+  position: relative
+  display: inline-block
+  padding: 16px 24px
+  z-index: 1
+  cursor: pointer
+  border: none
+
+  &:hover
+    opacity: 0.8 !important
+
+  // Creates a background behind the button which can be animated on hover.
+  &:before
+    background: $color-button-blue
+    content: ''
+    z-index: -1
+    transition: all 1s ease
+    @include overlay(0, 0, 50.5%, 50.5%)
+
+  // If the button is hovered or active then the background should be full.
+  &.button--active,
+  &.button--disabled
+    border-color: $color-button-blue
+    color: $color-text-normal
+
+    &:before
+      left: 0
+      right: 0
+
+  &:not(.button--disabled):hover,
+  &:not(.button--disabled):active
+    @include tablet-or-larger
+      cursor: pointer
+      border-color: $color-button-blue
+      color: $color-text-normal
+
+      &:before
+        left: 0
+        right: 0
+
+// STYLES
+.button--box
+  min-width: 174px
+  border: 1px solid $color-text-normal
+
+  &:focus
+    outline: 4px solid $color-button-blue-dark
+
+.button--filled
+  min-width: 120px
+
+  @include mobile
+    border: 1px solid $color-text-normal
+
+  @include laptop-or-larger
+    min-width: 130px
+
+  &.button--active
+    @include mobile
+      border-color: $color-button-blue-dark
+      font-weight: $font-bold
+
+  &:before
+    background: $color-button-blue-dark
+
+  &.button--active
+    transition: all 0.5s
+    color: $color-text-inverse
+
+  &:not(.button--disabled):hover,
+  &:not(.button--disabled):active
+    @include laptop-or-larger
+      transition: all 0.5s
+      color: $color-text-inverse
+
+// SIZES
+.button--small
+  padding: 10px 12px
+
+.button--large
+  padding: 22px 32px
+
+// STATES
+.button--disabled
+  opacity: 0.8
+  cursor: default
+  filter: grayscale(80%)
+
+.button--invert
+  color: $color-text-inverse
+  border-color: $color-text-inverse
+  background: none
+
+  &.button--filled
+    background: transparentize(darkgrey, 0.8)
+    text-shadow: 0 0 2px transparentize(black, 0.2)
+    font-weight: $font-bold
+
+// ===== RESET FOR UNIQUE BUTTON TYPES ===== //
+.button--icon,
+.button--circle
+  &:before, &:after
+    content: none
+
+// ===== ICON BUTTONS ===== //
+.button--icon
+  display: inline-flex
+  flex-direction: row
+  align-items: center
+  justify-content: center
+  line-height: 53px
+  padding-top: 0
+  padding-bottom: 0
+  
+  @include mobile
+    padding: 0 math.div($gutter-width, 2)
+
+  > .icon
+    font-size: 2em
+    margin-right: 0.5em
+
+  .button__text
+    white-space: nowrap
+    overflow: hidden
+
+.button--colored
+  color: white !important
+  border-color: $color-text-light
+
+  &:hover
+    opacity: 0.8
+
+// ===== CIRCLE BUTTON ===== //
+.button--circle
+  display: flex
+  align-items: center
+  margin: 20px auto
+  width: 200px
+  height: 200px
+  padding: 36px
+  transition: all 0.5s ease
+  background: none
+
+  font-weight: $font-normal
+  text-align: center
+  font-size: 2.4rem
+  line-height: 1.1667
+
+  @include tablet
+    width: 224px
+    height: 224px
+
+  @include laptop-or-larger
+    width: 280px
+    height: 280px
+    padding: 54px
+    font-size: 3rem
+
+  &:focus
+    outline: none
+
+  .button__text
+    width: 100%
+
+  svg
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    width: 100%
+    height: 100%
+
+  path
+    stroke: $color-text-dark
+    transition: stroke 0.5s ease
+
+  &:focus, &:hover
+    &:not(.disabled)
+      transform: scale(1.1)
+      color: $color-text-orange
+
+      path
+        stroke: $color-text-orange

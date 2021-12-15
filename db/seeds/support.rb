@@ -51,7 +51,7 @@ def paragraphs count
 end
 
 def vimeo_attachment vimeo_id = nil
-  vimeo_id ||= [343376322, 238447552, 298038460, 249414159, 178920145].sample
+  vimeo_id ||= [343376322, 238447552, 298038460, 249414159].sample
   puts "Loading Vimeo ##{vimeo_id}"
   uri = URI("https://api.vimeo.com/videos/#{vimeo_id}?fields=name,pictures.sizes")
   request = Net::HTTP::Get.new(uri)

@@ -1,0 +1,13 @@
+
+.cb-contents-list
+  @extend %narrow-content-width
+
+  color: $color-text-normal
+  font-size: 1.8rem
+  line-height: 1.875
+  letter-spacing: 0.18px
+
+  &__item
+    @for $level from 3 through 6
+      &[data-level="h#{$level}"]
+        margin-left: 20px * ($level - 2)

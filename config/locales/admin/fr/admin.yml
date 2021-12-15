@@ -59,6 +59,7 @@ fr:
         show: "Voir sur le Site"
         preview: "Aperçu du Brouillon sur le Site"
         reload_vimeo_data: "Recharger les Métadonnées Vimeo"
+        restore_autosave: "restore autosave" # TODO: Translate
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
@@ -119,6 +120,7 @@ fr:
       invalid_vimeo_id: "doit être un identifiant Vimeo valide"
       new_author_notice: "Vous n'avez pas encore configuré votre profil d'auteur, remplissez les champs ci-dessous et appuyez sur enregistrer."
       start_details_before_content: "Commencez par traduire les détails en premier, puis le contenu."
+      autosave_detected: "Autosave detected" # TODO: Translate
 
     hints:
       excerpt: "Voici un bref aperçu du contenu de %{page} qui sera affiché dans les listes %{page}."
@@ -497,12 +499,3 @@ fr:
       locale:
         all_languages: "Toutes les Langues"
         other_languages: "Autres Langues"
-
-    javascript:      
-      email: "Adresse mail"
-      message: "Message"
-      drag_images_to_upload: "Faites glisser les images ici pour les télécharger"
-      no_results: "Aucun résultat trouvé..."
-      waiting_for_upload: "En attente de %{count} fichier(s) pour terminer le téléchargement..."
-      file: "Fichier"
-      files: "Fichiers"

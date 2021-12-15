@@ -60,6 +60,7 @@ uk:
         preview: "Попередній перегляд на сайті"
         reload_vimeo_data: "Перезавантажте метадані Vimeo"
         audit: "Перегляд змін"
+        restore_autosave: "restore autosave" # TODO: Translate
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
@@ -122,6 +123,7 @@ uk:
       invalid_vimeo_id: "має бути дійсним Vimeo ID"
       new_author_notice: "Ви ще не налаштували свій профіль автора, заповніть поля нижче та натисніть зберегти."
       start_details_before_content: "Почніть спочатку перекладати деталі, а потім вміст."
+      autosave_detected: "Autosave detected" # TODO: Translate
 
     hints: 
       excerpt: "Це короткий перегляд вмісту %{page}, який відображатиметься у списках %{page}. \"%{page}\"."
@@ -501,12 +503,3 @@ uk:
         no_languages: "Без мов"
         all_languages: "Всі мови"
         other_languages: "Інші мови"
-
-    javascript:      
-      email: "E-mail"
-      message: "Повідомлення"
-      drag_images_to_upload: "Перетягніть сюди зображення для завантаження"
-      no_results: "Результатів не знайдено ..."
-      waiting_for_upload: "Очікується завантаження %{count} файлів ..."
-      file: "Файл"
-      files: "Файли"

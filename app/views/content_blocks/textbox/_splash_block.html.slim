@@ -1,0 +1,36 @@
+
+ruby:
+  classes = []
+  classes << "cb-splash-textbox--#{block[:color] || 'dark'}"
+  classes << 'cb-splash-textbox--home' if index.zero? && action_name == 'home'
+  classes << 'js-splash' if index.zero?
+
+  return unless block[:image].is_a?(Hash)
+
+  image_url = record.media_file(block[:image][:id]).large.url
+  background = image_url ? "background-image: url(#{image_url})" : nil
+
+.cb-splash-textbox class=classes style=background data-invert=(block[:color] == 'light' ? 'true' : null)
+  - if index.zero? && action_name == 'home'
+    .preloader.js-preloader style=background data-turbolinks-permanent=true
+      = image_pack_tag 'graphics/preloader.svg', class: 'preloader__graphic'
+    
+  .cb-splash-textbox__wrapper
+    - if block[:title].present?
+      h1.cb-splash-textbox__title = block[:title]
+
+    - if block[:subtitle].present?
+      .cb-splash-textbox__subtitle = block[:subtitle]
+
+    - if block[:text].present?
+      .cb-splash-textbox__text = block[:text]
+
+    - if block[:action].present? && block[:url].present?
+      - if block[:decorations] && block[:decorations][:leaves]
+        .cb-splash-textbox__action
+          = inline_svg_tag 'graphics/leaves.svg', class: 'cb-splash-textbox__action__leaf'
+          a.cb-splash-textbox__action__text href=block[:url] = block[:action]
+          = inline_svg_tag 'graphics/leaves.svg', class: 'cb-splash-textbox__action__leaf'
+      - else
+        a.cb-splash-textbox__button.button.button--box.button--large href=block[:url]
+          = block[:action]
