@@ -81,7 +81,6 @@ module Contentable
   end
 
   def migrate_content!
-    puts "MIGRATE CONTENT FOR #{self.model_name} #{self.id} - #{self[:content].class}"
     return unless parsed_content.present?
     return if parsed_content['migrated']
 
