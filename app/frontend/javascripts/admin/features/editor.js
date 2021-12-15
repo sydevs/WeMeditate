@@ -60,20 +60,22 @@ export default function load() {
   contentEditor = document.getElementById('content-editor')
 
   // Only intialize if the content editor actually exists on this page.
-  if (form && contentEditor) {
-    form.onsubmit = onSubmit
-    editorInput = form.querySelector('#content-input')
-
-    if (contentEditor.dataset.loadAutosave) {
-      let localStorageData = localStorage.getItem(contentEditor.dataset.autosaveKey)
-      editorParameters.data = processDataForLoad(localStorageData)
-    } else if (contentEditor.dataset.content) {
-      editorParameters.data = processDataForLoad(contentEditor.dataset.content)
-    }
-
-    editorParameters.holder = contentEditor
-    editorInstance = new EditorJS(editorParameters)
+  if (!form || !contentEditor) {
+    return
   }
+
+  form.onsubmit = onSubmit
+  editorInput = form.querySelector('#content-input')
+
+  if (contentEditor.dataset.loadAutosave) {
+    let localStorageData = localStorage.getItem(contentEditor.dataset.autosaveKey)
+    editorParameters.data = processDataForLoad(localStorageData)
+  } else if (contentEditor.dataset.content) {
+    editorParameters.data = processDataForLoad(contentEditor.dataset.content)
+  }
+
+  editorParameters.holder = contentEditor
+  editorInstance = new EditorJS(editorParameters)
 
   if (!contentEditor.dataset.loadAutosave) {
     let localStorageData = localStorage.getItem(contentEditor.dataset.autosaveKey)
