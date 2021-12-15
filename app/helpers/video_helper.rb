@@ -12,6 +12,8 @@ module VideoHelper
   # Render a video player for a set of vimeo metadata
   def vimeo_tag vimeo_data, **args
     if supports_afterglow_player?(vimeo_data)
+      tag.iframe class: args[:class], data: { src: vimeo_data[:embed_url] }, width: '100%', height: '100%', frameborder: '0', allow: 'autoplay; fullscreen', webkitallowfullscreen: true, mozallowfullscreen: true, allowfullscreen: true
+    elsif false
       klass = args[:class].is_a?(Array) ? args[:class] : [args[:class]]
       klass << 'afterglow'
       klass << 'afterglow--ios' if browser.platform.ios?
