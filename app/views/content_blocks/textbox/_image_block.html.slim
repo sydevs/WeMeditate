@@ -37,7 +37,7 @@ ruby:
         .cb-image-textbox__text
           = simple_format_content block[:text]
           - if block[:action].present? && block[:url].present?
-            a.cb-image-textbox__button.button.button--box.button--large href=block[:url]
+            a.cb-image-textbox__button.button.button--box.button--large href=locale_link(block[:url])
               = block[:action]
 
   .cb-image-textbox__decoration.cb-image-textbox__decoration--triangle

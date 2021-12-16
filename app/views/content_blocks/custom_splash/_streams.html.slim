@@ -43,7 +43,7 @@ ruby:
 
       .cb-splash-textbox__action
         = inline_svg_tag 'graphics/leaves.svg', class: 'cb-splash-textbox__action__leaf'
-        a.cb-splash-textbox__action__text href=block[:url] = block[:action]
+        a.cb-splash-textbox__action__text href=locale_link(block[:url]) = block[:action]
         = inline_svg_tag 'graphics/leaves.svg', class: 'cb-splash-textbox__action__leaf'
 
 - location = request&.location&.data

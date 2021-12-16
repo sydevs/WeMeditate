@@ -59,7 +59,7 @@ module MetadataHelper
         'og:url' => request.original_url,
         'og:image' => ApplicationController.helpers.image_url('metadata/preview.png'),
         'og:locale' => locale,
-        'og:locale:alternate' => I18n.available_locales.map(&:to_s),
+        'og:locale:alternate' => Rails.configuration.published_locales.map(&:to_s),
         'twitter:site' => Rails.application.config.twitter_handle,
         'twitter:creator' => Rails.application.config.twitter_handle,
       }
