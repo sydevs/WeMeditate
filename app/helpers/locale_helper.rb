@@ -35,6 +35,7 @@ module LocaleHelper
     return url if I18n.locale == :en
     return url if url[0] == '#' || url[0] == '?'
 
+    url = I18n.transliterate(url, replacement: "") # Remove non-ascii characters
     uri = URI::parse(url)
     return url unless uri.host.nil? || Rails.configuration.public_host == uri.host
     
