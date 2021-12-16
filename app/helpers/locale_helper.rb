@@ -35,7 +35,7 @@ module LocaleHelper
     return url if I18n.locale == :en
     return url if url[0] == '#' || url[0] == '?'
     return url unless /^(http[s]?:\/\/)?([^:\/\s]+)?(\/\w\w)?(\/.*)?$/ =~ url # Parse url
-    return url unless $2.nil? || $2 == uri.host # URL points to We Meditate
+    return url unless $2.nil? || $2 == Rails.configuration.public_host # URL points to We Meditate
     return url if $3.present? # Starts with a locale
 
     "/#{I18n.locale}#{$4}" # Prepend locale to url
