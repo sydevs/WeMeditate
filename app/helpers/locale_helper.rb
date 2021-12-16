@@ -34,24 +34,11 @@ module LocaleHelper
   def locale_link url
     return url if I18n.locale == :en
     return url if url[0] == '#' || url[0] == '?'
+    return url unless /^(http[s]?:\/\/)?([^:\/\s]+)?(\/\w\w)?(\/.*)?$/ =~ url # Parse url
+    return url unless $2.nil? || $2 == uri.host # URL points to We Meditate
+    return url if $3.present? # Starts with a locale
 
-    url = I18n.transliterate(url, replacement: "") # Remove non-ascii characters
-    uri = URI::parse(url)
-    return url unless uri.host.nil? || Rails.configuration.public_host == uri.host
-    
-    url = strip_url(url) if Rails.configuration.public_host == uri.host
-    url = '/' + url unless url[0] == '/'
-    return url if url =~ /^\/[a-z][a-z][^a-zA-Z0-9]/ # Starts with a locale
-
-    "/#{I18n.locale}#{url}"
-  end
-
-  def strip_url url
-    uri = URI::parse(url)
-    result = uri.path
-    result += "##{uri.fragment}" if uri.fragment.present?
-    result += "?#{uri.query}" if uri.query.present?
-    result
+    "/#{I18n.locale}#{$4}" # Prepend locale to url
   end
 
 end
