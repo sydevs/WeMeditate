@@ -2,7 +2,8 @@
   "name": "wemeditate",
   "private": true,
   "engines" : {
-    "node" : ">=17.0.1"
+    "node" : "17.x",
+    "yarn": "1.x"
   },
   "dependencies": {
     "@babel/plugin-transform-for-of": "^7.14.5",
