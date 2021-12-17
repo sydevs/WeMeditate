@@ -25,6 +25,7 @@ window.addEventListener('load', () => init())
 document.addEventListener('turbolinks:load', () => {
   load()
   updateLazyloader()
+  initInlineSVGs()
 
   preloader = document.querySelector('.preloader')
   if (preloaded) {
