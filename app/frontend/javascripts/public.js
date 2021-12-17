@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import { initLazyImages, initInlineSVGs } from './public/images'
+import { initLazyImages, initInlineSVGs, updateLazyloader } from './public/images'
 import { init, load, unload } from './public/application'
 
 let preloaded = false
@@ -24,6 +24,7 @@ window.addEventListener('load', () => init())
 
 document.addEventListener('turbolinks:load', () => {
   load()
+  updateLazyloader()
 
   preloader = document.querySelector('.preloader')
   if (preloaded) {
