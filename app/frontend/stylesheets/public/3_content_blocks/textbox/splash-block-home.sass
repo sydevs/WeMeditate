@@ -1,18 +1,17 @@
 
 // ===== HOME PAGE ===== //
-.cb-splash-textbox--home
+.cb-splash-textbox--home,
+.cb-splash-textbox--home .preloader
   @include mobile
-    background-position-x: -85vh
-
-  @include tablet
-    background-position-x: -74vh
-
+    background-position-x: 60% !important
+  
+.cb-splash-textbox--home
   .cb-splash-textbox__wrapper
     position: absolute
     bottom: 0
     left: 0
     right: 0
-    padding-bottom: 15%
+    padding-bottom: 5%
 
     @include tiny
       padding-bottom: 6vh
@@ -80,7 +79,9 @@
   @include pulse-animation
 
   &__text
-    width: 150px
+    width: auto
+    padding: 0 20px
+    max-width: 60vw
 
   &__leaf
     width: 1.7217em
