@@ -20,8 +20,10 @@ module ImageHelper
   # `source` should be a CarrierWave image
   # `sizes` should be a "sizes" definition as per the HTML5 <picture> tag specification (look it up)
   def smart_image_tag source, sizes, **args
-    raise ArgumentError, "Media file is not an image (#{source.type})" unless source.image?
-    return image_tag(source.url, **args) unless source.scalable_image?
+    if source.is_a?(MediaFileUploader)
+      raise ArgumentError, "Media file is not an image (#{source.type})" unless source.image?
+      return image_tag(source.url, **args) unless source.scalable_image?
+    end
 
     srcset = []
     webp_srcset = []
