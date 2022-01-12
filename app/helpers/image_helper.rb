@@ -20,6 +20,9 @@ module ImageHelper
   # `source` should be a CarrierWave image
   # `sizes` should be a "sizes" definition as per the HTML5 <picture> tag specification (look it up)
   def smart_image_tag source, sizes, **args
+    raise ArgumentError, "Media file is not an image (#{source.type})" unless source.image?
+    return image_tag(source.url, **args) unless source.scalable_image?
+
     srcset = []
     webp_srcset = []
 
@@ -79,7 +82,6 @@ module ImageHelper
 
   # Renders a responsive and lazyloaded image from Vimeo metadata
   def vimeo_image_tag vimeo_object, sizes, **args
-
     capture do
       # Render a basic fallback incase javascript isn't enabled/supported
       concat content_tag(:noscript, tag.img(src: vimeo_object[:thumbnail], **args))

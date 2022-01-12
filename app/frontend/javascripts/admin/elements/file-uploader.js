@@ -13,7 +13,7 @@ export default class FileUploader {
 
     this.input = make('input', '', {
       type: 'file',
-      accept: 'image/png, image/jpg, image/jpeg'
+      accept: 'image/png, image/jpg, image/jpeg, image/gif, image/svg+xml',
     }, this.wrapper)
 
     this.wrapper.addEventListener('dragover', event => {

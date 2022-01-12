@@ -41,7 +41,7 @@ module Admin
 
       response_keep_alive_thread.kill
 
-      response_json = { id: @media_file.id, preview: @media_file.file.small.url }.to_json
+      response_json = { id: @media_file.id, preview: @media_file.preview_url }.to_json
       response.stream.write(response_json)
     ensure
       response.stream.close

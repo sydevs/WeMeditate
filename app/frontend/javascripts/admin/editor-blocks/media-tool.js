@@ -7,7 +7,7 @@ import FileUploader from '../elements/file-uploader'
 export default class MediaTool extends EditorTool {
   static get toolbox() {
     return {
-      icon: '<i class="camera icon"></i>',
+      icon: '<i class="photo video icon"></i>',
       title: translate('blocks.media.label'),
     }
   }
