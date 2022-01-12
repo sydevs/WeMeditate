@@ -8,8 +8,8 @@ module Admin::ApplicationHelper
     else
       args = [args, Globalize.locale]
     end
-    
-    polymorphic_path(args, **options)
+
+    polymorphic_url(args, **options)
   end
 
   # Admin URLs require a bit of special handling, to support all the abstraction that we do in the CMS
