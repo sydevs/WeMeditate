@@ -46,11 +46,11 @@ class MediaFile < ActiveRecord::Base
   end
 
   def image?
-    image_meta.nil? || image_meta['type'].nil? || image_meta['type'].starts_with?('image/')
+    !image_meta.present? || !image_meta['type'].present? || image_meta['type'].starts_with?('image/')
   end
 
   def scalable_image? _image = nil
-    image? && !%w[image/gif image/svg image/svg+xml].include?(image_meta['type'])
+    image? && (!image_meta.present? || !%w[image/gif image/svg image/svg+xml].include?(image_meta['type']))
   end
 
 end

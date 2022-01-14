@@ -12,7 +12,6 @@ module ContentHelper
       next if block['data']['type'] == 'splash' && skip_splash && index.zero?
 
       block_data = block['data'].deep_symbolize_keys
-      puts "LOAD #{block['type']} #{block_data.pretty_inspect}"
 
       if block_data[:legacy]
         block_partial = "legacy/#{block['type']}_block"
