@@ -46,7 +46,7 @@ class MediaFile < ActiveRecord::Base
   end
 
   def image?
-    image_meta && (image_meta['type'].nil? || image_meta['type'].starts_with?('image/'))
+    image_meta.nil? || image_meta['type'].nil? || image_meta['type'].starts_with?('image/')
   end
 
   def scalable_image? _image = nil
