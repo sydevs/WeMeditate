@@ -3,6 +3,7 @@ import { generateId, make } from '../util'
 import { translate } from '../../i18n'
 import EditorTool from './_editor-tool'
 import FileUploader from '../elements/file-uploader'
+import FinderModal from '../elements/finder-modal'
 
 export default class MediaTool extends EditorTool {
   static get toolbox() {
@@ -17,7 +18,7 @@ export default class MediaTool extends EditorTool {
       id: data.id || generateId(),
       items: data.items || [],
       mediaFiles: data.mediaFiles || [],
-      type: ['image', 'video', 'audio', 'vimeo'].includes(data.type) ? data.type : 'image',
+      type: ['image', 'video', 'audio', 'vimeo'].includes(data.type) ? data.type : 'none',
       quantity: ['single', 'gallery'].includes(data.quantity) ? data.quantity : 'single',
       position: ['left', 'center', 'right'].includes(data.position) ? data.position : 'center',
       size: ['narrow', 'wide'].includes(data.size) ? data.size : 'narrow',
@@ -29,7 +30,7 @@ export default class MediaTool extends EditorTool {
         type: {
           options: [
             { name: 'image', icon: 'image', },
-            //{ name: 'video', icon: 'film', },
+            { name: 'video', icon: 'film', },
             //{ name: 'audio', icon: 'volume up' },
           ]
         },
@@ -40,7 +41,7 @@ export default class MediaTool extends EditorTool {
           ]
         },
         position: {
-          requires: { type: ['image', 'video'], quantity: ['single'] },
+          requires: { type: ['image'], quantity: ['single'] },
           options: [
             { name: 'left', icon: 'indent' },
             { name: 'center', icon: 'align center' },
@@ -62,7 +63,14 @@ export default class MediaTool extends EditorTool {
       }
     }, api)
 
+    this.CSS.finder = `${this.CSS.container}__finder`
     this.CSS.items = `${this.CSS.container}__items`
+    this.CSS.picker = {
+      container: `${this.CSS.container}__picker`,
+      title: `${this.CSS.container}__picker__title`,
+      item: `${this.CSS.container}__picker__item`,
+    }
+
     this.CSS.item = {
       container: `${this.CSS.container}__item`,
       image: `${this.CSS.items}__image`,
@@ -75,6 +83,22 @@ export default class MediaTool extends EditorTool {
 
   render() {
     this.container = super.render()
+
+    this.typeSelector = make('div', this.CSS.picker.container, {}, this.container)
+    make('div', this.CSS.picker.title, { innerText: translate('blocks.media.picker') }, this.typeSelector)
+    this.tunes.type.options.forEach(item => {
+      let itemContainer = make('div', this.CSS.picker.item, {}, this.typeSelector)
+      make('i', `big ${item.icon} icon`.split(' '), {}, itemContainer)
+      make('label', '', { innerText: translate(`blocks.media.type.${item.name}`) }, itemContainer)
+      itemContainer.addEventListener('click', _event => this.selectTune(item))
+    })
+
+    const openButton = make('div', ['ui', 'tiny', 'right', 'floated', 'button', this.CSS.finder], {})
+    make('i', ['cog', 'icon'], {}, openButton)
+    make('span', '', { innerText: translate('blocks.media.change') }, openButton)
+    openButton.addEventListener('click', () => this.videoFinder.open(this.data.items, this.isGallery))
+    this.videoFinder = new FinderModal('jwplayer', items => this._onApproveVideoFinder(items))
+    this.container.prepend(openButton)
 
     this.uploader = new FileUploader(this.container)
     this.uploader.addEventListener('uploadstart', event => this.addFile(event.detail.index, event.detail.file))
@@ -97,7 +121,11 @@ export default class MediaTool extends EditorTool {
   renderItem(item = {}) {
     const container = make('div', this.CSS.item.container, {})
 
-    if (item.image && item.image.preview) {
+    if (this.data.type == 'video') {
+      const img = make('div', [this.CSS.item.image, 'ui', 'rounded', 'image'], {}, container)
+      make('img', null, { src: `https://cdn.jwplayer.com/v2/media/${item.id}/poster.jpg?width=320` }, img)
+      container.dataset.attributes = JSON.stringify(item)
+    } else if (item.image && item.image.preview) {
       const img = make('div', [this.CSS.item.image, 'ui', 'rounded', 'image'], {}, container)
       make('img', null, { src: item.image.preview }, img)
       img.dataset.attributes = JSON.stringify(item.image)
@@ -105,29 +133,33 @@ export default class MediaTool extends EditorTool {
       make('div', [this.CSS.item.image, 'ui', 'fluid', 'placeholder'], {}, container)
     }
 
-    let alt = make('div', [this.CSS.input, this.CSS.inputs.text, this.CSS.item.alt], {
-      contentEditable: true,
-      innerHTML: item.alt || '',
-    }, container)
+    if (this.data.type == 'image') {
+      let alt = make('div', [this.CSS.input, this.CSS.inputs.text, this.CSS.item.alt], {
+        contentEditable: true,
+        innerHTML: item.alt || '',
+      }, container)
 
-    alt.dataset.placeholder = translate('placeholders.alt')
-    alt.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
+      alt.dataset.placeholder = translate('placeholders.alt')
+      alt.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
 
-    let caption = make('div', [this.CSS.input, this.CSS.inputs.alt, this.CSS.item.caption], {
-      contentEditable: true,
-      innerHTML: item.caption || '',
-    }, container)
+      let caption = make('div', [this.CSS.input, this.CSS.inputs.alt, this.CSS.item.caption], {
+        contentEditable: true,
+        innerHTML: item.caption || '',
+      }, container)
 
-    caption.dataset.placeholder = translate('placeholders.caption')
-    caption.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
+      caption.dataset.placeholder = translate('placeholders.caption')
+      caption.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
 
-    let credit = make('div', [this.CSS.input, this.CSS.inputs.caption, this.CSS.item.credit], {
-      contentEditable: true,
-      innerHTML: item.credit || '',
-    }, container)
+      let credit = make('div', [this.CSS.input, this.CSS.inputs.caption, this.CSS.item.credit], {
+        contentEditable: true,
+        innerHTML: item.credit || '',
+      }, container)
 
-    credit.dataset.placeholder = translate('placeholders.credit')
-    credit.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
+      credit.dataset.placeholder = translate('placeholders.credit')
+      credit.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
+    } else {
+      make('div', '', { innerHTML: item.name }, container)
+    }
 
     let remove = make('i', [this.CSS.item.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, container)
     remove.addEventListener('click', (event) => this.removeItem(event.target.parentNode))
@@ -137,6 +169,15 @@ export default class MediaTool extends EditorTool {
 
   _onUpload(index, data) {
     this.itemsContainer.querySelector(`[data-index="${index}"]`).dataset.attributes = JSON.stringify(data)
+  }
+  
+  _onApproveVideoFinder(items) {
+    this.itemsContainer.innerHTML = ''
+    this.data.items = items
+    items.forEach(item => {
+      const element = this.renderItem(item)
+      this.itemsContainer.appendChild(element)
+    })
   }
 
   removeItem(item) {
@@ -177,27 +218,35 @@ export default class MediaTool extends EditorTool {
     newData.mediaFiles = []
     newData.items = []
 
-    for (let i = 0; i < this.itemsContainer.childElementCount; i++) {
-      const item = this.itemsContainer.children[i]
-      const image = JSON.parse(item.querySelector(`.${this.CSS.item.image}`).dataset.attributes)
-      const itemData = {
-        image: image,
-        alt: item.querySelector(`.${this.CSS.item.alt}`).innerText,
-        caption: item.querySelector(`.${this.CSS.item.caption}`).innerText,
-        credit: item.querySelector(`.${this.CSS.item.credit}`).innerText,
+    if (this.data.type == 'image') {
+      for (let i = 0; i < this.itemsContainer.childElementCount; i++) {
+        const item = this.itemsContainer.children[i]
+        const image = JSON.parse(item.querySelector(`.${this.CSS.item.image}`).dataset.attributes)
+        const itemData = {
+          image: image,
+          alt: item.querySelector(`.${this.CSS.item.alt}`).innerText,
+          caption: item.querySelector(`.${this.CSS.item.caption}`).innerText,
+          credit: item.querySelector(`.${this.CSS.item.credit}`).innerText,
+        }
+
+        if (!this.isGallery) {
+          itemData.credit = item.querySelector(`.${this.CSS.item.credit}`).innerText
+        }
+
+        newData.mediaFiles.push(image.id)
+        newData.items.push(itemData)
+
+        //if (!this.isGallery) break // TODO: Only save one image, if we are in single mode.
       }
-
-      if (!this.isGallery) {
-        itemData.credit = item.querySelector(`.${this.CSS.item.credit}`).innerText
+    } else {
+      for (let i = 0; i < this.itemsContainer.childElementCount; i++) {
+        const item = this.itemsContainer.children[i]
+        newData.items.push(JSON.parse(item.dataset.attributes))
       }
-
-      newData.mediaFiles.push(image.id)
-      newData.items.push(itemData)
-
-      //if (!this.isGallery) break // TODO: Only save one image, if we are in single mode.
     }
 
-    this.removeInactiveData()
+    // TODO: Because of autosave, this strips out necessary defaults prematurely.
+    //this.removeInactiveData()
     return Object.assign(this.data, newData)
   }
 

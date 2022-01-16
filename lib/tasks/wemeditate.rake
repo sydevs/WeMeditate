@@ -1,20 +1,21 @@
 namespace :wm do
-  desc "This task is called by the Heroku scheduler add-on"
-  task :decay_popularity => :environment do
+  desc 'This task is called by the Heroku scheduler add-on'
+  task decay_popularity: :environment do
     Meditation::Translation.where('popularity > 1').find_each do |meditation|
       meditation.update! popularity: meditation.popularity * 0.8
     end
   end
 
+  # TODO: Remove deprecated rake tasks
   namespace :vimeo do
-    desc "Reload the vimeo metadata for all records"
-    task :reset => :environment do
+    desc 'Reload the vimeo metadata for all records'
+    task reset: :environment do
       Rake::Task['wm:vimeo:reset:meditations'].invoke
     end
 
     namespace :reset do
-      desc "Reload the vimeo metadata for meditations only"
-      task :meditations => :environment do
+      desc 'Reload the vimeo metadata for meditations only'
+      task meditations: :environment do
         Meditation.in_batches(of: 200).each_with_index do |group, index|
           puts "Updating Meditations Vimeo Metadata (Group #{index + 1})..."
           group.each do |record|

@@ -30,7 +30,7 @@ module ContentHelper
       concat content_tag(:p, "Unsupported block #{block.inspect}")
     end
 
-    return nil
+    nil
   end
 
   def render_splash_block record, overrides = {}
@@ -65,7 +65,7 @@ module ContentHelper
     classes << "gradient--#{data[:color] || 'orange'}" if type == :gradient
 
     if type == :gradient && args[:size]
-      for size in args[:size] do
+      args[:size].each do |size|
         classes << "gradient--#{size}"
       end
     end

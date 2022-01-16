@@ -248,6 +248,8 @@ ro:
         thumbnail_id: :activerecord.attributes.treatment.thumbnail # Do not translate
         horizontal_vimeo_id: "Video Orizontal (Vimeo ID)"
         vertical_vimeo_id: "Video Vertical (Vimeo ID)"
+        horizontal_jwplayer_id: "Video Orizontal (JWPlayer ID)"
+        vertical_jwplayer_id: "Video Vertical (JWPlayer ID)"
         metatags: "Metadata"
 
       instrument_filter:
@@ -305,6 +307,8 @@ ro:
         slug: :activerecord.attributes.generic.slug # Do not translate
         horizontal_vimeo_id: "Video Orizontal (Vimeo ID)"
         vertical_vimeo_id: "Video Vertical (Vimeo ID)"
+        horizontal_jwplayer_id: "Video Orizontal (JWPlayer ID)"
+        vertical_jwplayer_id: "Video Vertical (JWPlayer ID)"
         duration_filter: :activerecord.models.duration_filter.one # Do not translate
         duration_filter_id: :activerecord.models.duration_filter.one # Do not translate
         goal_filters: :activerecord.models.goal_filter.other # Do not translate

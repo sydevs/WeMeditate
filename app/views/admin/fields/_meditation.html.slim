@@ -21,6 +21,19 @@
 - if record.image.present?
   .preview-item = image_tag record.image.url(:small), class: 'ui rounded image'
 
+= f.input :excerpt, as: :text
+= f.input :description, as: :text
+
+/= f.input :horizontal_jwplayer_id, wrapper: :semantic_input, icon: :video, wrapper_html: { class: 'js-video-field' }
+/= f.input :vertical_jwplayer_id, wrapper: :semantic_input, icon: :video, wrapper_html: { class: 'js-video-field' }
+
+/- if record.legacy_vimeo_video?
+  .ui.red.icon.message
+    i.warning.sign.icon
+    .content
+      .header Obsolete Video Service
+      p We Meditate no longer supports the use of Vimeo videos. Please upload this video to JWPlayer, and select it using the new video finder above.
+
 = f.input :horizontal_vimeo_id, wrapper: :semantic_input, icon: :video, wrapper_html: { class: 'js-vimeo-field' }
 - vimeo_metadata = record.vimeo_metadata(:horizontal)
 .preview-item
@@ -54,7 +67,3 @@
     .hint = vimeo_metadata[:title]
     a.ui.image href="https://vimeo.com/#{record.vertical_vimeo_id}" target='_blank'
       img src=vimeo_metadata[:thumbnail]
-
-= f.input :excerpt, as: :text
-= f.input :description, as: :text
-

@@ -3,8 +3,15 @@
 
 @include block
   .cdx-media
+    .uploader,
+    &__finder
+      display: none !important
+      
     img
       border-radius: 0.28571429rem
+
+    &__items
+      clear: both
 
     &__items__image
       overflow: hidden
@@ -100,7 +107,6 @@
       &__item
         position: relative
         display: inline-block
-        width: 33%
         padding: 0 2.5px
         margin: 5px 0
         vertical-align: top
@@ -109,11 +115,85 @@
         display: none
 
     img
-      width: 209px
-      height: 209px
       object-position: center
       object-fit: cover
 
-@include type(video)
+@include type(image)
   .uploader
+    display: block !important
+
+  @include with-option(quantity, gallery)
+    .cdx-media__item
+      width: 33%
+
+    img
+      width: 209px
+      height: 209px
+
+@include type(video)
+  .cdx-media
+    &__finder
+      display: block !important
+
+    &__items__image
+      border: 1px solid lightgrey
+
+    &__items__image::after
+      position: absolute
+      left: 50%
+      top: 50%
+      transform: translate(-50%, -50%)
+
+      font-family: "Icons"
+      content: "\f144"
+      font-size: 50px
+      opacity: 0.5
+
+  @include with-option(quantity, single)
+    .cdx-media__items
+      text-align: center
+
+  @include with-option(quantity, gallery)
+    .cdx-media__item
+      max-width: 50%
+      width: 320px
+
+    .cdx-media__items__image
+      padding-top: 56.25%
+      width: 100%
+
+    img
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+
+// TYPE PICKER
+@include block
+  .cdx-media__picker
     display: none
+    text-align: center
+
+    &__title
+      display: block
+      text-transform: uppercase
+      font-size: 14px
+      line-height: 30px
+      font-weight: bold
+
+    &__item
+      display: inline-block
+      margin: 10px
+      transition: all 0.2s
+
+    &__item:hover
+      cursor: pointer
+      opacity: 0.5
+
+    label
+      display: block
+
+@include type(none)
+  .cdx-media__picker
+    display: block

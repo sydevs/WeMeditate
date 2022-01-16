@@ -1,0 +1,36 @@
+
+/* UPLOADER
+  This file defines custom styling for the file uploader
+  These styles are built on semantic UI
+  */
+
+.uploader
+  border: 2px dashed lightgray
+  border-radius: 6px
+  color: lightgray
+  text-align: center
+  font-weight: bold
+  font-size: 18px
+  line-height: 1.5
+  padding: 10px
+  transition: color 0.2s
+
+  &:hover
+    cursor: pointer
+    border-color: gray
+    color: gray
+
+  &--dropping
+    border-color: #85B7D9
+    color: #85B7D9
+
+  &--error
+    border-color: lightred
+    color: lightred
+
+  input
+    width: 0 !important
+    height: 0 !important
+    overflow: hidden !important
+    padding: 0 !important
+    border: none !important

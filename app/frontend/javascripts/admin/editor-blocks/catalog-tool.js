@@ -2,6 +2,7 @@ import $ from 'jquery'
 import { generateId, make } from '../util'
 import { translate, locale } from '../../i18n'
 import EditorTool from './_editor-tool'
+import FinderModal from '../elements/finder-modal'
 
 export default class CatalogTool extends EditorTool {
   static get toolbox() {
@@ -74,38 +75,17 @@ export default class CatalogTool extends EditorTool {
 
     const openButton = make('div', ['ui', 'tiny', 'right', 'floated', 'button'], {})
     make('i', ['cog', 'icon'], {}, openButton)
-    make('span', '', { innerText: 'Change Items' }, openButton)
-    openButton.addEventListener('click', () => this.openModal())
+    make('span', '', { innerText: translate('blocks.catalog.change') }, openButton)
+    openButton.addEventListener('click', () => this.openFinder())
     container.prepend(openButton)
 
     this.itemsContainer = make('div', [this.CSS.items, 'ui', 'list'], {}, container)
     this.itemsContainer.addEventListener('click', event => this._clickHandler(event))
 
     const dimmer = make('div', ['ui', 'active', 'inverted', 'dimmer'], {}, this.itemsContainer)
-    make('div', ['ui', 'text', 'loader'], { innerText: 'Loading' }, dimmer)
+    make('div', ['ui', 'text', 'loader'], { innerText: translate('placeholders.loading') }, dimmer)
 
-    // Render Modal
-    this.modal = make('div', ['ui', 'tiny', 'modal'])
-    $(this.modal).modal({ onApprove: () => this.approveModal() })
-
-    make('div', 'header', { innerText: 'Search for We Meditate Content' }, this.modal)
-    const modalContent = make('div', ['content', this.CSS.search.container], {}, this.modal)
-    modalContent.addEventListener('click', event => this._clickHandler(event))
-
-    const searchInputWrapper = make('div', ['ui', 'fluid', 'icon', 'input'], {}, modalContent)
-    this.searchInput = make('input', [this.CSS.search.input, this.CSS.semanticInput], {
-      placeholder: translate('placeholders.search'),
-    }, searchInputWrapper)
-
-    make('i', ['search', 'icon'], {}, searchInputWrapper)
-    this.searchInput.addEventListener('keyup', event => this._onSearchChange(event))
-    this.searchResultContainer = make('div', [this.CSS.search.results, 'ui', 'list'], {}, modalContent)
-    this.searchSelectionContainer = make('div', [this.CSS.search.selection, 'ui', 'list'], {}, modalContent)
-
-    const modalFooter = make('div', 'actions', {}, this.modal)
-    make('div', ['ui', 'cancel', 'button'], { innerText: 'Cancel' }, modalFooter)
-    make('div', ['ui', 'green', 'ok', 'button'], { innerHTML: '<i class="check icon"></i> Select' }, modalFooter)
-
+    this.finder = new FinderModal('wemeditate', items => this._onApproveFinder(items))
     this.loadItems()
     return container
   }
@@ -145,29 +125,8 @@ export default class CatalogTool extends EditorTool {
     return container
   }
 
-  renderModalItem(item, selected = true) {
-    const container = make('div', 'item', { data: item })
-    const state = selected ? 'check' : 'plus'
-    make('i', [state, 'circle', 'link', 'icon'], {}, container)
-    make('div', 'content', { innerText: item.name }, container)
-
-    return container
-  }
-
-  openModal() {
-    this.searchInput.value = ''
-    this.searchResultContainer.innerHTML = ''
-    this.searchSelectionContainer.innerHTML = ''
-    this.draftItems = this.currentSelectedItems.slice() // clone array
-
-    if (this.draftItems.length) {
-      this.draftItems.forEach(item => {
-        this.searchSelectionContainer.appendChild(this.renderModalItem(item))
-      })
-    }
-
-    $(this.searchInput).focus()
-    $(this.modal).modal('show')
+  openFinder() {
+    this.finder.open(this.currentSelectedItems, true, this.data.type)
   }
 
   _onSearchChange(event) {
@@ -200,32 +159,10 @@ export default class CatalogTool extends EditorTool {
     }, 1000)
   }
 
-  _clickHandler(event) {
-    if (!event.target.classList.contains('link') || !event.target.classList.contains('icon')) {
-      return
-    }
-
-    const icon = event.target
-    const item = icon.parentNode
-
-    if (icon.classList.contains('plus')) {
-      // Add the item
-      icon.classList.replace('plus', 'check')
-      this.draftItems.push(item.dataset)
-      this.searchSelectionContainer.appendChild(item)
-    } else {
-      // Remove the item
-      this.draftItems = this.draftItems.filter(i => {
-        return i.id != item.dataset.id
-      })
-      item.remove()
-    }
-  }
-
-  approveModal() {
-    this.data.items = this.draftItems.map(i => i.id)
-    this.selectedItems[this.data.type] = this.draftItems
-    this.displayItems(this.draftItems)
+  _onApproveFinder(items) {
+    this.data.items = items.map(i => i.id)
+    this.selectedItems[this.data.type] = items
+    this.displayItems(items)
   }
 
   validate(blockData) {

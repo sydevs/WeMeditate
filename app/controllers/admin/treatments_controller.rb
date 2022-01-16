@@ -17,13 +17,13 @@ module Admin
         if policy(@treatment || Treatment).publish?
           params.fetch(:treatment, {}).permit(
             :name, :slug, :state, :excerpt, :content,
-            :thumbnail_id, :horizontal_vimeo_id, :vertical_vimeo_id,
+            :thumbnail_id, :horizontal_jwplayer_id, :vertical_jwplayer_id,
             metatags: {}
           )
         else
           params.fetch(:treatment, {}).permit(
             :name, :slug, :state, :excerpt, :content,
-            :thumbnail_id, :horizontal_vimeo_id, :vertical_vimeo_id,
+            :thumbnail_id, :horizontal_jwplayer_id, :vertical_jwplayer_id,
             metatags: {}
           )
         end

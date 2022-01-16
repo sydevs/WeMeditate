@@ -285,7 +285,8 @@ export default class EditorTool {
       newData[key] = newData[key].replace('&nbsp;', ' ').trim() // Strip non-breaking whitespace
     }
 
-    this.removeInactiveData()
+    // TODO: Because of autosave, this strips out necessary defaults prematurely.
+    //this.removeInactiveData()
     return Object.assign(this.data, newData)
   }
 

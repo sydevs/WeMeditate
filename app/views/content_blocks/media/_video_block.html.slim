@@ -19,13 +19,7 @@ ruby:
         - block[:items].each do |item|
           figure.carousel__item class='js-carousel-item' data-gtm-label=item[:title]
             .carousel__video.video class='js-video' data-gtm-local=item[:title] data-gtm-global="Video #{item[:id]}"
-              .video__inner
-                = vimeo_tag item[:vimeo_id]
-                .video__thumbnail
-                  - image_sizes = '(max-width: 767px) calc(100vw - 48px), (max-width: 919px) calc(100vw - 98px), (max-width: 1198px) 50vw, 548px'
-                  = vimeo_image_tag item, image_sizes, lazy: false
-                  a.video__button.video__popup data-lity=true href="https://vimeo.com/#{item[:vimeo_id]}"
-                  a.video__button
+              script src="https://cdn.jwplayer.com/players/#{item[:id]}-8SfP7aMx.js"
 
             figcaption.carousel__name = item[:title]
     - else
@@ -34,13 +28,7 @@ ruby:
 
       - item = block[:items].first
       figure.cb-video-media__item
-        .cb-video-media__media.video class='js-video' data-title=item[:title]
-          .video__inner
-            = vimeo_tag item[:vimeo_id]
-            .video__thumbnail
-              - image_sizes = '(max-width: 708px) calc(100vw - 48px), 660px'
-              = vimeo_image_tag item, image_sizes, lazy: false
-              a.video__button.video__popup data-lity=true href="https://vimeo.com/#{item[:vimeo_id]}"
-              a.video__button
+        .cb-video-media__media
+          script src="https://cdn.jwplayer.com/players/#{item[:id]}-8SfP7aMx.js"
 
-        figcaption.cb-video-media__name = item[:title]
+        figcaption.cb-video-media__name = item[:name]

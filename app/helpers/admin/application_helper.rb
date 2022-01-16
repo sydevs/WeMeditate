@@ -1,4 +1,3 @@
-
 module Admin::ApplicationHelper
 
   # Admin URLs require a bit of special handling, to support all the abstraction that we do in the CMS
@@ -91,7 +90,12 @@ module Admin::ApplicationHelper
           result = tag.span("[#{block['data']['action']}] → ") + tag.small(block['data']['url']) if block['data']['action'] && block['data']['url']
 
         when 'media'
-          result = block['data']['items'].map { |i| "#{tag.i(class: "#{block['data']['type']} icon")} <a href=\"#{i['image']['preview']}\" target=\"_blank\">#{i['image']['preview'].split('/').last}</a>#{" - \"#{i['caption'].truncate(100)}\"" if i['caption']}" }.join('<br>')
+          result = if block['data']['type'] == 'image'
+                     block['data']['items'].map { |i| "#{tag.i(class: "#{block['data']['type']} icon")} <a href=\"#{i['image']['preview']}\" target=\"_blank\">#{i['image']['preview'].split('/').last}</a>#{" - \"#{i['caption'].truncate(100)}\"" if i['caption']}" }
+                   else
+                     block['data']['items'].map { |i| "#{tag.i(class: "#{block['data']['type']} icon")} #{i['name']} (#{i['id']})" }
+                   end
+          result = result.join('<br>')
           result = sanitize(result, tags: %w[i a br])
 
         when 'vimeo'

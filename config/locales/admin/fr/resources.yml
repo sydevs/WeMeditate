@@ -220,7 +220,9 @@ fr:
         thumbnail: "Image Miniature (png)"
         thumbnail_id: :activerecord.attributes.treatment.thumbnail # Do not translate
         horizontal_vimeo_id: "Vidéo Horizontale (Vimeo ID)"
-        vertical_vimeo_id: "VIdép Verticale (Vimeo ID)"
+        vertical_vimeo_id: "Vidéo Verticale (Vimeo ID)"
+        horizontal_jwplayer_id: "Vidéo Horizontale (JWPlayer ID)"
+        vertical_jwplayer_id: "Vidéo Verticale (JWPlayer ID)"
         metatags: "Métadonnées"
 
       instrument_filter:
@@ -274,6 +276,8 @@ fr:
         slug: :activerecord.attributes.generic.slug # Do not translate
         horizontal_vimeo_id: "Vidéo Horizontale (Vimeo ID)"
         vertical_vimeo_id: "Vidéo Verticale (Vimeo ID)"
+        horizontal_jwplayer_id: "Vidéo Horizontale (JWPlayer ID)"
+        vertical_jwplayer_id: "Vidéo Verticale (JWPlayer ID)"
         duration_filter: :activerecord.models.duration_filter.one # Do not translate
         duration_filter_id: :activerecord.models.duration_filter.one # Do not translate
         goal_filters: :activerecord.models.goal_filter.other # Do not translate

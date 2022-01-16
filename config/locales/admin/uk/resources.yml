@@ -261,6 +261,8 @@ uk:
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
         horizontal_vimeo_id: "Горизонтальне Відео (Vimeo ID)"
         vertical_vimeo_id: "Вертикальне Відео (Vimeo ID)"
+        horizontal_jwplayer_id: "Горизонтальне Відео (JWPlayer ID)"
+        vertical_jwplayer_id: "Вертикальне Відео (JWPlayer ID)"
         metatags: "Метатеги"
 
       instrument_filter:
@@ -318,6 +320,8 @@ uk:
         slug: :activerecord.attributes.generic.slug # Do not translate
         horizontal_vimeo_id: "Горизонтальне Відео (Vimeo ID)"
         vertical_vimeo_id: "Вертикальне Відео (Vimeo ID)"
+        horizontal_jwplayer_id: "Горизонтальне Відео (JWPlayer ID)"
+        vertical_jwplayer_id: "Вертикальне Відео (JWPlayer ID)"
         duration_filter: :activerecord.models.duration_filter.one # Do not translate
         duration_filter_id: :activerecord.models.duration_filter.one # Do not translate
         goal_filters: :activerecord.models.goal_filter.few # Do not translate
