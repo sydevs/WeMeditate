@@ -109,7 +109,10 @@
   width: 100%
   max-height: 500px
   object-fit: contain
-  object-position: right
+  object-position: center
+
+  @include tablet-or-larger
+    object-position: right
 
   @include desktop
     max-height: 600px
@@ -144,11 +147,10 @@
 // ===== PLAYLIST CONTAINER ===== //
 .amplitude-playlist
   &-container
-    width: calc(60% + 120px)
-    max-width: 805px
-
     @include tablet-or-larger
       @include gradient(to left, 'blue')
+      width: calc(60% + 120px)
+      max-width: 805px
       min-height: 600px
       padding: 50px 20px
       padding-left: 80px
@@ -180,7 +182,7 @@
   &-list
     position: relative
     list-style: none
-    margin-top: 28px
+    margin-top: 42px
 
 
 // ===== MINI PLAYER ADJUSTMENTS ===== //
@@ -233,8 +235,6 @@
         margin-left: 12px
 
   .amplitude-song-container
-    margin-bottom: 22px
-
     @include tablet-or-larger
       margin-bottom: 28px
 
@@ -244,11 +244,14 @@
   border: 1px solid transparent
   width: 100%
   margin-top: 0
-  margin-bottom: 14px
+  margin-bottom: 22px
   padding: 5px
   padding-left: 37px
   padding-right: 50px
   cursor: pointer
+
+  @include tablet-or-larger
+    margin-bottom: 28px
 
 .amplitude-active-song-container
   border-color: $background-blue
@@ -278,3 +281,4 @@
     float: right
     font-family: $font-number
     opacity: 0.6
+    line-height: 26.25px
