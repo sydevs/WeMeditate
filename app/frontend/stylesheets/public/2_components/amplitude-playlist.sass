@@ -4,10 +4,18 @@
   We are using the amplitude library to play audio content.
   */
 
+.amplitude-content
+  display: flex
+
+  @include mobile
+    flex-direction: column
 
 // ===== PLAYLIST BUTTONS ===== //
 .amplitude-playlists
-  margin-bottom: 42px
+  margin-bottom: 60px
+
+  @include tablet-or-larger
+    margin-bottom: 42px
   
   &-title
     font-weight: $font-semibold
@@ -82,32 +90,39 @@
     fill: $color-player-blue !important
 
 // ===== COVER IMAGE ===== //
+.amplitude-cover
+  margin-bottom: 20px
+  min-width: 40%
+
+  @include tablet-or-larger
+    margin-top: 50px
+    margin-bottom: 0
+    z-index: 1
+
+  @include laptop-or-larger
+    margin-left: 50px
+
+  @include desktop
+    min-width: 50%
+
+.amplitude-cover img
+  width: 100%
+  max-height: 500px
+  object-fit: contain
+  object-position: right
+
+  @include desktop
+    max-height: 600px
+
 .amplitude-cover--desktop
   display: none
 
   @include tablet-or-larger
     display: block
-    position: absolute
-    margin-top: 218px
-    left: 78px
-    width: 40.77%
-
-  @include laptop-or-larger
-    left: auto
-    right: 50%
-    width: 27.5%
-    margin-top: 178px
-
-  @include desktop
-    margin-top: 218px
-
+    
   &-image
     float: right
     position: relative
-
-  img
-    width: 100%
-    max-height: 600px
 
 .amplitude-cover--mobile
   margin-top: 60px
@@ -116,7 +131,6 @@
     display: none
 
   img
-    width: 100%
     max-width: 400px
     margin: auto
 
@@ -130,32 +144,20 @@
 // ===== PLAYLIST CONTAINER ===== //
 .amplitude-playlist
   &-container
+    width: calc(60% + 120px)
     max-width: 805px
-    width: 100%
-    margin-top: 54px
-    margin-left: auto
-
-    @include tablet
-      width: 83.5%
-      margin-top: 100px
-      padding: 50px 0
-      padding-left: 39.1%
 
     @include tablet-or-larger
       @include gradient(to left, 'blue')
       min-height: 600px
+      padding: 50px 20px
+      padding-left: 80px
+      margin-left: -40px
 
     @include laptop-or-larger
-      width: 56%
-      margin-top: 60px
-      padding: 52px 0
-      padding-left: 162px
-      padding-right: 0
-      min-height: 700px
-
-    @include desktop
       min-height: 720px
-      margin-top: 100px
+      padding-left: 140px
+      margin-left: -60px
 
     &:not(.amplitude-active-playlist-container)
       display: none
@@ -178,14 +180,63 @@
   &-list
     position: relative
     list-style: none
+    margin-top: 28px
 
-    @include tablet
-      max-width: 577px
-      margin-left: -12px
+
+// ===== MINI PLAYER ADJUSTMENTS ===== //
+.amplitude--mini
+  display: block
+
+  .amplitude-cover
+    margin-top: 0
+
+
+// ===== MEGA PLAYER ADJUSTMENTS ===== //
+.amplitude--mega
+  .amplitude-cover--desktop
+    margin-top: 0
+
+    @include tablet-or-larger
+      margin-top: 218px
 
     @include laptop-or-larger
-      margin-left: 12px
+      margin-top: 178px
 
+    @include desktop
+      margin-top: 200px
+
+  .amplitude-playlist
+    &-container
+      margin-top: 54px
+      width: 100%
+      
+      @include tablet-or-larger
+        width: 83.5%
+        margin-top: 100px
+
+      @include laptop-or-larger
+        width: 56%
+        margin-top: 60px
+
+      @include desktop
+        min-height: 800px
+        margin-top: 100px
+
+    &-list
+      margin-top: 0
+
+      @include tablet
+        max-width: 577px
+        margin-left: -12px
+
+      @include laptop-or-larger
+        margin-left: 12px
+
+  .amplitude-song-container
+    margin-bottom: 22px
+
+    @include tablet-or-larger
+      margin-bottom: 28px
 
 // ===== SINGLE TRACK IN PLAYLIST ===== //
 .amplitude-song-container
@@ -193,14 +244,11 @@
   border: 1px solid transparent
   width: 100%
   margin-top: 0
-  margin-bottom: 22px
+  margin-bottom: 14px
   padding: 5px
   padding-left: 37px
   padding-right: 50px
   cursor: pointer
-
-  @include tablet-or-larger
-    margin-bottom: 28px
 
 .amplitude-active-song-container
   border-color: $background-blue

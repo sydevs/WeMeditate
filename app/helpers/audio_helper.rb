@@ -4,7 +4,32 @@
 module AudioHelper
 
   # Get the data which is relevant to make the amplitude player work
-  def amplitude_data tracks, playlists: true
+  def amplitude_block_data block
+    songs = block[:items].each_with_index.map do |item, index|
+      poster = MediaFile.find_by(id: block[:poster][:id])&.file
+      audio = MediaFile.find_by(id: item[:audio][:id])
+
+      {
+        index: index,
+        name: item[:title],
+        url: audio.file.url,
+        cover_art_url: poster&.url, # TODO: Implement responsive images
+        image: poster&.to_json,
+        duration: duration_as_string(audio.meta[:duration]),
+      }
+    end
+
+    {
+      songs: songs,
+      playlists: [{
+        title: '',
+        songs: songs.map { |song| song[:index] },
+      }],
+    }
+  end
+
+  # Get the data which is relevant to make the amplitude player work
+  def amplitude_track_data tracks, playlists: false
     playlists_data = {}
 
     songs = tracks.each_with_index.map do |track, index|
@@ -74,6 +99,13 @@ module AudioHelper
         # },
       }
     end
+  end
+
+  # A string representation of the duration of this track
+  def duration_as_string duration
+    return '0:00' if duration.nil?
+
+    Time.at(duration).utc.strftime('%M:%S')
   end
 
 end

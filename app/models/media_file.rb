@@ -25,32 +25,39 @@ class MediaFile < ActiveRecord::Base
   end
 
   def type
-    image_meta['type'] if image_meta
+    meta['type'] if meta
   end
 
-  # This is to be rendered as a json and used by the photoswipe gallery
-  def to_h
-    return nil unless image?
+  def to_h mode = nil
+    if mode == :photoswipe
+      return unless image?
 
-    hash = { pid: id, src: file.url }
-    hash[:msrc] = file.tiny.url if scalable_image?
+      hash = { pid: id, src: file.url }
+      hash[:msrc] = file.tiny.url if scalable_image?
 
-    if image_meta && image_meta['width'] && image_meta['height']
-      hash.merge! w: image_meta['width'], h: image_meta['height']
+      if meta && meta['width'] && meta['height']
+        hash.merge! w: meta['width'], h: meta['height']
+      else
+        # Choose some plausible default if the metadata is missing.
+        hash.merge! src: file.large.url, w: 1440, h: 900
+      end
+
+      hash
     else
-      # Choose some plausible default if the metadata is missing.
-      hash.merge! src: file.large.url, w: 1440, h: 900
+      { id: id, src: file.url }.merge!(meta)
     end
+  end
 
-    hash
+  def audio?
+    mime_type&.starts_with?('audio/')
   end
 
   def image?
-    !image_meta.present? || !image_meta['type'].present? || image_meta['type'].starts_with?('image/')
+    mime_type.nil? || mime_type.starts_with?('image/')
   end
 
   def scalable_image? _image = nil
-    image? && (!image_meta.present? || !%w[image/gif image/svg image/svg+xml].include?(image_meta['type']))
+    image? && !%w[image/gif image/svg image/svg+xml].include?(mime_type)
   end
 
 end

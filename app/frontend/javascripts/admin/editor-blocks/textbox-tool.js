@@ -125,6 +125,7 @@ export default class TextTool extends EditorTool {
     this.uploader.addEventListener('uploadstart', event => this.setImage(event.detail.file))
     this.uploader.addEventListener('uploadend', event => {
       this.imageContainer.dataset.attributes = JSON.stringify(event.detail.response)
+      this.imageContainer.querySelector('.loader').remove()
     })
 
     this.imageRemoveIcon = make('i', [this.CSS.image.remove, 'ui', 'times', 'circle', 'fitted', 'link', 'icon'], {}, this.imageContainer)
@@ -175,8 +176,9 @@ export default class TextTool extends EditorTool {
       const reader = new FileReader()
       reader.readAsDataURL(file)
       reader.onloadend = () => {
-        const img = make('img', this.CSS.image.img, { src: reader.result })
-        placeholder.replaceWith(img)
+        placeholder.remove()
+        make('div', ['ui', 'active', 'loader'], {}, this.imageContainer)
+        make('img', this.CSS.image.img, { src: reader.result }, this.imageContainer)
         this.wrapper.dataset.hasImage = true
       }
     } else {

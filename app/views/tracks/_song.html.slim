@@ -1,12 +1,11 @@
 
-.amplitude-song-container.amplitude-play data-amplitude-song-index=song_counter data-amplitude-playlist=playlist
+.amplitude-song-container.amplitude-play data-amplitude-song-index=song_counter data-amplitude-playlist=(local_assigns[:playlist] || nil)
   .amplitude-song-icon
     .icon.icon--player
-  - if song.duration.present?
-    .amplitude-song-duration = song.duration
+  .amplitude-song-duration = song[:duration]
   .amplitude-song-title = song[:name]
   .amplitude-song-artist
-    - song.artists.each do |artist|
+    - (song[:artists] || []).each do |artist|
       a href=artist.url target='_blank'
         = artist.name
-      = ', ' unless song.artists.last == artist
+      = ', ' unless song[:artists].last == artist

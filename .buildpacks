@@ -1,3 +1,4 @@
-https://github.com/MarmosetMusic/heroku-buildpack-taglib
+https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest
+https://github.com/heroku/heroku-buildpack-nodejs
 https://github.com/heroku/heroku-buildpack-ruby
 https://github.com/clhuang/heroku-buildpack-webp-binaries

@@ -16,6 +16,7 @@ export default class MediaTool extends EditorTool {
   constructor({data, _config, api}) {
     super({ // Data
       id: data.id || generateId(),
+      poster: data.poster || {},
       items: data.items || [],
       mediaFiles: data.mediaFiles || [],
       type: ['image', 'video', 'audio', 'vimeo'].includes(data.type) ? data.type : 'none',
@@ -31,7 +32,7 @@ export default class MediaTool extends EditorTool {
           options: [
             { name: 'image', icon: 'image', },
             { name: 'video', icon: 'film', },
-            //{ name: 'audio', icon: 'volume up' },
+            { name: 'audio', icon: 'volume up' },
           ]
         },
         quantity: {
@@ -64,6 +65,7 @@ export default class MediaTool extends EditorTool {
     }, api)
 
     this.CSS.finder = `${this.CSS.container}__finder`
+    this.CSS.poster = `${this.CSS.container}__poster`
     this.CSS.items = `${this.CSS.container}__items`
     this.CSS.picker = {
       container: `${this.CSS.container}__picker`,
@@ -74,6 +76,7 @@ export default class MediaTool extends EditorTool {
     this.CSS.item = {
       container: `${this.CSS.container}__item`,
       image: `${this.CSS.items}__image`,
+      title: `${this.CSS.items}__title`,
       alt: `${this.CSS.items}__alt`,
       caption: `${this.CSS.items}__caption`,
       credit: `${this.CSS.items}__credit`,
@@ -100,9 +103,20 @@ export default class MediaTool extends EditorTool {
     this.videoFinder = new FinderModal('jwplayer', items => this._onApproveVideoFinder(items))
     this.container.prepend(openButton)
 
-    this.uploader = new FileUploader(this.container)
+    this.posterUploader = new FileUploader(this.container, 'image', 'poster')
+    this.posterUploader.addEventListener('uploadstart', event => this._onPosterUpload(event.detail.file))
+    this.posterUploader.addEventListener('uploadend', event => this._onPosterUploaded(event.detail.response))
+
+    this.uploader = new FileUploader(this.container, this.data.type, 'file')
     this.uploader.addEventListener('uploadstart', event => this.addFile(event.detail.index, event.detail.file))
-    this.uploader.addEventListener('uploadend', event => this._onUpload(event.detail.index, event.detail.response))
+    this.uploader.addEventListener('uploadend', event => this._onFileUploaded(event.detail.index, event.detail.response))
+
+    this.poster = make('div', this.CSS.poster, {}, this.container)
+    if (this.data.poster.preview) {
+      make('img', null, { src: this.data.poster.preview }, this.poster)
+    } else {
+      make('i', ['huge', 'image', 'icon'], {}, this.poster)
+    }
 
     this.itemsContainer = make('div', this.CSS.items, {}, this.container)
 
@@ -119,9 +133,18 @@ export default class MediaTool extends EditorTool {
   }
 
   renderItem(item = {}) {
+    console.log('render item', item)
     const container = make('div', this.CSS.item.container, {})
 
-    if (this.data.type == 'video') {
+    if (this.data.type == 'audio') {
+      if (item.audio && item.audio.preview) {
+        const link = make('a', null, { href: item.audio.preview, target: '_blank' }, container)
+        make('i', ['play', 'circle', 'link', 'fitted', 'icon'], {}, link)
+      } else {
+        make('i', ['circle', 'notch', 'loading', 'icon'], {}, container)
+      }
+      container.dataset.attributes = JSON.stringify(item.audio)
+    } else if (this.data.type == 'video') {
       const img = make('div', [this.CSS.item.image, 'ui', 'rounded', 'image'], {}, container)
       make('img', null, { src: `https://cdn.jwplayer.com/v2/media/${item.id}/poster.jpg?width=320` }, img)
       container.dataset.attributes = JSON.stringify(item)
@@ -157,6 +180,14 @@ export default class MediaTool extends EditorTool {
 
       credit.dataset.placeholder = translate('placeholders.credit')
       credit.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
+    } else if (this.data.type == 'audio') {
+      let title = make('div', [this.CSS.input, this.CSS.inputs.text, this.CSS.item.title], {
+        contentEditable: true,
+        innerHTML: item.title || '',
+      }, container)
+
+      title.dataset.placeholder = translate('placeholders.title')
+      title.addEventListener('keydown', event => this.inhibitEnterAndBackspace(event))
     } else {
       make('div', '', { innerHTML: item.name }, container)
     }
@@ -165,19 +196,6 @@ export default class MediaTool extends EditorTool {
     remove.addEventListener('click', (event) => this.removeItem(event.target.parentNode))
 
     return container
-  }
-
-  _onUpload(index, data) {
-    this.itemsContainer.querySelector(`[data-index="${index}"]`).dataset.attributes = JSON.stringify(data)
-  }
-  
-  _onApproveVideoFinder(items) {
-    this.itemsContainer.innerHTML = ''
-    this.data.items = items
-    items.forEach(item => {
-      const element = this.renderItem(item)
-      this.itemsContainer.appendChild(element)
-    })
   }
 
   removeItem(item) {
@@ -195,22 +213,61 @@ export default class MediaTool extends EditorTool {
   }
 
   addFile(index, file) {
-    const item = this.renderItem()
+    console.log('add file', file)
+    const item = this.renderItem({ title: file.name })
     this.itemsContainer.appendChild(item)
 
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onloadend = () => {
-      const image = make('div', [this.CSS.item.image, 'ui', 'rounded', 'image'])
-      make('img', null, { src: reader.result }, image)
-      image.dataset.index = index
-      item.querySelector(`.${this.CSS.item.image}`).replaceWith(image)
+      if (this.data.type == 'image') {
+        const image = make('div', [this.CSS.item.image, 'ui', 'rounded', 'image'])
+        make('div', ['ui', 'active', 'loader'], {}, image)
+        make('img', null, { src: reader.result }, image)
+        item.querySelector(`.${this.CSS.item.image}`).replaceWith(image)
+      }
+
+      item.dataset.index = index
     }
 
     // Hide the uploader if we are using the single uploader and there is already an uploaded image.
     if (!this.isGallery && this.itemsContainer.childElementCount > 0) {
       $(this.uploader.wrapper).hide()
     }
+  }
+
+  _onFileUploaded(index, data) {
+    const item = this.itemsContainer.querySelector(`[data-index="${index}"]`)
+    item.dataset.attributes = JSON.stringify(data)
+
+    const loadingIcon = item.querySelector('.loading.icon')
+    if (loadingIcon) loadingIcon.className = 'arrow alternate circle up icon'
+    const loader = item.querySelector('.loader')
+    if (loader) loader.remove()
+  }
+  
+  _onPosterUpload(file) {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+      this.poster.innerHTML = ''
+      make('div', ['ui', 'active', 'loader'], {}, this.poster)
+      make('img', null, { src: reader.result }, this.poster)
+    }
+  }
+
+  _onPosterUploaded(data) {
+    this.poster.dataset.attributes = JSON.stringify(data)
+    this.poster.querySelector('.loader').remove()
+  }
+  
+  _onApproveVideoFinder(items) {
+    this.itemsContainer.innerHTML = ''
+    this.data.items = items
+    items.forEach(item => {
+      const element = this.renderItem(item)
+      this.itemsContainer.appendChild(element)
+    })
   }
 
   save(_toolElement) {
@@ -224,6 +281,7 @@ export default class MediaTool extends EditorTool {
         const image = JSON.parse(item.querySelector(`.${this.CSS.item.image}`).dataset.attributes)
         const itemData = {
           image: image,
+          title: item.querySelector(`.${this.CSS.item.title}`).innerText,
           alt: item.querySelector(`.${this.CSS.item.alt}`).innerText,
           caption: item.querySelector(`.${this.CSS.item.caption}`).innerText,
           credit: item.querySelector(`.${this.CSS.item.credit}`).innerText,
@@ -237,6 +295,24 @@ export default class MediaTool extends EditorTool {
         newData.items.push(itemData)
 
         //if (!this.isGallery) break // TODO: Only save one image, if we are in single mode.
+      }
+    } else if (this.data.type == 'audio') {
+      for (let i = 0; i < this.itemsContainer.childElementCount; i++) {
+        const item = this.itemsContainer.children[i]
+        const audio = JSON.parse(item.dataset.attributes)
+        const itemData = {
+          audio: audio,
+          title: item.querySelector(`.${this.CSS.item.title}`).innerText,
+        }
+
+        newData.mediaFiles.push(audio.id)
+        newData.items.push(itemData)
+
+        //if (!this.isGallery) break // TODO: Only save one image, if we are in single mode.
+      }
+
+      if (this.poster.dataset.attributes) {
+        newData.poster = JSON.parse(this.poster.dataset.attributes)
       }
     } else {
       for (let i = 0; i < this.itemsContainer.childElementCount; i++) {
@@ -255,11 +331,23 @@ export default class MediaTool extends EditorTool {
   }
 
   selectTune(tune) {
+    if (tune.group == 'type' && this.data.items.length > 0) {
+      // eslint-disable-next-line no-alert
+      const result = confirm(translate('blocks.media.change_warning'))
+      if (!result) return
+    }
+
     super.selectTune(tune)
 
     if (tune.group == 'quantity') {
       this.uploader.setAllowMultiple(this.isGallery)
       $(this.uploader.wrapper).toggle(this.isGallery || this.itemsContainer.childElementCount === 0)
+    }
+
+    if (tune.group == 'type') {
+      this.itemsContainer.innerHTML = null
+      this.data.items = []
+      this.uploader.changeType(tune.name)
     }
   }
 

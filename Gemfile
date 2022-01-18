@@ -46,6 +46,7 @@ gem 'google-api-client' # An unspecified dependency for carrierwave-google-stora
 gem 'carrierwave-meta' # To get image meta data
 gem 'google-cloud-storage' # Needed to access sitemaps
 gem 'mini_magick' # Image processing during upload
+gem 'streamio-ffmpeg' # To parse metadata from mp3 files
 
 # Admin
 gem 'audited' # To track changes to the files
@@ -79,7 +80,6 @@ gem 'httparty' # For http requests (specifically Klaviyo)
 gem 'lograge' # Reduce verbosity of Rails logs
 gem 'mail_form' # For the contact form
 gem 'sitemap_generator' # For SEO purposes
-gem 'taglib-ruby', '~> 0.7.1', platforms: %i[ruby] # To parse metadata from mp3 files
 gem 'geocoder' # For identifying users from specific regions
 gem 'cloudflare-rails' # To restore client IP addresses after proxy
 gem "recaptcha", require: "recaptcha/rails" # To protect against bots on the contact form

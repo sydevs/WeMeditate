@@ -66,6 +66,7 @@ en:
           label: "Media"
           picker: "Choose Media Type"
           change: "Change Videos"
+          change_warning: "Are you sure you want to change the type of this block? All items in the block will be erased."
           type:
             label: "Type"
             image: "Image"

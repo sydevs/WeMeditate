@@ -4,7 +4,8 @@ main
 
   - if @tracks.present?
     - first_track = @tracks.first
-    - amplitude_data = amplitude_data(@tracks)
+    - amplitude_data = amplitude_track_data(@tracks, playlists: true)
+    pre = amplitude_data.pretty_inspect
 
     .music
       .music__triangle
@@ -12,7 +13,7 @@ main
 
       p.music__description = translate 'tracks.text'
 
-      .amplitude id='music-player' data-tracks=amplitude_data.to_json
+      .amplitude.amplitude--mega id='music-player' data-tracks=amplitude_data.to_json
         .amplitude-playlists
           h2.amplitude-playlists-title = translate 'tracks.choose_instruments'
           .amplitude-playlists-list
@@ -55,31 +56,32 @@ main
                 .icon.icon--volume-muted
               input.amplitude-volume-slider type='range'
 
-        .amplitude-cover.amplitude-cover--desktop
-          .amplitude-cover-image
-            .amplitude-sidetext.sidetext.sidetext--overlay.sidetext--left
-            img data-amplitude-song-info='cover_art_url'
+        .amplitude-content
+          .amplitude-cover.amplitude-cover--desktop
+            .amplitude-cover-image
+              .amplitude-sidetext.sidetext.sidetext--overlay.sidetext--left
+              img data-amplitude-song-info='cover_art_url'
 
-        - amplitude_data[:playlists].each do |playlist_id, playlist|
-          - playlist_songs = amplitude_data[:songs].select { |song| playlist[:songs].include?(song[:index]) }
-          - active = 'amplitude-active-playlist-container' if playlist_id == 0
-          .amplitude-playlist-container class=active data-amplitude-playlist=playlist_id
-            .amplitude-playlist-title
-              = t('tracks.playlist')
-              - if playlist[:cover_art_url]
-                span.amplitude-playlist-icon
-                  // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
-                  .js-inline-svg data-url="#{playlist[:cover_art_url]}" data-namespace="#{playlist[:title].parameterize.downcase}"
-            .amplitude-playlist-list
-              /= render partial: 'tracks/song', collection: playlist_songs, locals: { playlist: playlist_id }, cached: Proc.new { |song| [song, playlist_id] }
-              - playlist_songs.each_with_index do |song, index|
-                - cache [song, playlist_id, I18n.locale] do
-                  = render 'tracks/song', song: song, playlist: playlist_id, song_counter: index
+          - amplitude_data[:playlists].each do |playlist_id, playlist|
+            - playlist_songs = amplitude_data[:songs].select { |song| playlist[:songs].include?(song[:index]) }
+            - active = 'amplitude-active-playlist-container' if playlist_id == 0
+            .amplitude-playlist-container class=active data-amplitude-playlist=playlist_id
+              .amplitude-playlist-title
+                = t('tracks.playlist')
+                - if playlist[:cover_art_url]
+                  span.amplitude-playlist-icon
+                    // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
+                    .js-inline-svg data-url="#{playlist[:cover_art_url]}" data-namespace="#{playlist[:title].parameterize.downcase}"
+              .amplitude-playlist-list
+                /= render partial: 'tracks/song', collection: playlist_songs, locals: { playlist: playlist_id }, cached: Proc.new { |song| [song, playlist_id] }
+                - playlist_songs.each_with_index do |song, index|
+                  - cache [song, playlist_id, I18n.locale] do
+                    = render 'tracks/song', song: song, playlist: playlist_id, song_counter: index
 
-        .amplitude-cover.amplitude-cover--mobile
-          .amplitude-cover-image
-            .amplitude-sidetext.sidetext.sidetext--overlay.sidetext--left
-            img data-amplitude-song-info='cover_art_url'
+          .amplitude-cover.amplitude-cover--mobile
+            .amplitude-cover-image
+              .amplitude-sidetext.sidetext.sidetext--overlay.sidetext--left
+              img data-amplitude-song-info='cover_art_url'
 
   - cache @static_page do
     .content = render_content @static_page

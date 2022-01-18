@@ -1,8 +1,6 @@
 ## TRACK
 # A musical track, which in the context of this website means music to meditate to.
 
-# require 'taglib' unless Gem.win_platform?
-
 class Track < ApplicationRecord
 
   # Extensions

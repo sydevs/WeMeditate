@@ -12,6 +12,10 @@
     &:hover
       color: $color-player-blue
 
+.amplitude-controls
+  @include mobile
+    padding: 0 10px
+
 // ===== BASIC BUTTON STATES ===== //
 .amplitude-play-pause
   > *
@@ -70,7 +74,7 @@
     width: 36px
     height: 36px
     font-size: 2.4rem
-    background: white
+    background: none
 
     > *
       margin: auto
@@ -80,9 +84,14 @@
     top: 0
     right: 0
   
+    @include mobile
+      display: none
+
 
 // ===== AMPLITUDE TRACK ===== //
 .amplitude-track-wrapper
+  position: relative
+  
   @include tablet-or-larger
     display: flex
 
@@ -101,11 +110,9 @@
 .amplitude-skip
   font-size: 2.2rem
   text-align: center
-  margin-top: 12px
 
   @include tablet-or-larger
     margin-left: 18px
-    margin-top: 0
 
   .amplitude-pause,
   .amplitude-next
@@ -120,6 +127,16 @@
   .amplitude-shuffle
     margin-left: 16px
 
+.amplitude-info .amplitude-skip
+  display: none
+  
+  @include laptop-or-larger
+    display: block
+
+.amplitude-track-wrapper .amplitude-skip
+  @include laptop-or-larger
+    display: none
+ 
 // ===== AMPLITUDE VOLUME ===== //
 .amplitude-volume
   font-size: 2rem
@@ -137,8 +154,22 @@
   .amplitude-mute
     margin-right: 12px
 
-// ===== MINI PLAYER ADJUSTMENTS ===== //
+// ===== MEGA PLAYER ADJUSTMENTS ===== //
 .amplitude--mini
+  .amplitude-info .amplitude-skip
+    @include tablet-or-larger
+      display: block
+
+  .amplitude-track-wrapper .amplitude-skip
+    @include tablet-or-larger
+      display: none
+
+// ===== MEGA PLAYER ADJUSTMENTS ===== //
+.amplitude--mega
+  .amplitude-track-wrapper .amplitude-skip
+    display: block
+
+.amplitude:not(.amplitude--mega)
   margin-top: 30px
   margin-bottom: 80px
   padding-bottom: 16px
@@ -148,14 +179,6 @@
 
   @include laptop-or-larger
     margin-bottom: 20px
-    
-  .amplitude-info .amplitude-skip
-    @include mobile
-      display: none
-
-  .amplitude-track-wrapper .amplitude-skip
-    @include tablet-or-larger
-      display: none
 
   .amplitude-info-name
     @include tablet-or-larger

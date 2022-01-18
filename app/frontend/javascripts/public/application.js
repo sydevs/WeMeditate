@@ -76,13 +76,16 @@ export function load() {
   loadAll('reading-time', ReadingTime)
   loadAll('video', Video)
 
+  // Remove all duplicate music players, then load
+  $('[id="music-player"]').slice(1).remove()
+  loadFirst('music-player', MusicPlayer)
+
   loadFirst('header', Header)
   setHeader(instances.header[0])
   loadFirst('categories-menu', CategoriesMenu)
   loadFirst('custom-meditation', CustomMeditation)
   loadFirst('geosearch', GeoSearch)
   loadFirst('language-switcher', LanguageSwitcher)
-  loadFirst('music-player', MusicPlayer)
   loadFirst('prescreen', Prescreen)
   loadFirst('subtle-system', SubtleSystem)
 }

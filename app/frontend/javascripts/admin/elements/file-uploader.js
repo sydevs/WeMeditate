@@ -2,19 +2,21 @@ import { make } from '../util'
 import { translate } from '../../i18n'
 import { uploadFile } from '../features/uploader'
 
+const ACCEPTS = {
+  file: '',
+  image: 'image/png, image/jpg, image/jpeg, image/gif, image/svg+xml',
+  audio: 'audio/mpeg',
+}
+
 export default class FileUploader {
 
-  constructor(container = null) {
+  constructor(container = null, type = 'image', key = '') {
+    type = Object.keys(ACCEPTS).includes(type) ? type : 'file'
     this.fileCounter = 0
 
-    this.wrapper = make('div', 'uploader', {
-      innerHTML: translate('uploader.drag', { file: translate('uploader.file.many').toLowerCase() })
-    }, container)
-
-    this.input = make('input', '', {
-      type: 'file',
-      accept: 'image/png, image/jpg, image/jpeg, image/gif, image/svg+xml',
-    }, this.wrapper)
+    this.wrapper = make('div', 'uploader', { data: { type: type, key: key } }, container)
+    this.input = make('input', '', { type: 'file', accept: ACCEPTS[type] }, this.wrapper)
+    this.changeType(type)
 
     this.wrapper.addEventListener('dragover', event => {
       event.preventDefault()
@@ -31,8 +33,18 @@ export default class FileUploader {
     })
 
     this.wrapper.addEventListener('click', () => this.input.click())
-    this.wrapper.addEventListener('drop', event => this._onImageDrop(event))
+    this.wrapper.addEventListener('drop', event => this._onFileDrop(event))
     this.input.addEventListener('change', event => this._onImageSelect(event))
+  }
+
+  refreshText() {
+    this.wrapper.innerText = translate('uploader.drag', { file: translate(`uploader.${this.type}.${this.allowMultiple ? 'many' : 'one'}`).toLowerCase() })
+  }
+
+  changeType(type) {
+    this.type = type
+    this.input.setAttribute('accept', ACCEPTS[type])
+    this.refreshText()
   }
 
   _onImageSelect(event) {
@@ -42,7 +54,7 @@ export default class FileUploader {
     }
   }
 
-  _onImageDrop(event) {
+  _onFileDrop(event) {
     if (event.dataTransfer.items) {
       // Use DataTransferItemList interface to access the file(s)
       for (let i = 0; i < event.dataTransfer.items.length; i++) {
@@ -91,11 +103,11 @@ export default class FileUploader {
 
     if (allow) {
       this.input.setAttribute('multiple', true)
-      this.wrapper.innerHTML = translate('uploader.drag', { file: translate('uploader.file.many').toLowerCase() })
     } else {
       this.input.removeAttribute('multiple')
-      this.wrapper.innerHTML = translate('uploader.drag', { file: translate('uploader.file.one').toLowerCase() })
     }
+
+    this.refreshText()
   }
 
   addEventListener(type, callback) {

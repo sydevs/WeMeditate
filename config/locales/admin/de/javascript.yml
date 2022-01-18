@@ -1,5 +1,5 @@
 
-en:
+de: # TODO: Translate
   admin:
     javascript:
       search:
@@ -18,77 +18,82 @@ en:
           many: "Files"
       blocks: # These blocks are the types of elements that can be used on a page
         action:
-          title: "Action"
+          label: "Action"
           type:
-            title: "Type"
+            label: "Type"
             button: "Button"
             form: "Form"
           form:
-            title: "Form"
+            label: "Form"
             signup: "Signup"
             contact: "Contact"
           spacing:
-            title: "Spacing"
+            label: "Spacing"
             spaced: "Comfortable"
             compact: "Compact"
         catalog:
-          title: "We Meditate Content"
+          label: "We Meditate Content"
+          change: "Change Items"
           type:
-            title: "Type"
+            label: "Type"
             articles: "Articles"
             treatments: "Techniques"
             meditations: "Meditations"
           style:
-            title: "Style"
+            label: "Style"
             image: "Image"
             text: "Text-only"
             title: "Title-only"
         layout:
-          title: "Layout"
+          label: "Layout"
           type:
-            title: "Type"
+            label: "Type"
             grid: "Grid"
             accordion: "Accordion"
             columns: "Columns"
         list:
-          title: "List"
+          label: "List"
           type:
-            title: "Type"
+            label: "Type"
             text: "Text"
             contents: "Page Index"
           style:
-            title: "Style"
+            label: "Style"
             unordered: "Dots"
             ordered: "Numbers"
             leaf: "Leaves"
         media:
-          title: "Media"
+          label: "Media"
+          picker: "Choose Media Type"
+          change: "Change Videos"
+          change_warning: "Are you sure you want to change the type of this block? All items in the block will be erased."
           type:
-            title: "Type"
+            label: "Type"
             image: "Image"
             video: "Video"
             audio: "Audio"
+            none: "None"
           quantity:
-            title: "Quantity"
+            label: "Quantity"
             single: "Single"
-            galley: "Galley"
+            gallery: "Gallery"
           position:
-            title: "Position"
+            label: "Position"
             left: "Left"
             right: "Right"
             center: "Full-width"
           size:
-            title: "Size"
-            normal: "Normal"
+            label: "Size"
+            narrow: "Normal"
             wide: "Wide"
         paragraph:
-          title: "Text"
+          label: "Text"
           type:
-            title: "Type"
-            paragraph: "Paragraph"
+            label: "Type"
             header: "Header"
+            text: "Paragraph"
           level:
-            title: "Level"
+            label: "Level"
             h1: "H1"
             h2: "H2"
             h3: "H3"
@@ -96,42 +101,42 @@ en:
             h5: "H5"
             h6: "H6"
         textbox:
-          title: "Textbox"
+          label: "Textbox"
           type:
-            title: "Type"
+            label: "Type"
             text: "Text Only"
             image: "With Image"
             splash: "Splash Screen"
           alignment:
-            title: "Alignment"
+            label: "Alignment"
             left: "Left"
             right: "Right"
             center: "Centered"
           style:
-            title: "Style"
+            label: "Style"
             quote: "Quote"
             poem: "Poem"
           spacing:
-            title: "Spacing"
+            label: "Spacing"
             overlap: "Overlap"
             separate: "Separate"
           background:
-            title: "Background"
+            label: "Background"
             white: "White"
             image: "Image"
             ornate: "Ornate"
           color:
-            title: "Colour"
+            label: "Colour"
             dark: "Dark"
             light: "Light"
           position:
-            title: "Position"
+            label: "Position"
             left: "Left"
             right: "Right"
         whitespace:
-          title: "Whitespace"
+          label: "Whitespace"
           size:
-            title: "Size"
+            label: "Size"
             small: "Small"
             medium: "Medium"
             large: "Large"
@@ -161,6 +166,12 @@ en:
         sidetext:
           label: "Vertical Text"
           text: "Enter vertical text..."
+      finder:
+        select: "Select"
+        cancel: "Cancel"
+        title:
+          jwplayer: "Search JWPlayer Media"
+          wemeditate: "Search We Meditate Content"
       placeholders:
         title: "Title"
         text: "Text"
@@ -176,3 +187,4 @@ en:
         email: "Email"
         message: "Message"
         countdown: "01:23:45"
+        loading: "Loading"

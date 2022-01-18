@@ -1,0 +1,82 @@
+
+ruby:
+  classes = []
+  classes << "cb-audio-media--#{block[:quantity]}"
+
+- if block[:items].present?
+  - amplitude_data = amplitude_block_data(block)
+
+  .cb-audio-media class=classes
+    .gradient-wrapper
+      = render_decoration :gradient, block, size: %i[tall long]
+
+    - if block[:quantity] == 'gallery' && block[:items].length > 1
+      .amplitude id='music-player' data-tracks=amplitude_data.to_json
+        .amplitude-content
+          .amplitude-cover
+            .amplitude-cover-image
+              .amplitude-sidetext.sidetext.sidetext--overlay.sidetext--left
+              img data-amplitude-song-info='cover_art_url'
+
+          .amplitude-playlist-container class='amplitude-active-playlist-container' data-amplitude-playlist=0
+            .amplitude-playlist-title
+              = t('tracks.playlist')
+
+            .amplitude-controls
+              .amplitude-info
+                a.amplitude-play-pause.amplitude-interactive
+                  .icon.icon--spinner
+                  .icon.icon--play
+                  .amplitude-equalizer
+                    - 7.times do
+                      span.amplitude-equalizer-bar
+                .amplitude-skip
+                  span.amplitude-prev.amplitude-interactive
+                    .icon.icon--backward
+                  span.amplitude-next.amplitude-interactive
+                    .icon.icon--forward
+                  span.amplitude-shuffle.amplitude-interactive
+                    .icon.icon--shuffle
+                .amplitude-info-name data-amplitude-song-info='name'
+              .amplitude-track-wrapper
+                .amplitude-track
+                  input.amplitude-song-slider type='range' step=0.1
+                  span.amplitude-current-time
+                  span.amplitude-duration-time
+                .amplitude-volume
+                  span.amplitude-mute.amplitude-interactive
+                    .icon.icon--volume
+                    .icon.icon--volume-muted
+                  input.amplitude-volume-slider type='range'
+                .amplitude-skip
+                  span.amplitude-prev.amplitude-interactive
+                    .icon.icon--backward
+                  span.amplitude-next.amplitude-interactive
+                    .icon.icon--forward
+                  span.amplitude-shuffle.amplitude-interactive
+                    .icon.icon--shuffle
+
+            .amplitude-playlist-list
+              - amplitude_data[:songs].each_with_index do |song, index|
+                = render 'tracks/song', song: song, song_counter: index
+    - else
+      .amplitude.amplitude--mini id='music-player' data-tracks=amplitude_data.to_json
+        .amplitude-controls
+          .amplitude-info
+            a.amplitude-play-pause.amplitude-interactive
+              .icon.icon--spinner
+              .icon.icon--play
+              .amplitude-equalizer
+                - 7.times do
+                  span.amplitude-equalizer-bar
+            .amplitude-info-name data-amplitude-song-info='name'
+          .amplitude-track-wrapper
+            .amplitude-track
+              input.amplitude-song-slider type='range' step=0.1
+              span.amplitude-current-time
+              span.amplitude-duration-time
+            .amplitude-volume
+              span.amplitude-mute.amplitude-interactive
+                .icon.icon--volume
+                .icon.icon--volume-muted
+              input.amplitude-volume-slider type='range'

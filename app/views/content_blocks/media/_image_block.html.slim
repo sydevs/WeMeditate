@@ -35,7 +35,7 @@ ruby:
   - items.compact.each_with_index do |item, index|
     - media_file = record.media_files.find_by(id: item[:image][:id])
     - if media_file.present?
-      - attributes = media_file.to_h.merge(title: item[:caption]) if is_gallery
+      - attributes = media_file.to_h(:photoswipe).merge(title: item[:caption]) if is_gallery
       figure.cb-image-media__item data-attributes=attributes&.to_json
         a.cb-image-media__item__media href=(media_file.file_url if is_gallery) target='_blank'
           = smart_image_tag media_file.file, image_sizes, lazy: false, class: 'cb-image-media__img', alt: (item[:alt] || item[:caption])

@@ -28,7 +28,7 @@ main id=dom_id(@static_page)
           p.excerpt__text = translate 'treatments.music.description'
 
           - if @tracks.present?
-            .amplitude.amplitude--mini id='music-player' data-tracks=amplitude_data(@tracks, playlists: false).to_json
+            .amplitude.amplitude--mini id='music-player' data-tracks=amplitude_track_data(@tracks).to_json
               .amplitude-info
                 .amplitude-play-pause.amplitude-interactive
                   .icon.icon--spinner
