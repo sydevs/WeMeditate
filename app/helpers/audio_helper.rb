@@ -15,7 +15,7 @@ module AudioHelper
         url: audio.file.url,
         cover_art_url: poster&.url, # TODO: Implement responsive images
         image: poster&.to_json,
-        duration: duration_as_string(audio.meta[:duration]),
+        duration: duration_as_string(audio.meta['duration']),
       }
     end
 
@@ -105,7 +105,7 @@ module AudioHelper
   def duration_as_string duration
     return '0:00' if duration.nil?
 
-    Time.at(duration).utc.strftime('%M:%S')
+    Time.at(duration).utc.strftime('%-M:%S')
   end
 
 end

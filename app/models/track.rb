@@ -27,9 +27,6 @@ class Track < ApplicationRecord
   # Scopes
   scope :q, -> (q) { with_translation.joins(:translations, :artists).where('track_translations.name ILIKE ? OR artists.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
 
-  # Callbacks
-  before_save :parse_duration
-
   # Include everything necessary to render the full content of this model
   def self.preload_for mode
     case mode
@@ -40,22 +37,7 @@ class Track < ApplicationRecord
 
   # A string representation of the duration of this track
   def duration_as_string
-    Time.at(duration).utc.strftime('%M:%S') if try(:duration)
+    Time.at(duration).utc.strftime('%-M:%S') if try(:duration)
   end
-
-  private
-
-    # Use the TagLib library to extract the duration of this track before it is saved.
-    def parse_duration
-      return
-      return if Gem.win_platform?
-      return unless audio.present? && (duration.nil? || audio_changed?)
-
-      # This can only be run when the audio file is changed because the file will be stored in the cache.
-      # Once the audio file is on the remote server this method won't work.
-      ::TagLib::FileRef.open(audio.file.path) do |file|
-        self.duration = file.audio_properties.length unless file.null?
-      end
-    end
 
 end
