@@ -11,7 +11,7 @@ ruby:
 .cb-image-textbox class=classes
   - if block[:background] == 'ornate'
     .gradient-wrapper
-      .gradient.gradient--ornate class="gradient--#{block[:position] == 'left' ? 'right' : 'left'}"
+      .gradient.gradient--ornate class="gradient--#{block[:position] == 'left' ? :right : :left}"
   - elsif block[:background] != 'image'
     .cb-image-textbox__decoration.cb-image-textbox__decoration--gradient
       .gradient-wrapper
@@ -20,7 +20,7 @@ ruby:
   .cb-image-textbox__wrapper
     .cb-image-textbox__decoration.cb-image-textbox__decoration--sidetext
       .cb-image-textbox__sidetext
-        = render_decoration :sidetext, block, position: (block[:position] == 'left' ? :right : :left)
+        = render_decoration :sidetext, block, alignment: block[:position]
 
     - if block[:background] == 'ornate'
       = inline_svg_tag 'graphics/ornate.svg', class: 'cb-image-textbox__graphic'
