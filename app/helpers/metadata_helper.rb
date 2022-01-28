@@ -21,6 +21,10 @@ module MetadataHelper
           end
         elsif key == 'description'
           concat tag.meta name: 'description', content: value
+        elsif key == 'hreflang'
+          value.each do |val|
+            concat tag.link rel: 'alternate', href: val[1], hreflang: val[0]
+          end
         elsif value.is_a? Array
           value.each do |val|
             concat tag.meta property: key, content: val
@@ -59,7 +63,7 @@ module MetadataHelper
         'og:url' => request.original_url,
         'og:image' => ApplicationController.helpers.image_url('metadata/preview.png'),
         'og:locale' => locale,
-        'og:locale:alternate' => Rails.configuration.published_locales.map(&:to_s),
+        # 'og:locale:alternate' => Rails.configuration.published_locales.map(&:to_s),
         'twitter:site' => Rails.application.config.twitter_handle,
         'twitter:creator' => Rails.application.config.twitter_handle,
       }
@@ -93,16 +97,38 @@ module MetadataHelper
     def set_record_metatags! tags, record
       tags['title'] = record.name
       tags['description'] = record.excerpt if record.respond_to?(:excerpt)
+      tags['og:url'] = wm_url_for(record)
       tags['og:type'] = 'article'
       tags['og:image'] = record.thumbnail.url if record.try(:thumbnail).present?
-      tags['og:locale:alternate'] = record.translated_locales.map(&:to_s) if record.try(:translatable?)
       tags['og:article:published_time'] = record.created_at.to_s(:db)
       tags['og:article:modified_time'] = record.updated_at.to_s(:db)
       tags['og:article:section'] = record.category&.name if record.is_a?(Article)
       tags['twitter:card'] = 'summary'
 
+      set_locale_metatags!(tags, record) if record.try(:translatable?)
       set_static_page_metatags!(tags, record) if record.is_a?(StaticPage)
       set_video_metatags!(tags, record) if record.try(:vimeo_metadata).present?
+    end
+
+    # Add locale metatags for a record to a given `tags` hash
+    def set_locale_metatags! tags, record
+      tags['og:locale:alternate'] = []
+      tags['hreflang'] = []
+
+      fields = %i[locale]
+      fields << :state if record.respond_to? :state
+      fields << :published if record.respond_to? :published
+      fields << :published_at if record.respond_to? :published_at
+      translations = record.translations.unscope(where: :locale).select(*fields)
+
+      translations.each do |translation|
+        next if translation.respond_to?(:state) && translation.state != record.class.states[:published]
+        next if translation.respond_to?(:published) && !translation.published
+        next if translation.respond_to?(:published_at) && !translation.published_at.nil? && translation.published_at > DateTime.now
+
+        tags['og:locale:alternate'] << translation.locale
+        tags['hreflang'] << [translation.locale, wm_url_for(record, locale: translation.locale)]
+      end
     end
 
     # Add the configured metatags for a static page record to a given `tags` hash
@@ -115,7 +141,6 @@ module MetadataHelper
       end
 
       tags['og:image'] = image_url image.file_url if image.present?
-      tags['og:url'] = static_page_url_for(record)
       tags['og:type'] = 'website' if %w[home contact privacy articles meditations subtle_system].include?(record.role)
     end
 

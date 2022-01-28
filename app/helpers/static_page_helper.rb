@@ -48,19 +48,20 @@ module StaticPageHelper
 
   # Many static pages represent special pages in the site.
   # This helper fetches the URL for one of those special pages, or the default URL for a given role or static page.
-  def static_page_url_for page_or_role
+  def static_page_url_for page_or_role, locale: nil
+    locale ||= Globalize.locale || I18n.locale
     role = page_or_role.is_a?(StaticPage) ? page_or_role.role : page_or_role
     role = role&.to_sym
 
     if ROLE_TO_URL.key?(role)
-      send(:"#{ROLE_TO_URL[role]}_#{Globalize.locale}_url")
+      send(:"#{ROLE_TO_URL[role]}_#{locale}_url")
     elsif role == :custom
       page_or_role.is_a?(StaticPage) ? static_page_url(page_or_role) : nil
     elsif role == nil
       ''
     else
       page = StaticPage.preload_for(:preview).find_by_role(role)
-      polymorphic_url([page, Globalize.locale])
+      polymorphic_url([page, locale])
     end
   end
 

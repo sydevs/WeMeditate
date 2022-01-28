@@ -36,4 +36,14 @@ module ApplicationHelper
     end
   end
 
+  def wm_url_for record, locale: nil
+    locale ||= Globalize.locale || I18n.locale
+
+    if record.is_a?(StaticPage)
+      static_page_url_for(record, locale: locale.to_s)
+    else
+      polymorphic_url([record, locale])
+    end
+  end
+
 end
