@@ -4,7 +4,7 @@ Rails.application.configure do
     port: 587,
     user_name: ENV['SMTP_EMAIL'],
     password: ENV['SMTP_PASSWORD'],
-    domain: 'wemeditate.co',
+    domain: 'wemeditate.com',
     authentication: :plain,
     enable_starttls_auto: true,
   }

@@ -276,6 +276,7 @@ module Contentable
 
     %w[
       wemeditate.co www.wemeditate.co
+      wemeditate.com www.wemeditate.com
       wemeditate.fr www.wemeditate.fr
       wemeditate.ru www.wemeditate.ru
       wemeditate.cz www.wemeditate.cz

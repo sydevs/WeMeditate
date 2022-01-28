@@ -10,7 +10,7 @@ import TimeZonesMap from './elements/time-zones-map'
 import RepeatableFields from './elements/repeatable-fields'
 
 /** Admin
- * This file orchestrates all the code for the administrative part of the website (ie. admin.wemeditate.co)
+ * This file orchestrates all the code for the administrative part of the website (ie. admin.wemeditate.com)
  */
 
 export function load() {

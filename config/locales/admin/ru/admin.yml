@@ -474,11 +474,11 @@ ru:
         issues:
           menu: "Сообщить о проблеме"
           title: "Как сообщить о проблеме"
-          description: "Пожалуйста, нажмите \"Сообщить о проблеме\" в меню внизу слева. Так вы сможете отправить email на admin@wemeditate.co."
+          description: "Пожалуйста, нажмите \"Сообщить о проблеме\" в меню внизу слева. Так вы сможете отправить email на admin@wemeditate.com."
 
     report_issue:
       name: "WeMeditate Administrator"
-      email: "admin@wemeditate.co"
+      email: "admin@wemeditate.com"
       subject: "WeMeditate Issue Report"
       body: "Пожалуйста, опишите проблему по-английски."
 

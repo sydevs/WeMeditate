@@ -463,11 +463,11 @@ it:
         issues:
           menu: "Segnala un problema"
           title: "Come segnalare un problema"
-          description: "Clicca il bottone \"Segnala un problema\" in fondo al menu a sinistra. Questo aprirà il tuo client emai da cui sarai in grado di inviarci un messaggio a admin@wemeditate.co"
+          description: "Clicca il bottone \"Segnala un problema\" in fondo al menu a sinistra. Questo aprirà il tuo client emai da cui sarai in grado di inviarci un messaggio a admin@wemeditate.com"
 
     report_issue:
       name: "We Meditate Administrator"
-      email: "admin@wemeditate.co"
+      email: "admin@wemeditate.com"
       subject: "We Meditate Issue Report"
       body: "Per favore descrivi la problematica in inglese..."
 

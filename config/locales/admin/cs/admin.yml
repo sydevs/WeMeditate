@@ -468,11 +468,11 @@ cs:
         issues:
           menu: "Reporting Issues"
           title: "How to report issues"
-          description: "Please click the \"Report Issue\" button at the bottom of the left-hand side menu. This will open up your email client where you will be able to send us an email at admin@wemeditate.co"
+          description: "Please click the \"Report Issue\" button at the bottom of the left-hand side menu. This will open up your email client where you will be able to send us an email at admin@wemeditate.com"
 
     report_issue:
       name: "WeMeditate Administrator"
-      email: "admin@wemeditate.co"
+      email: "admin@wemeditate.com"
       subject: "WeMeditate Issue Report"
       body: "Please describe the issue in English..."
 

@@ -471,11 +471,11 @@ uk:
         issues:
           menu: "Звітність про проблеми"
           title: "Як повідомляти про проблеми"
-          description: "Будь ласка, натисніть на \"Report Issue\" кнопка в нижній частині лівого меню. Це відкриє ваш клієнт електронної пошти, куди ви зможете надіслати нам електронний лист на адресу admin@wemeditate.co"
+          description: "Будь ласка, натисніть на \"Report Issue\" кнопка в нижній частині лівого меню. Це відкриє ваш клієнт електронної пошти, куди ви зможете надіслати нам електронний лист на адресу admin@wemeditate.com"
 
     report_issue:
       name: "WeMeditate Administrator"
-      email: "admin@wemeditate.co"
+      email: "admin@wemeditate.com"
       subject: "WeMeditate Issue Report"
       body: "Будь ласка, опишіть проблему на англійській ..."
 

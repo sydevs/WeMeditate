@@ -467,11 +467,11 @@ fr:
         issues:
           menu: "Signaler des Problèmes"
           title: "Comment Signaler des Problèmes"
-          description: "Please click the \"Report Issue\" button at the bottom of the left-hand side menu. This will open up your email client where you will be able to send us an email at admin@wemeditate.co" # TODO: Translate
+          description: "Please click the \"Report Issue\" button at the bottom of the left-hand side menu. This will open up your email client where you will be able to send us an email at admin@wemeditate.com" # TODO: Translate
 
     report_issue:
       name: "WeMeditate Administrateur"
-      email: "admin@wemeditate.co"
+      email: "admin@wemeditate.com"
       subject: "Rapport de Problème WeMeditate"
       body: "Veuillez décrire le problème en anglais..."
 

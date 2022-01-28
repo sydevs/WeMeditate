@@ -474,11 +474,11 @@ ro:
         issues:
           menu: "Raportează problemă"
           title: "Cum să raportezi o problemă"
-          description: "Te rog apasă pe butonul de \"Raportează problema\" situat în partea stânga-jos a meniului. Acesta va deschide e-mail-ul clientului unde vei avea posibilitatea să trimiti un mesaj către admin@wemeditate.co"
+          description: "Te rog apasă pe butonul de \"Raportează problema\" situat în partea stânga-jos a meniului. Acesta va deschide e-mail-ul clientului unde vei avea posibilitatea să trimiti un mesaj către admin@wemeditate.com"
 
     report_issue:
       name: "WeMeditate Administrator"
-      email: "admin@wemeditate.co"
+      email: "admin@wemeditate.com"
       subject: "WeMeditate Issue Report"
       body: "Te rog descrie problema întâmpinată în limba engleză..."
 
