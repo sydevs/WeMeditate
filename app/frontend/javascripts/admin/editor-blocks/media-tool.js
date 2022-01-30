@@ -281,7 +281,6 @@ export default class MediaTool extends EditorTool {
         const image = JSON.parse(item.querySelector(`.${this.CSS.item.image}`).dataset.attributes)
         const itemData = {
           image: image,
-          title: item.querySelector(`.${this.CSS.item.title}`).innerText,
           alt: item.querySelector(`.${this.CSS.item.alt}`).innerText,
           caption: item.querySelector(`.${this.CSS.item.caption}`).innerText,
           credit: item.querySelector(`.${this.CSS.item.credit}`).innerText,
