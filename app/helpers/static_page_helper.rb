@@ -61,7 +61,7 @@ module StaticPageHelper
       ''
     else
       page = StaticPage.preload_for(:preview).find_by_role(role)
-      polymorphic_url([page, locale])
+      polymorphic_url([page, locale.to_sym])
     end
   end
 
