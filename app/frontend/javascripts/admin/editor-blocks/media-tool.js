@@ -278,9 +278,9 @@ export default class MediaTool extends EditorTool {
     if (this.data.type == 'image') {
       for (let i = 0; i < this.itemsContainer.childElementCount; i++) {
         const item = this.itemsContainer.children[i]
-        const image = JSON.parse(item.querySelector(`.${this.CSS.item.image}`).dataset.attributes)
+        const imageData = item.dataset.attributes ? JSON.parse(item.dataset.attributes) : null
         const itemData = {
-          image: image,
+          image: imageData,
           alt: item.querySelector(`.${this.CSS.item.alt}`).innerText,
           caption: item.querySelector(`.${this.CSS.item.caption}`).innerText,
           credit: item.querySelector(`.${this.CSS.item.credit}`).innerText,
@@ -290,7 +290,7 @@ export default class MediaTool extends EditorTool {
           itemData.credit = item.querySelector(`.${this.CSS.item.credit}`).innerText
         }
 
-        newData.mediaFiles.push(image.id)
+        if (imageData) newData.mediaFiles.push(imageData.id)
         newData.items.push(itemData)
 
         //if (!this.isGallery) break // TODO: Only save one image, if we are in single mode.
