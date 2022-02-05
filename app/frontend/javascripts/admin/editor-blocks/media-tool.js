@@ -133,7 +133,6 @@ export default class MediaTool extends EditorTool {
   }
 
   renderItem(item = {}) {
-    console.log('render item', item)
     const container = make('div', this.CSS.item.container, {})
 
     if (this.data.type == 'audio') {
@@ -278,9 +277,10 @@ export default class MediaTool extends EditorTool {
     if (this.data.type == 'image') {
       for (let i = 0; i < this.itemsContainer.childElementCount; i++) {
         const item = this.itemsContainer.children[i]
-        const imageData = item.dataset.attributes ? JSON.parse(item.dataset.attributes) : null
+        if (!item.dataset.attributes) continue
+        const image = JSON.parse(item.dataset.attributes)
         const itemData = {
-          image: imageData,
+          image: image,
           alt: item.querySelector(`.${this.CSS.item.alt}`).innerText,
           caption: item.querySelector(`.${this.CSS.item.caption}`).innerText,
           credit: item.querySelector(`.${this.CSS.item.credit}`).innerText,
@@ -290,7 +290,7 @@ export default class MediaTool extends EditorTool {
           itemData.credit = item.querySelector(`.${this.CSS.item.credit}`).innerText
         }
 
-        if (imageData) newData.mediaFiles.push(imageData.id)
+        newData.mediaFiles.push(image.id)
         newData.items.push(itemData)
 
         //if (!this.isGallery) break // TODO: Only save one image, if we are in single mode.
@@ -298,6 +298,7 @@ export default class MediaTool extends EditorTool {
     } else if (this.data.type == 'audio') {
       for (let i = 0; i < this.itemsContainer.childElementCount; i++) {
         const item = this.itemsContainer.children[i]
+        if (!item.dataset.attributes) continue
         const audio = JSON.parse(item.dataset.attributes)
         const itemData = {
           audio: audio,
