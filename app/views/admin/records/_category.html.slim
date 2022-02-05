@@ -11,3 +11,7 @@ tr.record id=dom_id(category)
 
   td.collapsing.top.aligned
     = table_record_status_label(category)
+
+  - if local_assigns[:original_locale]
+    td.collapsing.top.aligned.faded
+      = language_name(category.original_locale)

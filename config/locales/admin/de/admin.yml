@@ -77,6 +77,7 @@ de:
       role: "Rolle auf der Webseite"
       pending_changes: "Diese %{page} enthält Änderungen bis zur Genehmigung"
       start_date: "Start Date" # TODO: Translate
+      records_from_other_languages: "%{pages} from other languages" # TODO: Translate
 
     tags:
       published: "Veröffentlicht"
@@ -106,6 +107,7 @@ de:
     messages:
       loading: "Laden"
       errors: "Fehler"
+      no_records_found: "No %{pages} found" # TODO: Translate
       no_translations_found: "Keine %{pages} zu übersetzen"
       make_public: "Mache diese %{page} sichtbar für die Öffentlichkeit"
       maintenance_mode: "Diese Webseite ist im Umbau, sie wird bald wieder verfügbar sein."
@@ -359,6 +361,7 @@ de:
         node: "Node" # TODO: Translate
         location: "Location" # TODO: Translate
         local_time: "Local Time" # TODO: Translate
+        original_locale: "Language" # TODO: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate

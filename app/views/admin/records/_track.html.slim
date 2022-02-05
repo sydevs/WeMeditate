@@ -19,3 +19,7 @@ tr.record id=dom_id(track)
 
   td.collapsing.top.aligned
     = table_record_status_label(track)
+
+  - if local_assigns[:original_locale]
+    td.collapsing.top.aligned.faded
+      = language_name(track.original_locale)

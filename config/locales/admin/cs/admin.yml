@@ -77,6 +77,7 @@ cs:
       role: "Role On Website"
       pending_changes: "This %{page} has changes pending approval"
       start_date: "Start Date"
+      records_from_other_languages: "%{pages} from other languages" # TODO: Translate
 
     tags:
       published: "Published"
@@ -106,6 +107,7 @@ cs:
     messages:
       loading: "Loading"
       errors: "Errors"
+      no_records_found: "No %{pages} found"
       no_translations_found: "No %{pages} to translate"
       make_public: "Make this %{page} visible to the public"
       maintenance_mode: "The website is under construction, come back soon."
@@ -359,6 +361,7 @@ cs:
         node: "Node"
         location: "Location"
         local_time: "Local Time"
+        original_locale: "Language" # TODO: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate

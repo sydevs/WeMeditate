@@ -77,6 +77,7 @@ ru:
       role: "Роль На Сайте"
       pending_changes: "Эта %{page} имеет изменения, требующие утверждения" 
       start_date: "Start Date" # TODO: Translate
+      records_from_other_languages: "%{pages} from other languages" # TODO: Translate
 
     tags:
       published: "Опубликовано"
@@ -108,6 +109,7 @@ ru:
     messages:
       loading: "Загружается"
       errors: "Ошибки"
+      no_records_found: "No %{pages} found" # TODO: Translate
       no_translations_found: "Все статьи типа \"%{pages}\" уже переведены"
       make_public: "Сделать %{page} видимой для пользователей"
       maintenance_mode: "Сайт в разработке, возвращайтесь через некоторое время."
@@ -366,6 +368,7 @@ ru:
         node: "Node" # TOOD: Translate
         location: "Location" # TODO: Translate
         local_time: "Local Time" # TODO: Translate
+        original_locale: "Language" # TODO: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate

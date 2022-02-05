@@ -11,3 +11,7 @@ tr.record id=dom_id(goal_filter)
 
   td.collapsing.top.aligned
     = table_record_status_label(goal_filter)
+
+  - if local_assigns[:original_locale]
+    td.collapsing.top.aligned.faded
+      = language_name(goal_filter.original_locale)

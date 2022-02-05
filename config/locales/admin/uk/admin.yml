@@ -77,6 +77,7 @@ uk:
       role: "Роль На Сайті"
       pending_changes: "Ця %{page} має зміни в очікуванні затвердження"
       start_date: "Start Date" # TODO: Translate
+      records_from_other_languages: "%{pages} from other languages" # TODO: Translate
 
     tags:
       published: "Опубліковано"
@@ -108,6 +109,7 @@ uk:
     messages:
       loading: "Завантажується"
       errors: "Помилки"
+      no_records_found: "No %{pages} found" # TODO: Translate
       no_translations_found: "Усі статті типу \"%{pages}\" вже перекладені"
       make_public: "Зробити %{page} видимим для публіки"
       maintenance_mode: "Веб-сайт розробляється, повертайтесь незабаром."
@@ -362,6 +364,7 @@ uk:
         minutes: "Тривалість"
         location: "Location" # TODO: Translate
         local_time: "Local Time" # TODO: Translate
+        original_locale: "Language" # TODO: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate

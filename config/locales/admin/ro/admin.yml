@@ -77,6 +77,7 @@ ro:
       role: "Rol pe Website"
       pending_changes: "Această %{page} are modificări în curs de aprobare"
       start_date: "Start Date" # TODO: Translate
+      records_from_other_languages: "%{pages} from other languages" # TODO: Translate
 
     tags:
       published: "Publicat"
@@ -107,6 +108,7 @@ ro:
     messages:
       loading: "Se încarcă"
       errors: "Erori"
+      no_records_found: "No %{pages} found" # TODO: Translate
       no_translations_found: "Nicio traducere pentru %{pages}"
       make_public: "Fă %{page} să fie vizibilă publicului"
       maintenance_mode: "Website  în construcție, te rugăm să revii în curând."
@@ -363,6 +365,7 @@ ro:
         minutes: "Interval de Timp"
         location: "Location" # TODO: Translate
         local_time: "Local Time" # TODO: Translate
+        original_locale: "Language" # TODO: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate

@@ -14,3 +14,7 @@ tr.record id=dom_id(static_page)
 
   td.collapsing.top.aligned
     = table_record_status_label(static_page)
+
+  - if local_assigns[:original_locale]
+    td.collapsing.top.aligned.faded
+      = language_name(static_page.original_locale)

@@ -21,3 +21,7 @@ tr.record id=dom_id(meditation)
 
   td.collapsing.top.aligned
     = table_record_status_label(meditation)
+
+  - if local_assigns[:original_locale]
+    td.collapsing.top.aligned.faded
+      = language_name(meditation.original_locale)

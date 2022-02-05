@@ -23,3 +23,7 @@ tr.record id=dom_id(author)
         = author.user.preview_name
     - else
       = translate('admin.index.attribute.none')
+
+  - if local_assigns[:original_locale]
+    td.collapsing.top.aligned.faded
+      = language_name(author.original_locale)

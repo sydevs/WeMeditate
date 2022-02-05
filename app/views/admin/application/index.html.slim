@@ -75,27 +75,52 @@
             i.plus.icon
             = translate('admin.action.simple.create')
 
-  table.ui.compact.unstackable.models.table
-    thead
-      tr
-        - table_columns(@model) do |column, index|
-          th class=('collapsing' unless index == 0 || column == :artist_id)
-            - column = :created_at if params[:sort] == 'created_at' && column == :updated_at
-            = translate(column, scope: %i[admin index columns])
-            - if params[:sort] == column.to_s
-              i.dropdown.icon
-            - if params[:filter].present? && params[:filter].split(':')[0] == column.to_s
-              i.small.filter.icon
+  - unless current_user.translator?
+    table.ui.compact.unstackable.models.table
+      thead
+        tr
+          - table_columns(@model) do |column, index|
+            th class=('collapsing' unless index == 0 || column == :artist_id)
+              - column = :created_at if params[:sort] == 'created_at' && column == :updated_at
+              = translate(column, scope: %i[admin index columns])
+              - if params[:sort] == column.to_s
+                i.dropdown.icon
+              - if params[:filter].present? && params[:filter].split(':')[0] == column.to_s
+                i.small.filter.icon
 
-    tbody#records = render partial: "admin/records/#{@model.model_name.singular_route_key}", collection: @records
+      tbody#records = render partial: "admin/records/#{@model.model_name.singular_route_key}", collection: @records
 
-  - if @records.empty? && current_user.translator?
     #pagination
-      = translate 'admin.messages.no_translations_found', pages: human_model_name(@model, :plural).downcase
-  - else
-    #pagination
-      = page_entries_info @records
-      = paginate @records, remote: true
+      - if @records.empty?
+        = translate 'admin.messages.no_records_found', pages: human_model_name(@model, :plural).downcase
+      - else
+        = page_entries_info @records
+        = paginate @records, remote: true
+
+  - if @untranslated_records.present?
+    - unless current_user.translator?
+      .ui.small.header = translate('admin.details.records_from_other_languages', pages: human_model_name(@model, :plural))
+
+    table.ui.compact.unstackable.models.table
+      thead
+        tr
+          - table_columns(@model, original_locale: true) do |column, index|
+            th class=('collapsing' unless index == 0 || column == :artist_id)
+              - column = :created_at if params[:sort] == 'created_at' && column == :updated_at
+              = translate(column, scope: %i[admin index columns])
+              - if params[:sort] == column.to_s
+                i.dropdown.icon
+              - if params[:filter].present? && params[:filter].split(':')[0] == column.to_s
+                i.small.filter.icon
+
+      tbody#untranslated-records = render partial: "admin/records/#{@model.model_name.singular_route_key}", collection: @untranslated_records, locals: { original_locale: true }
+
+    #untranslated-pagination
+      - if @untranslated_records.empty? && current_user.translator?
+        = translate 'admin.messages.no_translations_found', pages: human_model_name(@model, :plural).downcase
+      - else
+        = page_entries_info @untranslated_records
+        = paginate @untranslated_records, remote: true
 
   .ui.hidden.divider
 

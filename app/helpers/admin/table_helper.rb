@@ -98,8 +98,10 @@ module Admin::TableHelper
   }.freeze
 
   # Yield all the columns for a certain model's table
-  def table_columns model, &_block
-    TABLE_COLUMNS[model.model_name.route_key.to_sym].each_with_index do |column, index|
+  def table_columns model, original_locale: false, &_block
+    columns = TABLE_COLUMNS[model.model_name.route_key.to_sym].clone
+    columns << :original_locale if original_locale
+    columns.each_with_index do |column, index|
       yield column, index
     end
   end

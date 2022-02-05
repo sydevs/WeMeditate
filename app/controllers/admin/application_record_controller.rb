@@ -12,14 +12,21 @@ module Admin
         @records = @records.where(id: params[:ids].split(',').map(&:to_i)) unless params[:ids].blank?
         @records = @records.where.not(id: params[:exclude].split(',').map(&:to_i)) unless params[:exclude].blank?
 
+        unless request.format.json?
+          if @model.try(:translatable?) && [Article, StaticPage].include?(@model)
+            @untranslated_records = @records.without_translation.page(params[:page]).per(15)
+            @records = @records.with_translation.page(params[:page]).per(15)
+          else
+            @records = @records.page(params[:page]).per(15)
+          end
+        end
+
         respond_to do |format|
           format.html do
-            @records = @records.page(params[:page]).per(15)
             render 'admin/application/index'
           end
 
           format.js do
-            @records = @records.page(params[:page]).per(15)
             render 'admin/application/index'
           end
 
