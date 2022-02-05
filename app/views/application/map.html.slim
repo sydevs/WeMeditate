@@ -1,5 +1,5 @@
 
-- if ENV['ATLAS_URL']
+- if false && ENV['ATLAS_URL']
   iframe#map src="#{ENV.fetch('ATLAS_URL')}?#{@config.to_query}"
 - else
   .error
@@ -11,6 +11,12 @@
 
     p.error__subtitle = translate 'errors.alternatives_title'
     ul.error__list
-      - %i[meditations tracks articles].each do |role|
-        - page = static_page_preview_for(role)
+      - if I18n.locale == :en
+        - page = static_page_preview_for(:streams)
         li: a href=static_page_path_for(page) = page.name
+        li: a href='https://www.sahajayoga.org.uk/find-a-meditation' Classes in the United Kingom
+        li: a href='https://us.sahajayoga.org/classes-near-me/' Classes in the United States
+      - else
+        - %i[meditations tracks articles].each do |role|
+          - page = static_page_preview_for(role)
+          li: a href=static_page_path_for(page) = page.name
