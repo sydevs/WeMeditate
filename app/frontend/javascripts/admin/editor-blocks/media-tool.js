@@ -150,7 +150,7 @@ export default class MediaTool extends EditorTool {
     } else if (item.image && item.image.preview) {
       const img = make('div', [this.CSS.item.image, 'ui', 'rounded', 'image'], {}, container)
       make('img', null, { src: item.image.preview }, img)
-      img.dataset.attributes = JSON.stringify(item.image)
+      container.dataset.attributes = JSON.stringify(item.image)
     } else {
       make('div', [this.CSS.item.image, 'ui', 'fluid', 'placeholder'], {}, container)
     }
@@ -320,6 +320,8 @@ export default class MediaTool extends EditorTool {
         newData.items.push(JSON.parse(item.dataset.attributes))
       }
     }
+
+    console.log('saving', this.data, 'as', newData)
 
     // TODO: Because of autosave, this strips out necessary defaults prematurely.
     //this.removeInactiveData()
