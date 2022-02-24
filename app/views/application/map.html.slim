@@ -1,6 +1,6 @@
 
-- if false && ENV['ATLAS_URL']
-  iframe#map src="#{ENV.fetch('ATLAS_URL')}?#{@config.to_query}"
+- if @atlas_url
+  iframe#map src="#{@atlas_url}?#{@config.to_query}"
 - else
   .error
     h1.error__banner.banner
