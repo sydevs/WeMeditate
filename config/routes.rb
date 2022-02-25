@@ -36,7 +36,7 @@ Rails.application.routes.draw do
           resources :media_files, only: %i[create]
         end
 
-        resources :articles, :treatments, :streams, only: %i[destroy]
+        resources :articles, :treatments, :streams, :static_pages, only: %i[destroy]
         resources :users, :artists, :meditations, :tracks, :authors,
                   :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters,
                   only: %i[index new edit create update destroy]
