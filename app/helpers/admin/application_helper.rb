@@ -83,7 +83,7 @@ module Admin::ApplicationHelper
           result = ''
           result += "<strong>#{block['data']['title']}</strong><br>" if block['data']['title'].present?
           result += "#{block['data']['text']&.truncate(60)}<br>" if block['data']['text'].present?
-          result += tag.span("[#{block['data']['action']}] → ") + tag.small(block['data']['url']) if block['data']['action'] && block['data']['url']
+          result += tag.span("[#{block['data']['action']}] → ") + tag.small(block['data']['url']) if block['data']['action'].present? && block['data']['url'].present?
           result = sanitize(result, tags: %w[strong br])
 
         when 'action'

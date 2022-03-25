@@ -16,7 +16,8 @@ export default class TextTool extends EditorTool {
     super({ // Data
       id: data.id || generateId(),
       title: data.title || '',
-      subtitle: data.subtitle || '',
+      caption: data.caption || '',
+      credit: data.credit || '',
       text: data.text || '',
       action: data.action || '',
       url: data.url || '',
@@ -24,7 +25,7 @@ export default class TextTool extends EditorTool {
       mediaFiles: data.mediaFiles || [],
       type: ['text', 'image', 'splash'].includes(data.type) ? data.type : 'text',
       alignment: ['left', 'center', 'right'].includes(data.alignment) ? data.alignment : 'left',
-      style: ['quote', 'poem'].includes(data.style) ? data.style : 'quote',
+      style: ['simple', 'hero'].includes(data.style) ? data.style : 'hero',
       spacing: ['overlap', 'separate'].includes(data.spacing) ? data.spacing : 'overlap',
       background: ['white', 'image', 'ornate'].includes(data.background) ? data.background : 'white',
       color: ['dark', 'light'].includes(data.color) ? data.color : 'light',
@@ -35,8 +36,9 @@ export default class TextTool extends EditorTool {
       fields: {
         image: { input: false },
         title: { input: 'title', contained: true },
-        subtitle: { label: 'Subtitle', input: 'caption', contained: true },
         text: { input: 'content', contained: true },
+        credit: { contained: true },
+        caption: { input: 'caption', contained: true },
         action: { input: 'button', contained: true },
         url: { input: 'url', contained: true },
       },
@@ -59,8 +61,8 @@ export default class TextTool extends EditorTool {
         style: {
           requires: { type: ['text'] },
           options: [
-            { name: 'quote', icon: 'quote left' },
-            { name: 'poem', icon: 'feather alternate' },
+            { name: 'simple', icon: 'circle' },
+            { name: 'hero', icon: 'star' },
           ]
         },
         position: {

@@ -114,8 +114,8 @@ en:
             center: "Centered"
           style:
             label: "Style"
-            quote: "Quote"
-            poem: "Poem"
+            simple: "Simple"
+            hero: "Hero"
           spacing:
             label: "Spacing"
             overlap: "Overlap"

@@ -126,6 +126,7 @@ function processDataForSave(data) {
     delete block.data.mediaFiles
   }
 
+  data.markupVersion = 3
   data.mediaFiles = mediaFiles
   return JSON.stringify(data)
 }

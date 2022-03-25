@@ -2,8 +2,55 @@
 .cb-text-textbox
   color: $color-text-dark
 
-// ===== CENTERED QUOTE ===== //
-// The basic kind of quote.
+  &__title
+    font-weight: $font-bold
+    font-size: 1.8rem
+    line-height: 1.4
+
+  &__credit
+    font-size: 1.6rem
+    line-height: 1.875
+
+  &__caption
+    font-size: 1.4rem
+    line-height: 1.875
+
+  &__caption
+    font-style: italic
+
+// ===== SIMPLE QUOTE ===== //
+.cb-text-textbox--simple
+  @extend %narrow-content-width
+
+  @each $side in left right
+    &.cb-text-textbox--#{$side}
+      .cb-text-textbox__block
+        margin-#{$side}: 20px
+        border-#{$side}: 1px solid #AAAAA9
+        text-align: $side
+
+.cb-text-textbox--simple .cb-text-textbox
+  &__block
+    padding: 0.5em 1em
+
+  &__text
+    font-size: 1.8rem
+    line-height: 1.6
+    margin-bottom: 10px
+
+  &__text > p
+    &:first-child
+      margin-top: 0
+
+    &:last-child
+      margin-bottom: 0
+
+  &__caption
+    line-height: 1.4
+    margin-bottom: 5px
+
+
+// ===== CENTERED TEXTBOX ===== //
 .cb-text-textbox--center
   @extend %narrow-content-width
 
@@ -34,11 +81,6 @@
       line-height: 1.6
       margin-bottom: 16px
 
-  &__title
-    font-weight: $font-bold
-    font-size: 1.8rem
-    line-height: 1.4
-
   &__credit
     @include laptop-or-larger
       font-size: 1.8rem
@@ -49,43 +91,13 @@
     font-size: 1.4rem
     line-height: 30px
 
-// ===== POEM QUOTE ===== //
-.cb-text-textbox--poem
-  @extend %narrow-content-width
-
-  @each $side in left right
-    &.cb-text-textbox--#{$side}
-      .cb-text-textbox__block
-        margin-#{$side}: 20px
-        border-#{$side}: 1px solid #AAAAA9
-        text-align: $side
-
-.cb-text-textbox--poem .cb-text-textbox
-  &__block
-    padding: 0.5em 1em
-
-  &__text
-    font-size: 1.8rem
-    line-height: 1.6
-
-  &__text > p
-    &:first-child
-      margin-top: 0
-
-    &:last-child
-      margin-bottom: 0
-
-  &__caption
-    line-height: 1.4
-    margin-bottom: 5px
-
-.cb-text-textbox--poem.cb-text-textbox--center .cb-text-textbox
+.cb-text-textbox--simple.cb-text-textbox--center .cb-text-textbox
   &__block
     max-width: 400px
     text-align: left
 
   &__text
-    line-height: 2
+    font-size: 1.8rem
 
   &__block
     .divider--leaf-up
@@ -94,12 +106,19 @@
     .divider--leaf-down
       margin-top: 28px
 
-// ===== FLOATING TEXTBOX ===== //
+
+// ===== FLOATING HERO TEXTBOX ===== //
 // This is a textbox which is placed as an insert into the text.
 .cb-text-textbox--floating
   max-width: 1050px
   margin: auto
   margin-top: 0 !important
+
+  @include mobile
+    &::after
+      display: block
+      content: ''
+      clear: both
 
   .cb-text-textbox__block
     position: relative
@@ -140,6 +159,7 @@
 
         @include mobile
           padding-#{$opposite}: $gutter-width
+          max-width: 480px
 
         @include tablet-or-larger
           margin-#{$opposite}: 50px
@@ -154,5 +174,10 @@
         @include tablet-or-larger
           #{$opposite}: 20%
 
+      .cb-text-textbox__title
+        font-size: 0.9em
+        font-weight: bold
+        text-align: $opposite
+        
       .cb-text-textbox__text
         text-align: $opposite

@@ -20,73 +20,71 @@
 
     &:hover
       color: #DB2828
-      
+
 
 // TEXT TYPE
 @include type(text)
   .cdx-block
-    padding: 15px 5px
+    padding: 10px
     text-align: center
-    max-width: 80%
-    margin-left: auto
-    margin-right: auto
-
-  .cdx-input
-    text-align: center
+    margin: 10px auto
 
   .cdx-textbox__fields
     display: flex
     flex-direction: column
 
+  .cdx-input
+    text-align: left
+
+  @include on-field(title)
+    margin-bottom: 0.4em
+
   @include on-field(text)
-    font-size: 1.125em
+    margin-bottom: 0.6em
     min-height: 0
-    margin-bottom: 10px
+
+  @include on-field(caption)
+    margin-bottom: 0.15em
+    font-size: 0.9em
+
+  @include on-field(credit)
+    font-size: 0.9em
 
   @include on-fields(action, url, image)
     display: none
 
-  @include with-option(alignment, left)
+  @include with-option(alignment, center)
     .cdx-block
-      padding-right: 30%
-      text-align: left
-      margin-left: 0
+      max-width: 40%
+      border: solid lightgray
+      border-width: 1px 0
 
-      border-left: 4px solid lightgray
+  @include with-option(style, hero)
+    .cdx-block
+      max-width: 80%
+      padding: 15px
+      font-size: 1.125em
 
     .cdx-input
-      text-align: left
+      text-align: center
 
-  @include with-option(alignment, right)
-    .cdx-block
-      padding-left: 30%
-      text-align: right
-      margin-right: 0
+  @each $side in left right
+    $opposite: if($side == right, left, right)
 
-    .cdx-input
-      text-align: right
+    @include with-option(alignment, $side)
+      .cdx-block
+        text-align: left
+        margin-#{$side}: 0
+        border-#{$side}: 3px solid lightgray
 
-  @include with-option(style, poem)
-    @include on-field(title)
-      margin-bottom: 2px
+      .cdx-input
+        text-align: $side
 
-    @include on-field(subtitle)
-      margin-bottom: 10px
-      font-size: 1em
-
-    .cdx-block
-      font-style: italic
-
-  @include with-option(style, quote)
-    @include on-field(title)
-      margin-bottom: 2px
-      font-weight: 500
-
-    @include on-field(subtitle)
-      font-size: 0.9em
-
-    @include on-field(text)
-      order: -1
+      @include with-option(style, hero)
+        .cdx-block
+          background: linear-gradient(to $opposite, #EEE, transparent 90%)
+          max-width: 50%
+          border: none
 
 
 // IMAGE TYPE
