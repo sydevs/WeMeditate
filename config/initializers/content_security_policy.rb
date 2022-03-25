@@ -23,7 +23,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.connect_src :self, ApplicationUploader.asset_host, *featured_stream_sources, *gtm_sources, *jwp_sources, *mapbox_sources
   policy.media_src   :blob, ApplicationUploader.asset_host, 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', *vimeo_sources
   policy.style_src   :self, :unsafe_inline, :https
-  policy.frame_src   :self, 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', 'www.google.com', 'www.recaptcha.net', *vimeo_sources, ENV['ATLAS_URL'] || ''
+  policy.frame_src   :self, 'atlas.sydevelopers.com', 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', 'www.google.com', 'www.recaptcha.net', *vimeo_sources
 
   # Specify URI for violation reports
   # policy.report_uri "/csp-violation-report-endpoint"
