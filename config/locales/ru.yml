@@ -20,17 +20,17 @@ ru:
     streams: "live"
     
   header:
-    advanced_articles: "All Articles" # TODO: Translate
+    advanced_articles: "Все статьи" 
     advanced: "Ещё"
     live_meditations: "Медитации в прямом эфире"
-    classes_near_me: "Classes near me" # TODO: Translate
+    classes_near_me: "Центры медитации" 
     inspiration_from_within: "Источник вдохновения внутри"
     preview_notice: "ТЫ просматриваешь предварительный вариант"
     kundalini: "Внутренняя Энергия"
     social: "Follow us"
 
   cookie_notice:
-    text: "Продолжая использовать wemeditate.ru, ты даёшь согласие на использование файлов cookie."
+    text: "Продолжая использовать wemeditate.com, ты даёшь согласие на использование файлов cookie."
     learn_more: "Ещё"
 
   footer:
@@ -148,7 +148,7 @@ ru:
         text: "Уже медитировал с нами?"
         action: "Перейти к выбору медитации"
     featured:
-      self_realization: "Начать" # TODO: Translate
+      self_realization: "Начать" 
       daily_meditation: "Медитация дня"
       trending_meditation: "Сейчас в тренде"
       random_meditation: "Довериться воле судьбы"
@@ -216,8 +216,8 @@ ru:
     title: "Все прямые эфиры"
     read_more: "Посмотреть"
     skip:
-      title: "Не удобно это время занятия?"
-      description: "Выберете подходящее тебе"
+      title: "Не удобно это время для медитации?"
+      description: "Выбери подходящее тебе"
       action: "Выбрать занятие"
     live:
       title: "Мы в прямом эфире!"
@@ -228,7 +228,7 @@ ru:
         stream: "Смотреть трансляцию"
         zoom: "Подключиться в Zoom"
         google: "Подключиться в Google Meet"
-        default: "Join via Video Call" # TODO: Translate
+        default: "Подключиться через видео звонок"
       description: "Присоединиться" 
       alt_description: "Задавайте вопросы в Zoom, или просто медитируйте, следуя указаниям в трансляции."
     timing:
