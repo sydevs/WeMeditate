@@ -11,7 +11,7 @@ module AudioHelper
         image: track.artists.first&.image&.url,
         duration: track.duration_as_string,
         filters: track.instrument_filters.pluck(:id),
-        artists: track.artists.map { |a| [a.name, a.url] }
+        artists: track.artists.map { |a| [a.name, a.url] },
       }
     end
   end

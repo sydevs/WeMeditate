@@ -15,7 +15,7 @@
               = filter.name
 
   - if type != :regular
-    = render 'tracks/player_controls', type: type, song: song
+    = render 'tracks/player_controls', type: type, song: song, single: audio.length == 1
 
   - unless type == :mini
     .audio__playlist
@@ -29,7 +29,7 @@
                 .js-inline-svg data-url=filter.icon_url data-namespace=filter.name.parameterize.downcase
 
         - if type == :regular
-          = render 'tracks/player_controls', type: type, song: song
+          = render 'tracks/player_controls', type: type, song: song, single: audio.length == 1
 
         .audio__tracks__list
           = render partial: 'tracks/song', collection: audio, cached: true

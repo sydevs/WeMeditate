@@ -7,7 +7,7 @@
       .audio__equalizer
         - 7.times do
           span
-    - if type != :mega
+    - if type != :mega && !single
       .audio__skip
         a.audio__prev data-attribute='prev'
           .icon.icon--backward

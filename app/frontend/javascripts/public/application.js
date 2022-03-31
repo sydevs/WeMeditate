@@ -23,7 +23,6 @@ import CategoriesMenu from './features/categories-menu'
 import CustomMeditation from './features/custom-meditation'
 import GeoSearch from './features/geosearch'
 import LanguageSwitcher from './features/language-switcher'
-import MusicPlayer from './features/music-player'
 import Prescreen from './features/prescreen'
 import SubtleSystem from './features/subtle-system'
 
@@ -77,10 +76,6 @@ export function load() {
   loadAll('reading-time', ReadingTime)
   loadAll('video', Video)
   loadAll('audio', Audio)
-
-  // Remove all duplicate music players, then load
-  $('[id="music-player"]').slice(1).remove()
-  loadFirst('music-player', MusicPlayer)
 
   loadFirst('header', Header)
   setHeader(instances.header[0])

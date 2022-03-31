@@ -10,3 +10,5 @@ ruby:
 
     - if block[:quantity] == 'gallery' && block[:items].length > 1
       = render 'tracks/player', audio: audio_from_block(block)
+    - else
+      = render 'tracks/player', type: :mini, audio: audio_from_block(block)
