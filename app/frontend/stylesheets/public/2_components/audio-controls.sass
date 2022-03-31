@@ -56,22 +56,6 @@
   > a:not(:last-child)::after
     content: ', '
 
-/*
-  .old-audio__skip,
-  .old-audio__volume
-    white-space: nowrap
-
-    > *
-      display: inline-block
-
-  .old-audio__skip
-    position: absolute
-    top: 0
-    right: 0
-
-    @include mobile
-      display: none
-  */
 
 // ===== PLAY / PAUSE ===== //
 .audio:not([data-state=paused]) .audio__play:not(.audio__play--hero) > .icon--play,
@@ -96,12 +80,19 @@
 // ===== PROGRESS ===== //
 .audio__controls
   position: relative
-  
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+
   @include tablet-or-larger
-    display: flex
+    flex-wrap: nowrap
 
 .audio__progress
-  flex-grow: 1
+  width: 100%
+
+  @include tablet-or-larger
+    flex-grow: 1
+    width: auto
 
 .audio__duration
   float: right
@@ -137,15 +128,8 @@
   .audio[data-shuffle=true] &
     color: $color-text-darkest !important
 
-/*.audio__info .audio__skip
-  @include tablet-or-smaller
-    display: none
-  */
-
-/*.audio__controls .audio__skip
-  @include laptop-or-larger
-    display: none
-  */
+.audio__info .audio__skip
+  float: right
 
 
 // ===== AMPLITUDE VOLUME ===== //
@@ -153,12 +137,14 @@
   display: flex
   font-size: 2rem
   text-align: center
-  margin-top: 30px
-  margin-left: 18px
+  margin: 8px 28px
+  max-width: 180px
+  flex-grow: 1
 
   @include tablet-or-larger
+    margin: 0
     margin-left: 80px
-    margin-top: 0
+    flex-grow: 0
 
   @media (hover: none)
     // Hide for touch devices
@@ -167,19 +153,20 @@
   .icon--volume
     margin-right: 12px
 
-  .audio__slider
-    width: 70px
-
 
 // ===== MINI PLAYER ADJUSTMENTS ===== //
 .audio--mini
   .audio__info .audio__skip
-    @include laptop-or-larger
+    @include mobile
       display: none
 
   .audio__controls .audio__skip
     @include tablet-or-larger
       display: none
+
+  .audio__volume
+    width: 100px
+    margin-left: 24px
 
 
 // ===== MEGA PLAYER ADJUSTMENTS ===== //
@@ -192,16 +179,8 @@
       padding-right: 0
 
   .audio__volume
-    margin-left: 0
-    margin-top: 20px
-    justify-content: center
-    
     @include tablet-or-larger
       margin-left: 80px
-      margin-top: 0
-
-  .audio__volume .audio__slider
-    width: auto
 
 
 // ===== EQUALIZER ===== //

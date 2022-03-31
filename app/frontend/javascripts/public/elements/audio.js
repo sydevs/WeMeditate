@@ -8,9 +8,9 @@ export default class Audio {
     this.container = element
     this.tracks = JSON.parse(element.dataset.tracks)
     this.trackIndex = 0
-    this.shuffleOrder = null
+    this.shuffledPlaylist = null
     this.filters = []
-    this.filteredOrder = null
+    this.filteredPlaylist = Array.from(this.tracks.keys())
 
     var attributes = [
       'filter', 'icon',
@@ -42,6 +42,10 @@ export default class Audio {
     this.elements.$progress.click((event) => this.seek(event.currentTarget.value))
     this.elements.$volume.click((event) => this.volume(event.currentTarget.value))
     this.elements.$filter.click(() => this.filter(event.currentTarget.dataset.filter, event.currentTarget.innerText))
+  }
+
+  unload() {
+    this.stop()
   }
 
   onPlay(sound) {
@@ -94,9 +98,11 @@ export default class Audio {
     this.container.dataset.state = (sound.state() === 'loaded' ? 'playing' : 'loading')
     this.trackIndex = trackIndex
 
-    let activeTrack = this.elements.tracks.querySelector('.audio__track--active')
-    if (activeTrack) activeTrack.classList.remove('audio__track--active')
-    this.elements.tracks.querySelector(`.audio__track[data-track-index="${trackIndex}"]`).classList.add('audio__track--active')
+    if (this.elements.tracks) {
+      let activeTrack = this.elements.tracks.querySelector('.audio__track--active')
+      if (activeTrack) activeTrack.classList.remove('audio__track--active')
+      this.elements.tracks.querySelector(`.audio__track[data-track-index="${trackIndex}"]`).classList.add('audio__track--active')
+    }
   }
 
   pause() {
@@ -105,17 +111,21 @@ export default class Audio {
     this.container.dataset.state = 'paused'
   }
 
+  stop() {
+    if (this.tracks[this.trackIndex].howl) {
+      this.tracks[this.trackIndex].howl.stop()
+    }
+
+    this.elements.$progress.val(0)
+  }
+
   skip(direction) {
     let index = this.findTrackIndex(direction)
     this.skipTo(index)
   }
 
   skipTo(index) {
-    if (this.tracks[this.trackIndex].howl) {
-      this.tracks[this.trackIndex].howl.stop()
-    }
-
-    this.elements.$progress.val(0)
+    this.stop()
     this.play(index)
   }
 
@@ -145,18 +155,18 @@ export default class Audio {
   }
 
   shuffle() {
-    if (this.shuffleOrder) {
-      this.shuffleOrder = null
+    if (this.shuffledPlaylist) {
+      this.shuffledPlaylist = null
     } else {
-      this.shuffleOrder = shuffleArray(this.filteredOrder)
+      this.shuffledPlaylist = shuffleArray(this.filteredPlaylist)
     }
 
-    this.container.dataset.shuffle = Boolean(this.shuffleOrder)
+    this.container.dataset.shuffle = Boolean(this.shuffledPlaylist)
   }
 
   filter(id) {
     this.filters = this.filters.indexOf(id) >= 0 ? [] : [id]
-    this.filterTracks(Boolean(this.shuffleOrder))
+    this.setupPlaylist(Boolean(this.shuffledPlaylist))
     /* This block of code would allow multiple filters to be selected simultaneously.
     let existingIndex = this.filters.indexOf(id)
     if (existingIndex >= 0) {
@@ -168,7 +178,7 @@ export default class Audio {
 
     if (this.filters.length > 0) {
       // Check if the current track is in new filter
-      if (!this.filteredOrder.includes(this.trackIndex)) {
+      if (!this.filteredPlaylist.includes(this.trackIndex)) {
         this.skipTo(this.findTrackIndex('first'))
       }
 
@@ -207,25 +217,25 @@ export default class Audio {
     }
   }
 
-  filterTracks(shuffle = false) {
+  setupPlaylist(shuffle = false) {
     if (this.filters.length > 0) {
-      this.filteredOrder = []
+      this.filteredPlaylist = []
       for (let i = 0; i < this.tracks.length; i++) {
         if (hasCommonItems(this.filters, this.tracks[i].filters)) {
-          this.filteredOrder.push(i)
+          this.filteredPlaylist.push(i)
         }
       }
     } else {
-      this.filteredOrder = Array.from(Array(this.tracks.length).keys())
+      this.filteredPlaylist = Array.from(Array(this.tracks.length).keys())
     }
 
     if (shuffle) {
-      this.shuffleOrder = shuffleArray(this.filteredOrder)
+      this.shuffledPlaylist = shuffleArray(this.filteredPlaylist)
     }
   }
 
   findTrackIndex(type) {
-    let order = this.shuffleOrder ? this.shuffleOrder : this.filteredOrder
+    let order = this.shuffledPlaylist ? this.shuffledPlaylist : this.filteredPlaylist
     let index = order.indexOf(this.trackIndex)
 
     if (type === 'first') {
