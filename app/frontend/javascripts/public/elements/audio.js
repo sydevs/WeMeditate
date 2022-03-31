@@ -39,9 +39,12 @@ export default class Audio {
     this.elements.$prev.click(() => this.skip('prev'))
     this.elements.$next.click(() => this.skip('next'))
     this.elements.$shuffle.click(() => this.shuffle())
-    this.elements.$progress.click((event) => this.seek(event.currentTarget.value))
     this.elements.$volume.click((event) => this.volume(event.currentTarget.value))
     this.elements.$filter.click(() => this.filter(event.currentTarget.dataset.filter, event.currentTarget.innerText))
+
+    this.elements.$progress.on('mousedown', () => { this.seeking = true })
+    this.elements.$progress.on('input', (event) => { this.trackDrag(event.currentTarget.value) })
+    this.elements.$progress.on('mouseup', (event) => { this.seek(event.currentTarget.value) })
   }
 
   unload() {
@@ -55,7 +58,7 @@ export default class Audio {
 
   onLoad(sound) {
     this.elements.$duration.text(this.formatTime(Math.round(sound.duration())))
-    this.container.dataset.state = 'playing'
+    if (sound.playing()) this.container.dataset.state = 'playing'
   }
 
   onSeek() {
@@ -76,7 +79,7 @@ export default class Audio {
     }
   }
 
-  play(index) {
+  init(index) {
     let trackIndex = (typeof index === 'number' ? index : this.trackIndex)
     let track = this.tracks[trackIndex]
     
@@ -90,6 +93,14 @@ export default class Audio {
         onseek: () => this.onSeek()
       })
     }
+
+    return track.howl
+  }
+
+  play(index) {
+    let trackIndex = (typeof index === 'number' ? index : this.trackIndex)
+    let track = this.tracks[trackIndex]
+    this.init(trackIndex)
     
     let sound = track.howl
     sound.play()
@@ -137,27 +148,43 @@ export default class Audio {
 
   volume(val) {
     Howler.volume(val)
-    this.elements.$volume.val(val)
+    // Set all volume elements globally
+    $('.js-audio-volume').val(val)
   }
 
   seek(percent) {
     let sound = this.tracks[this.trackIndex].howl
 
-    if (sound.playing()) {
-      sound.seek(sound.duration() * percent)
+    if (!sound) {
+      sound = this.init()
     }
+
+    var seekPosition = percent * sound.duration()
+    this.elements.$timer.text(this.formatTime(Math.round(seekPosition)))
+
+    sound.seek(sound.duration() * percent)
+    this.seeking = false
   }
 
   step() {
     var sound = this.tracks[this.trackIndex].howl
-    var seekPosition = sound.seek() || 0
-    this.elements.$timer.text(this.formatTime(Math.round(seekPosition)))
-    this.elements.$progress.val((seekPosition / sound.duration()) || 0)
+
+    if (!this.seeking) {
+      var seekPosition = sound.seek() || 0
+      this.elements.$timer.text(this.formatTime(Math.round(seekPosition)))
+      this.elements.$progress.val((seekPosition / sound.duration()) || 0)
+    }
 
     // If the sound is still playing, continue stepping.
     if (sound.playing()) {
       requestAnimationFrame(this.step.bind(this))
     }
+  }
+
+  trackDrag(percent) {
+    var sound = this.tracks[this.trackIndex].howl
+    var seekPosition = percent * sound.duration()
+    this.elements.$timer.text(this.formatTime(Math.round(seekPosition)))
   }
 
   shuffle() {
