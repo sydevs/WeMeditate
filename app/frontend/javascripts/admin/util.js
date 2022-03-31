@@ -1,3 +1,4 @@
+
 /** UTILITY FUNCTIONS
  * This file contains standalone utility functions. Usually these functions have been copied from the internet.
  */
@@ -18,25 +19,31 @@ export function make(tagName, classNames = null, attributes = {}, parent = null)
     el.classList.add(classNames)
   }
 
-  for (let attrName in attributes) {
-    if (attrName == 'value') {
-      el.setAttribute('value', attributes[attrName])
-    } else if (attrName == 'data') {
-      const data = attributes[attrName]
-      for (let key in data) {
-        if (!data[key]) continue
-        el.dataset[key] = data[key]
-      }
-    } else {
-      el[attrName] = attributes[attrName]
-    }
-  }
+  setAttributes([el], attributes)
 
   if (parent) {
     parent.appendChild(el)
   }
 
   return el
+}
+
+export function setAttributes(elements, attributes) {
+  for (let element in elements) {
+    for (let attrName in attributes) {
+      if (attrName == 'value') {
+        element.setAttribute('value', attributes[attrName])
+      } else if (attrName == 'data') {
+        const data = attributes[attrName]
+        for (let key in data) {
+          if (!data[key]) continue
+          element.dataset[key] = data[key]
+        }
+      } else {
+        element[attrName] = attributes[attrName]
+      }
+    }
+  }
 }
 
 export function show(element, type = 'block') {

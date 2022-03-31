@@ -3,6 +3,17 @@
 
 module AudioHelper
 
+  def audio_tracks_from_records tracks
+    tracks.map do |track|
+      {
+        title: track.name,
+        file: track.audio_url,
+        image: track.artists.first&.image&.url,
+        filters: track.instrument_filters.pluck(:id),
+      }
+    end
+  end
+
   # Get the data which is relevant to make the amplitude player work
   def amplitude_block_data block
     songs = block[:items].each_with_index.map do |item, index|

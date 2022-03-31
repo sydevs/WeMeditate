@@ -1,0 +1,160 @@
+
+.audio__playlist
+  display: flex
+
+  @include mobile
+    flex-direction: column
+
+// ===== COVER IMAGE ===== //
+.audio__cover
+  margin-top: 60px
+  min-width: 40%
+
+  @include tablet-or-larger
+    z-index: 1
+    order: -1
+
+  @include laptop-or-larger
+    margin-left: 50px
+
+  @include desktop
+    min-width: 50%
+
+.audio__cover img
+  width: 100%
+  max-width: 400px
+  max-height: 500px
+  margin: auto
+  object-fit: contain
+  object-position: center
+
+  @include tablet-or-larger
+    object-position: right
+
+  @include desktop
+    max-height: 600px
+
+// ===== SIDETEXT ===== //
+.audio__sidetext
+  margin-left: -50px
+
+  @include laptop-or-larger
+    margin-left: -108px
+
+// ===== TRACK LIST ===== //
+.audio__tracks
+  position: relative
+  list-style: none
+  margin-top: 42px
+  
+  @include tablet-or-larger
+    @include gradient(to left, 'blue')
+    width: calc(60% + 120px)
+    max-width: 805px
+    min-height: 600px
+    padding: 50px 20px
+    padding-left: 80px
+    margin-left: -40px
+
+  @include laptop-or-larger
+    min-height: 720px
+    padding-left: 140px
+    margin-left: -60px
+
+  &__title
+    font-weight: $font-semibold
+    font-size: 2.4rem
+    line-height: 1.25
+    letter-spacing: 0.45px
+    color: $color-text-dark
+    margin-bottom: 40px
+
+  &__icon
+    margin-left: 6px
+
+    > svg
+      height: 25px
+      fill: $color-text-dark
+
+
+// ===== MINI PLAYER ADJUSTMENTS ===== //
+.audio--mini
+  display: block
+
+  .audio__cover
+    margin-top: 0
+
+
+// ===== MEGA PLAYER ADJUSTMENTS ===== //
+.audio--mega
+  .audio__cover
+    @include tablet-or-larger
+      margin-top: 162px
+
+    @include desktop
+      margin-top: 200px
+
+  .audio__playlist
+    margin-top: 54px
+    width: 100%
+    
+    @include tablet-or-larger
+      //width: 83.5%
+      margin-top: 100px
+
+    @include laptop-or-larger
+      //width: 56%
+      margin-top: 60px
+
+    @include desktop
+      min-height: 800px
+      margin-top: 100px
+
+  .audio__track
+    @include tablet-or-larger
+      margin-bottom: 28px
+
+// ===== SINGLE TRACK IN PLAYLIST ===== //
+.audio__track
+  position: relative
+  border: 1px solid transparent
+  width: 100%
+  margin-top: 0
+  margin-bottom: 12px
+  padding: 10px
+  padding-left: 37px
+  padding-right: 16px
+  cursor: pointer
+
+  @include tablet-or-larger
+    margin-bottom: 18px
+    padding-right: 50px
+
+  &--active
+    border-color: $background-blue
+
+  &__icon
+    position: absolute
+    top: 17px
+    left: 12px
+    font-size: 1.2rem
+
+  &__title
+    color: $color-text-dark
+    font-weight: $font-semibold
+    font-size: 2.1rem
+    line-height: 1.25
+
+  &__artist
+    font-size: 1.4rem
+    line-height: 1.5
+    letter-spacing: 0.39px
+
+    &:hover
+      color: $color-text-orange
+
+  &__duration
+    float: right
+    font-family: $font-number
+    opacity: 0.6
+    line-height: 30px

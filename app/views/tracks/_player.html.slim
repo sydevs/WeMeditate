@@ -1,0 +1,62 @@
+- first_track = tracks.first
+
+.audio.audio--mega class='js-audio' data-state='paused' data-tracks=audio_tracks_from_records(@tracks).to_json
+  .audio__filters
+    h2.audio__filters__title = translate('tracks.choose_instruments')
+    .audio__filters__list
+      - @instrument_filters.each do |instrument_filter|
+        a.audio__filter data=gtm_record(instrument_filter) data-attribute='filter' data-filter=instrument_filter.id
+          .audio__filter__icon
+            // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
+            .js-inline-svg data-url=instrument_filter.icon_url data-namespace=instrument_filter.name.parameterize.downcase
+          .audio__filter__title
+            = instrument_filter.name
+
+  .audio__player
+    .audio__info
+      a.audio__play.audio__play--hero data-attribute='play'
+        .icon.icon--spinner
+        .icon.icon--play
+        .audio__equalizer
+          - 7.times do
+            span
+      .audio__title data-attribute='title'
+        = first_track.name
+      .audio__artists data-attribute='artists'
+        - first_track.artists.each do |artist|
+          a href=artist.url target='_blank'
+            = artist.name
+    .audio__controls
+      .audio__progress
+        input.audio__slider type='range' value=0 step=0.001 min=0 max=1 data-attribute='progress'
+        .audio__duration data-attribute='duration'
+        .audio__timer data-attribute='timer' 0:00
+      .audio__skip
+        a.audio__prev data-attribute='prev'
+          .icon.icon--backward
+        a.audio__play data-attribute='play'
+          .icon.icon--play
+          .icon.icon--pause
+        a.audio__next data-attribute='next'
+          .icon.icon--forward
+        a.audio__shuffle data-attribute='shuffle'
+          .icon.icon--shuffle
+      .audio__volume
+        .icon.icon--volume
+        input.audio__slider type='range' value=1 step=0.01 min=0 max=1 data-attribute='volume'
+
+  .audio__playlist
+    .audio__tracks
+      .audio__tracks__title data-attribute='playlist'
+        = t('tracks.playlist')
+        - @instrument_filters.each do |filter|
+          span.audio__tracks__icon data-attribute='icon' data-filter=filter.id style='display: none'
+            // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
+            .js-inline-svg data-url=filter.icon_url data-namespace=filter.name.parameterize.downcase
+      .audio__tracks__list
+        = render @tracks, cached: true
+
+    .audio__cover
+      .audio__image
+        .audio__sidetext.sidetext.sidetext--overlay.sidetext--left
+        img src=first_track.artists.first.image.url data-attribute='image'

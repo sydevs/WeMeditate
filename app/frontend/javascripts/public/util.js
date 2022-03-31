@@ -26,3 +26,39 @@ export function isMobileDevice() {
 export function isTouchDevice() {
   return ('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)
 }
+
+export function shuffleArray(orderedArray) {
+  let array = [...orderedArray]
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1))
+    let temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+  }
+
+  return array
+}
+
+export function show(element, type = 'block') {
+  element.style.display = type
+}
+
+export function hide(element) {
+  element.style.display = 'none'
+}
+
+export function toggle(element, visible, type = 'block') {
+  element.style.display = visible ? type : 'none'
+}
+
+export function hasCommonItems(array1, array2) {
+  for (let i = 0; i < array1.length; i++) {
+    for (let j = 0; j < array2.length; j++) {
+      if (array1[i] == array2[j]) {
+        return true
+      }
+    }
+  }
+
+  return false
+}

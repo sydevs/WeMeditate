@@ -3,7 +3,7 @@ main
   h1.banner.banner--left = @static_page.name
 
   - if @tracks.present?
-    - first_track = @tracks.first
+    - track = @tracks.first
     - amplitude_data = amplitude_track_data(@tracks, playlists: true)
 
     .music
@@ -11,77 +11,7 @@ main
         .triangle.triangle--right.triangle--large
 
       p.music__description = translate 'tracks.text'
-
-      .amplitude.amplitude--mega id='music-player' data-tracks=amplitude_data.to_json
-        .amplitude-playlists
-          h2.amplitude-playlists-title = translate 'tracks.choose_instruments'
-          .amplitude-playlists-list
-            - @instrument_filters.each do |instrument_filter|
-              a.amplitude-playlist-button.amplitude-play.amplitude-interactive data=gtm_record(instrument_filter) data-amplitude-playlist=instrument_filter.id
-                .amplitude-playlist-button-icon
-                  // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
-                  .js-inline-svg data-url="#{instrument_filter.icon_url}" data-namespace="#{instrument_filter.name.parameterize.downcase}"
-                .amplitude-playlist-button-title
-                  = instrument_filter.name
-
-        .amplitude-controls
-          .amplitude-info
-            a.amplitude-play-pause.amplitude-play-pause-hero.amplitude-interactive
-              .icon.icon--spinner
-              .icon.icon--play
-              /.icon.icon--pause
-              .amplitude-equalizer
-                - 7.times do
-                  span.amplitude-equalizer-bar
-            .amplitude-info-name data-amplitude-song-info='name'
-            .amplitude-info-artists
-          .amplitude-track-wrapper
-            .amplitude-track
-              input.amplitude-song-slider type='range' step=0.1
-              span.amplitude-current-time
-              span.amplitude-duration-time
-            .amplitude-skip
-              span.amplitude-prev.amplitude-interactive
-                .icon.icon--backward
-              span.amplitude-play-pause.amplitude-interactive
-                .icon.icon--play
-                .icon.icon--pause
-              span.amplitude-next.amplitude-interactive
-                .icon.icon--forward
-              span.amplitude-shuffle.amplitude-interactive
-                .icon.icon--shuffle
-            .amplitude-volume
-              span.amplitude-mute.amplitude-interactive
-                .icon.icon--volume
-                .icon.icon--volume-muted
-              input.amplitude-volume-slider type='range'
-
-        .amplitude-content
-          .amplitude-cover.amplitude-cover--desktop
-            .amplitude-cover-image
-              .amplitude-sidetext.sidetext.sidetext--overlay.sidetext--left
-              img data-amplitude-song-info='cover_art_url'
-
-          - amplitude_data[:playlists].each do |playlist_id, playlist|
-            - playlist_songs = amplitude_data[:songs].select { |song| playlist[:songs].include?(song[:index]) }
-            - active = 'amplitude-active-playlist-container' if playlist_id == 0
-            .amplitude-playlist-container class=active data-amplitude-playlist=playlist_id
-              .amplitude-playlist-title
-                = t('tracks.playlist')
-                - if playlist[:cover_art_url]
-                  span.amplitude-playlist-icon
-                    // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
-                    .js-inline-svg data-url="#{playlist[:cover_art_url]}" data-namespace="#{playlist[:title].parameterize.downcase}"
-              .amplitude-playlist-list
-                /= render partial: 'tracks/song', collection: playlist_songs, locals: { playlist: playlist_id }, cached: Proc.new { |song| [song, playlist_id] }
-                - playlist_songs.each_with_index do |song, index|
-                  - cache [song, playlist_id, I18n.locale] do
-                    = render 'tracks/song', song: song, playlist: playlist_id, song_counter: index
-
-          .amplitude-cover.amplitude-cover--mobile
-            .amplitude-cover-image
-              .amplitude-sidetext.sidetext.sidetext--overlay.sidetext--left
-              img data-amplitude-song-info='cover_art_url'
+      = render 'tracks/player', filters: @instrument_filters, tracks: @tracks
 
   - cache @static_page do
     .content = render_content @static_page

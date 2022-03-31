@@ -1,0 +1,58 @@
+@import "../../mixins/*"
+
+/* AUDIO SLIDERS
+  */
+
+@mixin player-thumb
+  border: none
+  border-radius: 0
+  width: 16px
+  height: 16px
+  background: $color-player-blue
+  cursor: pointer
+
+// ===== SLIDERS ===== //
+.audio__slider
+  appearance: none
+  background: none
+  width: 100%
+  height: 20px
+
+  &:focus
+    outline: none
+
+// ===== WEBKIT ===== //
+.audio__slider
+  &::-webkit-media-slider-thumb,
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+    margin-top: -6.5px
+    @include player-thumb
+
+  &::-webkit-slider-runnable-track
+    height: 3px
+    background: $color-player-blue
+    transition: all 0.3s ease
+    user-select: none
+
+// ===== MOZILLA ===== //
+.audio__slider
+  &::-moz-range-thumb
+    @include player-thumb
+
+  &::-moz-range-track
+    background: $color-player-light
+
+  &::-moz-range-progress
+    background: $color-player-blue
+
+// ===== MICROSOFT ===== //
+.audio__slider
+  &::-ms-thumb
+    @include player-thumb
+
+  &::-ms-fill-upper
+    background: $color-player-light
+
+  &::-ms-fill-lower
+    background: $color-player-blue

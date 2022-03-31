@@ -1,8 +1,8 @@
 {
   "name": "wemeditate",
   "private": true,
-  "engines" : {
-    "node" : "16.x",
+  "engines": {
+    "node": "16.x",
     "yarn": "1.x"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "d3": "^6.5.0",
     "d3-geo-projection": "^3.0.0",
     "fomantic-ui-css": "^2.8.8",
+    "howler": "^2.2.3",
     "jquery": "^3.5.1",
     "lity": "^2.4.1",
     "macy": "^2.5.1",

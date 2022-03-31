@@ -16,6 +16,7 @@ import ImageGallery from './elements/image-gallery'
 import Loadmore from './elements/loadmore'
 import ReadingTime from './elements/reading-time'
 import Video from './elements/video'
+import Audio from './elements/audio'
 
 import Header, { setHeader } from './features/header'
 import CategoriesMenu from './features/categories-menu'
@@ -75,6 +76,7 @@ export function load() {
   loadAll('loadmore', Loadmore)
   loadAll('reading-time', ReadingTime)
   loadAll('video', Video)
+  loadAll('audio', Audio)
 
   // Remove all duplicate music players, then load
   $('[id="music-player"]').slice(1).remove()

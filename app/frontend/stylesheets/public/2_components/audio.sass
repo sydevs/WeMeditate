@@ -1,0 +1,255 @@
+
+.audio
+  margin-top: 30px
+  margin-bottom: 80px
+  padding-bottom: 16px
+
+  @include tablet
+    margin-bottom: 40px
+
+  @include laptop-or-larger
+    margin-bottom: 20px
+
+  a:not([href])
+    cursor: pointer
+    transition: all 0.3s
+    color: $color-text-dark
+
+    @media (hover: hover)
+      &:hover
+        color: $color-player-blue
+
+  @include mobile
+    padding: 0 10px
+
+// ===== AMPLITUDE INFO ===== //
+.audio__info
+  position: relative
+  margin-bottom: 31px
+  padding-left: 70px
+
+  @include tablet-or-larger
+    padding-left: 80px
+
+  > .audio__play
+    position: absolute
+    top: 0
+    left: 0
+
+.audio__title
+  font-weight: $font-semibold
+  font-size: 2.4rem
+  line-height: 1.25
+  letter-spacing: 1.25px
+  color: $color-text-dark
+
+  @include tablet-or-larger
+    padding-right: 80px
+
+.audio__artists
+  margin-top: 8px
+  font-weight: $font-normal
+  font-size: 1.6rem
+  line-height: 1
+  color: $color-text-normal
+
+  > a:not(:last-child)::after
+    content: ', '
+
+/*
+  .old-audio__skip,
+  .old-audio__volume
+    white-space: nowrap
+
+    > *
+      display: inline-block
+
+  .old-audio__skip
+    position: absolute
+    top: 0
+    right: 0
+
+    @include mobile
+      display: none
+  */
+
+// ===== PLAY / PAUSE ===== //
+.audio:not([data-state=paused]) .audio__play:not(.audio__play--hero) > .icon--play,
+.audio:not([data-state=paused]) .audio__play--hero > .icon--play,
+.audio:not([data-state=loading]) .icon--spinner,
+.audio[data-state=paused] .icon--pause
+  display: none
+
+.audio__play--hero
+  display: flex
+  border: 1px solid
+  border-radius: 0
+  width: 36px
+  height: 36px
+  font-size: 2.4rem
+  background: none
+
+  > *
+    margin: auto
+
+
+// ===== PROGRESS ===== //
+.audio__controls
+  position: relative
+  
+  @include tablet-or-larger
+    display: flex
+
+.audio__progress
+  flex-grow: 1
+
+.audio__duration
+  float: right
+
+.audio__timer,
+.audio__duration
+  font-family: $font-number
+  opacity: 0.8
+
+
+// ===== AMPLITUDE SKIP ===== //
+.audio__skip
+  display: flex
+  font-size: 2.2rem
+  text-align: center
+  margin-top: 8px
+  justify-content: center
+  align-items: flex-start
+
+  @include tablet-or-larger
+    margin-left: 18px
+    margin-top: 0
+
+  > *
+    margin-left: 16px
+
+    @include tablet-or-larger
+      margin-left: 4px
+
+.audio__shuffle
+  margin-left: 16px
+
+  .audio[data-shuffle=true] &
+    color: $color-text-darkest !important
+
+/*.audio__info .audio__skip
+  @include tablet-or-smaller
+    display: none
+  */
+
+/*.audio__controls .audio__skip
+  @include laptop-or-larger
+    display: none
+  */
+
+
+// ===== AMPLITUDE VOLUME ===== //
+.audio__volume
+  display: flex
+  font-size: 2rem
+  text-align: center
+  margin-top: 30px
+  margin-left: 18px
+
+  @include tablet-or-larger
+    margin-left: 80px
+    margin-top: 0
+
+  @media (hover: none)
+    // Hide for touch devices
+    display: none !important
+
+  .icon--volume
+    margin-right: 12px
+
+  .audio__slider
+    width: 70px
+
+
+// ===== MINI PLAYER ADJUSTMENTS ===== //
+.audio--mini
+  .audio__info .audio__skip
+    @include laptop-or-larger
+      display: none
+
+  .audio__controls .audio__skip
+    @include tablet-or-larger
+      display: none
+
+
+// ===== MEGA PLAYER ADJUSTMENTS ===== //
+.audio--mega
+  margin: 0
+  padding: 0
+
+  .audio__title
+    @include tablet-or-larger
+      padding-right: 0
+
+  .audio__volume
+    margin-left: 0
+    margin-top: 20px
+    justify-content: center
+    
+    @include tablet-or-larger
+      margin-left: 80px
+      margin-top: 0
+
+  .audio__volume .audio__slider
+    width: auto
+
+
+// ===== EQUALIZER ===== //
+.audio__equalizer
+  position: relative
+  height: 18px
+  line-height: 18px
+  font-size: 0
+  overflow: hidden
+
+  .audio:not([data-state=playing]) &
+    display: none
+
+  > span
+    display: inline-block
+    width: 2px
+    height: 100%
+    background: $color-text-normal
+    margin-right: 1px
+    transition: all 0.3s ease
+
+    &:nth-child(1)
+      height: 70%
+      @include equalizer-animation
+
+    &:nth-child(2)
+      @include equalizer-animation-2
+
+    &:nth-child(3)
+      height: 70%
+      @include equalizer-animation
+      animation-duration: 200ms
+
+    &:nth-child(4)
+      @include equalizer-animation-2
+      animation-duration: 150ms
+
+    &:nth-child(5)
+      height: 70%
+      @include equalizer-animation
+      animation-duration: 150ms
+
+    &:nth-child(6)
+      height: 70%
+      @include equalizer-animation
+      animation-duration: 200ms
+
+    &:nth-child(7)
+      height: 70%
+      @include equalizer-animation-2
+      animation-duration: 150ms
