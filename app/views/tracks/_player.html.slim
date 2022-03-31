@@ -1,0 +1,40 @@
+- type = %i[mini mega].include?(local_assigns[:type]) ? local_assigns[:type] : :regular
+- song = audio.first
+
+.audio class=("audio--#{type}" unless type == :regular) class='js-audio' data-state='paused' data-tracks=audio.to_json
+  - if local_assigns[:filters]
+    .audio__filters
+      h2.audio__filters__title = translate('tracks.choose_instruments')
+      .audio__filters__list
+        - filters.each do |filter|
+          a.audio__filter data=gtm_record(filter) data-attribute='filter' data-filter=filter.id
+            .audio__filter__icon
+              // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
+              .js-inline-svg data-url=filter.icon_url data-namespace=filter.name.parameterize.downcase
+            .audio__filter__title
+              = filter.name
+
+  - if type != :regular
+    = render 'tracks/player_controls', type: type, song: song, single: audio.length == 1
+
+  - unless type == :mini
+    .audio__playlist
+      .audio__tracks
+        .audio__tracks__title data-attribute='playlist'
+          = t('tracks.playlist')
+          - if local_assigns[:filters]
+            - filters.each do |filter|
+              span.audio__tracks__icon data-attribute='icon' data-filter=filter.id style='display: none'
+                // This SVG must be inlined on the front-end because it is stored externally (not in the server files)
+                .js-inline-svg data-url=filter.icon_url data-namespace=filter.name.parameterize.downcase
+
+        - if type == :regular
+          = render 'tracks/player_controls', type: type, song: song, single: audio.length == 1
+
+        .audio__tracks__list
+          = render partial: 'tracks/song', collection: audio, cached: true
+
+      .audio__cover
+        .audio__image
+          .audio__sidetext.sidetext.sidetext--overlay.sidetext--left
+          img src=song[:image] data-attribute='image'

@@ -1,0 +1,46 @@
+
+.audio__player
+  .audio__info
+    a.audio__play.audio__play--hero data-attribute='play'
+      .icon.icon--spinner
+      .icon.icon--play
+      .audio__equalizer
+        - 7.times do
+          span
+    - if type != :mega && !single
+      .audio__skip
+        a.audio__prev data-attribute='prev'
+          .icon.icon--backward
+        a.audio__next data-attribute='next'
+          .icon.icon--forward
+        - if type != :mini
+          a.audio__shuffle data-attribute='shuffle'
+            .icon.icon--shuffle
+    .audio__title data-attribute='title'
+      = song[:title]
+    .audio__artists data-attribute='artists'
+      - if song[:artists]
+        - song[:artists].each do |artist|
+          a href=artist[1] target='_blank'
+            = artist[0]
+          = ', ' unless song[:artists].last == artist
+  .audio__controls
+    .audio__progress
+      input.audio__slider type='range' value=0 step=0.001 min=0 max=1 data-attribute='progress'
+      .audio__duration data-attribute='duration'
+      .audio__timer data-attribute='timer' 0:00
+    .audio__skip
+      a.audio__prev data-attribute='prev'
+        .icon.icon--backward
+      - if type != :mini
+        a.audio__play data-attribute='play'
+          .icon.icon--play
+          .icon.icon--pause
+      a.audio__next data-attribute='next'
+        .icon.icon--forward
+      - if type != :mini
+        a.audio__shuffle data-attribute='shuffle'
+          .icon.icon--shuffle
+    .audio__volume
+      .icon.icon--volume
+      input.audio__slider class='js-audio-volume' type='range' value=1 step=0.01 min=0 max=1 data-attribute='volume'

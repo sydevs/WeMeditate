@@ -1,11 +1,12 @@
 
-.amplitude-song-container.amplitude-play data-amplitude-song-index=song_counter data-amplitude-playlist=(local_assigns[:playlist] || nil)
-  .amplitude-song-icon
+.audio__track data-attribute='play' data-track-index=song_counter data-filter-by=song[:filters]&.join(' ')
+  .audio__track__icon
     .icon.icon--player
-  .amplitude-song-duration = song[:duration]
-  .amplitude-song-title = song[:name]
-  .amplitude-song-artist
-    - (song[:artists] || []).each do |artist|
-      a href=artist.url target='_blank'
-        = artist.name
-      = ', ' unless song[:artists].last == artist
+  .audio__track__duration = song[:duration]
+  .audio__track__title = song[:title]
+  .audio__track__artists
+    - if song[:artists]
+      - song[:artists].each do |artist|
+        a href=artist[1] target='_blank'
+          = artist[0]
+        = ', ' unless song[:artists].last == artist

@@ -1,3 +1,4 @@
+
 /** UTILITY FUNCTIONS
  * This file contains standalone utility functions. Usually these functions have been copied from the internet.
  */

@@ -4,6 +4,8 @@
   - [Setup](#setup)
   - [Framework & Languages](#framework--languages)
   - [Concepts](#concepts)
+    - [Models / Views / Controllers](#models--views--controllers)
+      - [Concerns](#concerns)
     - [Translation / Drafting](#translation--drafting)
     - [Content Editor](#content-editor)
     - [Image, Audio, and Videos](#image-audio-and-videos)
@@ -170,7 +172,7 @@ This is a list of some of the key libraries that are used to manage major featur
 *JavaScript Libraries:*
  - *EditorJS*, block-based content editing
  - *Afterglow*, html5 video player
- - *Amplitude*, audio player
+ - *Howler*, audio player
  - *Macy*, creates masonry-like grid layouts
  - *Lity*, lightbox (deprecated)
  - *Zenscroll*, smooth scrolling

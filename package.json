@@ -1,8 +1,8 @@
 {
   "name": "wemeditate",
   "private": true,
-  "engines" : {
-    "node" : "16.x",
+  "engines": {
+    "node": "17.x",
     "yarn": "1.x"
   },
   "dependencies": {
@@ -12,13 +12,13 @@
     "@rails/ujs": "^6.1.2-1",
     "@rails/webpacker": "^5.4.0",
     "@vimeo/player": "^2.15.0",
-    "amplitudejs": "^5.3.0",
     "autosize": "^4.0.2",
     "core-js": "^3.8.3",
     "css-loader": "^5.0.1",
     "d3": "^6.5.0",
     "d3-geo-projection": "^3.0.0",
     "fomantic-ui-css": "^2.8.8",
+    "howler": "^2.2.3",
     "jquery": "^3.5.1",
     "lity": "^2.4.1",
     "macy": "^2.5.1",
