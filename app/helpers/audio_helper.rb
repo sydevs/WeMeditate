@@ -15,7 +15,7 @@ module AudioHelper
       }
     end
   end
-  
+
   def audio_from_block block
     poster = MediaFile.find_by(id: block[:poster][:id])&.file
 
