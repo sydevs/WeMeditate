@@ -28,40 +28,7 @@ main id=dom_id(@static_page)
           p.excerpt__text = translate 'treatments.music.description'
 
           - if @tracks.present?
-            .amplitude.amplitude--mini id='music-player' data-tracks=amplitude_track_data(@tracks).to_json
-              .amplitude-info
-                .amplitude-play-pause.amplitude-play-pause-hero.amplitude-interactive
-                  .icon.icon--spinner
-                  .icon.icon--play
-                  /.icon.icon--pause
-                  .amplitude-equalizer
-                    - 7.times do
-                      span.amplitude-equalizer-bar
-                .amplitude-skip
-                  span.amplitude-prev.amplitude-interactive
-                    .icon.icon--backward
-                  span.amplitude-next.amplitude-interactive
-                    .icon.icon--forward
-                .amplitude-info-name data-amplitude-song-info='name'
-                .amplitude-info-artists
-              .amplitude-track-wrapper
-                .amplitude-track
-                  input.amplitude-song-slider type='range' step=0.1
-                  span.amplitude-current-time
-                  span.amplitude-duration-time
-                .amplitude-volume
-                  span.amplitude-mute.amplitude-interactive
-                    .icon.icon--volume
-                    .icon.icon--volume-muted
-                  input.amplitude-volume-slider type='range'
-                .amplitude-skip
-                  span.amplitude-prev.amplitude-interactive
-                    .icon.icon--backward
-                  span.amplitude-play-pause.amplitude-interactive
-                    .icon.icon--play
-                    .icon.icon--pause
-                  span.amplitude-next.amplitude-interactive
-                    .icon.icon--forward
+            = render 'tracks/player', type: :mini, audio: audio_from_tracks(@tracks)
 
           a.excerpt__button.button.button--box href=tracks_path
             = translate 'treatments.music.read_more'

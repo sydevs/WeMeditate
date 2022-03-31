@@ -1,0 +1,83 @@
+@import "../../mixins/*"
+
+/* AUDIO FILTERS
+  */
+
+// ===== FILTER BUTTONS ===== //
+.audio__filters
+  margin-bottom: 60px
+
+  @include tablet-or-larger
+    margin-bottom: 42px
+  
+  &__title
+    font-weight: $font-semibold
+    font-size: 2.4rem
+    line-height: 1.25
+    color: $color-text-dark
+    margin-top: 40px
+    margin-bottom: 48px
+    text-align: center
+
+    @include tablet-or-larger
+      text-align: left
+      margin-top: 82px
+
+.audio__filter
+  display: flex
+  flex-direction: row
+  align-items: center
+
+  width: 140px
+  margin: auto
+  margin-bottom: 44px
+  padding: 0
+
+  font-weight: $font-semibold
+  font-size: 1.8rem
+  letter-spacing: 0.2px
+  color: $color-text-dark
+
+  @include tablet-or-larger
+    display: inline-flex
+    width: auto
+    margin-top: 6px
+    margin-bottom: 28px
+    margin-left: 0
+    margin-right: 72px
+
+  &:hover svg
+    fill: $color-player-blue
+
+  &--active
+    opacity: 0.95
+    color: $color-text-darkest !important
+
+    svg
+      fill: $color-text-darkest !important
+
+  &__icon
+    width: 40%
+    text-align: left
+    display: inline-block
+
+    @include tablet-or-larger
+      width: auto
+      margin-right: 18px
+
+    > svg
+      fill: $color-text-normal
+      height: 56px
+      width: auto
+      transition: all 0.3s
+      max-width: 60px
+
+  &__title
+    width: 60%
+    text-align: right
+    display: inline-block
+    line-height: 60px
+
+    @include tablet-or-larger
+      width: auto
+      text-align: left

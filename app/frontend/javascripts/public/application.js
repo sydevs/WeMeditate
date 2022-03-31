@@ -16,13 +16,13 @@ import ImageGallery from './elements/image-gallery'
 import Loadmore from './elements/loadmore'
 import ReadingTime from './elements/reading-time'
 import Video from './elements/video'
+import Audio from './elements/audio'
 
 import Header, { setHeader } from './features/header'
 import CategoriesMenu from './features/categories-menu'
 import CustomMeditation from './features/custom-meditation'
 import GeoSearch from './features/geosearch'
 import LanguageSwitcher from './features/language-switcher'
-import MusicPlayer from './features/music-player'
 import Prescreen from './features/prescreen'
 import SubtleSystem from './features/subtle-system'
 
@@ -75,10 +75,7 @@ export function load() {
   loadAll('loadmore', Loadmore)
   loadAll('reading-time', ReadingTime)
   loadAll('video', Video)
-
-  // Remove all duplicate music players, then load
-  $('[id="music-player"]').slice(1).remove()
-  loadFirst('music-player', MusicPlayer)
+  loadAll('audio', Audio)
 
   loadFirst('header', Header)
   setHeader(instances.header[0])

@@ -1,7 +1,6 @@
 @import "../../mixins/*"
 
-/* AMPLITUDE SLIDERS
-  We are using the amplitude library to play audio content.
+/* AUDIO SLIDERS
   */
 
 @mixin player-thumb
@@ -13,24 +12,17 @@
   cursor: pointer
 
 // ===== SLIDERS ===== //
-.amplitude-song-slider
-  width: 100%
-
-.amplitude-volume-slider
-  width: 100px
-
-.amplitude-song-slider,
-.amplitude-volume-slider
+.audio__slider
   appearance: none
   background: none
+  width: 100%
   height: 20px
 
   &:focus
     outline: none
 
 // ===== WEBKIT ===== //
-.amplitude-song-slider,
-.amplitude-volume-slider
+.audio__slider
   &::-webkit-media-slider-thumb,
   &::-webkit-slider-thumb
     -webkit-appearance: none
@@ -44,8 +36,7 @@
     user-select: none
 
 // ===== MOZILLA ===== //
-.amplitude-song-slider,
-.amplitude-volume-slider
+.audio__slider
   &::-moz-range-thumb
     @include player-thumb
 
@@ -56,8 +47,7 @@
     background: $color-player-blue
 
 // ===== MICROSOFT ===== //
-.amplitude-song-slider,
-.amplitude-volume-slider
+.audio__slider
   &::-ms-thumb
     @include player-thumb
 
