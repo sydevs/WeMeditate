@@ -53,9 +53,6 @@
   line-height: 1
   color: $color-text-normal
 
-  > a:not(:last-child)::after
-    content: ', '
-
 
 // ===== PLAY / PAUSE ===== //
 .audio:not([data-state=paused]) .audio__play:not(.audio__play--hero) > .icon--play,
@@ -130,6 +127,13 @@
 
 .audio__info .audio__skip
   float: right
+  
+  @include mobile
+    display: none
+
+.audio__controls .audio__skip
+  @include tablet-or-larger
+    display: none
 
 
 // ===== AMPLITUDE VOLUME ===== //
@@ -138,12 +142,13 @@
   font-size: 2rem
   text-align: center
   margin: 8px 28px
+  width: 100px
   max-width: 180px
   flex-grow: 1
 
   @include tablet-or-larger
     margin: 0
-    margin-left: 80px
+    margin-left: 24px
     flex-grow: 0
 
   @media (hover: none)
@@ -155,18 +160,7 @@
 
 
 // ===== MINI PLAYER ADJUSTMENTS ===== //
-.audio--mini
-  .audio__info .audio__skip
-    @include mobile
-      display: none
-
-  .audio__controls .audio__skip
-    @include tablet-or-larger
-      display: none
-
-  .audio__volume
-    width: 100px
-    margin-left: 24px
+//.audio--mini
 
 
 // ===== MEGA PLAYER ADJUSTMENTS ===== //
@@ -181,6 +175,9 @@
   .audio__volume
     @include tablet-or-larger
       margin-left: 80px
+
+  .audio__controls .audio__skip
+    display: block
 
 
 // ===== EQUALIZER ===== //

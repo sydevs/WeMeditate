@@ -11,7 +11,7 @@ main
         .triangle.triangle--right.triangle--large
 
       p.music__description = translate 'tracks.text'
-      = render 'tracks/player', type: :mega, filters: @instrument_filters, tracks: @tracks
+      = render 'tracks/player', type: :mega, filters: @instrument_filters, audio: audio_from_tracks(@tracks)
 
   - cache @static_page do
     .content = render_content @static_page

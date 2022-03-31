@@ -4,13 +4,15 @@ ruby:
   classes << "cb-audio-media--#{block[:quantity]}"
 
 - if block[:items].present?
-  - amplitude_data = amplitude_block_data(block)
-
   .cb-audio-media class=classes
     .gradient-wrapper
       = render_decoration :gradient, block, size: %i[tall long]
 
     - if block[:quantity] == 'gallery' && block[:items].length > 1
+      = render 'tracks/player', audio: audio_from_block(block)
+
+    - if false
+      - amplitude_data = amplitude_block_data(block)
       .amplitude id='music-player' data-tracks=amplitude_data.to_json
         .amplitude-content
           .amplitude-cover
@@ -62,7 +64,7 @@ ruby:
             .amplitude-playlist-list
               - amplitude_data[:songs].each_with_index do |song, index|
                 = render 'tracks/song', song: song, song_counter: index
-    - else
+    - elsif false
       .amplitude.amplitude--mini id='music-player' data-tracks=amplitude_data.to_json
         .amplitude-controls
           .amplitude-info

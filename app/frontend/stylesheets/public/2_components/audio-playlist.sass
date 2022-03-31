@@ -11,6 +11,7 @@
   min-width: 40%
 
   @include tablet-or-larger
+    margin-top: 162px
     z-index: 1
     order: -1
 
@@ -18,6 +19,7 @@
     margin-left: 50px
 
   @include desktop
+    margin-top: 200px
     min-width: 50%
 
 .audio__cover img
@@ -76,6 +78,9 @@
       height: 25px
       fill: $color-text-dark
 
+  .audio__player
+    margin-bottom: 40px
+
 
 // ===== MINI PLAYER ADJUSTMENTS ===== //
 .audio--mini
@@ -87,13 +92,6 @@
 
 // ===== MEGA PLAYER ADJUSTMENTS ===== //
 .audio--mega
-  .audio__cover
-    @include tablet-or-larger
-      margin-top: 162px
-
-    @include desktop
-      margin-top: 200px
-
   .audio__playlist
     margin-top: 54px
     width: 100%

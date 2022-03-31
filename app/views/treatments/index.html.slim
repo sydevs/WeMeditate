@@ -28,7 +28,7 @@ main id=dom_id(@static_page)
           p.excerpt__text = translate 'treatments.music.description'
 
           - if @tracks.present?
-            = render 'tracks/player', type: :mini, tracks: @tracks
+            = render 'tracks/player', type: :mini, audio: audio_from_tracks(@tracks)
 
           a.excerpt__button.button.button--box href=tracks_path
             = translate 'treatments.music.read_more'

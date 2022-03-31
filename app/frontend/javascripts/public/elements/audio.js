@@ -95,6 +95,12 @@ export default class Audio {
     sound.play()
     this.elements.$title.text(track.title)
     this.elements.$image.attr('src', track.image)
+
+    if (track.artists) {
+      let artistsHTML = track.artists.map(a => `<a href="${a[1]}" target="_blank">${a[0]}</a>`)
+      this.elements.$artists.html(artistsHTML.join(', '))
+    }
+
     this.container.dataset.state = (sound.state() === 'loaded' ? 'playing' : 'loading')
     this.trackIndex = trackIndex
 
