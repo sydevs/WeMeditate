@@ -43,7 +43,7 @@ export default class Audio {
     this.elements.$filter.click(() => this.filter(event.currentTarget.dataset.filter, event.currentTarget.innerText))
 
     this.elements.$progress.on('mousedown', () => { this.seeking = true })
-    this.elements.$progress.on('input', (event) => { this.trackDrag(event.currentTarget.value) })
+    this.elements.$progress.on('input', (event) => { this.onSeekDrag(event.currentTarget.value) })
     this.elements.$progress.on('mouseup', (event) => { this.seek(event.currentTarget.value) })
   }
 
@@ -63,6 +63,12 @@ export default class Audio {
 
   onSeek() {
     requestAnimationFrame(this.step.bind(this))
+  }
+
+  onSeekDrag(percent) {
+    var sound = this.tracks[this.trackIndex].howl
+    var seekPosition = percent * sound.duration()
+    this.elements.$timer.text(this.formatTime(Math.round(seekPosition)))
   }
 
   onEnd() {
@@ -179,12 +185,6 @@ export default class Audio {
     if (sound.playing()) {
       requestAnimationFrame(this.step.bind(this))
     }
-  }
-
-  trackDrag(percent) {
-    var sound = this.tracks[this.trackIndex].howl
-    var seekPosition = percent * sound.duration()
-    this.elements.$timer.text(this.formatTime(Math.round(seekPosition)))
   }
 
   shuffle() {
