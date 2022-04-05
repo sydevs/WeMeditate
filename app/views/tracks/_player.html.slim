@@ -32,7 +32,10 @@
           = render 'tracks/player_controls', type: type, song: song, single: audio.length == 1
 
         .audio__tracks__list
-          = render partial: 'tracks/song', collection: audio, cached: true
+          /= render partial: 'tracks/song', collection: audio, cached: true
+          - audio.each_with_index do |song, index|
+            - cache [song, I18n.locale] do
+              = render 'tracks/song', song: song, song_counter: index
 
       .audio__cover
         .audio__image
