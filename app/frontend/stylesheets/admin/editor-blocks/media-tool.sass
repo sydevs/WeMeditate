@@ -3,6 +3,7 @@
 
 @include block
   .cdx-media
+    .cdx-input[data-key='url'],
     .uploader,
     &__finder,
     &__poster
@@ -223,6 +224,10 @@
 
     .uploader
       display: block !important
+
+@include type(embed)
+  .cdx-input[data-key='url']
+    display: block !important
 
 // TYPE PICKER
 @include block
