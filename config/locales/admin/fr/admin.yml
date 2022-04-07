@@ -77,6 +77,7 @@ fr:
       pending_changes: "This %{page} has changes pending approval" # TODO: Translate this
       start_date: "Start Date" # TODO: Translate
       records_from_other_languages: "%{pages} from other languages" # TODO: Translate
+      records_for_super_admin: "Global Administrators" # TODO: Translate
 
     tags:
       published: "Publié"

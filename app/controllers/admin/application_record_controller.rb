@@ -13,8 +13,13 @@ module Admin
         @records = @records.where.not(id: params[:exclude].split(',').map(&:to_i)) unless params[:exclude].blank?
 
         unless request.format.json?
-          if @model.try(:translatable?) && [Article, StaticPage].include?(@model)
-            @untranslated_records = @records.without_translation.page(params[:page]).per(15)
+          if @model == User
+            @separated_records_title = I18n.translate('admin.details.records_for_super_admin')
+            @separated_records = @records.where(role: :super_admin).page(params[:page]).per(15)
+            @records = @records.where.not(role: :super_admin).page(params[:page]).per(15)
+          elsif @model.try(:translatable?) && [Article, StaticPage].include?(@model)
+            @separated_records_title = I18n.translate('admin.details.records_from_other_languages', pages: human_model_name(@model, :plural))
+            @separated_records = @records.without_translation.page(params[:page]).per(15)
             @records = @records.with_translation.page(params[:page]).per(15)
           else
             @records = @records.page(params[:page]).per(15)

@@ -6,13 +6,13 @@
 
 $('#records').html(`<%= render partial: "admin/records/#{@model.model_name.singular_route_key}", collection: @records, cache: true %>`)
 
-<% if @untranslated_records.present? %>
-  $('#untranslated-pagination').html('<%=j page_entries_info @untranslated_records %><%=j paginate @untranslated_records, remote: true %>')
+<% if @separated_records.present? %>
+  $('#untranslated-pagination').html('<%=j page_entries_info @separated_records %><%=j paginate @separated_records, remote: true %>')
 <% else %>
   $('#untranslated-pagination').html('<%=j translate "admin.messages.no_translations_found", pages: human_model_name(@model, :plural).downcase %>')
 <% end %>
 
-$('#untranslated-records').html(`<%= render partial: "admin/records/#{@model.model_name.singular_route_key}", collection: @untranslated_records, cache: true, locals: { original_locale: true } %>`)
+$('#untranslated-records').html(`<%= render partial: "admin/records/#{@model.model_name.singular_route_key}", collection: @separated_records, cache: true, locals: { original_locale: true } %>`)
 
 $('.ui.loading.form').removeClass('loading')
 $('#loader').removeClass('active')

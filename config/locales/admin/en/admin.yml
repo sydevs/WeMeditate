@@ -78,6 +78,7 @@ en:
       pending_changes: "This %{page} has changes pending approval"
       start_date: "Start Date"
       records_from_other_languages: "%{pages} from other languages"
+      records_for_super_admin: "Global Administrators"
 
     tags:
       published: "Published"

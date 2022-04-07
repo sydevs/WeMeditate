@@ -78,6 +78,7 @@ ro:
       pending_changes: "Această %{page} are modificări în curs de aprobare"
       start_date: "Start Date" # TODO: Translate
       records_from_other_languages: "%{pages} from other languages" # TODO: Translate
+      records_for_super_admin: "Global Administrators" # TODO: Translate
 
     tags:
       published: "Publicat"
