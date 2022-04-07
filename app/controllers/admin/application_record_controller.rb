@@ -18,7 +18,7 @@ module Admin
             @separated_records = @records.where(role: :super_admin).page(params[:page]).per(15)
             @records = @records.where.not(role: :super_admin).page(params[:page]).per(15)
           elsif @model.try(:translatable?) && [Article, StaticPage].include?(@model)
-            @separated_records_title = I18n.translate('admin.details.records_from_other_languages', pages: human_model_name(@model, :plural))
+            @separated_records_title = I18n.translate('admin.details.records_from_other_languages', pages: helpers.human_model_name(@model, :plural))
             @separated_records = @records.without_translation.page(params[:page]).per(15)
             @records = @records.with_translation.page(params[:page]).per(15)
           else
