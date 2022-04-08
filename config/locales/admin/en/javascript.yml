@@ -53,6 +53,7 @@ en:
             columns: "Columns"
         list:
           label: "List"
+          refresh: "Refresh index"
           type:
             label: "Type"
             text: "Text"

@@ -92,7 +92,7 @@ export default class ListTool extends EditorTool {
       make('li', this.CSS.item, {}, this.listElement)
     }
 
-    this.refreshButton = make('div', [this.CSS.refresh], {}, this.container)
+    this.refreshButton = make('div', [this.CSS.refresh], { data: { tooltip: translate('blocks.list.refresh') } }, this.container)
     make('i', ['fitted', 'sync', 'alternate', 'icon'], {}, this.refreshButton)
     this.refreshButton.addEventListener('click', () => this.refreshTableOfContents())
     this.container.addEventListener('click', () => {
