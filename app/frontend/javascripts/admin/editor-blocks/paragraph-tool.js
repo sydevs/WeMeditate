@@ -55,13 +55,16 @@ export default class ParagraphTool extends EditorTool {
     }
 
     if (this.container.textContent === '') {
-      this.container.innerHTML = ''
+      const textElement = this.container.querySelector('.cdx-input[data-key=text]')
+      textElement.innerHTML = ''
     }
   }
 
   // How to merge with another text element.
   merge(data) {
-    this.data = { text: this.data.text + data.text }
+    const textElement = this.container.querySelector('.cdx-input[data-key=text]')
+    this.data.text += data.text
+    textElement.innerHTML += data.text
   }
 
   // Check for emptiness

@@ -23,7 +23,7 @@ let form, editorInstance, editorInput, contentEditor
 
 const editorParameters = {
   autofocus: true,
-  onChange: debounce(() => autoSave()),
+  // onChange: debounce(() => autoSave()),
   placeholder: 'Let`s write an awesome story!',
   inlineToolbar: ['link', 'bold', 'italic', 'citation'],
   tools: {
