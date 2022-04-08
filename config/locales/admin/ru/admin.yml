@@ -121,6 +121,9 @@ ru:
       unapproved_changes_notice: "%{page} имеет несохраненные изменения. Изменения не видны пользователям, пока они не утверждены администратором."
       pending_invitation_notice: "%{person} получил приглашение стать редактором сайта, но ещё не ответил."
       draft_notice: "Вы просматриваете черновик %{page}. Эта версия не видна пользователям, пока они не утверждена администратором."
+      draft_outline: # TODO: Translate
+        one: "This %{page} has draft content, with 1 content block."
+        other: "This %{page} has draft content, with %{count} content blocks."
       draft_contributed_by: "Этот черновик содержит изменения, сделанные %{people}."
       text_too_short: "должен быть по крайней мере %{count} букв"
       invalid_vimeo_id: "должно иметь действующее Vimeo ID"

@@ -119,6 +119,9 @@ es:
       unapproved_changes_notice: "%{page} tiene cambios sin publicar. Los cambios no serán visibles al público hasta que sean revisados por el administrador."
       pending_invitation_notice: "Se ha enviado una invitación a %{person} para ser editor de la web, pero todavía no ha respondido."
       draft_notice: "Estás viendo una versión borrador de %{page}. Esta versión no será visible al publico hasta que sea revisado por un administrador."
+      draft_outline: # TODO: Translate
+        one: "This %{page} has draft content, with 1 content block."
+        other: "This %{page} has draft content, with %{count} content blocks."
       draft_contributed_by: "Este borrador incluye los cambios realizados por %{people}."
       text_too_short: "Debe tener al menos %{count} letras"
       invalid_vimeo_id: "Debe ser un ID de Vimeo válido."

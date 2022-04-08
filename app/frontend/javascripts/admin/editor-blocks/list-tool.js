@@ -93,7 +93,7 @@ export default class ListTool extends EditorTool {
     }
 
     this.refreshButton = make('div', [this.CSS.refresh], {}, this.container)
-    make('i', ['fitted', 'redo', 'alternate', 'icon'], {}, this.refreshButton)
+    make('i', ['fitted', 'sync', 'alternate', 'icon'], {}, this.refreshButton)
     this.refreshButton.addEventListener('click', () => this.refreshTableOfContents())
     this.container.addEventListener('click', () => {
       if (this.data.type == 'contents') {

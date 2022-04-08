@@ -120,6 +120,9 @@ ro:
       unapproved_changes_notice: "%{page} are modificări nepublicate. Acestea nu vor fi vizibile publicului până când nu vor fi revizuite de un administrator"
       pending_invitation_notice: "%{person} a primit invitația pentru a deveni editor pe site-ul web, dar încă nu a răspuns."
       draft_notice: "Vizionezi o versiune a schiței acestei %{page}. Această versiune nu va fi vizibilă publicului până când nu va fi revizuită de un administrator."
+      draft_outline: # TODO: Translate
+        one: "This %{page} has draft content, with 1 content block."
+        other: "This %{page} has draft content, with %{count} content blocks."
       draft_contributed_by: "Această schiță include modificările făcute de %{people}."
       text_too_short: "trebuie să aibă cel puțin %{count} litere"
       invalid_vimeo_id: "trebuie sa fie un ID Vimeo valid"

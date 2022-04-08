@@ -121,6 +121,9 @@ uk:
       unapproved_changes_notice: "%{page} має незбережені зміни. Зміни не видно користувачам, поки вони не затверджені адміністратором."
       pending_invitation_notice: "%{person} отримав запрошення стати редактором сайту, але ще не відповів."
       draft_notice: "Ви переглядаєте чернетку %{page}. Ця версія не відображаться користувачам, поки вона не затверджена адміністратором."
+      draft_outline: # TODO: Translate
+        one: "This %{page} has draft content, with 1 content block."
+        other: "This %{page} has draft content, with %{count} content blocks."
       draft_contributed_by: "Ця чернетка містить зміни, внесені %{people}."
       text_too_short: "повинний мати хоча б %{count} літери"
       invalid_vimeo_id: "має бути дійсним Vimeo ID"

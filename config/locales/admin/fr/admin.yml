@@ -118,6 +118,9 @@ fr:
       unapproved_changes_notice: "Cette %{page} a des modifications non publiées. Elles resteront invisibles au public tant qu'elles n'auront pas été validées par un administrateur."
       pending_invitation_notice: " %{person} a été invité(e) à devenir éditeur sur le site Web, mais n'a pas encore répondu."
       draft_notice: "Vous consultez une version brouillon de %{page}. Cette version restera invisible au public tant qu'elle n'aura pas été validée par un administrateur."
+      draft_outline: # TODO: Translate
+        one: "This %{page} has draft content, with 1 content block."
+        other: "This %{page} has draft content, with %{count} content blocks."
       draft_contributed_by: "Ce brouillon comprend les modifications apportées par %{people}."
       text_too_short: "doit avoir au moins %{count} caractères"
       invalid_vimeo_id: "doit être un identifiant Vimeo valide"
