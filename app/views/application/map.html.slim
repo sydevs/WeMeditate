@@ -1,5 +1,7 @@
 
-- if @atlas_url
+- if params[:country] == 'NL'
+  iframe#map src="https://atlas.sydevelopers.com/map/0b1e22f9-3bfd-4a8c-8384-08db6a7e912e?country=NL"
+- elsif @atlas_url
   iframe#map src="#{@atlas_url}?#{@config.to_query}"
 - else
   .error
