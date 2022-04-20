@@ -63,6 +63,8 @@ module NavigationHelper
         }]
       }.to_h
 
+      articles = Article.published.in_header.preload_for(:preview)
+
       {
         title: I18n.translate('header.advanced'),
         url: '#',
@@ -86,13 +88,20 @@ module NavigationHelper
             static_pages[:shri_mataji],
             static_pages[:sahaja_yoga],
             static_pages[:treatments],
+            {
+              title: I18n.translate('header.further_reading'),
+              url: category_path(Category.in_header.first || Category.last),
+            }
           ],
-          featured: Article.published.preload_for(:preview).reorder("RANDOM()").limit(2).map { |article|
+          featured: [
+            articles.order(published_at: :desc).first,
+            articles.order('RANDOM()').first
+          ].compact.map { |article|
             {
               title: article.name,
               url: article_path(article),
               data: gtm_record(article),
-              thumbnail: article.thumbnail.url,
+              thumbnail: article.thumbnail&.url,
             }
           },
         },

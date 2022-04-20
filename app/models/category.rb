@@ -25,6 +25,7 @@ class Category < ApplicationRecord
   # Scopes
   default_scope { order(:order) }
   scope :q, -> (q) { with_translation.joins(:translations).where('category_translations.name ILIKE ?', "%#{q}%") if q.present? }
+  scope :in_header, -> { where(show_articles_in_header: true) }
 
   # Get all categories that have content
   def self.has_content

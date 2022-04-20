@@ -28,6 +28,7 @@ uk:
     preview_notice: "Ви переглядаєте попередній варіант"
     kundalini: "Внутрішня енергія"
     social: "Підписатись"
+    further_reading: "Further Reading" # TODO: Translate
 
   cookie_notice:
     text: "Продовжуючи використовувати wemeditate.ua, Ви даєте згоду на використання файлів cookie."

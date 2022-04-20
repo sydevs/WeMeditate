@@ -28,6 +28,7 @@ fr:
     preview_notice: "Vous visualisez un aperçu"
     kundalini: "Énergie Intérieure"
     social: "Follow us"
+    further_reading: "Further Reading" # TODO: Translate
 
   cookie_notice:
     text: "En continuant à utiliser wemeditate.com, vous acceptez notre utilisation des cookies."

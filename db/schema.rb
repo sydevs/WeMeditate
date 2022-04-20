@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_16_120740) do
+ActiveRecord::Schema.define(version: 2022_04_16_082101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(version: 2022_01_16_120740) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "original_locale", null: false
+    t.boolean "show_articles_in_header", default: false
+    t.boolean "show_articles_in_index", default: true
   end
 
   create_table "category_translations", force: :cascade do |t|

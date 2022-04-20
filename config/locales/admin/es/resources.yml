@@ -209,8 +209,11 @@ es:
         articles:
           one: "%{count} Artículo"
           other: "%{count} Artículos"
+        show_articles_in_header: "Feature Articles in Header" # TODO: Translate
+        show_articles_in_index: "Show Articles in Inspiration Index" # TODO: Translate
 
       treatment:
+        draft: :activerecord.attributes.generic.draft # Do not translate
         state: :activerecord.attributes.generic.state # Do not translate
         states:
           no_state: :activerecord.attributes.generic.states.no_state # Do not translate

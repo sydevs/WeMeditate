@@ -27,6 +27,7 @@ el:
     inspiration_from_within: "Η Έμπνευση πηγάζει από μέσα μας"  
     preview_notice: "Για να πάρετε μια ιδέα"  
     social: "Ακολουθήστε μας"
+    further_reading: "Further Reading" # TODO: Translate
 
   cookie_notice:
     text: "Συνεχίζοντας τη χρήση του wemeditate.com αποδέχεστε τα cookies."      

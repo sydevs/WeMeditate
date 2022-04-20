@@ -212,6 +212,8 @@ cs:
         articles:
           one: "%{count} Článek"
           other: "%{count} Články"
+        show_articles_in_header: "Feature Articles in Header" # TODO: Translate
+        show_articles_in_index: "Show Articles in Inspiration Index" # TODO: Translate
 
       treatment:
         draft: :activerecord.attributes.generic.draft # Do not translate

@@ -1,13 +1,13 @@
 
 - allow = policy(record)
 
-.ui.grey.small.dividing.header Preview
+.ui.grey.small.dividing.header = translate('admin.form.category.preview')
 = draftable_media_field f, :thumbnail, preview: true, wrapper: { required: true }
 
 = draftable_field f, :excerpt, type: :text, hint: translate('admin.hints.excerpt', page: human_model_name(record.class).downcase) do |value|
   - f.input_field :excerpt, as: :text, rows: 3, value: value
 
-.ui.grey.small.dividing.header Timing
+.ui.grey.small.dividing.header = translate('admin.form.category.timing')
 = draftable_field f, :recurrence, hint: translate('admin.hints.stream.recurrence'), wrapper: { class: 'grouped fields' } do |value|
   .ui.seven.buttons
     - Stream.recurrences.map do |key, val|
@@ -24,7 +24,7 @@
   = draftable_field f, :end_time, type: :time do |value|
     - f.input :end_time, label: false, error: false, input_html: { type: 'time', autocomplete: 'off', value: value }
 
-.ui.grey.small.dividing.header Location
+.ui.grey.small.dividing.header = translate('admin.form.category.location')
 .two.fields
   = draftable_field f, :location, type: :string, hint: translate('admin.hints.stream.location')
   = draftable_field f, :time_zone_identifier do |value|
@@ -44,6 +44,6 @@
       | ...
     = f.hint translate('admin.hints.stream.target_time_zones_conflict')
 
-.ui.grey.small.dividing.header Attributes
+.ui.grey.small.dividing.header = translate('admin.form.category.attributes')
 = draftable_field f, :stream_url, type: :string, hint: translate('admin.hints.stream.url')
 = draftable_field f, :video_conference_url, type: :string, hint: translate('admin.hints.stream.video_conference_url')

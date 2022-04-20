@@ -26,7 +26,7 @@ module Admin
 
       def category_params
         if policy(@category || Category).publish?
-          params.fetch(:category, {}).permit(:name, :slug, :published)
+          params.fetch(:category, {}).permit(:name, :slug, :show_articles_in_header, :show_articles_in_index, :published)
         else
           params.fetch(:category, {}).permit(:name, :slug)
         end

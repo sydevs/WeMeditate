@@ -155,6 +155,18 @@ ru:
         target_time_zones: "Users in the selected timezones will be shown this stream on the main live meditations page. You can select multiple timezones. Selected zones are marked in green."
         target_time_zones_conflict: "Note: If multiple streams are featured in the same timezone, the one which is physically closer to the user will be shown."
         video_conference_url: "This may be a link to Zoom, Google Hangouts, or another live video call where attendees will be able to interact with the program leader."
+      category: # TODO: Translate
+        show_articles_in_header: "Articles from this category will be shown in the site header dropdown."
+        show_articles_in_index: "Articles from this category will be shown in the Inspiration index."
+
+    form: # TODO: Translate
+      category:
+        publishing: "Publishing"
+      stream:
+        preview: "Preview"
+        timing: "Timing"
+        location: "Location"
+        attributes: "Attributes"
 
     result:
       created: "Успешно создан."

@@ -28,6 +28,7 @@ nl:
     preview_notice: "Dit is een voorbeeldweergave"
     kundalini: "Inner Energy" # TODO: Translate
     social: "Follow us"
+    further_reading: "Further Reading" # TODO: Translate
 
   cookie_notice:
     text: "Bij verder gebruik van nl.wemeditate.com geef je automatisch toestemming voor het gebruik van cookies."

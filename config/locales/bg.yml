@@ -27,6 +27,7 @@ bg:
     preview_notice: "Предварителен преглед"
     kundalini: "Вътрешна енергия"
     social: "Follow us"
+    further_reading: "Further Reading" # TODO: Translate
 
   cookie_notice:
     text: "Продължавайки да ползвате wemeditate.com, се съгласявате да употребяваме бисквитки."

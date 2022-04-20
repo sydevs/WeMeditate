@@ -8,3 +8,8 @@
   = content_tag :div, class: 'ui labeled slug input' do
     = tag.div CGI.unescape(url), class: 'ui basic label'
     = f.input_field :slug
+
+.grouped.fields
+  = f.label translate('admin.form.category.publishing')
+  = f.input :show_articles_in_header
+  = f.input :show_articles_in_index

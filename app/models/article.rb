@@ -41,6 +41,8 @@ class Article < ApplicationRecord
   scope :ordered, -> { order(order: :desc, published_at: :desc) }
   scope :upcoming, -> { published.where('article_translations.published_at >= ?', DateTime.now).order(published_at: :asc) }
   scope :q, -> (q) { with_translation.joins(:translations, category: :translations).where('article_translations.name ILIKE ? OR category_translations.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
+  scope :in_index, -> { published.joins(:category).where(categories: { show_articles_in_index: true }) }
+  scope :in_header, -> { published.joins(:category).where(categories: { show_articles_in_header: true }) }
 
   # Callbacks
   before_validation :compute_order

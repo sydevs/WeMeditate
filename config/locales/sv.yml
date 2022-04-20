@@ -28,6 +28,7 @@ sv:
     preview_notice: "Detta är en förhandsgranskning"
     kundalini: "Inre Energi"
     social: "Follow us"
+    further_reading: "Further Reading" # TODO: Translate
 
   cookie_notice:
     text: "Genom att använda wemeditate tillåter du användning av cookies."

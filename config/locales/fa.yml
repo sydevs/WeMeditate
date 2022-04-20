@@ -28,6 +28,7 @@ fa:
     inspiration_from_within: "الهامات از درون می آیند"
     preview_notice: "شما در حال مشاهده پیش نمایش هستید"
     social: "ما را دنبال کنید"
+    further_reading: "Further Reading" # TODO: Translate
 
   cookie_notice:
     text: "با ادامه استفاده از این وبسایت، شما با استفاده از کوکی ها موافقت خواهید کرد."

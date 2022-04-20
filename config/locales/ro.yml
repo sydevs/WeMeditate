@@ -28,6 +28,7 @@ ro:
     preview_notice: "Acesta este un preview"
     kundalini: "Energia Interioară"
     social: "Follow us"
+    further_reading: "Further Reading" # TODO: Translate
 
   cookie_notice:
     text: "Acest site folosește cookies. Continuarea navigării implică acceptarea lor."

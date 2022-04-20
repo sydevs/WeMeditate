@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   # Render articles for all categories
   def index
     @category = nil
-    @scope = Article.publicly_visible.where.not(priority: Article.priorities[:hidden])
+    @scope = Article.publicly_visible.in_index.where.not(priority: Article.priorities[:hidden])
     @articles = @scope.ordered.preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
     return unless stale?(@articles)
     display

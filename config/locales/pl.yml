@@ -28,6 +28,7 @@ pl:
     preview_notice: "Oglądasz zapowiedź" # tutaj nie jestem przekonany. oryginał "You are viewing a preview"
     kundalini: "Wewnętrzna Energia"
     social: "Śledź nas"
+    further_reading: "Further Reading" # TODO: Translate
 
   cookie_notice:
     text: "Korzystając ze strony wemeditate.com zgadzasz się na wykorzystanie przez naszą stronę ciasteczek."

@@ -28,6 +28,7 @@ cs:
     preview_notice: "Prohlížíte náhled"
     kundalini: "Vnitřní Energie"
     social: "Follow us"
+    further_reading: "Further Reading" # TODO: Translate
 
   cookie_notice:
     text: "Tyto stránky používají k analýze návštěvnosti soubory cookies. Setrváním na stránce souhlasíte s jejich používáním."
