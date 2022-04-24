@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   def index
     @category = nil
     @scope = Article.publicly_visible.in_index.where.not(priority: Article.priorities[:hidden])
-    @articles = @scope.ordered.preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
+    @articles = @scope.order('RANDOM()').preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
     return unless stale?(@articles)
     display
   end
@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.publicly_visible.friendly.find(params[:id])
     @scope = @category.articles.publicly_visible.where.not(priority: Article.priorities[:hidden])
-    @articles = @scope.ordered.preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
+    @articles = @scope.order('RANDOM()').preload_for(:preview).offset(params[:offset]).limit(ARTICLES_PER_PAGE)
     return unless stale?(@articles)
     display
   end
