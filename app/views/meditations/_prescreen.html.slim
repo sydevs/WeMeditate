@@ -18,16 +18,19 @@
           = translate "#{translations}.explanation.learn_more"
           .icon.icon--breadcrumb
 
-    a.prescreen__button.button.button--circle href=self_realization_meditations_path
+    a.prescreen__button.button.button--circle href=self_realization_meditations_path onclick="window.fathom.trackGoal('KJ7WR5U6', 0)"
       = inline_svg_tag 'graphics/circle.svg'
       .button__text = translate "#{translations}.action"
 
     .prescreen__skip
       span.prescreen__skip__text = translate "#{translations}.skip.text"
-      a.prescreen__skip__link href=skip_url
+      a.prescreen__skip__link href=skip_url onclick="window.fathom.trackGoal('BQOXQ5AJ', 0)"
         span = translate "#{translations}.skip.action"
         .icon.icon--breadcrumb
 
   .prescreen__image
     = static_image_tag 'meditations/prescreen-background', '100vw', class: 'prescreen__image__background'
     = static_image_tag 'meditations/prescreen-foreground', '100vw', class: 'prescreen__image__foreground'
+
+javascript:
+  window.addEventListener('load', () => window.fathom.trackGoal('QSF50CHW', 0))
