@@ -23,10 +23,12 @@ namespace :wm do
         Meditation.in_batches(of: 200).each_with_index do |group, index|
           puts "Updating Meditations Vimeo Metadata (#{I18n.locale.upcase} Group #{index + 1})..."
           group.each do |record|
+            next if !record.horizontal_vimeo_id? && !record.vertical_vimeo_id?
+
             record.update_column(:vimeo_metadata, {
               horizontal: (Vimeo.retrieve_metadata(record.horizontal_vimeo_id) if record.horizontal_vimeo_id),
               vertical: (Vimeo.retrieve_metadata(record.vertical_vimeo_id) if record.vertical_vimeo_id),
-            })
+            }.to_json)
           end
 
           # Wait for 60 second to avoid the rate limit
