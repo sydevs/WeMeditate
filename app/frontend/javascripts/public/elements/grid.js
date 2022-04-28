@@ -25,10 +25,6 @@ export default class Grid {
 
     this.macy.recalculate(true, true)
 
-    // Some grids may be hidden with an inline style to prevent flicker.
-    // Now that macy is initialize we should re-show it.
-    element.style.display = 'block'
-
     this.container.addEventListener('contentchange', _event => {
       // This looks like a double call, but for whatever reason it's needed.
       this.macy.recalculate(true, true)
