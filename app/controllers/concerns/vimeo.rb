@@ -31,7 +31,7 @@ module Vimeo
     end
 
     response = JSON.parse(response.body)
-    puts "Retrieved Vimeo Data for #{vimeo_id}\r\n#{response.inspect}"
+    puts "Retrieved Vimeo Data for #{vimeo_id}" # \r\n#{response.inspect}"
 
     {
       vimeo_id: vimeo_id,

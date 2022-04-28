@@ -15,9 +15,12 @@ namespace :wm do
 
     namespace :reset do
       desc 'Reload the vimeo metadata for meditations only'
-      task meditations: :environment do
+      task :meditations, %i[locale] => :environment do |_, args|
+        I18n.locale = args.locale&.to_sym || :en
+        Globalize.locale = I18n.locale
+
         Meditation.in_batches(of: 200).each_with_index do |group, index|
-          puts "Updating Meditations Vimeo Metadata (Group #{index + 1})..."
+          puts "Updating Meditations Vimeo Metadata (#{args.local.upcase} Group #{index + 1})..."
           group.each do |record|
             record.vimeo_metadata = {
               horizontal: (Vimeo.retrieve_metadata(record.horizontal_vimeo_id) if record.horizontal_vimeo_id),
