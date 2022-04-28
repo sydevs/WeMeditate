@@ -109,7 +109,8 @@ class ApplicationController < ActionController::Base
   protected
 
     def redirect_legacy_url record
-      return false unless request.path != polymorphic_path(record)
+      console.log('REDIRECT?', request.path, "!=", polymorphic_path(record))
+      return false if request.path == polymorphic_path(record)
 
       redirect_to record, status: :moved_permanently
       true

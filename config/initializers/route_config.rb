@@ -9,7 +9,7 @@ RouteTranslator.config do |config|
   elsif Rails.env.staging?
     Rails.configuration.public_domain = 'staging.wemeditate.com'
     Rails.configuration.public_host = Rails.configuration.public_domain
-    Rails.configuration.admin_domain = 'admin.staging.wemeditate.com'
+    Rails.configuration.admin_domain = 'admin-staging.wemeditate.com'
     Rails.configuration.admin_host = Rails.configuration.admin_domain
   else
     host = ENV.fetch('LOCALHOST')
