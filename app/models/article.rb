@@ -39,7 +39,8 @@ class Article < ApplicationRecord
 
   # Scopes
   scope :ordered, -> { order(order: :desc, published_at: :desc) }
-  # scope :index_order, -> { order("CASE WHEN article_translations.published_at >= CURRENT_TIMESTAMP - INTERVAL '14 days' THEN article_translations.published_at ELSE '#{100.years.ago}' END, RANDOM()") }
+  scope :recent, -> { published.where('article_translations.published_at >= ?', 2.weeks.ago) }
+  scope :not_recent, -> { published.where('article_translations.published_at < ?', 2.weeks.ago) }
   scope :upcoming, -> { published.where('article_translations.published_at >= ?', DateTime.now).order(published_at: :asc) }
   scope :q, -> (q) { with_translation.joins(:translations, category: :translations).where('article_translations.name ILIKE ? OR category_translations.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
   scope :in_index, -> { published.joins(:category).where(categories: { show_articles_in_index: true }) }

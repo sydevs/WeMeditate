@@ -64,6 +64,8 @@ module NavigationHelper
       }.to_h
 
       articles = Article.published.in_header.preload_for(:preview)
+      recent_article = articles.order(published_at: :desc).first
+      random_article = articles.where.not(id: recent_article.id).order('RANDOM()').first
 
       {
         title: I18n.translate('header.advanced'),
@@ -72,13 +74,6 @@ module NavigationHelper
         active: %w[static_pages subtle_system_nodes].include?(controller_name),
         content: {
           items: [
-=begin
-            {
-              title: translate('header.advanced_articles'),
-              url: '#', # static_page_path_for(static_page),
-              # data: gtm_record(static_page),
-            },
-=end
             static_pages[:subtle_system],
             {
               title: translate('header.kundalini'),
@@ -93,10 +88,7 @@ module NavigationHelper
               url: category_path(Category.in_header.first || Category.last),
             }
           ],
-          featured: [
-            articles.order(published_at: :desc).first,
-            articles.order('RANDOM()').first
-          ].compact.map { |article|
+          featured: [recent_article, random_article].compact.map { |article|
             {
               title: article.name,
               url: article_path(article),

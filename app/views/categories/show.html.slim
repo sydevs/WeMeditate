@@ -15,6 +15,7 @@ main
 
     #articles-grid.inspiration__grid.js-grid style='display: none'
       / Using display: none initially on this js-grid to prevent flicker
+      = render @recent_articles
       = render @articles
 
     - if @loadmore_url

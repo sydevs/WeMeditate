@@ -4,8 +4,8 @@
 = draftable_field f, :category, type: :association do |value|
   - f.association :category, wrapper: false, label: false, disabled: !allow.update_structure?, selected: value
 
-- priorities = Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}
-= draftable_field f, :priority, type: :collection, input: { collection: priorities },  hint: translate('admin.hints.article_visibility') do |value|
+/- priorities = Article.priorities.map {|k, v| [human_enum_name(Article, :priority, k), k]}
+/= draftable_field f, :priority, type: :collection, input: { collection: priorities },  hint: translate('admin.hints.article_visibility') do |value|
   - f.input_field :priority, collection: priorities, selected: value, disabled: !allow.update_structure?
 
 - if allow.update_structure?
