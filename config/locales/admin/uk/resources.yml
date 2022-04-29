@@ -171,7 +171,6 @@ uk:
           classes: "Заняття"
           privacy: "Політика конфіденційності"
           streams: "Livestream Page" # TODO: Translate
-          custom: "Custom Page" # TODO: Translate
         content: "Контент"
         metatags: "Метатеги"
 

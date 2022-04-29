@@ -24,17 +24,15 @@ class StaticPage < ApplicationRecord
   include Translatable # Should come after Publishable/Stateable
 
   # Associations
-  enum role: ROLES.clone.merge(custom: 99)
+  enum role: ROLES
 
   # Validations
   validates :name, presence: true
-  validates :role, presence: true
-  validates :role, uniqueness: true, unless: :custom?
+  validates :role, presence: true, uniqueness: true
 
   # Scopes
   default_scope { order(:role) }
   scope :q, -> (q) { with_translation.joins(:translations).where('static_page_translations.name ILIKE ?', "%#{q}%", "%#{q}%") if q.present? }
-  scope :special, -> { where.not(role: :custom) }
   
   # Include everything necessary to render this model
   def self.preload_for mode
@@ -50,7 +48,7 @@ class StaticPage < ApplicationRecord
 
   # Returns a list of which roles don't yet have a database representation.
   def self.available_roles
-    StaticPage.roles.keys - [:custom] - StaticPage.where.not(role: :custom).pluck(:role)
+    StaticPage.roles.keys - StaticPage.where.pluck(:role)
   end
 
   def slug

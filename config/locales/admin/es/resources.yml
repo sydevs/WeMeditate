@@ -137,7 +137,6 @@ es:
           classes: "Página de Clases"
           privacy: "Política de Privacidad"
           streams: "Livestream Page" # TODO: Translate
-          custom: "Custom Page" # TODO: Translate
         content: "Contenido"
         metatags: "Metadatos"
 
