@@ -20,10 +20,10 @@ uk:
     streams: "наживо"
     # TODO: Translate
     about: "about"
-    contact: "contact"
-    shri_mataji: "shri-mataji"
-    sahaja_yoga: "sahaja-yoga"
-    privacy: "privacy"
+    contact: "зв'язатися-з-нами"
+    shri_mataji: "шрі-матаджі"
+    sahaja_yoga: "сахаджа-йога"
+    privacy: "повідомлення-про-конфіденційність"
 
   header:
     advanced_articles: "Всі статті"
