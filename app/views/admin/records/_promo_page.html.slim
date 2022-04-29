@@ -7,7 +7,7 @@ tr.record id=dom_id(promo_page)
 
   td.collapsing.top.aligned.faded
     - if promo_page.published?
-      a href=(promo_page_url(promo_page))
+      a href=(promo_page_url(promo_page)) target='_blank'
         |/#{promo_page.slug}
     - else
       |/#{promo_page.slug}

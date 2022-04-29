@@ -2,7 +2,7 @@
 
 .ui.details.list
   = record_detail 'info circle', human_enum_name(record, :state), human_attribute_name(record, :state)
-  - path = CGI.unescape(polymorphic_path([record, Globalize.locale]))
+  - path = CGI.unescape(wm_path_for(record))
   - if record.published?
     = record_detail 'linkify', path, url: polymorphic_public_url(record)
   - elsif allow.preview?
