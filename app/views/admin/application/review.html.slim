@@ -67,7 +67,7 @@
         .content
           .ui.message Ignore this information unless you know what you are doing.
           .ui.small.header Original Attributes
-          pre = @record.translation.pretty_inspect
+          pre = @record.translatable? ? @record.translation.pretty_inspect : @record.pretty_inspect
           .ui.small.header Draft Attributes
           pre = @record.parsed_draft.pretty_inspect
           .ui.small.header Draft Content
