@@ -18,6 +18,11 @@ cs:
     self_realization: "first-experience"
     classes: "classes"
     streams: "live"
+    about: "o-nas"
+    contact: "kontakt"
+    shri_mataji: "sri-matadzi"
+    sahaja_yoga: "sahadza-joga"
+    privacy: "ochrana-osobnich-udaju"
 
   header:
     advanced_articles: "All Articles" # TODO: Translate

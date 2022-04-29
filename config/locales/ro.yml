@@ -17,7 +17,13 @@ ro:
     archive: "toate"
     self_realization: "prima-experiență"
     classes: "cursuri"
+    # TODO: Translate
     streams: "live"
+    about: "despre"
+    contact: "contact"
+    shri_mataji: "shri-mataji"
+    sahaja_yoga: "sahaja-yoga"
+    privacy: "notificare-de-confidentialitate"
 
   header:
     advanced_articles: "All Articles" # TODO: Translate

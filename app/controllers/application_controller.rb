@@ -2,7 +2,6 @@ require 'google/cloud/storage'
 
 class ApplicationController < ActionController::Base
 
-  include ApplicationHelper
   include Regulator
   include Klaviyo
   protect_from_forgery prepend: true
@@ -28,11 +27,6 @@ class ApplicationController < ActionController::Base
     @config[:locale] = I18n.locale unless I18n.locale == :en
     @config[:theme] = 'wemeditate'
     render layout: 'minimal'
-  end
-
-  # A stable URL to reach the classes near me page.
-  def classes
-    redirect_to helpers.static_page_path_for(:classes), status: :moved_permanently
   end
 
   # A POST endpoint to submit a contact message to the site admins
@@ -109,8 +103,8 @@ class ApplicationController < ActionController::Base
   protected
 
     def redirect_legacy_url record
-      puts "REDIRECT? #{request.path} != #{polymorphic_path(record)}"
-      return false if request.path == polymorphic_path(record)
+      puts "REDIRECT? #{request.path} != #{helpers.wm_path_for(record)}"
+      return false if request.path == helpers.wm_path_for(record)
 
       redirect_to record, status: :moved_permanently
       true

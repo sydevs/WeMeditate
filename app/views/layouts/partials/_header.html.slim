@@ -8,7 +8,7 @@ ruby:
   classes << "header--custom-#{@header_style}" if @header_style
 
   use_live_streams = Stream.public_stream.any?
-  come_meditate_path = use_live_streams ? static_page_path_for(:streams) : static_page_path_for(:classes)
+  come_meditate_path = use_live_streams ? static_page_path(:streams) : static_page_path(:classes)
 
 header#header.header class=classes
   .header__container
@@ -60,7 +60,7 @@ header#header.header class=classes
         .header__notice__text
           .header__notice__close
           = translate 'cookie_notice.text'
-          a href=static_page_url_for(:privacy) = translate 'cookie_notice.learn_more'
+          a href=static_page_url(:privacy) = translate 'cookie_notice.learn_more'
 
     - unless @breadcrumbs.nil?
       .header__breadcrumbs-wrapper

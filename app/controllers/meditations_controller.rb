@@ -7,7 +7,7 @@ class MeditationsController < ApplicationController
     expires_in 12.hours, public: true
 
     @breadcrumbs = [
-      { name: StaticPageHelper.preview_for(:home).name, url: root_path },
+      { name: StaticPage.preview(:home).name, url: root_path },
       { name: @static_page.name },
     ]
 
@@ -48,8 +48,8 @@ class MeditationsController < ApplicationController
     respond_to do |format|
       format.html do
         @breadcrumbs = [
-          { name: StaticPageHelper.preview_for(:home).name, url: root_path },
-          { name: StaticPageHelper.preview_for(:meditations).name, url: meditations_path },
+          { name: StaticPage.preview(:home).name, url: root_path },
+          { name: StaticPage.preview(:meditations).name, url: meditations_path },
           { name: translate('meditations.title'), url: archive_meditations_path },
           { name: translate('meditations.archive.title') },
         ]
@@ -72,7 +72,7 @@ class MeditationsController < ApplicationController
 
     meditations_page = StaticPage.preload_for(:content).find_by(role: :meditations)
     @breadcrumbs = [
-      { name: StaticPageHelper.preview_for(:home).name, url: root_path },
+      { name: StaticPage.preview(:home).name, url: root_path },
       { name: meditations_page.name, url: meditations_path },
       { name: @meditation.name },
     ]

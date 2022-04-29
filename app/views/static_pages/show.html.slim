@@ -31,7 +31,7 @@
                   = translate('classes.nearby')
               div class='js-geosearch-results'
 
-    - elsif !@static_page.contact? && !@static_page.custom?
+    - elsif !@static_page.contact?
       h1.banner.banner--left = @static_page.name
 
     - cache @static_page do

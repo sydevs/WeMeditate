@@ -8,7 +8,7 @@ class TracksController < ApplicationController
     @instrument_filters = InstrumentFilter.publicly_visible.has_content
     @static_page = StaticPage.preload_for(:content).find_by(role: :tracks)
     @breadcrumbs = [
-      { name: StaticPageHelper.preview_for(:home).name, url: root_path },
+      { name: StaticPage.preview(:home).name, url: root_path },
       { name: @static_page.name },
     ]
 

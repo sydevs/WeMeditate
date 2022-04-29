@@ -105,7 +105,8 @@ Each model corresponds to a table in the database, and collectively these form t
 #### Pages
  - **Article**, these create the main blog feature which is present on the "Inspiration" page.
  - **SubtleSystemNode**, these defined the contnent of the pages for each chakra and channel.
- - **StaticPage**, any page on the site which doesn't directly represent a model is controlled by a Static Page model. For example: home page, inspiration page, subtle system page, classes near me, contact us, sahaja yoga page, shri mataji page, etc.
+ - **StaticPage**, these are the primary pages of the website. For example: home page, inspiration page, subtle system page, classes near me, contact us, sahaja yoga page, shri mataji page, etc.
+ - **PromoPage**, these are landing pages that are used to promote events or special promotions. They are accessible at the root of the website. eg. wemeditate.com/event-name
 
 #### Resources
  - **Meditation**, a guided meditation with an associated video and a brief description

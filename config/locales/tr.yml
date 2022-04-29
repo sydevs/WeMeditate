@@ -18,6 +18,11 @@ tr:
     self_realization: "first-experience"
     classes: "classes"
     streams: "live"
+    about: "hakkimizda"
+    contact: "bizimle-iletisime-gecin"
+    shri_mataji: "shri-mataji"
+    sahaja_yoga: "sahaja-yoga"
+    privacy: "gizlilik-politikası"
     
   header:
     advanced_articles: "All Articles" # TODO: Translate

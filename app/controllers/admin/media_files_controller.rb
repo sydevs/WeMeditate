@@ -10,6 +10,8 @@ module Admin
         @parent = Treatment.friendly.find(params[:treatment_id])
       elsif params[:static_page_id].present?
         @parent = StaticPage.friendly.find(params[:static_page_id])
+      elsif params[:promo_page_id].present?
+        @parent = PromoPage.friendly.find(params[:promo_page_id])
       elsif params[:subtle_system_node_id].present?
         @parent = SubtleSystemNode.friendly.find(params[:subtle_system_node_id])
       elsif params[:stream_id].present?

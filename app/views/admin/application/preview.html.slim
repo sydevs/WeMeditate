@@ -1,9 +1,6 @@
 
 - content_for :title, 'Preview'
 
-- content_for :head do
-  = javascript_include_tag 'preview', 'data-turbolinks-track': 'reload'
-
 - if params[:review] && @record.has_draft?(:content)
   - content_for :content do
     - block_comparison(@record) do |original_block, draft_block, effect|

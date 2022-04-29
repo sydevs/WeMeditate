@@ -137,6 +137,10 @@ SitemapGenerator::Sitemap.create do
     end
   end
 
+  PromoPages.published.preload_for(:content).find_each do |promo_page|
+    add promo_page_path(promo_page), changefreq: 'daily', **record_data(promo_page)
+  end
+
   SubtleSystemNode.published.preload_for(:content).find_each do |subtle_system_node|
     add subtle_system_node_path(subtle_system_node), changefreq: 'weekly', **record_data(subtle_system_node)
   end

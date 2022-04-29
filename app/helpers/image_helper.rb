@@ -118,4 +118,17 @@ module ImageHelper
     inline_svg_pack_tag "media/images/#{src}", **attrs
   end
 
+  # Return the full url to a an image, instead of just the path. Useful for metadata
+  def image_url source
+    source.delete_prefix!('/')
+
+    if source.starts_with?('uploads')
+      path_to_url source
+    elsif !source.starts_with?('http')
+      path_to_url asset_pack_path("media/images/#{source}")
+    else
+      source
+    end
+  end
+
 end

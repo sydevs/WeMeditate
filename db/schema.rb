@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_16_082101) do
+ActiveRecord::Schema.define(version: 2022_04_28_160733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -300,6 +300,21 @@ ActiveRecord::Schema.define(version: 2022_04_16_082101) do
     t.bigint "mood_filter_id"
     t.index ["mood_filter_id"], name: "index_mood_filters_tracks_on_mood_filter_id"
     t.index ["track_id"], name: "index_mood_filters_tracks_on_track_id"
+  end
+
+  create_table "promo_pages", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.date "published_at"
+    t.bigint "owner_id"
+    t.jsonb "draft"
+    t.jsonb "content"
+    t.jsonb "metatags"
+    t.integer "state", default: 0
+    t.string "locale", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_promo_pages_on_owner_id"
   end
 
   create_table "static_page_translations", force: :cascade do |t|

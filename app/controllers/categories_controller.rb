@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
           @categories = Category.publicly_visible.includes(articles: :translations).where(article_translations: { state: Article.states[:published] }).where('article_translations.published_at < ?', DateTime.now).where.not(articles: { id: nil })
 
           @breadcrumbs = [
-            { name: StaticPageHelper.preview_for(:home).name, url: root_path },
+            { name: StaticPage.preview(:home).name, url: root_path },
             { name: @static_page.name },
           ]
 

@@ -81,7 +81,7 @@ module Stateable
     result
   end
 
-  # This is a temporary workaround to prevet unpublishing of certain types.
+  # This is a temporary workaround to prevent unpublishing of certain types.
   # TODO: Rework this so that anything with a fixed slug cannot be unpublished.
   def unpublishable?
     return false if is_a?(StaticPage) || is_a?(SubtleSystemNode)

@@ -372,6 +372,7 @@ it:
         node: "Node" # TOOD: Translate
         location: "Location" # TODO: Translate
         local_time: "Local Time" # TODO: Translate
+        slug: "URL" # TODO: Translate
         original_locale: "Language" # TODO: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
@@ -441,6 +442,7 @@ it:
         message:
           # Pages
           static_pages: "Queste sono le pagine principali del sito, come ad esempio Home Page, Ispirazione, Shri Mataji, etc. Puoi usare questa lista per modificare il contenuto di queste pagine, però la maggior parte di queste ha contenuti e indirizzi predefiniti."
+          promo_pages: "These are custom landing pages. These are used to promote events and special courses." # TODO: Translate
           articles: "Gli articoli sono scritti da Sahaja Yogis per dare ispirazione ai ricercatori. Riguardano diversi temi come: la meditazione nella vita quotidiana, articoli sulle anime realizzate, opere d'arte, musica, poesie di yogis, articoli di approfondimento su temi più profondi, etc. Qualunque cosa uno yogi voglia scrivere.<br><br>Tutti gli articoli sono mostrati nella pagina \"Ispirazione\""
           subtle_system_nodes: "Queste pagine descrivono le diverse parti del Sistema Sottile. Ogni pagina contiene una spiegazione dettagliata delle qualità di un chakra o canale, come si manifesta nella vita quotidiana e quali sono i trattamenti più adatti ad esso."
           streams: "These are live online meditations that are streamed on a weekly basis at a set time. The livestream of the meditation will be embedded on We Meditate, and seekers can subscribe for a reminder when the meditation starts." # TODO: Translate
@@ -502,6 +504,7 @@ it:
         people: "Persone"
         # For specific models
         static_pages: "Pagine Principali"
+        promo_pages: "Landing Pages" # TODO: Translate
         articles: "Articoli di Ispirazione"
         subtle_system_nodes: "Sistema Sottile"
         streams: :activerecord.models.stream.other # Do not translate

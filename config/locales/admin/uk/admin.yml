@@ -302,7 +302,6 @@ uk:
         update_own_user: "Can Modify Own Account" # TODO: Translate
         update_subordinate: "Можна Змінювати %{subordinates}"
         create_subordinate: "Можна Створювати %{subordinates}"
-        destroy_custom: "Can Destroy Custom %{pages}" # TODO: Translate
       role_description: # This describes the responsibilities of a given type of administrator
         translator: "Перекладають контент, який був опублікований на інших мовах, на відповідну мову."
         writer: "Можуть створювати нові статті або редагувати старі, раніше написані ними."
@@ -380,6 +379,7 @@ uk:
         minutes: "Тривалість"
         location: "Location" # TODO: Translate
         local_time: "Local Time" # TODO: Translate
+        slug: "URL" # TODO: Translate
         original_locale: "Language" # TODO: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
@@ -449,6 +449,7 @@ uk:
         message:
           # Pages
           static_pages: "Це основні сторінки веб-сайту, такі як Домашня сторінка, Сторінка натхнення, Сторінка Шрі Матаджі і т.д. Ви можете використовувати цей індекс для редагування частини вмісту цих сторінок, але більшість із цих сторінок мають заздалегідь визначений вміст та URL-адреси."
+          promo_pages: "These are custom landing pages. These are used to promote events and special courses." # TODO: Translate
           articles: "Статті написані Сахаджа йогами, щоб надихнути шукачів. Вони можуть висвітлювати різні теми, такі як: медитація у повсякденному житті; написання про реалізовані душі; художні твори, музика чи поезія йогів; поглиблені статті на більш глибокі теми; тощо. Будь-що, про що йоги можуть надихнутись написати. <br> <br> Усі статті відображаються на \"Сторінка Натхнення.\"."
           subtle_system_nodes: "Це сторінки, що описують різні частини тонкої системи. Кожна сторінка - це поглиблене пояснення якостей тієї чакри чи каналу, в якій вона проявляється у повсякденному житті та способів лікування, які стосуються її."
           streams: "These are live online meditations that are streamed on a weekly basis at a set time. The livestream of the meditation will be embedded on We Meditate, and seekers can subscribe for a reminder when the meditation starts." # TODO: Translate
@@ -511,6 +512,7 @@ uk:
         people: "Люди"
         # For specific models
         static_pages: "Основні Сторінки"
+        promo_pages: "Landing Pages" # TODO: Translate
         articles: "Статті Натхнення"
         subtle_system_nodes: "Тонка Система"
         streams: :activerecord.models.stream.other # Do not translate

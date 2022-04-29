@@ -9,6 +9,7 @@ module Admin
         @records = policy_scope(@model).order(updated_at: :desc).q(params[:q])
         @records = sort_by(@records, params[:sort])
         @records = filter_by(@records, params[:filter])
+        @records = @records.where(locale: Globalize.locale) if !@model.try(:translatable?) && @model.has_attribute?(:locale)
         @records = @records.where(id: params[:ids].split(',').map(&:to_i)) unless params[:ids].blank?
         @records = @records.where.not(id: params[:exclude].split(',').map(&:to_i)) unless params[:exclude].blank?
 
@@ -17,7 +18,7 @@ module Admin
             @separated_records_title = I18n.translate('admin.details.records_for_super_admin')
             @separated_records = @records.where(role: :super_admin).page(params[:page]).per(15)
             @records = @records.where.not(role: :super_admin).page(params[:page]).per(15)
-          elsif @model.try(:translatable?) && [Article, StaticPage].include?(@model)
+          elsif @model.try(:translatable?) && @model.is_a?(StaticPage)
             @separated_records_title = I18n.translate('admin.details.records_from_other_languages', pages: helpers.human_model_name(@model, :plural))
             @separated_records = @records.without_translation.page(params[:page]).per(15)
             @records = @records.with_translation.page(params[:page]).per(15)

@@ -28,6 +28,11 @@
             i.icon class=model_icon_key(Article)
             = translate('admin.misc.menu.articles')
 
+        - if policy(PromoPage).index?
+          = link_to [:admin, PromoPage, locale: Globalize.locale], class: "#{'active' if controller_name == 'promo_pages'} item"
+            i.icon class=model_icon_key(PromoPage)
+            = translate('admin.misc.menu.promo_pages')
+
         - if policy(SubtleSystemNode).index?
           = link_to [:admin, SubtleSystemNode, locale: Globalize.locale], class: "#{'active' if controller_name == 'subtle_system_nodes'} item"
             i.icon class=model_icon_key(SubtleSystemNode)
