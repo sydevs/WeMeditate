@@ -22,8 +22,8 @@ class StreamsController < ApplicationController
     #return unless stale?(@stream)
 
     @breadcrumbs = [
-      #{ name: StaticPageHelper.preview_for(:home).name, url: root_path },
-      { name: StaticPageHelper.preview_for(:streams).name, url: streams_path },
+      #{ name: StaticPage.preview(:home).name, url: root_path },
+      { name: StaticPage.preview(:streams).name, url: streams_path },
       { name: @stream.name },
     ]
 

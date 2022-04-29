@@ -28,7 +28,7 @@ ruby:
         - if translate(block[:form], scope: 'form.input.privacy').present?
           .cb-form-action__privacy
             = translate(block[:form], scope: 'form.input.privacy')
-            a href=static_page_path_for(:privacy) target='_blank' = translate 'form.input.privacy.learn_more'
+            a href=static_page_path(:privacy) target='_blank' = translate 'form.input.privacy.learn_more'
 
     .cb-form-action__buttons
       button.button.button--box = block[:action]

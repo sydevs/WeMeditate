@@ -59,7 +59,6 @@ Rails.application.routes.draw do
       post :contact, to: 'application#contact'
       post :subscribe, to: 'application#subscribe'
       get :map, to: 'application#map'
-      get :classes, to: 'application#classes'
       get :live, to: 'streams#index'
 
       resources :articles, only: %i[show] do
@@ -80,7 +79,10 @@ Rails.application.routes.draw do
       resources :subtle_system_nodes, only: %i[index show], path: 'subtle_system'
       resources :streams, only: %i[index show], path: 'streams'
 
-      get 'classes', to: 'static_pages#show'
+      StaticPage::ROLES.each do |role, _|
+        get role, to: 'static_pages#show'
+      end
+
       resources :promo_pages, only: %i[show], path: ''
     end
   end
