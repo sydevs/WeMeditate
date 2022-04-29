@@ -48,7 +48,7 @@ class StaticPage < ApplicationRecord
 
   # Returns a list of which roles don't yet have a database representation.
   def self.available_roles
-    StaticPage.roles.keys - StaticPage.where.pluck(:role)
+    StaticPage.roles.keys - StaticPage.pluck(:role)
   end
 
   def slug
@@ -76,7 +76,7 @@ class StaticPage < ApplicationRecord
   def self.preview role
     # Simply fetch all previews and store them, because we know that every page load will require almost every static page preview to generate the navigation
     unless defined? @@static_page_previews
-      @@static_page_previews = StaticPage.preload_for(:preview).special.index_by(&:role) # rubocop:disable Style/ClassVars
+      @@static_page_previews = StaticPage.preload_for(:preview).index_by(&:role) # rubocop:disable Style/ClassVars
     end
 
     @@static_page_previews[role.to_s]
