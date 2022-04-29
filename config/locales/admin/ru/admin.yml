@@ -305,7 +305,6 @@ ru:
         update_own_user: "Can Modify Own Account" # TODO: Translate
         update_subordinate: "Можно Изменять %{subordinates}"
         create_subordinate: "Можно Создавать %{subordinates}"
-        destroy_custom: "Can Destroy Custom %{pages}" # TODO: Translate
       role_description: # This describes the responsibilities of a given type of administrator
         translator: "переводят контент, который был опубликован на других языках, на соответствующий язык."
         writer: "могут создавать новые статьи или редактировать старые, ранее написанные ими статьи."

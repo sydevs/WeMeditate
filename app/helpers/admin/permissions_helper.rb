@@ -43,7 +43,6 @@ module Admin::PermissionsHelper
       super_admin: {
         update: true,
         publish: true,
-        destroy: 'destroy_custom', # Some models require a special description of the permission.
       },
     },
     subtle_system_node: {
