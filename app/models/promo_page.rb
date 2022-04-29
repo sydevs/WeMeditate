@@ -20,7 +20,7 @@ class PromoPage < ApplicationRecord
 
   # Scopes
   scope :q, -> (q) { where('promo_pages.name ILIKE ?', "%#{q}%") if q.present? }
-  
+
   # Include everything necessary to render this model
   def self.preload_for mode
     case mode

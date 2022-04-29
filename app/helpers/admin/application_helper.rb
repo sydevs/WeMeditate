@@ -2,13 +2,6 @@ module Admin::ApplicationHelper
 
   # Admin URLs require a bit of special handling, to support all the abstraction that we do in the CMS
   def polymorphic_public_url args, options = {}
-=begin
-    if args.is_a? Array
-      args.push!(Globalize.locale)
-    else
-      args = [args, Globalize.locale]
-    end
-=end
     wm_url_for(args, **options)
   end
 

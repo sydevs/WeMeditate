@@ -48,7 +48,7 @@ namespace :migrate do
   end
 
   desc 'Migrate custom pages to promo pages'
-  task cleanup_custom_pages: :environment do |_, args|
+  task cleanup_custom_pages: :environment do
     pages = StaticPage.where.not(role: StaticPage::ROLES.values)
     puts "Destroying #{pages.count} custom pages"
     pages.destroy_all

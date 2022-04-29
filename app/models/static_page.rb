@@ -59,12 +59,13 @@ class StaticPage < ApplicationRecord
 
   def self.find_by_slug slug
     # Simply fetch all previews and store them, because we know that every page load will require almost every static page preview to generate the navigation
-    @@static_page_lookups ||= {}
+    @@static_page_lookups ||= {} # rubocop:disable Style/ClassVars
 
     unless @@static_page_lookups[I18n.locale].present?
       @@static_page_lookups[I18n.locale] = {}
       I18n.translate('routes').each do |role, translated_slug|
         next unless ROLES.has_key?(role)
+
         @@static_page_lookups[I18n.locale][translated_slug] = role.to_sym
       end
     end

@@ -30,7 +30,7 @@ module RouteHelper
     route = STATIC_PAGE_ROLE_TO_URL[role&.to_sym] || role
     send(:"#{route}_#{locale}_url")
   end
-  
+
   # Given a path, convert it to the full URL
   def path_to_url path
     "https://#{Rails.configuration.public_host}/#{path.sub(%r{^\/}, '')}"
@@ -65,4 +65,3 @@ module RouteHelper
   end
 
 end
-  
