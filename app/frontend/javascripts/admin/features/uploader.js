@@ -51,7 +51,8 @@ export function uploadFile(file, success, failure) {
       updateUpload(file.name, 'success')
       success(result)
     },
-    error: function(result) {
+    error: function(result, status, err) {
+      console.log(result, status, err)
       let error = result.responseJSON.errors[0]
       error = error.split(' Original Error: ')[0]
       updateUpload(file.name, 'error', error)

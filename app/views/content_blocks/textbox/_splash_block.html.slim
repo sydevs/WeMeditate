@@ -7,7 +7,7 @@ ruby:
 
   return unless block[:image].is_a?(Hash)
 
-  image_url = record.media_file(block[:image][:id]).large.url
+  image_url = record.media_file(block[:image][:id])&.large&.url
   background = image_url ? "background-image: url(#{image_url})" : nil
 
 .cb-splash-textbox class=classes style=background data-invert=(block[:color] == 'light' ? 'true' : null)

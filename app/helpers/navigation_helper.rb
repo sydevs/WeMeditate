@@ -65,7 +65,7 @@ module NavigationHelper
 
       articles = Article.published.in_header.preload_for(:preview)
       recent_article = articles.order(published_at: :desc).first
-      random_article = articles.where.not(id: recent_article.id).order('RANDOM()').first
+      random_article = articles.where.not(id: recent_article&.id).order('RANDOM()').first
 
       {
         title: I18n.translate('header.advanced'),

@@ -48,6 +48,9 @@ module Admin
     ensure
       response.stream.close
     end
+  rescue StandardError => e
+    render json: { errors: "Internal Server Error" }, status: 500
+    raise e
   end
 
 end

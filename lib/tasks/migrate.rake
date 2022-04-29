@@ -35,7 +35,7 @@ namespace :migrate do
           if PromoPage.friendly.find_by_slug(r[:slug]).present?
             puts "Skipping page \"#{r.name}\" with slug conflict \"#{r[:slug]}\" (#{r.original_locale})"
           else
-            puts "Creating page: \"#{r.name}\""
+            puts "Creating page: \"#{r.name}\" (#{r.original_locale})"
             PromoPage.create!({
               name: r.name,
               slug: r[:slug],
@@ -44,7 +44,9 @@ namespace :migrate do
               draft: r.draft,
               content: r.content,
               locale: r.original_locale,
-            })
+            }) do |p|
+              p.media_files = r.media_files
+            end
           end
         end
       end
