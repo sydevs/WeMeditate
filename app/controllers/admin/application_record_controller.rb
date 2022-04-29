@@ -9,6 +9,7 @@ module Admin
         @records = policy_scope(@model).order(updated_at: :desc).q(params[:q])
         @records = sort_by(@records, params[:sort])
         @records = filter_by(@records, params[:filter])
+        @records = @records.where(role: StaticPage::ROLES.keys) if @model == StaticPage
         @records = @records.where(locale: Globalize.locale) if !@model.try(:translatable?) && @model.has_attribute?(:locale)
         @records = @records.where(id: params[:ids].split(',').map(&:to_i)) unless params[:ids].blank?
         @records = @records.where.not(id: params[:exclude].split(',').map(&:to_i)) unless params[:exclude].blank?
