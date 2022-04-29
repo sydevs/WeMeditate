@@ -35,7 +35,7 @@ module Admin
     end
 
     def destroy?
-      record.custom?
+      record.custom? && publish?
     end
 
   end

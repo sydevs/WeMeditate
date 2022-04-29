@@ -49,7 +49,7 @@ class StaticPage < ApplicationRecord
 
   # Returns a list of which roles don't yet have a database representation.
   def self.available_roles
-    StaticPage.roles.keys - StaticPage.where.not(role: :custom).pluck(:role)
+    StaticPage.roles.keys - [:custom] - StaticPage.where.not(role: :custom).pluck(:role)
   end
 
 end

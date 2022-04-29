@@ -7,6 +7,7 @@ module Admin::TableHelper
   TABLE_COLUMNS = {
     # Pages
     static_pages: %i[name role updated_at status],
+    promo_pages: %i[name slug updated_at status],
     articles: %i[name category_id updated_at status],
     subtle_system_nodes: %i[name node updated_at status],
     streams: %i[name location updated_at status],
@@ -31,6 +32,7 @@ module Admin::TableHelper
   SORTABLE_COLUMNS = {
     # Pages
     static_pages: %i[updated_at], # %i[name updated_at],
+    promo_pages: %i[updated_at], # %i[name updated_at],
     articles: %i[name updated_at created_at],
     subtle_system_nodes: %i[updated_at], # %i[name updated_at],
     streams: %i[name updated_at created_at],
@@ -54,8 +56,9 @@ module Admin::TableHelper
   # TODO: Implement the missing filterings which are shown as comments on each of the following entries.
   FILTERABLE_COLUMNS = {
     # Pages
-    articles: %i[category_id priority status],
     static_pages: %i[status],
+    promo_pages: %i[status],
+    articles: %i[category_id priority status],
     subtle_system_nodes: %i[status],
     streams: %i[status],
     # Resources

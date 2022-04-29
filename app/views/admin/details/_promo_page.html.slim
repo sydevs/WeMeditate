@@ -1,0 +1,9 @@
+- allow = policy(@record)
+
+.ui.details.list
+  = record_detail 'info circle', human_enum_name(record, :state), human_attribute_name(record, :state)
+  - path = CGI.unescape(polymorphic_path([record, Globalize.locale]))
+  - if record.published?
+    = record_detail 'linkify', path, url: polymorphic_public_url(record)
+  - elsif allow.preview?
+    = record_detail 'linkify', path, translate('admin.action.descriptive.preview'), url: polymorphic_admin_path([:preview, :admin, record])

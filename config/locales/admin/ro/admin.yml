@@ -381,6 +381,7 @@ ro:
         minutes: "Interval de Timp"
         location: "Location" # TODO: Translate
         local_time: "Local Time" # TODO: Translate
+        slug: "URL" # TODO: Translate
         original_locale: "Language" # TODO: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
@@ -451,6 +452,7 @@ ro:
         message:
           # Pages
           static_pages: "Acestea sunt paginile principale ale site-ului, cum ar fi Pagina Principală, Pagina de Inspirație, Pagina Shri Mataji, etc. Poți utiliza acest index pentru a edita o parte din conținutul acestor pagini, dar cele mai multe dintre aceste pagini au conținut și URL-uri predefinite."
+          promo_pages: "These are custom landing pages. These are used to promote events and special courses." # TODO: Translate
           articles: "Articolele sunt scrise de Sahaja Yoghini pentru a-i inspira căutătorii. Ele pot acoperi diverse teme, cum ar fi: meditația în viața de zi cu zi; scrieri despre suflete realizate; opere de artă, muzică sau poezii scrise de yoghini; articole cu teme mai profunde; etc. Orice îl inspiră pe Sahaja Yogin să scrie.<br><br>Toate articolele sunt afișate pe \"Pagina de Inspirație.\""
           subtle_system_nodes: "Acestea sunt paginile ce descriu diferite părți ale Sistemului Subtil. Fiecare pagină este o explicație în detaliu a calităților acelei chakre sau canal, a modului în care se manifestă în viața de zi cu zi și a tratamentelor specifice chakrei."
           streams: "These are live online meditations that are streamed on a weekly basis at a set time. The livestream of the meditation will be embedded on We Meditate, and seekers can subscribe for a reminder when the meditation starts." # TODO: Translate
@@ -514,6 +516,7 @@ ro:
         people: "Persoane"
         # For specific models
         static_pages: "Pagini Principale"
+        promo_pages: "Landing Pages" # TODO: Translate
         articles: "Articole de Inspiratie"
         subtle_system_nodes: "Sistemul Subtil"
         streams: :activerecord.models.stream.other # Do not translate

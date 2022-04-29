@@ -14,6 +14,7 @@ module Admin::DashboardHelper
     untranslated SubtleSystemNode, :critical, &block
     pinned Article, :important, &block
     needs_review StaticPage, :important, &block
+    needs_review PromoPage, :important, &block
     needs_review SubtleSystemNode, :important, &block
     needs_review Stream, :important, &block
     needs_review Treatment, :important, &block

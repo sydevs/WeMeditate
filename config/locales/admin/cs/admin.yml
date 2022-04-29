@@ -377,7 +377,8 @@ cs:
         node: "Node"
         location: "Location"
         local_time: "Local Time"
-        original_locale: "Language" # TODO: Translate
+        slug: "URL"
+        original_locale: "Language"
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate
@@ -445,6 +446,7 @@ cs:
         message:
           # Pages
           static_pages: "These are the primary pages of the website, such as the Home Page, Inspiration Page, Shri Mataji Page, etc. You can use this index to edit some of the content of these pages, but most of these pages have predefined conntent and urls."
+          promo_pages: "These are custom landing pages. These are used to promote events and special courses."
           articles: "Articles are written by Sahaja Yogis to inspire seekers. They can cover various topics, such as: meditation in daily life; writing about realized souls; artwork, music or poetry by yogis; in-depth articles on deeper topics; etc. Whatever a yogi may be inspired to write about.<br><br>All articles are shown on the site's \"Inspiration Page.\""
           subtle_system_nodes: "These are the pages that describe different parts of the Subtle System. Each page is an in-depth explanation of the qualities of that chakra or channel, how it manifests in daily life, and the treatments that address it."
           streams: "These are live online meditations that are streamed on a weekly basis at a set time. The livestream of the meditation will be embedded on We Meditate, and seekers can subscribe for a reminder when the meditation starts."
@@ -508,6 +510,7 @@ cs:
         people: "People"
         # For specific models
         static_pages: "Main Pages"
+        promo_pages: "Landing Pages"
         articles: "Inspiration Articles"
         subtle_system_nodes: "Subtle System"
         streams: :activerecord.models.stream.other # Do not translate

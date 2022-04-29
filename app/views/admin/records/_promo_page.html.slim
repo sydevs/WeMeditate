@@ -1,0 +1,23 @@
+- allow = policy(promo_page)
+
+tr.record id=dom_id(promo_page)
+  td.top.aligned
+    a href=polymorphic_admin_path([(:edit unless allow.show?), :admin, promo_page])
+      = promo_page.preview_name
+
+  td.collapsing.top.aligned.faded
+    - if promo_page.published?
+      a href=(wm_url_for(promo_page))
+        |/#{promo_page.slug}
+    - else
+      |/#{promo_page.slug}
+
+  td.collapsing.top.aligned.faded
+    = localize promo_page.updated_at, format: :short
+
+  td.collapsing.top.aligned
+    = table_record_status_label(promo_page)
+
+  - if local_assigns[:original_locale]
+    td.collapsing.top.aligned.faded
+      = language_name(promo_page.original_locale)

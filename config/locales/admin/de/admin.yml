@@ -377,6 +377,7 @@ de:
         node: "Node" # TODO: Translate
         location: "Location" # TODO: Translate
         local_time: "Local Time" # TODO: Translate
+        slug: "URL" # TODO: Translate
         original_locale: "Language" # TODO: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
@@ -445,6 +446,7 @@ de:
         message:
           # Pages
           static_pages: "Dies sind die primären Seiten der Website, z.B. die Startseite, die Inspirationsseite, die Shri Mataji-Seite usw. Sie können diesen Index verwenden, um einen Teil des Inhalts dieser Seiten zu bearbeiten. Die meisten dieser Seiten haben jedoch vordefinierte Inhalte und URLs."
+          promo_pages: "These are custom landing pages. These are used to promote events and special courses." # TODO: Translate
           articles: "Artikel werden von Sahaja Yogis geschrieben, um Suchende zu inspirieren. Sie können verschiedene Themen abdecken, wie zum Beispiel: Meditation im täglichen Leben; Schreiben über realisierte Seelen; Kunstwerke, Musik oder Gedichte von Yogis; ausführliche Artikel zu tieferen Themen; usw. Was auch immer ein Yogi zum Schreiben inspiriert hat.<br><br>Alle Artikel werden auf der Seite \"Inspiration Page.\" angezeigt"
           subtle_system_nodes: "Dies sind die Seiten, die verschiedene Teile des subtilen Systems beschreiben. Jede Seite ist eine ausführliche Erklärung der Eigenschaften dieses Chakras oder Kanals, wie sie sich im täglichen Leben manifestiert und welche Behandlungen es dafür gibt."
           streams: "These are live online meditations that are streamed on a weekly basis at a set time. The livestream of the meditation will be embedded on We Meditate, and seekers can subscribe for a reminder when the meditation starts." # TODO: Translate
@@ -508,6 +510,7 @@ de:
         people: "Personen"
         # For specific models
         static_pages: "Hauptseiten"
+        promo_pages: "Landing Pages" # TODO: Translate
         articles: "Inspirationsartikel"
         subtle_system_nodes: "Subtiles System"
         streams: :activerecord.models.stream.other # Do not translate

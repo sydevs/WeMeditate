@@ -378,6 +378,7 @@ es:
         node: "Node" # TOOD: Translate
         location: "Location" # TODO: Translate
         local_time: "Local Time" # TODO: Translate
+        slug: "URL" # TODO: Translate
         original_locale: "Language" # TODO: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
@@ -447,6 +448,7 @@ es:
         message:
           # Pages
           static_pages: "Estas son las páginas principales del sitio web, como la Página Principal, la Página de Inspiración, la Página de Shri Mataji, etc. Puede usar este índice para editar parte del contenido de estas páginas, pero la mayoría de estas páginas tienen contenido y urls predefinidos."
+          promo_pages: "These are custom landing pages. These are used to promote events and special courses." # TODO: Translate
           articles: "Los artículos son escritos por los Sahaja Yoguis para inspirar a los buscadores. Pueden cubrir varios temas, tales como: la meditación en la vida cotidiana; escribir sobre almas realizadas; obras de arte, música o poesía de yoguis; artículos en profundidad sobre temas más profundos, etc. Cualquier cosa en que un yogui pueda sentirse inspirado a escribir.<br><br>Todos los artículos se muestran en la \"Página de Inspiración.\" de la web"
           subtle_system_nodes: "Estas son las páginas que describen las diferentes partes del Sistema Sutil. Cada página es una explicación en profundidad de las cualidades de ese chakra o canal, cómo se manifiesta en la vida diaria, y los tratamientos que se pueden aplicar."
           streams: "These are live online meditations that are streamed on a weekly basis at a set time. The livestream of the meditation will be embedded on We Meditate, and seekers can subscribe for a reminder when the meditation starts." # TODO: Translate
@@ -510,6 +512,7 @@ es:
         people: "Gente"
         # For specific models
         static_pages: "Páginas Principales"
+        promo_pages: "Landing Pages" # TODO: Translate
         articles: "Artículos de Inspiración"
         subtle_system_nodes: "Sistema Sutil"
         streams: :activerecord.models.stream.other # Do not translate

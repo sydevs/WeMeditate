@@ -25,6 +25,16 @@ module Admin::PermissionsHelper
       regional_admin: %i[update publish create],
       super_admin: %i[update publish create destroy],
     },
+    promo_page: {
+      translator: [],
+      writer: {
+        update: 'update_own', # Some models require a special description of the permission.
+        publish: 'publish_own', # Some models require a special description of the permission.
+      },
+      editor: %i[update publish create],
+      regional_admin: %i[update publish create],
+      super_admin: %i[update publish create destroy],
+    },
     static_page: {
       translator: %i[translate],
       writer: [],

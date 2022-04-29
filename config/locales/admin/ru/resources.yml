@@ -17,6 +17,12 @@ ru:
         many: "Основных страниц" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
         other: "Основные cтраницы" # Nonspecific number of elements
         
+      promo_page: # TODO: Translate
+        one: "Landing Page" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Landing Pages" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Landing Pages" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Landing Pages" # Nonspecific number of elements
+
       subtle_system_node: # This is a page for a Chakra, Channel, or the Kundalini. ie. Some part of the subtle system
         one: "Элемент тонкой системы" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
         few: "Элемента тонкой системы" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
@@ -185,6 +191,20 @@ ru:
         content: "Контент"
         metatags: "Метаданные"
 
+      promo_page: # TODO: Translate
+        draft: :activerecord.attributes.generic.draft # Do not translate
+        name: "Title"
+        slug: :activerecord.attributes.generic.slug # Do not translate
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+        content: "Content"
+        metatags: "Metadata"
+        owner: "Allow a writer to update this page"
 
       subtle_system_node:
         state: :activerecord.attributes.generic.state # Do not translate

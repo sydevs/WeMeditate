@@ -34,7 +34,7 @@
     / TODO: Try and improve this janky way of getting the url. It's because articles and static pages don't have any index route
     ruby:
       if record.new_record?
-        url = record.is_a?(StaticPage) ? '/*' : "/#{translate(record.model_name.i18n_key.to_s.pluralize, scope: 'routes')}/*"
+        url = record.is_a?(StaticPage) || record.is_a?(PromoPage) ? '/*' : "/#{translate(record.model_name.i18n_key.to_s.pluralize, scope: 'routes')}/*"
       else
         url = url_for(record)
       end

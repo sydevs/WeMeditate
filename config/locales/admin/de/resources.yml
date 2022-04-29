@@ -11,6 +11,9 @@ de:
       static_page:
         one: "Hauptseite"
         other: "Hauptseiten"
+      promo_page: # TODO: Translate
+        one: "Landing Page"
+        other: "Landing Pages"
       subtle_system_node: # This is a page for a Chakra, Channel, or the Kundalini. ie. Some part of the subtle system
         one: "Knoten des Subtilen Systems"
         other: "Knoten des Subtilen Systems"
@@ -142,6 +145,21 @@ de:
           custom: "Kunden-Seite"
         content: "Inhalt"
         metatags: "Metadaten"
+
+      promo_page: # TODO: Translate
+        draft: :activerecord.attributes.generic.draft # Do not translate
+        name: "Title"
+        slug: :activerecord.attributes.generic.slug # Do not translate
+        state: :activerecord.attributes.generic.state # Do not translate
+        states:
+          no_state: :activerecord.attributes.generic.states.no_state # Do not translate
+          in_progress: :activerecord.attributes.generic.states.in_progress # Do not translate
+          archived: :activerecord.attributes.generic.states.archived # Do not translate
+          published: :activerecord.attributes.generic.states.published # Do not translate
+          unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
+        content: "Content"
+        metatags: "Metadata"
+        owner: "Allow a writer to update this page"
 
       subtle_system_node:
         draft: :activerecord.attributes.generic.draft # Do not translate

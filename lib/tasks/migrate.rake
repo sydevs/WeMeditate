@@ -9,7 +9,7 @@ namespace :migrate do
           record = args.model.classify.constantize.find(args.id)
           record.migrate_content!
         else
-          [Article, StaticPage, Stream, SubtleSystemNode, Treatment].each do |model|
+          [Article, StaticPage, PromoPage, Stream, SubtleSystemNode, Treatment].each do |model|
             puts "Migrating #{model} for #{Globalize.locale}"
             model.in_batches.each_record do |r|
               r.migrate_content!
