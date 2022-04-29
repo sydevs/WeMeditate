@@ -10,10 +10,10 @@ module NavigationHelper
 
       # Collect the three basic navigaton links
       %i[meditations tracks articles].each do |role|
-        static_page = static_page_preview_for(role)
+        static_page = StaticPage.preview(role)
         result.push({
           title: static_page.name,
-          url: static_page_path_for(static_page),
+          url: static_page_path(static_page),
           active: controller_name == role.to_s,
           data: gtm_record(static_page),
         })
@@ -35,10 +35,10 @@ module NavigationHelper
       %i[meditations tracks streams articles].each do |role|
         next if role == :streams && !Stream.public_stream.any?
 
-        static_page = static_page_preview_for(role)
+        static_page = StaticPage.preview(role)
         result.push({
           title: role == :streams ? translate('header.live_meditations') : static_page.name,
-          url: static_page_path_for(static_page),
+          url: static_page_path(static_page),
           active: controller_name == role.to_s,
           data: gtm_record(static_page),
         })
@@ -55,10 +55,10 @@ module NavigationHelper
     @advanced_navigation_item ||= begin
       kundalini_page = SubtleSystemNode.find_by(role: :kundalini)
       static_pages = %i[shri_mataji sahaja_yoga subtle_system treatments].map { |role|
-        static_page = static_page_preview_for(role)
+        static_page = StaticPage.preview(role)
         [role, {
           title: static_page.name,
-          url: static_page_path_for(static_page),
+          url: static_page_path(static_page),
           data: gtm_record(static_page),
         }]
       }.to_h

@@ -39,6 +39,7 @@ module Admin::LookupHelper
   MODEL_ICON = {
     Article => 'file text',
     StaticPage => 'file',
+    PromoPage => 'star',
     SubtleSystemNode => 'sun',
     Stream => 'film',
     Meditation => 'fire',

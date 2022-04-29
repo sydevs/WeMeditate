@@ -13,7 +13,7 @@ main
           a.inspiration__filters__item.button.button--filled class="#{'button--active' if @category == category}" href=category_path(category) data=gtm_record(category)
             = category.name
 
-    #articles-grid.inspiration__grid.js-grid style='display: none'
+    #articles-grid.inspiration__grid class="js-grid" 
       / Using display: none initially on this js-grid to prevent flicker
       = render @recent_articles
       = render @articles

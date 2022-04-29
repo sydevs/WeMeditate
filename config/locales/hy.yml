@@ -18,6 +18,11 @@ hy:
     self_realization: "first-experience"
     classes: "classes"
     streams: "live"
+    about: "մեր-մասին"
+    contact: "հետադարձ-կապ"
+    shri_mataji: "Շրի-Մատաջի"
+    sahaja_yoga: "սահաջա-յոգա"
+    privacy: "Գաղտնի-նախացգուշացում"
     
   header:
     advanced_articles: "All Articles" # TODO: Translate

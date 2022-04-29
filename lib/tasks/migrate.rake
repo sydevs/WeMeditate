@@ -9,7 +9,7 @@ namespace :migrate do
           record = args.model.classify.constantize.find(args.id)
           record.migrate_content!
         else
-          [Article, StaticPage, Stream, SubtleSystemNode, Treatment].each do |model|
+          [Article, StaticPage, PromoPage, Stream, SubtleSystemNode, Treatment].each do |model|
             puts "Migrating #{model} for #{Globalize.locale}"
             model.in_batches.each_record do |r|
               r.migrate_content!
@@ -20,5 +20,38 @@ namespace :migrate do
         end
       end
     end
+  end
+
+  desc 'Migrate custom pages to promo pages'
+  task custom_pages: :environment do |_, args|
+    pages = StaticPage.where.not(role: StaticPage::ROLES.values)
+    puts "Migrating #{pages.count} custom pages"
+
+    pages.in_batches.each_record do |r|
+      next unless r[:slug].present?
+
+      if PromoPage.friendly.find(r[:slug]).present?
+        puts "Skipping page \"#{r.name}\" with slug conflict \"#{r[:slug]}\" (#{r.original_locale})"
+      else
+        puts "Creating page: \"#{r.name}\""
+        PromoPage.create!({
+          name: r.name,
+          slug: r[:slug],
+          state: r.state,
+          published_at: r.published_at,
+          draft: r.draft,
+          content: r.content,
+          locale: r.original_locale,
+        })
+      end
+    end
+  end
+
+  desc 'Migrate custom pages to promo pages'
+  task cleanup_custom_pages: :environment do
+    pages = StaticPage.where.not(role: StaticPage::ROLES.values)
+    puts "Destroying #{pages.count} custom pages"
+    pages.destroy_all
+    puts "Destroyed #{pages.count} custom pages"
   end
 end

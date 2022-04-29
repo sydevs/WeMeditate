@@ -6,8 +6,8 @@ class ArticlesController < ApplicationController
     return unless stale?(@article)
 
     @breadcrumbs = [
-      { name: StaticPageHelper.preview_for(:home).name, url: root_path },
-      { name: StaticPageHelper.preview_for(:articles).name, url: categories_path },
+      { name: StaticPage.preview(:home).name, url: root_path },
+      { name: StaticPage.preview(:articles).name, url: categories_path },
       { name: @article.category.name, url: category_path(@article.category) },
       { name: @article.name },
     ]

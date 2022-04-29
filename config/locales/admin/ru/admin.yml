@@ -305,7 +305,6 @@ ru:
         update_own_user: "Can Modify Own Account" # TODO: Translate
         update_subordinate: "Можно Изменять %{subordinates}"
         create_subordinate: "Можно Создавать %{subordinates}"
-        destroy_custom: "Can Destroy Custom %{pages}" # TODO: Translate
       role_description: # This describes the responsibilities of a given type of administrator
         translator: "переводят контент, который был опубликован на других языках, на соответствующий язык."
         writer: "могут создавать новые статьи или редактировать старые, ранее написанные ими статьи."
@@ -384,6 +383,7 @@ ru:
         node: "Node" # TOOD: Translate
         location: "Location" # TODO: Translate
         local_time: "Local Time" # TODO: Translate
+        slug: "URL" # TODO: Translate
         original_locale: "Language" # TODO: Translate
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
@@ -452,6 +452,7 @@ ru:
         message:
           # Pages
           static_pages: "Это основные страницы сайта - главная, вдохновение, Шри Матаджи и др. Большинство этих страниц имеют предопределенное содержание и URL-адреса."
+          promo_pages: "These are custom landing pages. These are used to promote events and special courses." # TODO: Translate
           articles: "Статьи написаны йогами для вдохновения искателей. Они могут охватывать различные темы, такие как: медитация в повседневной жизни; реализованные люди; художественные произведения, музыка или поэзия йогов; подробные статьи на более глубокие темы и т.д. <br><br>Все статьи показаны на странице \"Вдохновение\"."
           subtle_system_nodes: "Это страницы, которые о тонкой системе. Каждая страница подробно описывает чакру или канал."
           streams: "These are live online meditations that are streamed on a weekly basis at a set time. The livestream of the meditation will be embedded on We Meditate, and seekers can subscribe for a reminder when the meditation starts." # TODO: Translate
@@ -514,6 +515,7 @@ ru:
         people: "Люди"
         # For specific models
         static_pages: "Основные Страницы"
+        promo_pages: "Landing Pages" # TODO: Translate
         articles: "Статьи Вдохновение"
         subtle_system_nodes: "Тонкая Система"
         streams: :activerecord.models.stream.other # Do not translate

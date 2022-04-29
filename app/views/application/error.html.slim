@@ -10,7 +10,7 @@
   p.error__subtitle = translate 'errors.alternatives_title'
   ul.error__list
     - %i[meditations tracks articles].each do |role|
-      - page = static_page_preview_for(role)
+      - page = StaticPage.preview(role)
       li
-        a href=static_page_path_for(page) data=gtm_record(page)
+        a href=static_page_path(page) data=gtm_record(page)
           = page.name

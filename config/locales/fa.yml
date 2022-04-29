@@ -18,6 +18,12 @@ fa:
     self_realization: "نخستین تجربه"
     classes: "کلاس ها"
     streams: "پخش زنده"
+    # TODO: Translate
+    about: "about"
+    contact: "contact"
+    shri_mataji: "shri-mataji"
+    sahaja_yoga: "sahaja-yoga"
+    privacy: "privacy"
 
   header:
     advanced_articles: "همه مقالات"

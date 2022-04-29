@@ -18,7 +18,13 @@ uk:
     self_realization: "перший-досвід"
     classes: "заняття"
     streams: "наживо"
-    
+    # TODO: Translate
+    about: "about"
+    contact: "зв'язатися-з-нами"
+    shri_mataji: "шрі-матаджі"
+    sahaja_yoga: "сахаджа-йога"
+    privacy: "повідомлення-про-конфіденційність"
+
   header:
     advanced_articles: "Всі статті"
     advanced: "Дізнатись більше"

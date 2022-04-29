@@ -7,8 +7,8 @@ class TreatmentsController < ApplicationController
 
     about_page = StaticPage.preload_for(:preview).find_by(role: :about)
     @breadcrumbs = [
-      { name: StaticPageHelper.preview_for(:home).name, url: root_path },
-      { name: I18n.t('header.advanced'), url: static_page_path(about_page) },
+      { name: StaticPage.preview(:home).name, url: root_path },
+      { name: I18n.t('header.advanced'), url: helpers.static_page_path(about_page) },
       { name: @static_page.name },
     ]
 
@@ -22,8 +22,8 @@ class TreatmentsController < ApplicationController
     about_page = StaticPage.preload_for(:preview).find_by(role: :about)
     treatments_page = StaticPage.preload_for(:preview).find_by(role: :treatments)
     @breadcrumbs = [
-      { name: StaticPageHelper.preview_for(:home).name, url: root_path },
-      { name: I18n.t('header.advanced'), url: static_page_path(about_page) },
+      { name: StaticPage.preview(:home).name, url: root_path },
+      { name: I18n.t('header.advanced'), url: helpers.static_page_path(about_page) },
       { name: treatments_page.name, url: treatments_path },
       { name: @treatment.name },
     ]

@@ -26,6 +26,18 @@
   margin: 0 math.div(-$gutter-width, 2)
   margin-top: $gutter-width
 
+  display: grid
+  grid-template-columns: 100%
+
+  @media screen and (min-width: 550px)
+    grid-template-columns: 50% 50%
+
+  @media screen and (min-width: 768px)
+    grid-template-columns: 33% 33% 33%
+
+  @media screen and (min-width: 1112px)
+    grid-template-columns: 25% 25% 25% 25%
+
 .inspiration__item
   box-sizing: border-box
   padding: math.div($gutter-width, 2)

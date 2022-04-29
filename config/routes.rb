@@ -27,7 +27,7 @@ Rails.application.routes.draw do
           get :preview, on: :member
         end
 
-        resources :articles, :static_pages, :subtle_system_nodes, :treatments, :streams, except: %i[destroy] do
+        resources :articles, :static_pages, :promo_pages, :subtle_system_nodes, :treatments, :streams, except: %i[destroy] do
           get :write, on: :member
           get :review, on: :member
           patch :approve, on: :member, path: 'review'
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
           resources :media_files, only: %i[create]
         end
 
-        resources :articles, :treatments, :streams, :static_pages, only: %i[destroy]
+        resources :articles, :static_pages, :promo_pages, :treatments, :streams, only: %i[destroy]
         resources :users, :artists, :meditations, :tracks, :authors,
                   :categories, :mood_filters, :instrument_filters, :goal_filters, :duration_filters,
                   only: %i[index new edit create update destroy]
@@ -59,7 +59,6 @@ Rails.application.routes.draw do
       post :contact, to: 'application#contact'
       post :subscribe, to: 'application#subscribe'
       get :map, to: 'application#map'
-      get :classes, to: 'application#classes'
       get :live, to: 'streams#index'
 
       resources :articles, only: %i[show] do
@@ -79,7 +78,12 @@ Rails.application.routes.draw do
       resources :tracks, only: %i[index], path: 'music'
       resources :subtle_system_nodes, only: %i[index show], path: 'subtle_system'
       resources :streams, only: %i[index show], path: 'streams'
-      resources :static_pages, only: %i[show], path: ''
+
+      StaticPage::ROLES.each do |role, _|
+        get role, to: 'static_pages#show'
+      end
+
+      resources :promo_pages, only: %i[show], path: ''
     end
   end
 

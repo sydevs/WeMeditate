@@ -32,7 +32,7 @@ module Viewable
   def fixed_slug?
     case self
     when StaticPage
-      %i[home subtle_system articles treatments tracks meditations streams].include?(role&.to_sym)
+      true
     when Meditation
       slug == I18n.translate('routes.self_realization')
     else
