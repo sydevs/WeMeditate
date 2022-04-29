@@ -24,19 +24,26 @@ namespace :migrate do
 
   desc 'Migrate custom pages to promo pages'
   task custom_pages: :environment do |_, args|
-    puts "Migrating custom pages"
+    pages = StaticPage.where.not(role: StaticPage::ROLES.values)
+    puts "Migrating #{pages.count} custom pages"
 
-    StaticPage.where.not(role: StaticPage::ROLES.values).in_batches.each_record do |r|
-      puts "Creating page: \"#{r.name}\""
-      PromoPage.create!({
-        name: r.name,
-        slug: r[:slug],
-        state: r.state,
-        published_at: r.published_at,
-        draft: r.draft,
-        content: r.content,
-        locale: r.original_locale,
-      })
+    pages.in_batches.each_record do |r|
+      next unless r[:slug].present?
+
+      if PromoPage.friendly.find(r[:slug]).present?
+        puts "Skipping page \"#{r.name}\" with slug conflict \"#{r[:slug]}\" (#{r.original_locale})"
+      else
+        puts "Creating page: \"#{r.name}\""
+        PromoPage.create!({
+          name: r.name,
+          slug: r[:slug],
+          state: r.state,
+          published_at: r.published_at,
+          draft: r.draft,
+          content: r.content,
+          locale: r.original_locale,
+        })
+      end
     end
   end
 
