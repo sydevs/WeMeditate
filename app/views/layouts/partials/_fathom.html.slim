@@ -1,0 +1,19 @@
+<script defer>
+  (function(f, a, t, h, o, m){
+  a[h]=a[h]||function(){
+  (a[h].q=a[h].q||[]).push(arguments)
+  };
+  o=f.createElement('script'),
+  m=f.getElementsByTagName('script')[0];
+  o.async=1; o.src=t; o.id='fathom-script';
+  m.parentNode.insertBefore(o,m)
+  })(document, window, 'https://thirtyeight-code.wemeditate.com/script.js', 'fathom');
+  fathom('set', 'siteId', '<%= ENV["FATHOM_ID"]');
+  fathom('set', 'spa', 'pushstate');
+
+  document.addEventListener('turbolinks:load', e => {
+    if (typeof window.fathom === 'function') {
+      window.fathom('trackPageview')
+    }
+  })
+</script>
