@@ -11,6 +11,7 @@ Rails.application.config.content_security_policy do |policy|
   jwp_sources = %w[cdn.jwplayer.com ssl.p.jwpcdn.com videos-cloudflare.jwpsrv.com assets-jpcust.jwpsrv.com prd.jwpltx.com]
   vimeo_sources = %w[player.vimeo.com vod-progressive.akamaized.net]
   mapbox_sources = %w[api.mapbox.com]
+  fathom_sources = %w[thirtyeight-code.wemeditate.com]
   featured_stream_sources = %[gist.githubusercontent.com cdn.jsdelivr.net]
   # jwp_sources = []
 
@@ -20,7 +21,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.object_src  :none
   policy.script_src  :self, *gtm_sources, *jwp_sources, :unsafe_eval, :unsafe_inline, :https
   policy.worker_src  :self, :blob
-  policy.connect_src :self, ApplicationUploader.asset_host, *featured_stream_sources, *gtm_sources, *jwp_sources, *mapbox_sources
+  policy.connect_src :self, ApplicationUploader.asset_host, *fathom_sources, *featured_stream_sources, *gtm_sources, *jwp_sources, *mapbox_sources
   policy.media_src   :blob, ApplicationUploader.asset_host, 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', *vimeo_sources
   policy.style_src   :self, :unsafe_inline, :https
   policy.frame_src   :self, 'atlas.sydevelopers.com', 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', 'www.google.com', 'www.recaptcha.net', *vimeo_sources
