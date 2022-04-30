@@ -8,7 +8,7 @@
   o.async=1; o.src=t; o.id='fathom-script';
   m.parentNode.insertBefore(o,m)
   })(document, window, 'https://thirtyeight-code.wemeditate.com/script.js', 'fathom');
-  fathom('set', 'siteId', '<%= ENV["FATHOM_ID"]');
+  fathom('set', 'siteId', '<%= ENV["FATHOM_ID"] %>');
   fathom('set', 'spa', 'pushstate');
 
   document.addEventListener('turbolinks:load', e => {
