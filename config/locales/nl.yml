@@ -39,6 +39,10 @@ nl:
     text: "Bij verder gebruik van nl.wemeditate.com geef je automatisch toestemming voor het gebruik van cookies."
     learn_more: "Meer informatie"
 
+  locale_redirect: # TODO: Translate
+    text: "Looking for Dutch?"
+    action: "Switch to Dutch"
+
   footer:
     scroll_to_top: "Terug naar boven"
     meditate_now: "Mediteer nu"

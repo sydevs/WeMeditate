@@ -68,6 +68,7 @@ gem 'i18n_data' # Adds some utility functions for localizing countries
 gem 'kaminari-i18n' # Localization for kaminari
 gem 'rails-i18n' # Localization of rails features
 gem 'route_translator' # Adds support for translating URLs
+gem 'country_to_locales_mapping' # Lookup the primary language for a given country
 
 # Tools
 gem 'rollbar' # Error tracking

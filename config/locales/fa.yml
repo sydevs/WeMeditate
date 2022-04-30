@@ -40,6 +40,10 @@ fa:
     text: "با ادامه استفاده از این وبسایت، شما با استفاده از کوکی ها موافقت خواهید کرد."
     learn_more: "بیشتر بدانید"
 
+  locale_redirect: # TODO: Translate
+    text: "Looking for Farsi?"
+    action: "Switch to Farsi"
+
   footer:
     scroll_to_top: "بازگشت به بالای صفحه"
     meditate_now: "هم اکنون مدیتیشن کنید"

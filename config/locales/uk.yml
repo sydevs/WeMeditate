@@ -40,6 +40,10 @@ uk:
     text: "Продовжуючи використовувати wemeditate.ua, Ви даєте згоду на використання файлів cookie."
     learn_more: "Дізнатись більше"
 
+  locale_redirect: # TODO: Translate
+    text: "Шукаєте українську?"
+    action: "Перейти на українську"
+
   footer:
     scroll_to_top: "Догори"
     meditate_now: "Медитувати онлайн"

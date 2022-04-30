@@ -25,3 +25,5 @@ main.scrollspy-target
         = render @streams, cached: true
 
 = sharing_links
+
+= render 'locale_redirect', redirect_url: -> { Stream.public_stream.any? ? streams_url : classes_url }

@@ -39,6 +39,10 @@ en:
     text: "By continuing to use wemeditate.com you will be agreeing to our use of cookies."
     learn_more: "Learn More"
 
+  locale_redirect:
+    text: "Looking for English?"
+    action: "Switch to English"
+
   footer:
     scroll_to_top: "Back to Top"
     meditate_now: "Meditate Now"

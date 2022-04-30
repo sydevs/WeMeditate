@@ -39,6 +39,10 @@ es:
     text: "Al continuar usando wemeditate.com usted estará aceptando nuestro uso de cookies."
     learn_more: "Aprende Más"
 
+  locale_redirect: # TODO: Translate
+    text: "Looking for Spanish?"
+    action: "Switch to Spanish"
+
   footer:
     scroll_to_top: "Volver al Inicio"
     meditate_now: "Medita Ahora"

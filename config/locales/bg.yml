@@ -39,6 +39,10 @@ bg:
     text: "Продължавайки да ползвате wemeditate.com, се съгласявате да употребяваме бисквитки."
     learn_more: "Научете повече."
 
+  locale_redirect: # TODO: Translate
+    text: "Looking for Bulgarian?"
+    action: "Switch to Bulgarian"
+
   footer:
     scroll_to_top: "Обратно към началото"
     meditate_now: "Медитирайте сега"

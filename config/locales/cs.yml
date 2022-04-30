@@ -39,6 +39,10 @@ cs:
     text: "Tyto stránky používají k analýze návštěvnosti soubory cookies. Setrváním na stránce souhlasíte s jejich používáním."
     learn_more: "Dozvědět se více"
 
+  locale_redirect: # TODO: Translate
+    text: "Looking for Czech?"
+    action: "Switch to Czech"
+
   footer:
     scroll_to_top: "Zpět na začátek"
     meditate_now: "Začněte s meditací"

@@ -40,6 +40,10 @@ pl:
     text: "Korzystając ze strony wemeditate.com zgadzasz się na wykorzystanie przez naszą stronę ciasteczek."
     learn_more: "Dowiedz się więcej"
 
+  locale_redirect: # TODO: Translate
+    text: "Looking for Polish?"
+    action: "Switch to Polish"
+
   footer:
     scroll_to_top: "Powrót na górę"
     meditate_now: "Zacznij Medytować"

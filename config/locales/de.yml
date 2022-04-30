@@ -40,6 +40,10 @@ de:
     text: "Bei weiterer Nutzung von wemeditate.com stimmst du der Verwendung von Cookies durch uns zu."
     learn_more: "Lerne mehr"
 
+  locale_redirect: # TODO: Translate
+    text: "Looking for German?"
+    action: "Switch to German"
+
   footer:
     scroll_to_top: "Zurück zum Anfang"
     meditate_now: "Jetzt meditieren"

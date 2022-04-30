@@ -31,14 +31,28 @@ module LocaleHelper
     I18nData.languages(language) rescue I18nData.languages
   end
 
-  def locale_link url
-    return url if I18n.locale == :en
+  def locale_link url, locale: nil
+    locale ||= I18n.locale
+    return url if locale == :en
     return url if url[0] == '#' || url[0] == '?'
     return url unless /^(http[s]?:\/\/)?([^:\/\s]+)?(\/\w\w)?([\/\?#].*)?$/ =~ url # Parse url
     return url unless $2.nil? || $2 == Rails.configuration.public_host # URL points to We Meditate
     return url if $3.present? # Starts with a locale
 
-    "/#{I18n.locale}#{$4}" # Prepend locale to url
+    "/#{locale}#{$4}" # Prepend locale to url
+  end
+
+  def suggested_locale_for country: nil
+    country_code = (country || request.headers["HTTP_CF_IPCOUNTRY"])&.upcase
+    return nil unless country_code.present? && country_code != "xx"
+
+    locales = CountryToLocalesMapping.country_code_locales(country_code)
+    available_locales = locales.map(&:to_sym).intersection(Rails.configuration.published_locales)
+    return available_locales.first if available_locales.present?
+
+    locales = locales.map { |l| l.split('-').first.to_sym }
+    available_locales = locales.intersection(Rails.configuration.published_locales)
+    return available_locales.first if available_locales.present?
   end
 
 end

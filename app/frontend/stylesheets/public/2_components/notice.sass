@@ -1,0 +1,43 @@
+@import "../../mixins/*"
+
+/* NOTICE
+  A floating notice
+  */
+
+.notice
+  $margin: 20px
+  position: fixed
+  bottom: $margin
+  left: 50%
+  transform: scale(1) translateX(-50%)
+  
+  background: white
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 1px 6px
+  border-radius: 4px
+  padding: 16px 20px
+  width: calc(100% - $margin*2)
+  font-size: 1.6rem
+  z-index: 1000
+
+  @include tablet-or-larger
+    width: 260px
+    bottom: 30px
+
+  strong
+    display: block
+    margin-bottom: 8px
+
+  a
+    display: inline-block
+    font-size: 80%
+
+  a::after
+    content: ' ⇒'
+
+.notice__close
+  position: absolute
+  top: 8px
+  right: 8px
+
+  cursor: pointer
+  user-select: none

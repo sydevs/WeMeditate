@@ -40,6 +40,10 @@ ro:
     text: "Acest site folosește cookies. Continuarea navigării implică acceptarea lor."
     learn_more: "Află mai Multe"
 
+  locale_redirect: # TODO: Translate
+    text: "Looking for Romanian?"
+    action: "Switch to Romanian"
+
   footer:
     scroll_to_top: "Începutul Paginii"
     meditate_now: "Meditează Acum"

@@ -39,6 +39,10 @@ el:
     text: "Συνεχίζοντας τη χρήση του wemeditate.com αποδέχεστε τα cookies."      
     learn_more: "Μάθετε Περισσότερα"
 
+  locale_redirect: # TODO: Translate
+    text: "Looking for Greek?"
+    action: "Switch to Greek"
+
   footer:
     scroll_to_top: "Πίσω στην Αρχή" 
     meditate_now: "Βιώστε Τώρα το Διαλογισμό"   

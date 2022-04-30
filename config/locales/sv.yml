@@ -39,6 +39,10 @@ sv:
     text: "Genom att använda wemeditate tillåter du användning av cookies."
     learn_more: "Lär dig mer"
 
+  locale_redirect: # TODO: Translate
+    text: "Looking for Swedish?"
+    action: "Switch to Swedish"
+
   footer:
     scroll_to_top: "Tillbaka till början"
     meditate_now: "Meditera Nu"

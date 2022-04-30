@@ -39,6 +39,10 @@ ru:
     text: "Продолжая использовать wemeditate.com, ты даёшь согласие на использование файлов cookie."
     learn_more: "Ещё"
 
+  locale_redirect: # TODO: Translate
+    text: "Ищете на русский?"
+    action: "Переключиться на русский язык"
+
   footer:
     scroll_to_top: "Наверх"
     meditate_now: "Медитировать онлайн"
