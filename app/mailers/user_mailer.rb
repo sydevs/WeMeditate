@@ -1,3 +1,3 @@
 class UserMailer < Devise::Mailer
-  helper ApplicationHelper
+  helper RouteHelper
 end
