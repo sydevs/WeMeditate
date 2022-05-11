@@ -10,7 +10,7 @@ ruby:
   image_url = record.media_file(block[:image][:id])&.large&.url
   background = image_url ? "background-image: url(#{image_url})" : nil
 
-.cb-splash-textbox class=classes style=background data-invert=(block[:color] == 'light' ? 'true' : null)
+.cb-splash-textbox class=classes style=background data-invert=(block[:color] == 'light' ? 'true' : nil)
   - if index.zero? && action_name == 'home'
     .preloader.js-preloader style=background data-turbolinks-permanent=true
       = image_pack_tag 'graphics/preloader.svg', class: 'preloader__graphic'
