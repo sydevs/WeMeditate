@@ -16,6 +16,7 @@ export default class TextTool extends EditorTool {
     super({ // Data
       id: data.id || generateId(),
       title: data.title || '',
+      subtitle: data.subtitle || '',
       caption: data.caption || '',
       credit: data.credit || '',
       text: data.text || '',
@@ -36,6 +37,7 @@ export default class TextTool extends EditorTool {
       fields: {
         image: { input: false },
         title: { input: 'title', contained: true },
+        subtitle: { contained: true },
         text: { input: 'content', contained: true },
         credit: { contained: true },
         caption: { input: 'caption', contained: true },

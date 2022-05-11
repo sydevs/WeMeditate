@@ -50,7 +50,7 @@
   @include on-field(credit)
     font-size: 0.9em
 
-  @include on-fields(action, url, image)
+  @include on-fields(action, url, subtitle, image)
     display: none
 
   @include with-option(alignment, center)
@@ -130,6 +130,10 @@
     .cdx-textbox__remove-image
       display: none
 
+  @include on-field(text)
+    margin-bottom: 0.6em
+    min-height: 0
+
   @include on-field(image)
     position: relative
     width: 40%
@@ -147,7 +151,7 @@
       height: 100%
       object-fit: cover
 
-  @include on-field(subtitle)
+  @include on-fields(subtitle, credit, caption)
     display: none
 
   // Option adjustments
@@ -237,6 +241,9 @@
       width: 100%
       height: 100%
       object-fit: cover
+
+  @include on-fields(credit, caption)
+    display: none
 
   @include with-option(color, light)
     &[data-has-image=true] .cdx-textbox__fields
