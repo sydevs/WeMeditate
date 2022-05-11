@@ -13,7 +13,8 @@ ruby:
       .divider.divider--leaf.divider--leaf-up
 
     - if block[:title].present?
-      h5.cb-text-textbox__title = block[:title]
+      h5.cb-text-textbox__title id=block[:title].parameterize
+        = block[:title]
 
     .cb-text-textbox__text = simple_format block[:text]
 
