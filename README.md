@@ -59,8 +59,8 @@ We support only the most recent versions of Chrome, Safari, Firefox, Edge, and O
 
 Once the server is running you should be able to can access these urls
  - [localhost:3000](http://localhost:3000) for the english website
- - [ru.localhost:3000](http://ru.localhost:3000) for the russian website
- - [it.localhost:3000](http://it.localhost:3000) for the italian website
+ - [localhost:3000/ru](http://localhost:3000/ru) for the russian website
+ - [localhost:3000/it](http://localhost:3000/it) for the italian website
  - [admin.localhost:3000](http://admin.localhost:3000) for the admin site
 
 When accessing the admin site you will be asked to login, in the development environment you can use a simple dropdown (shown under the login window) to select which account you want to be logged in as, without having to enter a password.
