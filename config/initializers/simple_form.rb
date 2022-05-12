@@ -200,7 +200,7 @@ SimpleForm.setup do |config|
   # config.label_class = nil
 
   # You can define the class to use on all forms. Default is simple_form.
-  config.form_class = 'ui form'
+  config.default_form_class = 'ui form'
 
   # You can define which elements should obtain additional classes
   # config.generate_additional_classes_for = [:wrapper, :label, :input]
@@ -229,7 +229,7 @@ SimpleForm.setup do |config|
     boolean: :semantic_checkbox,
     select: :semantic_select,
   }
-  
+
   # Namespaces where SimpleForm should look for custom input classes that
   # override default inputs.
   # config.custom_inputs_namespaces << "CustomInputs"
