@@ -1,5 +1,10 @@
 
 ruby:
+  # Set defaults
+  block.reverse_merge!({
+    style: 'simple',
+  })
+
   alignment = %w[left right center].include?(block[:alignment]) ? block[:alignment] : 'center'
   floating = %w[left right].include?(alignment) && block[:style] == 'hero'
   classes = []

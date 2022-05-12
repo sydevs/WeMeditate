@@ -189,49 +189,61 @@ article.update! thumbnail_id: attachment('articles/thumbnails/1.png', article)
 
 article.update!(content: content([
   {
-    type: :header,
+    type: :paragraph,
     data: {
+      type: :header,
       text: 'Section 1',
+      level: :h2,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
-    type: :quote,
+    type: :textbox,
     data: {
+      type: :text,
       text: sentences(1),
-      position: :right,
+      alignment: :right,
+      style: :simple,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
-    type: :header,
+    type: :paragraph,
     data: {
+      type: :header,
       text: 'Section 2',
+      level: :h2,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
-    type: :image,
+    type: :media,
     data: {
+      type: :image,
       items: [{
         image: content_attachment('articles/callout.jpg', article),
         credit: 'John Smith',
@@ -241,21 +253,25 @@ article.update!(content: content([
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
-    type: :image,
+    type: :media,
     data: {
+      type: :image,
       items: [{
         image: content_attachment('articles/container-width.jpg', article),
         credit: 'John Smith',
@@ -263,112 +279,132 @@ article.update!(content: content([
     },
   },
   {
-    type: :header,
+    type: :paragraph,
     data: {
+      type: :header,
       text: 'Section 3',
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
     type: :action,
     data: {
+      type: :button,
       text: 'Try Meditation',
       url: '/page/the-first-experience',
       decorations: { leaves: true },
     },
   }, {
-    type: :image,
+    type: :media,
     data: {
+      type: :image,
       items: [{
         image: content_attachment('articles/page-width.jpg', article),
         credit: 'John Smith',
       }], # rubocop:disable Style/TrailingCommaInArrayLiteral
-      position: :wide,
+      size: :wide,
       decorations: { triangle: { alignment: :right } },
     },
   }, {
-    type: :header,
+    type: :paragraph,
     data: {
+      type: :header,
       text: 'Section 4',
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(6),
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
-    type: :quote,
+    type: :textbox,
     data: {
+      type: :text,
       text: 'Joy starts to descend on your head all the time, spilling throughout the whole being, making you absolutely calm and beautiful.',
       credit: 'Shri Mataji',
       caption: 'Founder of the meditation method "Sahaja Yoga"',
+      style: :hero,
     },
   }, {
     type: :action,
     data: {
+      type: :button,
       text: 'Meditation with Shri Mataji',
       url: '/page/the-first-experience',
     },
   }, {
-    type: :header,
+    type: :paragraph,
     data: {
+      type: :header,
       text: 'Section 5',
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   }, {
-    type: :form,
+    type: :action,
     data: {
+      type: :form,
       title: '7 Daily Meditations',
       subtitle: 'Free guide',
       text: 'Simple meditations for a better life, delivered to you daily for a week.',
       action: 'Get the guide',
-      format: :signup,
+      form: :signup,
     },
   }, {
-    type: :video,
+    type: :vimeo,
     data: {
+      legacy: true,
       items: [vimeo_attachment],
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   },
@@ -388,117 +424,161 @@ article.update! thumbnail_id: attachment('articles/thumbnails/1.png', article)
 
 article.update!(content: content([
   {
-    type: :header,
+    type: :paragraph,
     data: {
+      type: :header,
       text: 'Section 1',
       level: :h2,
     },
   }, {
-    type: :header,
+    type: :paragraph,
     data: {
+      type: :header,
       text: 'Section 2',
       level: :h3,
     },
   }, {
-    type: :header,
+    type: :paragraph,
     data: {
+      type: :header,
       text: 'Section 3',
       level: :h4,
     },
   }, {
-    type: :header,
+    type: :paragraph,
     data: {
+      type: :header,
       text: 'Section 4',
       level: :h5,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(8),
     },
   }, {
     type: :list,
     data: {
+      type: :text,
       items: Array.new(3) { |_i| sentences(1) },
       style: :unordered,
     },
   }, {
     type: :list,
     data: {
+      type: :text,
       items: Array.new(3) { |_i| sentences(1) },
       style: :ordered,
     },
   }, {
     type: :list,
     data: {
+      type: :text,
       items: Array.new(3) { |_i| sentences(1) },
       style: :leaf,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(8),
     },
   }, {
-    type: :quote,
+    type: :textbox,
     data: {
+      type: :text,
       text: sentences(1),
       credit: 'John Smith',
       caption: 'University professor',
-      position: :right,
+      alignment: :right,
+      style: :hero,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(8),
     },
   }, {
-    type: :quote,
+    type: :textbox,
     data: {
+      type: :text,
       text: sentences(1),
       credit: 'John Smith',
       caption: 'University professor',
-      position: :left,
+      alignment: :left,
+      style: :hero,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(8),
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(8),
     },
   }, {
-    type: :quote,
+    type: :textbox,
     data: {
+      type: :text,
       text: sentences(2),
       credit: 'John Smith',
       caption: 'University professor',
+      alignment: :center,
+      style: :hero,
     },
   }, {
-    type: :quote,
+    type: :textbox,
     data: {
+      type: :text,
       text: sentences(2),
       credit: 'A Poem About Truth',
       caption: 'John Smith',
-      asPoem: true,
+      position: :left,
+      style: :simple,
+    },
+  }, {
+    type: :textbox,
+    data: {
+      type: :text,
+      text: sentences(2),
+      credit: 'A Poem About Truth',
+      caption: 'John Smith',
+      alignment: :right,
+      style: :simple,
+    },
+  }, {
+    type: :textbox,
+    data: {
+      type: :text,
+      text: sentences(2),
+      credit: 'A Poem About Truth',
+      caption: 'John Smith',
+      position: :center,
+      style: :simple,
     },
   }, {
     type: :action,
     data: {
+      type: :button,
       text: 'Button Text',
       url: '/inspiration',
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(8),
     },
   }, {
-    type: :image,
+    type: :media,
     data: {
+      type: :image,
       items: [{
         image: content_attachment('articles/callout.jpg', article),
         credit: 'John Smith',
@@ -509,16 +589,19 @@ article.update!(content: content([
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(6),
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(8),
     },
   }, {
-    type: :image,
+    type: :media,
     data: {
+      type: :image,
       items: [{
         image: content_attachment('articles/callout.jpg', article),
         credit: 'John Smith',
@@ -529,16 +612,19 @@ article.update!(content: content([
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
-    type: :image,
+    type: :media,
     data: {
+      type: :image,
       items: [{
         image: content_attachment('articles/container-width.jpg', article),
         credit: 'John Smith',
@@ -548,138 +634,156 @@ article.update!(content: content([
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   }, {
-    type: :image,
+    type: :media,
     data: {
+      type: :image,
       items: [{
         image: content_attachment('articles/page-width.jpg', article),
         credit: 'John Smith',
         caption: 'This is a text caption, for this image.',
       }], # rubocop:disable Style/TrailingCommaInArrayLiteral
-      position: :wide,
+      size: :wide,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   }, {
-    type: :image,
+    type: :media,
     data: {
+      type: :image,
       items: Array.new(9) { |i| { image: content_attachment("articles/thumbnails/#{i + 1}.png", article) } },
-      asGallery: true,
+      quantity: :gallery,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   }, {
     type: :whitespace,
     data: {
-      size: 'small',
+      size: :small,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
     type: :whitespace,
     data: {
-      size: 'medium',
+      size: :medium,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
     type: :whitespace,
     data: {
-      size: 'large',
+      size: :large,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(5),
     },
   }, {
-    type: :video,
+    type: :vimeo,
     data: {
+      legacy: true,
       items: [vimeo_attachment],
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   }, {
-    type: :video,
+    type: :vimeo,
     data: {
+      legacy: true,
       items: Array.new(4) { |_i| vimeo_attachment },
-      asGallery: true,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   }, {
-    type: :form,
+    type: :action,
     data: {
+      type: :form,
       title: 'Still Have Questions?',
       subtitle: 'Contact us now,',
       text: 'or don\'t',
       action: 'Submit',
-      format: :contact,
+      form: :contact,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   }, {
-    type: :form,
+    type: :action,
     data: {
+      type: :form,
       title: 'Want to know more?',
       subtitle: 'Sign up for our newsletter,',
       text: 'or don\'t',
       action: 'Submit',
-      format: :signup,
+      form: :signup,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   }, {
-    type: :structured,
+    type: :layout,
     data: {
+      type: :grid,
       items: Array.new(4) { |i| { title: "Item #{i}", text: sentences(3) } },
-      format: :grid,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   }, {
-    type: :structured,
+    type: :layout,
     data: {
-      items: Array.new(4) { |i| { title: "Item #{i}", text: sentences(3) } },
-      format: :accordion,
+      type: :accordion,
+      items: Array.new(4) { |i| { title: "Item #{i + 1}", text: sentences(3) } },
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   }, {
-    type: :structured,
+    type: :layout,
     data: {
+      type: :columns,
       items: Array.new(3) { |i|
         {
           title: "Item #{i + 1}",
@@ -687,119 +791,122 @@ article.update!(content: content([
           image: content_attachment("articles/thumbnails/#{i + 1}.png", article),
         }
       },
-      format: :columns,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   }, {
     type: :textbox,
     data: {
+      type: :image,
       image: content_attachment('articles/lefthand.jpg', article),
-      title: 'Compact Block',
+      title: 'Overlapping Block',
       text: paragraphs(1),
       action: 'Read More',
       url: '/en',
-      alignment: :left,
-      compact: true,
+      position: :left,
+      spacing: :overlap,
     },
   }, {
     type: :paragraph,
     data: {
+      type: :text,
       text: sentences(4),
     },
   }, {
     type: :textbox,
     data: {
+      type: :image,
       image: content_attachment('articles/lefthand.jpg', article),
       title: 'Separated Block',
       text: paragraphs(1),
       action: 'Read More',
       url: '/en',
-      alignment: :left,
-      separate: true,
+      position: :right,
+      spacing: :separate,
     },
   }, {
     type: :textbox,
     data: {
+      type: :image,
       image: content_attachment('articles/lefthand.jpg', article),
       title: 'About Us',
       text: paragraphs(1),
       action: 'Read More',
       url: '/en',
-      alignment: :left,
+      position: :left,
     },
   }, {
     type: :textbox,
     data: {
+      type: :image,
       image: content_attachment('articles/righthand.jpg', article),
       title: 'About Us',
       text: paragraphs(1),
       action: 'Read More',
       url: '/en',
-      alignment: :right,
+      position: :right,
     },
   }, {
     type: :textbox,
     data: {
+      type: :image,
       image: content_attachment('articles/behind.jpg', article),
       title: 'About Us',
       text: paragraphs(1),
       action: 'Read More',
       url: '/en',
-      alignment: :center,
-      invert: true,
+      background: :image,
+      position: :left,
+      color: :light,
     },
   }, {
     type: :textbox,
     data: {
+      type: :image,
       image: content_attachment('articles/ancient-wisdom.jpg', article),
       title: 'Ancient Knowledge',
       text: paragraphs(2),
       action: 'Read More',
       url: '/en',
-      alignment: :left,
-      asWisdom: true,
+      position: :left,
+      background: :ornate,
     },
   }, {
     type: :textbox,
     data: {
+      type: :image,
       image: content_attachment('articles/ancient-wisdom.jpg', article),
       title: 'Ancient Knowledge',
       text: paragraphs(2),
       action: 'Learn More',
       url: '/en',
-      alignment: :right,
-      asWisdom: true,
+      position: :right,
+      background: :ornate,
     },
   }, {
     type: :catalog,
     data: {
       type: :articles,
       title: 'Articles',
-      items: Article.all.sample(6).map { |item|
-        { id: item.id, name: item.name }
-      },
+      items: Article.all.sample(6).pluck(:id),
     },
   }, {
     type: :catalog,
     data: {
       type: :treatments,
       title: 'Treatments',
-      items: Treatment.all.sample(3).map { |item|
-        { id: item.id, name: item.name }
-      },
+      items: Treatment.all.sample(3).pluck(:id),
     },
   }, {
     type: :catalog,
     data: {
       type: :meditations,
       title: 'Meditations',
-      items: Meditation.all.sample(3).map { |item|
-        { id: item.id, name: item.name }
-      },
+      items: Meditation.all.sample(3).pluck(:id),
     },
   },
 ]))

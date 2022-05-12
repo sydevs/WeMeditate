@@ -1,8 +1,5 @@
 
 main
-  - cache @static_page do
-    .content = render_content @static_page
-
   .inspiration
     #categories-menu
       .inspiration__filters.button_group.button_group--centered
@@ -22,3 +19,6 @@ main
       .inspiration__loadmore.js-loadmore
         = link_to @loadmore_url, remote: 'true', class: 'button button--box button--large' do
           = t('articles.load_more')
+
+  - cache @static_page do
+    .content = render_content @static_page

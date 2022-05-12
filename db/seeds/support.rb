@@ -85,7 +85,7 @@ def content blocks
     media_files = []
     media_files << block.dig(:data, :image, :id)
     media_files += block[:data][:items].map { |item| item.dig(:image, :id) if item.is_a?(Hash) } if block.dig(:data, :items).present?
-    block[:media_files] = media_files.compact
+    block[:mediaFiles] = media_files.compact
     block[:data].merge!(id: SecureRandom.hex(8))
     block
   end
@@ -93,7 +93,8 @@ def content blocks
   {
     time: Time.now.to_i,
     blocks: blocks,
-    media_files: blocks.map { |block| block[:media_files] }.flatten,
+    mediaFiles: blocks.map { |block| block[:media_files] }.flatten,
+    markupVersion: 3, # We Meditate content markup version
     version: '2.15.1', # EditorJS at the last time when the structure of seed JSONs were checked.
   }.to_json
 end

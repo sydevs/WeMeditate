@@ -1,8 +1,14 @@
 
 ruby:
+  # Set defaults
+  block.reverse_merge!({
+    form: 'contact',
+    spacing: 'spaced',
+  })
+
   url = (block[:form] == 'contact' ? contact_path : subscribe_path)
   classes = ['cb-form-action', 'js-form']
-  classes << "cb-form-action--#{block[:format]}"
+  classes << "cb-form-action--#{block[:form]}"
   classes << "cb-form-action--#{block[:spacing]}"
 
 = form_tag url, class: classes, remote: true do

@@ -13,7 +13,7 @@ module ContentHelper
 
       block_data = block['data'].deep_symbolize_keys
 
-      if block_data[:legacy]
+      if block_data[:legacy] || block['type'] == 'vimeo'
         block_partial = "legacy/#{block['type']}_block"
       elsif block_data[:type] == 'splash'
         block_partial = splash_partial
