@@ -271,6 +271,7 @@ de:
         action: "Text-Button"
         url: "Fügen Sie hier einen Link ein"
         quote: "Geben Sie ein Zitat ein" # "Quote" as in a quotation from some other text or person
+        subtitle: "Subtitle" # TODO: Translate
         alt: "Beschreiben Sie das Bild für Sehbehinderte"
         caption: "Geben Sie eine Überschrift ein" # "Caption" as in a piece of text describing an image
         credit: "Geben Sie einen Credit ein" # "Credit" as in the credit for an image or quotation

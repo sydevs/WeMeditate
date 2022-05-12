@@ -271,6 +271,7 @@ ro:
         action: "Buton text"
         url: "Lipește un link aici"
         quote: "Introdu un citat" # "Quote" as in a quotation from some other text or person
+        subtitle: "Subtitle" # TODO: Translate
         alt: "Descrie imaginea pentru persoanele cu deficiențe de vedere"
         caption: "Introdu descriere" # "Caption" as in a piece of text describing an image
         credit: "Introdu acreditare" # "Credit" as in the credit for an image or quotation

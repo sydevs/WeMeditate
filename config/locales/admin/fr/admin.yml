@@ -270,6 +270,7 @@ fr:
         action: "Texte du Bouton"
         url: "Collez le Lien ici"
         quote: "Entrez la Citation" # "Quote" as in a quotation from some other text or person
+        subtitle: "Subtitle" # TODO: Translate
         alt: "Décrire l'image pour les malvoyants"
         caption: "Entrez la Légende" # "Caption" as in a piece of text describing an image
         credit: "Entrez les Sources" # "Credit" as in the credit for an image or quotation

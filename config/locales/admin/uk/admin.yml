@@ -270,6 +270,7 @@ uk:
         action: "Текст Кнопки"
         url: "Вставте Посилання"
         quote: "Введіть цитату" # "Quote" as in a quotation from some other text or person
+        subtitle: "Subtitle" # TODO: Translate
         alt: "Опишіть, що на зображенні (потрібно для сео і людей з проблемами зору)" 
         caption: "Введіть підпис до зображення" # "Caption" as in a piece of text describing an image
         credit: "Введіть автора зображення / цитати" # "Credit" as in the credit for an image or quotation
