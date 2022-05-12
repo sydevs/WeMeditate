@@ -55,7 +55,7 @@ def vimeo_attachment vimeo_id = nil
   puts "Loading Vimeo ##{vimeo_id}"
   uri = URI("https://api.vimeo.com/videos/#{vimeo_id}?fields=name,pictures.sizes")
   request = Net::HTTP::Get.new(uri)
-  request['Authorization'] = "Bearer #{ENV['VIMEO_ACCESS_KEY']}"
+  request['Authorization'] = "Bearer #{ENV.fetch('VIMEO_ACCESS_KEY')}"
 
   response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
     http.request(request)
