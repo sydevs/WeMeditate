@@ -3,7 +3,7 @@ require 'rails/test_help'
 require 'webmock/minitest'
 
 # Open up localhost connections for system tests to work out
-WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.disable_net_connect!(allow_localhost: true, allow: 'chromedriver.storage.googleapis.com')
 
 class ActiveSupport::TestCase
 
