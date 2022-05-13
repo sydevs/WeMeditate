@@ -2,7 +2,7 @@ puts ' -- Start User Seeds -- '
 
 User.roles.each do |role, _index|
   name = "Mr. #{role.titleize}"
-  email = "#{role}@wemeditate.co"
+  email = "#{role}@wemeditate.com"
 
   User.find_or_create_by(email: email).update!({
     name: name,
