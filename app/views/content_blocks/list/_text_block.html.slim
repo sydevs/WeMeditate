@@ -1,7 +1,7 @@
 
 ruby:
   classes = []
-  classes << "cb-text-list--#{block[:style]}"
+  classes << "cb-text-list--#{block[:style] || 'unordered'}"
 
 .cb-text-list class=classes
   - if block[:style] == 'ordered'

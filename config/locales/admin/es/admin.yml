@@ -272,6 +272,7 @@ es:
         action: "Boton Texto"
         url: "Pegar aquí el link"
         quote: "Introducir una cita" # "Quote" as in a quotation from some other text or person
+        subtitle: "Subtitle" # TODO: Translate
         alt: "Describir la imagen para discapacitados visuales"
         caption: "Introducir pie de foto" # "Caption" as in a piece of text describing an image
         credit: "Introducir Créditos de Autor" # "Credit" as in the credit for an image or quotation

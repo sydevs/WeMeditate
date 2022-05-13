@@ -1,7 +1,7 @@
 
 ruby:
   classes = []
-  classes << "cb-audio-media--#{block[:quantity]}"
+  classes << "cb-audio-media--#{block[:quantity] || 'single'}"
 
 - if block[:items].present?
   .cb-audio-media class=classes

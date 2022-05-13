@@ -229,7 +229,7 @@ SimpleForm.setup do |config|
     boolean: :semantic_checkbox,
     select: :semantic_select,
   }
-  
+
   # Namespaces where SimpleForm should look for custom input classes that
   # override default inputs.
   # config.custom_inputs_namespaces << "CustomInputs"

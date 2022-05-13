@@ -180,6 +180,7 @@ it: # TODO: Translate
         action: "Button Text"
         url: "Paste a link here"
         quote: "Enter a quote" # "Quote" as in a quotation from some other text or person
+        subtitle: "Subtitle"
         alt: "Describe the image for the visually impaired"
         caption: "Enter a caption" # "Caption" as in a piece of text describing an image
         credit: "Enter a credit" # "Credit" as in the credit for an image or quotation

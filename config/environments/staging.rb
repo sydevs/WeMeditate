@@ -5,4 +5,7 @@ Rails.application.configure do
   # Here override any defaults
   config.force_ssl = false
   config.consider_all_requests_local = true
+
+  # To allow HTTPS on CloudFlare but HTTP on Heroku
+  config.action_controller.forgery_protection_origin_check = false
 end

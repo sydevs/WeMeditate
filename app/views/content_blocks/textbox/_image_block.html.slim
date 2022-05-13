@@ -1,8 +1,17 @@
 
 ruby:
+  # Set defaults
+  block.reverse_merge!({
+    position: 'left',
+    color: 'dark',
+    spacing: 'overlap',
+    background: 'white',
+  })
+
+  # Configure classes
   classes = ["cb-image-textbox--#{block[:position]}"]
   classes << "cb-image-textbox--#{block[:color]}"
-  classes << "cb-image-textbox--#{block[:spacing]}" unless block[:background] == 'ornate'
+  classes << "cb-image-textbox--#{block[:spacing]}" if block[:background] == 'white'
   classes << "cb-image-textbox--overlap" if block[:background] == 'image'
   classes << "cb-image-textbox--#{block[:background]}"
 
@@ -11,7 +20,7 @@ ruby:
 .cb-image-textbox class=classes
   - if block[:background] == 'ornate'
     .gradient-wrapper
-      .gradient.gradient--ornate class="gradient--#{block[:position] == 'left' ? :right : :left}"
+      .gradient.gradient--ornate class="gradient--#{block[:position] == 'left' ? 'right' : 'left'}"
   - elsif block[:background] != 'image'
     .cb-image-textbox__decoration.cb-image-textbox__decoration--gradient
       .gradient-wrapper

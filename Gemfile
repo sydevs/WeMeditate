@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.7.6'
+
+ruby File.read('.ruby-version').chomp
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
@@ -15,8 +16,6 @@ gem 'slim-rails' # Use Slim for views
 gem 'uglifier' # Use Uglifier as compressor for JavaScript assets
 
 gem 'webpacker' # Used to pack sass, js, and images
-gem 'rails_serve_static_assets' # Allow the heroku app to serve static files
-gem 'redis' # Use Redis for caching
 gem 'turbolinks' # Makes navigating your web application faster.
 
 # Users
@@ -36,7 +35,6 @@ gem 'fomantic-ui-sass' # CSS framework for the admin/CMS pages
 
 # Models
 gem 'friendly_id' # Model routes use a slug instead of an ID number
-gem 'jsonb_accessor' # Makes it simpler to access attributes of a jsonb database column
 gem 'array_enum' # Allows the use of enum arrays
 
 # Uploads
@@ -49,7 +47,7 @@ gem 'mini_magick' # Image processing during upload
 gem 'streamio-ffmpeg' # To parse metadata from mp3 files
 
 # Admin
-gem 'audited' # To track changes to the files
+gem 'audited', '4.9.0' # To track changes to the files (locked due to 5.x raising error on boot)
 gem 'autosize' # To automatically grow text areas
 gem 'diff-lcs' # For draft comparisons
 gem 'kaminari' # For pagination
@@ -86,11 +84,7 @@ gem 'cloudflare-rails' # To restore client IP addresses after proxy
 gem "recaptcha", require: "recaptcha/rails" # To protect against bots on the contact form
 
 # Maybe needed later(?)
-# gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'coffee-rails', '~> 4.2' # Use CoffeeScript for .coffee assets and views
 # gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
-# gem 'capistrano-rails', group: :development # Use Capistrano for deployment
-# gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
 group :staging, :development do
   # For profiling load times, exclude windows

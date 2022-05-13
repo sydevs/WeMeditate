@@ -39,17 +39,28 @@ We support only the most recent versions of Chrome, Safari, Firefox, Edge, and O
 
 # Getting Started
 
+## Prerequisites
+
+- Postgres (for MacOS, Use `brew install postgresql` or [Postgres.app](https://postgresapp.com)), for windows you can try the [official installer](https://www.postgresql.org/download/windows/).
+- ImageMagick (`brew install imagemagick` on MacOS)
+- FFMPEG (`brew install ffmpeg` on MacOS)
+- The correct version of Ruby (specified via `.ruby-version`). Using a version manager such as [rbenv](https://github.com/rbenv/rbenv) is recommended. Otherwise you may follow instructions on [the official Ruby install page](https://www.ruby-lang.org/en/documentation/installation/).
+- The correct version of Node and yarn (specified via `package.json`).
+
 ## Setup
-- Install Postgres on your computer (for Mac, I recommend [Postgress.app](https://postgresapp.com)), for windows you can try the [official installer](https://www.postgresql.org/download/windows/).
-- You may need to [install Ruby](https://www.ruby-lang.org/en/documentation/installation/) if your computer does not already have it installed.
+
 - Clone this repository
+- Run `bundle` to install dependencies
+- Run `yarn` to install frontend dependencies
+- Ensure you have required ENV variables configured in `.env.development.local` (eg. `VIMEO_ACCESS_KEY`)
 - Run `rails db:setup` to create and populate the database.
+- Run `bin/webpack` to build frontend packages
 - Run `rails server` to run the server.
 
 Once the server is running you should be able to can access these urls
  - [localhost:3000](http://localhost:3000) for the english website
- - [ru.localhost:3000](http://ru.localhost:3000) for the russian website
- - [it.localhost:3000](http://it.localhost:3000) for the italian website
+ - [localhost:3000/ru](http://localhost:3000/ru) for the russian website
+ - [localhost:3000/it](http://localhost:3000/it) for the italian website
  - [admin.localhost:3000](http://admin.localhost:3000) for the admin site
 
 When accessing the admin site you will be asked to login, in the development environment you can use a simple dropdown (shown under the login window) to select which account you want to be logged in as, without having to enter a password.

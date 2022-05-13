@@ -267,6 +267,7 @@ it:
         action: "Bottone testo"
         url: "Inserire il link qui"
         quote: "Inserire la citazione qui"
+        subtitle: "Subtitle" # TODO: Translate
         alt: "Descrivi l'immagine per gli ipovedenti"
         caption: "Inserire la didascalia qui"
         credit: "Attribuzione diritti d'autore"

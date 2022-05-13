@@ -1,7 +1,6 @@
 
 ruby:
   item_ids = block[:items]
-  showImages = block[:withImages] != false
   records = block[:type].classify.constantize.published.where(id: item_ids).all
   return unless records.present?
 

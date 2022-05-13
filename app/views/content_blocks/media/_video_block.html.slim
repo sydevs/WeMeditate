@@ -1,7 +1,7 @@
 
 ruby:
   classes = []
-  classes << "cb-video-media--#{block[:quantity]}"
+  classes << "cb-video-media--#{block[:quantity] || 'single'}"
 
 - if block[:items].length > 0
   .cb-video-media class=classes

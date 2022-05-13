@@ -18,7 +18,7 @@ class MonkeyPatchesTest < ActiveSupport::TestCase
       file: file_name,
       page_type: 'StaticPage',
       page_id: 1,
-      image_meta: { width: 640, height: 480 }.to_json,
+      meta: { width: 640, height: 480 }.to_json,
       created_at: Time.now,
       updated_at: Time.now
     )

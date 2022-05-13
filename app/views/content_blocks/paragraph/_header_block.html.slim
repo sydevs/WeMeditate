@@ -2,7 +2,7 @@
 ruby:
   classes = %w[cb-header-paragraph]
   classes << 'cb-header-paragraph--centered' if block.dig(:decorations, :leaves)
-  tag = block[:level]&.to_sym || :h2
+  tag = block[:level] || :h2
 
 = content_tag tag, class: classes do
   .cb-header-paragraph__anchor id=block[:text].parameterize

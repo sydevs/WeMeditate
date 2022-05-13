@@ -44,16 +44,16 @@ treatments = []
     vertical_vimeo_id: 152153054,
     horizontal_vimeo_id: 208643382,
     content: content([
-      { type: :header, data: { text: 'When is it used?' } },
-      { type: :paragraph, data: { text: 'You may have experienced the soothing feeling of sitting on the bank of a river, or standing on an ocean shore, with your feet in the cool water on a hot day. Maybe you were chatting with a friend and enjoying the view, not really paying attention to your state of being, but nevertheless the water would have cooled you down, relaxed and invigorated you.' } },
-      { type: :paragraph, data: { text: 'When you want to wind down after a hard day’s work or calm yourself before going to bed, doing a foot-soak is one of the easiest and most effective techniques out there. Whether you are feeling down, or hyped up and restless, soaking your feet in salt-water helps to restore balance within. Once you get into the routine of enjoying this simple 10-minute method, it can become as important to you as brushing your teeth.' } },
-      { type: :header, data: { text: 'How is it done?' } },
-      { type: :paragraph, data: { text: 'You will need a plastic tub designated solely for this purpose. Fill it with enough water to cover your feet with water up to your ankles. The water should be cool if you are feeling overactive, and warm if you are feeling more lethargic or emotional. Take lukewarm water if in doubt. Add a handful of salt to your water (we recommend sea salt). Prepare a chair to sit on, a towel to dry your feet and a jug of water to rinse your feet after the 10-minute foot-soak. Once all this is in place, you are ready to begin.' } },
-      { type: :paragraph, data: { text: 'First, to start the foot-soak raise your Kundalini and give yourself a Bandhan, then sit with your palms facing upward and your feet immersed in the salt water. Try to keep your eyes closed, with your attention resting at the top of your head. You can combine other methods of cleansing with your foot-soak e.g.: keeping ice on your liver and/or listening to music or saying Bija mantras. At the end of your foot-soak, raise your Kundalini and give yourself a Bandhan once more. You will then need to rinse your feet over the bucket, dry them off with a towel, and simply throw the foot-soak water down the toilet.' } },
-      { type: :paragraph, data: { text: 'Note: Doing a foot-soak in a lake, river, or in the ocean can be even more effective because of the additional soothing and cleansing effect of being outdoors and in the nature (in this case no salt is added, because the qualities of Mother Earth are present already).' } },
-      { type: :header, data: { text: 'Why does it work?' } },
-      { type: :paragraph, data: { text: 'A lot of nerves end in our feet and soaking them in salt water can help soothe those nerves, relax our muscles and improve circulation.' } },
-      { type: :paragraph, data: { text: 'Apart from the rewarding physical benefits, the salt water foot-soak quickly and efficiently clears out energetic blockages in our subtle system, especially those linked to the first three Chakras. How so? Water is the element of the Nabhi Chakra, based at the solar plexus. While perhaps a seemingly simple fact, water has a powerful capacity to cleanse and soothe us. Salt represents the earth element, which is related to the first center, the Mooladhara, located at the base of our spine or the pelvic plexus. The earth element also has the power to absorb and restore us, which is often why we might suddenly feel more at ease and relaxed when sitting in nature. The combination of salt and water thus has an immense power to absorb and revitalize us no matter what state we are in.' } },
+      { type: :paragraph, data: { type: :header, text: 'When is it used?' } },
+      { type: :paragraph, data: { type: :text, text: 'You may have experienced the soothing feeling of sitting on the bank of a river, or standing on an ocean shore, with your feet in the cool water on a hot day. Maybe you were chatting with a friend and enjoying the view, not really paying attention to your state of being, but nevertheless the water would have cooled you down, relaxed and invigorated you.' } },
+      { type: :paragraph, data: { type: :text, text: 'When you want to wind down after a hard day’s work or calm yourself before going to bed, doing a foot-soak is one of the easiest and most effective techniques out there. Whether you are feeling down, or hyped up and restless, soaking your feet in salt-water helps to restore balance within. Once you get into the routine of enjoying this simple 10-minute method, it can become as important to you as brushing your teeth.' } },
+      { type: :paragraph, data: { type: :header, text: 'How is it done?' } },
+      { type: :paragraph, data: { type: :text, text: 'You will need a plastic tub designated solely for this purpose. Fill it with enough water to cover your feet with water up to your ankles. The water should be cool if you are feeling overactive, and warm if you are feeling more lethargic or emotional. Take lukewarm water if in doubt. Add a handful of salt to your water (we recommend sea salt). Prepare a chair to sit on, a towel to dry your feet and a jug of water to rinse your feet after the 10-minute foot-soak. Once all this is in place, you are ready to begin.' } },
+      { type: :paragraph, data: { type: :text, text: 'First, to start the foot-soak raise your Kundalini and give yourself a Bandhan, then sit with your palms facing upward and your feet immersed in the salt water. Try to keep your eyes closed, with your attention resting at the top of your head. You can combine other methods of cleansing with your foot-soak e.g.: keeping ice on your liver and/or listening to music or saying Bija mantras. At the end of your foot-soak, raise your Kundalini and give yourself a Bandhan once more. You will then need to rinse your feet over the bucket, dry them off with a towel, and simply throw the foot-soak water down the toilet.' } },
+      { type: :paragraph, data: { type: :text, text: 'Note: Doing a foot-soak in a lake, river, or in the ocean can be even more effective because of the additional soothing and cleansing effect of being outdoors and in the nature (in this case no salt is added, because the qualities of Mother Earth are present already).' } },
+      { type: :paragraph, data: { type: :header, text: 'Why does it work?' } },
+      { type: :paragraph, data: { type: :text, text: 'A lot of nerves end in our feet and soaking them in salt water can help soothe those nerves, relax our muscles and improve circulation.' } },
+      { type: :paragraph, data: { type: :text, text: 'Apart from the rewarding physical benefits, the salt water foot-soak quickly and efficiently clears out energetic blockages in our subtle system, especially those linked to the first three Chakras. How so? Water is the element of the Nabhi Chakra, based at the solar plexus. While perhaps a seemingly simple fact, water has a powerful capacity to cleanse and soothe us. Salt represents the earth element, which is related to the first center, the Mooladhara, located at the base of our spine or the pelvic plexus. The earth element also has the power to absorb and restore us, which is often why we might suddenly feel more at ease and relaxed when sitting in nature. The combination of salt and water thus has an immense power to absorb and revitalize us no matter what state we are in.' } },
     ]),
     state: :published,
     published_at: DateTime.now,
@@ -88,22 +88,26 @@ end
   if %i[chakra_3b chakra_6 chakra_7].include? role
     first_blocks = [
       {
-        type: :image,
+        type: :media,
         data: {
+          type: :image,
           items: [{ image: content_attachment("subtle_system_nodes/#{role.to_s.dasherize.downcase}.png", subtle_system_node) }],
           position: :left,
         },
       }, {
         type: :paragraph,
-        data: { text: sentences(5) },
+        data: {
+          type: :text,
+          text: sentences(5),
+        },
       }
     ]
   else
     first_blocks = [
       {
-        type: :structured,
+        type: :layout,
         data: {
-          format: :columns,
+          type: :columns,
           items: [
             {
               image: content_attachment("subtle_system_nodes/#{role.to_s.dasherize.downcase}-small.png", subtle_system_node),
@@ -130,11 +134,12 @@ end
     {
       type: :textbox,
       data: {
+        type: :image,
         image: content_attachment('subtle_system_nodes/background.jpg', subtle_system_node),
         title: "How to open the #{name}",
         text: chakra_in_life_content,
-        alignment: :center,
-        invert: true,
+        background: :image,
+        color: :light,
         decorations: {
           gradient: { alignment: :right, color: :orange },
           sidetext: { text: 'In Life' },
@@ -145,16 +150,16 @@ end
       type: :catalog,
       data: {
         type: :treatments,
-        items: treatments.sample(4).map { |treatment|
-          { id: treatment.id, name: treatment.name }
-        },
+        items: treatments.sample(4).pluck(:id),
+        style: :image,
         decorations: { sidetext: { text: 'Cleansing Techniques' } },
       },
     },
     {
-      type: :video,
+      type: :vimeo,
       data: {
         items: [vimeo_attachment],
+        legacy: true,
         decorations: {
           sidetext: { text: 'Shri Mataji\'s Words' },
           gradient: { alignment: :left, color: :orange },
@@ -164,11 +169,12 @@ end
     {
       type: :textbox,
       data: {
+        type: :image,
         image: content_attachment('subtle_system_nodes/ancient-wisdom.jpg', subtle_system_node),
         title: 'The Eternal Child',
         text: 'When seeking to express the qualities of the Mooladhara chakra, one can study the archetype of the Hindu deity, Shri Ganesha. He is said to be the primordial child, completely pure and innocent, formed from the earth by the Goddess Parvati. His elephant head represents the innate wisdom that he imbibes, and the story of how he gained it demonstrates his complete dedication to his mother.One day, the Goddess Parvati was taking a bath and asked Shri Ganesha to guard the door, and to let no one enter under any circumstance. Anyone who tried to approach the door to call on Goddess Parvati, Shri Ganesha swiftly sent away. However after some time, her husband Shri Shiva arrived and asked to enter. Shri Ganesha, in total innocence and devotion to his mother’s instructions, repeatedly refused and would not step aside. In a furious rage, Shri Shiva cut off the head of the child, not knowing that it was his own son.When Shri Parvati came out and saw her dead son, she was struck by grief. Upon learning his mistake, Shri Shiva asked his soldiers to bring him the head of the first beast they find, which happened to be an elephant. Shri Shiva attached the elephant head to the body of the boy and gave him life again. From that point onward, Shri Ganesha became revered for his unwavering devotion and grounded inner strength.<br><br>In Hinduism, Shri Ganesha is venerated as the remover of obstacles, a symbol of pure innocence, intelligence and wisdom, and is worshipped at the start of any endeavor or ceremony. Although this story may seem abstract, we can take some value from the moral. Our inner awakening takes place when we are devoted to our innate motherly energy, the Kundalini. This is why the Mooladhara chakra is the first center on our central nervous system, placed below the sacrum bone where the Kundalini lies dormant. When we invoke our own sense of innocence and show our complete faith in our Kundalini, the same way a child does to their mother, she rises in us and nourishes us within.',
-        alignment: :right,
-        asWisdom: true,
+        position: :right,
+        background: :ornate,
         decorations: { sidetext: { text: 'Ancient Knowledge' } },
       },
     },
@@ -186,6 +192,7 @@ end
     role: role,
     name: name,
     excerpt: sentences(2),
+    state: :published,
     published_at: DateTime.now,
   })
 
@@ -193,6 +200,7 @@ end
     {
       type: :paragraph,
       data: {
+        type: :text,
         text: 'Coming soon',
       },
     },
