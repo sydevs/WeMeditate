@@ -50,7 +50,7 @@ module RouteHelper
     locale ||= Globalize.locale || I18n.locale
 
     if record.is_a?(StaticPage)
-      static_page_path(record, locale: locale.to_s)
+      static_page_path(record)
     else
       polymorphic_path([record, locale])
     end

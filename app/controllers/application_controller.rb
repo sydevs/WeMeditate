@@ -103,8 +103,6 @@ class ApplicationController < ActionController::Base
   protected
 
     def redirect_legacy_url record
-      puts "REDIRECT FOR #{record}"
-      puts "REDIRECT? #{request.path} != #{helpers.wm_path_for(record)}"
       return false if request.path == helpers.wm_path_for(record)
 
       redirect_to record, status: :moved_permanently
