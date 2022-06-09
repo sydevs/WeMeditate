@@ -112,7 +112,6 @@ class ApplicationController < ActionController::Base
     end
 
     def set_locale!
-      puts "SET LOCALE #{params[:locale].inspect}"
       I18n.locale = params[:locale].to_sym || :en
       Globalize.locale = params[:locale].to_sym || :en
     end
