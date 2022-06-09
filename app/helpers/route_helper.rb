@@ -39,6 +39,7 @@ module RouteHelper
   # Get the web url for the current locale
   def public_url
     locale = Globalize.locale || I18n.locale
+    
     if locale == :en
       Rails.configuration.public_host
     else

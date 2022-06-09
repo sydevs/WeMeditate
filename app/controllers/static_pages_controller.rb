@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
   def show
     slug = CGI.unescape(request.path.split('/').last)
     @static_page = StaticPage.publicly_visible.preload_for(:content).find_by_slug(slug)
+    puts "STATIC PAGE FOR #{I18n.locale}/#{Globalize.locale}, #{slug.inspect}, #{@static_page}"
     return if redirect_legacy_url(@static_page)
     return redirect_to helpers.static_page_path(@static_page) unless helpers.static_page_path(@static_page) == request.path
     return unless stale?(@static_page)
