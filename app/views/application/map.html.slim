@@ -1,8 +1,8 @@
 
 - if params[:preview] == 'true'
-  iframe#map src=@atlas_url
+  iframe#map src=ENV['ATLAS_URL']
 - elsif params[:country] == 'NL'
-  iframe#map src="#{@atlas_url}&country=#{params[:country]}"
+  iframe#map src="#{ENV['ATLAS_URL']}&country=#{params[:country]}"
 - elsif @atlas_url
   iframe#map src="#{@atlas_url}?#{@config.to_query}"
 - else
