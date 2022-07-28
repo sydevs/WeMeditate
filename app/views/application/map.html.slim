@@ -4,7 +4,7 @@
 - elsif params[:country] == 'NL'
   iframe#map src="#{ENV['ATLAS_URL']}&country=#{params[:country]}"
 - elsif @atlas_url
-  iframe#map src="#{@atlas_url}?#{@config.to_query}"
+  iframe#map src="#{@atlas_url}&#{@config.to_query}"
 - else
   .error
     h1.error__banner.banner
