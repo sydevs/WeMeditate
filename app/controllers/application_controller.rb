@@ -112,8 +112,8 @@ class ApplicationController < ActionController::Base
     end
 
     def set_locale!
-      I18n.locale = params[:locale].to_sym || :en
-      Globalize.locale = params[:locale].to_sym || :en
+      I18n.locale = params[:locale]&.to_sym || :en
+      Globalize.locale = params[:locale]&.to_sym || :en
     end
 
     # Allows us to use a different layout for the `devise` gem, which handles logins/user accounts
