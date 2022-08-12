@@ -41,9 +41,9 @@ module RouteHelper
     locale = Globalize.locale || I18n.locale
     
     if locale == :en
-      "https://#{Rails.configuration.public_host}"
+      "#{Rails.configuration.public_host}/en"
     else
-      "https://#{Rails.configuration.public_host}/#{locale}"
+      "#{Rails.configuration.public_host}/#{locale}"
     end
   end
 
