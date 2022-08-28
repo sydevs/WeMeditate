@@ -70,6 +70,12 @@ Rails.application.configure do
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
 
+  # Log disallowed deprecations.
+  config.active_support.disallowed_deprecation = :log
+
+  # Tell Active Support which deprecation messages to disallow.
+  config.active_support.disallowed_deprecation_warnings = []
+
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
@@ -85,6 +91,14 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # End of rails generated config ^
+
+  # Avoid overloading our Papertrail logging account
+  config.assets.quite = true
+
+  # Uglify sprockets-based JavaScript
+  config.assets.js_compressor = Uglifier.new(harmony: true)
 
   # End of rails generated config ^
 

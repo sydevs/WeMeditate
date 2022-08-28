@@ -57,7 +57,7 @@ module Admin
 
       def set_locale!
         I18n.locale = current_user&.preferred_language&.to_sym || :en
-        Globalize.locale = params[:locale].to_sym || :en
+        Globalize.locale = params[:locale]&.to_sym || :en
         Rails.application.routes.default_url_options[:host] = Rails.configuration.public_host
         Rails.application.routes.default_url_options[:locale] = Globalize.locale
       end
