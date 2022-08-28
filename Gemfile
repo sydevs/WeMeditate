@@ -8,9 +8,10 @@ git_source(:github) do |repo_name|
 end
 
 # Core gems
+gem 'bootsnap' # Speed up boot time through caching
 gem 'pg' # Use postgresql as the database for Active Record
 gem 'puma' # Use Puma as the app server
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.0.0'
 gem 'sassc-rails' # Use SASS for stylesheets
 gem 'slim-rails' # Use Slim for views
 gem 'uglifier' # Use Uglifier as compressor for JavaScript assets
@@ -47,7 +48,7 @@ gem 'mini_magick' # Image processing during upload
 gem 'streamio-ffmpeg' # To parse metadata from mp3 files
 
 # Admin
-gem 'audited', '5.0.1' # To track changes to the files (locked due to 5.0.2 raising error on boot)
+gem 'audited', git: 'https://github.com/collectiveidea/audited', ref: '97bce368cc8ec46963a1bf6755552df926b6d7ce' # To track changes to the files (locked since 5.0.2 breaks boot)
 gem 'autosize' # To automatically grow text areas
 gem 'diff-lcs' # For draft comparisons
 gem 'kaminari' # For pagination
@@ -110,9 +111,9 @@ group :development do
   gem 'binding_of_caller' # Works with `better_errors` to let you query the code state in browser when an error occurs.
   gem 'i18n_generators'
   gem 'letter_opener' # Let's us capture test emails to verify that they were sent, and what markup was actually sent.
-  gem 'listen' # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'switch_user', github: 'tslocke/switch_user' # Quickly switch between users without having to login/logout in development
-  gem 'web-console'
+  gem 'listen' # More efficient file reloading via ActiveSupport::EventedFileUpdateChecker
+  gem 'switch_user' # Quickly switch between users without having to login/logout in development
+  gem 'web-console' # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
 end
 
 group :test do
