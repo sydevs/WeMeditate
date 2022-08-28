@@ -6,6 +6,9 @@ Rails.application.configure do
   config.force_ssl = false
   config.consider_all_requests_local = true
 
+  # Devise config
+  config.action_mailer.default_url_options = { host: 'admin-staging.wemeditate.com' }
+
   # To allow HTTPS on CloudFlare but HTTP on Heroku
   config.action_controller.forgery_protection_origin_check = false
 

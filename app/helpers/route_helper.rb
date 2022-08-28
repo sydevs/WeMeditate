@@ -39,18 +39,21 @@ module RouteHelper
   # Get the web url for the current locale
   def public_url
     locale = Globalize.locale || I18n.locale
+    
     if locale == :en
-      Rails.configuration.public_host
+      "#{Rails.configuration.public_host}/en"
     else
       "#{Rails.configuration.public_host}/#{locale}"
     end
   end
 
   def wm_path_for record
+    locale ||= Globalize.locale || I18n.locale
+
     if record.is_a?(StaticPage)
       static_page_path(record)
     else
-      polymorphic_path([record])
+      polymorphic_path([record, locale])
     end
   end
 

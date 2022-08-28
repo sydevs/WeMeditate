@@ -103,7 +103,8 @@ class ApplicationController < ActionController::Base
   protected
 
     def redirect_legacy_url record
-      puts "REDIRECT? #{request.path} != #{helpers.wm_path_for(record)}"
+      puts "REDIRECT URL FOR #{I18n.locale}/#{Globalize.locale}, #{record}"
+      puts "REDIRECT URL #{request.path} == #{helpers.wm_path_for(record)}"
       return false if request.path == helpers.wm_path_for(record)
 
       redirect_to record, status: :moved_permanently
@@ -111,8 +112,8 @@ class ApplicationController < ActionController::Base
     end
 
     def set_locale!
-      I18n.locale = params[:locale]
-      Globalize.locale = params[:locale]
+      I18n.locale = params[:locale]&.to_sym || :en
+      Globalize.locale = params[:locale]&.to_sym || :en
     end
 
     # Allows us to use a different layout for the `devise` gem, which handles logins/user accounts
