@@ -3,17 +3,17 @@
 / for when we preview a static page on the admin side
 - case @static_page.role&.to_sym
 - when :home
-  = render file: 'application/home'
+  = render template: 'application/home'
 - when :subtle_system
-  = render file: 'subtle_system_nodes/index'
+  = render template: 'subtle_system_nodes/index'
 - when :articles
-  = render file: 'categories/index'
+  = render template: 'categories/index'
 - when :treatments
-  = render file: 'treatments/index'
+  = render template: 'treatments/index'
 - when :tracks
-  = render file: 'tracks/index'
+  = render template: 'tracks/index'
 - when :meditations
-  = render file: 'meditations/index'
+  = render template: 'meditations/index'
 - else
   main.scrollspy-target
     - if @static_page.classes?

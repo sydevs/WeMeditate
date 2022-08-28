@@ -11,4 +11,7 @@ Rails.application.configure do
 
   # To allow HTTPS on CloudFlare but HTTP on Heroku
   config.action_controller.forgery_protection_origin_check = false
+
+  # Override mailer host
+  config.action_mailer.default_url_options = { host: 'admin-staging.wemeditate.com' }
 end

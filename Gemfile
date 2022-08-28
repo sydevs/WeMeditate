@@ -10,7 +10,7 @@ end
 # Core gems
 gem 'pg' # Use postgresql as the database for Active Record
 gem 'puma' # Use Puma as the app server
-gem 'rails', '~> 6.0.1'
+gem 'rails', '~> 6.1.0'
 gem 'sassc-rails' # Use SASS for stylesheets
 gem 'slim-rails' # Use Slim for views
 gem 'uglifier' # Use Uglifier as compressor for JavaScript assets
@@ -21,7 +21,7 @@ gem 'turbolinks' # Makes navigating your web application faster.
 # Users
 gem 'devise' # Adds all the core features for users - user sessions, login, password recovery, etc
 gem 'devise_invitable' # Adds support to invite users by email
-gem 'regulator' # Adds permissions, so we can control users' access to certain pages
+gem 'regulator', git: 'https://github.com/sydevs/regulator', branch: 'rails6-compatibility' # Adds permissions, so we can control users' access to certain pages
 
 # Front End
 gem 'autoprefixer-rails' # For automatic cross browser CSS compatibility
@@ -47,7 +47,7 @@ gem 'mini_magick' # Image processing during upload
 gem 'streamio-ffmpeg' # To parse metadata from mp3 files
 
 # Admin
-gem 'audited', '4.9.0' # To track changes to the files (locked due to 5.x raising error on boot)
+gem 'audited', '5.0.1' # To track changes to the files (locked due to 5.0.2 raising error on boot)
 gem 'autosize' # To automatically grow text areas
 gem 'diff-lcs' # For draft comparisons
 gem 'kaminari' # For pagination
@@ -111,8 +111,6 @@ group :development do
   gem 'i18n_generators'
   gem 'letter_opener' # Let's us capture test emails to verify that they were sent, and what markup was actually sent.
   gem 'listen' # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'spring' # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring-watcher-listen'
   gem 'switch_user', github: 'tslocke/switch_user' # Quickly switch between users without having to login/logout in development
   gem 'web-console'
 end

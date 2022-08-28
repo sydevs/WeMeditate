@@ -15,7 +15,7 @@
 - if params[:excerpt]
   = render "#{@record.model_name.route_key}/#{@record.model_name.singular_route_key}", { @record.model_name.singular_route_key.to_sym => @record }
 - else
-  = render file: "#{@record.model_name.route_key}/show"
+  = render template: "#{@record.model_name.route_key}/show"
 
 - if params[:review]
   sass:
