@@ -1,7 +1,7 @@
 
 - if params[:preview] == 'true'
-  iframe#map src=ENV['ATLAS_URL']
-- elsif params[:country] == 'NL'
+  script src="https://atlas.sydevelopers.com/map/embed.js" key=ENV['ATLAS_KEY'] path="/"
+- elsif params[:country]
   iframe#map src="#{ENV['ATLAS_URL']}&country=#{params[:country]}"
 - elsif @atlas_url
   iframe#map src="#{@atlas_url}&#{@config.to_query}"
