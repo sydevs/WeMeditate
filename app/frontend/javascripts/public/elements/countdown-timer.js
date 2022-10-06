@@ -3,8 +3,8 @@ export default class CountdownTimer {
   constructor(element) {
     this.container = element
 
-    const currentTimezoneOffsetMs = new Date().getTimezoneOffset() * 60;
-    this.targetDate = new Date(parseFloat(element.dataset.time)).getTime() - currentTimezoneOffsetMs;
+    const currentTimezoneOffsetMs = new Date().getTimezoneOffset() * 60
+    this.targetDate = new Date(parseFloat(element.dataset.time)).getTime() - currentTimezoneOffsetMs
 
     this.days = element.querySelector('.js-countdown-days')
     this.hours = element.querySelector('.js-countdown-hours')
