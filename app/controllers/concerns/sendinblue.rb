@@ -9,13 +9,6 @@ module Sendinblue
     client = SibApiV3Sdk::ContactsApi.new
 
     # Create a contact
-    puts "CREATE CONTACT #{{
-      'email' => email,
-      'attributes' => attributes.deep_transform_keys { |key| key.to_s.upcase },
-      'listIds' => [list_id],
-      'updateEnabled' => true,
-    }}"
-
     p client.create_contact(
       'email' => email,
       'attributes' => attributes.deep_transform_keys { |key| key.to_s.upcase },
