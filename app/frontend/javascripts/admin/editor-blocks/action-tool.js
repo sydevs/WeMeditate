@@ -31,7 +31,7 @@ export default class ActionTool extends EditorTool {
         text: { label: 'Text', contained: true },
         action: { label: 'Button Text', input: 'button', contained: true },
         url: { input: 'url', contained: true },
-        list_id: { label: 'Custom Klaviyo List ID', input: 'caption', contained: true },
+        list_id: { label: 'Custom SendInBlue List ID', input: 'caption', contained: true },
       },
       tunes: {
         type: {
