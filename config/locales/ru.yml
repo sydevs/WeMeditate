@@ -261,6 +261,7 @@ ru:
   javascript:
     reading_time: "%{minutes} мин. чтения" 
     loading: "Загружается..." 
+    error: "Error - please try again later" # TODO: Translate
     popup:
       close: "Закрыть (Esc)"
       loading: "Загружается..."

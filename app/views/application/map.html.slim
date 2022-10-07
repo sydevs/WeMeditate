@@ -1,6 +1,6 @@
 
 - if params[:preview] == 'true'
-  script src="https://atlas.sydevelopers.com/map/embed.js" key=ENV['ATLAS_KEY'] path="/"
+  script src="https://atlas.sydevelopers.com/map/embed.js?key=#{ENV['ATLAS_KEY']}"
 - elsif params[:country]
   iframe#map src="#{ENV['ATLAS_URL']}&country=#{params[:country]}"
 - elsif @atlas_url

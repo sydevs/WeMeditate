@@ -236,6 +236,7 @@ en:
   javascript:
     reading_time: "%{minutes} minute read"
     loading: "Loading..."
+    error: "Error - please try again later"
     popup:
       close: "Close (Esc)"
       loading: "Loading..."

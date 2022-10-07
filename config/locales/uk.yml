@@ -238,6 +238,7 @@ uk:
   javascript:
     reading_time: "%{minutes} хвилина читання"
     loading: "Завантажується..."
+    error: "Error - please try again later" # TODO: Translate
     popup:
       close: "Закрити (Esc)"
       loading: "Завантажується..."

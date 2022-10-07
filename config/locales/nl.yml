@@ -236,6 +236,7 @@ nl:
   javascript:
     reading_time: "leestijd: %{minutes} minu(u)t(en)"
     loading: "Laden..."
+    error: "Error - please try again later" # TODO: Translate
     popup:
       close: "Sluiten (Esc)"
       loading: "Laden..."

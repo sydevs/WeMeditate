@@ -235,6 +235,7 @@ bg:
   javascript:
     reading_time: "%{minutes} минути четено"
     loading: "Зареждане..."
+    error: "Error - please try again later" # TODO: Translate
     popup:
       close: "Затвори (Esc)"
       loading: "Зареждане..."

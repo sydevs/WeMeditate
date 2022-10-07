@@ -238,6 +238,7 @@ ro:
   javascript:
     reading_time: "%{minutes} minute de citire"
     loading: "Încarcă..."
+    error: "Error - please try again later" # TODO: Translate
     popup:
       close: "Închide (Esc)"
       loading: "Încarcă..."

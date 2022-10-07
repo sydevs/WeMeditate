@@ -6,12 +6,17 @@ export default class Form {
   constructor(element) {
     this.container = element
     this.button = element.querySelector('.button')
-    this.message = element.querySelector('.content__form__message')
-    this.type = element.classList.contains('content__form--signup') ? 'signup' : 'contact'
+    this.message = element.querySelector('.cb-form-action__message')
+    this.type = element.classList.contains('cb-form-action--signup') ? 'signup' : 'contact'
     this.originalButtonText = this.button.innerText
 
     if (this.container.dataset.remote) {
       this.container.addEventListener('ajax:beforeSend', _event => this.setLoadingState(true))
+      this.container.addEventListener('ajax:error', _event => {
+        this.setMessage(translate('error'), 'negative')
+        this.setButtonEnabled(true)
+        this.setLoadingState(false)
+      })
     }
 
     const inputs = this.container.querySelectorAll('input, textarea, select')
@@ -25,8 +30,8 @@ export default class Form {
 
   setMessage(message, type = 'positive') {
     const oppositeType = (type == 'positive' ? 'negative' : 'positive')
-    this.message.classList.remove(`content__form__message--${oppositeType}`)
-    this.message.classList.add(`content__form__message--${type}`)
+    this.message.classList.remove(`cb-form-action__message--${oppositeType}`)
+    this.message.classList.add(`cb-form-action__message--${type}`)
     this.message.innerText = message
     $(this.message).show()
   }
@@ -47,7 +52,7 @@ export default class Form {
 
   setLoadingState(isLoading) {
     const inputs = this.container.querySelectorAll('input, textarea, select')
-    this.container.classList.toggle('form--loading', isLoading)
+    this.container.classList.toggle('cb-form-action--loading', isLoading)
 
     if (isLoading) {
       for (let index = 0; index < inputs.length; index++) {

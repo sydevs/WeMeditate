@@ -236,6 +236,7 @@ el:
   javascript:
     reading_time: "%minutes% minute read"
     loading: "Φόρτωση..."
+    error: "Error - please try again later" # TODO: Translate
     popup:
       close: "Κλείσιμο (Esc)"
       loading: "Φόρτωση..."

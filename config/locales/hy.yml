@@ -236,6 +236,7 @@ hy:
   javascript:
     reading_time: "%{minutes} minute read"
     loading: "Loading..."
+    error: "Error - please try again later" # TODO: Translate
     popup:
       close: "Close (Esc)"
       loading: "Loading..."

@@ -48,17 +48,18 @@ Rails.application.routes.draw do
   constraints DomainConstraint.new(Rails.configuration.public_domain) do
     get 'surrey', to: redirect('/live/surrey')
     get '/en', to: redirect('/')
-    
+
     localized do
       root to: 'application#home'
       get 'sitemap.xml.gz', to: 'application#sitemap'
       get '404', to: 'application#error'
       get '422', to: 'application#error'
       get '500', to: 'application#error'
-  
+
       post :contact, to: 'application#contact'
       post :subscribe, to: 'application#subscribe'
       get :map, to: 'application#map'
+      get 'map/(*path)', to: 'application#map'
       get :live, to: 'streams#index'
 
       resources :articles, only: %i[show] do

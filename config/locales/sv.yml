@@ -232,6 +232,7 @@ sv:
   javascript:
     reading_time: "%{minutes} minuters läsning"
     loading: "Laddar..."
+    error: "Error - please try again later" # TODO: Translate
     popup:
       close: "Stäng (Esc)"
       loading: "Laddar..."

@@ -57,9 +57,18 @@ class ApplicationController < ActionController::Base
     if params[:signup][:email_address].present?
       email = params[:signup][:email_address].gsub(/\s/, '').downcase
       list_id = params[:signup][:list_id]
+      language_code = I18n.locale.to_s.upcase
+      country_code = request.headers['CF-IPCountry']
 
       begin
-        Klaviyo.subscribe(email, list_id, request.referer)
+        Sendinblue.subscribe(
+          email,
+          list_id,
+          first_referrer: request.referer,
+          language: I18nData.languages[language_code],
+          country: I18nData.countries[country_code]
+        )
+
         @message = I18n.translate('form.success.subscribe')
         @success = true
       rescue Error => e

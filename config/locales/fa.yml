@@ -237,6 +237,7 @@ fa:
   javascript:
     reading_time: "زمان مطالعه: %{minutes}  دقیقه"
     loading: "در حال بارگذاری..."
+    error: "Error - please try again later" # TODO: Translate
     popup:
       close: "ببندید (Esc)" # TODO: Translate
       loading: "در حال بارگذاری..."

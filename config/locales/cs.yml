@@ -236,6 +236,7 @@ cs:
   javascript:
     reading_time: "%{minutes} minut čtení" # Eg. 5 minute read
     loading: "Načítání..."
+    error: "Error - please try again later" # TODO: Translate
     popup:
       close: "Zavřít (Esc)"
       loading: "Načítání..."

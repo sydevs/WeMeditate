@@ -248,6 +248,7 @@ fr:
   javascript:
     reading_time: "%{minutes} minutes de lecture"
     loading: "Chargement en cours..."
+    error: "Error - please try again later" # TODO: Translate
     popup:
       close: "Fermer (Esc)"
       loading: "Chargement en cours..."

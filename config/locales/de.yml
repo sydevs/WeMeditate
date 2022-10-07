@@ -237,6 +237,7 @@ de:
   javascript:
     reading_time: "%{minutes} Minuten zu lesen"
     loading: "Laden..."
+    error: "Error - please try again later" # TODO: Translate
     popup:
       close: "Schließen (Esc)"
       loading: "Laden..."

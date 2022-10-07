@@ -74,15 +74,18 @@ gem 'rollbar' # Error tracking
 gem 'seedbank' # Used to populate the database with the pages and data used in the designs, for quick deployment and recovery.
 gem 'sprig' # Used to populate the database with the pages and data used in the designs, for quick deployment and recovery.
 
+# Email
+gem 'mail_form' # For the contact form
+gem 'sib-api-v3-sdk' # API for sendinblue emailer
+gem 'recaptcha', require: 'recaptcha/rails' # To protect against bots on the contact form
+
 # Misc
 gem 'browser' # Detect the user's browser / device
 gem 'httparty' # For http requests (specifically Klaviyo)
 gem 'lograge' # Reduce verbosity of Rails logs
-gem 'mail_form' # For the contact form
 gem 'sitemap_generator' # For SEO purposes
 gem 'geocoder' # For identifying users from specific regions
 gem 'cloudflare-rails' # To restore client IP addresses after proxy
-gem "recaptcha", require: "recaptcha/rails" # To protect against bots on the contact form
 
 # Maybe needed later(?)
 # gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
