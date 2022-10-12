@@ -73,6 +73,7 @@ en:
             image: "Image"
             video: "Video"
             audio: "Audio"
+            embed: "Embed"
             none: "None"
           quantity:
             label: "Quantity"

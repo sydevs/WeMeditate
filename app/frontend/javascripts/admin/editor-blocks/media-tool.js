@@ -18,24 +18,30 @@ export default class MediaTool extends EditorTool {
       id: data.id || generateId(),
       poster: data.poster || {},
       items: data.items || [],
+      url: data.url || '',
       mediaFiles: data.mediaFiles || [],
-      type: ['image', 'video', 'audio', 'vimeo'].includes(data.type) ? data.type : 'none',
+      type: ['image', 'video', 'audio', 'embed', 'vimeo'].includes(data.type) ? data.type : 'none',
       quantity: ['single', 'gallery'].includes(data.quantity) ? data.quantity : 'single',
+      source: ['jwplayer', 'youtube'].includes(data.source) ? data.source : 'jwplayer',
       position: ['left', 'center', 'right'].includes(data.position) ? data.position : 'center',
       size: ['narrow', 'wide'].includes(data.size) ? data.size : 'narrow',
       decorations: data.decorations || {},
     }, { // Config
       id: 'media',
-      fields: {},
+      fields: {
+        url: { type: 'url' },
+      },
       tunes: {
         type: {
           options: [
             { name: 'image', icon: 'image', },
             { name: 'video', icon: 'film', },
             { name: 'audio', icon: 'volume up' },
+            { name: 'embed', icon: 'code' },
           ]
         },
         quantity: {
+          requires: { type: ['image', 'video', 'audio'] },
           options: [
             { name: 'single', icon: 'square' },
             { name: 'gallery', icon: 'clone' },
@@ -60,7 +66,7 @@ export default class MediaTool extends EditorTool {
       decorations: {
         triangle: { requires: { type: ['image'], position: ['center'] }},
         sidetext: { requires: { type: ['video'] }},
-        gradient: { requires: { type: ['video'] }},
+        gradient: { requires: { type: ['video', 'embed'] }},
       }
     }, api)
 
@@ -127,6 +133,8 @@ export default class MediaTool extends EditorTool {
         this.itemsContainer.appendChild(this.renderItem(item))
       })
     }
+
+    this.renderItem('url', this.container)
 
     this.uploader.setAllowMultiple(this.isGallery)
     return this.container
