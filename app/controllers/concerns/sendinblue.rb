@@ -1,4 +1,3 @@
-require 'httparty'
 
 ## SENDINBLUE
 # This concern simplifies requests to sendinblue.com

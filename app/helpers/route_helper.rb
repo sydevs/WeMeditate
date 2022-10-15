@@ -19,7 +19,7 @@ module RouteHelper
     locale = Globalize.locale || I18n.locale
     role = page_or_role.is_a?(StaticPage) ? page_or_role.role : page_or_role
     route = STATIC_PAGE_ROLE_TO_URL[role&.to_sym] || role
-    send(:"#{route}_#{locale}_path")
+    send(:"#{route}_#{locale.to_s.underscore}_path")
   end
 
   # Many static pages represent special pages in the site.
@@ -28,7 +28,7 @@ module RouteHelper
     locale ||= Globalize.locale || I18n.locale
     role = page_or_role.is_a?(StaticPage) ? page_or_role.role : page_or_role
     route = STATIC_PAGE_ROLE_TO_URL[role&.to_sym] || role
-    send(:"#{route}_#{locale}_url")
+    send(:"#{route}_#{locale.to_s.underscore}_url")
   end
 
   # Given a path, convert it to the full URL
