@@ -26,10 +26,11 @@ class Stream < ApplicationRecord
   array_enum recurrence: { sunday: 0, monday: 1, tuesday: 2, wednesday: 3, thursday: 4, friday: 5, saturday: 6 }, array: true
 
   # Validations
-  validates_presence_of :name, :slug, :excerpt, :stream_url
+  validates_presence_of :name, :slug, :excerpt
   validates_presence_of :location, :time_zone_identifier, :time_zone_offset, :target_time_zones
   validates_presence_of :recurrence, :start_date, :start_time, :end_time
-  validates :thumbnail_id, presence: true, if: :persisted?
+  validates_presence_of :stream_url, unless: :video_conference_url?
+  validates_presence_of :thumbnail_id, if: :persisted?
   validates :duration, numericality: { greater_than: 0 }
 
   # Scopes
