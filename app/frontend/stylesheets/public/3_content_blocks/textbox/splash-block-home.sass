@@ -1,9 +1,9 @@
 
 // ===== HOME PAGE ===== //
-.cb-splash-textbox--home,
-.cb-splash-textbox--home .preloader
-  @include mobile
-    background-position-x: 60% !important
+.cb-splash-textbox--home[data-background="russian-field"]
+  &, .preloader
+    @include mobile
+      background-position-x: 60% !important
   
 .cb-splash-textbox--home
   .cb-splash-textbox__wrapper

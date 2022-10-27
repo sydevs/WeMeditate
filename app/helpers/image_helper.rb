@@ -5,8 +5,13 @@ module ImageHelper
 
   # Note: "Static images" are images which are stored in the server files, rather than being uploaded to Google Cloud through CarrierWave
 
-  # Definitions for statis images which are PNGs (for now there is just one)
-  STATIC_IMAGE_PNGS = %w[meditations/prescreen-foreground].freeze
+  # Definitions for statis images which are PNGs
+  STATIC_IMAGE_PNGS = %w[
+    home/malaysian-yuvas
+    home/scotland
+    meditations/prescreen-foreground
+  ].freeze
+
   # Definitions of the different versions available for some static images.
   STATIC_IMAGE_VERSIONS = {
     'meditations/prescreen-background' => { large: 1920, medium: 960, small: 480 },
@@ -15,6 +20,18 @@ module ImageHelper
     'music/treatment' => { medium: 400, small: 200 },
     'meditations/random' => { large: 1200, medium: 800, small: 400 },
   }.freeze
+
+  HOMEPAGE_IMAGES = %w[
+    home/scotland
+    home/russian-field
+  ].freeze
+
+  def homepage_image_url
+    month = Date.today.strftime('%m').to_i
+    path = HOMEPAGE_IMAGES[month % HOMEPAGE_IMAGES.count]
+    extension = STATIC_IMAGE_PNGS.include?(path) ? 'png' : 'jpg'
+    asset_pack_path "media/images/#{path}.#{extension}"
+  end
 
   # Takes care of all the complicated rendering generate a picture tag that supports webp, lazyloading, and responsive images.
   # `source` should be a CarrierWave image
