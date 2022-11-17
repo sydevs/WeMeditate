@@ -23,7 +23,6 @@ module ImageHelper
   HOMEPAGE_IMAGES = %w[
     home/scotland
     home/russian-field
-    home/malaysian-yuvas
   ].freeze
 
   def homepage_image_url
