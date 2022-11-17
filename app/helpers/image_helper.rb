@@ -7,7 +7,6 @@ module ImageHelper
 
   # Definitions for statis images which are PNGs
   STATIC_IMAGE_PNGS = %w[
-    home/malaysian-yuvas
     home/scotland
     meditations/prescreen-foreground
   ].freeze
@@ -24,11 +23,12 @@ module ImageHelper
   HOMEPAGE_IMAGES = %w[
     home/scotland
     home/russian-field
+    home/malaysian-yuvas
   ].freeze
 
   def homepage_image_url
     month = Date.today.strftime('%m').to_i
-    path = HOMEPAGE_IMAGES[month % HOMEPAGE_IMAGES.count]
+    path = HOMEPAGE_IMAGES[(month / HOMEPAGE_IMAGES.count).to_i]
     extension = STATIC_IMAGE_PNGS.include?(path) ? 'png' : 'jpg'
     asset_pack_path "media/images/#{path}.#{extension}"
   end
