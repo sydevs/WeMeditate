@@ -22,10 +22,13 @@ class ApplicationController < ActionController::Base
   def map
     # expires_in 1.year, public: true
     set_metadata({ 'title' => translate('classes.map_title') })
-    @atlas_url = ENV['ATLAS_URL'] if ENV['ATLAS_URL'] && ENV['ATLAS_LOCALES'].split(',').include?(I18n.locale.to_s)
-    @config = params.permit(:q, :latitude, :longitude, :type, :west, :east, :south, :north)
-    @config[:locale] = I18n.locale unless I18n.locale == :en
-    @config[:theme] = 'wemeditate'
+
+    config = params.permit(:q, :country)
+    config[:locale] = I18n.locale unless I18n.locale == :en
+    config[:theme] = 'wemeditate'
+    @atlas_url = "https://atlas.sydevelopers.com/map/embed.js?key=#{ENV.fetch('ATLAS_KEY')}&#{@config.to_query}"
+    @atlas_enabled = ENV['ATLAS_LOCALES'].split(',').include?(I18n.locale.to_s)
+ 
     render layout: 'minimal'
   end
 

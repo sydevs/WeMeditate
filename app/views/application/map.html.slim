@@ -1,10 +1,6 @@
 
-- if params[:preview] == 'true'
-  script src="https://atlas.sydevelopers.com/map/embed.js?key=#{ENV['ATLAS_KEY']}"
-- elsif params[:country]
-  iframe#map src="#{ENV['ATLAS_URL']}&country=#{params[:country]}"
-- elsif @atlas_url
-  iframe#map src="#{@atlas_url}&#{@config.to_query}"
+- if @atlas_enabled || params[:preview] == 'true'
+  script id='sahaj-atlas' src=@atlas_url
 - else
   .error
     h1.error__banner.banner
