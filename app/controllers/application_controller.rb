@@ -23,9 +23,16 @@ class ApplicationController < ActionController::Base
     # expires_in 1.year, public: true
     set_metadata({ 'title' => translate('classes.map_title') })
 
+    countries = {
+      ru: 'RU',
+      cs: 'CZ',
+      it: 'IT',
+    }
+
     config = params.permit(:q, :country)
     config[:locale] = I18n.locale unless I18n.locale == :en
     config[:theme] = 'wemeditate'
+    config[:country] ||= countries[I18n.locale]
     @atlas_url = "https://atlas.sydevelopers.com/map/embed.js?key=#{ENV.fetch('ATLAS_KEY')}&#{config.to_query}"
     @atlas_enabled = ENV['ATLAS_LOCALES'].split(',').include?(I18n.locale.to_s)
  
