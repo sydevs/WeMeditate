@@ -2,7 +2,7 @@
 # This file contains translations which will be seen by the public.
 
 bg:
-  we_meditate: "WeMeditate" # This is the title of the website
+  we_meditate: "We Meditate" # This is the title of the website
   tagline: "Успокойте ума си и открийте вътрешния си потенциал чрез водени медитации. Свържете се с други хора по света, които медитират за по-добър живот."
 
   routes: # These are for the website URLs, they should be all lower case and use dashes instead of spaces
@@ -17,31 +17,30 @@ bg:
     self_realization: "първо-преживяване"
     classes: "занятия"
     streams: "на-живо"
-    # TODO: Translate
-    about: "about"
-    contact: "contact"
-    shri_mataji: "shri-mataji"
-    sahaja_yoga: "sahaja-yoga"
-    privacy: "privacy"
+    about: "за нас"
+    contact: "контакти"
+    shri_mataji: "шри-матаджи"
+    sahaja_yoga: "сахаджа-йога"
+    privacy: "политика-за-поверителност"
 
   header:
-    advanced_articles: "All Articles" # TODO: Translate
+    advanced_articles: "Всички Статии"
     advanced: "Научете повече"
     classes_near_me: "Водени медитации на живо"
     inspiration_from_within: "Вдъхновението идва от вътре"
     cookie_notice: "Продължавайки да ползвате wemeditate.com, се съгласявате да употребяваме бисквитки."
     preview_notice: "Предварителен преглед"
     kundalini: "Вътрешна енергия"
-    social: "Follow us"
-    further_reading: "Further Reading" # TODO: Translate
+    social: "Последвайте ни"
+    further_reading: "Допълнително четене"
 
   cookie_notice:
     text: "Продължавайки да ползвате wemeditate.com, се съгласявате да употребяваме бисквитки."
     learn_more: "Научете повече."
 
-  locale_redirect: # TODO: Translate
-    text: "Looking for Bulgarian?"
-    action: "Switch to Bulgarian"
+  locale_redirect:
+    text: "Търсите български?"
+    action: "Преминете на български"
 
   footer:
     scroll_to_top: "Обратно към началото"
@@ -208,13 +207,13 @@ bg:
       identifier:
         zoom: zoom.us # Do not translate
         google: meet.google.com # Do not translate
-      action: # TODO: Translate
-        stream: "Watch the Broadcast"
-        zoom: "Join via Zoom"
-        google: "Join via Google Meet"
-        default: "Join via Video Call"
+      action:
+        stream: "Гледайте излъчването"
+        zoom: "Присъединете се чрез Zoom"
+        google: "Присъединете се чрез Google Meet"
+        default: "Присъединете се чрез Video Call"
       description: "Натиснете Пусни, за да се присъедините точно сега към нашата медитация на живо"
-      alt_description: "Enjoy the meditation via broadcast, or join a video call where you can ask questions." # TODO: Translate
+      alt_description: "Насладете се на медитацията на живо или се присъединете към видео разговор, където можете да задавате въпроси."
     timing:
       days: "Дни"
       hours: "Часове"
@@ -235,7 +234,7 @@ bg:
   javascript:
     reading_time: "%{minutes} минути четено"
     loading: "Зареждане..."
-    error: "Error - please try again later" # TODO: Translate
+    error: "Грешка - моля, опитайте отново по-късно"
     popup:
       close: "Затвори (Esc)"
       loading: "Зареждане..."
