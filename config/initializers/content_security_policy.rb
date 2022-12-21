@@ -18,7 +18,7 @@ Rails.application.configure do
 
     policy.default_src :self, :https
     policy.font_src    :self, :https, :data
-    policy.img_src     :self, asset_host, *gtm_sources, *jwp_sources, :https, :data
+    policy.img_src     :self, asset_host, *gtm_sources, *jwp_sources, :https, :data, :blob
     policy.object_src  :none
     policy.script_src  :self, *gtm_sources, *jwp_sources, :unsafe_eval, :unsafe_inline, :https
     policy.worker_src  :self, :blob
