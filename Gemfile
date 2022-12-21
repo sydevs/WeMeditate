@@ -26,7 +26,7 @@ gem 'regulator', git: 'https://github.com/sydevs/regulator', branch: 'rails6-com
 
 # Front End
 gem 'autoprefixer-rails' # For automatic cross browser CSS compatibility
-gem 'google-tag-manager-rails'
+# gem 'google-tag-manager-rails'
 gem 'inline_svg' # To embed svg files
 gem 'jquery-rails' # Add jQuery
 gem 'jquery-slick-rails' # A slider library

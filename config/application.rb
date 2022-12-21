@@ -37,6 +37,6 @@ module Wemeditate
     Rails.autoloaders.main.ignore(Rails.root.join('app/frontend'))
 
     # Google Tag Manager
-    GoogleTagManager.gtm_id = ENV['GOOGLE_TAG_MANAGER_ID']
+    # GoogleTagManager.gtm_id = ENV['GOOGLE_TAG_MANAGER_ID']
   end
 end

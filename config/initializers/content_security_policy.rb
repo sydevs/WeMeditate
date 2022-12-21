@@ -9,7 +9,7 @@ return if Rails.env.development?
 Rails.application.configure do
   config.content_security_policy do |policy|
     asset_host = CarrierWave::Uploader::Base.asset_host
-    gtm_sources = %w[www.googletagmanager.com tagmanager.google.com www.google-analytics.com stats.g.doubleclick.net www.gstatic.com]
+    gtm_sources = [] # %w[www.googletagmanager.com tagmanager.google.com www.google-analytics.com stats.g.doubleclick.net www.gstatic.com]
     jwp_sources = %w[cdn.jwplayer.com ssl.p.jwpcdn.com videos-cloudflare.jwpsrv.com assets-jpcust.jwpsrv.com prd.jwpltx.com]
     vimeo_sources = %w[player.vimeo.com vod-progressive.akamaized.net]
     atlas_sources = %w[atlas.sydevelopers.com api.mapbox.com events.mapbox.com]
