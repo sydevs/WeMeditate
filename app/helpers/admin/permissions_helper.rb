@@ -79,7 +79,7 @@ module Admin::PermissionsHelper
       translator: [],
       writer: [],
       editor: [],
-      regional_admin: [],
+      regional_admin: %i[update publish],
       super_admin: %i[update publish create destroy],
     },
 

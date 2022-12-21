@@ -1,10 +1,21 @@
 
+- allow = policy(record)
+
 = f.input :name
-= f.association :artists
-- duration_hint = record.duration ? "#{record.class.human_attribute_name(:duration)}: #{record.duration_as_string}" : nil
-= f.input :audio, as: :file, wrapper: :semantic_file, icon: file_type_icon(:audio), file: record.audio, hint: duration_hint, input_html: { accept: file_type_accepts(:audio) }
-/= f.association :mood_filters
-= f.association :instrument_filters
+
+- if allow.update_structure?
+  = f.association :artists
+  - duration_hint = record.duration ? "#{record.class.human_attribute_name(:duration)}: #{record.duration_as_string}" : nil
+  = f.input :audio, as: :file, wrapper: :semantic_file, icon: file_type_icon(:audio), file: record.audio, hint: duration_hint, input_html: { accept: file_type_accepts(:audio) }
+  /= f.association :mood_filters
+  = f.association :instrument_filters
+- else
+  = f.input :audio, required: false do
+    .ui.fluid.file.labels
+      - media = record.audio
+      a.ui.basic.label href=media.url target='_blank'
+        i.icon class=file_type_icon(:audio)
+        span = (media.file.identifier || media.file.filename).humanize
 
 ruby:
   translated_locales = record.translated_locales - [record.original_locale]

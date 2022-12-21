@@ -20,10 +20,7 @@ module Admin
             artist_ids: [], mood_filter_ids: [], instrument_filter_ids: []
           )
         else
-          params.fetch(:track, {}).permit(
-            :name, :audio,
-            artist_ids: [], mood_filter_ids: [], instrument_filter_ids: []
-          )
+          params.fetch(:track, {}).permit(:name)
         end
       end
 
