@@ -15,7 +15,7 @@
       - media = record.audio
       a.ui.basic.label href=media.url target='_blank'
         i.icon class=file_type_icon(:audio)
-        span = (media.file.identifier || media.file.filename).humanize
+        span = (media.file.try(:identifier) || media.file.try(:filename)).humanize
 
 ruby:
   translated_locales = record.translated_locales - [record.original_locale]
