@@ -76,7 +76,7 @@ export default class EditorTool {
     }
 
     // A few special types of inputs also have their own CSS class
-    const inputs = ['title', 'caption', 'textarea', 'text', 'content', 'button', 'url']
+    const inputs = ['title', 'caption', 'textarea', 'text', 'content', 'button', 'url', 'iframe']
     inputs.forEach(name => {
       this.CSS.inputs[name] = `${this.CSS.input}--${name}`
     })

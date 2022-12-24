@@ -1,0 +1,19 @@
+
+ruby:
+  classes = []
+
+.cb-youtube-media class=classes
+  .gradient-wrapper
+    = render_decoration :gradient, block, size: %i[tall long]
+
+  h2.cb-video-media__title = block[:decorations] && block[:decorations][:sidetext] && block[:decorations][:sidetext][:text]
+  .cb-video-media__sidetext = render_decoration :sidetext, block, alignment: :left
+
+  figure.cb-video-media__item
+    .cb-video-media__media.video class='js-video'
+      .video__inner
+        iframe src="https://www.youtube.com/embed/#{block[:youtube_id]}"
+        .video__thumbnail
+          img src="https://img.youtube.com/vi/#{block[:youtube_id]}/maxresdefault.jpg"
+          a.video__button.video__popup data-lity=true href="https://www.youtube.com/embed/#{block[:youtube_id]}"
+          a.video__button

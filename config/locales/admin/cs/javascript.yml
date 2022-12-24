@@ -73,6 +73,7 @@ cs: # TODO: Translate
             image: "Image"
             video: "Video"
             audio: "Audio"
+            youtube: "YouTube"
             none: "None"
           quantity:
             label: "Quantity"

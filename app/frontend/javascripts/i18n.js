@@ -7,10 +7,12 @@ const deepGet = (obj, keys) =>
   )
 
 export const translate = function(key, args) {
-  let result = deepGet(window.translations, key.split('.'))
+  let keys = key.split('.')
+  let result = deepGet(window.translations, keys)
 
   if (!result) {
-    console.error('Failed to find translation for', key) // eslint-disable-line no-console
+    console.warn('Failed to find translation for', key) // eslint-disable-line no-console
+    return keys[keys.length - 1]
   }
 
   for (const key in args) {

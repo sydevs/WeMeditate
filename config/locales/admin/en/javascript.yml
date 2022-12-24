@@ -73,6 +73,7 @@ en:
             image: "Image"
             video: "Video"
             audio: "Audio"
+            youtube: "YouTube"
             none: "None"
           quantity:
             label: "Quantity"
@@ -179,6 +180,7 @@ en:
         items: "Items"
         action: "Button Text"
         url: "Paste a link here"
+        iframe: "Paste an embeddable url here"
         quote: "Enter a quote" # "Quote" as in a quotation from some other text or person
         subtitle: "Subtitle"
         alt: "Describe the image for the visually impaired"

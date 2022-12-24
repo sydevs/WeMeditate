@@ -19,20 +19,24 @@ export default class MediaTool extends EditorTool {
       poster: data.poster || {},
       items: data.items || [],
       mediaFiles: data.mediaFiles || [],
-      type: ['image', 'video', 'audio', 'vimeo'].includes(data.type) ? data.type : 'none',
+      youtube_id: data.youtube_id || '',
+      type: ['image', 'video', 'audio', 'youtube'].includes(data.type) ? data.type : 'none',
       quantity: ['single', 'gallery'].includes(data.quantity) ? data.quantity : 'single',
       position: ['left', 'center', 'right'].includes(data.position) ? data.position : 'center',
       size: ['narrow', 'wide'].includes(data.size) ? data.size : 'narrow',
       decorations: data.decorations || {},
     }, { // Config
       id: 'media',
-      fields: {},
+      fields: {
+        youtube_id: { label: "YouTube ID", input: 'iframe', contained: true },
+      },
       tunes: {
         type: {
           options: [
             { name: 'image', icon: 'image', },
             { name: 'video', icon: 'film', },
             { name: 'audio', icon: 'volume up' },
+            { name: 'youtube', icon: 'youtube' },
           ]
         },
         quantity: {
@@ -314,6 +318,8 @@ export default class MediaTool extends EditorTool {
       if (this.poster.dataset.attributes) {
         newData.poster = JSON.parse(this.poster.dataset.attributes)
       }
+    } else if (this.data.type == 'youtube') {
+      super.save(_toolElement)
     } else {
       for (let i = 0; i < this.itemsContainer.childElementCount; i++) {
         const item = this.itemsContainer.children[i]
@@ -329,7 +335,7 @@ export default class MediaTool extends EditorTool {
   }
 
   validate(blockData) {
-    return blockData.items.length > 0
+    return blockData.items.length > 0 || (blockData.type == 'youtube' && Boolean(blockData.youtube_id))
   }
 
   selectTune(tune) {
@@ -346,7 +352,7 @@ export default class MediaTool extends EditorTool {
       $(this.uploader.wrapper).toggle(this.isGallery || this.itemsContainer.childElementCount === 0)
     }
 
-    if (tune.group == 'type') {
+    if (tune.group == 'type' && (this.data.type == 'image' || this.data.type == 'audio')) {
       this.itemsContainer.innerHTML = null
       this.data.items = []
       this.uploader.changeType(tune.name)

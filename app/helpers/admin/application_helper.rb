@@ -88,10 +88,12 @@ module Admin::ApplicationHelper
                      block['data']['items'].map { |i| "#{tag.i(class: 'image icon')} <a href=\"#{i['image']['preview']}\" target=\"_blank\">#{i['image']['preview'].split('/').last}</a>#{" - \"#{i['caption'].truncate(100)}\"" if i['caption']}" }
                    elsif block['data']['type'] == 'audio'
                      block['data']['items'].map { |i| "#{tag.i(class: 'volume up icon')} <a href=\"#{i['audio']['preview']}\" target=\"_blank\">#{i['title']}</a>" }
+                   elsif block['data']['type'] == 'youtube'
+                    tag.span('[YouTube Embed] → ') + tag.small("https://www.youtube.com/watch?v=#{block['data']['youtube_id']}") if block['data']['youtube_id'] # TODO: Translate
                    else
                      block['data']['items'].map { |i| "#{tag.i(class: "#{block['data']['type']} icon")} #{i['name']} (#{i['id']})" }
                    end
-          result = result.join('<br>')
+          result = result.join('<br>') if result.kind_of?(Array)
           result = sanitize(result, tags: %w[i a br], attributes: %w[href class target])
 
         when 'vimeo'

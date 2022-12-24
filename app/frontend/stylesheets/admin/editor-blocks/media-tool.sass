@@ -63,6 +63,9 @@
     .cdx-media__items__remove
       display: none
 
+  @include on-fields(url)
+    display: none
+
   @include with-option(size, wide)
     .cdx-block
       margin-left: -10px
@@ -223,6 +226,10 @@
 
     .uploader
       display: block !important
+
+@include type(youtube)
+  @include on-fields(url)
+    display: block
 
 // TYPE PICKER
 @include block
