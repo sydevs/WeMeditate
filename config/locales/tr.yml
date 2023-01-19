@@ -33,21 +33,21 @@ tr:
     preview_notice: "Ön bilgileri görüntülüyorsunuz"
     kundalini: "İçsel enerji"
     social: "Bizi takip edin"
-    further_reading: "Further Reading" # TODO: Translate
+    further_reading: "Daha Fazla Okuma"
 
   cookie_notice:
-    text: "wemeditate.com'yu kullanmaya devam ederek çerez kullanımımızı kabul etmiş oluyorsunuz."
+    text: "wemeditate.co'yu kullanmaya devam ederek çerez kullanımımızı kabul etmiş oluyorsunuz."
     learn_more: "Daha fazla bilgi edinin"
 
-  locale_redirect: # TODO: Translate
-    text: "Looking for Turkish?"
-    action: "Switch to Turkish"
+  locale_redirect: 
+    text: "Türkçesini mi arıyorsunuz?"
+    action: "Türkçeye git."
 
   footer:
     scroll_to_top: "Geri Dön"
     meditate_now: "Şimdi Meditasyon Yapın"
     music_for_meditation: "Meditasyon için müzik"
-    learn_more: "Daha fazla bilgi edin"
+    learn_more: "Daha fazla bilgi edinin"
     come_meditate: "Meditasyona katılın"
     online_meditations: "Çevrimiçi Rehberli Meditasyonlar"
     languages: "Diller"
@@ -139,7 +139,7 @@ tr:
       trending_meditation: "Bu aralar moda"
       random_meditation: "Kader karar versin"
       random_meditation_title: "Rastgele bir meditasyon deneyin"
-      random_meditation_description: "Şu anda neye ihtiyacın olduğundan emin değil misiniz? Şansınızı mı denemek istiyorsunuz? Oynat'ı tıklayın ve bırakın evren karar versin."
+      random_meditation_description: "Şu anda neye ihtiyacınız olduğundan emin değil misiniz? Şansınızı mı denemek istiyorsunuz? Oynat'ı tıklayın ve bırakın evren karar versin."
     custom_meditation:
       title: "Kendi Meditasyonunuzu Kurgulayın"
       choose_goal: "... hissetmek istiyorum" # Please keep ' ...' (with a space) at the end of your translation.
@@ -157,7 +157,7 @@ tr:
     subtitle: "Müzik için altyazı"
     text: "Çevrenizden bağımsızlaşmanıza ve gerçek bir iç huzuru elde etmenize yardımcı olmak için hazırladığımız meditatif müzik koleksiyonumuzun keyfini çıkarın."
     choose_mood: "Ruh halinize göre seçin"
-    choose_instruments: Müziğinizi seçin"
+    choose_instruments: "Müziğinizi seçin"
     playlist: "Çalma Listesi"
 
   treatments:
@@ -168,7 +168,7 @@ tr:
       action: "İçinizdeki Enerjiyi Uyandırın"
       explanation:
         text: "Herkesin, meditasyonu deneyimlemeden önce uyandırılması gereken bir içsel enerjisi vardır."
-        learn_more: "Daha fazla bilgi edin"
+        learn_more: "Daha fazla bilgi edinin"
       skip:
         text: "Bizimle daha önce meditasyon yaptınız mı?"
         action: "Meditasyon deneyiminizi geliştirin!"
@@ -176,7 +176,7 @@ tr:
       title: "Müzik"
       description: "Müzik, bizi dengeye getirerek ve zihnimizin düşüncelerden özgürleşmesine izin vererek hem rahatlatıcı hem de hafifçe uyarıcı olabilir. Daha derin bir meditasyon hali sağlamak için oluşturulmuş, özel olarak bestelenmiş parçalardan oluşan koleksiyonumuzu keşfedin."
       read_more: "Koleksiyonumuzdan seçin"
-    read_more: "Daha fazla bilgi edin"
+    read_more: "Daha fazla bilgi edinin"
     show_more: "Daha Fazla Teknik Göster"
 
   content:
@@ -189,7 +189,7 @@ tr:
       mobile: "Daha fazlasını öğrenmek için dokunun"
     chakras: "Çakralar"
     channels: "Kanallar"
-    read_more: "Daha fazla bilgi edin"
+    read_more: "Daha fazla bilgi edinin"
 
   classes:
     map_title: "Yakınımdaki Meditasyon Sınıfları"
@@ -200,7 +200,7 @@ tr:
 
   streams:
     title: "Tüm Çevrimiçi Meditasyonlar"
-    read_more: "Daha fazla bilgi edin"
+    read_more: "Daha fazla bilgi edinin"
     skip:
       title: "Zaman size uymuyor mu?"
       description: "Size uygun alternatif bir akış seçin"
@@ -237,12 +237,12 @@ tr:
   javascript:
     reading_time: "%minutes% dakika sayımı"
     loading: "Yükleniyor..."
-    error: "Error - please try again later" # TODO: Translate
+    error: "Hatalı - lütfen daha sonra tekrar deneyin"
     popup:
-      close: "Close (Esc)"
-      loading: "Loading..."
+      close: "Kapat (Esc)"
+      loading: "Yükleniyor..."
       prev: "Geri (Sol ok tuşu)"
       next: "İleri (Sağ ok tuşu)"
-      counter: "%curr% of %total%"
+      counter: "%curr% / %total%"
       image_error: "<a href=\"%url%\">The image</a> yüklenemedi."
       ajax_error: "<a href=\"%url%\">The content</a> yüklenemedi."
