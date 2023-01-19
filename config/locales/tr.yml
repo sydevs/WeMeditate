@@ -4,20 +4,20 @@
 
 tr:
   we_meditate: "We Meditate" # This is the title of the website
-  tagline: "Silence your mind and discover your inner potential with guided meditations. Connect with others around the world meditating for a better life."
+  tagline: "Rehberli meditasyonlarla zihninizi sessizleştirin ve içsel potansiyelinizi keşfedin. Daha iyi bir yaşama sahip olmak için dünyanın dört bir yanındaki meditasyon yapan başka kişilerle bağlantı kurun."
 
   routes: # These are for the website URLs, they should be all lower case and use dashes instead of spaces
-    inspiration: "inspiration"
-    articles: "articles"
-    meditations: "meditations"
-    techniques: "techniques"
-    subtle_system: "subtle-system"
-    page: "page"
-    music: "music"
-    archive: "all"
-    self_realization: "first-experience"
-    classes: "classes"
-    streams: "live"
+    inspiration: "ilham"
+    articles: "makaleler"
+    meditations: "meditasyonlar"
+    techniques: "teknikler"
+    subtle_system: "süptil-sistem"
+    page: "sayfa"
+    music: "müzik"
+    archive: "tümü"
+    self_realization: "ilk-deneyim"
+    classes: "sınıflar"
+    streams: "canlı"
     about: "hakkimizda"
     contact: "bizimle-iletisime-gecin"
     shri_mataji: "shri-mataji"
@@ -25,224 +25,224 @@ tr:
     privacy: "gizlilik-politikası"
     
   header:
-    advanced_articles: "All Articles" # TODO: Translate
-    advanced: "About Meditation"
-    live_meditations: "Live Classes"
-    classes_near_me: "Classes Near Me"
-    inspiration_from_within: "Inspiration comes from within"
-    preview_notice: "You are viewing a preview"
-    kundalini: "Inner Energy"
-    social: "Follow us"
+    advanced_articles: "Tüm Makaleler"
+    advanced: "Meditasyon Hakkında"
+    live_meditations: "Çevrimiçi Sınıflar"
+    classes_near_me: "Yakınlardaki Dersler"
+    inspiration_from_within: "İçten gelen ilham"
+    preview_notice: "Ön bilgileri görüntülüyorsunuz"
+    kundalini: "İçsel enerji"
+    social: "Bizi takip edin"
     further_reading: "Further Reading" # TODO: Translate
 
   cookie_notice:
-    text: "By continuing to use wemeditate.com you will be agreeing to our use of cookies."
-    learn_more: "Learn More"
+    text: "wemeditate.com'yu kullanmaya devam ederek çerez kullanımımızı kabul etmiş oluyorsunuz."
+    learn_more: "Daha fazla bilgi edinin"
 
   locale_redirect: # TODO: Translate
     text: "Looking for Turkish?"
     action: "Switch to Turkish"
 
   footer:
-    scroll_to_top: "Back to Top"
-    meditate_now: "Meditate Now"
-    music_for_meditation: "Music for meditation"
-    learn_more: "Learn more"
-    come_meditate: "Come meditate"
-    online_meditations: "Guided Meditations Online"
-    languages: "Languages"
-    self_realization: "The First Experience"
+    scroll_to_top: "Geri Dön"
+    meditate_now: "Şimdi Meditasyon Yapın"
+    music_for_meditation: "Meditasyon için müzik"
+    learn_more: "Daha fazla bilgi edin"
+    come_meditate: "Meditasyona katılın"
+    online_meditations: "Çevrimiçi Rehberli Meditasyonlar"
+    languages: "Diller"
+    self_realization: "İlk Deneyim"
 
   actions_footer:
-    title: "Discover it for yourself!"
-    subtitle: "Don’t just take our word for it. Try meditating and see how you feel!"
-    sidetext: "Try Meditation"
+    title: "Kendiniz için keşfedin!"
+    subtitle:  "Sadece bizim sözümüze güvenerek hareket etmeyin. Meditasyonu deneyin ve nasıl hissettiğinizi görün!" 
+    sidetext: "Meditasyonu deneyin"
     actions:
-      online: "Meditate online"
-      local: "Classes near me"
+      online: "Çevrimiçi meditasyon yapın"
+      local: "Yakınımdaki sınıflar"
 
   author:
-    about_the_author: "About the author"
-    about_the_artist: "About the artist"
-    written_by: "Written by"
+    about_the_author: "Yazar hakkında"
+    about_the_artist: "Sanatçı hakkında"
+    written_by: "Tarafından yazılmıştır"
     meditating_for:
-      one: "Meditating for %{count} year" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-      few: "Meditating for %{count} years" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
-      many: "Meditating for %{count} years" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+      one: "%{count} yıldır meditasyon yapıyor" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+      few: "%{count} yıldır meditasyon yapıyor" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
+      many: "%{count} yıldır meditasyon yapıyor" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
     countries:
       gb: UK
 
   form:
     input:
-      email: "Your email"
-      message: "Message"
+      email: "E-posta adresiniz"
+      message: "İleti"
       privacy:
-        signup: "By submitting this form, you agree to the processing of your personal data to receive guided meditations and other emails from WeMeditate."
-        contact: "By submitting this form, you agree that your data will be processed in accordance with our privacy policy. The data from this form will be forwarded to the We Meditate team via email and will not be stored in our database."
-        learn_more: "Learn more."
-      name: "Your name"
-      class: "Select class"
+        signup: "Bu formu göndererek, WeMeditate'ten rehberli meditasyonlar ve diğer e-postalar almak için kişisel verilerinizin işlenmesini kabul etmiş olursunuz."
+        contact: "Bu formu göndererek, verilerinizin gizlilik politikamıza uygun olarak işleneceğini kabul etmiş olursunuz. Bu formdaki veriler e-posta yoluyla We Meditate ekibine iletilecek ve veri tabanımızda saklanmayacaktır."
+        learn_more: "Daha fazla bilgi edinin."
+      name: "Adınız"
+      class: "Sınıf seçin"
     missing:
-      email: "You must provide an email address."
-      message: "You forgot to fill out a message."
-      name: "You must provide your name."
+      email: "Bir e-posta adresi vermelisiniz."
+      message: "Bir iletiyi doldurmayı unuttunuz."
+      name: "Adınızı vermelisiniz."
     success:
-      subscribe: "You have been subscribed."
-      contact: "Your message has been received."
-      register: "You have been registered."
+      subscribe: "Abone oldunuz."
+      contact: "Mesajınız alındı."
+      register: "Kaydınız yapıldı."
     button:
-      try_again: "Try Again"
-      submitted: "Submitted"
+      try_again: "Tekrar deneyin"
+      submitted: "Gönderilen"
 
   player: # For the music or video player
-    pause: "Pause"
-    play: "Play"
-    '%_buffered': "% buffered"
-    skip_back: "Previous Track"
-    skip_forward: "Next Track"
-    rewind_10_secs: "Rewind 10 secs"
-    forward_10_secs: "Forward 10 secs"
-    unmute: "Unmute"
-    mute: "Mute"
-    volume: "Volume"
-    disable_captions: "Disable captions"
-    enable_captions: "Enable captions"
-    exit_fullscreen: "Exit fullscreen"
-    enter_fullscreen: "Enter fullscreen"
-    duration: "Duration"
-    current_time: "Current time" # The current time that the player is at
-    seek: "Seek"
-    play_title: "Play, %{title}" # %{title} is the title of a video or music track
+    pause: "Duraklat"
+    play: "Oynat"
+    '%_buffered': "% arabelleğe alındı"
+    skip_back: "Önceki parça"
+    skip_forward: "Sonraki parça"
+    rewind_10_secs: "10 saniye geri sar"
+    forward_10_secs: "10 saniye ileri al"
+    unmute: "Sesini aç"
+    mute: "Sesini kapa" 
+    volume: "Ses"
+    disable_captions: "Altyazıları devre dışı bırak"
+    enable_captions: "Alt yazıları etkinleştir"
+    exit_fullscreen: "Tam ekrandan çık"
+    enter_fullscreen: "Tam ekrana geçiş yap"
+    duration: "Süre"
+    current_time: "Şimdiki zaman" # The current time that the player is at
+    seek: "Ara"
+    play_title: "%{title} oynat" # %{title} is the title of a video or music track
 
   articles:
-    read_more: "Read more" # Takes you to the article page
-    load_more: "Load more" # Loads more articles
-    filter: "Filter"
-    show_all: "All"
-    share: "Share: "
+    read_more: "Daha fazla okuyun" # Takes you to the article page
+    load_more: "Daha fazla yükleyin" # Loads more articles
+    filter: "Filtre"
+    show_all: "Tümü"
+    share: "Paylaş: "
 
   meditations:
-    title: "Meditations"
+    title: "Meditasyonlar"
     prescreen:
-      title: "Unlock guided meditations by awakening your %{kundalini} first"
-      kundalini: "inner energy"
-      action: "Awaken Your Inner Energy"
+      title: "Önce %{kundalini}'nizi uyandırarak rehberli meditasyonlara giriş yapın"
+      kundalini: "içsel enerji"
+      action: "İçinizdeki Enerjiyi Uyandırın"
       explanation:
-        text: "Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation."
-        learn_more: "Learn more"
+        text: "Herkesin, meditasyon durumunu deneyimlemeden önce uyandırılması gereken bir içsel enerjisi vardır."
+        learn_more: "Daha fazla bilgi edinin"
       skip:
-        text: "Meditated with us before?"
-        action: "Continue to your guided meditation"
+        text: "Bizimle daha önce meditasyon yaptınız mı?"
+        action: "Rehberli meditasyonunuza devam edin"
     featured:
-      self_realization: "Get started"
-      daily_meditation: "Meditation of the day"
-      trending_meditation: "Trending now"
-      random_meditation: "Let fate decide"
-      random_meditation_title: "Try a random meditation"
-      random_meditation_description: "Not sure what you need right now? Just feel like taking a chance? Click play and let the universe decide."
+      self_realization: "Başlayın"
+      daily_meditation: "Günün meditasyonu"
+      trending_meditation: "Bu aralar moda"
+      random_meditation: "Kader karar versin"
+      random_meditation_title: "Rastgele bir meditasyon deneyin"
+      random_meditation_description: "Şu anda neye ihtiyacın olduğundan emin değil misiniz? Şansınızı mı denemek istiyorsunuz? Oynat'ı tıklayın ve bırakın evren karar versin."
     custom_meditation:
-      title: "Set Up your own Meditation"
-      choose_goal: "I wish to feel ..." # Please keep ' ...' (with a space) at the end of your translation.
-      choose_duration: "I have"
-      goal_prompt: "Select goal"
-      submit: "Start meditation"
-      minutes: "min"
+      title: "Kendi Meditasyonunuzu Kurgulayın"
+      choose_goal: "... hissetmek istiyorum" # Please keep ' ...' (with a space) at the end of your translation.
+      choose_duration: "Sahibim"
+      goal_prompt: "Hedef seçin"
+      submit: "Meditasyona başla"
+      minutes: "dk"
     archive:
-      see_all_meditations: "See all meditations"
-      title: "Guided Meditations"
-      view_meditation: "View meditation"
-      load_more: "Load more"
+      see_all_meditations: "Tüm meditasyonları görün"
+      title:  "Rehberli Meditasyonlar"
+      view_meditation: "Meditasyon görüntüle"
+      load_more: "Daha fazla yükle"
 
   tracks:
-    subtitle: "Subtitle for music"
-    text: "Enjoy a curated collection of meditation music we produced to help you disconnect from your surroundings and achieve a true state of inner peace."
-    choose_mood: "Choose the mood"
-    choose_instruments: "Choose your sound"
-    playlist: "Playlist"
+    subtitle: "Müzik için altyazı"
+    text: "Çevrenizden bağımsızlaşmanıza ve gerçek bir iç huzuru elde etmenize yardımcı olmak için hazırladığımız meditatif müzik koleksiyonumuzun keyfini çıkarın."
+    choose_mood: "Ruh halinize göre seçin"
+    choose_instruments: Müziğinizi seçin"
+    playlist: "Çalma Listesi"
 
   treatments:
-    header_title: "Technique: %{title}"
+    header_title: "Teknik: %{title}"
     prescreen:
-      title: "Before using methods to improve meditation, you need to awaken your %{kundalini}"
-      kundalini: "inner energy"
-      action: "Awaken Your Inner Energy"
+      title: "Meditasyon deneyiminizi geliştirmek için yöntemler kullanmaya başlamadan önce, %{kundalini}'nizi uyandırmanız gerekir"
+      kundalini: "içsel enerji"
+      action: "İçinizdeki Enerjiyi Uyandırın"
       explanation:
-        text: "Everyone has an inner energy, which needs to be awakened before you can experience the state of meditation."
-        learn_more: "Learn more"
+        text: "Herkesin, meditasyonu deneyimlemeden önce uyandırılması gereken bir içsel enerjisi vardır."
+        learn_more: "Daha fazla bilgi edin"
       skip:
-        text: "Meditated with us before?"
-        action: "Improve your meditation!"
+        text: "Bizimle daha önce meditasyon yaptınız mı?"
+        action: "Meditasyon deneyiminizi geliştirin!"
     music:
-      title: "Music"
-      description: "Music can be both relaxing and gently stimulating, bringing us into balance and allowing our minds to go thoughtless, Explore our curated collection of specially composed tracks, created to enable a deeper state of meditation."
-      read_more: "Choose from our collection"
-    read_more: "Learn more"
-    show_more: "Show More Techniques"
+      title: "Müzik"
+      description: "Müzik, bizi dengeye getirerek ve zihnimizin düşüncelerden özgürleşmesine izin vererek hem rahatlatıcı hem de hafifçe uyarıcı olabilir. Daha derin bir meditasyon hali sağlamak için oluşturulmuş, özel olarak bestelenmiş parçalardan oluşan koleksiyonumuzu keşfedin."
+      read_more: "Koleksiyonumuzdan seçin"
+    read_more: "Daha fazla bilgi edin"
+    show_more: "Daha Fazla Teknik Göster"
 
   content:
-    credit: "Credit"
-    show_more: "Show More"
+    credit: "Beğeni"
+    show_more: "Daha fazla göster"
 
   subtle_system:
     title:
-      desktop: "Hover to learn more"
-      mobile: "Tap to learn more"
-    chakras: "Chakras"
-    channels: "Channels"
-    read_more: "Learn More"
+      desktop: "Daha fazlasını öğrenmek için üzerine tıklayın"
+      mobile: "Daha fazlasını öğrenmek için dokunun"
+    chakras: "Çakralar"
+    channels: "Kanallar"
+    read_more: "Daha fazla bilgi edin"
 
   classes:
-    map_title: "Meditation Classes Near Me"
-    prompt: "Enter your city or post code"
-    nearby: "Nearby"
-    loading: "Locating..."
-    found: "Click to confirm"
+    map_title: "Yakınımdaki Meditasyon Sınıfları"
+    prompt: "Şehrinizi veya posta kodunuzu girin"
+    nearby: "Yakında"
+    loading: "... bulunuyor"
+    found:  "Onaylamak için tıklayın"
 
   streams:
-    title: "All Live Meditations"
-    read_more: "Learn more"
+    title: "Tüm Çevrimiçi Meditasyonlar"
+    read_more: "Daha fazla bilgi edin"
     skip:
-      title: "Time doesn't suit you?"
-      description: "Choose an alternative stream that works for you"
-      action: "See other times"
+      title: "Zaman size uymuyor mu?"
+      description: "Size uygun alternatif bir akış seçin"
+      action: "Diğer zamanlara bakın"
     live:
-      title: "We are live now!"
+      title: "Artık yayındayız!"
       identifier:
         zoom: zoom.us # Do not translate
         google: meet.google.com # Do not translate
       action:
-        stream: "Watch the Broadcast"
-        zoom: "Join via Zoom"
-        google: "Join via Google Meet"
-        default: "Join via Video Call"
-      description: "Press play to join our live meditation session streaming right now"
-      alt_description: "Enjoy the meditation via broadcast, or join a video call where you can ask questions."
+        stream: "Yayın izleyin"
+        zoom: "Zoom ile katılın"
+        google: "Google Meet aracılığıyla katılın"
+        default: "Görüntülü Arama ile Katılın"
+      description: "Çevrimiçi meditasyon seans akışımıza hemen katılmak için oynat'a basın"
+      alt_description: "Yayın yoluyla meditasyonun keyfini çıkarın veya soru sorabileceğiniz bir görüntülü görüşmeye katılın."
     timing:
-      days: "Days"
-      hours: "Hours"
-      minutes: "Minutes"
-      seconds: "Seconds"
+      days: "Gün"
+      hours: "Saat"
+      minutes: "Dakika"
+      seconds: "Saniye"
 
   errors:
-    title: "Oops..."
-    coming_soon: "Coming Soon"
-    no_programs: "Meditation classes in your area are coming soon."
-    error: "Error"
-    alternatives_title: "Try one of these instead:"
-    report_issue: "Please try again, and report this issue if it continues to occur. When reporting the issue, please do your best to describe what specific actions you were taking before the issue occurred."
-    '404': "This page doesn’t exist"
-    '422': "The change you wanted was rejected"
-    '500': "We're sorry, but something went wrong"
+    title: "Hata..."
+    coming_soon: "Pek yakında"
+    no_programs: "Bölgenizdeki meditasyon dersleri yakında başlıyor."
+    error: "Hata"
+    alternatives_title: "Bunun yerine şunlardan birini deneyin:"
+    report_issue: "Lütfen tekrar deneyin ve problem devam ederse bu sorunu bildirin. Sorunu bildirirken, lütfen sorun oluşmadan önce hangi işlemleri yaptığınızı açıklamak için elinizden gelenin en iyisini yapın."
+    '404': "Bu sayfa mevcut değil"
+    '422': "İstediğiniz değişiklik reddedildi"
+    '500': "Üzgünüz, yanlış giden bir şeyler oldu"
 
   javascript:
-    reading_time: "%{minutes} minute read"
-    loading: "Loading..."
+    reading_time: "%minutes% dakika sayımı"
+    loading: "Yükleniyor..."
     error: "Error - please try again later" # TODO: Translate
     popup:
       close: "Close (Esc)"
       loading: "Loading..."
-      prev: "Previous (Left arrow key)"
-      next: "Next (Right arrow key)"
+      prev: "Geri (Sol ok tuşu)"
+      next: "İleri (Sağ ok tuşu)"
       counter: "%curr% of %total%"
-      image_error: "<a href=\"%url%\">The image</a> could not be loaded."
-      ajax_error: "<a href=\"%url%\">The content</a> could not be loaded."
+      image_error: "<a href=\"%url%\">The image</a> yüklenemedi."
+      ajax_error: "<a href=\"%url%\">The content</a> yüklenemedi."
