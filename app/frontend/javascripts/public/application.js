@@ -94,6 +94,7 @@ export function unload() {
       if (typeof instance.unload === 'function') {
         console.log('unloading', selector) // eslint-disable-line no-console
         instance.unload()
+        delete instances[selector][key]
       }
     }
   }
