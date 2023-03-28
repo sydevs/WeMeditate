@@ -32,7 +32,7 @@ module NavigationHelper
       result = []
 
       # Collect the four basic navigaton links
-      %i[meditations tracks streams articles].each do |role|
+      %i[meditations tracks streams classes articles].each do |role|
         next if role == :streams && !Stream.public_stream.any?
 
         static_page = StaticPage.preview(role)

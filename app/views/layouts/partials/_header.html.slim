@@ -7,7 +7,7 @@ ruby:
   classes << 'header--minimal' if minimal
   classes << "header--custom-#{@header_style}" if @header_style
 
-  use_live_streams = Stream.public_stream.any?
+  use_live_streams = Stream.public_stream.any? && I18n.locale != :en
   come_meditate_path = use_live_streams ? static_page_path(:streams) : static_page_path(:classes)
 
 header#header.header class=classes
