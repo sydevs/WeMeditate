@@ -58,9 +58,9 @@ ru:
       descriptive:
         show: "Посмотреть на сайте"
         preview: "Предварительный просмотр на сайте"
-        reload_vimeo_data: "Reload Vimeo Metadata"
+        reload_vimeo_data: "Перезагрузить метаданные Vimeo"
         audit: "Просмотреть изменения" 
-        restore_autosave: "restore autosave" # TODO: Translate
+        restore_autosave: "Восстановить автосохранение"
 
     # ===== MESSAGES ===== #
     # This section includes messages which will be displayed to the administrator.
@@ -76,9 +76,9 @@ ru:
       featured_date: "Дата Статьи" # The date which will be shown on an article preview
       role: "Роль На Сайте"
       pending_changes: "Эта %{page} имеет изменения, требующие утверждения" 
-      start_date: "Start Date" # TODO: Translate
-      records_from_other_languages: "%{pages} from other languages" # TODO: Translate
-      records_for_super_admin: "Global Administrators" # TODO: Translate
+      start_date: "Дата начала"
+      records_from_other_languages: "%{pages} на других языках"
+      records_for_super_admin: "Глобальные администраторы"
 
     tags:
       published: "Опубликовано"
@@ -110,63 +110,63 @@ ru:
     messages:
       loading: "Загружается"
       errors: "Ошибки"
-      no_records_found: "No %{pages} found" # TODO: Translate
+      no_records_found: "Найдено %{pages} статей"
       no_translations_found: "Все статьи типа \"%{pages}\" уже переведены"
       make_public: "Сделать %{page} видимой для пользователей"
       maintenance_mode: "Сайт в разработке, возвращайтесь через некоторое время."
-      confirm_destroy: "Вы уверены, что хотите удалить это? Действие невозможно будет отменить!"
+      confirm_destroy: "Вы уверены, что хотите удалить это? Действие будет невозможно отменить!"
       confirm_discard_draft: "Вы уверены, что хотите отменить правки, показанные на этой странице? Действие невозможно будет отменить!" 
       confirm_unsaved_changes: "Подождите! Несохраненные данные будут потеряны. Вы уверены, что хотите покинуть страницу?"
       drop_files_here: "Переместите файлы сюда"
       unapproved_changes_notice: "%{page} имеет несохраненные изменения. Изменения не видны пользователям, пока они не утверждены администратором."
       pending_invitation_notice: "%{person} получил приглашение стать редактором сайта, но ещё не ответил."
       draft_notice: "Вы просматриваете черновик %{page}. Эта версия не видна пользователям, пока они не утверждена администратором."
-      draft_outline: # TODO: Translate
-        one: "This %{page} has draft content, with 1 content block."
-        other: "This %{page} has draft content, with %{count} content blocks."
+      draft_outline:
+        one: "У страницы %{page} есть черновик с 1 блоком контента."
+        other: "У страницы %{page} есть черновик с %{count} блоками контента."
       draft_contributed_by: "Этот черновик содержит изменения, сделанные %{people}."
       text_too_short: "должен быть по крайней мере %{count} букв"
       invalid_vimeo_id: "должно иметь действующее Vimeo ID"
       new_author_notice: "Вы ещё не настроили свой профиль автора, заполните поля ниже и нажмите сохранить."
       start_details_before_content: "Сначала надо перевести параметры, потом контент." 
       self_realization_slug: "Адрес страницы самореализации должен быть \"%{slug}\"" 
-      autosave_detected: "Autosave detected" # TODO: Translate
+      autosave_detected: "Обнаружено автосохранение"
 
     hints: 
       excerpt: "Это короткое превью страницы, которое будет показано в списке страниц типа \"%{page}\"."
       article_visibility: "Это определяет, в какой категории будет размещена статья на странице Вдохновение." 
-      article_author: "Профиль, который будет отображаться в статье на сайте."
+      article_author: "Профиль автора, который будет отображаться на сайте."
       article_article_type: "Различные типы статей будут предлагать несколько разных полей и по-разному отображать автора." 
       article_coordinates: "Указание широты и долготы позволит улучшить результаты поиска Google." 
       article_owner: "Администраторы и Редакторы всегда могут редактировать любые статьи. Это поле дает автору специальное разрешение на изменение статьи после её публикации. Обычно это человек, который написал первую версию статьи."
       article_video: "Если вы добавите видео, оно будет отображено на превью статьи."
       article_date: "Установите дату начала мероприятия здесь. Эта дата появится в превью статьи." 
       article_published_at: "Статья будет опубликована в эту дату. Оставьте это поле пустым, чтобы автоматически установить дату публикации." 
-      article_type_report: "'Report' type articles are general articles which we don't want to attribute to an individual author." # TODO: Translate
-      fixed_slug: "Это особая страница, ее адрес (URL) нельзя изменить." 
-      preferred_language: "This is the language the user will view the admin website in." # TODO: Translate
+      article_type_report: "Статьи типа 'Обзор' - это общие статьи, которые мы не хотим приписывать отдельному автору."
+      fixed_slug: "Это особая страница, её URL-адрес нельзя изменить." 
+      preferred_language: "Это язык, на котором пользователь будет просматривать сайт администратора."
       languages_access: "Это языки, на которых пользователь может изменять контент." 
       languages_known: "Это языки, с которых пользователь может переводить контент." 
-      stream: # TODO: Translate
-        url: "This should be an embeddable link to whichever service this meditation is being streamed with. For example: Twitch, Vimeo, etc. This should be a stable URL that will work every time."
-        location: "Where is this meditation being broadcasted from?"
-        recurrence: "Which days of the week will you be streaming on? Click all that apply."
-        list_id: "You must have a list set up in SendInBlue (our mailing service) and supply a unique list ID here. This list will be used for those who want to subscribe for reminders of when the meditation starts."
-        target_time_zones: "Users in the selected timezones will be shown this stream on the main live meditations page. You can select multiple timezones. Selected zones are marked in green."
-        target_time_zones_conflict: "Note: If multiple streams are featured in the same timezone, the one which is physically closer to the user will be shown."
-        video_conference_url: "This may be a link to Zoom, Google Hangouts, or another live video call where attendees will be able to interact with the program leader."
-      category: # TODO: Translate
-        show_articles_in_header: "Articles from this category will be shown in the site header dropdown."
-        show_articles_in_index: "Articles from this category will be shown in the Inspiration index."
-
-    form: # TODO: Translate
-      category:
-        publishing: "Publishing"
       stream:
-        preview: "Preview"
-        timing: "Timing"
-        location: "Location"
-        attributes: "Attributes"
+        url: "Это должна быть встраиваемая ссылка на любой сервис, с помощью которого транслируется медитация. Например: Twitch, Vimeo и др. Это должен быть стабильный URL-адрес, который будет работать каждый раз."
+        location: "Откуда транслируется эта медитация?"
+        recurrence: "В какие дни недели вы будете проводить трансляции?"
+        list_id: "Укажите уникальный идентификатор списка SendInBlue (наш сервис рассылки), который надо предварительно настроить. Список нужен для тех, кто хочет подписаться на напоминания о начале медитаций."
+        target_time_zones: "Для пользователей выбранных часовых поясов эта трансляция будет показана на главной странице live медитаций. Вы можете выбрать несколько часовых поясов. Выбранные часовые пояса отмечены зелёным цветом."
+        target_time_zones_conflict: "Если в одном часовом поясе представлено несколько трансляций, то будет показана та, который физически ближе к пользователю."
+        video_conference_url: "Это может быть ссылка на Zoom, Google Hangouts или другой сервис видеозвонков, где можно провожить встречи в интерактивном формате."
+      category:
+        show_articles_in_header: "Статьи из этой категории будут отображаться в выпадающем меню шапки сайта."
+        show_articles_in_index: "Статьи из этой категории будут отображаться в разделе Ввдохновение."
+
+    form:
+      category:
+        publishing: "Публикация"
+      stream:
+        preview: "Предпросомтр"
+        timing: "Время"
+        location: "Место"
+        attributes: "Атрибуты"
 
     result:
       created: "Успешно создан."
@@ -273,7 +273,7 @@ ru:
         action: "Текст Кнопки"
         url: "Вставьте Ссылку"
         quote: "Введите цитату" # "Quote" as in a quotation from some other text or person
-        subtitle: "Subtitle" # TODO: Translate
+        subtitle: "Подзаголовок"
         alt: "Опишите, что на изображении (нужно для сео и людей с проблемами зрения)" 
         caption: "Введите подпись к изображению" # "Caption" as in a piece of text describing an image
         credit: "Введите автора изображения/цитаты" # "Credit" as in the credit for an image or quotation
@@ -299,15 +299,15 @@ ru:
       publish: "Можно Утверждать Изменения"
       destroy: "Можно Удалять"
       special:
-        update_own: "Можно Изменять %{pages}"
-        publish_own: "Можно Утверждать Изменения %{pages}"
-        update_own_bio: "Можно Изменять Свою Биографию"
-        create_own_bio: "Можно Создать Свою Биографию"
-        update_own_user: "Can Modify Own Account" # TODO: Translate
-        update_subordinate: "Можно Изменять %{subordinates}"
-        create_subordinate: "Можно Создавать %{subordinates}"
+        update_own: "Можно изменить %{pages}"
+        publish_own: "Можно утвердить изменения %{pages}"
+        update_own_bio: "Можно изменить свою биографию"
+        create_own_bio: "Можно создать свою биографию"
+        update_own_user: "Можно изменить свой аккаунт"
+        update_subordinate: "Можно изменить %{subordinates}"
+        create_subordinate: "Можно создать %{subordinates}"
       role_description: # This describes the responsibilities of a given type of administrator
-        translator: "переводят контент, который был опубликован на других языках, на соответствующий язык."
+        translator: "переводят контент, который был уже опубликован на других языках."
         writer: "могут создавать новые статьи или редактировать старые, ранее написанные ими статьи."
         editor: "проверяют и публикуют статьи, написанные авторами, а также могут сами писать статьи."
         regional_admin: "отвечает за утверждение переводов, переводит основную часть сайта, контролирует публикацию нового контента на соответстующем языке."
@@ -333,7 +333,7 @@ ru:
         nochange: "Без Изменений"
 
     preview:
-      no_custom_meditations: "Пользовательский интерфейс медитации нельзя просмотреть, поэтому он был скрыт для этого предварительного просмотра."
+      no_custom_meditations: "Пользовательский интерфейс медитации нельзя просмотреть, поэтому он был скрыт для предварительного просмотра."
 
     metadata:
       key: "Название"
@@ -358,9 +358,9 @@ ru:
           many: "Черновик с %{count} блоками" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
 
     dashboard: 
-      title: "Dashboard for %{language}" # TODO: Translate
+      title: "Панель управления для %{language}"
       content:
-        title: "Опубликованный Контент"
+        title: "Опубликованный контент"
         public: "%{language} сайт (%{host}) доступен пользователям и имеет следующий опубликованный контент."
         private: "%{language} сайт (%{host}) не доступен пользователям, но имеет следующий контент, готовый к публикации."
       schedule:
@@ -381,11 +381,11 @@ ru:
         created_at: "Создано"
         last_sign_in_at: "Последний логин"
         minutes: "Продолжительность"
-        node: "Node" # TOOD: Translate
-        location: "Location" # TODO: Translate
-        local_time: "Local Time" # TODO: Translate
-        slug: "URL" # TODO: Translate
-        original_locale: "Language" # TODO: Translate
+        node: "Узел"
+        location: "Местоположение"
+        local_time: "Местное время"
+        slug: "URL-адрес"
+        original_locale: "Язык"
         category_id: :activerecord.models.category.one # Do not translate
         categories: :activerecord.models.category.other # Do not translate
         popularity: :activerecord.attributes.meditation.popularity # Do not translate
@@ -433,7 +433,7 @@ ru:
         unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
         not_published: :activerecord.attributes.generic.states.unpublished # Do not translate
         # Publishable
-        public: "публичный"
+        public: "опубликованный"
         private: "скрытый"
         # Users
         pending: "в ожидании"
@@ -453,10 +453,10 @@ ru:
         message:
           # Pages
           static_pages: "Это основные страницы сайта - главная, вдохновение, Шри Матаджи и др. Большинство этих страниц имеют предопределенное содержание и URL-адреса."
-          promo_pages: "These are custom landing pages. These are used to promote events and special courses." # TODO: Translate
+          promo_pages: "Это настраиваемые посадочные страницы. Они используются для продвижения событий и специальных курсов."
           articles: "Статьи написаны йогами для вдохновения искателей. Они могут охватывать различные темы, такие как: медитация в повседневной жизни; реализованные люди; художественные произведения, музыка или поэзия йогов; подробные статьи на более глубокие темы и т.д. <br><br>Все статьи показаны на странице \"Вдохновение\"."
           subtle_system_nodes: "Это страницы, которые о тонкой системе. Каждая страница подробно описывает чакру или канал."
-          streams: "These are live online meditations that are streamed on a weekly basis at a set time. The livestream of the meditation will be embedded on We Meditate, and seekers can subscribe for a reminder when the meditation starts." # TODO: Translate
+          streams: "Это живые онлайн-медитации, которые транслируются еженедельно в установленное время. Прямая трансляция медитации будет встроена в сайт WeMeditate, и искатели могут подписаться на напоминания о начале медитаций."
           # Resources
           meditations: "Это видео медитаций. Они доступны на странице \"Медитации\". <br><br>Медитации разбиты по продолжительности и целям, так что пользователь может выбрать в зависимости от своих интересов. Каждая медитация имеет статистику популярности (количество просмотров в недавнее время)."
           treatments: "Это страницы, которые описывают различные методы чисток. Каждый метод имеет описание и может иметь видео."
@@ -505,9 +505,9 @@ ru:
 
     misc:
       no_translated_title: "Отсутствует Перевод Заголовка" # This should be written in titlecase
-      previous_slugs: "Previous URLs Used" # TODO: Translate
+      previous_slugs: "Прошлые URL-адреса"
       menu:
-        dashboard: "Dashboard" # TODO: Translate
+        dashboard: "Панель управления"
         my_author: "Мой профиль"
         all_authors: "Профили всех авторов"
         # The website's editable content is broken into three sections Pages, Resources, and People
@@ -516,7 +516,7 @@ ru:
         people: "Люди"
         # For specific models
         static_pages: "Основные Страницы"
-        promo_pages: "Landing Pages" # TODO: Translate
+        promo_pages: "Посадочные Страницы"
         articles: "Статьи Вдохновение"
         subtle_system_nodes: "Тонкая Система"
         streams: :activerecord.models.stream.other # Do not translate
