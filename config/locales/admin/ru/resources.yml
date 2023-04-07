@@ -17,11 +17,11 @@ ru:
         many: "Основных страниц" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
         other: "Основные cтраницы" # Nonspecific number of elements
         
-      promo_page: # TODO: Translate
-        one: "Landing Page" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
-        few: "Landing Pages" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
-        many: "Landing Pages" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
-        other: "Landing Pages" # Nonspecific number of elements
+      promo_page:
+        one: "Посадочная страница" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
+        few: "Посадочные страницы" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …
+        many: "Посадочных страниц" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
+        other: "Посадочные страницы" # Nonspecific number of elements
 
       subtle_system_node: # This is a page for a Chakra, Channel, or the Kundalini. ie. Some part of the subtle system
         one: "Элемент тонкой системы" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
@@ -146,7 +146,7 @@ ru:
           article: "Статья"
           artwork: "Творчество"
           event: "Событие"
-          report: "Report" # TODO: Translate
+          report: "Обзор"
         excerpt: "Выдержка"
         thumbnail: "Превью"
         thumbnail_id: :activerecord.attributes.article.thumbnail # Do not translate
@@ -190,9 +190,9 @@ ru:
         content: "Контент"
         metatags: "Метаданные"
 
-      promo_page: # TODO: Translate
+      promo_page:
         draft: :activerecord.attributes.generic.draft # Do not translate
-        name: "Title"
+        name: "Заголовок"
         slug: :activerecord.attributes.generic.slug # Do not translate
         state: :activerecord.attributes.generic.state # Do not translate
         states:
@@ -201,9 +201,9 @@ ru:
           archived: :activerecord.attributes.generic.states.archived # Do not translate
           published: :activerecord.attributes.generic.states.published # Do not translate
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
-        content: "Content"
-        metatags: "Metadata"
-        owner: "Allow a writer to update this page"
+        content: "Контент"
+        metatags: "Метаданные"
+        owner: "Разрешить автору обновлять эту страницу"
 
       subtle_system_node:
         state: :activerecord.attributes.generic.state # Do not translate
@@ -233,9 +233,9 @@ ru:
         content: "Контент"
         metatags: "Метаданные"
 
-      stream: # TODO: Translate
+      stream:
         draft: :activerecord.attributes.generic.draft # Do not translate
-        name: "Title"
+        name: "Заголовок"
         slug: :activerecord.attributes.generic.slug # Do not translate
         state: :activerecord.attributes.generic.state # Do not translate
         states:
@@ -244,30 +244,30 @@ ru:
           archived: :activerecord.attributes.generic.states.archived # Do not translate
           published: :activerecord.attributes.generic.states.published # Do not translate
           unpublished: :activerecord.attributes.generic.states.unpublished # Do not translate
-        excerpt: "Excerpt"
-        stream_url: "Embeddable Stream URL"
-        video_conference_url: "Video Conference URL"
-        thumbnail: "Thumbnail"
+        excerpt: "Выдержка"
+        stream_url: "Встраиваемый URL-адрес трансляции"
+        video_conference_url: "URL-адрес видеозвонка"
+        thumbnail: "Превью (thumbnail)"
         thumbnail_id: :activerecord.attributes.stream.thumbnail # Do not translate
-        location: "Location"
-        time_zone_identifier: "Time Zone"
-        time_zone_offset: "Time Zone Offset"
-        start_date: "Start Date"
-        start_time: "Start Time"
-        end_time: "End Time"
-        duration: "Duration"
-        recurrence: "Days of the Week"
+        location: "Местоположение"
+        time_zone_identifier: "Часовой пояс"
+        time_zone_offset: "Смещение часового пояса"
+        start_date: "Дата начала"
+        start_time: "Время начала"
+        end_time: "Время конца"
+        duration: "Продолжительность"
+        recurrence: "Дни недели"
         recurrences:
-          monday: "Mon"
-          tuesday: "Tue"
-          wednesday: "Wed"
-          thursday: "Thu"
-          friday: "Fri"
-          saturday: "Sat"
-          sunday: "Sun"
-        target_time_zones: "Featured in Time Zones"
-        content: "Content"
-        metatags: "Metadata"
+          monday: "Пн"
+          tuesday: "Вт"
+          wednesday: "Ср"
+          thursday: "Чт"
+          friday: "Пт"
+          saturday: "Сб"
+          sunday: "Вс"
+        target_time_zones: "Показывается в часовых поясах"
+        content: "Контент"
+        metatags: "Метаданные"
 
       category:
         published: :activerecord.attributes.article.published # Do not translate
@@ -277,8 +277,8 @@ ru:
           one: "%{count} Статья" # Eg. 1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …
           few: "%{count} Статьи" # Eg. 2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, … 
           many: "%{count} Статей" # Eg. 0, 5~19, 100, 1000, 10000, 100000, 1000000, …
-        show_articles_in_header: "Feature Articles in Header" # TODO: Translate
-        show_articles_in_index: "Show Articles in Inspiration Index" # TODO: Translate
+        show_articles_in_header: "Показывать статьи в шапке сайта"
+        show_articles_in_index: "Показывать статьи в разделе Вдохновение"
 
       treatment:
         draft: :activerecord.attributes.generic.draft # Do not translate
