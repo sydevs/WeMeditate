@@ -122,6 +122,7 @@ de:
     share: "Teilen: "
 
   meditations:
+    not_translated: "Einige Videos sind im Moment nur in English verfügbar. Die deutsche Version folgt in Kürze."
     title: "Meditationen"
     prescreen:
       title: "Schalte die geführten Meditationen frei, in dem du zuerst deine %{kundalini} erweckst"
