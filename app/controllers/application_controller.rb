@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
       ru: 'RU',
       cs: 'CZ',
       it: 'IT',
+      ko: 'SK',
     }
 
     config = params.permit(:q, :country)
