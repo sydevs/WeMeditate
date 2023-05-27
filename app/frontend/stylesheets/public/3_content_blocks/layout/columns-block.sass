@@ -52,6 +52,7 @@ $image-height: 200px
   letter-spacing: 0.18px
   margin-top: 0.5em
   margin-bottom: 0.5em
+  padding-bottom: 0.5em
 
   @include laptop
     font-size: 1.5rem
@@ -78,13 +79,20 @@ $image-height: 200px
     line-height: 1.25
     height: auto
     width: auto
-    max-width: 100px
+    max-width: 124px
+    word-break: keep-all
 
   @each $side in left right
     $opposite: if($side == left, right, left)
     $key: if($side == left, prev, next)
+    $direction: if($side == left, row, row-reverse)
+    
+    .slick-#{$key}
+      display: flex
+      flex-direction: $direction
 
-    .slick-#{$key}:before
+    .slick-#{$key}::before
       margin-#{$opposite}: 15px
-      float: $side
+      margin-#{$side}: 5px
       line-height: 44px
+      color: $color-text-darker
