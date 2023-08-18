@@ -26,3 +26,7 @@ html lang=locale
 
 body class="#{controller_name} #{controller_name}-#{action_name}"
   = yield
+
+  javascript:
+    window.translations = #{translate('javascript').to_json.html_safe}
+    window.locale = '#{Globalize.locale}'

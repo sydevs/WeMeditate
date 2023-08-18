@@ -78,7 +78,7 @@ export function load() {
   loadAll('audio', Audio)
 
   loadFirst('header', Header)
-  setHeader(instances.header[0])
+  if (instances.header) setHeader(instances.header[0])
   loadFirst('categories-menu', CategoriesMenu)
   loadFirst('custom-meditation', CustomMeditation)
   loadFirst('geosearch', GeoSearch)

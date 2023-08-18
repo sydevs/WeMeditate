@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   prepend_before_action :set_locale!
   before_action :enforce_maintenance_mode, except: %i[maintenance]
   skip_forgery_protection only: %i[contact subscribe] # Because of page caching
+  layout Proc.new { |controller| params[:embed] ? 'basic' : 'application' }
 
   # The root page of the website
   def home
@@ -129,6 +130,11 @@ class ApplicationController < ActionController::Base
 
       redirect_to record, status: :moved_permanently
       true
+    end
+
+    def set_locale!
+      I18n.locale = params[:locale]&.to_sym || :en
+      Globalize.locale = params[:locale]&.to_sym || :en
     end
 
     def set_locale!

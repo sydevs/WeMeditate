@@ -1,9 +1,10 @@
+- url = subtle_system_node_path(subtle_system_node, embed: params[:embed])
 
 .preview.subtle-system__item id=dom_id(subtle_system_node) class="subtle-system__item--#{subtle_system_node.role.to_s.dasherize}"
-  a.preview__title href=url_for(subtle_system_node) data=gtm_record(subtle_system_node)
+  a.preview__title href=url data=gtm_record(subtle_system_node)
     = subtle_system_node.name
   p.preview__text = subtle_system_node.excerpt
   .preview__meta
-    a.preview__meta__link href=url_for(subtle_system_node) data=gtm_record(subtle_system_node, prefix: 'subtle_system.read_more')
+    a.preview__meta__link href=url data=gtm_record(subtle_system_node, prefix: 'subtle_system.read_more')
       = t('subtle_system.read_more')
       .icon.icon--breadcrumb
