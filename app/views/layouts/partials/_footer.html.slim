@@ -8,6 +8,7 @@
 - classes_page = StaticPage.preview(:classes)
 - self_realization_page = StaticPage.preview(:self_realization)
 - privacy_page = StaticPage.preview(:privacy)
+- streams_page = StaticPage.preview(:streams)
 
 footer.footer
   .footer__divider = image_pack_tag('media/images/footer/illustration.svg')
@@ -33,6 +34,7 @@ footer.footer
         .footer__header = translate 'footer.come_meditate'
         a.footer__link href=static_page_path(classes_page) = classes_page.name
         a.footer__link href=meditations_path = translate 'footer.online_meditations'
+        a.footer__link href=static_page_path(streams_page) = translate('header.live_meditations')
         a.footer__link href=static_page_path(privacy_page) = privacy_page.name
         a.footer__link href=static_page_path(contact_page) = contact_page.name
 
