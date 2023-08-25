@@ -3,6 +3,7 @@
 class Users::PasswordsController < Devise::PasswordsController
 
   prepend_before_action :set_locale!
+  layout 'devise'
 
   def set_locale!
     I18n.locale = params[:locale]&.to_sym || :en

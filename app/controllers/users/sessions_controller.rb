@@ -3,6 +3,7 @@
 class Users::SessionsController < Devise::SessionsController
 
   prepend_before_action :set_locale!
+  layout 'devise'
 
   def set_locale!
     I18n.locale = params[:locale]&.to_sym || :en

@@ -2,6 +2,7 @@ class Users::InvitationsController < Devise::InvitationsController
   
   skip_before_action :enforce_maintenance_mode
   prepend_before_action :set_locale!
+  layout 'devise'
 
   def set_locale!
     I18n.locale = params[:locale]&.to_sym || :en
