@@ -7,6 +7,7 @@ module Admin
     before_action :redirect_to_locale!
     after_action :verify_authorized, except: %i[dashboard vimeo_data error]
     after_action :verify_policy_scoped, only: :index
+    layout 'admin/application'
 
     def dashboard
       localize :content do
