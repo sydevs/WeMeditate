@@ -40,14 +40,14 @@ module ContentHelper
     overrides[:url] = overrides[:url] + block[:url] if overrides[:url] && block[:url]&.starts_with?('#')
     block.merge!(overrides)
 
-    block_partial = splash_partial
+    block_partial = splash_partial(record)
 
     render "content_blocks/#{block_partial}", block: block, record: record, index: 0
   end
 
-  def splash_partial
-    file_name = controller_name == 'streams' ? 'streams' : @static_page&.role || @record&.slug
-    puts "GET SPLASH PARTIAL #{file_name}"
+  def splash_partial record = nil
+    file_name = controller_name == 'streams' ? 'streams' : (@static_page&.role || record&.slug)
+    
     if File.exist?(Rails.root.join('app', 'views', 'content_blocks', 'custom_splash', "_#{file_name}.html.slim"))
       "custom_splash/#{file_name}"
     else

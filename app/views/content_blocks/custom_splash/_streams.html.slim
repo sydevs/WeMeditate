@@ -8,7 +8,7 @@ ruby:
   classes << 'js-splash' if index.zero?
   classes << "cb-splash-textbox--#{block[:color] || 'dark'}"
 
-.cb-splash-textbox.cb-splash-textbox--stream class='js-splash' style=background data-invert=(block[:color] == 'light' ? 'true' : nil)
+.cb-splash-textbox class=classes style=background data-invert=(block[:color] == 'light' ? 'true' : nil)
   .cb-splash-textbox__wrapper-live
     .cb-splash-textbox__wrapper
       h1.cb-splash-textbox__title = translate('streams.live.title')

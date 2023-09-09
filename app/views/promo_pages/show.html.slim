@@ -1,7 +1,9 @@
 
+= render_splash_block(@promo_page)
+
 main.scrollspy-target
   - cache @promo_page do
-    .content = render_content @promo_page
+    .content = render_content @promo_page, skip_splash: true
 
 = sharing_links
 = render 'application/actions_footer'

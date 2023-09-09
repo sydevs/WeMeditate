@@ -1,0 +1,29 @@
+
+ruby:
+  invert = block[:color] == 'light'
+  image_url = record.media_file(block[:image][:id]).large.url if block[:image]
+  background = image_url ? "background-image: url(#{image_url})" : nil
+
+  classes = ['cb-splash-textbox--app']
+  classes << 'js-splash' if index.zero?
+  classes << "cb-splash-textbox--#{block[:color] || 'dark'}"
+
+.cb-splash-textbox class=classes style=background data-invert=(block[:color] == 'light' ? 'true' : nil)
+  .cb-splash-textbox__wrapper
+    - if block[:title].present?
+      h1.cb-splash-textbox__title = block[:title]
+
+    - if block[:subtitle].present?
+      .cb-splash-textbox__subtitle = block[:subtitle]
+
+    .cb-splash-textbox__action
+      .cb-splash-textbox__app
+        a title="Download on the App Store" href="store.apple.com" target='_blank'
+          = image_pack_tag 'icons/app-store-badge.svg'
+      .cb-splash-textbox__divider
+      .cb-splash-textbox__app
+        a title="Get it on Google Player" href="play.google.com" target='_blank'
+          = image_pack_tag 'icons/google-play-badge.svg'
+
+    - if block[:text].present?
+      .cb-splash-textbox__text = block[:text]
