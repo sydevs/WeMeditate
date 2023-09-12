@@ -133,7 +133,7 @@ class ApplicationController < ActionController::Base
     end
 
     def set_locale!
-      I18n.locale = params[:locale]&.dasherize&.to_sym || :en
+      I18n.locale = params[:locale]&.to_sym || :en
       Globalize.locale = I18n.locale
     end
 

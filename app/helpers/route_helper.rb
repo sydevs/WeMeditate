@@ -49,6 +49,7 @@ module RouteHelper
 
   def wm_path_for record
     locale ||= Globalize.locale || I18n.locale
+    locale = locale.to_s.underscore.to_sym
 
     if record.is_a?(StaticPage)
       static_page_path(record)
@@ -59,6 +60,7 @@ module RouteHelper
 
   def wm_url_for record, locale: nil
     locale ||= Globalize.locale || I18n.locale
+    locale = locale.to_s.underscore.to_sym
 
     if record.is_a?(StaticPage)
       static_page_url(record, locale: locale.to_s)

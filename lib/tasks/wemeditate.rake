@@ -17,7 +17,7 @@ namespace :wm do
       desc 'Reload the vimeo metadata for meditations only'
       task :meditations, %i[locale] => :environment do |_, args|
         args.with_defaults(locale: 'en')
-        I18n.locale = args.locale.dasherize.to_sym
+        I18n.locale = args.locale
         Globalize.locale = I18n.locale
 
         Meditation.in_batches(of: 200).each_with_index do |group, index|
