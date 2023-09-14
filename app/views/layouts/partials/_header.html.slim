@@ -55,7 +55,7 @@ header#header.header class=classes
       .header__notice.header__notice--preview
         .header__notice__text
           = translate 'header.preview_notice'
-    - elsif cookies[:notice] != 'dismissed'
+    /- elsif cookies[:notice] != 'dismissed'
       .header__notice.header__notice--cookie
         .header__notice__text
           .header__notice__close

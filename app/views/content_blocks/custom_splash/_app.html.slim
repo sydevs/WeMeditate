@@ -4,26 +4,55 @@ ruby:
   image_url = record.media_file(block[:image][:id]).large.url if block[:image]
   background = image_url ? "background-image: url(#{image_url})" : nil
 
-  classes = ['cb-splash-textbox--app']
+  classes = ['cb-splash-textbox--stream', 'cb-splash-textbox--app']
   classes << 'js-splash' if index.zero?
   classes << "cb-splash-textbox--#{block[:color] || 'dark'}"
 
 .cb-splash-textbox class=classes style=background data-invert=(block[:color] == 'light' ? 'true' : nil)
-  .cb-splash-textbox__wrapper
-    - if block[:title].present?
+  .cb-splash-textbox__wrapper-countdown
+    .cb-splash-textbox__wrapper
       h1.cb-splash-textbox__title = block[:title]
-
-    - if block[:subtitle].present?
       .cb-splash-textbox__subtitle = block[:subtitle]
+      .cb-splash-textbox__description = block[:text]
 
-    .cb-splash-textbox__action
-      .cb-splash-textbox__app
-        a title="Download on the App Store" href="store.apple.com" target='_blank'
-          = image_pack_tag 'icons/app-store-badge.svg'
-      .cb-splash-textbox__divider
-      .cb-splash-textbox__app
-        a title="Get it on Google Player" href="play.google.com" target='_blank'
-          = image_pack_tag 'icons/google-play-badge.svg'
+      .cb-splash-textbox__countdown.cb-splash-textbox__countdown--hidden class='js-countdown' data-time=(DateTime.new(2023, 9, 25).to_f * 1000) data-duration=(100.years * 1000)
+        span class='js-countdown-days' data-label=translate('streams.timing.days')
+        span.separator = ' '
+        span class='js-countdown-hours' data-label=translate('streams.timing.hours')
+        span.separator = ':'
+        span class='js-countdown-minutes' data-label=translate('streams.timing.minutes')
+        span.separator = ':'
+        span class='js-countdown-seconds' data-label=translate('streams.timing.seconds')
 
-    - if block[:text].present?
-      .cb-splash-textbox__text = block[:text]
+      .cb-splash-textbox__action
+        = inline_svg_tag 'graphics/leaves.svg', class: 'cb-splash-textbox__action__leaf'
+        a.cb-splash-textbox__action__text href=locale_link(block[:url]) = block[:action]
+        = inline_svg_tag 'graphics/leaves.svg', class: 'cb-splash-textbox__action__leaf'
+
+  .cb-splash-textbox__wrapper-live
+    .cb-splash-textbox__wrapper
+      - if block[:title].present?
+        h1.cb-splash-textbox__title = block[:title]
+
+      - if block[:subtitle].present?
+        .cb-splash-textbox__subtitle = block[:subtitle]
+
+      .cb-splash-textbox__options
+        .cb-splash-textbox__app
+          a href="store.apple.com" target='_blank'
+            = inline_svg_tag 'icons/apple-logo.svg'
+            p Download on<br>App Store
+        .cb-splash-textbox__divider
+        .cb-splash-textbox__app
+          a href="play.google.com" target='_blank'
+            = inline_svg_tag 'icons/android-logo.svg'
+            p Download on<br>Google Play
+
+      - if block[:text].present?
+        .cb-splash-textbox__text = block[:text]
+
+      - if block[:action].present?
+        .cb-splash-textbox__action
+          = inline_svg_tag 'graphics/leaves.svg', class: 'cb-splash-textbox__action__leaf'
+          a.cb-splash-textbox__action__text href=locale_link(block[:url]) = block[:action]
+          = inline_svg_tag 'graphics/leaves.svg', class: 'cb-splash-textbox__action__leaf'

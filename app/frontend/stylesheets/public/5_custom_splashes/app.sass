@@ -1,32 +1,58 @@
 @import "../../mixins/*"
 
-// ===== SPLASH SCREEN ===== //
 .cb-splash-textbox--app .cb-splash-textbox
-  &__action
+  &__title
+    font-weight: $font-bold
+    margin-bottom: 3vh
+    padding: 0 30px
+
+// ===== SPLASH SCREEN LIVE ===== //
+.cb-splash-textbox--app .cb-splash-textbox__wrapper-live .cb-splash-textbox
+  &__wrapper
+    margin-top: 0 !important
+
+  &__options
     font-size: 1.8rem
     line-height: 2.2rem
     letter-spacing: 0.56px
     animation: none
 
-    display: flex
-    justify-content: space-evenly
-    margin-bottom: 20px
-
-  &__action > *
+  &__options > *
     display: flex
     flex-direction: column
     align-items: center
-    width: 192px
+    width: 120px
     max-width: 45%
-    margin: 20px
+    margin: 10px
+
+    @include tablet-or-larger
+      margin: 20px
 
   &__divider
     width: 0
     height: 80%
-    border-left: 2px solid white
+    border-left: 1px solid white
+    opacity: 0.7
 
   &__app > a
-    width: 100%
+    color: white
 
     &:hover
-      opacity: 0.8
+      opacity: 1
+      color: $color-text-blue
+
+      path
+        fill: $color-text-blue
+
+  &__app
+    img, svg
+      width: 50px
+      height: 50px
+      margin: auto
+
+      path
+        transition: all 0.3s ease
+
+      @include tablet-or-larger
+        width: 70px
+        height: 70px
