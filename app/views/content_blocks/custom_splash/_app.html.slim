@@ -11,9 +11,13 @@ ruby:
 .cb-splash-textbox class=classes style=background data-invert=(block[:color] == 'light' ? 'true' : nil)
   .cb-splash-textbox__wrapper-countdown
     .cb-splash-textbox__wrapper
-      h1.cb-splash-textbox__title = block[:title]
-      .cb-splash-textbox__subtitle = block[:subtitle]
-      .cb-splash-textbox__description = block[:text]
+      - if block[:title].present?
+        h1.cb-splash-textbox__title
+          = block[:title]
+          .cb-splash-textbox__subtitle = block[:subtitle]
+
+      - if block[:text].present?
+        .cb-splash-textbox__description = block[:text]
 
       .cb-splash-textbox__countdown.cb-splash-textbox__countdown--hidden class='js-countdown' data-time=(DateTime.new(2023, 9, 25).to_f * 1000) data-duration=(100.years * 1000)
         span class='js-countdown-days' data-label=translate('streams.timing.days')
@@ -32,10 +36,10 @@ ruby:
   .cb-splash-textbox__wrapper-live
     .cb-splash-textbox__wrapper
       - if block[:title].present?
-        h1.cb-splash-textbox__title = block[:title]
-
-      - if block[:subtitle].present?
-        .cb-splash-textbox__subtitle = block[:subtitle]
+        h1.cb-splash-textbox__title
+          = block[:title]
+          - if block[:subtitle].present?
+            .cb-splash-textbox__subtitle = block[:subtitle]
 
       .cb-splash-textbox__options
         .cb-splash-textbox__app
