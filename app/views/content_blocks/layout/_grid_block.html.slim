@@ -3,7 +3,13 @@
   .cb-grid-layout__grid.js-grid data-max-columns=3
     - block[:items].first(3).each do |item|
       article.cb-grid-layout__item
-        h3.cb-grid-layout__title = item[:title]
+        h3.cb-grid-layout__title
+          - if item[:url].present?
+            a href=item[:url]
+              = item[:title]
+              |  →
+          - else
+            = item[:title]
         .cb-grid-layout__text = simple_format_content item[:text]
 
   - if block[:items].count > 3

@@ -66,7 +66,7 @@ module Admin::ApplicationHelper
           result = sanitize(result, tags: %w[em br])
 
         when 'layout'
-          result = block['data']['items'].map { |i| "— #{i['title']}" }.join('<br>')
+          result = block['data']['items'].map { |i| "— #{i['title']}#{" → #{i['url']}" if i['url'].present?}" }.join('<br>')
           result = sanitize(result, tags: %w[br])
 
         when 'catalog'

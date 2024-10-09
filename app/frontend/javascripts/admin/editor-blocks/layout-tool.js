@@ -41,6 +41,7 @@ export default class LayoutTool extends EditorTool {
       img: `${this.CSS.container}__img`,
       title: `${this.CSS.container}__title`,
       text: `${this.CSS.container}__text`,
+      url: `${this.CSS.container}__url`,
     }
   }
 
@@ -107,6 +108,13 @@ export default class LayoutTool extends EditorTool {
       if (event.shiftKey) this.insertParagraphBreak(event)
     })
     text.addEventListener('paste', event => this.containPaste(event))
+
+    // Add url input
+    const url = make('div', [this.CSS.input, this.CSS.inputs.url, this.CSS.item.url], {
+      contentEditable: true,
+      innerHTML: data.url || '',
+    }, container)
+    url.dataset.placeholder = translate('placeholders.url')
 
     return container
   }
@@ -189,9 +197,10 @@ export default class LayoutTool extends EditorTool {
     for (let i = 0; i < items.length; i++) {
       const title = items[i].querySelector(`.${this.CSS.item.title}`).value
       const text = items[i].querySelector(`.${this.CSS.item.text}`).innerHTML
+      const url = items[i].querySelector(`.${this.CSS.item.url}`).innerHTML
 
       if (title || text) {
-        const data = { title: title, text: text }
+        const data = { title: title, text: text, url: url }
 
         if (this.data.type === 'columns') {
           let imageData = items[i].querySelector(`.${this.CSS.item.image}`).dataset.attributes
