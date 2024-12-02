@@ -25,6 +25,8 @@ module MetadataHelper
           value.each do |val|
             concat tag.link rel: 'alternate', href: val[1], hreflang: val[0]
           end
+        elsif key == 'canonical_url'
+          concat tag.link rel: 'canonical', content: value
         elsif value.is_a? Array
           value.each do |val|
             concat tag.meta property: key, content: val
@@ -61,6 +63,7 @@ module MetadataHelper
         'description' => translate('tagline'),
         'og:site_name' => translate('we_meditate'),
         'og:url' => request.original_url,
+        'canonical_url' => request.base_url + request.path,
         'og:image' => ApplicationController.helpers.image_url('metadata/preview.png'),
         'og:locale' => locale,
         # 'og:locale:alternate' => Rails.configuration.published_locales.map(&:to_s),
