@@ -1,24 +1,21 @@
 
-- if @atlas_enabled || params[:preview] == 'true'
-  script src="https://atlas.sydevelopers.com/embed.js" type="module"
-  //script src="http://localhost:3000/embed.js" type="module"
-  syatlas-map api-key=ENV.fetch('ATLAS_KEY')
-- else
-  .error
-    h1.error__banner.banner
-      = translate 'errors.coming_soon'
+script src="https://atlas.sydevelopers.com/embed.js" type="module"
+//script src="http://localhost:3000/embed.js" type="module"
+syatlas-map api-key=ENV.fetch('ATLAS_KEY') locale=(I18n.locale || 'en')
 
-    h2.error__title
-      = translate 'errors.no_programs'
-
-    p.error__subtitle = translate 'errors.alternatives_title'
-    ul.error__list
-      - if I18n.locale == :en
-        - page = StaticPage.preview(:streams)
+//.error
+  h1.error__banner.banner
+    = translate 'errors.coming_soon'
+  h2.error__title
+    = translate 'errors.no_programs'
+  p.error__subtitle = translate 'errors.alternatives_title'
+  ul.error__list
+    - if I18n.locale == :en
+      - page = StaticPage.preview(:streams)
+      li: a href=static_page_path(page) = page.name
+      li: a href='https://www.sahajayoga.org.uk/find-a-meditation' Classes in the United Kingom
+      li: a href='https://us.sahajayoga.org/classes-near-me/' Classes in the United States
+    - else
+      - %i[meditations tracks articles].each do |role|
+        - page = StaticPage.preview(role)
         li: a href=static_page_path(page) = page.name
-        li: a href='https://www.sahajayoga.org.uk/find-a-meditation' Classes in the United Kingom
-        li: a href='https://us.sahajayoga.org/classes-near-me/' Classes in the United States
-      - else
-        - %i[meditations tracks articles].each do |role|
-          - page = StaticPage.preview(role)
-          li: a href=static_page_path(page) = page.name
