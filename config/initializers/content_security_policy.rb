@@ -12,7 +12,7 @@ Rails.application.configure do
     gtm_sources = [] # %w[www.googletagmanager.com tagmanager.google.com www.google-analytics.com stats.g.doubleclick.net www.gstatic.com]
     jwp_sources = %w[cdn.jwplayer.com ssl.p.jwpcdn.com videos-cloudflare.jwpsrv.com assets-jpcust.jwpsrv.com prd.jwpltx.com]
     vimeo_sources = %w[player.vimeo.com vod-progressive.akamaized.net]
-    atlas_sources = %w[atlas.sydevelopers.com api.mapbox.com events.mapbox.com]
+    atlas_sources = %w[atlas.sydevelopers.com syatlas.pages.dev api.mapbox.com events.mapbox.com]
     fathom_sources = %w[thirtyeight-code.wemeditate.com]
     featured_stream_sources = %w[gist.githubusercontent.com cdn.jsdelivr.net]
 
