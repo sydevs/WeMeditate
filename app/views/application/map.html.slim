@@ -1,6 +1,7 @@
 
 - if @atlas_enabled || params[:preview] == 'true'
-  script id='sahaj-atlas' src=@atlas_url
+  script src="https://atlas.sydevelopers.com/embed.js" type="module"
+  syatlas-map api-key=ENV.fetch('ATLAS_KEY')
 - else
   .error
     h1.error__banner.banner
