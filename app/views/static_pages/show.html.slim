@@ -18,7 +18,7 @@
   main.scrollspy-target
     - if @static_page.classes?
       .classes__splash.js-splash data-invert='true'
-        form.classes__form method='GET' action=map_path id='geosearch' data-key=ENV.fetch('MAPBOX_ACCESSTOKEN')
+        form.classes__form method='GET' action=map_path(anchor: '!/search') id='geosearch' data-key=ENV.fetch('MAPBOX_ACCESSTOKEN')
           .classes__field
             button.classes__field__icon
               .icon.icon--search

@@ -87,7 +87,7 @@ export default class GeoSearch {
     this.searchNearbyText.textContent = this.searchNearbyText.dataset.loading
 
     navigator.geolocation.getCurrentPosition((position) => {
-      this.searchNearby.href = `${this.endpoint}?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`
+      this.searchNearby.href = `${this.endpoint}?center=${position.coords.longitude},${position.coords.latitude}`
       this.searchNearbyText.textContent = `${position.coords.latitude.toFixed(6)}, ${position.coords.longitude.toFixed(6)} (${this.searchNearbyText.dataset.found})`
     }, (error) => {
       this.searchNearby.classList.add('classes__nearby--error')
@@ -170,22 +170,14 @@ export default class GeoSearch {
 
   parseServiceResponse(data) {
     const results = []
-    
+
     // Showing only 8 results for now, potentially increase/descrease the number
     for (let i = 0; i < data.length; i++) {
       const dat = data[i]
       let result = {
         q: dat.place_name,
-        latitude: dat.center[1],
-        longitude: dat.center[0],
-        type: dat.place_type[0],
-      }
-
-      if (['country', 'region', 'district'].includes(result.type)) {
-        result.west = dat.bbox[0]
-        result.south = dat.bbox[1]
-        result.east = dat.bbox[2]
-        result.north = dat.bbox[3]
+        center: dat.center.join(','),
+        bbox: dat.bbox.join(','),
       }
 
       results.push(result)

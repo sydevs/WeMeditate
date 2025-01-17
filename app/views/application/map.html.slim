@@ -1,8 +1,7 @@
 
-- content_for :head do
-  script src="https://atlas.sydevelopers.com/embed.js" type="module"
-
 - if @atlas_enabled || params[:preview] == 'true'
+  script src="https://atlas.sydevelopers.com/embed.js" type="module"
+  //script src="http://localhost:3000/embed.js" type="module"
   syatlas-map api-key=ENV.fetch('ATLAS_KEY')
 - else
   .error
