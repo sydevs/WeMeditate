@@ -6,6 +6,7 @@ module Admin::LookupHelper
   # So we define that mapping manually here.
   LANGUAGE_TO_FLAG_MAP = {
     en: 'gb', # UK for English
+    :'en-au': 'au' # Australia sublocale
     ru: 'ru', # Russian
     it: 'it', # Italian
     de: 'de', # German
