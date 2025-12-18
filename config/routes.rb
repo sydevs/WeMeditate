@@ -51,6 +51,7 @@ Rails.application.routes.draw do
 
     localized do
       root to: 'application#home'
+      get 'robots.txt', to: 'robots#txt'
       get 'sitemap.xml.gz', to: 'application#sitemap'
       get '404', to: 'application#error'
       get '422', to: 'application#error'
@@ -88,6 +89,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'robots.txt', to: 'robots#txt'
   get '404', to: 'application#error'
   get '422', to: 'application#error'
   get '500', to: 'application#error'
