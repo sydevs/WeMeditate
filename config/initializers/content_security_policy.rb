@@ -12,7 +12,8 @@ Rails.application.configure do
     gtm_sources = [] # %w[www.googletagmanager.com tagmanager.google.com www.google-analytics.com stats.g.doubleclick.net www.gstatic.com]
     jwp_sources = %w[cdn.jwplayer.com ssl.p.jwpcdn.com videos-cloudflare.jwpsrv.com assets-jpcust.jwpsrv.com prd.jwpltx.com]
     vimeo_sources = %w[player.vimeo.com vod-progressive.akamaized.net]
-    atlas_sources = %w[atlas.sydevelopers.com syatlas.pages.dev api.mapbox.com events.mapbox.com]
+    # Sahaj Atlas's connect-src list, from SahajAtlasWeb docs/embedding.md
+    atlas_sources = %w[cloud.sydevelopers.com api.mapbox.com events.mapbox.com ipwho.is cdn.usefathom.com *.sentry.io]
     fathom_sources = %w[thirtyeight-code.wemeditate.com]
     featured_stream_sources = %w[gist.githubusercontent.com cdn.jsdelivr.net]
 
@@ -22,10 +23,11 @@ Rails.application.configure do
     policy.object_src  :none
     policy.script_src  :self, *gtm_sources, *jwp_sources, :unsafe_eval, :unsafe_inline, :https
     policy.worker_src  :self, :blob
+    policy.child_src   :self, :blob
     policy.connect_src :self, asset_host, *fathom_sources, *featured_stream_sources, *gtm_sources, *jwp_sources, *atlas_sources
     policy.media_src   :blob, asset_host, 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', *vimeo_sources
     policy.style_src   :self, :unsafe_inline, :https
-    policy.frame_src   :self, 'atlas.sydevelopers.com', 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', 'www.google.com', 'www.recaptcha.net', *vimeo_sources
+    policy.frame_src   :self, 'cloud.sydevelopers.com', 'cdn.jwplayer.com', 'player.twitch.tv', 'www.youtube.com', 'www.google.com', 'www.recaptcha.net', *vimeo_sources
 
     # Specify URI for violation reports
     # policy.report_uri "/csp-violation-report-endpoint"
