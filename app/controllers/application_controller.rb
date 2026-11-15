@@ -111,7 +111,7 @@ class ApplicationController < ActionController::Base
     # The Sahaj Atlas loader URL for this map page (SahajAtlasWeb docs/embedding.md).
     #
     # SahajCloud links every class and region to a path under /map, such as /map/gb/london,
-    # so `atlas` opens the widget at the route this page's path names — without it the
+    # so `atlas` opens the widget at the route this page's path names; without it the
     # widget looks only for an `?atlas=` parameter, and shows the whole world.
     #
     # `routing=path` keeps the routes the widget writes as paths too, but only under the
