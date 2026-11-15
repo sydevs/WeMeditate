@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
   # The page where we embed the Sahaj Atlas map
   def map
     set_metadata({ 'title' => translate('classes.map_title') })
+    @atlas_src = atlas_embed_src
     render layout: 'minimal'
   end
 
@@ -106,6 +107,22 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+    # The Sahaj Atlas loader URL for this map page (SahajAtlasWeb docs/embedding.md).
+    #
+    # SahajCloud links every class and region to a path under /map, such as /map/gb/london,
+    # so `atlas` opens the widget at the route this page's path names — without it the
+    # widget looks only for an `?atlas=` parameter, and shows the whole world.
+    #
+    # `routing=path` keeps the routes the widget writes as paths too, but only under the
+    # page set on the We Meditate client record in SahajCloud, which is /map. A localised
+    # page (/ru/map/...) sits outside it, so it keeps query routing and still opens at its
+    # route. Until that page is set, the widget falls back to query routing by itself.
+    def atlas_embed_src
+      query = { key: ENV.fetch('ATLAS_KEY'), atlas: "/#{params[:path]}" }
+      query[:routing] = 'path' if request.path == '/map' || request.path.start_with?('/map/')
+      "https://sahajatlas.com/auto.js?#{query.to_query}"
+    end
 
     def redirect_legacy_url record
       puts "REDIRECT URL FOR #{I18n.locale}/#{Globalize.locale}, #{record}"
